@@ -44,6 +44,11 @@ public class BlissDevice : Disposable {
     
     private SampleCountFlags _msaaSamples;
 
+    /// <summary>
+    /// Constructor for creating a BlissDevice object.
+    /// </summary>
+    /// <param name="vk">The Vulkan instance.</param>
+    /// <param name="window">The window view.</param>
     public BlissDevice(Vk vk, IView window) {
         this.Vk = vk;
         this.DeviceName = "Unknown";
@@ -65,7 +70,10 @@ public class BlissDevice : Disposable {
         this.CreateLogicalDevice();
         this.CreateCommandPool();
     }
-    
+
+    /// <summary>
+    /// Creates a Vulkan instance.
+    /// </summary>
     private unsafe void CreateInstance() {
         if (this._enableValidationLayers && !this.CheckValidationLayerSupport()) {
             throw new Exception("Validation layers requested, but not available!");
@@ -114,7 +122,10 @@ public class BlissDevice : Disposable {
             SilkMarshal.Free((nint) createInfo.PpEnabledLayerNames);
         }
     }
-        
+
+    /// <summary>
+    /// Sets up the debug messenger for Vulkan validation layers, if enabled.
+    /// </summary>
     private unsafe void SetupDebugMessenger() {
         if (!this._enableValidationLayers || !this.Vk.TryGetInstanceExtension(this._instance, out this._debugUtils)) {
             return;
@@ -127,7 +138,10 @@ public class BlissDevice : Disposable {
             throw new Exception("Failed to set up debug messenger!");
         }
     }
-    
+
+    /// <summary>
+    /// Creates a Vulkan surface.
+    /// </summary>
     private unsafe void CreateSurface() {
         if (!this.Vk.TryGetInstanceExtension(this._instance, out this._khrSurface)) {
             throw new NotSupportedException("KHR_surface extension not found.");
@@ -139,7 +153,10 @@ public class BlissDevice : Disposable {
 
         this._surface = this._window.VkSurface.Create<AllocationCallbacks>(this._instance.ToHandle(), null).ToSurface();
     }
-    
+
+    /// <summary>
+    /// Method for selecting a physical device that supports Vulkan.
+    /// </summary>
     private unsafe void PickPhysicalDevice() {
         uint devicedCount = 0;
         this.Vk.EnumeratePhysicalDevices(this._instance, ref devicedCount, null);
@@ -170,6 +187,9 @@ public class BlissDevice : Disposable {
         Logger.Info($"Using device: {this.DeviceName}.");
     }
 
+    /// <summary>
+    /// Creates the logical device for Vulkan rendering.
+    /// </summary>
     private unsafe void CreateLogicalDevice() {
         QueueFamilyIndices indices = this.FindQueueFamilies(this._physicalDevice);
 
@@ -230,6 +250,9 @@ public class BlissDevice : Disposable {
         SilkMarshal.Free((nint) createInfo.PpEnabledExtensionNames);
     }
 
+    /// <summary>
+    /// Creates a command pool for the BlissDevice object.
+    /// </summary>
     private unsafe void CreateCommandPool() {
         QueueFamilyIndices queueFamilyIndices = this.FindQueueFamilies(this._physicalDevice);
 
@@ -243,7 +266,11 @@ public class BlissDevice : Disposable {
             throw new Exception("Failed to create command pool!");
         }
     }
-    
+
+    /// <summary>
+    /// Populates the DebugUtilsMessengerCreateInfoEXT structure with the necessary information for creating a debug messenger.
+    /// </summary>
+    /// <param name="createInfo">The DebugUtilsMessengerCreateInfoEXT structure to be populated.</param>
     private unsafe void PopulateDebugMessengerCreateInfo(ref DebugUtilsMessengerCreateInfoEXT createInfo) {
         createInfo.SType = StructureType.DebugUtilsMessengerCreateInfoExt;
         createInfo.MessageSeverity = DebugUtilsMessageSeverityFlagsEXT.VerboseBitExt | DebugUtilsMessageSeverityFlagsEXT.WarningBitExt | DebugUtilsMessageSeverityFlagsEXT.ErrorBitExt;
@@ -251,6 +278,14 @@ public class BlissDevice : Disposable {
         createInfo.PfnUserCallback = (DebugUtilsMessengerCallbackFunctionEXT) this.DebugCallback;
     }
 
+    /// <summary>
+    /// Callback used for debugging messages.
+    /// </summary>
+    /// <param name="messageSeverity">The severity level of the message.</param>
+    /// <param name="messageTypes">The types of the message.</param>
+    /// <param name="pCallbackData">Pointer to the debug message data.</param>
+    /// <param name="pUserData">Pointer to user-defined data.</param>
+    /// <returns>The result of the debug callback.</returns>
     private unsafe uint DebugCallback(DebugUtilsMessageSeverityFlagsEXT messageSeverity, DebugUtilsMessageTypeFlagsEXT messageTypes, DebugUtilsMessengerCallbackDataEXT* pCallbackData, void* pUserData) {
         if (messageSeverity == DebugUtilsMessageSeverityFlagsEXT.VerboseBitExt) return Vk.False;
 
@@ -260,18 +295,14 @@ public class BlissDevice : Disposable {
         return Vk.False;
     }
 
-    public void CopyBuffer(Buffer srcBuffer, Buffer dstBuffer, ulong size) {
-        CommandBuffer commandBuffer = this.BeginSingleTimeCommands();
-
-        BufferCopy copyRegion = new() {
-            Size = size,
-        };
-
-        this.Vk.CmdCopyBuffer(commandBuffer, srcBuffer, dstBuffer, 1, copyRegion);
-
-        this.EndSingleTimeCommands(commandBuffer);
-    }
-    
+    /// <summary>
+    /// Creates a Vulkan buffer with specified size, usage, and memory properties.
+    /// </summary>
+    /// <param name="size">The size in bytes of the buffer.</param>
+    /// <param name="usage">The intended usage of the buffer.</param>
+    /// <param name="properties">The required memory properties for the buffer.</param>
+    /// <param name="buffer">Reference to the created Vulkan buffer.</param>
+    /// <param name="bufferMemory">Reference to the allocated Vulkan device memory for the buffer.</param>
     public unsafe void CreateBuffer(ulong size, BufferUsageFlags usage, MemoryPropertyFlags properties, ref Buffer buffer, ref DeviceMemory bufferMemory) {
         BufferCreateInfo bufferInfo = new() {
             SType = StructureType.BufferCreateInfo,
@@ -302,7 +333,29 @@ public class BlissDevice : Disposable {
 
         this.Vk.BindBufferMemory(this._device, buffer, bufferMemory, 0);
     }
-    
+
+    /// <summary>
+    /// Copies the contents of one buffer to another buffer.
+    /// </summary>
+    /// <param name="srcBuffer">The source buffer.</param>
+    /// <param name="dstBuffer">The destination buffer.</param>
+    /// <param name="size">The size, in bytes, of the data to be copied.</param>
+    public void CopyBuffer(Buffer srcBuffer, Buffer dstBuffer, ulong size) {
+        CommandBuffer commandBuffer = this.BeginSingleTimeCommands();
+
+        BufferCopy copyRegion = new() {
+            Size = size,
+        };
+
+        this.Vk.CmdCopyBuffer(commandBuffer, srcBuffer, dstBuffer, 1, copyRegion);
+
+        this.EndSingleTimeCommands(commandBuffer);
+    }
+
+    /// <summary>
+    /// Begins the recording of a single time command buffer.
+    /// </summary>
+    /// <returns>The command buffer that is allocated and started.</returns>
     private CommandBuffer BeginSingleTimeCommands() {
         CommandBufferAllocateInfo allocateInfo = new() {
             SType = StructureType.CommandBufferAllocateInfo,
@@ -323,6 +376,10 @@ public class BlissDevice : Disposable {
         return commandBuffer;
     }
 
+    /// <summary>
+    /// Ends a single time command buffer execution.
+    /// </summary>
+    /// <param name="commandBuffer">The command buffer to end.</param>
     private unsafe void EndSingleTimeCommands(CommandBuffer commandBuffer) {
         this.Vk.EndCommandBuffer(commandBuffer);
 
@@ -338,6 +395,11 @@ public class BlissDevice : Disposable {
         this.Vk.FreeCommandBuffers(this._device, this._commandPool, 1, commandBuffer);
     }
 
+    /// <summary>
+    /// Queries the swap chain support of the physical device.
+    /// </summary>
+    /// <param name="physicalDevice">The physical device.</param>
+    /// <returns>The swap chain support details.</returns>
     private unsafe SwapChainSupportDetails QuerySwapChainSupport(PhysicalDevice physicalDevice) {
         SwapChainSupportDetails details = new();
         
@@ -374,6 +436,11 @@ public class BlissDevice : Disposable {
         return details;
     }
 
+    /// <summary>
+    /// Check if a given physical device is suitable for the application.
+    /// </summary>
+    /// <param name="device">The physical device to check.</param>
+    /// <returns><c>true</c> if the device is suitable; otherwise, <c>false</c>.</returns>
     private bool IsDeviceSuitable(PhysicalDevice device) {
         QueueFamilyIndices indices = this.FindQueueFamilies(device);
 
@@ -390,6 +457,11 @@ public class BlissDevice : Disposable {
         return indices.IsComplete() && extensionsSupported && swapChainAdequate && supportedFeatures.SamplerAnisotropy;
     }
 
+    /// <summary>
+    /// Checks if the specified device supports the required device extensions.
+    /// </summary>
+    /// <param name="device">The physical device to check.</param>
+    /// <returns>True if the device supports all the required device extensions, false otherwise.</returns>
     private unsafe bool CheckDeviceExtensionsSupport(PhysicalDevice device) {
         uint extensionsCount = 0;
         this.Vk.EnumerateDeviceExtensionProperties(device, (byte*) null, ref extensionsCount, null);
@@ -411,6 +483,11 @@ public class BlissDevice : Disposable {
         return this._deviceExtensions.All(availableExtensionNames.Contains);
     }
 
+    /// <summary>
+    /// Finds the queue families available on the given physical device.
+    /// </summary>
+    /// <param name="device">The physical device to query.</param>
+    /// <returns>The queue family indices containing the graphics and presentation families.</returns>
     private unsafe QueueFamilyIndices FindQueueFamilies(PhysicalDevice device) {
         QueueFamilyIndices indices = new();
 
@@ -444,7 +521,11 @@ public class BlissDevice : Disposable {
 
         return indices;
     }
-    
+
+    /// <summary>
+    /// Retrieves the required Vulkan extensions based on the window view.
+    /// </summary>
+    /// <returns>An array of strings representing the required Vulkan extensions.</returns>
     private unsafe string[] GetRequiredExtensions() {
         byte** glfwExtensions = this._window.VkSurface!.GetRequiredExtensions(out var glfwExtensionCount);
         string[] extensions = SilkMarshal.PtrToStringArray((nint) glfwExtensions, (int) glfwExtensionCount);
@@ -455,7 +536,11 @@ public class BlissDevice : Disposable {
 
         return extensions;
     }
-    
+
+    /// <summary>
+    /// Checks if the required validation layers are supported by the Vulkan instance.
+    /// </summary>
+    /// <returns>Returns true if all validation layers are supported, otherwise false.</returns>
     private unsafe bool CheckValidationLayerSupport() {
         uint layerCount = 0;
         this.Vk.EnumerateInstanceLayerProperties(ref layerCount, null);
@@ -476,7 +561,11 @@ public class BlissDevice : Disposable {
 
         return this._validationLayers.All(availableLayerNames.Contains);
     }
-    
+
+    /// <summary>
+    /// Gets the maximum usable sample count for the physical device.
+    /// </summary>
+    /// <returns>The maximum usable sample count.</returns>
     private SampleCountFlags GetMaxUsableSampleCount() {
         this.Vk.GetPhysicalDeviceProperties(this._physicalDevice, out var physicalDeviceProperties);
         
@@ -493,6 +582,13 @@ public class BlissDevice : Disposable {
         };
     }
 
+    /// <summary>
+    /// Finds a supported format for the given candidates, tiling, and features.
+    /// </summary>
+    /// <param name="candidates">The list of format candidates.</param>
+    /// <param name="tiling">The tiling mode.</param>
+    /// <param name="features">The required format features.</param>
+    /// <returns>The supported format.</returns>
     private Format FindSupportedFormat(IEnumerable<Format> candidates, ImageTiling tiling, FormatFeatureFlags features) {
         foreach (var format in candidates) {
             this.Vk.GetPhysicalDeviceFormatProperties(this._physicalDevice, format, out FormatProperties props);
@@ -508,6 +604,9 @@ public class BlissDevice : Disposable {
         throw new Exception("Failed to find supported format!");
     }
 
+    /// <summary>
+    /// Finds a supported format for the given candidates, tiling, and features.
+    /// </summary>
     public Format FindDepthFormat() {
         return this.FindSupportedFormat(new[] {
             Format.D32Sfloat,
@@ -516,6 +615,12 @@ public class BlissDevice : Disposable {
         }, ImageTiling.Optimal, FormatFeatureFlags.DepthStencilAttachmentBit);
     }
 
+    /// <summary>
+    /// Finds the memory type that meets the specified requirements.
+    /// </summary>
+    /// <param name="typeFilter">The memory type filter.</param>
+    /// <param name="properties">The desired memory properties.</param>
+    /// <returns>The index of the matching memory type.</returns>
     public uint FindMemoryType(uint typeFilter, MemoryPropertyFlags properties) {
         this.Vk.GetPhysicalDeviceMemoryProperties(this._physicalDevice, out PhysicalDeviceMemoryProperties memProperties);
 
@@ -528,54 +633,99 @@ public class BlissDevice : Disposable {
         throw new Exception("Failed to find suitable memory type!");
     }
 
+    /// <summary>
+    /// Retrieves the Vulkan device associated with the BlissDevice.
+    /// </summary>
+    /// <returns>The Vulkan device.</returns>
     public Device GetDevice() {
         return this._device;
     }
-    
+
+    /// <summary>
+    /// Returns the Vulkan instance associated with the BlissDevice object.
+    /// </summary>
+    /// <returns>The Vulkan instance.</returns
     public Instance GetInstance() {
         return this._instance;
     }
 
+    /// <summary>
+    /// Gets the Vulkan surface associated with the current BlissDevice object.
+    /// </summary>
+    /// <returns>The Vulkan surface.</returns>
     public SurfaceKHR GetSurface() {
         return this._surface;
     }
 
+    /// <summary>
+    /// Retrieves the graphics queue associated with the BlissDevice object.
+    /// </summary>
+    /// <returns>The graphics queue.</returns>
     public Queue GetGraphicsQueue() {
         return this._graphicsQueue;
     }
 
+    /// <summary>
+    /// Retrieves the present queue from the BlissDevice object.
+    /// </summary>
+    /// <returns>The present queue.</returns>
     public Queue GetPresentQueue() {
         return this._presentQueue;
     }
-    
+
+    /// <summary>
+    /// Retrieves the command pool associated with the BlissDevice object.
+    /// </summary>
+    /// <returns>The command pool.</returns>
     public CommandPool GetCommandPool() {
         return this._commandPool;
     }
-    
+
+    /// <summary>
+    /// Retrieves the physical device properties.
+    /// </summary>
+    /// <returns>The physical device properties.</returns>
     public PhysicalDeviceProperties GetProperties() {
         this.Vk.GetPhysicalDeviceProperties(this._physicalDevice, out PhysicalDeviceProperties properties);
         return properties;
     }
-
+    /// <summary>>
+    /// Queries the swap chain support of the physical device.
+    /// </summary>
+    /// <returns>The swap chain support details.</returns>
     public SwapChainSupportDetails QuerySwapChainSupport() {
         return this.QuerySwapChainSupport(this._physicalDevice);
     }
 
+    /// <summary>
+    /// Finds the queue families available on the given physical device.
+    /// </summary>
+    /// <returns>The queue family indices containing the graphics and presentation families.</returns>
     public QueueFamilyIndices FindQueueFamilies() {
         return this.FindQueueFamilies(this._physicalDevice);
     }
-    
+
+    /// <summary>
+    /// Provides information about the swap chain support of a physical device.
+    /// </summary>
     public struct SwapChainSupportDetails {
         public SurfaceCapabilitiesKHR Capabilities;
         public SurfaceFormatKHR[] Formats;
         public PresentModeKHR[] PresentModes;
     }
-    
+
+    /// <summary>
+    /// Represents the indices of the queue families on a physical device.
+    /// </summary>
     public struct QueueFamilyIndices {
         
         public uint? GraphicsFamily;
         public uint? PresentFamily;
-        
+
+        /// <summary>
+        /// Checks if the device is suitable for use in the application based on various criteria such as queue family support, device extensions support, swap chain support, and supported features.
+        /// </summary>
+        /// <returns>True if the device is suitable, otherwise false.</returns>
         public bool IsComplete() {
             return this.GraphicsFamily.HasValue && this.PresentFamily.HasValue;
         }
