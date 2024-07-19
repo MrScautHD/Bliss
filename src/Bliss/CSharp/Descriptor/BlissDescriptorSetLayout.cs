@@ -23,7 +23,7 @@ public class BlissDescriptorSetLayout : Disposable {
                 PBindings = setLayoutPtr
             };
 
-            if (vk.CreateDescriptorSetLayout(device.VkDevice, &descriptorSetLayoutInfo, null, out this.DescriptorSetLayout) != Result.Success) {
+            if (vk.CreateDescriptorSetLayout(device.GetDevice(), &descriptorSetLayoutInfo, null, out this.DescriptorSetLayout) != Result.Success) {
                 throw new ApplicationException("Failed to create descriptor set layout");
             }
         }
@@ -31,7 +31,7 @@ public class BlissDescriptorSetLayout : Disposable {
 
     protected override unsafe void Dispose(bool disposing) {
         if (disposing) {
-            this.Vk.DestroyDescriptorSetLayout(this.Device.VkDevice, this.DescriptorSetLayout, null);
+            this.Vk.DestroyDescriptorSetLayout(this.Device.GetDevice(), this.DescriptorSetLayout, null);
         }
     }
 }

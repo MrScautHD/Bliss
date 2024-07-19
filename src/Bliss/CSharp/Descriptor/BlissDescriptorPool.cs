@@ -30,7 +30,7 @@ public class BlissDescriptorPool : Disposable {
                     Flags = flags
                 };
 
-                if (vk.CreateDescriptorPool(device.VkDevice, &descriptorPoolInfo, null, descriptorPoolPtr) != Result.Success) {
+                if (vk.CreateDescriptorPool(device.GetDevice(), &descriptorPoolInfo, null, descriptorPoolPtr) != Result.Success) {
                     throw new ApplicationException("Failed to create descriptor pool");
                 }
             }
@@ -45,20 +45,20 @@ public class BlissDescriptorPool : Disposable {
             DescriptorSetCount = 1
         };
         
-        return this.Vk.AllocateDescriptorSets(this.Device.VkDevice, allocInfo, out descriptorSet) == Result.Success;
+        return this.Vk.AllocateDescriptorSets(this.Device.GetDevice(), allocInfo, out descriptorSet) == Result.Success;
     }
 
     private void FreeDescriptors(ref DescriptorSet[] descriptors) {
-        this.Vk.FreeDescriptorSets(this.Device.VkDevice, this.DescriptorPool, descriptors);
+        this.Vk.FreeDescriptorSets(this.Device.GetDevice(), this.DescriptorPool, descriptors);
     }
 
     private void ResetPool() {
-        this.Vk.ResetDescriptorPool(this.Device.VkDevice, this.DescriptorPool, 0);
+        this.Vk.ResetDescriptorPool(this.Device.GetDevice(), this.DescriptorPool, 0);
     }
 
     protected override unsafe void Dispose(bool disposing) {
         if (disposing) {
-            this.Vk.DestroyDescriptorPool(this.Device.VkDevice, this.DescriptorPool, null);
+            this.Vk.DestroyDescriptorPool(this.Device.GetDevice(), this.DescriptorPool, null);
         }
     }
 }

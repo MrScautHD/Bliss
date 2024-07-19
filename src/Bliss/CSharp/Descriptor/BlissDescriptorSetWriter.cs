@@ -79,7 +79,7 @@ public class BlissDescriptorSetWriter {
         }
         
         fixed (WriteDescriptorSet* writesPtr = this._writes) {
-            this.Vk.UpdateDescriptorSets(this.Device.VkDevice, (uint) this._writes.Length, writesPtr, 0, null);
+            this.Vk.UpdateDescriptorSets(this.Device.GetDevice(), (uint) this._writes.Length, writesPtr, 0, null);
         }
     }
 }
