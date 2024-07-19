@@ -4,15 +4,15 @@
 
 # Bliss 🚀
 [![Discord](https://img.shields.io/discord/1199798541980283051?style=flat-square&logo=discord&label=Discord)](https://discord.gg/7XKw6YQa76)
-[![License](https://img.shields.io/github/license/MrScautHD/Raylib-CSharp?style=flat-square&logo=libreofficewriter&label=License)](LICENSE)
-[![Activity](https://img.shields.io/github/commit-activity/w/MrScautHD/Raylib-CSharp?style=flat-square&logo=Github&label=Activity)](https://github.com/MrScautHD/Raylib-CSharp/activity)
-[![Stars](https://img.shields.io/github/stars/MrScautHD/Raylib-CSharp?style=flat-square&logo=Github&label=Stars)](https://github.com/MrScautHD/Raylib-CSharp/stargazers)
+[![License](https://img.shields.io/github/license/MrScautHD/Bliss?style=flat-square&logo=libreofficewriter&label=License)](LICENSE)
+[![Activity](https://img.shields.io/github/commit-activity/w/MrScautHD/Bliss?style=flat-square&logo=Github&label=Activity)](https://github.com/MrScautHD/Bliss/activity)
+[![Stars](https://img.shields.io/github/stars/MrScautHD/Bliss?style=flat-square&logo=Github&label=Stars)](https://github.com/MrScautHD/Bliss/stargazers)
 
 __Bliss__ is a modern `Vulkan` Render Framework.
 
 ---
 
-# 🪙 Installation - [Nuget](https://www.nuget.org/packages/Raylib-CSharp)
+# 🪙 Installation - [Nuget](https://www.nuget.org/packages/Bliss)
 ```
 Coming SoOn!
 ```
