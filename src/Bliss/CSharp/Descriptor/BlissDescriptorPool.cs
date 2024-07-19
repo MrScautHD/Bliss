@@ -1,4 +1,5 @@
-﻿using Silk.NET.Vulkan;
+﻿using Bliss.CSharp.Rendering.Vulkan;
+using Silk.NET.Vulkan;
 
 namespace Bliss.CSharp.Descriptor;
 
@@ -36,7 +37,7 @@ public class BlissDescriptorPool : Disposable {
         }
     }
 
-    public unsafe bool AllocateDescriptorSet(DescriptorSetLayout descriptorSetLayout, ref Silk.NET.Vulkan.DescriptorSet descriptorSet) {
+    public unsafe bool AllocateDescriptorSet(DescriptorSetLayout descriptorSetLayout, ref DescriptorSet descriptorSet) {
         DescriptorSetAllocateInfo allocInfo = new DescriptorSetAllocateInfo {
             SType = StructureType.DescriptorSetAllocateInfo,
             DescriptorPool = this.DescriptorPool,

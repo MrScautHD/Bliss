@@ -1,3 +1,4 @@
+using Bliss.CSharp.Rendering.Vulkan;
 using Silk.NET.Vulkan;
 
 namespace Bliss.CSharp.Descriptor;
