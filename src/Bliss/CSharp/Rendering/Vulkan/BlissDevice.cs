@@ -17,6 +17,7 @@ public class BlissDevice : Disposable {
     
     public readonly Vk Vk;
     public string DeviceName { get; private set; }
+    public SampleCountFlags MsaaSamples { get; private set; }
     
     private Device _device;
     private readonly IView _window;
@@ -42,8 +43,6 @@ public class BlissDevice : Disposable {
     private ExtDebugUtils _debugUtils;
     private DebugUtilsMessengerEXT _debugMessenger;
     
-    private SampleCountFlags _msaaSamples;
-
     /// <summary>
     /// Constructor for creating a BlissDevice object.
     /// </summary>
@@ -60,7 +59,8 @@ public class BlissDevice : Disposable {
         };
         
         this._deviceExtensions = new[] {
-            KhrSwapchain.ExtensionName
+            KhrSwapchain.ExtensionName,
+            KhrSynchronization2.ExtensionName
         };
         
         this.CreateInstance();
@@ -173,7 +173,7 @@ public class BlissDevice : Disposable {
         foreach (var device in devices) {
             if (this.IsDeviceSuitable(device)) {
                 this._physicalDevice = device;
-                this._msaaSamples = this.GetMaxUsableSampleCount();
+                this.MsaaSamples = this.GetMaxUsableSampleCount();
                 break;
             }
         }
@@ -218,12 +218,27 @@ public class BlissDevice : Disposable {
         PhysicalDeviceFeatures deviceFeatures = new() {
             SamplerAnisotropy = true
         };
+        
+        PhysicalDeviceSynchronization2FeaturesKHR sync2Features = new() {
+            SType = StructureType.PhysicalDeviceSynchronization2FeaturesKhr,
+            Synchronization2 = Vk.True
+        };
+
+        PhysicalDeviceFeatures2 deviceFeatures2 = new() {
+            SType = StructureType.PhysicalDeviceFeatures2,
+            PNext = &sync2Features
+        };
+
+        this.Vk.GetPhysicalDeviceFeatures2(this._physicalDevice, &deviceFeatures2);
 
         DeviceCreateInfo createInfo = new() {
             SType = StructureType.DeviceCreateInfo,
             QueueCreateInfoCount = (uint) uniqueQueueFamilies.Length,
             PQueueCreateInfos = queueCreateInfos,
+            
             PEnabledFeatures = &deviceFeatures,
+            PNext = &sync2Features,
+            
             EnabledExtensionCount = (uint) this._deviceExtensions.Length,
             PpEnabledExtensionNames = (byte**) SilkMarshal.StringArrayToPtr(this._deviceExtensions)
         };
@@ -441,7 +456,7 @@ public class BlissDevice : Disposable {
     /// </summary>
     /// <param name="device">The physical device to check.</param>
     /// <returns><c>true</c> if the device is suitable; otherwise, <c>false</c>.</returns>
-    private bool IsDeviceSuitable(PhysicalDevice device) {
+    private unsafe bool IsDeviceSuitable(PhysicalDevice device) {
         QueueFamilyIndices indices = this.FindQueueFamilies(device);
 
         bool extensionsSupported = this.CheckDeviceExtensionsSupport(device);
@@ -453,8 +468,20 @@ public class BlissDevice : Disposable {
         }
 
         this.Vk.GetPhysicalDeviceFeatures(device, out PhysicalDeviceFeatures supportedFeatures);
+        
+        PhysicalDeviceSynchronization2FeaturesKHR sync2Features = new() {
+            SType = StructureType.PhysicalDeviceSynchronization2FeaturesKhr,
+            Synchronization2 = Vk.True
+        };
 
-        return indices.IsComplete() && extensionsSupported && swapChainAdequate && supportedFeatures.SamplerAnisotropy;
+        PhysicalDeviceFeatures2 deviceFeatures2 = new() {
+            SType = StructureType.PhysicalDeviceFeatures2,
+            PNext = &sync2Features
+        };
+
+        this.Vk.GetPhysicalDeviceFeatures2(device, &deviceFeatures2);
+
+        return indices.IsComplete() && extensionsSupported && swapChainAdequate && supportedFeatures.SamplerAnisotropy && sync2Features.Synchronization2;
     }
 
     /// <summary>
@@ -637,7 +664,7 @@ public class BlissDevice : Disposable {
     /// Retrieves the Vulkan device associated with the BlissDevice.
     /// </summary>
     /// <returns>The Vulkan device.</returns>
-    public Device GetDevice() {
+    public Device GetVkDevice() {
         return this._device;
     }
 

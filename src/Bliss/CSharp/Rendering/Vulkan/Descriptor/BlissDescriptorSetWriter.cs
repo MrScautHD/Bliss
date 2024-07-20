@@ -1,7 +1,6 @@
-using Bliss.CSharp.Rendering.Vulkan;
 using Silk.NET.Vulkan;
 
-namespace Bliss.CSharp.Descriptor;
+namespace Bliss.CSharp.Rendering.Vulkan.Descriptor;
 
 public class BlissDescriptorSetWriter {
     
@@ -79,7 +78,7 @@ public class BlissDescriptorSetWriter {
         }
         
         fixed (WriteDescriptorSet* writesPtr = this._writes) {
-            this.Vk.UpdateDescriptorSets(this.Device.GetDevice(), (uint) this._writes.Length, writesPtr, 0, null);
+            this.Vk.UpdateDescriptorSets(this.Device.GetVkDevice(), (uint) this._writes.Length, writesPtr, 0, null);
         }
     }
 }

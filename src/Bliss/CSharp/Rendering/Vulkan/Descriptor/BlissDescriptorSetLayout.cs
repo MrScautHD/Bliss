@@ -1,7 +1,6 @@
-using Bliss.CSharp.Rendering.Vulkan;
 using Silk.NET.Vulkan;
 
-namespace Bliss.CSharp.Descriptor;
+namespace Bliss.CSharp.Rendering.Vulkan.Descriptor;
 
 public class BlissDescriptorSetLayout : Disposable {
     
@@ -23,7 +22,7 @@ public class BlissDescriptorSetLayout : Disposable {
                 PBindings = setLayoutPtr
             };
 
-            if (vk.CreateDescriptorSetLayout(device.GetDevice(), &descriptorSetLayoutInfo, null, out this.DescriptorSetLayout) != Result.Success) {
+            if (vk.CreateDescriptorSetLayout(device.GetVkDevice(), &descriptorSetLayoutInfo, null, out this.DescriptorSetLayout) != Result.Success) {
                 throw new ApplicationException("Failed to create descriptor set layout");
             }
         }
@@ -31,7 +30,7 @@ public class BlissDescriptorSetLayout : Disposable {
 
     protected override unsafe void Dispose(bool disposing) {
         if (disposing) {
-            this.Vk.DestroyDescriptorSetLayout(this.Device.GetDevice(), this.DescriptorSetLayout, null);
+            this.Vk.DestroyDescriptorSetLayout(this.Device.GetVkDevice(), this.DescriptorSetLayout, null);
         }
     }
 }
