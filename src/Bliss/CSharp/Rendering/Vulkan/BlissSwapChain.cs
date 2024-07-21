@@ -8,7 +8,7 @@ namespace Bliss.CSharp.Rendering.Vulkan;
 
 public class BlissSwapChain : Disposable {
     
-    public static readonly int MaxFramesInFlight = 2;
+    public readonly int MaxFramesInFlight = 2;
 
     public readonly Vk Vk;
     

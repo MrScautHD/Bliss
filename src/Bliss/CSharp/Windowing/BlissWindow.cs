@@ -47,7 +47,7 @@ public class BlissWindow : IDisposable {
     public BlissWindow(Vector2D<int> size, string title) {
         this._window = Window.Create(WindowOptions.DefaultVulkan with {
             Size = size,
-            Title = title
+            Title = title,
         });
     }
 
