@@ -1,7 +1,7 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using Bliss.CSharp.Geometry;
 using Silk.NET.Core.Native;
-using Silk.NET.SDL;
 using Silk.NET.Vulkan;
 using BlendFactor = Silk.NET.Vulkan.BlendFactor;
 
@@ -149,7 +149,7 @@ public class BlissPipeline : Disposable {
             PName = (byte*) SilkMarshal.StringToPtr("main"),
             Flags = PipelineShaderStageCreateFlags.None,
             PNext = null,
-            PSpecializationInfo = null,
+            PSpecializationInfo = null
         };
 
         PipelineShaderStageCreateInfo fragShaderStageInfo = new() {
@@ -159,7 +159,7 @@ public class BlissPipeline : Disposable {
             PName = (byte*) SilkMarshal.StringToPtr("main"),
             Flags = PipelineShaderStageCreateFlags.None,
             PNext = null,
-            PSpecializationInfo = null,
+            PSpecializationInfo = null
         };
 
         PipelineShaderStageCreateInfo* shaderStages = stackalloc[] {
