@@ -7,15 +7,6 @@ public class Logger {
     
     public delegate bool OnMessage(LogType type, string msg, int skipFrames, ConsoleColor color);
     public static event OnMessage? Message;
-    
-    public static bool HasInitialized { get; private set; }
-    
-    /// <summary>
-    /// Initializes the logger.
-    /// </summary>
-    internal static void Init() {
-        HasInitialized = true;
-    }
 
     /// <summary>
     /// Logs a debug message with optional stack frame information.
@@ -97,12 +88,5 @@ public class Logger {
         Console.ForegroundColor = color;
         Console.WriteLine(text);
         Console.ResetColor();
-    }
-    
-    /// <summary>
-    /// Destroys the logger and cleans up any resources used.
-    /// </summary>
-    public static void Destroy() {
-        Message = null;
     }
 }
