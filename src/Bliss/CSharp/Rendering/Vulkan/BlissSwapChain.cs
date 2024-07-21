@@ -1,4 +1,5 @@
 using Bliss.CSharp.Logging;
+using Silk.NET.Maths;
 using Silk.NET.Vulkan;
 using Silk.NET.Vulkan.Extensions.KHR;
 using Semaphore = Silk.NET.Vulkan.Semaphore;
@@ -7,7 +8,7 @@ namespace Bliss.CSharp.Rendering.Vulkan;
 
 public class BlissSwapChain : Disposable {
     
-    public readonly static int MaxFramesInFlight = 2;
+    public static readonly int MaxFramesInFlight = 2;
 
     public readonly Vk Vk;
     
@@ -22,16 +23,16 @@ public class BlissSwapChain : Disposable {
     private Extent2D _windowExtent;
 
     private KhrSwapchain _khrSwapChain;
-    private SwapchainKHR _swapChain; // TODO: Get Method (GetVkSwapChain).
+    private SwapchainKHR _swapChain;
 
     private Image[] _swapChainImages;
     
-    private Extent2D _swapChainExtent; // TODO: Get Method (GetSwapChainExtent, GetSize, GetAspectRatio => (float) _swapChainExtent.Width / (float)_swapChainExtent.Height)
+    private Extent2D _swapChainExtent;
     
-    private ImageView[] _swapChainImageViews; // TODO: Get Method (GetSwapChainImageViews, GetImageCount).
-    private Framebuffer[] _swapChainFrameBuffers; // TODO: Get Method (GetSwapChainFrameBuffers, GetSwapChainFrameBufferAt, GetSwapChainFrameBufferCount).
+    private ImageView[] _swapChainImageViews;
+    private Framebuffer[] _swapChainFrameBuffers;
     
-    private RenderPass _renderPass; // TODO: Get Method (GetRenderPass).
+    private RenderPass _renderPass;
 
     private Image[] _depthImages;
     private DeviceMemory[] _depthImageMemories;
@@ -50,6 +51,13 @@ public class BlissSwapChain : Disposable {
 
     private BlissSwapChain? _oldSwapChain;
 
+    /// <summary>
+    /// Initializes a new instance of the BlissSwapChain class.
+    /// </summary>
+    /// <param name="vk">The Vulkan instance.</param>
+    /// <param name="device">The Bliss device.</param>
+    /// <param name="useFifo">A boolean indicating whether to use FIFO for presentation.</param>
+    /// <param name="extent">The window extent.</param>
     public BlissSwapChain(Vk vk, BlissDevice device, bool useFifo, Extent2D extent) {
         this.Vk = vk;
         this.Device = device;
@@ -58,7 +66,10 @@ public class BlissSwapChain : Disposable {
         this._windowExtent = extent;
         this.Setup();
     }
-
+    
+    /// <summary>
+    /// Sets up the swap chain and related resources.
+    /// </summary>
     private void Setup() {
         this.CreateSwapChain();
         this.CreateImageViews();
@@ -69,12 +80,23 @@ public class BlissSwapChain : Disposable {
         this.CreateSyncObjects();
     }
 
+    /// <summary>
+    /// Acquires the next image from the swap chain.
+    /// </summary>
+    /// <param name="imageIndex">A reference to an unsigned integer that will store the index of the acquired image.</param>
+    /// <returns>A result code indicating the success or failure of the operation.</returns>
     public Result AcquireNextImage(ref uint imageIndex) {
         this.Vk.WaitForFences(this.Device.GetVkDevice(), 1, this._inFlightFences[this._currentFrame], true, ulong.MaxValue);
         
         return this._khrSwapChain.AcquireNextImage(this.Device.GetVkDevice(), this._swapChain, ulong.MaxValue, this._imageAvailableSemaphores[this._currentFrame], default, ref imageIndex);
     }
 
+    /// <summary>
+    /// Submits command buffers to the Vulkan graphics queue for execution.
+    /// </summary>
+    /// <param name="commandBuffer">The command buffer to submit.</param>
+    /// <param name="imageIndex">The index of the swap chain image to which the command buffer is submitted.</param>
+    /// <returns>Returns a <see cref="Result"/> indicating the success of the submission.</returns>
     public unsafe Result SubmitCommandBuffers(CommandBuffer commandBuffer, uint imageIndex) {
         if (this._imagesInFlight[imageIndex].Handle != default) {
             this.Vk.WaitForFences(this.Device.GetVkDevice(), 1, this._imagesInFlight[imageIndex], true, ulong.MaxValue);
@@ -139,6 +161,93 @@ public class BlissSwapChain : Disposable {
         return this._khrSwapChain.QueuePresent(this.Device.GetPresentQueue(), presentInfo);
     }
 
+    /// <summary>
+    /// Retrieves the Vulkan swap chain associated with the BlissSwapChain instance.
+    /// </summary>
+    /// <returns>The Vulkan swap chain.</returns>
+    public SwapchainKHR GetVkSwapChain() {
+        return this._swapChain;
+    }
+
+    /// <summary>
+    /// Retrieves the extent of the swap chain.
+    /// </summary>
+    /// <returns>The extent of the swap chain.</returns>
+    public Extent2D GetSwapChainExtent() {
+        return this._swapChainExtent;
+    }
+
+    /// <summary>
+    /// Returns the size of the swap chain extent.
+    /// </summary>
+    /// <returns>The size of the swap chain extent as a Vector2D of unsigned integers representing the width and height respectively.</returns>
+    public Vector2D<uint> GetSize() {
+        return new Vector2D<uint>(this._swapChainExtent.Width, this._swapChainExtent.Height);
+    }
+
+    /// <summary>
+    /// Calculates the aspect ratio of the swap chain.
+    /// </summary>
+    /// <returns>
+    /// The aspect ratio of the swap chain as a floating-point value.
+    /// The aspect ratio is calculated by dividing the width of the swap chain extent by its height.
+    /// </returns>
+    public float GetAspectRatio() {
+        return (float) this._swapChainExtent.Width / (float) this._swapChainExtent.Height;
+    }
+
+    /// <summary>
+    /// Returns an array of ImageView objects representing the swap chain image views.
+    /// </summary>
+    /// <returns>An array of ImageView objects.</returns>
+    public ImageView[] GetSwapChainImageViews() {
+        return this._swapChainImageViews;
+    }
+
+    /// <summary>
+    /// Gets the number of images in the swap chain.
+    /// </summary>
+    /// <returns>The number of images in the swap chain.</returns>
+    public int GetImageCount() {
+        return this._swapChainImageViews.Length;
+    }
+
+    /// <summary>
+    /// Retrieves the array of frame buffers associated with the swap chain.
+    /// </summary>
+    /// <returns>An array of Framebuffer objects representing the frame buffers of the swap chain.</returns>
+    public Framebuffer[] GetSwapChainFrameBuffers() {
+        return this._swapChainFrameBuffers;
+    }
+
+    /// <summary>
+    /// Retrieves the framebuffer at the specified index from the swap chain.
+    /// </summary>
+    /// <param name="index">The index of the framebuffer to retrieve.</param>
+    /// <returns>The framebuffer at the specified index.</returns>
+    public Framebuffer GetSwapChainFrameBufferAt(uint index) {
+        return this._swapChainFrameBuffers[index];
+    }
+
+    /// <summary>
+    /// Returns the number of frame buffers in the swap chain.
+    /// </summary>
+    /// <returns>The number of frame buffers in the swap chain.</returns>
+    public int GetFrameBufferCount() {
+        return this._swapChainFrameBuffers.Length;
+    }
+
+    /// <summary>
+    /// Retrieves the render pass associated with the swap chain.
+    /// </summary>
+    /// <returns>The render pass associated with the swap chain.</returns>
+    public RenderPass GetRenderPass() {
+        return this._renderPass;
+    }
+
+    /// <summary>
+    /// Creates a swap chain for rendering images on the screen.
+    /// </summary>
     private unsafe void CreateSwapChain() {
         BlissDevice.SwapChainSupportDetails swapChainSupport = this.Device.QuerySwapChainSupport();
 
@@ -189,10 +298,8 @@ public class BlissSwapChain : Disposable {
             Clipped = true
         };
 
-        if (this._khrSwapChain == null) {
-            if (!this.Vk.TryGetDeviceExtension(this.Device.GetInstance(), this.VkDevice, out this._khrSwapChain)) {
-                throw new NotSupportedException("VK_KHR_swapchain extension not found.");
-            }
+        if (!this.Vk.TryGetDeviceExtension(this.Device.GetInstance(), this.VkDevice, out this._khrSwapChain)) {
+            throw new NotSupportedException("VK_KHR_swapchain extension not found.");
         }
 
         creatInfo.OldSwapchain = this._oldSwapChain?._swapChain ?? default;
@@ -212,6 +319,9 @@ public class BlissSwapChain : Disposable {
         this._swapChainExtent = extent;
     }
 
+    /// <summary>
+    /// Creates image views for the swap chain images.
+    /// </summary>
     private unsafe void CreateImageViews() {
         this._swapChainImageViews = new ImageView[this._swapChainImages.Length];
 
@@ -235,7 +345,10 @@ public class BlissSwapChain : Disposable {
             }
         }
     }
-    
+
+    /// <summary>
+    /// Creates a render pass for the BlissSwapChain.
+    /// </summary>
     private unsafe void CreateRenderPass() {
         AttachmentDescription depthAttachment = new() {
             Format = this.Device.FindDepthFormat(),
@@ -324,7 +437,10 @@ public class BlissSwapChain : Disposable {
             }
         }
     }
-    
+
+    /// <summary>
+    /// Creates the frame buffers for the swap chain images.
+    /// </summary>
     private unsafe void CreateFrameBuffers() {
         this._swapChainFrameBuffers = new Framebuffer[this._swapChainImageViews.Length];
 
@@ -353,6 +469,9 @@ public class BlissSwapChain : Disposable {
         }
     }
 
+    /// <summary>
+    /// Creates the color resources for the BlissSwapChain.
+    /// </summary>
     private unsafe void CreateColorResources() {
         Format colorFormat = this.SwapChainImageFormat;
 
@@ -423,6 +542,9 @@ public class BlissSwapChain : Disposable {
         }
     }
 
+    /// <summary>
+    /// Creates depth resources for the swap chain images.
+    /// </summary>
     private unsafe void CreateDepthResources() {
         this.SwapChainDepthFormat = this.Device.FindDepthFormat();
 
@@ -493,6 +615,19 @@ public class BlissSwapChain : Disposable {
         }
     }
 
+    /// <summary>
+    /// Creates a new image with the specified parameters.
+    /// </summary>
+    /// <param name="width">The width of the image.</param>
+    /// <param name="height">The height of the image.</param>
+    /// <param name="mipLevels">The number of MIP levels for the image.</param>
+    /// <param name="numSamples">The number of samples for the image.</param>
+    /// <param name="format">The format of the image.</param>
+    /// <param name="tiling">The tiling mode for the image.</param>
+    /// <param name="usage">The usage flags for the image.</param>
+    /// <param name="properties">The memory properties for the image.</param>
+    /// <param name="image">The created image object.</param>
+    /// <param name="imageMemory">The allocated device memory for the image.</param>
     private unsafe void CreateImage(uint width, uint height, uint mipLevels, SampleCountFlags numSamples, Format format, ImageTiling tiling, ImageUsageFlags usage, MemoryPropertyFlags properties, ref Image image, ref DeviceMemory imageMemory) {
         ImageCreateInfo imageInfo = new() {
             SType = StructureType.ImageCreateInfo,
@@ -535,6 +670,9 @@ public class BlissSwapChain : Disposable {
         this.Vk.BindImageMemory(this.VkDevice, image, imageMemory, 0);
     }
 
+    /// <summary>
+    /// Creates synchronization objects for managing image availability and rendering completion.
+    /// </summary>
     private unsafe void CreateSyncObjects() {
         this._imageAvailableSemaphores = new Semaphore[MaxFramesInFlight];
         this._renderFinishedSemaphores = new Semaphore[MaxFramesInFlight];
@@ -559,6 +697,11 @@ public class BlissSwapChain : Disposable {
         }
     }
 
+    /// <summary>
+    /// Chooses the surface format for the swap chain.
+    /// </summary>
+    /// <param name="availableFormats">The list of available surface formats.</param>
+    /// <returns>The chosen surface format.</returns>
     private SurfaceFormatKHR ChooseSwapSurfaceFormat(IReadOnlyList<SurfaceFormatKHR> availableFormats) {
         foreach (var availableFormat in availableFormats) {
             if (availableFormat.Format == Format.B8G8R8A8Srgb && availableFormat.ColorSpace == ColorSpaceKHR.SpaceSrgbNonlinearKhr) {
@@ -569,6 +712,11 @@ public class BlissSwapChain : Disposable {
         return availableFormats[0];
     }
 
+    /// <summary>
+    /// Chooses the present mode for the Vulkan swap chain.
+    /// </summary>
+    /// <param name="availablePresentModes">The list of available present modes.</param>
+    /// <returns>The chosen present mode.</returns>
     private PresentModeKHR ChoosePresentMode(IReadOnlyList<PresentModeKHR> availablePresentModes) {
         if (this.UseFifo) return PresentModeKHR.FifoKhr;
 
@@ -579,10 +727,15 @@ public class BlissSwapChain : Disposable {
             }
         }
 
-        Logger.Info("Swapchain fallback present mode = FifoKhr");
+        Logger.Info("Swapchain fallback to present mode = FifoKhr");
         return PresentModeKHR.FifoKhr;
     }
 
+    /// <summary>
+    /// Chooses the extent of the swap chain based on the capabilities of the surface.
+    /// </summary>
+    /// <param name="capabilities">The capabilities of the surface.</param>
+    /// <returns>The chosen extent of the swap chain.</returns>
     private Extent2D ChooseSwapExtent(SurfaceCapabilitiesKHR capabilities) {
         if (capabilities.CurrentExtent.Width != uint.MaxValue) {
             return capabilities.CurrentExtent;
