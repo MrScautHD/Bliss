@@ -5,23 +5,15 @@ using Silk.NET.Vulkan;
 
 namespace Bliss.CSharp.Geometry;
 
-public class Vertex {
+public struct Vertex {
     
     public Vector3 Position;
-    public Color Color;
+    public Vector2 TexCoords;
+    public Vector2 TexCoords2;
     public Vector3 Normal;
-    public Vector2 Uv;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Vertex"/> class.
-    /// </summary>
-    /// <param name="pos">The position of the vertex.</param>
-    /// <param name="color">The color of the vertex.</param>
-    public Vertex(Vector3 pos, Color color) {
-        this.Position = pos;
-        this.Color = color;
-    }
-
+    public Vector3 Tangent;
+    public Color Color;
+    
     /// <summary>
     /// Get the binding descriptions for the Vertex class.
     /// </summary>
@@ -51,20 +43,32 @@ public class Vertex {
             new VertexInputAttributeDescription() {
                 Binding = 0,
                 Location = 1,
-                Format = Format.R32G32B32Sfloat,
-                Offset = (uint) Marshal.OffsetOf<Vertex>(nameof(Color.GetHsv))
+                Format = Format.R32G32Sfloat,
+                Offset = (uint) Marshal.OffsetOf<Vertex>(nameof(TexCoords))
             },
             new VertexInputAttributeDescription() {
                 Binding = 0,
                 Location = 2,
+                Format = Format.R32G32Sfloat,
+                Offset = (uint) Marshal.OffsetOf<Vertex>(nameof(TexCoords2))
+            },
+            new VertexInputAttributeDescription() {
+                Binding = 0,
+                Location = 3,
                 Format = Format.R32G32B32Sfloat,
                 Offset = (uint) Marshal.OffsetOf<Vertex>(nameof(Normal))
             },
             new VertexInputAttributeDescription() {
                 Binding = 0,
-                Location = 3,
-                Format = Format.R32G32Sfloat,
-                Offset = (uint) Marshal.OffsetOf<Vertex>(nameof(Uv))
+                Location = 4,
+                Format = Format.R32G32B32Sfloat,
+                Offset = (uint) Marshal.OffsetOf<Vertex>(nameof(Tangent))
+            },
+            new VertexInputAttributeDescription() {
+                Binding = 0,
+                Location = 5,
+                Format = Format.R32G32B32A32Sfloat,
+                Offset = (uint) Marshal.OffsetOf<Vertex>(nameof(Color))
             }
         };
     }
