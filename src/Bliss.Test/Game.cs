@@ -31,16 +31,16 @@ public class Game : Disposable {
     public void Run() {
         Logger.Info("Hello World! Bliss start...");
         
-        this.Vk = Vk.GetApi();
         Logger.Info("Initialize Vulkan...");
+        this.Vk = Vk.GetApi();
         
+        Logger.Info("Initialize Window...");
         this.Window = SilkWindow.Create(WindowOptions.DefaultVulkan with {
             Title = "Test Game!",
             Size = new Vector2D<int>(1270, 720)
         });
-
-        this.Window.Load += this.Init;
-        this.Window.Update += this.Update;
+        
+        this.Window.Update += this.RunLoop;
         this.Window.Render += this.Draw;
         
         this.Window.Initialize();
@@ -49,30 +49,27 @@ public class Game : Disposable {
             throw new PlatformNotSupportedException("Windowing platform doesn't support Vulkan.");
         }
         
-        Logger.Info("Initialize Window...");
-
-        this.Device = new BlissDevice(this.Vk, this.Window);
         Logger.Info("Initialize Device...");
+        this.Device = new BlissDevice(this.Vk, this.Window);
 
-        this.Renderer = new BlissRenderer(this.Vk, this.Window, this.Device, false);
         Logger.Info("Initialize Renderer...");
+        this.Renderer = new BlissRenderer(this.Vk, this.Window, this.Device, false);
 
+        Logger.Info("Initialize Global Pool...");
         this.GlobalPool = new BlissDescriptorPoolBuilder(this.Vk, this.Device)
             .SetMaxSets(BlissSwapChain.MaxDefaultFramesInFlight)
             .AddSize(DescriptorType.UniformBuffer, BlissSwapChain.MaxDefaultFramesInFlight)
             .Build();
-        Logger.Info("Initialize Global Pool...");
+        
+        this.Init();
         
         Logger.Info("Start main Loop...");
         this.Window.Run();
         this.Vk.DeviceWaitIdle(this.Device.GetVkDevice());
     }
-
-    protected virtual void Init() {
-        
-    }
-
-    protected virtual void Update(double delta) {
+    
+    protected virtual void RunLoop(double delta) {
+        this.Update(delta);
         this.AfterUpdate(delta);
         
         this._timer += delta;
@@ -82,17 +79,15 @@ public class Game : Disposable {
         }
     }
 
-    protected virtual void AfterUpdate(double delta) {
-        
-    }
+    protected virtual void Init() { }
 
-    protected virtual void FixedUpdate() {
-        
-    }
+    protected virtual void Update(double delta) { }
 
-    protected virtual void Draw(double delta) {
-        
-    }
+    protected virtual void AfterUpdate(double delta) { }
+
+    protected virtual void FixedUpdate() { }
+
+    protected virtual void Draw(double delta) { }
     
     protected override void Dispose(bool disposing) {
         if (disposing) {

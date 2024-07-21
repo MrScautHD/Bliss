@@ -9,6 +9,6 @@ public struct FrameInfo {
     public float FrameTime;
     public CommandBuffer CommandBuffer;
     public ICam Camera;
-    public DescriptorSet DescriptorSet;
-    //public Dictionary<uint, Renderable> RenderObjects;
+    public DescriptorSet GlobalDescriptorSet;
+    public List<Renderable> RenderableObjects;
 }

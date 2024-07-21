@@ -35,7 +35,7 @@ public class BlissPipeline : Disposable {
     /// Retrieves the default pipeline configuration information.
     /// </summary>
     /// <param name="configInfo">The pipeline configuration information.</param>
-    public unsafe void GetDefaultPipelineConfigInfo(ref PipelineConfigInfo configInfo) {
+    public static unsafe void GetDefaultPipelineConfigInfo(ref PipelineConfigInfo configInfo) {
         configInfo.InputAssemblyInfo.SType = StructureType.PipelineInputAssemblyStateCreateInfo;
         configInfo.InputAssemblyInfo.Topology = PrimitiveTopology.TriangleList;
         configInfo.InputAssemblyInfo.PrimitiveRestartEnable = Vk.False;
