@@ -1,8 +1,10 @@
 using Bliss.CSharp;
+using Bliss.CSharp.Interact;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Rendering;
 using Bliss.CSharp.Rendering.Vulkan;
 using Bliss.CSharp.Rendering.Vulkan.Descriptor;
+using Silk.NET.Input;
 using Silk.NET.Maths;
 using Silk.NET.Vulkan;
 using Silk.NET.Windowing;
@@ -61,14 +63,19 @@ public class Game : Disposable {
             .AddSize(DescriptorType.UniformBuffer, BlissSwapChain.MaxDefaultFramesInFlight)
             .Build();
         
+        Logger.Info("Initialize Input...");
+        Input.Init(this.Window);
+        
         this.Init();
         
-        Logger.Info("Start main Loop...");
+        Logger.Info("Start main Loops...");
         this.Window.Run();
         this.Vk.DeviceWaitIdle(this.Device.GetVkDevice());
     }
     
     protected virtual void RunLoop(double delta) {
+        Input.BeginInput();
+        
         this.Update(delta);
         this.AfterUpdate(delta);
         
@@ -77,11 +84,25 @@ public class Game : Disposable {
             this.FixedUpdate();
             this._timer -= this._fixedTimeStep;
         }
+        
+        Input.EndInput();
     }
 
     protected virtual void Init() { }
 
-    protected virtual void Update(double delta) { }
+    protected virtual void Update(double delta) {
+        if (Input.IsKeyPressed(Key.A)) {
+            Logger.Error("KEY [A] GOT PRESSED!");
+        }
+        
+        if (Input.IsKeyDown(Key.S)) {
+            Logger.Error("KEY [S] IS DOWN!");
+        }
+        
+        if (Input.IsKeyReleased(Key.D)) {
+            Logger.Error("KEY [D] IS RELEASED!");
+        }
+    }
 
     protected virtual void AfterUpdate(double delta) { }
 

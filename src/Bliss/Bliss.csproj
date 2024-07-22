@@ -16,7 +16,6 @@
     <ItemGroup>
       <Folder Include="content\" />
       <Folder Include="CSharp\Audio\" />
-      <Folder Include="CSharp\Interact\" />
     </ItemGroup>
 
     <!-- Libraries -->
