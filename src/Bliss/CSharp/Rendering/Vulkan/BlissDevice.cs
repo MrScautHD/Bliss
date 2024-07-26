@@ -20,6 +20,7 @@ public class BlissDevice : Disposable {
     public SampleCountFlags MsaaSamples { get; private set; }
     
     private Device _device;
+    
     private readonly IView _window;
     
     private Instance _instance;
@@ -158,16 +159,16 @@ public class BlissDevice : Disposable {
     /// Method for selecting a physical device that supports Vulkan.
     /// </summary>
     private unsafe void PickPhysicalDevice() {
-        uint devicedCount = 0;
-        this.Vk.EnumeratePhysicalDevices(this._instance, ref devicedCount, null);
+        uint deviceCount = 0;
+        this.Vk.EnumeratePhysicalDevices(this._instance, ref deviceCount, null);
 
-        if (devicedCount == 0) {
+        if (deviceCount == 0) {
             throw new Exception("Failed to find GPUs with Vulkan support!");
         }
 
-        PhysicalDevice[] devices = new PhysicalDevice[devicedCount];
+        PhysicalDevice[] devices = new PhysicalDevice[deviceCount];
         fixed (PhysicalDevice* devicesPtr = devices) {
-            this.Vk.EnumeratePhysicalDevices(this._instance, ref devicedCount, devicesPtr);
+            this.Vk.EnumeratePhysicalDevices(this._instance, ref deviceCount, devicesPtr);
         }
 
         foreach (var device in devices) {
@@ -671,7 +672,7 @@ public class BlissDevice : Disposable {
     /// <summary>
     /// Returns the Vulkan instance associated with the BlissDevice object.
     /// </summary>
-    /// <returns>The Vulkan instance.</returns
+    /// <returns>The Vulkan instance.</returns>
     public Instance GetInstance() {
         return this._instance;
     }

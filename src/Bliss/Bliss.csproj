@@ -16,6 +16,7 @@
     <ItemGroup>
       <Folder Include="content\" />
       <Folder Include="CSharp\Audio\" />
+      <Folder Include="CSharp\Shaders\" />
     </ItemGroup>
 
     <!-- Libraries -->

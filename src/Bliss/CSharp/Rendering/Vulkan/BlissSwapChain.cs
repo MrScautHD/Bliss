@@ -2,6 +2,7 @@ using Bliss.CSharp.Logging;
 using Silk.NET.Maths;
 using Silk.NET.Vulkan;
 using Silk.NET.Vulkan.Extensions.KHR;
+using Buffer = Silk.NET.Vulkan.Buffer;
 using Semaphore = Silk.NET.Vulkan.Semaphore;
 
 namespace Bliss.CSharp.Rendering.Vulkan;

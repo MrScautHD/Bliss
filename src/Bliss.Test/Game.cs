@@ -1,3 +1,4 @@
+using System.Numerics;
 using Bliss.CSharp;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Logging;
@@ -101,6 +102,34 @@ public class Game : Disposable {
         
         if (Input.IsKeyReleased(Key.D)) {
             Logger.Error("KEY [D] IS RELEASED!");
+        }
+
+        foreach (var test in Input.GetPressedChars()) {
+            Logger.Error(test + "");
+        }
+        
+        if (Input.IsMouseDoubleClicked(MouseButton.Left, out Vector2 pos)) {
+            Logger.Error($"Mouse clicked at pos: {pos}");
+        }
+        
+        if (Input.IsMouseMoving(out Vector2 ghg)) {
+            Logger.Error($"Mouse moved at pos: {ghg}");
+        }
+
+        if (Input.IsMouseScrolling(out ScrollWheel? scrollWheel)) {
+            Logger.Error($"Mouse scroll: {scrollWheel!.Value.Y}");
+        }
+
+        if (Input.IsGamepadTriggerMoved(1)) {
+            Logger.Error($"Trigger moved: {Input.GetGamepadTriggers(0)[1].Position}");
+        }
+
+        if (Input.IsGamepadThumpStickMoved(1)) {
+            Logger.Error($"Thumpsticks moved: {Input.GetGamepadThumbsticks(0)[1].Position}");
+        }
+        
+        if (Input.IsGamepadButtonDown(ButtonName.A)) {
+            Logger.Error("PRESSED A");
         }
     }
 
