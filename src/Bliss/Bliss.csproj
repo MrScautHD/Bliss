@@ -14,13 +14,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="content\" />
       <Folder Include="CSharp\Audio\" />
       <Folder Include="CSharp\Shaders\" />
     </ItemGroup>
 
     <!-- Libraries -->
     <ItemGroup>
+      <PackageReference Include="GLSLangSharp" Version="0.4.15" />
       <PackageReference Include="Silk.NET.Vulkan.Extensions.EXT" Version="2.21.0" />
       <PackageReference Include="Silk.NET.Vulkan.Extensions.KHR" Version="2.21.0" />
       <PackageReference Include="Silk.NET.Windowing" Version="2.21.0" />

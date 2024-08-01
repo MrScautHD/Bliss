@@ -68,6 +68,9 @@ public class Game : Disposable {
         Input.Init(this.Window);
         
         this.Init();
+
+        uint frames = BlissSwapChain.MaxDefaultFramesInFlight;
+        
         
         Logger.Info("Start main Loops...");
         this.Window.Run();

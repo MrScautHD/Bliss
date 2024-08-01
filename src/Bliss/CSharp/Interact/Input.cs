@@ -415,7 +415,7 @@ public static class Input {
     /// <summary>
     /// Retrieves a list of connected gamepads.
     /// </summary>
-    /// <returns>A read-only list of IGamepad objects representing the connected gamepads.</returns
+    /// <returns>A read-only list of IGamepad objects representing the connected gamepads.</returns>
     public static IReadOnlyList<IGamepad> GetGamepads() {
         return _context.Gamepads;
     }
@@ -542,7 +542,7 @@ public static class Input {
     /// Retrieves the currently pressed buttons of the specified joystick.
     /// </summary>
     /// <param name="joystick">The index of the joystick to get buttons from.</param>
-    /// <returns>The list of buttons currently pressed on the specified joystick.</returns
+    /// <returns>The list of buttons currently pressed on the specified joystick.</returns>
     public static IReadOnlyList<Button> GetJoystickButtons(int joystick) {
         return _context.Joysticks[joystick].Buttons;
     }
@@ -597,7 +597,7 @@ public static class Input {
     /// <param name="button">The joystick button to check.</param>
     /// <returns>
     /// <c>true</c> if the joystick button is in the up state; otherwise, <c>false</c>.
-    /// </
+    /// </returns>
     public static bool IsJoystickButtonUp(ButtonName button) {
         return !_joystickButtonsDown.Contains(button);
     }

@@ -1,9 +1,16 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using Bliss.CSharp.Geometry;
+using Bliss.CSharp.Logging;
+using GLSLang;
+using Microsoft.FSharp.Collections;
+using Microsoft.FSharp.Core;
 using Silk.NET.Core.Native;
 using Silk.NET.Vulkan;
 using BlendFactor = Silk.NET.Vulkan.BlendFactor;
+using FrontFace = Silk.NET.Vulkan.FrontFace;
+using Pipeline = Silk.NET.Vulkan.Pipeline;
+using PrimitiveTopology = Silk.NET.Vulkan.PrimitiveTopology;
 
 namespace Bliss.CSharp.Rendering.Vulkan;
 
@@ -136,8 +143,8 @@ public class BlissPipeline : Disposable {
     /// <param name="fragPath">The path to the fragment shader file.</param>
     /// <param name="configInfo">The pipeline configuration information.</param>
     private unsafe void CreateGraphicsPipeline(string vertPath, string fragPath, PipelineConfigInfo configInfo) {
-        byte[] vertSource = this.GetShaderBytes(vertPath);
-        byte[] fragSource = this.GetShaderBytes(fragPath);
+        byte[] vertSource = this.GetShaderBytes(vertPath, ShaderStage.Vertex);
+        byte[] fragSource = this.GetShaderBytes(fragPath, ShaderStage.Fragment);
 
         this._vertShaderModule = this.CreateShaderModule(vertSource);
         this._fragShaderModule = this.CreateShaderModule(fragSource);
@@ -229,7 +236,7 @@ public class BlissPipeline : Disposable {
     /// </summary>
     /// <param name="filename">The name of the shader file.</param>
     /// <returns>The byte array representing the shader file.</returns>
-    private byte[] GetShaderBytes(string filename) {
+    private byte[] GetShaderBytesWithSpv(string filename) {
         Assembly assembly = Assembly.GetExecutingAssembly();
         string? resourceName = assembly.GetManifestResourceNames().FirstOrDefault(s => s.EndsWith(filename));
         
@@ -242,6 +249,26 @@ public class BlissPipeline : Disposable {
         
         stream.CopyTo(ms);
         return ms.ToArray();
+    }
+
+    // TODO: Use the Nuget packet (GLSLLangSharp, or Spv-V.... to compile the shaders from the .vert, .frag to .spv format). (Should work fine need to be tested!)
+    public byte[] GetShaderBytes(string filename, ShaderStage shaderStage, List<string>? defines = default) {
+        Assembly assembly = Assembly.GetExecutingAssembly();
+        string? resourceName = assembly.GetManifestResourceNames().FirstOrDefault(s => s.EndsWith(filename));
+        
+        if (resourceName == null) {
+            throw new ApplicationException($"No shader file found with name {filename}");
+        }
+
+        var result = GLSLang.GLSLang.tryCompile(shaderStage, "main", defines != null ? ListModule.OfSeq(defines) : FSharpList<string>.Empty, resourceName);
+
+        if (FSharpOption<byte[]>.get_IsSome(result.Item1)) {
+            Logger.Info($"Shader at [{filename}] complied successfully!");
+            return result.Item1.Value;
+        }
+        else {
+            throw new ApplicationException($"Shader at [{filename}] failed at compilation!");
+        }
     }
 
     /// <summary>

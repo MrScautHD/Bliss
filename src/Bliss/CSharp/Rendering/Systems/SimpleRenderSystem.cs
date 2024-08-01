@@ -74,7 +74,7 @@ public class SimpleRenderSystem : Disposable {
         pipelineConfig.RenderPass = renderPass;
         pipelineConfig.PipelineLayout = this._pipelineLayout;
         
-        this._pipeline = new BlissPipeline(this.Vk, this.Device, "simpleShader.vert.spv", "simpleShader.frag.spv", pipelineConfig);
+        this._pipeline = new BlissPipeline(this.Vk, this.Device, "content/shaders/default_shader.frag", "content/shaders/default_shader.vert", pipelineConfig);
     }
 
     protected override unsafe void Dispose(bool disposing) {
