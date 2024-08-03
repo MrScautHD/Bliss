@@ -24,7 +24,7 @@ Coming SoOn!
 ---
 
 # ⚠️ Importand for the Installation
-For this project, you need the [`Vulkan SDK`](https://vulkan.lunarg.com/sdk/home#windows) with the version [1.3.283.0]. Please add the following code to your `.csproj` file:
+For this project, you need the [`Vulkan SDK`](https://vulkan.lunarg.com/sdk/home#windows) with the version `[1.3.283.0]`. Please add the following code to your `.csproj` file:
 ```cs
     <!-- Vulkan SDK -->
     <PropertyGroup>
