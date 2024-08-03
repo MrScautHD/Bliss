@@ -23,6 +23,59 @@ Coming SoOn!
 > 3. Ensure that you downloaded the [`Vulkand SDK`](https://vulkan.lunarg.com/).
 ---
 
+# !!! Importand
+For this project, you need the `Vulkan SDK` with the version [1.3.283.0]. Please add the following code to your `.csproj` file:
+```cs
+    <!-- Vulkan SDK -->
+    <PropertyGroup>
+        <VulkanBinPath>C:\VulkanSDK\1.3.283.0\Bin</VulkanBinPath>
+    </PropertyGroup>
+```
+
+To **compile shaders**, include the following code in your `.csproj` file:
+```cs
+    <!-- Shader Stages (Vertex, Fragment...) -->
+    <ItemGroup>
+        <VertexShader Include="**/*.vert" />
+        <FragmentShader Include="**/*.frag" />
+    </ItemGroup>
+
+    <!-- Compiled Shader Format -->
+    <ItemGroup>
+        <EmbeddedResource Include="**/*.spv" />
+    </ItemGroup>
+    
+    <!-- Content -->
+    <ItemGroup>
+        <Content Include="content/**/*" Pack="true" Exclude="@(VertexShader);@(FragmentShader);content/**/*.spv">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <PackageCopyToOutput>true</PackageCopyToOutput>
+        </Content>
+    </ItemGroup>
+
+    <!-- Shader Cleaner -->
+    <Target Name="CleanVulkanShader" BeforeTargets="Clean">
+        <Message Text="......................................SHADERS.Clean..........................................................." Importance="high" />
+        <ItemGroup>
+            <FilesToDelete Include="**\*.spv" />
+        </ItemGroup>
+        <Delete Files="@(FilesToDelete)" />
+        <Message Text="......................................SHADERS.Cleaned........................................................." Importance="high" />
+    </Target>
+
+    <!-- Shader Compiler -->
+    <Target Name="BuildVulkanShader" BeforeTargets="BeforeBuild">
+        <Message Text="......................................SHADERS.Compile........................................................." Importance="high" />
+        <Message Text="   Starting Vulkan Shader Compilation..." Importance="high" />
+        <Message Text="     VulkanBinPath: $(VulkanBinPath)" Importance="high" />
+        <Message Text="     VertexShader: @(VertexShader)" Importance="high" />
+        <Message Text="     FragmentShader: @(FragmentShader)" Importance="high" />
+        <Exec Command="$(VulkanBinPath)\glslc.exe &quot;%(VertexShader.FullPath)&quot; -o &quot;%(VertexShader.FullPath).spv&quot;" Condition="'@(VertexShader)'!=''" />
+        <Exec Command="$(VulkanBinPath)\glslc.exe &quot;%(FragmentShader.FullPath)&quot; -o &quot;%(FragmentShader.FullPath).spv&quot;" Condition="'@(FragmentShader)'!=''" />
+        <Message Text="......................................SHADERS.Compiled........................................................" Importance="high" />
+    </Target>
+```
+
 # 💻 Platforms
 [<img src="https://github.com/MrScautHD/Sparkle/assets/65916181/a92bd5fa-517b-44c2-ab58-cc01b5ae5751" alt="windows" width="70" height="70" align="left">](https://www.microsoft.com/de-at/windows)
 ### Windows
