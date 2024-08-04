@@ -39,15 +39,10 @@ To **compile shaders**, include the following code in your `.csproj` file:
         <VertexShader Include="**/*.vert" />
         <FragmentShader Include="**/*.frag" />
     </ItemGroup>
-
-    <!-- Compiled Shader Format -->
-    <ItemGroup>
-        <EmbeddedResource Include="**/*.spv" />
-    </ItemGroup>
     
     <!-- Content -->
     <ItemGroup>
-        <Content Include="content/**/*" Pack="true" Exclude="@(VertexShader);@(FragmentShader);content/**/*.spv">
+        <Content Include="content/**/*" Pack="true" Exclude="@(VertexShader);@(FragmentShader);">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
             <PackageCopyToOutput>true</PackageCopyToOutput>
         </Content>
