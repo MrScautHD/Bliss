@@ -32,7 +32,7 @@ Coming SoOn!
     </PropertyGroup>
 ```
 
-2. And for **compiling shaders**, include the following code in your `.csproj` file:
+2. To **compile shaders**, include the following code in your `.csproj` file:
 ```xml
     <!-- Shader Stages (Vertex, Fragment...) -->
     <ItemGroup>
