@@ -6,14 +6,12 @@ layout(location = 2) in vec3 fragNormalWorld;
 
 layout(location = 0) out vec4 outColor;
 
-
 struct PointLight {
     vec4 position;  // ignore w
     vec4 color;		// w is intensity
 };
 
-layout(set = 0, binding = 0) uniform GlobalUbo
-{
+layout(set = 0, binding = 0) uniform GlobalUbo {
     mat4 projection;
     mat4 view;
     vec4 front;
@@ -25,12 +23,10 @@ layout(set = 0, binding = 0) uniform GlobalUbo
     PointLight pointLights[10];
 } ubo;
 
-layout(push_constant) uniform Push
-{
+layout(push_constant) uniform Push {
     mat4 modelMatrix;
     mat4 normalMatrix;
 } push;
-
 
 
 void main() {
@@ -41,9 +37,7 @@ void main() {
     // already had front vec in camera 
     vec3 viewDirection = -ubo.front.xyz;
 
-    for (int i = 0; i < ubo.numLights; i++)
-    {
-
+    for (int i = 0; i < ubo.numLights; i++) {
         PointLight light = ubo.pointLights[i];
         vec3 directionToLight = light.position.xyz - fragPosWorld;
         float attenuation = 1.0 / dot(directionToLight, directionToLight); // distance squared

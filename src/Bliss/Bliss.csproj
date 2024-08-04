@@ -15,12 +15,10 @@
 
     <ItemGroup>
       <Folder Include="CSharp\Audio\" />
-      <Folder Include="CSharp\Shaders\" />
     </ItemGroup>
 
     <!-- Libraries -->
     <ItemGroup>
-      <PackageReference Include="GLSLangSharp" Version="0.4.15" />
       <PackageReference Include="Silk.NET.Vulkan.Extensions.EXT" Version="2.21.0" />
       <PackageReference Include="Silk.NET.Vulkan.Extensions.KHR" Version="2.21.0" />
       <PackageReference Include="Silk.NET.Windowing" Version="2.21.0" />
@@ -29,9 +27,15 @@
       <PackageReference Include="Silk.NET.Assimp" Version="2.21.0" />
     </ItemGroup>
 
+    <!-- Shader Stages (Vertex, Fragment...) -->
+    <ItemGroup>
+        <VertexShader Include="**/*.vert" />
+        <FragmentShader Include="**/*.frag" />
+    </ItemGroup>
+    
     <!-- Content -->
     <ItemGroup>
-        <Content Include="content/**/*" Pack="true">
+        <Content Include="content/**/*" Pack="true" Exclude="@(VertexShader);@(FragmentShader);">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
             <PackageCopyToOutput>true</PackageCopyToOutput>
         </Content>
@@ -39,24 +43,23 @@
 
     <!-- Shader Cleaner -->
     <Target Name="CleanVulkanShader" BeforeTargets="Clean">
-        <Message Text="......................................SHADERS.clean..........................................................." Importance="high" />
+        <Message Text="......................................SHADERS.Clean..........................................................." Importance="high" />
         <ItemGroup>
             <FilesToDelete Include="**\*.spv" />
         </ItemGroup>
         <Delete Files="@(FilesToDelete)" />
-        <Message Text="......................................SHADERS.cleaned........................................................." Importance="high" />
+        <Message Text="......................................SHADERS.Cleaned........................................................." Importance="high" />
     </Target>
 
     <!-- Shader Compiler -->
     <Target Name="BuildVulkanShader" BeforeTargets="BeforeBuild">
-        <Message Text="......................................SHADERS.compile........................................................." Importance="high" />
+        <Message Text="......................................SHADERS.Compile........................................................." Importance="high" />
         <Message Text="   Starting Vulkan Shader Compilation..." Importance="high" />
-        <Message Text="     > VulkanBinPath: $(VulkanBinPath)" Importance="high" />
-        <Message Text="     > VertexShader: @(VertexShader)" Importance="high" />
-        <Message Text="     > FragmentShader: @(FragmentShader)" Importance="high" />
+        <Message Text="     VulkanBinPath: $(VulkanBinPath)" Importance="high" />
+        <Message Text="     VertexShader: @(VertexShader)" Importance="high" />
+        <Message Text="     FragmentShader: @(FragmentShader)" Importance="high" />
         <Exec Command="$(VulkanBinPath)\glslc.exe &quot;%(VertexShader.FullPath)&quot; -o &quot;%(VertexShader.FullPath).spv&quot;" Condition="'@(VertexShader)'!=''" />
         <Exec Command="$(VulkanBinPath)\glslc.exe &quot;%(FragmentShader.FullPath)&quot; -o &quot;%(FragmentShader.FullPath).spv&quot;" Condition="'@(FragmentShader)'!=''" />
-        <Message Text="......................................SHADERS.compiled........................................................" Importance="high" />
+        <Message Text="......................................SHADERS.Compiled........................................................" Importance="high" />
     </Target>
-
 </Project>

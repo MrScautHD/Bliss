@@ -5,6 +5,13 @@ namespace Bliss.CSharp;
 public abstract class Disposable : IDisposable {
     
     public bool HasDisposed { get; private set; }
+
+    /// <summary>
+    /// Disposes of the object, allowing for proper resource cleanup and finalization.
+    /// </summary>
+    ~Disposable() {
+        this.Dispose();
+    }
     
     /// <summary>
     /// Disposes of the object, allowing for proper resource cleanup and finalization.

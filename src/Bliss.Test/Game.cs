@@ -1,11 +1,10 @@
-using System.Numerics;
 using Bliss.CSharp;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Rendering;
 using Bliss.CSharp.Rendering.Vulkan;
 using Bliss.CSharp.Rendering.Vulkan.Descriptor;
-using Silk.NET.Input;
+using Bliss.CSharp.Shaders;
 using Silk.NET.Maths;
 using Silk.NET.Vulkan;
 using Silk.NET.Windowing;
@@ -17,6 +16,8 @@ public class Game : Disposable {
     
     public static Game Instance { get; private set; }
     
+    public GameSettings Settings { get; private set; }
+    
     public Vk Vk { get; private set; }
     public IWindow Window { get; private set; }
     public BlissDevice Device { get; private set; }
@@ -26,9 +27,10 @@ public class Game : Disposable {
     private readonly double _fixedTimeStep;
     private double _timer;
 
-    public Game() {
+    public Game(GameSettings settings) {
         Instance = this;
-        this._fixedTimeStep = 1.0F / 60;
+        this.Settings = settings;
+        this._fixedTimeStep = settings.FixedTimeStep;
     }
 
     public void Run() {
@@ -39,12 +41,13 @@ public class Game : Disposable {
         
         Logger.Info("Initialize Window...");
         this.Window = SilkWindow.Create(WindowOptions.DefaultVulkan with {
-            Title = "Test Game!",
-            Size = new Vector2D<int>(1270, 720)
+            Title = this.Settings.Title,
+            Size = new Vector2D<int>(this.Settings.Width, this.Settings.Height)
         });
         
         this.Window.Update += this.RunLoop;
         this.Window.Render += this.Draw;
+        this.Window.Closing += this.Close;
         
         this.Window.Initialize();
         
@@ -56,7 +59,7 @@ public class Game : Disposable {
         this.Device = new BlissDevice(this.Vk, this.Window);
 
         Logger.Info("Initialize Renderer...");
-        this.Renderer = new BlissRenderer(this.Vk, this.Window, this.Device, false);
+        this.Renderer = new BlissRenderer(this.Vk, this.Window, this.Device, this.Settings.UseFifo);
 
         Logger.Info("Initialize Global Pool...");
         this.GlobalPool = new BlissDescriptorPoolBuilder(this.Vk, this.Device)
@@ -68,9 +71,49 @@ public class Game : Disposable {
         Input.Init(this.Window);
         
         this.Init();
-
+/*
         uint frames = BlissSwapChain.MaxDefaultFramesInFlight;
+        ubos = new GlobalUbo[frames];
+        uboBuffers = new BlissBuffer[frames];
         
+        for (int i = 0; i < frames; i++) {
+            ubos[i] = new GlobalUbo();
+            uboBuffers[i] = new(this.Vk, this.Device, GlobalUbo.SizeOf(), 1, BufferUsageFlags.UniformBufferBit, MemoryPropertyFlags.HostVisibleBit | MemoryPropertyFlags.HostCoherentBit);
+            uboBuffers[i].Map();
+        }
+        log.d("run", "initialized ubo buffers");
+
+        globalSetLayout = new BlissDescriptorSetLayoutBuilder(this.Vk, this.Device)
+            .AddBinding(0, DescriptorType.UniformBuffer, ShaderStageFlags.AllGraphics)
+            .Build();
+
+        globalDescriptorSets = new DescriptorSet[frames];
+        for (var i = 0; i < globalDescriptorSets.Length; i++) {
+            var bufferInfo = uboBuffers[i].DescriptorInfo();
+            _ = new LveDescriptorSetWriter(vk, device, globalSetLayout)
+                .WriteBuffer(0, bufferInfo)
+                .Build(globalPool, globalSetLayout.GetDescriptorSetLayout(), ref globalDescriptorSets[i]);
+        }
+        log.d("run", "got globalDescriptorSets");
+
+        simpleRenderSystem = new SimpleRenderSystem(
+            vk, device,
+            lveRenderer.GetSwapChainRenderPass(),
+            globalSetLayout.GetDescriptorSetLayout()
+        );
+
+        pointLightRenderSystem = new(
+            vk, device,
+            lveRenderer.GetSwapChainRenderPass(),
+            globalSetLayout.GetDescriptorSetLayout()
+        );
+        log.d("run", "got render systems");
+        
+        camera = new OrthographicCamera(Vector3.Zero, 4f, -20f, -140f, this.Window.FramebufferSize);
+        //camera = new PerspectiveCamera(new Vector3(5,5,5), 45f, 0f, 0f, window.FramebufferSize);
+        cameraController = new(camera, this.Window);
+        resize(window.FramebufferSize);
+        log.d("run", "got camera and controls");*/
         
         Logger.Info("Start main Loops...");
         this.Window.Run();
@@ -94,53 +137,15 @@ public class Game : Disposable {
 
     protected virtual void Init() { }
 
-    protected virtual void Update(double delta) {
-        if (Input.IsKeyPressed(Key.A)) {
-            Logger.Error("KEY [A] GOT PRESSED!");
-        }
-        
-        if (Input.IsKeyDown(Key.S)) {
-            Logger.Error("KEY [S] IS DOWN!");
-        }
-        
-        if (Input.IsKeyReleased(Key.D)) {
-            Logger.Error("KEY [D] IS RELEASED!");
-        }
-
-        foreach (var test in Input.GetPressedChars()) {
-            Logger.Error(test + "");
-        }
-        
-        if (Input.IsMouseDoubleClicked(MouseButton.Left, out Vector2 pos)) {
-            Logger.Error($"Mouse clicked at pos: {pos}");
-        }
-        
-        if (Input.IsMouseMoving(out Vector2 ghg)) {
-            Logger.Error($"Mouse moved at pos: {ghg}");
-        }
-
-        if (Input.IsMouseScrolling(out ScrollWheel? scrollWheel)) {
-            Logger.Error($"Mouse scroll: {scrollWheel!.Value.Y}");
-        }
-
-        if (Input.IsGamepadTriggerMoved(1)) {
-            Logger.Error($"Trigger moved: {Input.GetGamepadTriggers(0)[1].Position}");
-        }
-
-        if (Input.IsGamepadThumpStickMoved(1)) {
-            Logger.Error($"Thumpsticks moved: {Input.GetGamepadThumbsticks(0)[1].Position}");
-        }
-        
-        if (Input.IsGamepadButtonDown(ButtonName.A)) {
-            Logger.Error("PRESSED A");
-        }
-    }
+    protected virtual void Update(double delta) { }
 
     protected virtual void AfterUpdate(double delta) { }
 
     protected virtual void FixedUpdate() { }
 
     protected virtual void Draw(double delta) { }
+    
+    protected virtual void Close() { }
     
     protected override void Dispose(bool disposing) {
         if (disposing) {

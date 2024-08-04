@@ -14,8 +14,7 @@ struct PointLight {
     vec4 color;		// w is intensity
 };
 
-layout(set = 0, binding = 0) uniform GlobalUbo
-{
+layout(set = 0, binding = 0) uniform GlobalUbo {
     mat4 projection;
     mat4 view;
     vec4 front;
@@ -27,8 +26,7 @@ layout(set = 0, binding = 0) uniform GlobalUbo
     PointLight pointLights[10];
 } ubo;
 
-layout(push_constant) uniform Push
-{
+layout(push_constant) uniform Push {
     mat4 modelMatrix;
     mat4 normalMatrix;
 } push;

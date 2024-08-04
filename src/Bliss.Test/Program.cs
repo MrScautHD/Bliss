@@ -1,4 +1,8 @@
 ﻿using Bliss.Test;
 
-using Game game = new Game();
+GameSettings settings = new GameSettings() {
+    Title = "Bliss - [Test]"
+};
+
+using Game game = new Game(settings);
 game.Run();

@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Rendering.Vulkan;
+using Bliss.CSharp.Shaders;
 using Silk.NET.Vulkan;
 
 namespace Bliss.CSharp.Rendering.Systems;
@@ -39,9 +40,9 @@ public class SimpleRenderSystem : Disposable {
     }
     
     private unsafe void CreatePipelineLayout(DescriptorSetLayout globalSetLayout) {
-        DescriptorSetLayout[] descriptorSetLayouts = new DescriptorSetLayout[] {
+        DescriptorSetLayout[] descriptorSetLayouts = [
             globalSetLayout
-        };
+        ];
         
         PushConstantRange pushConstantRange = new() {
             StageFlags = ShaderStageFlags.VertexBit | ShaderStageFlags.FragmentBit,
@@ -74,7 +75,7 @@ public class SimpleRenderSystem : Disposable {
         pipelineConfig.RenderPass = renderPass;
         pipelineConfig.PipelineLayout = this._pipelineLayout;
         
-        this._pipeline = new BlissPipeline(this.Vk, this.Device, "content/shaders/default_shader.frag", "content/shaders/default_shader.vert", pipelineConfig);
+        this._pipeline = new BlissPipeline(this.Vk, this.Device, new Shader(this.Vk, this.Device, "content/shaders/default_shader.frag", "content/shaders/default_shader.vert"), pipelineConfig);
     }
 
     protected override unsafe void Dispose(bool disposing) {

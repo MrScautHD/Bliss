@@ -1,10 +1,6 @@
-using System.Reflection;
 using System.Runtime.CompilerServices;
 using Bliss.CSharp.Geometry;
-using Bliss.CSharp.Logging;
-using GLSLang;
-using Microsoft.FSharp.Collections;
-using Microsoft.FSharp.Core;
+using Bliss.CSharp.Shaders;
 using Silk.NET.Core.Native;
 using Silk.NET.Vulkan;
 using BlendFactor = Silk.NET.Vulkan.BlendFactor;
@@ -20,22 +16,18 @@ public class BlissPipeline : Disposable {
     public readonly BlissDevice Device;
 
     private Pipeline _graphicsPipeline;
-
-    private ShaderModule _vertShaderModule;
-    private ShaderModule _fragShaderModule;
-
+    
     /// <summary>
-    /// Initializes a new instance of the BlissPipeline class.
+    /// Initializes a new instance of the <see cref="BlissPipeline"/> class with the specified Vulkan instance, device, shader, and pipeline configuration.
     /// </summary>
     /// <param name="vk">The Vulkan instance.</param>
     /// <param name="device">The Bliss device.</param>
-    /// <param name="vertPath">The path to the vertex shader file.</param>
-    /// <param name="fragPath">The path to the fragment shader file.</param>
-    /// <param name="configInfo">The pipeline configuration information.</param>
-    public BlissPipeline(Vk vk, BlissDevice device, string vertPath, string fragPath, PipelineConfigInfo configInfo) {
+    /// <param name="shader">The shader program to be used for the pipeline.</param>
+    /// <param name="configInfo">The configuration information for the pipeline.</param>
+    public BlissPipeline(Vk vk, BlissDevice device, Shader shader, PipelineConfigInfo configInfo) {
         this.Vk = vk;
         this.Device = device;
-        this.CreateGraphicsPipeline(vertPath, fragPath, configInfo);
+        this.CreateGraphicsPipeline(shader, configInfo);
     }
 
     /// <summary>
@@ -137,22 +129,15 @@ public class BlissPipeline : Disposable {
     }
 
     /// <summary>
-    /// Creates a new graphics pipeline with the specified vertex and fragment shaders.
+    /// Creates a graphics pipeline using the provided shader and pipeline configuration information.
     /// </summary>
-    /// <param name="vertPath">The path to the vertex shader file.</param>
-    /// <param name="fragPath">The path to the fragment shader file.</param>
+    /// <param name="shader">The shader to be used for the graphics pipeline.</param>
     /// <param name="configInfo">The pipeline configuration information.</param>
-    private unsafe void CreateGraphicsPipeline(string vertPath, string fragPath, PipelineConfigInfo configInfo) {
-        byte[] vertSource = this.GetShaderBytes(vertPath, ShaderStage.Vertex);
-        byte[] fragSource = this.GetShaderBytes(fragPath, ShaderStage.Fragment);
-
-        this._vertShaderModule = this.CreateShaderModule(vertSource);
-        this._fragShaderModule = this.CreateShaderModule(fragSource);
-
+    private unsafe void CreateGraphicsPipeline(Shader shader, PipelineConfigInfo configInfo) {
         PipelineShaderStageCreateInfo vertShaderStageInfo = new() {
             SType = StructureType.PipelineShaderStageCreateInfo,
             Stage = ShaderStageFlags.VertexBit,
-            Module = this._vertShaderModule,
+            Module = shader.VertShaderModule,
             PName = (byte*) SilkMarshal.StringToPtr("main"),
             Flags = PipelineShaderStageCreateFlags.None,
             PNext = null,
@@ -162,7 +147,7 @@ public class BlissPipeline : Disposable {
         PipelineShaderStageCreateInfo fragShaderStageInfo = new() {
             SType = StructureType.PipelineShaderStageCreateInfo,
             Stage = ShaderStageFlags.FragmentBit,
-            Module = this._fragShaderModule,
+            Module = shader.FragShaderModule,
             PName = (byte*) SilkMarshal.StringToPtr("main"),
             Flags = PipelineShaderStageCreateFlags.None,
             PNext = null,
@@ -224,75 +209,8 @@ public class BlissPipeline : Disposable {
             }
         }
 
-        this.Vk.DestroyShaderModule(this.Device.GetVkDevice(), this._fragShaderModule, null);
-        this.Vk.DestroyShaderModule(this.Device.GetVkDevice(), this._vertShaderModule, null);
-
         SilkMarshal.Free((nint) shaderStages[0].PName);
         SilkMarshal.Free((nint) shaderStages[1].PName);
-    }
-
-    /// <summary>
-    /// Get the byte array representation of a shader file.
-    /// </summary>
-    /// <param name="filename">The name of the shader file.</param>
-    /// <returns>The byte array representing the shader file.</returns>
-    private byte[] GetShaderBytesWithSpv(string filename) {
-        Assembly assembly = Assembly.GetExecutingAssembly();
-        string? resourceName = assembly.GetManifestResourceNames().FirstOrDefault(s => s.EndsWith(filename));
-        
-        if (resourceName == null) {
-            throw new ApplicationException($"No shader file found with name {filename}");
-        }
-
-        using Stream stream = assembly.GetManifestResourceStream(resourceName) ?? throw new ApplicationException($"No shader file found with name {filename}");
-        using MemoryStream ms = new MemoryStream();
-        
-        stream.CopyTo(ms);
-        return ms.ToArray();
-    }
-
-    // TODO: Use the Nuget packet (GLSLLangSharp, or Spv-V.... to compile the shaders from the .vert, .frag to .spv format). (Should work fine need to be tested!)
-    public byte[] GetShaderBytes(string filename, ShaderStage shaderStage, List<string>? defines = default) {
-        Assembly assembly = Assembly.GetExecutingAssembly();
-        string? resourceName = assembly.GetManifestResourceNames().FirstOrDefault(s => s.EndsWith(filename));
-        
-        if (resourceName == null) {
-            throw new ApplicationException($"No shader file found with name {filename}");
-        }
-
-        var result = GLSLang.GLSLang.tryCompile(shaderStage, "main", defines != null ? ListModule.OfSeq(defines) : FSharpList<string>.Empty, resourceName);
-
-        if (FSharpOption<byte[]>.get_IsSome(result.Item1)) {
-            Logger.Info($"Shader at [{filename}] complied successfully!");
-            return result.Item1.Value;
-        }
-        else {
-            throw new ApplicationException($"Shader at [{filename}] failed at compilation!");
-        }
-    }
-
-    /// <summary>
-    /// Creates a shader module.
-    /// </summary>
-    /// <param name="code">The byte array containing the shader code.</param>
-    /// <returns>A <see cref="ShaderModule"/> object representing the created shader module.</returns>
-    private unsafe ShaderModule CreateShaderModule(byte[] code) {
-        ShaderModuleCreateInfo createInfo = new() {
-            SType = StructureType.ShaderModuleCreateInfo,
-            CodeSize = (nuint) code.Length,
-        };
-
-        ShaderModule shaderModule;
-
-        fixed (byte* codePtr = code) {
-            createInfo.PCode = (uint*) codePtr;
-
-            if (this.Vk.CreateShaderModule(this.Device.GetVkDevice(), createInfo, null, out shaderModule) != Result.Success) {
-                throw new Exception();
-            }
-        }
-
-        return shaderModule;
     }
 
     /// <summary>
@@ -305,8 +223,6 @@ public class BlissPipeline : Disposable {
 
     protected override unsafe void Dispose(bool disposing) {
         if (disposing) {
-            this.Vk.DestroyShaderModule(this.Device.GetVkDevice(), this._vertShaderModule, null);
-            this.Vk.DestroyShaderModule(this.Device.GetVkDevice(), this._fragShaderModule, null);
             this.Vk.DestroyPipeline(this.Device.GetVkDevice(), this._graphicsPipeline, null);
         }
     }
