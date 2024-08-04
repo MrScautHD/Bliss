@@ -24,7 +24,7 @@ Coming SoOn!
 ---
 
 # ⚠️ Importand for the Installation
-> 1. For this project, you need the [`Vulkan SDK`](https://vulkan.lunarg.com/sdk/home#windows) with the version `[1.3.283.0]`. Please add the following code to your `.csproj` file:
+1. For this project, you need the [`Vulkan SDK`](https://vulkan.lunarg.com/sdk/home#windows) with the version `[1.3.283.0]`. Please add the following code to your `.csproj` file:
 ```xml
     <!-- Vulkan SDK -->
     <PropertyGroup>
@@ -32,7 +32,7 @@ Coming SoOn!
     </PropertyGroup>
 ```
 
-> 2. And for **compiling shaders**, include the following code in your `.csproj` file:
+2. And for **compiling shaders**, include the following code in your `.csproj` file:
 ```xml
     <!-- Shader Stages (Vertex, Fragment...) -->
     <ItemGroup>
