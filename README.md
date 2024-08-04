@@ -25,7 +25,7 @@ Coming SoOn!
 
 # ⚠️ Importand for the Installation
 For this project, you need the [`Vulkan SDK`](https://vulkan.lunarg.com/sdk/home#windows) with the version `[1.3.283.0]`.
-To **compile shaders**, include the following code in your `.csproj` file:
+And for **compiling shaders**, include the following code in your `.csproj` file:
 ```xml
     <!-- Shader Stages (Vertex, Fragment...) -->
     <ItemGroup>
