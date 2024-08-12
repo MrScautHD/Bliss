@@ -143,7 +143,7 @@ public class BlissPipeline : Disposable {
             PNext = null,
             PSpecializationInfo = null
         };
-
+        
         PipelineShaderStageCreateInfo fragShaderStageInfo = new() {
             SType = StructureType.PipelineShaderStageCreateInfo,
             Stage = ShaderStageFlags.FragmentBit,
@@ -170,7 +170,7 @@ public class BlissPipeline : Disposable {
                     VertexAttributeDescriptionCount = (uint) attributeDescriptions.Length,
                     VertexBindingDescriptionCount = (uint) bindingDescriptions.Length,
                     PVertexAttributeDescriptions = attributeDescriptionsPtr,
-                    PVertexBindingDescriptions = bindingDescriptionsPtr,
+                    PVertexBindingDescriptions = bindingDescriptionsPtr
                 };
 
                 Span<DynamicState> dynamicStates = stackalloc DynamicState[] {

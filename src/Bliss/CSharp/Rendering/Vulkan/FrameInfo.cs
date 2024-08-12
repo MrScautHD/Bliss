@@ -10,5 +10,5 @@ public struct FrameInfo {
     public CommandBuffer CommandBuffer;
     public ICam Camera;
     public DescriptorSet GlobalDescriptorSet;
-    public List<Renderable> RenderableObjects;
+    public IEnumerable<Renderable> RenderableObjects;
 }

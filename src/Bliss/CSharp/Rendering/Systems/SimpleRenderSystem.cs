@@ -13,16 +13,15 @@ public class SimpleRenderSystem : Disposable {
 
     private BlissPipeline _pipeline;
     private PipelineLayout _pipelineLayout;
-
+    
     public SimpleRenderSystem(Vk vk, BlissDevice device, RenderPass renderPass, DescriptorSetLayout globalSetLayout) {
 		this.Vk = vk;
 		this.Device = device;
-        
         this.CreatePipelineLayout(globalSetLayout);
         this.CreatePipeline(renderPass);
 	}
     
-    public unsafe void Render(FrameInfo frameInfo) {
+    public unsafe void Draw(FrameInfo frameInfo) {
         this._pipeline.Bind(frameInfo.CommandBuffer);
         this.Vk.CmdBindDescriptorSets(frameInfo.CommandBuffer, PipelineBindPoint.Graphics, this._pipelineLayout, 0, 1, frameInfo.GlobalDescriptorSet, 0, null);
 
@@ -75,7 +74,7 @@ public class SimpleRenderSystem : Disposable {
         pipelineConfig.RenderPass = renderPass;
         pipelineConfig.PipelineLayout = this._pipelineLayout;
         
-        this._pipeline = new BlissPipeline(this.Vk, this.Device, new Shader(this.Vk, this.Device, "content/shaders/default_shader.frag", "content/shaders/default_shader.vert"), pipelineConfig);
+        this._pipeline = new BlissPipeline(this.Vk, this.Device, new Shader(this.Vk, this.Device, "content/shaders/default_shader.vert", "content/shaders/default_shader.frag"), pipelineConfig);
     }
 
     protected override unsafe void Dispose(bool disposing) {

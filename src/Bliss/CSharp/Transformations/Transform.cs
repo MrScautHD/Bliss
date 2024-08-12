@@ -25,7 +25,7 @@ public struct Transform {
     public Transform() {
         this.Translation = Vector3.Zero;
         this.Rotation = Quaternion.Identity;
-        this.Scale = Vector3.Zero;
+        this.Scale = Vector3.One;
     }
 
     /// <summary>

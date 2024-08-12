@@ -30,7 +30,7 @@ public class Shader : Disposable {
         this.VertShaderModule = this.CreateShaderModule(this.VertBytes);
         this.FragShaderModule = this.CreateShaderModule(this.FragBytes);
     }
-
+    
     /// <summary>
     /// Retrieves the byte code of a shader from a specified file path.
     /// </summary>
@@ -43,7 +43,7 @@ public class Shader : Disposable {
             throw new ApplicationException($"No shader file found in the path: [{path}]");
         }
         
-        Logger.Info($"Successfully loaded shader bytes from the path: [{path}]");
+        Logger.Info($"Successfully loaded shader bytes from the path: [{finalPath}]");
         return File.ReadAllBytes(finalPath);
     }
     
@@ -53,14 +53,13 @@ public class Shader : Disposable {
     /// <param name="code">The byte array containing the shader code.</param>
     /// <returns>The created shader module.</returns>
     private unsafe ShaderModule CreateShaderModule(byte[] code) {
-        ShaderModuleCreateInfo createInfo = new() {
-            SType = StructureType.ShaderModuleCreateInfo,
-            CodeSize = (nuint) code.Length
-        };
-        
         fixed (byte* codePtr = code) {
-            createInfo.PCode = (uint*) codePtr;
-
+            ShaderModuleCreateInfo createInfo = new() {
+                SType = StructureType.ShaderModuleCreateInfo,
+                CodeSize = (nuint) code.Length,
+                PCode = (uint*) codePtr
+            };
+            
             if (this.Vk.CreateShaderModule(this.Device.GetVkDevice(), createInfo, null, out ShaderModule shaderModule) == Result.Success) {
                 return shaderModule;
             }

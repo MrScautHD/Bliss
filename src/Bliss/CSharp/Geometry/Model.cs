@@ -46,7 +46,7 @@ public class Model : Disposable {
     /// <param name="device">The BlissDevice instance.</param>
     /// <param name="path">The file path of the model.</param>
     /// <returns>A new Model object representing the loaded 3D model.</returns>
-    private static unsafe Model LoadModel(Vk vk, BlissDevice device, string path) {
+    public static unsafe Model Load(Vk vk, BlissDevice device, string path) {
         Assimp assimp = Assimp.GetApi();
         Scene* scene = assimp.ImportFile(path, (uint) PostProcessPreset.TargetRealTimeMaximumQuality);
 
@@ -59,16 +59,33 @@ public class Model : Disposable {
             uint[] indices = new uint[mesh->MNumFaces * 3];
             
             for (int j = 0; j < mesh->MNumVertices; j++) {
-                Vector3 vertex = mesh->MVertices[j];
-                
                 vertices[j] = new Vertex {
-                    Position = vertex,
-                    TexCoords = new Vector2(mesh->MTextureCoords[0][j].X, mesh->MTextureCoords[0][j].Y),
-                    TexCoords2 = new Vector2(mesh->MTextureCoords[1][j].X, mesh->MTextureCoords[1][j].Y),
-                    Normal = mesh->MNormals[j],
-                    Tangent = mesh->MTangents[j],
-                    Color = Color.White // TODO: Check if the color is White is ok.
+                    Position = mesh->MVertices[j]
                 };
+                
+                if (mesh->MTextureCoords[0] != null) {
+                    Vector3 texCoords = mesh->MTextureCoords[0][i];
+                    vertices[j].TexCoords = new Vector2(texCoords.X, texCoords.Y);
+                }
+                
+                if (mesh->MTextureCoords[1] != null) {
+                    Vector3 texCoords2 = mesh->MTextureCoords[1][i];
+                    vertices[j].TexCoords2 = new Vector2(texCoords2.X, texCoords2.Y);
+                }
+                
+                if (mesh->MNormals != null) {
+                    vertices[j].Normal = mesh->MNormals[j];
+                }
+                
+                if (mesh->MTangents != null) {
+                    vertices[j].Tangent = mesh->MTangents[j];
+                }
+                
+                //if (mesh->MColors[0][j] != null) {
+                //    //Color color = new Color()
+                //    vertices[j].Color = mesh->MColors[0][j];
+                //}
+                vertices[j].Color = Color.White;
             }
 
             for (int j = 0; j < mesh->MNumFaces; j++) {
@@ -79,7 +96,7 @@ public class Model : Disposable {
                 }
             }
 
-            meshes[i] = new Mesh(vertices, indices);
+            meshes.Add(new Mesh(vertices, indices));
         }
         
         return new Model(vk, device, meshes.ToArray());

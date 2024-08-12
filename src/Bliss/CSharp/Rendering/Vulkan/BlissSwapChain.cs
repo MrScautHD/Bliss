@@ -133,7 +133,7 @@ public class BlissSwapChain : Disposable {
         
         submitInfo = submitInfo with {
             SignalSemaphoreCount = 1,
-            PSignalSemaphores = signalSemaphores,
+            PSignalSemaphores = signalSemaphores
         };
 
         this.Vk.ResetFences(this.Device.GetVkDevice(), 1, this._inFlightFences[this._currentFrame]);
@@ -252,7 +252,7 @@ public class BlissSwapChain : Disposable {
     /// </summary>
     private unsafe void CreateSwapChain() {
         BlissDevice.SwapChainSupportDetails swapChainSupport = this.Device.QuerySwapChainSupport();
-
+        
         SurfaceFormatKHR surfaceFormat = this.ChooseSwapSurfaceFormat(swapChainSupport.Formats);
         PresentModeKHR presentMode = this.ChoosePresentMode(swapChainSupport.PresentModes);
         Extent2D extent = this.ChooseSwapExtent(swapChainSupport.Capabilities);
@@ -724,12 +724,10 @@ public class BlissSwapChain : Disposable {
 
         foreach (var availablePresentMode in availablePresentModes) {
             if (availablePresentMode == PresentModeKHR.MailboxKhr) {
-                Logger.Info("Swapchain got present mode = Mailbox");
                 return availablePresentMode;
             }
         }
 
-        Logger.Info("Swapchain fallback to present mode = FifoKhr");
         return PresentModeKHR.FifoKhr;
     }
 

@@ -1,16 +1,24 @@
+using System.Numerics;
 using Bliss.CSharp;
+using Bliss.CSharp.Camera.Dim3;
+using Bliss.CSharp.Colors;
+using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Rendering;
+using Bliss.CSharp.Rendering.Systems;
 using Bliss.CSharp.Rendering.Vulkan;
 using Bliss.CSharp.Rendering.Vulkan.Descriptor;
 using Bliss.CSharp.Shaders;
+using Bliss.CSharp.Transformations;
 using Silk.NET.Maths;
 using Silk.NET.Vulkan;
 using Silk.NET.Windowing;
 using SilkWindow = Silk.NET.Windowing.Window;
 
 namespace Bliss.Test;
+
+// TODO CHECK THIS: https://github.com/dotnet/Silk.NET/blob/main/examples/CSharp/OpenGL%20Tutorials/Tutorial%204.1%20-%20Model%20Loading/Model.cs
 
 public class Game : Disposable {
     
@@ -22,10 +30,21 @@ public class Game : Disposable {
     public IWindow Window { get; private set; }
     public BlissDevice Device { get; private set; }
     public BlissRenderer Renderer { get; private set; }
+    
+    public GlobalUbo[] GlobalUbos { get; private set; }
+    public BlissBuffer[] GlobalUboBuffers { get; private set; }
+    
     public BlissDescriptorPool GlobalPool { get; private set; }
+    public BlissDescriptorSetLayout GlobalSetLayout { get; private set; }
+    public DescriptorSet[] GlobalDescriptorSets { get; private set; }
+    
+    public SimpleRenderSystem SimpleRenderSystem { get; private set; }
+    public Cam3D Cam3D { get; private set; } // TODO REMOVE IT FROM HERE
     
     private readonly double _fixedTimeStep;
     private double _timer;
+
+    public Renderable[] Renderables;
 
     public Game(GameSettings settings) {
         Instance = this;
@@ -46,7 +65,7 @@ public class Game : Disposable {
         });
         
         this.Window.Update += this.RunLoop;
-        this.Window.Render += this.Draw;
+        this.Window.Render += this.RunDrawing;
         this.Window.Closing += this.Close;
         
         this.Window.Initialize();
@@ -71,49 +90,36 @@ public class Game : Disposable {
         Input.Init(this.Window);
         
         this.Init();
-/*
+
+        Logger.Info("Initialize Global Ubo buffers...");
         uint frames = BlissSwapChain.MaxDefaultFramesInFlight;
-        ubos = new GlobalUbo[frames];
-        uboBuffers = new BlissBuffer[frames];
+        
+        this.GlobalUbos = new GlobalUbo[frames];
+        this.GlobalUboBuffers = new BlissBuffer[frames];
         
         for (int i = 0; i < frames; i++) {
-            ubos[i] = new GlobalUbo();
-            uboBuffers[i] = new(this.Vk, this.Device, GlobalUbo.SizeOf(), 1, BufferUsageFlags.UniformBufferBit, MemoryPropertyFlags.HostVisibleBit | MemoryPropertyFlags.HostCoherentBit);
-            uboBuffers[i].Map();
+            this.GlobalUbos[i] = new GlobalUbo();
+            this.GlobalUboBuffers[i] = new(this.Vk, this.Device, GlobalUbo.SizeOf(), 1, BufferUsageFlags.UniformBufferBit, MemoryPropertyFlags.HostVisibleBit | MemoryPropertyFlags.HostCoherentBit);
+            this.GlobalUboBuffers[i].Map();
         }
-        log.d("run", "initialized ubo buffers");
 
-        globalSetLayout = new BlissDescriptorSetLayoutBuilder(this.Vk, this.Device)
+        Logger.Info("Initialize Global Set Layout...");
+        this.GlobalSetLayout = new BlissDescriptorSetLayoutBuilder(this.Vk, this.Device)
             .AddBinding(0, DescriptorType.UniformBuffer, ShaderStageFlags.AllGraphics)
             .Build();
 
-        globalDescriptorSets = new DescriptorSet[frames];
-        for (var i = 0; i < globalDescriptorSets.Length; i++) {
-            var bufferInfo = uboBuffers[i].DescriptorInfo();
-            _ = new LveDescriptorSetWriter(vk, device, globalSetLayout)
-                .WriteBuffer(0, bufferInfo)
-                .Build(globalPool, globalSetLayout.GetDescriptorSetLayout(), ref globalDescriptorSets[i]);
-        }
-        log.d("run", "got globalDescriptorSets");
-
-        simpleRenderSystem = new SimpleRenderSystem(
-            vk, device,
-            lveRenderer.GetSwapChainRenderPass(),
-            globalSetLayout.GetDescriptorSetLayout()
-        );
-
-        pointLightRenderSystem = new(
-            vk, device,
-            lveRenderer.GetSwapChainRenderPass(),
-            globalSetLayout.GetDescriptorSetLayout()
-        );
-        log.d("run", "got render systems");
+        Logger.Info("Initialize Global Descriptor Sets...");
+        this.GlobalDescriptorSets = new DescriptorSet[frames];
         
-        camera = new OrthographicCamera(Vector3.Zero, 4f, -20f, -140f, this.Window.FramebufferSize);
-        //camera = new PerspectiveCamera(new Vector3(5,5,5), 45f, 0f, 0f, window.FramebufferSize);
-        cameraController = new(camera, this.Window);
-        resize(window.FramebufferSize);
-        log.d("run", "got camera and controls");*/
+        for (var i = 0; i < this.GlobalDescriptorSets.Length; i++) {
+            _ = new BlissDescriptorSetWriter(this.Vk, this.Device, this.GlobalSetLayout).WriteBuffer(0, this.GlobalUboBuffers[i].DescriptorInfo()).Build(this.GlobalPool, ref this.GlobalDescriptorSets[i]);
+        }
+
+        Logger.Info("Initialize Render System...");
+        this.SimpleRenderSystem = new SimpleRenderSystem(this.Vk, this.Device, this.Renderer.GetSwapChainRenderPass(), this.GlobalSetLayout.DescriptorSetLayout);
+        
+        Logger.Info("Setup Camera (TEMP get removed from here!)");
+        this.Cam3D = new Cam3D(this.Window, new Vector3(3, 3, 3), new Vector3(0, 2, 0));
         
         Logger.Info("Start main Loops...");
         this.Window.Run();
@@ -135,7 +141,41 @@ public class Game : Disposable {
         Input.EndInput();
     }
 
-    protected virtual void Init() { }
+    protected virtual void RunDrawing(double delta) {
+        CommandBuffer? commandBuffer = this.Renderer.BeginFrame();
+
+        if (commandBuffer != null) {
+            int frameIndex = this.Renderer.CurrentFrameIndex;
+
+            FrameInfo frameInfo = new() {
+                FrameIndex = frameIndex,
+                FrameTime = (float) delta,
+                CommandBuffer = commandBuffer.Value,
+                Camera = this.Cam3D,
+                GlobalDescriptorSet = this.GlobalDescriptorSets[frameIndex],
+                RenderableObjects = this.Renderables
+            };
+            
+            this.GlobalUbos[frameIndex].Update(this.Cam3D.GetProjection(), this.Cam3D.GetView(), new Vector4(this.Cam3D.GetForward(), 0));
+            this.GlobalUboBuffers[frameIndex].WriteBytesToBuffer(this.GlobalUbos[frameIndex].AsBytes());
+            
+            this.Renderer.BeginSwapChainRenderPass(commandBuffer.Value);
+            
+            this.Draw(frameInfo, delta);
+            
+            this.Renderer.EndSwapChainRenderPass(commandBuffer.Value);
+            this.Renderer.EndFrame();
+        }
+    }
+
+    protected virtual void Init() {
+        this.Renderables = new Renderable[1];
+        this.Renderables[0] = new Renderable(Model.Load(this.Vk, this.Device, "content/player.glb"), Color.White, new Transform() {
+            Translation = new Vector3(0, 0.5F, 0),
+            Rotation = Quaternion.Identity,
+            Scale = new Vector3(1, 1, 1)
+        });
+    }
 
     protected virtual void Update(double delta) { }
 
@@ -143,7 +183,9 @@ public class Game : Disposable {
 
     protected virtual void FixedUpdate() { }
 
-    protected virtual void Draw(double delta) { }
+    protected virtual void Draw(FrameInfo frameInfo, double delta) {
+        this.SimpleRenderSystem.Draw(frameInfo); // Replace the simple RenderSystem with Graphics.BeginMode3D(); AND Graphics.BeginShader();
+    }
     
     protected virtual void Close() { }
     
