@@ -74,7 +74,7 @@ Coming SoOn!
     </Target>
 ```
 
-For implimenting the `Shaders, Textures...` into the project to load them, add this code:
+3. To implimenting the `Shaders, Textures...` into the project to load them, add this code:
 ```xml
     <!-- _____________________________________Content_____________________________________ -->
 
