@@ -72,6 +72,10 @@ Coming SoOn!
         <Exec Command="$(VulkanBinPath)/glslc.exe &quot;%(FragmentShader.FullPath)&quot; -o &quot;%(FragmentShader.FullPath).spv&quot;" Condition="'@(FragmentShader)'!=''" />
         <Message Text="......................................Shaders Compiled......................................" Importance="high" />
     </Target>
+```
+
+For implimenting the `Shaders, Textures...` into the project to load them, add this code:
+```cs
 
     <!-- _____________________________________Content_____________________________________ -->
 
