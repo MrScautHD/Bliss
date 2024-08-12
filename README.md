@@ -24,56 +24,72 @@ Coming SoOn!
 ---
 
 # ⚠️ Importand for the Installation
-For this project, you need the [`Vulkan SDK`](https://vulkan.lunarg.com/sdk/home#windows) with the version `[1.3.283.0]`. Please add the following code to your `.csproj` file:
-```cs
+1. For this project, you need the [`Vulkan SDK`](https://vulkan.lunarg.com/sdk/home#windows) with the version `[1.3.283.0]`. Please add the following code to your `.csproj` file:
+```xml
+    <!-- _____________________________________Vulkan_____________________________________ -->
+
     <!-- Vulkan SDK -->
     <PropertyGroup>
-        <VulkanBinPath>C:\VulkanSDK\1.3.283.0\Bin</VulkanBinPath>
+        <VulkanBinPath>C:/VulkanSDK/1.3.283.0/Bin</VulkanBinPath>
     </PropertyGroup>
 ```
 
-To **compile shaders**, include the following code in your `.csproj` file:
-```cs
+2. To **compile shaders**, include the following code in your `.csproj` file:
+```xml
+    <!-- _____________________________________Shader_____________________________________ -->
+
     <!-- Shader Stages (Vertex, Fragment...) -->
     <ItemGroup>
-        <VertexShader Include="**/*.vert" />
-        <FragmentShader Include="**/*.frag" />
-    </ItemGroup>
-
-    <!-- Compiled Shader Format -->
-    <ItemGroup>
-        <EmbeddedResource Include="**/*.spv" />
-    </ItemGroup>
-    
-    <!-- Content -->
-    <ItemGroup>
-        <Content Include="content/**/*" Pack="true" Exclude="@(VertexShader);@(FragmentShader);content/**/*.spv">
+        <VertexShader Include="$(contentFolder)/**/*.vert" Pack="true">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
             <PackageCopyToOutput>true</PackageCopyToOutput>
-        </Content>
+        </VertexShader>
+
+        <FragmentShader Include="$(contentFolder)/**/*.frag" Pack="true">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <PackageCopyToOutput>true</PackageCopyToOutput>
+        </FragmentShader>
     </ItemGroup>
 
     <!-- Shader Cleaner -->
     <Target Name="CleanVulkanShader" BeforeTargets="Clean">
-        <Message Text="......................................SHADERS.Clean..........................................................." Importance="high" />
+        <Message Text="......................................Shaders Cleaning......................................" Importance="high" />
         <ItemGroup>
-            <FilesToDelete Include="**\*.spv" />
+            <FilesToDelete Include="$(contentFolder)/**/*.spv" />
         </ItemGroup>
         <Delete Files="@(FilesToDelete)" />
-        <Message Text="......................................SHADERS.Cleaned........................................................." Importance="high" />
+        <Message Text=".......................................Shaders Cleaned......................................" Importance="high" />
     </Target>
 
     <!-- Shader Compiler -->
     <Target Name="BuildVulkanShader" BeforeTargets="BeforeBuild">
-        <Message Text="......................................SHADERS.Compile........................................................." Importance="high" />
+        <Message Text="......................................Shaders Compiling....................................." Importance="high" />
         <Message Text="   Starting Vulkan Shader Compilation..." Importance="high" />
-        <Message Text="     VulkanBinPath: $(VulkanBinPath)" Importance="high" />
-        <Message Text="     VertexShader: @(VertexShader)" Importance="high" />
-        <Message Text="     FragmentShader: @(FragmentShader)" Importance="high" />
-        <Exec Command="$(VulkanBinPath)\glslc.exe &quot;%(VertexShader.FullPath)&quot; -o &quot;%(VertexShader.FullPath).spv&quot;" Condition="'@(VertexShader)'!=''" />
-        <Exec Command="$(VulkanBinPath)\glslc.exe &quot;%(FragmentShader.FullPath)&quot; -o &quot;%(FragmentShader.FullPath).spv&quot;" Condition="'@(FragmentShader)'!=''" />
-        <Message Text="......................................SHADERS.Compiled........................................................" Importance="high" />
+        <Message Text="     > VulkanBinPath: $(VulkanBinPath)" Importance="high" />
+        <Message Text="     > VertexShader: @(VertexShader)" Importance="high" />
+        <Message Text="     > FragmentShader: @(FragmentShader)" Importance="high" />
+        <Exec Command="$(VulkanBinPath)/glslc.exe &quot;%(VertexShader.FullPath)&quot; -o &quot;%(VertexShader.FullPath).spv&quot;" Condition="'@(VertexShader)'!=''" />
+        <Exec Command="$(VulkanBinPath)/glslc.exe &quot;%(FragmentShader.FullPath)&quot; -o &quot;%(FragmentShader.FullPath).spv&quot;" Condition="'@(FragmentShader)'!=''" />
+        <Message Text="......................................Shaders Compiled......................................" Importance="high" />
     </Target>
+```
+
+3. To implimenting the `Shaders, Textures...` into the project to load them, add this code:
+```xml
+    <!-- _____________________________________Content_____________________________________ -->
+
+    <!-- Content Folder -->
+    <PropertyGroup>
+        <contentFolder>content</contentFolder>
+    </PropertyGroup>
+
+    <!-- Content -->
+    <ItemGroup>
+        <Content Include="$(contentFolder)/**/*" Pack="true" Exclude="@(VertexShader);@(FragmentShader);">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <PackageCopyToOutput>true</PackageCopyToOutput>
+        </Content>
+    </ItemGroup>
 ```
 
 # 💻 Platforms
