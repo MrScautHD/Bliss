@@ -75,8 +75,7 @@ Coming SoOn!
 ```
 
 For implimenting the `Shaders, Textures...` into the project to load them, add this code:
-```cs
-
+```xml
     <!-- _____________________________________Content_____________________________________ -->
 
     <!-- Content Folder -->
