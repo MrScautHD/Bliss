@@ -36,21 +36,6 @@ Coming SoOn!
 
 2. To **compile shaders**, include the following code in your `.csproj` file:
 ```xml
-    <!-- _____________________________________Content_____________________________________ -->
-
-    <!-- Content Folder -->
-    <PropertyGroup>
-        <contentFolder>content</contentFolder>
-    </PropertyGroup>
-
-    <!-- Content -->
-    <ItemGroup>
-        <Content Include="$(contentFolder)/**/*" Pack="true" Exclude="@(VertexShader);@(FragmentShader);">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-            <PackageCopyToOutput>true</PackageCopyToOutput>
-        </Content>
-    </ItemGroup>
-
     <!-- _____________________________________Shader_____________________________________ -->
 
     <!-- Shader Stages (Vertex, Fragment...) -->
@@ -87,6 +72,21 @@ Coming SoOn!
         <Exec Command="$(VulkanBinPath)/glslc.exe &quot;%(FragmentShader.FullPath)&quot; -o &quot;%(FragmentShader.FullPath).spv&quot;" Condition="'@(FragmentShader)'!=''" />
         <Message Text="......................................Shaders Compiled......................................" Importance="high" />
     </Target>
+
+    <!-- _____________________________________Content_____________________________________ -->
+
+    <!-- Content Folder -->
+    <PropertyGroup>
+        <contentFolder>content</contentFolder>
+    </PropertyGroup>
+
+    <!-- Content -->
+    <ItemGroup>
+        <Content Include="$(contentFolder)/**/*" Pack="true" Exclude="@(VertexShader);@(FragmentShader);">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <PackageCopyToOutput>true</PackageCopyToOutput>
+        </Content>
+    </ItemGroup>
 ```
 
 # 💻 Platforms
