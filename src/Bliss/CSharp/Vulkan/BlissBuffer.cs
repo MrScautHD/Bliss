@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using Silk.NET.Vulkan;
 using Buffer = Silk.NET.Vulkan.Buffer;
 
-namespace Bliss.CSharp.Rendering.Vulkan;
+namespace Bliss.CSharp.Vulkan;
 
 public class BlissBuffer : Disposable {
     

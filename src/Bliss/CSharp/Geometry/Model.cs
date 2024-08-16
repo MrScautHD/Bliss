@@ -1,7 +1,7 @@
 using System.Numerics;
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Colors;
-using Bliss.CSharp.Rendering.Vulkan;
+using Bliss.CSharp.Vulkan;
 using Silk.NET.Assimp;
 using Silk.NET.Vulkan;
 using AssimpMesh = Silk.NET.Assimp.Mesh;

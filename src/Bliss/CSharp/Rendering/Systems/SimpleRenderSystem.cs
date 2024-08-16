@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using Bliss.CSharp.Rendering.Vulkan;
+using Bliss.CSharp.Vulkan;
 using Bliss.CSharp.Shaders;
 using Silk.NET.Vulkan;
 

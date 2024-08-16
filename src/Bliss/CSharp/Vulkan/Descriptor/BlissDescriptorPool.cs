@@ -1,6 +1,6 @@
 ﻿using Silk.NET.Vulkan;
 
-namespace Bliss.CSharp.Rendering.Vulkan.Descriptor;
+namespace Bliss.CSharp.Vulkan.Descriptor;
 
 public class BlissDescriptorPool : Disposable {
 

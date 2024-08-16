@@ -1,5 +1,5 @@
 using Bliss.CSharp.Logging;
-using Bliss.CSharp.Rendering.Vulkan;
+using Bliss.CSharp.Vulkan;
 using Silk.NET.Vulkan;
 
 namespace Bliss.CSharp.Shaders;

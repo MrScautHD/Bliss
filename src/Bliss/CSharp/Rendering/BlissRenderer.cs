@@ -1,5 +1,5 @@
 using System.Diagnostics;
-using Bliss.CSharp.Rendering.Vulkan;
+using Bliss.CSharp.Vulkan;
 using Silk.NET.Maths;
 using Silk.NET.Vulkan;
 using Silk.NET.Windowing;

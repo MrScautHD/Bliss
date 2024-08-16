@@ -1,7 +1,8 @@
 using Bliss.CSharp.Camera;
+using Bliss.CSharp.Rendering;
 using Silk.NET.Vulkan;
 
-namespace Bliss.CSharp.Rendering.Vulkan;
+namespace Bliss.CSharp.Vulkan;
 
 public struct FrameInfo {
 

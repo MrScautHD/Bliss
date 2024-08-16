@@ -1,16 +1,14 @@
-using Bliss.CSharp.Logging;
 using Silk.NET.Maths;
 using Silk.NET.Vulkan;
 using Silk.NET.Vulkan.Extensions.KHR;
-using Buffer = Silk.NET.Vulkan.Buffer;
 using Semaphore = Silk.NET.Vulkan.Semaphore;
 
-namespace Bliss.CSharp.Rendering.Vulkan;
+namespace Bliss.CSharp.Vulkan;
 
 public class BlissSwapChain : Disposable {
     
-    public const uint MaxDefaultFramesInFlight = 2;
-    public readonly int MaxFramesInFlight = 2;
+    public const int MaxDefaultFramesInFlight = 2;
+    public readonly int MaxFramesInFlight = MaxDefaultFramesInFlight;
 
     public readonly Vk Vk;
     
@@ -26,8 +24,6 @@ public class BlissSwapChain : Disposable {
 
     private KhrSwapchain _khrSwapChain;
     private SwapchainKHR _swapChain;
-
-    private Image[] _swapChainImages;
     
     private Extent2D _swapChainExtent;
     
@@ -35,6 +31,8 @@ public class BlissSwapChain : Disposable {
     private Framebuffer[] _swapChainFrameBuffers;
     
     private RenderPass _renderPass;
+    
+    private Image[] _swapChainImages;
 
     private Image[] _depthImages;
     private DeviceMemory[] _depthImageMemories;
@@ -615,6 +613,19 @@ public class BlissSwapChain : Disposable {
                 throw new Exception("Failed to create depth image views!");
             }
         }
+    }
+
+    private void CreateTextures(Images.Image image) {
+        ulong imageSize = (ulong) (image.Size.X * image.Size.Y);
+        uint mipLevels = (uint) (Math.Floor(Math.Log2(Math.Max(image.Size.X, image.Size.Y))) + 1);
+
+        BlissBuffer buffer = new BlissBuffer(this.Vk, this.Device, imageSize, 1, BufferUsageFlags.TransferSrcBit, MemoryPropertyFlags.HostVisibleBit  | MemoryPropertyFlags.HostCoherentBit);
+        buffer.Map();
+        buffer.WriteToBuffer(image.Data);
+
+        Image textureImage = default;
+        DeviceMemory deviceMemory = default;
+        this.CreateImage((uint) image.Size.X, (uint) image.Size.Y, mipLevels, this.Device.MsaaSamples, Format.R8G8B8A8Srgb, ImageTiling.Optimal, ImageUsageFlags.TransferSrcBit | ImageUsageFlags.TransferDstBit | ImageUsageFlags.SampledBit, MemoryPropertyFlags.DeviceLocalBit, ref textureImage, ref deviceMemory);
     }
 
     /// <summary>

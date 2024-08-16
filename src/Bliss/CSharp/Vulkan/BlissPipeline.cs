@@ -8,7 +8,7 @@ using FrontFace = Silk.NET.Vulkan.FrontFace;
 using Pipeline = Silk.NET.Vulkan.Pipeline;
 using PrimitiveTopology = Silk.NET.Vulkan.PrimitiveTopology;
 
-namespace Bliss.CSharp.Rendering.Vulkan;
+namespace Bliss.CSharp.Vulkan;
 
 public class BlissPipeline : Disposable {
     

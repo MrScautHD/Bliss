@@ -11,7 +11,7 @@ using Silk.NET.Vulkan.Extensions.KHR;
 using Silk.NET.Windowing;
 using Buffer = Silk.NET.Vulkan.Buffer;
 
-namespace Bliss.CSharp.Rendering.Vulkan;
+namespace Bliss.CSharp.Vulkan;
 
 public class BlissDevice : Disposable {
     
