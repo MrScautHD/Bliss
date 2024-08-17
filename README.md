@@ -8,7 +8,7 @@
 [![Activity](https://img.shields.io/github/commit-activity/w/MrScautHD/Bliss?style=flat-square&logo=Github&label=Activity)](https://github.com/MrScautHD/Bliss/activity)
 [![Stars](https://img.shields.io/github/stars/MrScautHD/Bliss?style=flat-square&logo=Github&label=Stars)](https://github.com/MrScautHD/Bliss/stargazers)
 
-__Bliss__ is a modern `Vulkan` Render Framework.
+__Bliss__ is a modern `Direct3D11`, `Vulkan`, `OpenGL`, `Metal`, `OpenGL-ES` Render Framework.
 
 ---
 
@@ -20,77 +20,13 @@ Coming SoOn!
 # 📖 [Installation - From source]
 > 1. Clone this repository.
 > 2. Add `Bliss.csproj` as a reference to your project.
-> 3. Ensure that you downloaded the [`Vulkand SDK`](https://vulkan.lunarg.com/).
 ---
 
-# ⚠️ Importand for the Installation
-1. For this project, you need the [`Vulkan SDK`](https://vulkan.lunarg.com/sdk/home#windows) with the version `[1.3.283.0]`. Please add the following code to your `.csproj` file:
-```xml
-    <!-- _____________________________________Vulkan_____________________________________ -->
-
-    <!-- Vulkan SDK -->
-    <PropertyGroup>
-        <VulkanBinPath>C:/VulkanSDK/1.3.283.0/Bin</VulkanBinPath>
-    </PropertyGroup>
-```
-
-2. To **compile shaders**, include the following code in your `.csproj` file:
-```xml
-    <!-- _____________________________________Shader_____________________________________ -->
-
-    <!-- Shader Stages (Vertex, Fragment...) -->
-    <ItemGroup>
-        <VertexShader Include="$(contentFolder)/**/*.vert" Pack="true">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-            <PackageCopyToOutput>true</PackageCopyToOutput>
-        </VertexShader>
-
-        <FragmentShader Include="$(contentFolder)/**/*.frag" Pack="true">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-            <PackageCopyToOutput>true</PackageCopyToOutput>
-        </FragmentShader>
-    </ItemGroup>
-
-    <!-- Shader Cleaner -->
-    <Target Name="CleanVulkanShader" BeforeTargets="Clean">
-        <Message Text="......................................Shaders Cleaning......................................" Importance="high" />
-        <ItemGroup>
-            <FilesToDelete Include="$(contentFolder)/**/*.spv" />
-        </ItemGroup>
-        <Delete Files="@(FilesToDelete)" />
-        <Message Text=".......................................Shaders Cleaned......................................" Importance="high" />
-    </Target>
-
-    <!-- Shader Compiler -->
-    <Target Name="BuildVulkanShader" BeforeTargets="BeforeBuild">
-        <Message Text="......................................Shaders Compiling....................................." Importance="high" />
-        <Message Text="   Starting Vulkan Shader Compilation..." Importance="high" />
-        <Message Text="     > VulkanBinPath: $(VulkanBinPath)" Importance="high" />
-        <Message Text="     > VertexShader: @(VertexShader)" Importance="high" />
-        <Message Text="     > FragmentShader: @(FragmentShader)" Importance="high" />
-        <Exec Command="$(VulkanBinPath)/glslc.exe &quot;%(VertexShader.FullPath)&quot; -o &quot;%(VertexShader.FullPath).spv&quot;" Condition="'@(VertexShader)'!=''" />
-        <Exec Command="$(VulkanBinPath)/glslc.exe &quot;%(FragmentShader.FullPath)&quot; -o &quot;%(FragmentShader.FullPath).spv&quot;" Condition="'@(FragmentShader)'!=''" />
-        <Message Text="......................................Shaders Compiled......................................" Importance="high" />
-    </Target>
-```
-
-3. To implimenting the `Shaders, Textures...` into the project to load them, add this code:
-```xml
-    <!-- _____________________________________Content_____________________________________ -->
-
-    <!-- Content Folder -->
-    <PropertyGroup>
-        <contentFolder>content</contentFolder>
-    </PropertyGroup>
-
-    <!-- Content -->
-    <ItemGroup>
-        <Content Include="$(contentFolder)/**/*" Pack="true" Exclude="@(VertexShader);@(FragmentShader);">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-            <PackageCopyToOutput>true</PackageCopyToOutput>
-        </Content>
-    </ItemGroup>
-```
+📚 Libraries - [Nuget](https://www.nuget.org/packages)
+======================================================
+- [`Veldrid`](https://www.nuget.org/packages/Veldrid#readme-body-tab)
+- [`SixLabors.ImageSharp`](https://www.nuget.org/packages/SixLabors.ImageSharp)
+- [`AssimpNet`](https://www.nuget.org/packages/AssimpNet)
 
 # 💻 Platforms
 [<img src="https://github.com/MrScautHD/Sparkle/assets/65916181/a92bd5fa-517b-44c2-ab58-cc01b5ae5751" alt="windows" width="70" height="70" align="left">](https://www.microsoft.com/de-at/windows)
@@ -118,7 +54,3 @@ Coming SoOn!
 
 # ✍️ Acknowledgement
 This library is available under the [MIT](https://choosealicense.com/licenses/mit) license.
-
-Special thanks to the author(s) and contributors of the following projects
-* [Silk.NET](https://github.com/dotnet/Silk.NET)
-* [SilkVulkanTutorial](https://github.com/stymee/SilkVulkanTutorial)
