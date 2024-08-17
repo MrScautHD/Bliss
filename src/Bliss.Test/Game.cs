@@ -1,10 +1,9 @@
 using Bliss.CSharp;
 using Bliss.CSharp.Logging;
-using Bliss.CSharp.Shaders;
+using Bliss.CSharp.Rendering;
 using Bliss.CSharp.Windowing;
 using Veldrid;
 using Veldrid.Sdl2;
-using Veldrid.StartupUtilities;
 
 namespace Bliss.Test;
 
@@ -15,7 +14,9 @@ public class Game : Disposable {
 
     public Window Window { get; private set; }
     public GraphicsDevice GraphicsDevice { get; private set; }
+    
     public CommandList CommandList { get; private set; }
+    public Graphics Graphics { get; private set; }
 
     private double _fixedFrameRate;
     
@@ -41,7 +42,7 @@ public class Game : Disposable {
             PreferDepthRangeZeroToOne = true
         };
         
-        this.Window = new Window(this.Settings.Width, this.Settings.Height, this.Settings.Title, options, VeldridStartup.GetPlatformDefaultBackend(), out GraphicsDevice graphicsDevice);
+        this.Window = new Window(this.Settings.Width, this.Settings.Height, this.Settings.Title, options, this.Settings.Backend, out GraphicsDevice graphicsDevice);
         this.GraphicsDevice = graphicsDevice;
         
         Logger.Info("Initialize time...");
@@ -50,12 +51,15 @@ public class Game : Disposable {
         Logger.Info($"Set target FPS to: {this.Settings.TargetFps}");
         this.SetTargetFps(this.Settings.TargetFps);
         
-        Logger.Info("Create CommandList");
+        Logger.Info("Initialize command list...");
         this.CommandList = this.GraphicsDevice.ResourceFactory.CreateCommandList();
+        
+        Logger.Info("Initialize graphics...");
+        this.Graphics = new Graphics(this.GraphicsDevice, this.CommandList);
         
         this.Init();
         
-        Logger.Info("Start main Loops...");
+        Logger.Info("Start main loops...");
         while (Window.Exists) {
             if (this.GetTargetFps() != 0 && Time.Timer.Elapsed.TotalSeconds <= this._fixedFrameRate) {
                 continue;
@@ -74,17 +78,17 @@ public class Game : Disposable {
                 this._fixedUpdateTimer -= this._fixedUpdateTimeStep;
             }
             
-            this.Draw(this.GraphicsDevice, this.CommandList);
+            this.Graphics.BeginDrawing();
+            this.Graphics.ClearBackground(0, RgbaFloat.Grey);
+            this.Draw(this.Graphics);
+            this.Graphics.EndDrawing();
         }
         
         Logger.Warn("Application shuts down!");
         this.OnClose();
     }
 
-    protected virtual void Init() {
-        (Shader, Shader) shader = ShaderHelper.Load(this.GraphicsDevice.ResourceFactory, "content/shaders/default_shader.vert", "content/shaders/default_shader.frag");
-
-    }
+    protected virtual void Init() { }
 
     protected virtual void Update() { }
 
@@ -92,29 +96,7 @@ public class Game : Disposable {
 
     protected virtual void FixedUpdate() { }
 
-    protected virtual void Draw(GraphicsDevice graphicsDevice, CommandList commandList) {
-        //commandList.Begin();
-        //
-        //commandList.SetFramebuffer(graphicsDevice.SwapchainFramebuffer);
-        //commandList.ClearColorTarget(0, RgbaFloat.Grey);
-        //
-        //commandList.SetVertexBuffer(0, this._vertexBuffer);
-        //commandList.SetIndexBuffer(this._indexBuffer, IndexFormat.UInt16);
-        //commandList.SetPipeline(this.Pipeline);
-        //commandList.SetGraphicsResourceSet(0, this.ResourceSet);
-        //
-        //commandList.DrawIndexed(
-        //    indexCount: 4,
-        //    instanceCount: 1,
-        //    indexStart: 0,
-        //    vertexOffset: 0,
-        //    instanceStart: 0);
-        //
-        //commandList.End();
-        //graphicsDevice.SubmitCommands(commandList);
-        //
-        //graphicsDevice.SwapBuffers();
-    }
+    protected virtual void Draw(Graphics graphics) { }
     
     protected virtual void OnClose() { }
 

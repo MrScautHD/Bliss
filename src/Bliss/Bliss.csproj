@@ -10,7 +10,6 @@
 
     <ItemGroup>
         <Folder Include="CSharp\Audio\" />
-        <Folder Include="CSharp\Rendering\" />
     </ItemGroup>
     
     <!-- Libraries -->

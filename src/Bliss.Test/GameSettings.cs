@@ -1,5 +1,6 @@
 using System.Reflection;
 using Veldrid;
+using Veldrid.StartupUtilities;
 
 namespace Bliss.Test;
 
@@ -10,6 +11,7 @@ public struct GameSettings {
     public int Height { get; init; }
     public int TargetFps { get; init; }
     public double FixedTimeStep { get; init; }
+    public GraphicsBackend Backend { get; init; }
     public TextureSampleCount SampleCount { get; init; }
     
     /// <summary>
@@ -21,6 +23,7 @@ public struct GameSettings {
         this.Height = 720;
         this.TargetFps = 0;
         this.FixedTimeStep = 1.0F / 60.0F;
+        this.Backend = VeldridStartup.GetPlatformDefaultBackend();
         this.SampleCount = 0;
     }
 }
