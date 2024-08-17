@@ -13,14 +13,9 @@
       <ProjectReference Include="..\Bliss\Bliss.csproj" />
     </ItemGroup>
     
-    <!-- Content Folder -->
-    <PropertyGroup>
-        <contentFolder>content</contentFolder>
-    </PropertyGroup>
-
     <!-- Content -->
     <ItemGroup>
-        <Content Include="$(contentFolder)/**/*" Pack="true">
+        <Content Include="content/**/*" Pack="true">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
             <PackageCopyToOutput>true</PackageCopyToOutput>
         </Content>

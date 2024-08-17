@@ -1,5 +1,6 @@
 using Bliss.CSharp;
 using Bliss.CSharp.Logging;
+using Bliss.CSharp.Shaders;
 using Bliss.CSharp.Windowing;
 using Veldrid;
 using Veldrid.Sdl2;
@@ -14,8 +15,10 @@ public class Game : Disposable {
 
     public Window Window { get; private set; }
     public GraphicsDevice GraphicsDevice { get; private set; }
+    public CommandList CommandList { get; private set; }
 
     private double _fixedFrameRate;
+    
     private readonly double _fixedUpdateTimeStep;
     private double _fixedUpdateTimer;
     
@@ -47,6 +50,9 @@ public class Game : Disposable {
         Logger.Info($"Set target FPS to: {this.Settings.TargetFps}");
         this.SetTargetFps(this.Settings.TargetFps);
         
+        Logger.Info("Create CommandList");
+        this.CommandList = this.GraphicsDevice.ResourceFactory.CreateCommandList();
+        
         this.Init();
         
         Logger.Info("Start main Loops...");
@@ -58,6 +64,7 @@ public class Game : Disposable {
             
             this.Window.PumpEvents();
             Sdl2Events.ProcessEvents();
+            
             this.Update();
             this.AfterUpdate();
 
@@ -67,14 +74,17 @@ public class Game : Disposable {
                 this._fixedUpdateTimer -= this._fixedUpdateTimeStep;
             }
             
-            this.Draw();
+            this.Draw(this.GraphicsDevice, this.CommandList);
         }
         
         Logger.Warn("Application shuts down!");
         this.OnClose();
     }
 
-    protected virtual void Init() { }
+    protected virtual void Init() {
+        (Shader, Shader) shader = ShaderHelper.Load(this.GraphicsDevice.ResourceFactory, "content/shaders/default_shader.vert", "content/shaders/default_shader.frag");
+
+    }
 
     protected virtual void Update() { }
 
@@ -82,7 +92,29 @@ public class Game : Disposable {
 
     protected virtual void FixedUpdate() { }
 
-    protected virtual void Draw() { }
+    protected virtual void Draw(GraphicsDevice graphicsDevice, CommandList commandList) {
+        //commandList.Begin();
+        //
+        //commandList.SetFramebuffer(graphicsDevice.SwapchainFramebuffer);
+        //commandList.ClearColorTarget(0, RgbaFloat.Grey);
+        //
+        //commandList.SetVertexBuffer(0, this._vertexBuffer);
+        //commandList.SetIndexBuffer(this._indexBuffer, IndexFormat.UInt16);
+        //commandList.SetPipeline(this.Pipeline);
+        //commandList.SetGraphicsResourceSet(0, this.ResourceSet);
+        //
+        //commandList.DrawIndexed(
+        //    indexCount: 4,
+        //    instanceCount: 1,
+        //    indexStart: 0,
+        //    vertexOffset: 0,
+        //    instanceStart: 0);
+        //
+        //commandList.End();
+        //graphicsDevice.SubmitCommands(commandList);
+        //
+        //graphicsDevice.SwapBuffers();
+    }
     
     protected virtual void OnClose() { }
 

@@ -78,7 +78,7 @@ public class Texture2D : Disposable {
     /// </summary>
     /// <param name="graphicsDevice">The graphics device on which to create the texture.</param>
     private unsafe void CreateDeviceTexture(GraphicsDevice graphicsDevice) {
-        this.DeviceTexture = graphicsDevice.ResourceFactory.CreateTexture(TextureDescription.Texture2D(this.Width, this.Height, this.MipLevels, 0, this.Format, TextureUsage.Sampled));
+        this.DeviceTexture = graphicsDevice.ResourceFactory.CreateTexture(TextureDescription.Texture2D(this.Width, this.Height, this.MipLevels, 1, this.Format, TextureUsage.Sampled));
         
         for (int i = 0; i < this.MipLevels; i++) {
             Image<Rgba32> image = this.Images[i];
