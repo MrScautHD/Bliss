@@ -387,6 +387,8 @@ public static class Input {
                     _gamepads.Add(gamepad.ControllerIndex, gamepad);
                 }
                 else {
+                    Gamepad gamepad = _gamepads[deviceEvent.which];
+                    gamepad.Dispose();
                     _gamepads.Remove(deviceEvent.which);
                 }
                 
@@ -404,5 +406,11 @@ public static class Input {
     public static void Destroy() {
         SetMouseCursor(MouseCursor.Default); // To free Cursor.
         Sdl2Events.Unsubscribe(ProcessEvent);
+
+        foreach (Gamepad gamepad in _gamepads.Values) {
+            gamepad.Dispose();
+        }
+        
+        _gamepads.Clear();
     }
 }
