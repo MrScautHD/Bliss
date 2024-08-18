@@ -136,8 +136,9 @@ public class Game : Disposable {
         //    Input.GetGamepadName(0);
         //}
 
-        Logger.Info(""+ Input.GetGamepadAxisMovement(0, GamepadAxis.LeftX));
         if (Input.IsGamepadAvailable(0)) {
+            Logger.Info(""+ Input.GetGamepadAxisMovement(0, GamepadAxis.LeftX));
+            
             if (Input.IsGamepadButtonPressed(0, GamepadButton.A)) {
                 Input.SetGamepadRumble(0, 0xFFFF, 0xFFFF, 1000);
             }
