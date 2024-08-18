@@ -16,6 +16,10 @@ public class Gamepad : Disposable {
     private readonly List<SDL_GameControllerButton> _controllerButtonsDown;
     private readonly List<SDL_GameControllerButton> _controllerButtonsReleased;
     
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Gamepad"/> class, opening a game controller and setting up input tracking.
+    /// </summary>
+    /// <param name="index">The index of the game controller to open.</param>
     public unsafe Gamepad(int index) {
         this.Controller = Sdl2Native.SDL_GameControllerOpen(index);
         this.ControllerIndex = Sdl2Native.SDL_JoystickInstanceID(Sdl2Native.SDL_GameControllerGetJoystick(this.Controller));
@@ -28,32 +32,64 @@ public class Gamepad : Disposable {
         this._controllerButtonsReleased = new List<SDL_GameControllerButton>();
     }
 
+    /// <summary>
+    /// Clears the states of the gamepad buttons that were pressed and released.
+    /// </summary>
     public void CleanStates() {
         this._controllerButtonsPressed.Clear();
         this._controllerButtonsReleased.Clear();
     }
 
+    /// <summary>
+    /// Gets the movement value of a specified gamepad axis.
+    /// </summary>
+    /// <param name="axis">The axis to check the movement for.</param>
+    /// <returns>The movement value of the specified axis.</returns>
     public float GetAxisMovement(GamepadAxis axis) {
         this._joystickAxis.TryGetValue((SDL_GameControllerAxis) axis, out float result);
         return result;
     }
-    
+
+    /// <summary>
+    /// Checks if a specific gamepad button was pressed during the current frame.
+    /// </summary>
+    /// <param name="button">The gamepad button to check.</param>
+    /// <returns>True if the button was pressed, false otherwise.</returns>
     public bool IsButtonPressed(GamepadButton button) {
         return this._controllerButtonsPressed.Contains((SDL_GameControllerButton) button);
     }
-    
+
+    /// <summary>
+    /// Checks if a specific gamepad button is currently held down.
+    /// </summary>
+    /// <param name="button">The gamepad button to check.</param>
+    /// <returns>True if the button is down, false otherwise.</returns>
     public bool IsButtonDown(GamepadButton button) {
         return this._controllerButtonsDown.Contains((SDL_GameControllerButton) button);
     }
-    
+
+    /// <summary>
+    /// Checks if a specific gamepad button was released during the current frame.
+    /// </summary>
+    /// <param name="button">The gamepad button to check.</param>
+    /// <returns>True if the button was released, false otherwise.</returns>
     public bool IsButtonReleased(GamepadButton button) {
         return this._controllerButtonsReleased.Contains((SDL_GameControllerButton) button);
     }
-    
+
+    /// <summary>
+    /// Checks if a specific gamepad button is currently not held down.
+    /// </summary>
+    /// <param name="button">The gamepad button to check.</param>
+    /// <returns>True if the button is up, false otherwise.</returns>
     public bool IsButtonUp(GamepadButton button) {
         return !this._controllerButtonsDown.Contains((SDL_GameControllerButton) button);
     }
-    
+
+    /// <summary>
+    /// Processes input events for a gamepad.
+    /// </summary>
+    /// <param name="ev">The SDL_Event to process.</param>
     public void ProcessEvent(ref SDL_Event ev) {
         switch (ev.type) {
             case SDL_EventType.ControllerAxisMotion:
@@ -82,7 +118,12 @@ public class Gamepad : Disposable {
                 break;
         }
     }
-    
+
+    /// <summary>
+    /// Normalizes the value of a joystick axis.
+    /// </summary>
+    /// <param name="value">The raw value of the joystick axis.</param>
+    /// <returns>The normalized value of the joystick axis.</returns>
     private float NormalizeJoystickAxis(short value) {
         return value < 0 ? -(value / (float) short.MinValue) : (value / (float) short.MaxValue);
     }

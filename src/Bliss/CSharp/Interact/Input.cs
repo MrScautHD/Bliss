@@ -310,34 +310,82 @@ public static class Input {
     
     /* ------------------------------------ Gamepad ------------------------------------ */
 
+    /// <summary>
+    /// Checks if a specific gamepad is available.
+    /// </summary>
+    /// <param name="gamepad">The index of the gamepad to check.</param>
+    /// <returns>True if the gamepad is available, false otherwise.</returns>
     public static bool IsGamepadAvailable(int gamepad) {
         return gamepad <= _gamepads.Count - 1;
     }
-
+    
+    /// <summary>
+    /// Gets the name of a specific gamepad.
+    /// </summary>
+    /// <param name="gamepad">The index of the gamepad.</param>
+    /// <returns>The name of the gamepad.</returns>
     public static string GetGamepadName(uint gamepad) {
         return _gamepads.ToArray()[gamepad].Value.Name;
     }
     
+    /// <summary>
+    /// Sets the rumble effect on a specific gamepad.
+    /// </summary>
+    /// <param name="gamepad">The index of the gamepad.</param>
+    /// <param name="lowFrequencyRumble">The low frequency rumble strength.</param>
+    /// <param name="highFrequencyRumble">The high frequency rumble strength.</param>
+    /// <param name="durationMs">The duration of the rumble in milliseconds.</param>
+    /// <returns>True if the rumble effect was set successfully, false otherwise.</returns>
     public static bool SetGamepadRumble(int gamepad, ushort lowFrequencyRumble, ushort highFrequencyRumble, uint durationMs) {
         return Sdl2Helper.SetControllerRumble(_gamepads.ToArray()[gamepad].Value, lowFrequencyRumble, highFrequencyRumble, durationMs);
     }
     
+    /// <summary>
+    /// Gets the axis movement value of a specific gamepad.
+    /// </summary>
+    /// <param name="gamepad">The index of the gamepad.</param>
+    /// <param name="axis">The gamepad axis to get the movement value of.</param>
+    /// <returns>The movement value of the specified axis.</returns>
     public static float GetGamepadAxisMovement(int gamepad, GamepadAxis axis) {
         return _gamepads.ToArray()[gamepad].Value.GetAxisMovement(axis);
     }
     
+    /// <summary>
+    /// Checks if a specific button on a gamepad is pressed.
+    /// </summary>
+    /// <param name="gamepad">The index of the gamepad.</param>
+    /// <param name="button">The button to check.</param>
+    /// <returns>True if the button is pressed, false otherwise.</returns>
     public static bool IsGamepadButtonPressed(int gamepad, GamepadButton button) {
         return _gamepads.ToArray()[gamepad].Value.IsButtonPressed(button);
     }
     
+    /// <summary>
+    /// Checks if a specific button on a gamepad is currently down.
+    /// </summary>
+    /// <param name="gamepad">The index of the gamepad.</param>
+    /// <param name="button">The button to check.</param>
+    /// <returns>True if the button is down, false otherwise.</returns>
     public static bool IsGamepadButtonDown(int gamepad, GamepadButton button) {
         return _gamepads.ToArray()[gamepad].Value.IsButtonDown(button);
     }
     
+    /// <summary>
+    /// Checks if a specific button on a gamepad was released.
+    /// </summary>
+    /// <param name="gamepad">The index of the gamepad.</param>
+    /// <param name="button">The button to check.</param>
+    /// <returns>True if the button was released, false otherwise.</returns>
     public static bool IsGamepadButtonReleased(int gamepad, GamepadButton button) {
         return _gamepads.ToArray()[gamepad].Value.IsButtonReleased(button);
     }
     
+    /// <summary>
+    /// Checks if a specific button on a gamepad is currently up.
+    /// </summary>
+    /// <param name="gamepad">The index of the gamepad.</param>
+    /// <param name="button">The button to check.</param>
+    /// <returns>True if the button is up, false otherwise.</returns>
     public static bool IsGamepadButtonUp(int gamepad, GamepadButton button) {
         return _gamepads.ToArray()[gamepad].Value.IsButtonUp(button);
     }
@@ -376,6 +424,10 @@ public static class Input {
         _keyboardKeysReleased.Add(args.Key);
     }
 
+    /// <summary>
+    /// Processes SDL events related to gamepad devices being added or removed, and updates the list of active gamepads accordingly.
+    /// </summary>
+    /// <param name="ev">The SDL event to process.</param>
     private static void ProcessEvent(ref SDL_Event ev) {
         switch (ev.type) {
             case SDL_EventType.ControllerDeviceAdded:
@@ -404,13 +456,27 @@ public static class Input {
     /// Destroys resources (like free a mouse cursor).
     /// </summary>
     public static void Destroy() {
-        SetMouseCursor(MouseCursor.Default); // To free Cursor.
-        Sdl2Events.Unsubscribe(ProcessEvent);
-
+        
+        // Mouse
+        SetMouseCursor(MouseCursor.Default); // To free the Cursor.
+        
+        Window.Sdl2Window.MouseWheel -= OnMouseWheel;
+        Window.Sdl2Window.MouseMove -= OnMouseMove;
+        Window.Sdl2Window.MouseDown -= OnMouseDown;
+        Window.Sdl2Window.MouseUp -= OnMouseUp;
+        
+        // Keyboard
+        Window.Sdl2Window.KeyDown -= OnKeyDown;
+        Window.Sdl2Window.KeyUp -= OnKeyUp;
+        
+        // Gamepad
         foreach (Gamepad gamepad in _gamepads.Values) {
             gamepad.Dispose();
         }
         
         _gamepads.Clear();
+        
+        // Event
+        Sdl2Events.Unsubscribe(ProcessEvent);
     }
 }
