@@ -6,6 +6,8 @@ using Veldrid.StartupUtilities;
 namespace Bliss.CSharp.Windowing;
 
 public class Window {
+    
+    // Todo: SDL2 Window events in this class!
 
     /// <summary>
     /// Gets the underlying SDL2 window.
@@ -46,25 +48,6 @@ public class Window {
     /// Gets the mouse movement delta.
     /// </summary>
     public Vector2 MouseDelta => this.Sdl2Window.MouseDelta;
-    
-    public event Action Resized;
-    public event Action Closing;
-    public event Action Closed;
-    public event Action FocusLost;
-    public event Action FocusGained;
-    public event Action Shown;
-    public event Action Hidden;
-    public event Action MouseEntered;
-    public event Action MouseLeft;
-    public event Action Exposed;
-    public event Action<Point> Moved;
-    public event Action<MouseWheelEventArgs> MouseWheel;
-    public event Action<MouseMoveEventArgs> MouseMove;
-    public event Action<MouseEvent> MouseDown;
-    public event Action<MouseEvent> MouseUp;
-    public event Action<KeyEvent> KeyDown;
-    public event Action<KeyEvent> KeyUp;
-    public event Action<DragDropEvent> DragDrop;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Window"/> class with the specified properties and creates a graphics device.
@@ -85,25 +68,7 @@ public class Window {
         };
         
         VeldridStartup.CreateWindowAndGraphicsDevice(info, options, backend, out this.Sdl2Window, out graphicsDevice);
-
-        this.Sdl2Window.Resized += Resized;
-        this.Sdl2Window.Closing += Closing;
-        this.Sdl2Window.Closed += Closed;
-        this.Sdl2Window.FocusLost += FocusLost;
-        this.Sdl2Window.FocusGained += FocusGained;
-        this.Sdl2Window.Shown += Shown;
-        this.Sdl2Window.Hidden += Hidden;
-        this.Sdl2Window.MouseEntered += MouseEntered;
-        this.Sdl2Window.MouseLeft += MouseLeft;
-        this.Sdl2Window.Exposed += Exposed;
-        this.Sdl2Window.Moved += Moved;
-        this.Sdl2Window.MouseWheel += MouseWheel;
-        this.Sdl2Window.MouseMove += MouseMove;
-        this.Sdl2Window.MouseDown += MouseDown;
-        this.Sdl2Window.MouseUp += MouseUp;
-        this.Sdl2Window.KeyDown += KeyDown;
-        this.Sdl2Window.KeyUp += KeyUp;
-        this.Sdl2Window.DragDrop += DragDrop;
+        Sdl2Native.SDL_Init(SDLInitFlags.GameController | SDLInitFlags.Joystick);
     }
     
     /// <summary>
@@ -197,8 +162,8 @@ public class Window {
     /// <summary>
     /// Processes all pending events in the event queue for the window.
     /// </summary>
-    public void PumpEvents() {
-        this.Sdl2Window.PumpEvents();
+    public InputSnapshot PumpEvents() {
+        return this.Sdl2Window.PumpEvents();
     }
 
     /// <summary>
@@ -255,24 +220,6 @@ public class Window {
     /// Closes the window.
     /// </summary>
     public void Close() {
-        this.Sdl2Window.Resized -= Resized;
-        this.Sdl2Window.Closing -= Closing;
-        this.Sdl2Window.Closed -= Closed;
-        this.Sdl2Window.FocusLost -= FocusLost;
-        this.Sdl2Window.FocusGained -= FocusGained;
-        this.Sdl2Window.Shown -= Shown;
-        this.Sdl2Window.Hidden -= Hidden;
-        this.Sdl2Window.MouseEntered -= MouseEntered;
-        this.Sdl2Window.MouseLeft -= MouseLeft;
-        this.Sdl2Window.Exposed -= Exposed;
-        this.Sdl2Window.Moved -= Moved;
-        this.Sdl2Window.MouseWheel -= MouseWheel;
-        this.Sdl2Window.MouseMove -= MouseMove;
-        this.Sdl2Window.MouseDown -= MouseDown;
-        this.Sdl2Window.MouseUp -= MouseUp;
-        this.Sdl2Window.KeyDown -= KeyDown;
-        this.Sdl2Window.KeyUp -= KeyUp;
-        this.Sdl2Window.DragDrop -= DragDrop;
         this.Sdl2Window.Close();
     }
 }

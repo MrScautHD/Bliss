@@ -1,4 +1,7 @@
+using System.Numerics;
 using Bliss.CSharp;
+using Bliss.CSharp.Interact;
+using Bliss.CSharp.Interact.Gamepads;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Rendering;
 using Bliss.CSharp.Windowing;
@@ -57,6 +60,9 @@ public class Game : Disposable {
         Logger.Info("Initialize graphics...");
         this.Graphics = new Graphics(this.GraphicsDevice, this.CommandList);
         
+        Logger.Info("Initialize input...");
+        Input.Init(this.Window);
+        
         this.Init();
         
         Logger.Info("Start main loops...");
@@ -66,8 +72,8 @@ public class Game : Disposable {
             }
             Time.Update();
             
-            this.Window.PumpEvents();
             Sdl2Events.ProcessEvents();
+            Input.Begin(this.Window.PumpEvents());
             
             this.Update();
             this.AfterUpdate();
@@ -82,6 +88,8 @@ public class Game : Disposable {
             this.Graphics.ClearBackground(0, RgbaFloat.Grey);
             this.Draw(this.Graphics);
             this.Graphics.EndDrawing();
+            
+            Input.End();
         }
         
         Logger.Warn("Application shuts down!");
@@ -90,8 +98,52 @@ public class Game : Disposable {
 
     protected virtual void Init() { }
 
-    protected virtual void Update() { }
+    protected virtual void Update() {
+        /*if (Input.IsMouseButtonPressed(MouseButton.Right)) {
+            Logger.Error("Right mouse button is pressed!");
+        }
+        
+        if (Input.IsMouseButtonDown(MouseButton.Left)) {
+            Logger.Error("Left mouse button is down!");
+        }
+        
+        if (Input.IsMouseButtonReleased(MouseButton.Right)) {
+            Logger.Error("Right mouse button is released!");
+        }
+        
+        if (Input.IsMouseMoving(out Vector2 pos)) {
+            Logger.Error("Mouse moves: " + pos);
+        }
+        
+        if (Input.IsMouseScrolling(out float wheelDelta)) {
+            Logger.Error("Mouse is scrolling: " + wheelDelta);
+        }
 
+        if (Input.IsKeyDown(Key.A)) {
+            Logger.Error("Key A is down");
+        }
+        
+        if (Input.IsKeyPressed(Key.D)) {
+            Logger.Error("Key D is pressed");
+        }
+        
+        if (Input.IsKeyReleased(Key.D)) {
+            Logger.Error("Key D is released");
+        }*/
+
+        //if (Input.IsGamepadAvailable(0)) {
+        //    //Logger.Warn(Input.GetGamepadName(0));
+        //    Input.GetGamepadName(0);
+        //}
+
+        Logger.Info(""+ Input.GetGamepadAxisMovement(0, GamepadAxis.LeftX));
+        if (Input.IsGamepadAvailable(0)) {
+            if (Input.IsGamepadButtonPressed(0, GamepadButton.A)) {
+                Input.SetGamepadRumble(0, 0xFFFF, 0xFFFF, 1000);
+            }
+        }
+    }
+    
     protected virtual void AfterUpdate() { }
 
     protected virtual void FixedUpdate() { }
@@ -112,6 +164,7 @@ public class Game : Disposable {
         if (disposing) {
             this.GraphicsDevice.Dispose();
             this.Window.Close();
+            Input.Destroy();
         }
     }
 }

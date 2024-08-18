@@ -24,7 +24,7 @@ public class Cam3D : Disposable, ICam {
     
     public Cam3D(Window window, Vector3 position, Vector3 target, Vector3? up = default, ProjectionType projectionType = ProjectionType.Perspective, float fov = 70.0F) {
         this.Window = window;
-        this.Window.Resized += this.Resize;
+        this.Window.Sdl2Window.Resized += this.Resize;
 
         this.Position = position;
         this.Target = target;
@@ -84,7 +84,7 @@ public class Cam3D : Disposable, ICam {
 
     protected override void Dispose(bool disposing) {
         if (disposing) {
-            this.Window.Resized -= this.Resize;
+            this.Window.Sdl2Window.Resized -= this.Resize;
         }
     }
 } 

@@ -1,6 +1,6 @@
 using Veldrid.Sdl2;
 
-namespace Bliss.CSharp.Interact;
+namespace Bliss.CSharp.Interact.Gamepads;
 
 public enum GamepadButton : byte {
     Unknown = SDL_GameControllerButton.Invalid,

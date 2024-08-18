@@ -4,6 +4,7 @@ using Veldrid;
 namespace Bliss.CSharp.Rendering;
 
 public class Graphics {
+    
     public GraphicsDevice GraphicsDevice { get; private set; }
     public CommandList CommandList { get; private set; }
     
