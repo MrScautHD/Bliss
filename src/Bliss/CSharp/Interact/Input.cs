@@ -30,6 +30,9 @@ public static class Input {
     // Gamepad
     private static Dictionary<int, Gamepad> _gamepads;
     
+    // Other
+    private static List<string> _filesDragDropped;
+    
     /// <summary>
     /// Initializes mouse input tracking and event handlers for the specified window.
     /// </summary>
@@ -53,6 +56,9 @@ public static class Input {
         // Gamepads
         _gamepads = new Dictionary<int, Gamepad>();
         
+        // Other
+        _filesDragDropped = new List<string>();
+        
         // Mouse
         Window.Sdl2Window.MouseWheel += OnMouseWheel;
         Window.Sdl2Window.MouseMove += OnMouseMove;
@@ -62,6 +68,9 @@ public static class Input {
         // Keyboard
         Window.Sdl2Window.KeyDown += OnKeyDown;
         Window.Sdl2Window.KeyUp += OnKeyUp;
+        
+        // Other
+        Window.Sdl2Window.DragDrop += OnDragDrop;
     }
 
     /// <summary>
@@ -91,6 +100,9 @@ public static class Input {
         foreach (Gamepad gamepad in _gamepads.Values) {
             gamepad.CleanStates();
         }
+        
+        // Other
+        _filesDragDropped.Clear();
     }
     
     /* ------------------------------------ Mouse ------------------------------------ */
@@ -390,6 +402,23 @@ public static class Input {
         return _gamepads.ToArray()[gamepad].Value.IsButtonUp(button);
     }
     
+    /* ------------------------------------ Other ------------------------------------ */
+
+    /// <summary>
+    /// Checks if a file was dragged and dropped onto the window, and retrieves the path of the first dropped file, if any.
+    /// </summary>
+    /// <param name="path">The path of the first dropped file, if any.</param>
+    /// <returns>True if a file was dragged and dropped onto the window, false otherwise.</returns>
+    public static bool IsFileDragDropped(out string path) {
+        if (_filesDragDropped.Count > 0) {
+            path = _filesDragDropped[0];
+            return true;
+        }
+        
+        path = string.Empty;
+        return false;
+    }
+    
     /* ------------------------------------ Mouse ------------------------------------ */
 
     private static void OnMouseWheel(MouseWheelEventArgs args) {
@@ -408,6 +437,10 @@ public static class Input {
     private static void OnMouseUp(MouseEvent args) {
         _mouseButtonsDown.Remove(args.MouseButton);
         _mouseButtonsReleased.Add(args.MouseButton);
+    }
+    
+    private static void OnDragDrop(DragDropEvent args) {
+        _filesDragDropped.Add(args.File);
     }
     
     /* ------------------------------------ Keyboard ------------------------------------ */

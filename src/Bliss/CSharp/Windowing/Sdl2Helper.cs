@@ -1,6 +1,5 @@
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Interact.Gamepads;
-using Veldrid;
 using Veldrid.Sdl2;
 
 namespace Bliss.CSharp.Windowing;

@@ -137,11 +137,19 @@ public class Game : Disposable {
         //}
 
         if (Input.IsGamepadAvailable(0)) {
-            Logger.Info(""+ Input.GetGamepadAxisMovement(0, GamepadAxis.LeftX));
-            
             if (Input.IsGamepadButtonPressed(0, GamepadButton.A)) {
                 Input.SetGamepadRumble(0, 0xFFFF, 0xFFFF, 1000);
             }
+        }
+        
+        if (Input.IsGamepadAvailable(1)) {
+            if (Input.IsGamepadButtonPressed(1, GamepadButton.A)) {
+                Input.SetGamepadRumble(1, 0xFFFF, 0xFFFF, 1000);
+            }
+        }
+
+        if (Input.IsFileDragDropped(out string path)) {
+            Logger.Warn(path);
         }
     }
     

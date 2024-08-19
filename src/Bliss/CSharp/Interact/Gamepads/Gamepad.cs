@@ -12,9 +12,9 @@ public class Gamepad : Disposable {
     
     private readonly Dictionary<SDL_GameControllerAxis, float> _joystickAxis;
     
-    private readonly List<SDL_GameControllerButton> _controllerButtonsPressed;
-    private readonly List<SDL_GameControllerButton> _controllerButtonsDown;
-    private readonly List<SDL_GameControllerButton> _controllerButtonsReleased;
+    private readonly List<SDL_GameControllerButton> _buttonsPressed;
+    private readonly List<SDL_GameControllerButton> _buttonsDown;
+    private readonly List<SDL_GameControllerButton> _buttonsReleased;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="Gamepad"/> class, opening a game controller and setting up input tracking.
@@ -27,17 +27,17 @@ public class Gamepad : Disposable {
 
         this._joystickAxis = new Dictionary<SDL_GameControllerAxis, float>();
         
-        this._controllerButtonsPressed = new List<SDL_GameControllerButton>();
-        this._controllerButtonsDown = new List<SDL_GameControllerButton>();
-        this._controllerButtonsReleased = new List<SDL_GameControllerButton>();
+        this._buttonsPressed = new List<SDL_GameControllerButton>();
+        this._buttonsDown = new List<SDL_GameControllerButton>();
+        this._buttonsReleased = new List<SDL_GameControllerButton>();
     }
 
     /// <summary>
     /// Clears the states of the gamepad buttons that were pressed and released.
     /// </summary>
     public void CleanStates() {
-        this._controllerButtonsPressed.Clear();
-        this._controllerButtonsReleased.Clear();
+        this._buttonsPressed.Clear();
+        this._buttonsReleased.Clear();
     }
 
     /// <summary>
@@ -56,7 +56,7 @@ public class Gamepad : Disposable {
     /// <param name="button">The gamepad button to check.</param>
     /// <returns>True if the button was pressed, false otherwise.</returns>
     public bool IsButtonPressed(GamepadButton button) {
-        return this._controllerButtonsPressed.Contains((SDL_GameControllerButton) button);
+        return this._buttonsPressed.Contains((SDL_GameControllerButton) button);
     }
 
     /// <summary>
@@ -65,7 +65,7 @@ public class Gamepad : Disposable {
     /// <param name="button">The gamepad button to check.</param>
     /// <returns>True if the button is down, false otherwise.</returns>
     public bool IsButtonDown(GamepadButton button) {
-        return this._controllerButtonsDown.Contains((SDL_GameControllerButton) button);
+        return this._buttonsDown.Contains((SDL_GameControllerButton) button);
     }
 
     /// <summary>
@@ -74,7 +74,7 @@ public class Gamepad : Disposable {
     /// <param name="button">The gamepad button to check.</param>
     /// <returns>True if the button was released, false otherwise.</returns>
     public bool IsButtonReleased(GamepadButton button) {
-        return this._controllerButtonsReleased.Contains((SDL_GameControllerButton) button);
+        return this._buttonsReleased.Contains((SDL_GameControllerButton) button);
     }
 
     /// <summary>
@@ -83,7 +83,7 @@ public class Gamepad : Disposable {
     /// <param name="button">The gamepad button to check.</param>
     /// <returns>True if the button is up, false otherwise.</returns>
     public bool IsButtonUp(GamepadButton button) {
-        return !this._controllerButtonsDown.Contains((SDL_GameControllerButton) button);
+        return !this._buttonsDown.Contains((SDL_GameControllerButton) button);
     }
 
     /// <summary>
@@ -106,12 +106,12 @@ public class Gamepad : Disposable {
                 
                 if (buttonEvent.which == this.ControllerIndex) {
                     if (buttonEvent.state == 1) {
-                        this._controllerButtonsPressed.Add(buttonEvent.button);
-                        this._controllerButtonsDown.Add(buttonEvent.button);
+                        this._buttonsPressed.Add(buttonEvent.button);
+                        this._buttonsDown.Add(buttonEvent.button);
                     }
                     else {
-                        this._controllerButtonsDown.Remove(buttonEvent.button);
-                        this._controllerButtonsReleased.Add(buttonEvent.button);
+                        this._buttonsDown.Remove(buttonEvent.button);
+                        this._buttonsReleased.Add(buttonEvent.button);
                     }
                 }
                 
