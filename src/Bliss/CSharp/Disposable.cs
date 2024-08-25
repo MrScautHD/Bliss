@@ -4,6 +4,10 @@ namespace Bliss.CSharp;
 
 public abstract class Disposable : IDisposable {
     
+    /// <summary>
+    /// Indicates whether the object has been disposed.
+    /// </summary>
+    /// <value>True if the object has been disposed; otherwise, false.</value>
     public bool HasDisposed { get; private set; }
 
     /// <summary>

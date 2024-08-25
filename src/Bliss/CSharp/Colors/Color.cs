@@ -97,7 +97,7 @@ public struct Color : IEquatable<Color> {
     /// Converts the color to an RgbaFloat value.
     /// </summary>
     /// <returns>A new instance of the RgbaFloat struct representing the color.</returns>
-    public readonly RgbaFloat ToRgbaFloat() {
+    public RgbaFloat ToRgbaFloat() {
         return new RgbaFloat(this.R / 255.0F, this.G / 255.0F, this.B / 255.0F, this.A / 255.0F);
     }
 

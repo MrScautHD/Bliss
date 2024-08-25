@@ -7,8 +7,6 @@ namespace Bliss.CSharp.Windowing;
 
 public class Window {
     
-    // Todo: SDL2 Window events in this class!
-
     /// <summary>
     /// Gets the underlying SDL2 window.
     /// </summary>
@@ -48,6 +46,96 @@ public class Window {
     /// Gets the mouse movement delta.
     /// </summary>
     public Vector2 MouseDelta => this.Sdl2Window.MouseDelta;
+    
+    /// <summary>
+    /// Occurs when the window is resized.
+    /// </summary>
+    public event Action Resized;
+
+    /// <summary>
+    /// Occurs when the window is about to close.
+    /// </summary>
+    public event Action Closing;
+
+    /// <summary>
+    /// Occurs after the window has closed.
+    /// </summary>
+    public event Action Closed;
+
+    /// <summary>
+    /// Occurs when the window gains focus.
+    /// </summary>
+    public event Action FocusGained;
+
+    /// <summary>
+    /// Occurs when the window loses focus.
+    /// </summary>
+    public event Action FocusLost;
+
+    /// <summary>
+    /// Occurs when the window is shown.
+    /// </summary>
+    public event Action Shown;
+
+    /// <summary>
+    /// Occurs when the window is hidden.
+    /// </summary>
+    public event Action Hidden;
+
+    /// <summary>
+    /// Occurs when the window is exposed (made visible or unhidden).
+    /// </summary>
+    public event Action Exposed;
+
+    /// <summary>
+    /// Occurs when the window is moved.
+    /// </summary>
+    public event Action<Point> Moved;
+
+    /// <summary>
+    /// Occurs when the mouse enters the window.
+    /// </summary>
+    public event Action MouseEntered;
+
+    /// <summary>
+    /// Occurs when the mouse leaves the window.
+    /// </summary>
+    public event Action MouseLeft;
+
+    /// <summary>
+    /// Occurs when the mouse wheel is scrolled.
+    /// </summary>
+    public event Action<MouseWheelEventArgs> MouseWheel;
+
+    /// <summary>
+    /// Occurs when the mouse is moved.
+    /// </summary>
+    public event Action<MouseMoveEventArgs> MouseMove;
+
+    /// <summary>
+    /// Occurs when a mouse button is pressed.
+    /// </summary>
+    public event Action<MouseEvent> MouseDown;
+
+    /// <summary>
+    /// Occurs when a mouse button is released.
+    /// </summary>
+    public event Action<MouseEvent> MouseUp;
+
+    /// <summary>
+    /// Occurs when a key is pressed.
+    /// </summary>
+    public event Action<KeyEvent> KeyDown;
+
+    /// <summary>
+    /// Occurs when a key is released.
+    /// </summary>
+    public event Action<KeyEvent> KeyUp;
+
+    /// <summary>
+    /// Occurs when a drag-and-drop operation is performed.
+    /// </summary>
+    public event Action<DragDropEvent> DragDrop;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Window"/> class with the specified properties and creates a graphics device.
@@ -69,6 +157,25 @@ public class Window {
         
         VeldridStartup.CreateWindowAndGraphicsDevice(info, options, backend, out this.Sdl2Window, out graphicsDevice);
         Sdl2Native.SDL_Init(SDLInitFlags.GameController | SDLInitFlags.Joystick);
+
+        this.Sdl2Window.Resized += this.OnResize;
+        this.Sdl2Window.Closing += this.OnClosing;
+        this.Sdl2Window.Closed += this.OnClosed;
+        this.Sdl2Window.FocusGained += this.OnFocusGained;
+        this.Sdl2Window.FocusLost += this.OnFocusLost;
+        this.Sdl2Window.Shown += this.OnShowing;
+        this.Sdl2Window.Hidden += this.OnHiding;
+        this.Sdl2Window.MouseEntered += this.OnMouseEntered;
+        this.Sdl2Window.MouseLeft += this.OnMouseLeft;
+        this.Sdl2Window.Exposed += this.OnExposing;
+        this.Sdl2Window.Moved += this.OnMoving;
+        this.Sdl2Window.MouseWheel += this.OnMouseWheel;
+        this.Sdl2Window.MouseMove += this.OnMouseMoving;
+        this.Sdl2Window.MouseDown += this.OnMouseDown;
+        this.Sdl2Window.MouseUp += this.OnMouseUp;
+        this.Sdl2Window.KeyDown += this.OnKeyDown;
+        this.Sdl2Window.KeyUp += this.OnKeyUp;
+        this.Sdl2Window.DragDrop += this.OnDragDrop;
     }
     
     /// <summary>
@@ -220,6 +327,159 @@ public class Window {
     /// Closes the window.
     /// </summary>
     public void Close() {
+        this.Sdl2Window.Resized -= this.OnResize;
+        this.Sdl2Window.Closing -= this.OnClosing;
+        this.Sdl2Window.Closed -= this.OnClosed;
+        this.Sdl2Window.FocusGained -= this.OnFocusGained;
+        this.Sdl2Window.FocusLost -= this.OnFocusLost;
+        this.Sdl2Window.Shown -= this.OnShowing;
+        this.Sdl2Window.Hidden -= this.OnHiding;
+        this.Sdl2Window.MouseEntered -= this.OnMouseEntered;
+        this.Sdl2Window.MouseLeft -= this.OnMouseLeft;
+        this.Sdl2Window.Exposed -= this.OnExposing;
+        this.Sdl2Window.Moved -= this.OnMoving;
+        this.Sdl2Window.MouseWheel -= this.OnMouseWheel;
+        this.Sdl2Window.MouseMove -= this.OnMouseMoving;
+        this.Sdl2Window.MouseDown -= this.OnMouseDown;
+        this.Sdl2Window.MouseUp -= this.OnMouseUp;
+        this.Sdl2Window.KeyDown -= this.OnKeyDown;
+        this.Sdl2Window.KeyUp -= this.OnKeyUp;
+        this.Sdl2Window.DragDrop -= this.OnDragDrop;
+        
         this.Sdl2Window.Close();
+    }
+
+    /// <summary>
+    /// Invokes the <see cref="Resized"/> event when the window is resized.
+    /// </summary>
+    private void OnResize() {
+        this.Resized?.Invoke();
+    }
+    
+    /// <summary>
+    /// Invokes the <see cref="Closing"/> event when the window is about to close.
+    /// </summary>
+    private void OnClosing() {
+        this.Closing?.Invoke();
+    }
+    
+    /// <summary>
+    /// Invokes the <see cref="Closed"/> event after the window has closed.
+    /// </summary>
+    private void OnClosed() {
+        this.Closed?.Invoke();
+    }
+    
+    /// <summary>
+    /// Invokes the <see cref="FocusGained"/> event when the window gains focus.
+    /// </summary>
+    private void OnFocusGained() {
+        this.FocusGained?.Invoke();
+    }
+    
+    /// <summary>
+    /// Invokes the <see cref="FocusLost"/> event when the window loses focus.
+    /// </summary>
+    private void OnFocusLost() {
+        this.FocusLost?.Invoke();
+    }
+    
+    /// <summary>
+    /// Invokes the <see cref="Shown"/> event when the window is shown.
+    /// </summary>
+    private void OnShowing() {
+        this.Shown?.Invoke();
+    }
+    
+    /// <summary>
+    /// Invokes the <see cref="Hidden"/> event when the window is hidden.
+    /// </summary>
+    private void OnHiding() {
+        this.Hidden?.Invoke();
+    }
+    
+    /// <summary>
+    /// Invokes the <see cref="Exposed"/> event when the window is exposed.
+    /// </summary>
+    private void OnExposing() {
+        this.Exposed?.Invoke();
+    }
+    
+    /// <summary>
+    /// Invokes the <see cref="Moved"/> event when the window is moved, passing the new position.
+    /// </summary>
+    /// <param name="point">The new position of the window.</param>
+    private void OnMoving(Point point) {
+        this.Moved?.Invoke(point);
+    }
+    
+    /// <summary>
+    /// Invokes the <see cref="MouseEntered"/> event when the mouse enters the window.
+    /// </summary>
+    private void OnMouseEntered() {
+        this.MouseEntered?.Invoke();
+    }
+    
+    /// <summary>
+    /// Invokes the <see cref="MouseLeft"/> event when the mouse leaves the window.
+    /// </summary>
+    private void OnMouseLeft() {
+        this.MouseLeft?.Invoke();
+    }
+    
+    /// <summary>
+    /// Invokes the <see cref="MouseWheel"/> event when the mouse wheel is scrolled.
+    /// </summary>
+    /// <param name="args">The mouse wheel event arguments.</param>
+    private void OnMouseWheel(MouseWheelEventArgs args) {
+        this.MouseWheel?.Invoke(args);
+    }
+    
+    /// <summary>
+    /// Invokes the <see cref="MouseMove"/> event when the mouse is moved.
+    /// </summary>
+    /// <param name="args">The mouse move event arguments.</param>
+    private void OnMouseMoving(MouseMoveEventArgs args) {
+        this.MouseMove?.Invoke(args);
+    }
+    
+    /// <summary>
+    /// Invokes the <see cref="MouseDown"/> event when a mouse button is pressed.
+    /// </summary>
+    /// <param name="mouseEvent">The mouse event arguments.</param>
+    private void OnMouseDown(MouseEvent mouseEvent) {
+        this.MouseDown?.Invoke(mouseEvent);
+    }
+    
+    /// <summary>
+    /// Invokes the <see cref="MouseUp"/> event when a mouse button is released.
+    /// </summary>
+    /// <param name="mouseEvent">The mouse event arguments.</param>
+    private void OnMouseUp(MouseEvent mouseEvent) {
+        this.MouseUp?.Invoke(mouseEvent);
+    }
+    
+    /// <summary>
+    /// Invokes the <see cref="KeyDown"/> event when a key is pressed.
+    /// </summary>
+    /// <param name="keyEvent">The key event arguments.</param>
+    private void OnKeyDown(KeyEvent keyEvent) {
+        this.KeyDown?.Invoke(keyEvent);
+    }
+    
+    /// <summary>
+    /// Invokes the <see cref="KeyUp"/> event when a key is released.
+    /// </summary>
+    /// <param name="keyEvent">The key event arguments.</param>
+    private void OnKeyUp(KeyEvent keyEvent) {
+        this.KeyUp?.Invoke(keyEvent);
+    }
+    
+    /// <summary>
+    /// Invokes the <see cref="DragDrop"/> event when a drag-and-drop operation is performed.
+    /// </summary>
+    /// <param name="dropEvent">The drag-and-drop event arguments.</param>
+    private void OnDragDrop(DragDropEvent dropEvent) {
+        this.DragDrop?.Invoke(dropEvent);
     }
 }

@@ -1,12 +1,6 @@
-using System.Numerics;
 using Bliss.CSharp;
-using Bliss.CSharp.Colors;
 using Bliss.CSharp.Interact;
-using Bliss.CSharp.Interact.Gamepads;
-using Bliss.CSharp.Interact.Mice;
 using Bliss.CSharp.Logging;
-using Bliss.CSharp.Rendering;
-using Bliss.CSharp.Textures;
 using Bliss.CSharp.Windowing;
 using Veldrid;
 using Veldrid.Sdl2;
@@ -20,9 +14,7 @@ public class Game : Disposable {
 
     public Window Window { get; private set; }
     public GraphicsDevice GraphicsDevice { get; private set; }
-    
     public CommandList CommandList { get; private set; }
-    public Graphics Graphics { get; private set; }
 
     private double _fixedFrameRate;
     
@@ -60,16 +52,13 @@ public class Game : Disposable {
         Logger.Info("Initialize command list...");
         this.CommandList = this.GraphicsDevice.ResourceFactory.CreateCommandList();
         
-        Logger.Info("Initialize graphics...");
-        this.Graphics = new Graphics(this.GraphicsDevice, this.CommandList);
-        
         Logger.Info("Initialize input...");
         Input.Init(this.Window);
         
         this.Init();
         
         Logger.Info("Start main loops...");
-        while (Window.Exists) {
+        while (this.Window.Exists) {
             if (this.GetTargetFps() != 0 && Time.Timer.Elapsed.TotalSeconds <= this._fixedFrameRate) {
                 continue;
             }
@@ -87,11 +76,7 @@ public class Game : Disposable {
                 this._fixedUpdateTimer -= this._fixedUpdateTimeStep;
             }
             
-            //this.Graphics.BeginDrawing();
-            //this.Graphics.ClearBackground(0, Color.DarkGray);
-            this.Draw(this.Graphics);
-            //this.Graphics.EndDrawing();
-            
+            this.Draw(this.GraphicsDevice, this.CommandList);
             Input.End();
         }
         
@@ -101,68 +86,13 @@ public class Game : Disposable {
     
     protected virtual void Init() { }
 
-    protected virtual void Update() {
-        /*if (Input.IsMouseButtonPressed(MouseButton.Right)) {
-            Logger.Error("Right mouse button is pressed!");
-        }
-        
-        if (Input.IsMouseButtonDown(MouseButton.Left)) {
-            Logger.Error("Left mouse button is down!");
-        }
-        
-        if (Input.IsMouseButtonReleased(MouseButton.Right)) {
-            Logger.Error("Right mouse button is released!");
-        }
-        
-        if (Input.IsMouseMoving(out Vector2 pos)) {
-            Logger.Error("Mouse moves: " + pos);
-        }
-        
-        if (Input.IsMouseScrolling(out float wheelDelta)) {
-            Logger.Error("Mouse is scrolling: " + wheelDelta);
-        }
-
-        if (Input.IsKeyDown(Key.A)) {
-            Logger.Error("Key A is down");
-        }
-        
-        if (Input.IsKeyPressed(Key.D)) {
-            Logger.Error("Key D is pressed");
-        }
-        
-        if (Input.IsKeyReleased(Key.D)) {
-            Logger.Error("Key D is released");
-        }*/
-
-        //if (Input.IsGamepadAvailable(0)) {
-        //    //Logger.Warn(Input.GetGamepadName(0));
-        //    Input.GetGamepadName(0);
-        //}
-
-        if (Input.IsGamepadAvailable(0)) {
-            if (Input.IsGamepadButtonPressed(0, GamepadButton.A)) {
-                Input.SetGamepadRumble(0, 0xFFFF, 0xFFFF, 1000);
-            }
-        }
-        
-        if (Input.IsGamepadAvailable(1)) {
-            if (Input.IsGamepadButtonPressed(1, GamepadButton.A)) {
-                Input.SetGamepadRumble(1, 0xFFFF, 0xFFFF, 1000);
-            }
-        }
-
-        if (Input.IsFileDragDropped(out string path)) {
-            Logger.Warn(path);
-        }
-    }
+    protected virtual void Update() { }
     
     protected virtual void AfterUpdate() { }
 
     protected virtual void FixedUpdate() { }
 
-    protected virtual void Draw(Graphics graphics) {
-        
-    }
+    protected virtual void Draw(GraphicsDevice graphicsDevice, CommandList commandList) { }
     
     protected virtual void OnClose() { }
 

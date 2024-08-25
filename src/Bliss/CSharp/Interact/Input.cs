@@ -48,18 +48,18 @@ public static class Input {
         _mouseButtonsDown = new List<MouseButton>();
         _mouseButtonsReleased = new List<MouseButton>();
         
-        Window.Sdl2Window.MouseWheel += OnMouseWheel;
-        Window.Sdl2Window.MouseMove += OnMouseMove;
-        Window.Sdl2Window.MouseDown += OnMouseDown;
-        Window.Sdl2Window.MouseUp += OnMouseUp;
+        Window.MouseWheel += OnMouseWheel;
+        Window.MouseMove += OnMouseMove;
+        Window.MouseDown += OnMouseDown;
+        Window.MouseUp += OnMouseUp;
         
         // Keyboard
         _keyboardKeysPressed = new List<Key>();
         _keyboardKeysDown = new List<Key>();
         _keyboardKeysReleased = new List<Key>();
         
-        Window.Sdl2Window.KeyDown += OnKeyDown;
-        Window.Sdl2Window.KeyUp += OnKeyUp;
+        Window.KeyDown += OnKeyDown;
+        Window.KeyUp += OnKeyUp;
         
         // Gamepads
         _gamepads = new Dictionary<int, Gamepad>();
@@ -67,7 +67,7 @@ public static class Input {
         // Other
         _filesDragDropped = new List<string>();
         
-        Window.Sdl2Window.DragDrop += OnDragDrop;
+        Window.DragDrop += OnDragDrop;
     }
 
     /// <summary>
@@ -492,14 +492,14 @@ public static class Input {
         // Mouse
         SetMouseCursor(MouseCursor.Default); // To free the Cursor.
         
-        Window.Sdl2Window.MouseWheel -= OnMouseWheel;
-        Window.Sdl2Window.MouseMove -= OnMouseMove;
-        Window.Sdl2Window.MouseDown -= OnMouseDown;
-        Window.Sdl2Window.MouseUp -= OnMouseUp;
+        Window.MouseWheel -= OnMouseWheel;
+        Window.MouseMove -= OnMouseMove;
+        Window.MouseDown -= OnMouseDown;
+        Window.MouseUp -= OnMouseUp;
         
         // Keyboard
-        Window.Sdl2Window.KeyDown -= OnKeyDown;
-        Window.Sdl2Window.KeyUp -= OnKeyUp;
+        Window.KeyDown -= OnKeyDown;
+        Window.KeyUp -= OnKeyUp;
         
         // Gamepad
         foreach (Gamepad gamepad in _gamepads.Values) {
@@ -509,7 +509,7 @@ public static class Input {
         _gamepads.Clear();
         
         // Other
-        Window.Sdl2Window.DragDrop -= OnDragDrop;
+        Window.DragDrop -= OnDragDrop;
         
         // Event
         Sdl2Events.Unsubscribe(ProcessEvent);
