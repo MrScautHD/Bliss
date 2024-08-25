@@ -1,6 +1,9 @@
+using System.Numerics;
+using Veldrid;
+
 namespace Bliss.CSharp.Colors;
 
-public struct Color {
+public struct Color : IEquatable<Color> {
     
     public static readonly Color White = new Color(255, 255, 255, 255);
     public static readonly Color Black = new Color(0, 0, 0, 255);
@@ -41,13 +44,13 @@ public struct Color {
     public static readonly Color Purple = new Color(128, 0, 128, 255);
     public static readonly Color DarkPurple = new Color(75, 0, 130, 255);
 
-    public static readonly Color LightPink = new Color(255, 182, 193, 255);
-    public static readonly Color Pink = new Color(255, 192, 203, 255);
+    public static readonly Color LightPink = new Color(255, 192, 203, 255);
+    public static readonly Color Pink = new Color(255, 182, 193, 255);
     public static readonly Color DarkPink = new Color(231, 84, 128, 255);
 
-    public static readonly Color LightGray = new Color(211, 211, 211, 255);
+    public static readonly Color LightGray = new Color(166, 166, 166, 255);
     public static readonly Color Gray = new Color(128, 128, 128, 255);
-    public static readonly Color DarkGray = new Color(169, 169, 169, 255);
+    public static readonly Color DarkGray = new Color(64, 64, 64, 255);
     
     public float R;
     public float G;
@@ -66,5 +69,81 @@ public struct Color {
         this.G = g;
         this.B = b;
         this.A = a;
+    }
+
+    /// <summary>
+    /// Determines whether two Color objects are equal.
+    /// </summary>
+    /// <param name="left">The first Color to compare.</param>
+    /// <param name="right">The second Color to compare.</param>
+    /// <returns>
+    /// <c>true</c> if the specified Color objects are equal; otherwise, <c>false</c>.
+    /// </returns>
+    public static bool operator ==(Color left, Color right) {
+        return left.Equals(right);
+    }
+
+    /// <summary>
+    /// Represents the equality operator for comparing two colors for equality.
+    /// </summary>
+    /// <param name="left">The first color to compare.</param>
+    /// <param name="right">The second color to compare.</param>
+    /// <returns>true if the colors are equal; otherwise, false.</returns>
+    public static bool operator !=(Color left, Color right) {
+        return !left.Equals(right);
+    }
+
+    /// <summary>
+    /// Converts the color to an RgbaFloat value.
+    /// </summary>
+    /// <returns>A new instance of the RgbaFloat struct representing the color.</returns>
+    public readonly RgbaFloat ToRgbaFloat() {
+        return new RgbaFloat(this.R / 255.0F, this.G / 255.0F, this.B / 255.0F, this.A / 255.0F);
+    }
+
+    /// <summary>
+    /// Converts the color to a Vector4 representation.
+    /// </summary>
+    /// <returns>A Vector4 representing the color.</returns>
+    public Vector4 ToVector4() {
+        return new Vector4(this.R, this.G, this.B, this.A);
+    }
+
+    /// <summary>
+    /// Determines whether the current color object is equal to another color object.
+    /// </summary>
+    /// <param name="other">The color to compare to.</param>
+    /// <returns>
+    /// True if the current color object is equal to the other color object; otherwise, false.
+    /// </returns>
+    public bool Equals(Color other) {
+        return this.R.Equals(other.R) && this.G.Equals(other.G) && this.B.Equals(other.B) && this.A.Equals(other.A);
+    }
+
+    /// <summary>
+    /// Determines whether the current color object is equal to another color object.
+    /// </summary>
+    /// <param name="obj">The color to compare to.</param>
+    /// <returns>
+    /// True if the current color object is equal to the other color object; otherwise, false.
+    /// </returns>
+    public override bool Equals(object? obj) {
+        return obj is Color other && this.Equals(other);
+    }
+
+    /// <summary>
+    /// Returns the hash code for this instance.
+    /// </summary>
+    /// <returns>The hash code for this instance.</returns>
+    public override int GetHashCode() {
+        return HashCode.Combine(this.R, this.G, this.B, this.A);
+    }
+
+    /// <summary>
+    /// Returns a string that represents the current color.
+    /// </summary>
+    /// <returns>A string representation of the current color.</returns>
+    public override string ToString() {
+        return $"R:{this.R}, G:{this.G}, B:{this.B}, A:{this.A}";
     }
 }

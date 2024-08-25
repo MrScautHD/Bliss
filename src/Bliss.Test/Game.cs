@@ -1,9 +1,12 @@
 using System.Numerics;
 using Bliss.CSharp;
+using Bliss.CSharp.Colors;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Gamepads;
+using Bliss.CSharp.Interact.Mice;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Rendering;
+using Bliss.CSharp.Textures;
 using Bliss.CSharp.Windowing;
 using Veldrid;
 using Veldrid.Sdl2;
@@ -84,10 +87,10 @@ public class Game : Disposable {
                 this._fixedUpdateTimer -= this._fixedUpdateTimeStep;
             }
             
-            this.Graphics.BeginDrawing();
-            this.Graphics.ClearBackground(0, RgbaFloat.Grey);
+            //this.Graphics.BeginDrawing();
+            //this.Graphics.ClearBackground(0, Color.DarkGray);
             this.Draw(this.Graphics);
-            this.Graphics.EndDrawing();
+            //this.Graphics.EndDrawing();
             
             Input.End();
         }
@@ -95,7 +98,7 @@ public class Game : Disposable {
         Logger.Warn("Application shuts down!");
         this.OnClose();
     }
-
+    
     protected virtual void Init() { }
 
     protected virtual void Update() {
@@ -157,7 +160,9 @@ public class Game : Disposable {
 
     protected virtual void FixedUpdate() { }
 
-    protected virtual void Draw(Graphics graphics) { }
+    protected virtual void Draw(Graphics graphics) {
+        
+    }
     
     protected virtual void OnClose() { }
 

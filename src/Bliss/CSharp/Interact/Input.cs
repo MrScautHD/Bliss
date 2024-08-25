@@ -48,10 +48,18 @@ public static class Input {
         _mouseButtonsDown = new List<MouseButton>();
         _mouseButtonsReleased = new List<MouseButton>();
         
+        Window.Sdl2Window.MouseWheel += OnMouseWheel;
+        Window.Sdl2Window.MouseMove += OnMouseMove;
+        Window.Sdl2Window.MouseDown += OnMouseDown;
+        Window.Sdl2Window.MouseUp += OnMouseUp;
+        
         // Keyboard
         _keyboardKeysPressed = new List<Key>();
         _keyboardKeysDown = new List<Key>();
         _keyboardKeysReleased = new List<Key>();
+        
+        Window.Sdl2Window.KeyDown += OnKeyDown;
+        Window.Sdl2Window.KeyUp += OnKeyUp;
         
         // Gamepads
         _gamepads = new Dictionary<int, Gamepad>();
@@ -59,17 +67,6 @@ public static class Input {
         // Other
         _filesDragDropped = new List<string>();
         
-        // Mouse
-        Window.Sdl2Window.MouseWheel += OnMouseWheel;
-        Window.Sdl2Window.MouseMove += OnMouseMove;
-        Window.Sdl2Window.MouseDown += OnMouseDown;
-        Window.Sdl2Window.MouseUp += OnMouseUp;
-        
-        // Keyboard
-        Window.Sdl2Window.KeyDown += OnKeyDown;
-        Window.Sdl2Window.KeyUp += OnKeyUp;
-        
-        // Other
         Window.Sdl2Window.DragDrop += OnDragDrop;
     }
 
@@ -439,10 +436,6 @@ public static class Input {
         _mouseButtonsReleased.Add(args.MouseButton);
     }
     
-    private static void OnDragDrop(DragDropEvent args) {
-        _filesDragDropped.Add(args.File);
-    }
-    
     /* ------------------------------------ Keyboard ------------------------------------ */
 
     private static void OnKeyDown(KeyEvent args) {
@@ -455,6 +448,12 @@ public static class Input {
     private static void OnKeyUp(KeyEvent args) {
         _keyboardKeysDown.Remove(args.Key);
         _keyboardKeysReleased.Add(args.Key);
+    }
+    
+    /* ------------------------------------ Other ------------------------------------ */
+    
+    private static void OnDragDrop(DragDropEvent args) {
+        _filesDragDropped.Add(args.File);
     }
 
     /// <summary>
@@ -508,6 +507,9 @@ public static class Input {
         }
         
         _gamepads.Clear();
+        
+        // Other
+        Window.Sdl2Window.DragDrop -= OnDragDrop;
         
         // Event
         Sdl2Events.Unsubscribe(ProcessEvent);
