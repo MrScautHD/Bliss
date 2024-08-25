@@ -1,6 +1,5 @@
 name: Build Bliss
 
-
 on:
   release:
     types: [ "published" ]
