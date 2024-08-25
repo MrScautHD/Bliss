@@ -1,5 +1,6 @@
 name: Build Bliss
 
+
 on:
   release:
     types: [ "published" ]
@@ -35,3 +36,31 @@ jobs:
     # Test
     - name: Test
       run: dotnet test --no-build --verbosity normal
+
+  # Publish to NuGet
+  publish-nuget:
+    runs-on: ubuntu-latest
+    
+    # Run
+    steps:
+      - uses: actions/checkout@v4
+      
+      # Setup .NET
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      # Restore dependencies
+      - name: Restore dependencies
+        run: dotnet restore
+      
+      # Build and pack NuGet package
+      - name: Pack NuGet package
+        if: github.event_name == 'release'
+        run: dotnet pack src/Bliss -p:PackageVersion=${{ github.event.release.tag_name }} --configuration Release --output nuget
+
+      # Publish NuGet package
+      - name: Publish NuGet package
+        if: github.event_name == 'release'
+        run: dotnet nuget push nuget/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
