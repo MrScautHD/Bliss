@@ -19,6 +19,11 @@ public class Model : Disposable {
     private DeviceBuffer _vertexBuffer;
     private DeviceBuffer _indexBuffer;
     
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Model"/> class with the provided meshes and creates necessary vertex and index buffers.
+    /// </summary>
+    /// <param name="factory">The resource factory used to create buffers.</param>
+    /// <param name="meshes">An array of meshes to be included in the model.</param>
     public Model(ResourceFactory factory, Mesh[] meshes) {
         this.Meshes = meshes;
 
@@ -34,7 +39,14 @@ public class Model : Disposable {
         this._indexBuffer = factory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer));
     }
     
-    // TODO: bool loadMaterials = false
+    // TODO: Check if the UV flip works maybe it should just the Y axis get fliped and add Materials loading (with a boolean to disable it) and add Animations loading.
+    /// <summary>
+    /// Loads a model from the specified file path, processes it using Assimp, and creates a new <see cref="Model"/> instance.
+    /// </summary>
+    /// <param name="factory">The resource factory used to create buffers.</param>
+    /// <param name="path">The file path to the model to load.</param>
+    /// <param name="flipUv">Specifies whether to flip the UV coordinates vertically. Default is false.</param>
+    /// <returns>Returns a <see cref="Model"/> object containing the loaded meshes.</returns>
     public static Model Load(ResourceFactory factory, string path, bool flipUv = false) {
         using AssimpContext context = new AssimpContext();
         Scene scene = context.ImportFile(path, DefaultPostProcessSteps);
@@ -116,6 +128,10 @@ public class Model : Disposable {
     }
 
     // TODO: Finish that.
+    /// <summary>
+    /// Renders the model using the provided command list, setting necessary graphics pipeline state and binding vertex and index buffers.
+    /// </summary>
+    /// <param name="commandList">The command list used to issue draw commands.</param>
     public void Draw(CommandList commandList) {
         commandList.SetPipeline(null);
         commandList.SetGraphicsResourceSet(0, null);
