@@ -1,4 +1,5 @@
 using Bliss.CSharp;
+using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Windowing;
@@ -83,8 +84,10 @@ public class Game : Disposable {
         Logger.Warn("Application shuts down!");
         this.OnClose();
     }
-    
-    protected virtual void Init() { }
+
+    protected virtual void Init() {
+        Model model = Model.Load(this.GraphicsDevice.ResourceFactory, "content/player.glb");
+    }
 
     protected virtual void Update() { }
     

@@ -1,4 +1,5 @@
 using System.Numerics;
+using Bliss.CSharp.Rendering;
 using Bliss.CSharp.Windowing;
 using Vortice.Mathematics;
 using Viewport = Veldrid.Viewport;
@@ -21,11 +22,13 @@ public class Cam3D : Disposable, ICam {
     public float Fov;
     
     private Vector3 _rotation;
+
+    private Frustum _frustum;
     
     public Cam3D(Window window, Vector3 position, Vector3 target, Vector3? up = default, ProjectionType projectionType = ProjectionType.Perspective, float fov = 70.0F) {
         this.Window = window;
         this.Window.Sdl2Window.Resized += this.Resize;
-
+        
         this.Position = position;
         this.Target = target;
         this.Up = up ?? -Vector3.UnitY; // TODO CHECK IF negative is right.
@@ -34,6 +37,8 @@ public class Cam3D : Disposable, ICam {
         
         this.NearPlane = 0.001F;
         this.FarPlane = 1000.0F;
+
+        this._frustum = new Frustum();
         
         this.Resize();
     }
@@ -80,6 +85,12 @@ public class Cam3D : Disposable, ICam {
     private void Resize() {
         this.Viewport = new Viewport(0, 0, this.Window.Width, this.Window.Height, 0, 0);
         this.AspectRatio = (float) this.Window.Width / (float) this.Window.Height;
+    }
+
+    public Frustum GetFrustum() {
+        this._frustum.Extract(this.GetView() * this.GetProjection());
+
+        return this._frustum;
     }
 
     protected override void Dispose(bool disposing) {

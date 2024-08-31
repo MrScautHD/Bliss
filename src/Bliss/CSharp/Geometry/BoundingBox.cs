@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace Bliss.CSharp.Geometry.Box;
+namespace Bliss.CSharp.Geometry;
 
 public struct BoundingBox {
 
