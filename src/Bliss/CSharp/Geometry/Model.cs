@@ -39,7 +39,7 @@ public class Model : Disposable {
         this._indexBuffer = factory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer));
     }
     
-    // TODO: Check if the UV flip works maybe it should just the Y axis get fliped and add Materials loading (with a boolean to disable it) and add Animations loading.
+    // TODO: Check if the UV flip works maybe it should just the Y axis get fliped and add Materials loading (with a boolean to disable it) and add Animations loading and add a option to load with Stream instead of the path.
     /// <summary>
     /// Loads a model from the specified file path, processes it using Assimp, and creates a new <see cref="Model"/> instance.
     /// </summary>

@@ -1,5 +1,6 @@
 namespace Bliss.CSharp.Geometry;
 
+// TODO: Add Material
 public struct Mesh {
 
     public Vertex[] Vertices;
