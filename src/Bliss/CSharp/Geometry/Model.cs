@@ -64,7 +64,7 @@ public class Model : Disposable {
             }
             
             // Vertices
-            Vertex[] vertices = new Vertex[scene.Meshes[i].VertexCount];
+            Vertex3D[] vertices = new Vertex3D[scene.Meshes[i].VertexCount];
 
             for (int j = 0; j < mesh.VertexCount; j++) {
                 

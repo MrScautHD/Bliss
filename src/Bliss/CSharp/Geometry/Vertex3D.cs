@@ -3,7 +3,7 @@ using Bliss.CSharp.Colors;
 
 namespace Bliss.CSharp.Geometry;
 
-public struct Vertex {
+public struct Vertex3D {
     
     public Vector3 Position;
     public Vector2 TexCoord;
@@ -13,7 +13,7 @@ public struct Vertex {
     public Vector4 Color;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Vertex"/> struct with the specified position, texture coordinates, secondary texture coordinates, normal, tangent, and color.
+    /// Initializes a new instance of the <see cref="Vertex3D"/> struct with the specified position, texture coordinates, secondary texture coordinates, normal, tangent, and color.
     /// </summary>
     /// <param name="position">The vertex position in 3D space.</param>
     /// <param name="texCoord">The primary texture coordinates for the vertex.</param>
@@ -21,7 +21,7 @@ public struct Vertex {
     /// <param name="normal">The normal vector for the vertex.</param>
     /// <param name="tangent">The tangent vector for the vertex.</param>
     /// <param name="color">The color of the vertex.</param>
-    public Vertex(Vector3 position, Vector2 texCoord, Vector2 texCoord2, Vector3 normal, Vector3 tangent, Color color) {
+    public Vertex3D(Vector3 position, Vector2 texCoord, Vector2 texCoord2, Vector3 normal, Vector3 tangent, Color color) {
         this.Position = position;
         this.TexCoord = texCoord;
         this.TexCoord2 = texCoord2;

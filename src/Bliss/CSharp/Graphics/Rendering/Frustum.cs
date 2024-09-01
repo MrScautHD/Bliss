@@ -1,7 +1,7 @@
 using System.Numerics;
 using Bliss.CSharp.Geometry;
 
-namespace Bliss.CSharp.Rendering;
+namespace Bliss.CSharp.Graphics.Rendering;
 
 public class Frustum {
     

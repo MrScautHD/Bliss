@@ -1,5 +1,5 @@
 using System.Numerics;
-using Bliss.CSharp.Rendering;
+using Bliss.CSharp.Graphics.Rendering;
 using Bliss.CSharp.Windowing;
 using Vortice.Mathematics;
 using Viewport = Veldrid.Viewport;
