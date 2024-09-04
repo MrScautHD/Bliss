@@ -88,7 +88,6 @@ public class SpriteBatch : Disposable {
     }
 
     // TODO: ADD TRANSFORM ( SRY VIEW)
-
     /// <summary>
     /// Begins a new sprite batch, preparing the specified command list for rendering with optional parameters for view matrix and pipeline.
     /// </summary>
@@ -187,7 +186,7 @@ public class SpriteBatch : Disposable {
             Color = finalColor.ToVector4()
         };
         
-        float x = VertexTemplate[(int) Sprites.VertexTemplate.TopRight].X;
+        float x = VertexTemplate[(int) VertexTemplateType.TopRight].X;
         float w = spriteScale.X * x;
 
         Vertex2D topRight = new Vertex2D() {
@@ -204,7 +203,7 @@ public class SpriteBatch : Disposable {
             Color = finalColor.ToVector4()
         };
         
-        float y = VertexTemplate[(int) Sprites.VertexTemplate.BottomLeft].Y;
+        float y = VertexTemplate[(int) VertexTemplateType.BottomLeft].Y;
         float h = spriteScale.Y * y;
 
         Vertex2D bottomLeft = new Vertex2D() {
@@ -221,8 +220,8 @@ public class SpriteBatch : Disposable {
             Color = finalColor.ToVector4()
         };
         
-        x = VertexTemplate[(int) Sprites.VertexTemplate.BottomRight].X;
-        y = VertexTemplate[(int) Sprites.VertexTemplate.BottomRight].Y;
+        x = VertexTemplate[(int) VertexTemplateType.BottomRight].X;
+        y = VertexTemplate[(int) VertexTemplateType.BottomRight].Y;
         w = spriteScale.X * x;
         h = spriteScale.Y * y;
 
