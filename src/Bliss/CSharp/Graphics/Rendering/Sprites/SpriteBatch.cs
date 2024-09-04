@@ -14,14 +14,14 @@ public class SpriteBatch : Disposable {
     private const uint VerticesPerQuad = 4;
     private const uint IndicesPerQuad = 6;
     
-    private static Vector2[] _vertexTemplate = new Vector2[] {
+    private static readonly Vector2[] VertexTemplate = new Vector2[] {
         new Vector2(0.0F, 0.0F),
         new Vector2(1.0F, 0.0F),
         new Vector2(0.0F, 1.0F),
         new Vector2(1.0F, 1.0F),
     };
     
-    private static ushort[] _indicesTemplate = new ushort[] {
+    private static readonly ushort[] IndicesTemplate = new ushort[] {
         2, 1, 0,
         2, 3, 1
     };
@@ -73,13 +73,13 @@ public class SpriteBatch : Disposable {
             var startIndex = i * IndicesPerQuad;
             var offset = i * VerticesPerQuad;
 
-            this._indices[startIndex + 0] = (ushort) (_indicesTemplate[0] + offset);
-            this._indices[startIndex + 1] = (ushort) (_indicesTemplate[1] + offset);
-            this._indices[startIndex + 2] = (ushort) (_indicesTemplate[2] + offset);
+            this._indices[startIndex + 0] = (ushort) (IndicesTemplate[0] + offset);
+            this._indices[startIndex + 1] = (ushort) (IndicesTemplate[1] + offset);
+            this._indices[startIndex + 2] = (ushort) (IndicesTemplate[2] + offset);
             
-            this._indices[startIndex + 3] = (ushort) (_indicesTemplate[3] + offset);
-            this._indices[startIndex + 4] = (ushort) (_indicesTemplate[4] + offset);
-            this._indices[startIndex + 5] = (ushort) (_indicesTemplate[5] + offset);
+            this._indices[startIndex + 3] = (ushort) (IndicesTemplate[3] + offset);
+            this._indices[startIndex + 4] = (ushort) (IndicesTemplate[4] + offset);
+            this._indices[startIndex + 5] = (ushort) (IndicesTemplate[5] + offset);
         }
         
         this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) this._indices.Length * sizeof(ushort), BufferUsage.IndexBuffer));
@@ -159,8 +159,8 @@ public class SpriteBatch : Disposable {
         float texelWidth = 1.0F / texture.Width;
         float texelHeight = 1.0F / texture.Height;
         
-        bool flipX = (flip == SpriteFlip.Horizontal || flip == SpriteFlip.Both);
-        bool flipY = (flip == SpriteFlip.Vertical || flip == SpriteFlip.Both);
+        bool flipX = flip == SpriteFlip.Horizontal || flip == SpriteFlip.Both;
+        bool flipY = flip == SpriteFlip.Vertical || flip == SpriteFlip.Both;
 
         float sin = 0;
         float cos = 0;
@@ -187,7 +187,7 @@ public class SpriteBatch : Disposable {
             Color = finalColor.ToVector4()
         };
         
-        float x = _vertexTemplate[(int) VertexTemplate.TopRight].X;
+        float x = VertexTemplate[(int) Sprites.VertexTemplate.TopRight].X;
         float w = spriteScale.X * x;
 
         Vertex2D topRight = new Vertex2D() {
@@ -204,7 +204,7 @@ public class SpriteBatch : Disposable {
             Color = finalColor.ToVector4()
         };
         
-        float y = _vertexTemplate[(int) VertexTemplate.BottomLeft].Y;
+        float y = VertexTemplate[(int) Sprites.VertexTemplate.BottomLeft].Y;
         float h = spriteScale.Y * y;
 
         Vertex2D bottomLeft = new Vertex2D() {
@@ -221,8 +221,8 @@ public class SpriteBatch : Disposable {
             Color = finalColor.ToVector4()
         };
         
-        x = _vertexTemplate[(int) VertexTemplate.BottomRight].X;
-        y = _vertexTemplate[(int) VertexTemplate.BottomRight].Y;
+        x = VertexTemplate[(int) Sprites.VertexTemplate.BottomRight].X;
+        y = VertexTemplate[(int) Sprites.VertexTemplate.BottomRight].Y;
         w = spriteScale.X * x;
         h = spriteScale.Y * y;
 
