@@ -76,10 +76,10 @@ public class Model : Disposable {
                     Vector3 texCoord = ModelConversion.FromVector3D(mesh.TextureCoordinateChannels[0][j]);
                     Vector2 finalTexCoord = new Vector2(texCoord.X, texCoord.Y);
                     
-                    vertices[j].TexCoord = flipUv ? -finalTexCoord : finalTexCoord;
+                    vertices[j].TexCoords = flipUv ? -finalTexCoord : finalTexCoord;
                 }
                 else {
-                    vertices[j].TexCoord = Vector2.Zero;
+                    vertices[j].TexCoords = Vector2.Zero;
                 }
                 
                 // TexCoord2
@@ -87,10 +87,10 @@ public class Model : Disposable {
                     Vector3 texCoord2 = ModelConversion.FromVector3D(mesh.TextureCoordinateChannels[1][j]);
                     Vector2 finalTexCoord2 = new Vector2(texCoord2.X, texCoord2.Y);
                     
-                    vertices[j].TexCoord2 = flipUv ? -finalTexCoord2 : finalTexCoord2;
+                    vertices[j].TexCoords2 = flipUv ? -finalTexCoord2 : finalTexCoord2;
                 }
                 else {
-                    vertices[j].TexCoord2 = Vector2.Zero;
+                    vertices[j].TexCoords2 = Vector2.Zero;
                 }
                 
                 // Normal

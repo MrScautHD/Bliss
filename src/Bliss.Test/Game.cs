@@ -1,7 +1,10 @@
+using System.Numerics;
 using Bliss.CSharp;
-using Bliss.CSharp.Geometry;
+using Bliss.CSharp.Colors;
+using Bliss.CSharp.Graphics.Rendering.Sprites;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Logging;
+using Bliss.CSharp.Textures;
 using Bliss.CSharp.Windowing;
 using Veldrid;
 using Veldrid.Sdl2;
@@ -21,6 +24,9 @@ public class Game : Disposable {
     
     private readonly double _fixedUpdateTimeStep;
     private double _fixedUpdateTimer;
+
+    private SpriteBatch _spriteBatch;
+    private Texture2D _texture;
     
     public Game(GameSettings settings) {
         Instance = this;
@@ -86,7 +92,8 @@ public class Game : Disposable {
     }
 
     protected virtual void Init() {
-        Model model = Model.Load(this.GraphicsDevice.ResourceFactory, "content/player.glb");
+        this._spriteBatch = new SpriteBatch(this.GraphicsDevice);
+        this._texture = new Texture2D(this.GraphicsDevice, "content/image.png");
     }
 
     protected virtual void Update() { }
@@ -94,8 +101,20 @@ public class Game : Disposable {
     protected virtual void AfterUpdate() { }
 
     protected virtual void FixedUpdate() { }
-
-    protected virtual void Draw(GraphicsDevice graphicsDevice, CommandList commandList) { }
+    
+    protected virtual void Draw(GraphicsDevice graphicsDevice, CommandList commandList) {
+        this.CommandList.Begin();
+        this.CommandList.SetFramebuffer(this.GraphicsDevice.SwapchainFramebuffer);
+        this.CommandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
+        
+        this._spriteBatch.Begin(commandList);
+        this._spriteBatch.DrawTexture(this._texture, graphicsDevice.PointSampler, new Vector2(50, 50));
+        this._spriteBatch.End();
+        
+        this.CommandList.End();
+        this.GraphicsDevice.SubmitCommands(this.CommandList);
+        this.GraphicsDevice.SwapBuffers();
+    }
     
     protected virtual void OnClose() { }
 
