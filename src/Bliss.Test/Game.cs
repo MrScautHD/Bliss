@@ -108,7 +108,7 @@ public class Game : Disposable {
         this.CommandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
         
         this._spriteBatch.Begin(commandList);
-        this._spriteBatch.DrawTexture(this._texture, graphicsDevice.PointSampler, new Vector2(50, 50));
+        this._spriteBatch.DrawTexture(this._texture, graphicsDevice.PointSampler, new Vector2(50, 200));
         this._spriteBatch.End();
         
         this.CommandList.End();

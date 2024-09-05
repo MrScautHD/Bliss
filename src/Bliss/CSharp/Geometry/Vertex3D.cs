@@ -6,6 +6,8 @@ namespace Bliss.CSharp.Geometry;
 
 public struct Vertex3D {
     
+    // TODO: Add VertexLayout like Vertex2D.
+    
     public Vector3 Position;
     public Vector2 TexCoords;
     public Vector2 TexCoords2;

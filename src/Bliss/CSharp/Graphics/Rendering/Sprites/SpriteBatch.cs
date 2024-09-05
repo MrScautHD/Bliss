@@ -39,6 +39,10 @@ public class SpriteBatch : Disposable {
     private DeviceBuffer _vertexBuffer;
     private DeviceBuffer _indexBuffer;
 
+    private DeviceBuffer _transformBuffer;
+    private ResourceLayout _transformLayout;
+    private ResourceSet _transformSet;
+
     private Effect _defaultEffect;
     private ResourceLayout _defaultPipelineResourceLayout;
     private SimplePipeline _defaultPipeline;
@@ -64,9 +68,11 @@ public class SpriteBatch : Disposable {
         
         this._cachedTextures = new Dictionary<(Texture2D, Sampler), ResourceSet>();
         
+        // Create vertex buffer.
         this._vertices = new Vertex2D[capacity * VerticesPerQuad];
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (capacity * VerticesPerQuad * Marshal.SizeOf<Vertex2D>()), BufferUsage.VertexBuffer));
         
+        // Create indices buffer.
         this._indices = new ushort[capacity * IndicesPerQuad];
 
         for (int i = 0; i < capacity; i++) {
@@ -83,30 +89,35 @@ public class SpriteBatch : Disposable {
         }
         
         this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) this._indices.Length * sizeof(ushort), BufferUsage.IndexBuffer));
+        graphicsDevice.UpdateBuffer(this._indexBuffer, 0, ref this._indices[0], (uint) (this._indices.Length * sizeof(ushort)));
+        //graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this._indices);
+
+        // Create transform buffer.
+        this._transformBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) Marshal.SizeOf<Matrix4x4>(), BufferUsage.UniformBuffer));
+        this._transformLayout = graphicsDevice.ResourceFactory.CreateResourceLayout(new ResourceLayoutDescription(new ResourceLayoutElementDescription("ProjectionViewBuffer", ResourceKind.UniformBuffer, ShaderStages.Vertex)));
+        this._transformSet = graphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(this._transformLayout, this._transformBuffer));
         
         this.CreateDefaultPipeline();
     }
 
-    // TODO: ADD TRANSFORM ( SRY VIEW)
-    /// <summary>
-    /// Begins a new sprite batch, preparing the specified command list for rendering with optional parameters for view matrix and pipeline.
-    /// </summary>
-    /// <param name="commandList">The command list used to record rendering commands.</param>
-    /// <param name="view">An optional view matrix to transform the sprites. If null, no transformation is applied.</param>
-    /// <param name="pipeline">An optional rendering pipeline to use. If null, the default pipeline is used.</param>
-    public void Begin(CommandList commandList, Matrix4x4? view = null, SimplePipeline? pipeline = null) {
+    public void Begin(CommandList commandList, Matrix4x4? view = null, Matrix4x4? projection = null, SimplePipeline? pipeline = null) {
         if (this._begun) {
             throw new Exception("The SpriteBatch has already begun!");
         }
-
         this._begun = true;
+        
         this._currentCommandList = commandList;
 
         if (this._currentPipeline != pipeline) {
             this.Flush();
         }
-        
         this._currentPipeline = pipeline ?? this._defaultPipeline;
+        
+        Matrix4x4 finalView = view ?? Matrix4x4.Identity;
+        Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, 1270.0F, 720.0F, 0.0F, 0.0F, 1.0F);
+        
+        this.GraphicsDevice.UpdateBuffer(this._transformBuffer, 0, finalView * finalProj);
+        
         this.DrawCallCount = 0;
     }
 
@@ -122,6 +133,10 @@ public class SpriteBatch : Disposable {
 
         this._begun = false;
     }
+    
+    // TODO: ADD All Texture drawing methods.
+    // TODO: Add All Font drawing methods.
+    // TODO: Add Methods like: BeginShaderMode (Replace the Pipeline system), BeginBlendMode(), BeginScissorMode.
 
     /// <summary>
     /// Draws a texture using the specified parameters, including position, source rectangle, scale, origin, rotation, color, and flipping.
@@ -135,7 +150,7 @@ public class SpriteBatch : Disposable {
     /// <param name="rotation">The rotation angle in radians.</param>
     /// <param name="color">The color to tint the texture. If null, the texture is drawn with its original colors.</param>
     /// <param name="flip">Specifies how the texture should be flipped horizontally or vertically.</param>
-    public void DrawTexture(Texture2D texture, Sampler sampler, Vector2 position, Rectangle? sourceRect = null, Vector2? scale = null, Vector2? origin = null, float rotation = 0, Color? color = null, SpriteFlip flip = SpriteFlip.None) {
+    public void DrawTexture(Texture2D texture, Sampler sampler, Vector2 position, Rectangle? sourceRect = null, Vector2? scale = null, Vector2? origin = null, float rotation = 0.0F, Color? color = null, SpriteFlip flip = SpriteFlip.None) {
         if (!this._begun) {
             throw new Exception("You must begin the SpriteBatch before calling draw methods!");
         }
@@ -264,7 +279,6 @@ public class SpriteBatch : Disposable {
         this._currentSpritesCount += 1;
     }
     
-    // TODO: ADD TRANSFORM
     /// <summary>
     /// Submits the currently batched sprites to the graphics device for rendering.
     /// This involves updating the vertex and index buffers, setting the necessary pipeline
@@ -276,7 +290,7 @@ public class SpriteBatch : Disposable {
         }
         
         // Update vertex buffer.
-        this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, ref this._vertices[0], (uint) (this._currentSpritesCount * VerticesPerQuad * Marshal.SizeOf<Vertex2D>()));
+        this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, ref this._vertices[0], (uint)(this._currentSpritesCount * VerticesPerQuad * Marshal.SizeOf<Vertex2D>()));
         
         // Set vertex and index buffers.
         this._currentCommandList.SetVertexBuffer(0, this._vertexBuffer);
@@ -284,10 +298,13 @@ public class SpriteBatch : Disposable {
         
         // Set pipeline.
         this._currentCommandList.SetPipeline(this._currentPipeline.Pipeline);
+        
+        // Set transform buffer.
+        this._currentCommandList.SetGraphicsResourceSet(0, this._transformSet);
 
         // Create or get texture.
         if (this._currentTexture != null && this._currentSampler != null) {
-            this._currentCommandList.SetGraphicsResourceSet(0, this.GetOrCreateTextureResourceSet(this._currentTexture, this._currentSampler));
+            this._currentCommandList.SetGraphicsResourceSet(1, this.GetOrCreateTextureResourceSet(this._currentTexture, this._currentSampler));
         }
         
         // Draw.
@@ -308,7 +325,7 @@ public class SpriteBatch : Disposable {
     /// <returns>The resource set that includes the specified texture and sampler.</returns>
     private ResourceSet GetOrCreateTextureResourceSet(Texture2D texture, Sampler sampler) {
         if (!this._cachedTextures.TryGetValue((texture, sampler), out ResourceSet? resourceSet)) {
-            ResourceSet newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(this._currentPipeline.ResourceLayout, texture.DeviceTexture, sampler));
+            ResourceSet newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(this._currentPipeline.ResourceLayouts[1], texture.DeviceTexture, sampler));
                 
             this._cachedTextures.Add((texture, sampler), newResourceSet);
             return newResourceSet;
@@ -332,7 +349,7 @@ public class SpriteBatch : Disposable {
             )
         );
 
-        this._defaultPipeline = new SimplePipeline(this.GraphicsDevice, this._defaultEffect, this._defaultPipelineResourceLayout, this.GraphicsDevice.SwapchainFramebuffer.OutputDescription, BlendStateDescription.SingleOverrideBlend, FaceCullMode.Back);
+        this._defaultPipeline = new SimplePipeline(this.GraphicsDevice, this._defaultEffect, [this._transformLayout, this._defaultPipelineResourceLayout], this.GraphicsDevice.SwapchainFramebuffer.OutputDescription, BlendStateDescription.SingleOverrideBlend, FaceCullMode.Back);
     }
     
     protected override void Dispose(bool disposing) {
