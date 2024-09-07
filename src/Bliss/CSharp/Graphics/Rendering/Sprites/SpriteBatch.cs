@@ -50,7 +50,7 @@ public class SpriteBatch : Disposable {
     private bool _begun;
 
     private CommandList _currentCommandList;
-    private uint _currentSpritesCount;
+    private uint _currentBatchCount;
 
     private Texture2D? _currentTexture;
     private Sampler? _currentSampler;
@@ -73,6 +73,8 @@ public class SpriteBatch : Disposable {
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (capacity * VerticesPerQuad * Marshal.SizeOf<Vertex2D>()), BufferUsage.VertexBuffer));
         
         // Create indices buffer.
+        this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(capacity * IndicesPerQuad * sizeof(ushort), BufferUsage.IndexBuffer));
+        
         this._indices = new ushort[capacity * IndicesPerQuad];
 
         for (int i = 0; i < capacity; i++) {
@@ -88,9 +90,7 @@ public class SpriteBatch : Disposable {
             this._indices[startIndex + 5] = (ushort) (IndicesTemplate[5] + offset);
         }
         
-        this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) this._indices.Length * sizeof(ushort), BufferUsage.IndexBuffer));
-        graphicsDevice.UpdateBuffer(this._indexBuffer, 0, ref this._indices[0], (uint) (this._indices.Length * sizeof(ushort)));
-        //graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this._indices);
+        graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this._indices);
 
         // Create transform buffer.
         this._transformBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) Marshal.SizeOf<Matrix4x4>(), BufferUsage.UniformBuffer));
@@ -132,6 +132,26 @@ public class SpriteBatch : Disposable {
         }
 
         this._begun = false;
+    }
+    
+    public void DrawDebugRectangle(Vector2 position, Vector2 size, Color color) {
+        //Vertex2D[] vertices = new Vertex2D[4];
+        //vertices[0] = new Vertex2D { Position = position, TexCoords = new Vector2(0, 0), Color = color.ToVector4() };
+        //vertices[1] = new Vertex2D { Position = position + new Vector2(size.X, 0), TexCoords = new Vector2(1, 0), Color = color.ToVector4() };
+        //vertices[2] = new Vertex2D { Position = position + new Vector2(0, size.Y), TexCoords = new Vector2(0, 1), Color = color.ToVector4() };
+        //vertices[3] = new Vertex2D { Position = position + new Vector2(size.X, size.Y), TexCoords = new Vector2(1, 1), Color = color.ToVector4() };
+        
+        float texelWidth = 1.0F / 10;
+        float texelHeight = 1.0F / 10;
+
+        Vertex2D[] vertices = {
+            new Vertex2D(new Vector2(-0.75f, 0.75f), new Vector2(texelWidth, texelHeight), RgbaFloat.Red.ToVector4()),
+            new Vertex2D(new Vector2(0.75f, 0.75f), new Vector2(texelWidth, texelHeight), RgbaFloat.Green.ToVector4()),
+            new Vertex2D(new Vector2(-0.75f, -0.75f), new Vector2(texelWidth, texelHeight), RgbaFloat.Blue.ToVector4()),
+            new Vertex2D(new Vector2(0.75f, -0.75f), new Vector2(texelWidth, texelHeight), RgbaFloat.Yellow.ToVector4())
+        };
+        
+        this.AddQuad(vertices[0], vertices[1], vertices[2], vertices[3]);
     }
     
     // TODO: ADD All Texture drawing methods.
@@ -198,7 +218,7 @@ public class SpriteBatch : Disposable {
             TexCoords = new Vector2(
                 flipX ? (finalSource.X + finalSource.Width) * texelWidth : finalSource.X * texelWidth,
                 flipY ? (finalSource.Y + finalSource.Height) * texelHeight : finalSource.Y * texelHeight),
-            Color = finalColor.ToVector4()
+            Color = finalColor.ToRgbaFloat().ToVector4()
         };
         
         float x = VertexTemplate[(int) VertexTemplateType.TopRight].X;
@@ -215,7 +235,7 @@ public class SpriteBatch : Disposable {
             TexCoords = new Vector2(
                 flipX ? finalSource.X * texelWidth : (finalSource.X + finalSource.Width) * texelWidth,
                 flipY ? (finalSource.Y + finalSource.Height) * texelHeight : finalSource.Y * texelHeight),
-            Color = finalColor.ToVector4()
+            Color = finalColor.ToRgbaFloat().ToVector4()
         };
         
         float y = VertexTemplate[(int) VertexTemplateType.BottomLeft].Y;
@@ -232,7 +252,7 @@ public class SpriteBatch : Disposable {
             TexCoords = new Vector2(
                 flipX ? (finalSource.X + finalSource.Width) * texelWidth : finalSource.X * texelWidth,
                 flipY ? finalSource.Y * texelHeight : (finalSource.Y + finalSource.Height) * texelHeight),
-            Color = finalColor.ToVector4()
+            Color = finalColor.ToRgbaFloat().ToVector4()
         };
         
         x = VertexTemplate[(int) VertexTemplateType.BottomRight].X;
@@ -251,7 +271,7 @@ public class SpriteBatch : Disposable {
             TexCoords = new Vector2(
                 flipX ? finalSource.X * texelWidth : (finalSource.X + finalSource.Width) * texelWidth,
                 flipY ? finalSource.Y * texelHeight : (finalSource.Y + finalSource.Height) * texelHeight),
-            Color = finalColor.ToVector4()
+            Color = finalColor.ToRgbaFloat().ToVector4()
         };
         
         this.AddQuad(topLeft, topRight, bottomLeft, bottomRight);
@@ -265,18 +285,18 @@ public class SpriteBatch : Disposable {
     /// <param name="bottomLeft">The vertex at the bottom-left corner of the quad.</param>
     /// <param name="bottomRight">The vertex at the bottom-right corner of the quad.</param>
     public void AddQuad(Vertex2D topLeft, Vertex2D topRight, Vertex2D bottomLeft, Vertex2D bottomRight) {
-        if (this._currentSpritesCount >= (this.Capacity - 1)) {
+        if (this._currentBatchCount >= (this.Capacity - 1)) {
             this.Flush();
         }
         
-        uint index = this._currentSpritesCount * VerticesPerQuad;
+        uint index = this._currentBatchCount * VerticesPerQuad;
 
         this._vertices[index] = topLeft;
         this._vertices[index + 1] = topRight;
         this._vertices[index + 2] = bottomLeft;
         this._vertices[index + 3] = bottomRight;
 
-        this._currentSpritesCount += 1;
+        this._currentBatchCount += 1;
     }
     
     /// <summary>
@@ -285,12 +305,12 @@ public class SpriteBatch : Disposable {
     /// states, and issuing the draw command to render the sprites.
     /// </summary>
     public void Flush() {
-        if (this._currentSpritesCount == 0) {
+        if (this._currentBatchCount == 0) {
             return;
         }
         
         // Update vertex buffer.
-        this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, ref this._vertices[0], (uint)(this._currentSpritesCount * VerticesPerQuad * Marshal.SizeOf<Vertex2D>()));
+        this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, this._vertices);
         
         // Set vertex and index buffers.
         this._currentCommandList.SetVertexBuffer(0, this._vertexBuffer);
@@ -308,10 +328,10 @@ public class SpriteBatch : Disposable {
         }
         
         // Draw.
-        this._currentCommandList.DrawIndexed(this._currentSpritesCount * IndicesPerQuad);
+        this._currentCommandList.DrawIndexed(this._currentBatchCount * IndicesPerQuad);
         
         // Clean up.
-        this._currentSpritesCount = 0;
+        this._currentBatchCount = 0;
         Array.Clear(this._vertices);
         
         this.DrawCallCount++;
