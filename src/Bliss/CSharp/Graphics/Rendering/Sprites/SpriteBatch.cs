@@ -2,18 +2,17 @@ using System.Numerics;
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Effects;
+using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Windowing;
+using FontStashSharp;
 using Veldrid;
 
 namespace Bliss.CSharp.Graphics.Rendering.Sprites;
 
 public class SpriteBatch : Disposable {
-    
-    private const uint VerticesPerQuad = 4;
-    private const uint IndicesPerQuad = 6;
     
     private static readonly Vector2[] VertexTemplate = new Vector2[] {
         new Vector2(0.0F, 0.0F),
@@ -27,11 +26,16 @@ public class SpriteBatch : Disposable {
         2, 3, 1
     };
     
+    private const uint VerticesPerQuad = 4;
+    private const uint IndicesPerQuad = 6;
+    
     public GraphicsDevice GraphicsDevice { get; private set; }
     public Window Window { get; private set; }
     public uint Capacity { get; }
     
     public int DrawCallCount { get; private set; }
+
+    internal FontStashAdapter FontStashAdapter;
     
     private Dictionary<(Effect, BlendState), SimplePipeline> _cachedPipelines;
     private Dictionary<(Texture2D, Sampler), ResourceSet> _cachedTextures;
@@ -62,14 +66,17 @@ public class SpriteBatch : Disposable {
     private Sampler? _currentSampler;
     
     /// <summary>
-    /// Initializes a new instance of the <see cref="SpriteBatch"/> class with the specified graphics device and optional capacity.
+    /// Initializes a new instance of the <see cref="SpriteBatch"/> class, setting up graphics resources and buffers for sprite rendering.
     /// </summary>
-    /// <param name="graphicsDevice">The graphics device used to create resources and manage rendering.</param>
-    /// <param name="capacity">The maximum number of sprites that can be batched together. Defaults to 15360.</param>
+    /// <param name="graphicsDevice">The graphics device used for rendering.</param>
+    /// <param name="window">The window associated with the graphics device.</param>
+    /// <param name="capacity">The maximum number of quads (sprite batches) that can be handled by this sprite batch instance. Default is 15360.</param>
     public SpriteBatch(GraphicsDevice graphicsDevice, Window window, uint capacity = 15360) {
         this.GraphicsDevice = graphicsDevice;
         this.Window = window;
         this.Capacity = capacity;
+
+        this.FontStashAdapter = new FontStashAdapter(graphicsDevice, this);
 
         this._cachedPipelines = new Dictionary<(Effect, BlendState), SimplePipeline>();
         this._cachedTextures = new Dictionary<(Texture2D, Sampler), ResourceSet>();
@@ -106,6 +113,15 @@ public class SpriteBatch : Disposable {
         this._transformSet = graphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(this._transformLayout, this._transformBuffer));
     }
 
+    /// <summary>
+    /// Begins a sprite batch operation, preparing the command list for sprite rendering.
+    /// </summary>
+    /// <param name="commandList">The command list to record rendering commands to.</param>
+    /// <param name="effect">Optional effect to apply; if null, the default effect is used.</param>
+    /// <param name="blendState">Optional blend state to use; if null, the default blend state is used.</param>
+    /// <param name="view">Optional view matrix; if null, an identity matrix is used.</param>
+    /// <param name="projection">Optional projection matrix; if null, an orthographic projection matching the window dimensions is used.</param>
+    /// <exception cref="Exception">Thrown if Begin is called while a previous Begin has not been followed by an End.</exception>
     public void Begin(CommandList commandList, Effect? effect = null, BlendState? blendState = null, Matrix4x4? view = null, Matrix4x4? projection = null) {
         if (this._begun) {
             throw new Exception("The SpriteBatch has already begun!");
@@ -130,10 +146,10 @@ public class SpriteBatch : Disposable {
     }
 
     /// <summary>
-    /// Ends the SpriteBatch process, ensuring that all batched sprites are rendered.
-    /// This method concludes the drawing phase and must be called after all draw calls are made.
-    /// It will throw an exception if the `Begin` method was not called previously.
+    /// Ends the drawing session that was started with the <see cref="Begin(CommandList, Effect?, BlendState?, Matrix4x4?, Matrix4x4?)"/> method.
+    /// This method should be called after all the draw operations are completed for the current batch.
     /// </summary>
+    /// <exception cref="Exception">Thrown if the <see cref="Begin(CommandList, Effect?, BlendState?, Matrix4x4?, Matrix4x4?)"/> method has not been called before calling this method.</exception>
     public void End() {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -142,30 +158,36 @@ public class SpriteBatch : Disposable {
         this._begun = false;
     }
     
-    public void DrawDebugRectangle(Vector2 position, Vector2 size, Color color) {
-        //Vertex2D[] vertices = new Vertex2D[4];
-        //vertices[0] = new Vertex2D { Position = position, TexCoords = new Vector2(0, 0), Color = color.ToVector4() };
-        //vertices[1] = new Vertex2D { Position = position + new Vector2(size.X, 0), TexCoords = new Vector2(1, 0), Color = color.ToVector4() };
-        //vertices[2] = new Vertex2D { Position = position + new Vector2(0, size.Y), TexCoords = new Vector2(0, 1), Color = color.ToVector4() };
-        //vertices[3] = new Vertex2D { Position = position + new Vector2(size.X, size.Y), TexCoords = new Vector2(1, 1), Color = color.ToVector4() };
-        
-        float texelWidth = 1.0F / 10;
-        float texelHeight = 1.0F / 10;
-
-        Vertex2D[] vertices = {
-            new Vertex2D(new Vector2(-0.75f, 0.75f), new Vector2(texelWidth, texelHeight), RgbaFloat.Red.ToVector4()),
-            new Vertex2D(new Vector2(0.75f, 0.75f), new Vector2(texelWidth, texelHeight), RgbaFloat.Green.ToVector4()),
-            new Vertex2D(new Vector2(-0.75f, -0.75f), new Vector2(texelWidth, texelHeight), RgbaFloat.Blue.ToVector4()),
-            new Vertex2D(new Vector2(0.75f, -0.75f), new Vector2(texelWidth, texelHeight), RgbaFloat.Yellow.ToVector4())
-        };
-        
-        this.AddQuad(vertices[0], vertices[1], vertices[2], vertices[3]);
-    }
-    
-    // TODO: ADD All Texture drawing methods.
-    // TODO: Add All Font drawing methods.
     // TODO: Add Methods like: BeginShaderMode (Replace the Pipeline system), BeginBlendMode(), BeginScissorMode.
 
+    public void BeginScissorMode() {
+        
+    }
+
+    public void EndScissorMode() {
+        
+    }
+
+    /// <summary>
+    /// Draws the specified text at the given position with the provided font and styling options.
+    /// </summary>
+    /// <param name="font">The font to be used for drawing the text.</param>
+    /// <param name="text">The text to be drawn.</param>
+    /// <param name="position">The position on the screen where the text will be drawn.</param>
+    /// <param name="size">The size of the text.</param>
+    /// <param name="characterSpacing">Optional spacing between characters. Default is 0.0F.</param>
+    /// <param name="lineSpacing">Optional spacing between lines of text. Default is 0.0F.</param>
+    /// <param name="scale">Optional scale applied to the text. Default is null.</param>
+    /// <param name="origin">Optional origin point for rotation and scaling. Default is null.</param>
+    /// <param name="rotation">Optional rotation angle in radians. Default is 0.0F.</param>
+    /// <param name="color">Optional color of the text. Default is null.</param>
+    /// <param name="style">Optional text style. Default is TextStyle.None.</param>
+    /// <param name="effect">Optional effect applied to the text. Default is FontSystemEffect.None.</param>
+    /// <param name="effectAmount">Optional amount for the effect applied. Default is 0.</param>
+    public void DrawText(Font font, string text, Vector2 position, int size, float characterSpacing = 0.0F, float lineSpacing = 0.0F, Vector2? scale = null, Vector2? origin = null, float rotation = 0.0F, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0) {
+        font.Draw(this, text, position, size, characterSpacing, lineSpacing, scale, origin, rotation, color, style, effect, effectAmount);
+    }
+    
     /// <summary>
     /// Draws a texture using the specified parameters, including position, source rectangle, scale, origin, rotation, color, and flipping.
     /// </summary>
@@ -286,9 +308,9 @@ public class SpriteBatch : Disposable {
         
         this.AddQuad(topLeft, topRight, bottomLeft, bottomRight);
     }
-
+    
     /// <summary>
-    /// Adds a quad (a four-sided polygon) to the sprite batch. This method is used to define a quad using its four vertices.
+    /// Adds a quad to the sprite batch, using the specified vertices.
     /// </summary>
     /// <param name="topLeft">The vertex at the top-left corner of the quad.</param>
     /// <param name="topRight">The vertex at the top-right corner of the quad.</param>
@@ -310,9 +332,9 @@ public class SpriteBatch : Disposable {
     }
     
     /// <summary>
-    /// Submits the currently batched sprites to the graphics device for rendering.
-    /// This involves updating the vertex and index buffers, setting the necessary pipeline
-    /// states, and issuing the draw command to render the sprites.
+    /// Flushes the current batch of sprites, ensuring that all queued draw calls are executed.
+    /// This method updates the vertex buffer, sets the necessary GPU resources, and issues the draw calls.
+    /// Call this method when you need to ensure that all previously enqueued sprites are rendered immediately.
     /// </summary>
     public void Flush() {
         if (this._currentBatchCount == 0) {

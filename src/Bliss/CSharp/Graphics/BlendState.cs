@@ -1,4 +1,3 @@
-using Bliss.CSharp.Logging;
 using Veldrid;
 
 namespace Bliss.CSharp.Graphics;

@@ -1,12 +1,14 @@
 using System.Numerics;
 using Bliss.CSharp;
 using Bliss.CSharp.Colors;
+using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Rendering.Sprites;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Windowing;
+using FontStashSharp;
 using Veldrid;
 using Veldrid.Sdl2;
 
@@ -28,6 +30,7 @@ public class Game : Disposable {
 
     private SpriteBatch _spriteBatch;
     private Texture2D _texture;
+    private Font _font;
     
     public Game(GameSettings settings) {
         Instance = this;
@@ -94,7 +97,8 @@ public class Game : Disposable {
 
     protected virtual void Init() {
         this._spriteBatch = new SpriteBatch(this.GraphicsDevice, this.Window);
-        this._texture = new Texture2D(this.GraphicsDevice, "content/image.png");
+        this._texture = new Texture2D(this.GraphicsDevice, "content/images/icon.png");
+        this._font = new Font("content/fonts/fontoe.ttf");
     }
 
     protected virtual void Update() { }
@@ -110,6 +114,7 @@ public class Game : Disposable {
 
         this._spriteBatch.Begin(commandList);
         this._spriteBatch.DrawTexture(this._texture, SamplerType.Point, new Vector2(this.Window.Width / 2.0F - (216.0F / 4 / 2.0F), this.Window.Height / 2.0F - (85.0F / 4 / 2.0F)), default, new Vector2(4, 4), new Vector2(216.0F / 2.0F, 85.0F / 2.0F), 0, Color.White, SpriteFlip.None);
+        this._spriteBatch.DrawText(this._font, "This is my first FONT!!!", new Vector2(5, 5), 72, rotation: Single.DegreesToRadians(20)); // TODO FIX ROTATION!!!!
         this._spriteBatch.End();
         
         this.CommandList.End();
