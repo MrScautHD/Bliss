@@ -10,6 +10,13 @@
 
 __Bliss__ is a modern `Direct3D11`, `Vulkan`, `OpenGL`, `Metal`, `OpenGL-ES` Render Framework.
 
+# ✨ Features ✨
+- 🎨 Efficient rendering of textures, fonts, and shapes using SpriteBatch.
+- 🎥 User-friendly Camera2D and Camera3D systems for intuitive control.
+- 🎮 Simplified input handling for keyboard, mouse, and gamepads.
+- ✨ Straightforward system for loading and managing effects.
+- 🖼️ Easy-to-implement window management using SDL2.
+- 🎶 Robust and powerful audio system for immersive sound experiences.
 ---
 
 # 🪙 Installation - [Nuget](https://www.nuget.org/packages/Bliss)
