@@ -114,7 +114,7 @@ public class SpriteBatch : Disposable {
         this._currentPipeline = pipeline ?? this._defaultPipeline;
         
         Matrix4x4 finalView = view ?? Matrix4x4.Identity;
-        Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, 1270.0F, 720.0F, 0.0F, 0.0F, 1.0F);
+        Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, 1280.0F, 720.0F, 0.0F, 0.0F, 1.0F); // TODO SET RIGHT RES.
         
         this.GraphicsDevice.UpdateBuffer(this._transformBuffer, 0, finalView * finalProj);
         
@@ -369,7 +369,7 @@ public class SpriteBatch : Disposable {
             )
         );
 
-        this._defaultPipeline = new SimplePipeline(this.GraphicsDevice, this._defaultEffect, [this._transformLayout, this._defaultPipelineResourceLayout], this.GraphicsDevice.SwapchainFramebuffer.OutputDescription, BlendStateDescription.SingleOverrideBlend, FaceCullMode.Back);
+        this._defaultPipeline = new SimplePipeline(this.GraphicsDevice, this._defaultEffect, [this._transformLayout, this._defaultPipelineResourceLayout], this.GraphicsDevice.SwapchainFramebuffer.OutputDescription, BlendStateDescription.SingleOverrideBlend, FaceCullMode.Front);
     }
     
     protected override void Dispose(bool disposing) {

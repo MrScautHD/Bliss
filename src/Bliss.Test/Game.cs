@@ -108,10 +108,9 @@ public class Game : Disposable {
         this.CommandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
         
         this._spriteBatch.Begin(commandList);
-        for (int i = 0; i < 1000; i++) {
-            this._spriteBatch.DrawTexture(this._texture, graphicsDevice.PointSampler, new Vector2(i, i));
-        }
-        //this._spriteBatch.DrawDebugRectangle(new Vector2(1, 1), new Vector2(20, 20), Color.Blue);
+        this._spriteBatch.DrawTexture(this._texture, graphicsDevice.PointSampler, new Vector2(10, 10));
+
+        //this._spriteBatch.DrawDebugRectangle(new Vector2(10, 10), new Vector2(200, 200), Color.Blue);
         this._spriteBatch.End();
         
         this.CommandList.End();

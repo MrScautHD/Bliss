@@ -1,14 +1,16 @@
 using System.Numerics;
+using System.Runtime.InteropServices;
 using Veldrid;
 
 namespace Bliss.CSharp.Geometry;
 
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
 public struct Vertex2D {
     
     public static VertexLayoutDescription VertexLayout = new VertexLayoutDescription(
         new VertexElementDescription("vPosition", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float2),
         new VertexElementDescription("vTexCoords", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float2),
-        new VertexElementDescription("vColor", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Byte4_Norm)
+        new VertexElementDescription("vColor", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float4)
     );
     
     public Vector2 Position;
