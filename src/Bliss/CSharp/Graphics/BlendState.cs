@@ -31,7 +31,6 @@ public class BlendState {
     /// <returns>The <see cref="BlendState"/> instance corresponding to the provided description.</returns>
     public static BlendState FromDescription(BlendStateDescription description) {
         if (!_cachedBlendStates.TryGetValue(description, out BlendState? state)) {
-            Logger.Info("Create a new BlendState.");
             BlendState blendState = new BlendState(description);
             
             _cachedBlendStates.Add(description, blendState);

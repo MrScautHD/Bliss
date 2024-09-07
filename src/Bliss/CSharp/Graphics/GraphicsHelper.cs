@@ -3,6 +3,7 @@ using Veldrid;
 namespace Bliss.CSharp.Graphics;
 
 public static class GraphicsHelper {
+    
     /// <summary>
     /// Retrieves a Sampler object based on the provided SamplerType.
     /// </summary>

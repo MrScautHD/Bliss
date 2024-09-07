@@ -5,6 +5,7 @@ using Veldrid;
 
 namespace Bliss.CSharp.Textures;
 
+// TODO: Take a look if ImageSharp can get replaced with that one that just returns ImageResult.
 public class Texture2D : Disposable {
 
     /// <summary>
