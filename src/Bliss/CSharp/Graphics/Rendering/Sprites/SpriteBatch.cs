@@ -5,6 +5,7 @@ using Bliss.CSharp.Effects;
 using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Textures;
+using Bliss.CSharp.Windowing;
 using Veldrid;
 
 namespace Bliss.CSharp.Graphics.Rendering.Sprites;
@@ -27,6 +28,7 @@ public class SpriteBatch : Disposable {
     };
     
     public GraphicsDevice GraphicsDevice { get; private set; }
+    public Window Window { get; private set; }
     public uint Capacity { get; }
     
     public int DrawCallCount { get; private set; }
@@ -64,8 +66,9 @@ public class SpriteBatch : Disposable {
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used to create resources and manage rendering.</param>
     /// <param name="capacity">The maximum number of sprites that can be batched together. Defaults to 15360.</param>
-    public SpriteBatch(GraphicsDevice graphicsDevice, uint capacity = 15360) {
+    public SpriteBatch(GraphicsDevice graphicsDevice, Window window, uint capacity = 15360) {
         this.GraphicsDevice = graphicsDevice;
+        this.Window = window;
         this.Capacity = capacity;
 
         this._cachedPipelines = new Dictionary<(Effect, BlendState), SimplePipeline>();
@@ -119,7 +122,7 @@ public class SpriteBatch : Disposable {
         this._currentBlendState = blendState ?? BlendState.AlphaBlend;
         
         Matrix4x4 finalView = view ?? Matrix4x4.Identity;
-        Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, 1280.0F, 720.0F, 0.0F, 0.0F, 1.0F); // TODO SET RIGHT RES.
+        Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.Width, this.Window.Height, 0.0F, 0.0F, 1.0F);
         
         this.GraphicsDevice.UpdateBuffer(this._transformBuffer, 0, finalView * finalProj);
         

@@ -93,7 +93,7 @@ public class Game : Disposable {
     }
 
     protected virtual void Init() {
-        this._spriteBatch = new SpriteBatch(this.GraphicsDevice);
+        this._spriteBatch = new SpriteBatch(this.GraphicsDevice, this.Window);
         this._texture = new Texture2D(this.GraphicsDevice, "content/image.png");
     }
 
@@ -109,7 +109,7 @@ public class Game : Disposable {
         this.CommandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
 
         this._spriteBatch.Begin(commandList);
-        this._spriteBatch.DrawTexture(this._texture, SamplerType.Point, new Vector2(150, 150), default, default, new Vector2(216.0F / 2.0F, 85.0F / 2.0F), 0, Color.White, SpriteFlip.None);
+        this._spriteBatch.DrawTexture(this._texture, SamplerType.Point, new Vector2(this.Window.Width / 2.0F - (216.0F / 4 / 2.0F), this.Window.Height / 2.0F - (85.0F / 4 / 2.0F)), default, new Vector2(4, 4), new Vector2(216.0F / 2.0F, 85.0F / 2.0F), 0, Color.White, SpriteFlip.None);
         this._spriteBatch.End();
         
         this.CommandList.End();
