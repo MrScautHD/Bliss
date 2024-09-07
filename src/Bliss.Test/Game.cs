@@ -1,6 +1,7 @@
 using System.Numerics;
 using Bliss.CSharp;
 using Bliss.CSharp.Colors;
+using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Rendering.Sprites;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Logging;
@@ -106,11 +107,9 @@ public class Game : Disposable {
         this.CommandList.Begin();
         this.CommandList.SetFramebuffer(this.GraphicsDevice.SwapchainFramebuffer);
         this.CommandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
-        
-        this._spriteBatch.Begin(commandList);
-        this._spriteBatch.DrawTexture(this._texture, graphicsDevice.PointSampler, new Vector2(150, 150), default, default, new Vector2(216.0F / 2.0F, 85.0F / 2.0F), 0, Color.White, SpriteFlip.None);
 
-        //this._spriteBatch.DrawDebugRectangle(new Vector2(10, 10), new Vector2(200, 200), Color.Blue);
+        this._spriteBatch.Begin(commandList);
+        this._spriteBatch.DrawTexture(this._texture, SamplerType.Point, new Vector2(150, 150), default, default, new Vector2(216.0F / 2.0F, 85.0F / 2.0F), 0, Color.White, SpriteFlip.None);
         this._spriteBatch.End();
         
         this.CommandList.End();

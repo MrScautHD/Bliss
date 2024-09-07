@@ -31,7 +31,10 @@ public class SpriteBatch : Disposable {
     
     public int DrawCallCount { get; private set; }
     
+    private Dictionary<(Effect, BlendState), SimplePipeline> _cachedPipelines;
     private Dictionary<(Texture2D, Sampler), ResourceSet> _cachedTextures;
+    
+    private Effect _defaultEffect;
     
     private Vertex2D[] _vertices;
     private ushort[] _indices;
@@ -42,21 +45,20 @@ public class SpriteBatch : Disposable {
     private DeviceBuffer _transformBuffer;
     private ResourceLayout _transformLayout;
     private ResourceSet _transformSet;
-
-    private Effect _defaultEffect;
-    private ResourceLayout _defaultPipelineResourceLayout;
-    private SimplePipeline _defaultPipeline;
     
     private bool _begun;
+    
+    private ResourceLayout _pipelineLayout;
 
     private CommandList _currentCommandList;
     private uint _currentBatchCount;
 
+    private Effect _currentEffect;
+    private BlendState _currentBlendState;
+    
     private Texture2D? _currentTexture;
     private Sampler? _currentSampler;
-
-    private SimplePipeline _currentPipeline;
-
+    
     /// <summary>
     /// Initializes a new instance of the <see cref="SpriteBatch"/> class with the specified graphics device and optional capacity.
     /// </summary>
@@ -65,8 +67,11 @@ public class SpriteBatch : Disposable {
     public SpriteBatch(GraphicsDevice graphicsDevice, uint capacity = 15360) {
         this.GraphicsDevice = graphicsDevice;
         this.Capacity = capacity;
-        
+
+        this._cachedPipelines = new Dictionary<(Effect, BlendState), SimplePipeline>();
         this._cachedTextures = new Dictionary<(Texture2D, Sampler), ResourceSet>();
+        
+        this._defaultEffect = new Effect(this.GraphicsDevice.ResourceFactory, Vertex2D.VertexLayout, "content/shaders/sprite.vert", "content/shaders/sprite.frag");
         
         // Create vertex buffer.
         this._vertices = new Vertex2D[capacity * VerticesPerQuad];
@@ -92,15 +97,13 @@ public class SpriteBatch : Disposable {
         
         graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this._indices);
 
-        // Create transform buffer.
+        // Create transform buffer. // TODO: TAKE CARE FOR IT!
         this._transformBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) Marshal.SizeOf<Matrix4x4>(), BufferUsage.UniformBuffer));
         this._transformLayout = graphicsDevice.ResourceFactory.CreateResourceLayout(new ResourceLayoutDescription(new ResourceLayoutElementDescription("ProjectionViewBuffer", ResourceKind.UniformBuffer, ShaderStages.Vertex)));
         this._transformSet = graphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(this._transformLayout, this._transformBuffer));
-        
-        this.CreateDefaultPipeline();
     }
 
-    public void Begin(CommandList commandList, Matrix4x4? view = null, Matrix4x4? projection = null, SimplePipeline? pipeline = null) {
+    public void Begin(CommandList commandList, Effect? effect = null, BlendState? blendState = null, Matrix4x4? view = null, Matrix4x4? projection = null) {
         if (this._begun) {
             throw new Exception("The SpriteBatch has already begun!");
         }
@@ -108,10 +111,12 @@ public class SpriteBatch : Disposable {
         
         this._currentCommandList = commandList;
 
-        if (this._currentPipeline != pipeline) {
+        if (this._currentEffect != effect || this._currentBlendState != blendState) {
             this.Flush();
         }
-        this._currentPipeline = pipeline ?? this._defaultPipeline;
+        
+        this._currentEffect = effect ?? this._defaultEffect;
+        this._currentBlendState = blendState ?? BlendState.AlphaBlend;
         
         Matrix4x4 finalView = view ?? Matrix4x4.Identity;
         Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, 1280.0F, 720.0F, 0.0F, 0.0F, 1.0F); // TODO SET RIGHT RES.
@@ -162,7 +167,7 @@ public class SpriteBatch : Disposable {
     /// Draws a texture using the specified parameters, including position, source rectangle, scale, origin, rotation, color, and flipping.
     /// </summary>
     /// <param name="texture">The texture to be drawn.</param>
-    /// <param name="sampler">The sampler state to use for texture sampling.</param>
+    /// <param name="samplerType">The sampler state to use for texture sampling.</param>
     /// <param name="position">The position where the texture will be drawn.</param>
     /// <param name="sourceRect">The source rectangle within the texture. If null, the entire texture is used.</param>
     /// <param name="scale">The scale factor for resizing the texture. If null, the texture is drawn at its original size.</param>
@@ -170,10 +175,12 @@ public class SpriteBatch : Disposable {
     /// <param name="rotation">The rotation angle in radians.</param>
     /// <param name="color">The color to tint the texture. If null, the texture is drawn with its original colors.</param>
     /// <param name="flip">Specifies how the texture should be flipped horizontally or vertically.</param>
-    public void DrawTexture(Texture2D texture, Sampler sampler, Vector2 position, Rectangle? sourceRect = null, Vector2? scale = null, Vector2? origin = null, float rotation = 0.0F, Color? color = null, SpriteFlip flip = SpriteFlip.None) {
+    public void DrawTexture(Texture2D texture, SamplerType samplerType, Vector2 position, Rectangle? sourceRect = null, Vector2? scale = null, Vector2? origin = null, float rotation = 0.0F, Color? color = null, SpriteFlip flip = SpriteFlip.None) {
         if (!this._begun) {
             throw new Exception("You must begin the SpriteBatch before calling draw methods!");
         }
+
+        Sampler sampler = GraphicsHelper.GetSampler(this.GraphicsDevice, samplerType);
         
         if (this._currentTexture != texture || this._currentSampler != sampler) {
             this.Flush();
@@ -317,7 +324,7 @@ public class SpriteBatch : Disposable {
         this._currentCommandList.SetIndexBuffer(this._indexBuffer, IndexFormat.UInt16);
         
         // Set pipeline.
-        this._currentCommandList.SetPipeline(this._currentPipeline.Pipeline);
+        this._currentCommandList.SetPipeline(this.GetOrCreatePipeline(this._currentEffect, this._currentBlendState).Pipeline);
         
         // Set transform buffer.
         this._currentCommandList.SetGraphicsResourceSet(0, this._transformSet);
@@ -338,14 +345,38 @@ public class SpriteBatch : Disposable {
     }
 
     /// <summary>
+    /// Retrieves an existing pipeline associated with the given effect and blend state, or creates a new one if it doesn't exist.
+    /// </summary>
+    /// <param name="effect">The effect to be used for the pipeline.</param>
+    /// <param name="blendState">The blend state description for the pipeline.</param>
+    /// <returns>A SimplePipeline object configured with the provided effect and blend state.</returns>
+    private SimplePipeline GetOrCreatePipeline(Effect effect, BlendState blendState) { // TODO: TAKE A LOOK WHAT YOU DO WITH THE LAYOUTS!!!
+        if (!this._cachedPipelines.TryGetValue((effect, blendState), out SimplePipeline? pipeline)) {
+            this._pipelineLayout = this.GraphicsDevice.ResourceFactory.CreateResourceLayout(new ResourceLayoutDescription() {
+                Elements = [
+                    new ResourceLayoutElementDescription("fTexture", ResourceKind.TextureReadOnly, ShaderStages.Fragment),
+                    new ResourceLayoutElementDescription("fTextureSampler", ResourceKind.Sampler, ShaderStages.Fragment)
+                ]
+            });
+
+            SimplePipeline newPipeline = new SimplePipeline(this.GraphicsDevice, effect, [this._transformLayout, this._pipelineLayout], this.GraphicsDevice.SwapchainFramebuffer.OutputDescription, blendState.Description, FaceCullMode.None);
+            
+            this._cachedPipelines.Add((effect, blendState), newPipeline);
+            return newPipeline;
+        }
+
+        return pipeline;
+    }
+
+    /// <summary>
     /// Retrieves an existing texture resource set or creates a new one if it doesn't exist.
     /// </summary>
     /// <param name="texture">The texture to be used in the resource set.</param>
     /// <param name="sampler">The sampler to be used in the resource set.</param>
     /// <returns>The resource set that includes the specified texture and sampler.</returns>
-    private ResourceSet GetOrCreateTextureResourceSet(Texture2D texture, Sampler sampler) {
+    private ResourceSet GetOrCreateTextureResourceSet(Texture2D texture, Sampler sampler) { // TODO: TAKE A LOOK WHAT YOU DO WITH THE LAYOUTS!!!
         if (!this._cachedTextures.TryGetValue((texture, sampler), out ResourceSet? resourceSet)) {
-            ResourceSet newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(this._currentPipeline.ResourceLayouts[1], texture.DeviceTexture, sampler));
+            ResourceSet newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(this._pipelineLayout, texture.DeviceTexture, sampler));
                 
             this._cachedTextures.Add((texture, sampler), newResourceSet);
             return newResourceSet;
@@ -353,30 +384,19 @@ public class SpriteBatch : Disposable {
 
         return resourceSet;
     }
-
-    /// <summary>
-    /// Creates the default rendering pipeline for the SpriteBatch.
-    /// This includes setting up the default shader programs and
-    /// configuring the necessary resource layouts and pipeline states.
-    /// </summary>
-    private void CreateDefaultPipeline() { // TODO: Replace this with GetOrCreateEffectPipeline.
-        this._defaultEffect = new Effect(this.GraphicsDevice.ResourceFactory, Vertex2D.VertexLayout, "content/shaders/sprite.vert", "content/shaders/sprite.frag");
-        
-        this._defaultPipelineResourceLayout = this.GraphicsDevice.ResourceFactory.CreateResourceLayout(
-            new ResourceLayoutDescription(
-                new ResourceLayoutElementDescription("fTexture", ResourceKind.TextureReadOnly, ShaderStages.Fragment),
-                new ResourceLayoutElementDescription("fTextureSampler", ResourceKind.Sampler, ShaderStages.Fragment)
-            )
-        );
-
-        this._defaultPipeline = new SimplePipeline(this.GraphicsDevice, this._defaultEffect, [this._transformLayout, this._defaultPipelineResourceLayout], this.GraphicsDevice.SwapchainFramebuffer.OutputDescription, BlendStateDescription.SingleAlphaBlend, FaceCullMode.None);
-    }
     
     protected override void Dispose(bool disposing) {
         if (disposing) {
+            foreach (SimplePipeline pipeline in this._cachedPipelines.Values) {
+                pipeline.Dispose();
+            }
+            
             foreach (ResourceSet resourceSet in this._cachedTextures.Values) {
                 resourceSet.Dispose();
             }
+            
+            this._defaultEffect.Dispose();
+            this._pipelineLayout.Dispose();
             
             this._vertexBuffer.Dispose();
             this._indexBuffer.Dispose();
@@ -384,10 +404,6 @@ public class SpriteBatch : Disposable {
             this._transformBuffer.Dispose();
             this._transformLayout.Dispose();
             this._transformSet.Dispose();
-            
-            this._defaultEffect.Dispose();
-            this._defaultPipelineResourceLayout.Dispose();
-            this._defaultPipeline.Dispose();
         }
     }
 }
