@@ -369,7 +369,7 @@ public class SpriteBatch : Disposable {
             )
         );
 
-        this._defaultPipeline = new SimplePipeline(this.GraphicsDevice, this._defaultEffect, [this._transformLayout, this._defaultPipelineResourceLayout], this.GraphicsDevice.SwapchainFramebuffer.OutputDescription, BlendStateDescription.SingleOverrideBlend, FaceCullMode.Front);
+        this._defaultPipeline = new SimplePipeline(this.GraphicsDevice, this._defaultEffect, [this._transformLayout, this._defaultPipelineResourceLayout], this.GraphicsDevice.SwapchainFramebuffer.OutputDescription, BlendStateDescription.SingleAlphaBlend, FaceCullMode.None);
     }
     
     protected override void Dispose(bool disposing) {
@@ -380,6 +380,10 @@ public class SpriteBatch : Disposable {
             
             this._vertexBuffer.Dispose();
             this._indexBuffer.Dispose();
+            
+            this._transformBuffer.Dispose();
+            this._transformLayout.Dispose();
+            this._transformSet.Dispose();
             
             this._defaultEffect.Dispose();
             this._defaultPipelineResourceLayout.Dispose();
