@@ -5,8 +5,15 @@ using Veldrid.SPIRV;
 namespace Bliss.CSharp.Effects;
 
 public class Effect : Disposable {
-
+    
+    /// <summary>
+    /// Represents a pair of shaders consisting of a vertex shader and a fragment shader.
+    /// </summary>
     public readonly (Shader, Shader) Shader;
+
+    /// <summary>
+    /// Describes the layout of vertex data for a graphics pipeline.
+    /// </summary>
     public readonly VertexLayoutDescription VertexLayout;
 
     /// <summary>

@@ -1,13 +1,24 @@
 using System.Numerics;
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Colors;
+using Veldrid;
 
 namespace Bliss.CSharp.Geometry;
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
 public struct Vertex3D {
     
-    // TODO: Add VertexLayout like Vertex2D.
+    /// <summary>
+    /// Represents the layout description for the <see cref="Vertex3D"/> structure.
+    /// </summary>
+    public static VertexLayoutDescription VertexLayout = new VertexLayoutDescription(
+        new VertexElementDescription("vPosition", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float2),
+        new VertexElementDescription("vTexCoords", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float2),
+        new VertexElementDescription("vTexCoords2", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float2),
+        new VertexElementDescription("vNormal", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float3),
+        new VertexElementDescription("vTangent", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float3),
+        new VertexElementDescription("vColor", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float4)
+    );
     
     public Vector3 Position;
     public Vector2 TexCoords;

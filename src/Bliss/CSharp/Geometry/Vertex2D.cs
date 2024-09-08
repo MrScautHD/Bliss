@@ -7,6 +7,9 @@ namespace Bliss.CSharp.Geometry;
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
 public struct Vertex2D {
     
+    /// <summary>
+    /// Represents the layout description for the <see cref="Vertex2D"/> structure.
+    /// </summary>
     public static VertexLayoutDescription VertexLayout = new VertexLayoutDescription(
         new VertexElementDescription("vPosition", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float2),
         new VertexElementDescription("vTexCoords", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float2),

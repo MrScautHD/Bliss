@@ -9,6 +9,9 @@ namespace Bliss.CSharp.Textures;
 // TODO: Take a look if ImageSharp can get replaced with that one that just returns ImageResult.
 public class Texture2D : Disposable {
     
+    /// <summary>
+    /// Gets the graphics device associated with this texture.
+    /// </summary>
     public GraphicsDevice GraphicsDevice { get; private set; }
 
     /// <summary>
@@ -45,6 +48,11 @@ public class Texture2D : Disposable {
     /// Gets the device texture created from the images.
     /// </summary>
     public Texture DeviceTexture { get; private set; }
+
+    /// <summary>
+    /// A dictionary that caches resource sets associated with samplers, used to avoid redundant resource set creation.
+    /// </summary>
+    private Dictionary<(Sampler, ResourceLayout), ResourceSet> _cachedResourceSets;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="Texture2D"/> class with the specified graphics device, image file path, and optional mipmapping and sRGB settings.
@@ -76,6 +84,25 @@ public class Texture2D : Disposable {
         this.Images = mipmap ? MipmapHelper.GenerateMipmaps(image) : [image];
         this.Format = srgb ? PixelFormat.R8_G8_B8_A8_UNorm_SRgb : PixelFormat.R8_G8_B8_A8_UNorm;
         this.DeviceTexture = this.CreateDeviceTexture(graphicsDevice);
+        this._cachedResourceSets = new Dictionary<(Sampler, ResourceLayout), ResourceSet>();
+    }
+
+    /// <summary>
+    /// Gets a resource set associated with the specified sampler and resource layout.
+    /// If the resource set is already cached, it returns the cached resource set; otherwise, it creates and caches a new one.
+    /// </summary>
+    /// <param name="sampler">The sampler used for the resource set.</param>
+    /// <param name="layout">The resource layout used for the resource set.</param>
+    /// <returns>The resource set associated with the specified sampler and resource layout.</returns>
+    public ResourceSet GetResourceSet(Sampler sampler, ResourceLayout layout) {
+        if (!this._cachedResourceSets.TryGetValue((sampler, layout), out ResourceSet? resourceSet)) {
+            ResourceSet newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(layout, this.DeviceTexture, sampler));
+                
+            this._cachedResourceSets.Add((sampler, layout), newResourceSet);
+            return newResourceSet;
+        }
+
+        return resourceSet;
     }
 
     /// <summary>
@@ -141,6 +168,10 @@ public class Texture2D : Disposable {
 
     protected override void Dispose(bool disposing) {
         if (disposing) {
+            foreach (ResourceSet resourceSet in this._cachedResourceSets.Values) {
+                resourceSet.Dispose();
+            }
+            
             this.DeviceTexture.Dispose();
         }
     }

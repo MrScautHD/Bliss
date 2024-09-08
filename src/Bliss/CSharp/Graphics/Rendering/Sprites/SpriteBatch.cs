@@ -5,15 +5,22 @@ using Bliss.CSharp.Effects;
 using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Graphics.Pipelines;
+using Bliss.CSharp.Graphics.Pipelines.Buffers;
+using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Windowing;
 using FontStashSharp;
+using FontStashSharp.Interfaces;
 using Veldrid;
 
 namespace Bliss.CSharp.Graphics.Rendering.Sprites;
 
 public class SpriteBatch : Disposable {
     
+    /// <summary>
+    /// Defines a template for vertex positions used to create a quad. 
+    /// The array contains four <see cref="Vector2"/> instances representing the corners of the quad.
+    /// </summary>
     private static readonly Vector2[] VertexTemplate = new Vector2[] {
         new Vector2(0.0F, 0.0F),
         new Vector2(1.0F, 0.0F),
@@ -21,48 +28,135 @@ public class SpriteBatch : Disposable {
         new Vector2(1.0F, 1.0F),
     };
     
+    /// <summary>
+    /// Defines an index template for rendering two triangles as a quad.
+    /// The array contains six <see cref="ushort"/> values, representing the vertex indices for two triangles.
+    /// </summary>
     private static readonly ushort[] IndicesTemplate = new ushort[] {
         2, 1, 0,
         2, 3, 1
     };
-    
+
+    /// <summary>
+    /// Represents the number of vertices used to define a single quad in the SpriteBatch.
+    /// Each quad is made up of four vertices.
+    /// </summary>
     private const uint VerticesPerQuad = 4;
+
+    /// <summary>
+    /// Represents the number of indices used to define a single quad in the SpriteBatch.
+    /// Each quad is made up of six indices.
+    /// </summary>
     private const uint IndicesPerQuad = 6;
-    
+
+    /// <summary>
+    /// Gets the <see cref="GraphicsDevice"/> associated with the <see cref="SpriteBatch"/>.
+    /// This device is responsible for managing and rendering graphics resources such as buffers, shaders, and textures.
+    /// </summary>
     public GraphicsDevice GraphicsDevice { get; private set; }
+
+    /// <summary>
+    /// Represents the window used for rendering graphics.
+    /// </summary>
     public Window Window { get; private set; }
+
+    /// <summary>
+    /// Specifies the maximum number of sprites that the SpriteBatch can process in a single draw call.
+    /// </summary>
     public uint Capacity { get; }
-    
+
+    /// <summary>
+    /// Gets the number of draw calls made during the current batch rendering session.
+    /// This count is reset to zero each time <see cref="Begin"/> is called and increments with each call to <see cref="Flush"/>.
+    /// </summary>
     public int DrawCallCount { get; private set; }
 
-    internal FontStashAdapter FontStashAdapter;
-    
+    /// <summary>
+    /// Adapter class for integrating the FontStash font rendering library with the SpriteBatch rendering system.
+    /// It implements <see cref="ITexture2DManager"/> and <see cref="IFontStashRenderer"/> interfaces to manage textures and render fonts respectively.
+    /// </summary>
+    internal readonly FontStashAdapter FontStashAdapter;
+
+    /// <summary>
+    /// Stores a collection of reusable pipeline objects, keyed by a combination of <see cref="Effect"/> and <see cref="BlendState"/>.
+    /// This cache helps optimize the rendering process by avoiding the recreation of pipelines during rendering operations.
+    /// </summary>
     private Dictionary<(Effect, BlendState), SimplePipeline> _cachedPipelines;
-    private Dictionary<(Texture2D, Sampler), ResourceSet> _cachedTextures;
-    
+
+    /// <summary>
+    /// Represents the default <see cref="Effect"/> used by the <see cref="SpriteBatch"/> when no specific effect is provided.
+    /// </summary>
     private Effect _defaultEffect;
-    
+
+    /// <summary>
+    /// An array of <see cref="Vertex2D"/> structures representing the vertices used for rendering.
+    /// The array is initialized with a specified capacity and holds vertex data for drawing 2D sprites or shapes.
+    /// </summary>
     private Vertex2D[] _vertices;
+
+    /// <summary>
+    /// An array of <see cref="ushort"/> values representing the indices used for indexing vertices.
+    /// This array defines the order in which vertices are connected to form primitives like triangles or lines.
+    /// </summary>
     private ushort[] _indices;
-    
+
+    /// <summary>
+    /// The buffer used to store vertex data on the GPU. This buffer contains information about vertices such as their positions, colors, and texture coordinates.
+    /// </summary>
     private DeviceBuffer _vertexBuffer;
+    
+    /// <summary>
+    /// The buffer used to store index data on the GPU. This buffer defines the order in which vertices are used to construct geometric primitives.
+    /// </summary>
     private DeviceBuffer _indexBuffer;
-
-    private DeviceBuffer _transformBuffer;
-    private ResourceLayout _transformLayout;
-    private ResourceSet _transformSet;
     
+    /// <summary>
+    /// The resource layout that describes how texture resources are bound in the shader. It specifies the layout of texture and sampler resources for rendering.
+    /// </summary>
+    private SimpleTextureLayout _textureLayout;
+
+    /// <summary>
+    /// A buffer used to store and update the projection-view matrix for the shader.
+    /// It is an instance of <see cref="SimpleBuffer{Matrix4x4}"/> and is used in the rendering process to transform sprite coordinates for rendering on the screen.
+    /// </summary>
+    private SimpleBuffer<Matrix4x4> _projViewBuffer;
+
+    /// <summary>
+    /// Indicates whether a sprite batch operation has begun.
+    /// </summary>
     private bool _begun;
-    
-    private ResourceLayout _pipelineLayout;
 
+    /// <summary>
+    /// Represents the current graphics command list used by the SpriteBatch during rendering.
+    /// </summary>
     private CommandList _currentCommandList;
+
+    /// <summary>
+    /// Tracks the number of quads that have been batched in the current draw call cycle.
+    /// This count helps determine when to flush the batch to the GPU.
+    /// </summary>
     private uint _currentBatchCount;
 
+    /// <summary>
+    /// Holds the currently active effect used for rendering operations in the <see cref="SpriteBatch"/>.
+    /// It determines the shaders and graphical transformations applied to rendered sprites.
+    /// </summary>
     private Effect _currentEffect;
+
+    /// <summary>
+    /// Holds the current blend state used by the <see cref="SpriteBatch"/> for rendering operations.
+    /// Determines how the colors of the rendered sprites are blended with the background.
+    /// </summary>
     private BlendState _currentBlendState;
     
+    /// <summary>
+    /// The currently active texture that is being used for rendering. This field may be null if no texture is currently set.
+    /// </summary>
     private Texture2D? _currentTexture;
+    
+    /// <summary>
+    /// The currently active sampler that is being used with the texture. This field may be null if no sampler is currently set.
+    /// </summary>
     private Sampler? _currentSampler;
     
     /// <summary>
@@ -75,12 +169,11 @@ public class SpriteBatch : Disposable {
         this.GraphicsDevice = graphicsDevice;
         this.Window = window;
         this.Capacity = capacity;
-
         this.FontStashAdapter = new FontStashAdapter(graphicsDevice, this);
-
-        this._cachedPipelines = new Dictionary<(Effect, BlendState), SimplePipeline>();
-        this._cachedTextures = new Dictionary<(Texture2D, Sampler), ResourceSet>();
         
+        this._cachedPipelines = new Dictionary<(Effect, BlendState), SimplePipeline>();
+        
+        // Create default effect.
         this._defaultEffect = new Effect(this.GraphicsDevice.ResourceFactory, Vertex2D.VertexLayout, "content/shaders/sprite.vert", "content/shaders/sprite.frag");
         
         // Create vertex buffer.
@@ -88,9 +181,8 @@ public class SpriteBatch : Disposable {
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (capacity * VerticesPerQuad * Marshal.SizeOf<Vertex2D>()), BufferUsage.VertexBuffer));
         
         // Create indices buffer.
-        this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(capacity * IndicesPerQuad * sizeof(ushort), BufferUsage.IndexBuffer));
-        
         this._indices = new ushort[capacity * IndicesPerQuad];
+        this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(capacity * IndicesPerQuad * sizeof(ushort), BufferUsage.IndexBuffer));
 
         for (int i = 0; i < capacity; i++) {
             var startIndex = i * IndicesPerQuad;
@@ -106,11 +198,12 @@ public class SpriteBatch : Disposable {
         }
         
         graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this._indices);
-
-        // Create transform buffer. // TODO: TAKE CARE FOR IT!
-        this._transformBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) Marshal.SizeOf<Matrix4x4>(), BufferUsage.UniformBuffer));
-        this._transformLayout = graphicsDevice.ResourceFactory.CreateResourceLayout(new ResourceLayoutDescription(new ResourceLayoutElementDescription("ProjectionViewBuffer", ResourceKind.UniformBuffer, ShaderStages.Vertex)));
-        this._transformSet = graphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(this._transformLayout, this._transformBuffer));
+        
+        // Create texture layout.
+        this._textureLayout = new SimpleTextureLayout(this.GraphicsDevice, "fTexture");
+        
+        // Create projection view buffer.
+        this._projViewBuffer = new SimpleBuffer<Matrix4x4>(this.GraphicsDevice, "ProjectionViewBuffer", (uint) Marshal.SizeOf<Matrix4x4>(), SimpleBufferType.Uniform, ShaderStages.Vertex);
     }
 
     /// <summary>
@@ -140,7 +233,7 @@ public class SpriteBatch : Disposable {
         Matrix4x4 finalView = view ?? Matrix4x4.Identity;
         Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.Width, this.Window.Height, 0.0F, 0.0F, 1.0F);
         
-        this.GraphicsDevice.UpdateBuffer(this._transformBuffer, 0, finalView * finalProj);
+        this._projViewBuffer.SetValue(0, finalView * finalProj, true);
         this.DrawCallCount = 0;
     }
 
@@ -156,16 +249,6 @@ public class SpriteBatch : Disposable {
 
         this._begun = false;
         this.Flush();
-    }
-    
-    // TODO: Add Methods like: BeginShaderMode (Replace the Pipeline system), BeginBlendMode(), BeginScissorMode.
-
-    public void BeginScissorMode() {
-        
-    }
-
-    public void EndScissorMode() {
-        
     }
 
     /// <summary>
@@ -351,12 +434,12 @@ public class SpriteBatch : Disposable {
         // Set pipeline.
         this._currentCommandList.SetPipeline(this.GetOrCreatePipeline(this._currentEffect, this._currentBlendState).Pipeline);
         
-        // Set transform buffer.
-        this._currentCommandList.SetGraphicsResourceSet(0, this._transformSet);
+        // Set projection view buffer.
+        this._currentCommandList.SetGraphicsResourceSet(0, this._projViewBuffer.ResourceSet);
 
         // Create or get texture.
         if (this._currentTexture != null && this._currentSampler != null) {
-            this._currentCommandList.SetGraphicsResourceSet(1, this.GetOrCreateTextureResourceSet(this._currentTexture, this._currentSampler));
+            this._currentCommandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this._textureLayout.Layout));
         }
         
         // Draw.
@@ -375,39 +458,15 @@ public class SpriteBatch : Disposable {
     /// <param name="effect">The effect to be used for the pipeline.</param>
     /// <param name="blendState">The blend state description for the pipeline.</param>
     /// <returns>A SimplePipeline object configured with the provided effect and blend state.</returns>
-    private SimplePipeline GetOrCreatePipeline(Effect effect, BlendState blendState) { // TODO: TAKE A LOOK WHAT YOU DO WITH THE LAYOUTS!!!
+    private SimplePipeline GetOrCreatePipeline(Effect effect, BlendState blendState) {
         if (!this._cachedPipelines.TryGetValue((effect, blendState), out SimplePipeline? pipeline)) {
-            this._pipelineLayout = this.GraphicsDevice.ResourceFactory.CreateResourceLayout(new ResourceLayoutDescription() {
-                Elements = [
-                    new ResourceLayoutElementDescription("fTexture", ResourceKind.TextureReadOnly, ShaderStages.Fragment),
-                    new ResourceLayoutElementDescription("fTextureSampler", ResourceKind.Sampler, ShaderStages.Fragment)
-                ]
-            });
-
-            SimplePipeline newPipeline = new SimplePipeline(this.GraphicsDevice, effect, [this._transformLayout, this._pipelineLayout], this.GraphicsDevice.SwapchainFramebuffer.OutputDescription, blendState.Description, FaceCullMode.None);
+            SimplePipeline newPipeline = new SimplePipeline(this.GraphicsDevice, effect, this.GraphicsDevice.SwapchainFramebuffer.OutputDescription, blendState.Description, FaceCullMode.None, [ this._projViewBuffer ], [ this._textureLayout ]);
             
             this._cachedPipelines.Add((effect, blendState), newPipeline);
             return newPipeline;
         }
 
         return pipeline;
-    }
-
-    /// <summary>
-    /// Retrieves an existing texture resource set or creates a new one if it doesn't exist.
-    /// </summary>
-    /// <param name="texture">The texture to be used in the resource set.</param>
-    /// <param name="sampler">The sampler to be used in the resource set.</param>
-    /// <returns>The resource set that includes the specified texture and sampler.</returns>
-    private ResourceSet GetOrCreateTextureResourceSet(Texture2D texture, Sampler sampler) { // TODO: TAKE A LOOK WHAT YOU DO WITH THE LAYOUTS!!!
-        if (!this._cachedTextures.TryGetValue((texture, sampler), out ResourceSet? resourceSet)) {
-            ResourceSet newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(this._pipelineLayout, texture.DeviceTexture, sampler));
-                
-            this._cachedTextures.Add((texture, sampler), newResourceSet);
-            return newResourceSet;
-        }
-
-        return resourceSet;
     }
     
     protected override void Dispose(bool disposing) {
@@ -416,19 +475,13 @@ public class SpriteBatch : Disposable {
                 pipeline.Dispose();
             }
             
-            foreach (ResourceSet resourceSet in this._cachedTextures.Values) {
-                resourceSet.Dispose();
-            }
-            
             this._defaultEffect.Dispose();
-            this._pipelineLayout.Dispose();
             
             this._vertexBuffer.Dispose();
             this._indexBuffer.Dispose();
             
-            this._transformBuffer.Dispose();
-            this._transformLayout.Dispose();
-            this._transformSet.Dispose();
+            this._textureLayout.Dispose();
+            this._projViewBuffer.Dispose();
         }
     }
 }

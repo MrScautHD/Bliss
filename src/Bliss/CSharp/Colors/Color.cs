@@ -51,10 +51,25 @@ public struct Color : IEquatable<Color> {
     public static readonly Color LightGray = new Color(166, 166, 166, 255);
     public static readonly Color Gray = new Color(128, 128, 128, 255);
     public static readonly Color DarkGray = new Color(64, 64, 64, 255);
-    
+
+    /// <summary>
+    /// Represents the red component of the color in the range of 0 to 255.
+    /// </summary>
     public float R;
+
+    /// <summary>
+    /// Represents the green component of the color in the range of 0 to 255.
+    /// </summary>
     public float G;
+
+    /// <summary>
+    /// Represents the blue component of the color in the range of 0 to 255.
+    /// </summary>
     public float B;
+
+    /// <summary>
+    /// Represents the alpha component of the color, indicating its transparency, in the range of 0 to 255.
+    /// </summary>
     public float A;
     
     /// <summary>

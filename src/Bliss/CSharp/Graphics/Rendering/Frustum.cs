@@ -5,6 +5,9 @@ namespace Bliss.CSharp.Graphics.Rendering;
 
 public class Frustum {
     
+    /// <summary>
+    /// An array of planes used in various calculations or spatial operations.
+    /// </summary>
     private Plane[] _planes;
     
     /// <summary>
