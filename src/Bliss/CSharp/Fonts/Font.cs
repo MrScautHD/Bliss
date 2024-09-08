@@ -17,9 +17,34 @@ public class Font : Disposable {
     /// Initializes a new instance of the <see cref="Font"/> class, loading font data from the specified file path.
     /// </summary>
     /// <param name="path">The file path to the font data.</param>
-    public Font(string path) {
-        this.FontData = this.LoadFontData(path);
+    public Font(string path) : this(LoadFontData(path)) { }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Font"/> class with the specified font data.
+    /// </summary>
+    /// <param name="data">A byte array containing the font data.</param>
+    public Font(byte[] data) {
+        this.FontData = data;
         this._fontSystem = this.CreateFontSystem();
+    }
+    
+    /// <summary>
+    /// Loads font data from a specified file path.
+    /// </summary>
+    /// <param name="path">The path to the font file (.ttf) to be loaded.</param>
+    /// <returns>A byte array containing the font data.</returns>
+    /// <exception cref="ApplicationException">Thrown if the file does not exist or is not a .ttf file.</exception>
+    private static byte[] LoadFontData(string path) {
+        if (!File.Exists(path)) {
+            throw new Exception($"No font file found in the path: [{path}]");
+        }
+
+        if (Path.GetExtension(path) != ".ttf") {
+            throw new Exception($"This font type is not supported: [{Path.GetExtension(path)}]");
+        }
+        
+        Logger.Info($"Successfully loaded font data from the path: [{path}]");
+        return File.ReadAllBytes(path);
     }
 
     /// <summary>
@@ -82,21 +107,6 @@ public class Font : Disposable {
 
         Bounds bounds = font.TextBounds(text, Vector2.Zero);
         return new Rectangle((int) bounds.X, (int) bounds.Y, (int) bounds.X2, (int) bounds.Y2);
-    }
-
-    /// <summary>
-    /// Loads font data from a specified file path.
-    /// </summary>
-    /// <param name="path">The path to the font file (.ttf) to be loaded.</param>
-    /// <returns>A byte array containing the font data.</returns>
-    /// <exception cref="ApplicationException">Thrown if the file does not exist or is not a .ttf file.</exception>
-    private byte[] LoadFontData(string path) {
-        if (!File.Exists(path)) {
-            throw new ApplicationException($"No font file found in the path: [{path}]");
-        }
-        
-        Logger.Info($"Successfully loaded font data from the path: [{path}]");
-        return File.ReadAllBytes(path);
     }
 
     /// <summary>

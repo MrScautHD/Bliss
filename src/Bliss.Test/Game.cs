@@ -108,23 +108,25 @@ public class Game : Disposable {
     protected virtual void FixedUpdate() { }
     
     protected virtual void Draw(GraphicsDevice graphicsDevice, CommandList commandList) {
-        this.CommandList.Begin();
-        this.CommandList.SetFramebuffer(graphicsDevice.SwapchainFramebuffer);
-        this.CommandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
+        commandList.Begin();
+        commandList.SetFramebuffer(graphicsDevice.SwapchainFramebuffer);
+        commandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
 
-        this._spriteBatch.Begin(commandList);
+        this._spriteBatch.Begin(commandList, blendState: BlendState.AdditiveBlend);
         
+        // Draw texture.
         this._spriteBatch.DrawTexture(this._texture, SamplerType.Point, new Vector2(this.Window.Width / 2.0F - (216.0F / 4 / 2.0F), this.Window.Height / 2.0F - (85.0F / 4 / 2.0F)), default, new Vector2(4, 4), new Vector2(216.0F / 2.0F, 85.0F / 2.0F), 10, Color.White, SpriteFlip.None);
         
+        // Draw text.
         int textSize = 36;
         string text = "This is my first FONT!!!";
         Vector2 measureTextSize = this._font.MeasureText(text, textSize);
-        this._spriteBatch.DrawText(this._font, text, new Vector2(this.Window.Width / 2.0F - (measureTextSize.X / 2.0F), this.Window.Height / 2.25F - (measureTextSize.Y / 2.0F)), textSize);
+        this._spriteBatch.DrawText(this._font, text, new Vector2(this.Window.Width / 2.0F - (measureTextSize.X / 2.0F), this.Window.Height / 1.25F - (measureTextSize.Y / 2.0F)), textSize);
         
         this._spriteBatch.End();
         
-        this.CommandList.End();
-        graphicsDevice.SubmitCommands(this.CommandList);
+        commandList.End();
+        graphicsDevice.SubmitCommands(commandList);
         graphicsDevice.SwapBuffers();
     }
     

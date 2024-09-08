@@ -16,9 +16,18 @@ public class Effect : Disposable {
     /// <param name="vertexLayout">The vertex layout description to be used with this effect.</param>
     /// <param name="vertPath">The file path to the vertex shader source code.</param>
     /// <param name="fragPath">The file path to the fragment shader source code.</param>
-    public Effect(ResourceFactory resourceFactory, VertexLayoutDescription vertexLayout, string vertPath, string fragPath) {
-        ShaderDescription vertDescription = new ShaderDescription(ShaderStages.Vertex, this.LoadBytecode(vertPath), "main");
-        ShaderDescription fragDescription = new ShaderDescription(ShaderStages.Fragment, this.LoadBytecode(fragPath), "main");
+    public Effect(ResourceFactory resourceFactory, VertexLayoutDescription vertexLayout, string vertPath, string fragPath) : this(resourceFactory, vertexLayout, LoadBytecode(vertPath), LoadBytecode(fragPath)) { }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Effect"/> class with the specified vertex layout and shader bytecode.
+    /// </summary>
+    /// <param name="resourceFactory">The resource factory used to create shaders and resources.</param>
+    /// <param name="vertexLayout">The layout of the vertex data for this effect.</param>
+    /// <param name="vertBytes">A byte array containing the vertex shader bytecode.</param>
+    /// <param name="fragBytes">A byte array containing the fragment shader bytecode.</param>
+    public Effect(ResourceFactory resourceFactory, VertexLayoutDescription vertexLayout, byte[] vertBytes, byte[] fragBytes) {
+        ShaderDescription vertDescription = new ShaderDescription(ShaderStages.Vertex, vertBytes, "main");
+        ShaderDescription fragDescription = new ShaderDescription(ShaderStages.Fragment, fragBytes, "main");
         
         Shader[] shaders = resourceFactory.CreateFromSpirv(vertDescription, fragDescription);
 
@@ -33,9 +42,13 @@ public class Effect : Disposable {
     /// </summary>
     /// <param name="path">The file path to the shader source code.</param>
     /// <returns>A byte array containing the bytecode from the shader file.</returns>
-    private byte[] LoadBytecode(string path) {
-        if (!File.Exists(path) || (Path.GetExtension(path) != ".vert" && Path.GetExtension(path) != ".frag")) {
-            throw new ApplicationException($"No shader file found in the path: [{path}]");
+    private static byte[] LoadBytecode(string path) {
+        if (!File.Exists(path)) {
+            throw new Exception($"No shader file found in the path: [{path}]");
+        }
+        
+        if (Path.GetExtension(path) != ".vert" && Path.GetExtension(path) != ".frag") {
+            throw new Exception($"This shader type is not supported: [{Path.GetExtension(path)}]");
         }
         
         Logger.Info($"Successfully loaded shader bytes from the path: [{path}]");
