@@ -1,9 +1,10 @@
 using System.Numerics;
+using System.Runtime.InteropServices;
 using Bliss.CSharp.Colors;
-using Veldrid;
 
 namespace Bliss.CSharp.Geometry;
 
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
 public struct Vertex3D {
     
     // TODO: Add VertexLayout like Vertex2D.

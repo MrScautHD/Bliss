@@ -155,6 +155,7 @@ public class SpriteBatch : Disposable {
         }
 
         this._begun = false;
+        this.Flush();
     }
     
     // TODO: Add Methods like: BeginShaderMode (Replace the Pipeline system), BeginBlendMode(), BeginScissorMode.
@@ -206,7 +207,7 @@ public class SpriteBatch : Disposable {
 
         Sampler sampler = GraphicsHelper.GetSampler(this.GraphicsDevice, samplerType);
         
-        if (this._currentTexture != texture || this._currentSampler != sampler) { // TODO: FIX SORTING (Without the if check it would work but check it pls!)
+        if (this._currentTexture != texture || this._currentSampler != sampler) {
             this.Flush();
         }
         

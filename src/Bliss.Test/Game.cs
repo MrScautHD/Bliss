@@ -109,7 +109,7 @@ public class Game : Disposable {
     
     protected virtual void Draw(GraphicsDevice graphicsDevice, CommandList commandList) {
         this.CommandList.Begin();
-        this.CommandList.SetFramebuffer(this.GraphicsDevice.SwapchainFramebuffer);
+        this.CommandList.SetFramebuffer(graphicsDevice.SwapchainFramebuffer);
         this.CommandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
 
         this._spriteBatch.Begin(commandList);
@@ -119,13 +119,13 @@ public class Game : Disposable {
         int textSize = 36;
         string text = "This is my first FONT!!!";
         Vector2 measureTextSize = this._font.MeasureText(text, textSize);
-        this._spriteBatch.DrawText(this._font, text, new Vector2(this.Window.Width / 2.0F - (measureTextSize.X / 2.0F), this.Window.Height / 1.25F - (measureTextSize.Y / 2.0F)), textSize, rotation: 0);
+        this._spriteBatch.DrawText(this._font, text, new Vector2(this.Window.Width / 2.0F - (measureTextSize.X / 2.0F), this.Window.Height / 2.25F - (measureTextSize.Y / 2.0F)), textSize);
         
         this._spriteBatch.End();
         
         this.CommandList.End();
-        this.GraphicsDevice.SubmitCommands(this.CommandList);
-        this.GraphicsDevice.SwapBuffers();
+        graphicsDevice.SubmitCommands(this.CommandList);
+        graphicsDevice.SwapBuffers();
     }
     
     protected virtual void OnClose() { }
