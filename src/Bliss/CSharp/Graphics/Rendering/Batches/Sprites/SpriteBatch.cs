@@ -13,7 +13,7 @@ using FontStashSharp;
 using FontStashSharp.Interfaces;
 using Veldrid;
 
-namespace Bliss.CSharp.Graphics.Rendering.Sprites;
+namespace Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 
 public class SpriteBatch : Disposable {
     

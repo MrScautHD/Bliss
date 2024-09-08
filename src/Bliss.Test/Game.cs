@@ -3,12 +3,11 @@ using Bliss.CSharp;
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Graphics;
-using Bliss.CSharp.Graphics.Rendering.Sprites;
+using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Windowing;
-using FontStashSharp;
 using Veldrid;
 using Veldrid.Sdl2;
 
@@ -112,10 +111,10 @@ public class Game : Disposable {
         commandList.SetFramebuffer(graphicsDevice.SwapchainFramebuffer);
         commandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
 
-        this._spriteBatch.Begin(commandList, blendState: BlendState.AdditiveBlend);
+        this._spriteBatch.Begin(commandList);
         
         // Draw texture.
-        this._spriteBatch.DrawTexture(this._texture, SamplerType.Point, new Vector2(this.Window.Width / 2.0F - (216.0F / 4 / 2.0F), this.Window.Height / 2.0F - (85.0F / 4 / 2.0F)), default, new Vector2(4, 4), new Vector2(216.0F / 2.0F, 85.0F / 2.0F), 10, Color.White, SpriteFlip.None);
+        this._spriteBatch.DrawTexture(this._texture, SamplerType.Point, new Vector2(this.Window.Width / 2.0F - (216.0F / 4 / 2.0F), this.Window.Height / 2.0F - (85.0F / 4 / 2.0F)), default, new Vector2(4, 4), new Vector2(216.0F / 2.0F, 85.0F / 2.0F), 10);
         
         // Draw text.
         int textSize = 36;

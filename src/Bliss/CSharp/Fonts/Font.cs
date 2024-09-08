@@ -1,6 +1,6 @@
 using System.Numerics;
 using Bliss.CSharp.Colors;
-using Bliss.CSharp.Graphics.Rendering.Sprites;
+using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 using Bliss.CSharp.Logging;
 using FontStashSharp;
 using Veldrid;
@@ -9,8 +9,14 @@ namespace Bliss.CSharp.Fonts;
 
 public class Font : Disposable {
     
+    /// <summary>
+    /// Gets the byte array containing the raw font data.
+    /// </summary>
     public byte[] FontData { get; private set; }
 
+    /// <summary>
+    /// Represents the font system used to manage and render fonts for the <see cref="Font"/> class.
+    /// </summary>
     private FontSystem _fontSystem;
 
     /// <summary>

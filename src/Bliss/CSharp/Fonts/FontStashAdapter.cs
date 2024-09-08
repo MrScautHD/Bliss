@@ -1,6 +1,6 @@
 using System.Numerics;
 using Bliss.CSharp.Graphics;
-using Bliss.CSharp.Graphics.Rendering.Sprites;
+using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 using Bliss.CSharp.Textures;
 using FontStashSharp;
 using FontStashSharp.Interfaces;
@@ -15,9 +15,20 @@ using Color = Bliss.CSharp.Colors.Color;
 namespace Bliss.CSharp.Fonts;
 
 internal class FontStashAdapter : ITexture2DManager, IFontStashRenderer {
-
+    
+    /// <summary>
+    /// The graphics device used for rendering operations.
+    /// </summary>
     public GraphicsDevice GraphicsDevice { get; private set; }
+
+    /// <summary>
+    /// The sprite batch used for batching sprite draw calls.
+    /// </summary>
     public SpriteBatch SpriteBatch { get; private set; }
+
+    /// <summary>
+    /// The texture manager responsible for managing textures.
+    /// </summary>
     public ITexture2DManager TextureManager { get; }
     
     /// <summary>

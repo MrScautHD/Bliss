@@ -16,8 +16,19 @@ public struct Vertex2D {
         new VertexElementDescription("vColor", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float4)
     );
     
+    /// <summary>
+    /// The position of the vertex in 2D space.
+    /// </summary>
     public Vector2 Position;
+
+    /// <summary>
+    /// The texture coordinates of the vertex.
+    /// </summary>
     public Vector2 TexCoords;
+
+    /// <summary>
+    /// The color of the vertex.
+    /// </summary>
     public Vector4 Color;
     
     /// <summary>
