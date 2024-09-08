@@ -63,7 +63,7 @@ public class SpriteBatch : Disposable {
     /// <summary>
     /// Specifies the maximum number of sprites that the SpriteBatch can process in a single draw call.
     /// </summary>
-    public uint Capacity { get; }
+    public uint Capacity { get; private set; }
 
     /// <summary>
     /// Gets the number of draw calls made during the current batch rendering session.
@@ -200,10 +200,10 @@ public class SpriteBatch : Disposable {
         graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this._indices);
         
         // Create texture layout.
-        this._textureLayout = new SimpleTextureLayout(this.GraphicsDevice, "fTexture");
+        this._textureLayout = new SimpleTextureLayout(graphicsDevice, "fTexture");
         
         // Create projection view buffer.
-        this._projViewBuffer = new SimpleBuffer<Matrix4x4>(this.GraphicsDevice, "ProjectionViewBuffer", (uint) Marshal.SizeOf<Matrix4x4>(), SimpleBufferType.Uniform, ShaderStages.Vertex);
+        this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "ProjectionViewBuffer", (uint) Marshal.SizeOf<Matrix4x4>(), SimpleBufferType.Uniform, ShaderStages.Vertex);
     }
 
     /// <summary>
@@ -460,7 +460,32 @@ public class SpriteBatch : Disposable {
     /// <returns>A SimplePipeline object configured with the provided effect and blend state.</returns>
     private SimplePipeline GetOrCreatePipeline(Effect effect, BlendState blendState) {
         if (!this._cachedPipelines.TryGetValue((effect, blendState), out SimplePipeline? pipeline)) {
-            SimplePipeline newPipeline = new SimplePipeline(this.GraphicsDevice, effect, this.GraphicsDevice.SwapchainFramebuffer.OutputDescription, blendState.Description, FaceCullMode.None, [ this._projViewBuffer ], [ this._textureLayout ]);
+            SimplePipeline newPipeline = new SimplePipeline(this.GraphicsDevice, new SimplePipelineDescription() {
+                BlendState = blendState.Description,
+                DepthStencilState = new DepthStencilStateDescription(true, true, ComparisonKind.LessEqual),
+                RasterizerState = new RasterizerStateDescription() {
+                    DepthClipEnabled = true,
+                    CullMode = FaceCullMode.None,
+                    ScissorTestEnabled = true
+                },
+                PrimitiveTopology = PrimitiveTopology.TriangleList,
+                Buffers = [
+                    this._projViewBuffer
+                ],
+                TextureLayouts = [
+                    this._textureLayout
+                ],
+                ShaderSet = new ShaderSetDescription() {
+                    VertexLayouts = [
+                        effect.VertexLayout
+                    ],
+                    Shaders = [
+                        effect.Shader.Item1,
+                        effect.Shader.Item2
+                    ]
+                },
+                Outputs = this.GraphicsDevice.SwapchainFramebuffer.OutputDescription
+            });
             
             this._cachedPipelines.Add((effect, blendState), newPipeline);
             return newPipeline;
