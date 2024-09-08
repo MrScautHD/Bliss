@@ -66,17 +66,17 @@ internal class FontStashAdapter : ITexture2DManager, IFontStashRenderer {
     /// Draws a texture at the specified position with given parameters for source rectangle, color, rotation, scale, and depth.
     /// </summary>
     /// <param name="texture">The texture to draw.</param>
-    /// <param name="pos">The position where the texture will be drawn.</param>
+    /// <param name="position">The position where the texture will be drawn.</param>
     /// <param name="src">The source rectangle within the texture to draw. If null, the entire texture will be drawn.</param>
     /// <param name="fsColor">The color to apply to the texture.</param>
     /// <param name="rotation">The rotation angle in radians.</param>
     /// <param name="scale">The scale factor to apply to the texture.</param>
     /// <param name="depth">The depth at which to draw the texture.</param>
-    public void Draw(object texture, Vector2 pos, SRectangle? src, FSColor fsColor, float rotation, Vector2 scale, float depth) {
+    public void Draw(object texture, Vector2 position, SRectangle? src, FSColor fsColor, float rotation, Vector2 scale, float depth) {
         Texture2D texture2D = (Texture2D) texture;
         Rectangle? source = src != null ? new Rectangle(src.Value.X, src.Value.Y, src.Value.Width, src.Value.Height) : null;
         Color color = new Color(fsColor.R, fsColor.G, fsColor.B, fsColor.A);
 
-        this.SpriteBatch.DrawTexture(texture2D, SamplerType.Point, pos, source, scale, Vector2.Zero, 0, color);
+        this.SpriteBatch.DrawTexture(texture2D, SamplerType.Point, position, source, scale, Vector2.Zero, Single.RadiansToDegrees(rotation), color);
     }
 }

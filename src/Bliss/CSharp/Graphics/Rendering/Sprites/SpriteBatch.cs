@@ -126,8 +126,8 @@ public class SpriteBatch : Disposable {
         if (this._begun) {
             throw new Exception("The SpriteBatch has already begun!");
         }
-        this._begun = true;
         
+        this._begun = true;
         this._currentCommandList = commandList;
 
         if (this._currentEffect != effect || this._currentBlendState != blendState) {
@@ -141,7 +141,6 @@ public class SpriteBatch : Disposable {
         Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.Width, this.Window.Height, 0.0F, 0.0F, 1.0F);
         
         this.GraphicsDevice.UpdateBuffer(this._transformBuffer, 0, finalView * finalProj);
-        
         this.DrawCallCount = 0;
     }
 
@@ -207,7 +206,7 @@ public class SpriteBatch : Disposable {
 
         Sampler sampler = GraphicsHelper.GetSampler(this.GraphicsDevice, samplerType);
         
-        if (this._currentTexture != texture || this._currentSampler != sampler) {
+        if (this._currentTexture != texture || this._currentSampler != sampler) { // TODO: FIX SORTING (Without the if check it would work but check it pls!)
             this.Flush();
         }
         

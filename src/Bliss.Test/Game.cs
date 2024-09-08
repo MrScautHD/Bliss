@@ -113,8 +113,14 @@ public class Game : Disposable {
         this.CommandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
 
         this._spriteBatch.Begin(commandList);
-        this._spriteBatch.DrawTexture(this._texture, SamplerType.Point, new Vector2(this.Window.Width / 2.0F - (216.0F / 4 / 2.0F), this.Window.Height / 2.0F - (85.0F / 4 / 2.0F)), default, new Vector2(4, 4), new Vector2(216.0F / 2.0F, 85.0F / 2.0F), 0, Color.White, SpriteFlip.None);
-        this._spriteBatch.DrawText(this._font, "This is my first FONT!!!", new Vector2(5, 5), 72, rotation: Single.DegreesToRadians(20)); // TODO FIX ROTATION!!!!
+        
+        this._spriteBatch.DrawTexture(this._texture, SamplerType.Point, new Vector2(this.Window.Width / 2.0F - (216.0F / 4 / 2.0F), this.Window.Height / 2.0F - (85.0F / 4 / 2.0F)), default, new Vector2(4, 4), new Vector2(216.0F / 2.0F, 85.0F / 2.0F), 10, Color.White, SpriteFlip.None);
+        
+        int textSize = 36;
+        string text = "This is my first FONT!!!";
+        Vector2 measureTextSize = this._font.MeasureText(text, textSize);
+        this._spriteBatch.DrawText(this._font, text, new Vector2(this.Window.Width / 2.0F - (measureTextSize.X / 2.0F), this.Window.Height / 1.25F - (measureTextSize.Y / 2.0F)), textSize, rotation: 0);
+        
         this._spriteBatch.End();
         
         this.CommandList.End();

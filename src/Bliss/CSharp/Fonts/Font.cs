@@ -8,7 +8,7 @@ using Veldrid;
 namespace Bliss.CSharp.Fonts;
 
 public class Font : Disposable {
-
+    
     public byte[] FontData { get; private set; }
 
     private FontSystem _fontSystem;
@@ -40,10 +40,9 @@ public class Font : Disposable {
     /// <param name="effectAmount">The intensity of the applied effect. Default is 0.</param>
     public void Draw(SpriteBatch batch, string text, Vector2 position, int size, float characterSpacing = 0.0F, float lineSpacing = 0.0F, Vector2? scale = null, Vector2? origin = null, float rotation = 0.0F, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0) {
         Color finalColor = color ?? Color.White;
-        Vector2 textSize = this.MeasureText(text, size);
-        Vector2 finalOrigin = origin ?? new Vector2(position.X / 2 - (textSize.X / 2), position.Y / 2 - (textSize.Y / 2));
+        Vector2 finalOrigin = origin ?? new Vector2(0.0F, 0.0F);
         
-        this._fontSystem.GetFont(size).DrawText(batch.FontStashAdapter, text, position, new FSColor(finalColor.R, finalColor.G, finalColor.B, finalColor.A), rotation, finalOrigin, scale, default, characterSpacing, lineSpacing, style, effect, effectAmount);
+        this._fontSystem.GetFont(size).DrawText(batch.FontStashAdapter, text, position, new FSColor(finalColor.R, finalColor.G, finalColor.B, finalColor.A), Single.DegreesToRadians(rotation), finalOrigin, scale, default, characterSpacing, lineSpacing, style, effect, effectAmount);
     }
 
     /// <summary>

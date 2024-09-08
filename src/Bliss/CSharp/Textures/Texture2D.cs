@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using Bliss.CSharp.Logging;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
@@ -118,6 +119,8 @@ public class Texture2D : Disposable {
     /// </summary>
     /// <param name="graphicsDevice">The graphics device on which to create the texture.</param>
     private unsafe Texture CreateDeviceTexture(GraphicsDevice graphicsDevice) {
+        // TODO: DO MSSA: this.GraphicsDevice.GetSampleCountLimit(this.Format, false);
+        
         Texture texture = graphicsDevice.ResourceFactory.CreateTexture(TextureDescription.Texture2D(this.Width, this.Height, this.MipLevels, 1, this.Format, TextureUsage.Sampled));
         
         for (int i = 0; i < this.MipLevels; i++) {
