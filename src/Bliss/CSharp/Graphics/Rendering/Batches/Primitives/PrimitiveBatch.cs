@@ -1,10 +1,10 @@
 using System.Numerics;
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Effects;
-using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.VertexTypes;
+using Bliss.CSharp.Logging;
 using Bliss.CSharp.Windowing;
 using Veldrid;
 
@@ -16,20 +16,11 @@ public class PrimitiveBatch : Disposable {
     /// Defines a template for vertex positions used to create a quad. 
     /// The array contains four <see cref="Vector2"/> instances representing the corners of the quad.
     /// </summary>
-    private static readonly Vector2[] VertexTemplate = new Vector2[] {
+    private static readonly Vector2[] QuadVertexTemplate = new Vector2[] {
         new Vector2(0.0F, 0.0F),
         new Vector2(1.0F, 0.0F),
         new Vector2(0.0F, 1.0F),
         new Vector2(1.0F, 1.0F),
-    };
-    
-    /// <summary>
-    /// Defines an index template for rendering two triangles as a quad.
-    /// The array contains six <see cref="ushort"/> values, representing the vertex indices for two triangles.
-    /// </summary>
-    private static readonly ushort[] IndicesTemplate = new ushort[] {
-        2, 1, 0,
-        2, 3, 1
     };
     
     public GraphicsDevice GraphicsDevice { get; private set; }
@@ -37,25 +28,19 @@ public class PrimitiveBatch : Disposable {
     public uint Capacity { get; private set; }
     public int DrawCallCount { get; private set; }
     
-    private SimpleBuffer<Matrix4x4> _projViewBuffer;
-    
     private Effect _effect;
+    private SimpleBuffer<Matrix4x4> _projViewBuffer;
     private SimplePipeline _pipelineTriangleList;
     private SimplePipeline _pipelineTriangleStrip;
     private SimplePipeline _pipelineLineLoop;
     
     private PrimitiveVertex2D[] _vertices;
-    private ushort[] _indices;
-
     private DeviceBuffer _vertexBuffer;
-    private DeviceBuffer _indexBuffer;
     
     private bool _begun;
     
     private CommandList _currentCommandList;
-    
     private uint _currentBatchCount;
-
     private SimplePipeline? _currentPipeline;
     
     public PrimitiveBatch(GraphicsDevice graphicsDevice, Window window, uint capacity = 15360) {
@@ -130,8 +115,37 @@ public class PrimitiveBatch : Disposable {
         this.Flush();
     }
 
-    private void AddVertices(int count) {
+    public void DrawLine() {
         
+    }
+
+    public void DrawRectangle() {
+        
+    }
+
+    public void DrawCircle() {
+        
+    }
+
+    private void AddVertices(SimplePipeline pipeline, int count) {
+        if (this._currentPipeline != pipeline) {
+            this.Flush();
+        }
+
+        this._currentPipeline = pipeline;
+        
+        // TODO: USE THIS TO CHECK!
+        Logger.Error("Capacity: " + (this.Capacity - 1));
+        Logger.Error("Vertex: " + this._vertices.Length);
+        
+        if (this._currentBatchCount + count >= (this.Capacity - 1)) { // TODO: Check if -1 is right.
+            this.Flush();
+        }
+
+        for (int i = 0; i < count; i++) {
+            this._vertices[this._currentBatchCount] = default; //  Temp vertices (because clear a array is way more efficent then creating everytime a new one!)
+            this._currentBatchCount += 1;
+        }
     }
     
     private void Flush() {
@@ -161,7 +175,11 @@ public class PrimitiveBatch : Disposable {
     
     protected override void Dispose(bool disposing) {
         if (disposing) {
-            
+            this._effect.Dispose();
+            this._projViewBuffer.Dispose();
+            this._pipelineTriangleList.Dispose();
+            this._pipelineTriangleStrip.Dispose();
+            this._pipelineLineLoop.Dispose();
         }
     }
 }
