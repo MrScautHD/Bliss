@@ -39,15 +39,15 @@ Coming SoOn!
 # 💻 Platforms
 [<img src="https://github.com/MrScautHD/Sparkle/assets/65916181/a92bd5fa-517b-44c2-ab58-cc01b5ae5751" alt="windows" width="70" height="70" align="left">](https://www.microsoft.com/de-at/windows)
 ### Windows
-- Using `Direct3D11`, `Vulkan`, `OpenGL`, `OpenGL-ES`
+- Graphics API's: `Direct3D11`, `Vulkan`, `OpenGL`, `OpenGL-ES`
 
 [<img src="https://github.com/MrScautHD/Sparkle/assets/65916181/f9e643a8-4d46-450c-91ac-d220394ecd42" alt="Linux" width="70" height="70" align="left">](https://www.ubuntu.com/)
 ### Linux
-- Using `Vulkan`, `OpenGL`, `OpenGL-ES`
+- Graphics API's `Vulkan`, `OpenGL`, `OpenGL-ES`
 
 [<img src="https://github.com/MrScautHD/Sparkle/assets/65916181/e37eb15f-4237-47ae-9ae7-e4455f7c3d92" alt="macOS" width="70" height="70" align="left">](https://www.apple.com/at/macos/sonoma/)
 ### MacOS
-- Using `Metal`, `Vulkan`, `OpenGL`, `OpenGL-ES`
+- Graphics API's `Metal`, `Vulkan`, `OpenGL`, `OpenGL-ES`
 
 # 🧑 Contributors
 <a href="https://github.com/mrscauthd/Bliss/graphs/contributors">
