@@ -2,13 +2,13 @@ using System.Numerics;
 using System.Runtime.InteropServices;
 using Veldrid;
 
-namespace Bliss.CSharp.Geometry;
+namespace Bliss.CSharp.Graphics.VertexTypes;
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct Vertex2D {
+public struct SpriteVertex2D {
     
     /// <summary>
-    /// Represents the layout description for the <see cref="Vertex2D"/> structure.
+    /// Represents the layout description for the <see cref="SpriteVertex2D"/> structure.
     /// </summary>
     public static VertexLayoutDescription VertexLayout = new VertexLayoutDescription(
         new VertexElementDescription("vPosition", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float2),
@@ -32,12 +32,12 @@ public struct Vertex2D {
     public Vector4 Color;
     
     /// <summary>
-    /// Initializes a new instance of the <see cref="Vertex2D"/> struct with the specified position, texture coordinates, and color.
+    /// Initializes a new instance of the <see cref="SpriteVertex2D"/> struct with the specified position, texture coordinates, and color.
     /// </summary>
     /// <param name="position">The 2D position of the vertex.</param>
     /// <param name="texCoords">The texture coordinates of the vertex.</param>
     /// <param name="color">The color of the vertex as a vector with RGBA components.</param>
-    public Vertex2D(Vector2 position, Vector2 texCoords, Vector4 color) {
+    public SpriteVertex2D(Vector2 position, Vector2 texCoords, Vector4 color) {
         this.Position = position;
         this.TexCoords = texCoords;
         this.Color = color;

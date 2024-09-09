@@ -4,6 +4,7 @@ using Bliss.CSharp.Effects;
 using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
+using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Windowing;
 using Veldrid;
 
@@ -37,25 +38,36 @@ public class PrimitiveBatch : Disposable {
     public int DrawCallCount { get; private set; }
     
     private SimpleBuffer<Matrix4x4> _projViewBuffer;
-
+    
     private Effect _effect;
     private SimplePipeline _pipelineTriangleList;
     private SimplePipeline _pipelineTriangleStrip;
     private SimplePipeline _pipelineLineLoop;
     
+    private PrimitiveVertex2D[] _vertices;
+    private ushort[] _indices;
+
+    private DeviceBuffer _vertexBuffer;
+    private DeviceBuffer _indexBuffer;
+    
     private bool _begun;
     
     private CommandList _currentCommandList;
+    
+    private uint _currentBatchCount;
 
-    private SimplePipeline _currentPipeline;
-
+    private SimplePipeline? _currentPipeline;
+    
     public PrimitiveBatch(GraphicsDevice graphicsDevice, Window window, uint capacity = 15360) {
         this.GraphicsDevice = graphicsDevice;
         this.Window = window;
         this.Capacity = capacity;
         
         // Create effects.
-        this._effect = new Effect(graphicsDevice.ResourceFactory, Vertex2D.VertexLayout, "content/shaders/primitive.vert", "content/shaders/primitive.frag");
+        this._effect = new Effect(graphicsDevice.ResourceFactory, PrimitiveVertex2D.VertexLayout, "content/shaders/primitive.vert", "content/shaders/primitive.frag");
+        
+        // Create projection view buffer.
+        this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "ProjectionViewBuffer", (uint) Marshal.SizeOf<Matrix4x4>(), SimpleBufferType.Uniform, ShaderStages.Vertex);
 
         // Create pipelines.
         SimplePipelineDescription pipelineDescription = new SimplePipelineDescription() {
@@ -65,9 +77,12 @@ public class PrimitiveBatch : Disposable {
                 DepthClipEnabled = true,
                 CullMode = FaceCullMode.None
             },
+            Buffers = [
+                this._projViewBuffer
+            ],
             ShaderSet = new ShaderSetDescription() {
                 VertexLayouts = [
-                    Vertex2D.VertexLayout
+                    PrimitiveVertex2D.VertexLayout
                 ],
                 Shaders = [
                     this._effect.Shader.Item1,
@@ -86,8 +101,9 @@ public class PrimitiveBatch : Disposable {
         pipelineDescription.PrimitiveTopology = PrimitiveTopology.LineStrip;
         this._pipelineLineLoop = new SimplePipeline(graphicsDevice, pipelineDescription);
         
-        // Create projection view buffer.
-        this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "ProjectionViewBuffer", (uint) Marshal.SizeOf<Matrix4x4>(), SimpleBufferType.Uniform, ShaderStages.Vertex);
+        // Create vertex buffer.
+        this._vertices = new PrimitiveVertex2D[capacity];
+        this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (capacity * Marshal.SizeOf<PrimitiveVertex2D>()), BufferUsage.VertexBuffer));
     }
 
     public void Begin(CommandList commandList, Matrix4x4? view = null, Matrix4x4? projection = null) {
@@ -114,9 +130,32 @@ public class PrimitiveBatch : Disposable {
         this.Flush();
     }
 
+    private void AddVertices(int count) {
+        
+    }
+    
     private void Flush() {
+        if (this._currentBatchCount == 0 || this._currentPipeline == null) {
+            return;
+        }
+                
+        // Update vertex buffer.
+        this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, this._vertices);
+        
+        // Set vertex buffer.
+        this._currentCommandList.SetVertexBuffer(0, this._vertexBuffer);
+        
+        // Set pipeline.
+        this._currentCommandList.SetPipeline(this._currentPipeline.Pipeline);
+        
+        // Set projection view buffer.
+        this._currentCommandList.SetGraphicsResourceSet(0, this._projViewBuffer.ResourceSet);
+        
+        // Draw.
+        this._currentCommandList.Draw(this._currentBatchCount);
 
-
+        this._currentBatchCount = 0;
+        this._currentPipeline = null;
         this.DrawCallCount++;
     }
     

@@ -1,6 +1,7 @@
 using System.Numerics;
 using Assimp;
 using Bliss.CSharp.Geometry.Conversions;
+using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Logging;
 using Veldrid;
 using AMesh = Assimp.Mesh;

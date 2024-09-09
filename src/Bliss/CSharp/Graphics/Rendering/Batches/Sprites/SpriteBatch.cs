@@ -3,10 +3,10 @@ using System.Runtime.InteropServices;
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Effects;
 using Bliss.CSharp.Fonts;
-using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
+using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Windowing;
 using FontStashSharp;
@@ -92,7 +92,7 @@ public class SpriteBatch : Disposable {
     /// An array of <see cref="Vertex2D"/> structures representing the vertices used for rendering.
     /// The array is initialized with a specified capacity and holds vertex data for drawing 2D sprites or shapes.
     /// </summary>
-    private Vertex2D[] _vertices;
+    private SpriteVertex2D[] _vertices;
 
     /// <summary>
     /// An array of <see cref="ushort"/> values representing the indices used for indexing vertices.
@@ -174,11 +174,11 @@ public class SpriteBatch : Disposable {
         this._cachedPipelines = new Dictionary<(Effect, BlendState), SimplePipeline>();
         
         // Create default effect.
-        this._defaultEffect = new Effect(this.GraphicsDevice.ResourceFactory, Vertex2D.VertexLayout, "content/shaders/sprite.vert", "content/shaders/sprite.frag");
+        this._defaultEffect = new Effect(this.GraphicsDevice.ResourceFactory, SpriteVertex2D.VertexLayout, "content/shaders/sprite.vert", "content/shaders/sprite.frag");
         
         // Create vertex buffer.
-        this._vertices = new Vertex2D[capacity * VerticesPerQuad];
-        this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (capacity * VerticesPerQuad * Marshal.SizeOf<Vertex2D>()), BufferUsage.VertexBuffer));
+        this._vertices = new SpriteVertex2D[capacity * VerticesPerQuad];
+        this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (capacity * VerticesPerQuad * Marshal.SizeOf<SpriteVertex2D>()), BufferUsage.VertexBuffer));
         
         // Create indices buffer.
         this._indices = new ushort[capacity * IndicesPerQuad];
@@ -287,16 +287,7 @@ public class SpriteBatch : Disposable {
         if (!this._begun) {
             throw new Exception("You must begin the SpriteBatch before calling draw methods!");
         }
-
-        Sampler sampler = GraphicsHelper.GetSampler(this.GraphicsDevice, samplerType);
         
-        if (this._currentTexture != texture || this._currentSampler != sampler) {
-            this.Flush();
-        }
-        
-        this._currentTexture = texture;
-        this._currentSampler = sampler;
-
         Rectangle finalSource = sourceRect ?? new Rectangle(0, 0, (int) texture.Width, (int) texture.Height);
         Color finalColor = color ?? Color.White;
         Vector2 finalScale = scale ?? new Vector2(1.0F, 1.0F);
@@ -322,7 +313,7 @@ public class SpriteBatch : Disposable {
             cos = MathF.Cos(radiansRot);
         }
         
-        Vertex2D topLeft = new Vertex2D() {
+        SpriteVertex2D topLeft = new SpriteVertex2D() {
             Position = rotation == 0.0F 
                 ? new Vector2(
                     position.X - spriteOrigin.X,
@@ -339,7 +330,7 @@ public class SpriteBatch : Disposable {
         float x = VertexTemplate[(int) VertexTemplateType.TopRight].X;
         float w = spriteScale.X * x;
 
-        Vertex2D topRight = new Vertex2D() {
+        SpriteVertex2D topRight = new SpriteVertex2D() {
             Position = rotation == 0.0F
                 ? new Vector2(
                     (position.X - spriteOrigin.X) + w,
@@ -356,7 +347,7 @@ public class SpriteBatch : Disposable {
         float y = VertexTemplate[(int) VertexTemplateType.BottomLeft].Y;
         float h = spriteScale.Y * y;
 
-        Vertex2D bottomLeft = new Vertex2D() {
+        SpriteVertex2D bottomLeft = new SpriteVertex2D() {
             Position = rotation == 0.0F
                 ? new Vector2(
                     position.X - spriteOrigin.X,
@@ -375,7 +366,7 @@ public class SpriteBatch : Disposable {
         w = spriteScale.X * x;
         h = spriteScale.Y * y;
 
-        Vertex2D bottomRight = new Vertex2D() {
+        SpriteVertex2D bottomRight = new SpriteVertex2D() {
             Position = rotation == 0.0F
                 ? new Vector2(
                     position.X - spriteOrigin.X + w,
@@ -389,17 +380,26 @@ public class SpriteBatch : Disposable {
             Color = finalColor.ToRgbaFloat().ToVector4()
         };
         
-        this.AddQuad(topLeft, topRight, bottomLeft, bottomRight);
+        this.AddQuad(texture, GraphicsHelper.GetSampler(this.GraphicsDevice, samplerType), topLeft, topRight, bottomLeft, bottomRight);
     }
-    
+
     /// <summary>
-    /// Adds a quad to the sprite batch, using the specified vertices.
+    /// Adds a quad to the sprite batch for rendering.
     /// </summary>
+    /// <param name="texture">The texture to be applied to the quad.</param>
+    /// <param name="sampler">The sampler state for the texture.</param>
     /// <param name="topLeft">The vertex at the top-left corner of the quad.</param>
     /// <param name="topRight">The vertex at the top-right corner of the quad.</param>
     /// <param name="bottomLeft">The vertex at the bottom-left corner of the quad.</param>
     /// <param name="bottomRight">The vertex at the bottom-right corner of the quad.</param>
-    public void AddQuad(Vertex2D topLeft, Vertex2D topRight, Vertex2D bottomLeft, Vertex2D bottomRight) {
+    public void AddQuad(Texture2D texture, Sampler sampler, SpriteVertex2D topLeft, SpriteVertex2D topRight, SpriteVertex2D bottomLeft, SpriteVertex2D bottomRight) {
+        if (this._currentTexture != texture || this._currentSampler != sampler) {
+            this.Flush();
+        }
+        
+        this._currentTexture = texture;
+        this._currentSampler = sampler;
+        
         if (this._currentBatchCount >= (this.Capacity - 1)) {
             this.Flush();
         }

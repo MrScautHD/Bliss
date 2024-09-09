@@ -1,3 +1,5 @@
+using Bliss.CSharp.Graphics.VertexTypes;
+
 namespace Bliss.CSharp.Geometry;
 
 // TODO: Add Material

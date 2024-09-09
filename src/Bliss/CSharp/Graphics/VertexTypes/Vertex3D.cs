@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using Bliss.CSharp.Colors;
 using Veldrid;
 
-namespace Bliss.CSharp.Geometry;
+namespace Bliss.CSharp.Graphics.VertexTypes;
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
 public struct Vertex3D {
