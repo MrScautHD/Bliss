@@ -1,14 +1,33 @@
 using System.Runtime.InteropServices;
+using System.Text;
 using Bliss.CSharp.Interact.Gamepads;
 using Bliss.CSharp.Logging;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
-using SixLabors.ImageSharp.Processing;
 using Veldrid.Sdl2;
 
 namespace Bliss.CSharp.Windowing;
 
 public static class Sdl2Helper {
+    
+    /// <summary>
+    /// Retrieves the current SDL error message, if any.
+    /// </summary>
+    /// <returns>Returns a <see cref="string"/> representing the current SDL error message. If no error message is available, returns an empty string.</returns>
+    public static unsafe string GetErrorMessage() {
+        byte* error = Sdl2Native.SDL_GetError();
+
+        if (error == null) {
+            return "";
+        }
+
+        int chars = 0;
+        while (error[chars] != 0) {
+            chars++;
+        }
+
+        return Encoding.UTF8.GetString(error, chars);
+    }
     
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate bool SdlGetRelativeMouseMode();
@@ -46,14 +65,14 @@ public static class Sdl2Helper {
     private static SdlSetWindowIcon _setWindowIcon = Sdl2Native.LoadFunction<SdlSetWindowIcon>("SDL_SetWindowIcon");
     
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    private delegate nint CreateRgbSurfaceFrom(nint pixels, int width, int height, int depth, int pitch, uint rMask, uint gMask, uint bMask, uint aMask);
+
+    private static CreateRgbSurfaceFrom _createRgbSurfaceFrom = Sdl2Native.LoadFunction<CreateRgbSurfaceFrom>("SDL_CreateRGBSurfaceFrom");
+    
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     private delegate void SdlFreeSurface(nint surface);
     
     private static SdlFreeSurface _freeSurface = Sdl2Native.LoadFunction<SdlFreeSurface>("SDL_FreeSurface");
-
-    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    private delegate nint CreateRgbSurfaceFrom(nint pixels, int width, int height, int depth, int pitch, uint rmask, uint gmask, uint bmask, uint amask);
-
-    private static CreateRgbSurfaceFrom _createRgbSurfaceFrom = Sdl2Native.LoadFunction<CreateRgbSurfaceFrom>("SDL_CreateRGBSurfaceFrom");
 
     /// <summary>
     /// Sets the window icon for a specified SDL2 window using the provided image.
@@ -68,11 +87,10 @@ public static class Sdl2Helper {
             nint surface = _createRgbSurfaceFrom((nint) dataPtr, image.Width, image.Height, 32, image.Width * 4, 0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000);
 
             if (surface == nint.Zero) {
-                Logger.Error("Failed to set Sdl2 window icon!");
+                Logger.Error($"Failed to set Sdl2 window icon: {GetErrorMessage()}");
             }
 
             _setWindowIcon(window.SdlWindowHandle, surface);
-
             _freeSurface(surface);
         }
     }
