@@ -1,7 +1,11 @@
 using System.Numerics;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
 using Veldrid.Sdl2;
 using Veldrid.StartupUtilities;
+using Point = Veldrid.Point;
+using Rectangle = Veldrid.Rectangle;
 
 namespace Bliss.CSharp.Windowing;
 
@@ -264,6 +268,14 @@ public class Window {
     public bool BorderVisible {
         get => this.Sdl2Window.BorderVisible;
         set => this.Sdl2Window.BorderVisible = value;
+    }
+
+    /// <summary>
+    /// Sets the icon for the window using the specified image.
+    /// </summary>
+    /// <param name="image">The image to use as the icon, represented as an <see cref="Image{Rgba32}"/>.</param>
+    public void SetIcon(Image<Rgba32> image) {
+        Sdl2Helper.SetWindowIcon(this.Sdl2Window, image);
     }
 
     /// <summary>

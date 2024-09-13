@@ -285,10 +285,6 @@ public class SpriteBatch : Disposable {
     /// <param name="color">The color to tint the texture. If null, the texture is drawn with its original colors.</param>
     /// <param name="flip">Specifies how the texture should be flipped horizontally or vertically.</param>
     public void DrawTexture(Texture2D texture, SamplerType samplerType, Vector2 position, Rectangle? sourceRect = null, Vector2? scale = null, Vector2? origin = null, float rotation = 0.0F, Color? color = null, SpriteFlip flip = SpriteFlip.None) {
-        if (!this._begun) {
-            throw new Exception("You must begin the SpriteBatch before calling draw methods!");
-        }
-        
         Rectangle finalSource = sourceRect ?? new Rectangle(0, 0, (int) texture.Width, (int) texture.Height);
         Color finalColor = color ?? Color.White;
         Vector2 finalScale = scale ?? new Vector2(1.0F, 1.0F);
@@ -394,6 +390,10 @@ public class SpriteBatch : Disposable {
     /// <param name="bottomLeft">The vertex at the bottom-left corner of the quad.</param>
     /// <param name="bottomRight">The vertex at the bottom-right corner of the quad.</param>
     public void AddQuad(Texture2D texture, Sampler sampler, SpriteVertex2D topLeft, SpriteVertex2D topRight, SpriteVertex2D bottomLeft, SpriteVertex2D bottomRight) {
+        if (!this._begun) {
+            throw new Exception("You must begin the SpriteBatch before calling draw methods!");
+        }
+        
         if (this._currentTexture != texture || this._currentSampler != sampler) {
             this.Flush();
         }

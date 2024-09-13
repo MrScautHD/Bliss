@@ -73,4 +73,12 @@ public struct SimplePipelineDescription {
         this.Outputs = outputs;
         this.ResourceBindingModel = null;
     }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="SimplePipelineDescription"/> struct.
+    /// </summary>
+    public SimplePipelineDescription() {
+        this.Buffers = [];
+        this.TextureLayouts = [];
+    }
 }

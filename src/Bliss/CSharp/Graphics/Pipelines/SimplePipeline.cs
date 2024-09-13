@@ -42,12 +42,12 @@ public class SimplePipeline : Disposable {
             this.ResourceLayouts[layoutIndex] = buffer.ResourceLayout;
             layoutIndex += 1;
         }
-        
+
         foreach (SimpleTextureLayout textureLayout in this.PipelineDescription.TextureLayouts) {
             this.ResourceLayouts[layoutIndex] = textureLayout.Layout;
             layoutIndex += 1;
         }
-        
+
         this.Pipeline = this.GraphicsDevice.ResourceFactory.CreateGraphicsPipeline(new GraphicsPipelineDescription() {
            BlendState = pipelineDescription.BlendState,
            DepthStencilState = pipelineDescription.DepthStencilState,

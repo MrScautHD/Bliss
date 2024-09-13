@@ -1,5 +1,9 @@
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Interact.Gamepads;
+using Bliss.CSharp.Logging;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp.Processing;
 using Veldrid.Sdl2;
 
 namespace Bliss.CSharp.Windowing;
@@ -34,5 +38,42 @@ public static class Sdl2Helper {
     /// <returns>Returns a <see cref="bool"/> value indicating whether the rumble effect was successfully applied or not.</returns>
     public static bool SetControllerRumble(Gamepad gamepad, ushort lowFrequencyRumble, ushort highFrequencyRumble, uint durationMs) {
         return _gameControllerRumble(gamepad.Controller, lowFrequencyRumble, highFrequencyRumble, durationMs) == 0;
+    }
+
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    private delegate void SdlSetWindowIcon(nint window, nint surface);
+    
+    private static SdlSetWindowIcon _setWindowIcon = Sdl2Native.LoadFunction<SdlSetWindowIcon>("SDL_SetWindowIcon");
+    
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    private delegate void SdlFreeSurface(nint surface);
+    
+    private static SdlFreeSurface _freeSurface = Sdl2Native.LoadFunction<SdlFreeSurface>("SDL_FreeSurface");
+
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    private delegate nint CreateRgbSurfaceFrom(nint pixels, int width, int height, int depth, int pitch, uint rmask, uint gmask, uint bmask, uint amask);
+
+    private static CreateRgbSurfaceFrom _createRgbSurfaceFrom = Sdl2Native.LoadFunction<CreateRgbSurfaceFrom>("SDL_CreateRGBSurfaceFrom");
+
+    /// <summary>
+    /// Sets the window icon for a specified SDL2 window using the provided image.
+    /// </summary>
+    /// <param name="window">The SDL2 window for which the icon will be set.</param>
+    /// <param name="image">The image to be used as the window icon.</param>
+    public static unsafe void SetWindowIcon(Sdl2Window window, Image<Rgba32> image) {
+        byte[] data = new byte[image.Width * image.Height * 4];
+        image.CopyPixelDataTo(data);
+
+        fixed (byte* dataPtr = data) {
+            nint surface = _createRgbSurfaceFrom((nint) dataPtr, image.Width, image.Height, 32, image.Width * 4, 0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000);
+
+            if (surface == nint.Zero) {
+                Logger.Error("Failed to set Sdl2 window icon!");
+            }
+
+            _setWindowIcon(window.SdlWindowHandle, surface);
+
+            _freeSurface(surface);
+        }
     }
 }

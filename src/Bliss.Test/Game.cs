@@ -1,15 +1,19 @@
 using System.Numerics;
 using Bliss.CSharp;
-using Bliss.CSharp.Colors;
 using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Graphics;
+using Bliss.CSharp.Graphics.Rendering.Batches.Primitives;
 using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Windowing;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
 using Veldrid.Sdl2;
+using Color = Bliss.CSharp.Colors.Color;
+using Rectangle = Veldrid.Rectangle;
 
 namespace Bliss.Test;
 
@@ -28,6 +32,7 @@ public class Game : Disposable {
     private double _fixedUpdateTimer;
 
     private SpriteBatch _spriteBatch;
+    private PrimitiveBatch _primitiveBatch;
     private Texture2D _texture;
     private Font _font;
     
@@ -52,6 +57,9 @@ public class Game : Disposable {
         
         this.Window = new Window(this.Settings.Width, this.Settings.Height, this.Settings.Title, options, this.Settings.Backend, out GraphicsDevice graphicsDevice);
         this.GraphicsDevice = graphicsDevice;
+        
+        Logger.Info("Loading window icon...");
+        this.Window.SetIcon(this.Settings.IconPath != string.Empty ? Image.Load<Rgba32>(this.Settings.IconPath) : Image.Load<Rgba32>("content/images/icon.png"));
         
         Logger.Info("Initialize time...");
         Time.Init();
@@ -96,7 +104,8 @@ public class Game : Disposable {
 
     protected virtual void Init() {
         this._spriteBatch = new SpriteBatch(this.GraphicsDevice, this.Window);
-        this._texture = new Texture2D(this.GraphicsDevice, "content/images/icon.png");
+        this._primitiveBatch = new PrimitiveBatch(this.GraphicsDevice, this.Window);
+        this._texture = new Texture2D(this.GraphicsDevice, "content/images/logo.png");
         this._font = new Font("content/fonts/fontoe.ttf");
     }
 
@@ -123,6 +132,10 @@ public class Game : Disposable {
         this._spriteBatch.DrawText(this._font, text, new Vector2(this.Window.Width / 2.0F - (measureTextSize.X / 2.0F), this.Window.Height / 1.25F - (measureTextSize.Y / 2.0F)), textSize);
         
         this._spriteBatch.End();
+        
+        this._primitiveBatch.Begin(commandList);
+        this._primitiveBatch.DrawRectangle(new Rectangle(0, 0, 1000, 1000), default, 0, Color.Blue);
+        this._primitiveBatch.End();
         
         commandList.End();
         graphicsDevice.SubmitCommands(commandList);
