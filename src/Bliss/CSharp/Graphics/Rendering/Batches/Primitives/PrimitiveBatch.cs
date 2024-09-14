@@ -209,16 +209,14 @@ public class PrimitiveBatch : Disposable {
         Vector2 finalOrigin = origin ?? Vector2.Zero;
         float finalRotation = float.DegreesToRadians(rotation);
         Color finalColor = color ?? Color.White;
-        
-        Matrix4x4 transform = Matrix4x4.CreateTranslation(-finalOrigin.X, -finalOrigin.Y, 0) * 
-                              Matrix4x4.CreateRotationZ(finalRotation) * 
-                              Matrix4x4.CreateTranslation(finalOrigin.X, finalOrigin.Y, 0);
+
+        Matrix4x4 transform = Matrix4x4.CreateRotationZ(finalRotation, new Vector3(rectangle.Position, 0));
         
         // Calculate the four corners of the rectangle
-        Vector2 topLeft = Vector2.Transform(new Vector2(rectangle.X, rectangle.Y), transform);
-        Vector2 topRight = Vector2.Transform(new Vector2(rectangle.X + rectangle.Width, rectangle.Y), transform);
-        Vector2 bottomLeft = Vector2.Transform(new Vector2(rectangle.X, rectangle.Y + rectangle.Height), transform);
-        Vector2 bottomRight = Vector2.Transform(new Vector2(rectangle.X + rectangle.Width, rectangle.Y + rectangle.Height), transform);
+        Vector2 topLeft = Vector2.Transform(new Vector2(rectangle.X, rectangle.Y) - finalOrigin, transform);
+        Vector2 topRight = Vector2.Transform(new Vector2(rectangle.X + rectangle.Width, rectangle.Y) - finalOrigin, transform);
+        Vector2 bottomLeft = Vector2.Transform(new Vector2(rectangle.X, rectangle.Y + rectangle.Height) - finalOrigin, transform);
+        Vector2 bottomRight = Vector2.Transform(new Vector2(rectangle.X + rectangle.Width, rectangle.Y + rectangle.Height) - finalOrigin, transform);
         
         // Line offset
         Vector2 lineOffsetX = new Vector2(outlineSize / 2.0F, 0);
