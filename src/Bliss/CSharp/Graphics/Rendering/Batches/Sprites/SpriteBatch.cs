@@ -379,6 +379,10 @@ public class SpriteBatch : Disposable {
         
         this.AddQuad(texture, GraphicsHelper.GetSampler(this.GraphicsDevice, samplerType), topLeft, topRight, bottomLeft, bottomRight);
     }
+
+    public void DrawTextureNPatch() {
+        // TODO: ADD THIS!!!
+    }
     
     /// <summary>
     /// Adds a quad to the sprite batch using the provided texture, sampler, and sprite vertices.

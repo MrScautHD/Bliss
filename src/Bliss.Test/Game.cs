@@ -125,7 +125,7 @@ public class Game : Disposable {
         this._spriteBatch.Begin(commandList);
         
         // Draw FPS.
-        this._spriteBatch.DrawText(this._font, $"FPS: {1.0F / Time.Delta}", new Vector2(5, 5), 18);
+        this._spriteBatch.DrawText(this._font, $"FPS: {(int) (1.0F / Time.Delta)}", new Vector2(5, 5), 18);
         
         // Draw texture.
         Vector2 texturePos = new Vector2(this.Window.Width / 2.0F - (216.0F / 4.0F / 2.0F), this.Window.Height / 2.0F - (85.0F / 4.0F / 2.0F));
@@ -146,12 +146,12 @@ public class Game : Disposable {
         this._primitiveBatch.Begin(commandList);
         
         // Draw Line.
-        this._primitiveBatch.DrawLine(new Vector2(0, 0), new Vector2(this.Window.Width, this.Window.Height), 10, Color.Blue);
+        this._primitiveBatch.DrawLine(new Vector2(0, 40), new Vector2(this.Window.Width, 40), 10, Color.Blue);
         
         // Draw rectangle.
         RectangleF rectangle = new RectangleF(this.Window.Width / 2.0F - 500, this.Window.Height / 2.0F - 250, 1000, 500);
-        this._primitiveBatch.DrawFilledRectangle(rectangle, default, 10, new Color(144, 238, 144, 20));
-        this._primitiveBatch.DrawEmptyRectangle(rectangle, 4, default, 10, Color.DarkGreen);
+        this._primitiveBatch.DrawFilledRectangle(rectangle, default, 0, new Color(144, 238, 144, 20));
+        this._primitiveBatch.DrawEmptyRectangle(rectangle, 4, default, 0, Color.DarkGreen);
         
         this._primitiveBatch.End();
         

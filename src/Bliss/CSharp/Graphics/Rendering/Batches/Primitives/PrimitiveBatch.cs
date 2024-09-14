@@ -197,6 +197,13 @@ public class PrimitiveBatch : Disposable {
         this.Flush();
     }
 
+    /// <summary>
+    /// Draws a line between two points with the specified thickness and color.
+    /// </summary>
+    /// <param name="start">The start point of the line.</param>
+    /// <param name="end">The end point of the line.</param>
+    /// <param name="thickness">The thickness of the line. Default is 1.0.</param>
+    /// <param name="color">The color of the line. If null, defaults to white.</param>
     public void DrawLine(Vector2 start, Vector2 end, float thickness = 1.0F, Color? color = null) {
         float distance = Vector2.Distance(start, end);
         float angle = float.RadiansToDegrees(MathF.Atan2(end.Y - start.Y, end.X - start.X));
@@ -205,7 +212,15 @@ public class PrimitiveBatch : Disposable {
         this.DrawFilledRectangle(rectangle, new Vector2(0, thickness / 2.0F), angle, color ?? Color.White);
     }
 
-    public void DrawEmptyRectangle(RectangleF rectangle, float outlineSize, Vector2? origin = null, float rotation = 0.0F, Color? color = null) {
+    /// <summary>
+    /// Draws an empty rectangle with the specified dimensions, outline size, origin point, rotation, and color.
+    /// </summary>
+    /// <param name="rectangle">Specifies the position and size of the rectangle.</param>
+    /// <param name="thickness">Width of the rectangle's outline.</param>
+    /// <param name="origin">Optional origin point for rotation and positioning. Defaults to (0,0).</param>
+    /// <param name="rotation">Optional rotation angle in degrees. Defaults to 0.0F.</param>
+    /// <param name="color">Optional color for the rectangle's outline. Defaults to white.</param>
+    public void DrawEmptyRectangle(RectangleF rectangle, float thickness, Vector2? origin = null, float rotation = 0.0F, Color? color = null) {
         Vector2 finalOrigin = origin ?? Vector2.Zero;
         float finalRotation = float.DegreesToRadians(rotation);
         Color finalColor = color ?? Color.White;
@@ -219,20 +234,20 @@ public class PrimitiveBatch : Disposable {
         Vector2 bottomRight = Vector2.Transform(new Vector2(rectangle.X + rectangle.Width, rectangle.Y + rectangle.Height) - finalOrigin, transform);
         
         // Line offset
-        Vector2 lineOffsetX = new Vector2(outlineSize / 2.0F, 0);
-        Vector2 lineOffsetY = new Vector2(0, outlineSize / 2.0F);
+        Vector2 lineOffsetX = new Vector2(thickness / 2.0F, 0);
+        Vector2 lineOffsetY = new Vector2(0, thickness / 2.0F);
         
         // Top side
-        this.DrawLine(topLeft - lineOffsetX, topRight + lineOffsetX, outlineSize, finalColor);
+        this.DrawLine(topLeft - lineOffsetX, topRight + lineOffsetX, thickness, finalColor);
 
         // Bottom side
-        this.DrawLine(bottomLeft - lineOffsetX, bottomRight + lineOffsetX, outlineSize, finalColor);
+        this.DrawLine(bottomLeft - lineOffsetX, bottomRight + lineOffsetX, thickness, finalColor);
 
         // Left side
-        this.DrawLine(topLeft + lineOffsetY, bottomLeft - lineOffsetY, outlineSize, finalColor);
+        this.DrawLine(topLeft + lineOffsetY, bottomLeft - lineOffsetY, thickness, finalColor);
 
         // Right side
-        this.DrawLine(topRight + lineOffsetY, bottomRight - lineOffsetY, outlineSize, finalColor);
+        this.DrawLine(topRight + lineOffsetY, bottomRight - lineOffsetY, thickness, finalColor);
     }
 
     /// <summary>
@@ -321,8 +336,44 @@ public class PrimitiveBatch : Disposable {
         
         this.AddVertices(this._pipelineTriangleList, 6);
     }
+    
+    public void DrawEmptyCircleSector(Vector2 position, float radius, float startAngle, float endAngle, int thickness, int segments, Color? color = null) {
+        
+    }
+    
+    public void DrawCircleSector(Vector2 position, float radius, float startAngle, float endAngle, int segments, Color? color = null) {
+        
+    }
 
-    public void DrawCircle() {
+    public void DrawEmptyCircle(Vector2 position, float radius, int thickness, int segments, Color? color = null) {
+        
+    }
+
+    public void DrawFilledCircle(Vector2 position, float radius, int segments, Color? color = null) {
+        
+    }
+    
+    public void DrawEmptyRing(Vector2 position, float innerRadius, float outerRadius, int thickness, int segments, Color? color = null) {
+        
+    }
+    
+    public void DrawFilledRing(Vector2 position, float innerRadius, float outerRadius, int segments, Color? color = null) {
+        
+    }
+
+    public void DrawEmptyEllipse(Vector2 position, Vector2 radius, int thickness, int segments, Color? color = null) {
+        
+    }
+    
+    public void DrawFilledEllipse(Vector2 position, Vector2 radius, int segments, Color? color = null) {
+        
+    }
+
+    public void DrawEmptyTriangle(Vector2 point1, Vector2 point2, Vector2 point3, int thickness, Color? color = null) {
+        
+    }
+    
+    public void DrawFilledTriangle(Vector2 point1, Vector2 point2, Vector2 point3, Color? color = null) {
         
     }
 
