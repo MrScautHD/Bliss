@@ -2,6 +2,7 @@ using System.Numerics;
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 using Bliss.CSharp.Logging;
+using Bliss.CSharp.Transformations;
 using FontStashSharp;
 using Veldrid;
 
@@ -108,11 +109,11 @@ public class Font : Disposable {
     /// <param name="text">The text to measure.</param>
     /// <param name="size">The size of the font.</param>
     /// <return>The bounds of the text as a Rectangle.</return>
-    public Rectangle MeasureTextRect(string text, int size) {
+    public RectangleF MeasureTextRect(string text, int size) {
         DynamicSpriteFont font = this._fontSystem.GetFont(size);
 
         Bounds bounds = font.TextBounds(text, Vector2.Zero);
-        return new Rectangle((int) bounds.X, (int) bounds.Y, (int) bounds.X2, (int) bounds.Y2);
+        return new RectangleF(bounds.X, bounds.Y, bounds.X2, bounds.Y2);
     }
 
     /// <summary>

@@ -147,16 +147,18 @@ public class Window {
     /// <param name="width">The width of the window in pixels.</param>
     /// <param name="height">The height of the window in pixels.</param>
     /// <param name="title">The title of the window.</param>
+    /// <param name="state">The state of the window.</param>
     /// <param name="options">Options for creating the graphics device.</param>
     /// <param name="backend">The graphics backend to use.</param>
     /// <param name="graphicsDevice">Outputs the created graphics device.</param>
-    public Window(int width, int height, string title, GraphicsDeviceOptions options, GraphicsBackend backend, out GraphicsDevice graphicsDevice) {
+    public Window(int width, int height, string title, WindowState state, GraphicsDeviceOptions options, GraphicsBackend backend, out GraphicsDevice graphicsDevice) {
         WindowCreateInfo info = new WindowCreateInfo() {
             X = Sdl2Native.SDL_WINDOWPOS_CENTERED,
             Y = Sdl2Native.SDL_WINDOWPOS_CENTERED,
             WindowWidth = width,
             WindowHeight = height,
-            WindowTitle = title
+            WindowTitle = title,
+            WindowInitialState = state
         };
         
         VeldridStartup.CreateWindowAndGraphicsDevice(info, options, backend, out this.Sdl2Window, out graphicsDevice);

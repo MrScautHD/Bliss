@@ -26,7 +26,7 @@ public class SpriteBatch : Disposable {
         new Vector2(0.0F, 0.0F),
         new Vector2(1.0F, 0.0F),
         new Vector2(0.0F, 1.0F),
-        new Vector2(1.0F, 1.0F),
+        new Vector2(1.0F, 1.0F)
     };
     
     /// <summary>
@@ -110,17 +110,17 @@ public class SpriteBatch : Disposable {
     /// The buffer used to store index data on the GPU. This buffer defines the order in which vertices are used to construct geometric primitives.
     /// </summary>
     private DeviceBuffer _indexBuffer;
-    
-    /// <summary>
-    /// The resource layout that describes how texture resources are bound in the shader. It specifies the layout of texture and sampler resources for rendering.
-    /// </summary>
-    private SimpleTextureLayout _textureLayout;
 
     /// <summary>
     /// A buffer used to store and update the projection-view matrix for the shader.
     /// It is an instance of <see cref="SimpleBuffer{Matrix4x4}"/> and is used in the rendering process to transform sprite coordinates for rendering on the screen.
     /// </summary>
     private SimpleBuffer<Matrix4x4> _projViewBuffer;
+    
+    /// <summary>
+    /// The resource layout that describes how texture resources are bound in the shader. It specifies the layout of texture and sampler resources for rendering.
+    /// </summary>
+    private SimpleTextureLayout _textureLayout;
 
     /// <summary>
     /// Indicates whether a sprite batch operation has begun.
@@ -200,11 +200,11 @@ public class SpriteBatch : Disposable {
         
         graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this._indices);
         
+        // Create projection view buffer.
+        this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "ProjectionViewBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        
         // Create texture layout.
         this._textureLayout = new SimpleTextureLayout(graphicsDevice, "fTexture");
-        
-        // Create projection view buffer.
-        this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "ProjectionViewBuffer", (uint) Marshal.SizeOf<Matrix4x4>(), SimpleBufferType.Uniform, ShaderStages.Vertex);
     }
 
     /// <summary>
@@ -305,7 +305,7 @@ public class SpriteBatch : Disposable {
         float nOriginY = -spriteOrigin.Y;
 
         if (rotation != 0.0F) {
-            float radiansRot = Single.DegreesToRadians(rotation);
+            float radiansRot = float.DegreesToRadians(rotation);
             sin = MathF.Sin(radiansRot);
             cos = MathF.Cos(radiansRot);
         }
@@ -379,16 +379,17 @@ public class SpriteBatch : Disposable {
         
         this.AddQuad(texture, GraphicsHelper.GetSampler(this.GraphicsDevice, samplerType), topLeft, topRight, bottomLeft, bottomRight);
     }
-
+    
     /// <summary>
-    /// Adds a quad to the sprite batch for rendering.
+    /// Adds a quad to the sprite batch using the provided texture, sampler, and sprite vertices.
     /// </summary>
     /// <param name="texture">The texture to be applied to the quad.</param>
-    /// <param name="sampler">The sampler state for the texture.</param>
+    /// <param name="sampler">The sampler state to be used for texture sampling.</param>
     /// <param name="topLeft">The vertex at the top-left corner of the quad.</param>
     /// <param name="topRight">The vertex at the top-right corner of the quad.</param>
     /// <param name="bottomLeft">The vertex at the bottom-left corner of the quad.</param>
     /// <param name="bottomRight">The vertex at the bottom-right corner of the quad.</param>
+    /// <exception cref="Exception">Thrown if the SpriteBatch has not been begun before drawing.</exception>
     public void AddQuad(Texture2D texture, Sampler sampler, SpriteVertex2D topLeft, SpriteVertex2D topRight, SpriteVertex2D bottomLeft, SpriteVertex2D bottomRight) {
         if (!this._begun) {
             throw new Exception("You must begin the SpriteBatch before calling draw methods!");
@@ -416,9 +417,7 @@ public class SpriteBatch : Disposable {
     }
     
     /// <summary>
-    /// Flushes the current batch of sprites, ensuring that all queued draw calls are executed.
-    /// This method updates the vertex buffer, sets the necessary GPU resources, and issues the draw calls.
-    /// Call this method when you need to ensure that all previously enqueued sprites are rendered immediately.
+    /// Flushes the current batch of sprites to the GPU for rendering.
     /// </summary>
     public void Flush() {
         if (this._currentBatchCount == 0) {
