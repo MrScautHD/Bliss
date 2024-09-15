@@ -7,7 +7,6 @@ using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
 using Veldrid;
-using Vortice.Mathematics;
 using Color = Bliss.CSharp.Colors.Color;
 
 namespace Bliss.CSharp.Graphics.Rendering.Batches.Primitives;
@@ -59,7 +58,7 @@ public class PrimitiveBatch : Disposable {
     /// <summary>
     /// Pipeline configuration used for rendering line loops.
     /// </summary>
-    private SimplePipeline _pipelineLineLoop;
+    private SimplePipeline _pipelineLineLoop; // TODO: Can maybe be removed!!!
     
     /// <summary>
     /// Array of vertices used for rendering 2D primitives.
@@ -101,8 +100,8 @@ public class PrimitiveBatch : Disposable {
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used for rendering operations.</param>
     /// <param name="window">The window used for rendering output.</param>
-    /// <param name="capacity">The maximum number of vertices that can process in a single draw call. Defaults is 15360.</param>
-    public PrimitiveBatch(GraphicsDevice graphicsDevice, Window window, uint capacity = 15360) {
+    /// <param name="capacity">The maximum number of vertices that can process in a single draw call. Defaults is 30720.</param>
+    public PrimitiveBatch(GraphicsDevice graphicsDevice, Window window, uint capacity = 30720) {
         this.GraphicsDevice = graphicsDevice;
         this.Window = window;
         this.Capacity = capacity;
@@ -282,21 +281,183 @@ public class PrimitiveBatch : Disposable {
         
         this.AddVertices(this._pipelineTriangleList, 6);
     }
-    
+
+    /// <summary>
+    /// Draws an empty circle sector using the specified parameters.
+    /// </summary>
+    /// <param name="position">The position of the center of the circle.</param>
+    /// <param name="radius">The radius of the circle sector.</param>
+    /// <param name="startAngle">The starting angle of the sector in degrees.</param>
+    /// <param name="endAngle">The ending angle of the sector in degrees.</param>
+    /// <param name="thickness">The thickness of the circle sector line.</param>
+    /// <param name="segments">The number of segments used to draw the sector. Minimum value is 4.</param>
+    /// <param name="color">The color of the circle sector line. Defaults to white if null.</param>
     public void DrawEmptyCircleSector(Vector2 position, float radius, float startAngle, float endAngle, int thickness, int segments, Color? color = null) {
-        
+        float finalStartAngle = float.DegreesToRadians(startAngle);
+        float finalEndAngle = float.DegreesToRadians(endAngle);
+        Color finalColor = color ?? Color.White;
+
+        // Calculate angular range and number of segments
+        float angularRange = finalEndAngle - finalStartAngle;
+        int segmentCount = (int) (Math.Max(4, segments) * (angularRange / (2 * MathF.PI)));
+        int finalSegments = Math.Max(4, segmentCount);
+
+        float angleIncrement = angularRange / finalSegments;
+        Vector2 firstPoint = position + new Vector2(radius * MathF.Cos(finalStartAngle), radius * MathF.Sin(finalStartAngle));
+        Vector2 lastPoint = firstPoint;
+
+        for (int i = 1; i <= finalSegments; i++) {
+            float angle = finalStartAngle + i * angleIncrement;
+            Vector2 currentPoint = new Vector2(
+                position.X + radius * MathF.Cos(angle),
+                position.Y + radius * MathF.Sin(angle)
+            );
+            
+            this.DrawLine(lastPoint, currentPoint, thickness, finalColor);
+            lastPoint = currentPoint;
+        }
+
+        // Draw the sector edges to the center.
+        Vector2 lineOffsetX = new Vector2(thickness / 2.0F, 0);
+        Vector2 lineOffsetY = new Vector2(0, thickness / 2.0F);
+
+        this.DrawLine(position - lineOffsetX, firstPoint + lineOffsetX, thickness, finalColor);
+        this.DrawLine(position + lineOffsetY, lastPoint - lineOffsetY, thickness, finalColor);
     }
+
+    /// <summary>
+    /// Draws a filled sector of a circle on the screen at the specified position with the given parameters.
+    /// </summary>
+    /// <param name="position">The center position of the circle sector.</param>
+    /// <param name="radius">The radius of the circle sector.</param>
+    /// <param name="startAngle">The starting angle of the sector in degrees.</param>
+    /// <param name="endAngle">The ending angle of the sector in degrees.</param>
+    /// <param name="segments">Number of segments to use for drawing the sector.</param>
+    /// <param name="color">Optional color to use for the sector. Defaults to white if null.</param>
+    public void DrawFilledCircleSector(Vector2 position, float radius, float startAngle, float endAngle, int segments, Color? color = null) {
+        float finalStartAngle = float.DegreesToRadians(startAngle);
+        float finalEndAngle = float.DegreesToRadians(endAngle);
+        Color finalColor = color ?? Color.White;
+
+        // Calculate the angular range and the number of segments
+        float angularRange = finalEndAngle - finalStartAngle;
+        int segmentCount = (int) (Math.Max(4, segments) * (angularRange / (2 * MathF.PI)));
+        int finalSegments = Math.Max(4, segmentCount);
+
+        float angleIncrement = angularRange / finalSegments;
+        Vector2 firstPoint = position + new Vector2(radius * MathF.Cos(finalStartAngle), radius * MathF.Sin(finalStartAngle));
+        Vector2 lastPoint = firstPoint;
     
-    public void DrawCircleSector(Vector2 position, float radius, float startAngle, float endAngle, int segments, Color? color = null) {
+        for (int i = 1; i <= finalSegments; i++) {
+            float angle = finalStartAngle + i * angleIncrement;
+            Vector2 currentPoint = new Vector2(
+                position.X + radius * MathF.Cos(angle),
+                position.Y + radius * MathF.Sin(angle)
+            );
+
+            this._tempVertices[0] = new PrimitiveVertex2D() {
+                Position = position,
+                Color = finalColor.ToRgbaFloat().ToVector4()
+            };
+            this._tempVertices[1] = new PrimitiveVertex2D() {
+                Position = lastPoint,
+                Color = finalColor.ToRgbaFloat().ToVector4()
+            };
+            this._tempVertices[2] = new PrimitiveVertex2D() {
+                Position = currentPoint,
+                Color = finalColor.ToRgbaFloat().ToVector4()
+            };
         
+            this.AddVertices(this._pipelineTriangleList, 3);
+            lastPoint = currentPoint;
+        }
     }
 
+    /// <summary>
+    /// Draws an empty circle at the specified position with the given radius, thickness, and number of segments.
+    /// </summary>
+    /// <param name="position">The center position of the circle.</param>
+    /// <param name="radius">The radius of the circle.</param>
+    /// <param name="thickness">The thickness of the circle's outline.</param>
+    /// <param name="segments">The number of segments to divide the circle into. Must be at least 4.</param>
+    /// <param name="color">The color of the circle's outline. Defaults to white if not specified.</param>
     public void DrawEmptyCircle(Vector2 position, float radius, int thickness, int segments, Color? color = null) {
+        int finalSegments = Math.Max(4, segments);
+        Color finalColor = color ?? Color.White;
         
+        float angleIncrement = 2 * MathF.PI / finalSegments;
+        float lineOffset = thickness / 2.0F;
+        
+        for (int i = 0; i < finalSegments; i++) {
+            float startAngle = i * angleIncrement;
+            float endAngle = (i + 1) * angleIncrement;
+            
+            Vector2 startPoint = new Vector2(
+                position.X + radius * MathF.Cos(startAngle),
+                position.Y + radius * MathF.Sin(startAngle)
+            );
+            
+            Vector2 endPoint = new Vector2(
+                position.X + radius * MathF.Cos(endAngle),
+                position.Y + radius * MathF.Sin(endAngle)
+            );
+            
+            // Calculate the direction of the segment.
+            Vector2 direction = Vector2.Normalize(endPoint - startPoint);
+        
+            // Perpendicular vector for offset (rotate 90 degrees).
+            Vector2 perpendicular = new Vector2(-direction.Y, direction.X);
+
+            // Apply offset to start and end points.
+            Vector2 startOffset = perpendicular * lineOffset;
+            Vector2 endOffset = perpendicular * lineOffset;
+
+            // Adjusted start and end points.
+            Vector2 adjustedStartPoint = startPoint + startOffset;
+            Vector2 adjustedEndPoint = endPoint + endOffset;
+            
+            this.DrawLine(adjustedStartPoint, adjustedEndPoint, thickness, finalColor);
+        }
     }
 
+    /// <summary>
+    /// Draws a filled circle at the specified position with the given radius, number of segments, and optional color.
+    /// </summary>
+    /// <param name="position">The position of the center of the circle.</param>
+    /// <param name="radius">The radius of the circle.</param>
+    /// <param name="segments">The number of segments to use for drawing the circle.</param>
+    /// <param name="color">The optional color of the circle. If null, defaults to white.</param>
     public void DrawFilledCircle(Vector2 position, float radius, int segments, Color? color = null) {
+        int finalSegments = Math.Max(4, segments);
+        Color finalColor = color ?? Color.White;
         
+        float angleIncrement = MathF.PI * 2.0f / finalSegments;
+        Vector2 firstPoint = position + new Vector2(radius, 0);
+        Vector2 lastPoint = firstPoint;
+
+        for (int i = 1; i <= finalSegments; i++) {
+            float angle = i * angleIncrement;
+            Vector2 currentPoint = new Vector2(
+                position.X + radius * MathF.Cos(angle),
+                position.Y + radius * MathF.Sin(angle)
+            );
+
+            this._tempVertices[0] = new PrimitiveVertex2D() {
+                Position = position,
+                Color = finalColor.ToRgbaFloat().ToVector4()
+            };
+            this._tempVertices[1] = new PrimitiveVertex2D() {
+                Position = lastPoint,
+                Color = finalColor.ToRgbaFloat().ToVector4()
+            };
+            this._tempVertices[2] = new PrimitiveVertex2D() {
+                Position = currentPoint,
+                Color = finalColor.ToRgbaFloat().ToVector4()
+            };
+            
+            this.AddVertices(this._pipelineTriangleList, 3);
+            lastPoint = currentPoint;
+        }
     }
     
     public void DrawEmptyRing(Vector2 position, float innerRadius, float outerRadius, int thickness, int segments, Color? color = null) {

@@ -13,6 +13,7 @@ using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
 using Veldrid.Sdl2;
 using Color = Bliss.CSharp.Colors.Color;
+using Rectangle = Veldrid.Rectangle;
 using RectangleF = Bliss.CSharp.Transformations.RectangleF;
 
 namespace Bliss.Test;
@@ -144,6 +145,12 @@ public class Game : Disposable {
         
         // PrimitiveBatch Drawing.
         this._primitiveBatch.Begin(commandList);
+        
+        this._primitiveBatch.DrawFilledCircleSector(new Vector2(400, 400), 150, 0, 270, 40, Color.Magenta);
+        this._primitiveBatch.DrawEmptyCircleSector(new Vector2(400, 400), 150, 0, 270, 4, 160, Color.Orange);
+        
+        this._primitiveBatch.DrawFilledCircle(new Vector2(160, 160), 150, 60, Color.LightRed);
+        this._primitiveBatch.DrawEmptyCircle(new Vector2(160, 160), 150, 5, 60, Color.DarkRed);
         
         // Draw Line.
         this._primitiveBatch.DrawLine(new Vector2(0, 40), new Vector2(this.Window.Width, 40), 10, Color.Blue);

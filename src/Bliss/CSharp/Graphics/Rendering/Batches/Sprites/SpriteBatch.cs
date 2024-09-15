@@ -7,7 +7,6 @@ using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Graphics.VertexTypes;
-using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Windowing;
 using FontStashSharp;
@@ -324,10 +323,6 @@ public class SpriteBatch : Disposable {
         };
         
         this.AddQuad(texture, GraphicsHelper.GetSampler(this.GraphicsDevice, samplerType), topLeft, topRight, bottomLeft, bottomRight);
-    }
-
-    public void DrawTextureNPatch() {
-        // TODO: ADD THIS!!!
     }
     
     /// <summary>
