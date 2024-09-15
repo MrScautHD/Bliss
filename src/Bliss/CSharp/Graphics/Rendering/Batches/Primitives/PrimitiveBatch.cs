@@ -56,11 +56,6 @@ public class PrimitiveBatch : Disposable {
     private SimplePipeline _pipelineTriangleStrip;
     
     /// <summary>
-    /// Pipeline configuration used for rendering line loops.
-    /// </summary>
-    private SimplePipeline _pipelineLineLoop; // TODO: Can maybe be removed!!!
-    
-    /// <summary>
     /// Array of vertices used for rendering 2D primitives.
     /// </summary>
     private PrimitiveVertex2D[] _vertices;
@@ -140,9 +135,6 @@ public class PrimitiveBatch : Disposable {
         
         pipelineDescription.PrimitiveTopology = PrimitiveTopology.TriangleStrip;
         this._pipelineTriangleStrip = new SimplePipeline(graphicsDevice, pipelineDescription);
-        
-        pipelineDescription.PrimitiveTopology = PrimitiveTopology.LineStrip;
-        this._pipelineLineLoop = new SimplePipeline(graphicsDevice, pipelineDescription);
         
         // Create vertex buffer.
         this._vertices = new PrimitiveVertex2D[capacity];
@@ -805,7 +797,7 @@ public class PrimitiveBatch : Disposable {
             this._projViewBuffer.Dispose();
             this._pipelineTriangleList.Dispose();
             this._pipelineTriangleStrip.Dispose();
-            this._pipelineLineLoop.Dispose();
+            this._vertexBuffer.Dispose();
         }
     }
 }
