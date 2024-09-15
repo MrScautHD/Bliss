@@ -13,17 +13,6 @@ using Color = Bliss.CSharp.Colors.Color;
 namespace Bliss.CSharp.Graphics.Rendering.Batches.Primitives;
 
 public class PrimitiveBatch : Disposable {
-    
-    /// <summary>
-    /// Defines a template for vertex positions used to create a quad. 
-    /// The array contains four <see cref="Vector2"/> instances representing the corners of the quad.
-    /// </summary>
-    private static readonly Vector2[] QuadVertexTemplate = new Vector2[] {
-        new Vector2(0.0F, 0.0F),
-        new Vector2(1.0F, 0.0F),
-        new Vector2(0.0F, 1.0F),
-        new Vector2(1.0F, 1.0F)
-    };
 
     /// <summary>
     /// Represents the graphics device used for rendering operations within the <see cref="PrimitiveBatch"/> class.

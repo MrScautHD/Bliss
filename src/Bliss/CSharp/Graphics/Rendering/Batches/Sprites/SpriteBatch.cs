@@ -19,17 +19,6 @@ namespace Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 public class SpriteBatch : Disposable {
     
     /// <summary>
-    /// Defines a template for vertex positions used to create a quad. 
-    /// The array contains four <see cref="Vector2"/> instances representing the corners of the quad.
-    /// </summary>
-    private static readonly Vector2[] VertexTemplate = new Vector2[] {
-        new Vector2(0.0F, 0.0F),
-        new Vector2(1.0F, 0.0F),
-        new Vector2(0.0F, 1.0F),
-        new Vector2(1.0F, 1.0F)
-    };
-    
-    /// <summary>
     /// Defines an index template for rendering two triangles as a quad.
     /// The array contains six <see cref="ushort"/> values, representing the vertex indices for two triangles.
     /// </summary>
