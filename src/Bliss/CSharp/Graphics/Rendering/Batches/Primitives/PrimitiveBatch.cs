@@ -251,7 +251,7 @@ public class PrimitiveBatch : Disposable {
         Color finalColor = color ?? Color.White;
         float finalRotation = float.DegreesToRadians(rotation);
         
-        Matrix4x4 transform = Matrix4x4.CreateRotationZ(finalRotation, new Vector3(rectangle.Position, 0));
+        Matrix3x2 transform = Matrix3x2.CreateRotation(finalRotation, rectangle.Position);
 
         PrimitiveVertex2D topLeft = new PrimitiveVertex2D() {
             Position = Vector2.Transform(new Vector2(rectangle.X, rectangle.Y) - finalOrigin, transform),
