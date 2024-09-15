@@ -289,7 +289,7 @@ public class SpriteBatch : Disposable {
         bool flipX = flip == SpriteFlip.Horizontal || flip == SpriteFlip.Both;
         bool flipY = flip == SpriteFlip.Vertical || flip == SpriteFlip.Both;
         
-        Matrix4x4 transform = Matrix4x4.CreateRotationZ(finalRotation, new Vector3(position, 0));
+        Matrix3x2 transform = Matrix3x2.CreateRotation(finalRotation, position);
 
         SpriteVertex2D topLeft = new SpriteVertex2D() {
             Position = Vector2.Transform(new Vector2(position.X, position.Y) - spriteOrigin, transform),

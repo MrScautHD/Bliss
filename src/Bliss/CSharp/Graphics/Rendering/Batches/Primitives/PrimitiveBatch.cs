@@ -214,7 +214,7 @@ public class PrimitiveBatch : Disposable {
         float finalRotation = float.DegreesToRadians(rotation);
         Color finalColor = color ?? Color.White;
 
-        Matrix4x4 transform = Matrix4x4.CreateRotationZ(finalRotation, new Vector3(rectangle.Position, 0));
+        Matrix3x2 transform = Matrix3x2.CreateRotation(finalRotation, rectangle.Position);
         
         // Calculate the four corners of the rectangle
         Vector2 topLeft = Vector2.Transform(new Vector2(rectangle.X, rectangle.Y) - finalOrigin, transform);
