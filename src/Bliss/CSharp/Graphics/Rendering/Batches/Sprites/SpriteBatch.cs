@@ -286,9 +286,10 @@ public class SpriteBatch : Disposable {
     /// <param name="flip">Specifies how the texture should be flipped horizontally or vertically.</param>
     public void DrawTexture(Texture2D texture, SamplerType samplerType, Vector2 position, Rectangle? sourceRect = null, Vector2? scale = null, Vector2? origin = null, float rotation = 0.0F, Color? color = null, SpriteFlip flip = SpriteFlip.None) {
         Rectangle finalSource = sourceRect ?? new Rectangle(0, 0, (int) texture.Width, (int) texture.Height);
-        Color finalColor = color ?? Color.White;
         Vector2 finalScale = scale ?? new Vector2(1.0F, 1.0F);
         Vector2 finalOrigin = origin ?? new Vector2(0.0F, 0.0F);
+        float finalRotation = float.DegreesToRadians(rotation);
+        Color finalColor = color ?? Color.White;
         
         Vector2 spriteScale = new Vector2(finalSource.Width, finalSource.Height) * finalScale;
         Vector2 spriteOrigin = finalOrigin * finalScale;
@@ -298,79 +299,35 @@ public class SpriteBatch : Disposable {
         
         bool flipX = flip == SpriteFlip.Horizontal || flip == SpriteFlip.Both;
         bool flipY = flip == SpriteFlip.Vertical || flip == SpriteFlip.Both;
-
-        float sin = 0;
-        float cos = 0;
-        float nOriginX = -spriteOrigin.X;
-        float nOriginY = -spriteOrigin.Y;
-
-        if (rotation != 0.0F) {
-            float radiansRot = float.DegreesToRadians(rotation);
-            sin = MathF.Sin(radiansRot);
-            cos = MathF.Cos(radiansRot);
-        }
         
+        Matrix4x4 transform = Matrix4x4.CreateRotationZ(finalRotation, new Vector3(position, 0));
+
         SpriteVertex2D topLeft = new SpriteVertex2D() {
-            Position = rotation == 0.0F 
-                ? new Vector2(
-                    position.X - spriteOrigin.X,
-                    position.Y - spriteOrigin.Y)
-                : new Vector2(
-                    position.X + nOriginX * cos - nOriginY * sin,
-                    position.Y + nOriginX * sin + nOriginY * cos),
+            Position = Vector2.Transform(new Vector2(position.X, position.Y) - spriteOrigin, transform),
             TexCoords = new Vector2(
                 flipX ? (finalSource.X + finalSource.Width) * texelWidth : finalSource.X * texelWidth,
                 flipY ? (finalSource.Y + finalSource.Height) * texelHeight : finalSource.Y * texelHeight),
             Color = finalColor.ToRgbaFloat().ToVector4()
         };
         
-        float x = VertexTemplate[(int) VertexTemplateType.TopRight].X;
-        float w = spriteScale.X * x;
-
         SpriteVertex2D topRight = new SpriteVertex2D() {
-            Position = rotation == 0.0F
-                ? new Vector2(
-                    (position.X - spriteOrigin.X) + w,
-                    position.Y - spriteOrigin.Y)
-                : new Vector2(
-                    position.X + (nOriginX + w) * cos - nOriginY * sin,
-                    position.Y + (nOriginX + w) * sin + nOriginY * cos),
+            Position = Vector2.Transform(new Vector2(position.X + spriteScale.X, position.Y) - spriteOrigin, transform),
             TexCoords = new Vector2(
                 flipX ? finalSource.X * texelWidth : (finalSource.X + finalSource.Width) * texelWidth,
                 flipY ? (finalSource.Y + finalSource.Height) * texelHeight : finalSource.Y * texelHeight),
             Color = finalColor.ToRgbaFloat().ToVector4()
         };
         
-        float y = VertexTemplate[(int) VertexTemplateType.BottomLeft].Y;
-        float h = spriteScale.Y * y;
-
         SpriteVertex2D bottomLeft = new SpriteVertex2D() {
-            Position = rotation == 0.0F
-                ? new Vector2(
-                    position.X - spriteOrigin.X,
-                    position.Y - spriteOrigin.Y + h)
-                : new Vector2(
-                    position.X + nOriginX * cos - (nOriginY + h) * sin,
-                    position.Y + nOriginX * sin + (nOriginY + h) * cos),
+            Position = Vector2.Transform(new Vector2(position.X, position.Y + spriteScale.Y) - spriteOrigin, transform),
             TexCoords = new Vector2(
                 flipX ? (finalSource.X + finalSource.Width) * texelWidth : finalSource.X * texelWidth,
                 flipY ? finalSource.Y * texelHeight : (finalSource.Y + finalSource.Height) * texelHeight),
             Color = finalColor.ToRgbaFloat().ToVector4()
         };
         
-        x = VertexTemplate[(int) VertexTemplateType.BottomRight].X;
-        y = VertexTemplate[(int) VertexTemplateType.BottomRight].Y;
-        w = spriteScale.X * x;
-        h = spriteScale.Y * y;
-
         SpriteVertex2D bottomRight = new SpriteVertex2D() {
-            Position = rotation == 0.0F
-                ? new Vector2(
-                    position.X - spriteOrigin.X + w,
-                    position.Y - spriteOrigin.Y + h)
-                : new Vector2(
-                    position.X + (nOriginX + w) * cos - (nOriginY + h) * sin,
-                    position.Y + (nOriginX + w) * sin + (nOriginY + h) * cos),
+            Position = Vector2.Transform(new Vector2(position.X + spriteScale.X, position.Y + spriteScale.Y) - spriteOrigin, transform),
             TexCoords = new Vector2(
                 flipX ? finalSource.X * texelWidth : (finalSource.X + finalSource.Width) * texelWidth,
                 flipY ? finalSource.Y * texelHeight : (finalSource.Y + finalSource.Height) * texelHeight),
