@@ -147,7 +147,19 @@ public class Game : Disposable {
         this._primitiveBatch.Begin(commandList);
         
         this._primitiveBatch.DrawFilledCircleSector(new Vector2(400, 400), 150, 0, 270, 40, Color.Magenta);
-        this._primitiveBatch.DrawEmptyCircleSector(new Vector2(400, 400), 150, 0, 270, 4, 160, Color.Orange);
+        this._primitiveBatch.DrawEmptyCircleSector(new Vector2(400, 400), 150, 0, 270, 4, 40, Color.Orange);
+        
+        this._primitiveBatch.DrawEmptyRing(new Vector2(650, 650), 150, 160, 4, 60, Color.LightRed);
+        
+        this._primitiveBatch.DrawFilledRing(new Vector2(650, 200), 120, 160, 60, Color.Pink);
+        
+        this._primitiveBatch.DrawEmptyEllipse(new Vector2(1000, 200), new Vector2(150, 100), 4, 60, Color.Blue);
+        
+        this._primitiveBatch.DrawFilledEllipse(new Vector2(1000, 400), new Vector2(150, 90), 60, Color.Cyan);
+        
+        this._primitiveBatch.DrawFilledTriangle(new Vector2(1000, 500), new Vector2(900, 640), new Vector2(1100, 640), Color.LightRed);
+        
+        this._primitiveBatch.DrawEmptyTriangle(new Vector2(1000, 500), new Vector2(900, 640), new Vector2(1100, 640), 4, Color.DarkRed);
         
         this._primitiveBatch.DrawFilledCircle(new Vector2(160, 160), 150, 60, Color.LightRed);
         this._primitiveBatch.DrawEmptyCircle(new Vector2(160, 160), 150, 5, 60, Color.DarkRed);

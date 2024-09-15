@@ -192,7 +192,7 @@ public class PrimitiveBatch : Disposable {
     /// <param name="end">The end point of the line.</param>
     /// <param name="thickness">The thickness of the line. Default is 1.0.</param>
     /// <param name="color">The color of the line. If null, defaults to white.</param>
-    public void DrawLine(Vector2 start, Vector2 end, float thickness = 1.0F, Color? color = null) {
+    public void DrawLine(Vector2 start, Vector2 end, float thickness, Color? color = null) {
         float distance = Vector2.Distance(start, end);
         float angle = float.RadiansToDegrees(MathF.Atan2(end.Y - start.Y, end.X - start.X));
         
@@ -459,29 +459,284 @@ public class PrimitiveBatch : Disposable {
             lastPoint = currentPoint;
         }
     }
-    
+
+    /// <summary>
+    /// Draws an empty ring at the specified position with given inner and outer radii, thickness, segments, and optional color.
+    /// </summary>
+    /// <param name="position">The position where the ring will be drawn.</param>
+    /// <param name="innerRadius">The inner radius of the ring.</param>
+    /// <param name="outerRadius">The outer radius of the ring.</param>
+    /// <param name="thickness">The thickness of the ring.</param>
+    /// <param name="segments">The number of segments to use for drawing the ring. Minimum is 4.</param>
+    /// <param name="color">Optional color to use for drawing the ring. Defaults to white if not provided.</param>
     public void DrawEmptyRing(Vector2 position, float innerRadius, float outerRadius, int thickness, int segments, Color? color = null) {
-        
+        int finalSegments = Math.Max(4, segments);
+        Color finalColor = color ?? Color.White;
+
+        float angleIncrement = MathF.PI * 2.0f / finalSegments;
+        float lineOffset = thickness / 2.0F;
+
+        for (int i = 0; i < finalSegments; i++) {
+            float startAngle = i * angleIncrement;
+            float endAngle = (i + 1) * angleIncrement;
+
+            Vector2 innerStart = new Vector2(
+                position.X + innerRadius * MathF.Cos(startAngle),
+                position.Y + innerRadius * MathF.Sin(startAngle)
+            );
+
+            Vector2 innerEnd = new Vector2(
+                position.X + innerRadius * MathF.Cos(endAngle),
+                position.Y + innerRadius * MathF.Sin(endAngle)
+            );
+
+            Vector2 outerStart = new Vector2(
+                position.X + outerRadius * MathF.Cos(startAngle),
+                position.Y + outerRadius * MathF.Sin(startAngle)
+            );
+
+            Vector2 outerEnd = new Vector2(
+                position.X + outerRadius * MathF.Cos(endAngle),
+                position.Y + outerRadius * MathF.Sin(endAngle)
+            );
+            
+            // Calculate the direction of the segment.
+            Vector2 innerDirection = Vector2.Normalize(innerEnd - innerStart);
+            Vector2 innerPerpendicular = new Vector2(-innerDirection.Y, innerDirection.X);
+
+            // Apply offset to start and end points.
+            Vector2 innerStartOffset = innerPerpendicular * lineOffset;
+            Vector2 innerEndOffset = innerPerpendicular * lineOffset;
+
+            // Adjusted start and end points.
+            Vector2 adjustedInnerStartPoint = innerStart + innerStartOffset;
+            Vector2 adjustedInnerEndPoint = innerEnd + innerEndOffset;
+
+            // Draw the inner ring.
+            this.DrawLine(adjustedInnerStartPoint, adjustedInnerEndPoint, thickness, finalColor);
+            
+            // Calculate the direction of the segment.
+            Vector2 outerDirection = Vector2.Normalize(outerEnd - outerStart);
+            Vector2 outerPerpendicular = new Vector2(-outerDirection.Y, outerDirection.X);
+
+            // Apply offset to start and end points.
+            Vector2 outerStartOffset = outerPerpendicular * lineOffset;
+            Vector2 outerEndOffset = outerPerpendicular * lineOffset;
+
+            // Adjusted start and end points.
+            Vector2 adjustedOuterStartPoint = outerStart + outerStartOffset;
+            Vector2 adjustedOuterEndPoint = outerEnd + outerEndOffset;
+            
+            // Draw the outer ring.
+            this.DrawLine(adjustedOuterStartPoint, adjustedOuterEndPoint, thickness, finalColor);
+        }
     }
-    
+
+    /// <summary>
+    /// Draws a filled ring at the specified position with the given inner and outer radii, segment count, and optional color.
+    /// </summary>
+    /// <param name="position">The center position of the ring.</param>
+    /// <param name="innerRadius">The inner radius of the ring.</param>
+    /// <param name="outerRadius">The outer radius of the ring.</param>
+    /// <param name="segments">The number of segments to use for drawing the ring.</param>
+    /// <param name="color">The color of the ring. If not provided, defaults to white.</param>
     public void DrawFilledRing(Vector2 position, float innerRadius, float outerRadius, int segments, Color? color = null) {
-        
+        int finalSegments = Math.Max(4, segments);
+        Color finalColor = color ?? Color.White;
+
+        float angleIncrement = MathF.PI * 2.0f / finalSegments;
+
+        for (int i = 0; i < finalSegments; i++) {
+            float startAngle = i * angleIncrement;
+            float endAngle = (i + 1) * angleIncrement;
+    
+            Vector2 innerStart = new Vector2(
+                position.X + innerRadius * MathF.Cos(startAngle),
+                position.Y + innerRadius * MathF.Sin(startAngle)
+            );
+    
+            Vector2 innerEnd = new Vector2(
+                position.X + innerRadius * MathF.Cos(endAngle),
+                position.Y + innerRadius * MathF.Sin(endAngle)
+            );
+    
+            Vector2 outerStart = new Vector2(
+                position.X + outerRadius * MathF.Cos(startAngle),
+                position.Y + outerRadius * MathF.Sin(startAngle)
+            );
+    
+            Vector2 outerEnd = new Vector2(
+                position.X + outerRadius * MathF.Cos(endAngle),
+                position.Y + outerRadius * MathF.Sin(endAngle)
+            );
+    
+            // Define the vertices for the triangle as part of the ring segment.
+            this._tempVertices[0] = new PrimitiveVertex2D() {
+                Position = innerStart,
+                Color = finalColor.ToRgbaFloat().ToVector4()
+            };
+            this._tempVertices[1] = new PrimitiveVertex2D() {
+                Position = outerStart,
+                Color = finalColor.ToRgbaFloat().ToVector4()
+            };
+            this._tempVertices[2] = new PrimitiveVertex2D() {
+                Position = outerEnd,
+                Color = finalColor.ToRgbaFloat().ToVector4()
+            };
+    
+            this._tempVertices[3] = new PrimitiveVertex2D() {
+                Position = innerStart,
+                Color = finalColor.ToRgbaFloat().ToVector4()
+            };
+            this._tempVertices[4] = new PrimitiveVertex2D() {
+                Position = outerEnd,
+                Color = finalColor.ToRgbaFloat().ToVector4()
+            };
+            this._tempVertices[5] = new PrimitiveVertex2D() {
+                Position = innerEnd,
+                Color = finalColor.ToRgbaFloat().ToVector4()
+            };
+    
+            this.AddVertices(this._pipelineTriangleList, 6);
+        }
     }
 
+    /// <summary>
+    /// Draws an empty ellipse at the specified position with the given radius, thickness, and number of segments.
+    /// </summary>
+    /// <param name="position">The center position of the ellipse in 2D space.</param>
+    /// <param name="radius">The radius of the ellipse along the X and Y axes.</param>
+    /// <param name="thickness">The thickness of the ellipse outline.</param>
+    /// <param name="segments">The number of segments to use for drawing the ellipse. Minimum value is 4.</param>
+    /// <param name="color">The color to use for the ellipse outline. If not specified, defaults to white.</param>
     public void DrawEmptyEllipse(Vector2 position, Vector2 radius, int thickness, int segments, Color? color = null) {
+        int finalSegments = Math.Max(4, segments);
+        Color finalColor = color ?? Color.White;
+
+        float angleIncrement = MathF.PI * 2.0f / finalSegments;
+        float lineOffset = thickness / 2.0F;
+
+        for (int i = 0; i < finalSegments; i++) {
+            float startAngle = i * angleIncrement;
+            float endAngle = (i + 1) * angleIncrement;
+
+            Vector2 startPoint = new Vector2(
+                position.X + radius.X * MathF.Cos(startAngle),
+                position.Y + radius.Y * MathF.Sin(startAngle)
+            );
+
+            Vector2 endPoint = new Vector2(
+                position.X + radius.X * MathF.Cos(endAngle),
+                position.Y + radius.Y * MathF.Sin(endAngle)
+            );
+            
+            // Calculate the direction of the segment.
+            Vector2 direction = Vector2.Normalize(endPoint - startPoint);
         
-    }
-    
-    public void DrawFilledEllipse(Vector2 position, Vector2 radius, int segments, Color? color = null) {
-        
+            // Perpendicular vector for offset (rotate 90 degrees).
+            Vector2 perpendicular = new Vector2(-direction.Y, direction.X);
+
+            // Apply offset to start and end points.
+            Vector2 startOffset = perpendicular * lineOffset;
+            Vector2 endOffset = perpendicular * lineOffset;
+
+            // Adjusted start and end points.
+            Vector2 adjustedStartPoint = startPoint + startOffset;
+            Vector2 adjustedEndPoint = endPoint + endOffset;
+
+            // Draw the line between the start and end points.
+            this.DrawLine(adjustedStartPoint, adjustedEndPoint, thickness, finalColor);
+        }
     }
 
-    public void DrawEmptyTriangle(Vector2 point1, Vector2 point2, Vector2 point3, int thickness, Color? color = null) {
-        
+    /// <summary>
+    /// Draws a filled ellipse at the specified position with the given radius, number of segments, and optional color.
+    /// </summary>
+    /// <param name="position">The center position of the ellipse.</param>
+    /// <param name="radius">The horizontal and vertical radii of the ellipse.</param>
+    /// <param name="segments">The number of segments to divide the ellipse into.</param>
+    /// <param name="color">The color used to fill the ellipse. Defaults to white if not specified.</param>
+    public void DrawFilledEllipse(Vector2 position, Vector2 radius, int segments, Color? color = null) {
+        int finalSegments = Math.Max(4, segments);
+        Color finalColor = color ?? Color.White;
+
+        float angleIncrement = MathF.PI * 2.0f / finalSegments;
+
+        for (int i = 0; i < finalSegments; i++) {
+            float startAngle = i * angleIncrement;
+            float endAngle = (i + 1) * angleIncrement;
+
+            Vector2 startPoint = new Vector2(
+                position.X + radius.X * MathF.Cos(startAngle),
+                position.Y + radius.Y * MathF.Sin(startAngle)
+            );
+
+            Vector2 endPoint = new Vector2(
+                position.X + radius.X * MathF.Cos(endAngle),
+                position.Y + radius.Y * MathF.Sin(endAngle)
+            );
+
+            this._tempVertices[0] = new PrimitiveVertex2D {
+                Position = position,
+                Color = finalColor.ToRgbaFloat().ToVector4()
+            };
+            
+            this._tempVertices[1] = new PrimitiveVertex2D {
+                Position = startPoint,
+                Color = finalColor.ToRgbaFloat().ToVector4()
+            };
+            
+            this._tempVertices[2] = new PrimitiveVertex2D {
+                Position = endPoint,
+                Color = finalColor.ToRgbaFloat().ToVector4()
+            };
+
+            this.AddVertices(this._pipelineTriangleList, 3);
+        }
     }
-    
-    public void DrawFilledTriangle(Vector2 point1, Vector2 point2, Vector2 point3, Color? color = null) {
+
+    /// <summary>
+    /// Draws an empty triangle between the specified points with a given thickness and color.
+    /// </summary>
+    /// <param name="point1">The first vertex of the triangle.</param>
+    /// <param name="point2">The second vertex of the triangle.</param>
+    /// <param name="point3">The third vertex of the triangle.</param>
+    /// <param name="thickness">The thickness of the triangle edges.</param>
+    /// <param name="color">The color of the triangle edges. Defaults to white if not specified.</param>
+    public void DrawEmptyTriangle(Vector2 point1, Vector2 point2, Vector2 point3, int thickness, Color? color = null) {
+        Color finalColor = color ?? Color.White;
         
+        this.DrawLine(point1, point2, thickness, finalColor);
+        this.DrawLine(point2, point3, thickness, finalColor);
+        this.DrawLine(point3, point1, thickness, finalColor);
+    }
+
+    /// <summary>
+    /// Draws a filled triangle using the specified vertices and an optional color.
+    /// </summary>
+    /// <param name="point1">The first vertex of the triangle.</param>
+    /// <param name="point2">The second vertex of the triangle.</param>
+    /// <param name="point3">The third vertex of the triangle.</param>
+    /// <param name="color">The color of the triangle. If null, the default color is white.</param>
+    public void DrawFilledTriangle(Vector2 point1, Vector2 point2, Vector2 point3, Color? color = null) {
+        Color finalColor = color ?? Color.White;
+
+        this._tempVertices[0] = new PrimitiveVertex2D {
+            Position = point1,
+            Color = finalColor.ToRgbaFloat().ToVector4()
+        };
+
+        this._tempVertices[1] = new PrimitiveVertex2D {
+            Position = point2,
+            Color = finalColor.ToRgbaFloat().ToVector4()
+        };
+
+        this._tempVertices[2] = new PrimitiveVertex2D {
+            Position = point3,
+            Color = finalColor.ToRgbaFloat().ToVector4()
+        };
+
+        this.AddVertices(this._pipelineTriangleList, 3);
     }
 
     /// <summary>
