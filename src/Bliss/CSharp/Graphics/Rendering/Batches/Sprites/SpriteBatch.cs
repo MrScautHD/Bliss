@@ -50,6 +50,13 @@ public class SpriteBatch : Disposable {
     public Window Window { get; private set; }
 
     /// <summary>
+    /// Retrieves the current output configuration for the SpriteBatch.
+    /// This includes details such as the pixel format and any associated debug information
+    /// for rendering outputs.
+    /// </summary>
+    public OutputDescription Output { get; private set; }
+
+    /// <summary>
     /// Specifies the maximum number of sprites that the SpriteBatch can process in a single draw call.
     /// </summary>
     public uint Capacity { get; private set; }
@@ -147,16 +154,18 @@ public class SpriteBatch : Disposable {
     /// The currently active sampler that is being used with the texture. This field may be null if no sampler is currently set.
     /// </summary>
     private Sampler? _currentSampler;
-    
+
     /// <summary>
     /// Initializes a new instance of the <see cref="SpriteBatch"/> class, setting up graphics resources and buffers for sprite rendering.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used for rendering.</param>
     /// <param name="window">The window associated with the graphics device.</param>
+    /// <param name="output">The output description defining the render target.</param>
     /// <param name="capacity">The maximum number of quads (sprite batches) that can be handled by this sprite batch instance. Default is 15360.</param>
-    public SpriteBatch(GraphicsDevice graphicsDevice, Window window, uint capacity = 15360) {
+    public SpriteBatch(GraphicsDevice graphicsDevice, Window window, OutputDescription output, uint capacity = 15360) {
         this.GraphicsDevice = graphicsDevice;
         this.Window = window;
+        this.Output = output;
         this.Capacity = capacity;
         this.FontStashAdapter = new FontStashAdapter(graphicsDevice, this);
         
@@ -429,7 +438,7 @@ public class SpriteBatch : Disposable {
                         effect.Shader.Item2
                     ]
                 },
-                Outputs = this.GraphicsDevice.SwapchainFramebuffer.OutputDescription
+                Outputs = this.Output
             });
             
             this._cachedPipelines.Add((effect, blendState), newPipeline);

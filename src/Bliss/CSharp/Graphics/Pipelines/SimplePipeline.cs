@@ -34,21 +34,21 @@ public class SimplePipeline : Disposable {
     public SimplePipeline(GraphicsDevice graphicsDevice, SimplePipelineDescription pipelineDescription) {
         this.GraphicsDevice = graphicsDevice;
         this.PipelineDescription = pipelineDescription;
-        this.ResourceLayouts = new ResourceLayout[this.PipelineDescription.Buffers.Length + this.PipelineDescription.TextureLayouts.Length];
+        this.ResourceLayouts = new ResourceLayout[pipelineDescription.Buffers.Length + pipelineDescription.TextureLayouts.Length];
         
         int layoutIndex = 0;
 
-        foreach (ISimpleBuffer buffer in this.PipelineDescription.Buffers) {
+        foreach (ISimpleBuffer buffer in pipelineDescription.Buffers) {
             this.ResourceLayouts[layoutIndex] = buffer.ResourceLayout;
             layoutIndex += 1;
         }
 
-        foreach (SimpleTextureLayout textureLayout in this.PipelineDescription.TextureLayouts) {
+        foreach (SimpleTextureLayout textureLayout in pipelineDescription.TextureLayouts) {
             this.ResourceLayouts[layoutIndex] = textureLayout.Layout;
             layoutIndex += 1;
         }
 
-        this.Pipeline = this.GraphicsDevice.ResourceFactory.CreateGraphicsPipeline(new GraphicsPipelineDescription() {
+        this.Pipeline = graphicsDevice.ResourceFactory.CreateGraphicsPipeline(new GraphicsPipelineDescription() {
            BlendState = pipelineDescription.BlendState,
            DepthStencilState = pipelineDescription.DepthStencilState,
            RasterizerState = pipelineDescription.RasterizerState,

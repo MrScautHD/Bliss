@@ -4,6 +4,7 @@ using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Rendering.Batches.Primitives;
 using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
+using Bliss.CSharp.Graphics.Rendering.Passes;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
@@ -31,6 +32,9 @@ public class Game : Disposable {
     
     private readonly double _fixedUpdateTimeStep;
     private double _fixedUpdateTimer;
+    
+    public FullScreenRenderPass FullScreenRenderPass { get; private set; }
+    public RenderTexture2D FullScreenTexture { get; private set; }
 
     private SpriteBatch _spriteBatch;
     private PrimitiveBatch _primitiveBatch;
@@ -58,6 +62,7 @@ public class Game : Disposable {
         };
         
         this.Window = new Window(this.Settings.Width, this.Settings.Height, this.Settings.Title, this.Settings.WindowFlags, options, this.Settings.Backend, out GraphicsDevice graphicsDevice);
+        this.Window.Resized += () => this.OnResize(new Rectangle(this.Window.X, this.Window.Y, this.Window.Width, this.Window.Height));
         this.GraphicsDevice = graphicsDevice;
         
         Logger.Info("Loading window icon...");
@@ -87,6 +92,10 @@ public class Game : Disposable {
             Sdl2Events.ProcessEvents();
             Input.Begin(this.Window.PumpEvents());
             
+            if (!this.Window.Exists) {
+                break;
+            }
+
             this.Update();
             this.AfterUpdate();
 
@@ -103,10 +112,13 @@ public class Game : Disposable {
         Logger.Warn("Application shuts down!");
         this.OnClose();
     }
-
+    
     protected virtual void Init() {
-        this._spriteBatch = new SpriteBatch(this.GraphicsDevice, this.Window);
-        this._primitiveBatch = new PrimitiveBatch(this.GraphicsDevice, this.Window);
+        this.FullScreenRenderPass = new FullScreenRenderPass(this.GraphicsDevice, this.GraphicsDevice.SwapchainFramebuffer.OutputDescription);
+        this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.Window.Width, (uint) this.Window.Height, TextureSampleCount.Count8); //TODO: Recreate it when resize the window + SampleCount! //this.GraphicsDevice.GetSampleCountLimit()
+        
+        this._spriteBatch = new SpriteBatch(this.GraphicsDevice, this.Window, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._primitiveBatch = new PrimitiveBatch(this.GraphicsDevice, this.Window, this.FullScreenTexture.Framebuffer.OutputDescription);
         this._texture = new Texture2D(this.GraphicsDevice, "content/images/logo.png");
         this._font = new Font("content/fonts/fontoe.ttf");
     }
@@ -119,9 +131,21 @@ public class Game : Disposable {
     
     protected virtual void Draw(GraphicsDevice graphicsDevice, CommandList commandList) {
         commandList.Begin();
-        commandList.SetFramebuffer(graphicsDevice.SwapchainFramebuffer);
+        commandList.SetFramebuffer(this.FullScreenTexture.Framebuffer);
         commandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
-
+        
+        // PrimitiveBatch Drawing.
+        this._primitiveBatch.Begin(commandList);
+        
+        // Draw Rectangle.
+        RectangleF rectangle = new RectangleF(this.Window.Width / 2.0F - 500, this.Window.Height / 2.0F - 250, 1000, 500);
+        this._primitiveBatch.DrawFilledRectangle(rectangle, default, 0, new Color(144, 238, 144, 20));
+        this._primitiveBatch.DrawEmptyRectangle(rectangle, 4, default, 0, Color.DarkGreen);
+        
+        this._primitiveBatch.DrawFilledCircle(new Vector2(50, 50), 50, 60, Color.Red);
+        
+        this._primitiveBatch.End();
+        
         // SpriteBatch Drawing.
         this._spriteBatch.Begin(commandList);
         
@@ -143,42 +167,32 @@ public class Game : Disposable {
         
         this._spriteBatch.End();
         
-        // PrimitiveBatch Drawing.
-        this._primitiveBatch.Begin(commandList);
+        commandList.End();
+        graphicsDevice.SubmitCommands(commandList);
         
-        this._primitiveBatch.DrawFilledCircleSector(new Vector2(400, 400), 150, 0, 270, 40, Color.Magenta);
-        this._primitiveBatch.DrawEmptyCircleSector(new Vector2(400, 400), 150, 0, 270, 4, 40, Color.Orange);
+        // TODO: OpenGL is not working... :/
+        // TODO: MSAA Get not applied for some reason (PS: Whatever witch platform).
         
-        this._primitiveBatch.DrawEmptyRing(new Vector2(650, 650), 150, 160, 4, 60, Color.LightRed);
+        // Draw ScreenPass.
+        commandList.Begin();
+        commandList.SetFramebuffer(this.GraphicsDevice.SwapchainFramebuffer);
+        commandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
         
-        this._primitiveBatch.DrawFilledRing(new Vector2(650, 200), 120, 160, 60, Color.Pink);
+        commandList.ResolveTexture(this.FullScreenTexture.ColorTexture, this.FullScreenTexture.DestinationTexture);
         
-        this._primitiveBatch.DrawEmptyEllipse(new Vector2(1000, 200), new Vector2(150, 100), 4, 60, Color.Blue);
-        
-        this._primitiveBatch.DrawFilledEllipse(new Vector2(1000, 400), new Vector2(150, 90), 60, Color.Cyan);
-        
-        this._primitiveBatch.DrawFilledTriangle(new Vector2(1000, 500), new Vector2(900, 640), new Vector2(1100, 640), Color.LightRed);
-        
-        this._primitiveBatch.DrawEmptyTriangle(new Vector2(1000, 500), new Vector2(900, 640), new Vector2(1100, 640), 4, Color.DarkRed);
-        
-        this._primitiveBatch.DrawFilledCircle(new Vector2(160, 160), 150, 60, Color.LightRed);
-        this._primitiveBatch.DrawEmptyCircle(new Vector2(160, 160), 150, 5, 60, Color.DarkRed);
-        
-        // Draw Line.
-        this._primitiveBatch.DrawLine(new Vector2(0, 40), new Vector2(this.Window.Width, 40), 10, Color.Blue);
-        
-        // Draw rectangle.
-        RectangleF rectangle = new RectangleF(this.Window.Width / 2.0F - 500, this.Window.Height / 2.0F - 250, 1000, 500);
-        this._primitiveBatch.DrawFilledRectangle(rectangle, default, 0, new Color(144, 238, 144, 20));
-        this._primitiveBatch.DrawEmptyRectangle(rectangle, 4, default, 0, Color.DarkGreen);
-        
-        this._primitiveBatch.End();
+        this.FullScreenRenderPass.Draw(commandList, this.FullScreenTexture, SamplerType.Point);
         
         commandList.End();
+        
         graphicsDevice.SubmitCommands(commandList);
         graphicsDevice.SwapBuffers();
     }
     
+    protected virtual void OnResize(Rectangle rectangle) {
+        this.GraphicsDevice.MainSwapchain.Resize((uint) rectangle.Width, (uint) rectangle.Height);
+        this.FullScreenTexture.Resize((uint) rectangle.Width, (uint) rectangle.Height);
+    }
+
     protected virtual void OnClose() { }
 
     public int GetTargetFps() {
@@ -191,8 +205,8 @@ public class Game : Disposable {
     
     protected override void Dispose(bool disposing) {
         if (disposing) {
-            this.GraphicsDevice.Dispose();
             this.Window.Close();
+            this.GraphicsDevice.Dispose();
             Input.Destroy();
         }
     }

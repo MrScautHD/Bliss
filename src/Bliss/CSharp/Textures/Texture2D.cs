@@ -48,7 +48,7 @@ public class Texture2D : Disposable {
     /// Gets the device texture created from the images.
     /// </summary>
     public Texture DeviceTexture { get; private set; }
-
+    
     /// <summary>
     /// A dictionary that caches resource sets associated with samplers, used to avoid redundant resource set creation.
     /// </summary>
@@ -145,10 +145,6 @@ public class Texture2D : Disposable {
     /// </summary>
     /// <param name="graphicsDevice">The graphics device on which to create the texture.</param>
     private unsafe Texture CreateDeviceTexture(GraphicsDevice graphicsDevice) {
-        // TODO: DO MSSA: this.GraphicsDevice.GetSampleCountLimit(this.Format, false);
-        //Texture multiSampledTexture = graphicsDevice.ResourceFactory.CreateTexture(TextureDescription.Texture2D(this.Width, Height, 1, 1, this.Format, TextureUsage.RenderTarget, TextureSampleCount.Count8));
-        //Framebuffer framebuffer = graphicsDevice.ResourceFactory.CreateFramebuffer(new FramebufferDescription(null, multiSampledTexture));
-        
         Texture texture = graphicsDevice.ResourceFactory.CreateTexture(TextureDescription.Texture2D(this.Width, this.Height, this.MipLevels, 1, this.Format, TextureUsage.Sampled));
         
         for (int i = 0; i < this.MipLevels; i++) {
@@ -162,7 +158,7 @@ public class Texture2D : Disposable {
                 graphicsDevice.UpdateTexture(texture, (nint) dataPtr, (uint) (this.PixelSizeInBytes * image.Width * image.Height), 0, 0, 0, (uint) image.Width, (uint) image.Height, 1, (uint) i, 0);
             }
         }
-
+        
         return texture;
     }
 

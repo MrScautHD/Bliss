@@ -14,7 +14,7 @@ public struct GameSettings {
     public double FixedTimeStep { get; init; }
     public WindowState WindowFlags { get; init; }
     public GraphicsBackend Backend { get; init; }
-    public bool VSync{ get; init; }
+    public bool VSync { get; init; }
     public TextureSampleCount SampleCount { get; init; }
     
     /// <summary>
@@ -28,7 +28,7 @@ public struct GameSettings {
         this.TargetFps = 0;
         this.FixedTimeStep = 1.0F / 60.0F;
         this.WindowFlags = WindowState.Normal;
-        this.Backend = VeldridStartup.GetPlatformDefaultBackend();
+        this.Backend = GraphicsBackend.Vulkan; // TODO: VeldridStartup.GetPlatformDefaultBackend()
         this.VSync = true;
         this.SampleCount = 0;
     }

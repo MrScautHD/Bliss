@@ -23,6 +23,12 @@ public class PrimitiveBatch : Disposable {
     /// Represents the window used for rendering graphics.
     /// </summary>
     public Window Window { get; private set; }
+    
+    /// <summary>
+    /// Represents the output description utilized by the <see cref="PrimitiveBatch"/> for rendering configurations.
+    /// The <see cref="Output"/> property specifies how the rendering results are presented on the screen.
+    /// </summary>
+    public OutputDescription Output { get; private set; }
 
     /// <summary>
     /// Specifies the maximum number of sprites that the PrimitiveBatch can process in a single draw call.
@@ -89,16 +95,18 @@ public class PrimitiveBatch : Disposable {
     /// The pipeline used for the current rendering batch.
     /// </summary>
     private SimplePipeline? _currentPipeline;
-    
+
     /// <summary>
-    /// Initializes a new instance of the <see cref="PrimitiveBatch"/> class with the specified graphics device, window, and optional capacity.
+    /// Initializes a new instance of the PrimitiveBatch class for rendering 2D primitives.
     /// </summary>
-    /// <param name="graphicsDevice">The graphics device used for rendering operations.</param>
-    /// <param name="window">The window used for rendering output.</param>
-    /// <param name="capacity">The maximum number of vertices that can process in a single draw call. Defaults is 30720.</param>
-    public PrimitiveBatch(GraphicsDevice graphicsDevice, Window window, uint capacity = 30720) {
+    /// <param name="graphicsDevice">The graphics device used for rendering.</param>
+    /// <param name="window">The window representing the rendering context.</param>
+    /// <param name="output">The output description defining the render target.</param>
+    /// <param name="capacity">Optional. The initial capacity of the vertex buffer.</param>
+    public PrimitiveBatch(GraphicsDevice graphicsDevice, Window window, OutputDescription output, uint capacity = 30720) {
         this.GraphicsDevice = graphicsDevice;
         this.Window = window;
+        this.Output = output;
         this.Capacity = capacity;
         
         // Create effects.
@@ -127,7 +135,7 @@ public class PrimitiveBatch : Disposable {
                     this._effect.Shader.Item2
                 ]
             },
-            Outputs = graphicsDevice.SwapchainFramebuffer.OutputDescription // TODO: Allow custom output! even for SpriteBatch its for things like MSAA!!!
+            Outputs = output
         };
 
         pipelineDescription.PrimitiveTopology = PrimitiveTopology.TriangleList;
