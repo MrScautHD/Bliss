@@ -205,8 +205,8 @@ public class Game : Disposable {
     
     protected override void Dispose(bool disposing) {
         if (disposing) {
-            this.Window.Close();
             this.GraphicsDevice.Dispose();
+            this.Window.Close();
             Input.Destroy();
         }
     }
