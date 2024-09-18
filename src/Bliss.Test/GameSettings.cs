@@ -28,8 +28,8 @@ public struct GameSettings {
         this.TargetFps = 0;
         this.FixedTimeStep = 1.0F / 60.0F;
         this.WindowFlags = WindowState.Normal;
-        this.Backend = GraphicsBackend.OpenGL; // TODO: VeldridStartup.GetPlatformDefaultBackend()
+        this.Backend = GraphicsBackend.Metal; // TODO: VeldridStartup.GetPlatformDefaultBackend()
         this.VSync = true;
-        this.SampleCount = TextureSampleCount.Count2;
+        this.SampleCount = TextureSampleCount.Count1;
     }
 }

@@ -416,11 +416,10 @@ public class SpriteBatch : Disposable {
         if (!this._cachedPipelines.TryGetValue((effect, blendState), out SimplePipeline? pipeline)) {
             SimplePipeline newPipeline = new SimplePipeline(this.GraphicsDevice, new SimplePipelineDescription() {
                 BlendState = blendState.Description,
-                DepthStencilState = new DepthStencilStateDescription(false, false, ComparisonKind.LessEqual),
+                DepthStencilState = new DepthStencilStateDescription(true, true, ComparisonKind.LessEqual),
                 RasterizerState = new RasterizerStateDescription() {
                     DepthClipEnabled = true,
-                    CullMode = FaceCullMode.None,
-                    ScissorTestEnabled = true
+                    CullMode = FaceCullMode.None
                 },
                 PrimitiveTopology = PrimitiveTopology.TriangleList,
                 Buffers = [

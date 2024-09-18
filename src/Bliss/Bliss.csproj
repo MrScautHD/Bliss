@@ -14,22 +14,12 @@
     
     <!-- Libraries -->
     <ItemGroup>
-      <PackageReference Include="AssimpNet" Version="5.0.0-beta1" />
-      <PackageReference Include="FontStashSharp" Version="1.3.7" />
-      <PackageReference Include="SixLabors.ImageSharp" Version="3.1.5" />
       <PackageReference Include="Veldrid" Version="4.9.0" />
       <PackageReference Include="Veldrid.SPIRV" Version="1.0.15" />
       <PackageReference Include="Veldrid.StartupUtilities" Version="4.9.0" />
-      <PackageReference Include="Veldrid.Utilities" Version="4.9.0" />
-    </ItemGroup>
-
-    <!-- Native SDL2 -->
-    <ItemGroup>
-        <Content Include="runtimes/**/*" Pack="true">
-            <Link>%(Filename)%(Extension)</Link>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-            <PackageCopyToOutput>true</PackageCopyToOutput>
-        </Content>
+      <PackageReference Include="AssimpNet" Version="5.0.0-beta1" />
+      <PackageReference Include="FontStashSharp" Version="1.3.7" />
+      <PackageReference Include="SixLabors.ImageSharp" Version="3.1.5" />
     </ItemGroup>
 
     <!-- Content -->

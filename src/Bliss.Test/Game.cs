@@ -173,7 +173,6 @@ public class Game : Disposable {
         // Draw ScreenPass.
         commandList.Begin();
         
-        // TODO: Is just here because of OPENGL ._.
         if (this.FullScreenTexture.SampleCount != TextureSampleCount.Count1) {
             commandList.ResolveTexture(this.FullScreenTexture.ColorTexture, this.FullScreenTexture.DestinationTexture);
         }

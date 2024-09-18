@@ -35,7 +35,7 @@ public class FullScreenRenderPass : Disposable {
         // Create pipeline.
         this._pipeline = new SimplePipeline(graphicsDevice, new SimplePipelineDescription() {
             BlendState = BlendState.AlphaBlend.Description,
-            DepthStencilState = new DepthStencilStateDescription(false, false, ComparisonKind.LessEqual),
+            DepthStencilState = new DepthStencilStateDescription(true, true, ComparisonKind.LessEqual),
             RasterizerState = new RasterizerStateDescription() {
                 DepthClipEnabled = true,
                 CullMode = FaceCullMode.None
