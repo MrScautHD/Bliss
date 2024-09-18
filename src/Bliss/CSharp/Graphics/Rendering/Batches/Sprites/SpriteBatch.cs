@@ -203,7 +203,7 @@ public class SpriteBatch : Disposable {
         // Create texture layout.
         this._textureLayout = new SimpleTextureLayout(graphicsDevice, "fTexture");
     }
-
+    
     /// <summary>
     /// Begins a sprite batch operation, preparing the command list for sprite rendering.
     /// </summary>
@@ -416,7 +416,7 @@ public class SpriteBatch : Disposable {
         if (!this._cachedPipelines.TryGetValue((effect, blendState), out SimplePipeline? pipeline)) {
             SimplePipeline newPipeline = new SimplePipeline(this.GraphicsDevice, new SimplePipelineDescription() {
                 BlendState = blendState.Description,
-                DepthStencilState = new DepthStencilStateDescription(true, true, ComparisonKind.LessEqual),
+                DepthStencilState = new DepthStencilStateDescription(false, false, ComparisonKind.LessEqual),
                 RasterizerState = new RasterizerStateDescription() {
                     DepthClipEnabled = true,
                     CullMode = FaceCullMode.None,

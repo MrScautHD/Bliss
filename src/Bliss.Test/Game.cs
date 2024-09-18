@@ -115,7 +115,7 @@ public class Game : Disposable {
     
     protected virtual void Init() {
         this.FullScreenRenderPass = new FullScreenRenderPass(this.GraphicsDevice, this.GraphicsDevice.SwapchainFramebuffer.OutputDescription);
-        this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.Window.Width, (uint) this.Window.Height, TextureSampleCount.Count8); //TODO: Recreate it when resize the window + SampleCount! //this.GraphicsDevice.GetSampleCountLimit()
+        this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.Window.Width, (uint) this.Window.Height, this.Settings.SampleCount);
         
         this._spriteBatch = new SpriteBatch(this.GraphicsDevice, this.Window, this.FullScreenTexture.Framebuffer.OutputDescription);
         this._primitiveBatch = new PrimitiveBatch(this.GraphicsDevice, this.Window, this.FullScreenTexture.Framebuffer.OutputDescription);
@@ -170,15 +170,16 @@ public class Game : Disposable {
         commandList.End();
         graphicsDevice.SubmitCommands(commandList);
         
-        // TODO: OpenGL is not working... :/
-        // TODO: MSAA Get not applied for some reason (PS: Whatever witch platform).
-        
         // Draw ScreenPass.
         commandList.Begin();
+        
+        // TODO: Is just here because of OPENGL ._.
+        if (this.FullScreenTexture.SampleCount != TextureSampleCount.Count1) {
+            commandList.ResolveTexture(this.FullScreenTexture.ColorTexture, this.FullScreenTexture.DestinationTexture);
+        }
+        
         commandList.SetFramebuffer(this.GraphicsDevice.SwapchainFramebuffer);
         commandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
-        
-        commandList.ResolveTexture(this.FullScreenTexture.ColorTexture, this.FullScreenTexture.DestinationTexture);
         
         this.FullScreenRenderPass.Draw(commandList, this.FullScreenTexture, SamplerType.Point);
         

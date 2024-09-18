@@ -118,7 +118,7 @@ public class PrimitiveBatch : Disposable {
         // Create pipelines.
         SimplePipelineDescription pipelineDescription = new SimplePipelineDescription() {
             BlendState = BlendState.AlphaBlend.Description,
-            DepthStencilState = new DepthStencilStateDescription(true, true, ComparisonKind.LessEqual),
+            DepthStencilState = new DepthStencilStateDescription(false, false, ComparisonKind.LessEqual),
             RasterizerState = new RasterizerStateDescription() {
                 DepthClipEnabled = true,
                 CullMode = FaceCullMode.None

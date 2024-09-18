@@ -16,7 +16,8 @@ public class FullScreenRenderPass : Disposable {
     private SimpleTextureLayout _textureLayout;
     private SimplePipeline _pipeline;
     private DeviceBuffer _vertexBuffer;
-
+    
+    // TODO: Check pipeline + effect to maybe allow post processing to!
     public FullScreenRenderPass(GraphicsDevice graphicsDevice, OutputDescription output) {
         this.GraphicsDevice = graphicsDevice;
         this.Output = output;
@@ -34,7 +35,7 @@ public class FullScreenRenderPass : Disposable {
         // Create pipeline.
         this._pipeline = new SimplePipeline(graphicsDevice, new SimplePipelineDescription() {
             BlendState = BlendState.AlphaBlend.Description,
-            DepthStencilState = new DepthStencilStateDescription(true, true, ComparisonKind.LessEqual),
+            DepthStencilState = new DepthStencilStateDescription(false, false, ComparisonKind.LessEqual),
             RasterizerState = new RasterizerStateDescription() {
                 DepthClipEnabled = true,
                 CullMode = FaceCullMode.None

@@ -1,3 +1,4 @@
+using Bliss.CSharp.Logging;
 using Veldrid;
 
 namespace Bliss.CSharp.Textures;
@@ -9,22 +10,33 @@ public class RenderTexture2D : Disposable {
     public uint Width { get; private set; }
     public uint Height { get; private set; }
     
-    public TextureSampleCount SampleCount { get; private set; }
-    
     public Texture DepthTexture { get; private set; }
     public Texture ColorTexture { get; private set; }
     public Texture DestinationTexture { get; private set; }
     public Framebuffer Framebuffer { get; private set; }
-    
+
+    private TextureSampleCount _sampleCount;
     private Dictionary<(Sampler, ResourceLayout), ResourceSet> _cachedResourceSets;
     
     public RenderTexture2D(GraphicsDevice graphicsDevice, uint width, uint height, TextureSampleCount sampleCount = TextureSampleCount.Count1) {
         this.GraphicsDevice = graphicsDevice;
         this.Width = width;
         this.Height = height;
-        this.SampleCount = sampleCount;
+        this._sampleCount = this.GetValidSampleCount(sampleCount);
         this._cachedResourceSets = new Dictionary<(Sampler, ResourceLayout), ResourceSet>();
         this.CreateFrameBuffer();
+    }
+
+    /// <summary>
+    /// Gets or sets the sample count for the render texture.
+    /// </summary>
+    public TextureSampleCount SampleCount {
+        get => this._sampleCount;
+        set {
+            this._sampleCount = this.GetValidSampleCount(value);
+            this.ClearResources();
+            this.CreateFrameBuffer();
+        }
     }
     
     /// <summary>
@@ -46,13 +58,7 @@ public class RenderTexture2D : Disposable {
         this.Width = width;
         this.Height = height;
         
-        this.DepthTexture.Dispose();
-        this.ColorTexture.Dispose();
-        this.DestinationTexture.Dispose();
-        this.Framebuffer.Dispose();
-        
-        this._cachedResourceSets.Clear();
-
+        this.ClearResources();
         this.CreateFrameBuffer();
     }
 
@@ -65,20 +71,54 @@ public class RenderTexture2D : Disposable {
     /// <returns>A <see cref="ResourceSet"/> that contains the specified sampler and layout.</returns>
     public ResourceSet GetResourceSet(Sampler sampler, ResourceLayout layout) {
         if (!this._cachedResourceSets.TryGetValue((sampler, layout), out ResourceSet? resourceSet)) {
-            ResourceSet newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(layout, this.DestinationTexture, sampler));
-                
+            ResourceSet newResourceSet;
+            
+            if (this.SampleCount == TextureSampleCount.Count1) {
+                newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(layout, this.ColorTexture, sampler));
+            }
+            else {
+                newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(layout, this.DestinationTexture, sampler));
+            }
+            
             this._cachedResourceSets.Add((sampler, layout), newResourceSet);
             return newResourceSet;
         }
 
         return resourceSet;
     }
+
+    /// <summary>
+    /// Returns a valid sample count for the current GraphicsDevice. If the specified sample count exceeds the device's limit, the maximum valid sample count is returned.
+    /// </summary>
+    /// <param name="sampleCount">The desired sample count.</param>
+    /// <returns>The valid sample count, which might be equal to or less than the requested sample count.</returns>
+    private TextureSampleCount GetValidSampleCount(TextureSampleCount sampleCount) {
+        TextureSampleCount maxSamples = this.GraphicsDevice.GetSampleCountLimit(PixelFormat.R8_G8_B8_A8_UNorm, false);
+
+        if (sampleCount > maxSamples) {
+            Logger.Warn($"The count of [{sampleCount}] samples is to high for this GraphicsDevice, the count will fall back to [{maxSamples}] samples!");
+            return maxSamples;
+        }
+        else {
+            return sampleCount;
+        }
+    }
+
+    /// <summary>
+    /// Releases the resources allocated for the depth, color, and destination textures, as well as the framebuffer.
+    /// Also clears any cached resource sets to ensure no references to disposed resources remain.
+    /// </summary>
+    private void ClearResources() {
+        this.DepthTexture.Dispose();
+        this.ColorTexture.Dispose();
+        this.DestinationTexture.Dispose();
+        this.Framebuffer.Dispose();
+        this._cachedResourceSets.Clear();
+    }
     
     protected override void Dispose(bool disposing) {
         if (disposing) {
-            this.DepthTexture.Dispose();
-            this.ColorTexture.Dispose();
-            this.Framebuffer.Dispose();
+            this.ClearResources();
         }
     }
 }
