@@ -1,4 +1,6 @@
 #version 450
+
+//TODO: Split Position and TexCoords in two variables!)
 layout(location = 0) in vec4 vPosition;
 
 layout(location = 0) out vec2 vTexCoords;
