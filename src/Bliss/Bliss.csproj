@@ -23,6 +23,15 @@
       <PackageReference Include="Veldrid.Utilities" Version="4.9.0" />
     </ItemGroup>
 
+    <!-- Native SDL2 -->
+    <ItemGroup>
+        <Content Include="runtimes/**/*" Pack="true">
+            <Link>%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <PackageCopyToOutput>true</PackageCopyToOutput>
+        </Content>
+    </ItemGroup>
+
     <!-- Content -->
     <ItemGroup>
         <Content Include="content/**/*" Pack="true">
