@@ -43,9 +43,9 @@ public class RenderTexture2D : Disposable {
     /// Creates a framebuffer with depth and color textures based on the specified width, height, and sample count.
     /// </summary>
     public void CreateFrameBuffer() {
-        this.DepthTexture = this.GraphicsDevice.ResourceFactory.CreateTexture(new TextureDescription(this.Width, this.Height, 1, 1, 1, PixelFormat.D32_Float_S8_UInt, TextureUsage.DepthStencil | TextureUsage.Sampled, TextureType.Texture2D, this.SampleCount));
-        this.ColorTexture = this.GraphicsDevice.ResourceFactory.CreateTexture(new TextureDescription(this.Width, this.Height, 1, 1, 1, PixelFormat.R8_G8_B8_A8_UNorm, TextureUsage.RenderTarget | TextureUsage.Sampled, TextureType.Texture2D, this.SampleCount));
-        this.DestinationTexture = this.GraphicsDevice.ResourceFactory.CreateTexture(new TextureDescription(this.Width, this.Height, 1, 1, 1, PixelFormat.R8_G8_B8_A8_UNorm, TextureUsage.Sampled, TextureType.Texture2D));
+        this.DepthTexture = this.GraphicsDevice.ResourceFactory.CreateTexture(new TextureDescription(this.Width, this.Height, 1, 1, 1, PixelFormat.D32FloatS8UInt, TextureUsage.DepthStencil | TextureUsage.Sampled, TextureType.Texture2D, this.SampleCount));
+        this.ColorTexture = this.GraphicsDevice.ResourceFactory.CreateTexture(new TextureDescription(this.Width, this.Height, 1, 1, 1, PixelFormat.R8G8B8A8UNorm, TextureUsage.RenderTarget | TextureUsage.Sampled, TextureType.Texture2D, this.SampleCount));
+        this.DestinationTexture = this.GraphicsDevice.ResourceFactory.CreateTexture(new TextureDescription(this.Width, this.Height, 1, 1, 1, PixelFormat.R8G8B8A8UNorm, TextureUsage.Sampled, TextureType.Texture2D));
         this.Framebuffer = this.GraphicsDevice.ResourceFactory.CreateFramebuffer(new FramebufferDescription(this.DepthTexture, this.ColorTexture));
     }
 
@@ -93,7 +93,7 @@ public class RenderTexture2D : Disposable {
     /// <param name="sampleCount">The desired sample count.</param>
     /// <returns>The valid sample count, which might be equal to or less than the requested sample count.</returns>
     private TextureSampleCount GetValidSampleCount(TextureSampleCount sampleCount) {
-        TextureSampleCount maxSamples = this.GraphicsDevice.GetSampleCountLimit(PixelFormat.R8_G8_B8_A8_UNorm, false);
+        TextureSampleCount maxSamples = this.GraphicsDevice.GetSampleCountLimit(PixelFormat.R8G8B8A8UNorm, false);
 
         if (sampleCount > maxSamples) {
             Logger.Warn($"The count of [{sampleCount}] samples is to high for this GraphicsDevice, the count will fall back to [{maxSamples}] samples!");

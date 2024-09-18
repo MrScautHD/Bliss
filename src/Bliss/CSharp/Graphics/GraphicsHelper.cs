@@ -15,7 +15,7 @@ public static class GraphicsHelper {
         return samplerType switch {
             SamplerType.Point => graphicsDevice.PointSampler,
             SamplerType.Linear => graphicsDevice.LinearSampler,
-            SamplerType.Aniso4X => graphicsDevice.Aniso4xSampler,
+            SamplerType.Aniso4X => graphicsDevice.Aniso4XSampler,
             _ => throw new ArgumentException($"Unsupported sampler type: {samplerType}", nameof(samplerType))
         };
     }

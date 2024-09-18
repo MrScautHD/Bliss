@@ -18,7 +18,7 @@ public static class Sdl2Helper {
         byte* error = Sdl2Native.SDL_GetError();
 
         if (error == null) {
-            return "";
+            return string.Empty;
         }
 
         int chars = 0;

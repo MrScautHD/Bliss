@@ -13,22 +13,22 @@ public class BlendState {
     /// <summary>
     /// Describes a blend state in which a single color target is blended with Disabled.
     /// </summary>
-    public static BlendState Disabled => FromDescription(BlendStateDescription.SingleDisabled);
+    public static BlendState Disabled => FromDescription(BlendStateDescription.SINGLE_DISABLED);
     
     /// <summary>
     /// Describes a blend state in which a single color target is blended with AdditiveBlend.
     /// </summary>
-    public static BlendState AdditiveBlend => FromDescription(BlendStateDescription.SingleAdditiveBlend);
+    public static BlendState AdditiveBlend => FromDescription(BlendStateDescription.SINGLE_ADDITIVE_BLEND);
     
     /// <summary>
     /// Describes a blend state in which a single color target is blended with AlphaBlend.
     /// </summary>
-    public static BlendState AlphaBlend => FromDescription(BlendStateDescription.SingleAlphaBlend);
+    public static BlendState AlphaBlend => FromDescription(BlendStateDescription.SINGLE_ALPHA_BLEND);
     
     /// <summary>
     /// Describes a blend state in which a single color target is blended with OverrideBlend.
     /// </summary>
-    public static BlendState OverrideBlend => FromDescription(BlendStateDescription.SingleOverrideBlend);
+    public static BlendState OverrideBlend => FromDescription(BlendStateDescription.SINGLE_OVERRIDE_BLEND);
     
     /// <summary>
     /// Defines the blend state for rendering operations, including how blending is handled between source and destination pixels.

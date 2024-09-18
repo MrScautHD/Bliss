@@ -82,7 +82,7 @@ public class Texture2D : Disposable {
     public Texture2D(GraphicsDevice graphicsDevice, Image<Rgba32> image, bool mipmap = true, bool srgb = false) {
         this.GraphicsDevice = graphicsDevice;
         this.Images = mipmap ? MipmapHelper.GenerateMipmaps(image) : [image];
-        this.Format = srgb ? PixelFormat.R8_G8_B8_A8_UNorm_SRgb : PixelFormat.R8_G8_B8_A8_UNorm;
+        this.Format = srgb ? PixelFormat.R8G8B8A8UNormSRgb : PixelFormat.R8G8B8A8UNorm;
         this.DeviceTexture = this.CreateDeviceTexture(graphicsDevice);
         this._cachedResourceSets = new Dictionary<(Sampler, ResourceLayout), ResourceSet>();
     }

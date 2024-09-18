@@ -127,7 +127,7 @@ public class Cubemap : Disposable {
             this.Images[5] = [negativeZ];
         }
         
-        this.Format = srgb ? PixelFormat.R8_G8_B8_A8_UNorm_SRgb : PixelFormat.R8_G8_B8_A8_UNorm;
+        this.Format = srgb ? PixelFormat.R8G8B8A8UNormSRgb : PixelFormat.R8G8B8A8UNorm;
         this.CreateDeviceTexture(graphicsDevice);
     }
 

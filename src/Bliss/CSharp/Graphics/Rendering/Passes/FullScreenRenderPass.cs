@@ -30,12 +30,12 @@ public class FullScreenRenderPass : Disposable {
         this._effect = new Effect(graphicsDevice.ResourceFactory, vertexLayouts, "content/shaders/full_screen_render_pass.vert", "content/shaders/full_screen_render_pass.frag");
         
         // Create texture layout.
-        this._textureLayout = new SimpleTextureLayout(this.GraphicsDevice, "fTexture");
+        this._textureLayout = new SimpleTextureLayout(graphicsDevice, "fTexture");
         
         // Create pipeline.
         this._pipeline = new SimplePipeline(graphicsDevice, new SimplePipelineDescription() {
             BlendState = BlendState.AlphaBlend.Description,
-            DepthStencilState = new DepthStencilStateDescription(true, true, ComparisonKind.LessEqual),
+            DepthStencilState = new DepthStencilStateDescription(false, false, ComparisonKind.LessEqual),
             RasterizerState = new RasterizerStateDescription() {
                 DepthClipEnabled = true,
                 CullMode = FaceCullMode.None
@@ -58,7 +58,7 @@ public class FullScreenRenderPass : Disposable {
 
         // Create vertex buffer.
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(16 * 6, BufferUsage.VertexBuffer));
-        graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this.GetQuadVertices(this.GraphicsDevice.IsUvOriginTopLeft));
+        graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this.GetQuadVertices(graphicsDevice.IsUvOriginTopLeft));
     }
 
     /// <summary>
