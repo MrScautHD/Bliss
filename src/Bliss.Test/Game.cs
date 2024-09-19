@@ -5,7 +5,6 @@ using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Rendering.Batches.Primitives;
 using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 using Bliss.CSharp.Graphics.Rendering.Passes;
-using Bliss.CSharp.Interact;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Windowing;
@@ -61,11 +60,11 @@ public class Game : Disposable {
         };
         
         this.MainWindow = Window.CreateWindow(WindowType.Sdl3, this.Settings.Width, this.Settings.Height, this.Settings.Title, this.Settings.WindowFlags, options, this.Settings.Backend, out GraphicsDevice graphicsDevice);
-        // TODO: this.OldWindow.Resized += () => this.OnResize(new Rectangle(this.OldWindow.X, this.OldWindow.Y, this.OldWindow.Width, this.OldWindow.Height));
+        this.MainWindow.Resized += () => this.OnResize(new Rectangle(this.MainWindow.GetX(), this.MainWindow.GetY(), this.MainWindow.GetWidth(), this.MainWindow.GetHeight()));
         this.GraphicsDevice = graphicsDevice;
         
         Logger.Info("Loading window icon...");
-        //this.MainWindow.SetIcon(this.Settings.IconPath != string.Empty ? Image.Load<Rgba32>(this.Settings.IconPath) : Image.Load<Rgba32>("content/images/icon.png"));
+        this.MainWindow.SetIcon(this.Settings.IconPath != string.Empty ? Image.Load<Rgba32>(this.Settings.IconPath) : Image.Load<Rgba32>("content/images/icon.png"));
         
         Logger.Info("Initialize time...");
         Time.Init();
@@ -88,7 +87,7 @@ public class Game : Disposable {
             }
             Time.Update();
             
-            //TODO: Sdl2Events.ProcessEvents();
+            this.MainWindow.PumpEvents();
             //TODO: Input.Begin(this.MainWindow.PumpEvents());
             
             if (!this.MainWindow.Exists) {

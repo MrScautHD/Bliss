@@ -1,29 +1,161 @@
+using System.Numerics;
 using System.Runtime.InteropServices;
+using Bliss.CSharp.Interact.Keyboards;
+using Bliss.CSharp.Interact.Mice;
 using Bliss.CSharp.Logging;
+using Bliss.CSharp.Windowing.Events;
 using SDL;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
 using Veldrid.OpenGL;
+using Point = Bliss.CSharp.Transformations.Point;
 
 namespace Bliss.CSharp.Windowing;
 
 public class Sdl3Window : Disposable, IWindow {
     
-    public nint Handle { get; private set; }
-    public uint Id { get; private set; }
-    
-    public SwapchainSource SwapchainSource { get; }
+    /// <summary>
+    /// Specifies the initialization flags for SDL, which control which SDL subsystems are initialized when starting the window.
+    /// </summary>
+    private const SDL_InitFlags InitFlags = SDL_InitFlags.SDL_INIT_VIDEO | SDL_InitFlags.SDL_INIT_GAMEPAD | SDL_InitFlags.SDL_INIT_JOYSTICK;
 
-    public bool Exists { get; }
-    public bool IsFocused { get; }
+    /// <summary>
+    /// Sets the number of events that are processed in each loop iteration when handling window events.
+    /// </summary>
+    private const int EventsPerPeep = 64;
+
+    /// <summary>
+    /// Represents the native handle of the SDL window, which is used for low-level window operations and interactions.
+    /// </summary>
+    public nint Handle { get; private set; }
+
+    /// <summary>
+    /// Represents the unique identifier for the SDL window.
+    /// This identifier can be used to reference or differentiate between multiple windows.
+    /// </summary>
+    public uint Id { get; private set; }
+
+    /// <summary>
+    /// Represents the source of the swapchain, which is used for managing the rendering surface and synchronization for the window.
+    /// </summary>
+    public SwapchainSource SwapchainSource { get; private set; }
+
+    /// <summary>
+    /// Indicates whether the window currently exists.
+    /// </summary>
+    public bool Exists { get; private set; }
+
+    /// <summary>
+    /// Indicates whether the window is currently focused.
+    /// </summary>
+    public bool IsFocused { get; private set; }
     
     public WindowState State { get; set; }
+    
     public bool Visible { get; set; }
     public float Opacity { get; set; }
     public bool Resizable { get; set; }
     public bool BorderVisible { get; set; }
 
+    /// <summary>
+    /// Represents an event that is triggered whenever an SDL event occurs within the window.
+    /// </summary>
+    public event Action<SDL_Event>? SdlEvent; 
+    
+    /// <summary>
+    /// Occurs when the window is resized.
+    /// </summary>
+    public event Action? Resized;
+    
+    /// <summary>
+    /// Occurs after the window has closed.
+    /// </summary>
+    public event Action? Closed;
+
+    /// <summary>
+    /// Occurs when the window gains focus.
+    /// </summary>
+    public event Action? FocusGained;
+
+    /// <summary>
+    /// Occurs when the window loses focus.
+    /// </summary>
+    public event Action? FocusLost;
+
+    /// <summary>
+    /// Occurs when the window is shown.
+    /// </summary>
+    public event Action? Shown;
+
+    /// <summary>
+    /// Occurs when the window is hidden.
+    /// </summary>
+    public event Action? Hidden;
+
+    /// <summary>
+    /// Occurs when the window is exposed (made visible or unhidden).
+    /// </summary>
+    public event Action? Exposed;
+
+    /// <summary>
+    /// Occurs when the window is moved.
+    /// </summary>
+    public event Action<Point>? Moved;
+
+    /// <summary>
+    /// Occurs when the mouse enters the window.
+    /// </summary>
+    public event Action? MouseEntered;
+
+    /// <summary>
+    /// Occurs when the mouse leaves the window.
+    /// </summary>
+    public event Action? MouseLeft;
+
+    /// <summary>
+    /// Occurs when the mouse wheel is scrolled.
+    /// </summary>
+    public event Action<Vector2>? MouseWheel;
+
+    /// <summary>
+    /// Occurs when the mouse is moved.
+    /// </summary>
+    public event Action<Vector2>? MouseMove;
+
+    /// <summary>
+    /// Occurs when a mouse button is pressed.
+    /// </summary>
+    public event Action<MouseEvent>? MouseDown;
+
+    /// <summary>
+    /// Occurs when a mouse button is released.
+    /// </summary>
+    public event Action<MouseEvent>? MouseUp;
+
+    /// <summary>
+    /// Occurs when a key is pressed.
+    /// </summary>
+    public event Action<KeyEvent>? KeyDown;
+
+    /// <summary>
+    /// Occurs when a key is released.
+    /// </summary>
+    public event Action<KeyEvent>? KeyUp;
+
+    /// <summary>
+    /// Occurs when a drag-and-drop operation is performed.
+    /// </summary>
+    public event Action<DragDropEvent>? DragDrop;
+
+    /// <summary>
+    /// Contains a collection of SDL_Event objects used for polling and handling SDL events.
+    /// </summary>
+    private readonly SDL_Event[] _events;
+    
+    /// <summary>
+    /// Holds information about the OpenGL platform specific to the current window, including the context, function pointers, and other related details.
+    /// </summary>
     private OpenGLPlatformInfo? _openGlPlatformInfo;
     
     /// <summary>
@@ -37,24 +169,34 @@ public class Sdl3Window : Disposable, IWindow {
     /// </summary>
     private (int, int)? _maxSupportedGlEsVersion;
     
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Sdl3Window"/> class with the specified dimensions, title, and window flags.
+    /// </summary>
+    /// <param name="width">The width of the window in pixels.</param>
+    /// <param name="height">The height of the window in pixels.</param>
+    /// <param name="title">The title of the window.</param>
+    /// <param name="flags">Window flags that define the behavior and appearance of the window, specified as <see cref="SDL_WindowFlags"/>.</param>
+    /// <exception cref="Exception">Thrown if SDL fails to initialize the subsystem required for creating the window.</exception>
     public unsafe Sdl3Window(int width, int height, string title, SDL_WindowFlags flags) {
-        this.Exists = true; // TODO: IS TEMP HERE!
-        //SDL3.SDL_SetHint(SDL3.SDL_HINT_MOUSE_FOCUS_CLICKTHROUGH, "1");
+        this.Exists = true;
         
-        if (SDL3.SDL_InitSubSystem(SDL_InitFlags.SDL_INIT_VIDEO | SDL_InitFlags.SDL_INIT_GAMEPAD | SDL_InitFlags.SDL_INIT_JOYSTICK) == SDL_bool.SDL_FALSE) {
+        SDL3.SDL_SetHint(SDL3.SDL_HINT_MOUSE_FOCUS_CLICKTHROUGH, "1");
+        
+        if (SDL3.SDL_InitSubSystem(InitFlags) == SDL_bool.SDL_FALSE) {
             throw new Exception($"Failed to initialise SDL! Error: {SDL3.SDL_GetError()}");
         }
         
-        // ENABLE EVENTS.
+        // Enable events.
         SDL3.SDL_SetGamepadEventsEnabled(SDL_bool.SDL_TRUE);
+        SDL3.SDL_SetJoystickEventsEnabled(SDL_bool.SDL_TRUE);
         
         this.Handle = (nint) SDL3.SDL_CreateWindow(title, width, height, flags);
         this.Id = (uint) SDL3.SDL_GetWindowID((SDL_Window*) this.Handle);
-        // Do Window Events here like Sdl2WindowRegistry
-        
         this.SwapchainSource = this.CreateSwapchainSource();
+        
+        this._events = new SDL_Event[EventsPerPeep];
     }
-
+    
     /// <summary>
     /// Retrieves a module handle for the specified module.
     /// </summary>
@@ -63,17 +205,30 @@ public class Sdl3Window : Disposable, IWindow {
     /// <exception cref="System.ComponentModel.Win32Exception">Thrown if an error occurs when retrieving the module handle.</exception>
     [DllImport("kernel32", ExactSpelling = true)]
     private static extern unsafe nint GetModuleHandleW(ushort* lpModuleName);
-    
+
+    /// <summary>
+    /// Retrieves the title of the window.
+    /// </summary>
+    /// <returns>The title of the window as a string.</returns>
     public unsafe string GetTitle() {
         return SDL3.SDL_GetWindowTitle((SDL_Window*) this.Handle) ?? string.Empty;
     }
-    
+
+    /// <summary>
+    /// Sets the title of the window.
+    /// </summary>
+    /// <param name="title">The new title to set for the window.</param>
+    /// <exception cref="System.InvalidOperationException">Thrown if the title could not be set due to an internal error.</exception>
     public unsafe void SetTitle(string title) {
         if (SDL3.SDL_SetWindowTitle((SDL_Window*) this.Handle, title) == SDL_bool.SDL_FALSE) {
             Logger.Warn($"Failed to set the title of the window: [{this.Id}] Error: {SDL3.SDL_GetError()}");
         }
     }
-    
+
+    /// <summary>
+    /// Retrieves the current width and height of the window in pixels.
+    /// </summary>
+    /// <returns>A tuple containing two integers representing the width and height of the window in pixels.</returns>
     public unsafe (int, int) GetSize() {
         int width;
         int height;
@@ -85,34 +240,117 @@ public class Sdl3Window : Disposable, IWindow {
         return (width, height);
     }
 
+    /// <summary>
+    /// Sets the size of the window to the specified width and height.
+    /// </summary>
+    /// <param name="width">The new width of the window.</param>
+    /// <param name="height">The new height of the window.</param>
     public unsafe void SetSize(int width, int height) {
         if (SDL3.SDL_SetWindowSize((SDL_Window*) this.Handle, width, height) == SDL_bool.SDL_FALSE) {
             Logger.Warn($"Failed to set the size of the window: [{this.Id}] Error: {SDL3.SDL_GetError()}");
         }
     }
-    
+
+    /// <summary>
+    /// Gets the width of the window.
+    /// </summary>
+    /// <returns>The width of the window in pixels.</returns>
     public int GetWidth() {
         return this.GetSize().Item1;
     }
-    
+
+    /// <summary>
+    /// Sets the width of the window.
+    /// </summary>
+    /// <param name="width">The new width of the window.</param>
     public void SetWidth(int width) {
         this.SetSize(width, this.GetHeight());
     }
-    
+
+    /// <summary>
+    /// Retrieves the height of the window.
+    /// </summary>
+    /// <returns>The height of the window in pixels.</returns>
     public int GetHeight() {
         return this.GetSize().Item2;
     }
-    
+
+    /// <summary>
+    /// Sets the height of the window to the specified value.
+    /// </summary>
+    /// <param name="height">The new height of the window.</param>
     public void SetHeight(int height) {
         this.SetSize(this.GetWidth(), height);
     }
-    
+
+    /// <summary>
+    /// Retrieves the current position of the window.
+    /// </summary>
+    /// <returns>A tuple containing the x and y coordinates of the window's position.</returns>
+    /// <exception cref="System.Exception">Thrown if there is an error retrieving the window's position.</exception>
+    public unsafe (int, int) GetPosition() {
+        int x;
+        int y;
+        
+        if (SDL3.SDL_GetWindowPosition((SDL_Window*) this.Handle, &x, &y) == SDL_bool.SDL_FALSE) {
+            Logger.Warn($"Failed to set the position to the window: [{this.Id}] Error: {SDL3.SDL_GetError()}");
+        }
+        
+        return (x, y);
+    }
+
+    /// <summary>
+    /// Sets the position of the window on the screen.
+    /// </summary>
+    /// <param name="x">The x-coordinate of the window position.</param>
+    /// <param name="y">The y-coordinate of the window position.</param>
+    public unsafe void SetPosition(int x, int y) {
+        SDL3.SDL_SetWindowPosition((SDL_Window*) this.Handle, x, y);
+    }
+
+    /// <summary>
+    /// Retrieves the current X-coordinate position of the window.
+    /// </summary>
+    /// <returns>The X-coordinate of the window's position.</returns>
+    public int GetX() {
+        return this.GetPosition().Item1;
+    }
+
+    /// <summary>
+    /// Sets the X coordinate of the window's position.
+    /// </summary>
+    /// <param name="x">The new X coordinate of the window.</param>
+    public void SetX(int x) {
+        this.SetPosition(x, this.GetY());
+    }
+
+    /// <summary>
+    /// Retrieves the Y-coordinate of the window's position.
+    /// </summary>
+    /// <returns>The Y-coordinate of the window's position.</returns>
+    public int GetY() {
+        return this.GetPosition().Item2;
+    }
+
+    /// <summary>
+    /// Sets the Y-coordinate of the window's position.
+    /// </summary>
+    /// <param name="y">The new Y-coordinate.</param>
+    public void SetY(int y) {
+        this.SetPosition(this.GetX(), y);
+    }
+
+    /// <summary>
+    /// Sets the icon for the SDL3 window using the provided image.
+    /// </summary>
+    /// <param name="image">The image to set as the window icon. It should be of type <see cref="Image{Rgba32}"/>.</param>
+    /// <exception cref="Exception">Thrown if an error occurs while setting the window icon.</exception>
     public unsafe void SetIcon(Image<Rgba32> image) {
         byte[] data = new byte[image.Width * image.Height * 4];
         image.CopyPixelDataTo(data);
 
         fixed (byte* dataPtr = data) {
-            SDL_Surface* surface = SDL3.SDL_CreateSurfaceFrom(image.Width, image.Height, SDL_PixelFormat.SDL_PIXELFORMAT_RGB332, (nint) dataPtr, 1);
+            SDL_Surface* surface = SDL3.SDL_CreateSurfaceFrom(image.Width, image.Height, SDL_PixelFormat.SDL_PIXELFORMAT_ABGR8888, (nint) dataPtr, image.Width * 4);
 
             if ((nint) surface == nint.Zero) {
                 Logger.Error($"Failed to set Sdl3 window icon: {SDL3.SDL_GetError()}");
@@ -123,20 +361,47 @@ public class Sdl3Window : Disposable, IWindow {
         }
     }
 
+    /// <summary>
+    /// Processes all pending events for the window and invokes corresponding event handlers.
+    /// </summary>
+    /// <exception cref="System.ComponentModel.Win32Exception">Thrown if an error occurs when processing events.</exception>
     public void PumpEvents() {
-        //throw new NotImplementedException();
+        SDL3.SDL_PumpEvents();
+        int eventsRead;
+        
+        do {
+            eventsRead = SDL3.SDL_PeepEvents(this._events, SDL_EventAction.SDL_GETEVENT, SDL_EventType.SDL_EVENT_FIRST, SDL_EventType.SDL_EVENT_LAST);
+            for (int i = 0; i < eventsRead; i++) {
+                this.HandleEvent(this._events[i]);
+            }
+        } while (eventsRead == EventsPerPeep);
     }
 
+    /// <summary>
+    /// Converts a point from client-area coordinates to screen coordinates.
+    /// </summary>
+    /// <param name="point">The point in client-area coordinates to be converted.</param>
+    /// <returns>The point in screen coordinates.</returns>
     public Point ClientToScreen(Point point) {
-        //throw new NotImplementedException();
-        return new Point();
+        return new Point(point.X + this.GetX(), point.Y + this.GetY());
     }
 
+    /// <summary>
+    /// Converts a point from screen coordinates to client coordinates.
+    /// </summary>
+    /// <param name="point">The point in screen coordinates to be converted.</param>
+    /// <returns>The point in client coordinates.</returns>
     public Point ScreenToClient(Point point) {
-        //throw new NotImplementedException();
-        return new Point();
+        return new Point(point.X - this.GetX(), point.Y - this.GetY());
     }
 
+    /// <summary>
+    /// Retrieves or creates the OpenGL platform information for the current window.
+    /// </summary>
+    /// <param name="options">Options for configuring the graphics device.</param>
+    /// <param name="backend">The graphics backend to use.</param>
+    /// <returns>The OpenGL platform information associated with the current window.</returns>
+    /// <exception cref="VeldridException">Thrown if unable to create the OpenGL context, potentially due to insufficient system support for the requested profile, version, or swapchain format.</exception>
     public unsafe OpenGLPlatformInfo GetOrCreateOpenGlPlatformInfo(GraphicsDeviceOptions options, GraphicsBackend backend) {
         if (this._openGlPlatformInfo == null) {
             SDL3.SDL_ClearError();
@@ -360,8 +625,208 @@ public class Sdl3Window : Disposable, IWindow {
         throw new PlatformNotSupportedException("Filed to create a SwapchainSource!");
     }
 
+    /// <summary>
+    /// Handles a given SDL event and triggers the appropriate window event based on the type of the SDL event.
+    /// </summary>
+    /// <param name="sdlEvent">The SDL event to handle.</param>
+    private void HandleEvent(SDL_Event sdlEvent) {
+        this.SdlEvent?.Invoke(sdlEvent);
+        
+        switch (sdlEvent.Type) {
+            case SDL_EventType.SDL_EVENT_QUIT:
+            case SDL_EventType.SDL_EVENT_TERMINATING:
+                this.Exists = false;
+                this.Closed?.Invoke();
+                break;
+            case SDL_EventType.SDL_EVENT_WINDOW_RESIZED:
+            case SDL_EventType.SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED:
+            case SDL_EventType.SDL_EVENT_WINDOW_MINIMIZED:
+            case SDL_EventType.SDL_EVENT_WINDOW_MAXIMIZED:
+            case SDL_EventType.SDL_EVENT_WINDOW_RESTORED:
+                this.Resized?.Invoke();
+                break;
+            case SDL_EventType.SDL_EVENT_WINDOW_FOCUS_GAINED:
+                this.IsFocused = true;
+                this.FocusGained?.Invoke();
+                break;
+            case SDL_EventType.SDL_EVENT_WINDOW_FOCUS_LOST:
+                this.IsFocused = false;
+                this.FocusLost?.Invoke();
+                break;
+            case SDL_EventType.SDL_EVENT_WINDOW_SHOWN:
+                this.Shown?.Invoke();
+                break;
+            case SDL_EventType.SDL_EVENT_WINDOW_HIDDEN:
+                this.Hidden?.Invoke();
+                break;
+            case SDL_EventType.SDL_EVENT_WINDOW_MOUSE_ENTER:
+                this.MouseEntered?.Invoke();
+                break;
+            case SDL_EventType.SDL_EVENT_WINDOW_MOUSE_LEAVE:
+                this.MouseLeft?.Invoke();
+                break;
+            case SDL_EventType.SDL_EVENT_WINDOW_EXPOSED:
+                this.Exposed?.Invoke();
+                break;
+            case SDL_EventType.SDL_EVENT_WINDOW_MOVED:
+                this.Moved?.Invoke(new Point(sdlEvent.window.data1, sdlEvent.window.data2));
+                break;
+            case SDL_EventType.SDL_EVENT_MOUSE_WHEEL:
+                this.MouseWheel?.Invoke(new Vector2(sdlEvent.wheel.x, sdlEvent.wheel.y));
+                break;
+            case SDL_EventType.SDL_EVENT_MOUSE_MOTION:
+                this.MouseMove?.Invoke(new Vector2(sdlEvent.motion.y, sdlEvent.motion.x));
+                break;
+            case SDL_EventType.SDL_EVENT_MOUSE_BUTTON_DOWN:
+                this.MouseDown?.Invoke(new MouseEvent((MouseButton) sdlEvent.button.Button, sdlEvent.button.down == SDL_bool.SDL_TRUE));
+                break;
+            case SDL_EventType.SDL_EVENT_MOUSE_BUTTON_UP:
+                this.MouseUp?.Invoke(new MouseEvent((MouseButton) sdlEvent.button.Button, sdlEvent.button.down == SDL_bool.SDL_TRUE));
+                break;
+            case SDL_EventType.SDL_EVENT_KEY_DOWN:
+                this.KeyDown?.Invoke(new KeyEvent(this.MapKey(sdlEvent.key.scancode), sdlEvent.key.down == SDL_bool.SDL_TRUE));
+                break;
+            case SDL_EventType.SDL_EVENT_KEY_UP:
+                this.KeyUp?.Invoke(new KeyEvent(this.MapKey(sdlEvent.key.scancode), sdlEvent.key.down == SDL_bool.SDL_TRUE));
+                break;
+            case SDL_EventType.SDL_EVENT_DROP_FILE:
+                this.DragDrop?.Invoke(new DragDropEvent((int) sdlEvent.drop.x, (int) sdlEvent.drop.y, sdlEvent.drop.GetSource() ?? string.Empty));
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Maps an SDL_Scancode to the corresponding KeyboardKey.
+    /// </summary>
+    /// <param name="scancode">The SDL_Scancode representing the key to be mapped.</param>
+    /// <returns>The corresponding KeyboardKey for the given SDL_Scancode.</returns>
+    private KeyboardKey MapKey(SDL_Scancode scancode) {
+        return scancode switch {
+            SDL_Scancode.SDL_SCANCODE_A => KeyboardKey.A,
+            SDL_Scancode.SDL_SCANCODE_B => KeyboardKey.B,
+            SDL_Scancode.SDL_SCANCODE_C => KeyboardKey.C,
+            SDL_Scancode.SDL_SCANCODE_D => KeyboardKey.D,
+            SDL_Scancode.SDL_SCANCODE_E => KeyboardKey.E,
+            SDL_Scancode.SDL_SCANCODE_F => KeyboardKey.F,
+            SDL_Scancode.SDL_SCANCODE_G => KeyboardKey.G,
+            SDL_Scancode.SDL_SCANCODE_H => KeyboardKey.H,
+            SDL_Scancode.SDL_SCANCODE_I => KeyboardKey.I,
+            SDL_Scancode.SDL_SCANCODE_J => KeyboardKey.J,
+            SDL_Scancode.SDL_SCANCODE_K => KeyboardKey.K,
+            SDL_Scancode.SDL_SCANCODE_L => KeyboardKey.L,
+            SDL_Scancode.SDL_SCANCODE_M => KeyboardKey.M,
+            SDL_Scancode.SDL_SCANCODE_N => KeyboardKey.N,
+            SDL_Scancode.SDL_SCANCODE_O => KeyboardKey.O,
+            SDL_Scancode.SDL_SCANCODE_P => KeyboardKey.P,
+            SDL_Scancode.SDL_SCANCODE_Q => KeyboardKey.Q,
+            SDL_Scancode.SDL_SCANCODE_R => KeyboardKey.R,
+            SDL_Scancode.SDL_SCANCODE_S => KeyboardKey.S,
+            SDL_Scancode.SDL_SCANCODE_T => KeyboardKey.T,
+            SDL_Scancode.SDL_SCANCODE_U => KeyboardKey.U,
+            SDL_Scancode.SDL_SCANCODE_V => KeyboardKey.V,
+            SDL_Scancode.SDL_SCANCODE_W => KeyboardKey.W,
+            SDL_Scancode.SDL_SCANCODE_X => KeyboardKey.X,
+            SDL_Scancode.SDL_SCANCODE_Y => KeyboardKey.Y,
+            SDL_Scancode.SDL_SCANCODE_Z => KeyboardKey.Z,
+            SDL_Scancode.SDL_SCANCODE_1 => KeyboardKey.Number1,
+            SDL_Scancode.SDL_SCANCODE_2 => KeyboardKey.Number2,
+            SDL_Scancode.SDL_SCANCODE_3 => KeyboardKey.Number3,
+            SDL_Scancode.SDL_SCANCODE_4 => KeyboardKey.Number4,
+            SDL_Scancode.SDL_SCANCODE_5 => KeyboardKey.Number5,
+            SDL_Scancode.SDL_SCANCODE_6 => KeyboardKey.Number6,
+            SDL_Scancode.SDL_SCANCODE_7 => KeyboardKey.Number7,
+            SDL_Scancode.SDL_SCANCODE_8 => KeyboardKey.Number8,
+            SDL_Scancode.SDL_SCANCODE_9 => KeyboardKey.Number9,
+            SDL_Scancode.SDL_SCANCODE_0 => KeyboardKey.Number0,
+            SDL_Scancode.SDL_SCANCODE_RETURN => KeyboardKey.Enter,
+            SDL_Scancode.SDL_SCANCODE_ESCAPE => KeyboardKey.Escape,
+            SDL_Scancode.SDL_SCANCODE_BACKSPACE => KeyboardKey.BackSpace,
+            SDL_Scancode.SDL_SCANCODE_TAB => KeyboardKey.Tab,
+            SDL_Scancode.SDL_SCANCODE_SPACE => KeyboardKey.Space,
+            SDL_Scancode.SDL_SCANCODE_MINUS => KeyboardKey.Minus,
+            SDL_Scancode.SDL_SCANCODE_EQUALS => KeyboardKey.Plus,
+            SDL_Scancode.SDL_SCANCODE_LEFTBRACKET => KeyboardKey.BracketLeft,
+            SDL_Scancode.SDL_SCANCODE_RIGHTBRACKET => KeyboardKey.BracketRight,
+            SDL_Scancode.SDL_SCANCODE_BACKSLASH => KeyboardKey.BackSlash,
+            SDL_Scancode.SDL_SCANCODE_SEMICOLON => KeyboardKey.Semicolon,
+            SDL_Scancode.SDL_SCANCODE_APOSTROPHE => KeyboardKey.Quote,
+            SDL_Scancode.SDL_SCANCODE_GRAVE => KeyboardKey.Grave,
+            SDL_Scancode.SDL_SCANCODE_COMMA => KeyboardKey.Comma,
+            SDL_Scancode.SDL_SCANCODE_PERIOD => KeyboardKey.Period,
+            SDL_Scancode.SDL_SCANCODE_SLASH => KeyboardKey.Slash,
+            SDL_Scancode.SDL_SCANCODE_CAPSLOCK => KeyboardKey.CapsLock,
+            SDL_Scancode.SDL_SCANCODE_F1 => KeyboardKey.F1,
+            SDL_Scancode.SDL_SCANCODE_F2 => KeyboardKey.F2,
+            SDL_Scancode.SDL_SCANCODE_F3 => KeyboardKey.F3,
+            SDL_Scancode.SDL_SCANCODE_F4 => KeyboardKey.F4,
+            SDL_Scancode.SDL_SCANCODE_F5 => KeyboardKey.F5,
+            SDL_Scancode.SDL_SCANCODE_F6 => KeyboardKey.F6,
+            SDL_Scancode.SDL_SCANCODE_F7 => KeyboardKey.F7,
+            SDL_Scancode.SDL_SCANCODE_F8 => KeyboardKey.F8,
+            SDL_Scancode.SDL_SCANCODE_F9 => KeyboardKey.F9,
+            SDL_Scancode.SDL_SCANCODE_F10 => KeyboardKey.F10,
+            SDL_Scancode.SDL_SCANCODE_F11 => KeyboardKey.F11,
+            SDL_Scancode.SDL_SCANCODE_F12 => KeyboardKey.F12,
+            SDL_Scancode.SDL_SCANCODE_PRINTSCREEN => KeyboardKey.PrintScreen,
+            SDL_Scancode.SDL_SCANCODE_SCROLLLOCK => KeyboardKey.ScrollLock,
+            SDL_Scancode.SDL_SCANCODE_PAUSE => KeyboardKey.Pause,
+            SDL_Scancode.SDL_SCANCODE_INSERT => KeyboardKey.Insert,
+            SDL_Scancode.SDL_SCANCODE_HOME => KeyboardKey.Home,
+            SDL_Scancode.SDL_SCANCODE_PAGEUP => KeyboardKey.PageUp,
+            SDL_Scancode.SDL_SCANCODE_DELETE => KeyboardKey.Delete,
+            SDL_Scancode.SDL_SCANCODE_END => KeyboardKey.End,
+            SDL_Scancode.SDL_SCANCODE_PAGEDOWN => KeyboardKey.PageDown,
+            SDL_Scancode.SDL_SCANCODE_RIGHT => KeyboardKey.Right,
+            SDL_Scancode.SDL_SCANCODE_LEFT => KeyboardKey.Left,
+            SDL_Scancode.SDL_SCANCODE_DOWN => KeyboardKey.Down,
+            SDL_Scancode.SDL_SCANCODE_UP => KeyboardKey.Up,
+            SDL_Scancode.SDL_SCANCODE_NUMLOCKCLEAR => KeyboardKey.NumLock,
+            SDL_Scancode.SDL_SCANCODE_KP_DIVIDE => KeyboardKey.KeypadDivide,
+            SDL_Scancode.SDL_SCANCODE_KP_MULTIPLY => KeyboardKey.KeypadMultiply,
+            SDL_Scancode.SDL_SCANCODE_KP_MINUS => KeyboardKey.KeypadMinus,
+            SDL_Scancode.SDL_SCANCODE_KP_PLUS => KeyboardKey.KeypadPlus,
+            SDL_Scancode.SDL_SCANCODE_KP_ENTER => KeyboardKey.KeypadEnter,
+            SDL_Scancode.SDL_SCANCODE_KP_1 => KeyboardKey.Keypad1,
+            SDL_Scancode.SDL_SCANCODE_KP_2 => KeyboardKey.Keypad2,
+            SDL_Scancode.SDL_SCANCODE_KP_3 => KeyboardKey.Keypad3,
+            SDL_Scancode.SDL_SCANCODE_KP_4 => KeyboardKey.Keypad4,
+            SDL_Scancode.SDL_SCANCODE_KP_5 => KeyboardKey.Keypad5,
+            SDL_Scancode.SDL_SCANCODE_KP_6 => KeyboardKey.Keypad6,
+            SDL_Scancode.SDL_SCANCODE_KP_7 => KeyboardKey.Keypad7,
+            SDL_Scancode.SDL_SCANCODE_KP_8 => KeyboardKey.Keypad8,
+            SDL_Scancode.SDL_SCANCODE_KP_9 => KeyboardKey.Keypad9,
+            SDL_Scancode.SDL_SCANCODE_KP_0 => KeyboardKey.Keypad0,
+            SDL_Scancode.SDL_SCANCODE_KP_PERIOD => KeyboardKey.KeypadDecimal,
+            SDL_Scancode.SDL_SCANCODE_NONUSBACKSLASH => KeyboardKey.NonUsBackSlash,
+            SDL_Scancode.SDL_SCANCODE_KP_EQUALS => KeyboardKey.KeypadPlus,
+            SDL_Scancode.SDL_SCANCODE_F13 => KeyboardKey.F13,
+            SDL_Scancode.SDL_SCANCODE_F14 => KeyboardKey.F14,
+            SDL_Scancode.SDL_SCANCODE_F15 => KeyboardKey.F15,
+            SDL_Scancode.SDL_SCANCODE_F16 => KeyboardKey.F16,
+            SDL_Scancode.SDL_SCANCODE_F17 => KeyboardKey.F17,
+            SDL_Scancode.SDL_SCANCODE_F18 => KeyboardKey.F18,
+            SDL_Scancode.SDL_SCANCODE_F19 => KeyboardKey.F19,
+            SDL_Scancode.SDL_SCANCODE_F20 => KeyboardKey.F20,
+            SDL_Scancode.SDL_SCANCODE_F21 => KeyboardKey.F21,
+            SDL_Scancode.SDL_SCANCODE_F22 => KeyboardKey.F22,
+            SDL_Scancode.SDL_SCANCODE_F23 => KeyboardKey.F23,
+            SDL_Scancode.SDL_SCANCODE_F24 => KeyboardKey.F24,
+            SDL_Scancode.SDL_SCANCODE_MENU => KeyboardKey.Menu,
+            SDL_Scancode.SDL_SCANCODE_LCTRL => KeyboardKey.ControlLeft,
+            SDL_Scancode.SDL_SCANCODE_LSHIFT => KeyboardKey.ShiftLeft,
+            SDL_Scancode.SDL_SCANCODE_LALT => KeyboardKey.AltLeft,
+            SDL_Scancode.SDL_SCANCODE_RCTRL => KeyboardKey.ControlRight,
+            SDL_Scancode.SDL_SCANCODE_RSHIFT => KeyboardKey.ShiftRight,
+            SDL_Scancode.SDL_SCANCODE_RALT => KeyboardKey.AltRight,
+            SDL_Scancode.SDL_SCANCODE_LGUI => KeyboardKey.WinLeft,
+            SDL_Scancode.SDL_SCANCODE_RGUI => KeyboardKey.WinRight,
+            _ => KeyboardKey.Unknown
+        };
+    }
+
     protected override unsafe void Dispose(bool disposing) {
         if (disposing) {
+            SDL3.SDL_QuitSubSystem(InitFlags);
             SDL3.SDL_DestroyWindow((SDL_Window*) this.Handle);
         }
     }

@@ -119,7 +119,6 @@ public struct RectangleF : IEquatable<RectangleF> {
         return HashCode.Combine(this.X, this.Y, this.Width, this.Height);
     }
     
-    
     /// <summary>
     /// Returns a string that represents the current rectangle.
     /// </summary>

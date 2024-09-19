@@ -1,7 +1,10 @@
+using System.Numerics;
+using Bliss.CSharp.Windowing.Events;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
 using Veldrid.OpenGL;
+using Point = Bliss.CSharp.Transformations.Point;
 
 namespace Bliss.CSharp.Windowing;
 
@@ -71,6 +74,91 @@ public interface IWindow : IDisposable {
     /// users to resize and move the window. When set to false, the window will be borderless.
     /// </summary>
     bool BorderVisible { get; set; }
+    
+    /// <summary>
+    /// Occurs when the window is resized.
+    /// </summary>
+    public event Action? Resized;
+    
+    /// <summary>
+    /// Occurs after the window has closed.
+    /// </summary>
+    public event Action? Closed;
+
+    /// <summary>
+    /// Occurs when the window gains focus.
+    /// </summary>
+    public event Action? FocusGained;
+
+    /// <summary>
+    /// Occurs when the window loses focus.
+    /// </summary>
+    public event Action? FocusLost;
+
+    /// <summary>
+    /// Occurs when the window is shown.
+    /// </summary>
+    public event Action? Shown;
+
+    /// <summary>
+    /// Occurs when the window is hidden.
+    /// </summary>
+    public event Action? Hidden;
+
+    /// <summary>
+    /// Occurs when the window is exposed (made visible or unhidden).
+    /// </summary>
+    public event Action? Exposed;
+
+    /// <summary>
+    /// Occurs when the window is moved.
+    /// </summary>
+    public event Action<Point>? Moved;
+
+    /// <summary>
+    /// Occurs when the mouse enters the window.
+    /// </summary>
+    public event Action? MouseEntered;
+
+    /// <summary>
+    /// Occurs when the mouse leaves the window.
+    /// </summary>
+    public event Action? MouseLeft;
+
+    /// <summary>
+    /// Occurs when the mouse wheel is scrolled.
+    /// </summary>
+    public event Action<Vector2>? MouseWheel;
+
+    /// <summary>
+    /// Occurs when the mouse is moved.
+    /// </summary>
+    public event Action<Vector2>? MouseMove;
+
+    /// <summary>
+    /// Occurs when a mouse button is pressed.
+    /// </summary>
+    public event Action<MouseEvent>? MouseDown;
+
+    /// <summary>
+    /// Occurs when a mouse button is released.
+    /// </summary>
+    public event Action<MouseEvent>? MouseUp;
+
+    /// <summary>
+    /// Occurs when a key is pressed.
+    /// </summary>
+    public event Action<KeyEvent>? KeyDown;
+
+    /// <summary>
+    /// Occurs when a key is released.
+    /// </summary>
+    public event Action<KeyEvent>? KeyUp;
+
+    /// <summary>
+    /// Occurs when a drag-and-drop operation is performed.
+    /// </summary>
+    public event Action<DragDropEvent>? DragDrop;
 
     /// <summary>
     /// Retrieves the current title of the window.
@@ -116,6 +204,43 @@ public interface IWindow : IDisposable {
     int GetHeight();
 
     /// <summary>
+    /// Retrieves the current position of the window.
+    /// </summary>
+    /// <returns>A tuple containing the x and y coordinates of the window.</returns>
+    (int, int) GetPosition();
+
+    /// <summary>
+    /// Sets the position of the window to the specified coordinates.
+    /// </summary>
+    /// <param name="x">The x-coordinate to set for the window position.</param>
+    /// <param name="y">The y-coordinate to set for the window position.</param>
+    void SetPosition(int x, int y);
+
+    /// <summary>
+    /// Retrieves the current X coordinate of the window.
+    /// </summary>
+    /// <returns>The current X coordinate of the window as an integer.</returns>
+    int GetX();
+
+    /// <summary>
+    /// Sets the X coordinate of the window to the specified value.
+    /// </summary>
+    /// <param name="x">The new X coordinate for the window.</param>
+    void SetX(int x);
+
+    /// <summary>
+    /// Retrieves the current y-coordinate of the window's position.
+    /// </summary>
+    /// <returns>The current y-coordinate of the window as an integer.</returns>
+    int GetY();
+
+    /// <summary>
+    /// Sets the y-coordinate of the window's position.
+    /// </summary>
+    /// <param name="y">The new y-coordinate to set for the window.</param>
+    void SetY(int y);
+
+    /// <summary>
     /// Sets the height of the window to the specified value.
     /// </summary>
     /// <param name="height">The new height for the window.</param>
@@ -137,7 +262,7 @@ public interface IWindow : IDisposable {
     /// </summary>
     /// <param name="point">The client-area point to be converted.</param>
     /// <returns>The converted point in screen coordinates.</returns>
-    Point ClientToScreen(Point point); //TODO: DO A own point or use a diffrent type!
+    Point ClientToScreen(Point point);
 
     /// <summary>
     /// Converts the specified screen coordinates to client-area coordinates.
