@@ -31,7 +31,9 @@ Coming SoOn!
 
 📚 Libraries - [Nuget](https://www.nuget.org/packages)
 ======================================================
-- [`Veldrid`](https://www.nuget.org/packages/Veldrid#readme-body-tab)
+- [`ppy.Veldrid`](https://www.nuget.org/packages/ppy.Veldrid)
+- [`ppy.Veldrid.SPIRV`](https://www.nuget.org/packages/ppy.Veldrid.SPIRV)
+- [`ppy.SDL3-CS`](https://www.nuget.org/packages/ppy.SDL3-CS)
 - [`SixLabors.ImageSharp`](https://www.nuget.org/packages/SixLabors.ImageSharp)
 - [`AssimpNet`](https://www.nuget.org/packages/AssimpNet)
 - [`FontStashSharp`](https://www.nuget.org/packages/FontStashSharp.Base)
