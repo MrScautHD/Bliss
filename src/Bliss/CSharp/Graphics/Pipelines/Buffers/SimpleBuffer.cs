@@ -66,7 +66,7 @@ public class SimpleBuffer<T> : Disposable, ISimpleBuffer where T : unmanaged {
         this.ShaderStages = stages;
         this.Data = new T[size];
         
-        this.DeviceBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (size * Marshal.SizeOf<T>()), this.GetBufferUsage(bufferType)));
+        this.DeviceBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (size * Marshal.SizeOf<T>()), this.GetBufferUsage(bufferType) | BufferUsage.Dynamic));
         this.DeviceBuffer.Name = name;
         
         this.ResourceLayout = graphicsDevice.ResourceFactory.CreateResourceLayout(new ResourceLayoutDescription(new ResourceLayoutElementDescription(name, this.GetResourceKind(bufferType), stages)));

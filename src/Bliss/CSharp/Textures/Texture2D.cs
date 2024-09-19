@@ -2,7 +2,7 @@ using System.Runtime.InteropServices;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
-using Rectangle = Veldrid.Rectangle;
+using Rectangle = Bliss.CSharp.Transformations.Rectangle;
 
 namespace Bliss.CSharp.Textures;
 

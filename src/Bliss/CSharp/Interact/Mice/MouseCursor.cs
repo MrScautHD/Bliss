@@ -1,9 +1,7 @@
-using Veldrid.Sdl2;
-
 namespace Bliss.CSharp.Interact.Mice;
 
 public enum MouseCursor {
-    
+    /*
     /// <summary>
     /// The default cursor. Represents the system's default cursor.
     /// </summary>
@@ -68,4 +66,5 @@ public enum MouseCursor {
     /// The hand cursor. Typically used for indicating clickable elements, such as hyperlinks.
     /// </summary>
     Hand = SDL_SystemCursor.Hand
+    */
 }

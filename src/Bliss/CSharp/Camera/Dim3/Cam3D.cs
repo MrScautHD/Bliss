@@ -8,7 +8,6 @@ namespace Bliss.CSharp.Camera.Dim3;
 
 public class Cam3D : Disposable, ICam {
     
-    public Window Window { get; private set; }
     public Viewport Viewport { get; private set; }
     
     public float AspectRatio { get; private set; }
@@ -25,10 +24,7 @@ public class Cam3D : Disposable, ICam {
 
     private Frustum _frustum;
     
-    public Cam3D(Window window, Vector3 position, Vector3 target, Vector3? up = default, ProjectionType projectionType = ProjectionType.Perspective, float fov = 70.0F) {
-        this.Window = window;
-        this.Window.Sdl2Window.Resized += this.Resize;
-        
+    public Cam3D(int width, int height, Vector3 position, Vector3 target, Vector3? up = default, ProjectionType projectionType = ProjectionType.Perspective, float fov = 70.0F) {
         this.Position = position;
         this.Target = target;
         this.Up = up ?? -Vector3.UnitY; // TODO CHECK IF negative is right.
@@ -40,7 +36,12 @@ public class Cam3D : Disposable, ICam {
 
         this._frustum = new Frustum();
         
-        this.Resize();
+        this.Resize(width, height);
+    }
+    
+    public void Resize(int width, int height) {
+        this.Viewport = new Viewport(0, 0, width, height, 0, 0);
+        this.AspectRatio = (float) width / (float) height;
     }
 
     public Vector3 GetForward() {
@@ -82,20 +83,11 @@ public class Cam3D : Disposable, ICam {
         return Matrix4x4.CreateLookAt(this.Position, this.Target, this.Up);
     }
 
-    private void Resize() {
-        this.Viewport = new Viewport(0, 0, this.Window.Width, this.Window.Height, 0, 0);
-        this.AspectRatio = (float) this.Window.Width / (float) this.Window.Height;
-    }
-
     public Frustum GetFrustum() {
         this._frustum.Extract(this.GetView() * this.GetProjection());
 
         return this._frustum;
     }
 
-    protected override void Dispose(bool disposing) {
-        if (disposing) {
-            this.Window.Sdl2Window.Resized -= this.Resize;
-        }
-    }
+    protected override void Dispose(bool disposing) { }
 } 

@@ -8,6 +8,7 @@ using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Textures;
+using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
 using FontStashSharp;
 using FontStashSharp.Interfaces;
@@ -47,7 +48,7 @@ public class SpriteBatch : Disposable {
     /// <summary>
     /// Represents the window used for rendering graphics.
     /// </summary>
-    public Window Window { get; private set; }
+    public IWindow Window { get; private set; }
 
     /// <summary>
     /// Retrieves the current output configuration for the SpriteBatch.
@@ -162,7 +163,7 @@ public class SpriteBatch : Disposable {
     /// <param name="window">The window associated with the graphics device.</param>
     /// <param name="output">The output description defining the render target.</param>
     /// <param name="capacity">The maximum number of quads (sprite batches) that can be handled by this sprite batch instance. Default is 15360.</param>
-    public SpriteBatch(GraphicsDevice graphicsDevice, Window window, OutputDescription output, uint capacity = 15360) {
+    public SpriteBatch(GraphicsDevice graphicsDevice, IWindow window, OutputDescription output, uint capacity = 15360) {
         this.GraphicsDevice = graphicsDevice;
         this.Window = window;
         this.Output = output;
@@ -176,11 +177,11 @@ public class SpriteBatch : Disposable {
         
         // Create vertex buffer.
         this._vertices = new SpriteVertex2D[capacity * VerticesPerQuad];
-        this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (capacity * VerticesPerQuad * Marshal.SizeOf<SpriteVertex2D>()), BufferUsage.VertexBuffer));
+        this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (capacity * VerticesPerQuad * Marshal.SizeOf<SpriteVertex2D>()), BufferUsage.VertexBuffer | BufferUsage.Dynamic));
         
         // Create indices buffer.
         this._indices = new ushort[capacity * IndicesPerQuad];
-        this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(capacity * IndicesPerQuad * sizeof(ushort), BufferUsage.IndexBuffer));
+        this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(capacity * IndicesPerQuad * sizeof(ushort), BufferUsage.IndexBuffer | BufferUsage.Dynamic));
 
         for (int i = 0; i < capacity; i++) {
             var startIndex = i * IndicesPerQuad;
@@ -229,7 +230,7 @@ public class SpriteBatch : Disposable {
         this._currentBlendState = blendState ?? BlendState.AlphaBlend;
         
         Matrix4x4 finalView = view ?? Matrix4x4.Identity;
-        Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.Width, this.Window.Height, 0.0F, 0.0F, 1.0F);
+        Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
         
         this._projViewBuffer.SetValue(0, finalView * finalProj, true);
         this.DrawCallCount = 0;

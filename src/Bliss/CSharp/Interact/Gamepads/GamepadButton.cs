@@ -1,9 +1,7 @@
-using Veldrid.Sdl2;
-
 namespace Bliss.CSharp.Interact.Gamepads;
 
 public enum GamepadButton : byte {
-    Unknown = SDL_GameControllerButton.Invalid,
+    /*Unknown = SDL_GameControllerButton.Invalid,
     A = SDL_GameControllerButton.A,
     B = SDL_GameControllerButton.B,
     X = SDL_GameControllerButton.X,
@@ -19,5 +17,5 @@ public enum GamepadButton : byte {
     DPadDown = SDL_GameControllerButton.DPadDown,
     DPadLeft = SDL_GameControllerButton.DPadLeft,
     DPadRight = SDL_GameControllerButton.DPadRight,
-    Max = SDL_GameControllerButton.Max
+    Max = SDL_GameControllerButton.Max*/
 }

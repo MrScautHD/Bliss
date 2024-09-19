@@ -1,9 +1,7 @@
-using Veldrid.Sdl2;
-
 namespace Bliss.CSharp.Interact.Gamepads;
 
 public enum GamepadAxis : byte {
-    
+    /*
     /// <summary>
     /// Invalid axis.
     /// </summary>
@@ -42,5 +40,5 @@ public enum GamepadAxis : byte {
     /// <summary>
     /// Maximum axis value.
     /// </summary>
-    Max = SDL_GameControllerAxis.Max
+    Max = SDL_GameControllerAxis.Max*/
 }

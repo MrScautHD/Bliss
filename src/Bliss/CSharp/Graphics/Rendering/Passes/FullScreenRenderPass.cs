@@ -57,7 +57,7 @@ public class FullScreenRenderPass : Disposable {
         });
 
         // Create vertex buffer.
-        this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(16 * 6, BufferUsage.VertexBuffer));
+        this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(16 * 6, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
         graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this.GetQuadVertices(graphicsDevice.IsUvOriginTopLeft));
     }
 

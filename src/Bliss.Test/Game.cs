@@ -12,9 +12,7 @@ using Bliss.CSharp.Windowing;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
-using Veldrid.Sdl2;
 using Color = Bliss.CSharp.Colors.Color;
-using Rectangle = Veldrid.Rectangle;
 using RectangleF = Bliss.CSharp.Transformations.RectangleF;
 
 namespace Bliss.Test;
@@ -24,7 +22,7 @@ public class Game : Disposable {
     public static Game Instance { get; private set; }
     public GameSettings Settings { get; private set; }
 
-    public Window Window { get; private set; }
+    public IWindow MainWindow { get; private set; }
     public GraphicsDevice GraphicsDevice { get; private set; }
     public CommandList CommandList { get; private set; }
 
@@ -41,6 +39,7 @@ public class Game : Disposable {
     private Texture2D _texture;
     private Font _font;
     
+    // TODO: Make Metal working for MacOS!
     public Game(GameSettings settings) {
         Instance = this;
         this.Settings = settings;
@@ -61,12 +60,12 @@ public class Game : Disposable {
             SyncToVerticalBlank = this.Settings.VSync
         };
         
-        this.Window = new Window(this.Settings.Width, this.Settings.Height, this.Settings.Title, this.Settings.WindowFlags, options, this.Settings.Backend, out GraphicsDevice graphicsDevice);
-        this.Window.Resized += () => this.OnResize(new Rectangle(this.Window.X, this.Window.Y, this.Window.Width, this.Window.Height));
+        this.MainWindow = Window.CreateWindow(WindowType.Sdl3, this.Settings.Width, this.Settings.Height, this.Settings.Title, this.Settings.WindowFlags, options, this.Settings.Backend, out GraphicsDevice graphicsDevice);
+        // TODO: this.OldWindow.Resized += () => this.OnResize(new Rectangle(this.OldWindow.X, this.OldWindow.Y, this.OldWindow.Width, this.OldWindow.Height));
         this.GraphicsDevice = graphicsDevice;
         
         Logger.Info("Loading window icon...");
-        this.Window.SetIcon(this.Settings.IconPath != string.Empty ? Image.Load<Rgba32>(this.Settings.IconPath) : Image.Load<Rgba32>("content/images/icon.png"));
+        //this.MainWindow.SetIcon(this.Settings.IconPath != string.Empty ? Image.Load<Rgba32>(this.Settings.IconPath) : Image.Load<Rgba32>("content/images/icon.png"));
         
         Logger.Info("Initialize time...");
         Time.Init();
@@ -78,21 +77,21 @@ public class Game : Disposable {
         this.CommandList = this.GraphicsDevice.ResourceFactory.CreateCommandList();
         
         Logger.Info("Initialize input...");
-        Input.Init(this.Window);
+        //TODO: Input.Init(this.MainWindow);
         
         this.Init();
         
         Logger.Info("Start main loops...");
-        while (this.Window.Exists) {
+        while (this.MainWindow.Exists) {
             if (this.GetTargetFps() != 0 && Time.Timer.Elapsed.TotalSeconds <= this._fixedFrameRate) {
                 continue;
             }
             Time.Update();
             
-            Sdl2Events.ProcessEvents();
-            Input.Begin(this.Window.PumpEvents());
+            //TODO: Sdl2Events.ProcessEvents();
+            //TODO: Input.Begin(this.MainWindow.PumpEvents());
             
-            if (!this.Window.Exists) {
+            if (!this.MainWindow.Exists) {
                 break;
             }
 
@@ -106,7 +105,7 @@ public class Game : Disposable {
             }
             
             this.Draw(this.GraphicsDevice, this.CommandList);
-            Input.End();
+            //TODO: Input.End();
         }
         
         Logger.Warn("Application shuts down!");
@@ -115,10 +114,10 @@ public class Game : Disposable {
     
     protected virtual void Init() {
         this.FullScreenRenderPass = new FullScreenRenderPass(this.GraphicsDevice, this.GraphicsDevice.SwapchainFramebuffer.OutputDescription);
-        this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.Window.Width, (uint) this.Window.Height, this.Settings.SampleCount);
+        this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), this.Settings.SampleCount);
         
-        this._spriteBatch = new SpriteBatch(this.GraphicsDevice, this.Window, this.FullScreenTexture.Framebuffer.OutputDescription);
-        this._primitiveBatch = new PrimitiveBatch(this.GraphicsDevice, this.Window, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._spriteBatch = new SpriteBatch(this.GraphicsDevice, this.MainWindow, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._primitiveBatch = new PrimitiveBatch(this.GraphicsDevice, this.MainWindow, this.FullScreenTexture.Framebuffer.OutputDescription);
         this._texture = new Texture2D(this.GraphicsDevice, "content/images/logo.png");
         this._font = new Font("content/fonts/fontoe.ttf");
     }
@@ -138,7 +137,7 @@ public class Game : Disposable {
         this._primitiveBatch.Begin(commandList);
         
         // Draw Rectangle.
-        RectangleF rectangle = new RectangleF(this.Window.Width / 2.0F - 500, this.Window.Height / 2.0F - 250, 1000, 500);
+        RectangleF rectangle = new RectangleF(this.MainWindow.GetWidth() / 2.0F - 500, this.MainWindow.GetHeight() / 2.0F - 250, 1000, 500);
         this._primitiveBatch.DrawFilledRectangle(rectangle, default, 0, new Color(144, 238, 144, 20));
         this._primitiveBatch.DrawEmptyRectangle(rectangle, 4, default, 0, Color.DarkGreen);
         
@@ -153,7 +152,7 @@ public class Game : Disposable {
         this._spriteBatch.DrawText(this._font, $"FPS: {(int) (1.0F / Time.Delta)}", new Vector2(5, 5), 18);
         
         // Draw texture.
-        Vector2 texturePos = new Vector2(this.Window.Width / 2.0F - (216.0F / 4.0F / 2.0F), this.Window.Height / 2.0F - (85.0F / 4.0F / 2.0F));
+        Vector2 texturePos = new Vector2(this.MainWindow.GetWidth() / 2.0F - (216.0F / 4.0F / 2.0F), this.MainWindow.GetHeight() / 2.0F - (85.0F / 4.0F / 2.0F));
         Vector2 textureScale = new Vector2(4.0F, 4.0F);
         Vector2 textureOrigin = new Vector2(216.0F / 2.0F, 85.0F / 2.0F);
         this._spriteBatch.DrawTexture(this._texture, SamplerType.Point, texturePos, default, textureScale, textureOrigin, 10);
@@ -162,7 +161,7 @@ public class Game : Disposable {
         string text = "This is my first FONT!!!";
         int textSize = 36;
         Vector2 measureTextSize = this._font.MeasureText(text, textSize);
-        Vector2 textPos = new Vector2(this.Window.Width / 2.0F - (measureTextSize.X / 2.0F), this.Window.Height / 1.25F - (measureTextSize.Y / 2.0F));
+        Vector2 textPos = new Vector2(this.MainWindow.GetWidth() / 2.0F - (measureTextSize.X / 2.0F), this.MainWindow.GetHeight() / 1.25F - (measureTextSize.Y / 2.0F));
         this._spriteBatch.DrawText(this._font, text, textPos, textSize);
         
         this._spriteBatch.End();
@@ -206,8 +205,8 @@ public class Game : Disposable {
     protected override void Dispose(bool disposing) {
         if (disposing) {
             this.GraphicsDevice.Dispose();
-            this.Window.Close();
-            Input.Destroy();
+            this.MainWindow.Dispose();
+            //TODO: Input.Destroy();
         }
     }
 }

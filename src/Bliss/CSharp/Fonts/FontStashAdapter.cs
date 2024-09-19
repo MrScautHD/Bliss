@@ -8,7 +8,7 @@ using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
 using Point = System.Drawing.Point;
-using Rectangle = Veldrid.Rectangle;
+using Rectangle = Bliss.CSharp.Transformations.Rectangle;
 using SRectangle = System.Drawing.Rectangle;
 using Color = Bliss.CSharp.Colors.Color;
 

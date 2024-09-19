@@ -22,7 +22,7 @@ public class PrimitiveBatch : Disposable {
     /// <summary>
     /// Represents the window used for rendering graphics.
     /// </summary>
-    public Window Window { get; private set; }
+    public IWindow Window { get; private set; }
     
     /// <summary>
     /// Represents the output description utilized by the <see cref="PrimitiveBatch"/> for rendering configurations.
@@ -103,7 +103,7 @@ public class PrimitiveBatch : Disposable {
     /// <param name="window">The window representing the rendering context.</param>
     /// <param name="output">The output description defining the render target.</param>
     /// <param name="capacity">Optional. The initial capacity of the vertex buffer.</param>
-    public PrimitiveBatch(GraphicsDevice graphicsDevice, Window window, OutputDescription output, uint capacity = 30720) {
+    public PrimitiveBatch(GraphicsDevice graphicsDevice, IWindow window, OutputDescription output, uint capacity = 30720) {
         this.GraphicsDevice = graphicsDevice;
         this.Window = window;
         this.Output = output;
@@ -147,7 +147,7 @@ public class PrimitiveBatch : Disposable {
         // Create vertex buffer.
         this._vertices = new PrimitiveVertex2D[capacity];
         this._tempVertices = new PrimitiveVertex2D[capacity];
-        this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (capacity * Marshal.SizeOf<PrimitiveVertex2D>()), BufferUsage.VertexBuffer));
+        this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (capacity * Marshal.SizeOf<PrimitiveVertex2D>()), BufferUsage.VertexBuffer | BufferUsage.Dynamic));
     }
 
     /// <summary>
@@ -166,7 +166,7 @@ public class PrimitiveBatch : Disposable {
         this._currentCommandList = commandList;
         
         Matrix4x4 finalView = view ?? Matrix4x4.Identity;
-        Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.Width, this.Window.Height, 0.0F, 0.0F, 1.0F);
+        Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
         
         this._projViewBuffer.SetValue(0, finalView * finalProj, true);
         this.DrawCallCount = 0;

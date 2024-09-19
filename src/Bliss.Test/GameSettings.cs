@@ -1,4 +1,5 @@
 using System.Reflection;
+using Bliss.CSharp.Windowing;
 using Veldrid;
 
 namespace Bliss.Test;
@@ -26,8 +27,8 @@ public struct GameSettings {
         this.IconPath = string.Empty;
         this.TargetFps = 0;
         this.FixedTimeStep = 1.0F / 60.0F;
-        this.WindowFlags = WindowState.Normal;
-        this.Backend = GraphicsBackend.Metal; // TODO: Window.GetPlatformDefaultBackend()
+        this.WindowFlags = WindowState.Resizable;
+        this.Backend = GraphicsBackend.OpenGL; // TODO: Window.GetPlatformDefaultBackend()
         this.VSync = true;
         this.SampleCount = TextureSampleCount.Count1;
     }

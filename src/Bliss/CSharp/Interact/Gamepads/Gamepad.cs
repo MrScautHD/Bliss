@@ -1,11 +1,10 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Veldrid.Sdl2;
 
 namespace Bliss.CSharp.Interact.Gamepads;
 
-public class Gamepad : Disposable {
-    
+public class Gamepad/* : Disposable*/ {
+    /*
     public SDL_GameController Controller { get; private set; }
     public int ControllerIndex { get; private set; }
     public string Name { get; private set; }
@@ -132,5 +131,5 @@ public class Gamepad : Disposable {
         if (disposing) {
             Sdl2Native.SDL_GameControllerClose(this.Controller);
         }
-    }
+    }*/
 }
