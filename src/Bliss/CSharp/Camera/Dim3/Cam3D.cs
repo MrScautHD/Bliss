@@ -1,6 +1,5 @@
 using System.Numerics;
 using Bliss.CSharp.Graphics.Rendering;
-using Bliss.CSharp.Windowing;
 using Vortice.Mathematics;
 using Viewport = Veldrid.Viewport;
 
@@ -24,7 +23,7 @@ public class Cam3D : Disposable, ICam {
 
     private Frustum _frustum;
     
-    public Cam3D(int width, int height, Vector3 position, Vector3 target, Vector3? up = default, ProjectionType projectionType = ProjectionType.Perspective, float fov = 70.0F) {
+    public Cam3D((int, int) size, Vector3 position, Vector3 target, Vector3? up = default, ProjectionType projectionType = ProjectionType.Perspective, float fov = 70.0F) {
         this.Position = position;
         this.Target = target;
         this.Up = up ?? -Vector3.UnitY; // TODO CHECK IF negative is right.
@@ -36,7 +35,7 @@ public class Cam3D : Disposable, ICam {
 
         this._frustum = new Frustum();
         
-        this.Resize(width, height);
+        this.Resize(size.Item1, size.Item2);
     }
     
     public void Resize(int width, int height) {

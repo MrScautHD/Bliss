@@ -1,22 +1,9 @@
-using Bliss.CSharp.Logging;
 using SDL;
 using Veldrid;
-using Veldrid.OpenGL;
 
 namespace Bliss.CSharp.Windowing;
 
 public static class Window {
-    
-    /// <summary>
-    /// Stores the maximum supported OpenGL version as a tuple of major and minor version numbers.
-    /// </summary>
-    private static (int, int)? _maxSupportedGlVersion;
-
-    /// <summary>
-    /// Stores the maximum supported OpenGL ES (GLES) version.
-    /// The value is a tuple where the first item represents the major version, and the second item represents the minor version.
-    /// </summary>
-    private static (int, int)? _maxSupportedGlEsVersion;
     
     /// <summary>
     /// Creates a new window based on the specified parameters.
@@ -34,11 +21,6 @@ public static class Window {
         switch (type) {
             case WindowType.Sdl3:
                 Sdl3Window window = new Sdl3Window(width, height, title, GetSdl3WindowStates(state) | SDL_WindowFlags.SDL_WINDOW_OPENGL);
-
-                if (preferredBackend == GraphicsBackend.OpenGL | preferredBackend == GraphicsBackend.OpenGLES) {
-                    SetSdlGlContextAttributes(options, preferredBackend);
-                }
-                
                 graphicsDevice = CreateGraphicsDevice(window, options, preferredBackend);
                 return window;
             default:
@@ -171,187 +153,7 @@ public static class Window {
     /// <param name="options">Options for creating the graphics device.</param>
     /// <param name="backend">The graphics backend to use.</param>
     /// <returns>The created OpenGL graphics device.</returns>
-    private static unsafe GraphicsDevice CreateOpenGlGraphicsDevice(IWindow window, GraphicsDeviceOptions options, GraphicsBackend backend) {
-        SDL3.SDL_ClearError();
-        nint sdlHandle = window.Handle;
-
-        SetSdlGlContextAttributes(options, backend);
-
-        SDL_GLContextState* contextHandle = SDL3.SDL_GL_CreateContext((SDL_Window*) sdlHandle);
-        string error = SDL3.SDL_GetError() ?? string.Empty;
-        
-        if (error != string.Empty) {
-            throw new VeldridException($"Unable to create OpenGL Context: \"{error}\". This may indicate that the system does not support the requested OpenGL profile, version, or Swapchain format.");
-        }
-
-        int actualDepthSize;
-        int actualStencilSize;
-
-        SDL3.SDL_GL_GetAttribute(SDL_GLattr.SDL_GL_DEPTH_SIZE, &actualDepthSize);
-        SDL3.SDL_GL_GetAttribute(SDL_GLattr.SDL_GL_STENCIL_SIZE, &actualStencilSize);
-        SDL3.SDL_GL_SetSwapInterval(options.SyncToVerticalBlank ? 1 : 0);
-
-        OpenGLPlatformInfo platformInfo = new OpenGLPlatformInfo(
-            (nint) contextHandle,
-            proc => SDL3.SDL_GL_GetProcAddress(proc), //TODO: IM NOT SURE...
-            context => SDL3.SDL_GL_MakeCurrent((SDL_Window*) sdlHandle, (SDL_GLContextState*) context),
-            () => (nint) SDL3.SDL_GL_GetCurrentContext(),
-            () => SDL3.SDL_GL_MakeCurrent((SDL_Window*) sdlHandle, (SDL_GLContextState*) nint.Zero),
-            context => SDL3.SDL_GL_DestroyContext((SDL_GLContextState*) context),
-            () => SDL3.SDL_GL_SwapWindow((SDL_Window*) sdlHandle),
-            sync => SDL3.SDL_GL_SetSwapInterval(sync ? 1 : 0)
-        );
-
-        return GraphicsDevice.CreateOpenGL(options, platformInfo, (uint) window.GetWidth(), (uint) window.GetHeight());
-    }
-
-    /// <summary>
-    /// Configures the attributes for the SDL GL context based on the specified graphics device options and backend.
-    /// </summary>
-    /// <param name="options">The graphics device options including settings for debugging and vertical sync.</param>
-    /// <param name="backend">The graphics backend, which must be either OpenGL or OpenGLES.</param>
-    private static void SetSdlGlContextAttributes(GraphicsDeviceOptions options, GraphicsBackend backend) {
-       if (backend != GraphicsBackend.OpenGL && backend != GraphicsBackend.OpenGLES) {
-           throw new Exception($"GraphicsBackend must be: [{nameof(GraphicsBackend.OpenGL)}] or [{nameof(GraphicsBackend.OpenGLES)}]!");
-       }
-
-       SDL_GLcontextFlag contextFlags = options.Debug ? (SDL_GLcontextFlag.SDL_GL_CONTEXT_DEBUG_FLAG | SDL_GLcontextFlag.SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG) : SDL_GLcontextFlag.SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG;
-       SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_FLAGS, (int) contextFlags);
-
-       (int major, int minor) = GetMaxGlVersion(backend == GraphicsBackend.OpenGLES);
-
-       if (backend == GraphicsBackend.OpenGL) {
-           SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_PROFILE_MASK, (int) SDL_GLprofile.SDL_GL_CONTEXT_PROFILE_CORE);
-           SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_MAJOR_VERSION, major);
-           SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_MINOR_VERSION, minor);
-       }
-       else {
-           SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_PROFILE_MASK, (int) SDL_GLprofile.SDL_GL_CONTEXT_PROFILE_ES);
-           SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_MAJOR_VERSION, major);
-           SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_MINOR_VERSION, minor);
-       }
-
-       int depthBits = 0;
-       int stencilBits = 0;
-       
-       if (options.SwapchainDepthFormat.HasValue) {
-           switch (options.SwapchainDepthFormat) {
-               case PixelFormat.R16UNorm:
-                   depthBits = 16;
-                   break;
-               case PixelFormat.D24UNormS8UInt:
-                   depthBits = 24;
-                   stencilBits = 8;
-                   break;
-               case PixelFormat.R32Float:
-                   depthBits = 32;
-                   break;
-               case PixelFormat.D32FloatS8UInt:
-                   depthBits = 32;
-                   stencilBits = 8;
-                   break;
-               default:
-                   throw new VeldridException($"Invalid depth format: [{options.SwapchainDepthFormat.Value}]!");
-           }
-       }
-
-       SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_DEPTH_SIZE, depthBits);
-       SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_STENCIL_SIZE, stencilBits);
-       SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_FRAMEBUFFER_SRGB_CAPABLE, options.SwapchainSrgbFormat ? 1 : 0);
-    }
-
-    /// <summary>
-    /// Retrieves the maximum OpenGL or OpenGL ES version supported by the system.
-    /// </summary>
-    /// <param name="openGlEs">Specifies whether to query for OpenGL ES (true) or OpenGL (false) version.</param>
-    /// <return>Returns a tuple containing the major and minor version numbers of the supported OpenGL or OpenGL ES version.</return>
-    private static (int, int) GetMaxGlVersion(bool openGlEs) {
-        object glVersionLock = new object();
-        
-        lock (glVersionLock) {
-            (int, int)? maxVersion = openGlEs ? _maxSupportedGlEsVersion : _maxSupportedGlVersion;
-
-            if (maxVersion == null) {
-                maxVersion = TestMaxGlVersion(openGlEs);
-
-                if (openGlEs) {
-                    _maxSupportedGlEsVersion = maxVersion;
-                }
-                else {
-                    _maxSupportedGlVersion = maxVersion;
-                }
-            }
-
-            return maxVersion.Value;
-        }
-    }
-
-    /// <summary>
-    /// Tests the maximum supported OpenGL version for OpenGL or OpenGL ES.
-    /// </summary>
-    /// <param name="openGlEs">Indicates whether to test for OpenGL ES versions. If false, tests for standard OpenGL versions.</param>
-    /// <returns>
-    /// A tuple containing two integers: the major and minor versions of the maximum supported OpenGL (or OpenGL ES) version.
-    /// If no supported version is found, returns (0, 0).
-    /// </returns>
-    private static (int, int) TestMaxGlVersion(bool openGlEs) {
-        (int, int)[] testVersions = openGlEs 
-            ? [
-                (3, 2),
-                (3, 0)
-            ]
-            : [
-                (4, 6),
-                (4, 3),
-                (4, 0),
-                (3, 3),
-                (3, 0)
-            ];
-
-        foreach ((int major, int minor) in testVersions) {
-            if (TestIndividualGlVersion(openGlEs, major, minor)) {
-                return (major, minor);
-            }
-        }
-
-        return (0, 0);
-    }
-
-    /// <summary>
-    /// Tests the creation of an OpenGL or OpenGL ES context with the specified major and minor version numbers.
-    /// </summary>
-    /// <param name="openGlEs">Specifies whether to create an OpenGL ES context. Otherwise, creates an OpenGL context.</param>
-    /// <param name="major">The major version number of the context to create.</param>
-    /// <param name="minor">The minor version number of the context to create.</param>
-    /// <return>True if the context was successfully created; otherwise, false.</return>
-    private static unsafe bool TestIndividualGlVersion(bool openGlEs, int major, int minor) {
-        SDL_GLprofile profileMask = openGlEs ? SDL_GLprofile.SDL_GL_CONTEXT_PROFILE_ES : SDL_GLprofile.SDL_GL_CONTEXT_PROFILE_CORE;
-
-        SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_PROFILE_MASK, (int) profileMask);
-        SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_MAJOR_VERSION, major);
-        SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_MINOR_VERSION, minor);
-
-        SDL_Window* window = SDL3.SDL_CreateWindow(string.Empty, 1, 1, SDL_WindowFlags.SDL_WINDOW_HIDDEN | SDL_WindowFlags.SDL_WINDOW_OPENGL);
-        string windowError = SDL3.SDL_GetError() ?? string.Empty;
-        
-        if ((nint) window == nint.Zero || windowError != string.Empty) {
-            SDL3.SDL_ClearError();
-            Logger.Debug($"Unable to create version {major}.{minor} {profileMask} context.");
-            return false;
-        }
-
-        SDL_GLContextState* context = SDL3.SDL_GL_CreateContext(window);
-        string contextError = SDL3.SDL_GetError() ?? string.Empty;
-
-        if (contextError != string.Empty) {
-            SDL3.SDL_ClearError();
-            Logger.Debug($"Unable to create version {major}.{minor} {profileMask} context.");
-            SDL3.SDL_DestroyWindow(window);
-            return false;
-        }
-
-        SDL3.SDL_GL_DestroyContext(context);
-        SDL3.SDL_DestroyWindow(window);
-        return true;
+    private static GraphicsDevice CreateOpenGlGraphicsDevice(IWindow window, GraphicsDeviceOptions options, GraphicsBackend backend) {
+        return GraphicsDevice.CreateOpenGL(options, window.GetOrCreateOpenGlPlatformInfo(options, backend), (uint) window.GetWidth(), (uint) window.GetHeight());
     }
 }

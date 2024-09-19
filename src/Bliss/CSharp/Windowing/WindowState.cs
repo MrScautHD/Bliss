@@ -6,5 +6,5 @@ public enum WindowState { // TODO: Rework this!
     Maximized,
     Minimized,
     BorderlessFullScreen,
-    Hidden,
+    Hidden
 }

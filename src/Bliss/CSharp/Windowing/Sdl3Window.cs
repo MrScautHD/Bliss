@@ -4,6 +4,7 @@ using SDL;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
+using Veldrid.OpenGL;
 
 namespace Bliss.CSharp.Windowing;
 
@@ -13,7 +14,7 @@ public class Sdl3Window : Disposable, IWindow {
     public uint Id { get; private set; }
     
     public SwapchainSource SwapchainSource { get; }
-    
+
     public bool Exists { get; }
     public bool IsFocused { get; }
     
@@ -22,6 +23,19 @@ public class Sdl3Window : Disposable, IWindow {
     public float Opacity { get; set; }
     public bool Resizable { get; set; }
     public bool BorderVisible { get; set; }
+
+    private OpenGLPlatformInfo? _openGlPlatformInfo;
+    
+    /// <summary>
+    /// Stores the maximum supported OpenGL version as a tuple of major and minor version numbers.
+    /// </summary>
+    private (int, int)? _maxSupportedGlVersion;
+
+    /// <summary>
+    /// Stores the maximum supported OpenGL ES (GLES) version.
+    /// The value is a tuple where the first item represents the major version, and the second item represents the minor version.
+    /// </summary>
+    private (int, int)? _maxSupportedGlEsVersion;
     
     public unsafe Sdl3Window(int width, int height, string title, SDL_WindowFlags flags) {
         this.Exists = true; // TODO: IS TEMP HERE!
@@ -49,6 +63,269 @@ public class Sdl3Window : Disposable, IWindow {
     /// <exception cref="System.ComponentModel.Win32Exception">Thrown if an error occurs when retrieving the module handle.</exception>
     [DllImport("kernel32", ExactSpelling = true)]
     private static extern unsafe nint GetModuleHandleW(ushort* lpModuleName);
+    
+    public unsafe string GetTitle() {
+        return SDL3.SDL_GetWindowTitle((SDL_Window*) this.Handle) ?? string.Empty;
+    }
+    
+    public unsafe void SetTitle(string title) {
+        if (SDL3.SDL_SetWindowTitle((SDL_Window*) this.Handle, title) == SDL_bool.SDL_FALSE) {
+            Logger.Warn($"Failed to set the title of the window: [{this.Id}] Error: {SDL3.SDL_GetError()}");
+        }
+    }
+    
+    public unsafe (int, int) GetSize() {
+        int width;
+        int height;
+        
+        if (SDL3.SDL_GetWindowSizeInPixels((SDL_Window*) this.Handle, &width, &height) == SDL_bool.SDL_FALSE) {
+            Logger.Warn($"Failed to get the size of the window: [{this.Id}] Error: {SDL3.SDL_GetError()}");
+        }
+
+        return (width, height);
+    }
+
+    public unsafe void SetSize(int width, int height) {
+        if (SDL3.SDL_SetWindowSize((SDL_Window*) this.Handle, width, height) == SDL_bool.SDL_FALSE) {
+            Logger.Warn($"Failed to set the size of the window: [{this.Id}] Error: {SDL3.SDL_GetError()}");
+        }
+    }
+    
+    public int GetWidth() {
+        return this.GetSize().Item1;
+    }
+    
+    public void SetWidth(int width) {
+        this.SetSize(width, this.GetHeight());
+    }
+    
+    public int GetHeight() {
+        return this.GetSize().Item2;
+    }
+    
+    public void SetHeight(int height) {
+        this.SetSize(this.GetWidth(), height);
+    }
+    
+    public unsafe void SetIcon(Image<Rgba32> image) {
+        byte[] data = new byte[image.Width * image.Height * 4];
+        image.CopyPixelDataTo(data);
+
+        fixed (byte* dataPtr = data) {
+            SDL_Surface* surface = SDL3.SDL_CreateSurfaceFrom(image.Width, image.Height, SDL_PixelFormat.SDL_PIXELFORMAT_RGB332, (nint) dataPtr, 1);
+
+            if ((nint) surface == nint.Zero) {
+                Logger.Error($"Failed to set Sdl3 window icon: {SDL3.SDL_GetError()}");
+            }
+
+            SDL3.SDL_SetWindowIcon((SDL_Window*) this.Handle, surface);
+            SDL3.SDL_DestroySurface(surface);
+        }
+    }
+
+    public void PumpEvents() {
+        //throw new NotImplementedException();
+    }
+
+    public Point ClientToScreen(Point point) {
+        //throw new NotImplementedException();
+        return new Point();
+    }
+
+    public Point ScreenToClient(Point point) {
+        //throw new NotImplementedException();
+        return new Point();
+    }
+
+    public unsafe OpenGLPlatformInfo GetOrCreateOpenGlPlatformInfo(GraphicsDeviceOptions options, GraphicsBackend backend) {
+        if (this._openGlPlatformInfo == null) {
+            SDL3.SDL_ClearError();
+
+            this.SetSdlGlContextAttributes(options, backend);
+
+            SDL_GLContextState* contextHandle = SDL3.SDL_GL_CreateContext((SDL_Window*) this.Handle);
+            string error = SDL3.SDL_GetError() ?? string.Empty;
+        
+            if (error != string.Empty) {
+                throw new VeldridException($"Unable to create OpenGL Context: \"{error}\". This may indicate that the system does not support the requested OpenGL profile, version, or Swapchain format.");
+            }
+
+            int actualDepthSize;
+            int actualStencilSize;
+
+            SDL3.SDL_GL_GetAttribute(SDL_GLattr.SDL_GL_DEPTH_SIZE, &actualDepthSize);
+            SDL3.SDL_GL_GetAttribute(SDL_GLattr.SDL_GL_STENCIL_SIZE, &actualStencilSize);
+            SDL3.SDL_GL_SetSwapInterval(options.SyncToVerticalBlank ? 1 : 0);
+
+            OpenGLPlatformInfo platformInfo = new OpenGLPlatformInfo(
+                (nint) contextHandle,
+                proc => SDL3.SDL_GL_GetProcAddress(proc),
+                context => SDL3.SDL_GL_MakeCurrent((SDL_Window*) this.Handle, (SDL_GLContextState*) context),
+                () => (nint) SDL3.SDL_GL_GetCurrentContext(),
+                () => SDL3.SDL_GL_MakeCurrent((SDL_Window*) this.Handle, (SDL_GLContextState*) nint.Zero),
+                context => SDL3.SDL_GL_DestroyContext((SDL_GLContextState*) context),
+                () => SDL3.SDL_GL_SwapWindow((SDL_Window*) this.Handle),
+                sync => SDL3.SDL_GL_SetSwapInterval(sync ? 1 : 0)
+            );
+
+            this._openGlPlatformInfo = platformInfo;
+            return platformInfo;
+        }
+        else {
+            return this._openGlPlatformInfo;
+        }
+    }
+
+    /// <summary>
+    /// Configures the SDL GL context attributes based on the provided graphics device options and backend.
+    /// </summary>
+    /// <param name="options">The options that specify various settings for the graphics device.</param>
+    /// <param name="backend">The graphics backend in use (OpenGL or OpenGLES).</param>
+    /// <exception cref="System.Exception">Thrown if the graphics backend is not OpenGL or OpenGLES.</exception>
+    private void SetSdlGlContextAttributes(GraphicsDeviceOptions options, GraphicsBackend backend) {
+       if (backend != GraphicsBackend.OpenGL && backend != GraphicsBackend.OpenGLES) {
+           throw new Exception($"GraphicsBackend must be: [{nameof(GraphicsBackend.OpenGL)}] or [{nameof(GraphicsBackend.OpenGLES)}]!");
+       }
+
+       SDL_GLcontextFlag contextFlags = options.Debug ? (SDL_GLcontextFlag.SDL_GL_CONTEXT_DEBUG_FLAG | SDL_GLcontextFlag.SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG) : SDL_GLcontextFlag.SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG;
+       SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_FLAGS, (int) contextFlags);
+
+       (int major, int minor) = this.GetMaxGlVersion(backend == GraphicsBackend.OpenGLES);
+
+       if (backend == GraphicsBackend.OpenGL) {
+           SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_PROFILE_MASK, (int) SDL_GLprofile.SDL_GL_CONTEXT_PROFILE_CORE);
+           SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_MAJOR_VERSION, major);
+           SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_MINOR_VERSION, minor);
+       }
+       else {
+           SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_PROFILE_MASK, (int) SDL_GLprofile.SDL_GL_CONTEXT_PROFILE_ES);
+           SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_MAJOR_VERSION, major);
+           SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_MINOR_VERSION, minor);
+       }
+
+       int depthBits = 0;
+       int stencilBits = 0;
+       
+       if (options.SwapchainDepthFormat.HasValue) {
+           switch (options.SwapchainDepthFormat) {
+               case PixelFormat.R16UNorm:
+                   depthBits = 16;
+                   break;
+               case PixelFormat.D24UNormS8UInt:
+                   depthBits = 24;
+                   stencilBits = 8;
+                   break;
+               case PixelFormat.R32Float:
+                   depthBits = 32;
+                   break;
+               case PixelFormat.D32FloatS8UInt:
+                   depthBits = 32;
+                   stencilBits = 8;
+                   break;
+               default:
+                   throw new VeldridException($"Invalid depth format: [{options.SwapchainDepthFormat.Value}]!");
+           }
+       }
+
+       SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_DEPTH_SIZE, depthBits);
+       SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_STENCIL_SIZE, stencilBits);
+       SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_FRAMEBUFFER_SRGB_CAPABLE, options.SwapchainSrgbFormat ? 1 : 0);
+    }
+    
+    /// <summary>
+    /// Retrieves the maximum OpenGL or OpenGL ES version supported by the system.
+    /// </summary>
+    /// <param name="openGlEs">Specifies whether to query for OpenGL ES (true) or OpenGL (false) version.</param>
+    /// <return>Returns a tuple containing the major and minor version numbers of the supported OpenGL or OpenGL ES version.</return>
+    private (int, int) GetMaxGlVersion(bool openGlEs) {
+        object glVersionLock = new object();
+        
+        lock (glVersionLock) {
+            (int, int)? maxVersion = openGlEs ? this._maxSupportedGlEsVersion : this._maxSupportedGlVersion;
+
+            if (maxVersion == null) {
+                maxVersion = this.TestMaxGlVersion(openGlEs);
+
+                if (openGlEs) {
+                    this._maxSupportedGlEsVersion = maxVersion;
+                }
+                else {
+                    this._maxSupportedGlVersion = maxVersion;
+                }
+            }
+
+            return maxVersion.Value;
+        }
+    }
+
+    /// <summary>
+    /// Tests the maximum supported OpenGL version for OpenGL or OpenGL ES.
+    /// </summary>
+    /// <param name="openGlEs">Indicates whether to test for OpenGL ES versions. If false, tests for standard OpenGL versions.</param>
+    /// <returns>
+    /// A tuple containing two integers: the major and minor versions of the maximum supported OpenGL (or OpenGL ES) version.
+    /// If no supported version is found, returns (0, 0).
+    /// </returns>
+    private (int, int) TestMaxGlVersion(bool openGlEs) {
+        (int, int)[] testVersions = openGlEs 
+            ? [
+                (3, 2),
+                (3, 0)
+            ]
+            : [
+                (4, 6),
+                (4, 3),
+                (4, 0),
+                (3, 3),
+                (3, 0)
+            ];
+
+        foreach ((int major, int minor) in testVersions) {
+            if (this.TestIndividualGlVersion(openGlEs, major, minor)) {
+                return (major, minor);
+            }
+        }
+
+        return (0, 0);
+    }
+    
+    /// <summary>
+    /// Tests the creation of an OpenGL or OpenGL ES context with the specified major and minor version numbers.
+    /// </summary>
+    /// <param name="openGlEs">Specifies whether to create an OpenGL ES context. Otherwise, creates an OpenGL context.</param>
+    /// <param name="major">The major version number of the context to create.</param>
+    /// <param name="minor">The minor version number of the context to create.</param>
+    /// <return>True if the context was successfully created; otherwise, false.</return>
+    private unsafe bool TestIndividualGlVersion(bool openGlEs, int major, int minor) {
+        SDL_GLprofile profileMask = openGlEs ? SDL_GLprofile.SDL_GL_CONTEXT_PROFILE_ES : SDL_GLprofile.SDL_GL_CONTEXT_PROFILE_CORE;
+
+        SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_PROFILE_MASK, (int) profileMask);
+        SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_MAJOR_VERSION, major);
+        SDL3.SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_MINOR_VERSION, minor);
+
+        SDL_Window* window = SDL3.SDL_CreateWindow(string.Empty, 1, 1, SDL_WindowFlags.SDL_WINDOW_HIDDEN | SDL_WindowFlags.SDL_WINDOW_OPENGL);
+        string windowError = SDL3.SDL_GetError() ?? string.Empty;
+        
+        if ((nint) window == nint.Zero || windowError != string.Empty) {
+            SDL3.SDL_ClearError();
+            Logger.Debug($"Unable to create version {major}.{minor} {profileMask} context.");
+            return false;
+        }
+
+        SDL_GLContextState* context = SDL3.SDL_GL_CreateContext(window);
+        string contextError = SDL3.SDL_GetError() ?? string.Empty;
+
+        if (contextError != string.Empty) {
+            SDL3.SDL_ClearError();
+            Logger.Debug($"Unable to create version {major}.{minor} {profileMask} context.");
+            SDL3.SDL_DestroyWindow(window);
+            return false;
+        }
+
+        SDL3.SDL_GL_DestroyContext(context);
+        SDL3.SDL_DestroyWindow(window);
+        return true;
+    }
 
     /// <summary>
     /// Creates a SwapchainSource for use with the current operating system.
@@ -83,119 +360,9 @@ public class Sdl3Window : Disposable, IWindow {
         throw new PlatformNotSupportedException("Filed to create a SwapchainSource!");
     }
 
-    /// <summary>
-    /// Retrieves the title of the SDL window.
-    /// </summary>
-    /// <returns>A string representing the title of the window. If the title is not set, an empty string is returned.</returns>
-    public unsafe string GetTitle() {
-        return SDL3.SDL_GetWindowTitle((SDL_Window*) this.Handle) ?? string.Empty;
-    }
-
-    /// <summary>
-    /// Sets the title of the SDL window.
-    /// </summary>
-    /// <param name="title">A string representing the new title for the window.</param>
-    public unsafe void SetTitle(string title) {
-        if (SDL3.SDL_SetWindowTitle((SDL_Window*) this.Handle, title) == SDL_bool.SDL_FALSE) {
-            Logger.Warn($"Failed to set the title of the window: [{this.Id}] Error: {SDL3.SDL_GetError()}");
-        }
-    }
-
-    /// <summary>
-    /// Retrieves the size (width and height) of the SDL window.
-    /// </summary>
-    /// <returns>A tuple containing the width and height of the window.</returns>
-    public unsafe (int, int) GetSize() {
-        int width;
-        int height;
-        
-        if (SDL3.SDL_GetWindowSizeInPixels((SDL_Window*) this.Handle, &width, &height) == SDL_bool.SDL_FALSE) {
-            Logger.Warn($"Failed to get the size of the window: [{this.Id}] Error: {SDL3.SDL_GetError()}");
-        }
-
-        return (width, height);
-    }
-
-    /// <summary>
-    /// Sets the size of the SDL window.
-    /// </summary>
-    /// <param name="width">The new width for the window.</param>
-    /// <param name="height">The new height for the window.</param>
-    public unsafe void SetSize(int width, int height) {
-        if (SDL3.SDL_SetWindowSize((SDL_Window*) this.Handle, width, height) == SDL_bool.SDL_FALSE) {
-            Logger.Warn($"Failed to set the size of the window: [{this.Id}] Error: {SDL3.SDL_GetError()}");
-        }
-    }
-
-    /// <summary>
-    /// Retrieves the width of the SDL window.
-    /// </summary>
-    /// <returns>An integer representing the width of the window.</returns>
-    public int GetWidth() {
-        return this.GetSize().Item1;
-    }
-
-    /// <summary>
-    /// Sets the width of the SDL window.
-    /// </summary>
-    /// <param name="width">The new width for the window.</param>
-    public void SetWidth(int width) {
-        this.SetSize(width, this.GetHeight());
-    }
-
-    /// <summary>
-    /// Retrieves the height of the SDL window.
-    /// </summary>
-    /// <returns>An integer representing the height of the window.</returns>
-    public int GetHeight() {
-        return this.GetSize().Item2;
-    }
-
-    /// <summary>
-    /// Sets the height of the SDL window.
-    /// </summary>
-    /// <param name="height">The new height for the window.</param>
-    public void SetHeight(int height) {
-        this.SetSize(this.GetWidth(), height);
-    }
-
-    /// <summary>
-    /// Sets the icon for the SDL window using the provided image.
-    /// </summary>
-    /// <param name="image">The image to be used as the window icon. It should be an Image object with Rgba32 pixel format.</param>
-    public unsafe void SetIcon(Image<Rgba32> image) {
-        byte[] data = new byte[image.Width * image.Height * 4];
-        image.CopyPixelDataTo(data);
-
-        fixed (byte* dataPtr = data) {
-            SDL_Surface* surface = SDL3.SDL_CreateSurfaceFrom(image.Width, image.Height, SDL_PixelFormat.SDL_PIXELFORMAT_RGB332, (nint) dataPtr, 1);
-
-            if ((nint) surface == nint.Zero) {
-                Logger.Error($"Failed to set Sdl3 window icon: {SDL3.SDL_GetError()}");
-            }
-
-            SDL3.SDL_SetWindowIcon((SDL_Window*) this.Handle, surface);
-            SDL3.SDL_DestroySurface(surface);
-        }
-    }
-
-    public void PumpEvents() {
-        //throw new NotImplementedException();
-    }
-
-    public Point ClientToScreen(Point point) {
-        //throw new NotImplementedException();
-        return new Point();
-    }
-
-    public Point ScreenToClient(Point point) {
-        //throw new NotImplementedException();
-        return new Point();
-    }
-
-    protected override void Dispose(bool disposing) {
+    protected override unsafe void Dispose(bool disposing) {
         if (disposing) {
-            
+            SDL3.SDL_DestroyWindow((SDL_Window*) this.Handle);
         }
     }
 }

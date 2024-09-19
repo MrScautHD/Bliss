@@ -28,7 +28,7 @@ public struct GameSettings {
         this.TargetFps = 0;
         this.FixedTimeStep = 1.0F / 60.0F;
         this.WindowFlags = WindowState.Resizable;
-        this.Backend = GraphicsBackend.OpenGL; // TODO: Window.GetPlatformDefaultBackend()
+        this.Backend = GraphicsBackend.OpenGLES; // TODO: Window.GetPlatformDefaultBackend()
         this.VSync = true;
         this.SampleCount = TextureSampleCount.Count1;
     }
