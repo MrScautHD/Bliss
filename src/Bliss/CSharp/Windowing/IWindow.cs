@@ -42,38 +42,6 @@ public interface IWindow : IDisposable {
     /// This property can be used to check if the window is the foreground window.
     /// </summary>
     bool IsFocused { get; }
-
-    /// <summary>
-    /// Gets or sets the state of the window, which defines its appearance and behavior.
-    /// The possible states include resizable, full screen, maximized, minimized,
-    /// borderless full screen, and hidden.
-    /// </summary>
-    WindowState State { get; set; }
-
-    /// <summary>
-    /// Gets or sets a value indicating whether the window is visible on the screen.
-    /// If set to true, the window will be displayed; otherwise, it will be hidden.
-    /// </summary>
-    bool Visible { get; set; }
-
-    /// <summary>
-    /// Gets or sets the opacity level of the window. The value ranges from 0.0 (completely transparent)
-    /// to 1.0 (completely opaque). Adjusting the opacity can be used for visual effects or overlay purposes.
-    /// </summary>
-    float Opacity { get; set; }
-
-    /// <summary>
-    /// Indicates whether the window can be resized by the user.
-    /// If set to true, the window can be resized; otherwise, it cannot be resized.
-    /// </summary>
-    bool Resizable { get; set; }
-
-    /// <summary>
-    /// Gets or sets a value indicating whether the window border is visible. When set to true, the window
-    /// will have a visible border, which typically includes the title bar and the window frame that allows
-    /// users to resize and move the window. When set to false, the window will be borderless.
-    /// </summary>
-    bool BorderVisible { get; set; }
     
     /// <summary>
     /// Occurs when the window is resized.
@@ -159,6 +127,30 @@ public interface IWindow : IDisposable {
     /// Occurs when a drag-and-drop operation is performed.
     /// </summary>
     public event Action<DragDropEvent>? DragDrop;
+
+    /// <summary>
+    /// Retrieves the current state of the window.
+    /// </summary>
+    /// <returns>The current state of the window as a WindowState enum value.</returns>
+    WindowState GetState();
+
+    /// <summary>
+    /// Checks if the current state of the window matches the specified state.
+    /// </summary>
+    /// <param name="state">The state to be checked against the current window state.</param>
+    /// <returns>True if the current state of the window matches the specified state, otherwise false.</returns>
+    bool HasState(WindowState state);
+
+    /// <summary>
+    /// Sets the state of the window to the specified WindowState.
+    /// </summary>
+    /// <param name="state">The desired state to set the window to, represented by the WindowState enum.</param>
+    void SetState(WindowState state);
+
+    /// <summary>
+    /// Clears the current state of the window, resetting it to its default state.
+    /// </summary>
+    void ClearState();
 
     /// <summary>
     /// Retrieves the current title of the window.

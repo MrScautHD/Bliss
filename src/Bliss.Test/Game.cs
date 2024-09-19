@@ -5,6 +5,8 @@ using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Rendering.Batches.Primitives;
 using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 using Bliss.CSharp.Graphics.Rendering.Passes;
+using Bliss.CSharp.Interact;
+using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Windowing;
@@ -76,7 +78,7 @@ public class Game : Disposable {
         this.CommandList = this.GraphicsDevice.ResourceFactory.CreateCommandList();
         
         Logger.Info("Initialize input...");
-        //TODO: Input.Init(this.MainWindow);
+        Input.Init(this.MainWindow);
         
         this.Init();
         
@@ -88,7 +90,7 @@ public class Game : Disposable {
             Time.Update();
             
             this.MainWindow.PumpEvents();
-            //TODO: Input.Begin(this.MainWindow.PumpEvents());
+            Input.Begin();
             
             if (!this.MainWindow.Exists) {
                 break;
@@ -104,7 +106,7 @@ public class Game : Disposable {
             }
             
             this.Draw(this.GraphicsDevice, this.CommandList);
-            //TODO: Input.End();
+            Input.End();
         }
         
         Logger.Warn("Application shuts down!");
@@ -121,7 +123,19 @@ public class Game : Disposable {
         this._font = new Font("content/fonts/fontoe.ttf");
     }
 
-    protected virtual void Update() { }
+    protected virtual void Update() {
+        if (Input.IsKeyPressed(KeyboardKey.A)) {
+            Logger.Warn("A GOT PRESSED!!!!");
+        }
+        
+        if (Input.IsKeyDown(KeyboardKey.D)) {
+            Logger.Warn("D IS DOWN!!!!");
+        }
+        
+        if (Input.IsKeyReleased(KeyboardKey.D)) {
+            Logger.Warn("D IS Released!!!!");
+        }
+    }
     
     protected virtual void AfterUpdate() { }
 

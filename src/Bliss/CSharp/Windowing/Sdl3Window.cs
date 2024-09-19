@@ -51,13 +51,6 @@ public class Sdl3Window : Disposable, IWindow {
     /// </summary>
     public bool IsFocused { get; private set; }
     
-    public WindowState State { get; set; }
-    
-    public bool Visible { get; set; }
-    public float Opacity { get; set; }
-    public bool Resizable { get; set; }
-    public bool BorderVisible { get; set; }
-
     /// <summary>
     /// Represents an event that is triggered whenever an SDL event occurs within the window.
     /// </summary>
@@ -149,6 +142,11 @@ public class Sdl3Window : Disposable, IWindow {
     public event Action<DragDropEvent>? DragDrop;
 
     /// <summary>
+    /// Represents the current state of the SDL window, such as whether it is resizable, full screen, maximized, minimized, hidden, etc.
+    /// </summary>
+    private WindowState _state;
+
+    /// <summary>
     /// Contains a collection of SDL_Event objects used for polling and handling SDL events.
     /// </summary>
     private readonly SDL_Event[] _events;
@@ -170,14 +168,14 @@ public class Sdl3Window : Disposable, IWindow {
     private (int, int)? _maxSupportedGlEsVersion;
     
     /// <summary>
-    /// Initializes a new instance of the <see cref="Sdl3Window"/> class with the specified dimensions, title, and window flags.
+    /// Initializes a new instance of the <see cref="Sdl3Window"/> class with the specified width, height, title, and window state.
     /// </summary>
     /// <param name="width">The width of the window in pixels.</param>
     /// <param name="height">The height of the window in pixels.</param>
     /// <param name="title">The title of the window.</param>
-    /// <param name="flags">Window flags that define the behavior and appearance of the window, specified as <see cref="SDL_WindowFlags"/>.</param>
+    /// <param name="state">The initial state of the window, specified as a <see cref="WindowState"/> value.</param>
     /// <exception cref="Exception">Thrown if SDL fails to initialize the subsystem required for creating the window.</exception>
-    public unsafe Sdl3Window(int width, int height, string title, SDL_WindowFlags flags) {
+    public unsafe Sdl3Window(int width, int height, string title, WindowState state) {
         this.Exists = true;
         
         SDL3.SDL_SetHint(SDL3.SDL_HINT_MOUSE_FOCUS_CLICKTHROUGH, "1");
@@ -190,7 +188,7 @@ public class Sdl3Window : Disposable, IWindow {
         SDL3.SDL_SetGamepadEventsEnabled(SDL_bool.SDL_TRUE);
         SDL3.SDL_SetJoystickEventsEnabled(SDL_bool.SDL_TRUE);
         
-        this.Handle = (nint) SDL3.SDL_CreateWindow(title, width, height, flags);
+        this.Handle = (nint) SDL3.SDL_CreateWindow(title, width, height, this.MapWindowState(state) | SDL_WindowFlags.SDL_WINDOW_OPENGL);
         this.Id = (uint) SDL3.SDL_GetWindowID((SDL_Window*) this.Handle);
         this.SwapchainSource = this.CreateSwapchainSource();
         
@@ -205,6 +203,69 @@ public class Sdl3Window : Disposable, IWindow {
     /// <exception cref="System.ComponentModel.Win32Exception">Thrown if an error occurs when retrieving the module handle.</exception>
     [DllImport("kernel32", ExactSpelling = true)]
     private static extern unsafe nint GetModuleHandleW(ushort* lpModuleName);
+    
+    /// <summary>
+    /// Retrieves the current state of the window.
+    /// </summary>
+    /// <returns>The current state of the window represented by the <see cref="WindowState"/> enumeration.</returns>
+    public WindowState GetState() {
+        return this._state;
+    }
+
+    /// <summary>
+    /// Determines if the current window state matches the specified state.
+    /// </summary>
+    /// <param name="state">The window state to compare with the current state.</param>
+    /// <returns>True if the current window state matches the specified state; otherwise, false.</returns>
+    public bool HasState(WindowState state) {
+        return this._state.HasFlag(state);
+    }
+
+    /// <summary>
+    /// Sets the state of the window to the specified state.
+    /// </summary>
+    /// <param name="state">The desired state for the window, specified as a <see cref="WindowState"/>.</param>
+    public unsafe void SetState(WindowState state) {
+        switch (state) {
+            case WindowState.Resizable:
+                SDL3.SDL_SetWindowResizable((SDL_Window*) this.Handle, SDL_bool.SDL_TRUE);
+                break;
+            case WindowState.FullScreen:
+                SDL3.SDL_SetWindowFullscreen((SDL_Window*) this.Handle, SDL_bool.SDL_TRUE);
+                break;
+            case WindowState.BorderlessFullScreen:
+                SDL3.SDL_SetWindowBordered((SDL_Window*) this.Handle, SDL_bool.SDL_TRUE);
+                break;
+            case WindowState.Maximized:
+                SDL3.SDL_MaximizeWindow((SDL_Window*) this.Handle);
+                break;
+            case WindowState.Minimized:
+                SDL3.SDL_MinimizeWindow((SDL_Window*) this.Handle);
+                break;
+            case WindowState.Hidden:
+                SDL3.SDL_HideWindow((SDL_Window*) this.Handle);
+                break;
+            case WindowState.CaptureMouse:
+                SDL3.SDL_CaptureMouse(SDL_bool.SDL_TRUE);
+                break;
+            case WindowState.AlwaysOnTop:
+                SDL3.SDL_SetWindowAlwaysOnTop((SDL_Window*) this.Handle, SDL_bool.SDL_TRUE);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Resets the window to its default state by clearing various settings such as resizability, fullscreen mode, border visibility, and always-on-top status.
+    /// </summary>
+    /// <exception cref="InvalidOperationException">Thrown if the window handle is invalid.</exception>
+    public unsafe void ClearState() {
+        SDL3.SDL_SetWindowResizable((SDL_Window*) this.Handle, SDL_bool.SDL_FALSE);
+        SDL3.SDL_SetWindowFullscreen((SDL_Window*) this.Handle, SDL_bool.SDL_FALSE);
+        SDL3.SDL_SetWindowBordered((SDL_Window*) this.Handle, SDL_bool.SDL_FALSE);
+        SDL3.SDL_ShowWindow((SDL_Window*) this.Handle);
+        SDL3.SDL_CaptureMouse(SDL_bool.SDL_FALSE);
+        SDL3.SDL_SetWindowAlwaysOnTop((SDL_Window*) this.Handle, SDL_bool.SDL_FALSE);
+    }
 
     /// <summary>
     /// Retrieves the title of the window.
@@ -626,6 +687,35 @@ public class Sdl3Window : Disposable, IWindow {
     }
 
     /// <summary>
+    /// Maps a given <see cref="WindowState"/> to the corresponding <see cref="SDL_WindowFlags"/>.
+    /// </summary>
+    /// <param name="state">The state of the window to map, specified as <see cref="WindowState"/>.</param>
+    /// <returns>The corresponding <see cref="SDL_WindowFlags"/> for the provided <paramref name="state"/>.</returns>
+    /// <exception cref="Exception">Thrown when an invalid <see cref="WindowState"/> is provided.</exception>
+    private SDL_WindowFlags MapWindowState(WindowState state) {
+        switch (state) {
+            case WindowState.Resizable:
+                return SDL_WindowFlags.SDL_WINDOW_RESIZABLE;
+            case WindowState.FullScreen:
+                return SDL_WindowFlags.SDL_WINDOW_FULLSCREEN;
+            case WindowState.BorderlessFullScreen:
+                return SDL_WindowFlags.SDL_WINDOW_BORDERLESS;
+            case WindowState.Maximized:
+                return SDL_WindowFlags.SDL_WINDOW_MAXIMIZED;
+            case WindowState.Minimized:
+                return SDL_WindowFlags.SDL_WINDOW_MINIMIZED;
+            case WindowState.Hidden:
+                return SDL_WindowFlags.SDL_WINDOW_HIDDEN;
+            case WindowState.CaptureMouse:
+                return SDL_WindowFlags.SDL_WINDOW_MOUSE_CAPTURE;
+            case WindowState.AlwaysOnTop:
+                return SDL_WindowFlags.SDL_WINDOW_ALWAYS_ON_TOP;
+            default:
+                throw new Exception($"Invalid WindowState: [{state}]");
+        }
+    }
+
+    /// <summary>
     /// Handles a given SDL event and triggers the appropriate window event based on the type of the SDL event.
     /// </summary>
     /// <param name="sdlEvent">The SDL event to handle.</param>
@@ -684,10 +774,10 @@ public class Sdl3Window : Disposable, IWindow {
                 this.MouseUp?.Invoke(new MouseEvent((MouseButton) sdlEvent.button.Button, sdlEvent.button.down == SDL_bool.SDL_TRUE));
                 break;
             case SDL_EventType.SDL_EVENT_KEY_DOWN:
-                this.KeyDown?.Invoke(new KeyEvent(this.MapKey(sdlEvent.key.scancode), sdlEvent.key.down == SDL_bool.SDL_TRUE));
+                this.KeyDown?.Invoke(new KeyEvent(this.MapKey(sdlEvent.key.scancode), sdlEvent.key.down == SDL_bool.SDL_TRUE, sdlEvent.key.repeat == SDL_bool.SDL_TRUE));
                 break;
             case SDL_EventType.SDL_EVENT_KEY_UP:
-                this.KeyUp?.Invoke(new KeyEvent(this.MapKey(sdlEvent.key.scancode), sdlEvent.key.down == SDL_bool.SDL_TRUE));
+                this.KeyUp?.Invoke(new KeyEvent(this.MapKey(sdlEvent.key.scancode), sdlEvent.key.down == SDL_bool.SDL_TRUE, sdlEvent.key.repeat == SDL_bool.SDL_TRUE));
                 break;
             case SDL_EventType.SDL_EVENT_DROP_FILE:
                 this.DragDrop?.Invoke(new DragDropEvent((int) sdlEvent.drop.x, (int) sdlEvent.drop.y, sdlEvent.drop.GetSource() ?? string.Empty));

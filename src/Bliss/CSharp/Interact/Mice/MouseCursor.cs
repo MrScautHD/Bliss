@@ -1,70 +1,109 @@
 namespace Bliss.CSharp.Interact.Mice;
 
 public enum MouseCursor {
-    /*
+    
     /// <summary>
-    /// The default cursor. Represents the system's default cursor.
+    /// The default arrow cursor.
     /// </summary>
-    Default = default,
+    Default = 0,
 
     /// <summary>
-    /// The arrow cursor. Typically used for standard pointing interactions.
+    /// A cursor indicating text selection or editing.
     /// </summary>
-    Arrow = SDL_SystemCursor.Arrow,
+    Text = 1,
 
     /// <summary>
-    /// The I-beam cursor. Typically used for text selection.
+    /// A cursor indicating that the application is busy and the user should wait.
     /// </summary>
-    IBeam = SDL_SystemCursor.IBeam,
+    Wait = 2,
 
     /// <summary>
-    /// The wait cursor. Typically used to indicate that the application is busy.
+    /// A cursor indicating a crosshair, typically used for precise selection or drawing.
     /// </summary>
-    Wait = SDL_SystemCursor.Wait,
+    Crosshair = 3,
 
     /// <summary>
-    /// The crosshair cursor. Typically used for precise selections or aiming.
+    /// A cursor indicating a progress or loading state.
     /// </summary>
-    Crosshair = SDL_SystemCursor.Crosshair,
+    Progress = 4,
 
     /// <summary>
-    /// The wait arrow cursor. Typically used to indicate that the application is busy, but still allows pointing.
+    /// A cursor indicating a resize action from the northwest to the southeast.
     /// </summary>
-    WaitArrow = SDL_SystemCursor.WaitArrow,
+    NWSEResize = 5,
 
     /// <summary>
-    /// The size NW-SE cursor. Typically used for resizing diagonally from the northwest to the southeast.
+    /// A cursor indicating a resize action from the northeast to the southwest.
     /// </summary>
-    SizeNWSE = SDL_SystemCursor.SizeNWSE,
+    NESWResize = 6,
 
     /// <summary>
-    /// The size NE-SW cursor. Typically used for resizing diagonally from the northeast to the southwest.
+    /// A cursor indicating a horizontal resize action.
     /// </summary>
-    SizeNESW = SDL_SystemCursor.SizeNESW,
+    EWResize = 7,
 
     /// <summary>
-    /// The size horizontal cursor. Typically used for resizing horizontally.
+    /// A cursor indicating a vertical resize action.
     /// </summary>
-    SizeWE = SDL_SystemCursor.SizeWE,
+    NSResize = 8,
 
     /// <summary>
-    /// The size vertical cursor. Typically used for resizing vertically.
+    /// A cursor indicating a move action.
     /// </summary>
-    SizeNS = SDL_SystemCursor.SizeNS,
+    Move = 9,
 
     /// <summary>
-    /// The size all cursor. Typically used for resizing in any direction.
+    /// A cursor indicating that the action is not allowed.
     /// </summary>
-    SizeAll = SDL_SystemCursor.SizeAll,
+    NotAllowed = 10,
 
     /// <summary>
-    /// The no cursor. Typically used to indicate that an action is not allowed.
+    /// A cursor indicating a pointing hand, often used for hyperlinks.
     /// </summary>
-    No = SDL_SystemCursor.No,
+    Pointer = 11,
 
     /// <summary>
-    /// The hand cursor. Typically used for indicating clickable elements, such as hyperlinks.
+    /// A cursor indicating a resize action from the northwest.
     /// </summary>
-    Hand = SDL_SystemCursor.Hand
-    */
+    NWResize = 12,
+
+    /// <summary>
+    /// A cursor indicating a resize action from the north.
+    /// </summary>
+    NResize = 13,
+
+    /// <summary>
+    /// A cursor indicating a resize action from the northeast.
+    /// </summary>
+    NEResize = 14,
+
+    /// <summary>
+    /// A cursor indicating a resize action from the east.
+    /// </summary>
+    EResize = 15,
+
+    /// <summary>
+    /// A cursor indicating a resize action from the southeast.
+    /// </summary>
+    SEResize = 16,
+
+    /// <summary>
+    /// A cursor indicating a resize action from the south.
+    /// </summary>
+    SResize = 17,
+
+    /// <summary>
+    /// A cursor indicating a resize action from the southwest.
+    /// </summary>
+    SWResize = 18,
+
+    /// <summary>
+    /// A cursor indicating a resize action from the west.
+    /// </summary>
+    WResize = 19,
+
+    /// <summary>
+    /// The total number of cursor types available.
+    /// </summary>
+    Count = 20
 }

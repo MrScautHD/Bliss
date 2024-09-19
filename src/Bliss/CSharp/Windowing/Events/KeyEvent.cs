@@ -15,12 +15,19 @@ public struct KeyEvent {
     public bool IsDown;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="KeyEvent"/> class with the specified keyboard key and key state.
+    /// Indicates whether the key press event is a repeat of the previous key press action.
+    /// </summary>
+    public bool Repeat;
+    
+    /// <summary>
+    /// Initializes a new instance of the <see cref="KeyEvent"/> class with the specified keyboard key, key state, and repeat flag.
     /// </summary>
     /// <param name="keyboardKey">The <see cref="KeyboardKey"/> representing the key involved in the event.</param>
     /// <param name="isDown">Indicates whether the key is pressed down (<c>true</c>) or released (<c>false</c>).</param>
-    public KeyEvent(KeyboardKey keyboardKey, bool isDown) {
+    /// <param name="repeat">Indicates whether the key event is a repeated key press (<c>true</c>) or a single press (<c>false</c>).</param>
+    public KeyEvent(KeyboardKey keyboardKey, bool isDown, bool repeat) {
         this.KeyboardKey = keyboardKey;
         this.IsDown = isDown;
+        this.Repeat = repeat;
     }
 }

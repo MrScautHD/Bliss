@@ -1,4 +1,3 @@
-using SDL;
 using Veldrid;
 
 namespace Bliss.CSharp.Windowing;
@@ -20,35 +19,11 @@ public static class Window {
     public static IWindow CreateWindow(WindowType type, int width, int height, string title, WindowState state, GraphicsDeviceOptions options, GraphicsBackend preferredBackend, out GraphicsDevice graphicsDevice) {
         switch (type) {
             case WindowType.Sdl3:
-                Sdl3Window window = new Sdl3Window(width, height, title, GetSdl3WindowStates(state) | SDL_WindowFlags.SDL_WINDOW_OPENGL);
+                Sdl3Window window = new Sdl3Window(width, height, title, state);
                 graphicsDevice = CreateGraphicsDevice(window, options, preferredBackend);
                 return window;
             default:
                 throw new Exception($"The window type: [{type}] is not supported!");
-        }
-    }
-
-    /// <summary>
-    /// Converts the specified <see cref="WindowState"/> to the corresponding SDL window flags.
-    /// </summary>
-    /// <param name="state">The state of the window (e.g., normal, fullscreen, maximized).</param>
-    /// <returns>The SDL window flags that correspond to the specified window state.</returns>
-    private static SDL_WindowFlags GetSdl3WindowStates(WindowState state) {
-        switch (state) {
-            case WindowState.Resizable:
-                return SDL_WindowFlags.SDL_WINDOW_RESIZABLE;
-            case WindowState.FullScreen:
-                return SDL_WindowFlags.SDL_WINDOW_FULLSCREEN;
-            case WindowState.BorderlessFullScreen:
-                return SDL_WindowFlags.SDL_WINDOW_BORDERLESS;
-            case WindowState.Maximized:
-                return SDL_WindowFlags.SDL_WINDOW_MAXIMIZED;
-            case WindowState.Minimized:
-                return SDL_WindowFlags.SDL_WINDOW_MINIMIZED;
-            case WindowState.Hidden:
-                return SDL_WindowFlags.SDL_WINDOW_HIDDEN;
-            default:
-                throw new Exception($"Invalid WindowState: [{state}]");
         }
     }
     
