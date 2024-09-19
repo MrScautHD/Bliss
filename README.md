@@ -49,7 +49,7 @@ Coming SoOn!
 
 [<img src="https://github.com/MrScautHD/Sparkle/assets/65916181/e37eb15f-4237-47ae-9ae7-e4455f7c3d92" alt="macOS" width="70" height="70" align="left">](https://www.apple.com/at/macos/sonoma/)
 ### MacOS
-- Graphics API's `Metal`, `Vulkan`, `OpenGL`, `OpenGL-ES`
+- Graphics API's `Metal`, `OpenGL`, `OpenGL-ES`
 
 # 🧑 Contributors
 <a href="https://github.com/mrscauthd/Bliss/graphs/contributors">
