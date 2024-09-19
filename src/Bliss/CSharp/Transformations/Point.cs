@@ -65,11 +65,11 @@ public struct Point : IEquatable<Point> {
     public override int GetHashCode() {
         return HashCode.Combine(this.X.GetHashCode(), this.Y.GetHashCode());
     }
-
+    
     /// <summary>
-    /// Returns a string that represents the current rectangle.
+    /// Returns a string that represents the current Point instance.
     /// </summary>
-    /// <returns>A string that represents the rectangle's position and size.</returns>
+    /// <returns>A string that contains the X and Y coordinates of the Point instance.</returns>
     public override string ToString() {
         return $"X:{this.X} Y:{this.Y}";
     }
