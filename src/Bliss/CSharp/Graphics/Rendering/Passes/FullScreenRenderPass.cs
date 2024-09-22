@@ -1,4 +1,5 @@
 using System.Numerics;
+using System.Runtime.InteropServices;
 using Bliss.CSharp.Effects;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
@@ -9,15 +10,42 @@ namespace Bliss.CSharp.Graphics.Rendering.Passes;
 
 public class FullScreenRenderPass : Disposable {
     
+    /// <summary>
+    /// The graphics device used for rendering.
+    /// </summary>
     public GraphicsDevice GraphicsDevice { get; private set; }
+    
+    /// <summary>
+    /// The output description for the rendering pass.
+    /// </summary>
     public OutputDescription Output { get; private set; }
 
+    /// <summary>
+    /// The shader effect used for rendering in the full-screen pass.
+    /// </summary>
     private Effect _effect;
+    
+    /// <summary>
+    /// The layout for the textures used in the rendering process.
+    /// </summary>
     private SimpleTextureLayout _textureLayout;
+    
+    /// <summary>
+    /// The rendering pipeline configuration, defining how to process the rendering.
+    /// </summary>
     private SimplePipeline _pipeline;
+    
+    /// <summary>
+    /// The vertex buffer that stores the vertex data for rendering a full-screen quad.
+    /// </summary>
     private DeviceBuffer _vertexBuffer;
     
     // TODO: Check pipeline + effect to maybe allow post processing to!
+    /// <summary>
+    /// Initializes a new instance of the <see cref="FullScreenRenderPass"/> class.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device to use for rendering.</param>
+    /// <param name="output">The output description for the rendering pass.</param>
     public FullScreenRenderPass(GraphicsDevice graphicsDevice, OutputDescription output) {
         this.GraphicsDevice = graphicsDevice;
         this.Output = output;
@@ -57,7 +85,7 @@ public class FullScreenRenderPass : Disposable {
         });
 
         // Create vertex buffer.
-        this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(16 * 6, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
+        this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (6 * Marshal.SizeOf<Vector4>()), BufferUsage.VertexBuffer | BufferUsage.Dynamic));
         graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this.GetQuadVertices(graphicsDevice.IsUvOriginTopLeft));
     }
 

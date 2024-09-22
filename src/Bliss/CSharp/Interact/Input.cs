@@ -10,6 +10,7 @@ using SDL;
 
 namespace Bliss.CSharp.Interact;
 
+// TODO: Rework that with SDL3!
 public static class Input {
 
     public static IWindow Window { get; private set; }
