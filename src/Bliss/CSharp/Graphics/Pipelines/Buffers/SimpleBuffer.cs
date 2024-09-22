@@ -1,3 +1,4 @@
+using System.Numerics;
 using System.Runtime.InteropServices;
 using Veldrid;
 
@@ -66,10 +67,15 @@ public class SimpleBuffer<T> : Disposable, ISimpleBuffer where T : unmanaged {
         this.ShaderStages = stages;
         this.Data = new T[size];
         
+        //long dataSize = size * Marshal.SizeOf<T>();
+        //long bufferSize = (dataSize / 16 + (dataSize % 16 > 0 ? 1 : 0)) * 16;
+        
+        uint alignment = graphicsDevice.UniformBufferMinOffsetAlignment; // More common requirement in Metal
         long dataSize = size * Marshal.SizeOf<T>();
-        long bufferSize = (dataSize / 16 + (dataSize % 16 > 0 ? 1 : 0)) * 16;
+        long bufferSize = (dataSize / alignment + (dataSize % alignment > 0 ? 1 : 0)) * alignment;
         
         this.DeviceBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) bufferSize, this.GetBufferUsage(bufferType)));
+        graphicsDevice.UpdateBuffer(this.DeviceBuffer, 0, ref this.Data[0], (uint) (this.Data.Length * Marshal.SizeOf<T>()));
         this.DeviceBuffer.Name = name;
         
         this.ResourceLayout = graphicsDevice.ResourceFactory.CreateResourceLayout(new ResourceLayoutDescription(new ResourceLayoutElementDescription(name, this.GetResourceKind(bufferType), stages)));
@@ -84,12 +90,12 @@ public class SimpleBuffer<T> : Disposable, ISimpleBuffer where T : unmanaged {
     /// <param name="updateBuffer">Indicates whether the GPU buffer should be updated with the new value.</param>
     public void SetValue(int index, T value, bool updateBuffer = false) {
         this.Data[index] = value;
-
+        
         if (updateBuffer) {
             this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, (uint) (index * Marshal.SizeOf<T>()), this.Data[index]);
         }
     }
-
+    
     /// <summary>
     /// Updates the GPU buffer with the current data stored in the <see cref="Data"/> array.
     /// This method synchronizes the CPU-side data with the GPU-side buffer by copying the

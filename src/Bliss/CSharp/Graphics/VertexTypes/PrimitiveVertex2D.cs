@@ -4,7 +4,7 @@ using Veldrid;
 
 namespace Bliss.CSharp.Graphics.VertexTypes;
 
-[StructLayout(LayoutKind.Sequential, Pack = 1)]
+[StructLayout(LayoutKind.Sequential, Pack = 1, Size = 32)]
 public struct PrimitiveVertex2D {
     
     /// <summary>
@@ -12,6 +12,7 @@ public struct PrimitiveVertex2D {
     /// </summary>
     public static VertexLayoutDescription VertexLayout = new VertexLayoutDescription(
         new VertexElementDescription("vPosition", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float2),
+        new VertexElementDescription("vPadding", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float2),
         new VertexElementDescription("vColor", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float4)
     );
     
@@ -19,6 +20,11 @@ public struct PrimitiveVertex2D {
     /// The position of the vertex in 2D space.
     /// </summary>
     public Vector2 Position;
+    
+    /// <summary>
+    /// A placeholder vector to align vertex data structure and ensure proper spacing.
+    /// </summary>
+    public Vector2 Padding;
 
     /// <summary>
     /// The color of the vertex.
@@ -30,8 +36,9 @@ public struct PrimitiveVertex2D {
     /// </summary>
     /// <param name="position">The 2D position of the vertex.</param>
     /// <param name="color">The color of the vertex, represented as a Vector4 (RGBA).</param>
-    public PrimitiveVertex2D(Vector2 position, Vector4 color) {
+    public PrimitiveVertex2D(Vector2 position, Vector2 padding, Vector4 color) { //TODO FINISH THE SUMMARY IF IT REALLY STARTS WORKING!
         this.Position = position;
+        this.Padding = padding;
         this.Color = color;
     }
 }
