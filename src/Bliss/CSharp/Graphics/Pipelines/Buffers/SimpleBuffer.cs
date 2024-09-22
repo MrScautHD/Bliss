@@ -66,7 +66,10 @@ public class SimpleBuffer<T> : Disposable, ISimpleBuffer where T : unmanaged {
         this.ShaderStages = stages;
         this.Data = new T[size];
         
-        this.DeviceBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (size * Marshal.SizeOf<T>()), this.GetBufferUsage(bufferType) | BufferUsage.Dynamic));
+        long dataSize = size * Marshal.SizeOf<T>();
+        long bufferSize = (dataSize / 16 + (dataSize % 16 > 0 ? 1 : 0)) * 16;
+        
+        this.DeviceBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) bufferSize, this.GetBufferUsage(bufferType)));
         this.DeviceBuffer.Name = name;
         
         this.ResourceLayout = graphicsDevice.ResourceFactory.CreateResourceLayout(new ResourceLayoutDescription(new ResourceLayoutElementDescription(name, this.GetResourceKind(bufferType), stages)));
@@ -88,14 +91,23 @@ public class SimpleBuffer<T> : Disposable, ISimpleBuffer where T : unmanaged {
     }
 
     /// <summary>
+    /// Updates the GPU buffer with the current data stored in the <see cref="Data"/> array.
+    /// This method synchronizes the CPU-side data with the GPU-side buffer by copying the
+    /// contents of the <see cref="Data"/> array into the <see cref="DeviceBuffer"/>.
+    /// </summary>
+    public void UpdateBuffer() {
+        this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, 0, this.Data);
+    }
+
+    /// <summary>
     /// Determines the buffer usage based on the provided buffer type.
     /// </summary>
     /// <param name="bufferType">The type of buffer to get the usage for.</param>
     /// <return>The corresponding buffer usage for the specified buffer type.</return>
     private BufferUsage GetBufferUsage(SimpleBufferType bufferType) {
         return bufferType switch {
-            SimpleBufferType.Uniform => BufferUsage.UniformBuffer,
-            SimpleBufferType.StructuredReadOnly => BufferUsage.StructuredBufferReadOnly,
+            SimpleBufferType.Uniform => BufferUsage.UniformBuffer | BufferUsage.Dynamic,
+            SimpleBufferType.StructuredReadOnly => BufferUsage.StructuredBufferReadOnly | BufferUsage.Dynamic,
             SimpleBufferType.StructuredReadWrite => BufferUsage.StructuredBufferReadWrite,
             _ => throw new ArgumentException($"Unsupported buffer type: {bufferType}", nameof(bufferType))
         };

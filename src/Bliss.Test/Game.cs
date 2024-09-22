@@ -56,9 +56,14 @@ public class Game : Disposable {
         
         Logger.Info("Initialize window and graphics device...");
         GraphicsDeviceOptions options = new GraphicsDeviceOptions() {
-            PreferStandardClipSpaceYDirection = true,
+            Debug = false,
+            HasMainSwapchain = true,
+            SwapchainDepthFormat = null,
+            SyncToVerticalBlank = this.Settings.VSync,
+            ResourceBindingModel = ResourceBindingModel.Default,
             PreferDepthRangeZeroToOne = true,
-            SyncToVerticalBlank = this.Settings.VSync
+            PreferStandardClipSpaceYDirection = true,
+            SwapchainSrgbFormat = false
         };
         
         this.MainWindow = Window.CreateWindow(WindowType.Sdl3, this.Settings.Width, this.Settings.Height, this.Settings.Title, this.Settings.WindowFlags, options, this.Settings.Backend, out GraphicsDevice graphicsDevice);
@@ -126,10 +131,12 @@ public class Game : Disposable {
     protected virtual void Update() {
         if (Input.IsKeyPressed(KeyboardKey.A)) {
             Logger.Warn("A GOT PRESSED!!!!");
+            this.MainWindow.SetState(WindowState.Maximized | WindowState.AlwaysOnTop);
         }
         
         if (Input.IsKeyDown(KeyboardKey.D)) {
             Logger.Warn("D IS DOWN!!!!");
+            this.MainWindow.SetState(WindowState.FullScreen);
         }
         
         if (Input.IsKeyReleased(KeyboardKey.D)) {
@@ -219,7 +226,7 @@ public class Game : Disposable {
         if (disposing) {
             this.GraphicsDevice.Dispose();
             this.MainWindow.Dispose();
-            //TODO: Input.Destroy();
+            Input.Destroy();
         }
     }
 }

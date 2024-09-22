@@ -4,6 +4,11 @@ namespace Bliss.CSharp.Windowing;
 public enum WindowState {
     
     /// <summary>
+    /// Indicates that the window has no specific state.
+    /// </summary>
+    None,
+    
+    /// <summary>
     /// The window is resizable, allowing the user to adjust its size.
     /// </summary>
     Resizable,

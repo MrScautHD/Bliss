@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using Veldrid;
 
 namespace Bliss.CSharp.Windowing;
@@ -26,7 +27,30 @@ public static class Window {
                 throw new Exception($"The window type: [{type}] is not supported!");
         }
     }
-    
+
+    /// <summary>
+    /// Determines the default graphics backend for the current platform.
+    /// </summary>
+    /// <returns>The default <see cref="GraphicsBackend"/> for the current platform.</returns>
+    public static GraphicsBackend GetPlatformDefaultBackend() {
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
+            return GraphicsBackend.Direct3D11;
+        }
+        else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) {
+            return GraphicsDevice.IsBackendSupported(GraphicsBackend.Metal) ? GraphicsBackend.Metal : GraphicsBackend.OpenGL;
+        }
+        else {
+            return GraphicsDevice.IsBackendSupported(GraphicsBackend.Vulkan) ? GraphicsBackend.Vulkan : GraphicsBackend.OpenGL;
+        }
+    }
+
+    /// <summary>
+    /// Creates a graphics device for the specified window, based on the provided options and preferred backend.
+    /// </summary>
+    /// <param name="window">The window for which to create the graphics device.</param>
+    /// <param name="options">Options for configuring the graphics device.</param>
+    /// <param name="preferredBackend">The preferred graphics backend to use.</param>
+    /// <returns>A graphics device configured according to the specified options and preferred backend.</returns>
     private static GraphicsDevice CreateGraphicsDevice(IWindow window, GraphicsDeviceOptions options, GraphicsBackend preferredBackend) {
         switch (preferredBackend) {
             case GraphicsBackend.Direct3D11:
@@ -63,13 +87,13 @@ public static class Window {
                 throw new VeldridException($"Invalid GraphicsBackend: [{preferredBackend}]");
         }
     }
-    
+
     /// <summary>
-    /// Creates a Direct3D11 graphics device for a specified SDL2 window with the provided graphics device options.
+    /// Creates a Direct3D11 graphics device and swapchain for the specified window.
     /// </summary>
-    /// <param name="window">The SDL2 window for which to create the graphics device.</param>
-    /// <param name="options">The options to use for creating the graphics device.</param>
-    /// <returns>The created Direct3D11 graphics device.</returns>
+    /// <param name="window">The window for which to create the graphics device.</param>
+    /// <param name="options">Options for configuring the graphics device.</param>
+    /// <returns>A <see cref="GraphicsDevice"/> instance configured for Direct3D11.</returns>
     private static GraphicsDevice CreateD3D11GraphicsDevice(IWindow window, GraphicsDeviceOptions options) {
         SwapchainDescription description = new SwapchainDescription() {
             Source = window.SwapchainSource,
@@ -84,11 +108,11 @@ public static class Window {
     }
 
     /// <summary>
-    /// Creates a Vulkan graphics device for a specified SDL2 window with the provided graphics device options.
+    /// Creates a Vulkan graphics device for the specified window and graphics device options.
     /// </summary>
-    /// <param name="window">The SDL2 window for which to create the graphics device.</param>
-    /// <param name="options">The options to use for creating the graphics device.</param>
-    /// <returns>The created Vulkan graphics device.</returns>
+    /// <param name="window">The window for which the graphics device is to be created.</param>
+    /// <param name="options">The configuration options for the graphics device.</param>
+    /// <returns>A Vulkan-based <see cref="GraphicsDevice"/> corresponding to the specified window and options.</returns>
     private static GraphicsDevice CreateVulkanGraphicsDevice(IWindow window, GraphicsDeviceOptions options) {
         SwapchainDescription description = new SwapchainDescription() {
             Source = window.SwapchainSource,
@@ -101,12 +125,12 @@ public static class Window {
 
         return GraphicsDevice.CreateVulkan(options, description);
     }
-    
+
     /// <summary>
-    /// Creates a Metal graphics device for a specified SDL2 window with the provided graphics device options.
+    /// Creates a Metal graphics device for the specified window with the given options.
     /// </summary>
-    /// <param name="window">The SDL2 window for which to create the graphics device.</param>
-    /// <param name="options">The options to use for creating the graphics device.</param>
+    /// <param name="window">The window for which the graphics device is created.</param>
+    /// <param name="options">Options for configuring the graphics device.</param>
     /// <returns>The created Metal graphics device.</returns>
     private static GraphicsDevice CreateMetalGraphicsDevice(IWindow window, GraphicsDeviceOptions options) {
         SwapchainDescription description = new SwapchainDescription() {
@@ -120,13 +144,13 @@ public static class Window {
 
         return GraphicsDevice.CreateMetal(options, description);
     }
-    
+
     /// <summary>
-    /// Creates an OpenGL graphics device for the provided SDL2 window with the specified options and backend.
+    /// Creates an OpenGL graphics device based on the specified parameters.
     /// </summary>
-    /// <param name="window">The SDL2 window for which to create the graphics device.</param>
-    /// <param name="options">Options for creating the graphics device.</param>
-    /// <param name="backend">The graphics backend to use.</param>
+    /// <param name="window">The window for which the graphics device is being created.</param>
+    /// <param name="options">Options for configuring the graphics device.</param>
+    /// <param name="backend">The graphics backend creating the device.</param>
     /// <returns>The created OpenGL graphics device.</returns>
     private static GraphicsDevice CreateOpenGlGraphicsDevice(IWindow window, GraphicsDeviceOptions options, GraphicsBackend backend) {
         return GraphicsDevice.CreateOpenGL(options, window.GetOrCreateOpenGlPlatformInfo(options, backend), (uint) window.GetWidth(), (uint) window.GetHeight());

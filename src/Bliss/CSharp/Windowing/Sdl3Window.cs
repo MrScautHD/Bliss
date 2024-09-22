@@ -226,31 +226,31 @@ public class Sdl3Window : Disposable, IWindow {
     /// </summary>
     /// <param name="state">The desired state for the window, specified as a <see cref="WindowState"/>.</param>
     public unsafe void SetState(WindowState state) {
-        switch (state) {
-            case WindowState.Resizable:
-                SDL3.SDL_SetWindowResizable((SDL_Window*) this.Handle, SDL_bool.SDL_TRUE);
-                break;
-            case WindowState.FullScreen:
-                SDL3.SDL_SetWindowFullscreen((SDL_Window*) this.Handle, SDL_bool.SDL_TRUE);
-                break;
-            case WindowState.BorderlessFullScreen:
-                SDL3.SDL_SetWindowBordered((SDL_Window*) this.Handle, SDL_bool.SDL_TRUE);
-                break;
-            case WindowState.Maximized:
-                SDL3.SDL_MaximizeWindow((SDL_Window*) this.Handle);
-                break;
-            case WindowState.Minimized:
-                SDL3.SDL_MinimizeWindow((SDL_Window*) this.Handle);
-                break;
-            case WindowState.Hidden:
-                SDL3.SDL_HideWindow((SDL_Window*) this.Handle);
-                break;
-            case WindowState.CaptureMouse:
-                SDL3.SDL_CaptureMouse(SDL_bool.SDL_TRUE);
-                break;
-            case WindowState.AlwaysOnTop:
-                SDL3.SDL_SetWindowAlwaysOnTop((SDL_Window*) this.Handle, SDL_bool.SDL_TRUE);
-                break;
+        this._state = state;
+
+        if (state.HasFlag(WindowState.Resizable)) {
+            SDL3.SDL_SetWindowResizable((SDL_Window*) this.Handle, SDL_bool.SDL_TRUE);
+        }
+        if (state.HasFlag(WindowState.FullScreen)) {
+            SDL3.SDL_SetWindowFullscreen((SDL_Window*) this.Handle, SDL_bool.SDL_TRUE);
+        }
+        if (state.HasFlag(WindowState.BorderlessFullScreen)) {
+            SDL3.SDL_SetWindowBordered((SDL_Window*) this.Handle, SDL_bool.SDL_TRUE);
+        }
+        if (state.HasFlag(WindowState.Maximized)) {
+            SDL3.SDL_MaximizeWindow((SDL_Window*) this.Handle);
+        }
+        if (state.HasFlag(WindowState.Minimized)) {
+            SDL3.SDL_MinimizeWindow((SDL_Window*) this.Handle);
+        }
+        if (state.HasFlag(WindowState.Hidden)) {
+            SDL3.SDL_HideWindow((SDL_Window*) this.Handle);
+        }
+        if (state.HasFlag(WindowState.CaptureMouse)) {
+            SDL3.SDL_CaptureMouse(SDL_bool.SDL_TRUE);
+        }
+        if (state.HasFlag(WindowState.AlwaysOnTop)) {
+            SDL3.SDL_SetWindowAlwaysOnTop((SDL_Window*) this.Handle, SDL_bool.SDL_TRUE);
         }
     }
 
@@ -259,9 +259,11 @@ public class Sdl3Window : Disposable, IWindow {
     /// </summary>
     /// <exception cref="InvalidOperationException">Thrown if the window handle is invalid.</exception>
     public unsafe void ClearState() {
+        this._state = WindowState.None;
+        
         SDL3.SDL_SetWindowResizable((SDL_Window*) this.Handle, SDL_bool.SDL_FALSE);
         SDL3.SDL_SetWindowFullscreen((SDL_Window*) this.Handle, SDL_bool.SDL_FALSE);
-        SDL3.SDL_SetWindowBordered((SDL_Window*) this.Handle, SDL_bool.SDL_FALSE);
+        SDL3.SDL_SetWindowBordered((SDL_Window*) this.Handle, SDL_bool.SDL_TRUE);
         SDL3.SDL_ShowWindow((SDL_Window*) this.Handle);
         SDL3.SDL_CaptureMouse(SDL_bool.SDL_FALSE);
         SDL3.SDL_SetWindowAlwaysOnTop((SDL_Window*) this.Handle, SDL_bool.SDL_FALSE);
@@ -467,7 +469,7 @@ public class Sdl3Window : Disposable, IWindow {
         if (this._openGlPlatformInfo == null) {
             SDL3.SDL_ClearError();
 
-            this.SetSdlGlContextAttributes(options, backend);
+            this.SetGlContextAttributes(options, backend);
 
             SDL_GLContextState* contextHandle = SDL3.SDL_GL_CreateContext((SDL_Window*) this.Handle);
             string error = SDL3.SDL_GetError() ?? string.Empty;
@@ -508,7 +510,7 @@ public class Sdl3Window : Disposable, IWindow {
     /// <param name="options">The options that specify various settings for the graphics device.</param>
     /// <param name="backend">The graphics backend in use (OpenGL or OpenGLES).</param>
     /// <exception cref="System.Exception">Thrown if the graphics backend is not OpenGL or OpenGLES.</exception>
-    private void SetSdlGlContextAttributes(GraphicsDeviceOptions options, GraphicsBackend backend) {
+    private void SetGlContextAttributes(GraphicsDeviceOptions options, GraphicsBackend backend) {
        if (backend != GraphicsBackend.OpenGL && backend != GraphicsBackend.OpenGLES) {
            throw new Exception($"GraphicsBackend must be: [{nameof(GraphicsBackend.OpenGL)}] or [{nameof(GraphicsBackend.OpenGLES)}]!");
        }
@@ -665,17 +667,18 @@ public class Sdl3Window : Disposable, IWindow {
             return SwapchainSource.CreateWin32(hwnd, hInstance);
         }
         else if (OperatingSystem.IsLinux()) {
-            string driver = SDL3.SDL_GetCurrentVideoDriver() ?? string.Empty;
-            
-            if (driver == "wayland") {
+            if (SDL3.SDL_strcmp(SDL3.SDL_GetCurrentVideoDriver(), "x11") == 0) {
+                nint display = SDL3.SDL_GetPointerProperty(SDL3.SDL_GetWindowProperties((SDL_Window*) this.Handle), SDL3.SDL_PROP_WINDOW_X11_DISPLAY_POINTER, nint.Zero);
+                nint surface = SDL3.SDL_GetPointerProperty(SDL3.SDL_GetWindowProperties((SDL_Window*) this.Handle), SDL3.SDL_PROP_WINDOW_X11_WINDOW_NUMBER, 0);
+                return SwapchainSource.CreateXlib(display, surface);
+            }
+            else if (SDL3.SDL_strcmp(SDL3.SDL_GetCurrentVideoDriver(), "wayland") == 0) {
                 nint display = SDL3.SDL_GetPointerProperty(SDL3.SDL_GetWindowProperties((SDL_Window*) this.Handle), SDL3.SDL_PROP_WINDOW_WAYLAND_DISPLAY_POINTER, nint.Zero);
                 nint surface = SDL3.SDL_GetPointerProperty(SDL3.SDL_GetWindowProperties((SDL_Window*) this.Handle), SDL3.SDL_PROP_WINDOW_WAYLAND_SURFACE_POINTER, nint.Zero);
                 return SwapchainSource.CreateWayland(display, surface);
             }
             else {
-                nint display = SDL3.SDL_GetPointerProperty(SDL3.SDL_GetWindowProperties((SDL_Window*) this.Handle), SDL3.SDL_PROP_WINDOW_X11_DISPLAY_POINTER, nint.Zero);
-                nint surface = new IntPtr(SDL3.SDL_GetPointerProperty(SDL3.SDL_GetWindowProperties((SDL_Window*) this.Handle), SDL3.SDL_PROP_WINDOW_X11_WINDOW_NUMBER, 0));
-                return SwapchainSource.CreateXlib(display, surface);
+                throw new Exception($"The driver: [{SDL3.SDL_GetCurrentVideoDriver()}] is not supported!");
             }
         }
         else if (OperatingSystem.IsMacOS()) {
