@@ -40,7 +40,6 @@ public class Game : Disposable {
     private Texture2D _texture;
     private Font _font;
     
-    // TODO: Make Metal working for MacOS!
     public Game(GameSettings settings) {
         Instance = this;
         this.Settings = settings;

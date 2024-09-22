@@ -67,16 +67,11 @@ public class SimpleBuffer<T> : Disposable, ISimpleBuffer where T : unmanaged {
         this.ShaderStages = stages;
         this.Data = new T[size];
         
+        uint alignment = graphicsDevice.UniformBufferMinOffsetAlignment;
         long dataSize = size * Marshal.SizeOf<T>();
-        long bufferSize = (dataSize / 16 + (dataSize % 16 > 0 ? 1 : 0)) * 16;
+        long bufferSize = (dataSize / alignment + (dataSize % alignment > 0 ? 1 : 0)) * alignment;
         
-        //uint alignment = graphicsDevice.UniformBufferMinOffsetAlignment; // More common requirement in Metal
-        //long dataSize = size * Marshal.SizeOf<T>();
-        //long bufferSize = (dataSize / alignment + (dataSize % alignment > 0 ? 1 : 0)) * alignment;
-        
-        Logger.Error(bufferSize + "");
-        
-        this.DeviceBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (bufferSize), this.GetBufferUsage(bufferType)));
+        this.DeviceBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) bufferSize, this.GetBufferUsage(bufferType)));
         this.DeviceBuffer.Name = name;
         
         this.ResourceLayout = graphicsDevice.ResourceFactory.CreateResourceLayout(new ResourceLayoutDescription(new ResourceLayoutElementDescription(name, this.GetResourceKind(bufferType), stages)));

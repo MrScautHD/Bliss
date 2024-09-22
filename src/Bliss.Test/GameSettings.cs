@@ -28,7 +28,7 @@ public struct GameSettings {
         this.TargetFps = 0;
         this.FixedTimeStep = 1.0F / 60.0F;
         this.WindowFlags = WindowState.Resizable;
-        this.Backend = Window.GetPlatformDefaultBackend(); //TODO: MacOS Metal is not working correctly (Something is wrong with the uniform buffer but i cant figure it out :(.)!
+        this.Backend = Window.GetPlatformDefaultBackend();
         this.VSync = true;
         this.SampleCount = TextureSampleCount.Count1;
     }
