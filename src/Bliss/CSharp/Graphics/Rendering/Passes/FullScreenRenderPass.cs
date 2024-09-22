@@ -1,8 +1,10 @@
 using System.Numerics;
 using System.Runtime.InteropServices;
+using Bliss.CSharp.Colors;
 using Bliss.CSharp.Effects;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
+using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Textures;
 using Veldrid;
 
@@ -50,12 +52,7 @@ public class FullScreenRenderPass : Disposable {
         this.GraphicsDevice = graphicsDevice;
         this.Output = output;
         
-        // Create effect.
-        VertexLayoutDescription vertexLayouts = new VertexLayoutDescription(
-            new VertexElementDescription("vPosition", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float4)
-        );
-        
-        this._effect = new Effect(graphicsDevice.ResourceFactory, vertexLayouts, "content/shaders/full_screen_render_pass.vert", "content/shaders/full_screen_render_pass.frag");
+        this._effect = new Effect(graphicsDevice.ResourceFactory, SpriteVertex2D.VertexLayout, "content/shaders/full_screen_render_pass.vert", "content/shaders/full_screen_render_pass.frag");
         
         // Create texture layout.
         this._textureLayout = new SimpleTextureLayout(graphicsDevice, "fTexture");
@@ -74,7 +71,7 @@ public class FullScreenRenderPass : Disposable {
             ],
             ShaderSet = new ShaderSetDescription() {
                 VertexLayouts = [
-                    vertexLayouts
+                    SpriteVertex2D.VertexLayout
                 ],
                 Shaders = [
                     this._effect.Shader.Item1,
@@ -85,8 +82,8 @@ public class FullScreenRenderPass : Disposable {
         });
 
         // Create vertex buffer.
-        this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (6 * Marshal.SizeOf<Vector4>()), BufferUsage.VertexBuffer | BufferUsage.Dynamic));
-        graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this.GetQuadVertices(graphicsDevice.IsUvOriginTopLeft));
+        this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (6 * Marshal.SizeOf<SpriteVertex2D>()), BufferUsage.VertexBuffer | BufferUsage.Dynamic));
+        graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this.GetVertices(graphicsDevice.IsUvOriginTopLeft));
     }
 
     /// <summary>
@@ -94,18 +91,47 @@ public class FullScreenRenderPass : Disposable {
     /// </summary>
     /// <param name="isUvOriginTopLeft">Determines if the UV origin is at the top-left corner of the screen.</param>
     /// <returns>An array of Vector4 structures representing the vertices of the quad.</returns>
-    private Vector4[] GetQuadVertices(bool isUvOriginTopLeft) {
+    private SpriteVertex2D[] GetVertices(bool isUvOriginTopLeft) {
         float top = isUvOriginTopLeft ? 1.0F : 0.0F;
         float bottom = isUvOriginTopLeft ? 0.0F : 1.0F;
+        Color color = Color.White;
         
         return [
-            new Vector4(-1.0F, -1.0F, 0.0F, top),
-            new Vector4( 1.0F, -1.0F, 1.0F, top),
-            new Vector4( 1.0F,  1.0F, 1.0F, bottom),
-
-            new Vector4(-1.0F, -1.0F, 0.0F, top),
-            new Vector4( 1.0F,  1.0F, 1.0F, bottom),
-            new Vector4(-1.0F,  1.0F, 0.0F, bottom)
+            new SpriteVertex2D() {
+                Position = new Vector2(-1.0F, -1.0F),
+                TexCoords = new Vector2(0.0F, top),
+                Color = color.ToRgbaFloat().ToVector4()
+            },
+        
+            new SpriteVertex2D() {
+                Position = new Vector2(1.0F, -1.0F),
+                TexCoords = new Vector2(1.0F, top),
+                Color = color.ToRgbaFloat().ToVector4()
+            },
+        
+            new SpriteVertex2D() {
+                Position = new Vector2(1.0F, 1.0F),
+                TexCoords = new Vector2(1.0F, bottom),
+                Color = color.ToRgbaFloat().ToVector4()
+            },
+        
+            new SpriteVertex2D() {
+                Position = new Vector2(-1.0F, -1.0F),
+                TexCoords = new Vector2(0.0F, top),
+                Color = color.ToRgbaFloat().ToVector4()
+            },
+            
+            new SpriteVertex2D() {
+                Position = new Vector2(1.0F, 1.0F),
+                TexCoords = new Vector2(1.0F, bottom),
+                Color = color.ToRgbaFloat().ToVector4()
+            },
+            
+            new SpriteVertex2D() {
+                Position = new Vector2(-1.0F, 1.0F),
+                TexCoords = new Vector2(0.0F, bottom),
+                Color = color.ToRgbaFloat().ToVector4()
+            }
         ];
     }
 
