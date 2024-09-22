@@ -15,7 +15,7 @@ __Bliss__ is a modern `Direct3D11`, `Vulkan`, `OpenGL`, `Metal`, `OpenGL-ES` Ren
 - 🎥 User-friendly Camera2D and Camera3D systems for intuitive control.
 - 🎮 Simplified input handling for keyboard, mouse, and gamepads.
 - ✨ Straightforward system for loading and managing effects, textures, images, audio, and more.
-- 🖼️ Easy-to-implement window management using SDL2.
+- 🖼️ Easy-to-implement window management using SDL3.
 - 🎶 Robust and powerful audio system for immersive sound experiences.
 ---
 
@@ -31,7 +31,9 @@ Coming SoOn!
 
 📚 Libraries - [Nuget](https://www.nuget.org/packages)
 ======================================================
-- [`Veldrid`](https://www.nuget.org/packages/Veldrid#readme-body-tab)
+- [`ppy.Veldrid`](https://www.nuget.org/packages/ppy.Veldrid)
+- [`ppy.Veldrid.SPIRV`](https://www.nuget.org/packages/ppy.Veldrid.SPIRV)
+- [`ppy.SDL3-CS`](https://www.nuget.org/packages/ppy.SDL3-CS)
 - [`SixLabors.ImageSharp`](https://www.nuget.org/packages/SixLabors.ImageSharp)
 - [`AssimpNet`](https://www.nuget.org/packages/AssimpNet)
 - [`FontStashSharp`](https://www.nuget.org/packages/FontStashSharp.Base)
@@ -47,7 +49,7 @@ Coming SoOn!
 
 [<img src="https://github.com/MrScautHD/Sparkle/assets/65916181/e37eb15f-4237-47ae-9ae7-e4455f7c3d92" alt="macOS" width="70" height="70" align="left">](https://www.apple.com/at/macos/sonoma/)
 ### MacOS
-- Graphics API's `Metal`, `Vulkan`, `OpenGL`, `OpenGL-ES`
+- Graphics API's `Metal`, `OpenGL`, `OpenGL-ES`
 
 # 🧑 Contributors
 <a href="https://github.com/mrscauthd/Bliss/graphs/contributors">
