@@ -30,7 +30,7 @@ public struct PrimitiveVertex2D {
     /// The color of the vertex.
     /// </summary>
     public Vector4 Color;
-    
+
     /// <summary>
     /// Initializes a new instance of the <see cref="PrimitiveVertex2D"/> struct with the specified position and color values.
     /// </summary>

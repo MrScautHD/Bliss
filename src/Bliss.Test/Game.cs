@@ -60,7 +60,7 @@ public class Game : Disposable {
             HasMainSwapchain = true,
             SwapchainDepthFormat = null,
             SyncToVerticalBlank = this.Settings.VSync,
-            ResourceBindingModel = ResourceBindingModel.Default,
+            ResourceBindingModel = ResourceBindingModel.Improved,
             PreferDepthRangeZeroToOne = true,
             PreferStandardClipSpaceYDirection = true,
             SwapchainSrgbFormat = false
