@@ -82,7 +82,7 @@ public class Game : Disposable {
         this.CommandList = this.GraphicsDevice.ResourceFactory.CreateCommandList();
         
         Logger.Info("Initialize input...");
-        Input.Init(this.MainWindow);
+        InputOld.Init(this.MainWindow);
         
         this.Init();
         
@@ -94,7 +94,7 @@ public class Game : Disposable {
             Time.Update();
             
             this.MainWindow.PumpEvents();
-            Input.Begin();
+            InputOld.Begin();
             
             if (!this.MainWindow.Exists) {
                 break;
@@ -110,7 +110,7 @@ public class Game : Disposable {
             }
             
             this.Draw(this.GraphicsDevice, this.CommandList);
-            Input.End();
+            InputOld.End();
         }
         
         Logger.Warn("Application shuts down!");
@@ -128,17 +128,17 @@ public class Game : Disposable {
     }
 
     protected virtual void Update() {
-        if (Input.IsKeyPressed(KeyboardKey.A)) {
+        if (InputOld.IsKeyPressed(KeyboardKey.A)) {
             Logger.Warn("A GOT PRESSED!!!!");
             this.MainWindow.SetState(WindowState.Maximized | WindowState.AlwaysOnTop);
         }
         
-        if (Input.IsKeyDown(KeyboardKey.D)) {
+        if (InputOld.IsKeyDown(KeyboardKey.D)) {
             Logger.Warn("D IS DOWN!!!!");
             this.MainWindow.SetState(WindowState.FullScreen);
         }
         
-        if (Input.IsKeyReleased(KeyboardKey.D)) {
+        if (InputOld.IsKeyReleased(KeyboardKey.D)) {
             Logger.Warn("D IS Released!!!!");
         }
     }
@@ -225,7 +225,7 @@ public class Game : Disposable {
         if (disposing) {
             this.GraphicsDevice.Dispose();
             this.MainWindow.Dispose();
-            Input.Destroy();
+            InputOld.Destroy();
         }
     }
 }
