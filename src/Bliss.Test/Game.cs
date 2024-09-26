@@ -6,6 +6,7 @@ using Bliss.CSharp.Graphics.Rendering.Batches.Primitives;
 using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 using Bliss.CSharp.Graphics.Rendering.Passes;
 using Bliss.CSharp.Interact;
+using Bliss.CSharp.Interact.Contexts;
 using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
@@ -82,7 +83,12 @@ public class Game : Disposable {
         this.CommandList = this.GraphicsDevice.ResourceFactory.CreateCommandList();
         
         Logger.Info("Initialize input...");
-        InputOld.Init(this.MainWindow);
+        if (this.MainWindow is Sdl3Window) {
+            Input.Init(new Sdl3InputContext(this.MainWindow));
+        }
+        else {
+            throw new Exception("This type of window is not supported by the InputContext!");
+        }
         
         this.Init();
         
@@ -94,7 +100,7 @@ public class Game : Disposable {
             Time.Update();
             
             this.MainWindow.PumpEvents();
-            InputOld.Begin();
+            Input.Begin();
             
             if (!this.MainWindow.Exists) {
                 break;
@@ -110,7 +116,7 @@ public class Game : Disposable {
             }
             
             this.Draw(this.GraphicsDevice, this.CommandList);
-            InputOld.End();
+            Input.End();
         }
         
         Logger.Warn("Application shuts down!");
@@ -128,17 +134,17 @@ public class Game : Disposable {
     }
 
     protected virtual void Update() {
-        if (InputOld.IsKeyPressed(KeyboardKey.A)) {
+        if (Input.IsKeyPressed(KeyboardKey.A)) {
             Logger.Warn("A GOT PRESSED!!!!");
             this.MainWindow.SetState(WindowState.Maximized | WindowState.AlwaysOnTop);
         }
         
-        if (InputOld.IsKeyDown(KeyboardKey.D)) {
+        if (Input.IsKeyDown(KeyboardKey.D)) {
             Logger.Warn("D IS DOWN!!!!");
             this.MainWindow.SetState(WindowState.FullScreen);
         }
         
-        if (InputOld.IsKeyReleased(KeyboardKey.D)) {
+        if (Input.IsKeyReleased(KeyboardKey.D)) {
             Logger.Warn("D IS Released!!!!");
         }
     }
@@ -225,7 +231,7 @@ public class Game : Disposable {
         if (disposing) {
             this.GraphicsDevice.Dispose();
             this.MainWindow.Dispose();
-            InputOld.Destroy();
+            Input.Destroy();
         }
     }
 }

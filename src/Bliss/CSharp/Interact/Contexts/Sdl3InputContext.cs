@@ -1,25 +1,99 @@
 using System.Numerics;
+using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Interact.Mice;
+using Bliss.CSharp.Interact.Mice.Cursors;
 using Bliss.CSharp.Windowing;
+using Bliss.CSharp.Windowing.Events;
 using SDL;
 
 namespace Bliss.CSharp.Interact.Contexts;
 
 public class Sdl3InputContext : Disposable, IInputContext {
-
+    
+    /// <summary>
+    /// Represents the window that this input context is associated with.
+    /// </summary>
     private IWindow _window;
 
+    /// <summary>
+    /// Stores the latest position of the mouse movement.
+    /// </summary>
+    private Vector2 _mouseMoving;
+
+    /// <summary>
+    /// Stores the amount of mouse scrolling in the input context, represented as a vector indicating scroll direction and magnitude.
+    /// </summary>
+    private Vector2 _mouseSrolling;
+
+    /// <summary>
+    /// List of mouse buttons that were pressed during the current input context cycle.
+    /// </summary>
+    private List<MouseButton> _mouseButtonsPressed;
+
+    /// <summary>
+    /// Holds the current state of mouse buttons that are currently being pressed down.
+    /// </summary>
+    private List<MouseButton> _mouseButtonsDown;
+
+    /// <summary>
+    /// Holds the list of mouse buttons that have been released during the current frame.
+    /// </summary>
+    private List<MouseButton> _mouseButtonsReleased;
+    
+    private List<KeyboardKey> _keyboardKeysPressed;
+    private List<KeyboardKey> _keyboardKeysDown;
+    private List<KeyboardKey> _keyboardKeysReleased;
+    private List<char> _keyboardCharsPressed;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Sdl3InputContext"/> class for handling input events from a window.
+    /// </summary>
+    /// <param name="window">The window associated with the input context. Must be an SDL3 window.</param>
+    /// <exception cref="Exception">Thrown if the provided window is not an SDL3 window.</exception>
     public Sdl3InputContext(IWindow window) {
+        if (window is not Sdl3Window) {
+            throw new Exception("You need a SDL3 window for the SDL3 input context!");
+        }
+        
         this._window = window;
+
+        this._mouseButtonsPressed = new List<MouseButton>();
+        this._mouseButtonsDown = new List<MouseButton>();
+        this._mouseButtonsReleased = new List<MouseButton>();
+
+        this._keyboardKeysPressed = new List<KeyboardKey>();
+        this._keyboardKeysDown = new List<KeyboardKey>();
+        this._keyboardKeysReleased = new List<KeyboardKey>();
+        this._keyboardCharsPressed = new List<char>();
+        
+        this._window.MouseMove += this.OnMouseMove;
+        this._window.MouseWheel += this.OnMouseWheel;
+        this._window.MouseDown += this.OnMouseDown;
+        this._window.MouseUp += this.OnMouseUp;
+        
+        this._window.KeyDown += OnKeyDown;
+        this._window.KeyUp += OnKeyUp;
+        this._window.TextInput += OnTextInput;
     }
 
-    public void Begin() {
-        
+    public unsafe void Begin() {
+        SDL3.SDL_StopTextInput((SDL_Window*) this._window.Handle);
     }
-
-    public void End() {
+    
+    public unsafe void End() {
+        this._mouseMoving = Vector2.Zero;
+        this._mouseSrolling = Vector2.Zero;
+        this._mouseButtonsPressed.Clear();
+        this._mouseButtonsReleased.Clear();
         
+        this._keyboardKeysPressed.Clear();
+        this._keyboardKeysReleased.Clear();
+        this._keyboardCharsPressed.Clear();
+        
+        SDL3.SDL_StartTextInput((SDL_Window*) this._window.Handle);
     }
+    
+    /* ------------------------------------ Mouse ------------------------------------ */
 
     public bool IsCursorShown() {
         return SDL3.SDL_CursorVisible() == SDL_bool.SDL_TRUE;
@@ -33,61 +107,168 @@ public class Sdl3InputContext : Disposable, IInputContext {
         SDL3.SDL_HideCursor();
     }
 
-    public MouseCursor GetMouseCursor() {
-        throw new NotImplementedException();
+    public unsafe ICursor GetMouseCursor() {
+        return new Sdl3Cursor(SDL3.SDL_GetCursor());
     }
 
-    public void SetMouseCursor(MouseCursor cursor) {
-        throw new NotImplementedException();
+    public unsafe void SetMouseCursor(ICursor cursor) {
+        SDL3.SDL_SetCursor((SDL_Cursor*) cursor.GetCursorHandle());
     }
 
-    public bool IsRelativeMouseModeEnabled() {
-        throw new NotImplementedException();
+    public unsafe bool IsRelativeMouseModeEnabled() {
+        return SDL3.SDL_GetWindowRelativeMouseMode((SDL_Window*) this._window.Handle) == SDL_bool.SDL_TRUE;
     }
 
-    public void EnableRelativeMouseMode() {
-        throw new NotImplementedException();
+    public unsafe void EnableRelativeMouseMode() {
+        SDL3.SDL_SetWindowRelativeMouseMode((SDL_Window*) this._window.Handle, SDL_bool.SDL_TRUE);
     }
 
-    public void DisableRelativeMouseMode() {
-        throw new NotImplementedException();
+    public unsafe void DisableRelativeMouseMode() {
+        SDL3.SDL_SetWindowRelativeMouseMode((SDL_Window*) this._window.Handle, SDL_bool.SDL_FALSE);
     }
 
-    public Vector2 GetMousePosition() {
-        throw new NotImplementedException();
+    public unsafe Vector2 GetMousePosition() {
+        float x;
+        float y;
+
+        SDL3.SDL_GetRelativeMouseState(&x, &y);
+        return new Vector2(x, y);
     }
 
-    public void SetMousePosition(Vector2 position) {
-        throw new NotImplementedException();
+    public unsafe void SetMousePosition(Vector2 position) {
+        SDL3.SDL_WarpMouseInWindow((SDL_Window*) this._window.Handle, position.X, position.Y);
     }
 
     public bool IsMouseButtonPressed(MouseButton button) {
-        throw new NotImplementedException();
+        return this._mouseButtonsPressed.Contains(button);
     }
 
     public bool IsMouseButtonDown(MouseButton button) {
-        throw new NotImplementedException();
+        return this._mouseButtonsDown.Contains(button);
     }
 
     public bool IsMouseButtonReleased(MouseButton button) {
-        throw new NotImplementedException();
+        return this._mouseButtonsReleased.Contains(button);
     }
 
     public bool IsMouseButtonUp(MouseButton button) {
-        throw new NotImplementedException();
+        return !this._mouseButtonsDown.Contains(button);
     }
 
-    public bool IsMouseMoving(out Vector2 pos) {
-        throw new NotImplementedException();
+    public bool IsMouseMoving(out Vector2 position) {
+        position = this._mouseMoving;
+        return this._mouseMoving != Vector2.Zero;
     }
 
-    public bool IsMouseScrolling(out float wheelDelta) {
-        throw new NotImplementedException();
+    public bool IsMouseScrolling(out Vector2 wheelDelta) {
+        wheelDelta = this._mouseSrolling;
+        return this._mouseSrolling != Vector2.Zero;
+    }
+
+    /* ------------------------------------ Keyboard ------------------------------------ */
+    
+    public bool IsKeyPressed(KeyboardKey key) {
+        return this._keyboardKeysPressed.Contains(key);
+    }
+
+    public bool IsKeyDown(KeyboardKey key) {
+        return this._keyboardKeysDown.Contains(key);
+    }
+
+    public bool IsKeyReleased(KeyboardKey key) {
+        return this._keyboardKeysReleased.Contains(key);
+    }
+
+    public bool IsKeyUp(KeyboardKey key) {
+        return !this._keyboardKeysDown.Contains(key);
+    }
+
+    public char[] GetPressedChars() {
+        return this._keyboardCharsPressed.ToArray();
+    }
+
+    public string GetClipboardText() {
+        return SDL3.SDL_GetClipboardText() ?? string.Empty;
+    }
+
+    public void SetClipboardText(string text) {
+        SDL3.SDL_SetClipboardText(text);
+    }
+    
+    /* ------------------------------------ Mouse Events ------------------------------------ */
+
+    /// <summary>
+    /// Handles the mouse move event by updating the internal mouse position.
+    /// </summary>
+    /// <param name="position">The new position of the mouse cursor.</param>
+    private void OnMouseMove(Vector2 position) {
+        this._mouseMoving = position;
+    }
+
+    /// <summary>
+    /// Handles the mouse wheel event by updating the mouse scrolling vector.
+    /// </summary>
+    /// <param name="wheelDelta">The vector indicating the amount of scrolling on the mouse wheel.</param>
+    private void OnMouseWheel(Vector2 wheelDelta) {
+        this._mouseSrolling = wheelDelta;
+    }
+
+    /// <summary>
+    /// Handles the event when a mouse button is pressed.
+    /// </summary>
+    /// <param name="mouseEvent">The mouse event containing information about the button pressed and its state.</param>
+    private void OnMouseDown(MouseEvent mouseEvent) {
+        this._mouseButtonsPressed.Add(mouseEvent.Button);
+        this._mouseButtonsDown.Add(mouseEvent.Button);
+    }
+
+    /// <summary>
+    /// Handles the mouse button up event, updating the internal state of mouse buttons.
+    /// </summary>
+    /// <param name="mouseEvent">The event data for the mouse button up event, including which button was released.</param>
+    private void OnMouseUp(MouseEvent mouseEvent) {
+        this._mouseButtonsDown.Remove(mouseEvent.Button);
+        this._mouseButtonsReleased.Add(mouseEvent.Button);
+    }
+    
+    /* ------------------------------------ Keyboard Events ------------------------------------ */
+
+    /// <summary>
+    /// Handles the event when a key is pressed down.
+    /// </summary>
+    /// <param name="keyEvent">The key event containing information about the pressed key.</param>
+    private void OnKeyDown(KeyEvent keyEvent) {
+        if (!keyEvent.Repeat) {
+            this._keyboardKeysPressed.Add(keyEvent.KeyboardKey);
+            this._keyboardKeysDown.Add(keyEvent.KeyboardKey);
+        }
+    }
+
+    /// <summary>
+    /// Handles the event when a key is released.
+    /// </summary>
+    /// <param name="keyEvent">Contains details about the key event, including the key that was released.</param>
+    private void OnKeyUp(KeyEvent keyEvent) {
+        this._keyboardKeysDown.Remove(keyEvent.KeyboardKey);
+        this._keyboardKeysReleased.Add(keyEvent.KeyboardKey);
+    }
+
+    /// <summary>
+    /// Handles text input events by adding the input characters to the list of characters pressed.
+    /// </summary>
+    /// <param name="chars">An array of characters generated from the text input event.</param>
+    private void OnTextInput(char[] chars) {
+        foreach (char charText in chars) {
+            this._keyboardCharsPressed.Add(charText);
+        }
     }
     
     protected override void Dispose(bool disposing) {
         if (disposing) {
-            
+            this._window.MouseMove -= this.OnMouseMove;
+            this._window.MouseWheel -= this.OnMouseWheel;
+            this._window.MouseDown -= this.OnMouseDown;
+            this._window.MouseUp -= this.OnMouseUp;
         }
     }
 }

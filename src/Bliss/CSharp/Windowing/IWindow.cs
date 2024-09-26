@@ -124,6 +124,12 @@ public interface IWindow : IDisposable {
     public event Action<KeyEvent>? KeyUp;
 
     /// <summary>
+    /// Occurs when text input is received from the user. The event handler receives an array of characters
+    /// representing the text that was entered.
+    /// </summary>
+    public event Action<char[]>? TextInput; 
+
+    /// <summary>
     /// Occurs when a drag-and-drop operation is performed.
     /// </summary>
     public event Action<DragDropEvent>? DragDrop;

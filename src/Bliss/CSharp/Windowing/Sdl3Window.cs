@@ -137,6 +137,11 @@ public class Sdl3Window : Disposable, IWindow {
     public event Action<KeyEvent>? KeyUp;
 
     /// <summary>
+    /// Represents an event that triggers when text input is received.
+    /// </summary>
+    public event Action<char[]>? TextInput; 
+
+    /// <summary>
     /// Occurs when a drag-and-drop operation is performed.
     /// </summary>
     public event Action<DragDropEvent>? DragDrop;
@@ -781,6 +786,13 @@ public class Sdl3Window : Disposable, IWindow {
                 break;
             case SDL_EventType.SDL_EVENT_KEY_UP:
                 this.KeyUp?.Invoke(new KeyEvent(this.MapKey(sdlEvent.key.scancode), sdlEvent.key.down == SDL_bool.SDL_TRUE, sdlEvent.key.repeat == SDL_bool.SDL_TRUE));
+                break;
+            case SDL_EventType.SDL_EVENT_TEXT_INPUT:
+                char[]? chars = sdlEvent.text.GetText()?.ToCharArray();
+                
+                if (chars != null) {
+                    this.TextInput?.Invoke(chars);
+                }
                 break;
             case SDL_EventType.SDL_EVENT_DROP_FILE:
                 this.DragDrop?.Invoke(new DragDropEvent((int) sdlEvent.drop.x, (int) sdlEvent.drop.y, sdlEvent.drop.GetSource() ?? string.Empty));
