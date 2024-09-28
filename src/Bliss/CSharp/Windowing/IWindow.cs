@@ -1,4 +1,5 @@
 using System.Numerics;
+using Bliss.CSharp.Interact.Gamepads;
 using Bliss.CSharp.Windowing.Events;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
@@ -106,12 +107,12 @@ public interface IWindow : IDisposable {
     /// <summary>
     /// Occurs when a mouse button is pressed.
     /// </summary>
-    public event Action<MouseEvent>? MouseDown;
+    public event Action<MouseEvent>? MouseButtonDown;
 
     /// <summary>
     /// Occurs when a mouse button is released.
     /// </summary>
-    public event Action<MouseEvent>? MouseUp;
+    public event Action<MouseEvent>? MouseButtonUp;
 
     /// <summary>
     /// Occurs when a key is pressed.
@@ -127,12 +128,41 @@ public interface IWindow : IDisposable {
     /// Occurs when text input is received from the user. The event handler receives an array of characters
     /// representing the text that was entered.
     /// </summary>
-    public event Action<char[]>? TextInput; 
+    public event Action<char[]>? TextInput;
+
+    /// <summary>
+    /// Occurs when a new gamepad is detected and added to the system.
+    /// The event provides the ID of the newly connected gamepad.
+    /// </summary>
+    public event Action<uint>? GamepadAdded;
+
+    /// <summary>
+    /// Occurs when a gamepad is removed from the system. The event provides the ID of the removed gamepad as an argument.
+    /// </summary>
+    public event Action<uint>? GamepadRemoved;
+
+    /// <summary>
+    /// Invoked when a gamepad's axis is moved. This event provides details such as
+    /// the gamepad ID, the specific axis, and the position value of the axis movement.
+    /// </summary>
+    public event Action<uint, GamepadAxis, short>? GamepadAxisMoved;
+
+    /// <summary>
+    /// Occurs when a gamepad button is pressed down. The event provides the gamepad ID
+    /// and the button that was pressed.
+    /// </summary>
+    public event Action<uint, GamepadButton>? GamepadButtonDown;
+
+    /// <summary>
+    /// Event triggered when a gamepad button is released.
+    /// The event handler receives two parameters: the ID of the gamepad and the button that was released.
+    /// </summary>
+    public event Action<uint, GamepadButton>? GamepadButtonUp;
 
     /// <summary>
     /// Occurs when a drag-and-drop operation is performed.
     /// </summary>
-    public event Action<DragDropEvent>? DragDrop;
+    public event Action<string>? DragDrop;
 
     /// <summary>
     /// Retrieves the current state of the window.

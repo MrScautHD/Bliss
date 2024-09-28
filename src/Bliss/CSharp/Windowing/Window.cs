@@ -51,7 +51,7 @@ public static class Window {
     /// <param name="options">Options for configuring the graphics device.</param>
     /// <param name="preferredBackend">The preferred graphics backend to use.</param>
     /// <returns>A graphics device configured according to the specified options and preferred backend.</returns>
-    private static GraphicsDevice CreateGraphicsDevice(IWindow window, GraphicsDeviceOptions options, GraphicsBackend preferredBackend) {
+    public static GraphicsDevice CreateGraphicsDevice(IWindow window, GraphicsDeviceOptions options, GraphicsBackend preferredBackend) {
         switch (preferredBackend) {
             case GraphicsBackend.Direct3D11:
 #if !EXCLUDE_D3D11_BACKEND

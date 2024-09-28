@@ -1,4 +1,5 @@
 using System.Numerics;
+using Bliss.CSharp.Interact.Gamepads;
 using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Interact.Mice;
 using Bliss.CSharp.Interact.Mice.Cursors;
@@ -23,7 +24,7 @@ public class Sdl3InputContext : Disposable, IInputContext {
     /// <summary>
     /// Stores the amount of mouse scrolling in the input context, represented as a vector indicating scroll direction and magnitude.
     /// </summary>
-    private Vector2 _mouseSrolling;
+    private Vector2 _mouseScrolling;
 
     /// <summary>
     /// List of mouse buttons that were pressed during the current input context cycle.
@@ -39,11 +40,37 @@ public class Sdl3InputContext : Disposable, IInputContext {
     /// Holds the list of mouse buttons that have been released during the current frame.
     /// </summary>
     private List<MouseButton> _mouseButtonsReleased;
-    
+
+    /// <summary>
+    /// Holds the current state of keys that are pressed on the keyboard.
+    /// </summary>
     private List<KeyboardKey> _keyboardKeysPressed;
+    
+    /// <summary>
+    /// Tracks the keys that are currently pressed down on the keyboard.
+    /// </summary>
     private List<KeyboardKey> _keyboardKeysDown;
+
+    /// <summary>
+    /// A list of keyboard keys that have been released in the current input context.
+    /// </summary>
     private List<KeyboardKey> _keyboardKeysReleased;
+
+    /// <summary>
+    /// Stores a list of characters that have been pressed on the keyboard.
+    /// </summary>
     private List<char> _keyboardCharsPressed;
+
+    /// <summary>
+    /// A collection of gamepad devices currently connected and managed by the input context.
+    /// </summary>
+    private Dictionary<uint, IGamepad> _gamepads;
+
+    /// <summary>
+    /// Stores information about the file that was dragged and dropped onto the window.
+    /// The tuple includes the x and y coordinates where the file was dropped, and the path of the dropped file.
+    /// </summary>
+    private string _dragDroppedFile;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Sdl3InputContext"/> class for handling input events from a window.
@@ -65,15 +92,24 @@ public class Sdl3InputContext : Disposable, IInputContext {
         this._keyboardKeysDown = new List<KeyboardKey>();
         this._keyboardKeysReleased = new List<KeyboardKey>();
         this._keyboardCharsPressed = new List<char>();
+
+        this._gamepads = new Dictionary<uint, IGamepad>();
+        
+        this._dragDroppedFile = string.Empty;
         
         this._window.MouseMove += this.OnMouseMove;
         this._window.MouseWheel += this.OnMouseWheel;
-        this._window.MouseDown += this.OnMouseDown;
-        this._window.MouseUp += this.OnMouseUp;
+        this._window.MouseButtonDown += this.OnMouseDown;
+        this._window.MouseButtonUp += this.OnMouseUp;
         
-        this._window.KeyDown += OnKeyDown;
-        this._window.KeyUp += OnKeyUp;
-        this._window.TextInput += OnTextInput;
+        this._window.KeyDown += this.OnKeyDown;
+        this._window.KeyUp += this.OnKeyUp;
+        this._window.TextInput += this.OnTextInput;
+
+        this._window.GamepadAdded += this.OnGamepadAdded;
+        this._window.GamepadRemoved += this.OnGamepadRemoved;
+
+        this._window.DragDrop += this.OnFileDragDropped;
     }
 
     public unsafe void Begin() {
@@ -82,7 +118,7 @@ public class Sdl3InputContext : Disposable, IInputContext {
     
     public unsafe void End() {
         this._mouseMoving = Vector2.Zero;
-        this._mouseSrolling = Vector2.Zero;
+        this._mouseScrolling = Vector2.Zero;
         this._mouseButtonsPressed.Clear();
         this._mouseButtonsReleased.Clear();
         
@@ -91,6 +127,12 @@ public class Sdl3InputContext : Disposable, IInputContext {
         this._keyboardCharsPressed.Clear();
         
         SDL3.SDL_StartTextInput((SDL_Window*) this._window.Handle);
+
+        foreach (IGamepad gamepad in this._gamepads.Values) {
+            gamepad.CleanStates();
+        }
+
+        this._dragDroppedFile = string.Empty;
     }
     
     /* ------------------------------------ Mouse ------------------------------------ */
@@ -112,7 +154,7 @@ public class Sdl3InputContext : Disposable, IInputContext {
     }
 
     public unsafe void SetMouseCursor(ICursor cursor) {
-        SDL3.SDL_SetCursor((SDL_Cursor*) cursor.GetCursorHandle());
+        SDL3.SDL_SetCursor((SDL_Cursor*) cursor.GetHandle());
     }
 
     public unsafe bool IsRelativeMouseModeEnabled() {
@@ -131,7 +173,7 @@ public class Sdl3InputContext : Disposable, IInputContext {
         float x;
         float y;
 
-        SDL3.SDL_GetRelativeMouseState(&x, &y);
+        SDL3.SDL_GetMouseState(&x, &y);
         return new Vector2(x, y);
     }
 
@@ -161,8 +203,8 @@ public class Sdl3InputContext : Disposable, IInputContext {
     }
 
     public bool IsMouseScrolling(out Vector2 wheelDelta) {
-        wheelDelta = this._mouseSrolling;
-        return this._mouseSrolling != Vector2.Zero;
+        wheelDelta = this._mouseScrolling;
+        return this._mouseScrolling != Vector2.Zero;
     }
 
     /* ------------------------------------ Keyboard ------------------------------------ */
@@ -194,7 +236,52 @@ public class Sdl3InputContext : Disposable, IInputContext {
     public void SetClipboardText(string text) {
         SDL3.SDL_SetClipboardText(text);
     }
+
+    /* ------------------------------------ Gamepad ------------------------------------ */
+
+    public uint GetAvailableGamepadCount() {
+        return (uint) this._gamepads.Count;
+    }
     
+    public bool IsGamepadAvailable(uint gamepad) {
+        return gamepad <= this._gamepads.Count - 1;
+    }
+
+    public string GetGamepadName(uint gamepad) {
+        return this._gamepads.ToArray()[gamepad].Value.GetName();
+    }
+
+    public unsafe void RumbleGamepad(uint gamepad, ushort lowFrequencyRumble, ushort highFrequencyRumble, uint durationMs) {
+        SDL3.SDL_RumbleGamepad((SDL_Gamepad*) this._gamepads.ToArray()[gamepad].Value.GetHandle(), lowFrequencyRumble, highFrequencyRumble, durationMs);
+    }
+
+    public float GetGamepadAxisMovement(uint gamepad, GamepadAxis axis) {
+        return this._gamepads.ToArray()[gamepad].Value.GetAxisMovement(axis);
+    }
+    
+    public bool IsGamepadButtonPressed(uint gamepad, GamepadButton button) {
+        return this._gamepads.ToArray()[gamepad].Value.IsButtonPressed(button);
+    }
+    
+    public bool IsGamepadButtonDown(uint gamepad, GamepadButton button) {
+        return this._gamepads.ToArray()[gamepad].Value.IsButtonDown(button);
+    }
+    
+    public bool IsGamepadButtonReleased(uint gamepad, GamepadButton button) {
+        return this._gamepads.ToArray()[gamepad].Value.IsButtonReleased(button);
+    }
+    
+    public bool IsGamepadButtonUp(uint gamepad, GamepadButton button) {
+        return this._gamepads.ToArray()[gamepad].Value.IsButtonUp(button);
+    }
+
+    /* ------------------------------------ Other ------------------------------------ */
+
+    public bool IsFileDragDropped(out string path) {
+        path = this._dragDroppedFile;
+        return this._dragDroppedFile != string.Empty;
+    }
+
     /* ------------------------------------ Mouse Events ------------------------------------ */
 
     /// <summary>
@@ -210,7 +297,7 @@ public class Sdl3InputContext : Disposable, IInputContext {
     /// </summary>
     /// <param name="wheelDelta">The vector indicating the amount of scrolling on the mouse wheel.</param>
     private void OnMouseWheel(Vector2 wheelDelta) {
-        this._mouseSrolling = wheelDelta;
+        this._mouseScrolling = wheelDelta;
     }
 
     /// <summary>
@@ -263,12 +350,43 @@ public class Sdl3InputContext : Disposable, IInputContext {
         }
     }
     
+    /* ------------------------------------ Gamepad Events ------------------------------------ */
+
+    /// <summary>
+    /// Handles the event when a gamepad is added to the system.
+    /// </summary>
+    /// <param name="which">The identifier of the newly added gamepad.</param>
+    private void OnGamepadAdded(uint which) {
+        Sdl3Gamepad gamepad = new Sdl3Gamepad(this._window, which);
+        this._gamepads.Add(gamepad.GetIndex(), gamepad);
+    }
+
+    /// <summary>
+    /// Handles the removal of a gamepad.
+    /// </summary>
+    /// <param name="which">The identifier of the gamepad that was removed.</param>
+    private void OnGamepadRemoved(uint which) {
+        Sdl3Gamepad gamepad = new Sdl3Gamepad(this._window, which);
+        gamepad.Dispose();
+        this._gamepads.Remove(which);
+    }
+    
+    /* ------------------------------------ Other Events ------------------------------------ */
+    
+    /// <summary>
+    /// Handles the event when a file is dragged and dropped onto the window.
+    /// </summary>
+    /// <param name="path">The file path of the dropped file.</param>
+    private void OnFileDragDropped(string path) {
+        this._dragDroppedFile = path;
+    }
+    
     protected override void Dispose(bool disposing) {
         if (disposing) {
             this._window.MouseMove -= this.OnMouseMove;
             this._window.MouseWheel -= this.OnMouseWheel;
-            this._window.MouseDown -= this.OnMouseDown;
-            this._window.MouseUp -= this.OnMouseUp;
+            this._window.MouseButtonDown -= this.OnMouseDown;
+            this._window.MouseButtonUp -= this.OnMouseUp;
         }
     }
 }

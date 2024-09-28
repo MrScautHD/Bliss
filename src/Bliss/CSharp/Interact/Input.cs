@@ -1,5 +1,6 @@
 using System.Numerics;
 using Bliss.CSharp.Interact.Contexts;
+using Bliss.CSharp.Interact.Gamepads;
 using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Interact.Mice;
 using Bliss.CSharp.Interact.Mice.Cursors;
@@ -17,7 +18,7 @@ public static class Input {
     /// Initializes the Input class with the specified input context.
     /// </summary>
     /// <param name="inputContext">The input context to initialize.</param>
-    public static void Init(Sdl3InputContext inputContext) {
+    public static void Init(IInputContext inputContext) {
         InputContext = inputContext;
     }
 
@@ -35,6 +36,8 @@ public static class Input {
     public static void End() {
         InputContext.End();
     }
+    
+    /* ------------------------------------ Mouse ------------------------------------ */
 
     /// <summary>
     /// Checks if the cursor is currently shown.
@@ -227,6 +230,106 @@ public static class Input {
     /// <param name="text">The text to set to the clipboard.</param>
     public static void SetClipboardText(string text) { 
         InputContext.SetClipboardText(text);
+    }
+    
+    /* ------------------------------------ Gamepad ------------------------------------ */
+
+    /// <summary>
+    /// Gets the count of available gamepads.
+    /// </summary>
+    /// <returns>The number of available gamepads.</returns>
+    public static uint GetAvailableGamepadCount() {
+        return InputContext.GetAvailableGamepadCount();
+    }
+
+    /// <summary>
+    /// Checks if the specified gamepad is available.
+    /// </summary>
+    /// <param name="gamepad">The index of the gamepad to check.</param>
+    /// <returns>True if the gamepad is available; otherwise, false.</returns>
+    public static bool IsGamepadAvailable(uint gamepad) {
+        return InputContext.IsGamepadAvailable(gamepad);
+    }
+
+    /// <summary>
+    /// Gets the name of the specified gamepad.
+    /// </summary>
+    /// <param name="gamepad">The index of the gamepad.</param>
+    /// <returns>The name of the specified gamepad.</returns>
+    public static string GetGamepadName(uint gamepad) {
+        return InputContext.GetGamepadName(gamepad);
+    }
+
+    /// <summary>
+    /// Generates a rumble effect on the specified gamepad.
+    /// </summary>
+    /// <param name="gamepad">The index of the gamepad to rumble.</param>
+    /// <param name="lowFrequencyRumble">The intensity of the low-frequency rumble.</param>
+    /// <param name="highFrequencyRumble">The intensity of the high-frequency rumble.</param>
+    /// <param name="durationMs">Duration of the rumble effect in milliseconds.</param>
+    public static void RumbleGamepad(uint gamepad, ushort lowFrequencyRumble, ushort highFrequencyRumble, uint durationMs) {
+        InputContext.RumbleGamepad(gamepad, lowFrequencyRumble, highFrequencyRumble, durationMs);
+    }
+
+    /// <summary>
+    /// Retrieves the movement value of the specified axis on the given gamepad.
+    /// </summary>
+    /// <param name="gamepad">The index of the gamepad.</param>
+    /// <param name="axis">The axis of the gamepad to check.</param>
+    /// <returns>The movement value of the specified axis.</returns>
+    public static float GetGamepadAxisMovement(uint gamepad, GamepadAxis axis) {
+        return InputContext.GetGamepadAxisMovement(gamepad, axis);
+    }
+
+    /// <summary>
+    /// Checks if the specified button on the given gamepad is pressed.
+    /// </summary>
+    /// <param name="gamepad">The identifier of the gamepad to check.</param>
+    /// <param name="button">The button on the gamepad to check.</param>
+    /// <returns>True if the button is pressed; otherwise, false.</returns>
+    public static bool IsGamepadButtonPressed(uint gamepad, GamepadButton button) {
+        return InputContext.IsGamepadButtonPressed(gamepad, button);
+    }
+
+    /// <summary>
+    /// Checks if a specific gamepad button is currently pressed.
+    /// </summary>
+    /// <param name="gamepad">The ID of the gamepad to check.</param>
+    /// <param name="button">The gamepad button to check.</param>
+    /// <returns>True if the button is pressed, otherwise false.</returns>
+    public static bool IsGamepadButtonDown(uint gamepad, GamepadButton button) {
+        return InputContext.IsGamepadButtonDown(gamepad, button);
+    }
+
+    /// <summary>
+    /// Checks if the specified gamepad button is released.
+    /// </summary>
+    /// <param name="gamepad">The gamepad identifier.</param>
+    /// <param name="button">The gamepad button to check.</param>
+    /// <returns>True if the specified gamepad button is released; otherwise, false.</returns>
+    public static bool IsGamepadButtonReleased(uint gamepad, GamepadButton button) {
+        return InputContext.IsGamepadButtonReleased(gamepad, button);
+    }
+
+    /// <summary>
+    /// Checks if the specified gamepad button is not pressed.
+    /// </summary>
+    /// <param name="gamepad">The identifier of the gamepad.</param>
+    /// <param name="button">The gamepad button to check.</param>
+    /// <returns>True if the specified gamepad button is up; otherwise, false.</returns>
+    public static bool IsGamepadButtonUp(uint gamepad, GamepadButton button) {
+        return InputContext.IsGamepadButtonUp(gamepad, button);
+    }
+    
+    /* ------------------------------------ Other ------------------------------------ */
+
+    /// <summary>
+    /// Determines whether a file has been drag-dropped onto the application.
+    /// </summary>
+    /// <param name="path">The path of the drag-dropped file, if one exists.</param>
+    /// <returns>True if a file was drag-dropped; otherwise, false.</returns>
+    public static bool IsFileDragDropped(out string path) {
+        return InputContext.IsFileDragDropped(out path);
     }
 
     /// <summary>

@@ -1,4 +1,5 @@
 using System.Numerics;
+using Bliss.CSharp.Interact.Gamepads;
 using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Interact.Mice;
 using Bliss.CSharp.Interact.Mice.Cursors;
@@ -164,4 +165,84 @@ public interface IInputContext : IDisposable {
     /// </summary>
     /// <param name="text">The text to set to the clipboard.</param>
     void SetClipboardText(string text);
+    
+    /* ------------------------------------ Gamepad ------------------------------------ */
+
+    /// <summary>
+    /// Gets the count of available gamepads.
+    /// </summary>
+    /// <returns>The number of available gamepads.</returns>
+    uint GetAvailableGamepadCount();
+
+    /// <summary>
+    /// Checks if the specified gamepad is available.
+    /// </summary>
+    /// <param name="gamepad">The index of the gamepad to check.</param>
+    /// <returns>True if the gamepad is available; otherwise, false.</returns>
+    bool IsGamepadAvailable(uint gamepad);
+
+    /// <summary>
+    /// Gets the name of the specified gamepad.
+    /// </summary>
+    /// <param name="gamepad">The index of the gamepad.</param>
+    /// <returns>The name of the specified gamepad.</returns>
+    string GetGamepadName(uint gamepad);
+
+    /// <summary>
+    /// Generates a rumble effect on the specified gamepad.
+    /// </summary>
+    /// <param name="gamepad">The index of the gamepad to rumble.</param>
+    /// <param name="lowFrequencyRumble">The intensity of the low-frequency rumble.</param>
+    /// <param name="highFrequencyRumble">The intensity of the high-frequency rumble.</param>
+    /// <param name="durationMs">Duration of the rumble effect in milliseconds.</param>
+    void RumbleGamepad(uint gamepad, ushort lowFrequencyRumble, ushort highFrequencyRumble, uint durationMs);
+
+    /// <summary>
+    /// Retrieves the movement value of the specified axis on the given gamepad.
+    /// </summary>
+    /// <param name="gamepad">The index of the gamepad.</param>
+    /// <param name="axis">The axis of the gamepad to check.</param>
+    /// <returns>The movement value of the specified axis.</returns>
+    float GetGamepadAxisMovement(uint gamepad, GamepadAxis axis);
+
+    /// <summary>
+    /// Checks if a specific gamepad button is pressed.
+    /// </summary>
+    /// <param name="gamepad">The identifier of the gamepad.</param>
+    /// <param name="button">The button on the gamepad to check.</param>
+    /// <returns>True if the specified button is pressed; otherwise, false.</returns>
+    bool IsGamepadButtonPressed(uint gamepad, GamepadButton button);
+
+    /// <summary>
+    /// Checks if the specified button on the given gamepad is currently being pressed.
+    /// </summary>
+    /// <param name="gamepad">The index of the gamepad.</param>
+    /// <param name="button">The button on the gamepad to check.</param>
+    /// <returns>True if the specified button is pressed, otherwise false.</returns>
+    bool IsGamepadButtonDown(uint gamepad, GamepadButton button);
+
+    /// <summary>
+    /// Determines whether a specific button on a specified gamepad has been released.
+    /// </summary>
+    /// <param name="gamepad">The identifier of the gamepad.</param>
+    /// <param name="button">The gamepad button to check.</param>
+    /// <returns>True if the button was released; otherwise, false.</returns>
+    bool IsGamepadButtonReleased(uint gamepad, GamepadButton button);
+
+    /// <summary>
+    /// Determines whether a specified button on the specified gamepad is currently not pressed.
+    /// </summary>
+    /// <param name="gamepad">The identifier of the gamepad.</param>
+    /// <param name="button">The gamepad button to check.</param>
+    /// <returns>True if the button is up (not pressed); otherwise, false.</returns>
+    bool IsGamepadButtonUp(uint gamepad, GamepadButton button);
+    
+    /* ------------------------------------ Other ------------------------------------ */
+
+    /// <summary>
+    /// Checks if a file has been drag-dropped onto the application.
+    /// </summary>
+    /// <param name="path">When this method returns, contains the path of the file that was drag-dropped.</param>
+    /// <returns>True if a file was drag-dropped; otherwise, false.</returns>
+    bool IsFileDragDropped(out string path);
 }

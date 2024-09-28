@@ -1,5 +1,6 @@
 using System.Numerics;
 using System.Runtime.InteropServices;
+using Bliss.CSharp.Interact.Gamepads;
 using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Interact.Mice;
 using Bliss.CSharp.Logging;
@@ -119,12 +120,12 @@ public class Sdl3Window : Disposable, IWindow {
     /// <summary>
     /// Occurs when a mouse button is pressed.
     /// </summary>
-    public event Action<MouseEvent>? MouseDown;
+    public event Action<MouseEvent>? MouseButtonDown;
 
     /// <summary>
     /// Occurs when a mouse button is released.
     /// </summary>
-    public event Action<MouseEvent>? MouseUp;
+    public event Action<MouseEvent>? MouseButtonUp;
 
     /// <summary>
     /// Occurs when a key is pressed.
@@ -139,12 +140,37 @@ public class Sdl3Window : Disposable, IWindow {
     /// <summary>
     /// Represents an event that triggers when text input is received.
     /// </summary>
-    public event Action<char[]>? TextInput; 
+    public event Action<char[]>? TextInput;
+
+    /// <summary>
+    /// Event triggered when a new gamepad is connected to the system.
+    /// </summary>
+    public event Action<uint>? GamepadAdded;
+
+    /// <summary>
+    /// Event triggered when a gamepad is removed from the system.
+    /// </summary>
+    public event Action<uint>? GamepadRemoved;
+
+    /// <summary>
+    /// Represents an event that is triggered when a gamepad axis is moved.
+    /// </summary>
+    public event Action<uint, GamepadAxis, short>? GamepadAxisMoved;
+
+    /// <summary>
+    /// Occurs when a button on the gamepad is pressed.
+    /// </summary>
+    public event Action<uint, GamepadButton>? GamepadButtonDown;
+
+    /// <summary>
+    /// Triggered when a gamepad button is released, providing the button identifier and related data.
+    /// </summary>
+    public event Action<uint, GamepadButton>? GamepadButtonUp;
 
     /// <summary>
     /// Occurs when a drag-and-drop operation is performed.
     /// </summary>
-    public event Action<DragDropEvent>? DragDrop;
+    public event Action<string>? DragDrop;
 
     /// <summary>
     /// Represents the current state of the SDL window, such as whether it is resizable, full screen, maximized, minimized, hidden, etc.
@@ -776,10 +802,10 @@ public class Sdl3Window : Disposable, IWindow {
                 this.MouseMove?.Invoke(new Vector2(sdlEvent.motion.y, sdlEvent.motion.x));
                 break;
             case SDL_EventType.SDL_EVENT_MOUSE_BUTTON_DOWN:
-                this.MouseDown?.Invoke(new MouseEvent((MouseButton) sdlEvent.button.Button, sdlEvent.button.down == SDL_bool.SDL_TRUE));
+                this.MouseButtonDown?.Invoke(new MouseEvent(this.MapMouseButton(sdlEvent.button.Button), sdlEvent.button.down == SDL_bool.SDL_TRUE));
                 break;
             case SDL_EventType.SDL_EVENT_MOUSE_BUTTON_UP:
-                this.MouseUp?.Invoke(new MouseEvent((MouseButton) sdlEvent.button.Button, sdlEvent.button.down == SDL_bool.SDL_TRUE));
+                this.MouseButtonUp?.Invoke(new MouseEvent(this.MapMouseButton(sdlEvent.button.Button), sdlEvent.button.down == SDL_bool.SDL_TRUE));
                 break;
             case SDL_EventType.SDL_EVENT_KEY_DOWN:
                 this.KeyDown?.Invoke(new KeyEvent(this.MapKey(sdlEvent.key.scancode), sdlEvent.key.down == SDL_bool.SDL_TRUE, sdlEvent.key.repeat == SDL_bool.SDL_TRUE));
@@ -794,8 +820,23 @@ public class Sdl3Window : Disposable, IWindow {
                     this.TextInput?.Invoke(chars);
                 }
                 break;
+            case SDL_EventType.SDL_EVENT_GAMEPAD_ADDED:
+                this.GamepadAdded?.Invoke((uint) sdlEvent.gdevice.which);
+                break;
+            case SDL_EventType.SDL_EVENT_GAMEPAD_REMOVED:
+                this.GamepadRemoved?.Invoke((uint) sdlEvent.gdevice.which);
+                break;
+            case SDL_EventType.SDL_EVENT_GAMEPAD_AXIS_MOTION:
+                this.GamepadAxisMoved?.Invoke((uint) sdlEvent.gaxis.which, this.MapGamepadAxis(sdlEvent.gaxis.Axis), sdlEvent.gaxis.value);
+                break;
+            case SDL_EventType.SDL_EVENT_GAMEPAD_BUTTON_DOWN:
+                this.GamepadButtonDown?.Invoke((uint) sdlEvent.gbutton.which, this.MapGamepadButton(sdlEvent.gbutton.Button));
+                break;
+            case SDL_EventType.SDL_EVENT_GAMEPAD_BUTTON_UP:
+                this.GamepadButtonUp?.Invoke((uint) sdlEvent.gbutton.which, this.MapGamepadButton(sdlEvent.gbutton.Button));
+                break;
             case SDL_EventType.SDL_EVENT_DROP_FILE:
-                this.DragDrop?.Invoke(new DragDropEvent((int) sdlEvent.drop.x, (int) sdlEvent.drop.y, sdlEvent.drop.GetSource() ?? string.Empty));
+                this.DragDrop?.Invoke(sdlEvent.drop.GetData() ?? string.Empty);
                 break;
         }
     }
@@ -926,6 +967,80 @@ public class Sdl3Window : Disposable, IWindow {
             SDL_Scancode.SDL_SCANCODE_LGUI => KeyboardKey.WinLeft,
             SDL_Scancode.SDL_SCANCODE_RGUI => KeyboardKey.WinRight,
             _ => KeyboardKey.Unknown
+        };
+    }
+
+    /// <summary>
+    /// Maps an SDL mouse button to a <see cref="MouseButton"/>.
+    /// </summary>
+    /// <param name="button">The SDL button to map.</param>
+    /// <returns>The corresponding <see cref="MouseButton"/>.</returns>
+    /// <exception cref="Exception">Thrown when the SDL button is not supported.</exception>
+    private MouseButton MapMouseButton(SDLButton button) {
+        return button switch {
+            SDLButton.SDL_BUTTON_LEFT => MouseButton.Left,
+            SDLButton.SDL_BUTTON_MIDDLE => MouseButton.Middle,
+            SDLButton.SDL_BUTTON_RIGHT => MouseButton.Right,
+            SDLButton.SDL_BUTTON_X1 => MouseButton.X1,
+            SDLButton.SDL_BUTTON_X2 => MouseButton.X2,
+            _ => throw new Exception("This type of mouse button is not supported!")
+        };
+    }
+
+    /// <summary>
+    /// Maps an SDL gamepad axis to the corresponding <see cref="GamepadAxis"/> value.
+    /// </summary>
+    /// <param name="gamepadAxis">The SDL gamepad axis to be mapped.</param>
+    /// <returns>The corresponding <see cref="GamepadAxis"/> value, or <see cref="GamepadAxis.Invalid"/> if no match is found.</returns>
+    private GamepadAxis MapGamepadAxis(SDL_GamepadAxis gamepadAxis) {
+        return gamepadAxis switch {
+            SDL_GamepadAxis.SDL_GAMEPAD_AXIS_LEFTX => GamepadAxis.LeftX,
+            SDL_GamepadAxis.SDL_GAMEPAD_AXIS_LEFTY => GamepadAxis.LeftY,
+            SDL_GamepadAxis.SDL_GAMEPAD_AXIS_RIGHTX => GamepadAxis.RightX,
+            SDL_GamepadAxis.SDL_GAMEPAD_AXIS_RIGHTY => GamepadAxis.RightY,
+            SDL_GamepadAxis.SDL_GAMEPAD_AXIS_LEFT_TRIGGER => GamepadAxis.TriggerLeft,
+            SDL_GamepadAxis.SDL_GAMEPAD_AXIS_RIGHT_TRIGGER => GamepadAxis.TriggerRight,
+            SDL_GamepadAxis.SDL_GAMEPAD_AXIS_COUNT => GamepadAxis.TriggerRight,
+            _ => GamepadAxis.Invalid
+        };
+    }
+
+    /// <summary>
+    /// Maps the specified SDL_GamepadButton to a corresponding GamepadButton value.
+    /// </summary>
+    /// <param name="gamepadButton">The SDL_GamepadButton value to be mapped.</param>
+    /// <returns>The corresponding GamepadButton value.</returns>
+    private GamepadButton MapGamepadButton(SDL_GamepadButton gamepadButton) {
+        return gamepadButton switch {
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_INVALID => GamepadButton.Invalid,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_SOUTH => GamepadButton.South,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_EAST => GamepadButton.East,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_WEST => GamepadButton.West,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_NORTH => GamepadButton.North,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_BACK => GamepadButton.Back,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_GUIDE => GamepadButton.Guide,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_START => GamepadButton.Start,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_LEFT_STICK => GamepadButton.LeftStick,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_RIGHT_STICK => GamepadButton.RightStick,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_LEFT_SHOULDER => GamepadButton.LeftShoulder,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_RIGHT_SHOULDER => GamepadButton.RightShoulder,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_DPAD_UP => GamepadButton.DpadUp,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_DPAD_DOWN => GamepadButton.DpadDown,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_DPAD_LEFT => GamepadButton.DpadLeft,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_DPAD_RIGHT => GamepadButton.DpadRight,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_MISC1 => GamepadButton.Misc1,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_RIGHT_PADDLE1 => GamepadButton.RightPaddle1,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_LEFT_PADDLE1 => GamepadButton.LeftPaddle1,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_RIGHT_PADDLE2 => GamepadButton.RightPaddle2,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_LEFT_PADDLE2 => GamepadButton.LeftPaddle2,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_TOUCHPAD => GamepadButton.Touchpad,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_MISC2 => GamepadButton.Misc2,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_MISC3 => GamepadButton.Misc3,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_MISC4 => GamepadButton.Misc4,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_MISC5 => GamepadButton.Misc5,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_MISC6 => GamepadButton.Misc6,
+            SDL_GamepadButton.SDL_GAMEPAD_BUTTON_COUNT => GamepadButton.Count,
+            _ => GamepadButton.Invalid
         };
     }
 

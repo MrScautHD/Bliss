@@ -7,6 +7,7 @@ using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 using Bliss.CSharp.Graphics.Rendering.Passes;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Contexts;
+using Bliss.CSharp.Interact.Gamepads;
 using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
@@ -146,6 +147,17 @@ public class Game : Disposable {
         
         if (Input.IsKeyReleased(KeyboardKey.D)) {
             Logger.Warn("D IS Released!!!!");
+        }
+
+        if (Input.IsGamepadAvailable(1)) {
+            if (Input.IsGamepadButtonPressed(1, GamepadButton.LeftStick)) {
+                Logger.Error("LEFT STICK!!!");
+                Input.RumbleGamepad(1, 30000, 40000, 500);
+            }
+        }
+
+        if (Input.IsFileDragDropped(out string path)) {
+            Logger.Error($"File DragDropped at: {Input.GetMousePosition()} in the path: {path}");
         }
     }
     

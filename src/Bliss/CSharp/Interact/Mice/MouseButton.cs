@@ -1,6 +1,6 @@
 namespace Bliss.CSharp.Interact.Mice;
 
-public enum MouseButton : byte {
+public enum MouseButton {
     
     /// <summary>
     /// The left mouse button.

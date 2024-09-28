@@ -1,44 +1,44 @@
 namespace Bliss.CSharp.Interact.Gamepads;
 
-public enum GamepadAxis : byte {
-    /*
+public enum GamepadAxis {
+    
     /// <summary>
     /// Invalid axis.
     /// </summary>
-    Invalid = SDL_GameControllerAxis.Invalid,
+    Invalid = -1,
 
     /// <summary>
     /// Left stick horizontal axis.
     /// </summary>
-    LeftX = SDL_GameControllerAxis.LeftX,
+    LeftX = 0,
 
     /// <summary>
     /// Left stick vertical axis.
     /// </summary>
-    LeftY = SDL_GameControllerAxis.LeftY,
+    LeftY = 1,
 
     /// <summary>
     /// Right stick horizontal axis.
     /// </summary>
-    RightX = SDL_GameControllerAxis.RightX,
+    RightX = 2,
 
     /// <summary>
     /// Right stick vertical axis.
     /// </summary>
-    RightY = SDL_GameControllerAxis.RightY,
+    RightY = 3,
 
     /// <summary>
     /// Left trigger axis.
     /// </summary>
-    TriggerLeft = SDL_GameControllerAxis.TriggerLeft,
+    TriggerLeft = 4,
 
     /// <summary>
     /// Right trigger axis.
     /// </summary>
-    TriggerRight = SDL_GameControllerAxis.TriggerRight,
+    TriggerRight = 5,
 
     /// <summary>
     /// Maximum axis value.
     /// </summary>
-    Max = SDL_GameControllerAxis.Max*/
+    Max = 6
 }
