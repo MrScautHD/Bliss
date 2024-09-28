@@ -26,7 +26,7 @@ public class Sdl3Cursor : Disposable, ICursor {
     /// <param name="offsetX">The X-axis offset for the cursor's hotspot.</param>
     /// <param name="offsetY">The Y-axis offset for the cursor's hotspot.</param>
     public unsafe Sdl3Cursor(Image<Rgba32> image, int offsetX, int offsetY) { // TODO: REWORK CURSOR TO HAVE JUST 1 or do a static cursor creation class like Cursor.Create();
-        this._cursor = this.GetColorCursor(image, offsetX, offsetY);
+        this._cursor = this.CreateColorCursor(image, offsetX, offsetY);
     }
 
     /// <summary>
@@ -34,7 +34,7 @@ public class Sdl3Cursor : Disposable, ICursor {
     /// </summary>
     /// <param name="systemCursor">The type of system cursor to create.</param>
     public unsafe Sdl3Cursor(SystemCursor systemCursor) {
-        this._cursor = this.GetSystemCursor(systemCursor);
+        this._cursor = this.CreateSystemCursor(systemCursor);
     }
 
     /// <summary>
@@ -57,7 +57,7 @@ public class Sdl3Cursor : Disposable, ICursor {
     /// <param name="offsetX">The x-coordinate offset for the cursor hotspot.</param>
     /// <param name="offsetY">The y-coordinate offset for the cursor hotspot.</param>
     /// <returns>Returns an SDL_Cursor pointer representing the created color cursor.</returns>
-    private unsafe SDL_Cursor* GetColorCursor(Image<Rgba32> image, int offsetX, int offsetY) {
+    private unsafe SDL_Cursor* CreateColorCursor(Image<Rgba32> image, int offsetX, int offsetY) {
         byte[] data = new byte[image.Width * image.Height * 4];
         image.CopyPixelDataTo(data);
 
@@ -79,7 +79,7 @@ public class Sdl3Cursor : Disposable, ICursor {
     /// </summary>
     /// <param name="systemCursor">The type of system cursor to retrieve.</param>
     /// <returns>Returns an SDL_Cursor pointer to the specified system cursor.</returns>
-    private unsafe SDL_Cursor* GetSystemCursor(SystemCursor systemCursor) {
+    private unsafe SDL_Cursor* CreateSystemCursor(SystemCursor systemCursor) {
         return SDL3.SDL_CreateSystemCursor(this.MapSystemCursor(systemCursor));
     }
 
