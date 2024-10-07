@@ -382,7 +382,7 @@ public class SpriteBatch : Disposable {
         // Update vertex buffer.
         this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, this._vertices);
         
-        // Set vertex and index buffers.
+        // Set vertex and index buffer.
         this._currentCommandList.SetVertexBuffer(0, this._vertexBuffer);
         this._currentCommandList.SetIndexBuffer(this._indexBuffer, IndexFormat.UInt16);
         

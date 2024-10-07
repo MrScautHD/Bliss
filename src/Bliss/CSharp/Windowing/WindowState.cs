@@ -1,5 +1,6 @@
 namespace Bliss.CSharp.Windowing;
 
+// TODO: Add Translucent!!!!
 [Flags]
 public enum WindowState {
     

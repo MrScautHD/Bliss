@@ -7,8 +7,6 @@ using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 using Bliss.CSharp.Graphics.Rendering.Passes;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Contexts;
-using Bliss.CSharp.Interact.Gamepads;
-using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Windowing;
@@ -134,32 +132,7 @@ public class Game : Disposable {
         this._font = new Font("content/fonts/fontoe.ttf");
     }
 
-    protected virtual void Update() {
-        if (Input.IsKeyPressed(KeyboardKey.A)) {
-            Logger.Warn("A GOT PRESSED!!!!");
-            this.MainWindow.SetState(WindowState.Maximized | WindowState.AlwaysOnTop);
-        }
-        
-        if (Input.IsKeyDown(KeyboardKey.D)) {
-            Logger.Warn("D IS DOWN!!!!");
-            this.MainWindow.SetState(WindowState.FullScreen);
-        }
-        
-        if (Input.IsKeyReleased(KeyboardKey.D)) {
-            Logger.Warn("D IS Released!!!!");
-        }
-
-        if (Input.IsGamepadAvailable(1)) {
-            if (Input.IsGamepadButtonPressed(1, GamepadButton.LeftStick)) {
-                Logger.Error("LEFT STICK!!!");
-                Input.RumbleGamepad(1, 30000, 40000, 500);
-            }
-        }
-
-        if (Input.IsFileDragDropped(out string path)) {
-            Logger.Error($"File DragDropped at: {Input.GetMousePosition()} in the path: {path}");
-        }
-    }
+    protected virtual void Update() { }
     
     protected virtual void AfterUpdate() { }
 

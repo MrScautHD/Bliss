@@ -25,7 +25,7 @@ public class Sdl3Cursor : Disposable, ICursor {
     /// <param name="image">The image used to create the cursor.</param>
     /// <param name="offsetX">The X-axis offset for the cursor's hotspot.</param>
     /// <param name="offsetY">The Y-axis offset for the cursor's hotspot.</param>
-    public unsafe Sdl3Cursor(Image<Rgba32> image, int offsetX, int offsetY) { // TODO: REWORK CURSOR TO HAVE JUST 1 or do a static cursor creation class like Cursor.Create();
+    public unsafe Sdl3Cursor(Image<Rgba32> image, int offsetX, int offsetY) {
         this._cursor = this.CreateColorCursor(image, offsetX, offsetY);
     }
 

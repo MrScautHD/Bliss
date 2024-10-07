@@ -6,6 +6,8 @@ using Viewport = Veldrid.Viewport;
 namespace Bliss.CSharp.Camera.Dim3;
 
 public class Cam3D : Disposable, ICam {
+
+    internal static Cam3D? ActiveCamera;
     
     public Viewport Viewport { get; private set; }
     
@@ -86,6 +88,14 @@ public class Cam3D : Disposable, ICam {
         this._frustum.Extract(this.GetView() * this.GetProjection());
 
         return this._frustum;
+    }
+
+    public void Begin3D() {
+        ActiveCamera = this;
+    }
+
+    public void End3D() {
+        ActiveCamera = null;
     }
 
     protected override void Dispose(bool disposing) { }

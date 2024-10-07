@@ -1,6 +1,8 @@
+using System.Runtime.InteropServices;
+
 namespace Bliss.CSharp.Materials;
 
-// TODO: Implement it.
-public abstract class Material : Disposable {
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct Material {
     
 }
