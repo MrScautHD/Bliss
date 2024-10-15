@@ -1,23 +1,136 @@
+using System.Numerics;
+using Bliss.CSharp.Camera.Dim3;
+using Bliss.CSharp.Colors;
+using Bliss.CSharp.Graphics;
+using Bliss.CSharp.Graphics.Pipelines;
+using Bliss.CSharp.Graphics.Pipelines.Buffers;
+using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Materials;
+using Bliss.CSharp.Transformations;
+using Veldrid;
 
 namespace Bliss.CSharp.Geometry;
 
-// TODO: Add Material
-public struct Mesh {
-
-    public Vertex3D[] Vertices;
-    public uint[] Indices;
-    public MaterialOld MaterialOld;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Mesh"/> class with optional vertices and indices.
-    /// </summary>
-    /// <param name="vertices">An array of <see cref="Vertex3D"/> objects. If null, an empty array is used.</param>
-    /// <param name="indices">An array of indices. If null, an empty array is used.</param>
-    public Mesh(Vertex3D[]? vertices = default, uint[]? indices = default, MaterialOld? material = default) {
+public class Mesh : Disposable {
+    
+    public GraphicsDevice GraphicsDevice { get; private set; }
+    public Material Material { get; private set; }
+    
+    public Vertex3D[] Vertices { get; private set; }
+    public uint[] Indices { get; private set; }
+    
+    public uint VertexCount { get; private set; }
+    public uint IndexCount { get; private set; }
+    
+    private DeviceBuffer _vertexBuffer;
+    private DeviceBuffer _indexBuffer;
+    
+    private SimpleBuffer<Matrix4x4> _modelMatrixBuffer;
+    
+    private Dictionary<Material, SimplePipeline> _cachedPipelines;
+    
+    public Mesh(GraphicsDevice graphicsDevice, Material material, Vertex3D[]? vertices = default, uint[]? indices = default) {
+        this.GraphicsDevice = graphicsDevice;
+        this.Material = material;
         this.Vertices = vertices ?? [];
         this.Indices = indices ?? [];
-        this.MaterialOld = material ?? default; // TODO: Do a default material;
+
+        this.VertexCount = (uint) this.Vertices.Length;
+        this.IndexCount = (uint) this.Indices.Length;
+        
+        uint vertexBufferSize = this.VertexCount * sizeof(float);
+        uint indexBufferSize = this.IndexCount * sizeof(uint);
+        
+        this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
+        this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
+        
+        this._modelMatrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "MatrixBuffer", 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        
+        this._cachedPipelines = new Dictionary<Material, SimplePipeline>();
+    }
+
+    public void Draw(CommandList commandList, OutputDescription output, Transform transform, BlendState blendState, Color color) {
+        Cam3D? cam3D = Cam3D.ActiveCamera;
+
+        if (cam3D == null) {
+            return;
+        }
+        
+        // Update matrix buffer.
+        this._modelMatrixBuffer.SetValue(0, cam3D.GetView() * cam3D.GetProjection());
+        this._modelMatrixBuffer.SetValue(1, transform.GetTransform());
+        this._modelMatrixBuffer.UpdateBuffer();
+        
+        if (this.IndexCount > 0) {
+            // Set vertex and index buffer.
+            commandList.SetVertexBuffer(0, this._vertexBuffer);
+            commandList.SetIndexBuffer(this._indexBuffer, IndexFormat.UInt32);
+            
+            // Set pipeline.
+            commandList.SetPipeline(this.GetOrCreatePipeline(this.Material, blendState, output).Pipeline);
+            
+            // Set projection view buffer.
+            commandList.SetGraphicsResourceSet(0, null);
+            
+            // Draw.
+            commandList.DrawIndexed(this.IndexCount, 1, 0, 0, 0);
+        }
+        else {
+            // Set vertex buffer.
+            commandList.SetVertexBuffer(0, this._vertexBuffer);
+            
+            // Set pipeline.
+            commandList.SetPipeline(this.GetOrCreatePipeline(this.Material, blendState, output).Pipeline);
+            
+            // Set projection view buffer.
+            commandList.SetGraphicsResourceSet(0, null);
+            
+            // Draw.
+            commandList.Draw(this.VertexCount);
+        }
+    }
+    
+    public SimplePipeline GetOrCreatePipeline(Material material, BlendState blendState, OutputDescription output) {
+        if (!this._cachedPipelines.TryGetValue(material, out SimplePipeline? pipeline)) {
+            SimplePipeline newPipeline = new SimplePipeline(this.GraphicsDevice, new SimplePipelineDescription() {
+                BlendState = blendState.Description,
+                DepthStencilState = new DepthStencilStateDescription(true, true, ComparisonKind.LessEqual),
+                RasterizerState = new RasterizerStateDescription() {
+                    CullMode = FaceCullMode.Front,
+                    FillMode = PolygonFillMode.Solid,
+                    FrontFace = FrontFace.Clockwise,
+                    DepthClipEnabled = true,
+                    ScissorTestEnabled = false
+                },
+                PrimitiveTopology = PrimitiveTopology.TriangleList,
+                Buffers = [
+                    this._modelMatrixBuffer
+                ],
+                TextureLayouts = material.TextureLayouts,
+                ShaderSet = new ShaderSetDescription() {
+                    VertexLayouts = [
+                        material.Effect.VertexLayout
+                    ],
+                    Shaders = [
+                        material.Effect.Shader.Item1,
+                        material.Effect.Shader.Item2
+                    ]
+                },
+                Outputs = output
+            });
+            
+            this._cachedPipelines.Add(material, newPipeline);
+            return newPipeline;
+        }
+
+        return pipeline;
+    }
+
+    protected override void Dispose(bool disposing) {
+        if (disposing) {
+            this._vertexBuffer.Dispose();
+            this._indexBuffer.Dispose();
+        }
     }
 }

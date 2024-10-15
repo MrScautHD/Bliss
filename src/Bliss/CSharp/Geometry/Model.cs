@@ -1,18 +1,22 @@
+using System.Collections.ObjectModel;
 using System.Numerics;
+using System.Text;
 using Assimp;
-using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Colors;
+using Bliss.CSharp.Effects;
 using Bliss.CSharp.Geometry.Conversions;
-using Bliss.CSharp.Graphics.Pipelines;
-using Bliss.CSharp.Graphics.Pipelines.Buffers;
-using Bliss.CSharp.Graphics.Pipelines.Textures;
+using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
+using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
 using Veldrid;
 using AMesh = Assimp.Mesh;
-using Matrix4x4 = System.Numerics.Matrix4x4;
+using ShaderMaterialProperties = Assimp.Material.ShaderMaterialProperties;
+using Material = Bliss.CSharp.Materials.Material;
+using AMaterial = Assimp.Material;
+using TextureType = Assimp.TextureType;
 
 namespace Bliss.CSharp.Geometry;
 
@@ -22,41 +26,10 @@ public class Model : Disposable {
     
     public GraphicsDevice GraphicsDevice { get; private set; }
     public Mesh[] Meshes { get; private set; }
-    
-    public uint VertexCount { get; private set; }
-    public uint IndexCount { get; private set; }
-    
-    private DeviceBuffer _vertexBuffer;
-    private DeviceBuffer _indexBuffer;
-    
-    private SimpleBuffer<Matrix4x4> _modelMatrixBuffer;
-    
-    private SimpleTextureLayout _textureLayout;
-    
-    private Dictionary<MaterialOld, SimplePipeline> _cachedPipelines;
 
     public Model(GraphicsDevice graphicsDevice, Mesh[] meshes) {
         this.GraphicsDevice = graphicsDevice;
         this.Meshes = meshes;
-
-        foreach (Mesh mesh in meshes) {
-            this.VertexCount += (uint) mesh.Vertices.Length;
-            this.IndexCount += (uint) mesh.Indices.Length;
-        }
-        
-        uint vertexBufferSize = this.VertexCount * sizeof(float);
-        uint indexBufferSize = this.IndexCount * sizeof(uint);
-        
-        this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer));
-        this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer));
-
-        // Create model matrix buffer.
-        this._modelMatrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "MatrixBuffer", 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
-
-        // Create texture layout.
-        this._textureLayout = new SimpleTextureLayout(graphicsDevice, "fTexture");
-        
-        this._cachedPipelines = new Dictionary<MaterialOld, SimplePipeline>();
     }
     
     // TODO: Check if the UV flip works maybe it should just the Y axis get fliped and add Materials loading (with a boolean to disable it) and add Animations loading and add a option to load with Stream instead of the path.
@@ -70,11 +43,47 @@ public class Model : Disposable {
             AMesh mesh = scene.Meshes[i];
             
             // Materials
-            Color4D? color = null;
+            Effect? effect = null;
+            Dictionary<MaterialMapType, MaterialMap> maps = new Dictionary<MaterialMapType, MaterialMap>();
             
             if (scene.HasMaterials) {
-                color = scene.Materials[mesh.MaterialIndex].ColorDiffuse;
+                AMaterial aMaterial = scene.Materials[mesh.MaterialIndex];
+                ShaderMaterialProperties shaderProperties = aMaterial.Shaders;
+
+                if (shaderProperties.HasVertexShader && shaderProperties.HasFragmentShader) {
+                    effect = new Effect(graphicsDevice.ResourceFactory, Vertex3D.VertexLayout, Encoding.UTF8.GetBytes(shaderProperties.VertexShader), Encoding.UTF8.GetBytes(shaderProperties.FragmentShader));
+                }
+                else {
+                    throw new Exception("Something went wrong by loading the Effect of the model material!");
+                }
+                
+                for (int j = 0; j < 11; j++) {
+                    List<Texture2D> textures = new List<Texture2D>();
+                    List<Color> colors = new List<Color>();
+                    
+                    foreach (TextureSlot textureSlot in aMaterial.GetAllMaterialTextures()) {
+                        textures.Add(new Texture2D(graphicsDevice, textureSlot.FilePath));
+                    }
+
+                    if (aMaterial.HasColorDiffuse) {
+                        Color4D color4D = aMaterial.ColorDiffuse;
+                        colors.Add(new Color(new RgbaFloat(color4D.R, color4D.G, color4D.B, color4D.A)));
+                    }
+
+                    MaterialMapType mapType = (MaterialMapType) j;
+
+                    switch (mapType) {
+                        case MaterialMapType.Albedo:
+                            maps.Add(MaterialMapType.Albedo, new MaterialMap {
+                                Texture = textures[j],
+                                Color = colors[j]
+                            });
+                            break;
+                    }
+                }
             }
+            
+            Material material = new Material(graphicsDevice, effect!, new ReadOnlyDictionary<MaterialMapType, MaterialMap>(maps), default, true);
             
             // Vertices
             Vertex3D[] vertices = new Vertex3D[scene.Meshes[i].VertexCount];
@@ -113,7 +122,7 @@ public class Model : Disposable {
                 vertices[j].Tangent = mesh.HasTangentBasis ? ModelConversion.FromVector3D(mesh.Tangents[j]) : Vector3.Zero;
                 
                 // Color
-                vertices[j].Color = color != null ? new Vector4(color.Value.R, color.Value.G, color.Value.B, color.Value.A) : Vector4.Zero;
+                vertices[j].Color = material.Maps[MaterialMapType.Albedo].Color.ToVector4();
             }
 
             // Indices
@@ -131,7 +140,7 @@ public class Model : Disposable {
                 indices.Add((uint) face.Indices[2]);
             }
 
-            meshes.Add(new Mesh(vertices, indices.ToArray()));
+            meshes.Add(new Mesh(graphicsDevice, material, vertices, indices.ToArray()));
         }
         
         Logger.Info($"Model successfully loaded from the path: [{path}]");
@@ -140,90 +149,22 @@ public class Model : Disposable {
         return new Model(graphicsDevice, meshes.ToArray());
     }
 
-    // TODO: Finish that.
-    public void Draw(CommandList commandList, OutputDescription output, Transform transform, Color color) {
-        Cam3D? cam3D = Cam3D.ActiveCamera;
+    //private static MaterialMapType MapMaterialMapType(TextureType textureType) {
+    //    return textureType switch {
+    //        TextureType.Diffuse => MaterialMapType.Albedo,
+    //        _ => Logger.Warn($"Failed to load MaterialMapType: {textureType}!");
+    //    };
+    //}
 
-        if (cam3D == null) {
-            return;
+    public void Draw(CommandList commandList, OutputDescription output, Transform transform, BlendState blendState, Color color) {
+        foreach (Mesh mesh in this.Meshes) {
+            mesh.Draw(commandList, output, transform, blendState, color);
         }
-        
-        // Update matrix buffer.
-        this._modelMatrixBuffer.SetValue(0, cam3D.GetView() * cam3D.GetProjection());
-        this._modelMatrixBuffer.SetValue(1, transform.GetTransform());
-        this._modelMatrixBuffer.UpdateBuffer();
-        
-        if (this.IndexCount > 0) {
-            // Set vertex and index buffer.
-            commandList.SetVertexBuffer(0, this._vertexBuffer);
-            commandList.SetIndexBuffer(this._indexBuffer, IndexFormat.UInt32);
-            
-            // Set pipeline.
-            commandList.SetPipeline(this.GetOrCreatePipeline(this.Meshes[0].MaterialOld, output).Pipeline);
-            
-            // Set projection view buffer.
-            commandList.SetGraphicsResourceSet(0, null);
-            
-            // Draw.
-            commandList.DrawIndexed(this.IndexCount, 1, 0, 0, 0);
-        }
-        else {
-            // Set vertex buffer.
-            commandList.SetVertexBuffer(0, this._vertexBuffer);
-            
-            // Set pipeline.
-            commandList.SetPipeline(this.GetOrCreatePipeline(this.Meshes[0].MaterialOld, output).Pipeline);
-            
-            // Set projection view buffer.
-            commandList.SetGraphicsResourceSet(0, null);
-            
-            // Draw.
-            commandList.Draw(this.VertexCount);
-        }
-    }
-
-    public SimplePipeline GetOrCreatePipeline(MaterialOld materialOld, OutputDescription output) {
-        if (!this._cachedPipelines.TryGetValue(materialOld, out SimplePipeline? pipeline)) {
-            SimplePipeline newPipeline = new SimplePipeline(this.GraphicsDevice, new SimplePipelineDescription() {
-                BlendState = materialOld.BlendState.Description,
-                DepthStencilState = new DepthStencilStateDescription(true, true, ComparisonKind.LessEqual),
-                RasterizerState = new RasterizerStateDescription() {
-                    CullMode = FaceCullMode.Front,
-                    FillMode = PolygonFillMode.Solid,
-                    FrontFace = FrontFace.Clockwise,
-                    DepthClipEnabled = true,
-                    ScissorTestEnabled = false
-                },
-                PrimitiveTopology = PrimitiveTopology.TriangleList,
-                Buffers = [
-                    this._modelMatrixBuffer
-                ],
-                TextureLayouts = [
-                    this._textureLayout
-                ],
-                ShaderSet = new ShaderSetDescription() {
-                    VertexLayouts = [
-                        materialOld.Effect.VertexLayout
-                    ],
-                    Shaders = [
-                        materialOld.Effect.Shader.Item1,
-                        materialOld.Effect.Shader.Item2
-                    ]
-                },
-                Outputs = output
-            });
-            
-            this._cachedPipelines.Add(materialOld, newPipeline);
-            return newPipeline;
-        }
-
-        return pipeline;
     }
 
     protected override void Dispose(bool disposing) {
         if (disposing) {
-            this._vertexBuffer.Dispose();
-            this._indexBuffer.Dispose();
+            
         }
     }
 }

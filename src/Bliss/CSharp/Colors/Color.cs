@@ -87,6 +87,16 @@ public struct Color : IEquatable<Color> {
     }
 
     /// <summary>
+    /// Represents a color with red, green, blue, and alpha components.
+    /// </summary>
+    public Color(RgbaFloat rgbaFloat) {
+        this.R = rgbaFloat.R * 255.0F;
+        this.G = rgbaFloat.G * 255.0F;
+        this.B = rgbaFloat.B * 255.0F;
+        this.A = rgbaFloat.A * 255.0F;
+    }
+
+    /// <summary>
     /// Determines whether two Color objects are equal.
     /// </summary>
     /// <param name="left">The first Color to compare.</param>
