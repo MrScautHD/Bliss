@@ -8,12 +8,12 @@ public struct MaterialMap {
     /// <summary>
     /// Represents the texture map of a material.
     /// </summary>
-    public Texture2D Texture;
+    public Texture2D? Texture;
 
     /// <summary>
     /// Defines the color properties of a material.
     /// </summary>
-    public Color Color;
+    public Color? Color;
 
     /// <summary>
     /// Represents a numeric value associated with the material.

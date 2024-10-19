@@ -1,6 +1,7 @@
 using System.Numerics;
 using Bliss.CSharp;
 using Bliss.CSharp.Fonts;
+using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Rendering.Batches.Primitives;
 using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
@@ -130,6 +131,8 @@ public class Game : Disposable {
         this._primitiveBatch = new PrimitiveBatch(this.GraphicsDevice, this.MainWindow, this.FullScreenTexture.Framebuffer.OutputDescription);
         this._texture = new Texture2D(this.GraphicsDevice, "content/images/logo.png");
         this._font = new Font("content/fonts/fontoe.ttf");
+
+        Model model = Model.Load(this.GraphicsDevice, "content/model.glb");
     }
 
     protected virtual void Update() { }
