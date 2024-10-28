@@ -1,4 +1,3 @@
-using System.Collections.ObjectModel;
 using System.Numerics;
 using System.Text;
 using Assimp;
@@ -22,18 +21,35 @@ namespace Bliss.CSharp.Geometry;
 
 public class Model : Disposable {
     
+    /// <summary>
+    /// The default post-processing steps applied to the model during processing.
+    /// This includes flipping the winding order, triangulating, pre-transforming vertices,
+    /// calculating tangent space, and generating smooth normals.
+    /// </summary>
     private const PostProcessSteps DefaultPostProcessSteps = PostProcessSteps.FlipWindingOrder | PostProcessSteps.Triangulate | PostProcessSteps.PreTransformVertices | PostProcessSteps.CalculateTangentSpace | PostProcessSteps.GenerateSmoothNormals;
     
+    /// <summary>
+    /// The graphics device used for rendering the model.
+    /// </summary>
     public GraphicsDevice GraphicsDevice { get; private set; }
+    
+    /// <summary>
+    /// An array of meshes that make up the model.
+    /// </summary>
     public Mesh[] Meshes { get; private set; }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Model"/> class with the specified graphics device and meshes.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used for rendering the model.</param>
+    /// <param name="meshes">An array of meshes that compose the model.</param>
     public Model(GraphicsDevice graphicsDevice, Mesh[] meshes) {
         this.GraphicsDevice = graphicsDevice;
         this.Meshes = meshes;
     }
     
     // TODO: Check if the UV flip works maybe it should just the Y axis get fliped and add Materials loading (with a boolean to disable it) and add Animations loading and add a option to load with Stream instead of the path.
-    public static Model Load(GraphicsDevice graphicsDevice, string path, bool flipUv = false) {
+    public static Model Load(GraphicsDevice graphicsDevice, string path, bool loadMaterial = true, bool flipUv = false) {
         using AssimpContext context = new AssimpContext();
         Scene scene = context.ImportFile(path, DefaultPostProcessSteps);
 
@@ -42,41 +58,45 @@ public class Model : Disposable {
         for (int i = 0; i < scene.Meshes.Count; i++) {
             AMesh mesh = scene.Meshes[i];
             
-            // Materials
+            // Load effect.
             Effect? effect = null;
-            Dictionary<MaterialMapType, MaterialMap> maps = new Dictionary<MaterialMapType, MaterialMap>();
-            
-            if (scene.HasMaterials) {
+
+            if (scene.HasMaterials && loadMaterial) {
                 AMaterial aMaterial = scene.Materials[mesh.MaterialIndex];
                 ShaderMaterialProperties shaderProperties = aMaterial.Shaders;
-
+                
                 if (shaderProperties.HasVertexShader && shaderProperties.HasFragmentShader) {
+                    Logger.Error(shaderProperties.VertexShader);
                     effect = new Effect(graphicsDevice.ResourceFactory, Vertex3D.VertexLayout, Encoding.UTF8.GetBytes(shaderProperties.VertexShader), Encoding.UTF8.GetBytes(shaderProperties.FragmentShader));
                 }
                 else {
-                    effect = new Effect(graphicsDevice.ResourceFactory, Vertex3D.VertexLayout, "content/shaders/default_model.vert", "content/shaders/default_model.frag");
+                    Logger.Warn($"Failed loading material effect for the model at [{path}]");
                 }
+            }
+
+            effect ??= new Effect(graphicsDevice.ResourceFactory, Vertex3D.VertexLayout, "content/shaders/default_model.vert", "content/shaders/default_model.frag"); // TODO: Do not load it every mesh... plsss xD
+            
+            // Load material maps.
+            Material material = new Material(graphicsDevice, effect);
+
+            if (scene.HasMaterials && loadMaterial) {
+                AMaterial aMaterial = scene.Materials[mesh.MaterialIndex];
                 
                 for (int j = 0; j < 11; j++) {
                     MaterialMapType mapType = (MaterialMapType) j;
-                    maps.Add(mapType, GetMaterialMap(graphicsDevice, mapType, aMaterial));
+                    material.SetMaterialMap(mapType, GetMaterialMap(graphicsDevice, mapType, aMaterial));
                 }
             }
-            else {
-                //TODO ADD DEFAULT MAPS!!!!
-            }
             
-            Material material = new Material(graphicsDevice, effect!, new ReadOnlyDictionary<MaterialMapType, MaterialMap>(maps), default, true);
-            
-            // Vertices
+            // Setup vertices.
             Vertex3D[] vertices = new Vertex3D[scene.Meshes[i].VertexCount];
 
             for (int j = 0; j < mesh.VertexCount; j++) {
                 
-                // Pos
+                // Set Position.
                 vertices[j].Position = ModelConversion.FromVector3D(mesh.Vertices[i]);
 
-                // TexCoord
+                // Set TexCoord.
                 if (mesh.HasTextureCoords(0)) {
                     Vector3 texCoord = ModelConversion.FromVector3D(mesh.TextureCoordinateChannels[0][j]);
                     Vector2 finalTexCoord = new Vector2(texCoord.X, texCoord.Y);
@@ -87,7 +107,7 @@ public class Model : Disposable {
                     vertices[j].TexCoords = Vector2.Zero;
                 }
                 
-                // TexCoord2
+                // Set TexCoord2.
                 if (mesh.HasTextureCoords(1)) {
                     Vector3 texCoord2 = ModelConversion.FromVector3D(mesh.TextureCoordinateChannels[1][j]);
                     Vector2 finalTexCoord2 = new Vector2(texCoord2.X, texCoord2.Y);
@@ -98,17 +118,17 @@ public class Model : Disposable {
                     vertices[j].TexCoords2 = Vector2.Zero;
                 }
                 
-                // Normal
+                // Set Normal.
                 vertices[j].Normal = mesh.HasNormals ? ModelConversion.FromVector3D(mesh.Normals[i]) : Vector3.Zero;
 
-                // Tangent
+                // Set Tangent.
                 vertices[j].Tangent = mesh.HasTangentBasis ? ModelConversion.FromVector3D(mesh.Tangents[j]) : Vector3.Zero;
                 
-                // Color
-                vertices[j].Color = material.Maps[MaterialMapType.Albedo].Color?.ToVector4() ?? Color.White.ToVector4();
+                // Set Color.
+                vertices[j].Color = material.GetMapColor(MaterialMapType.Albedo)?.ToVector4() ?? Vector4.Zero;
             }
 
-            // Indices
+            // Setup indices.
             List<uint> indices = new List<uint>();
             
             for (int j = 0; j < mesh.FaceCount; j++) {
@@ -131,7 +151,14 @@ public class Model : Disposable {
         
         return new Model(graphicsDevice, meshes.ToArray());
     }
-    
+
+    /// <summary>
+    /// Creates a <see cref="MaterialMap"/> from the given graphics device, material map type, and Assimp material.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device to use for creating textures.</param>
+    /// <param name="mapType">The type of material map to be created.</param>
+    /// <param name="aMaterial">The Assimp material source.</param>
+    /// <returns>A <see cref="MaterialMap"/> containing the texture and color corresponding to the specified material map type.</returns>
     private static MaterialMap GetMaterialMap(GraphicsDevice graphicsDevice, MaterialMapType mapType, AMaterial aMaterial) {
         string? texturePath = GetMapTypeTexturePath(mapType, aMaterial);
         Color4D? color4D = GetMapTypeColor(mapType, aMaterial);
@@ -144,21 +171,32 @@ public class Model : Disposable {
             Color = color
         };
     }
-    
-    // TODO DONE IT RIGHT...
+
+    /// <summary>
+    /// Retrieves the file path for a texture associated with the specified material map type from the given Assimp material.
+    /// </summary>
+    /// <param name="mapType">The type of material map whose texture path should be retrieved.</param>
+    /// <param name="aMaterial">The Assimp material containing texture information.</param>
+    /// <returns>A string representing the file path to the texture associated with the specified material map type, or null if no texture is found.</returns>
     private static string? GetMapTypeTexturePath(MaterialMapType mapType, AMaterial aMaterial) {
         return mapType switch {
             MaterialMapType.Albedo => aMaterial.HasTextureDiffuse ? aMaterial.GetMaterialTextures(TextureType.Diffuse).FirstOrDefault().FilePath : null,
             MaterialMapType.Metalness => aMaterial.HasTextureSpecular ? aMaterial.GetMaterialTextures(TextureType.Metalness).FirstOrDefault().FilePath : null,
             MaterialMapType.Normal => aMaterial.HasTextureNormal ? aMaterial.GetMaterialTextures(TextureType.Normals).FirstOrDefault().FilePath : null,
+            MaterialMapType.Roughness => aMaterial.PBR.HasTextureRoughness ? aMaterial.GetMaterialTextures(TextureType.Roughness).FirstOrDefault().FilePath : null,
+            MaterialMapType.Occlusion => aMaterial.HasTextureAmbientOcclusion ? aMaterial.GetMaterialTextures(TextureType.AmbientOcclusion).FirstOrDefault().FilePath : null,
             MaterialMapType.Emission => aMaterial.HasTextureEmissive ? aMaterial.GetMaterialTextures(TextureType.Emissive).FirstOrDefault().FilePath : null,
             MaterialMapType.Height => aMaterial.HasTextureHeight ? aMaterial.GetMaterialTextures(TextureType.Height).FirstOrDefault().FilePath : null,
             _ => null
         };
     }
-    
-    
-    // TODO DONE IT RIGHT...
+
+    /// <summary>
+    /// Retrieves the color corresponding to a specific material map type from the given Assimp material.
+    /// </summary>
+    /// <param name="mapType">The type of material map to retrieve the color for.</param>
+    /// <param name="aMaterial">The Assimp material from which the color is retrieved.</param>
+    /// <returns>A nullable <see cref="Color4D"/> representing the color corresponding to the specified material map type, or null if the color is not available.</returns>
     private static Color4D? GetMapTypeColor(MaterialMapType mapType, AMaterial aMaterial) {
         return mapType switch {
             MaterialMapType.Albedo => aMaterial.HasColorDiffuse ? aMaterial.ColorDiffuse : null,
@@ -168,7 +206,15 @@ public class Model : Disposable {
             _ => null
         };
     }
-    
+
+    /// <summary>
+    /// Renders the model by drawing all its meshes using the specified command list, output description, transform, blend state, and color.
+    /// </summary>
+    /// <param name="commandList">The command list used to issue rendering commands.</param>
+    /// <param name="output">The output description of the rendering target.</param>
+    /// <param name="transform">The transformation to apply to the model during rendering.</param>
+    /// <param name="blendState">The blend state to use during rendering.</param>
+    /// <param name="color">The color to apply to the model during rendering.</param>
     public void Draw(CommandList commandList, OutputDescription output, Transform transform, BlendState blendState, Color color) {
         foreach (Mesh mesh in this.Meshes) {
             mesh.Draw(commandList, output, transform, blendState, color);
@@ -177,7 +223,11 @@ public class Model : Disposable {
 
     protected override void Dispose(bool disposing) {
         if (disposing) {
+            foreach (Mesh mesh in this.Meshes) {
+                mesh.Dispose();
+            }
             
+            // TODO: Unload cached resoucres (materials)
         }
     }
 }

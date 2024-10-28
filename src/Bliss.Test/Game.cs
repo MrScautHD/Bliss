@@ -132,7 +132,7 @@ public class Game : Disposable {
         this._texture = new Texture2D(this.GraphicsDevice, "content/images/logo.png");
         this._font = new Font("content/fonts/fontoe.ttf");
 
-        Model model = Model.Load(this.GraphicsDevice, "content/model.glb");
+        Model model = Model.Load(this.GraphicsDevice, "content/model2.glb");
     }
 
     protected virtual void Update() { }

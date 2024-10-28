@@ -1,5 +1,8 @@
 namespace Bliss.CSharp.Materials;
 
+/// <summary>
+/// An undefined or uninitialized material map type.
+/// </summary>
 public enum MaterialMapType {
     
     /// <summary>
@@ -55,5 +58,10 @@ public enum MaterialMapType {
     /// <summary>
     /// The bidirectional reflectance distribution function (BRDF) map.
     /// </summary>
-    Brdf
+    Brdf,
+
+    /// <summary>
+    /// An undefined or uninitialized material map type.
+    /// </summary>
+    Unknown
 }
