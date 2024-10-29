@@ -4,7 +4,6 @@ using Bliss.CSharp.Colors;
 using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
-using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Materials;
 using Bliss.CSharp.Transformations;

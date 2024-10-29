@@ -6,6 +6,11 @@ namespace Bliss.CSharp.Materials;
 public enum MaterialMapType {
     
     /// <summary>
+    /// An undefined or uninitialized material map type.
+    /// </summary>
+    Unknown,
+    
+    /// <summary>
     /// The base color map.
     /// </summary>
     Albedo,
@@ -58,10 +63,5 @@ public enum MaterialMapType {
     /// <summary>
     /// The bidirectional reflectance distribution function (BRDF) map.
     /// </summary>
-    Brdf,
-
-    /// <summary>
-    /// An undefined or uninitialized material map type.
-    /// </summary>
-    Unknown
+    Brdf
 }

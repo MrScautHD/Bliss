@@ -27,6 +27,12 @@ public class Model : Disposable {
     /// calculating tangent space, and generating smooth normals.
     /// </summary>
     private const PostProcessSteps DefaultPostProcessSteps = PostProcessSteps.FlipWindingOrder | PostProcessSteps.Triangulate | PostProcessSteps.PreTransformVertices | PostProcessSteps.CalculateTangentSpace | PostProcessSteps.GenerateSmoothNormals;
+
+    /// <summary>
+    /// The default effect applied to models.
+    /// This is instantiated with shaders for rendering models, and includes configuration for vertex layout.
+    /// </summary>
+    private static Effect? _defaultEffect;
     
     /// <summary>
     /// The graphics device used for rendering the model.
@@ -74,7 +80,7 @@ public class Model : Disposable {
                 }
             }
 
-            effect ??= new Effect(graphicsDevice.ResourceFactory, Vertex3D.VertexLayout, "content/shaders/default_model.vert", "content/shaders/default_model.frag"); // TODO: Do not load it every mesh... plsss xD
+            effect ??= GetDefaultEffect(graphicsDevice);
             
             // Load material maps.
             Material material = new Material(graphicsDevice, effect);
@@ -150,6 +156,16 @@ public class Model : Disposable {
         Logger.Info($"\t> Meshes: {meshes.Count}");
         
         return new Model(graphicsDevice, meshes.ToArray());
+    }
+
+    /// <summary>
+    /// Retrieves the default effect for the model.
+    /// If the default effect is not already created, it initializes a new <see cref="Effect"/> with the specified graphics device.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used to create the default effect.</param>
+    /// <return>The default <see cref="Effect"/> for the model.</return>
+    private static Effect GetDefaultEffect(GraphicsDevice graphicsDevice) {
+        return _defaultEffect ??= new Effect(graphicsDevice.ResourceFactory, Vertex3D.VertexLayout, "content/shaders/default_model.vert", "content/shaders/default_model.frag");
     }
 
     /// <summary>
