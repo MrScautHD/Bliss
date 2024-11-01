@@ -16,6 +16,7 @@ public class Material : Disposable {
     public List<float> Parameters;
 
     private Dictionary<MaterialMapType, MaterialMap> _maps;
+    private Dictionary<(Sampler, ResourceLayout), ResourceSet> _cachedResourceSets;
     
     public Material(GraphicsDevice graphicsDevice, Effect effect) {
         this.GraphicsDevice = graphicsDevice;
@@ -23,6 +24,22 @@ public class Material : Disposable {
         this.TextureLayouts = this.CreateTextureLayout(graphicsDevice);
         this.Parameters = new List<float>();
         this._maps = this.SetDefaultMaterialMaps();
+        this._cachedResourceSets = new Dictionary<(Sampler, ResourceLayout), ResourceSet>();
+    }
+    
+    public ResourceSet? GetResourceSet(Sampler sampler, ResourceLayout layout, MaterialMapType mapType) {
+        if (this._maps[mapType].Texture == null) {
+            return null;
+        }
+        
+        if (!this._cachedResourceSets.TryGetValue((sampler, layout), out ResourceSet? resourceSet)) {
+            ResourceSet newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(layout, this._maps[mapType].Texture!.DeviceTexture, sampler));
+                
+            this._cachedResourceSets.Add((sampler, layout), newResourceSet);
+            return newResourceSet;
+        }
+
+        return resourceSet;
     }
 
     /// <summary>

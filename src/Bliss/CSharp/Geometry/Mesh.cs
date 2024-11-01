@@ -44,21 +44,25 @@ public class Mesh : Disposable {
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
         this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
         
-        this._modelMatrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "MatrixBuffer", 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        this._modelMatrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "MatrixBuffer", 3, SimpleBufferType.Uniform, ShaderStages.Vertex);
         
         this._cachedPipelines = new Dictionary<Material, SimplePipeline>();
     }
 
-    public void Draw(CommandList commandList, OutputDescription output, Transform transform, BlendState blendState, Color color) {
+    public void Draw(CommandList commandList, OutputDescription output, SamplerType samplerType, Transform transform, BlendState blendState, Color color) {
         Cam3D? cam3D = Cam3D.ActiveCamera;
 
         if (cam3D == null) {
             return;
         }
+
+        // Get Sampler.
+        Sampler sampler = GraphicsHelper.GetSampler(this.GraphicsDevice, samplerType);
         
         // Update matrix buffer.
-        this._modelMatrixBuffer.SetValue(0, cam3D.GetView() * cam3D.GetProjection());
-        this._modelMatrixBuffer.SetValue(1, transform.GetTransform());
+        this._modelMatrixBuffer.SetValue(0, cam3D.GetProjection());
+        this._modelMatrixBuffer.SetValue(1, cam3D.GetView());
+        this._modelMatrixBuffer.SetValue(2, transform.GetTransform());
         this._modelMatrixBuffer.UpdateBuffer();
         
         if (this.IndexCount > 0) {
@@ -70,7 +74,17 @@ public class Mesh : Disposable {
             commandList.SetPipeline(this.GetOrCreatePipeline(this.Material, blendState, output).Pipeline);
             
             // Set projection view buffer.
-            commandList.SetGraphicsResourceSet(0, null);
+            commandList.SetGraphicsResourceSet(0, this._modelMatrixBuffer.ResourceSet);
+            
+            // Set material.
+            for (int i = 0; i < 11; i++) {
+                MaterialMapType mapType = (MaterialMapType) i;
+                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler, this.Material.TextureLayouts[i].Layout, mapType);
+
+                if (resourceSet != null) {
+                    commandList.SetGraphicsResourceSet((uint) i + 1, resourceSet);
+                }
+            }
             
             // Draw.
             commandList.DrawIndexed(this.IndexCount, 1, 0, 0, 0);

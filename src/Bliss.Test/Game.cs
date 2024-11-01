@@ -1,5 +1,6 @@
 using System.Numerics;
 using Bliss.CSharp;
+using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Graphics;
@@ -10,11 +11,13 @@ using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Contexts;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
+using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
 using Color = Bliss.CSharp.Colors.Color;
+using Rectangle = SixLabors.ImageSharp.Rectangle;
 using RectangleF = Bliss.CSharp.Transformations.RectangleF;
 
 namespace Bliss.Test;
@@ -40,6 +43,9 @@ public class Game : Disposable {
     private PrimitiveBatch _primitiveBatch;
     private Texture2D _texture;
     private Font _font;
+    
+    private Cam3D _cam3D;
+    private Model _model;
     
     public Game(GameSettings settings) {
         Instance = this;
@@ -131,8 +137,9 @@ public class Game : Disposable {
         this._primitiveBatch = new PrimitiveBatch(this.GraphicsDevice, this.MainWindow, this.FullScreenTexture.Framebuffer.OutputDescription);
         this._texture = new Texture2D(this.GraphicsDevice, "content/images/logo.png");
         this._font = new Font("content/fonts/fontoe.ttf");
-
-        Model model = Model.Load(this.GraphicsDevice, "content/model.glb");
+        
+        this._cam3D = new Cam3D((this.MainWindow.GetWidth(), this.MainWindow.GetHeight()), new Vector3(10, 10, 10), Vector3.Zero);
+        this._model = Model.Load(this.GraphicsDevice, "content/model.glb", false);
     }
 
     protected virtual void Update() { }
@@ -178,6 +185,10 @@ public class Game : Disposable {
         this._spriteBatch.DrawText(this._font, text, textPos, textSize);
         
         this._spriteBatch.End();
+        
+        this._cam3D.Begin3D();
+        this._model.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, SamplerType.Point, new Transform(), BlendState.AlphaBlend, Color.White);
+        this._cam3D.End3D();
         
         commandList.End();
         graphicsDevice.SubmitCommands(commandList);

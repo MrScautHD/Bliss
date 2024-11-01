@@ -6,11 +6,6 @@ namespace Bliss.CSharp.Materials;
 public enum MaterialMapType {
     
     /// <summary>
-    /// An undefined or uninitialized material map type.
-    /// </summary>
-    Unknown,
-    
-    /// <summary>
     /// The base color map.
     /// </summary>
     Albedo,

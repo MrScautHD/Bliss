@@ -82,7 +82,7 @@ public class Model : Disposable {
 
             effect ??= GetDefaultEffect(graphicsDevice);
             
-            // Load material maps.
+            // Load material maps. // TODO: loading texture are still broken!
             Material material = new Material(graphicsDevice, effect);
 
             if (scene.HasMaterials && loadMaterial) {
@@ -222,18 +222,19 @@ public class Model : Disposable {
             _ => null
         };
     }
-
+    
     /// <summary>
-    /// Renders the model by drawing all its meshes using the specified command list, output description, transform, blend state, and color.
+    /// Draws the model using the specified command list, output description, sampler type, transform, blend state, and color.
     /// </summary>
-    /// <param name="commandList">The command list used to issue rendering commands.</param>
-    /// <param name="output">The output description of the rendering target.</param>
-    /// <param name="transform">The transformation to apply to the model during rendering.</param>
-    /// <param name="blendState">The blend state to use during rendering.</param>
-    /// <param name="color">The color to apply to the model during rendering.</param>
-    public void Draw(CommandList commandList, OutputDescription output, Transform transform, BlendState blendState, Color color) {
+    /// <param name="commandList">The command list used to issue drawing commands.</param>
+    /// <param name="output">The output description of the render target.</param>
+    /// <param name="samplerType">The type of sampler to use during rendering.</param>
+    /// <param name="transform">The transformation applied to the model.</param>
+    /// <param name="blendState">The blend state used during rendering.</param>
+    /// <param name="color">The color applied to the model.</param>
+    public void Draw(CommandList commandList, OutputDescription output, SamplerType samplerType, Transform transform, BlendState blendState, Color color) {
         foreach (Mesh mesh in this.Meshes) {
-            mesh.Draw(commandList, output, transform, blendState, color);
+            mesh.Draw(commandList, output, samplerType, transform, blendState, color);
         }
     }
 
