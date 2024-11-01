@@ -10,6 +10,7 @@ using Bliss.CSharp.Graphics.Rendering.Passes;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Contexts;
 using Bliss.CSharp.Logging;
+using Bliss.CSharp.Materials;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
@@ -17,7 +18,7 @@ using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
 using Color = Bliss.CSharp.Colors.Color;
-using Rectangle = SixLabors.ImageSharp.Rectangle;
+using Rectangle = Bliss.CSharp.Transformations.Rectangle;
 using RectangleF = Bliss.CSharp.Transformations.RectangleF;
 
 namespace Bliss.Test;
@@ -138,8 +139,12 @@ public class Game : Disposable {
         this._texture = new Texture2D(this.GraphicsDevice, "content/images/logo.png");
         this._font = new Font("content/fonts/fontoe.ttf");
         
-        this._cam3D = new Cam3D((this.MainWindow.GetWidth(), this.MainWindow.GetHeight()), new Vector3(10, 10, 10), Vector3.Zero);
+        this._cam3D = new Cam3D((this.MainWindow.GetWidth(), this.MainWindow.GetHeight()), new Vector3(3, 3, 3), new Vector3(0, 1.5F, 0));
         this._model = Model.Load(this.GraphicsDevice, "content/model.glb", false);
+
+        for (int i = 0; i < this._model.Meshes.Length; i++) {
+            this._model.Meshes[i].Material.SetMapTexture(MaterialMapType.Albedo, new Texture2D(this.GraphicsDevice, "content/texture.png"));
+        }
     }
 
     protected virtual void Update() { }
@@ -154,37 +159,39 @@ public class Game : Disposable {
         commandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
         
         // PrimitiveBatch Drawing.
-        this._primitiveBatch.Begin(commandList);
+        //this._primitiveBatch.Begin(commandList);
+        //
+        //// Draw Rectangle.
+        //RectangleF rectangle = new RectangleF(this.MainWindow.GetWidth() / 2.0F - 500, this.MainWindow.GetHeight() / 2.0F - 250, 1000, 500);
+        //this._primitiveBatch.DrawFilledRectangle(rectangle, default, 0, new Color(144, 238, 144, 20));
+        //this._primitiveBatch.DrawEmptyRectangle(rectangle, 4, default, 0, Color.DarkGreen);
+        //
+        //this._primitiveBatch.DrawFilledCircle(new Vector2(50, 50), 50, 60, Color.Red);
+        //
+        //this._primitiveBatch.End();
+        //
+        //// SpriteBatch Drawing.
+        //this._spriteBatch.Begin(commandList);
+        //
+        //// Draw FPS.
+        //this._spriteBatch.DrawText(this._font, $"FPS: {(int) (1.0F / Time.Delta)}", new Vector2(5, 5), 18);
+        //
+        //// Draw texture.
+        //Vector2 texturePos = new Vector2(this.MainWindow.GetWidth() / 2.0F - (216.0F / 4.0F / 2.0F), this.MainWindow.GetHeight() / 2.0F - (85.0F / 4.0F / 2.0F));
+        //Vector2 textureScale = new Vector2(4.0F, 4.0F);
+        //Vector2 textureOrigin = new Vector2(216.0F / 2.0F, 85.0F / 2.0F);
+        //this._spriteBatch.DrawTexture(this._texture, SamplerType.Point, texturePos, default, textureScale, textureOrigin, 10);
+        //
+        //// Draw text.
+        //string text = "This is my first FONT!!!";
+        //int textSize = 36;
+        //Vector2 measureTextSize = this._font.MeasureText(text, textSize);
+        //Vector2 textPos = new Vector2(this.MainWindow.GetWidth() / 2.0F - (measureTextSize.X / 2.0F), this.MainWindow.GetHeight() / 1.25F - (measureTextSize.Y / 2.0F));
+        //this._spriteBatch.DrawText(this._font, text, textPos, textSize);
+        //
+        //this._spriteBatch.End();
         
-        // Draw Rectangle.
-        RectangleF rectangle = new RectangleF(this.MainWindow.GetWidth() / 2.0F - 500, this.MainWindow.GetHeight() / 2.0F - 250, 1000, 500);
-        this._primitiveBatch.DrawFilledRectangle(rectangle, default, 0, new Color(144, 238, 144, 20));
-        this._primitiveBatch.DrawEmptyRectangle(rectangle, 4, default, 0, Color.DarkGreen);
-        
-        this._primitiveBatch.DrawFilledCircle(new Vector2(50, 50), 50, 60, Color.Red);
-        
-        this._primitiveBatch.End();
-        
-        // SpriteBatch Drawing.
-        this._spriteBatch.Begin(commandList);
-        
-        // Draw FPS.
-        this._spriteBatch.DrawText(this._font, $"FPS: {(int) (1.0F / Time.Delta)}", new Vector2(5, 5), 18);
-        
-        // Draw texture.
-        Vector2 texturePos = new Vector2(this.MainWindow.GetWidth() / 2.0F - (216.0F / 4.0F / 2.0F), this.MainWindow.GetHeight() / 2.0F - (85.0F / 4.0F / 2.0F));
-        Vector2 textureScale = new Vector2(4.0F, 4.0F);
-        Vector2 textureOrigin = new Vector2(216.0F / 2.0F, 85.0F / 2.0F);
-        this._spriteBatch.DrawTexture(this._texture, SamplerType.Point, texturePos, default, textureScale, textureOrigin, 10);
-        
-        // Draw text.
-        string text = "This is my first FONT!!!";
-        int textSize = 36;
-        Vector2 measureTextSize = this._font.MeasureText(text, textSize);
-        Vector2 textPos = new Vector2(this.MainWindow.GetWidth() / 2.0F - (measureTextSize.X / 2.0F), this.MainWindow.GetHeight() / 1.25F - (measureTextSize.Y / 2.0F));
-        this._spriteBatch.DrawText(this._font, text, textPos, textSize);
-        
-        this._spriteBatch.End();
+        commandList.ClearDepthStencil(1);
         
         this._cam3D.Begin3D();
         this._model.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, SamplerType.Point, new Transform(), BlendState.AlphaBlend, Color.White);

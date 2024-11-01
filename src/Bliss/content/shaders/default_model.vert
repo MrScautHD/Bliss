@@ -26,6 +26,6 @@ void main() {
     fTangent = vTangent;
     fColor = vColor;
 
-    vec4 v4Pos = vec4(vPosition, 1.0);
-    gl_Position = uProjection * uView * (uTransformation * v4Pos);
+    vec4 v4Pos = vec4(vPosition, 1.0F);
+    gl_Position = uProjection * uView * uTransformation * v4Pos;
 }

@@ -100,12 +100,12 @@ public class Model : Disposable {
             for (int j = 0; j < mesh.VertexCount; j++) {
                 
                 // Set Position.
-                vertices[j].Position = ModelConversion.FromVector3D(mesh.Vertices[i]);
+                vertices[j].Position = ModelConversion.FromVector3D(mesh.Vertices[j]);
 
                 // Set TexCoord.
                 if (mesh.HasTextureCoords(0)) {
                     Vector3 texCoord = ModelConversion.FromVector3D(mesh.TextureCoordinateChannels[0][j]);
-                    Vector2 finalTexCoord = new Vector2(texCoord.X, texCoord.Y);
+                    Vector2 finalTexCoord = new Vector2(texCoord.X, -texCoord.Y);
                     
                     vertices[j].TexCoords = flipUv ? -finalTexCoord : finalTexCoord;
                 }
@@ -116,7 +116,7 @@ public class Model : Disposable {
                 // Set TexCoord2.
                 if (mesh.HasTextureCoords(1)) {
                     Vector3 texCoord2 = ModelConversion.FromVector3D(mesh.TextureCoordinateChannels[1][j]);
-                    Vector2 finalTexCoord2 = new Vector2(texCoord2.X, texCoord2.Y);
+                    Vector2 finalTexCoord2 = new Vector2(texCoord2.X, -texCoord2.Y);
                     
                     vertices[j].TexCoords2 = flipUv ? -finalTexCoord2 : finalTexCoord2;
                 }

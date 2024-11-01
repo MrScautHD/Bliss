@@ -1,4 +1,5 @@
 using System.Numerics;
+using System.Runtime.InteropServices;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Graphics;
@@ -38,12 +39,15 @@ public class Mesh : Disposable {
         this.VertexCount = (uint) this.Vertices.Length;
         this.IndexCount = (uint) this.Indices.Length;
         
-        uint vertexBufferSize = this.VertexCount * sizeof(float);
-        uint indexBufferSize = this.IndexCount * sizeof(uint);
+        uint vertexBufferSize = this.VertexCount * (uint) Marshal.SizeOf<Vertex3D>();
+        uint indexBufferSize = this.IndexCount * 4;
         
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
+        graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, vertices);
+
         this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
-        
+        graphicsDevice.UpdateBuffer(this._indexBuffer, 0, indices);
+
         this._modelMatrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "MatrixBuffer", 3, SimpleBufferType.Uniform, ShaderStages.Vertex);
         
         this._cachedPipelines = new Dictionary<Material, SimplePipeline>();
@@ -110,7 +114,7 @@ public class Mesh : Disposable {
                 BlendState = blendState.Description,
                 DepthStencilState = new DepthStencilStateDescription(true, true, ComparisonKind.LessEqual),
                 RasterizerState = new RasterizerStateDescription() {
-                    CullMode = FaceCullMode.Front,
+                    CullMode = FaceCullMode.Back, // TODO: Make cull mode option like blendstate...
                     FillMode = PolygonFillMode.Solid,
                     FrontFace = FrontFace.Clockwise,
                     DepthClipEnabled = true,

@@ -28,7 +28,7 @@ public class Cam3D : Disposable, ICam {
     public Cam3D((int, int) size, Vector3 position, Vector3 target, Vector3? up = default, ProjectionType projectionType = ProjectionType.Perspective, float fov = 70.0F) {
         this.Position = position;
         this.Target = target;
-        this.Up = up ?? -Vector3.UnitY; // TODO CHECK IF negative is right.
+        this.Up = up ?? Vector3.UnitY;
         this.ProjectionType = projectionType;
         this.Fov = fov;
         
