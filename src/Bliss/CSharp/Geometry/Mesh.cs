@@ -53,6 +53,7 @@ public class Mesh : Disposable {
         this._cachedPipelines = new Dictionary<Material, SimplePipeline>();
     }
 
+    // TODO: Take care of color.
     public void Draw(CommandList commandList, OutputDescription output, Transform transform, BlendState blendState, Color color) {
         Cam3D? cam3D = Cam3D.ActiveCamera;
 

@@ -9,6 +9,7 @@ using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 using Bliss.CSharp.Graphics.Rendering.Passes;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Contexts;
+using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
 using Bliss.CSharp.Textures;
@@ -140,7 +141,7 @@ public class Game : Disposable {
         this._texture = new Texture2D(this.GraphicsDevice, "content/images/logo.png");
         this._font = new Font("content/fonts/fontoe.ttf");
         
-        this._cam3D = new Cam3D((this.MainWindow.GetWidth(), this.MainWindow.GetHeight()), new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0));
+        this._cam3D = new Cam3D(this.MainWindow.GetWidth(), this.MainWindow.GetHeight(), new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0));
         this._model = Model.Load(this.GraphicsDevice, "content/model.glb", false);
         this._modelTexture = new Texture2D(this.GraphicsDevice, "content/texture.png");
 
@@ -182,12 +183,8 @@ public class Game : Disposable {
         Vector2 texturePos = new Vector2(this.MainWindow.GetWidth() / 2.0F - (216.0F / 4.0F / 2.0F), this.MainWindow.GetHeight() / 2.0F - (85.0F / 4.0F / 2.0F));
         Vector2 textureScale = new Vector2(4.0F, 4.0F);
         Vector2 textureOrigin = new Vector2(216.0F / 2.0F, 85.0F / 2.0F);
-        this._texture.SetSampler(SamplerType.Point);
         this._spriteBatch.DrawTexture(this._texture, texturePos, default, textureScale, textureOrigin, 10);
 
-        this._texture.SetSampler(SamplerType.Aniso4X);
-        this._spriteBatch.DrawTexture(this._texture, texturePos + new Vector2(140, 140), default, textureScale, textureOrigin, 10);
-        
         // Draw text.
         string text = "This is my first FONT!!!";
         int textSize = 36;
@@ -197,10 +194,24 @@ public class Game : Disposable {
         
         this._spriteBatch.End();
         
+        Logger.Error(this._cam3D.GetRotation() + "");
+
+        if (Input.IsKeyDown(KeyboardKey.A)) {
+            this._cam3D.SetYaw(this._cam3D.GetRotation().Y + 10 * (float) Time.Delta, true);
+        }
+        
+        if (Input.IsKeyDown(KeyboardKey.W)) {
+            this._cam3D.SetPitch(90, false);
+        }
+
+        if (Input.IsKeyDown(KeyboardKey.S)) {
+            this._cam3D.SetRoll(0);
+        }
+        
         // Drawing 3D.
-        this._cam3D.Begin3D();
+        this._cam3D.Begin();
         this._model.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform(), BlendState.Disabled, Color.Blue);
-        this._cam3D.End3D();
+        this._cam3D.End();
         
         commandList.End();
         graphicsDevice.SubmitCommands(commandList);

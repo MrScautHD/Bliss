@@ -1,7 +1,6 @@
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Effects;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
-using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
 using Veldrid;
 
