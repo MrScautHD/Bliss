@@ -1,4 +1,6 @@
 using System.Runtime.InteropServices;
+using Bliss.CSharp.Graphics;
+using Bliss.CSharp.Logging;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
@@ -6,7 +8,7 @@ using Rectangle = Bliss.CSharp.Transformations.Rectangle;
 
 namespace Bliss.CSharp.Textures;
 
-// TODO: Take a look if ImageSharp can get replaced with that one that just returns ImageResult.
+// TODO: Take a look if ImageSharp can get replaced with that one that just returns ImageResult. (Make a gif system)
 public class Texture2D : Disposable {
     
     /// <summary>
@@ -48,43 +50,83 @@ public class Texture2D : Disposable {
     /// Gets the device texture created from the images.
     /// </summary>
     public Texture DeviceTexture { get; private set; }
+
+    /// <summary>
+    /// Represents the sampler associated with the `Texture2D` instance, used for sampling textures.
+    /// </summary>
+    private Sampler _sampler;
     
     /// <summary>
     /// A dictionary that caches resource sets associated with samplers, used to avoid redundant resource set creation.
     /// </summary>
     private Dictionary<(Sampler, ResourceLayout), ResourceSet> _cachedResourceSets;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Texture2D"/> class using an image file path.
+    /// Loads the texture from the specified path and applies the given sampler, mipmap, and sRGB settings.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used for rendering the texture.</param>
+    /// <param name="path">The file path of the image to load as a texture.</param>
+    /// <param name="sampler">The sampler used for texture sampling.</param>
+    /// <param name="mipmap">Indicates whether to generate mipmaps for the texture.</param>
+    /// <param name="srgb">Indicates whether to use sRGB color space for the texture.</param>
+    public Texture2D(GraphicsDevice graphicsDevice, string path, Sampler? sampler = null, bool mipmap = true, bool srgb = false) : this(graphicsDevice, Image.Load<Rgba32>(path), sampler, mipmap, srgb) {
+        Logger.Info($"Texture loaded successfully from path: [{path}]");
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Texture2D"/> class using an image stream.
+    /// Loads the texture from the specified stream and applies the given sampler, mipmap, and sRGB settings.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used for rendering the texture.</param>
+    /// <param name="stream">The image stream to load as a texture.</param>
+    /// <param name="sampler">The sampler used for texture sampling.</param>
+    /// <param name="mipmap">Indicates whether to generate mipmaps for the texture.</param>
+    /// <param name="srgb">Indicates whether to use sRGB color space for the texture.</param>
+    public Texture2D(GraphicsDevice graphicsDevice, Stream stream, Sampler? sampler = null, bool mipmap = true, bool srgb = false) : this(graphicsDevice, Image.Load<Rgba32>(stream), sampler, mipmap, srgb) {
+        Logger.Info($"Texture loaded successfully from stream: [{stream}]");
+    }
     
     /// <summary>
-    /// Initializes a new instance of the <see cref="Texture2D"/> class with the specified graphics device, image file path, and optional mipmapping and sRGB settings.
+    /// Initializes a new instance of the <see cref="Texture2D"/> class using an <see cref="Image{Rgba32}"/> object.
+    /// Creates a device texture, applies the specified sampler, and stores mipmap and color format information.
     /// </summary>
-    /// <param name="graphicsDevice">The graphics device used to create the texture.</param>
-    /// <param name="path">The file path of the image to load.</param>
-    /// <param name="mipmap">Indicates whether to generate mipmaps for the texture. Default is true.</param>
-    /// <param name="srgb">Indicates whether to use sRGB format for the texture. Default is false.</param>
-    public Texture2D(GraphicsDevice graphicsDevice, string path, bool mipmap = true, bool srgb = false) : this(graphicsDevice, Image.Load<Rgba32>(path), mipmap, srgb) { }
-    
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Texture2D"/> class with the specified graphics device, image stream, and optional mipmapping and sRGB settings.
-    /// </summary>
-    /// <param name="graphicsDevice">The graphics device used to create the texture.</param>
-    /// <param name="stream">The stream containing the image to load.</param>
-    /// <param name="mipmap">Indicates whether to generate mipmaps for the texture. Default is true.</param>
-    /// <param name="srgb">Indicates whether to use sRGB format for the texture. Default is false.</param>
-    public Texture2D(GraphicsDevice graphicsDevice, Stream stream, bool mipmap = true, bool srgb = false) : this(graphicsDevice, Image.Load<Rgba32>(stream), mipmap, srgb) { }
-    
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Texture2D"/> class with the specified graphics device, image, and optional mipmapping and sRGB settings.
-    /// </summary>
-    /// <param name="graphicsDevice">The graphics device used to create the texture.</param>
-    /// <param name="image">The image to use for the texture.</param>
-    /// <param name="mipmap">Indicates whether to generate mipmaps for the texture. Default is true.</param>
-    /// <param name="srgb">Indicates whether to use sRGB format for the texture. Default is false.</param>
-    public Texture2D(GraphicsDevice graphicsDevice, Image<Rgba32> image, bool mipmap = true, bool srgb = false) {
+    /// <param name="graphicsDevice">The graphics device used for rendering the texture.</param>
+    /// <param name="image">The image object used to create the texture.</param>
+    /// <param name="sampler">The sampler used for texture sampling.</param>
+    /// <param name="mipmap">Indicates whether to generate mipmaps for the texture.</param>
+    /// <param name="srgb">Indicates whether to use sRGB color space for the texture.</param>
+    public Texture2D(GraphicsDevice graphicsDevice, Image<Rgba32> image, Sampler? sampler = null, bool mipmap = true, bool srgb = false) {
         this.GraphicsDevice = graphicsDevice;
         this.Images = mipmap ? MipmapHelper.GenerateMipmaps(image) : [image];
         this.Format = srgb ? PixelFormat.R8G8B8A8UNormSRgb : PixelFormat.R8G8B8A8UNorm;
         this.DeviceTexture = this.CreateDeviceTexture(graphicsDevice);
+        this._sampler = sampler ?? graphicsDevice.PointSampler;
         this._cachedResourceSets = new Dictionary<(Sampler, ResourceLayout), ResourceSet>();
+    }
+
+    /// <summary>
+    /// Gets the sampler associated with this texture.
+    /// </summary>
+    /// <returns>The sampler instance used by this texture.</returns>
+    public Sampler GetSampler() {
+        return this._sampler;
+    }
+
+    /// <summary>
+    /// Sets the sampler for the texture.
+    /// </summary>
+    /// <param name="sampler">The sampler to set.</param>
+    public void SetSampler(Sampler sampler) {
+        this._sampler = sampler;
+    }
+
+    /// <summary>
+    /// Sets the sampler for the texture using the specified sampler type.
+    /// </summary>
+    /// <param name="samplerType">The type of the sampler to be set for the texture.</param>
+    public void SetSampler(SamplerType samplerType) {
+        this._sampler = GraphicsHelper.GetSampler(this.GraphicsDevice, samplerType);
     }
 
     /// <summary>
@@ -111,7 +153,7 @@ public class Texture2D : Disposable {
     /// <typeparam name="T">The type of the data being updated. Must be an unmanaged type.</typeparam>
     /// <param name="data">The array of data to be used for updating the texture.</param>
     /// <param name="rectangle">An optional rectangle specifying the region of the texture to update. If null, the entire texture is updated.</param>
-    public void UpdateData<T>(T[] data, Rectangle? rectangle = null) where T : unmanaged {
+    public void UpdateData<T>(T[] data, Rectangle? rectangle = null) where T : unmanaged { // TODO: Make it possible if you change the texture data that the SpriteBatch updates to like 1. texture1 drawing 2. Update Data 3. texture1 drawing again but still uses the old data because it use the old texture (i think maybe it will works anyways)
         this.UpdateData(data.AsSpan(), rectangle);
     }
 

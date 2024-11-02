@@ -43,14 +43,14 @@ public class Font : Disposable {
     /// <exception cref="ApplicationException">Thrown if the file does not exist or is not a .ttf file.</exception>
     private static byte[] LoadFontData(string path) {
         if (!File.Exists(path)) {
-            throw new Exception($"No font file found in the path: [{path}]");
+            throw new Exception($"No font file found in path: [{path}]");
         }
 
         if (Path.GetExtension(path) != ".ttf") {
             throw new Exception($"This font type is not supported: [{Path.GetExtension(path)}]");
         }
         
-        Logger.Info($"Successfully loaded font data from the path: [{path}]");
+        Logger.Info($"Font data loaded successfully from path: [{path}]");
         return File.ReadAllBytes(path);
     }
 

@@ -1,5 +1,6 @@
 #version 450
 
+// TODO: For this layouts exists limits pls make a diffrent system for it idk maybe a texture and sampler list (Do Sampler2D like on ChatGPT) OR doing just 1 sampler for all.
 layout (set = 1, binding = 0) uniform texture2D fAlbedoTexture;
 layout (set = 1, binding = 1) uniform sampler fAlbedoTextureSampler;
 

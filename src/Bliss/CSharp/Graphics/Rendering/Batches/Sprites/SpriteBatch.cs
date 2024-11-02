@@ -274,7 +274,6 @@ public class SpriteBatch : Disposable {
     /// Draws a texture using the specified parameters, including position, source rectangle, scale, origin, rotation, color, and flipping.
     /// </summary>
     /// <param name="texture">The texture to be drawn.</param>
-    /// <param name="samplerType">The sampler state to use for texture sampling.</param>
     /// <param name="position">The position where the texture will be drawn.</param>
     /// <param name="sourceRect">The source rectangle within the texture. If null, the entire texture is used.</param>
     /// <param name="scale">The scale factor for resizing the texture. If null, the texture is drawn at its original size.</param>
@@ -282,7 +281,7 @@ public class SpriteBatch : Disposable {
     /// <param name="rotation">The rotation angle in radians.</param>
     /// <param name="color">The color to tint the texture. If null, the texture is drawn with its original colors.</param>
     /// <param name="flip">Specifies how the texture should be flipped horizontally or vertically.</param>
-    public void DrawTexture(Texture2D texture, SamplerType samplerType, Vector2 position, Rectangle? sourceRect = null, Vector2? scale = null, Vector2? origin = null, float rotation = 0.0F, Color? color = null, SpriteFlip flip = SpriteFlip.None) {
+    public void DrawTexture(Texture2D texture, Vector2 position, Rectangle? sourceRect = null, Vector2? scale = null, Vector2? origin = null, float rotation = 0.0F, Color? color = null, SpriteFlip flip = SpriteFlip.None) {
         Rectangle finalSource = sourceRect ?? new Rectangle(0, 0, (int) texture.Width, (int) texture.Height);
         Vector2 finalScale = scale ?? new Vector2(1.0F, 1.0F);
         Vector2 finalOrigin = origin ?? new Vector2(0.0F, 0.0F);
@@ -332,30 +331,29 @@ public class SpriteBatch : Disposable {
             Color = finalColor.ToRgbaFloat().ToVector4()
         };
         
-        this.AddQuad(texture, GraphicsHelper.GetSampler(this.GraphicsDevice, samplerType), topLeft, topRight, bottomLeft, bottomRight);
+        this.AddQuad(texture, topLeft, topRight, bottomLeft, bottomRight);
     }
     
     /// <summary>
     /// Adds a quad to the sprite batch using the provided texture, sampler, and sprite vertices.
     /// </summary>
     /// <param name="texture">The texture to be applied to the quad.</param>
-    /// <param name="sampler">The sampler state to be used for texture sampling.</param>
     /// <param name="topLeft">The vertex at the top-left corner of the quad.</param>
     /// <param name="topRight">The vertex at the top-right corner of the quad.</param>
     /// <param name="bottomLeft">The vertex at the bottom-left corner of the quad.</param>
     /// <param name="bottomRight">The vertex at the bottom-right corner of the quad.</param>
     /// <exception cref="Exception">Thrown if the SpriteBatch has not been begun before drawing.</exception>
-    public void AddQuad(Texture2D texture, Sampler sampler, SpriteVertex2D topLeft, SpriteVertex2D topRight, SpriteVertex2D bottomLeft, SpriteVertex2D bottomRight) {
+    public void AddQuad(Texture2D texture, SpriteVertex2D topLeft, SpriteVertex2D topRight, SpriteVertex2D bottomLeft, SpriteVertex2D bottomRight) {
         if (!this._begun) {
             throw new Exception("You must begin the SpriteBatch before calling draw methods!");
         }
         
-        if (this._currentTexture != texture || this._currentSampler != sampler) {
+        if (this._currentTexture != texture || this._currentSampler != texture.GetSampler()) {
             this.Flush();
         }
         
         this._currentTexture = texture;
-        this._currentSampler = sampler;
+        this._currentSampler = texture.GetSampler();
         
         if (this._currentBatchCount >= (this.Capacity - 1)) {
             this.Flush();

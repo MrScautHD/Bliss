@@ -53,15 +53,12 @@ public class Mesh : Disposable {
         this._cachedPipelines = new Dictionary<Material, SimplePipeline>();
     }
 
-    public void Draw(CommandList commandList, OutputDescription output, SamplerType samplerType, Transform transform, BlendState blendState, Color color) {
+    public void Draw(CommandList commandList, OutputDescription output, Transform transform, BlendState blendState, Color color) {
         Cam3D? cam3D = Cam3D.ActiveCamera;
 
         if (cam3D == null) {
             return;
         }
-
-        // Get Sampler.
-        Sampler sampler = GraphicsHelper.GetSampler(this.GraphicsDevice, samplerType);
         
         // Update matrix buffer.
         this._modelMatrixBuffer.SetValue(0, cam3D.GetProjection());
@@ -70,6 +67,10 @@ public class Mesh : Disposable {
         this._modelMatrixBuffer.UpdateBuffer();
         
         if (this.IndexCount > 0) {
+            
+            // Clear depth stencil.
+            commandList.ClearDepthStencil(1.0F);
+            
             // Set vertex and index buffer.
             commandList.SetVertexBuffer(0, this._vertexBuffer);
             commandList.SetIndexBuffer(this._indexBuffer, IndexFormat.UInt32);
@@ -83,7 +84,7 @@ public class Mesh : Disposable {
             // Set material.
             for (int i = 0; i < 11; i++) {
                 MaterialMapType mapType = (MaterialMapType) i;
-                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler, this.Material.TextureLayouts[i].Layout, mapType);
+                ResourceSet? resourceSet = this.Material.GetResourceSet(this.Material.TextureLayouts[i].Layout, mapType);
 
                 if (resourceSet != null) {
                     commandList.SetGraphicsResourceSet((uint) i + 1, resourceSet);
@@ -94,6 +95,10 @@ public class Mesh : Disposable {
             commandList.DrawIndexed(this.IndexCount, 1, 0, 0, 0);
         }
         else {
+            
+            // Clear depth stencil.
+            commandList.ClearDepthStencil(1.0F);
+            
             // Set vertex buffer.
             commandList.SetVertexBuffer(0, this._vertexBuffer);
             

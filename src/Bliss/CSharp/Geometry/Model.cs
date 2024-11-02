@@ -76,7 +76,7 @@ public class Model : Disposable {
                     effect = new Effect(graphicsDevice.ResourceFactory, Vertex3D.VertexLayout, Encoding.UTF8.GetBytes(shaderProperties.VertexShader), Encoding.UTF8.GetBytes(shaderProperties.FragmentShader));
                 }
                 else {
-                    Logger.Warn($"Failed loading material effect for the model at [{path}]");
+                    Logger.Warn($"Failed to load material effect for model at path: [{path}]");
                 }
             }
 
@@ -152,9 +152,9 @@ public class Model : Disposable {
             meshes.Add(new Mesh(graphicsDevice, material, vertices, indices.ToArray()));
         }
         
-        Logger.Info($"Model successfully loaded from the path: [{path}]");
+        Logger.Info($"Model loaded successfully from path: [{path}]");
         Logger.Info($"\t> Meshes: {meshes.Count}");
-        
+
         return new Model(graphicsDevice, meshes.ToArray());
     }
 
@@ -228,13 +228,12 @@ public class Model : Disposable {
     /// </summary>
     /// <param name="commandList">The command list used to issue drawing commands.</param>
     /// <param name="output">The output description of the render target.</param>
-    /// <param name="samplerType">The type of sampler to use during rendering.</param>
     /// <param name="transform">The transformation applied to the model.</param>
     /// <param name="blendState">The blend state used during rendering.</param>
     /// <param name="color">The color applied to the model.</param>
-    public void Draw(CommandList commandList, OutputDescription output, SamplerType samplerType, Transform transform, BlendState blendState, Color color) {
+    public void Draw(CommandList commandList, OutputDescription output, Transform transform, BlendState blendState, Color color) {
         foreach (Mesh mesh in this.Meshes) {
-            mesh.Draw(commandList, output, samplerType, transform, blendState, color);
+            mesh.Draw(commandList, output, transform, blendState, color);
         }
     }
 

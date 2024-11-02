@@ -1,6 +1,7 @@
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Effects;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
+using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
 using Veldrid;
 
@@ -26,15 +27,25 @@ public class Material : Disposable {
         this._maps = this.SetDefaultMaterialMaps();
         this._cachedResourceSets = new Dictionary<(Sampler, ResourceLayout), ResourceSet>();
     }
-    
-    public ResourceSet? GetResourceSet(Sampler sampler, ResourceLayout layout, MaterialMapType mapType) {
-        if (this._maps[mapType].Texture == null) {
+
+    /// <summary>
+    /// Retrieves the resource set associated with the specified resource layout and material map type.
+    /// </summary>
+    /// <param name="layout">The resource layout for which the resource set is to be retrieved.</param>
+    /// <param name="mapType">The type of the material map.</param>
+    /// <returns>The resource set associated with the specified layout and material map type, or null if the texture is not found.</returns>
+    public ResourceSet? GetResourceSet(ResourceLayout layout, MaterialMapType mapType) {
+        Texture2D? texture = this._maps[mapType].Texture;
+        
+        if (texture == null) {
             return null;
         }
+
+        Sampler sampler = texture.GetSampler();
         
         if (!this._cachedResourceSets.TryGetValue((sampler, layout), out ResourceSet? resourceSet)) {
-            ResourceSet newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(layout, this._maps[mapType].Texture!.DeviceTexture, sampler));
-                
+            ResourceSet newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(layout, texture.DeviceTexture, texture.GetSampler()));
+            
             this._cachedResourceSets.Add((sampler, layout), newResourceSet);
             return newResourceSet;
         }

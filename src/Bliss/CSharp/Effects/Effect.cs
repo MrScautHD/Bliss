@@ -51,14 +51,14 @@ public class Effect : Disposable {
     /// <returns>A byte array containing the bytecode from the shader file.</returns>
     private static byte[] LoadBytecode(string path) {
         if (!File.Exists(path)) {
-            throw new Exception($"No shader file found in the path: [{path}]");
+            throw new Exception($"No shader file found in path: [{path}]");
         }
         
         if (Path.GetExtension(path) != ".vert" && Path.GetExtension(path) != ".frag") {
             throw new Exception($"This shader type is not supported: [{Path.GetExtension(path)}]");
         }
         
-        Logger.Info($"Successfully loaded shader bytes from the path: [{path}]");
+        Logger.Info($"Shader bytes loaded successfully from path: [{path}]");
         return File.ReadAllBytes(path);
     }
 
