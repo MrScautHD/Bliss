@@ -5,6 +5,11 @@ namespace Bliss.CSharp.Camera;
 public interface ICam {
     
     /// <summary>
+    /// Updates the camera's state, recalculating its parameters as needed.
+    /// </summary>
+    void Update(double delta);
+    
+    /// <summary>
     /// Resizes the viewport and updates the aspect ratio based on the given width and height.
     /// </summary>
     /// <param name="width">The new width of the viewport.</param>

@@ -1,5 +1,6 @@
 using System.Numerics;
 using Bliss.CSharp.Graphics.Rendering;
+using Bliss.CSharp.Interact;
 using Vortice.Mathematics;
 using Viewport = Veldrid.Viewport;
 
@@ -51,6 +52,13 @@ public class Cam3D : ICam {
     public ProjectionType ProjectionType;
 
     /// <summary>
+    /// Defines the current operational mode of the camera.
+    /// This determines the behavior and control mechanics of the camera,
+    /// such as whether it's in Free mode, Orbital mode, etc.
+    /// </summary>
+    public CameraMode Mode;
+
+    /// <summary>
     /// Defines the field of view (FOV) angle for the camera, determining
     /// the extent of the observable world that is seen at any given moment.
     /// </summary>
@@ -75,8 +83,8 @@ public class Cam3D : ICam {
     private Frustum _frustum;
     
     /// <summary>
-    /// Initializes a new instance of the <see cref="Cam3D"/> class, configuring the camera's position,
-    /// target, orientation, projection type, field of view, and clipping planes.
+    /// Initializes a new instance of the <see cref="Cam3D"/> class, configuring the camera's position, 
+    /// target, orientation, projection type, camera mode, field of view, and clipping planes.
     /// </summary>
     /// <param name="width">The width of the viewport or rendering area.</param>
     /// <param name="height">The height of the viewport or rendering area.</param>
@@ -84,19 +92,59 @@ public class Cam3D : ICam {
     /// <param name="target">The point in space that the camera is looking at.</param>
     /// <param name="up">The up vector for the camera orientation; defaults to <see cref="Vector3.UnitY"/> if not specified.</param>
     /// <param name="projectionType">The type of projection to use (e.g., perspective or orthographic); defaults to <see cref="ProjectionType.Perspective"/>.</param>
+    /// <param name="mode">The camera mode, such as <see cref="CameraMode.Free"/> or other modes; defaults to <see cref="CameraMode.Free"/>.</param>
     /// <param name="fov">The field of view angle in degrees; defaults to 70.0 degrees.</param>
     /// <param name="nearPlane">The distance to the near clipping plane; defaults to 0.001 units.</param>
     /// <param name="farPlane">The distance to the far clipping plane; defaults to 1000.0 units.</param>
-    public Cam3D(int width, int height, Vector3 position, Vector3 target, Vector3? up = default, ProjectionType projectionType = ProjectionType.Perspective, float fov = 70.0F, float nearPlane = 0.001F, float farPlane = 1000.0F) {
+    public Cam3D(int width, int height, Vector3 position, Vector3 target, Vector3? up = default, ProjectionType projectionType = ProjectionType.Perspective, CameraMode mode = CameraMode.Free, float fov = 70.0F, float nearPlane = 0.001F, float farPlane = 1000.0F) {
         this.Position = position;
         this.Target = target;
         this.Up = up ?? Vector3.UnitY;
         this.ProjectionType = projectionType;
+        this.Mode = mode;
         this.Fov = fov;
         this.NearPlane = nearPlane;
         this.FarPlane = farPlane;
         this._frustum = new Frustum();
         this.Resize(width, height);
+    }
+
+    public void Update(double delta) {
+        switch (this.Mode) {
+            case CameraMode.Free:
+                if (!Input.IsGamepadAvailable(0)) {
+                    this.SetYaw(this.GetYaw() - Input.GetMouseDelta().X * 27.0F * (float) delta, true);
+                    this.SetPitch(this.GetPitch() - Input.GetMouseDelta().Y * 27.0F * (float) delta, true);
+
+                    //if (Input.IsKeyDown(KeyboardKey.W)) {
+                    //    this.MoveForward(this.MovementSpeed * Time.GetFrameTime(), true);
+                    //}
+                    //
+                    //if (Input.IsKeyDown(KeyboardKey.S)) {
+                    //    this.MoveForward(-this.MovementSpeed * Time.GetFrameTime(), true);
+                    //}
+                    //
+                    //if (Input.IsKeyDown(KeyboardKey.A)) {
+                    //    this.MoveRight(-this.MovementSpeed * Time.GetFrameTime(), true);
+                    //}
+                    //
+                    //if (Input.IsKeyDown(KeyboardKey.D)) {
+                    //    this.MoveRight(this.MovementSpeed * Time.GetFrameTime(), true);
+                    //}
+//
+                    //if (Input.IsKeyDown(KeyboardKey.Space)) {
+                    //    this.MoveUp(this.MovementSpeed * Time.GetFrameTime());
+                    //}
+                    //
+                    //if (Input.IsKeyDown(KeyboardKey.LeftShift)) {
+                    //    this.MoveUp(-this.MovementSpeed * Time.GetFrameTime());
+                    //}
+                }
+                else {
+                    
+                }
+                break;
+        }
     }
 
     /// <summary>
@@ -113,12 +161,15 @@ public class Cam3D : ICam {
     /// Generates the projection matrix based on the current camera settings, such as projection type, field of view (FOV), aspect ratio, near plane, and far plane distances.
     /// </summary>
     /// <returns>The calculated projection matrix.</returns>
-    public Matrix4x4 GetProjection() {
+    public Matrix4x4 GetProjection() { // TODO: Create it not everytime it get called just one time!
         if (this.ProjectionType == ProjectionType.Perspective) {
-            return Matrix4x4.CreatePerspectiveFieldOfView(MathHelper.ToRadians(this.Fov), this.AspectRatio, this.NearPlane, this.FarPlane);
+            return Matrix4x4.CreatePerspectiveFieldOfView(float.DegreesToRadians(this.Fov), this.AspectRatio, this.NearPlane, this.FarPlane);
         }
+
+        float top = this.Fov / 2.0F;
+        float right = top * this.AspectRatio;
         
-        return Matrix4x4.CreateOrthographicOffCenter(-40, 40, 40, -40, this.NearPlane, this.FarPlane);
+        return Matrix4x4.CreateOrthographicOffCenter(-right, right, -top, top, this.NearPlane, this.FarPlane);
     }
 
     /// <summary>
@@ -164,7 +215,7 @@ public class Cam3D : ICam {
     /// </summary>
     /// <returns>A Vector3 representing the current rotation of the camera.</returns>
     public Vector3 GetRotation() {
-        Matrix4x4 lookAt = Matrix4x4.CreateLookAt(this.Position, this.Target, this.Up);
+        Matrix4x4 lookAt = this.GetView();
         Vector3 rotation = Quaternion.CreateFromRotationMatrix(lookAt).ToEuler();
         return new Vector3(float.RadiansToDegrees(rotation.X), float.RadiansToDegrees(rotation.Y), float.RadiansToDegrees(rotation.Z));
     }
@@ -203,19 +254,35 @@ public class Cam3D : ICam {
     public float GetPitch() {
         return this.GetRotation().X;
     }
-    
-    public void SetPitch(float angle, bool rotateAroundTarget) { // TODO: This is fully broken i need to check it after dinner.
+
+    /// <summary>
+    /// Sets the pitch angle of the camera, rotating around the specified target if indicated.
+    /// </summary>
+    /// <param name="angle">The desired pitch angle in degrees.</param>
+    /// <param name="rotateAroundTarget">If true, rotates the camera around the target point; otherwise rotates around its own position.</param>
+    public void SetPitch(float angle, bool rotateAroundTarget) { // TODO: STILL BROKEN!
         float difference = angle - this.GetPitch();
-        Vector3 right = this.GetRight();
-        Matrix4x4 rotationMatrix = Matrix4x4.CreateFromAxisAngle(right, float.DegreesToRadians(difference));
+        Matrix4x4 rotationMatrix = Matrix4x4.CreateFromAxisAngle(this.GetRight(), float.DegreesToRadians(difference));
 
         if (rotateAroundTarget) {
-            Vector3 direction = Vector3.Transform(this.Position - this.Target, rotationMatrix);
-            this.Position = this.Target + direction;
+            Vector3 direction = Vector3.TransformNormal(this.Position - this.Target, rotationMatrix);
+        
+            if (Math.Abs(Vector3.Dot(Vector3.UnitY, Vector3.Normalize(direction))) > 0.99f) {
+                return;
+            }
+
+            Vector3 finalDirection = Vector3.Normalize(direction) * (this.Position - this.Target).Length();
+            this.Position = this.Target + finalDirection;
         }
         else {
-            Vector3 direction = Vector3.Transform(this.Target - this.Position, rotationMatrix);
-            this.Target = this.Position + direction;
+            Vector3 direction = Vector3.TransformNormal(this.Target - this.Position, rotationMatrix);
+        
+            if (Math.Abs(Vector3.Dot(Vector3.UnitY, Vector3.Normalize(direction))) > 0.99f) {
+                return;
+            }
+
+            Vector3 finalDirection = Vector3.Normalize(direction) * (this.Target - this.Position).Length();
+            this.Target = this.Position + finalDirection;
         }
     }
     
@@ -244,7 +311,7 @@ public class Cam3D : ICam {
     /// </summary>
     /// <returns>The updated frustum containing the extracted planes.</returns>
     public Frustum GetFrustum() {
-        this._frustum.Extract(this.GetView() * this.GetProjection());
+        this._frustum.Extract(this.GetProjection() * this.GetView());
         return this._frustum;
     }
 } 

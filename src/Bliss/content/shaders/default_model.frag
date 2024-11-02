@@ -34,6 +34,8 @@ layout (set = 10, binding = 19) uniform sampler fPrefilterTextureSampler;
 layout (set = 11, binding = 20) uniform texture2D fBrdfTexture;
 layout (set = 11, binding = 21) uniform sampler fBrdfTextureSampler;
 
+//TODO: This is eating perfomance ^^
+
 layout (location = 0) in vec2 fTexCoords;
 layout (location = 1) in vec2 fTexCoords2;
 layout (location = 2) in vec3 fNormal;

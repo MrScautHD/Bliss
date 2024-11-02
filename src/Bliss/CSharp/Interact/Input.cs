@@ -109,6 +109,14 @@ public static class Input {
     }
 
     /// <summary>
+    /// Retrieves the change in mouse position since the last frame.
+    /// </summary>
+    /// <returns>A Vector2 representing the delta of the mouse movement.</returns>
+    public static Vector2 GetMouseDelta() {
+        return InputContext.GetMouseDelta();
+    }
+
+    /// <summary>
     /// Sets the mouse position to the specified coordinates.
     /// </summary>
     /// <param name="position">The position to set the mouse to.</param>

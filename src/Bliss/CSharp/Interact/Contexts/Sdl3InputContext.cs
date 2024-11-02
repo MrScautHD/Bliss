@@ -15,6 +15,16 @@ public class Sdl3InputContext : Disposable, IInputContext {
     /// Represents the window that this input context is associated with.
     /// </summary>
     private IWindow _window;
+    
+    /// <summary>
+    /// Stores the change in mouse position since the last frame.
+    /// </summary>
+    private Vector2 _mouseDelta;
+    
+    /// <summary>
+    /// Stores the previous mouse movement delta values.
+    /// </summary>
+    private Vector2 _previousMousePos;
 
     /// <summary>
     /// Stores the latest position of the mouse movement.
@@ -117,6 +127,9 @@ public class Sdl3InputContext : Disposable, IInputContext {
     }
     
     public unsafe void End() {
+        this._mouseDelta = this.GetMousePosition() - (this.IsRelativeMouseModeEnabled() ? new Vector2(100, 100) : this._previousMousePos); // TODO: Remove the relative mouse mode or do it different!
+        this._previousMousePos = this.GetMousePosition();
+        
         this._mouseMoving = Vector2.Zero;
         this._mouseScrolling = Vector2.Zero;
         this._mouseButtonsPressed.Clear();
@@ -163,6 +176,7 @@ public class Sdl3InputContext : Disposable, IInputContext {
 
     public unsafe void EnableRelativeMouseMode() {
         SDL3.SDL_SetWindowRelativeMouseMode((SDL_Window*) this._window.Handle, SDL_bool.SDL_TRUE);
+        SDL3.SDL_WarpMouseInWindow((SDL_Window*) this._window.Handle, 100, 100); // TODO: Impliment it better! (just for test here)
     }
 
     public unsafe void DisableRelativeMouseMode() {
@@ -175,6 +189,10 @@ public class Sdl3InputContext : Disposable, IInputContext {
 
         SDL3.SDL_GetMouseState(&x, &y);
         return new Vector2(x, y);
+    }
+
+    public Vector2 GetMouseDelta() {
+        return this._mouseDelta;
     }
 
     public unsafe void SetMousePosition(Vector2 position) {

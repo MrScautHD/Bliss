@@ -69,6 +69,12 @@ public interface IInputContext : IDisposable {
     /// </summary>
     /// <returns>The mouse position as a <see cref="Vector2"/>.</returns>
     Vector2 GetMousePosition();
+
+    /// <summary>
+    /// Retrieves the change in mouse position since the last frame.
+    /// </summary>
+    /// <returns>A Vector2 representing the delta of the mouse movement.</returns>
+    Vector2 GetMouseDelta();
     
     /// <summary>
     /// Sets the mouse position to the specified coordinates.

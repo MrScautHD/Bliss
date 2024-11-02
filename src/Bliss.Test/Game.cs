@@ -48,7 +48,9 @@ public class Game : Disposable {
     
     private Cam3D _cam3D;
     private Model _model;
+    private Model _planeModel;
     private Texture2D _modelTexture;
+    private Texture2D _planeTexture;
     
     public Game(GameSettings settings) {
         Instance = this;
@@ -143,14 +145,22 @@ public class Game : Disposable {
         
         this._cam3D = new Cam3D(this.MainWindow.GetWidth(), this.MainWindow.GetHeight(), new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0));
         this._model = Model.Load(this.GraphicsDevice, "content/model.glb", false);
+        this._planeModel = Model.Load(this.GraphicsDevice, "content/plane.glb", false);
         this._modelTexture = new Texture2D(this.GraphicsDevice, "content/texture.png");
+        this._planeTexture = new Texture2D(this.GraphicsDevice, "content/plane_texture.png");
 
         foreach (Mesh mesh in this._model.Meshes) {
             mesh.Material.SetMapTexture(MaterialMapType.Albedo, this._modelTexture);
         }
+        
+        foreach (Mesh mesh in this._planeModel.Meshes) {
+            mesh.Material.SetMapTexture(MaterialMapType.Albedo, this._planeTexture);
+        }
     }
 
-    protected virtual void Update() { }
+    protected virtual void Update() {
+        this._cam3D.Update((float) Time.Delta);
+    }
     
     protected virtual void AfterUpdate() { }
 
@@ -165,9 +175,9 @@ public class Game : Disposable {
         this._primitiveBatch.Begin(commandList);
         
         // Draw Rectangle.
-        RectangleF rectangle = new RectangleF(this.MainWindow.GetWidth() / 2.0F - 500, this.MainWindow.GetHeight() / 2.0F - 250, 1000, 500);
-        this._primitiveBatch.DrawFilledRectangle(rectangle, default, 0, new Color(144, 238, 144, 20));
-        this._primitiveBatch.DrawEmptyRectangle(rectangle, 4, default, 0, Color.DarkGreen);
+        //RectangleF rectangle = new RectangleF(this.MainWindow.GetWidth() / 2.0F - 500, this.MainWindow.GetHeight() / 2.0F - 250, 1000, 500);
+        //this._primitiveBatch.DrawFilledRectangle(rectangle, default, 0, new Color(144, 238, 144, 20));
+        //this._primitiveBatch.DrawEmptyRectangle(rectangle, 4, default, 0, Color.DarkGreen);
         
         this._primitiveBatch.DrawFilledCircle(new Vector2(50, 50), 50, 60, Color.Red);
         
@@ -180,37 +190,36 @@ public class Game : Disposable {
         this._spriteBatch.DrawText(this._font, $"FPS: {(int) (1.0F / Time.Delta)}", new Vector2(5, 5), 18);
         
         // Draw texture.
-        Vector2 texturePos = new Vector2(this.MainWindow.GetWidth() / 2.0F - (216.0F / 4.0F / 2.0F), this.MainWindow.GetHeight() / 2.0F - (85.0F / 4.0F / 2.0F));
-        Vector2 textureScale = new Vector2(4.0F, 4.0F);
-        Vector2 textureOrigin = new Vector2(216.0F / 2.0F, 85.0F / 2.0F);
-        this._spriteBatch.DrawTexture(this._texture, texturePos, default, textureScale, textureOrigin, 10);
+        //Vector2 texturePos = new Vector2(this.MainWindow.GetWidth() / 2.0F - (216.0F / 4.0F / 2.0F), this.MainWindow.GetHeight() / 2.0F - (85.0F / 4.0F / 2.0F));
+        //Vector2 textureScale = new Vector2(4.0F, 4.0F);
+        //Vector2 textureOrigin = new Vector2(216.0F / 2.0F, 85.0F / 2.0F);
+        //this._spriteBatch.DrawTexture(this._texture, texturePos, default, textureScale, textureOrigin, 10);
 
         // Draw text.
-        string text = "This is my first FONT!!!";
-        int textSize = 36;
-        Vector2 measureTextSize = this._font.MeasureText(text, textSize);
-        Vector2 textPos = new Vector2(this.MainWindow.GetWidth() / 2.0F - (measureTextSize.X / 2.0F), this.MainWindow.GetHeight() / 1.25F - (measureTextSize.Y / 2.0F));
-        this._spriteBatch.DrawText(this._font, text, textPos, textSize);
+        //string text = "This is my first FONT!!!";
+        //int textSize = 36;
+        //Vector2 measureTextSize = this._font.MeasureText(text, textSize);
+        //Vector2 textPos = new Vector2(this.MainWindow.GetWidth() / 2.0F - (measureTextSize.X / 2.0F), this.MainWindow.GetHeight() / 1.25F - (measureTextSize.Y / 2.0F));
+        //this._spriteBatch.DrawText(this._font, text, textPos, textSize);
         
         this._spriteBatch.End();
         
-        Logger.Error(this._cam3D.GetRotation() + "");
+        //Logger.Error(this._cam3D.GetRotation() + "        " + this._cam3D.Up + "");
+        
+        Input.EnableRelativeMouseMode();
 
         if (Input.IsKeyDown(KeyboardKey.A)) {
-            this._cam3D.SetYaw(this._cam3D.GetRotation().Y + 10 * (float) Time.Delta, true);
-        }
-        
-        if (Input.IsKeyDown(KeyboardKey.W)) {
-            this._cam3D.SetPitch(90, false);
+            this._cam3D.SetRoll(this._cam3D.GetRoll() + 24 * (float) Time.Delta);
         }
 
-        if (Input.IsKeyDown(KeyboardKey.S)) {
-            this._cam3D.SetRoll(0);
+        if (Input.IsKeyDown(KeyboardKey.D)) {
+            this._cam3D.SetRoll(this._cam3D.GetRoll() - 24 * (float) Time.Delta);
         }
         
         // Drawing 3D.
         this._cam3D.Begin();
-        this._model.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform(), BlendState.Disabled, Color.Blue);
+        this._planeModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform(), BlendState.Disabled, Color.White);
+        this._model.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(0, 0.1F, 0)}, BlendState.Disabled, Color.Blue);
         this._cam3D.End();
         
         commandList.End();
