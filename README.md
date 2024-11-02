@@ -37,6 +37,7 @@ Coming SoOn!
 - [`SixLabors.ImageSharp`](https://www.nuget.org/packages/SixLabors.ImageSharp)
 - [`AssimpNet`](https://www.nuget.org/packages/AssimpNet)
 - [`FontStashSharp`](https://www.nuget.org/packages/FontStashSharp.Base)
+- [`MiniAudioEx`](https://www.nuget.org/packages/JAJ.Packages.MiniAudioEx)
 
 # 💻 Platforms
 [<img src="https://github.com/MrScautHD/Sparkle/assets/65916181/a92bd5fa-517b-44c2-ab58-cc01b5ae5751" alt="windows" width="70" height="70" align="left">](https://www.microsoft.com/de-at/windows)
