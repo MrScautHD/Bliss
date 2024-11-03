@@ -1,4 +1,5 @@
 using System.Numerics;
+using Veldrid;
 
 namespace Bliss.CSharp.Camera;
 
@@ -14,7 +15,7 @@ public interface ICam {
     /// </summary>
     /// <param name="width">The new width of the viewport.</param>
     /// <param name="height">The new height of the viewport.</param>
-    void Resize(int width, int height);
+    void Resize(uint width, uint height);
 
     /// <summary>
     /// Generates the projection matrix based on the current camera settings, such as projection type, field of view (FOV), aspect ratio, near plane, and far plane distances.
@@ -31,10 +32,10 @@ public interface ICam {
     /// <summary>
     /// Initializes the camera for rendering or capturing by performing any necessary setup operations.
     /// </summary>
-    void Begin();
+    void Begin(CommandList commandList);
 
     /// <summary>
     /// Finalizes the camera operations, ensuring any necessary cleanup or finalization steps are performed.
     /// </summary>
-    void End();
+    void End(CommandList commandList);
 }

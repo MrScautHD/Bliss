@@ -168,7 +168,7 @@ public class PrimitiveBatch : Disposable {
         Matrix4x4 finalView = view ?? Matrix4x4.Identity;
         Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
 
-        this._projViewBuffer.SetValue(0, finalView * finalProj, true);
+        this._projViewBuffer.SetValueImmediate(0, finalView * finalProj);
         this.DrawCallCount = 0;
     }
     

@@ -78,26 +78,48 @@ public class SimpleBuffer<T> : Disposable, ISimpleBuffer where T : unmanaged {
     }
 
     /// <summary>
-    /// Sets the value at the specified index of the buffer and optionally updates the GPU buffer.
+    /// Sets the value at the specified index in the buffer.
     /// </summary>
-    /// <param name="index">The index at which the value will be set.</param>
-    /// <param name="value">The value to set at the specified index.</param>
-    /// <param name="updateBuffer">Indicates whether the GPU buffer should be updated with the new value.</param>
-    public void SetValue(int index, T value, bool updateBuffer = false) {
+    /// <param name="index">The index in the buffer where the value should be set.</param>
+    /// <param name="value">The value to set in the buffer.</param>
+    public void SetValue(int index, T value) {
         this.Data[index] = value;
-        
-        if (updateBuffer) {
-            this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, (uint) (index * Marshal.SizeOf<T>()), this.Data[index]);
-        }
     }
-    
+
     /// <summary>
-    /// Updates the GPU buffer with the current data stored in the <see cref="Data"/> array.
-    /// This method synchronizes the CPU-side data with the GPU-side buffer by copying the
-    /// contents of the <see cref="Data"/> array into the <see cref="DeviceBuffer"/>.
+    /// Sets the value of the buffer at the specified index and updates the buffer on the graphics device immediately.
     /// </summary>
-    public void UpdateBuffer() {
+    /// <param name="index">The index at which the value should be set.</param>
+    /// <param name="value">The value to set at the specified index.</param>
+    public void SetValueImmediate(int index, T value) {
+        this.Data[index] = value;
+        this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, (uint) (index * Marshal.SizeOf<T>()), this.Data[index]);
+    }
+
+    /// <summary>
+    /// Sets the value at the specified index in the buffer and schedules a command to update the buffer on the command list.
+    /// </summary>
+    /// <param name="commandList">The command list to which the buffer update command will be added.</param>
+    /// <param name="index">The index of the buffer element to set.</param>
+    /// <param name="value">The value to set at the specified index.</param>
+    public void SetValueDeferred(CommandList commandList, int index, T value) {
+        this.Data[index] = value;
+        commandList.UpdateBuffer(this.DeviceBuffer, (uint) (index * Marshal.SizeOf<T>()), this.Data[index]);
+    }
+
+    /// <summary>
+    /// Immediately updates the GPU buffer with the current data held in the CPU buffer.
+    /// </summary>
+    public void UpdateBufferImmediate() {
         this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, 0, this.Data);
+    }
+
+    /// <summary>
+    /// Updates the contents of the device buffer with the current data.
+    /// </summary>
+    /// <param name="commandList">The command list used to record the buffer update command.</param>
+    public void UpdateBuffer(CommandList commandList) {
+        commandList.UpdateBuffer(this.DeviceBuffer, 0, this.Data);
     }
 
     /// <summary>

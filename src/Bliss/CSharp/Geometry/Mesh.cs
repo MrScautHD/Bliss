@@ -65,12 +65,9 @@ public class Mesh : Disposable {
         this._modelMatrixBuffer.SetValue(0, cam3D.GetProjection());
         this._modelMatrixBuffer.SetValue(1, cam3D.GetView());
         this._modelMatrixBuffer.SetValue(2, transform.GetTransform());
-        this._modelMatrixBuffer.UpdateBuffer();
+        this._modelMatrixBuffer.UpdateBuffer(commandList);
         
         if (this.IndexCount > 0) {
-            
-            // Clear depth stencil.
-            commandList.ClearDepthStencil(1.0F); // TODO: Move you to Begin3d();
             
             // Set vertex and index buffer.
             commandList.SetVertexBuffer(0, this._vertexBuffer);
@@ -97,9 +94,6 @@ public class Mesh : Disposable {
         }
         else {
             
-            // Clear depth stencil.
-            commandList.ClearDepthStencil(1.0F);
-            
             // Set vertex buffer.
             commandList.SetVertexBuffer(0, this._vertexBuffer);
             
@@ -107,7 +101,7 @@ public class Mesh : Disposable {
             commandList.SetPipeline(this.GetOrCreatePipeline(this.Material, blendState, output).Pipeline);
             
             // Set projection view buffer.
-            commandList.SetGraphicsResourceSet(0, null);
+            commandList.SetGraphicsResourceSet(0, this._modelMatrixBuffer.ResourceSet);
             
             // Draw.
             commandList.Draw(this.VertexCount);

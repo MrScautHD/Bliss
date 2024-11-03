@@ -9,7 +9,6 @@ using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 using Bliss.CSharp.Graphics.Rendering.Passes;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Contexts;
-using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
 using Bliss.CSharp.Textures;
@@ -20,7 +19,6 @@ using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
 using Color = Bliss.CSharp.Colors.Color;
 using Rectangle = Bliss.CSharp.Transformations.Rectangle;
-using RectangleF = Bliss.CSharp.Transformations.RectangleF;
 
 namespace Bliss.Test;
 
@@ -143,7 +141,7 @@ public class Game : Disposable {
         this._texture = new Texture2D(this.GraphicsDevice, "content/images/logo.png");
         this._font = new Font("content/fonts/fontoe.ttf");
         
-        this._cam3D = new Cam3D(this.MainWindow.GetWidth(), this.MainWindow.GetHeight(), new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0));
+        this._cam3D = new Cam3D((uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0), default, ProjectionType.Perspective, CameraMode.Orbital);
         this._model = Model.Load(this.GraphicsDevice, "content/model.glb", false);
         this._planeModel = Model.Load(this.GraphicsDevice, "content/plane.glb", false);
         this._modelTexture = new Texture2D(this.GraphicsDevice, "content/texture.png");
@@ -170,6 +168,25 @@ public class Game : Disposable {
         commandList.Begin();
         commandList.SetFramebuffer(this.FullScreenTexture.Framebuffer);
         commandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
+        
+        //Input.EnableRelativeMouseMode();
+
+        // Drawing 3D.
+        this._cam3D.Begin(commandList);
+        
+        // Drawing Plane
+        this._planeModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform(), BlendState.Disabled, Color.White);
+        
+        // Draw Player
+        this._model.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, BlendState.Disabled, Color.Blue);
+        
+        for (int i = 0; i < 60; i++) {
+            for (int j = 0; j < 60; j++) {
+                this._model.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(i * 2.5F, 0.05F, j * 2.5F)}, BlendState.Disabled, Color.Blue);
+            }
+        }
+        
+        this._cam3D.End(commandList);
         
         // PrimitiveBatch Drawing.
         this._primitiveBatch.Begin(commandList);
@@ -204,24 +221,6 @@ public class Game : Disposable {
         
         this._spriteBatch.End();
         
-        //Logger.Error(this._cam3D.GetRotation() + "        " + this._cam3D.Up + "");
-        
-        Input.EnableRelativeMouseMode();
-
-        //if (Input.IsKeyDown(KeyboardKey.A)) {
-        //    this._cam3D.SetRoll(this._cam3D.GetRoll() + 30.0F * (float) Time.Delta);
-        //}
-//
-        //if (Input.IsKeyDown(KeyboardKey.D)) {
-        //    this._cam3D.SetRoll(this._cam3D.GetRoll() - 30.0F * (float) Time.Delta);
-        //}
-        
-        // Drawing 3D.
-        this._cam3D.Begin();
-        this._planeModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform(), BlendState.Disabled, Color.White);
-        this._model.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, BlendState.Disabled, Color.Blue);
-        this._cam3D.End();
-        
         commandList.End();
         graphicsDevice.SubmitCommands(commandList);
         
@@ -246,6 +245,7 @@ public class Game : Disposable {
     protected virtual void OnResize(Rectangle rectangle) {
         this.GraphicsDevice.MainSwapchain.Resize((uint) rectangle.Width, (uint) rectangle.Height);
         this.FullScreenTexture.Resize((uint) rectangle.Width, (uint) rectangle.Height);
+        this._cam3D.Resize((uint) rectangle.Width, (uint) rectangle.Height);
     }
 
     protected virtual void OnClose() { }

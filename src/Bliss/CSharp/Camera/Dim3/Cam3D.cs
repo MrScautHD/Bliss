@@ -3,8 +3,8 @@ using Bliss.CSharp.Graphics.Rendering;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Gamepads;
 using Bliss.CSharp.Interact.Keyboards;
-using Bliss.CSharp.Logging;
 using Bliss.CSharp.Mathematics;
+using Veldrid;
 using Vortice.Mathematics;
 using Viewport = Veldrid.Viewport;
 
@@ -106,6 +106,20 @@ public class Cam3D : ICam {
     /// visible field and boundary for objects in the 3D scene.
     /// </summary>
     private Frustum _frustum;
+
+    /// <summary>
+    /// Stores the projection matrix used for transforming 3D coordinates to 2D screen coordinates.
+    /// Updated based on the camera's projection type, field of view, aspect ratio, and near/far planes.
+    /// Accessed to retrieve the current projection matrix for rendering.
+    /// </summary>
+    private Matrix4x4 _projection;
+
+    /// <summary>
+    /// Stores the view matrix of the camera.
+    /// The view matrix represents the transformation from world coordinates to camera coordinates.
+    /// It is used in rendering to position and orient the camera in the scene.
+    /// </summary>
+    private Matrix4x4 _view;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="Cam3D"/> class, configuring the camera's position, 
@@ -121,7 +135,7 @@ public class Cam3D : ICam {
     /// <param name="fov">The field of view angle in degrees; defaults to 70.0 degrees.</param>
     /// <param name="nearPlane">The distance to the near clipping plane; defaults to 0.001 units.</param>
     /// <param name="farPlane">The distance to the far clipping plane; defaults to 1000.0 units.</param>
-    public Cam3D(int width, int height, Vector3 position, Vector3 target, Vector3? up = default, ProjectionType projectionType = ProjectionType.Perspective, CameraMode mode = CameraMode.ThirdPerson, float fov = 70.0F, float nearPlane = 0.001F, float farPlane = 1000.0F) {
+    public Cam3D(uint width, uint height, Vector3 position, Vector3 target, Vector3? up = default, ProjectionType projectionType = ProjectionType.Perspective, CameraMode mode = CameraMode.Free, float fov = 70.0F, float nearPlane = 0.001F, float farPlane = 1000.0F) {
         this.Position = position;
         this.Target = target;
         this.Up = up ?? Vector3.UnitY;
@@ -232,7 +246,7 @@ public class Cam3D : ICam {
     /// </summary>
     /// <param name="width">The new width of the viewport.</param>
     /// <param name="height">The new height of the viewport.</param>
-    public void Resize(int width, int height) {
+    public void Resize(uint width, uint height) {
         this.Viewport = new Viewport(0, 0, width, height, 0, 0);
         this.AspectRatio = (float) width / (float) height;
     }
@@ -241,36 +255,41 @@ public class Cam3D : ICam {
     /// Generates the projection matrix based on the current camera settings, such as projection type, field of view (FOV), aspect ratio, near plane, and far plane distances.
     /// </summary>
     /// <returns>The calculated projection matrix.</returns>
-    public Matrix4x4 GetProjection() { // TODO: Create it not everytime it get called just one time!
-        if (this.ProjectionType == ProjectionType.Perspective) {
-            return Matrix4x4.CreatePerspectiveFieldOfView(float.DegreesToRadians(this.Fov), this.AspectRatio, this.NearPlane, this.FarPlane);
-        }
-
-        float top = this.Fov / 2.0F;
-        float right = top * this.AspectRatio;
-        
-        return Matrix4x4.CreateOrthographicOffCenter(-right, right, -top, top, this.NearPlane, this.FarPlane);
+    public Matrix4x4 GetProjection() {
+        return this._projection;
     }
 
     /// <summary>
     /// Constructs and returns the view matrix for the camera based on its position, target, and up vector.
     /// </summary>
     /// <returns>The view matrix of the camera.</returns>
-    public Matrix4x4 GetView() { // TODO: Create it not everytime it get called just one time!
-        return Matrix4x4.CreateLookAt(this.Position, this.Target, this.Up);
+    public Matrix4x4 GetView() {
+        return this._view;
     }
     
     /// <summary>
     /// Sets the current instance of Cam3D as the active camera for rendering 3D scenes.
     /// </summary>
-    public void Begin() {
+    public void Begin(CommandList commandList) {
+        
+        // Update projection and view matrix.
+        this.UpdateProjection();
+        this.UpdateView();
+        
+        // Clear depth stencil.
+        commandList.ClearDepthStencil(1.0F);
+        
         ActiveCamera = this;
     }
 
     /// <summary>
     /// Ends the current 3D rendering session and deactivates the camera.
     /// </summary>
-    public void End() {
+    public void End(CommandList commandList) {
+        
+        // Clear depth stencil (default).
+        commandList.ClearDepthStencil(0.0F);
+        
         ActiveCamera = null;
     }
     
@@ -447,5 +466,31 @@ public class Cam3D : ICam {
     public Frustum GetFrustum() {
         this._frustum.Extract(this.GetProjection() * this.GetView());
         return this._frustum;
+    }
+
+    /// <summary>
+    /// Updates the camera's projection matrix based on its current projection type,
+    /// field of view, aspect ratio, and clipping planes.
+    /// </summary>
+    private void UpdateProjection() {
+        switch (this.ProjectionType) {
+            case ProjectionType.Perspective:
+                this._projection = Matrix4x4.CreatePerspectiveFieldOfView(float.DegreesToRadians(this.Fov), this.AspectRatio, this.NearPlane, this.FarPlane);
+                break;
+            
+            case ProjectionType.Orthographic:
+                float top = this.Fov / 2.0F;
+                float right = top * this.AspectRatio;
+        
+                this._projection = Matrix4x4.CreateOrthographicOffCenter(-right, right, -top, top, this.NearPlane, this.FarPlane);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Updates the view matrix of the camera based on its current position, target, and up vector.
+    /// </summary>
+    private void UpdateView() {
+        this._view = Matrix4x4.CreateLookAt(this.Position, this.Target, this.Up);
     }
 } 
