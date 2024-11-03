@@ -209,11 +209,11 @@ public class Game : Disposable {
         Input.EnableRelativeMouseMode();
 
         if (Input.IsKeyDown(KeyboardKey.A)) {
-            this._cam3D.SetRoll(this._cam3D.GetRoll() + 24 * (float) Time.Delta);
+            this._cam3D.SetRoll(this._cam3D.GetRoll() + 30.0F * (float) Time.Delta);
         }
 
         if (Input.IsKeyDown(KeyboardKey.D)) {
-            this._cam3D.SetRoll(this._cam3D.GetRoll() - 24 * (float) Time.Delta);
+            this._cam3D.SetRoll(this._cam3D.GetRoll() - 30.0F * (float) Time.Delta);
         }
         
         // Drawing 3D.

@@ -1,6 +1,8 @@
 using System.Numerics;
 using Bliss.CSharp.Graphics.Rendering;
 using Bliss.CSharp.Interact;
+using Bliss.CSharp.Logging;
+using Bliss.CSharp.Mathematics;
 using Vortice.Mathematics;
 using Viewport = Veldrid.Viewport;
 
@@ -110,11 +112,13 @@ public class Cam3D : ICam {
     }
 
     public void Update(double delta) {
+        Logger.Error(this.GetRotation() + "");
+        
         switch (this.Mode) {
             case CameraMode.Free:
                 if (!Input.IsGamepadAvailable(0)) {
-                    this.SetYaw(this.GetYaw() - Input.GetMouseDelta().X * 27.0F * (float) delta, true);
-                    this.SetPitch(this.GetPitch() - Input.GetMouseDelta().Y * 27.0F * (float) delta, true);
+                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * 10) * (float) delta, true);
+                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * 10) * (float) delta, true);
 
                     //if (Input.IsKeyDown(KeyboardKey.W)) {
                     //    this.MoveForward(this.MovementSpeed * Time.GetFrameTime(), true);
@@ -215,11 +219,10 @@ public class Cam3D : ICam {
     /// </summary>
     /// <returns>A Vector3 representing the current rotation of the camera.</returns>
     public Vector3 GetRotation() {
-        Matrix4x4 lookAt = this.GetView();
-        Vector3 rotation = Quaternion.CreateFromRotationMatrix(lookAt).ToEuler();
+        Vector3 rotation = Quaternion.CreateFromRotationMatrix(this.GetView()).ToEuler();
         return new Vector3(float.RadiansToDegrees(rotation.X), float.RadiansToDegrees(rotation.Y), float.RadiansToDegrees(rotation.Z));
     }
-
+    
     /// <summary>
     /// Retrieves the current yaw (rotation around the Y-axis) of the camera.
     /// </summary>
@@ -234,16 +237,19 @@ public class Cam3D : ICam {
     /// <param name="angle">The angle in degrees to rotate the camera.</param>
     /// <param name="rotateAroundTarget">A boolean indicating whether to rotate the camera around the target or adjust the target position.</param>
     public void SetYaw(float angle, bool rotateAroundTarget) {
-        float difference = angle - this.GetYaw();
-        Matrix4x4 rotationMatrix = Matrix4x4.CreateFromAxisAngle(this.Up, float.DegreesToRadians(difference));
+        float finalAngle = float.DegreesToRadians(angle - this.GetYaw());
+        
+        // Calculate view vector.
+        Vector3 view = this.Target - this.Position;
+
+        // Calculate target pos.
+        Vector3 targetPosition = BlissMath.Vector3RotateByAxisAngle(view, this.Up, finalAngle);
         
         if (rotateAroundTarget) {
-            Vector3 direction = Vector3.Transform(this.Position - this.Target, rotationMatrix);
-            this.Position = this.Target + direction;
+            this.Position = this.Target - targetPosition;
         }
         else {
-            Vector3 direction = Vector3.Transform(this.Target - this.Position, rotationMatrix);
-            this.Target = this.Position + direction;
+            this.Target = this.Position + targetPosition;
         }
     }
     
@@ -260,32 +266,30 @@ public class Cam3D : ICam {
     /// </summary>
     /// <param name="angle">The desired pitch angle in degrees.</param>
     /// <param name="rotateAroundTarget">If true, rotates the camera around the target point; otherwise rotates around its own position.</param>
-    public void SetPitch(float angle, bool rotateAroundTarget) { // TODO: STILL BROKEN!
-        float difference = angle - this.GetPitch();
-        Matrix4x4 rotationMatrix = Matrix4x4.CreateFromAxisAngle(this.GetRight(), float.DegreesToRadians(difference));
+    public void SetPitch(float angle, bool rotateAroundTarget) {
+        float finalAngle = float.DegreesToRadians(angle - this.GetPitch());
+        
+        // Calculate view vector.
+        Vector3 view = this.Target - this.Position;
+
+        // Calculate max allowable upward and downward angles.
+        float maxAngleUp = BlissMath.Vector3Angle(this.Up, view) - 0.001F;
+        float maxAngleDown = -BlissMath.Vector3Angle(Vector3.Negate(this.Up), view) + 0.001F;
+        
+        // Clamp the angle within the min and max bounds.
+        finalAngle = Math.Clamp(finalAngle, maxAngleDown, maxAngleUp);
+        
+        // Calculate target pos.
+        Vector3 targetPosition = BlissMath.Vector3RotateByAxisAngle(view, this.GetRight(), finalAngle);
 
         if (rotateAroundTarget) {
-            Vector3 direction = Vector3.TransformNormal(this.Position - this.Target, rotationMatrix);
-        
-            if (Math.Abs(Vector3.Dot(Vector3.UnitY, Vector3.Normalize(direction))) > 0.99f) {
-                return;
-            }
-
-            Vector3 finalDirection = Vector3.Normalize(direction) * (this.Position - this.Target).Length();
-            this.Position = this.Target + finalDirection;
+            this.Position = this.Target - targetPosition;
         }
         else {
-            Vector3 direction = Vector3.TransformNormal(this.Target - this.Position, rotationMatrix);
-        
-            if (Math.Abs(Vector3.Dot(Vector3.UnitY, Vector3.Normalize(direction))) > 0.99f) {
-                return;
-            }
-
-            Vector3 finalDirection = Vector3.Normalize(direction) * (this.Target - this.Position).Length();
-            this.Target = this.Position + finalDirection;
+            this.Target = this.Position + targetPosition;
         }
     }
-    
+
     /// <summary>
     /// Retrieves the roll component of the camera's rotation.
     /// </summary>
@@ -299,11 +303,8 @@ public class Cam3D : ICam {
     /// </summary>
     /// <param name="angle">The angle in degrees by which to set the roll.</param>
     public void SetRoll(float angle) {
-        float difference = angle - this.GetRoll();
-        Matrix4x4 rotationMatrix = Matrix4x4.CreateFromAxisAngle(this.GetForward(), float.DegreesToRadians(difference));
-        
-        this.Up = Vector3.Transform(this.Up, rotationMatrix);
-        this.Target = Vector3.Transform(this.Target - this.Position, rotationMatrix) + this.Position;
+        float finalAngle = float.DegreesToRadians(angle - this.GetRoll());
+        this.Up = BlissMath.Vector3RotateByAxisAngle(this.Up, this.GetForward(), finalAngle);
     }
 
     /// <summary>

@@ -70,7 +70,7 @@ public class Mesh : Disposable {
         if (this.IndexCount > 0) {
             
             // Clear depth stencil.
-            commandList.ClearDepthStencil(1.0F);
+            commandList.ClearDepthStencil(1.0F); // TODO: Move you to Begin3d();
             
             // Set vertex and index buffer.
             commandList.SetVertexBuffer(0, this._vertexBuffer);
