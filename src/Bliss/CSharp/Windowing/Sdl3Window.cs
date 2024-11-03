@@ -211,13 +211,13 @@ public class Sdl3Window : Disposable, IWindow {
         
         SDL3.SDL_SetHint(SDL3.SDL_HINT_MOUSE_FOCUS_CLICKTHROUGH, "1");
         
-        if (SDL3.SDL_InitSubSystem(InitFlags) == SDL_bool.SDL_FALSE) {
+        if (!SDL3.SDL_InitSubSystem(InitFlags)) {
             throw new Exception($"Failed to initialise SDL! Error: {SDL3.SDL_GetError()}");
         }
         
         // Enable events.
-        SDL3.SDL_SetGamepadEventsEnabled(SDL_bool.SDL_TRUE);
-        SDL3.SDL_SetJoystickEventsEnabled(SDL_bool.SDL_TRUE);
+        SDL3.SDL_SetGamepadEventsEnabled(true);
+        SDL3.SDL_SetJoystickEventsEnabled(true);
         
         this.Handle = (nint) SDL3.SDL_CreateWindow(title, width, height, this.MapWindowState(state) | SDL_WindowFlags.SDL_WINDOW_OPENGL);
         this.Id = (uint) SDL3.SDL_GetWindowID((SDL_Window*) this.Handle);
@@ -260,13 +260,13 @@ public class Sdl3Window : Disposable, IWindow {
         this._state = state;
 
         if (state.HasFlag(WindowState.Resizable)) {
-            SDL3.SDL_SetWindowResizable((SDL_Window*) this.Handle, SDL_bool.SDL_TRUE);
+            SDL3.SDL_SetWindowResizable((SDL_Window*) this.Handle, true);
         }
         if (state.HasFlag(WindowState.FullScreen)) {
-            SDL3.SDL_SetWindowFullscreen((SDL_Window*) this.Handle, SDL_bool.SDL_TRUE);
+            SDL3.SDL_SetWindowFullscreen((SDL_Window*) this.Handle, true);
         }
         if (state.HasFlag(WindowState.BorderlessFullScreen)) {
-            SDL3.SDL_SetWindowBordered((SDL_Window*) this.Handle, SDL_bool.SDL_TRUE);
+            SDL3.SDL_SetWindowBordered((SDL_Window*) this.Handle, true);
         }
         if (state.HasFlag(WindowState.Maximized)) {
             SDL3.SDL_MaximizeWindow((SDL_Window*) this.Handle);
@@ -278,10 +278,13 @@ public class Sdl3Window : Disposable, IWindow {
             SDL3.SDL_HideWindow((SDL_Window*) this.Handle);
         }
         if (state.HasFlag(WindowState.CaptureMouse)) {
-            SDL3.SDL_CaptureMouse(SDL_bool.SDL_TRUE);
+            SDL3.SDL_CaptureMouse(true);
         }
         if (state.HasFlag(WindowState.AlwaysOnTop)) {
-            SDL3.SDL_SetWindowAlwaysOnTop((SDL_Window*) this.Handle, SDL_bool.SDL_TRUE);
+            SDL3.SDL_SetWindowAlwaysOnTop((SDL_Window*) this.Handle, true);
+        }
+        if (state.HasFlag(WindowState.Transparent)) {
+            Logger.Warn("The Transparent flag must be set when creating the window!");
         }
     }
 
@@ -292,12 +295,12 @@ public class Sdl3Window : Disposable, IWindow {
     public unsafe void ClearState() {
         this._state = WindowState.None;
         
-        SDL3.SDL_SetWindowResizable((SDL_Window*) this.Handle, SDL_bool.SDL_FALSE);
-        SDL3.SDL_SetWindowFullscreen((SDL_Window*) this.Handle, SDL_bool.SDL_FALSE);
-        SDL3.SDL_SetWindowBordered((SDL_Window*) this.Handle, SDL_bool.SDL_TRUE);
+        SDL3.SDL_SetWindowResizable((SDL_Window*) this.Handle, false);
+        SDL3.SDL_SetWindowFullscreen((SDL_Window*) this.Handle, false);
+        SDL3.SDL_SetWindowBordered((SDL_Window*) this.Handle, true);
         SDL3.SDL_ShowWindow((SDL_Window*) this.Handle);
-        SDL3.SDL_CaptureMouse(SDL_bool.SDL_FALSE);
-        SDL3.SDL_SetWindowAlwaysOnTop((SDL_Window*) this.Handle, SDL_bool.SDL_FALSE);
+        SDL3.SDL_CaptureMouse(false);
+        SDL3.SDL_SetWindowAlwaysOnTop((SDL_Window*) this.Handle, false);
     }
 
     /// <summary>
@@ -314,7 +317,7 @@ public class Sdl3Window : Disposable, IWindow {
     /// <param name="title">The new title to set for the window.</param>
     /// <exception cref="System.InvalidOperationException">Thrown if the title could not be set due to an internal error.</exception>
     public unsafe void SetTitle(string title) {
-        if (SDL3.SDL_SetWindowTitle((SDL_Window*) this.Handle, title) == SDL_bool.SDL_FALSE) {
+        if (!SDL3.SDL_SetWindowTitle((SDL_Window*) this.Handle, title)) {
             Logger.Warn($"Failed to set the title of the window: [{this.Id}] Error: {SDL3.SDL_GetError()}");
         }
     }
@@ -327,7 +330,7 @@ public class Sdl3Window : Disposable, IWindow {
         int width;
         int height;
         
-        if (SDL3.SDL_GetWindowSizeInPixels((SDL_Window*) this.Handle, &width, &height) == SDL_bool.SDL_FALSE) {
+        if (!SDL3.SDL_GetWindowSizeInPixels((SDL_Window*) this.Handle, &width, &height)) {
             Logger.Warn($"Failed to get the size of the window: [{this.Id}] Error: {SDL3.SDL_GetError()}");
         }
 
@@ -340,7 +343,7 @@ public class Sdl3Window : Disposable, IWindow {
     /// <param name="width">The new width of the window.</param>
     /// <param name="height">The new height of the window.</param>
     public unsafe void SetSize(int width, int height) {
-        if (SDL3.SDL_SetWindowSize((SDL_Window*) this.Handle, width, height) == SDL_bool.SDL_FALSE) {
+        if (!SDL3.SDL_SetWindowSize((SDL_Window*) this.Handle, width, height)) {
             Logger.Warn($"Failed to set the size of the window: [{this.Id}] Error: {SDL3.SDL_GetError()}");
         }
     }
@@ -386,7 +389,7 @@ public class Sdl3Window : Disposable, IWindow {
         int x;
         int y;
         
-        if (SDL3.SDL_GetWindowPosition((SDL_Window*) this.Handle, &x, &y) == SDL_bool.SDL_FALSE) {
+        if (!SDL3.SDL_GetWindowPosition((SDL_Window*) this.Handle, &x, &y)) {
             Logger.Warn($"Failed to set the position to the window: [{this.Id}] Error: {SDL3.SDL_GetError()}");
         }
         
@@ -744,6 +747,8 @@ public class Sdl3Window : Disposable, IWindow {
                 return SDL_WindowFlags.SDL_WINDOW_MOUSE_CAPTURE;
             case WindowState.AlwaysOnTop:
                 return SDL_WindowFlags.SDL_WINDOW_ALWAYS_ON_TOP;
+            case WindowState.Transparent:
+                return SDL_WindowFlags.SDL_WINDOW_TRANSPARENT;
             default:
                 throw new Exception($"Invalid WindowState: [{state}]");
         }
@@ -802,16 +807,16 @@ public class Sdl3Window : Disposable, IWindow {
                 this.MouseMove?.Invoke(new Vector2(sdlEvent.motion.y, sdlEvent.motion.x));
                 break;
             case SDL_EventType.SDL_EVENT_MOUSE_BUTTON_DOWN:
-                this.MouseButtonDown?.Invoke(new MouseEvent(this.MapMouseButton(sdlEvent.button.Button), sdlEvent.button.down == SDL_bool.SDL_TRUE));
+                this.MouseButtonDown?.Invoke(new MouseEvent(this.MapMouseButton(sdlEvent.button.Button), sdlEvent.button.down));
                 break;
             case SDL_EventType.SDL_EVENT_MOUSE_BUTTON_UP:
-                this.MouseButtonUp?.Invoke(new MouseEvent(this.MapMouseButton(sdlEvent.button.Button), sdlEvent.button.down == SDL_bool.SDL_TRUE));
+                this.MouseButtonUp?.Invoke(new MouseEvent(this.MapMouseButton(sdlEvent.button.Button), sdlEvent.button.down));
                 break;
             case SDL_EventType.SDL_EVENT_KEY_DOWN:
-                this.KeyDown?.Invoke(new KeyEvent(this.MapKey(sdlEvent.key.scancode), sdlEvent.key.down == SDL_bool.SDL_TRUE, sdlEvent.key.repeat == SDL_bool.SDL_TRUE));
+                this.KeyDown?.Invoke(new KeyEvent(this.MapKey(sdlEvent.key.scancode), sdlEvent.key.down, sdlEvent.key.repeat));
                 break;
             case SDL_EventType.SDL_EVENT_KEY_UP:
-                this.KeyUp?.Invoke(new KeyEvent(this.MapKey(sdlEvent.key.scancode), sdlEvent.key.down == SDL_bool.SDL_TRUE, sdlEvent.key.repeat == SDL_bool.SDL_TRUE));
+                this.KeyUp?.Invoke(new KeyEvent(this.MapKey(sdlEvent.key.scancode), sdlEvent.key.down, sdlEvent.key.repeat));
                 break;
             case SDL_EventType.SDL_EVENT_TEXT_INPUT:
                 char[]? chars = sdlEvent.text.GetText()?.ToCharArray();

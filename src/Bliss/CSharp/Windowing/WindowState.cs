@@ -1,6 +1,5 @@
 namespace Bliss.CSharp.Windowing;
 
-// TODO: Add Translucent!!!!
 [Flags]
 public enum WindowState {
     
@@ -47,5 +46,10 @@ public enum WindowState {
     /// <summary>
     /// The window is always on top of other windows, maintaining its topmost position.
     /// </summary>
-    AlwaysOnTop
+    AlwaysOnTop,
+    
+    /// <summary>
+    /// The window is transparent, allowing content behind it to be partially visible.
+    /// </summary>
+    Transparent
 }

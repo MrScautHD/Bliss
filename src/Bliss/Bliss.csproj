@@ -15,15 +15,11 @@
         <DefineConstants Condition="'$(ExcludeMetal)' == 'true'">$(DefineConstants);EXCLUDE_METAL_BACKEND</DefineConstants>
         <DefineConstants Condition="'$(ExcludeOpenGL)' == 'true'">$(DefineConstants);EXCLUDE_OPENGL_BACKEND</DefineConstants>
     </PropertyGroup>
-
-    <ItemGroup>
-        <Folder Include="CSharp\Audio\" />
-    </ItemGroup>
     
     <!-- Libraries -->
     <ItemGroup>
       <PackageReference Include="JAJ.Packages.MiniAudioEx" Version="1.7.2" />
-      <PackageReference Include="ppy.SDL3-CS" Version="2024.916.0" />
+      <PackageReference Include="ppy.SDL3-CS" Version="2024.1022.0" />
       <PackageReference Include="ppy.Veldrid" Version="4.9.62-gca0239da6b" />
       <PackageReference Include="ppy.Veldrid.SPIRV" Version="1.0.15-gfbb03d21c2" />
       <PackageReference Include="AssimpNet" Version="5.0.0-beta1" />

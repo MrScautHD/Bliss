@@ -22,11 +22,6 @@ public class Sdl3InputContext : Disposable, IInputContext {
     private Vector2 _mouseDelta;
     
     /// <summary>
-    /// Stores the previous mouse movement delta values.
-    /// </summary>
-    private Vector2 _previousMousePos;
-
-    /// <summary>
     /// Stores the latest position of the mouse movement.
     /// </summary>
     private Vector2 _mouseMoving;
@@ -127,8 +122,11 @@ public class Sdl3InputContext : Disposable, IInputContext {
     }
     
     public unsafe void End() {
-        this._mouseDelta = this.GetMousePosition() - (this.IsRelativeMouseModeEnabled() ? new Vector2(100, 100) : this._previousMousePos); // TODO: Remove the relative mouse mode or do it different!
-        this._previousMousePos = this.GetMousePosition();
+        float mouseDeltaX;
+        float mouseDeltaY;
+
+        SDL3.SDL_GetRelativeMouseState(&mouseDeltaX, &mouseDeltaY);
+        this._mouseDelta = new Vector2(mouseDeltaX, mouseDeltaY);
         
         this._mouseMoving = Vector2.Zero;
         this._mouseScrolling = Vector2.Zero;
@@ -151,7 +149,7 @@ public class Sdl3InputContext : Disposable, IInputContext {
     /* ------------------------------------ Mouse ------------------------------------ */
 
     public bool IsCursorShown() {
-        return SDL3.SDL_CursorVisible() == SDL_bool.SDL_TRUE;
+        return SDL3.SDL_CursorVisible();
     }
 
     public void ShowCursor() {
@@ -171,16 +169,15 @@ public class Sdl3InputContext : Disposable, IInputContext {
     }
 
     public unsafe bool IsRelativeMouseModeEnabled() {
-        return SDL3.SDL_GetWindowRelativeMouseMode((SDL_Window*) this._window.Handle) == SDL_bool.SDL_TRUE;
+        return SDL3.SDL_GetWindowRelativeMouseMode((SDL_Window*) this._window.Handle);
     }
 
     public unsafe void EnableRelativeMouseMode() {
-        SDL3.SDL_SetWindowRelativeMouseMode((SDL_Window*) this._window.Handle, SDL_bool.SDL_TRUE);
-        SDL3.SDL_WarpMouseInWindow((SDL_Window*) this._window.Handle, 100, 100); // TODO: Impliment it better! (just for test here)
+        SDL3.SDL_SetWindowRelativeMouseMode((SDL_Window*) this._window.Handle, true);
     }
 
     public unsafe void DisableRelativeMouseMode() {
-        SDL3.SDL_SetWindowRelativeMouseMode((SDL_Window*) this._window.Handle, SDL_bool.SDL_FALSE);
+        SDL3.SDL_SetWindowRelativeMouseMode((SDL_Window*) this._window.Handle, false);
     }
 
     public unsafe Vector2 GetMousePosition() {

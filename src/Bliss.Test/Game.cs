@@ -14,6 +14,7 @@ using Bliss.CSharp.Materials;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
+using MiniAudioEx;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
@@ -49,6 +50,9 @@ public class Game : Disposable {
     private Model _planeModel;
     private Texture2D _modelTexture;
     private Texture2D _planeTexture;
+
+    private AudioSource _audioSource;
+    private AudioClip _audioClip;
     
     public Game(GameSettings settings) {
         Instance = this;
@@ -99,6 +103,9 @@ public class Game : Disposable {
             throw new Exception("This type of window is not supported by the InputContext!");
         }
         
+        Logger.Info("Initialize audio system...");
+        AudioContext.Initialize(44100, 2);
+        
         this.Init();
         
         Logger.Info("Start main loops...");
@@ -141,7 +148,7 @@ public class Game : Disposable {
         this._texture = new Texture2D(this.GraphicsDevice, "content/images/logo.png");
         this._font = new Font("content/fonts/fontoe.ttf");
         
-        this._cam3D = new Cam3D((uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0), default, ProjectionType.Perspective, CameraMode.Orbital);
+        this._cam3D = new Cam3D((uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0), default, ProjectionType.Perspective, CameraMode.Free);
         this._model = Model.Load(this.GraphicsDevice, "content/model.glb", false);
         this._planeModel = Model.Load(this.GraphicsDevice, "content/plane.glb", false);
         this._modelTexture = new Texture2D(this.GraphicsDevice, "content/texture.png");
@@ -154,9 +161,16 @@ public class Game : Disposable {
         foreach (Mesh mesh in this._planeModel.Meshes) {
             mesh.Material.SetMapTexture(MaterialMapType.Albedo, this._planeTexture);
         }
+        
+        // Audio
+        this._audioSource = new AudioSource();
+        
+        this._audioClip = new AudioClip("content/test_audio.mp3");
+        this._audioSource.Play(this._audioClip);
     }
 
     protected virtual void Update() {
+        AudioContext.Update();
         this._cam3D.Update((float) Time.Delta);
     }
     
@@ -169,7 +183,8 @@ public class Game : Disposable {
         commandList.SetFramebuffer(this.FullScreenTexture.Framebuffer);
         commandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
         
-        //Input.EnableRelativeMouseMode();
+        // Enables relative mouse mod.
+        Input.EnableRelativeMouseMode();
 
         // Drawing 3D.
         this._cam3D.Begin(commandList);
@@ -179,12 +194,6 @@ public class Game : Disposable {
         
         // Draw Player
         this._model.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, BlendState.Disabled, Color.Blue);
-        
-        for (int i = 0; i < 60; i++) {
-            for (int j = 0; j < 60; j++) {
-                this._model.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(i * 2.5F, 0.05F, j * 2.5F)}, BlendState.Disabled, Color.Blue);
-            }
-        }
         
         this._cam3D.End(commandList);
         
@@ -263,6 +272,7 @@ public class Game : Disposable {
             this.GraphicsDevice.Dispose();
             this.MainWindow.Dispose();
             Input.Destroy();
+            AudioContext.Deinitialize();
         }
     }
 }
