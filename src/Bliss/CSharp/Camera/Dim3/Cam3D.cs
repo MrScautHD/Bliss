@@ -1,6 +1,8 @@
 using System.Numerics;
 using Bliss.CSharp.Graphics.Rendering;
 using Bliss.CSharp.Interact;
+using Bliss.CSharp.Interact.Gamepads;
+using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Mathematics;
 using Vortice.Mathematics;
@@ -15,7 +17,7 @@ public class Cam3D : ICam {
     /// Used to determine which camera is currently rendering the scene.
     /// Can be accessed from other classes to retrieve camera-specific properties and methods.
     /// </summary>
-    internal static Cam3D? ActiveCamera;
+    internal static Cam3D? ActiveCamera { get; private set; }
 
     /// <summary>
     /// Defines the portion of the render target that a camera will render to.
@@ -79,6 +81,27 @@ public class Cam3D : ICam {
     public float FarPlane;
 
     /// <summary>
+    /// Determines the sensitivity of the camera to mouse movements.
+    /// This affects how fast the camera rotates or moves in response to mouse inputs.
+    /// Higher values result in faster and more responsive camera movements.
+    /// </summary>
+    public float MouseSensitivity;
+
+    /// <summary>
+    /// Specifies the speed at which the camera can move within the scene.
+    /// Adjust this value to control how fast the camera translates in the 3D space.
+    /// Typically used in conjunction with user input to navigate the scene.
+    /// </summary>
+    public float MovementSpeed;
+
+    /// <summary>
+    /// Represents the speed at which the camera orbits around a target.
+    /// Determines how quickly the camera moves when controlled to orbit in any direction.
+    /// Typically used in orbital or tracking camera modes.
+    /// </summary>
+    public float OrbitalSpeed;
+
+    /// <summary>
     /// Represents the viewing frustum for the camera, which determines the
     /// visible field and boundary for objects in the 3D scene.
     /// </summary>
@@ -98,7 +121,7 @@ public class Cam3D : ICam {
     /// <param name="fov">The field of view angle in degrees; defaults to 70.0 degrees.</param>
     /// <param name="nearPlane">The distance to the near clipping plane; defaults to 0.001 units.</param>
     /// <param name="farPlane">The distance to the far clipping plane; defaults to 1000.0 units.</param>
-    public Cam3D(int width, int height, Vector3 position, Vector3 target, Vector3? up = default, ProjectionType projectionType = ProjectionType.Perspective, CameraMode mode = CameraMode.Free, float fov = 70.0F, float nearPlane = 0.001F, float farPlane = 1000.0F) {
+    public Cam3D(int width, int height, Vector3 position, Vector3 target, Vector3? up = default, ProjectionType projectionType = ProjectionType.Perspective, CameraMode mode = CameraMode.ThirdPerson, float fov = 70.0F, float nearPlane = 0.001F, float farPlane = 1000.0F) {
         this.Position = position;
         this.Target = target;
         this.Up = up ?? Vector3.UnitY;
@@ -107,45 +130,98 @@ public class Cam3D : ICam {
         this.Fov = fov;
         this.NearPlane = nearPlane;
         this.FarPlane = farPlane;
+        this.MouseSensitivity = 10.0F;
+        this.MovementSpeed = 10.0F;
+        this.OrbitalSpeed = 0.5F;
         this._frustum = new Frustum();
         this.Resize(width, height);
     }
 
     public void Update(double delta) {
-        Logger.Error(this.GetRotation() + "");
-        
         switch (this.Mode) {
             case CameraMode.Free:
                 if (!Input.IsGamepadAvailable(0)) {
-                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * 10) * (float) delta, true);
-                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * 10) * (float) delta, true);
+                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity) * (float) delta, false);
+                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity) * (float) delta, false);
 
-                    //if (Input.IsKeyDown(KeyboardKey.W)) {
-                    //    this.MoveForward(this.MovementSpeed * Time.GetFrameTime(), true);
-                    //}
-                    //
-                    //if (Input.IsKeyDown(KeyboardKey.S)) {
-                    //    this.MoveForward(-this.MovementSpeed * Time.GetFrameTime(), true);
-                    //}
-                    //
-                    //if (Input.IsKeyDown(KeyboardKey.A)) {
-                    //    this.MoveRight(-this.MovementSpeed * Time.GetFrameTime(), true);
-                    //}
-                    //
-                    //if (Input.IsKeyDown(KeyboardKey.D)) {
-                    //    this.MoveRight(this.MovementSpeed * Time.GetFrameTime(), true);
-                    //}
-//
-                    //if (Input.IsKeyDown(KeyboardKey.Space)) {
-                    //    this.MoveUp(this.MovementSpeed * Time.GetFrameTime());
-                    //}
-                    //
-                    //if (Input.IsKeyDown(KeyboardKey.LeftShift)) {
-                    //    this.MoveUp(-this.MovementSpeed * Time.GetFrameTime());
-                    //}
+                    if (Input.IsKeyDown(KeyboardKey.W)) {
+                        this.MoveForward(this.MovementSpeed * (float) delta, true);
+                    }
+                    
+                    if (Input.IsKeyDown(KeyboardKey.S)) {
+                        this.MoveForward(-this.MovementSpeed * (float) delta, true);
+                    }
+                    
+                    if (Input.IsKeyDown(KeyboardKey.A)) {
+                        this.MoveRight(-this.MovementSpeed * (float) delta, true);
+                    }
+                    if (Input.IsKeyDown(KeyboardKey.D)) {
+                        this.MoveRight(this.MovementSpeed * (float) delta, true);
+                    }
+                    
+                    if (Input.IsKeyDown(KeyboardKey.Space)) {
+                        this.MoveUp(this.MovementSpeed * (float) delta);
+                    }
+                    
+                    if (Input.IsKeyDown(KeyboardKey.ShiftLeft)) {
+                        this.MoveUp(-this.MovementSpeed * (float) delta);
+                    }
                 }
                 else {
+                    this.SetYaw(this.GetYaw() - (Input.GetGamepadAxisMovement(0, GamepadAxis.RightX) * 6) * this.MouseSensitivity * (float) delta, false);
+                    this.SetPitch(this.GetPitch() - (Input.GetGamepadAxisMovement(0, GamepadAxis.RightY) * 6) * this.MouseSensitivity * (float) delta, false);
                     
+                    this.MoveForward(this.MovementSpeed * Input.GetGamepadAxisMovement(0, GamepadAxis.TriggerRight) * (float) delta, false);
+                    this.MoveForward(-this.MovementSpeed * Input.GetGamepadAxisMovement(0, GamepadAxis.TriggerLeft) * (float) delta, false);
+                    
+                    if (Input.IsGamepadButtonDown(0, GamepadButton.RightShoulder)) {
+                        this.MoveRight(this.MovementSpeed * (float) delta, true);
+                    }
+                    
+                    if (Input.IsGamepadButtonDown(0, GamepadButton.LeftShoulder)) {
+                        this.MoveRight(-this.MovementSpeed * (float) delta, true);
+                    }
+                    
+                    if (Input.IsGamepadButtonDown(0, GamepadButton.RightStick)) {
+                        this.MoveUp(this.MovementSpeed * (float) delta);
+                    }
+                    
+                    if (Input.IsGamepadButtonDown(0, GamepadButton.LeftStick)) {
+                        this.MoveUp(-this.MovementSpeed * (float) delta);
+                    }
+                }
+                break;
+            
+            case CameraMode.Orbital:
+                Matrix4x4 rotation = Matrix4x4.CreateFromAxisAngle(this.Up, this.OrbitalSpeed * (float) delta);
+                Vector3 view = this.Position - this.Target;
+                Vector3 transform = Vector3.Transform(view, rotation);
+                this.Position = this.Target + transform;
+
+                if (Input.IsMouseScrolling(out Vector2 wheelDelta)) {
+                    this.MoveToTarget(-wheelDelta.Y);
+                }
+                break;
+            
+            case CameraMode.FirstPerson:
+                if (!Input.IsGamepadAvailable(0)) {
+                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity) * (float) delta, false);
+                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity) * (float) delta, false);
+                }
+                else {
+                    this.SetYaw(this.GetYaw() - (Input.GetGamepadAxisMovement(0, GamepadAxis.RightX) * 6) * this.MouseSensitivity * (float) delta, false);
+                    this.SetPitch(this.GetPitch() - (Input.GetGamepadAxisMovement(0, GamepadAxis.RightY) * 6) * this.MouseSensitivity * (float) delta, false);
+                }
+                break;
+            
+            case CameraMode.ThirdPerson:
+                if (!Input.IsGamepadAvailable(0)) {
+                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity) * (float) delta, true);
+                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity) * (float) delta, true);
+                }
+                else {
+                    this.SetYaw(this.GetYaw() + (Input.GetGamepadAxisMovement(0, GamepadAxis.RightX) * 6) * this.MouseSensitivity * (float) delta, true);
+                    this.SetPitch(this.GetPitch() + (Input.GetGamepadAxisMovement(0, GamepadAxis.RightY) * 6) * this.MouseSensitivity * (float) delta, true);
                 }
                 break;
         }
@@ -180,7 +256,7 @@ public class Cam3D : ICam {
     /// Constructs and returns the view matrix for the camera based on its position, target, and up vector.
     /// </summary>
     /// <returns>The view matrix of the camera.</returns>
-    public Matrix4x4 GetView() {
+    public Matrix4x4 GetView() { // TODO: Create it not everytime it get called just one time!
         return Matrix4x4.CreateLookAt(this.Position, this.Target, this.Up);
     }
     
@@ -197,7 +273,7 @@ public class Cam3D : ICam {
     public void End() {
         ActiveCamera = null;
     }
-
+    
     /// <summary>
     /// Computes and returns the forward direction vector based on the camera's position and target.
     /// </summary>
@@ -207,11 +283,68 @@ public class Cam3D : ICam {
     }
 
     /// <summary>
+    /// Moves the camera forward by a specified distance.
+    /// </summary>
+    /// <param name="distance">The distance by which to move the camera forward.</param>
+    /// <param name="moveInWorldPlane">Determines whether to constrain movement to the world plane, ignoring the Y component.</param>
+    public void MoveForward(float distance, bool moveInWorldPlane) {
+        Vector3 forward = this.GetForward() * distance;
+        
+        if (moveInWorldPlane) {
+            forward.Y = 0;
+        }
+
+        this.Position += forward;
+        this.Target += forward;
+    }
+
+    /// <summary>
     /// Computes and returns the right direction vector based on the camera's forward direction and up vector.
     /// </summary>
     /// <returns>A Vector3 representing the right direction of the camera.</returns>
     public Vector3 GetRight() {
         return Vector3.Cross(this.GetForward(), this.Up);
+    }
+
+    /// <summary>
+    /// Moves the camera to the right by a specified distance, with an option to constrain the movement to the world plane.
+    /// </summary>
+    /// <param name="distance">The distance to move the camera to the right.</param>
+    /// <param name="moveInWorldPlane">If set to <c>true</c>, the camera will move parallel to the ground plane and will not change its Y position.</param>
+    public void MoveRight(float distance, bool moveInWorldPlane) {
+        Vector3 right = this.GetRight() * distance;
+        
+        if (moveInWorldPlane) {
+            right.Y = 0;
+        }
+
+        this.Position += right;
+        this.Target += right;
+    }
+
+    /// <summary>
+    /// Moves the camera upward by a specified distance.
+    /// </summary>
+    /// <param name="distance">The distance to move the camera upward.</param>
+    public void MoveUp(float distance) {
+        Vector3 up = this.Up * distance;
+        
+        this.Position += up;
+        this.Target += up;
+    }
+
+    /// <summary>
+    /// Moves the camera towards or away from its target by modifying the distance between the camera's position and its target point.
+    /// </summary>
+    /// <param name="delta">The amount by which to adjust the distance to the target. Positive values move the camera closer to the target, and negative values move it further away.</param>
+    public void MoveToTarget(float delta) {
+        float distance = Vector3.Distance(this.Position, this.Target) + delta;
+
+        if (distance <= 0) {
+            distance = 0.001F;
+        }
+
+        this.Position = this.Target + this.GetForward() * -distance;
     }
 
     /// <summary>

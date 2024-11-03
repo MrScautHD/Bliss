@@ -165,7 +165,7 @@ public class Sdl3Gamepad : Disposable, IGamepad {
             GamepadAxis.TriggerLeft => SDL_GamepadAxis.SDL_GAMEPAD_AXIS_LEFT_TRIGGER,
             GamepadAxis.TriggerRight => SDL_GamepadAxis.SDL_GAMEPAD_AXIS_RIGHT_TRIGGER,
             GamepadAxis.Max => SDL_GamepadAxis.SDL_GAMEPAD_AXIS_COUNT,
-            _ => SDL_GamepadAxis.SDL_GAMEPAD_AXIS_INVALID,
+            _ => SDL_GamepadAxis.SDL_GAMEPAD_AXIS_INVALID
         };
     }
 
@@ -203,7 +203,7 @@ public class Sdl3Gamepad : Disposable, IGamepad {
             GamepadButton.Misc5 => SDL_GamepadButton.SDL_GAMEPAD_BUTTON_MISC5,
             GamepadButton.Misc6 => SDL_GamepadButton.SDL_GAMEPAD_BUTTON_MISC6,
             GamepadButton.Count => SDL_GamepadButton.SDL_GAMEPAD_BUTTON_COUNT,
-            _ => SDL_GamepadButton.SDL_GAMEPAD_BUTTON_INVALID,
+            _ => SDL_GamepadButton.SDL_GAMEPAD_BUTTON_INVALID
         };
     }
 

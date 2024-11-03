@@ -208,18 +208,18 @@ public class Game : Disposable {
         
         Input.EnableRelativeMouseMode();
 
-        if (Input.IsKeyDown(KeyboardKey.A)) {
-            this._cam3D.SetRoll(this._cam3D.GetRoll() + 30.0F * (float) Time.Delta);
-        }
-
-        if (Input.IsKeyDown(KeyboardKey.D)) {
-            this._cam3D.SetRoll(this._cam3D.GetRoll() - 30.0F * (float) Time.Delta);
-        }
+        //if (Input.IsKeyDown(KeyboardKey.A)) {
+        //    this._cam3D.SetRoll(this._cam3D.GetRoll() + 30.0F * (float) Time.Delta);
+        //}
+//
+        //if (Input.IsKeyDown(KeyboardKey.D)) {
+        //    this._cam3D.SetRoll(this._cam3D.GetRoll() - 30.0F * (float) Time.Delta);
+        //}
         
         // Drawing 3D.
         this._cam3D.Begin();
         this._planeModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform(), BlendState.Disabled, Color.White);
-        this._model.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(0, 0.1F, 0)}, BlendState.Disabled, Color.Blue);
+        this._model.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, BlendState.Disabled, Color.Blue);
         this._cam3D.End();
         
         commandList.End();
