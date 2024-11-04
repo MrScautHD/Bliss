@@ -50,9 +50,6 @@ public class Game : Disposable {
     private Model _planeModel;
     private Texture2D _modelTexture;
     private Texture2D _planeTexture;
-
-    private AudioSource _audioSource;
-    private AudioClip _audioClip;
     
     public Game(GameSettings settings) {
         Instance = this;
@@ -161,16 +158,9 @@ public class Game : Disposable {
         foreach (Mesh mesh in this._planeModel.Meshes) {
             mesh.Material.SetMapTexture(MaterialMapType.Albedo, this._planeTexture);
         }
-        
-        // Audio
-        this._audioSource = new AudioSource();
-        
-        this._audioClip = new AudioClip("content/test_audio.mp3");
-        this._audioSource.Play(this._audioClip);
     }
 
     protected virtual void Update() {
-        AudioContext.Update();
         this._cam3D.Update((float) Time.Delta);
     }
     
@@ -272,7 +262,6 @@ public class Game : Disposable {
             this.GraphicsDevice.Dispose();
             this.MainWindow.Dispose();
             Input.Destroy();
-            AudioContext.Deinitialize();
         }
     }
 }
