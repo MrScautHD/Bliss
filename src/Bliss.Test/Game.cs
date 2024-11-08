@@ -144,8 +144,8 @@ public class Game : Disposable {
         this._font = new Font("content/fonts/fontoe.ttf");
         
         this._cam3D = new Cam3D((uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0), default, ProjectionType.Perspective, CameraMode.Free);
-        this._playerModel = Model.Load(this.GraphicsDevice, "content/player.glb", true);
-        this._planeModel = Model.Load(this.GraphicsDevice, "content/plane.glb", true);
+        this._playerModel = Model.Load(this.GraphicsDevice, "content/player.glb");
+        this._planeModel = Model.Load(this.GraphicsDevice, "content/plane.glb");
     }
 
     protected virtual void Update() {
