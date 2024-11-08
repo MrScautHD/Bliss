@@ -1,7 +1,6 @@
 using System.Numerics;
 using System.Text;
 using Assimp;
-using Bliss.CSharp.Colors;
 using Bliss.CSharp.Effects;
 using Bliss.CSharp.Geometry.Conversions;
 using Bliss.CSharp.Graphics;
@@ -10,11 +9,14 @@ using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
 using AMesh = Assimp.Mesh;
 using ShaderMaterialProperties = Assimp.Material.ShaderMaterialProperties;
 using Material = Bliss.CSharp.Materials.Material;
 using AMaterial = Assimp.Material;
+using Color = Bliss.CSharp.Colors.Color;
 using TextureType = Assimp.TextureType;
 
 namespace Bliss.CSharp.Geometry;
@@ -53,8 +55,15 @@ public class Model : Disposable {
         this.GraphicsDevice = graphicsDevice;
         this.Meshes = meshes;
     }
-    
-    // TODO: Check if the UV flip works maybe it should just the Y axis get fliped and add Materials loading (with a boolean to disable it) and add Animations loading and add a option to load with Stream instead of the path.
+
+    /// <summary>
+    /// Loads a model from the specified file path using the provided graphics device.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used for rendering the model.</param>
+    /// <param name="path">The file path to the model to be loaded.</param>
+    /// <param name="loadMaterial">Indicates whether the material should be loaded with the model. Default is true.</param>
+    /// <param name="flipUv">Indicates whether the UV coordinates should be flipped. Default is false.</param>
+    /// <returns>Returns a new instance of the <see cref="Model"/> class with the loaded meshes.</returns>
     public static Model Load(GraphicsDevice graphicsDevice, string path, bool loadMaterial = true, bool flipUv = false) {
         using AssimpContext context = new AssimpContext();
         Scene scene = context.ImportFile(path, DefaultPostProcessSteps);
@@ -72,26 +81,48 @@ public class Model : Disposable {
                 ShaderMaterialProperties shaderProperties = aMaterial.Shaders;
                 
                 if (shaderProperties.HasVertexShader && shaderProperties.HasFragmentShader) {
-                    Logger.Error(shaderProperties.VertexShader);
                     effect = new Effect(graphicsDevice.ResourceFactory, Vertex3D.VertexLayout, Encoding.UTF8.GetBytes(shaderProperties.VertexShader), Encoding.UTF8.GetBytes(shaderProperties.FragmentShader));
-                }
-                else {
-                    Logger.Warn($"Failed to load material effect for model at path: [{path}]");
                 }
             }
 
             effect ??= GetDefaultEffect(graphicsDevice);
             
-            // Load material maps. // TODO: loading texture are still broken!
+            // Load material maps.
             Material material = new Material(graphicsDevice, effect);
 
             if (scene.HasMaterials && loadMaterial) {
                 AMaterial aMaterial = scene.Materials[mesh.MaterialIndex];
                 
-                for (int j = 0; j < 11; j++) {
-                    MaterialMapType mapType = (MaterialMapType) j;
-                    material.SetMaterialMap(mapType, GetMaterialMap(graphicsDevice, mapType, aMaterial));
-                }
+                material.SetMaterialMap(MaterialMapType.Albedo, new MaterialMap() {
+                    Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Diffuse),
+                    Color = new Color((byte) aMaterial.ColorDiffuse.R, (byte) aMaterial.ColorDiffuse.G, (byte) aMaterial.ColorDiffuse.B, (byte) aMaterial.ColorDiffuse.A)
+                });
+                
+                material.SetMaterialMap(MaterialMapType.Metalness, new MaterialMap() {
+                    Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Metalness),
+                    Color = new Color((byte) aMaterial.ColorSpecular.R, (byte) aMaterial.ColorSpecular.G, (byte) aMaterial.ColorSpecular.B, (byte) aMaterial.ColorSpecular.A)
+                });
+                
+                material.SetMaterialMap(MaterialMapType.Normal, new MaterialMap() {
+                    Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Normals)
+                });
+                
+                material.SetMaterialMap(MaterialMapType.Roughness, new MaterialMap() {
+                    Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Roughness)
+                });
+                
+                material.SetMaterialMap(MaterialMapType.Occlusion, new MaterialMap() {
+                    Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.AmbientOcclusion)
+                });
+                
+                material.SetMaterialMap(MaterialMapType.Emission, new MaterialMap() {
+                    Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Emissive),
+                    Color = new Color((byte) aMaterial.ColorEmissive.R, (byte) aMaterial.ColorEmissive.G, (byte) aMaterial.ColorEmissive.B, (byte) aMaterial.ColorEmissive.A)
+                });
+                
+                material.SetMaterialMap(MaterialMapType.Height, new MaterialMap() {
+                    Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Height)
+                });
             }
             
             // Setup vertices.
@@ -169,58 +200,38 @@ public class Model : Disposable {
     }
 
     /// <summary>
-    /// Creates a <see cref="MaterialMap"/> from the given graphics device, material map type, and Assimp material.
+    /// Loads a texture from a material and returns it as a Texture2D object. If the texture is embedded, it extracts from the embedded data.
     /// </summary>
-    /// <param name="graphicsDevice">The graphics device to use for creating textures.</param>
-    /// <param name="mapType">The type of material map to be created.</param>
-    /// <param name="aMaterial">The Assimp material source.</param>
-    /// <returns>A <see cref="MaterialMap"/> containing the texture and color corresponding to the specified material map type.</returns>
-    private static MaterialMap GetMaterialMap(GraphicsDevice graphicsDevice, MaterialMapType mapType, AMaterial aMaterial) {
-        string? texturePath = GetMapTypeTexturePath(mapType, aMaterial);
-        Color4D? color4D = GetMapTypeColor(mapType, aMaterial);
+    /// <param name="graphicsDevice">The graphics device used for rendering the texture.</param>
+    /// <param name="scene">The scene containing the material and textures.</param>
+    /// <param name="aMaterial">The material from which the texture should be loaded.</param>
+    /// <param name="path">The path to the model file, used to resolve texture file paths.</param>
+    /// <param name="textureType">The type of texture to load from the material.</param>
+    /// <returns>A Texture2D object if the texture is successfully loaded, otherwise null.</returns>
+    private static Texture2D? LoadMaterialTexture(GraphicsDevice graphicsDevice, Scene scene, AMaterial aMaterial, string path, TextureType textureType) {
+        if (aMaterial.GetMaterialTexture(textureType, 0, out TextureSlot textureSlot)) {
+            string filePath = textureSlot.FilePath;
+            
+            if (filePath[0] == '*') {
+                EmbeddedTexture embeddedTexture = scene.GetEmbeddedTexture(filePath);
 
-        Texture2D? texture = !string.IsNullOrEmpty(texturePath) ? new Texture2D(graphicsDevice, texturePath) : null;
-        Color? color = color4D != null ? new Color(new RgbaFloat(color4D.Value.R, color4D.Value.G, color4D.Value.B, color4D.Value.A)) : null;
-        
-        return new MaterialMap {
-            Texture = texture,
-            Color = color
-        };
-    }
+                if (embeddedTexture.HasCompressedData) {
+                    byte[] compressedData = embeddedTexture.CompressedData;
 
-    /// <summary>
-    /// Retrieves the file path for a texture associated with the specified material map type from the given Assimp material.
-    /// </summary>
-    /// <param name="mapType">The type of material map whose texture path should be retrieved.</param>
-    /// <param name="aMaterial">The Assimp material containing texture information.</param>
-    /// <returns>A string representing the file path to the texture associated with the specified material map type, or null if no texture is found.</returns>
-    private static string? GetMapTypeTexturePath(MaterialMapType mapType, AMaterial aMaterial) {
-        return mapType switch {
-            MaterialMapType.Albedo => aMaterial.HasTextureDiffuse ? aMaterial.GetMaterialTextures(TextureType.Diffuse).FirstOrDefault().FilePath : null,
-            MaterialMapType.Metalness => aMaterial.HasTextureSpecular ? aMaterial.GetMaterialTextures(TextureType.Metalness).FirstOrDefault().FilePath : null,
-            MaterialMapType.Normal => aMaterial.HasTextureNormal ? aMaterial.GetMaterialTextures(TextureType.Normals).FirstOrDefault().FilePath : null,
-            MaterialMapType.Roughness => aMaterial.PBR.HasTextureRoughness ? aMaterial.GetMaterialTextures(TextureType.Roughness).FirstOrDefault().FilePath : null,
-            MaterialMapType.Occlusion => aMaterial.HasTextureAmbientOcclusion ? aMaterial.GetMaterialTextures(TextureType.AmbientOcclusion).FirstOrDefault().FilePath : null,
-            MaterialMapType.Emission => aMaterial.HasTextureEmissive ? aMaterial.GetMaterialTextures(TextureType.Emissive).FirstOrDefault().FilePath : null,
-            MaterialMapType.Height => aMaterial.HasTextureHeight ? aMaterial.GetMaterialTextures(TextureType.Height).FirstOrDefault().FilePath : null,
-            _ => null
-        };
-    }
+                    using (MemoryStream memoryStream = new MemoryStream(compressedData)) {
+                        using (Image<Rgba32> image = Image.Load<Rgba32>(memoryStream)) {
+                            return new Texture2D(graphicsDevice, image);
+                        }
+                    }
+                }
+            }
+            else {
+                string finalPath = Path.Combine(Path.GetDirectoryName(path) ?? string.Empty, filePath);
+                return new Texture2D(graphicsDevice, finalPath);
+            }
+        }
 
-    /// <summary>
-    /// Retrieves the color corresponding to a specific material map type from the given Assimp material.
-    /// </summary>
-    /// <param name="mapType">The type of material map to retrieve the color for.</param>
-    /// <param name="aMaterial">The Assimp material from which the color is retrieved.</param>
-    /// <returns>A nullable <see cref="Color4D"/> representing the color corresponding to the specified material map type, or null if the color is not available.</returns>
-    private static Color4D? GetMapTypeColor(MaterialMapType mapType, AMaterial aMaterial) {
-        return mapType switch {
-            MaterialMapType.Albedo => aMaterial.HasColorDiffuse ? aMaterial.ColorDiffuse : null,
-            MaterialMapType.Metalness => aMaterial.HasColorSpecular ? aMaterial.ColorSpecular : null,
-            MaterialMapType.Emission => aMaterial.HasTextureEmissive ? aMaterial.ColorDiffuse : null,
-            MaterialMapType.Height => aMaterial.HasTextureHeight ? aMaterial.ColorDiffuse : null,
-            _ => null
-        };
+        return null;
     }
     
     /// <summary>

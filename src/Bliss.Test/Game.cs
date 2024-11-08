@@ -46,10 +46,8 @@ public class Game : Disposable {
     private Font _font;
     
     private Cam3D _cam3D;
-    private Model _model;
+    private Model _playerModel;
     private Model _planeModel;
-    private Texture2D _modelTexture;
-    private Texture2D _planeTexture;
     
     public Game(GameSettings settings) {
         Instance = this;
@@ -146,18 +144,8 @@ public class Game : Disposable {
         this._font = new Font("content/fonts/fontoe.ttf");
         
         this._cam3D = new Cam3D((uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0), default, ProjectionType.Perspective, CameraMode.Free);
-        this._model = Model.Load(this.GraphicsDevice, "content/model.glb", false);
-        this._planeModel = Model.Load(this.GraphicsDevice, "content/plane.glb", false);
-        this._modelTexture = new Texture2D(this.GraphicsDevice, "content/texture.png");
-        this._planeTexture = new Texture2D(this.GraphicsDevice, "content/plane_texture.png");
-
-        foreach (Mesh mesh in this._model.Meshes) {
-            mesh.Material.SetMapTexture(MaterialMapType.Albedo, this._modelTexture);
-        }
-        
-        foreach (Mesh mesh in this._planeModel.Meshes) {
-            mesh.Material.SetMapTexture(MaterialMapType.Albedo, this._planeTexture);
-        }
+        this._playerModel = Model.Load(this.GraphicsDevice, "content/player.glb", true);
+        this._planeModel = Model.Load(this.GraphicsDevice, "content/plane.glb", true);
     }
 
     protected virtual void Update() {
@@ -183,7 +171,7 @@ public class Game : Disposable {
         this._planeModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform(), BlendState.Disabled, Color.White);
         
         // Draw Player
-        this._model.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, BlendState.Disabled, Color.Blue);
+        this._playerModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, BlendState.Disabled, Color.Blue);
         
         this._cam3D.End(commandList);
         
