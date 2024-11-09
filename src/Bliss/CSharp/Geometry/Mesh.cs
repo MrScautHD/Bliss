@@ -2,7 +2,6 @@ using System.Numerics;
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Colors;
-using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.VertexTypes;
@@ -13,6 +12,8 @@ using Veldrid;
 namespace Bliss.CSharp.Geometry;
 
 public class Mesh : Disposable {
+
+    private static Dictionary<Material, SimplePipeline> _cachedPipelines = new();
     
     public GraphicsDevice GraphicsDevice { get; private set; }
     public Material Material { get; private set; }
@@ -27,8 +28,6 @@ public class Mesh : Disposable {
     private DeviceBuffer _indexBuffer;
     
     private SimpleBuffer<Matrix4x4> _modelMatrixBuffer;
-    
-    private Dictionary<Material, SimplePipeline> _cachedPipelines;
     
     public Mesh(GraphicsDevice graphicsDevice, Material material, Vertex3D[]? vertices = default, uint[]? indices = default) {
         this.GraphicsDevice = graphicsDevice;
@@ -49,12 +48,10 @@ public class Mesh : Disposable {
         graphicsDevice.UpdateBuffer(this._indexBuffer, 0, indices);
 
         this._modelMatrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "MatrixBuffer", 3, SimpleBufferType.Uniform, ShaderStages.Vertex);
-        
-        this._cachedPipelines = new Dictionary<Material, SimplePipeline>();
     }
 
     // TODO: Take care of color.
-    public void Draw(CommandList commandList, OutputDescription output, Transform transform, BlendState blendState, Color color) {
+    public void Draw(CommandList commandList, OutputDescription output, Transform transform, Color? color = default) {
         Cam3D? cam3D = Cam3D.ActiveCamera;
 
         if (cam3D == null) {
@@ -74,7 +71,7 @@ public class Mesh : Disposable {
             commandList.SetIndexBuffer(this._indexBuffer, IndexFormat.UInt32);
             
             // Set pipeline.
-            commandList.SetPipeline(this.GetOrCreatePipeline(this.Material, blendState, output).Pipeline);
+            commandList.SetPipeline(this.GetOrCreatePipeline(this.Material, output).Pipeline);
             
             // Set projection view buffer.
             commandList.SetGraphicsResourceSet(0, this._modelMatrixBuffer.ResourceSet);
@@ -98,7 +95,7 @@ public class Mesh : Disposable {
             commandList.SetVertexBuffer(0, this._vertexBuffer);
             
             // Set pipeline.
-            commandList.SetPipeline(this.GetOrCreatePipeline(this.Material, blendState, output).Pipeline);
+            commandList.SetPipeline(this.GetOrCreatePipeline(this.Material, output).Pipeline);
             
             // Set projection view buffer.
             commandList.SetGraphicsResourceSet(0, this._modelMatrixBuffer.ResourceSet);
@@ -107,14 +104,20 @@ public class Mesh : Disposable {
             commandList.Draw(this.VertexCount);
         }
     }
-    
-    public SimplePipeline GetOrCreatePipeline(Material material, BlendState blendState, OutputDescription output) {
-        if (!this._cachedPipelines.TryGetValue(material, out SimplePipeline? pipeline)) {
+
+    /// <summary>
+    /// Retrieves an existing pipeline associated with the given material and output description, or creates a new one if it doesn't exist.
+    /// </summary>
+    /// <param name="material">The material associated with the pipeline.</param>
+    /// <param name="output">The output description for the pipeline.</param>
+    /// <returns>A pipeline that matches the specified material and output description.</returns>
+    private SimplePipeline GetOrCreatePipeline(Material material, OutputDescription output) {
+        if (!_cachedPipelines.TryGetValue(material, out SimplePipeline? pipeline)) {
             SimplePipeline newPipeline = new SimplePipeline(this.GraphicsDevice, new SimplePipelineDescription() {
-                BlendState = blendState.Description,
+                BlendState = material.BlendState.Description,
                 DepthStencilState = new DepthStencilStateDescription(true, true, ComparisonKind.LessEqual),
                 RasterizerState = new RasterizerStateDescription() {
-                    CullMode = FaceCullMode.Back, // TODO: Make cull mode option like blendstate...
+                    CullMode = FaceCullMode.Back,
                     FillMode = PolygonFillMode.Solid,
                     FrontFace = FrontFace.Clockwise,
                     DepthClipEnabled = true,
@@ -137,7 +140,7 @@ public class Mesh : Disposable {
                 Outputs = output
             });
             
-            this._cachedPipelines.Add(material, newPipeline);
+            _cachedPipelines.Add(material, newPipeline);
             return newPipeline;
         }
 
@@ -148,6 +151,7 @@ public class Mesh : Disposable {
         if (disposing) {
             this._vertexBuffer.Dispose();
             this._indexBuffer.Dispose();
+            this._modelMatrixBuffer.Dispose();
         }
     }
 }

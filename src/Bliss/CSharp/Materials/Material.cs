@@ -1,5 +1,6 @@
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Effects;
+using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Textures;
 using Veldrid;
@@ -8,19 +9,52 @@ namespace Bliss.CSharp.Materials;
 
 public class Material : Disposable {
     
+    /// <summary>
+    /// The graphics device associated with this material, used to manage rendering resources.
+    /// </summary>
     public GraphicsDevice GraphicsDevice { get; private set; }
     
+    /// <summary>
+    /// The effect (shader program) applied to this material.
+    /// </summary>
     public Effect Effect { get; private set; }
+    
+    /// <summary>
+    /// Specifies the blend state for rendering, determining how colors are blended on the screen.
+    /// </summary>
+    public BlendState BlendState { get; private set; }
+    
+    /// <summary>
+    /// An array of texture layouts that defines the material's texture configurations.
+    /// </summary>
     public SimpleTextureLayout[] TextureLayouts { get; private set; }
     
+    /// <summary>
+    /// A list of floating-point parameters for configuring material properties.
+    /// </summary>
     public List<float> Parameters;
 
+    /// <summary>
+    /// A dictionary mapping material map types to material map data, used for managing material textures.
+    /// </summary>
     private Dictionary<MaterialMapType, MaterialMap> _maps;
+    
+    /// <summary>
+    /// A cache of resource sets mapped by sampler and resource layout, improving efficiency when reusing resources.
+    /// </summary>
     private Dictionary<(Sampler, ResourceLayout), ResourceSet> _cachedResourceSets;
     
-    public Material(GraphicsDevice graphicsDevice, Effect effect) {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Material"/> class, configuring it with the specified
+    /// graphics device, shader effect, and optional blend state.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device to associate with this material.</param>
+    /// <param name="effect">The effect (shader) to apply to the material.</param>
+    /// <param name="blendState">The optional blend state to define how this material blends with others during rendering. If not specified, blending is disabled by default.</param>
+    public Material(GraphicsDevice graphicsDevice, Effect effect, BlendState? blendState = default) {
         this.GraphicsDevice = graphicsDevice;
         this.Effect = effect;
+        this.BlendState = blendState ?? BlendState.Disabled;
         this.TextureLayouts = this.CreateTextureLayout(graphicsDevice);
         this.Parameters = new List<float>();
         this._maps = this.SetDefaultMaterialMaps();
@@ -203,6 +237,10 @@ public class Material : Disposable {
         if (disposing) {
             foreach (SimpleTextureLayout textureLayout in this.TextureLayouts) {
                 textureLayout.Dispose();
+            }
+
+            foreach (ResourceSet resourceSet in this._cachedResourceSets.Values) {
+                resourceSet.Dispose();
             }
         }
     }

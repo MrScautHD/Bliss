@@ -168,10 +168,10 @@ public class Game : Disposable {
         this._cam3D.Begin(commandList);
         
         // Drawing Plane
-        this._planeModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform(), BlendState.Disabled, Color.White);
+        this._planeModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform(), Color.White);
         
         // Draw Player
-        this._playerModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, BlendState.Disabled, Color.Blue);
+        this._playerModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, Color.Blue);
         
         this._cam3D.End(commandList);
         
@@ -194,10 +194,15 @@ public class Game : Disposable {
         this._spriteBatch.DrawText(this._font, $"FPS: {(int) (1.0F / Time.Delta)}", new Vector2(5, 5), 18);
         
         // Draw texture.
-        //Vector2 texturePos = new Vector2(this.MainWindow.GetWidth() / 2.0F - (216.0F / 4.0F / 2.0F), this.MainWindow.GetHeight() / 2.0F - (85.0F / 4.0F / 2.0F));
-        //Vector2 textureScale = new Vector2(4.0F, 4.0F);
-        //Vector2 textureOrigin = new Vector2(216.0F / 2.0F, 85.0F / 2.0F);
-        //this._spriteBatch.DrawTexture(this._texture, texturePos, default, textureScale, textureOrigin, 10);
+        this._texture.SetSampler(SamplerType.Point);
+        Vector2 texturePos = new Vector2(this.MainWindow.GetWidth() / 2.0F - (216.0F / 4.0F / 2.0F), this.MainWindow.GetHeight() / 2.0F - (85.0F / 4.0F / 2.0F));
+        Vector2 textureScale = new Vector2(4.0F, 4.0F);
+        Vector2 textureOrigin = new Vector2(216.0F / 2.0F, 85.0F / 2.0F);
+        this._spriteBatch.DrawTexture(this._texture, texturePos, default, textureScale, textureOrigin, 10);
+        
+        this._texture.SetSampler(SamplerType.Aniso4X);
+        //this._texture.UpdateData(this);
+        this._spriteBatch.DrawTexture(this._texture, texturePos + new Vector2(100, 100), default, textureScale, textureOrigin, 10);
 
         // Draw text.
         //string text = "This is my first FONT!!!";

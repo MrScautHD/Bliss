@@ -3,7 +3,6 @@ using System.Text;
 using Assimp;
 using Bliss.CSharp.Effects;
 using Bliss.CSharp.Geometry.Conversions;
-using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
@@ -45,7 +44,7 @@ public class Model : Disposable {
     /// An array of meshes that make up the model.
     /// </summary>
     public Mesh[] Meshes { get; private set; }
-
+    
     /// <summary>
     /// Initializes a new instance of the <see cref="Model"/> class with the specified graphics device and meshes.
     /// </summary>
@@ -240,11 +239,10 @@ public class Model : Disposable {
     /// <param name="commandList">The command list used to issue drawing commands.</param>
     /// <param name="output">The output description of the render target.</param>
     /// <param name="transform">The transformation applied to the model.</param>
-    /// <param name="blendState">The blend state used during rendering.</param>
     /// <param name="color">The color applied to the model.</param>
-    public void Draw(CommandList commandList, OutputDescription output, Transform transform, BlendState blendState, Color color) {
+    public void Draw(CommandList commandList, OutputDescription output, Transform transform, Color color) {
         foreach (Mesh mesh in this.Meshes) {
-            mesh.Draw(commandList, output, transform, blendState, color);
+            mesh.Draw(commandList, output, transform, color);
         }
     }
 
