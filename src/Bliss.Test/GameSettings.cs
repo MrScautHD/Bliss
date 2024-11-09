@@ -29,7 +29,7 @@ public struct GameSettings {
         this.FixedTimeStep = 1.0F / 60.0F;
         this.WindowFlags = WindowState.Resizable;
         this.Backend = Window.GetPlatformDefaultBackend();
-        this.VSync = true;
+        this.VSync = false;
         this.SampleCount = TextureSampleCount.Count1;
     }
 }

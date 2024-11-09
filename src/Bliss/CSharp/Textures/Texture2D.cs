@@ -4,6 +4,7 @@ using Bliss.CSharp.Logging;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
+using Rectangle = Bliss.CSharp.Transformations.Rectangle;
 
 namespace Bliss.CSharp.Textures;
 
@@ -23,12 +24,12 @@ public class Texture2D : Disposable {
     /// <summary>
     /// Gets the width of the texture in pixels.
     /// </summary>
-    public uint Width => (uint) this.Images[0].Width;
+    public uint Width => this.DeviceTexture.Width;
 
     /// <summary>
     /// Gets the height of the texture in pixels.
     /// </summary>
-    public uint Height => (uint) this.Images[0].Height;
+    public uint Height => this.DeviceTexture.Height;
 
     /// <summary>
     /// Gets the pixel format of the texture.
@@ -147,31 +148,70 @@ public class Texture2D : Disposable {
     }
 
     /// <summary>
-    /// Retrieves the primary image data of the texture.
+    /// Retrieves the texture data as a byte array.
+    /// Copies the texture data from the GPU to a staging texture and then reads it into a managed array.
     /// </summary>
-    /// <returns>The primary <see cref="Image{Rgba32}"/> containing the texture data.</returns>
-    public Image<Rgba32> GetData() {
-        return this.Images[0];
+    /// <returns>A byte array containing the texture data.</returns>
+    public unsafe byte[] GetData() {
+        byte[] data = new byte[this.Width * this.Height * this.PixelSizeInBytes];
+
+        // Create a staging texture to copy the data from the GPU.
+        Texture stagingTexture = this.GraphicsDevice.ResourceFactory.CreateTexture(TextureDescription.Texture2D(this.Width, this.Height, this.MipLevels, 1, this.Format, TextureUsage.Staging));
+
+        // Copy the texture data to the staging texture.
+        CommandList commandList = this.GraphicsDevice.ResourceFactory.CreateCommandList();
+        commandList.Begin();
+        commandList.CopyTexture(this.DeviceTexture, stagingTexture);
+        commandList.End();
+        this.GraphicsDevice.SubmitCommands(commandList);
+        this.GraphicsDevice.WaitForIdle();
+
+        // Map the staging texture for reading.
+        MappedResource mappedResource = this.GraphicsDevice.Map(stagingTexture, MapMode.Read, 0);
+
+        // Copy the data to the managed array.
+        Buffer.MemoryCopy((void*) mappedResource.Data, (void*) data.AsSpan().GetPinnableReference(), data.Length, data.Length);
+
+        // Unmap and cleanup.
+        this.GraphicsDevice.Unmap(stagingTexture, 0);
+        stagingTexture.Dispose();
+        commandList.Dispose();
+
+        return data;
     }
 
     /// <summary>
-    /// Sets the texture data for the current Texture2D object, with optional mipmap generation.
+    /// Sets the texture data using the provided data array and optional rectangle area.
     /// </summary>
-    /// <param name="data">The image data to set for the texture.</param>
-    /// <param name="mipmap">Indicates whether to generate mipmaps for the texture. Default is true.</param>
-    public unsafe void SetData(Image<Rgba32> data, bool mipmap = true) {
-        this.Images = mipmap ? MipmapHelper.GenerateMipmaps(data) : [data];
-        
-        for (int i = 0; i < this.MipLevels; i++) {
-            Image<Rgba32> image = this.Images[i];
-            
-            if (!image.DangerousTryGetSinglePixelMemory(out Memory<Rgba32> pixelMemory)) {
-                throw new VeldridException("Unable to get image pixel data!");
-            }
+    /// <typeparam name="T">The type of the data elements, which must be unmanaged.</typeparam>
+    /// <param name="data">The data array to be copied into the texture.</param>
+    /// <param name="area">An optional rectangle specifying the area to update. If null, the entire texture is updated.</param>
+    public void SetData<T>(T[] data, Rectangle? area = null) where T : unmanaged { // TODO: Make it possible if you change the texture data that the SpriteBatch updates to like 1. texture1 drawing 2. Update Data 3. texture1 drawing again but still uses the old data because it use the old texture (i think maybe it will works anyways)
+        this.SetData(data.AsSpan(), area);
+    }
 
-            fixed (void* dataPtr = &MemoryMarshal.GetReference(pixelMemory.Span)) {
-                this.GraphicsDevice.UpdateTexture(this.DeviceTexture, (nint) dataPtr, (uint) (this.PixelSizeInBytes * image.Width * image.Height), 0, 0, 0, (uint) image.Width, (uint) image.Height, 1, (uint) i, 0);
-            }
+    /// <summary>
+    /// Sets the texture data within the specified rectangle or across the entire texture if no rectangle is specified.
+    /// </summary>
+    /// <typeparam name="T">The type of the texture data elements, which must be unmanaged.</typeparam>
+    /// <param name="data">The data to set into the texture.</param>
+    /// <param name="area">The rectangle within the texture to set data. If not specified, data is set across the entire texture.</param>
+    public void SetData<T>(Span<T> data, Rectangle? area = null) where T : unmanaged {
+        this.SetData((ReadOnlySpan<T>) data, area);
+    }
+
+    /// <summary>
+    /// Sets the texture data from a read-only span of data elements. An optional rectangle can be provided to specify the region of the texture to update.
+    /// </summary>
+    /// <typeparam name="T">The type of the data elements, which must be unmanaged.</typeparam>
+    /// <param name="data">The read-only span containing the data elements to set in the texture.</param>
+    /// <param name="area">An optional rectangle that defines the region of the texture to update. If null, the entire texture is updated.</param>
+    public unsafe void SetData<T>(ReadOnlySpan<T> data, Rectangle? area = null) where T : unmanaged {
+        Rectangle rect = area ?? new Rectangle(0, 0, (int) this.Width, (int) this.Height);
+
+        fixed (T* ptr = data) {
+            int size = data.Length * Marshal.SizeOf<T>();
+            this.GraphicsDevice.UpdateTexture(this.DeviceTexture, (nint) ptr, (uint) size, (uint) rect.X, (uint) rect.Y, 0, (uint) rect.Width, (uint) rect.Height, 1, 0, 0);
         }
     }
 

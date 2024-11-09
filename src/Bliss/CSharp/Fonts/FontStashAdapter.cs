@@ -1,5 +1,4 @@
 using System.Numerics;
-using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 using Bliss.CSharp.Textures;
 using FontStashSharp;
@@ -70,7 +69,7 @@ internal class FontStashAdapter : ITexture2DManager, IFontStashRenderer {
     /// <param name="data">The byte array containing the texture data to be set.</param>
     public void SetTextureData(object texture, SRectangle bounds, byte[] data) {
         Texture2D texture2D = (Texture2D) texture;
-        texture2D.UpdateData(data, new Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height));
+        texture2D.SetData(data, new Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height));
     }
 
     /// <summary>
