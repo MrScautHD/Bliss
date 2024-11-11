@@ -178,7 +178,7 @@ public class Texture2D : Disposable {
         Rectangle rect = area ?? new Rectangle(0, 0, (int) this.Width, (int) this.Height);
 
         // Use ImageSharp's LoadPixelData to create the bounded image directly from data.
-        using (var boundedImage = Image.LoadPixelData<Rgba32>(data, rect.Width, rect.Height)) {
+        using (Image<Rgba32> boundedImage = Image.LoadPixelData<Rgba32>(data, rect.Width, rect.Height)) {
             Image<Rgba32> image = this.GetDataFromImage();
         
             // Copy boundedImage into the image within the specified.

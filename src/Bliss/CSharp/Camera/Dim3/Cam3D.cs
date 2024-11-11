@@ -17,7 +17,7 @@ public class Cam3D : ICam {
     /// Used to determine which camera is currently rendering the scene.
     /// Can be accessed from other classes to retrieve camera-specific properties and methods.
     /// </summary>
-    internal static Cam3D? ActiveCamera { get; private set; }
+    public static Cam3D? ActiveCamera { get; private set; }
 
     /// <summary>
     /// Defines the portion of the render target that a camera will render to.
@@ -120,6 +120,8 @@ public class Cam3D : ICam {
     /// It is used in rendering to position and orient the camera in the scene.
     /// </summary>
     private Matrix4x4 _view;
+
+    private CommandList _currentCommandList;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="Cam3D"/> class, configuring the camera's position, 
@@ -151,63 +153,63 @@ public class Cam3D : ICam {
         this.Resize(width, height);
     }
 
-    public void Update(double delta) {
+    public void Update(double timeStep) {
         switch (this.Mode) {
             case CameraMode.Free:
                 if (!Input.IsGamepadAvailable(0)) {
-                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity) * (float) delta, false);
-                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity) * (float) delta, false);
+                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity) * (float) timeStep, false);
+                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity) * (float) timeStep, false);
 
                     if (Input.IsKeyDown(KeyboardKey.W)) {
-                        this.MoveForward(this.MovementSpeed * (float) delta, true);
+                        this.MoveForward(this.MovementSpeed * (float) timeStep, true);
                     }
                     
                     if (Input.IsKeyDown(KeyboardKey.S)) {
-                        this.MoveForward(-this.MovementSpeed * (float) delta, true);
+                        this.MoveForward(-this.MovementSpeed * (float) timeStep, true);
                     }
                     
                     if (Input.IsKeyDown(KeyboardKey.A)) {
-                        this.MoveRight(-this.MovementSpeed * (float) delta, true);
+                        this.MoveRight(-this.MovementSpeed * (float) timeStep, true);
                     }
                     if (Input.IsKeyDown(KeyboardKey.D)) {
-                        this.MoveRight(this.MovementSpeed * (float) delta, true);
+                        this.MoveRight(this.MovementSpeed * (float) timeStep, true);
                     }
                     
                     if (Input.IsKeyDown(KeyboardKey.Space)) {
-                        this.MoveUp(this.MovementSpeed * (float) delta);
+                        this.MoveUp(this.MovementSpeed * (float) timeStep);
                     }
                     
                     if (Input.IsKeyDown(KeyboardKey.ShiftLeft)) {
-                        this.MoveUp(-this.MovementSpeed * (float) delta);
+                        this.MoveUp(-this.MovementSpeed * (float) timeStep);
                     }
                 }
                 else {
-                    this.SetYaw(this.GetYaw() - (Input.GetGamepadAxisMovement(0, GamepadAxis.RightX) * 6) * this.MouseSensitivity * (float) delta, false);
-                    this.SetPitch(this.GetPitch() - (Input.GetGamepadAxisMovement(0, GamepadAxis.RightY) * 6) * this.MouseSensitivity * (float) delta, false);
+                    this.SetYaw(this.GetYaw() - (Input.GetGamepadAxisMovement(0, GamepadAxis.RightX) * 6) * this.MouseSensitivity * (float) timeStep, false);
+                    this.SetPitch(this.GetPitch() - (Input.GetGamepadAxisMovement(0, GamepadAxis.RightY) * 6) * this.MouseSensitivity * (float) timeStep, false);
                     
-                    this.MoveForward(this.MovementSpeed * Input.GetGamepadAxisMovement(0, GamepadAxis.TriggerRight) * (float) delta, false);
-                    this.MoveForward(-this.MovementSpeed * Input.GetGamepadAxisMovement(0, GamepadAxis.TriggerLeft) * (float) delta, false);
+                    this.MoveForward(this.MovementSpeed * Input.GetGamepadAxisMovement(0, GamepadAxis.TriggerRight) * (float) timeStep, false);
+                    this.MoveForward(-this.MovementSpeed * Input.GetGamepadAxisMovement(0, GamepadAxis.TriggerLeft) * (float) timeStep, false);
                     
                     if (Input.IsGamepadButtonDown(0, GamepadButton.RightShoulder)) {
-                        this.MoveRight(this.MovementSpeed * (float) delta, true);
+                        this.MoveRight(this.MovementSpeed * (float) timeStep, true);
                     }
                     
                     if (Input.IsGamepadButtonDown(0, GamepadButton.LeftShoulder)) {
-                        this.MoveRight(-this.MovementSpeed * (float) delta, true);
+                        this.MoveRight(-this.MovementSpeed * (float) timeStep, true);
                     }
                     
                     if (Input.IsGamepadButtonDown(0, GamepadButton.RightStick)) {
-                        this.MoveUp(this.MovementSpeed * (float) delta);
+                        this.MoveUp(this.MovementSpeed * (float) timeStep);
                     }
                     
                     if (Input.IsGamepadButtonDown(0, GamepadButton.LeftStick)) {
-                        this.MoveUp(-this.MovementSpeed * (float) delta);
+                        this.MoveUp(-this.MovementSpeed * (float) timeStep);
                     }
                 }
                 break;
             
             case CameraMode.Orbital:
-                Matrix4x4 rotation = Matrix4x4.CreateFromAxisAngle(this.Up, this.OrbitalSpeed * (float) delta);
+                Matrix4x4 rotation = Matrix4x4.CreateFromAxisAngle(this.Up, this.OrbitalSpeed * (float) timeStep);
                 Vector3 view = this.Position - this.Target;
                 Vector3 transform = Vector3.Transform(view, rotation);
                 this.Position = this.Target + transform;
@@ -219,23 +221,23 @@ public class Cam3D : ICam {
             
             case CameraMode.FirstPerson:
                 if (!Input.IsGamepadAvailable(0)) {
-                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity) * (float) delta, false);
-                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity) * (float) delta, false);
+                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity) * (float) timeStep, false);
+                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity) * (float) timeStep, false);
                 }
                 else {
-                    this.SetYaw(this.GetYaw() - (Input.GetGamepadAxisMovement(0, GamepadAxis.RightX) * 6) * this.MouseSensitivity * (float) delta, false);
-                    this.SetPitch(this.GetPitch() - (Input.GetGamepadAxisMovement(0, GamepadAxis.RightY) * 6) * this.MouseSensitivity * (float) delta, false);
+                    this.SetYaw(this.GetYaw() - (Input.GetGamepadAxisMovement(0, GamepadAxis.RightX) * 6) * this.MouseSensitivity * (float) timeStep, false);
+                    this.SetPitch(this.GetPitch() - (Input.GetGamepadAxisMovement(0, GamepadAxis.RightY) * 6) * this.MouseSensitivity * (float) timeStep, false);
                 }
                 break;
             
             case CameraMode.ThirdPerson:
                 if (!Input.IsGamepadAvailable(0)) {
-                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity) * (float) delta, true);
-                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity) * (float) delta, true);
+                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity) * (float) timeStep, true);
+                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity) * (float) timeStep, true);
                 }
                 else {
-                    this.SetYaw(this.GetYaw() + (Input.GetGamepadAxisMovement(0, GamepadAxis.RightX) * 6) * this.MouseSensitivity * (float) delta, true);
-                    this.SetPitch(this.GetPitch() + (Input.GetGamepadAxisMovement(0, GamepadAxis.RightY) * 6) * this.MouseSensitivity * (float) delta, true);
+                    this.SetYaw(this.GetYaw() + (Input.GetGamepadAxisMovement(0, GamepadAxis.RightX) * 6) * this.MouseSensitivity * (float) timeStep, true);
+                    this.SetPitch(this.GetPitch() + (Input.GetGamepadAxisMovement(0, GamepadAxis.RightY) * 6) * this.MouseSensitivity * (float) timeStep, true);
                 }
                 break;
         }
@@ -249,6 +251,28 @@ public class Cam3D : ICam {
     public void Resize(uint width, uint height) {
         this.Viewport = new Viewport(0, 0, width, height, 0, 0);
         this.AspectRatio = (float) width / (float) height;
+    }
+
+    /// <summary>
+    /// Sets the specified command list as the current command list for rendering operations and updates
+    /// the camera's projection and view matrices. Also clears the depth stencil and sets this camera as the active camera.
+    /// </summary>
+    /// <param name="commandList">The command list to set as the current command list for rendering operations.</param>
+    public void Begin(CommandList commandList) {
+        this._currentCommandList = commandList;
+        this.UpdateProjection();
+        this.UpdateView();
+        
+        commandList.ClearDepthStencil(1.0F);
+        ActiveCamera = this;
+    }
+
+    /// <summary>
+    /// Ends the current 3D rendering session and deactivates the camera.
+    /// </summary>
+    public void End() {
+        this._currentCommandList.ClearDepthStencil(0.0F);
+        ActiveCamera = null;
     }
     
     /// <summary>
@@ -265,32 +289,6 @@ public class Cam3D : ICam {
     /// <returns>The view matrix of the camera.</returns>
     public Matrix4x4 GetView() {
         return this._view;
-    }
-    
-    /// <summary>
-    /// Sets the current instance of Cam3D as the active camera for rendering 3D scenes.
-    /// </summary>
-    public void Begin(CommandList commandList) {
-        
-        // Update projection and view matrix.
-        this.UpdateProjection();
-        this.UpdateView();
-        
-        // Clear depth stencil.
-        commandList.ClearDepthStencil(1.0F);
-        
-        ActiveCamera = this;
-    }
-
-    /// <summary>
-    /// Ends the current 3D rendering session and deactivates the camera.
-    /// </summary>
-    public void End(CommandList commandList) {
-        
-        // Clear depth stencil (default).
-        commandList.ClearDepthStencil(0.0F);
-        
-        ActiveCamera = null;
     }
     
     /// <summary>

@@ -1,4 +1,3 @@
-using System.Numerics;
 using Veldrid;
 
 namespace Bliss.CSharp.Camera;
@@ -8,7 +7,7 @@ public interface ICam {
     /// <summary>
     /// Updates the camera's state, recalculating its parameters as needed.
     /// </summary>
-    void Update(double delta);
+    void Update(double timeStep);
     
     /// <summary>
     /// Resizes the viewport and updates the aspect ratio based on the given width and height.
@@ -18,24 +17,13 @@ public interface ICam {
     void Resize(uint width, uint height);
 
     /// <summary>
-    /// Generates the projection matrix based on the current camera settings, such as projection type, field of view (FOV), aspect ratio, near plane, and far plane distances.
+    /// Initializes the camera's usage in the current frame and sets it as the active camera.
     /// </summary>
-    /// <returns>The calculated projection matrix.</returns>
-    Matrix4x4 GetProjection();
-
-    /// <summary>
-    /// Constructs and returns the view matrix for the camera based on its position, target, and up vector.
-    /// </summary>
-    /// <returns>The view matrix of the camera.</returns>
-    Matrix4x4 GetView();
-
-    /// <summary>
-    /// Initializes the camera for rendering or capturing by performing any necessary setup operations.
-    /// </summary>
+    /// <param name="commandList">The command list to begin the camera's drawing operations.</param>
     void Begin(CommandList commandList);
-
+    
     /// <summary>
-    /// Finalizes the camera operations, ensuring any necessary cleanup or finalization steps are performed.
+    /// Concludes the camera's operations for the current frame.
     /// </summary>
-    void End(CommandList commandList);
+    void End();
 }

@@ -199,7 +199,7 @@ public class SpriteBatch : Disposable {
         graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this._indices);
         
         // Create projection view buffer.
-        this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "ProjectionViewBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "ProjectionViewBuffer", 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
         
         // Create texture layout.
         this._textureLayout = new SimpleTextureLayout(graphicsDevice, "fTexture");
@@ -211,10 +211,10 @@ public class SpriteBatch : Disposable {
     /// <param name="commandList">The command list to record rendering commands to.</param>
     /// <param name="effect">Optional effect to apply; if null, the default effect is used.</param>
     /// <param name="blendState">Optional blend state to use; if null, the default blend state is used.</param>
-    /// <param name="view">Optional view matrix; if null, an identity matrix is used.</param>
     /// <param name="projection">Optional projection matrix; if null, an orthographic projection matching the window dimensions is used.</param>
+    /// <param name="view">Optional view matrix; if null, an identity matrix is used.</param>
     /// <exception cref="Exception">Thrown if Begin is called while a previous Begin has not been followed by an End.</exception>
-    public void Begin(CommandList commandList, Effect? effect = null, BlendState? blendState = null, Matrix4x4? view = null, Matrix4x4? projection = null) {
+    public void Begin(CommandList commandList, Effect? effect = null, BlendState? blendState = null, Matrix4x4? projection = null, Matrix4x4? view = null) {
         if (this._begun) {
             throw new Exception("The SpriteBatch has already begun!");
         }
@@ -229,10 +229,12 @@ public class SpriteBatch : Disposable {
         this._currentEffect = effect ?? this._defaultEffect;
         this._currentBlendState = blendState ?? BlendState.AlphaBlend;
         
-        Matrix4x4 finalView = view ?? Matrix4x4.Identity;
         Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
+        Matrix4x4 finalView = view ?? Matrix4x4.Identity;
         
-        this._projViewBuffer.SetValueImmediate(0, finalView * finalProj);
+        this._projViewBuffer.SetValue(0, finalProj);
+        this._projViewBuffer.SetValue(1, finalView);
+        this._projViewBuffer.UpdateBufferImmediate();
         this.DrawCallCount = 0;
     }
 

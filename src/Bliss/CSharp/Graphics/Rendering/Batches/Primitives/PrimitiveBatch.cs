@@ -4,6 +4,7 @@ using Bliss.CSharp.Effects;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.VertexTypes;
+using Bliss.CSharp.Logging;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
 using Veldrid;
@@ -113,7 +114,7 @@ public class PrimitiveBatch : Disposable {
         this._effect = new Effect(graphicsDevice.ResourceFactory, PrimitiveVertex2D.VertexLayout, "content/shaders/primitive.vert", "content/shaders/primitive.frag");
         
         // Create projection view buffer.
-        this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "ProjectionViewBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "ProjectionViewBuffer", 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
 
         // Create pipelines.
         SimplePipelineDescription pipelineDescription = new SimplePipelineDescription() {
@@ -154,10 +155,10 @@ public class PrimitiveBatch : Disposable {
     /// Begins a new batch of primitive drawing operations.
     /// </summary>
     /// <param name="commandList">The command list to record drawing commands.</param>
-    /// <param name="view">Optional view transformation matrix. If null, defaults to the identity matrix.</param>
     /// <param name="projection">Optional projection transformation matrix. If null, defaults to an orthographic projection matrix.</param>
+    /// <param name="view">Optional view transformation matrix. If null, defaults to the identity matrix.</param>
     /// <exception cref="Exception">Thrown when the method is called before the previous batch is ended.</exception>
-    public void Begin(CommandList commandList, Matrix4x4? view = null, Matrix4x4? projection = null) {
+    public void Begin(CommandList commandList, Matrix4x4? projection = null, Matrix4x4? view = null) {
         if (this._begun) {
             throw new Exception("The PrimitiveBatch has already begun!");
         }
@@ -165,10 +166,12 @@ public class PrimitiveBatch : Disposable {
         this._begun = true;
         this._currentCommandList = commandList;
         
-        Matrix4x4 finalView = view ?? Matrix4x4.Identity;
         Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
+        Matrix4x4 finalView = view ?? Matrix4x4.Identity;
 
-        this._projViewBuffer.SetValueImmediate(0, finalView * finalProj);
+        this._projViewBuffer.SetValue(0, finalProj);
+        this._projViewBuffer.SetValue(1, finalView);
+        this._projViewBuffer.UpdateBufferImmediate();
         this.DrawCallCount = 0;
     }
     
