@@ -184,6 +184,15 @@ public class Model : Disposable {
                 indices.Add((uint) face.Indices[1]);
                 indices.Add((uint) face.Indices[2]);
             }
+            
+            // Setup bones.
+            for (int j = 0; j < mesh.BoneCount; j++) {
+                Bone bone = mesh.Bones[j];
+
+                foreach (VertexWeight vertexWeight in bone.VertexWeights) {
+                    vertices[vertexWeight.VertexID].AddBone((uint) j, vertexWeight.Weight);
+                }
+            }
 
             meshes.Add(new Mesh(graphicsDevice, material, vertices, indices.ToArray()));
         }

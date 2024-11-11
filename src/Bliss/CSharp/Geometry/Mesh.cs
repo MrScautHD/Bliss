@@ -2,6 +2,7 @@ using System.Numerics;
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Colors;
+using Bliss.CSharp.Geometry.Bones;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.VertexTypes;
@@ -17,7 +18,7 @@ public class Mesh : Disposable {
     /// A dictionary that caches instances of SimplePipeline based on Material keys.
     /// This helps in reusing pipeline configurations for materials, enhancing rendering performance and reducing redundant pipeline creation.
     /// </summary>
-    private static Dictionary<Material, SimplePipeline> _cachedPipelines = new();
+    private static Dictionary<Material, SimplePipeline> _cachedPipelines = new(); // TODO: Take care of disposing it idk maybe a system that checks if its the last mesh that using it and dispose it with it.
 
     /// <summary>
     /// Represents the graphics device used for rendering operations.
@@ -45,6 +46,12 @@ public class Mesh : Disposable {
     /// such as triangles in a mesh. This allows for efficient reuse of vertex data.
     /// </summary>
     public uint[] Indices { get; private set; }
+
+    /// <summary>
+    /// Contains data related to bone transformations within a mesh.
+    /// This is used primarily for skeletal animation and managing vertex transformations according to bone influences.
+    /// </summary>
+    public BoneInfo BoneInfo { get; private set; }
 
     /// <summary>
     /// The axis-aligned bounding box (AABB) for the mesh.
@@ -78,6 +85,12 @@ public class Mesh : Disposable {
     /// A buffer that stores model matrix data for shader usage in rendering.
     /// </summary>
     private SimpleBuffer<Matrix4x4> _modelMatrixBuffer;
+
+    /// <summary>
+    /// A buffer that stores bone transformation data used for skeletal animation.
+    /// This buffer holds an array of structures representing bone matrices and is utilized during rendering to apply bone transformations to vertices.
+    /// </summary>
+    private SimpleBuffer<Blittable> _boneBuffer;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="Mesh"/> class with the specified graphics device, material, vertices, and indices.
@@ -91,6 +104,7 @@ public class Mesh : Disposable {
         this.Material = material;
         this.Vertices = vertices ?? [];
         this.Indices = indices ?? [];
+        this.BoneInfo = new BoneInfo(new Matrix4x4[128]);
         this.BoundingBox = this.GenerateBoundingBox();
 
         this.VertexCount = (uint) this.Vertices.Length;
@@ -100,12 +114,17 @@ public class Mesh : Disposable {
         uint indexBufferSize = this.IndexCount * 4;
         
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
-        graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, vertices);
+        graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this.Vertices);
 
         this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
-        graphicsDevice.UpdateBuffer(this._indexBuffer, 0, indices);
+        graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this.Indices);
 
         this._modelMatrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "MatrixBuffer", 3, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        this._boneBuffer = new SimpleBuffer<Blittable>(graphicsDevice, "BoneBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex);
+    }
+
+    public void UpdateAnimation(double timeStep) {
+        
     }
 
     // TODO: Take care of color!!!!!

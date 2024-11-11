@@ -13,7 +13,6 @@ using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
-using MiniAudioEx;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
@@ -96,10 +95,7 @@ public class Game : Disposable {
         else {
             throw new Exception("This type of window is not supported by the InputContext!");
         }
-        
-        Logger.Info("Initialize audio system...");
-        AudioContext.Initialize(44100, 2);
-        
+
         this.Init();
         
         Logger.Info("Start main loops...");
