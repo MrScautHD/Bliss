@@ -12,28 +12,86 @@ using Veldrid;
 namespace Bliss.CSharp.Geometry;
 
 public class Mesh : Disposable {
-
+    
+    /// <summary>
+    /// A dictionary that caches instances of SimplePipeline based on Material keys.
+    /// This helps in reusing pipeline configurations for materials, enhancing rendering performance and reducing redundant pipeline creation.
+    /// </summary>
     private static Dictionary<Material, SimplePipeline> _cachedPipelines = new();
-    
+
+    /// <summary>
+    /// Represents the graphics device used for rendering operations.
+    /// This property provides access to the underlying GraphicsDevice instance responsible for managing GPU resources and executing rendering commands.
+    /// </summary>
     public GraphicsDevice GraphicsDevice { get; private set; }
+
+    /// <summary>
+    /// Represents the material properties used for rendering the mesh.
+    /// This may include shaders (effects), texture mappings, blending states, and other rendering parameters.
+    /// The Material controls how the mesh is rendered within the graphics pipeline.
+    /// </summary>
     public Material Material { get; private set; }
-    
+
+    /// <summary>
+    /// An array of Vertex3D structures that define the geometric points of a mesh.
+    /// Each vertex contains attributes such as position, texture coordinates, normal, and optional color.
+    /// Vertices are used to construct the shape and appearance of a 3D model.
+    /// </summary>
     public Vertex3D[] Vertices { get; private set; }
+
+    /// <summary>
+    /// An array of indices that define the order in which vertices are drawn.
+    /// Indices are used in conjunction with the vertex array to form geometric shapes
+    /// such as triangles in a mesh. This allows for efficient reuse of vertex data.
+    /// </summary>
     public uint[] Indices { get; private set; }
-    
+
+    /// <summary>
+    /// The axis-aligned bounding box (AABB) for the mesh.
+    /// This bounding box is calculated based on the vertices of the mesh and represents
+    /// the minimum and maximum coordinates that encompass the entire mesh.
+    /// </summary>
+    public BoundingBox BoundingBox { get; private set; }
+
+    /// <summary>
+    /// The total count of vertices present in the mesh.
+    /// This value determines the number of vertices available for rendering within the mesh.
+    /// </summary>
     public uint VertexCount { get; private set; }
+
+    /// <summary>
+    /// The number of indices in the mesh used for rendering.
+    /// </summary>
     public uint IndexCount { get; private set; }
-    
+
+    /// <summary>
+    /// A buffer that stores vertex data used for rendering in the graphics pipeline.
+    /// </summary>
     private DeviceBuffer _vertexBuffer;
+
+    /// <summary>
+    /// A buffer that stores index data used for indexed drawing in the graphics pipeline.
+    /// </summary>
     private DeviceBuffer _indexBuffer;
-    
+
+    /// <summary>
+    /// A buffer that stores model matrix data for shader usage in rendering.
+    /// </summary>
     private SimpleBuffer<Matrix4x4> _modelMatrixBuffer;
     
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Mesh"/> class with the specified graphics device, material, vertices, and indices.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used to create buffers and manage resources.</param>
+    /// <param name="material">The material associated with the mesh, defining its visual properties.</param>
+    /// <param name="vertices">The optional array of vertices defining the mesh geometry.</param>
+    /// <param name="indices">The optional array of indices defining the order of vertex rendering.</param>
     public Mesh(GraphicsDevice graphicsDevice, Material material, Vertex3D[]? vertices = default, uint[]? indices = default) {
         this.GraphicsDevice = graphicsDevice;
         this.Material = material;
         this.Vertices = vertices ?? [];
         this.Indices = indices ?? [];
+        this.BoundingBox = this.GenerateBoundingBox();
 
         this.VertexCount = (uint) this.Vertices.Length;
         this.IndexCount = (uint) this.Indices.Length;
@@ -50,7 +108,14 @@ public class Mesh : Disposable {
         this._modelMatrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "MatrixBuffer", 3, SimpleBufferType.Uniform, ShaderStages.Vertex);
     }
 
-    // TODO: Take care of color.
+    // TODO: Take care of color!!!!!
+    /// <summary>
+    /// Renders the mesh using the specified command list, output description, transformation, and optional color.
+    /// </summary>
+    /// <param name="commandList">The command list used for issuing rendering commands.</param>
+    /// <param name="output">The output description for the rendering pipeline.</param>
+    /// <param name="transform">The transformation to apply to the mesh.</param>
+    /// <param name="color">Optional color parameter for coloring the mesh.</param>
     public void Draw(CommandList commandList, OutputDescription output, Transform transform, Color? color = default) {
         Cam3D? cam3D = Cam3D.ActiveCamera;
 
@@ -145,6 +210,22 @@ public class Mesh : Disposable {
         }
 
         return pipeline;
+    }
+
+    /// <summary>
+    /// Calculates the bounding box for the current mesh based on its vertices.
+    /// </summary>
+    /// <returns>A BoundingBox object that encompasses all vertices of the mesh.</returns>
+    private BoundingBox GenerateBoundingBox() {
+        Vector3 min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
+        Vector3 max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
+
+        foreach (Vertex3D vertex in this.Vertices) {
+            min = Vector3.Min(min, vertex.Position);
+            max = Vector3.Max(max, vertex.Position);
+        }
+
+        return new BoundingBox(min, max);
     }
 
     protected override void Dispose(bool disposing) {

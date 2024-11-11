@@ -3,7 +3,6 @@ using Bliss.CSharp.Geometry;
 
 namespace Bliss.CSharp.Graphics.Rendering;
 
-// TODO: Check if that works and very importand maybe the matrix need switched like view * proj not proj * view!!!
 public class Frustum {
     
     /// <summary>

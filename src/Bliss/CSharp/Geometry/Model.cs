@@ -44,6 +44,11 @@ public class Model : Disposable {
     /// An array of meshes that make up the model.
     /// </summary>
     public Mesh[] Meshes { get; private set; }
+
+    /// <summary>
+    /// Represents the axis-aligned bounding box of the model.
+    /// </summary>
+    public BoundingBox BoundingBox { get; private set; }
     
     /// <summary>
     /// Initializes a new instance of the <see cref="Model"/> class with the specified graphics device and meshes.
@@ -53,6 +58,7 @@ public class Model : Disposable {
     public Model(GraphicsDevice graphicsDevice, Mesh[] meshes) {
         this.GraphicsDevice = graphicsDevice;
         this.Meshes = meshes;
+        this.BoundingBox = this.GenerateBoundingBox();
     }
 
     /// <summary>
@@ -194,7 +200,7 @@ public class Model : Disposable {
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used to create the default effect.</param>
     /// <return>The default <see cref="Effect"/> for the model.</return>
-    private static Effect GetDefaultEffect(GraphicsDevice graphicsDevice) {
+    private static Effect GetDefaultEffect(GraphicsDevice graphicsDevice) { // TODO: Take care to dispose it!
         return _defaultEffect ??= new Effect(graphicsDevice.ResourceFactory, Vertex3D.VertexLayout, "content/shaders/default_model.vert", "content/shaders/default_model.frag");
     }
 
@@ -244,6 +250,24 @@ public class Model : Disposable {
         foreach (Mesh mesh in this.Meshes) {
             mesh.Draw(commandList, output, transform, color);
         }
+    }
+
+    /// <summary>
+    /// Generates a bounding box that encapsulates all the vertices in the model's meshes.
+    /// </summary>
+    /// <returns>A <see cref="BoundingBox"/> that represents the minimum and maximum bounds of the model.</returns>
+    private BoundingBox GenerateBoundingBox() {
+        Vector3 min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
+        Vector3 max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
+
+        foreach (Mesh mesh in this.Meshes) {
+            foreach (Vertex3D vertex in mesh.Vertices) {
+                min = Vector3.Min(min, vertex.Position);
+                max = Vector3.Max(max, vertex.Position);
+            }
+        }
+
+        return new BoundingBox(min, max);
     }
 
     protected override void Dispose(bool disposing) {

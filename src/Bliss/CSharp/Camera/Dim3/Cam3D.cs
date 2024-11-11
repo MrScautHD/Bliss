@@ -467,7 +467,7 @@ public class Cam3D : ICam {
     /// </summary>
     /// <returns>The updated frustum containing the extracted planes.</returns>
     public Frustum GetFrustum() {
-        this._frustum.Extract(this.GetProjection() * this.GetView());
+        this._frustum.Extract(this.GetView() * this.GetProjection());
         return this._frustum;
     }
 

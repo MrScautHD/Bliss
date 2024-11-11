@@ -165,8 +165,15 @@ public class Game : Disposable {
 
         // Drawing 3D.
         this._cam3D.Begin(commandList);
-        this._planeModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform(), Color.White);
-        this._playerModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, Color.Blue);
+        
+        if (this._cam3D.GetFrustum().ContainsBox(this._planeModel.BoundingBox)) {
+            this._planeModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform(), Color.White);
+        }
+
+        if (this._cam3D.GetFrustum().ContainsBox(this._playerModel.BoundingBox)) {
+            this._playerModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, Color.Blue);
+        }
+        
         this._cam3D.End();
         
         // SpriteBatch Drawing.
