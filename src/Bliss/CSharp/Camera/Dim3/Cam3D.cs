@@ -121,6 +121,11 @@ public class Cam3D : ICam {
     /// </summary>
     private Matrix4x4 _view;
 
+    /// <summary>
+    /// Stores the current CommandList being used by the Cam3D instance.
+    /// Allows for the execution of rendering commands within the scope of
+    /// the camera's render operations.
+    /// </summary>
     private CommandList _currentCommandList;
     
     /// <summary>

@@ -1,6 +1,5 @@
 using System.Numerics;
 using Bliss.CSharp;
-using Bliss.CSharp.Camera.Dim2;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Geometry;
@@ -10,9 +9,7 @@ using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 using Bliss.CSharp.Graphics.Rendering.Passes;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Contexts;
-using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Logging;
-using Bliss.CSharp.Materials;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
@@ -22,7 +19,6 @@ using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
 using Color = Bliss.CSharp.Colors.Color;
 using Rectangle = Bliss.CSharp.Transformations.Rectangle;
-using RectangleF = Bliss.CSharp.Transformations.RectangleF;
 
 namespace Bliss.Test;
 
@@ -43,7 +39,6 @@ public class Game : Disposable {
     public FullScreenRenderPass FullScreenRenderPass { get; private set; }
     public RenderTexture2D FullScreenTexture { get; private set; }
 
-    private Cam2D _cam2D;
     private SpriteBatch _spriteBatch;
     private PrimitiveBatch _primitiveBatch;
     private Texture2D _texture;
@@ -142,7 +137,6 @@ public class Game : Disposable {
         this.FullScreenRenderPass = new FullScreenRenderPass(this.GraphicsDevice, this.GraphicsDevice.SwapchainFramebuffer.OutputDescription);
         this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), this.Settings.SampleCount);
         
-        this._cam2D = new Cam2D((uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), CameraFollowMode.FollowTargetSmooth, Vector2.Zero, Vector2.Zero, default, 0, 3);
         this._spriteBatch = new SpriteBatch(this.GraphicsDevice, this.MainWindow, this.FullScreenTexture.Framebuffer.OutputDescription);
         this._primitiveBatch = new PrimitiveBatch(this.GraphicsDevice, this.MainWindow, this.FullScreenTexture.Framebuffer.OutputDescription);
         this._texture = new Texture2D(this.GraphicsDevice, "content/images/logo.png");
@@ -154,33 +148,12 @@ public class Game : Disposable {
     }
 
     protected virtual void Update() {
-        if (Input.IsKeyDown(KeyboardKey.W)) {
-            this._playerPos.Y -= 30.5F * (float) Time.Delta;
-        }
-        
-        if (Input.IsKeyDown(KeyboardKey.S)) {
-            this._playerPos.Y += 30.5F * (float) Time.Delta;
-        }
-        
-        if (Input.IsKeyDown(KeyboardKey.A)) {
-            this._playerPos.X -= 30.5F * (float) Time.Delta;
-        }
-        
-        if (Input.IsKeyDown(KeyboardKey.D)) {
-            this._playerPos.X += 30.5F * (float) Time.Delta;
-        }
-        
-        this._cam2D.Target = this._playerPos;
-        
-        this._cam2D.Update((float) Time.Delta);
         this._cam3D.Update((float) Time.Delta);
     }
     
     protected virtual void AfterUpdate() { }
 
     protected virtual void FixedUpdate() { }
-
-    private Vector2 _playerPos;
     
     protected virtual void Draw(GraphicsDevice graphicsDevice, CommandList commandList) {
         commandList.Begin();
@@ -191,51 +164,14 @@ public class Game : Disposable {
         Input.EnableRelativeMouseMode();
 
         // Drawing 3D.
-        /*this._cam3D.Begin(commandList);
-        
-        // Drawing Plane
+        this._cam3D.Begin(commandList);
         this._planeModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform(), Color.White);
-        
-        // Draw Player
         this._playerModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, Color.Blue);
-        
-        this._cam3D.End();*/
-        
-        // PrimitiveBatch Drawing.
-        
-        this._cam2D.Begin(commandList);
-        this._primitiveBatch.Begin(commandList, default, this._cam2D.GetView());
-
-        this._primitiveBatch.DrawFilledCircle(this._playerPos, 40, 40, Color.Magenta);
-        this._primitiveBatch.DrawFilledRectangle(new RectangleF(100, 100, 100, 100));
-        
-        this._primitiveBatch.End();
-        this._cam2D.End();
+        this._cam3D.End();
         
         // SpriteBatch Drawing.
         this._spriteBatch.Begin(commandList);
-        
-        // Draw FPS.
         this._spriteBatch.DrawText(this._font, $"FPS: {(int) (1.0F / Time.Delta)}", new Vector2(5, 5), 18);
-        
-        // Draw texture.
-        //this._texture.SetSampler(SamplerType.Point);
-        //Vector2 texturePos = new Vector2(this.MainWindow.GetWidth() / 2.0F - (216.0F / 4.0F / 2.0F), this.MainWindow.GetHeight() / 2.0F - (85.0F / 4.0F / 2.0F));
-        //Vector2 textureScale = new Vector2(4.0F, 4.0F);
-        //Vector2 textureOrigin = new Vector2(216.0F / 2.0F, 85.0F / 2.0F);
-        //this._spriteBatch.DrawTexture(this._texture, texturePos, default, textureScale, textureOrigin, 10);
-        
-        //this._texture.SetSampler(SamplerType.Aniso4X);
-        //this._texture.UpdateData(this);
-        //this._spriteBatch.DrawTexture(this._texture, texturePos + new Vector2(100, 100), default, textureScale, textureOrigin, 10);
-
-        // Draw text.
-        //string text = "This is my first FONT!!!";
-        //int textSize = 36;
-        //Vector2 measureTextSize = this._font.MeasureText(text, textSize);
-        //Vector2 textPos = new Vector2(this.MainWindow.GetWidth() / 2.0F - (measureTextSize.X / 2.0F), this.MainWindow.GetHeight() / 1.25F - (measureTextSize.Y / 2.0F));
-        //this._spriteBatch.DrawText(this._font, text, textPos, textSize);
-        
         this._spriteBatch.End();
         
         commandList.End();
@@ -262,7 +198,6 @@ public class Game : Disposable {
     protected virtual void OnResize(Rectangle rectangle) {
         this.GraphicsDevice.MainSwapchain.Resize((uint) rectangle.Width, (uint) rectangle.Height);
         this.FullScreenTexture.Resize((uint) rectangle.Width, (uint) rectangle.Height);
-        this._cam2D.Resize((uint) rectangle.Width, (uint) rectangle.Height);
         this._cam3D.Resize((uint) rectangle.Width, (uint) rectangle.Height);
     }
 
