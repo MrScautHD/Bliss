@@ -160,18 +160,21 @@ public class Mesh : Disposable {
             // Set projection view buffer.
             commandList.SetGraphicsResourceSet(0, this._modelMatrixBuffer.ResourceSet);
             
+            // Set bone buffer.
+            commandList.SetGraphicsResourceSet(1, this._boneBuffer.ResourceSet);
+            
             // Set material.
             for (int i = 0; i < 11; i++) {
                 MaterialMapType mapType = (MaterialMapType) i;
                 ResourceSet? resourceSet = this.Material.GetResourceSet(this.Material.TextureLayouts[i].Layout, mapType);
 
                 if (resourceSet != null) {
-                    commandList.SetGraphicsResourceSet((uint) i + 1, resourceSet);
+                    commandList.SetGraphicsResourceSet((uint) i + 2, resourceSet);
                 }
             }
             
             // Draw.
-            commandList.DrawIndexed(this.IndexCount, 1, 0, 0, 0);
+            commandList.DrawIndexed(this.IndexCount);
         }
         else {
             
@@ -209,7 +212,8 @@ public class Mesh : Disposable {
                 },
                 PrimitiveTopology = PrimitiveTopology.TriangleList,
                 Buffers = [
-                    this._modelMatrixBuffer
+                    this._modelMatrixBuffer,
+                    this._boneBuffer
                 ],
                 TextureLayouts = material.TextureLayouts,
                 ShaderSet = new ShaderSetDescription() {
