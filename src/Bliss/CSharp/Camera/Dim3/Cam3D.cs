@@ -4,9 +4,9 @@ using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Gamepads;
 using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Mathematics;
+using Bliss.CSharp.Transformations;
 using Veldrid;
 using Vortice.Mathematics;
-using Viewport = Veldrid.Viewport;
 
 namespace Bliss.CSharp.Camera.Dim3;
 
@@ -23,7 +23,7 @@ public class Cam3D : ICam {
     /// Defines the portion of the render target that a camera will render to.
     /// Specifies the region of the screen or render target the camera will draw its contents to.
     /// </summary>
-    public Viewport Viewport { get; private set; }
+    public Rectangle Size { get; private set; }
 
     /// <summary>
     /// Represents the ratio between the width and height of the camera's viewport.
@@ -254,7 +254,7 @@ public class Cam3D : ICam {
     /// <param name="width">The new width of the viewport.</param>
     /// <param name="height">The new height of the viewport.</param>
     public void Resize(uint width, uint height) {
-        this.Viewport = new Viewport(0, 0, width, height, 0, 0);
+        this.Size = new Rectangle(0, 0, (int) width, (int) height);
         this.AspectRatio = (float) width / (float) height;
     }
 

@@ -1,4 +1,5 @@
 using System.Numerics;
+using Bliss.CSharp.Transformations;
 using Veldrid;
 
 namespace Bliss.CSharp.Camera.Dim2;
@@ -13,7 +14,7 @@ public class Cam2D : ICam {
     /// <summary>
     /// Gets the current viewport settings of the camera.
     /// </summary>
-    public Viewport Viewport { get; private set; }
+    public Rectangle Size { get; private set; }
 
     /// <summary>
     /// Defines the camera's follow mode, determining how the camera follows its target.
@@ -113,7 +114,7 @@ public class Cam2D : ICam {
     /// <param name="width">The new width of the viewport.</param>
     /// <param name="height">The new height of the viewport.</param>
     public void Resize(uint width, uint height) {
-        this.Viewport = new Viewport(0, 0, width, height, 0, 0);
+        this.Size = new Rectangle(0, 0, (int) width, (int) height);
     }
 
     /// <summary>
@@ -175,7 +176,7 @@ public class Cam2D : ICam {
     /// Adjusts the camera offset to center the target within the viewport.
     /// </summary>
     private void TargetFollowMovement() {
-        this.Offset = new Vector2(this.Viewport.Width / 2.0F, this.Viewport.Height / 2.0F);
+        this.Offset = new Vector2(this.Size.Width / 2.0F, this.Size.Height / 2.0F);
         this.Position = this.Target;
     }
 
@@ -185,7 +186,7 @@ public class Cam2D : ICam {
     /// </summary>
     /// <param name="timeStep">The elapsed time since the last update, used to scale the movement speed.</param>
     private void SmoothTargetFollowMovement(double timeStep) {
-        this.Offset = new Vector2(this.Viewport.Width / 2.0F, this.Viewport.Height / 2.0F);
+        this.Offset = new Vector2(this.Size.Width / 2.0F, this.Size.Height / 2.0F);
         Vector2 diff = this.Target - this.Position;
         float length = diff.Length();
         
