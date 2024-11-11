@@ -187,6 +187,19 @@ public class Mesh : Disposable {
             // Set projection view buffer.
             commandList.SetGraphicsResourceSet(0, this._modelMatrixBuffer.ResourceSet);
             
+            // Set bone buffer.
+            commandList.SetGraphicsResourceSet(1, this._boneBuffer.ResourceSet);
+            
+            // Set material.
+            for (int i = 0; i < 11; i++) {
+                MaterialMapType mapType = (MaterialMapType) i;
+                ResourceSet? resourceSet = this.Material.GetResourceSet(this.Material.TextureLayouts[i].Layout, mapType);
+
+                if (resourceSet != null) {
+                    commandList.SetGraphicsResourceSet((uint) i + 2, resourceSet);
+                }
+            }
+            
             // Draw.
             commandList.Draw(this.VertexCount);
         }
