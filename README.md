@@ -21,7 +21,7 @@ __Bliss__ is a modern `Direct3D11`, `Vulkan`, `OpenGL`, `Metal`, `OpenGL-ES` Ren
 
 # 🪙 Installation - [Nuget](https://www.nuget.org/packages/Bliss)
 ```
-Coming SoOn!
+dotnet add package Bliss --version 1.0.0
 ```
 
 # 📖 [Installation - From source]
