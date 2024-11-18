@@ -3,6 +3,7 @@ using System.Text;
 using Assimp;
 using Bliss.CSharp.Effects;
 using Bliss.CSharp.Geometry.Conversions;
+using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
@@ -97,37 +98,62 @@ public class Model : Disposable {
 
             if (scene.HasMaterials && loadMaterial) {
                 AMaterial aMaterial = scene.Materials[mesh.MaterialIndex];
+
+                if (aMaterial.HasTextureDiffuse)
+                {
+                    material.AddTextureLayout(new SimpleTextureLayout(graphicsDevice, "fAlbedoTexture"));
+                    material.SetMaterialMap(MaterialMapType.Albedo, new MaterialMap() {
+                        Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Diffuse),
+                        Color = new Color((byte) aMaterial.ColorDiffuse.R, (byte) aMaterial.ColorDiffuse.G, (byte) aMaterial.ColorDiffuse.B, (byte) aMaterial.ColorDiffuse.A)
+                    });
+                    material.SetMaterialMapType("fAlbedoTexture", MaterialMapType.Albedo);
+                }
                 
-                material.SetMaterialMap(MaterialMapType.Albedo, new MaterialMap() {
-                    Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Diffuse),
-                    Color = new Color((byte) aMaterial.ColorDiffuse.R, (byte) aMaterial.ColorDiffuse.G, (byte) aMaterial.ColorDiffuse.B, (byte) aMaterial.ColorDiffuse.A)
-                });
+                // material.SetMaterialMap(MaterialMapType.Metalness, new MaterialMap() {
+                //     Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Metalness),
+                //     Color = new Color((byte) aMaterial.ColorSpecular.R, (byte) aMaterial.ColorSpecular.G, (byte) aMaterial.ColorSpecular.B, (byte) aMaterial.ColorSpecular.A)
+                // });
+
+                if (aMaterial.HasTextureNormal)
+                {
+                    material.AddTextureLayout(new SimpleTextureLayout(graphicsDevice, "fNormalTexture"));
+                    material.SetMaterialMap(MaterialMapType.Normal, new MaterialMap() {
+                        Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Normals)
+                    });
+                    material.SetMaterialMapType("fNormalTexture", MaterialMapType.Normal);
+                }
                 
-                material.SetMaterialMap(MaterialMapType.Metalness, new MaterialMap() {
-                    Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Metalness),
-                    Color = new Color((byte) aMaterial.ColorSpecular.R, (byte) aMaterial.ColorSpecular.G, (byte) aMaterial.ColorSpecular.B, (byte) aMaterial.ColorSpecular.A)
-                });
+                // material.SetMaterialMap(MaterialMapType.Roughness, new MaterialMap() {
+                //     Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Roughness)
+                // });
                 
-                material.SetMaterialMap(MaterialMapType.Normal, new MaterialMap() {
-                    Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Normals)
-                });
-                
-                material.SetMaterialMap(MaterialMapType.Roughness, new MaterialMap() {
-                    Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Roughness)
-                });
-                
-                material.SetMaterialMap(MaterialMapType.Occlusion, new MaterialMap() {
-                    Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.AmbientOcclusion)
-                });
-                
-                material.SetMaterialMap(MaterialMapType.Emission, new MaterialMap() {
-                    Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Emissive),
-                    Color = new Color((byte) aMaterial.ColorEmissive.R, (byte) aMaterial.ColorEmissive.G, (byte) aMaterial.ColorEmissive.B, (byte) aMaterial.ColorEmissive.A)
-                });
-                
-                material.SetMaterialMap(MaterialMapType.Height, new MaterialMap() {
-                    Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Height)
-                });
+                if (aMaterial.HasTextureAmbientOcclusion)
+                {
+                    material.AddTextureLayout(new SimpleTextureLayout(graphicsDevice, "fAmbientOcclusionTexture"));
+                    material.SetMaterialMap(MaterialMapType.Occlusion, new MaterialMap() {
+                        Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.AmbientOcclusion)
+                    });
+                    material.SetMaterialMapType("fAmbientOcclusionTexture", MaterialMapType.Occlusion);
+                }
+
+                if (aMaterial.HasTextureEmissive)
+                {
+                    material.AddTextureLayout(new SimpleTextureLayout(graphicsDevice, "fEmissiveTexture"));
+                    material.SetMaterialMap(MaterialMapType.Emission, new MaterialMap() {
+                        Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Emissive),
+                        Color = new Color((byte) aMaterial.ColorEmissive.R, (byte) aMaterial.ColorEmissive.G, (byte) aMaterial.ColorEmissive.B, (byte) aMaterial.ColorEmissive.A)
+                    });
+                    material.SetMaterialMapType("fEmissiveTexture", MaterialMapType.Emission);
+                }
+
+                if (aMaterial.HasTextureHeight)
+                {
+                    material.AddTextureLayout(new SimpleTextureLayout(graphicsDevice, "fHeightTexture"));
+                    material.SetMaterialMap(MaterialMapType.Height, new MaterialMap() {
+                        Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Height)
+                    });
+                    material.SetMaterialMapType("fHeightTexture", MaterialMapType.Height);
+                }
             }
             
             // Setup vertices.

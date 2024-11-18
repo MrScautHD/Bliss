@@ -44,6 +44,8 @@ public class Material : Disposable {
     /// </summary>
     private Dictionary<(Sampler, ResourceLayout), ResourceSet> _cachedResourceSets;
     
+    private Dictionary<string, MaterialMapType> _mapTypes;
+    
     /// <summary>
     /// Initializes a new instance of the <see cref="Material"/> class, configuring it with the specified
     /// graphics device, shader effect, and optional blend state.
@@ -59,6 +61,7 @@ public class Material : Disposable {
         this.Parameters = new List<float>();
         this._maps = this.SetDefaultMaterialMaps();
         this._cachedResourceSets = new Dictionary<(Sampler, ResourceLayout), ResourceSet>();
+        this._mapTypes = new Dictionary<string, MaterialMapType>();
     }
 
     /// <summary>
@@ -86,6 +89,16 @@ public class Material : Disposable {
         return resourceSet;
     }
 
+    public MaterialMapType GetMaterialMapType(string materialMapName)
+    {
+        return this._mapTypes[materialMapName];
+    }
+
+    public void SetMaterialMapType(string materialMapName, MaterialMapType materialMapType)
+    {
+        this._mapTypes[materialMapName] = materialMapType;
+    }
+
     /// <summary>
     /// Retrieves the material map associated with the specified material map type.
     /// </summary>
@@ -100,7 +113,8 @@ public class Material : Disposable {
     /// </summary>
     /// <param name="mapType">The type of the material map to set.</param>
     /// <param name="map">The material map to assign to the specified type.</param>
-    public void SetMaterialMap(MaterialMapType mapType, MaterialMap map) {
+    public void SetMaterialMap(MaterialMapType mapType, MaterialMap map)
+    {
         this._maps[mapType] = map;
     }
 
@@ -176,39 +190,39 @@ public class Material : Disposable {
     /// <returns>A dictionary where the key is the material map type and the value is the associated default material map.</returns>
     private Dictionary<MaterialMapType, MaterialMap> SetDefaultMaterialMaps() {
         return new Dictionary<MaterialMapType, MaterialMap> {
-            {
-                MaterialMapType.Albedo, new MaterialMap()
-            },
-            {
-                MaterialMapType.Metalness, new MaterialMap()
-            },
-            {
-                MaterialMapType.Normal, new MaterialMap()
-            },
-            {
-                MaterialMapType.Roughness, new MaterialMap()
-            },
-            {
-                MaterialMapType.Occlusion, new MaterialMap()
-            },
-            {
-                MaterialMapType.Emission, new MaterialMap()
-            },
-            {
-                MaterialMapType.Height, new MaterialMap()
-            },
-            {
-                MaterialMapType.Cubemap, new MaterialMap()
-            },
-            {
-                MaterialMapType.Irradiance, new MaterialMap()
-            },
-            {
-                MaterialMapType.Prefilter, new MaterialMap()
-            },
-            {
-                MaterialMapType.Brdf, new MaterialMap()
-            }
+            // {
+            //     MaterialMapType.Albedo, new MaterialMap()
+            // },
+            // {
+            //     MaterialMapType.Metalness, new MaterialMap()
+            // },
+            // {
+            //     MaterialMapType.Normal, new MaterialMap()
+            // },
+            // {
+            //     MaterialMapType.Roughness, new MaterialMap()
+            // },
+            // {
+            //     MaterialMapType.Occlusion, new MaterialMap()
+            // },
+            // {
+            //     MaterialMapType.Emission, new MaterialMap()
+            // },
+            // {
+            //     MaterialMapType.Height, new MaterialMap()
+            // },
+            // {
+            //     MaterialMapType.Cubemap, new MaterialMap()
+            // },
+            // {
+            //     MaterialMapType.Irradiance, new MaterialMap()
+            // },
+            // {
+            //     MaterialMapType.Prefilter, new MaterialMap()
+            // },
+            // {
+            //     MaterialMapType.Brdf, new MaterialMap()
+            // }
         };
     }
 
@@ -219,20 +233,29 @@ public class Material : Disposable {
     /// <returns>An array of <see cref="SimpleTextureLayout"/> objects corresponding to various material textures.</returns>
     private SimpleTextureLayout[] CreateTextureLayout(GraphicsDevice graphicsDevice) {
         return [
-            new SimpleTextureLayout(graphicsDevice, "fAlbedoTexture"),
-            new SimpleTextureLayout(graphicsDevice, "fMetallicTexture"),
-            new SimpleTextureLayout(graphicsDevice, "fNormalTexture"),
-            new SimpleTextureLayout(graphicsDevice, "fRoughnessTexture"),
-            new SimpleTextureLayout(graphicsDevice, "fOcclusionTexture"),
-            new SimpleTextureLayout(graphicsDevice, "fEmissionTexture"),
-            new SimpleTextureLayout(graphicsDevice, "fHeightTexture"),
-            new SimpleTextureLayout(graphicsDevice, "fCubemapTexture"),
-            new SimpleTextureLayout(graphicsDevice, "fIrradianceTexture"),
-            new SimpleTextureLayout(graphicsDevice, "fPrefilterTexture"),
-            new SimpleTextureLayout(graphicsDevice, "fBrdfTexture")
+            // new SimpleTextureLayout(graphicsDevice, "fAlbedoTexture"),
+            // new SimpleTextureLayout(graphicsDevice, "fMetallicTexture"),
+            // new SimpleTextureLayout(graphicsDevice, "fNormalTexture"),
+            // new SimpleTextureLayout(graphicsDevice, "fRoughnessTexture"),
+            // new SimpleTextureLayout(graphicsDevice, "fOcclusionTexture"),
+            // new SimpleTextureLayout(graphicsDevice, "fEmissionTexture"),
+            // new SimpleTextureLayout(graphicsDevice, "fHeightTexture"),
+            // new SimpleTextureLayout(graphicsDevice, "fCubemapTexture"),
+            // new SimpleTextureLayout(graphicsDevice, "fIrradianceTexture"),
+            // new SimpleTextureLayout(graphicsDevice, "fPrefilterTexture"),
+            // new SimpleTextureLayout(graphicsDevice, "fBrdfTexture")
         ];
     }
 
+    public void AddTextureLayout(SimpleTextureLayout layout)
+    {
+        List<SimpleTextureLayout> newLayouts = new List<SimpleTextureLayout>();
+        newLayouts.AddRange(this.TextureLayouts);
+        newLayouts.Add(layout);
+        
+        this.TextureLayouts = newLayouts.ToArray();
+    }
+    
     protected override void Dispose(bool disposing) {
         if (disposing) {
             foreach (SimpleTextureLayout textureLayout in this.TextureLayouts) {
