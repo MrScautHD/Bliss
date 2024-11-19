@@ -108,11 +108,17 @@ public class Model : Disposable {
                     });
                     material.SetMaterialMapType("fAlbedoTexture", MaterialMapType.Albedo);
                 }
-                
-                // material.SetMaterialMap(MaterialMapType.Metalness, new MaterialMap() {
-                //     Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Metalness),
-                //     Color = new Color((byte) aMaterial.ColorSpecular.R, (byte) aMaterial.ColorSpecular.G, (byte) aMaterial.ColorSpecular.B, (byte) aMaterial.ColorSpecular.A)
-                // });
+
+                if (aMaterial.PBR.HasTextureMetalness)
+                {
+                    material.AddTextureLayout(new SimpleTextureLayout(graphicsDevice, "fMetallicTexture"));
+                    material.SetMaterialMap(MaterialMapType.Metalness, new MaterialMap()
+                    {
+                        Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Metalness),
+                        Color = new Color((byte)aMaterial.ColorSpecular.R, (byte)aMaterial.ColorSpecular.G, (byte)aMaterial.ColorSpecular.B, (byte)aMaterial.ColorSpecular.A)
+                    });
+                    material.SetMaterialMapType("fMetallicTexture", MaterialMapType.Metalness);
+                }
 
                 if (aMaterial.HasTextureNormal)
                 {
@@ -122,11 +128,17 @@ public class Model : Disposable {
                     });
                     material.SetMaterialMapType("fNormalTexture", MaterialMapType.Normal);
                 }
-                
-                // material.SetMaterialMap(MaterialMapType.Roughness, new MaterialMap() {
-                //     Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Roughness)
-                // });
-                
+
+                if (aMaterial.PBR.HasTextureRoughness)
+                {
+                    material.AddTextureLayout(new SimpleTextureLayout(graphicsDevice, "fRoughnessTexture"));
+                    material.SetMaterialMap(MaterialMapType.Roughness, new MaterialMap()
+                    {
+                        Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Roughness)
+                    });
+                    material.SetMaterialMapType("fRoughnessTexture", MaterialMapType.Roughness);
+                }
+
                 if (aMaterial.HasTextureAmbientOcclusion)
                 {
                     material.AddTextureLayout(new SimpleTextureLayout(graphicsDevice, "fAmbientOcclusionTexture"));

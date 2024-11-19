@@ -229,7 +229,7 @@ public class Mesh : Disposable {
                     this._modelMatrixBuffer,
                     this._boneBuffer
                 ],
-                TextureLayouts = material.TextureLayouts,
+                TextureLayouts = material.TextureLayouts.ToArray(),
                 ShaderSet = new ShaderSetDescription() {
                     VertexLayouts = [
                         material.Effect.VertexLayout
