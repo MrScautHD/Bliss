@@ -5,6 +5,7 @@ using Bliss.CSharp.Colors;
 using Bliss.CSharp.Geometry.Bones;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
+using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Materials;
 using Bliss.CSharp.Transformations;
@@ -164,12 +165,12 @@ public class Mesh : Disposable {
             commandList.SetGraphicsResourceSet(1, this._boneBuffer.ResourceSet);
             
             // Set material.
-            for (int i = 0; i < 11; i++) {
-                MaterialMapType mapType = (MaterialMapType) i;
-                ResourceSet? resourceSet = this.Material.GetResourceSet(this.Material.TextureLayouts[i].Layout, mapType);
-
+            foreach (var textureLayout in this.Material.TextureLayouts.Select((value, i) => ( value, i )))
+            {
+                ResourceSet? resourceSet = this.Material.GetResourceSet(textureLayout.value.Layout, this.Material.GetMaterialMapType(textureLayout.value.Name));
+                
                 if (resourceSet != null) {
-                    commandList.SetGraphicsResourceSet((uint) i + 2, resourceSet);
+                    commandList.SetGraphicsResourceSet((uint) textureLayout.i + 2, resourceSet);
                 }
             }
             
@@ -191,12 +192,12 @@ public class Mesh : Disposable {
             commandList.SetGraphicsResourceSet(1, this._boneBuffer.ResourceSet);
             
             // Set material.
-            for (int i = 0; i < 11; i++) {
-                MaterialMapType mapType = (MaterialMapType) i;
-                ResourceSet? resourceSet = this.Material.GetResourceSet(this.Material.TextureLayouts[i].Layout, mapType);
-
+            foreach (var textureLayout in this.Material.TextureLayouts.Select((value, i) => ( value, i )))
+            {
+                ResourceSet? resourceSet = this.Material.GetResourceSet(textureLayout.value.Layout, this.Material.GetMaterialMapType(textureLayout.value.Name));
+                
                 if (resourceSet != null) {
-                    commandList.SetGraphicsResourceSet((uint) i + 2, resourceSet);
+                    commandList.SetGraphicsResourceSet((uint) textureLayout.i + 2, resourceSet);
                 }
             }
             
@@ -228,7 +229,7 @@ public class Mesh : Disposable {
                     this._modelMatrixBuffer,
                     this._boneBuffer
                 ],
-                TextureLayouts = material.TextureLayouts,
+                TextureLayouts = material.TextureLayouts.ToArray(),
                 ShaderSet = new ShaderSetDescription() {
                     VertexLayouts = [
                         material.Effect.VertexLayout

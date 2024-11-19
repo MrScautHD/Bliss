@@ -27,7 +27,7 @@ public class Material : Disposable {
     /// <summary>
     /// An array of texture layouts that defines the material's texture configurations.
     /// </summary>
-    public SimpleTextureLayout[] TextureLayouts { get; private set; }
+    public List<SimpleTextureLayout> TextureLayouts { get; private set; }
     
     /// <summary>
     /// A list of floating-point parameters for configuring material properties.
@@ -44,6 +44,8 @@ public class Material : Disposable {
     /// </summary>
     private Dictionary<(Sampler, ResourceLayout), ResourceSet> _cachedResourceSets;
     
+    private Dictionary<string, MaterialMapType> _mapTypes;
+    
     /// <summary>
     /// Initializes a new instance of the <see cref="Material"/> class, configuring it with the specified
     /// graphics device, shader effect, and optional blend state.
@@ -55,10 +57,11 @@ public class Material : Disposable {
         this.GraphicsDevice = graphicsDevice;
         this.Effect = effect;
         this.BlendState = blendState ?? BlendState.Disabled;
-        this.TextureLayouts = this.CreateTextureLayout(graphicsDevice);
+        this.TextureLayouts = new List<SimpleTextureLayout>();
         this.Parameters = new List<float>();
-        this._maps = this.SetDefaultMaterialMaps();
+        this._maps = new Dictionary<MaterialMapType, MaterialMap> { };
         this._cachedResourceSets = new Dictionary<(Sampler, ResourceLayout), ResourceSet>();
+        this._mapTypes = new Dictionary<string, MaterialMapType>();
     }
 
     /// <summary>
@@ -87,6 +90,26 @@ public class Material : Disposable {
     }
 
     /// <summary>
+    /// Get the Materal maps type based on the texture Layout Name
+    /// </summary>
+    /// <param name="materialMapName"></param>
+    /// <returns></returns>
+    public MaterialMapType GetMaterialMapType(string materialMapName)
+    {
+        return this._mapTypes[materialMapName];
+    }
+
+    /// <summary>
+    /// set the mew dictonary  between the name of texture layout and the material map type
+    /// </summary>
+    /// <param name="textureLayoutName"></param>
+    /// <param name="materialMapType"></param>
+    public void SetMaterialMapType(string textureLayoutName, MaterialMapType materialMapType)
+    {
+        this._mapTypes[textureLayoutName] = materialMapType;
+    }
+
+    /// <summary>
     /// Retrieves the material map associated with the specified material map type.
     /// </summary>
     /// <param name="mapType">The type of the material map to retrieve.</param>
@@ -100,7 +123,8 @@ public class Material : Disposable {
     /// </summary>
     /// <param name="mapType">The type of the material map to set.</param>
     /// <param name="map">The material map to assign to the specified type.</param>
-    public void SetMaterialMap(MaterialMapType mapType, MaterialMap map) {
+    public void SetMaterialMap(MaterialMapType mapType, MaterialMap map)
+    {
         this._maps[mapType] = map;
     }
 
@@ -171,68 +195,14 @@ public class Material : Disposable {
     }
 
     /// <summary>
-    /// Initializes and returns a dictionary containing default material maps for various material map types.
+    /// Add the texture layout to the end of the layouts
     /// </summary>
-    /// <returns>A dictionary where the key is the material map type and the value is the associated default material map.</returns>
-    private Dictionary<MaterialMapType, MaterialMap> SetDefaultMaterialMaps() {
-        return new Dictionary<MaterialMapType, MaterialMap> {
-            {
-                MaterialMapType.Albedo, new MaterialMap()
-            },
-            {
-                MaterialMapType.Metalness, new MaterialMap()
-            },
-            {
-                MaterialMapType.Normal, new MaterialMap()
-            },
-            {
-                MaterialMapType.Roughness, new MaterialMap()
-            },
-            {
-                MaterialMapType.Occlusion, new MaterialMap()
-            },
-            {
-                MaterialMapType.Emission, new MaterialMap()
-            },
-            {
-                MaterialMapType.Height, new MaterialMap()
-            },
-            {
-                MaterialMapType.Cubemap, new MaterialMap()
-            },
-            {
-                MaterialMapType.Irradiance, new MaterialMap()
-            },
-            {
-                MaterialMapType.Prefilter, new MaterialMap()
-            },
-            {
-                MaterialMapType.Brdf, new MaterialMap()
-            }
-        };
+    /// <param name="layout"></param>
+    public void AddTextureLayout(SimpleTextureLayout layout)
+    {
+        this.TextureLayouts.Add(layout);
     }
-
-    /// <summary>
-    /// Creates an array of texture layouts for the specified graphics device.
-    /// </summary>
-    /// <param name="graphicsDevice">The graphics device used to create the texture layouts.</param>
-    /// <returns>An array of <see cref="SimpleTextureLayout"/> objects corresponding to various material textures.</returns>
-    private SimpleTextureLayout[] CreateTextureLayout(GraphicsDevice graphicsDevice) {
-        return [
-            new SimpleTextureLayout(graphicsDevice, "fAlbedoTexture"),
-            new SimpleTextureLayout(graphicsDevice, "fMetallicTexture"),
-            new SimpleTextureLayout(graphicsDevice, "fNormalTexture"),
-            new SimpleTextureLayout(graphicsDevice, "fRoughnessTexture"),
-            new SimpleTextureLayout(graphicsDevice, "fOcclusionTexture"),
-            new SimpleTextureLayout(graphicsDevice, "fEmissionTexture"),
-            new SimpleTextureLayout(graphicsDevice, "fHeightTexture"),
-            new SimpleTextureLayout(graphicsDevice, "fCubemapTexture"),
-            new SimpleTextureLayout(graphicsDevice, "fIrradianceTexture"),
-            new SimpleTextureLayout(graphicsDevice, "fPrefilterTexture"),
-            new SimpleTextureLayout(graphicsDevice, "fBrdfTexture")
-        ];
-    }
-
+    
     protected override void Dispose(bool disposing) {
         if (disposing) {
             foreach (SimpleTextureLayout textureLayout in this.TextureLayouts) {
