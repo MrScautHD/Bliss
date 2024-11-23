@@ -4,6 +4,7 @@ using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Textures;
 using Veldrid;
+using Vortice.Direct3D11;
 
 namespace Bliss.CSharp.Materials;
 
@@ -25,26 +26,25 @@ public class Material : Disposable {
     public BlendState BlendState { get; private set; }
     
     /// <summary>
-    /// An array of texture layouts that defines the material's texture configurations.
-    /// </summary>
-    public List<SimpleTextureLayout> TextureLayouts { get; private set; }
-    
-    /// <summary>
     /// A list of floating-point parameters for configuring material properties.
     /// </summary>
     public List<float> Parameters;
 
     /// <summary>
+    /// A dictionary that maps texture names to their corresponding simple texture layouts.
+    /// Used for managing texture configurations associated with material maps.
+    /// </summary>
+    private Dictionary<string, SimpleTextureLayout> _textureLayouts;
+
+    /// <summary>
     /// A dictionary mapping material map types to material map data, used for managing material textures.
     /// </summary>
-    private Dictionary<MaterialMapType, MaterialMap> _maps;
+    private Dictionary<string, MaterialMap> _maps;
     
     /// <summary>
     /// A cache of resource sets mapped by sampler and resource layout, improving efficiency when reusing resources.
     /// </summary>
     private Dictionary<(Sampler, ResourceLayout), ResourceSet> _cachedResourceSets;
-    
-    private Dictionary<string, MaterialMapType> _mapTypes;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="Material"/> class, configuring it with the specified
@@ -57,21 +57,14 @@ public class Material : Disposable {
         this.GraphicsDevice = graphicsDevice;
         this.Effect = effect;
         this.BlendState = blendState ?? BlendState.Disabled;
-        this.TextureLayouts = new List<SimpleTextureLayout>();
         this.Parameters = new List<float>();
-        this._maps = new Dictionary<MaterialMapType, MaterialMap> { };
+        this._textureLayouts = new Dictionary<string, SimpleTextureLayout>();
+        this._maps = new Dictionary<string, MaterialMap>();
         this._cachedResourceSets = new Dictionary<(Sampler, ResourceLayout), ResourceSet>();
-        this._mapTypes = new Dictionary<string, MaterialMapType>();
     }
-
-    /// <summary>
-    /// Retrieves the resource set associated with the specified resource layout and material map type.
-    /// </summary>
-    /// <param name="layout">The resource layout for which the resource set is to be retrieved.</param>
-    /// <param name="mapType">The type of the material map.</param>
-    /// <returns>The resource set associated with the specified layout and material map type, or null if the texture is not found.</returns>
-    public ResourceSet? GetResourceSet(ResourceLayout layout, MaterialMapType mapType) {
-        Texture2D? texture = this._maps[mapType].Texture;
+    
+    public ResourceSet? GetResourceSet(ResourceLayout layout, string mapName) {
+        Texture2D? texture = this._maps[mapName].Texture;
         
         if (texture == null) {
             return null;
@@ -88,124 +81,67 @@ public class Material : Disposable {
 
         return resourceSet;
     }
-
-    /// <summary>
-    /// Get the Materal maps type based on the texture Layout Name
-    /// </summary>
-    /// <param name="materialMapName"></param>
-    /// <returns></returns>
-    public MaterialMapType GetMaterialMapType(string materialMapName)
-    {
-        return this._mapTypes[materialMapName];
+    
+    public string[] GetTextureLayoutKeys() {
+        return this._textureLayouts.Keys.ToArray();
     }
 
-    /// <summary>
-    /// set the mew dictonary  between the name of texture layout and the material map type
-    /// </summary>
-    /// <param name="textureLayoutName"></param>
-    /// <param name="materialMapType"></param>
-    public void SetMaterialMapType(string textureLayoutName, MaterialMapType materialMapType)
-    {
-        this._mapTypes[textureLayoutName] = materialMapType;
+    public SimpleTextureLayout[] GetTextureLayouts() {
+        return this._textureLayouts.Values.ToArray();
     }
 
-    /// <summary>
-    /// Retrieves the material map associated with the specified material map type.
-    /// </summary>
-    /// <param name="mapType">The type of the material map to retrieve.</param>
-    /// <returns>The material map of the specified type.</returns>
-    public MaterialMap GetMaterialMap(MaterialMapType mapType) {
-        return this._maps[mapType];
+    public SimpleTextureLayout GetTextureLayout(string name) {
+        return this._textureLayouts[name];
+    }
+    
+    
+    public string[] GetMaterialMapKeys() {
+        return this._maps.Keys.ToArray();
+    }
+    
+    public MaterialMap[] GetMaterialMaps() {
+        return this._maps.Values.ToArray();
     }
 
-    /// <summary>
-    /// Sets the material map for the specified material map type.
-    /// </summary>
-    /// <param name="mapType">The type of the material map to set.</param>
-    /// <param name="map">The material map to assign to the specified type.</param>
-    public void SetMaterialMap(MaterialMapType mapType, MaterialMap map)
-    {
-        this._maps[mapType] = map;
+    public MaterialMap GetMaterialMap(string name) {
+        return this._maps[name];
     }
-
-    /// <summary>
-    /// Retrieves the texture associated with the specified material map type.
-    /// </summary>
-    /// <param name="mapType">The type of the material map from which to retrieve the texture.</param>
-    /// <returns>The texture associated with the specified material map type, or null if none exists.</returns>
-    public Texture2D? GetMapTexture(MaterialMapType mapType) {
-        return this._maps[mapType].Texture;
+    
+    public void AddMaterialMap(string name, MaterialMap map) {
+        this._maps.Add(name, map);
+        this._textureLayouts.Add(name, new SimpleTextureLayout(this.GraphicsDevice, $"{name}Texture"));
     }
-
-    /// <summary>
-    /// Sets the texture for the specified material map type.
-    /// </summary>
-    /// <param name="mapType">The type of material map to set the texture for.</param>
-    /// <param name="texture">The texture to associate with the specified material map type.</param>
-    public void SetMapTexture(MaterialMapType mapType, Texture2D? texture) {
-        this._maps[mapType] = new MaterialMap() {
-            Texture = texture,
-            Color = this.GetMapColor(mapType),
-            Value = this.GetMapValue(mapType)
-        };
+    
+    
+    
+    
+    public Texture2D? GetMapTexture(string name) {
+        return this._maps[name].Texture;
     }
-
-    /// <summary>
-    /// Retrieves the color associated with the specified material map type.
-    /// </summary>
-    /// <param name="mapType">The type of the material map to retrieve the color for.</param>
-    /// <returns>The color of the specified material map type, or null if no color is associated.</returns>
-    public Color? GetMapColor(MaterialMapType mapType) {
-        return this._maps[mapType].Color;
+    
+    public void SetMapTexture(string name, Texture2D? texture) {
+        this._maps[name].Texture = texture;
     }
-
-    /// <summary>
-    /// Sets the color for the specified material map type.
-    /// </summary>
-    /// <param name="mapType">The type of the material map to set the color for.</param>
-    /// <param name="color">The color to set for the specified material map type.</param>
-    public void SetMapColor(MaterialMapType mapType, Color color) {
-        this._maps[mapType] = new MaterialMap() {
-            Texture = this.GetMapTexture(mapType),
-            Color = color,
-            Value = this.GetMapValue(mapType)
-        };
+    
+    public Color? GetMapColor(string name) {
+        return this._maps[name].Color;
     }
-
-    /// <summary>
-    /// Retrieves the value associated with the specified material map type.
-    /// </summary>
-    /// <param name="mapType">The type of the material map to retrieve the value from.</param>
-    /// <returns>The numeric value of the specified material map type.</returns>
-    public float GetMapValue(MaterialMapType mapType) {
-        return this._maps[mapType].Value;
+    
+    public void SetMapColor(string name, Color color) {
+        this._maps[name].Color = color;
     }
-
-    /// <summary>
-    /// Sets the value for the specified material map type.
-    /// </summary>
-    /// <param name="mapType">The type of the material map to modify.</param>
-    /// <param name="value">The value to set for the specified material map type.</param>
-    public void SetMapValue(MaterialMapType mapType, float value) {
-        this._maps[mapType] = new MaterialMap() {
-            Texture = this.GetMapTexture(mapType),
-            Color = this.GetMapColor(mapType),
-            Value = value
-        };
+    
+    public float GetMapValue(string name) {
+        return this._maps[name].Value;
     }
-
-    /// <summary>
-    /// Add the texture layout to the end of the layouts
-    /// </summary>
-    /// <param name="layout"></param>
-    public void AddTextureLayout(SimpleTextureLayout layout)
-    {
-        this.TextureLayouts.Add(layout);
+    
+    public void SetMapValue(string name, float value) {
+        this._maps[name].Value = value;
     }
     
     protected override void Dispose(bool disposing) {
         if (disposing) {
-            foreach (SimpleTextureLayout textureLayout in this.TextureLayouts) {
+            foreach (SimpleTextureLayout textureLayout in this._textureLayouts.Values) {
                 textureLayout.Dispose();
             }
 

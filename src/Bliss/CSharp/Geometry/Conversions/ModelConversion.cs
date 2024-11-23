@@ -1,5 +1,6 @@
 using System.Numerics;
 using Assimp;
+using Bliss.CSharp.Colors;
 using AQuaternion = Assimp.Quaternion;
 using AMatrix4x4 = Assimp.Matrix4x4;
 using Matrix4x4 = System.Numerics.Matrix4x4;
@@ -8,6 +9,15 @@ using Quaternion = System.Numerics.Quaternion;
 namespace Bliss.CSharp.Geometry.Conversions;
 
 public static class ModelConversion {
+    
+    /// <summary>
+    /// Converts a Bliss.CSharp.Colors.Color to an Assimp.Color4D.
+    /// </summary>
+    /// <param name="color">The color in Bliss.CSharp.Colors.Color to be converted.</param>
+    /// <returns>Returns a new instance of Assimp.Color4D with the same R, G, B, and A values.</returns>
+    public static Color4D ToVector4D(Color color) {
+        return new Color4D(color.R, color.G, color.B, color.A);
+    }
     
     /// <summary>
     /// Converts a System.Numerics.Vector3 to an Assimp.Vector3D.
@@ -55,6 +65,15 @@ public static class ModelConversion {
         jMatrix.D4 = matrix4X4.M44;
 
         return jMatrix;
+    }
+
+    /// <summary>
+    /// Converts an Assimp.Color4D to a Bliss.CSharp.Colors.Color.
+    /// </summary>
+    /// <param name="color4D">The color in Assimp.Color4D to be converted.</param>
+    /// <returns>Returns a new instance of Bliss.CSharp.Colors.Color with the same R, G, B, and A values.</returns>
+    public static Color FromColor4D(Color4D color4D) {
+        return new Color((byte) color4D.R, (byte) color4D.G, (byte) color4D.B, (byte) color4D.A);
     }
 
     /// <summary>

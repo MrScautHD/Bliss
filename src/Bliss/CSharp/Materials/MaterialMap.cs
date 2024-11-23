@@ -3,20 +3,15 @@ using Bliss.CSharp.Textures;
 
 namespace Bliss.CSharp.Materials;
 
-public struct MaterialMap {
+public class MaterialMap {
     
-    /// <summary>
-    /// Represents the texture map of a material.
-    /// </summary>
     public Texture2D? Texture;
-
-    /// <summary>
-    /// Defines the color properties of a material.
-    /// </summary>
     public Color? Color;
-
-    /// <summary>
-    /// Represents a numeric value associated with the material.
-    /// </summary>
     public float Value;
+    
+    public MaterialMap(Texture2D? texture = null, Color? color = null, float value = 0.0F) {
+        this.Texture = texture;
+        this.Color = color;
+        this.Value = value;
+    }
 }

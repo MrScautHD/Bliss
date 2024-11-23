@@ -2,10 +2,11 @@
 
     <!-- Project -->
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <OutputType>Exe</OutputType>
+        <LangVersion>13</LangVersion>
     </PropertyGroup>
     
     <!-- References -->

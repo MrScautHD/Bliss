@@ -2,7 +2,7 @@ using System.Numerics;
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Colors;
-using Bliss.CSharp.Geometry.Bones;
+using Bliss.CSharp.Geometry.Animations;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
@@ -10,6 +10,8 @@ using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Materials;
 using Bliss.CSharp.Transformations;
 using Veldrid;
+using Material = Bliss.CSharp.Materials.Material;
+using Matrix4x4 = System.Numerics.Matrix4x4;
 
 namespace Bliss.CSharp.Geometry;
 
@@ -49,12 +51,6 @@ public class Mesh : Disposable {
     public uint[] Indices { get; private set; }
 
     /// <summary>
-    /// Contains data related to bone transformations within a mesh.
-    /// This is used primarily for skeletal animation and managing vertex transformations according to bone influences.
-    /// </summary>
-    public BoneInfo BoneInfo { get; private set; }
-
-    /// <summary>
     /// The axis-aligned bounding box (AABB) for the mesh.
     /// This bounding box is calculated based on the vertices of the mesh and represents
     /// the minimum and maximum coordinates that encompass the entire mesh.
@@ -91,7 +87,7 @@ public class Mesh : Disposable {
     /// A buffer that stores bone transformation data used for skeletal animation.
     /// This buffer holds an array of structures representing bone matrices and is utilized during rendering to apply bone transformations to vertices.
     /// </summary>
-    private SimpleBuffer<Blittable> _boneBuffer;
+    private SimpleBuffer<Matrix4x4> _boneBuffer;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="Mesh"/> class with the specified graphics device, material, vertices, and indices.
@@ -105,7 +101,6 @@ public class Mesh : Disposable {
         this.Material = material;
         this.Vertices = vertices ?? [];
         this.Indices = indices ?? [];
-        this.BoneInfo = new BoneInfo(new Matrix4x4[128]);
         this.BoundingBox = this.GenerateBoundingBox();
 
         this.VertexCount = (uint) this.Vertices.Length;
@@ -121,13 +116,32 @@ public class Mesh : Disposable {
         graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this.Indices);
 
         this._modelMatrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "MatrixBuffer", 3, SimpleBufferType.Uniform, ShaderStages.Vertex);
-        this._boneBuffer = new SimpleBuffer<Blittable>(graphicsDevice, "BoneBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        this._boneBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "BoneBuffer", 128, SimpleBufferType.Uniform, ShaderStages.Vertex);
     }
 
-    public void UpdateAnimation(double timeStep) {
-        
-    }
+    /// <summary>
+    /// Updates the animation state of the mesh by applying the specified frame of the given animation.
+    /// </summary>
+    /// <param name="commandList">The command list used for recording rendering commands.</param>
+    /// <param name="animation">The animation data containing bone transformations for each frame.</param>
+    /// <param name="frame">The specific frame of the animation to apply.</param>
+    public void UpdateAnimation(CommandList commandList, ModelAnimation animation, int frame) {
+        if (animation.FrameCount > 0 && animation.BoneCount > 0) {
+            // Ensure frame index is valid
+            if (frame < 0 || frame >= animation.FrameCount) {
+                throw new ArgumentOutOfRangeException(nameof(frame), "Frame index is out of range.");
+            }
 
+            for (int i = 0; i < animation.BoneCount; i++) {
+                Matrix4x4 boneTransform = animation.FramePoses[frame][i].GetTransform();
+                this._boneBuffer.SetValue(i, boneTransform);
+            }
+
+            // Upload all transformations in one operation
+            this._boneBuffer.UpdateBuffer(commandList);
+        }
+    }
+    
     // TODO: Take care of color!!!!!
     /// <summary>
     /// Renders the mesh using the specified command list, output description, transformation, and optional color.
@@ -165,12 +179,12 @@ public class Mesh : Disposable {
             commandList.SetGraphicsResourceSet(1, this._boneBuffer.ResourceSet);
             
             // Set material.
-            foreach (var textureLayout in this.Material.TextureLayouts.Select((value, i) => ( value, i )))
-            {
-                ResourceSet? resourceSet = this.Material.GetResourceSet(textureLayout.value.Layout, this.Material.GetMaterialMapType(textureLayout.value.Name));
-                
+            for (int i = 0; i < this.Material.GetTextureLayoutKeys().Length; i++) {
+                string key = this.Material.GetTextureLayoutKeys()[i];
+                ResourceSet? resourceSet = this.Material.GetResourceSet(this.Material.GetTextureLayout(key).Layout, key);
+
                 if (resourceSet != null) {
-                    commandList.SetGraphicsResourceSet((uint) textureLayout.i + 2, resourceSet);
+                    commandList.SetGraphicsResourceSet((uint) i + 2, resourceSet);
                 }
             }
             
@@ -192,12 +206,12 @@ public class Mesh : Disposable {
             commandList.SetGraphicsResourceSet(1, this._boneBuffer.ResourceSet);
             
             // Set material.
-            foreach (var textureLayout in this.Material.TextureLayouts.Select((value, i) => ( value, i )))
-            {
-                ResourceSet? resourceSet = this.Material.GetResourceSet(textureLayout.value.Layout, this.Material.GetMaterialMapType(textureLayout.value.Name));
-                
+            for (int i = 0; i < this.Material.GetTextureLayoutKeys().Length; i++) {
+                string key = this.Material.GetTextureLayoutKeys()[i];
+                ResourceSet? resourceSet = this.Material.GetResourceSet(this.Material.GetTextureLayout(key).Layout, key);
+
                 if (resourceSet != null) {
-                    commandList.SetGraphicsResourceSet((uint) textureLayout.i + 2, resourceSet);
+                    commandList.SetGraphicsResourceSet((uint) i + 2, resourceSet);
                 }
             }
             
@@ -229,7 +243,7 @@ public class Mesh : Disposable {
                     this._modelMatrixBuffer,
                     this._boneBuffer
                 ],
-                TextureLayouts = material.TextureLayouts.ToArray(),
+                TextureLayouts = material.GetTextureLayouts(),
                 ShaderSet = new ShaderSetDescription() {
                     VertexLayouts = [
                         material.Effect.VertexLayout

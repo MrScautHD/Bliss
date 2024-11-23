@@ -2,6 +2,8 @@ using System.Numerics;
 using System.Text;
 using Assimp;
 using Bliss.CSharp.Effects;
+using Bliss.CSharp.Geometry.Animations;
+using Bliss.CSharp.Geometry.Animations.Bones;
 using Bliss.CSharp.Geometry.Conversions;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Graphics.VertexTypes;
@@ -17,6 +19,8 @@ using ShaderMaterialProperties = Assimp.Material.ShaderMaterialProperties;
 using Material = Bliss.CSharp.Materials.Material;
 using AMaterial = Assimp.Material;
 using Color = Bliss.CSharp.Colors.Color;
+using Matrix4x4 = System.Numerics.Matrix4x4;
+using Quaternion = System.Numerics.Quaternion;
 using TextureType = Assimp.TextureType;
 
 namespace Bliss.CSharp.Geometry;
@@ -28,7 +32,7 @@ public class Model : Disposable {
     /// This includes flipping the winding order, triangulating, pre-transforming vertices,
     /// calculating tangent space, and generating smooth normals.
     /// </summary>
-    private const PostProcessSteps DefaultPostProcessSteps = PostProcessSteps.FlipWindingOrder | PostProcessSteps.Triangulate | PostProcessSteps.PreTransformVertices | PostProcessSteps.CalculateTangentSpace | PostProcessSteps.GenerateSmoothNormals;
+    private const PostProcessSteps DefaultPostProcessSteps = PostProcessSteps.FlipWindingOrder | PostProcessSteps.Triangulate | PostProcessSteps.CalculateTangentSpace | PostProcessSteps.GenerateSmoothNormals;
 
     /// <summary>
     /// The default effect applied to models.
@@ -47,18 +51,21 @@ public class Model : Disposable {
     public Mesh[] Meshes { get; private set; }
 
     /// <summary>
+    /// Collection of animations associated with the model.
+    /// Each animation encapsulates skeletal transformations over time,
+    /// enabling the model to exhibit complex motions.
+    /// </summary>
+    public ModelAnimation[] Animations { get; private set; }
+    
+    /// <summary>
     /// Represents the axis-aligned bounding box of the model.
     /// </summary>
     public BoundingBox BoundingBox { get; private set; }
     
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Model"/> class with the specified graphics device and meshes.
-    /// </summary>
-    /// <param name="graphicsDevice">The graphics device used for rendering the model.</param>
-    /// <param name="meshes">An array of meshes that compose the model.</param>
-    public Model(GraphicsDevice graphicsDevice, Mesh[] meshes) {
+    public Model(GraphicsDevice graphicsDevice, Mesh[] meshes, ModelAnimation[] animations) {
         this.GraphicsDevice = graphicsDevice;
         this.Meshes = meshes;
+        this.Animations = animations;
         this.BoundingBox = this.GenerateBoundingBox();
     }
 
@@ -75,6 +82,8 @@ public class Model : Disposable {
         Scene scene = context.ImportFile(path, DefaultPostProcessSteps);
 
         List<Mesh> meshes = new List<Mesh>();
+        List<BoneInfo> boneInfos = new List<BoneInfo>();
+        List<Matrix4x4> boneTransformations = new List<Matrix4x4>();
 
         for (int i = 0; i < scene.Meshes.Count; i++) {
             AMesh mesh = scene.Meshes[i];
@@ -99,72 +108,49 @@ public class Model : Disposable {
             if (scene.HasMaterials && loadMaterial) {
                 AMaterial aMaterial = scene.Materials[mesh.MaterialIndex];
 
-                if (aMaterial.HasTextureDiffuse)
-                {
-                    material.AddTextureLayout(new SimpleTextureLayout(graphicsDevice, "fAlbedoTexture"));
-                    material.SetMaterialMap(MaterialMapType.Albedo, new MaterialMap() {
+                if (aMaterial.HasTextureDiffuse) {
+                    material.AddMaterialMap(MaterialMapType.Albedo.ToString(), new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Diffuse),
-                        Color = new Color((byte) aMaterial.ColorDiffuse.R, (byte) aMaterial.ColorDiffuse.G, (byte) aMaterial.ColorDiffuse.B, (byte) aMaterial.ColorDiffuse.A)
+                        Color = ModelConversion.FromColor4D(aMaterial.ColorDiffuse)
                     });
-                    material.SetMaterialMapType("fAlbedoTexture", MaterialMapType.Albedo);
                 }
 
-                if (aMaterial.PBR.HasTextureMetalness)
-                {
-                    material.AddTextureLayout(new SimpleTextureLayout(graphicsDevice, "fMetallicTexture"));
-                    material.SetMaterialMap(MaterialMapType.Metalness, new MaterialMap()
-                    {
+                if (aMaterial.PBR.HasTextureMetalness) {
+                    material.AddMaterialMap(MaterialMapType.Metallic.ToString(), new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Metalness),
-                        Color = new Color((byte)aMaterial.ColorSpecular.R, (byte)aMaterial.ColorSpecular.G, (byte)aMaterial.ColorSpecular.B, (byte)aMaterial.ColorSpecular.A)
+                        Color = ModelConversion.FromColor4D(aMaterial.ColorSpecular)
                     });
-                    material.SetMaterialMapType("fMetallicTexture", MaterialMapType.Metalness);
                 }
 
-                if (aMaterial.HasTextureNormal)
-                {
-                    material.AddTextureLayout(new SimpleTextureLayout(graphicsDevice, "fNormalTexture"));
-                    material.SetMaterialMap(MaterialMapType.Normal, new MaterialMap() {
+                if (aMaterial.HasTextureNormal) {
+                    material.AddMaterialMap(MaterialMapType.Normal.ToString(), new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Normals)
                     });
-                    material.SetMaterialMapType("fNormalTexture", MaterialMapType.Normal);
                 }
 
-                if (aMaterial.PBR.HasTextureRoughness)
-                {
-                    material.AddTextureLayout(new SimpleTextureLayout(graphicsDevice, "fRoughnessTexture"));
-                    material.SetMaterialMap(MaterialMapType.Roughness, new MaterialMap()
-                    {
+                if (aMaterial.PBR.HasTextureRoughness) {
+                    material.AddMaterialMap(MaterialMapType.Roughness.ToString(), new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Roughness)
                     });
-                    material.SetMaterialMapType("fRoughnessTexture", MaterialMapType.Roughness);
                 }
 
-                if (aMaterial.HasTextureAmbientOcclusion)
-                {
-                    material.AddTextureLayout(new SimpleTextureLayout(graphicsDevice, "fAmbientOcclusionTexture"));
-                    material.SetMaterialMap(MaterialMapType.Occlusion, new MaterialMap() {
+                if (aMaterial.HasTextureAmbientOcclusion) {
+                    material.AddMaterialMap(MaterialMapType.Occlusion.ToString(), new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.AmbientOcclusion)
                     });
-                    material.SetMaterialMapType("fAmbientOcclusionTexture", MaterialMapType.Occlusion);
                 }
 
-                if (aMaterial.HasTextureEmissive)
-                {
-                    material.AddTextureLayout(new SimpleTextureLayout(graphicsDevice, "fEmissiveTexture"));
-                    material.SetMaterialMap(MaterialMapType.Emission, new MaterialMap() {
+                if (aMaterial.HasTextureEmissive) {
+                    material.AddMaterialMap(MaterialMapType.Emission.ToString(), new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Emissive),
-                        Color = new Color((byte) aMaterial.ColorEmissive.R, (byte) aMaterial.ColorEmissive.G, (byte) aMaterial.ColorEmissive.B, (byte) aMaterial.ColorEmissive.A)
+                        Color = ModelConversion.FromColor4D(aMaterial.ColorEmissive)
                     });
-                    material.SetMaterialMapType("fEmissiveTexture", MaterialMapType.Emission);
                 }
 
-                if (aMaterial.HasTextureHeight)
-                {
-                    material.AddTextureLayout(new SimpleTextureLayout(graphicsDevice, "fHeightTexture"));
-                    material.SetMaterialMap(MaterialMapType.Height, new MaterialMap() {
+                if (aMaterial.HasTextureHeight) {
+                    material.AddMaterialMap(MaterialMapType.Height.ToString(), new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Height)
                     });
-                    material.SetMaterialMapType("fHeightTexture", MaterialMapType.Height);
                 }
             }
             
@@ -226,6 +212,7 @@ public class Model : Disposable {
             // Setup bones.
             for (int j = 0; j < mesh.BoneCount; j++) {
                 Bone bone = mesh.Bones[j];
+                boneInfos.Add(new BoneInfo(bone.Name, (uint) j, ModelConversion.FromAMatrix4X4(bone.OffsetMatrix)));
 
                 foreach (VertexWeight vertexWeight in bone.VertexWeights) {
                     vertices[vertexWeight.VertexID].AddBone((uint) j, vertexWeight.Weight);
@@ -234,11 +221,104 @@ public class Model : Disposable {
 
             meshes.Add(new Mesh(graphicsDevice, material, vertices, indices.ToArray()));
         }
+
+        List<ModelAnimation> animations = new List<ModelAnimation>();
+
+        // Load animations
+        for (int i = 0; i < scene.Animations.Count; i++) {
+            Animation aAnimation = scene.Animations[i];
+            double frameDuration = aAnimation.TicksPerSecond > 0 ? aAnimation.TicksPerSecond : 25.0; // Default fallback
+            int frameCount = (int)(aAnimation.DurationInTicks / frameDuration * 60);
+
+            Transform[][] framePoses = new Transform[frameCount][];
+            for (int j = 0; j < frameCount; j++) {
+                framePoses[j] = new Transform[boneInfos.Count];
+
+                foreach (BoneInfo boneInfo in boneInfos) {
+                    // Find corresponding node channel
+                    NodeAnimationChannel? nodeChannel = aAnimation.NodeAnimationChannels
+                        .FirstOrDefault(c => c.NodeName == boneInfo.Name);
+
+                    if (nodeChannel != null) {
+                        framePoses[j][boneInfo.Id] = CalculateBoneTransform(nodeChannel, j, frameDuration);
+                    } else {
+                        // Default transform if no animation data available
+                        framePoses[j][boneInfo.Id] = new Transform();
+                    }
+                }
+            }
+
+            animations.Add(new ModelAnimation(aAnimation.Name, boneInfos.ToArray(), framePoses));
+        }
         
         Logger.Info($"Model loaded successfully from path: [{path}]");
         Logger.Info($"\t> Meshes: {meshes.Count}");
+        Logger.Info($"\t> Animations: {scene.AnimationCount}");
 
-        return new Model(graphicsDevice, meshes.ToArray());
+        return new Model(graphicsDevice, meshes.ToArray(), animations.ToArray());
+    }
+    
+    private static Transform CalculateBoneTransform(NodeAnimationChannel nodeChannel, int frame, double frameDuration) {
+        // Compute the appropriate keyframe index
+        double time = frame / 60.0 * frameDuration;
+
+        // Position
+        Vector3 position = nodeChannel.PositionKeys.Count > 0 ? InterpolatePosition(nodeChannel.PositionKeys, time) : Vector3.Zero;
+
+        // Rotation
+        Quaternion rotation = nodeChannel.RotationKeys.Count > 0 ? InterpolateRotation(nodeChannel.RotationKeys, time) : Quaternion.Identity;
+
+        // Scaling
+        Vector3 scale = nodeChannel.ScalingKeys.Count > 0 ? InterpolateScaling(nodeChannel.ScalingKeys, time) : Vector3.One;
+
+        return new Transform {
+            Translation = position,
+            Rotation = rotation,
+            Scale = scale
+        };
+    }
+    
+    private static Vector3 InterpolatePosition(List<VectorKey> keys, double time) {
+        // Linear interpolation between keyframes
+        for (int i = 0; i < keys.Count - 1; i++) {
+            if (keys[i + 1].Time > time) {
+                float factor = (float)((time - keys[i].Time) / (keys[i + 1].Time - keys[i].Time));
+                return Vector3.Lerp(
+                    ModelConversion.FromVector3D(keys[i].Value),
+                    ModelConversion.FromVector3D(keys[i + 1].Value),
+                    factor
+                );
+            }
+        }
+        return ModelConversion.FromVector3D(keys.Last().Value);
+    }
+
+    private static Quaternion InterpolateRotation(List<QuaternionKey> keys, double time) {
+        for (int i = 0; i < keys.Count - 1; i++) {
+            if (keys[i + 1].Time > time) {
+                float factor = (float)((time - keys[i].Time) / (keys[i + 1].Time - keys[i].Time));
+                return Quaternion.Slerp(
+                    ModelConversion.FromAQuaternion(keys[i].Value),
+                    ModelConversion.FromAQuaternion(keys[i + 1].Value),
+                    factor
+                );
+            }
+        }
+        return ModelConversion.FromAQuaternion(keys.Last().Value);
+    }
+
+    private static Vector3 InterpolateScaling(List<VectorKey> keys, double time) {
+        for (int i = 0; i < keys.Count - 1; i++) {
+            if (keys[i + 1].Time > time) {
+                float factor = (float)((time - keys[i].Time) / (keys[i + 1].Time - keys[i].Time));
+                return Vector3.Lerp(
+                    ModelConversion.FromVector3D(keys[i].Value),
+                    ModelConversion.FromVector3D(keys[i + 1].Value),
+                    factor
+                );
+            }
+        }
+        return ModelConversion.FromVector3D(keys.Last().Value);
     }
 
     /// <summary>
@@ -284,6 +364,12 @@ public class Model : Disposable {
         }
 
         return null;
+    }
+
+    public void UpdateAnimation(CommandList commandList, ModelAnimation animation, int frame) {
+        foreach (Mesh mesh in this.Meshes) {
+            mesh.UpdateAnimation(commandList, animation, frame);
+        }
     }
     
     /// <summary>

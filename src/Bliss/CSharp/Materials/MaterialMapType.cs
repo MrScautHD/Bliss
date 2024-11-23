@@ -1,3 +1,5 @@
+using System.Runtime.Serialization;
+
 namespace Bliss.CSharp.Materials;
 
 /// <summary>
@@ -8,55 +10,42 @@ public enum MaterialMapType {
     /// <summary>
     /// The base color map.
     /// </summary>
+    [EnumMember(Value = "fAlbedo")]
     Albedo,
     
     /// <summary>
-    /// The metalness map.
+    /// The metallic map.
     /// </summary>
-    Metalness,
+    [EnumMember(Value = "fMetallic")]
+    Metallic,
     
     /// <summary>
     /// The normal map.
     /// </summary>
+    [EnumMember(Value = "fNormal")]
     Normal,
     
     /// <summary>
     /// The roughness map.
     /// </summary>
+    [EnumMember(Value = "fRoughness")]
     Roughness,
     
     /// <summary>
     /// The occlusion map.
     /// </summary>
+    [EnumMember(Value = "fOcclusion")]
     Occlusion,
     
     /// <summary>
     /// The emission map.
     /// </summary>
+    [EnumMember(Value = "fEmissive")]
     Emission,
     
     /// <summary>
     /// The height map.
     /// </summary>
-    Height,
-    
-    /// <summary>
-    /// The cubemap.
-    /// </summary>
-    Cubemap,
-    
-    /// <summary>
-    /// The irradiance map.
-    /// </summary>
-    Irradiance,
-    
-    /// <summary>
-    /// The precomputed cubemap levels.
-    /// </summary>
-    Prefilter,
-    
-    /// <summary>
-    /// The bidirectional reflectance distribution function (BRDF) map.
-    /// </summary>
-    Brdf
+    [EnumMember(Value = "fHeight")]
+    Height
 }
