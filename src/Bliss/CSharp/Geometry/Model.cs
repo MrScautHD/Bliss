@@ -5,7 +5,6 @@ using Bliss.CSharp.Effects;
 using Bliss.CSharp.Geometry.Animations;
 using Bliss.CSharp.Geometry.Animations.Bones;
 using Bliss.CSharp.Geometry.Conversions;
-using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
@@ -108,6 +107,7 @@ public class Model : Disposable {
             if (scene.HasMaterials && loadMaterial) {
                 AMaterial aMaterial = scene.Materials[mesh.MaterialIndex];
 
+                // TODO: Done Default Texture if no Material(Texture) is set, but not everytime a model get loaded!
                 if (aMaterial.HasTextureDiffuse) {
                     material.AddMaterialMap(MaterialMapType.Albedo.ToString(), new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Diffuse),
@@ -408,7 +408,7 @@ public class Model : Disposable {
             foreach (Mesh mesh in this.Meshes) {
                 mesh.Dispose();
             }
-            
+
             // TODO: Unload cached resoucres (materials)
         }
     }

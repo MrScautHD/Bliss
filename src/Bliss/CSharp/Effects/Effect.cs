@@ -1,4 +1,5 @@
 using Bliss.CSharp.Logging;
+using Bliss.CSharp.Materials;
 using Veldrid;
 using Veldrid.SPIRV;
 
@@ -61,7 +62,7 @@ public class Effect : Disposable {
         Logger.Info($"Shader bytes loaded successfully from path: [{path}]");
         return File.ReadAllBytes(path);
     }
-
+    
     // TODO: ADD MATERIAL param here.
     /// <summary>
     /// Apply the state effect immediately before rendering it.

@@ -148,8 +148,7 @@ public class Texture2D : Disposable {
 
         return resourceSet;
     }
-
-
+    
     /// <summary>
     /// Retrieves the texture data as a byte array.
     /// </summary>
