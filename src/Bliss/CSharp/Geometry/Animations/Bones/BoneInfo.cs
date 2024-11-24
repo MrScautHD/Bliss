@@ -2,17 +2,23 @@ using System.Numerics;
 
 namespace Bliss.CSharp.Geometry.Animations.Bones;
 
-public struct BoneInfo {
+public class BoneInfo {
 
     public string Name;
     
     public uint Id;
-    
-    public Matrix4x4 OffsetMatrix;
 
-    public BoneInfo(string name, uint id, Matrix4x4 offsetMatrix) {
+    public BoneInfo? Parent;
+    
+    public Matrix4x4 Offset;
+
+    public Matrix4x4 Transform;
+
+    public BoneInfo(string name, uint id, BoneInfo? parent, Matrix4x4 offset, Matrix4x4 transform) {
         this.Name = name;
         this.Id = id;
-        this.OffsetMatrix = offsetMatrix;
+        this.Parent = parent;
+        this.Offset = offset;
+        this.Transform = transform;
     }
 }

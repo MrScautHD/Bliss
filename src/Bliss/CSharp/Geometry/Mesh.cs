@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Geometry.Animations;
+using Bliss.CSharp.Geometry.Animations.Bones;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.VertexTypes;
@@ -131,8 +132,13 @@ public class Mesh : Disposable {
             }
 
             for (int i = 0; i < animation.BoneCount; i++) {
+                BoneInfo childBoneInfo = animation.BoneInfos[i];
+                BoneInfo? parentBoneInfo = animation.BoneInfos[i].Parent;
+                
                 Matrix4x4 boneTransform = animation.FramePoses[frame][i].GetTransform();
-                this._boneBuffer.SetValue(i, boneTransform);
+                Matrix4x4 childTransform = childBoneInfo.Transform;
+                Matrix4x4 parentTransform = parentBoneInfo?.Parent?.Transform ?? Matrix4x4.Identity;
+                this._boneBuffer.SetValue(i, childBoneInfo.Offset * boneTransform * parentTransform);
             }
 
             // Upload all transformations in one operation

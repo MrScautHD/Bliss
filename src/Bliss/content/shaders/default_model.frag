@@ -1,6 +1,6 @@
 #version 450
 
-// TODO: Try todo it better maybe some system that just adding them by set locations
+// TODO: Try todo it better maybe some system that just adding them by set locations (i think it even crash with vulkan, because vulkan in vulkan the amount of sampler2Ds and the TextureLayouts need to be the same (match))
 layout (set = 1, binding = 0) uniform texture2D fAlbedoTexture;
 layout (set = 1, binding = 1) uniform sampler fAlbedoTextureSampler;
 

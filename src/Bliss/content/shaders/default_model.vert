@@ -26,7 +26,7 @@ layout (location = 3) out vec3 fTangent;
 layout (location = 4) out vec4 fColor;
 
 mat4x4 getBoneTransformation() {
-    mat4 boneTransformation = uBonesTransformations[vBoneIndices.x] * vBoneWeights.x;
+    mat4x4 boneTransformation = uBonesTransformations[vBoneIndices.x] * vBoneWeights.x;
     boneTransformation += uBonesTransformations[vBoneIndices.y] * vBoneWeights.y;
     boneTransformation += uBonesTransformations[vBoneIndices.z] * vBoneWeights.z;
     boneTransformation += uBonesTransformations[vBoneIndices.w] * vBoneWeights.w;

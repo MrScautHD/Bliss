@@ -38,6 +38,12 @@ public class Model : Disposable {
     /// This is instantiated with shaders for rendering models, and includes configuration for vertex layout.
     /// </summary>
     private static Effect? _defaultEffect;
+
+    /// <summary>
+    /// The default texture used when no other texture is specified.
+    /// Typically a 1x1 pixel texture with a solid color.
+    /// </summary>
+    private static Texture2D? _defaultTexture;
     
     /// <summary>
     /// The graphics device used for rendering the model.
@@ -81,8 +87,6 @@ public class Model : Disposable {
         Scene scene = context.ImportFile(path, DefaultPostProcessSteps);
 
         List<Mesh> meshes = new List<Mesh>();
-        List<BoneInfo> boneInfos = new List<BoneInfo>();
-        List<Matrix4x4> boneTransformations = new List<Matrix4x4>();
 
         for (int i = 0; i < scene.Meshes.Count; i++) {
             AMesh mesh = scene.Meshes[i];
@@ -107,7 +111,6 @@ public class Model : Disposable {
             if (scene.HasMaterials && loadMaterial) {
                 AMaterial aMaterial = scene.Materials[mesh.MaterialIndex];
 
-                // TODO: Done Default Texture if no Material(Texture) is set, but not everytime a model get loaded!
                 if (aMaterial.HasTextureDiffuse) {
                     material.AddMaterialMap(MaterialMapType.Albedo.ToString(), new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Diffuse),
@@ -152,6 +155,12 @@ public class Model : Disposable {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Height)
                     });
                 }
+            }
+            else {
+                material.AddMaterialMap(MaterialMapType.Albedo.ToString(), new MaterialMap() {
+                    Texture = GetDefaultTexture(graphicsDevice),
+                    Color = Color.White
+                });
             }
             
             // Setup vertices.
@@ -212,8 +221,7 @@ public class Model : Disposable {
             // Setup bones.
             for (int j = 0; j < mesh.BoneCount; j++) {
                 Bone bone = mesh.Bones[j];
-                boneInfos.Add(new BoneInfo(bone.Name, (uint) j, ModelConversion.FromAMatrix4X4(bone.OffsetMatrix)));
-
+                
                 foreach (VertexWeight vertexWeight in bone.VertexWeights) {
                     vertices[vertexWeight.VertexID].AddBone((uint) j, vertexWeight.Weight);
                 }
@@ -223,6 +231,7 @@ public class Model : Disposable {
         }
 
         List<ModelAnimation> animations = new List<ModelAnimation>();
+        List<BoneInfo> boneInfos = GetBones(scene);
 
         // Load animations
         for (int i = 0; i < scene.Animations.Count; i++) {
@@ -236,19 +245,24 @@ public class Model : Disposable {
 
                 foreach (BoneInfo boneInfo in boneInfos) {
                     // Find corresponding node channel
-                    NodeAnimationChannel? nodeChannel = aAnimation.NodeAnimationChannels
-                        .FirstOrDefault(c => c.NodeName == boneInfo.Name);
+                    NodeAnimationChannel? nodeChannel = aAnimation.NodeAnimationChannels.FirstOrDefault(c => c.NodeName == boneInfo.Name);
+                    
+                    
 
-                    if (nodeChannel != null) {
-                        framePoses[j][boneInfo.Id] = CalculateBoneTransform(nodeChannel, j, frameDuration);
-                    } else {
-                        // Default transform if no animation data available
-                        framePoses[j][boneInfo.Id] = new Transform();
-                    }
+                    framePoses[j][boneInfo.Id] = nodeChannel != null ? CalculateBoneTransform(nodeChannel, j, frameDuration) : new Transform();
                 }
             }
 
-            animations.Add(new ModelAnimation(aAnimation.Name, boneInfos.ToArray(), framePoses));
+            animations.Add(new ModelAnimation(aAnimation.Name, boneInfos.ToArray(), framePoses, ModelConversion.FromAMatrix4X4(scene.RootNode.Transform)));
+        }
+
+        for (int i = 0; i < scene.Animations.Count; i++) {
+            Animation animation = scene.Animations[i];
+
+            for (int j = 0; j < animation.NodeAnimationChannelCount; j++) {
+                NodeAnimationChannel channel = animation.NodeAnimationChannels[j];
+                
+            }
         }
         
         Logger.Info($"Model loaded successfully from path: [{path}]");
@@ -257,6 +271,41 @@ public class Model : Disposable {
 
         return new Model(graphicsDevice, meshes.ToArray(), animations.ToArray());
     }
+
+    private static List<BoneInfo> GetBones(Scene scene) {
+        List<BoneInfo> boneInfos = new List<BoneInfo>();
+        Dictionary<string, BoneInfo> boneInfoDict = new Dictionary<string, BoneInfo>();
+
+        scene.RootNode.Transform.Inverse();
+        Matrix4x4 transform = ModelConversion.FromAMatrix4X4(scene.RootNode.Transform);
+
+        foreach (AMesh mesh in scene.Meshes) {
+            for (int i = 0; i < mesh.BoneCount; i++) {
+                Bone bone = mesh.Bones[i];
+
+                // Add or retrieve BoneInfo for the parent node
+                Node? node = scene.RootNode?.FindNode(bone.Name);
+                if (node != null) {
+                    Node? parentNode = node.Parent;
+                    BoneInfo? parentBoneInfo = null;
+                    if (parentNode != null) {
+                        if (!boneInfoDict.TryGetValue(parentNode.Name, out parentBoneInfo)) {
+                            parentBoneInfo = new BoneInfo(parentNode.Name, (uint) boneInfoDict.Count, null, Matrix4x4.Identity, transform);
+                            boneInfos.Add(parentBoneInfo);
+                            boneInfoDict[parentNode.Name] = parentBoneInfo;
+                        }
+                    }
+
+                    // Create BoneInfo for the current bone
+                    BoneInfo boneInfo = new BoneInfo(bone.Name, (uint) boneInfos.Count, parentBoneInfo, Matrix4x4.Transpose(ModelConversion.FromAMatrix4X4(bone.OffsetMatrix)), transform);
+                    boneInfos.Add(boneInfo);
+                    boneInfoDict[bone.Name] = boneInfo;
+                }
+            }
+        }
+
+        return boneInfos;
+    }
     
     private static Transform CalculateBoneTransform(NodeAnimationChannel nodeChannel, int frame, double frameDuration) {
         // Compute the appropriate keyframe index
@@ -264,7 +313,7 @@ public class Model : Disposable {
 
         // Position
         Vector3 position = nodeChannel.PositionKeys.Count > 0 ? InterpolatePosition(nodeChannel.PositionKeys, time) : Vector3.Zero;
-
+        
         // Rotation
         Quaternion rotation = nodeChannel.RotationKeys.Count > 0 ? InterpolateRotation(nodeChannel.RotationKeys, time) : Quaternion.Identity;
 
@@ -297,14 +346,13 @@ public class Model : Disposable {
         for (int i = 0; i < keys.Count - 1; i++) {
             if (keys[i + 1].Time > time) {
                 float factor = (float)((time - keys[i].Time) / (keys[i + 1].Time - keys[i].Time));
-                return Quaternion.Slerp(
-                    ModelConversion.FromAQuaternion(keys[i].Value),
-                    ModelConversion.FromAQuaternion(keys[i + 1].Value),
-                    factor
-                );
+                Quaternion start = ModelConversion.FromAQuaternion(keys[i].Value);
+                Quaternion end = ModelConversion.FromAQuaternion(keys[i + 1].Value);
+
+                return Quaternion.Slerp(Quaternion.Normalize(start), Quaternion.Normalize(end), factor);
             }
         }
-        return ModelConversion.FromAQuaternion(keys.Last().Value);
+        return Quaternion.Normalize(ModelConversion.FromAQuaternion(keys.Last().Value));
     }
 
     private static Vector3 InterpolateScaling(List<VectorKey> keys, double time) {
@@ -320,7 +368,7 @@ public class Model : Disposable {
         }
         return ModelConversion.FromVector3D(keys.Last().Value);
     }
-
+    
     /// <summary>
     /// Retrieves the default effect for the model.
     /// If the default effect is not already created, it initializes a new <see cref="Effect"/> with the specified graphics device.
@@ -329,6 +377,15 @@ public class Model : Disposable {
     /// <return>The default <see cref="Effect"/> for the model.</return>
     private static Effect GetDefaultEffect(GraphicsDevice graphicsDevice) { // TODO: Take care to dispose it!
         return _defaultEffect ??= new Effect(graphicsDevice.ResourceFactory, Vertex3D.VertexLayout, "content/shaders/default_model.vert", "content/shaders/default_model.frag");
+    }
+
+    /// <summary>
+    /// Retrieves the default texture for the specified graphics device.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device to associate with the default texture.</param>
+    /// <returns>Returns a new instance of the <see cref="Texture2D"/> class with a default solid color texture.</returns>
+    private static Texture2D GetDefaultTexture(GraphicsDevice graphicsDevice) { // TODO: Take care to dispose it!
+        return _defaultTexture ??= new Texture2D(graphicsDevice, new Image<Rgba32>(1, 1, new Rgba32(128, 128, 128, 255)));
     }
 
     /// <summary>
