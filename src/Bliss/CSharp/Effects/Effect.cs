@@ -1,5 +1,4 @@
 using Bliss.CSharp.Logging;
-using Bliss.CSharp.Materials;
 using Veldrid;
 using Veldrid.SPIRV;
 
@@ -62,6 +61,8 @@ public class Effect : Disposable {
         Logger.Info($"Shader bytes loaded successfully from path: [{path}]");
         return File.ReadAllBytes(path);
     }
+    
+    // TODO: Adding Location system, for Material(Texture, Color) and in generel for buffers...
     
     // TODO: ADD MATERIAL param here.
     /// <summary>

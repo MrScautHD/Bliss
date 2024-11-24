@@ -43,5 +43,5 @@ void main() {
 
     mat4x4 boneTransformation = getBoneTransformation();
     vec4 v4Pos = vec4(vPosition, 1.0F);
-    gl_Position = uProjection * uView * uTransformation * boneTransformation * v4Pos;
+    gl_Position = uProjection * uView * uTransformation /* TODO: add back( * boneTransformation )*/ * v4Pos;
 }

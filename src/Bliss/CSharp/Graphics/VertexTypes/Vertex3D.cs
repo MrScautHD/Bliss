@@ -74,7 +74,7 @@ public struct Vertex3D {
     /// <param name="normal">The normal vector at the vertex, used for lighting calculations.</param>
     /// <param name="tangent">The tangent vector at the vertex, used for normal mapping.</param>
     /// <param name="color">The color of the vertex, stored as an RGBA float vector.</param>
-    public Vertex3D(Vector3 position, Vector4 boneWeights, UInt4 boneIndices, Vector2 texCoords, Vector2 texCoords2, Vector3 normal, Vector3 tangent, Color color) {
+    public Vertex3D(Vector3 position, Vector4 boneWeights, UInt4 boneIndices, Vector2 texCoords, Vector2 texCoords2, Vector3 normal, Vector3 tangent, Vector4 color) {
         this.Position = position;
         this.BoneWeights = boneWeights;
         this.BoneIndices = boneIndices;
@@ -82,7 +82,7 @@ public struct Vertex3D {
         this.TexCoords2 = texCoords2;
         this.Normal = normal;
         this.Tangent = tangent;
-        this.Color = color.ToRgbaFloat().ToVector4();
+        this.Color = color;
     }
 
     /// <summary>

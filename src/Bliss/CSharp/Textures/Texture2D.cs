@@ -2,8 +2,6 @@ using System.Runtime.InteropServices;
 using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Logging;
 using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Advanced;
-using SixLabors.ImageSharp.Memory;
 using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
 using Rectangle = Bliss.CSharp.Transformations.Rectangle;

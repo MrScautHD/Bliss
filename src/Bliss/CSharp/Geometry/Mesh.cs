@@ -7,6 +7,7 @@ using Bliss.CSharp.Geometry.Animations.Bones;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.VertexTypes;
+using Bliss.CSharp.Materials;
 using Bliss.CSharp.Transformations;
 using Veldrid;
 using Material = Bliss.CSharp.Materials.Material;
@@ -146,7 +147,6 @@ public class Mesh : Disposable {
         }
     }
     
-    // TODO: Take care of color!!!!!
     /// <summary>
     /// Renders the mesh using the specified command list, output description, transformation, and optional color.
     /// </summary>
@@ -160,6 +160,10 @@ public class Mesh : Disposable {
         if (cam3D == null) {
             return;
         }
+        
+        // Set optional color;
+        Color cachedColor = this.Material.GetMapColor(MaterialMapType.Albedo.ToString()) ?? Color.White;
+        this.Material.SetMapColor(MaterialMapType.Albedo.ToString(), color ?? cachedColor);
         
         // Update matrix buffer.
         this._modelMatrixBuffer.SetValue(0, cam3D.GetProjection());
@@ -222,6 +226,9 @@ public class Mesh : Disposable {
             // Draw.
             commandList.Draw(this.VertexCount);
         }
+        
+        // Reset albedo material color.
+        this.Material.SetMapColor(MaterialMapType.Albedo.ToString(), cachedColor);
     }
 
     /// <summary>

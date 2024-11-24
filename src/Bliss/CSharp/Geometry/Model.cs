@@ -200,7 +200,7 @@ public class Model : Disposable {
                 vertices[j].Tangent = mesh.HasTangentBasis ? ModelConversion.FromVector3D(mesh.Tangents[j]) : Vector3.Zero;
                 
                 // Set Color.
-                vertices[j].Color = material.GetMapColor(MaterialMapType.Albedo.ToString())?.ToVector4() ?? Vector4.Zero;
+                vertices[j].Color = material.GetMapColor(MaterialMapType.Albedo.ToString())?.ToRgbaFloat().ToVector4() ?? Vector4.Zero;
             }
 
             // Setup indices.
