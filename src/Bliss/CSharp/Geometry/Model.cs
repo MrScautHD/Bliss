@@ -385,7 +385,14 @@ public class Model : Disposable {
     /// <param name="graphicsDevice">The graphics device to associate with the default texture.</param>
     /// <returns>Returns a new instance of the <see cref="Texture2D"/> class with a default solid color texture.</returns>
     private static Texture2D GetDefaultTexture(GraphicsDevice graphicsDevice) { // TODO: Take care to dispose it!
-        return _defaultTexture ??= new Texture2D(graphicsDevice, new Image<Rgba32>(1, 1, new Rgba32(128, 128, 128, 255)));
+        if (_defaultTexture != null) {
+            return _defaultTexture;
+        }
+        else {
+            using (Image<Rgba32> image = new Image<Rgba32>(1, 1, new Rgba32(128, 128, 128, 255))) {
+                return _defaultTexture ??= new Texture2D(graphicsDevice, image);
+            }
+        }
     }
 
     /// <summary>
