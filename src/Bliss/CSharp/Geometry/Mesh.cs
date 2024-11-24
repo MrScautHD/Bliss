@@ -161,7 +161,7 @@ public class Mesh : Disposable {
             return;
         }
         
-        // Set optional color;
+        // Set optional color.
         Color cachedColor = this.Material.GetMapColor(MaterialMapType.Albedo.ToString()) ?? Color.White;
         this.Material.SetMapColor(MaterialMapType.Albedo.ToString(), color ?? cachedColor);
         
