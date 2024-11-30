@@ -7,6 +7,7 @@ using Bliss.CSharp.Geometry.Animations.Bones;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.VertexTypes;
+using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
 using Bliss.CSharp.Transformations;
 using Veldrid;
@@ -35,7 +36,7 @@ public class Mesh : Disposable {
     /// The Material controls how the mesh is rendered within the graphics pipeline.
     /// </summary>
     public Material Material { get; private set; }
-
+    
     /// <summary>
     /// An array of Vertex3D structures that define the geometric points of a mesh.
     /// Each vertex contains attributes such as position, texture coordinates, normal, and optional color.
@@ -49,6 +50,12 @@ public class Mesh : Disposable {
     /// such as triangles in a mesh. This allows for efficient reuse of vertex data.
     /// </summary>
     public uint[] Indices { get; private set; }
+
+    /// <summary>
+    /// An array containing information about each bone in a mesh, used for skeletal animation.
+    /// Each element provides details such as the bone's name, its identifier, and its transformation matrix.
+    /// </summary>
+    public Dictionary<string, Dictionary<int, BoneInfo[]>> BoneInfos { get; private set; }
 
     /// <summary>
     /// The axis-aligned bounding box (AABB) for the mesh.
@@ -89,18 +96,12 @@ public class Mesh : Disposable {
     /// </summary>
     private SimpleBuffer<Matrix4x4> _boneBuffer;
     
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Mesh"/> class with the specified graphics device, material, vertices, and indices.
-    /// </summary>
-    /// <param name="graphicsDevice">The graphics device used to create buffers and manage resources.</param>
-    /// <param name="material">The material associated with the mesh, defining its visual properties.</param>
-    /// <param name="vertices">The optional array of vertices defining the mesh geometry.</param>
-    /// <param name="indices">The optional array of indices defining the order of vertex rendering.</param>
-    public Mesh(GraphicsDevice graphicsDevice, Material material, Vertex3D[]? vertices = default, uint[]? indices = default) {
+    public Mesh(GraphicsDevice graphicsDevice, Material material, Vertex3D[]? vertices = default, uint[]? indices = default, Dictionary<string, Dictionary<int, BoneInfo[]>>? boneInfos = default) {
         this.GraphicsDevice = graphicsDevice;
         this.Material = material;
         this.Vertices = vertices ?? [];
         this.Indices = indices ?? [];
+        this.BoneInfos = boneInfos ?? new Dictionary<string, Dictionary<int, BoneInfo[]>>();
         this.BoundingBox = this.GenerateBoundingBox();
 
         this.VertexCount = (uint) this.Vertices.Length;
@@ -117,33 +118,25 @@ public class Mesh : Disposable {
 
         this._modelMatrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "MatrixBuffer", 3, SimpleBufferType.Uniform, ShaderStages.Vertex);
         this._boneBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "BoneBuffer", 128, SimpleBufferType.Uniform, ShaderStages.Vertex);
+
+        for (int i = 0; i < 128; i++) {
+            this._boneBuffer.SetValue(i, Matrix4x4.Identity);
+        }
+        
+        this._boneBuffer.UpdateBufferImmediate();
     }
 
     /// <summary>
-    /// Updates the animation state of the mesh by applying the specified frame of the given animation.
+    /// Updates the transformation matrices of the animation bones for a specific frame using the provided command list and animation data.
     /// </summary>
-    /// <param name="commandList">The command list used for recording rendering commands.</param>
-    /// <param name="animation">The animation data containing bone transformations for each frame.</param>
-    /// <param name="frame">The specific frame of the animation to apply.</param>
-    public void UpdateAnimation(CommandList commandList, ModelAnimation animation, int frame) {
-        if (animation.FrameCount > 0 && animation.BoneCount > 0) {
-            // Ensure frame index is valid
-            if (frame < 0 || frame >= animation.FrameCount) {
-                throw new ArgumentOutOfRangeException(nameof(frame), "Frame index is out of range.");
+    /// <param name="commandList">The command list used to issue rendering commands.</param>
+    /// <param name="animation">The animation data containing the bone transformations.</param>
+    /// <param name="frame">The specific frame of the animation to update the bone transformations.</param>
+    public void UpdateAnimationBones(CommandList commandList, ModelAnimation animation, int frame) {
+        if (this.BoneInfos.Count > 0) {
+            for (int boneId = 0; boneId < this.BoneInfos[animation.Name][frame].Length; boneId++) {
+                this._boneBuffer.SetValueDeferred(commandList, boneId, this.BoneInfos[animation.Name][frame][boneId].Transformation);
             }
-
-            for (int i = 0; i < animation.BoneCount; i++) {
-                BoneInfo childBoneInfo = animation.BoneInfos[i];
-                BoneInfo? parentBoneInfo = animation.BoneInfos[i].Parent;
-                
-                Matrix4x4 boneTransform = animation.FramePoses[frame][i].GetTransform();
-                Matrix4x4 childTransform = childBoneInfo.Transform;
-                Matrix4x4 parentTransform = parentBoneInfo?.Parent?.Transform ?? Matrix4x4.Identity;
-                this._boneBuffer.SetValue(i, childBoneInfo.Offset * boneTransform * parentTransform);
-            }
-
-            // Upload all transformations in one operation
-            this._boneBuffer.UpdateBuffer(commandList);
         }
     }
     

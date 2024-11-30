@@ -87,6 +87,13 @@ public class Model : Disposable {
         Scene scene = context.ImportFile(path, DefaultPostProcessSteps);
 
         List<Mesh> meshes = new List<Mesh>();
+        List<ModelAnimation> animations = new List<ModelAnimation>();
+
+        // Load animations
+        for (int i = 0; i < scene.Animations.Count; i++) {
+            Animation aAnimation = scene.Animations[i];
+            animations.Add(new ModelAnimation(aAnimation.Name, (float) aAnimation.DurationInTicks, (float) aAnimation.TicksPerSecond, aAnimation.NodeAnimationChannels));
+        }
 
         for (int i = 0; i < scene.Meshes.Count; i++) {
             AMesh mesh = scene.Meshes[i];
@@ -219,50 +226,26 @@ public class Model : Disposable {
             }
             
             // Setup bones.
+            Dictionary<string, uint> boneIDsByName = new Dictionary<string, uint>();
+            
             for (int j = 0; j < mesh.BoneCount; j++) {
                 Bone bone = mesh.Bones[j];
+                boneIDsByName.Add(bone.Name, (uint) j);
                 
                 foreach (VertexWeight vertexWeight in bone.VertexWeights) {
                     vertices[vertexWeight.VertexID].AddBone((uint) j, vertexWeight.Weight);
                 }
             }
+            
+            // Load Bone Transformation.
+            Dictionary<string, Dictionary<int, BoneInfo[]>> boneInfos = new Dictionary<string, Dictionary<int, BoneInfo[]>>();
 
-            meshes.Add(new Mesh(graphicsDevice, material, vertices, indices.ToArray()));
-        }
-
-        List<ModelAnimation> animations = new List<ModelAnimation>();
-        List<BoneInfo> boneInfos = GetBones(scene);
-
-        // Load animations
-        for (int i = 0; i < scene.Animations.Count; i++) {
-            Animation aAnimation = scene.Animations[i];
-            double frameDuration = aAnimation.TicksPerSecond > 0 ? aAnimation.TicksPerSecond : 25.0; // Default fallback
-            int frameCount = (int)(aAnimation.DurationInTicks / frameDuration * 60);
-
-            Transform[][] framePoses = new Transform[frameCount][];
-            for (int j = 0; j < frameCount; j++) {
-                framePoses[j] = new Transform[boneInfos.Count];
-
-                foreach (BoneInfo boneInfo in boneInfos) {
-                    // Find corresponding node channel
-                    NodeAnimationChannel? nodeChannel = aAnimation.NodeAnimationChannels.FirstOrDefault(c => c.NodeName == boneInfo.Name);
-                    
-                    
-
-                    framePoses[j][boneInfo.Id] = nodeChannel != null ? CalculateBoneTransform(nodeChannel, j, frameDuration) : new Transform();
-                }
+            for (int animationIndex = 0; animationIndex < animations.Count; animationIndex++) {
+                ModelAnimation animation = animations[animationIndex];
+                boneInfos.Add(animation.Name, SetupAnimation(animation, boneIDsByName, scene.RootNode));
             }
 
-            animations.Add(new ModelAnimation(aAnimation.Name, boneInfos.ToArray(), framePoses, ModelConversion.FromAMatrix4X4(scene.RootNode.Transform)));
-        }
-
-        for (int i = 0; i < scene.Animations.Count; i++) {
-            Animation animation = scene.Animations[i];
-
-            for (int j = 0; j < animation.NodeAnimationChannelCount; j++) {
-                NodeAnimationChannel channel = animation.NodeAnimationChannels[j];
-                
-            }
+            meshes.Add(new Mesh(graphicsDevice, material, vertices, indices.ToArray(), boneInfos));
         }
         
         Logger.Info($"Model loaded successfully from path: [{path}]");
@@ -271,40 +254,69 @@ public class Model : Disposable {
 
         return new Model(graphicsDevice, meshes.ToArray(), animations.ToArray());
     }
+    
+    private static Dictionary<int, BoneInfo[]> SetupAnimation(ModelAnimation animation, Dictionary<string, uint> boneIDsByName, Node rootNode) {
+        Dictionary<int, BoneInfo[]> bones = new Dictionary<int, BoneInfo[]>();
+        
+        double frameDuration = animation.TicksPerSecond > 0 ? animation.TicksPerSecond : 25.0;
+        int frameCount = (int) (animation.DurationInTicks / frameDuration * 60);
 
-    private static List<BoneInfo> GetBones(Scene scene) {
-        List<BoneInfo> boneInfos = new List<BoneInfo>();
-        Dictionary<string, BoneInfo> boneInfoDict = new Dictionary<string, BoneInfo>();
+        for (int i = 0; i < frameCount; i++) {
+            List<BoneInfo> boneInfos = new List<BoneInfo>();
+            
+            foreach (string name in boneIDsByName.Keys) {
+                Matrix4x4 transformation = UpdateChannel(rootNode, animation, Matrix4x4.Identity, i);
+                
+                BoneInfo boneInfo = new BoneInfo(name, boneIDsByName[name], transformation);
+                boneInfos.Add(boneInfo);
+            }
+            
+            bones.Add(i, boneInfos.ToArray());
+        }
 
-        scene.RootNode.Transform.Inverse();
-        Matrix4x4 transform = ModelConversion.FromAMatrix4X4(scene.RootNode.Transform);
+        return bones;
+    }
 
-        foreach (AMesh mesh in scene.Meshes) {
-            for (int i = 0; i < mesh.BoneCount; i++) {
-                Bone bone = mesh.Bones[i];
+    private static Matrix4x4 UpdateChannel(Node rootNode, ModelAnimation animation, Matrix4x4 parentTransform, int frameCount) {
+        Matrix4x4 nodeTransformation = Matrix4x4.Identity;
 
-                // Add or retrieve BoneInfo for the parent node
-                Node? node = scene.RootNode?.FindNode(bone.Name);
-                if (node != null) {
-                    Node? parentNode = node.Parent;
-                    BoneInfo? parentBoneInfo = null;
-                    if (parentNode != null) {
-                        if (!boneInfoDict.TryGetValue(parentNode.Name, out parentBoneInfo)) {
-                            parentBoneInfo = new BoneInfo(parentNode.Name, (uint) boneInfoDict.Count, null, Matrix4x4.Identity, transform);
-                            boneInfos.Add(parentBoneInfo);
-                            boneInfoDict[parentNode.Name] = parentBoneInfo;
-                        }
-                    }
+        if (GetChannel(rootNode, animation, out NodeAnimationChannel? channel)) {
+            Matrix4x4 scale = Matrix4x4.Identity;
+            Matrix4x4 rotation = Matrix4x4.Identity;
+            Matrix4x4 translation = Matrix4x4.Identity;
 
-                    // Create BoneInfo for the current bone
-                    BoneInfo boneInfo = new BoneInfo(bone.Name, (uint) boneInfos.Count, parentBoneInfo, Matrix4x4.Transpose(ModelConversion.FromAMatrix4X4(bone.OffsetMatrix)), transform);
-                    boneInfos.Add(boneInfo);
-                    boneInfoDict[bone.Name] = boneInfo;
-                }
+            nodeTransformation = scale * rotation * translation;
+        }
+
+        foreach (Node childNode in rootNode.Children) {
+            Matrix4x4 childTransformation = UpdateChannel(childNode, animation, nodeTransformation * parentTransform, frameCount);
+            nodeTransformation *= childTransformation;
+        }
+
+        return nodeTransformation * parentTransform;
+
+        //foreach (Node childNode in rootNode.Children) {
+        //    Matrix4x4 transformation = UpdateChannel(childNode, animation, nodeTransformation * parentTransform, frameCount);
+        //}
+    }
+
+    /// <summary>
+    /// Attempts to retrieve a node animation channel from the given animation corresponding to the specified node.
+    /// </summary>
+    /// <param name="node">The node from which to retrieve the animation channel.</param>
+    /// <param name="animation">The animation containing potential channels for the node.</param>
+    /// <param name="channel">The node animation channel if found, otherwise null.</param>
+    /// <returns>Returns true if an animation channel for the specified node was found; otherwise, false.</returns>
+    private static bool GetChannel(Node node, ModelAnimation animation, out NodeAnimationChannel? channel) {
+        foreach (NodeAnimationChannel nodeChannel in animation.AnimationChannels) {
+            if (nodeChannel.NodeName == node.Name) {
+                channel = nodeChannel;
+                return true;
             }
         }
 
-        return boneInfos;
+        channel = null;
+        return false;
     }
     
     private static Transform CalculateBoneTransform(NodeAnimationChannel nodeChannel, int frame, double frameDuration) {
@@ -404,7 +416,7 @@ public class Model : Disposable {
     /// <param name="path">The path to the model file, used to resolve texture file paths.</param>
     /// <param name="textureType">The type of texture to load from the material.</param>
     /// <returns>A Texture2D object if the texture is successfully loaded, otherwise null.</returns>
-    private static Texture2D? LoadMaterialTexture(GraphicsDevice graphicsDevice, Scene scene, AMaterial aMaterial, string path, TextureType textureType) {
+    private static Texture2D? LoadMaterialTexture(GraphicsDevice graphicsDevice, Scene scene, AMaterial aMaterial, string path, TextureType textureType) { // TODO: Take care to dispose it!
         if (aMaterial.GetMaterialTexture(textureType, 0, out TextureSlot textureSlot)) {
             string filePath = textureSlot.FilePath;
             
@@ -430,9 +442,15 @@ public class Model : Disposable {
         return null;
     }
 
-    public void UpdateAnimation(CommandList commandList, ModelAnimation animation, int frame) {
+    /// <summary>
+    /// Updates the animation bones for all meshes in the model based on the specified animation and frame.
+    /// </summary>
+    /// <param name="commandList">The command list used to issue rendering commands.</param>
+    /// <param name="animation">The animation whose bone transformations should be applied.</param>
+    /// <param name="frame">The specific frame of the animation to update the bones to.</param>
+    public void UpdateAnimationBones(CommandList commandList, ModelAnimation animation, int frame) {
         foreach (Mesh mesh in this.Meshes) {
-            mesh.UpdateAnimation(commandList, animation, frame);
+            mesh.UpdateAnimationBones(commandList, animation, frame);
         }
     }
     

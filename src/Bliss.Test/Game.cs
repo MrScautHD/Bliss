@@ -167,7 +167,7 @@ public class Game : Disposable {
         }
 
         //if (this._cam3D.GetFrustum().ContainsBox(this._playerModel.BoundingBox)) {
-            this._playerModel.UpdateAnimation(commandList, this._playerModel.Animations[0], 1);
+            this._playerModel.UpdateAnimationBones(commandList, this._playerModel.Animations[0], 4);
             this._playerModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, Color.Blue);
         //}
         

@@ -1,6 +1,4 @@
-using System.Numerics;
-using Bliss.CSharp.Geometry.Animations.Bones;
-using Bliss.CSharp.Transformations;
+using Assimp;
 
 namespace Bliss.CSharp.Geometry.Animations;
 
@@ -8,20 +6,16 @@ public class ModelAnimation {
     
     public string Name { get; private set; }
 
-    public int BoneCount { get; private set; }
-    public int FrameCount { get; private set; }
+    public float DurationInTicks { get; private set; }
+    public float DurationInSeconds => (float) this.DurationInTicks / (float) this.TicksPerSecond;
+    public float TicksPerSecond  { get; private set; }
     
-    public BoneInfo[] BoneInfos { get; private set; }
-    public Transform[][] FramePoses { get; private set; }
-    
-    public Matrix4x4 RootNodeTransform { get; private set; }
+    public List<NodeAnimationChannel> AnimationChannels { get; private set; } // TODO: Replace NodeAnimationChannel with my own class
 
-    public ModelAnimation(string name, BoneInfo[] boneInfos, Transform[][] framePoses, Matrix4x4 rootNodeTransform) {
+    public ModelAnimation(string name, float durationInTicks, float ticksPerSecond, List<NodeAnimationChannel> channels) {
         this.Name = name;
-        this.BoneCount = boneInfos.Length;
-        this.FrameCount = framePoses.Length;
-        this.BoneInfos = boneInfos;
-        this.FramePoses = framePoses;
-        this.RootNodeTransform = rootNodeTransform;
+        this.DurationInTicks = durationInTicks;
+        this.TicksPerSecond = ticksPerSecond;
+        this.AnimationChannels = channels;
     }
 }
