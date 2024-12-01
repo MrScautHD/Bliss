@@ -40,6 +40,9 @@ You are allowed to fork, clone, or create copies of this Project, whether in who
 4. Prohibition on Publication
 Publicly sharing or distributing forks and copies of this Project is allowed, but they must not be published or made available on package managers (e.g., NuGet, npm, PyPI), or similar platforms. Any public forks or copies must be clearly labeled as derivative works. Publishing or releasing such forks or copies on these platforms requires explicit written consent from the Project authors.
 
-5. Disclaimer of Liability
+5. Free Usage as a Package
+You are free to use this software ("Project") as a package, such as a NuGet package or submodule, to build upon it.
+
+6. Disclaimer of Liability
 This software is provided "as-is", without any express or implied warranty. In no event will the authors be held liable for any damages arising from the use of this software.
 =========================================================================
