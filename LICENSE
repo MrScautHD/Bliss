@@ -1,6 +1,8 @@
-MIT License
+This project includes files licensed under MIT License and Bliss License 1.0. The license type applied to each file will be specified in the header of that file. Please refer to the relevant license section below for the details.
 
-Copyright (c) 2024 MrScautHD
+MIT License:
+=========================================================================
+Copyright (c) 2024 Elias Springer (@MrScautHD)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +21,25 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+=========================================================================
+
+Bliss License 1.0:
+=========================================================================
+Copyright (c) 2024 Elias Springer (@MrScautHD)
+
+1. Permission to Use
+This software ("Project") may be used, modified, and extended by anyone for any purpose, provided the following conditions are met.
+
+2. Ownership Transfer
+All contributions (code, documentation, assets, or other content) made to this Project automatically become the sole property of the Project authors. The original author of the contribution retains no rights to their submissions.
+By submitting a contribution, you agree to transfer ownership of your contribution to the Project authors.
+
+3. Forks and Copies
+You are allowed to fork, clone, or create copies of this Project, whether in whole or in part. Modifications and adaptations may be made for private use. However, if you choose to make your fork or copy public (e.g., on GitHub or any other platform), it must be clearly marked as a derivative work of this Project.
+
+4. Prohibition on Publication
+Publicly sharing or distributing forks and copies of this Project is allowed, but they must not be published or made available on package managers (e.g., NuGet, npm, PyPI), or similar platforms. Any public forks or copies must be clearly labeled as derivative works. Publishing or releasing such forks or copies on these platforms requires explicit written consent from the Project authors.
+
+5. Disclaimer of Liability
+This software is provided "as-is", without any express or implied warranty. In no event will the authors be held liable for any damages arising from the use of this software.
+=========================================================================
