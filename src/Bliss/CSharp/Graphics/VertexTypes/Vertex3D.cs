@@ -1,8 +1,15 @@
+/*
+ * Copyright (c) 2024 Elias Springer (@MrScautHD)
+ * License-Identifier: Bliss License 1.0
+ * 
+ * For full license details, see:
+ * https://github.com/MrScautHD/Bliss/blob/main/LICENSE
+ */
+
 using System.Numerics;
 using System.Runtime.InteropServices;
 using Veldrid;
 using Vortice.Mathematics;
-using Color = Bliss.CSharp.Colors.Color;
 
 namespace Bliss.CSharp.Graphics.VertexTypes;
 

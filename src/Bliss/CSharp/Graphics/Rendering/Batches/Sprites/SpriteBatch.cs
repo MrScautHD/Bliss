@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) 2024 Elias Springer (@MrScautHD)
+ * License-Identifier: Bliss License 1.0
+ * 
+ * For full license details, see:
+ * https://github.com/MrScautHD/Bliss/blob/main/LICENSE
+ */
+
 using System.Numerics;
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Colors;
@@ -22,10 +30,10 @@ public class SpriteBatch : Disposable {
     /// Defines an index template for rendering two triangles as a quad.
     /// The array contains six <see cref="ushort"/> values, representing the vertex indices for two triangles.
     /// </summary>
-    private static readonly ushort[] IndicesTemplate = new ushort[] {
+    private static readonly ushort[] IndicesTemplate = [
         2, 1, 0,
         2, 3, 1
-    };
+    ];
 
     /// <summary>
     /// Represents the number of vertices used to define a single quad in the SpriteBatch.

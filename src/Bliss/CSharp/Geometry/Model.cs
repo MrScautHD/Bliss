@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) 2024 Elias Springer (@MrScautHD)
+ * License-Identifier: Bliss License 1.0
+ * 
+ * For full license details, see:
+ * https://github.com/MrScautHD/Bliss/blob/main/LICENSE
+ */
+
 using System.Numerics;
 using System.Text;
 using Assimp;
@@ -283,7 +291,7 @@ public class Model : Disposable {
         if (GetChannel(rootNode, animation, out NodeAnimationChannel? channel)) {
             Matrix4x4 scale = Matrix4x4.Identity;
             Matrix4x4 rotation = Matrix4x4.Identity;
-            Matrix4x4 translation = Matrix4x4.Identity;
+            Matrix4x4 translation = Matrix4x4.CreateTranslation(InterpolatePosition(channel!.PositionKeys, frameCount));
 
             nodeTransformation = scale * rotation * translation;
         }
@@ -319,31 +327,14 @@ public class Model : Disposable {
         return false;
     }
     
-    private static Transform CalculateBoneTransform(NodeAnimationChannel nodeChannel, int frame, double frameDuration) {
-        // Compute the appropriate keyframe index
-        double time = frame / 60.0 * frameDuration;
+    private static Vector3 InterpolatePosition(List<VectorKey> keys, int frameCount) {
+        if (keys.Count == 0) {
+            return Vector3.Zero;
+        }
 
-        // Position
-        Vector3 position = nodeChannel.PositionKeys.Count > 0 ? InterpolatePosition(nodeChannel.PositionKeys, time) : Vector3.Zero;
-        
-        // Rotation
-        Quaternion rotation = nodeChannel.RotationKeys.Count > 0 ? InterpolateRotation(nodeChannel.RotationKeys, time) : Quaternion.Identity;
-
-        // Scaling
-        Vector3 scale = nodeChannel.ScalingKeys.Count > 0 ? InterpolateScaling(nodeChannel.ScalingKeys, time) : Vector3.One;
-
-        return new Transform {
-            Translation = position,
-            Rotation = rotation,
-            Scale = scale
-        };
-    }
-    
-    private static Vector3 InterpolatePosition(List<VectorKey> keys, double time) {
-        // Linear interpolation between keyframes
         for (int i = 0; i < keys.Count - 1; i++) {
-            if (keys[i + 1].Time > time) {
-                float factor = (float)((time - keys[i].Time) / (keys[i + 1].Time - keys[i].Time));
+            if (keys[i + 1].Time > frameCount) {
+                float factor = (float)((frameCount - keys[i].Time) / (keys[i + 1].Time - keys[i].Time));
                 return Vector3.Lerp(
                     ModelConversion.FromVector3D(keys[i].Value),
                     ModelConversion.FromVector3D(keys[i + 1].Value),
@@ -351,6 +342,7 @@ public class Model : Disposable {
                 );
             }
         }
+
         return ModelConversion.FromVector3D(keys.Last().Value);
     }
 

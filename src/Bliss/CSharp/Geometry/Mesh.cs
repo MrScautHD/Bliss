@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) 2024 Elias Springer (@MrScautHD)
+ * License-Identifier: Bliss License 1.0
+ * 
+ * For full license details, see:
+ * https://github.com/MrScautHD/Bliss/blob/main/LICENSE
+ */
+
 using System.Numerics;
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Camera.Dim3;
@@ -7,7 +15,6 @@ using Bliss.CSharp.Geometry.Animations.Bones;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.VertexTypes;
-using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
 using Bliss.CSharp.Transformations;
 using Veldrid;

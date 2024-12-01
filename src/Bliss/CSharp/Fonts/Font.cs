@@ -1,10 +1,17 @@
+/*
+ * Copyright (c) 2024 Elias Springer (@MrScautHD)
+ * License-Identifier: Bliss License 1.0
+ * 
+ * For full license details, see:
+ * https://github.com/MrScautHD/Bliss/blob/main/LICENSE
+ */
+
 using System.Numerics;
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Transformations;
 using FontStashSharp;
-using Veldrid;
 
 namespace Bliss.CSharp.Fonts;
 
