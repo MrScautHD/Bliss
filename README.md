@@ -64,4 +64,4 @@ dotnet add package Bliss --version 1.0.0
 ---
 
 # ✍️ Acknowledgement
-This library is available under the our custom [license](https://github.com/MrScautHD/Bliss/blob/main/LICENSE).
+This library is available under our custom [license](https://github.com/MrScautHD/Bliss/blob/main/LICENSE).
