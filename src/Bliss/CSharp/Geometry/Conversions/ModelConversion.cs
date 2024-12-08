@@ -122,7 +122,7 @@ public static class ModelConversion {
         aMatrix.M31 = matrix4X4.C1;
         aMatrix.M32 = matrix4X4.C2;
         aMatrix.M33 = matrix4X4.C3;
-        aMatrix.M33 = matrix4X4.C4;
+        aMatrix.M34 = matrix4X4.C4;
         
         aMatrix.M41 = matrix4X4.D1;
         aMatrix.M42 = matrix4X4.D2;

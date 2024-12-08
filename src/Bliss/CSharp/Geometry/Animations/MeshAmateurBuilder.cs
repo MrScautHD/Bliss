@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using Assimp;
 using Bliss.CSharp.Geometry.Animations.Bones;
 using Bliss.CSharp.Geometry.Conversions;
@@ -56,7 +55,7 @@ public class MeshAmateurBuilder {
         return bones;
     }
 
-    private unsafe void UpdateChannel(Node node, ModelAnimation animation, int frame, AMatrix4x4 parentTransform) {
+    private void UpdateChannel(Node node, ModelAnimation animation, int frame, AMatrix4x4 parentTransform) {
         AMatrix4x4 nodeTransformation = AMatrix4x4.Identity;
 
         if (GetChannel(node, animation, out NodeAnimationChannel? channel)) {
@@ -75,7 +74,7 @@ public class MeshAmateurBuilder {
                 rootInverseTransform.Inverse();
                 
                 AMatrix4x4 transformation = bone.OffsetMatrix * nodeTransformation * parentTransform * rootInverseTransform;
-                this._boneTransformations[boneId] = Matrix4x4.Transpose(Unsafe.Read<Matrix4x4>(&transformation)); // TODO: By doing here Matrix4x4.Identity, it will be normal, there is just something wrong with any matrix i think translation
+                this._boneTransformations[boneId] = Matrix4x4.Transpose(ModelConversion.FromAMatrix4X4(transformation)); // TODO: By doing here Matrix4x4.Identity, it will be normal, there is just something wrong with any matrix i think translation
             }
         }
 
