@@ -97,11 +97,14 @@ public class Model : Disposable {
         List<Mesh> meshes = new List<Mesh>();
         List<ModelAnimation> animations = new List<ModelAnimation>();
 
-        // Load animations
+        // Load animations.
         for (int i = 0; i < scene.Animations.Count; i++) {
             Animation aAnimation = scene.Animations[i];
             animations.Add(new ModelAnimation(aAnimation.Name, (float) aAnimation.DurationInTicks, (float) aAnimation.TicksPerSecond, aAnimation.NodeAnimationChannels));
         }
+        
+        // Setup amateur builder.
+        MeshAmateurBuilder amateurBuilder = new MeshAmateurBuilder(scene.RootNode, animations.ToArray());
 
         for (int i = 0; i < scene.Meshes.Count; i++) {
             AMesh mesh = scene.Meshes[i];
@@ -234,26 +237,18 @@ public class Model : Disposable {
             }
             
             // Setup bones.
-            Dictionary<string, uint> boneIDsByName = new Dictionary<string, uint>();
+            Dictionary<uint, Bone> bonesByName = new Dictionary<uint, Bone>();
             
             for (int j = 0; j < mesh.BoneCount; j++) {
                 Bone bone = mesh.Bones[j];
-                boneIDsByName.Add(bone.Name, (uint) j);
+                bonesByName.Add((uint) j, bone);
                 
                 foreach (VertexWeight vertexWeight in bone.VertexWeights) {
                     vertices[vertexWeight.VertexID].AddBone((uint) j, vertexWeight.Weight);
                 }
             }
-            
-            // Load Bone Transformation.
-            Dictionary<string, Dictionary<int, BoneInfo[]>> boneInfos = new Dictionary<string, Dictionary<int, BoneInfo[]>>();
 
-            for (int animationIndex = 0; animationIndex < animations.Count; animationIndex++) {
-                ModelAnimation animation = animations[animationIndex];
-                boneInfos.Add(animation.Name, SetupAnimation(animation, boneIDsByName, scene.RootNode));
-            }
-
-            meshes.Add(new Mesh(graphicsDevice, material, vertices, indices.ToArray(), boneInfos));
+            meshes.Add(new Mesh(graphicsDevice, material, vertices, indices.ToArray(), amateurBuilder.Build(bonesByName)));
         }
         
         Logger.Info($"Model loaded successfully from path: [{path}]");
@@ -261,116 +256,6 @@ public class Model : Disposable {
         Logger.Info($"\t> Animations: {scene.AnimationCount}");
 
         return new Model(graphicsDevice, meshes.ToArray(), animations.ToArray());
-    }
-    
-    private static Dictionary<int, BoneInfo[]> SetupAnimation(ModelAnimation animation, Dictionary<string, uint> boneIDsByName, Node rootNode) {
-        Dictionary<int, BoneInfo[]> bones = new Dictionary<int, BoneInfo[]>();
-        
-        double frameDuration = animation.TicksPerSecond > 0 ? animation.TicksPerSecond : 25.0;
-        int frameCount = (int) (animation.DurationInTicks / frameDuration * 60);
-
-        for (int i = 0; i < frameCount; i++) {
-            List<BoneInfo> boneInfos = new List<BoneInfo>();
-            
-            foreach (string name in boneIDsByName.Keys) {
-                Matrix4x4 transformation = UpdateChannel(rootNode, animation, Matrix4x4.Identity, i);
-                
-                BoneInfo boneInfo = new BoneInfo(name, boneIDsByName[name], transformation);
-                boneInfos.Add(boneInfo);
-            }
-            
-            bones.Add(i, boneInfos.ToArray());
-        }
-
-        return bones;
-    }
-
-    private static Matrix4x4 UpdateChannel(Node rootNode, ModelAnimation animation, Matrix4x4 parentTransform, int frameCount) {
-        Matrix4x4 nodeTransformation = Matrix4x4.Identity;
-
-        if (GetChannel(rootNode, animation, out NodeAnimationChannel? channel)) {
-            Matrix4x4 scale = Matrix4x4.Identity;
-            Matrix4x4 rotation = Matrix4x4.Identity;
-            Matrix4x4 translation = Matrix4x4.CreateTranslation(InterpolatePosition(channel!.PositionKeys, frameCount));
-
-            nodeTransformation = scale * rotation * translation;
-        }
-
-        foreach (Node childNode in rootNode.Children) {
-            Matrix4x4 childTransformation = UpdateChannel(childNode, animation, nodeTransformation * parentTransform, frameCount);
-            nodeTransformation *= childTransformation;
-        }
-
-        return nodeTransformation * parentTransform;
-
-        //foreach (Node childNode in rootNode.Children) {
-        //    Matrix4x4 transformation = UpdateChannel(childNode, animation, nodeTransformation * parentTransform, frameCount);
-        //}
-    }
-
-    /// <summary>
-    /// Attempts to retrieve a node animation channel from the given animation corresponding to the specified node.
-    /// </summary>
-    /// <param name="node">The node from which to retrieve the animation channel.</param>
-    /// <param name="animation">The animation containing potential channels for the node.</param>
-    /// <param name="channel">The node animation channel if found, otherwise null.</param>
-    /// <returns>Returns true if an animation channel for the specified node was found; otherwise, false.</returns>
-    private static bool GetChannel(Node node, ModelAnimation animation, out NodeAnimationChannel? channel) {
-        foreach (NodeAnimationChannel nodeChannel in animation.AnimationChannels) {
-            if (nodeChannel.NodeName == node.Name) {
-                channel = nodeChannel;
-                return true;
-            }
-        }
-
-        channel = null;
-        return false;
-    }
-    
-    private static Vector3 InterpolatePosition(List<VectorKey> keys, int frameCount) {
-        if (keys.Count == 0) {
-            return Vector3.Zero;
-        }
-
-        for (int i = 0; i < keys.Count - 1; i++) {
-            if (keys[i + 1].Time > frameCount) {
-                float factor = (float)((frameCount - keys[i].Time) / (keys[i + 1].Time - keys[i].Time));
-                return Vector3.Lerp(
-                    ModelConversion.FromVector3D(keys[i].Value),
-                    ModelConversion.FromVector3D(keys[i + 1].Value),
-                    factor
-                );
-            }
-        }
-
-        return ModelConversion.FromVector3D(keys.Last().Value);
-    }
-
-    private static Quaternion InterpolateRotation(List<QuaternionKey> keys, double time) {
-        for (int i = 0; i < keys.Count - 1; i++) {
-            if (keys[i + 1].Time > time) {
-                float factor = (float)((time - keys[i].Time) / (keys[i + 1].Time - keys[i].Time));
-                Quaternion start = ModelConversion.FromAQuaternion(keys[i].Value);
-                Quaternion end = ModelConversion.FromAQuaternion(keys[i + 1].Value);
-
-                return Quaternion.Slerp(Quaternion.Normalize(start), Quaternion.Normalize(end), factor);
-            }
-        }
-        return Quaternion.Normalize(ModelConversion.FromAQuaternion(keys.Last().Value));
-    }
-
-    private static Vector3 InterpolateScaling(List<VectorKey> keys, double time) {
-        for (int i = 0; i < keys.Count - 1; i++) {
-            if (keys[i + 1].Time > time) {
-                float factor = (float)((time - keys[i].Time) / (keys[i + 1].Time - keys[i].Time));
-                return Vector3.Lerp(
-                    ModelConversion.FromVector3D(keys[i].Value),
-                    ModelConversion.FromVector3D(keys[i + 1].Value),
-                    factor
-                );
-            }
-        }
-        return ModelConversion.FromVector3D(keys.Last().Value);
     }
     
     /// <summary>

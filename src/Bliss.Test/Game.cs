@@ -157,7 +157,15 @@ public class Game : Disposable {
     
     protected virtual void AfterUpdate() { }
 
-    protected virtual void FixedUpdate() { }
+    public int test;
+
+    protected virtual void FixedUpdate() {
+        test++;
+
+        if (test >= 27) {
+            test = 0;
+        }
+    }
     
     protected virtual void Draw(GraphicsDevice graphicsDevice, CommandList commandList) {
         commandList.Begin();
@@ -175,7 +183,7 @@ public class Game : Disposable {
         }
 
         //if (this._cam3D.GetFrustum().ContainsBox(this._playerModel.BoundingBox)) {
-            this._playerModel.UpdateAnimationBones(commandList, this._playerModel.Animations[0], 4);
+            this._playerModel.UpdateAnimationBones(commandList, this._playerModel.Animations[0], test);
             this._playerModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, Color.Blue);
         //}
         
