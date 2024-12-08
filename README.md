@@ -4,7 +4,6 @@
 
 # Bliss 🚀
 [![Discord](https://img.shields.io/discord/1199798541980283051?style=flat-square&logo=discord&label=Discord)](https://discord.gg/7XKw6YQa76)
-[![License](https://img.shields.io/github/license/MrScautHD/Bliss?style=flat-square&logo=libreofficewriter&label=License)](LICENSE)
 [![Activity](https://img.shields.io/github/commit-activity/w/MrScautHD/Bliss?style=flat-square&logo=Github&label=Activity)](https://github.com/MrScautHD/Bliss/activity)
 [![Stars](https://img.shields.io/github/stars/MrScautHD/Bliss?style=flat-square&logo=Github&label=Stars)](https://github.com/MrScautHD/Bliss/stargazers)
 
@@ -64,4 +63,4 @@ dotnet add package Bliss --version 1.0.0
 ---
 
 # ✍️ Acknowledgement
-This library is available under the [MIT](https://choosealicense.com/licenses/mit) license.
+This library is available under our custom [license](https://github.com/MrScautHD/Bliss/blob/main/LICENSE).
