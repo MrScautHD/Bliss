@@ -103,6 +103,14 @@ public class Mesh : Disposable {
     /// </summary>
     private SimpleBuffer<Matrix4x4> _boneBuffer;
     
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Mesh"/> class with the specified properties.
+    /// </summary>
+    /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used for managing GPU resources.</param>
+    /// <param name="material">The material applied to the mesh, which defines its appearance (textures, shaders, etc.).</param>
+    /// <param name="vertices">An optional array of <see cref="Vertex3D"/> instances representing the mesh's vertices.</param>
+    /// <param name="indices">An optional array of indices used for defining the mesh's primitive topology.</param>
+    /// <param name="boneInfos">An optional dictionary containing bone information used for skeletal animation, where the key is a bone name and the value is a dictionary of bone indices mapped to bone data.</param>
     public Mesh(GraphicsDevice graphicsDevice, Material material, Vertex3D[]? vertices = default, uint[]? indices = default, Dictionary<string, Dictionary<int, BoneInfo[]>>? boneInfos = default) {
         this.GraphicsDevice = graphicsDevice;
         this.Material = material;

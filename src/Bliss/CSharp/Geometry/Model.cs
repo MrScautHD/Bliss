@@ -381,7 +381,7 @@ public class Model : Disposable {
                 mesh.Dispose();
             }
 
-            // TODO: Unload cached resoucres (materials)
+            // TODO: Unload cached resources (materials)
         }
     }
 }

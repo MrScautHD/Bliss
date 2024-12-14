@@ -1,7 +1,14 @@
+/*
+ * Copyright (c) 2024 Elias Springer (@MrScautHD)
+ * License-Identifier: Bliss License 1.0
+ * 
+ * For full license details, see:
+ * https://github.com/MrScautHD/Bliss/blob/main/LICENSE
+ */
+
 using Assimp;
 using Bliss.CSharp.Geometry.Animations.Bones;
 using Bliss.CSharp.Geometry.Conversions;
-using Bliss.CSharp.Logging;
 using AMatrix4x4 = Assimp.Matrix4x4;
 using Matrix4x4 = System.Numerics.Matrix4x4;
 using AQuaternion = Assimp.Quaternion;
