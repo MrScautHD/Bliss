@@ -17,6 +17,7 @@ using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 using Bliss.CSharp.Graphics.Rendering.Passes;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Contexts;
+using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
@@ -54,6 +55,9 @@ public class Game : Disposable {
     private Cam3D _cam3D;
     private Model _playerModel;
     private Model _planeModel;
+
+    private int _frameCount;
+    private bool _playingAnim;
     
     public Game(GameSettings settings) {
         Instance = this;
@@ -156,17 +160,16 @@ public class Game : Disposable {
     }
     
     protected virtual void AfterUpdate() { }
-
-    public int test;
-
+    
     protected virtual void FixedUpdate() {
-        test++;
+        if (Input.IsKeyDown(KeyboardKey.H)) {
+            this._playingAnim = true;
+            this._frameCount++;
 
-        if (test >= this._playerModel.Animations[2].FrameCount) {
-            test = 0;
+            if (this._frameCount >= this._playerModel.Animations[0].FrameCount) {
+                this._frameCount = 0;
+            }
         }
-        
-        Logger.Error(this._playerModel.Animations[2].FrameCount+ "");
     }
     
     protected virtual void Draw(GraphicsDevice graphicsDevice, CommandList commandList) {
@@ -183,9 +186,17 @@ public class Game : Disposable {
         if (this._cam3D.GetFrustum().ContainsBox(this._planeModel.BoundingBox)) {
             this._planeModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform(), Color.White);
         }
+        
+        if (Input.IsKeyPressed(KeyboardKey.G)) {
+            this._playerModel.ResetAnimationBones(commandList);
+            this._playingAnim = false;
+            Logger.Error("RESET ANIM");
+        }
 
         if (this._cam3D.GetFrustum().ContainsBox(this._playerModel.BoundingBox)) {
-            this._playerModel.UpdateAnimationBones(commandList, this._playerModel.Animations[2], test);
+            if (this._playingAnim) {
+                this._playerModel.UpdateAnimationBones(commandList, this._playerModel.Animations[0], this._frameCount);
+            }
             this._playerModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, Color.Blue);
         }
         

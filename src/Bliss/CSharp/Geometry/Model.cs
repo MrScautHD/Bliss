@@ -11,7 +11,6 @@ using System.Text;
 using Assimp;
 using Bliss.CSharp.Effects;
 using Bliss.CSharp.Geometry.Animations;
-using Bliss.CSharp.Geometry.Animations.Bones;
 using Bliss.CSharp.Geometry.Conversions;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Logging;
@@ -26,8 +25,6 @@ using ShaderMaterialProperties = Assimp.Material.ShaderMaterialProperties;
 using Material = Bliss.CSharp.Materials.Material;
 using AMaterial = Assimp.Material;
 using Color = Bliss.CSharp.Colors.Color;
-using Matrix4x4 = System.Numerics.Matrix4x4;
-using Quaternion = System.Numerics.Quaternion;
 using TextureType = Assimp.TextureType;
 
 namespace Bliss.CSharp.Geometry;
@@ -75,6 +72,12 @@ public class Model : Disposable {
     /// </summary>
     public BoundingBox BoundingBox { get; private set; }
     
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Model"/> class with the specified graphics device, meshes, and animations.
+    /// </summary>
+    /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used for rendering and resource management.</param>
+    /// <param name="meshes">An array of <see cref="Mesh"/> objects representing the geometric components of the model.</param>
+    /// <param name="animations">An array of <see cref="ModelAnimation"/> objects defining the animations for the model.</param>
     public Model(GraphicsDevice graphicsDevice, Mesh[] meshes, ModelAnimation[] animations) {
         this.GraphicsDevice = graphicsDevice;
         this.Meshes = meshes;
@@ -328,6 +331,16 @@ public class Model : Disposable {
     public void UpdateAnimationBones(CommandList commandList, ModelAnimation animation, int frame) {
         foreach (Mesh mesh in this.Meshes) {
             mesh.UpdateAnimationBones(commandList, animation, frame);
+        }
+    }
+
+    /// <summary>
+    /// Resets the animation bone transformations for all meshes in the model using the given command list.
+    /// </summary>
+    /// <param name="commandList">The command list used to execute the reset operation on the GPU.</param>
+    public void ResetAnimationBones(CommandList commandList) {
+        foreach (Mesh mesh in this.Meshes) {
+            mesh.ResetAnimationBones(commandList);
         }
     }
     

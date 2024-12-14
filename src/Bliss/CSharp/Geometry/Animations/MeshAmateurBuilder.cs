@@ -1,6 +1,7 @@
 using Assimp;
 using Bliss.CSharp.Geometry.Animations.Bones;
 using Bliss.CSharp.Geometry.Conversions;
+using Bliss.CSharp.Logging;
 using AMatrix4x4 = Assimp.Matrix4x4;
 using Matrix4x4 = System.Numerics.Matrix4x4;
 using AQuaternion = Assimp.Quaternion;
@@ -77,11 +78,11 @@ public class MeshAmateurBuilder {
     private void UpdateChannel(Node node, ModelAnimation animation, int frame, AMatrix4x4 parentTransform) {
         AMatrix4x4 nodeTransformation = AMatrix4x4.Identity;
 
-        if (GetChannel(node, animation, out NodeAnimationChannel? channel)) {
+        if (this.GetChannel(node, animation, out NodeAnimationChannel? channel)) {
             AMatrix4x4 scale = this.InterpolateScale(channel!, animation, frame);
             AMatrix4x4 rotation = this.InterpolateRotation(channel!, animation, frame);
             AMatrix4x4 translation = this.InterpolateTranslation(channel!, animation, frame);
-
+            
             nodeTransformation = scale * rotation * translation;
         }
 
@@ -103,16 +104,16 @@ public class MeshAmateurBuilder {
     }
 
     /// <summary>
-    /// Interpolates the translation of a node for a given frame in an animation channel.
+    /// Interpolates the translation transformation at a specific frame using the provided animation channel and animation data.
     /// </summary>
-    /// <param name="channel">The <see cref="NodeAnimationChannel"/> containing the position keys for translation.</param>
-    /// <param name="animation">The <see cref="ModelAnimation"/> providing the animation metadata.</param>
-    /// <param name="frame">The current frame index for which the translation is being interpolated.</param>
-    /// <returns>An <see cref="AMatrix4x4"/> representing the interpolated translation transformation for the node.</returns>
+    /// <param name="channel">The <see cref="NodeAnimationChannel"/> containing position keys for the node.</param>
+    /// <param name="animation">The <see cref="ModelAnimation"/> containing the animation data, including timing information.</param>
+    /// <param name="frame">The current frame for which the translation is being interpolated.</param>
+    /// <returns>An <see cref="Assimp.Matrix4x4"/> representing the interpolated translation transformation for the given frame.</returns>
     private AMatrix4x4 InterpolateTranslation(NodeAnimationChannel channel, ModelAnimation animation, int frame) {
         double frameTime = frame / 60.0F * animation.TicksPerSecond;
         Vector3D position;
-
+        
         if (channel.PositionKeyCount == 1) {
             position = channel.PositionKeys[0].Value;
         }
@@ -124,7 +125,7 @@ public class MeshAmateurBuilder {
                     break;
                 }
             }
-            
+
             VectorKey currentFrame = channel.PositionKeys[(int) frameIndex];
             VectorKey nextFrame = channel.PositionKeys[(int) ((frameIndex + 1) % channel.PositionKeyCount)];
 
@@ -134,17 +135,17 @@ public class MeshAmateurBuilder {
             Vector3D end = nextFrame.Value;
             position = start + (float) delta * (end - start);
         }
-
+        
         return AMatrix4x4.FromTranslation(position);
     }
 
     /// <summary>
-    /// Interpolates the rotation of a node for a given animation frame using spherical linear interpolation (Slerp).
+    /// Interpolates the rotation transformation for a given node animation channel at a specified frame.
     /// </summary>
-    /// <param name="channel">The <see cref="NodeAnimationChannel"/> containing rotation keyframes for the node.</param>
-    /// <param name="animation">The <see cref="ModelAnimation"/> defining the animation to be processed.</param>
-    /// <param name="frame">The current animation frame index.</param>
-    /// <returns>A <see cref="AMatrix4x4"/> representing the interpolated rotation transformation for the specified frame.</returns>
+    /// <param name="channel">The <see cref="NodeAnimationChannel"/> containing the rotation keyframes for the node.</param>
+    /// <param name="animation">The <see cref="ModelAnimation"/> object defining the overall animation data.</param>
+    /// <param name="frame">The current frame for which the rotation needs to be interpolated.</param>
+    /// <returns>An <see cref="AMatrix4x4"/> representing the interpolated rotation transformation matrix for the specified frame.</returns>
     private AMatrix4x4 InterpolateRotation(NodeAnimationChannel channel, ModelAnimation animation, int frame) {
         double frameTime = frame / 60.0F * animation.TicksPerSecond;
         AQuaternion rotation;
@@ -164,17 +165,24 @@ public class MeshAmateurBuilder {
             QuaternionKey currentFrame = channel.RotationKeys[(int) frameIndex];
             QuaternionKey nextFrame = channel.RotationKeys[(int) ((frameIndex + 1) % channel.RotationKeyCount)];
 
-            double delta = (frameTime - (float) currentFrame.Time) / (float) (nextFrame.Time - currentFrame.Time);
+            double delta = (frameTime - currentFrame.Time) / (nextFrame.Time - currentFrame.Time);
 
             AQuaternion start = currentFrame.Value;
             AQuaternion end = nextFrame.Value;
             rotation = AQuaternion.Slerp(start, end, (float) delta);
             rotation.Normalize();
         }
-
+        
         return rotation.GetMatrix();
     }
 
+    /// <summary>
+    /// Computes the interpolated scale transformation for a given animation channel at a specific frame.
+    /// </summary>
+    /// <param name="channel">The <see cref="NodeAnimationChannel"/> containing scaling keyframes.</param>
+    /// <param name="animation">The <see cref="ModelAnimation"/> associated with the animation data.</param>
+    /// <param name="frame">The current frame of the animation for which the scale transformation is calculated.</param>
+    /// <returns>An <see cref="AMatrix4x4"/> representing the interpolated scale transformation at the specified frame.</returns>
     private AMatrix4x4 InterpolateScale(NodeAnimationChannel channel, ModelAnimation animation, int frame) {
         double frameTime = frame / 60.0F * animation.TicksPerSecond;
         Vector3D scale;
@@ -184,7 +192,6 @@ public class MeshAmateurBuilder {
         }
         else {
             uint frameIndex = 0;
-        
             for (uint i = 0; i < channel.ScalingKeyCount - 1; i++) {
                 if (frameTime < channel.ScalingKeys[(int) (i + 1)].Time) {
                     frameIndex = i;
@@ -195,14 +202,14 @@ public class MeshAmateurBuilder {
             VectorKey currentFrame = channel.ScalingKeys[(int)frameIndex];
             VectorKey nextFrame = channel.ScalingKeys[(int)((frameIndex + 1) % channel.ScalingKeyCount)];
 
-            double delta = (frameTime - (float) currentFrame.Time) / (float) (nextFrame.Time - currentFrame.Time);
+            double delta = (frameTime - currentFrame.Time) / (nextFrame.Time - currentFrame.Time);
 
             Vector3D start = currentFrame.Value;
             Vector3D end = nextFrame.Value;
 
             scale = start + (float) delta * (end - start);
         }
-
+        
         return AMatrix4x4.FromScaling(scale);
     }
 

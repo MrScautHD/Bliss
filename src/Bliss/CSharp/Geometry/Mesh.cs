@@ -142,9 +142,23 @@ public class Mesh : Disposable {
     public void UpdateAnimationBones(CommandList commandList, ModelAnimation animation, int frame) {
         if (this.BoneInfos.Count > 0) {
             for (int boneId = 0; boneId < this.BoneInfos[animation.Name][frame].Length; boneId++) {
-                this._boneBuffer.SetValueDeferred(commandList, boneId, this.BoneInfos[animation.Name][frame][boneId].Transformation);
+                this._boneBuffer.SetValue(boneId, this.BoneInfos[animation.Name][frame][boneId].Transformation);
             }
+            
+            this._boneBuffer.UpdateBuffer(commandList);
         }
+    }
+
+    /// <summary>
+    /// Resets the bone transformation matrices to their identity state and updates the buffer on the GPU using the provided command list.
+    /// </summary>
+    /// <param name="commandList">The command list used to record the buffer update command, ensuring the changes are applied to the GPU.</param>
+    public void ResetAnimationBones(CommandList commandList) {
+        for (int i = 0; i < 128; i++) {
+            this._boneBuffer.SetValue(i, Matrix4x4.Identity);
+        }
+        
+        this._boneBuffer.UpdateBuffer(commandList);
     }
     
     /// <summary>
