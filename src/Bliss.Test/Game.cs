@@ -162,9 +162,11 @@ public class Game : Disposable {
     protected virtual void FixedUpdate() {
         test++;
 
-        if (test >= 27) {
+        if (test >= this._playerModel.Animations[2].FrameCount) {
             test = 0;
         }
+        
+        Logger.Error(this._playerModel.Animations[2].FrameCount+ "");
     }
     
     protected virtual void Draw(GraphicsDevice graphicsDevice, CommandList commandList) {
@@ -182,10 +184,10 @@ public class Game : Disposable {
             this._planeModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform(), Color.White);
         }
 
-        //if (this._cam3D.GetFrustum().ContainsBox(this._playerModel.BoundingBox)) {
-            this._playerModel.UpdateAnimationBones(commandList, this._playerModel.Animations[1], test);
+        if (this._cam3D.GetFrustum().ContainsBox(this._playerModel.BoundingBox)) {
+            this._playerModel.UpdateAnimationBones(commandList, this._playerModel.Animations[2], test);
             this._playerModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, Color.Blue);
-        //}
+        }
         
         this._cam3D.End();
         

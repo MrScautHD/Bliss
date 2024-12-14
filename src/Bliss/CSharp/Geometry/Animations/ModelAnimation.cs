@@ -13,10 +13,10 @@ namespace Bliss.CSharp.Geometry.Animations;
 public class ModelAnimation {
     
     public string Name { get; private set; }
-
+    
     public float DurationInTicks { get; private set; }
-    public float DurationInSeconds => (float) this.DurationInTicks / (float) this.TicksPerSecond;
-    public float TicksPerSecond  { get; private set; }
+    public float TicksPerSecond { get; private set; }
+    public int FrameCount { get; private set; }
     
     public List<NodeAnimationChannel> AnimationChannels { get; private set; } // TODO: Replace NodeAnimationChannel with my own class
 
@@ -24,6 +24,12 @@ public class ModelAnimation {
         this.Name = name;
         this.DurationInTicks = durationInTicks;
         this.TicksPerSecond = ticksPerSecond;
+        this.FrameCount = this.CalculateFrameCount();
         this.AnimationChannels = channels;
+    }
+
+    private int CalculateFrameCount() {
+        double frameDuration = this.TicksPerSecond > 0 ? this.TicksPerSecond : 25.0;
+        return (int) (this.DurationInTicks / frameDuration * 60);
     }
 }

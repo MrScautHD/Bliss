@@ -14,12 +14,22 @@ public class MeshAmateurBuilder {
     
     private Dictionary<uint, Bone> _bonesByName;
     private Matrix4x4[] _boneTransformations;
-
+    
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MeshAmateurBuilder"/> class with a root node and animations.
+    /// </summary>
+    /// <param name="rootNode">The root <see cref="Node"/> representing the hierarchical structure of the mesh.</param>
+    /// <param name="animations">An array of <see cref="ModelAnimation"/> objects defining animations for the mesh.</param>
     public MeshAmateurBuilder(Node rootNode, ModelAnimation[] animations) {
         this._rootNode = rootNode;
         this._animations = animations;
     }
 
+    /// <summary>
+    /// Constructs a dictionary containing bone information mapped by animation name and frame index.
+    /// </summary>
+    /// <param name="bonesByName">A dictionary mapping bone identifiers to bone objects.</param>
+    /// <returns>A dictionary where keys are animation names, and values are dictionaries that map frame indices to arrays of bone information.</returns>
     public Dictionary<string, Dictionary<int, BoneInfo[]>> Build(Dictionary<uint, Bone> bonesByName) {
         this._bonesByName = bonesByName;
         this._boneTransformations = new Matrix4x4[bonesByName.Count];
@@ -33,13 +43,15 @@ public class MeshAmateurBuilder {
         return boneInfos;
     }
 
+    /// <summary>
+    /// Generates a dictionary that maps frame indices to arrays of <see cref="BoneInfo"/> for a given animation.
+    /// </summary>
+    /// <param name="animation">The animation for which bone information is being set up.</param>
+    /// <returns>A dictionary with frame indices as keys and arrays of <see cref="BoneInfo"/> as values.</returns>
     private Dictionary<int, BoneInfo[]> SetupBoneInfos(ModelAnimation animation) {
         Dictionary<int, BoneInfo[]> bones = new Dictionary<int, BoneInfo[]>();
         
-        double frameDuration = animation.TicksPerSecond > 0 ? animation.TicksPerSecond : 25.0;
-        int frameCount = (int) (animation.DurationInTicks / frameDuration * 60);
-
-        for (int i = 0; i < frameCount; i++) {
+        for (int i = 0; i < animation.FrameCount; i++) {
             List<BoneInfo> boneInfos = new List<BoneInfo>();
             
             this.UpdateChannel(this._rootNode, animation, i, AMatrix4x4.Identity);
@@ -55,13 +67,20 @@ public class MeshAmateurBuilder {
         return bones;
     }
 
+    /// <summary>
+    /// Updates the transformation channel of a specified node based on the animation data and current frame index.
+    /// </summary>
+    /// <param name="node">The node whose transformation channel is to be updated.</param>
+    /// <param name="animation">The animation containing the transformation data.</param>
+    /// <param name="frame">The current frame index being processed.</param>
+    /// <param name="parentTransform">The transformation matrix of the parent node.</param>
     private void UpdateChannel(Node node, ModelAnimation animation, int frame, AMatrix4x4 parentTransform) {
         AMatrix4x4 nodeTransformation = AMatrix4x4.Identity;
 
         if (GetChannel(node, animation, out NodeAnimationChannel? channel)) {
-            AMatrix4x4 scale = this.InterpolateScale(channel!, frame);
-            AMatrix4x4 rotation = this.InterpolateRotation(channel!, frame);
-            AMatrix4x4 translation = this.InterpolateTranslation(channel!, frame);
+            AMatrix4x4 scale = this.InterpolateScale(channel!, animation, frame);
+            AMatrix4x4 rotation = this.InterpolateRotation(channel!, animation, frame);
+            AMatrix4x4 translation = this.InterpolateTranslation(channel!, animation, frame);
 
             nodeTransformation = scale * rotation * translation;
         }
@@ -74,7 +93,7 @@ public class MeshAmateurBuilder {
                 rootInverseTransform.Inverse();
                 
                 AMatrix4x4 transformation = bone.OffsetMatrix * nodeTransformation * parentTransform * rootInverseTransform;
-                this._boneTransformations[boneId] = Matrix4x4.Transpose(ModelConversion.FromAMatrix4X4(transformation)); // TODO: By doing here Matrix4x4.Identity, it will be normal, there is just something wrong with any matrix i think translation
+                this._boneTransformations[boneId] = Matrix4x4.Transpose(ModelConversion.FromAMatrix4X4(transformation));
             }
         }
 
@@ -83,7 +102,15 @@ public class MeshAmateurBuilder {
         }
     }
 
-    private AMatrix4x4 InterpolateTranslation(NodeAnimationChannel channel, int frame) {
+    /// <summary>
+    /// Interpolates the translation of a node for a given frame in an animation channel.
+    /// </summary>
+    /// <param name="channel">The <see cref="NodeAnimationChannel"/> containing the position keys for translation.</param>
+    /// <param name="animation">The <see cref="ModelAnimation"/> providing the animation metadata.</param>
+    /// <param name="frame">The current frame index for which the translation is being interpolated.</param>
+    /// <returns>An <see cref="AMatrix4x4"/> representing the interpolated translation transformation for the node.</returns>
+    private AMatrix4x4 InterpolateTranslation(NodeAnimationChannel channel, ModelAnimation animation, int frame) {
+        double frameTime = frame / 60.0F * animation.TicksPerSecond;
         Vector3D position;
 
         if (channel.PositionKeyCount == 1) {
@@ -92,56 +119,64 @@ public class MeshAmateurBuilder {
         else {
             uint frameIndex = 0;
             for (uint i = 0; i < channel.PositionKeyCount - 1; i++) {
-                if (frame < channel.PositionKeys[(int)(i + 1)].Time) {
+                if (frameTime < channel.PositionKeys[(int) (i + 1)].Time) {
                     frameIndex = i;
                     break;
                 }
             }
+            
+            VectorKey currentFrame = channel.PositionKeys[(int) frameIndex];
+            VectorKey nextFrame = channel.PositionKeys[(int) ((frameIndex + 1) % channel.PositionKeyCount)];
 
-            VectorKey currentFrame = channel.PositionKeys[(int)frameIndex];
-            VectorKey nextFrame = channel.PositionKeys[(int)((frameIndex + 1) % channel.PositionKeyCount)];
-
-            double delta = (frame - (float)currentFrame.Time) / (float)(nextFrame.Time - currentFrame.Time);
+            double delta = (frameTime - currentFrame.Time) / (nextFrame.Time - currentFrame.Time);
 
             Vector3D start = currentFrame.Value;
             Vector3D end = nextFrame.Value;
-            position = (start + (float)delta * (end - start));
+            position = start + (float) delta * (end - start);
         }
 
         return AMatrix4x4.FromTranslation(position);
     }
-    
-    private AMatrix4x4 InterpolateRotation(NodeAnimationChannel channel, int frame) {
+
+    /// <summary>
+    /// Interpolates the rotation of a node for a given animation frame using spherical linear interpolation (Slerp).
+    /// </summary>
+    /// <param name="channel">The <see cref="NodeAnimationChannel"/> containing rotation keyframes for the node.</param>
+    /// <param name="animation">The <see cref="ModelAnimation"/> defining the animation to be processed.</param>
+    /// <param name="frame">The current animation frame index.</param>
+    /// <returns>A <see cref="AMatrix4x4"/> representing the interpolated rotation transformation for the specified frame.</returns>
+    private AMatrix4x4 InterpolateRotation(NodeAnimationChannel channel, ModelAnimation animation, int frame) {
+        double frameTime = frame / 60.0F * animation.TicksPerSecond;
         AQuaternion rotation;
 
         if (channel.RotationKeyCount == 1) {
             rotation = channel.RotationKeys[0].Value;
         }
-        else
-        {
+        else {
             uint frameIndex = 0;
             for (uint i = 0; i < channel.RotationKeyCount - 1; i++) {
-                if (frame < channel.RotationKeys[(int)(i + 1)].Time) {
+                if (frameTime < channel.RotationKeys[(int) (i + 1)].Time) {
                     frameIndex = i;
                     break;
                 }
             }
 
-            QuaternionKey currentFrame = channel.RotationKeys[(int)frameIndex];
-            QuaternionKey nextFrame = channel.RotationKeys[(int)((frameIndex + 1) % channel.RotationKeyCount)];
+            QuaternionKey currentFrame = channel.RotationKeys[(int) frameIndex];
+            QuaternionKey nextFrame = channel.RotationKeys[(int) ((frameIndex + 1) % channel.RotationKeyCount)];
 
-            double delta = (frame - (float)currentFrame.Time) / (float)(nextFrame.Time - currentFrame.Time);
+            double delta = (frameTime - (float) currentFrame.Time) / (float) (nextFrame.Time - currentFrame.Time);
 
             AQuaternion start = currentFrame.Value;
             AQuaternion end = nextFrame.Value;
-            rotation = AQuaternion.Slerp(start, end, (float)delta);
+            rotation = AQuaternion.Slerp(start, end, (float) delta);
             rotation.Normalize();
         }
 
         return rotation.GetMatrix();
     }
-    
-    private AMatrix4x4 InterpolateScale(NodeAnimationChannel channel, int frame) {
+
+    private AMatrix4x4 InterpolateScale(NodeAnimationChannel channel, ModelAnimation animation, int frame) {
+        double frameTime = frame / 60.0F * animation.TicksPerSecond;
         Vector3D scale;
 
         if (channel.ScalingKeyCount == 1) {
@@ -151,7 +186,7 @@ public class MeshAmateurBuilder {
             uint frameIndex = 0;
         
             for (uint i = 0; i < channel.ScalingKeyCount - 1; i++) {
-                if (frame < channel.ScalingKeys[(int)(i + 1)].Time) {
+                if (frameTime < channel.ScalingKeys[(int) (i + 1)].Time) {
                     frameIndex = i;
                     break;
                 }
@@ -160,17 +195,24 @@ public class MeshAmateurBuilder {
             VectorKey currentFrame = channel.ScalingKeys[(int)frameIndex];
             VectorKey nextFrame = channel.ScalingKeys[(int)((frameIndex + 1) % channel.ScalingKeyCount)];
 
-            double delta = (frame - (float)currentFrame.Time) / (float)(nextFrame.Time - currentFrame.Time);
+            double delta = (frameTime - (float) currentFrame.Time) / (float) (nextFrame.Time - currentFrame.Time);
 
             Vector3D start = currentFrame.Value;
             Vector3D end = nextFrame.Value;
 
-            scale = (start + (float)delta * (end - start));
+            scale = start + (float) delta * (end - start);
         }
 
         return AMatrix4x4.FromScaling(scale);
     }
-    
+
+    /// <summary>
+    /// Retrieves the animation channel for a given node from the specified animation.
+    /// </summary>
+    /// <param name="node">The node for which the animation channel should be retrieved.</param>
+    /// <param name="animation">The animation containing the channels to check.</param>
+    /// <param name="channel">The output parameter that will hold the retrieved node animation channel if found; otherwise, null.</param>
+    /// <returns>True if the channel for the specified node is found in the animation; otherwise, false.</returns>
     private bool GetChannel(Node node, ModelAnimation animation, out NodeAnimationChannel? channel) {
         foreach (NodeAnimationChannel nodeChannel in animation.AnimationChannels) {
             if (nodeChannel.NodeName == node.Name) {
