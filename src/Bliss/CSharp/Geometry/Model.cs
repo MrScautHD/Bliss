@@ -9,6 +9,7 @@
 using System.Numerics;
 using System.Text;
 using Assimp;
+using Assimp.Configs;
 using Bliss.CSharp.Effects;
 using Bliss.CSharp.Geometry.Animations;
 using Bliss.CSharp.Geometry.Conversions;
@@ -36,7 +37,30 @@ public class Model : Disposable {
     /// This includes flipping the winding order, triangulating, pre-transforming vertices,
     /// calculating tangent space, and generating smooth normals.
     /// </summary>
-    private const PostProcessSteps DefaultPostProcessSteps = PostProcessSteps.FlipWindingOrder | PostProcessSteps.Triangulate | PostProcessSteps.CalculateTangentSpace | PostProcessSteps.GenerateSmoothNormals;
+    private const PostProcessSteps DefaultPostProcessSteps = PostProcessSteps.FlipWindingOrder |
+                                                             PostProcessSteps.Triangulate |
+                                                             PostProcessSteps.CalculateTangentSpace |
+                                                             PostProcessSteps.GenerateSmoothNormals |
+                                                             PostProcessSteps.JoinIdenticalVertices |
+                                                             PostProcessSteps.FindInvalidData |
+                                                             PostProcessSteps.ImproveCacheLocality |
+                                                             PostProcessSteps.FixInFacingNormals |
+                                                             PostProcessSteps.GenerateUVCoords |
+                                                             PostProcessSteps.ValidateDataStructure |
+                                                             PostProcessSteps.FindInstances |
+                                                             PostProcessSteps.GlobalScale;
+
+    /// <summary>
+    /// A collection of default property configurations applied to the 3D model importer.
+    /// These configurations include settings to limit vertex bone weights, exclude certain elements,
+    /// and adjust import behavior for specific file formats like FBX.
+    /// </summary>
+    private static readonly List<PropertyConfig> PropertyConfigs = [
+        new NoSkeletonMeshesConfig(true),
+        new VertexBoneWeightLimitConfig(4),
+        new FBXImportCamerasConfig(false),
+        new FBXStrictModeConfig(false)
+    ];
 
     /// <summary>
     /// The default effect applied to models.
@@ -95,6 +119,11 @@ public class Model : Disposable {
     /// <returns>Returns a new instance of the <see cref="Model"/> class with the loaded meshes.</returns>
     public static Model Load(GraphicsDevice graphicsDevice, string path, bool loadMaterial = true, bool flipUv = false) {
         using AssimpContext context = new AssimpContext();
+
+        foreach (PropertyConfig config in PropertyConfigs) {
+            context.SetConfig(config);
+        }
+        
         Scene scene = context.ImportFile(path, DefaultPostProcessSteps);
 
         List<Mesh> meshes = new List<Mesh>();

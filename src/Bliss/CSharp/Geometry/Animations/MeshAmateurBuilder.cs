@@ -17,10 +17,24 @@ namespace Bliss.CSharp.Geometry.Animations;
 
 public class MeshAmateurBuilder {
 
+    /// <summary>
+    /// The root node of the model. This node typically contains the root transformations for the mesh and references to other child nodes.
+    /// </summary>
     private Node _rootNode;
+    
+    /// <summary>
+    /// An array of <see cref="ModelAnimation"/> objects that represent animations applied to the model.
+    /// </summary>
     private ModelAnimation[] _animations;
     
+    /// <summary>
+    /// A dictionary mapping bone IDs to the corresponding <see cref="Bone"/> objects. This allows efficient look-up of bones by their ID or name.
+    /// </summary>
     private Dictionary<uint, Bone> _bonesByName;
+    
+    /// <summary>
+    /// An array of transformation matrices for the bones, used for skeletal animation. Each bone has a corresponding transformation matrix.
+    /// </summary>
     private Matrix4x4[] _boneTransformations;
     
     /// <summary>
@@ -83,8 +97,8 @@ public class MeshAmateurBuilder {
     /// <param name="frame">The current frame index being processed.</param>
     /// <param name="parentTransform">The transformation matrix of the parent node.</param>
     private void UpdateChannel(Node node, ModelAnimation animation, int frame, AMatrix4x4 parentTransform) {
-        AMatrix4x4 nodeTransformation = AMatrix4x4.Identity;
-
+        AMatrix4x4 nodeTransformation = node.Transform;
+        
         if (this.GetChannel(node, animation, out NodeAnimationChannel? channel)) {
             AMatrix4x4 scale = this.InterpolateScale(channel!, animation, frame);
             AMatrix4x4 rotation = this.InterpolateRotation(channel!, animation, frame);
@@ -140,7 +154,7 @@ public class MeshAmateurBuilder {
 
             Vector3D start = currentFrame.Value;
             Vector3D end = nextFrame.Value;
-            position = start + (float) delta * (end - start);
+            position = start + (float) Math.Clamp(delta, 0.0F, 1.0F) * (end - start);
         }
         
         return AMatrix4x4.FromTranslation(position);
@@ -176,7 +190,7 @@ public class MeshAmateurBuilder {
 
             AQuaternion start = currentFrame.Value;
             AQuaternion end = nextFrame.Value;
-            rotation = AQuaternion.Slerp(start, end, (float) delta);
+            rotation = AQuaternion.Slerp(start, end, (float) Math.Clamp(delta, 0.0F, 1.0F));
             rotation.Normalize();
         }
         
@@ -214,7 +228,7 @@ public class MeshAmateurBuilder {
             Vector3D start = currentFrame.Value;
             Vector3D end = nextFrame.Value;
 
-            scale = start + (float) delta * (end - start);
+            scale = start + (float) Math.Clamp(delta, 0.0F, 1.0F) * (end - start);
         }
         
         return AMatrix4x4.FromScaling(scale);
