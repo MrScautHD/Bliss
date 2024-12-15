@@ -12,6 +12,7 @@ using Assimp;
 using Assimp.Configs;
 using Bliss.CSharp.Effects;
 using Bliss.CSharp.Geometry.Animations;
+using Bliss.CSharp.Geometry.Animations.Keyframes;
 using Bliss.CSharp.Geometry.Conversions;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Logging;
@@ -132,7 +133,38 @@ public class Model : Disposable {
         // Load animations.
         for (int i = 0; i < scene.Animations.Count; i++) {
             Animation aAnimation = scene.Animations[i];
-            animations.Add(new ModelAnimation(aAnimation.Name, (float) aAnimation.DurationInTicks, (float) aAnimation.TicksPerSecond, aAnimation.NodeAnimationChannels));
+
+            // Setup channels.
+            List<NodeAnimChannel> animChannels = new List<NodeAnimChannel>();
+            
+            foreach (NodeAnimationChannel aChannel in aAnimation.NodeAnimationChannels) {
+                List<Vector3Key> positions = new List<Vector3Key>();
+                List<QuatKey> rotations = new List<QuatKey>();
+                List<Vector3Key> scales = new List<Vector3Key>();
+
+                // Setup positions.
+                foreach (VectorKey aPosition in aChannel.PositionKeys) {
+                    Vector3Key position = new Vector3Key(aPosition.Time, ModelConversion.FromVector3D(aPosition.Value));
+                    positions.Add(position);
+                }
+                
+                // Setup rotations.
+                foreach (QuaternionKey aRotation in aChannel.RotationKeys) {
+                    QuatKey rotation = new QuatKey(aRotation.Time, ModelConversion.FromAQuaternion(aRotation.Value));
+                    rotations.Add(rotation);
+                }
+                
+                // Setup scales.
+                foreach (VectorKey aScale in aChannel.ScalingKeys) {
+                    Vector3Key scale = new Vector3Key(aScale.Time, ModelConversion.FromVector3D(aScale.Value));
+                    scales.Add(scale);
+                }
+
+                NodeAnimChannel channel = new NodeAnimChannel(aChannel.NodeName, positions, rotations, scales);
+                animChannels.Add(channel);
+            }
+            
+            animations.Add(new ModelAnimation(aAnimation.Name, (float) aAnimation.DurationInTicks, (float) aAnimation.TicksPerSecond, animChannels));
         }
         
         // Setup amateur builder.

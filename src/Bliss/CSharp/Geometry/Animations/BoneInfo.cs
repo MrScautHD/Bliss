@@ -8,7 +8,7 @@
 
 using System.Numerics;
 
-namespace Bliss.CSharp.Geometry.Animations.Bones;
+namespace Bliss.CSharp.Geometry.Animations;
 
 public class BoneInfo {
 

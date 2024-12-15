@@ -48,31 +48,40 @@ public static class ModelConversion {
     /// <summary>
     /// Converts a System.Numerics.Matrix4x4 to an Assimp.Matrix4x4.
     /// </summary>
-    /// <param name="matrix4X4">The matrix in System.Numerics.Matrix4x4 to be converted.</param>
+    /// <param name="matrix">The matrix in System.Numerics.Matrix4x4 to be converted.</param>
     /// <returns>Returns a new instance of Assimp.Matrix4x4 with corresponding matrix elements.</returns>
-    public static AMatrix4x4 ToAMatrix4X4(Matrix4x4 matrix4X4) {
-        AMatrix4x4 jMatrix = AMatrix4x4.Identity;
-        jMatrix.A1 = matrix4X4.M11;
-        jMatrix.A2 = matrix4X4.M12;
-        jMatrix.A3 = matrix4X4.M13;
-        jMatrix.A4 = matrix4X4.M14;
+    public static AMatrix4x4 ToAMatrix4X4(Matrix4x4 matrix) {
+        AMatrix4x4 aMatrix = AMatrix4x4.Identity;
+        aMatrix.A1 = matrix.M11;
+        aMatrix.A2 = matrix.M12;
+        aMatrix.A3 = matrix.M13;
+        aMatrix.A4 = matrix.M14;
 
-        jMatrix.B1 = matrix4X4.M21;
-        jMatrix.B2 = matrix4X4.M22;
-        jMatrix.B3 = matrix4X4.M23;
-        jMatrix.B4 = matrix4X4.M24;
+        aMatrix.B1 = matrix.M21;
+        aMatrix.B2 = matrix.M22;
+        aMatrix.B3 = matrix.M23;
+        aMatrix.B4 = matrix.M24;
 
-        jMatrix.C1 = matrix4X4.M31;
-        jMatrix.C2 = matrix4X4.M32;
-        jMatrix.C3 = matrix4X4.M33;
-        jMatrix.C4 = matrix4X4.M33;
+        aMatrix.C1 = matrix.M31;
+        aMatrix.C2 = matrix.M32;
+        aMatrix.C3 = matrix.M33;
+        aMatrix.C4 = matrix.M33;
         
-        jMatrix.D1 = matrix4X4.M41;
-        jMatrix.D2 = matrix4X4.M42;
-        jMatrix.D3 = matrix4X4.M43;
-        jMatrix.D4 = matrix4X4.M44;
+        aMatrix.D1 = matrix.M41;
+        aMatrix.D2 = matrix.M42;
+        aMatrix.D3 = matrix.M43;
+        aMatrix.D4 = matrix.M44;
 
-        return jMatrix;
+        return aMatrix;
+    }
+
+    /// <summary>
+    /// Converts a System.Numerics.Matrix4x4 to an Assimp.Matrix4x4 with the matrix transposed.
+    /// </summary>
+    /// <param name="matrix">The matrix in System.Numerics.Matrix4x4 to be converted and transposed.</param>
+    /// <returns>Returns a new instance of Assimp.Matrix4x4 with corresponding transposed matrix elements.</returns>
+    public static AMatrix4x4 ToAMatrix4X4Transposed(Matrix4x4 matrix) {
+        return ToAMatrix4X4(Matrix4x4.Transpose(matrix));
     }
 
     /// <summary>
@@ -105,30 +114,39 @@ public static class ModelConversion {
     /// <summary>
     /// Converts an Assimp.Matrix4x4 to a System.Numerics.Matrix4x4.
     /// </summary>
-    /// <param name="matrix4X4">The matrix in Assimp.Matrix4x4 to be converted.</param>
+    /// <param name="aMatrix">The matrix in Assimp.Matrix4x4 to be converted.</param>
     /// <returns>Returns a new instance of System.Numerics.Matrix4x4 with corresponding matrix elements.</returns>
-    public static Matrix4x4 FromAMatrix4X4(AMatrix4x4 matrix4X4) {
-        Matrix4x4 aMatrix = Matrix4x4.Identity;
-        aMatrix.M11 = matrix4X4.A1;
-        aMatrix.M12 = matrix4X4.A2;
-        aMatrix.M13 = matrix4X4.A3;
-        aMatrix.M14 = matrix4X4.A4;
+    public static Matrix4x4 FromAMatrix4X4(AMatrix4x4 aMatrix) {
+        Matrix4x4 matrix = Matrix4x4.Identity;
+        matrix.M11 = aMatrix.A1;
+        matrix.M12 = aMatrix.A2;
+        matrix.M13 = aMatrix.A3;
+        matrix.M14 = aMatrix.A4;
 
-        aMatrix.M21 = matrix4X4.B1;
-        aMatrix.M22 = matrix4X4.B2;
-        aMatrix.M23 = matrix4X4.B3;
-        aMatrix.M24 = matrix4X4.B4;
+        matrix.M21 = aMatrix.B1;
+        matrix.M22 = aMatrix.B2;
+        matrix.M23 = aMatrix.B3;
+        matrix.M24 = aMatrix.B4;
 
-        aMatrix.M31 = matrix4X4.C1;
-        aMatrix.M32 = matrix4X4.C2;
-        aMatrix.M33 = matrix4X4.C3;
-        aMatrix.M34 = matrix4X4.C4;
+        matrix.M31 = aMatrix.C1;
+        matrix.M32 = aMatrix.C2;
+        matrix.M33 = aMatrix.C3;
+        matrix.M34 = aMatrix.C4;
         
-        aMatrix.M41 = matrix4X4.D1;
-        aMatrix.M42 = matrix4X4.D2;
-        aMatrix.M43 = matrix4X4.D3;
-        aMatrix.M44 = matrix4X4.D4;
+        matrix.M41 = aMatrix.D1;
+        matrix.M42 = aMatrix.D2;
+        matrix.M43 = aMatrix.D3;
+        matrix.M44 = aMatrix.D4;
 
-        return aMatrix;
+        return matrix;
+    }
+
+    /// <summary>
+    /// Converts an Assimp.Matrix4x4 to a transposed System.Numerics.Matrix4x4.
+    /// </summary>
+    /// <param name="aMatrix">The matrix in Assimp.Matrix4x4 to be converted and transposed.</param>
+    /// <returns>Returns a new instance of System.Numerics.Matrix4x4 with corresponding matrix elements, transposed.</returns>
+    public static Matrix4x4 FromAMatrix4X4Transposed(AMatrix4x4 aMatrix) {
+        return Matrix4x4.Transpose(FromAMatrix4X4(aMatrix));
     }
 }

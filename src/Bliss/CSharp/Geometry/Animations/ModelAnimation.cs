@@ -6,8 +6,6 @@
  * https://github.com/MrScautHD/Bliss/blob/main/LICENSE
  */
 
-using Assimp;
-
 namespace Bliss.CSharp.Geometry.Animations;
 
 public class ModelAnimation {
@@ -35,7 +33,7 @@ public class ModelAnimation {
     /// <summary>
     /// A list of animation channels that define the per-node transformations during the animation.
     /// </summary>
-    public IReadOnlyList<NodeAnimationChannel> AnimationChannels { get; private set; } // TODO: Replace NodeAnimationChannel with a own class.
+    public IReadOnlyList<NodeAnimChannel> AnimationChannels { get; private set; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ModelAnimation"/> class with the specified properties and animation channels.
@@ -44,7 +42,7 @@ public class ModelAnimation {
     /// <param name="durationInTicks">The total duration of the animation in ticks.</param>
     /// <param name="ticksPerSecond">The number of ticks per second, determining playback speed.</param>
     /// <param name="channels">The list of animation channels associated with this animation.</param>
-    public ModelAnimation(string name, float durationInTicks, float ticksPerSecond, IReadOnlyList<NodeAnimationChannel> channels) {
+    public ModelAnimation(string name, float durationInTicks, float ticksPerSecond, IReadOnlyList<NodeAnimChannel> channels) {
         this.Name = name;
         this.DurationInTicks = durationInTicks;
         this.TicksPerSecond = ticksPerSecond;
