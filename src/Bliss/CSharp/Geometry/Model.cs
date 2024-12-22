@@ -62,18 +62,6 @@ public class Model : Disposable {
         new FBXImportCamerasConfig(false),
         new FBXStrictModeConfig(false)
     ];
-
-    /// <summary>
-    /// The default effect applied to models.
-    /// This is instantiated with shaders for rendering models, and includes configuration for vertex layout.
-    /// </summary>
-    private static Effect? _defaultEffect;
-
-    /// <summary>
-    /// The default texture used when no other texture is specified.
-    /// Typically a 1x1 pixel texture with a solid color.
-    /// </summary>
-    private static Texture2D? _defaultTexture;
     
     /// <summary>
     /// The graphics device used for rendering the model.
@@ -126,7 +114,6 @@ public class Model : Disposable {
         }
         
         Scene scene = context.ImportFile(path, DefaultPostProcessSteps);
-
         List<Mesh> meshes = new List<Mesh>();
         List<ModelAnimation> animations = new List<ModelAnimation>();
 
@@ -181,11 +168,11 @@ public class Model : Disposable {
                 ShaderMaterialProperties shaderProperties = aMaterial.Shaders;
                 
                 if (shaderProperties.HasVertexShader && shaderProperties.HasFragmentShader) {
-                    effect = new Effect(graphicsDevice.ResourceFactory, Vertex3D.VertexLayout, Encoding.UTF8.GetBytes(shaderProperties.VertexShader), Encoding.UTF8.GetBytes(shaderProperties.FragmentShader));
+                    effect = new Effect(graphicsDevice, Vertex3D.VertexLayout, Encoding.UTF8.GetBytes(shaderProperties.VertexShader), Encoding.UTF8.GetBytes(shaderProperties.FragmentShader));
                 }
             }
 
-            effect ??= GetDefaultEffect(graphicsDevice);
+            effect ??= GlobalResource.DefaultModelEffect;
             
             // Load material maps.
             Material material = new Material(graphicsDevice, effect);
@@ -240,7 +227,7 @@ public class Model : Disposable {
             }
             else {
                 material.AddMaterialMap(MaterialMapType.Albedo.ToString(), new MaterialMap() {
-                    Texture = GetDefaultTexture(graphicsDevice),
+                    Texture = GlobalResource.DefaultModelTexture,
                     Color = Color.White
                 });
             }
@@ -322,32 +309,6 @@ public class Model : Disposable {
         return new Model(graphicsDevice, meshes.ToArray(), animations.ToArray());
     }
     
-    /// <summary>
-    /// Retrieves the default effect for the model.
-    /// If the default effect is not already created, it initializes a new <see cref="Effect"/> with the specified graphics device.
-    /// </summary>
-    /// <param name="graphicsDevice">The graphics device used to create the default effect.</param>
-    /// <return>The default <see cref="Effect"/> for the model.</return>
-    private static Effect GetDefaultEffect(GraphicsDevice graphicsDevice) { // TODO: Take care to dispose it!
-        return _defaultEffect ??= new Effect(graphicsDevice.ResourceFactory, Vertex3D.VertexLayout, "content/shaders/default_model.vert", "content/shaders/default_model.frag");
-    }
-
-    /// <summary>
-    /// Retrieves the default texture for the specified graphics device.
-    /// </summary>
-    /// <param name="graphicsDevice">The graphics device to associate with the default texture.</param>
-    /// <returns>Returns a new instance of the <see cref="Texture2D"/> class with a default solid color texture.</returns>
-    private static Texture2D GetDefaultTexture(GraphicsDevice graphicsDevice) { // TODO: Take care to dispose it!
-        if (_defaultTexture != null) {
-            return _defaultTexture;
-        }
-        else {
-            using (Image<Rgba32> image = new Image<Rgba32>(1, 1, new Rgba32(128, 128, 128, 255))) {
-                return _defaultTexture ??= new Texture2D(graphicsDevice, image);
-            }
-        }
-    }
-
     /// <summary>
     /// Loads a texture from a material and returns it as a Texture2D object. If the texture is embedded, it extracts from the embedded data.
     /// </summary>

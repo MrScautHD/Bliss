@@ -60,7 +60,7 @@ public class FullScreenRenderPass : Disposable {
         this.GraphicsDevice = graphicsDevice;
         this.Output = output;
         
-        this._effect = new Effect(graphicsDevice.ResourceFactory, SpriteVertex2D.VertexLayout, "content/shaders/full_screen_render_pass.vert", "content/shaders/full_screen_render_pass.frag");
+        this._effect = new Effect(graphicsDevice, SpriteVertex2D.VertexLayout, "content/shaders/full_screen_render_pass.vert", "content/shaders/full_screen_render_pass.frag");
         
         // Create texture layout.
         this._textureLayout = new SimpleTextureLayout(graphicsDevice, "fTexture");

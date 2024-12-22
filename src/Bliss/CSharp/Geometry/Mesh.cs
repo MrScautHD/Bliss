@@ -25,12 +25,6 @@ namespace Bliss.CSharp.Geometry;
 public class Mesh : Disposable {
     
     /// <summary>
-    /// A dictionary that caches instances of SimplePipeline based on Material keys.
-    /// This helps in reusing pipeline configurations for materials, enhancing rendering performance and reducing redundant pipeline creation.
-    /// </summary>
-    private static Dictionary<Material, SimplePipeline> _cachedPipelines = new(); // TODO: Take care of disposing it idk maybe a system that checks if its the last mesh that using it and dispose it with it.
-
-    /// <summary>
     /// Represents the graphics device used for rendering operations.
     /// This property provides access to the underlying GraphicsDevice instance responsible for managing GPU resources and executing rendering commands.
     /// </summary>
@@ -101,6 +95,13 @@ public class Mesh : Disposable {
     /// This buffer holds an array of structures representing bone matrices and is utilized during rendering to apply bone transformations to vertices.
     /// </summary>
     private SimpleBuffer<Matrix4x4> _boneBuffer;
+
+    /// <summary>
+    /// Defines the characteristics of the rendering pipeline used by the mesh.
+    /// This field specifies the pipeline configurations such as blending, depth stencil, rasterizer state,
+    /// primitive topology, associated buffers, texture layouts, shader set, and output descriptions.
+    /// </summary>
+    private SimplePipelineDescription _pipelineDescription;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="Mesh"/> class with the specified properties.
@@ -138,6 +139,8 @@ public class Mesh : Disposable {
         }
         
         this._boneBuffer.UpdateBufferImmediate();
+        
+        this._pipelineDescription = this.CreatePipelineDescription();
     }
 
     /// <summary>
@@ -191,6 +194,11 @@ public class Mesh : Disposable {
         this._modelMatrixBuffer.SetValue(1, cam3D.GetView());
         this._modelMatrixBuffer.SetValue(2, transform.GetTransform());
         this._modelMatrixBuffer.UpdateBuffer(commandList);
+
+        // Update pipeline description.
+        this._pipelineDescription.BlendState = this.Material.BlendState.Description;
+        this._pipelineDescription.TextureLayouts = this.Material.GetTextureLayouts();
+        this._pipelineDescription.Outputs = output;
         
         if (this.IndexCount > 0) {
             
@@ -199,7 +207,7 @@ public class Mesh : Disposable {
             commandList.SetIndexBuffer(this._indexBuffer, IndexFormat.UInt32);
             
             // Set pipeline.
-            commandList.SetPipeline(this.GetOrCreatePipeline(this.Material, output).Pipeline);
+            commandList.SetPipeline(this.Material.Effect.GetPipeline(this._pipelineDescription).Pipeline);
             
             // Set projection view buffer.
             commandList.SetGraphicsResourceSet(0, this._modelMatrixBuffer.ResourceSet);
@@ -226,7 +234,7 @@ public class Mesh : Disposable {
             commandList.SetVertexBuffer(0, this._vertexBuffer);
             
             // Set pipeline.
-            commandList.SetPipeline(this.GetOrCreatePipeline(this.Material, output).Pipeline);
+            commandList.SetPipeline(this.Material.Effect.GetPipeline(this._pipelineDescription).Pipeline);
             
             // Set projection view buffer.
             commandList.SetGraphicsResourceSet(0, this._modelMatrixBuffer.ResourceSet);
@@ -252,49 +260,35 @@ public class Mesh : Disposable {
         this.Material.SetMapColor(MaterialMapType.Albedo.ToString(), cachedColor);
     }
 
-    /// <summary>
-    /// Retrieves an existing pipeline associated with the given material and output description, or creates a new one if it doesn't exist.
-    /// </summary>
-    /// <param name="material">The material associated with the pipeline.</param>
-    /// <param name="output">The output description for the pipeline.</param>
-    /// <returns>A pipeline that matches the specified material and output description.</returns>
-    private SimplePipeline GetOrCreatePipeline(Material material, OutputDescription output) {
-        if (!_cachedPipelines.TryGetValue(material, out SimplePipeline? pipeline)) {
-            SimplePipeline newPipeline = new SimplePipeline(this.GraphicsDevice, new SimplePipelineDescription() {
-                BlendState = material.BlendState.Description,
-                DepthStencilState = new DepthStencilStateDescription(true, true, ComparisonKind.LessEqual),
-                RasterizerState = new RasterizerStateDescription() {
-                    CullMode = FaceCullMode.Back,
-                    FillMode = PolygonFillMode.Solid,
-                    FrontFace = FrontFace.Clockwise,
-                    DepthClipEnabled = true,
-                    ScissorTestEnabled = false
-                },
-                PrimitiveTopology = PrimitiveTopology.TriangleList,
-                Buffers = [
-                    this._modelMatrixBuffer,
-                    this._boneBuffer
+    private SimplePipelineDescription CreatePipelineDescription() {
+        return new SimplePipelineDescription() {
+            BlendState = this.Material.BlendState.Description,
+            DepthStencilState = new DepthStencilStateDescription(true, true, ComparisonKind.LessEqual),
+            RasterizerState = new RasterizerStateDescription() {
+                CullMode = FaceCullMode.Back,
+                FillMode = PolygonFillMode.Solid,
+                FrontFace = FrontFace.Clockwise,
+                DepthClipEnabled = true,
+                ScissorTestEnabled = false
+            },
+            PrimitiveTopology = PrimitiveTopology.TriangleList,
+            Buffers = [
+                this._modelMatrixBuffer,
+                this._boneBuffer
+            ],
+            TextureLayouts = this.Material.GetTextureLayouts(),
+            ShaderSet = new ShaderSetDescription() {
+                VertexLayouts = [
+                    this.Material.Effect.VertexLayout
                 ],
-                TextureLayouts = material.GetTextureLayouts(),
-                ShaderSet = new ShaderSetDescription() {
-                    VertexLayouts = [
-                        material.Effect.VertexLayout
-                    ],
-                    Shaders = [
-                        material.Effect.Shader.Item1,
-                        material.Effect.Shader.Item2
-                    ]
-                },
-                Outputs = output
-            });
-            
-            _cachedPipelines.Add(material, newPipeline);
-            return newPipeline;
-        }
-
-        return pipeline;
+                Shaders = [
+                    this.Material.Effect.Shader.Item1,
+                    this.Material.Effect.Shader.Item2
+                ]
+            }
+        };
     }
-
+    
     /// <summary>
     /// Calculates the bounding box for the current mesh based on its vertices.
     /// </summary>

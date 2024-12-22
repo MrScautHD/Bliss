@@ -98,7 +98,10 @@ public class Game : Disposable {
         this.SetTargetFps(this.Settings.TargetFps);
         
         Logger.Info("Initialize command list...");
-        this.CommandList = this.GraphicsDevice.ResourceFactory.CreateCommandList();
+        this.CommandList = graphicsDevice.ResourceFactory.CreateCommandList();
+        
+        Logger.Info("Initialize global resources...");
+        GlobalResource.Init(graphicsDevice);
         
         Logger.Info("Initialize input...");
         if (this.MainWindow is Sdl3Window) {
@@ -133,7 +136,7 @@ public class Game : Disposable {
                 this._fixedUpdateTimer -= this._fixedUpdateTimeStep;
             }
             
-            this.Draw(this.GraphicsDevice, this.CommandList);
+            this.Draw(graphicsDevice, this.CommandList);
             Input.End();
         }
         
@@ -217,7 +220,7 @@ public class Game : Disposable {
             commandList.ResolveTexture(this.FullScreenTexture.ColorTexture, this.FullScreenTexture.DestinationTexture);
         }
         
-        commandList.SetFramebuffer(this.GraphicsDevice.SwapchainFramebuffer);
+        commandList.SetFramebuffer(graphicsDevice.SwapchainFramebuffer);
         commandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
         
         this.FullScreenRenderPass.Draw(commandList, this.FullScreenTexture, SamplerType.Point);
@@ -249,6 +252,10 @@ public class Game : Disposable {
             this.GraphicsDevice.Dispose();
             this.MainWindow.Dispose();
             Input.Destroy();
+            GlobalResource.Destroy();
+            
+            this._playerModel.Dispose();
+            this._planeModel.Dispose();
         }
     }
 }

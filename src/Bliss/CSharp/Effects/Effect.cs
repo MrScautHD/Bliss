@@ -6,6 +6,7 @@
  * https://github.com/MrScautHD/Bliss/blob/main/LICENSE
  */
 
+using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Logging;
 using Veldrid;
 using Veldrid.SPIRV;
@@ -13,6 +14,11 @@ using Veldrid.SPIRV;
 namespace Bliss.CSharp.Effects;
 
 public class Effect : Disposable {
+    
+    /// <summary>
+    /// The graphics device used for creating and managing graphical resources.
+    /// </summary>
+    public GraphicsDevice GraphicsDevice { get; private set; }
     
     /// <summary>
     /// Represents a pair of shaders consisting of a vertex shader and a fragment shader.
@@ -25,31 +31,40 @@ public class Effect : Disposable {
     public readonly VertexLayoutDescription VertexLayout;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Effect"/> class by loading and compiling shaders and setting up the vertex layout.
+    /// A cache of pipelines created for specific pipeline descriptions, enabling reuse.
     /// </summary>
-    /// <param name="resourceFactory">The resource factory used to create GPU resources.</param>
-    /// <param name="vertexLayout">The vertex layout description to be used with this effect.</param>
+    private Dictionary<SimplePipelineDescription, SimplePipeline> _cachedPipelines;
+    
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Effect"/> class by loading shaders from file paths.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used for creating resources.</param>
+    /// <param name="vertexLayout">The vertex layout description for the pipeline.</param>
     /// <param name="vertPath">The file path to the vertex shader source code.</param>
     /// <param name="fragPath">The file path to the fragment shader source code.</param>
-    public Effect(ResourceFactory resourceFactory, VertexLayoutDescription vertexLayout, string vertPath, string fragPath) : this(resourceFactory, vertexLayout, LoadBytecode(vertPath), LoadBytecode(fragPath)) { }
-
+    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, string vertPath, string fragPath) : this(graphicsDevice, vertexLayout, LoadBytecode(vertPath), LoadBytecode(fragPath)) { }
+    
     /// <summary>
-    /// Initializes a new instance of the <see cref="Effect"/> class with the specified vertex layout and shader bytecode.
+    /// Initializes a new instance of the <see cref="Effect"/> class with precompiled shader bytecode.
     /// </summary>
-    /// <param name="resourceFactory">The resource factory used to create shaders and resources.</param>
-    /// <param name="vertexLayout">The layout of the vertex data for this effect.</param>
-    /// <param name="vertBytes">A byte array containing the vertex shader bytecode.</param>
-    /// <param name="fragBytes">A byte array containing the fragment shader bytecode.</param>
-    public Effect(ResourceFactory resourceFactory, VertexLayoutDescription vertexLayout, byte[] vertBytes, byte[] fragBytes) {
+    /// <param name="graphicsDevice">The graphics device used for creating resources.</param>
+    /// <param name="vertexLayout">The vertex layout description for the pipeline.</param>
+    /// <param name="vertBytes">The bytecode for the vertex shader.</param>
+    /// <param name="fragBytes">The bytecode for the fragment shader.</param>
+    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, byte[] vertBytes, byte[] fragBytes) {
+        this.GraphicsDevice = graphicsDevice;
+        
         ShaderDescription vertDescription = new ShaderDescription(ShaderStages.Vertex, vertBytes, "main");
         ShaderDescription fragDescription = new ShaderDescription(ShaderStages.Fragment, fragBytes, "main");
         
-        Shader[] shaders = resourceFactory.CreateFromSpirv(vertDescription, fragDescription);
+        Shader[] shaders = graphicsDevice.ResourceFactory.CreateFromSpirv(vertDescription, fragDescription);
 
         this.Shader.Item1 = shaders[0];
         this.Shader.Item2 = shaders[1];
         
         this.VertexLayout = vertexLayout;
+        
+        this._cachedPipelines = new Dictionary<SimplePipelineDescription, SimplePipeline>();
     }
 
     /// <summary>
@@ -69,9 +84,26 @@ public class Effect : Disposable {
         Logger.Info($"Shader bytes loaded successfully from path: [{path}]");
         return File.ReadAllBytes(path);
     }
+
+    /// <summary>
+    /// Retrieves or creates a pipeline for the given pipeline description.
+    /// </summary>
+    /// <param name="pipelineDescription">The description of the pipeline to retrieve or create.</param>
+    /// <returns>A <see cref="SimplePipeline"/> configured with the specified description.</returns>
+    public SimplePipeline GetPipeline(SimplePipelineDescription pipelineDescription) {
+        if (!this._cachedPipelines.TryGetValue(pipelineDescription, out SimplePipeline? pipeline)) {
+            SimplePipeline newPipeline = new SimplePipeline(this.GraphicsDevice, pipelineDescription);
+            
+            Logger.Error(pipelineDescription.ToString());
+            
+            this._cachedPipelines.Add(pipelineDescription, newPipeline);
+            return newPipeline;
+        }
+
+        return pipeline;
+    }
     
     // TODO: Adding Location system, for Material(Texture, Color) and in generel for buffers...
-    
     // TODO: ADD MATERIAL param here.
     /// <summary>
     /// Apply the state effect immediately before rendering it.
@@ -82,6 +114,10 @@ public class Effect : Disposable {
         if (disposing) {
             this.Shader.Item1.Dispose();
             this.Shader.Item2.Dispose();
+
+            foreach (SimplePipeline pipeline in this._cachedPipelines.Values) {
+                pipeline.Dispose();
+            }
         }
     }
 }

@@ -33,7 +33,11 @@ layout (location = 2) out vec3 fNormal;
 layout (location = 3) out vec3 fTangent;
 layout (location = 4) out vec4 fColor;
 
-mat4x4 getBoneTransformation() { // TODO: Do a second shader and Vertex3D one with skinned mesh and one without to fix the issue that no project is rendered.
+mat4x4 getBoneTransformation() {
+    if (length(vBoneWeights) == 0.0F) {
+        return mat4x4(1.0F);
+    }
+    
     mat4x4 boneTransformation = uBonesTransformations[vBoneIndices.x] * vBoneWeights.x;
     boneTransformation += uBonesTransformations[vBoneIndices.y] * vBoneWeights.y;
     boneTransformation += uBonesTransformations[vBoneIndices.z] * vBoneWeights.z;

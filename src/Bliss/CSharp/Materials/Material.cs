@@ -26,11 +26,11 @@ public class Material : Disposable {
     /// The effect (shader program) applied to this material.
     /// </summary>
     public Effect Effect { get; private set; }
-    
+
     /// <summary>
     /// Specifies the blend state for rendering, determining how colors are blended on the screen.
     /// </summary>
-    public BlendState BlendState { get; private set; }
+    public BlendState BlendState;
     
     /// <summary>
     /// A list of floating-point parameters for configuring material properties.
@@ -63,7 +63,7 @@ public class Material : Disposable {
         this._textureLayouts = new Dictionary<string, SimpleTextureLayout>();
         this._maps = new Dictionary<string, MaterialMap>();
     }
-
+    
     /// <summary>
     /// Retrieves a <see cref="ResourceSet"/> associated with the specified layout and map name.
     /// </summary>

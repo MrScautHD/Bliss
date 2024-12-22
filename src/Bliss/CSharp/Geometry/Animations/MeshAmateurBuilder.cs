@@ -218,8 +218,8 @@ public class MeshAmateurBuilder {
                 }
             }
 
-            Vector3Key currentFrame = channel.Scales[(int)frameIndex];
-            Vector3Key nextFrame = channel.Scales[(int)((frameIndex + 1) % channel.Scales.Count)];
+            Vector3Key currentFrame = channel.Scales[(int) frameIndex];
+            Vector3Key nextFrame = channel.Scales[(int) ((frameIndex + 1) % channel.Scales.Count)];
 
             double delta = (frameTime - currentFrame.Time) / (nextFrame.Time - currentFrame.Time);
 

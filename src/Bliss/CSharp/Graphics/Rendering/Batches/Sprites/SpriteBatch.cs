@@ -181,7 +181,7 @@ public class SpriteBatch : Disposable {
         this._cachedPipelines = new Dictionary<(Effect, BlendState), SimplePipeline>();
         
         // Create default effect.
-        this._defaultEffect = new Effect(this.GraphicsDevice.ResourceFactory, SpriteVertex2D.VertexLayout, "content/shaders/sprite.vert", "content/shaders/sprite.frag");
+        this._defaultEffect = new Effect(graphicsDevice, SpriteVertex2D.VertexLayout, "content/shaders/sprite.vert", "content/shaders/sprite.frag");
         
         // Create vertex buffer.
         this._vertices = new SpriteVertex2D[capacity * VerticesPerQuad];

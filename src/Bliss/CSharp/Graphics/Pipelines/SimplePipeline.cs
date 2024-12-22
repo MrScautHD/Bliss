@@ -76,6 +76,15 @@ public class SimplePipeline : Disposable {
     public ISimpleBuffer? GetBuffer(string name) {
         return this.PipelineDescription.Buffers.FirstOrDefault(buffer => buffer.Name == name);
     }
+
+    /// <summary>
+    /// Retrieves the texture layout associated with the specified name from the pipeline description.
+    /// </summary>
+    /// <param name="name">The name of the texture layout to retrieve.</param>
+    /// <returns>The <see cref="SimpleTextureLayout"/> associated with the specified name, or null if no layout with the given name exists.</returns>
+    public SimpleTextureLayout? GetTextureLayout(string name) {
+        return this.PipelineDescription.TextureLayouts.FirstOrDefault(buffer => buffer.Name == name);
+    }
     
     protected override void Dispose(bool disposing) {
         if (disposing) {
