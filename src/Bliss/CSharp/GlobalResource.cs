@@ -23,17 +23,22 @@ public static class GlobalResource {
     public static GraphicsDevice GraphicsDevice { get; private set; }
     
     /// <summary>
-    /// Gets the default effect used for rendering sprites.
+    /// Gets the default <see cref="Effect"/> used for rendering sprites.
     /// </summary>
     public static Effect DefaultSpriteEffect { get; private set; }
     
     /// <summary>
-    /// The default effect used for rendering 3D models.
+    /// Gets the <see cref="Effect"/> used for rendering primitive shapes.
+    /// </summary>
+    public static Effect PrimitiveEffect { get; private set; }
+    
+    /// <summary>
+    /// The default <see cref="Effect"/> used for rendering 3D models.
     /// </summary>
     public static Effect DefaultModelEffect { get; private set; }
     
     /// <summary>
-    /// The default texture used for rendering 3D models.
+    /// The default <see cref="Texture2D"/> used for rendering 3D models.
     /// </summary>
     public static Texture2D DefaultModelTexture { get; private set; }
 
@@ -46,6 +51,9 @@ public static class GlobalResource {
         
         // Default sprite effect.
         DefaultSpriteEffect = new Effect(graphicsDevice, SpriteVertex2D.VertexLayout, "content/shaders/sprite.vert", "content/shaders/sprite.frag");
+        
+        // Primitive effect.
+        PrimitiveEffect = new Effect(graphicsDevice, PrimitiveVertex2D.VertexLayout, "content/shaders/primitive.vert", "content/shaders/primitive.frag");
         
         // Default model effect.
         DefaultModelEffect = new Effect(graphicsDevice, Vertex3D.VertexLayout, "content/shaders/default_model.vert", "content/shaders/default_model.frag");
@@ -61,6 +69,7 @@ public static class GlobalResource {
     /// </summary>
     public static void Destroy() {
         DefaultSpriteEffect.Dispose();
+        PrimitiveEffect.Dispose();
         DefaultModelEffect.Dispose();
         DefaultModelTexture.Dispose();
     }

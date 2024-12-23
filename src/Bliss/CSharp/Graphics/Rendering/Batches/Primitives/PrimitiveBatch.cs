@@ -118,7 +118,7 @@ public class PrimitiveBatch : Disposable {
         this.Capacity = capacity;
         
         // Create effects.
-        this._effect = new Effect(graphicsDevice, PrimitiveVertex2D.VertexLayout, "content/shaders/primitive.vert", "content/shaders/primitive.frag");
+        this._effect = GlobalResource.PrimitiveEffect;
         
         // Create projection view buffer.
         this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "ProjectionViewBuffer", 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
