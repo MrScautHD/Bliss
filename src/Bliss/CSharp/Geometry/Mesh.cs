@@ -95,7 +95,7 @@ public class Mesh : Disposable {
     /// This buffer holds an array of structures representing bone matrices and is utilized during rendering to apply bone transformations to vertices.
     /// </summary>
     private SimpleBuffer<Matrix4x4> _boneBuffer;
-
+    
     /// <summary>
     /// Defines the characteristics of the rendering pipeline used by the mesh.
     /// This field specifies the pipeline configurations such as blending, depth stencil, rasterizer state,
@@ -125,13 +125,18 @@ public class Mesh : Disposable {
         uint vertexBufferSize = this.VertexCount * (uint) Marshal.SizeOf<Vertex3D>();
         uint indexBufferSize = this.IndexCount * 4;
         
+        // Create vertex buffer.
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
         graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this.Vertices);
 
+        // Create index buffer.
         this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
         graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this.Indices);
-
+        
+        // Create model matrix buffer.
         this._modelMatrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "MatrixBuffer", 3, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        
+        // Create bone buffer.
         this._boneBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "BoneBuffer", 128, SimpleBufferType.Uniform, ShaderStages.Vertex);
 
         for (int i = 0; i < 128; i++) {
@@ -140,6 +145,7 @@ public class Mesh : Disposable {
         
         this._boneBuffer.UpdateBufferImmediate();
         
+        // Create pipeline description.
         this._pipelineDescription = this.CreatePipelineDescription();
     }
 
@@ -260,6 +266,11 @@ public class Mesh : Disposable {
         this.Material.SetMapColor(MaterialMapType.Albedo.ToString(), cachedColor);
     }
 
+    /// <summary>
+    /// Creates and returns a configured instance of <see cref="SimplePipelineDescription"/> for rendering the mesh.
+    /// </summary>
+    /// <returns>A <see cref="SimplePipelineDescription"/> containing settings for blend state, depth-stencil state, rasterizer state,
+    /// primitive topology, buffer bindings, texture layouts, and shader set configuration.</returns>
     private SimplePipelineDescription CreatePipelineDescription() {
         return new SimplePipelineDescription() {
             BlendState = this.Material.BlendState.Description,

@@ -57,13 +57,20 @@ public class SpriteBatch : Disposable {
     /// Represents the window used for rendering graphics.
     /// </summary>
     public IWindow Window { get; private set; }
-
+    
     /// <summary>
     /// Retrieves the current output configuration for the SpriteBatch.
     /// This includes details such as the pixel format and any associated debug information
     /// for rendering outputs.
     /// </summary>
     public OutputDescription Output { get; private set; }
+    
+    /// <summary>
+    /// Represents a rendering effect used to apply shaders and other modifications during the rendering process.
+    /// This property specifies the <see cref="Effect"/> utilized by the <see cref="SpriteBatch"/>,
+    /// enabling customization of the rendering pipeline.
+    /// </summary>
+    public Effect Effect { get; private set; }
 
     /// <summary>
     /// Specifies the maximum number of sprites that the SpriteBatch can process in a single draw call.
@@ -81,17 +88,6 @@ public class SpriteBatch : Disposable {
     /// It implements <see cref="ITexture2DManager"/> and <see cref="IFontStashRenderer"/> interfaces to manage textures and render fonts respectively.
     /// </summary>
     internal readonly FontStashAdapter FontStashAdapter;
-
-    /// <summary>
-    /// Stores a collection of reusable pipeline objects, keyed by a combination of <see cref="Effect"/> and <see cref="BlendState"/>.
-    /// This cache helps optimize the rendering process by avoiding the recreation of pipelines during rendering operations.
-    /// </summary>
-    private Dictionary<(Effect, BlendState), SimplePipeline> _cachedPipelines;
-
-    /// <summary>
-    /// Represents the default <see cref="Effect"/> used by the <see cref="SpriteBatch"/> when no specific effect is provided.
-    /// </summary>
-    private Effect _defaultEffect;
 
     /// <summary>
     /// An array of <see cref="Vertex2D"/> structures representing the vertices used for rendering.
@@ -127,6 +123,11 @@ public class SpriteBatch : Disposable {
     private SimpleTextureLayout _textureLayout;
 
     /// <summary>
+    /// Stores the description of the graphics pipeline, defining its configuration and behavior.
+    /// </summary>
+    private SimplePipelineDescription _pipelineDescription;
+
+    /// <summary>
     /// Indicates whether a sprite batch operation has begun.
     /// </summary>
     private bool _begun;
@@ -143,12 +144,6 @@ public class SpriteBatch : Disposable {
     private uint _currentBatchCount;
 
     /// <summary>
-    /// Holds the currently active effect used for rendering operations in the <see cref="SpriteBatch"/>.
-    /// It determines the shaders and graphical transformations applied to rendered sprites.
-    /// </summary>
-    private Effect _currentEffect;
-
-    /// <summary>
     /// Holds the current blend state used by the <see cref="SpriteBatch"/> for rendering operations.
     /// Determines how the colors of the rendered sprites are blended with the background.
     /// </summary>
@@ -163,31 +158,28 @@ public class SpriteBatch : Disposable {
     /// The currently active sampler that is being used with the texture. This field may be null if no sampler is currently set.
     /// </summary>
     private Sampler? _currentSampler;
-
+    
     /// <summary>
-    /// Initializes a new instance of the <see cref="SpriteBatch"/> class, setting up graphics resources and buffers for sprite rendering.
+    /// Initializes a new instance of the <see cref="SpriteBatch"/> class for batching and rendering 2D sprites.
     /// </summary>
-    /// <param name="graphicsDevice">The graphics device used for rendering.</param>
-    /// <param name="window">The window associated with the graphics device.</param>
-    /// <param name="output">The output description defining the render target.</param>
-    /// <param name="capacity">The maximum number of quads (sprite batches) that can be handled by this sprite batch instance. Default is 15360.</param>
-    public SpriteBatch(GraphicsDevice graphicsDevice, IWindow window, OutputDescription output, uint capacity = 15360) {
+    /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used for rendering.</param>
+    /// <param name="window">The <see cref="IWindow"/> associated with the rendering context.</param>
+    /// <param name="output">The <see cref="OutputDescription"/> defining the output configuration for rendering.</param>
+    /// <param name="effect">The optional <see cref="Effect"/> to be used for rendering. Defaults to <see cref="GlobalResource.DefaultSpriteEffect"/> if not specified.</param>
+    /// <param name="capacity">The maximum number of sprites the batch can hold. Defaults to 15,360.</param>
+    public SpriteBatch(GraphicsDevice graphicsDevice, IWindow window, OutputDescription output, Effect? effect = null, uint capacity = 15360) {
         this.GraphicsDevice = graphicsDevice;
         this.Window = window;
+        this.Effect = effect ?? GlobalResource.DefaultSpriteEffect;
         this.Output = output;
         this.Capacity = capacity;
         this.FontStashAdapter = new FontStashAdapter(graphicsDevice, this);
-        
-        this._cachedPipelines = new Dictionary<(Effect, BlendState), SimplePipeline>();
-        
-        // Create default effect.
-        this._defaultEffect = new Effect(graphicsDevice, SpriteVertex2D.VertexLayout, "content/shaders/sprite.vert", "content/shaders/sprite.frag");
         
         // Create vertex buffer.
         this._vertices = new SpriteVertex2D[capacity * VerticesPerQuad];
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (capacity * VerticesPerQuad * Marshal.SizeOf<SpriteVertex2D>()), BufferUsage.VertexBuffer | BufferUsage.Dynamic));
         
-        // Create indices buffer.
+        // Create index buffer.
         this._indices = new ushort[capacity * IndicesPerQuad];
         this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(capacity * IndicesPerQuad * sizeof(ushort), BufferUsage.IndexBuffer | BufferUsage.Dynamic));
 
@@ -211,18 +203,21 @@ public class SpriteBatch : Disposable {
         
         // Create texture layout.
         this._textureLayout = new SimpleTextureLayout(graphicsDevice, "fTexture");
+
+        // Create pipeline description.
+        this._pipelineDescription = this.CreatePipelineDescription();
     }
-    
+
     /// <summary>
-    /// Begins a sprite batch operation, preparing the command list for sprite rendering.
+    /// Begins a new drawing session using the specified command list and optional parameters for blending, projection, and view matrices.
+    /// This method prepares the batch for drawing operations and resets the draw call count to zero.
     /// </summary>
-    /// <param name="commandList">The command list to record rendering commands to.</param>
-    /// <param name="effect">Optional effect to apply; if null, the default effect is used.</param>
-    /// <param name="blendState">Optional blend state to use; if null, the default blend state is used.</param>
-    /// <param name="projection">Optional projection matrix; if null, an orthographic projection matching the window dimensions is used.</param>
-    /// <param name="view">Optional view matrix; if null, an identity matrix is used.</param>
-    /// <exception cref="Exception">Thrown if Begin is called while a previous Begin has not been followed by an End.</exception>
-    public void Begin(CommandList commandList, Effect? effect = null, BlendState? blendState = null, Matrix4x4? projection = null, Matrix4x4? view = null) {
+    /// <param name="commandList">The command list to be used for the drawing session.</param>
+    /// <param name="blendState">An optional blend state to configure how the sprites are blended. If null, <see cref="BlendState.AlphaBlend"/> is used by default.</param>
+    /// <param name="projection">An optional projection matrix. If null, an orthographic projection covering the screen dimensions is used.</param>
+    /// <param name="view">An optional view matrix. If null, the identity matrix is used by default.</param>
+    /// <exception cref="Exception">Thrown if the SpriteBatch is already in a begun state (i.e., <see cref="Begin"/> was called without a corresponding call to <see cref="End"/>).</exception>
+    public void Begin(CommandList commandList, BlendState? blendState = null, Matrix4x4? projection = null, Matrix4x4? view = null) {
         if (this._begun) {
             throw new Exception("The SpriteBatch has already begun!");
         }
@@ -230,12 +225,12 @@ public class SpriteBatch : Disposable {
         this._begun = true;
         this._currentCommandList = commandList;
 
-        if (this._currentEffect != effect || this._currentBlendState != blendState) {
+        if (this._currentBlendState != blendState) {
             this.Flush();
         }
         
-        this._currentEffect = effect ?? this._defaultEffect;
         this._currentBlendState = blendState ?? BlendState.AlphaBlend;
+        this._pipelineDescription.BlendState = this._currentBlendState.Description;
         
         Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
         Matrix4x4 finalView = view ?? Matrix4x4.Identity;
@@ -247,10 +242,10 @@ public class SpriteBatch : Disposable {
     }
 
     /// <summary>
-    /// Ends the drawing session that was started with the <see cref="Begin(CommandList, Effect?, BlendState?, Matrix4x4?, Matrix4x4?)"/> method.
-    /// This method should be called after all the draw operations are completed for the current batch.
+    /// Ends the current drawing session that was initiated by a call to <see cref="Begin"/>.
+    /// This method finalizes the batch operations by flushing all pending draw calls.
     /// </summary>
-    /// <exception cref="Exception">Thrown if the <see cref="Begin(CommandList, Effect?, BlendState?, Matrix4x4?, Matrix4x4?)"/> method has not been called before calling this method.</exception>
+    /// <exception cref="Exception">Thrown if the SpriteBatch is in a state where <see cref="Begin"/> was not called beforehand.</exception>
     public void End() {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -382,7 +377,7 @@ public class SpriteBatch : Disposable {
     /// <summary>
     /// Flushes the current batch of sprites to the GPU for rendering.
     /// </summary>
-    public void Flush() {
+    private void Flush() {
         if (this._currentBatchCount == 0) {
             return;
         }
@@ -395,7 +390,7 @@ public class SpriteBatch : Disposable {
         this._currentCommandList.SetIndexBuffer(this._indexBuffer, IndexFormat.UInt16);
         
         // Set pipeline.
-        this._currentCommandList.SetPipeline(this.GetOrCreatePipeline(this._currentEffect, this._currentBlendState).Pipeline);
+        this._currentCommandList.SetPipeline(this.Effect.GetPipeline(this._pipelineDescription).Pipeline);
         
         // Set projection view buffer.
         this._currentCommandList.SetGraphicsResourceSet(0, this._projViewBuffer.ResourceSet);
@@ -414,56 +409,40 @@ public class SpriteBatch : Disposable {
         
         this.DrawCallCount++;
     }
-
+    
     /// <summary>
-    /// Retrieves an existing pipeline associated with the given effect and blend state, or creates a new one if it doesn't exist.
+    /// Creates a new instance of <see cref="SimplePipelineDescription"/> with predefined settings for the graphics pipeline.
     /// </summary>
-    /// <param name="effect">The effect to be used for the pipeline.</param>
-    /// <param name="blendState">The blend state description for the pipeline.</param>
-    /// <returns>A SimplePipeline object configured with the provided effect and blend state.</returns>
-    private SimplePipeline GetOrCreatePipeline(Effect effect, BlendState blendState) {
-        if (!this._cachedPipelines.TryGetValue((effect, blendState), out SimplePipeline? pipeline)) {
-            SimplePipeline newPipeline = new SimplePipeline(this.GraphicsDevice, new SimplePipelineDescription() {
-                BlendState = blendState.Description,
-                DepthStencilState = new DepthStencilStateDescription(false, false, ComparisonKind.LessEqual),
-                RasterizerState = new RasterizerStateDescription() {
-                    DepthClipEnabled = true,
-                    CullMode = FaceCullMode.None
-                },
-                PrimitiveTopology = PrimitiveTopology.TriangleList,
-                Buffers = [
-                    this._projViewBuffer
+    /// <returns>A configured <see cref="SimplePipelineDescription"/> object.</returns>
+    private SimplePipelineDescription CreatePipelineDescription() {
+        return new SimplePipelineDescription() {
+            DepthStencilState = new DepthStencilStateDescription(false, false, ComparisonKind.LessEqual),
+            RasterizerState = new RasterizerStateDescription() {
+                DepthClipEnabled = true,
+                CullMode = FaceCullMode.None
+            },
+            PrimitiveTopology = PrimitiveTopology.TriangleList,
+            Buffers = [
+                this._projViewBuffer
+            ],
+            TextureLayouts = [
+                this._textureLayout
+            ],
+            ShaderSet = new ShaderSetDescription() {
+                VertexLayouts = [
+                    this.Effect.VertexLayout
                 ],
-                TextureLayouts = [
-                    this._textureLayout
-                ],
-                ShaderSet = new ShaderSetDescription() {
-                    VertexLayouts = [
-                        effect.VertexLayout
-                    ],
-                    Shaders = [
-                        effect.Shader.Item1,
-                        effect.Shader.Item2
-                    ]
-                },
-                Outputs = this.Output
-            });
-            
-            this._cachedPipelines.Add((effect, blendState), newPipeline);
-            return newPipeline;
-        }
-
-        return pipeline;
+                Shaders = [
+                    this.Effect.Shader.Item1,
+                    this.Effect.Shader.Item2
+                ]
+            },
+            Outputs = this.Output
+        };
     }
     
     protected override void Dispose(bool disposing) {
         if (disposing) {
-            foreach (SimplePipeline pipeline in this._cachedPipelines.Values) {
-                pipeline.Dispose();
-            }
-            
-            this._defaultEffect.Dispose();
-            
             this._vertexBuffer.Dispose();
             this._indexBuffer.Dispose();
             

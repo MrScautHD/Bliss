@@ -147,10 +147,10 @@ public class PrimitiveBatch : Disposable {
         };
 
         pipelineDescription.PrimitiveTopology = PrimitiveTopology.TriangleList;
-        this._pipelineTriangleList = new SimplePipeline(graphicsDevice, pipelineDescription);
+        this._pipelineTriangleList = this._effect.GetPipeline(pipelineDescription);
         
         pipelineDescription.PrimitiveTopology = PrimitiveTopology.TriangleStrip;
-        this._pipelineTriangleStrip = new SimplePipeline(graphicsDevice, pipelineDescription);
+        this._pipelineTriangleStrip = this._effect.GetPipeline(pipelineDescription);
         
         // Create vertex buffer.
         this._vertices = new PrimitiveVertex2D[capacity];

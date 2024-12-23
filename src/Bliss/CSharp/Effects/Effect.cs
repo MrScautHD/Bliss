@@ -94,8 +94,6 @@ public class Effect : Disposable {
         if (!this._cachedPipelines.TryGetValue(pipelineDescription, out SimplePipeline? pipeline)) {
             SimplePipeline newPipeline = new SimplePipeline(this.GraphicsDevice, pipelineDescription);
             
-            Logger.Error(pipelineDescription.ToString());
-            
             this._cachedPipelines.Add(pipelineDescription, newPipeline);
             return newPipeline;
         }
