@@ -110,12 +110,12 @@ public class Effect : Disposable {
     
     protected override void Dispose(bool disposing) {
         if (disposing) {
-            this.Shader.Item1.Dispose();
-            this.Shader.Item2.Dispose();
-
             foreach (SimplePipeline pipeline in this._cachedPipelines.Values) {
                 pipeline.Dispose();
             }
+            
+            this.Shader.Item1.Dispose();
+            this.Shader.Item2.Dispose();
         }
     }
 }

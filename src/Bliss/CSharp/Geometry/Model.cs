@@ -181,52 +181,52 @@ public class Model : Disposable {
                 AMaterial aMaterial = scene.Materials[mesh.MaterialIndex];
 
                 if (aMaterial.HasTextureDiffuse) {
-                    material.AddMaterialMap(MaterialMapType.Albedo.ToString(), new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Diffuse),
                         Color = ModelConversion.FromColor4D(aMaterial.ColorDiffuse)
                     });
                 }
 
                 if (aMaterial.PBR.HasTextureMetalness) {
-                    material.AddMaterialMap(MaterialMapType.Metallic.ToString(), new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Metallic, new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Metalness),
                         Color = ModelConversion.FromColor4D(aMaterial.ColorSpecular)
                     });
                 }
 
                 if (aMaterial.HasTextureNormal) {
-                    material.AddMaterialMap(MaterialMapType.Normal.ToString(), new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Normal, new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Normals)
                     });
                 }
 
                 if (aMaterial.PBR.HasTextureRoughness) {
-                    material.AddMaterialMap(MaterialMapType.Roughness.ToString(), new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Roughness, new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Roughness)
                     });
                 }
 
                 if (aMaterial.HasTextureAmbientOcclusion) {
-                    material.AddMaterialMap(MaterialMapType.Occlusion.ToString(), new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Occlusion, new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.AmbientOcclusion)
                     });
                 }
 
                 if (aMaterial.HasTextureEmissive) {
-                    material.AddMaterialMap(MaterialMapType.Emission.ToString(), new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Emission, new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Emissive),
                         Color = ModelConversion.FromColor4D(aMaterial.ColorEmissive)
                     });
                 }
 
                 if (aMaterial.HasTextureHeight) {
-                    material.AddMaterialMap(MaterialMapType.Height.ToString(), new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Height, new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Height)
                     });
                 }
             }
             else {
-                material.AddMaterialMap(MaterialMapType.Albedo.ToString(), new MaterialMap() {
+                material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap() {
                     Texture = GlobalResource.DefaultModelTexture,
                     Color = Color.White
                 });
@@ -269,7 +269,7 @@ public class Model : Disposable {
                 vertices[j].Tangent = mesh.HasTangentBasis ? ModelConversion.FromVector3D(mesh.Tangents[j]) : Vector3.Zero;
                 
                 // Set Color.
-                vertices[j].Color = material.GetMapColor(MaterialMapType.Albedo.ToString())?.ToRgbaFloat().ToVector4() ?? Vector4.Zero;
+                vertices[j].Color = material.GetMapColor(MaterialMapType.Albedo)?.ToRgbaFloat().ToVector4() ?? Vector4.Zero;
             }
 
             // Setup indices.

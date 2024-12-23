@@ -192,8 +192,8 @@ public class Mesh : Disposable {
         }
         
         // Set optional color.
-        Color cachedColor = this.Material.GetMapColor(MaterialMapType.Albedo.ToString()) ?? Color.White;
-        this.Material.SetMapColor(MaterialMapType.Albedo.ToString(), color ?? cachedColor);
+        Color cachedColor = this.Material.GetMapColor(MaterialMapType.Albedo) ?? Color.White;
+        this.Material.SetMapColor(MaterialMapType.Albedo, color ?? cachedColor);
         
         // Update matrix buffer.
         this._modelMatrixBuffer.SetValue(0, cam3D.GetProjection());
@@ -263,7 +263,7 @@ public class Mesh : Disposable {
         }
         
         // Reset albedo material color.
-        this.Material.SetMapColor(MaterialMapType.Albedo.ToString(), cachedColor);
+        this.Material.SetMapColor(MaterialMapType.Albedo, cachedColor);
     }
 
     /// <summary>

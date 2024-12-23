@@ -35,7 +35,7 @@ public class SimpleTextureLayout : Disposable {
     public SimpleTextureLayout(GraphicsDevice graphicsDevice, string name) {
         this.GraphicsDevice = graphicsDevice;
         this.Name = name;
-
+        
         this.Layout = this.GraphicsDevice.ResourceFactory.CreateResourceLayout(new ResourceLayoutDescription() {
             Elements = [
                 new ResourceLayoutElementDescription(name, ResourceKind.TextureReadOnly, ShaderStages.Fragment),

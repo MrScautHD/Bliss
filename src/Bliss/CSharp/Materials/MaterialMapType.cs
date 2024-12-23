@@ -6,54 +6,42 @@
  * https://github.com/MrScautHD/Bliss/blob/main/LICENSE
  */
 
-using System.Runtime.Serialization;
-
 namespace Bliss.CSharp.Materials;
 
-/// <summary>
-/// An undefined or uninitialized material map type.
-/// </summary>
-public enum MaterialMapType {
+public static class MaterialMapType {
     
     /// <summary>
-    /// The base color map.
+    /// The name of the albedo map, representing base color and opacity.
     /// </summary>
-    [EnumMember(Value = "fAlbedo")]
-    Albedo,
-    
+    public const string Albedo = "fAlbedo";
+
     /// <summary>
-    /// The metallic map.
+    /// The name of the metallic map, representing the metallic property of a material.
     /// </summary>
-    [EnumMember(Value = "fMetallic")]
-    Metallic,
-    
+    public const string Metallic = "fMetallic";
+
     /// <summary>
-    /// The normal map.
+    /// The name of the normal map, used for simulating surface details without additional geometry.
     /// </summary>
-    [EnumMember(Value = "fNormal")]
-    Normal,
-    
+    public const string Normal = "fNormal";
+
     /// <summary>
-    /// The roughness map.
+    /// The name of the roughness map, representing the roughness property of a material.
     /// </summary>
-    [EnumMember(Value = "fRoughness")]
-    Roughness,
-    
+    public const string Roughness = "fRoughness";
+
     /// <summary>
-    /// The occlusion map.
+    /// The name of the occlusion map, representing ambient occlusion for the material.
     /// </summary>
-    [EnumMember(Value = "fOcclusion")]
-    Occlusion,
-    
+    public const string Occlusion = "fOcclusion";
+
     /// <summary>
-    /// The emission map.
+    /// The name of the emission map, used for materials that emit light.
     /// </summary>
-    [EnumMember(Value = "fEmissive")]
-    Emission,
-    
+    public const string Emission = "fEmissive";
+
     /// <summary>
-    /// The height map.
+    /// The name of the height map, used for simulating displacement and depth.
     /// </summary>
-    [EnumMember(Value = "fHeight")]
-    Height
+    public const string Height = "fHeight";
 }
