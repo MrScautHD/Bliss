@@ -9,6 +9,8 @@
 
 __Bliss__ is a modern `Direct3D11`, `Vulkan`, `OpenGL`, `Metal`, `OpenGL-ES` Render Framework.
 
+![grafik](https://github.com/user-attachments/assets/97c5f6a7-b196-44f1-8043-c90c52e847b4)
+
 
 # <span style="color: red;">⚠️ WARNING: The last Bliss is not stable! 🚨</span>
 **For a smoother experience, please wait until it is a stable version released [[1.1.0]](https://github.com/MrScautHD/Bliss/issues/3)!**
