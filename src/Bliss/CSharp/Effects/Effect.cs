@@ -1,12 +1,6 @@
-/*
- * Copyright (c) 2024 Elias Springer (@MrScautHD)
- * License-Identifier: Bliss License 1.0
- * 
- * For full license details, see:
- * https://github.com/MrScautHD/Bliss/blob/main/LICENSE
- */
-
 using Bliss.CSharp.Graphics.Pipelines;
+using Bliss.CSharp.Graphics.Pipelines.Buffers;
+using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Logging;
 using Veldrid;
 using Veldrid.SPIRV;
@@ -30,6 +24,17 @@ public class Effect : Disposable {
     /// </summary>
     public readonly VertexLayoutDescription VertexLayout;
 
+    /// <summary>
+    /// A dictionary that maps string keys to <see cref="SimpleTextureLayout"/> instances, used to define and manage buffer configurations for the Effect class.
+    /// </summary>
+    private Dictionary<string, SimpleBufferLayout> _bufferLayouts;
+
+    /// <summary>
+    /// A dictionary that maps texture layout names to their corresponding <see cref="SimpleTextureLayout"/> instances.
+    /// Used to store and retrieve layouts for managing texture resources within the Effect.
+    /// </summary>
+    private Dictionary<string, SimpleTextureLayout> _textureLayouts;
+    
     /// <summary>
     /// A cache of pipelines created for specific pipeline descriptions, enabling reuse.
     /// </summary>
@@ -63,7 +68,9 @@ public class Effect : Disposable {
         this.Shader.Item2 = shaders[1];
         
         this.VertexLayout = vertexLayout;
-        
+
+        this._bufferLayouts = new Dictionary<string, SimpleBufferLayout>();
+        this._textureLayouts = new Dictionary<string, SimpleTextureLayout>();
         this._cachedPipelines = new Dictionary<SimplePipelineDescription, SimplePipeline>();
     }
 
@@ -83,6 +90,42 @@ public class Effect : Disposable {
         
         Logger.Info($"Shader bytes loaded successfully from path: [{path}]");
         return File.ReadAllBytes(path);
+    }
+
+    public string[] GetBufferLayoutKeys() {
+        return this._bufferLayouts.Keys.ToArray();
+    }
+
+    public SimpleBufferLayout[] GetBufferLayouts() {
+        return this._bufferLayouts.Values.ToArray();
+    }
+
+    public SimpleBufferLayout GetBufferLayout(string name) {
+        return this._bufferLayouts[name];
+    }
+
+    public void AddBufferLayout(SimpleBufferLayout bufferLayout) {
+        if (!this._bufferLayouts.TryAdd(bufferLayout.Name, bufferLayout)) {
+            Logger.Warn($"Failed to add BufferLayout with name [{bufferLayout.Name}]. A buffer layout with this name might already exist.");
+        }
+    }
+    
+    public string[] GetTextureLayoutKeys() {
+        return this._textureLayouts.Keys.ToArray();
+    }
+
+    public SimpleTextureLayout[] GetTextureLayouts() {
+        return this._textureLayouts.Values.ToArray();
+    }
+
+    public SimpleTextureLayout GetTextureLayout(string name) {
+        return this._textureLayouts[name];
+    }
+    
+    public void AddTextureLayout(SimpleTextureLayout textureLayout) {
+        if (!this._textureLayouts.TryAdd(textureLayout.Name, textureLayout)) {
+            Logger.Warn($"Failed to add TextureLayout with name [{textureLayout.Name}]. A texture layout with this name might already exist.");
+        }
     }
 
     /// <summary>

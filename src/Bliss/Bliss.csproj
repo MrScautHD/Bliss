@@ -44,6 +44,7 @@
         <PackageReference Include="SixLabors.ImageSharp" Version="3.1.6" />
         <PackageReference Include="StirlingLabs.Assimp.Net" Version="23.4.1" />
 
+        <!-- TODO: Check by release the new NUGET version if it works for all platforms. (im not sure about it) -->
         <PackageReference Update="StirlingLabs.assimp.native.win-x64" Version="5.2.5.4" Condition="$([MSBuild]::IsOSPlatform('Windows'))" />
         <PackageReference Include="StirlingLabs.assimp.native.linux-x64" Version="5.2.5.4" Condition="$([MSBuild]::IsOSPlatform('Linux'))" />
         <PackageReference Include="StirlingLabs.assimp.native.osx" Version="5.2.5.4" Condition="$([MSBuild]::IsOSPlatform('OSX'))" />

@@ -1,11 +1,3 @@
-/*
- * Copyright (c) 2024 Elias Springer (@MrScautHD)
- * License-Identifier: Bliss License 1.0
- * 
- * For full license details, see:
- * https://github.com/MrScautHD/Bliss/blob/main/LICENSE
- */
-
 using System.Numerics;
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Effects;
@@ -58,6 +50,8 @@ public class PrimitiveBatch : Disposable {
     /// Buffer storing the combined projection and view matrix for rendering.
     /// </summary>
     private SimpleBuffer<Matrix4x4> _projViewBuffer;
+
+    private SimpleBufferLayout _bufferLayout;
     
     /// <summary>
     /// Pipeline configuration used for rendering a list of triangles.
@@ -121,7 +115,10 @@ public class PrimitiveBatch : Disposable {
         this._effect = GlobalResource.PrimitiveEffect;
         
         // Create projection view buffer.
-        this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "ProjectionViewBuffer", 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        
+        // Create buffer layout.
+        this._bufferLayout = new SimpleBufferLayout(graphicsDevice, "ProjectionViewBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
 
         // Create pipelines.
         SimplePipelineDescription pipelineDescription = new SimplePipelineDescription() {
@@ -131,8 +128,8 @@ public class PrimitiveBatch : Disposable {
                 DepthClipEnabled = true,
                 CullMode = FaceCullMode.None
             },
-            Buffers = [
-                this._projViewBuffer
+            BufferLayouts = [
+                this._bufferLayout
             ],
             ShaderSet = new ShaderSetDescription() {
                 VertexLayouts = [
@@ -796,7 +793,7 @@ public class PrimitiveBatch : Disposable {
         this._currentCommandList.SetPipeline(this._currentPipeline.Pipeline);
         
         // Set projection view buffer.
-        this._currentCommandList.SetGraphicsResourceSet(0, this._projViewBuffer.ResourceSet);
+        this._currentCommandList.SetGraphicsResourceSet(0, this._projViewBuffer.GetResourceSet(this._bufferLayout));
         
         // Draw.
         this._currentCommandList.Draw(this._currentBatchCount);

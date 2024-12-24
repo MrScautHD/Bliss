@@ -1,11 +1,3 @@
-/*
- * Copyright (c) 2024 Elias Springer (@MrScautHD)
- * License-Identifier: Bliss License 1.0
- * 
- * For full license details, see:
- * https://github.com/MrScautHD/Bliss/blob/main/LICENSE
- */
-
 using System.Numerics;
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Colors;
@@ -116,6 +108,11 @@ public class SpriteBatch : Disposable {
     /// It is an instance of <see cref="SimpleBuffer{Matrix4x4}"/> and is used in the rendering process to transform sprite coordinates for rendering on the screen.
     /// </summary>
     private SimpleBuffer<Matrix4x4> _projViewBuffer;
+
+    /// <summary>
+    /// The resource layout that describes how buffer resources are bound in the shader. It specifies the layout of buffer resources for rendering.
+    /// </summary>
+    private SimpleBufferLayout _bufferLayout;
     
     /// <summary>
     /// The resource layout that describes how texture resources are bound in the shader. It specifies the layout of texture and sampler resources for rendering.
@@ -199,7 +196,10 @@ public class SpriteBatch : Disposable {
         graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this._indices);
         
         // Create projection view buffer.
-        this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "ProjectionViewBuffer", 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        
+        // Create buffer layout.
+        this._bufferLayout = new SimpleBufferLayout(graphicsDevice, "ProjectionViewBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
         
         // Create texture layout.
         this._textureLayout = new SimpleTextureLayout(graphicsDevice, "fTexture");
@@ -393,7 +393,7 @@ public class SpriteBatch : Disposable {
         this._currentCommandList.SetPipeline(this.Effect.GetPipeline(this._pipelineDescription).Pipeline);
         
         // Set projection view buffer.
-        this._currentCommandList.SetGraphicsResourceSet(0, this._projViewBuffer.ResourceSet);
+        this._currentCommandList.SetGraphicsResourceSet(0, this._projViewBuffer.GetResourceSet(this._bufferLayout));
 
         // Create or get texture.
         if (this._currentTexture != null && this._currentSampler != null) {
@@ -422,8 +422,8 @@ public class SpriteBatch : Disposable {
                 CullMode = FaceCullMode.None
             },
             PrimitiveTopology = PrimitiveTopology.TriangleList,
-            Buffers = [
-                this._projViewBuffer
+            BufferLayouts = [
+                this._bufferLayout
             ],
             TextureLayouts = [
                 this._textureLayout

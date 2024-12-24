@@ -1,11 +1,3 @@
-/*
- * Copyright (c) 2024 Elias Springer (@MrScautHD)
- * License-Identifier: Bliss License 1.0
- * 
- * For full license details, see:
- * https://github.com/MrScautHD/Bliss/blob/main/LICENSE
- */
-
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Veldrid;
@@ -37,7 +29,7 @@ public struct SimplePipelineDescription : IEquatable<SimplePipelineDescription> 
     /// <summary>
     /// An array of buffers that are bound to the pipeline, containing vertex data and possibly other information.
     /// </summary>
-    public ISimpleBuffer[] Buffers;
+    public SimpleBufferLayout[] BufferLayouts;
 
     /// <summary>
     /// An array of texture layouts, describing how textures are arranged and accessed in the pipeline.
@@ -66,16 +58,16 @@ public struct SimplePipelineDescription : IEquatable<SimplePipelineDescription> 
     /// <param name="depthStencilState">The depth and stencil state configuration of the pipeline.</param>
     /// <param name="rasterizerState">The rasterizer state configuration of the pipeline.</param>
     /// <param name="primitiveTopology">The primitive topology that defines how vertex data is interpreted.</param>
-    /// <param name="buffers">An array of buffers to be used by the pipeline.</param>
+    /// <param name="bufferLayouts">An array of buffer layouts to be used by the pipeline.</param>
     /// <param name="textureLayouts">An array of texture layouts to be used in the pipeline.</param>
     /// <param name="shaderSet">The shader set description that defines the vertex and fragment shaders.</param>
     /// <param name="outputs">The output configuration of the pipeline, specifying the render targets and depth-stencil buffer.</param>
-    public SimplePipelineDescription(BlendStateDescription blendState, DepthStencilStateDescription depthStencilState, RasterizerStateDescription rasterizerState, PrimitiveTopology primitiveTopology, ISimpleBuffer[] buffers, SimpleTextureLayout[] textureLayouts, ShaderSetDescription shaderSet, OutputDescription outputs) {
+    public SimplePipelineDescription(BlendStateDescription blendState, DepthStencilStateDescription depthStencilState, RasterizerStateDescription rasterizerState, PrimitiveTopology primitiveTopology, SimpleBufferLayout[] bufferLayouts, SimpleTextureLayout[] textureLayouts, ShaderSetDescription shaderSet, OutputDescription outputs) {
         this.BlendState = blendState;
         this.DepthStencilState = depthStencilState;
         this.RasterizerState = rasterizerState;
         this.PrimitiveTopology = primitiveTopology;
-        this.Buffers = buffers;
+        this.BufferLayouts = bufferLayouts;
         this.TextureLayouts = textureLayouts;
         this.ShaderSet = shaderSet;
         this.Outputs = outputs;
@@ -86,7 +78,7 @@ public struct SimplePipelineDescription : IEquatable<SimplePipelineDescription> 
     /// Initializes a new instance of the <see cref="SimplePipelineDescription"/> struct.
     /// </summary>
     public SimplePipelineDescription() {
-        this.Buffers = [];
+        this.BufferLayouts = [];
         this.TextureLayouts = [];
     }
     
@@ -116,7 +108,7 @@ public struct SimplePipelineDescription : IEquatable<SimplePipelineDescription> 
                this.DepthStencilState.Equals(other.DepthStencilState) &&
                this.RasterizerState.Equals(other.RasterizerState) &&
                this.PrimitiveTopology == other.PrimitiveTopology &&
-               this.Buffers.Select(buffer => buffer.Name).SequenceEqual(other.Buffers.Select(buffer => buffer.Name)) &&
+               this.BufferLayouts.Select(layout => layout.Name).SequenceEqual(other.BufferLayouts.Select(layout => layout.Name)) &&
                this.TextureLayouts.Select(layout => layout.Name).SequenceEqual(other.TextureLayouts.Select(layout => layout.Name)) &&
                this.ShaderSet.Equals(other.ShaderSet) &&
                this.Outputs.Equals(other.Outputs) &&
@@ -143,7 +135,7 @@ public struct SimplePipelineDescription : IEquatable<SimplePipelineDescription> 
         hashCode.Add(this.RasterizerState);
         hashCode.Add((int) this.PrimitiveTopology);
 
-        foreach (ISimpleBuffer buffer in this.Buffers) {
+        foreach (SimpleBufferLayout buffer in this.BufferLayouts) {
             hashCode.Add(buffer.Name);
         }
         
@@ -167,7 +159,7 @@ public struct SimplePipelineDescription : IEquatable<SimplePipelineDescription> 
                $"\t> DepthStencilState = {this.DepthStencilState}, \n" +
                $"\t> RasterizerState = {this.RasterizerState}, \n" +
                $"\t> PrimitiveTopology = {this.PrimitiveTopology}, \n" +
-               $"\t> Buffers = [{string.Join(", ", this.Buffers.Select(buffer => buffer.Name))}], \n" +
+               $"\t> Buffers = [{string.Join(", ", this.BufferLayouts.Select(layout => layout.Name))}], \n" +
                $"\t> TextureLayouts = [{string.Join(", ", this.TextureLayouts.Select(layout => layout.Name))}], \n" +
                $"\t> ShaderSet = {this.ShaderSet}, \n" +
                $"\t> Outputs = {this.Outputs}, \n" +

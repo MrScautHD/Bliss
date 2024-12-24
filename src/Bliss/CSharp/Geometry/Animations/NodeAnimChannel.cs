@@ -1,11 +1,3 @@
-/*
- * Copyright (c) 2024 Elias Springer (@MrScautHD)
- * License-Identifier: Bliss License 1.0
- * 
- * For full license details, see:
- * https://github.com/MrScautHD/Bliss/blob/main/LICENSE
- */
-
 using Bliss.CSharp.Geometry.Animations.Keyframes;
 
 namespace Bliss.CSharp.Geometry.Animations;

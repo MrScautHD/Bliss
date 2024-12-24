@@ -1,11 +1,3 @@
-/*
- * Copyright (c) 2024 Elias Springer (@MrScautHD)
- * License-Identifier: Bliss License 1.0
- * 
- * For full license details, see:
- * https://github.com/MrScautHD/Bliss/blob/main/LICENSE
- */
-
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Logging;
@@ -144,7 +136,7 @@ public class Texture2D : Disposable {
     /// <param name="sampler">The sampler used for the resource set.</param>
     /// <param name="layout">The resource layout used for the resource set.</param>
     /// <returns>The resource set associated with the specified sampler and resource layout.</returns>
-    public ResourceSet GetResourceSet(Sampler sampler, ResourceLayout layout) {
+    public ResourceSet GetResourceSet(Sampler sampler, ResourceLayout layout) { // TODO: MOVE TO SimpleTextureLayout!
         if (!this._cachedResourceSets.TryGetValue((sampler, layout), out ResourceSet? resourceSet)) {
             ResourceSet newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(layout, this.DeviceTexture, sampler));
 

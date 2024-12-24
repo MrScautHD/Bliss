@@ -1,11 +1,3 @@
-/*
- * Copyright (c) 2024 Elias Springer (@MrScautHD)
- * License-Identifier: Bliss License 1.0
- * 
- * For full license details, see:
- * https://github.com/MrScautHD/Bliss/blob/main/LICENSE
- */
-
 using System.Numerics;
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Camera.Dim3;
@@ -92,9 +84,18 @@ public class Mesh : Disposable {
 
     /// <summary>
     /// A buffer that stores bone transformation data used for skeletal animation.
-    /// This buffer holds an array of structures representing bone matrices and is utilized during rendering to apply bone transformations to vertices.
     /// </summary>
     private SimpleBuffer<Matrix4x4> _boneBuffer;
+
+    /// <summary>
+    /// Represents the buffer layout configuration used for handling the model matrix data in the rendering pipeline.
+    /// </summary>
+    private SimpleBufferLayout _modelMatrixBufferLayout;
+
+    /// <summary>
+    /// Represents the layout configuration for the bone buffer used in GPU operations.
+    /// </summary>
+    private SimpleBufferLayout _boneBufferLayout;
     
     /// <summary>
     /// Defines the characteristics of the rendering pipeline used by the mesh.
@@ -134,16 +135,22 @@ public class Mesh : Disposable {
         graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this.Indices);
         
         // Create model matrix buffer.
-        this._modelMatrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "MatrixBuffer", 3, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        this._modelMatrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 3, SimpleBufferType.Uniform, ShaderStages.Vertex);
         
         // Create bone buffer.
-        this._boneBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, "BoneBuffer", 128, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        this._boneBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 128, SimpleBufferType.Uniform, ShaderStages.Vertex);
 
         for (int i = 0; i < 128; i++) {
             this._boneBuffer.SetValue(i, Matrix4x4.Identity);
         }
         
         this._boneBuffer.UpdateBufferImmediate();
+        
+        // Create model matrix buffer layout.
+        this._modelMatrixBufferLayout = new SimpleBufferLayout(graphicsDevice, "MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
+        
+        // Create bone buffer layout.
+        this._boneBufferLayout = new SimpleBufferLayout(graphicsDevice, "BoneBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
         
         // Create pipeline description.
         this._pipelineDescription = this.CreatePipelineDescription();
@@ -216,10 +223,10 @@ public class Mesh : Disposable {
             commandList.SetPipeline(this.Material.Effect.GetPipeline(this._pipelineDescription).Pipeline);
             
             // Set projection view buffer.
-            commandList.SetGraphicsResourceSet(0, this._modelMatrixBuffer.ResourceSet);
+            commandList.SetGraphicsResourceSet(0, this._modelMatrixBuffer.GetResourceSet(this._modelMatrixBufferLayout));
             
             // Set bone buffer.
-            commandList.SetGraphicsResourceSet(1, this._boneBuffer.ResourceSet);
+            commandList.SetGraphicsResourceSet(1, this._boneBuffer.GetResourceSet(this._boneBufferLayout));
             
             // Set material.
             for (int i = 0; i < this.Material.GetTextureLayoutKeys().Length; i++) {
@@ -243,10 +250,10 @@ public class Mesh : Disposable {
             commandList.SetPipeline(this.Material.Effect.GetPipeline(this._pipelineDescription).Pipeline);
             
             // Set projection view buffer.
-            commandList.SetGraphicsResourceSet(0, this._modelMatrixBuffer.ResourceSet);
+            commandList.SetGraphicsResourceSet(0, this._modelMatrixBuffer.GetResourceSet(this._modelMatrixBufferLayout));
             
             // Set bone buffer.
-            commandList.SetGraphicsResourceSet(1, this._boneBuffer.ResourceSet);
+            commandList.SetGraphicsResourceSet(1, this._boneBuffer.GetResourceSet(this._boneBufferLayout));
             
             // Set material.
             for (int i = 0; i < this.Material.GetTextureLayoutKeys().Length; i++) {
@@ -283,9 +290,9 @@ public class Mesh : Disposable {
                 ScissorTestEnabled = false
             },
             PrimitiveTopology = PrimitiveTopology.TriangleList,
-            Buffers = [
-                this._modelMatrixBuffer,
-                this._boneBuffer
+            BufferLayouts = [
+                this._modelMatrixBufferLayout,
+                this._boneBufferLayout
             ],
             TextureLayouts = this.Material.GetTextureLayouts(),
             ShaderSet = new ShaderSetDescription() {

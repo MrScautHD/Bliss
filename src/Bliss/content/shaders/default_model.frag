@@ -1,11 +1,3 @@
-/*
- * Copyright (c) 2024 Elias Springer (@MrScautHD)
- * License-Identifier: Bliss License 1.0
- * 
- * For full license details, see:
- * https://github.com/MrScautHD/Bliss/blob/main/LICENSE
- */
-
 #version 450
 
 // TODO: Try todo it better maybe some system that just adding them by set locations (i think it even crash with vulkan, because vulkan in vulkan the amount of sampler2Ds and the TextureLayouts need to be the same (match)) and add colors!

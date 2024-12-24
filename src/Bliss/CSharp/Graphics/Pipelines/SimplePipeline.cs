@@ -1,11 +1,3 @@
-/*
- * Copyright (c) 2024 Elias Springer (@MrScautHD)
- * License-Identifier: Bliss License 1.0
- * 
- * For full license details, see:
- * https://github.com/MrScautHD/Bliss/blob/main/LICENSE
- */
-
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Veldrid;
@@ -42,12 +34,12 @@ public class SimplePipeline : Disposable {
     public SimplePipeline(GraphicsDevice graphicsDevice, SimplePipelineDescription pipelineDescription) {
         this.GraphicsDevice = graphicsDevice;
         this.PipelineDescription = pipelineDescription;
-        this.ResourceLayouts = new ResourceLayout[pipelineDescription.Buffers.Length + pipelineDescription.TextureLayouts.Length];
+        this.ResourceLayouts = new ResourceLayout[pipelineDescription.BufferLayouts.Length + pipelineDescription.TextureLayouts.Length];
         
         int layoutIndex = 0;
 
-        foreach (ISimpleBuffer buffer in pipelineDescription.Buffers) {
-            this.ResourceLayouts[layoutIndex] = buffer.ResourceLayout;
+        foreach (SimpleBufferLayout bufferLayout in pipelineDescription.BufferLayouts) {
+            this.ResourceLayouts[layoutIndex] = bufferLayout.Layout;
             layoutIndex += 1;
         }
 
@@ -69,21 +61,21 @@ public class SimplePipeline : Disposable {
     }
 
     /// <summary>
-    /// Retrieves a buffer by its name from the collection of buffers in the pipeline.
+    /// Retrieves a buffer layout from the pipeline description by its name.
     /// </summary>
-    /// <param name="name">The name of the buffer to retrieve.</param>
-    /// <returns>The buffer with the specified name, or null if no such buffer exists.</returns>
-    public ISimpleBuffer? GetBuffer(string name) {
-        return this.PipelineDescription.Buffers.FirstOrDefault(buffer => buffer.Name == name);
+    /// <param name="name">The name of the buffer layout to retrieve.</param>
+    /// <returns>A <see cref="SimpleBufferLayout"/> object if a matching buffer layout is found; otherwise, null.</returns>
+    public SimpleBufferLayout? GetBufferLayout(string name) {
+        return this.PipelineDescription.BufferLayouts.FirstOrDefault(layout => layout.Name == name);
     }
 
     /// <summary>
-    /// Retrieves the texture layout associated with the specified name from the pipeline description.
+    /// Retrieves the <see cref="SimpleTextureLayout"/> with the specified name from the pipeline description's texture layouts.
     /// </summary>
     /// <param name="name">The name of the texture layout to retrieve.</param>
-    /// <returns>The <see cref="SimpleTextureLayout"/> associated with the specified name, or null if no layout with the given name exists.</returns>
+    /// <returns>The <see cref="SimpleTextureLayout"/> if a matching layout is found; otherwise, null.</returns>
     public SimpleTextureLayout? GetTextureLayout(string name) {
-        return this.PipelineDescription.TextureLayouts.FirstOrDefault(buffer => buffer.Name == name);
+        return this.PipelineDescription.TextureLayouts.FirstOrDefault(layout => layout.Name == name);
     }
     
     protected override void Dispose(bool disposing) {
