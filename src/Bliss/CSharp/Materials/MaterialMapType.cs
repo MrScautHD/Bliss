@@ -1,39 +1,48 @@
+using System.Runtime.Serialization;
+
 namespace Bliss.CSharp.Materials;
 
-public static class MaterialMapType {
+public enum MaterialMapType {
+
+    /// <summary>
+    /// Albedo map, which defines the base color of the material.
+    /// </summary>
+    [EnumMember(Value = "fAlbedo")]
+    Albedo = 0,
     
     /// <summary>
-    /// The name of the albedo map, representing base color and opacity.
+    /// Metallic map, which defines the metallic properties of the material.
     /// </summary>
-    public const string Albedo = "fAlbedo";
-
+    [EnumMember(Value = "fMetallic")]
+    Metallic = 1,
+    
     /// <summary>
-    /// The name of the metallic map, representing the metallic property of a material.
+    /// Normal map, which adds detail to the surface of the material by simulating bumps and grooves.
     /// </summary>
-    public const string Metallic = "fMetallic";
-
+    [EnumMember(Value = "fNormal")]
+    Normal = 2,
+    
     /// <summary>
-    /// The name of the normal map, used for simulating surface details without additional geometry.
+    /// Roughness map, which defines the roughness level of the material's surface.
     /// </summary>
-    public const string Normal = "fNormal";
-
+    [EnumMember(Value = "fRoughness")]
+    Roughness = 3,
+    
     /// <summary>
-    /// The name of the roughness map, representing the roughness property of a material.
+    /// Occlusion map, which adds shadows in crevices to enhance the appearance of depth.
     /// </summary>
-    public const string Roughness = "fRoughness";
-
+    [EnumMember(Value = "fOcclusion")]
+    Occlusion = 4,
+    
     /// <summary>
-    /// The name of the occlusion map, representing ambient occlusion for the material.
+    /// Emission map, which defines areas of the material that emit light.
     /// </summary>
-    public const string Occlusion = "fOcclusion";
-
+    [EnumMember(Value = "fEmissive")]
+    Emission = 5,
+    
     /// <summary>
-    /// The name of the emission map, used for materials that emit light.
+    /// Height map, which provides height data for the material to simulate depth effects.
     /// </summary>
-    public const string Emission = "fEmissive";
-
-    /// <summary>
-    /// The name of the height map, used for simulating displacement and depth.
-    /// </summary>
-    public const string Height = "fHeight";
+    [EnumMember(Value = "fHeight")]
+    Height = 6
 }

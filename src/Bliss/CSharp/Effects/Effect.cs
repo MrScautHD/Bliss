@@ -2,6 +2,7 @@ using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Logging;
+using Bliss.CSharp.Materials;
 using Veldrid;
 using Veldrid.SPIRV;
 
@@ -92,36 +93,70 @@ public class Effect : Disposable {
         return File.ReadAllBytes(path);
     }
 
+    /// <summary>
+    /// Retrieves all the keys from the buffer layout dictionary.
+    /// </summary>
+    /// <returns>An array of strings representing the keys of the buffer layouts.</returns>
     public string[] GetBufferLayoutKeys() {
         return this._bufferLayouts.Keys.ToArray();
     }
 
+    /// <summary>
+    /// Retrieves an array of buffer layouts associated with the current effect.
+    /// </summary>
+    /// <returns>An array of <see cref="SimpleBufferLayout"/> objects, representing the buffer layouts used by the effect.</returns>
     public SimpleBufferLayout[] GetBufferLayouts() {
         return this._bufferLayouts.Values.ToArray();
     }
 
+    /// <summary>
+    /// Retrieves a buffer layout associated with the specified name.
+    /// </summary>
+    /// <param name="name">The name of the buffer layout to retrieve.</param>
+    /// <returns>The <see cref="SimpleBufferLayout"/> associated with the given name.</returns>
     public SimpleBufferLayout GetBufferLayout(string name) {
         return this._bufferLayouts[name];
     }
 
+    /// <summary>
+    /// Adds a buffer layout to the current effect instance.
+    /// </summary>
+    /// <param name="bufferLayout">The buffer layout to be added, containing the name and configuration of the buffer.</param>
     public void AddBufferLayout(SimpleBufferLayout bufferLayout) {
         if (!this._bufferLayouts.TryAdd(bufferLayout.Name, bufferLayout)) {
             Logger.Warn($"Failed to add BufferLayout with name [{bufferLayout.Name}]. A buffer layout with this name might already exist.");
         }
     }
-    
+
+    /// <summary>
+    /// Retrieves an array of keys representing the names of texture layouts stored within the effect.
+    /// </summary>
+    /// <returns>An array of strings containing the keys for the texture layouts.</returns>
     public string[] GetTextureLayoutKeys() {
         return this._textureLayouts.Keys.ToArray();
     }
 
+    /// <summary>
+    /// Retrieves all texture layouts associated with the effect.
+    /// </summary>
+    /// <returns>An array of <see cref="SimpleTextureLayout"/> representing the texture layouts.</returns>
     public SimpleTextureLayout[] GetTextureLayouts() {
         return this._textureLayouts.Values.ToArray();
     }
 
+    /// <summary>
+    /// Retrieves a specific texture layout by its name.
+    /// </summary>
+    /// <param name="name">The name of the texture layout to retrieve.</param>
+    /// <returns>The texture layout associated with the specified name.</returns>
     public SimpleTextureLayout GetTextureLayout(string name) {
         return this._textureLayouts[name];
     }
-    
+
+    /// <summary>
+    /// Adds a texture layout to the effect.
+    /// </summary>
+    /// <param name="textureLayout">The texture layout to be added.</param>
     public void AddTextureLayout(SimpleTextureLayout textureLayout) {
         if (!this._textureLayouts.TryAdd(textureLayout.Name, textureLayout)) {
             Logger.Warn($"Failed to add TextureLayout with name [{textureLayout.Name}]. A texture layout with this name might already exist.");
@@ -144,12 +179,10 @@ public class Effect : Disposable {
         return pipeline;
     }
     
-    // TODO: Adding Location system, for Material(Texture, Color) and in generel for buffers...
-    // TODO: ADD MATERIAL param here.
     /// <summary>
     /// Apply the state effect immediately before rendering it.
     /// </summary>
-    public virtual void Apply() { }
+    public virtual void Apply(Material? material = null) { }
     
     protected override void Dispose(bool disposing) {
         if (disposing) {

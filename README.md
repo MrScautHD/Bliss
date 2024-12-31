@@ -40,22 +40,22 @@ dotnet add package Bliss --version 1.0.0
 - [`ppy.Veldrid.SPIRV`](https://www.nuget.org/packages/ppy.Veldrid.SPIRV)
 - [`ppy.SDL3-CS`](https://www.nuget.org/packages/ppy.SDL3-CS)
 - [`SixLabors.ImageSharp`](https://www.nuget.org/packages/SixLabors.ImageSharp)
-- [`AssimpNet`](https://www.nuget.org/packages/AssimpNet)
+- [`AssimpNetter`](https://www.nuget.org/packages/AssimpNetter)
 - [`FontStashSharp`](https://www.nuget.org/packages/FontStashSharp.Base)
 - [`MiniAudioEx`](https://www.nuget.org/packages/JAJ.Packages.MiniAudioEx)
 
 # 💻 Platforms
 [<img src="https://github.com/MrScautHD/Sparkle/assets/65916181/a92bd5fa-517b-44c2-ab58-cc01b5ae5751" alt="windows" width="70" height="70" align="left">](https://www.microsoft.com/de-at/windows)
 ### Windows
-- Graphics API's: `Direct3D11`, `Vulkan`, `OpenGL`, `OpenGL-ES`
+- Graphics APIs: `Direct3D11`, `Vulkan`, `OpenGL`, `OpenGL-ES`
 
 [<img src="https://github.com/MrScautHD/Sparkle/assets/65916181/f9e643a8-4d46-450c-91ac-d220394ecd42" alt="Linux" width="70" height="70" align="left">](https://www.ubuntu.com/)
 ### Linux
-- Graphics API's `Vulkan`, `OpenGL`, `OpenGL-ES`
+- Graphics APIs `Vulkan`, `OpenGL`, `OpenGL-ES`
 
 [<img src="https://github.com/MrScautHD/Sparkle/assets/65916181/e37eb15f-4237-47ae-9ae7-e4455f7c3d92" alt="macOS" width="70" height="70" align="left">](https://www.apple.com/at/macos/sonoma/)
 ### MacOS
-- Graphics API's `Metal`, `OpenGL`, `OpenGL-ES`
+- Graphics APIs `Metal`, `OpenGL`, `OpenGL-ES`
 
 # 🧑 Contributors
 <a href="https://github.com/mrscauthd/Bliss/graphs/contributors">
@@ -69,4 +69,4 @@ dotnet add package Bliss --version 1.0.0
 ---
 
 # ✍️ Acknowledgement
-This library is available under our custom [license](https://github.com/MrScautHD/Bliss/blob/main/LICENSE).
+This library is available under the [MIT](https://github.com/MrScautHD/Bliss/blob/main/LICENSE) license.

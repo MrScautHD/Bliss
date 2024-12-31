@@ -5,7 +5,6 @@ using Bliss.CSharp.Effects;
 using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
-using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
@@ -110,16 +109,6 @@ public class SpriteBatch : Disposable {
     private SimpleBuffer<Matrix4x4> _projViewBuffer;
 
     /// <summary>
-    /// The resource layout that describes how buffer resources are bound in the shader. It specifies the layout of buffer resources for rendering.
-    /// </summary>
-    private SimpleBufferLayout _bufferLayout;
-    
-    /// <summary>
-    /// The resource layout that describes how texture resources are bound in the shader. It specifies the layout of texture and sampler resources for rendering.
-    /// </summary>
-    private SimpleTextureLayout _textureLayout;
-
-    /// <summary>
     /// Stores the description of the graphics pipeline, defining its configuration and behavior.
     /// </summary>
     private SimplePipelineDescription _pipelineDescription;
@@ -197,12 +186,6 @@ public class SpriteBatch : Disposable {
         
         // Create projection view buffer.
         this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
-        
-        // Create buffer layout.
-        this._bufferLayout = new SimpleBufferLayout(graphicsDevice, "ProjectionViewBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
-        
-        // Create texture layout.
-        this._textureLayout = new SimpleTextureLayout(graphicsDevice, "fTexture");
 
         // Create pipeline description.
         this._pipelineDescription = this.CreatePipelineDescription();
@@ -393,11 +376,11 @@ public class SpriteBatch : Disposable {
         this._currentCommandList.SetPipeline(this.Effect.GetPipeline(this._pipelineDescription).Pipeline);
         
         // Set projection view buffer.
-        this._currentCommandList.SetGraphicsResourceSet(0, this._projViewBuffer.GetResourceSet(this._bufferLayout));
+        this._currentCommandList.SetGraphicsResourceSet(0, this._projViewBuffer.GetResourceSet(this.Effect.GetBufferLayout("ProjectionViewBuffer")));
 
         // Create or get texture.
         if (this._currentTexture != null && this._currentSampler != null) {
-            this._currentCommandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this._textureLayout.Layout));
+            this._currentCommandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this.Effect.GetTextureLayout("fTexture")));
         }
         
         // Draw.
@@ -422,12 +405,8 @@ public class SpriteBatch : Disposable {
                 CullMode = FaceCullMode.None
             },
             PrimitiveTopology = PrimitiveTopology.TriangleList,
-            BufferLayouts = [
-                this._bufferLayout
-            ],
-            TextureLayouts = [
-                this._textureLayout
-            ],
+            BufferLayouts = this.Effect.GetBufferLayouts(),
+            TextureLayouts = this.Effect.GetTextureLayouts(),
             ShaderSet = new ShaderSetDescription() {
                 VertexLayouts = [
                     this.Effect.VertexLayout
@@ -445,8 +424,6 @@ public class SpriteBatch : Disposable {
         if (disposing) {
             this._vertexBuffer.Dispose();
             this._indexBuffer.Dispose();
-            
-            this._textureLayout.Dispose();
             this._projViewBuffer.Dispose();
         }
     }

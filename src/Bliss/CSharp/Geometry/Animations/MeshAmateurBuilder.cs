@@ -1,9 +1,6 @@
 using System.Numerics;
 using Assimp;
 using Bliss.CSharp.Geometry.Animations.Keyframes;
-using Bliss.CSharp.Geometry.Conversions;
-using Matrix4x4 = System.Numerics.Matrix4x4;
-using Quaternion = System.Numerics.Quaternion;
 
 namespace Bliss.CSharp.Geometry.Animations;
 
@@ -89,7 +86,7 @@ public class MeshAmateurBuilder {
     /// <param name="frame">The current frame index being processed.</param>
     /// <param name="parentTransform">The transformation matrix of the parent node.</param>
     private void UpdateChannel(Node node, ModelAnimation animation, int frame, Matrix4x4 parentTransform) {
-        Matrix4x4 nodeTransformation = ModelConversion.FromAMatrix4X4Transposed(node.Transform);
+        Matrix4x4 nodeTransformation = Matrix4x4.Transpose(node.Transform);
         
         if (this.GetChannel(node, animation, out NodeAnimChannel? channel)) {
             Matrix4x4 scale = this.InterpolateScale(channel!, animation, frame);
@@ -103,9 +100,9 @@ public class MeshAmateurBuilder {
             Bone bone = this._bonesByName[boneId];
             
             if (node.Name == bone.Name) {
-                Matrix4x4.Invert(ModelConversion.FromAMatrix4X4Transposed(this._rootNode.Transform), out Matrix4x4 rootInverseTransform);
+                Matrix4x4.Invert(Matrix4x4.Transpose(this._rootNode.Transform), out Matrix4x4 rootInverseTransform);
                 
-                Matrix4x4 transformation = ModelConversion.FromAMatrix4X4Transposed(bone.OffsetMatrix) * nodeTransformation * parentTransform * rootInverseTransform;
+                Matrix4x4 transformation = Matrix4x4.Transpose(bone.OffsetMatrix) * nodeTransformation * parentTransform * rootInverseTransform;
                 this._boneTransformations[boneId] = transformation;
             }
         }

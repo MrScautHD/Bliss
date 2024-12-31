@@ -6,7 +6,7 @@ layout(set = 0, binding = 0) uniform MatrixBuffer {
     mat4x4 uTransformation;
 };
 
-layout(set = 0, binding = 1) uniform BoneBuffer {
+layout(set = 1, binding = 0) uniform BoneBuffer {
     mat4x4 uBonesTransformations[128];
 };
 

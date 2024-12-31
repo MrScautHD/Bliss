@@ -50,8 +50,6 @@ public class PrimitiveBatch : Disposable {
     /// Buffer storing the combined projection and view matrix for rendering.
     /// </summary>
     private SimpleBuffer<Matrix4x4> _projViewBuffer;
-
-    private SimpleBufferLayout _bufferLayout;
     
     /// <summary>
     /// Pipeline configuration used for rendering a list of triangles.
@@ -116,9 +114,6 @@ public class PrimitiveBatch : Disposable {
         
         // Create projection view buffer.
         this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
-        
-        // Create buffer layout.
-        this._bufferLayout = new SimpleBufferLayout(graphicsDevice, "ProjectionViewBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
 
         // Create pipelines.
         SimplePipelineDescription pipelineDescription = new SimplePipelineDescription() {
@@ -128,9 +123,7 @@ public class PrimitiveBatch : Disposable {
                 DepthClipEnabled = true,
                 CullMode = FaceCullMode.None
             },
-            BufferLayouts = [
-                this._bufferLayout
-            ],
+            BufferLayouts = this._effect.GetBufferLayouts(),
             ShaderSet = new ShaderSetDescription() {
                 VertexLayouts = [
                     PrimitiveVertex2D.VertexLayout
@@ -793,7 +786,7 @@ public class PrimitiveBatch : Disposable {
         this._currentCommandList.SetPipeline(this._currentPipeline.Pipeline);
         
         // Set projection view buffer.
-        this._currentCommandList.SetGraphicsResourceSet(0, this._projViewBuffer.GetResourceSet(this._bufferLayout));
+        this._currentCommandList.SetGraphicsResourceSet(0, this._projViewBuffer.GetResourceSet(this._effect.GetBufferLayout("ProjectionViewBuffer")));
         
         // Draw.
         this._currentCommandList.Draw(this._currentBatchCount);

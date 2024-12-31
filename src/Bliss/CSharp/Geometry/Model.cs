@@ -5,7 +5,6 @@ using Assimp.Configs;
 using Bliss.CSharp.Effects;
 using Bliss.CSharp.Geometry.Animations;
 using Bliss.CSharp.Geometry.Animations.Keyframes;
-using Bliss.CSharp.Geometry.Conversions;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
@@ -123,19 +122,19 @@ public class Model : Disposable {
 
                 // Setup positions.
                 foreach (VectorKey aPosition in aChannel.PositionKeys) {
-                    Vector3Key position = new Vector3Key(aPosition.Time, ModelConversion.FromVector3D(aPosition.Value));
+                    Vector3Key position = new Vector3Key(aPosition.Time, aPosition.Value);
                     positions.Add(position);
                 }
                 
                 // Setup rotations.
                 foreach (QuaternionKey aRotation in aChannel.RotationKeys) {
-                    QuatKey rotation = new QuatKey(aRotation.Time, ModelConversion.FromAQuaternion(aRotation.Value));
+                    QuatKey rotation = new QuatKey(aRotation.Time, aRotation.Value);
                     rotations.Add(rotation);
                 }
                 
                 // Setup scales.
                 foreach (VectorKey aScale in aChannel.ScalingKeys) {
-                    Vector3Key scale = new Vector3Key(aScale.Time, ModelConversion.FromVector3D(aScale.Value));
+                    Vector3Key scale = new Vector3Key(aScale.Time, aScale.Value);
                     scales.Add(scale);
                 }
 
@@ -173,52 +172,52 @@ public class Model : Disposable {
                 AMaterial aMaterial = scene.Materials[mesh.MaterialIndex];
 
                 if (aMaterial.HasTextureDiffuse) {
-                    material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Diffuse),
-                        Color = ModelConversion.FromColor4D(aMaterial.ColorDiffuse)
+                        Color = new Color(new RgbaFloat(aMaterial.ColorDiffuse))
                     });
                 }
 
                 if (aMaterial.PBR.HasTextureMetalness) {
-                    material.AddMaterialMap(MaterialMapType.Metallic, new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Metallic.GetName(), new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Metalness),
-                        Color = ModelConversion.FromColor4D(aMaterial.ColorSpecular)
+                        Color = new Color(new RgbaFloat(aMaterial.ColorSpecular))
                     });
                 }
 
                 if (aMaterial.HasTextureNormal) {
-                    material.AddMaterialMap(MaterialMapType.Normal, new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Normal.GetName(), new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Normals)
                     });
                 }
 
                 if (aMaterial.PBR.HasTextureRoughness) {
-                    material.AddMaterialMap(MaterialMapType.Roughness, new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Roughness.GetName(), new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Roughness)
                     });
                 }
 
                 if (aMaterial.HasTextureAmbientOcclusion) {
-                    material.AddMaterialMap(MaterialMapType.Occlusion, new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Occlusion.GetName(), new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.AmbientOcclusion)
                     });
                 }
 
                 if (aMaterial.HasTextureEmissive) {
-                    material.AddMaterialMap(MaterialMapType.Emission, new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Emission.GetName(), new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Emissive),
-                        Color = ModelConversion.FromColor4D(aMaterial.ColorEmissive)
+                        Color = new Color(new RgbaFloat(aMaterial.ColorEmissive))
                     });
                 }
 
                 if (aMaterial.HasTextureHeight) {
-                    material.AddMaterialMap(MaterialMapType.Height, new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Height.GetName(), new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, scene, aMaterial, path, TextureType.Height)
                     });
                 }
             }
             else {
-                material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap() {
+                material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap() {
                     Texture = GlobalResource.DefaultModelTexture,
                     Color = Color.White
                 });
@@ -230,11 +229,11 @@ public class Model : Disposable {
             for (int j = 0; j < mesh.VertexCount; j++) {
                 
                 // Set Position.
-                vertices[j].Position = ModelConversion.FromVector3D(mesh.Vertices[j]);
+                vertices[j].Position = mesh.Vertices[j];
 
                 // Set TexCoord.
                 if (mesh.HasTextureCoords(0)) {
-                    Vector3 texCoord = ModelConversion.FromVector3D(mesh.TextureCoordinateChannels[0][j]);
+                    Vector3 texCoord = mesh.TextureCoordinateChannels[0][j];
                     Vector2 finalTexCoord = new Vector2(texCoord.X, -texCoord.Y);
                     
                     vertices[j].TexCoords = flipUv ? -finalTexCoord : finalTexCoord;
@@ -245,7 +244,7 @@ public class Model : Disposable {
                 
                 // Set TexCoord2.
                 if (mesh.HasTextureCoords(1)) {
-                    Vector3 texCoord2 = ModelConversion.FromVector3D(mesh.TextureCoordinateChannels[1][j]);
+                    Vector3 texCoord2 = mesh.TextureCoordinateChannels[1][j];
                     Vector2 finalTexCoord2 = new Vector2(texCoord2.X, -texCoord2.Y);
                     
                     vertices[j].TexCoords2 = flipUv ? -finalTexCoord2 : finalTexCoord2;
@@ -255,13 +254,13 @@ public class Model : Disposable {
                 }
                 
                 // Set Normal.
-                vertices[j].Normal = mesh.HasNormals ? ModelConversion.FromVector3D(mesh.Normals[j]) : Vector3.Zero;
+                vertices[j].Normal = mesh.HasNormals ? mesh.Normals[j] : Vector3.Zero;
 
                 // Set Tangent.
-                vertices[j].Tangent = mesh.HasTangentBasis ? ModelConversion.FromVector3D(mesh.Tangents[j]) : Vector3.Zero;
+                vertices[j].Tangent = mesh.HasTangentBasis ? mesh.Tangents[j] : Vector3.Zero;
                 
                 // Set Color.
-                vertices[j].Color = material.GetMapColor(MaterialMapType.Albedo)?.ToRgbaFloat().ToVector4() ?? Vector4.Zero;
+                vertices[j].Color = material.GetMapColor(MaterialMapType.Albedo.GetName())?.ToRgbaFloat().ToVector4() ?? Vector4.Zero;
             }
 
             // Setup indices.

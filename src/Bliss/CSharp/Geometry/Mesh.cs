@@ -88,14 +88,14 @@ public class Mesh : Disposable {
     private SimpleBuffer<Matrix4x4> _boneBuffer;
 
     /// <summary>
-    /// Represents the buffer layout configuration used for handling the model matrix data in the rendering pipeline.
+    /// A buffer that stores color data as a collection of 4D vectors (Vector4) for rendering purposes.
     /// </summary>
-    private SimpleBufferLayout _modelMatrixBufferLayout;
+    private SimpleBuffer<Vector4> _colorBuffer;
 
     /// <summary>
-    /// Represents the layout configuration for the bone buffer used in GPU operations.
+    /// Represents a GPU buffer that stores floating-point values for use in rendering or animation systems.
     /// </summary>
-    private SimpleBufferLayout _boneBufferLayout;
+    private SimpleBuffer<float> _valueBuffer;
     
     /// <summary>
     /// Defines the characteristics of the rendering pipeline used by the mesh.
@@ -146,12 +146,18 @@ public class Mesh : Disposable {
         
         this._boneBuffer.UpdateBufferImmediate();
         
-        // Create model matrix buffer layout.
-        this._modelMatrixBufferLayout = new SimpleBufferLayout(graphicsDevice, "MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
+        // Create color buffer.
+        this._colorBuffer = new SimpleBuffer<Vector4>(graphicsDevice, 7, SimpleBufferType.Uniform, ShaderStages.Fragment);
+
+        for (int i = 0; i < 7; i++) {
+            this._colorBuffer.SetValue(i, Color.White.ToRgbaFloatVec4());
+        }
         
-        // Create bone buffer layout.
-        this._boneBufferLayout = new SimpleBufferLayout(graphicsDevice, "BoneBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
+        this._colorBuffer.UpdateBufferImmediate();
         
+        // Create value buffer.
+        this._valueBuffer = new SimpleBuffer<float>(graphicsDevice, 7, SimpleBufferType.Uniform, ShaderStages.Fragment);
+
         // Create pipeline description.
         this._pipelineDescription = this.CreatePipelineDescription();
     }
@@ -191,7 +197,7 @@ public class Mesh : Disposable {
     /// <param name="output">The output description for the rendering pipeline.</param>
     /// <param name="transform">The transformation to apply to the mesh.</param>
     /// <param name="color">Optional color parameter for coloring the mesh.</param>
-    public void Draw(CommandList commandList, OutputDescription output, Transform transform, Color? color = default) {
+    public void Draw(CommandList commandList, OutputDescription output, Transform transform, Color? color = null) {
         Cam3D? cam3D = Cam3D.ActiveCamera;
 
         if (cam3D == null) {
@@ -199,18 +205,35 @@ public class Mesh : Disposable {
         }
         
         // Set optional color.
-        Color cachedColor = this.Material.GetMapColor(MaterialMapType.Albedo) ?? Color.White;
-        this.Material.SetMapColor(MaterialMapType.Albedo, color ?? cachedColor);
+        Color cachedColor = this.Material.GetMapColor(MaterialMapType.Albedo.GetName()) ?? Color.White;
+        this.Material.SetMapColor(MaterialMapType.Albedo.GetName(), color ?? cachedColor);
         
         // Update matrix buffer.
         this._modelMatrixBuffer.SetValue(0, cam3D.GetProjection());
         this._modelMatrixBuffer.SetValue(1, cam3D.GetView());
         this._modelMatrixBuffer.SetValue(2, transform.GetTransform());
         this._modelMatrixBuffer.UpdateBuffer(commandList);
+        
+        // Update color buffer.
+        for (int i = 0; i < 7; i++) {
+            Color? mapColor = this.Material.GetMapColor(((MaterialMapType) i).GetName());
+
+            if (mapColor.HasValue) {
+                this._colorBuffer.SetValue(i, mapColor.Value.ToRgbaFloatVec4());
+            }
+        }
+
+        this._colorBuffer.UpdateBuffer(commandList);
+        
+        // Update value buffer.
+        for (int i = 0; i < 7; i++) {
+            this._valueBuffer.SetValue(i, this.Material.GetMapValue(((MaterialMapType) i).GetName()));
+        }
+        
+        this._valueBuffer.UpdateBuffer(commandList);
 
         // Update pipeline description.
         this._pipelineDescription.BlendState = this.Material.BlendState.Description;
-        this._pipelineDescription.TextureLayouts = this.Material.GetTextureLayouts();
         this._pipelineDescription.Outputs = output;
         
         if (this.IndexCount > 0) {
@@ -223,18 +246,24 @@ public class Mesh : Disposable {
             commandList.SetPipeline(this.Material.Effect.GetPipeline(this._pipelineDescription).Pipeline);
             
             // Set projection view buffer.
-            commandList.SetGraphicsResourceSet(0, this._modelMatrixBuffer.GetResourceSet(this._modelMatrixBufferLayout));
+            commandList.SetGraphicsResourceSet(0, this._modelMatrixBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("MatrixBuffer")));
             
             // Set bone buffer.
-            commandList.SetGraphicsResourceSet(1, this._boneBuffer.GetResourceSet(this._boneBufferLayout));
+            commandList.SetGraphicsResourceSet(1, this._boneBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("BoneBuffer")));
             
-            // Set material.
-            for (int i = 0; i < this.Material.GetTextureLayoutKeys().Length; i++) {
-                string key = this.Material.GetTextureLayoutKeys()[i];
-                ResourceSet? resourceSet = this.Material.GetResourceSet(this.Material.GetTextureLayout(key).Layout, key);
+            // Set color buffer.
+            commandList.SetGraphicsResourceSet(2, this._colorBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ColorBuffer")));
+            
+            // Set value buffer.
+            commandList.SetGraphicsResourceSet(3, this._valueBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ValueBuffer")));
+            
+            // Set material texture.
+            for (int i = 0; i < this.Material.Effect.GetTextureLayoutKeys().Length; i++) {
+                string key = this.Material.Effect.GetTextureLayoutKeys()[i];
+                ResourceSet? resourceSet = this.Material.GetResourceSet(this.Material.Effect.GetTextureLayout(key), key);
 
                 if (resourceSet != null) {
-                    commandList.SetGraphicsResourceSet((uint) i + 2, resourceSet);
+                    commandList.SetGraphicsResourceSet((uint) i + 4, resourceSet);
                 }
             }
             
@@ -250,18 +279,24 @@ public class Mesh : Disposable {
             commandList.SetPipeline(this.Material.Effect.GetPipeline(this._pipelineDescription).Pipeline);
             
             // Set projection view buffer.
-            commandList.SetGraphicsResourceSet(0, this._modelMatrixBuffer.GetResourceSet(this._modelMatrixBufferLayout));
+            commandList.SetGraphicsResourceSet(0, this._modelMatrixBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("MatrixBuffer")));
             
             // Set bone buffer.
-            commandList.SetGraphicsResourceSet(1, this._boneBuffer.GetResourceSet(this._boneBufferLayout));
+            commandList.SetGraphicsResourceSet(1, this._boneBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("BoneBuffer")));
             
-            // Set material.
-            for (int i = 0; i < this.Material.GetTextureLayoutKeys().Length; i++) {
-                string key = this.Material.GetTextureLayoutKeys()[i];
-                ResourceSet? resourceSet = this.Material.GetResourceSet(this.Material.GetTextureLayout(key).Layout, key);
+            // Set color buffer.
+            commandList.SetGraphicsResourceSet(2, this._colorBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ColorBuffer")));
+            
+            // Set value buffer.
+            commandList.SetGraphicsResourceSet(3, this._valueBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ValueBuffer")));
+            
+            // Set material texture.
+            for (int i = 0; i < this.Material.Effect.GetTextureLayoutKeys().Length; i++) {
+                string key = this.Material.Effect.GetTextureLayoutKeys()[i];
+                ResourceSet? resourceSet = this.Material.GetResourceSet(this.Material.Effect.GetTextureLayout(key), key);
 
                 if (resourceSet != null) {
-                    commandList.SetGraphicsResourceSet((uint) i + 2, resourceSet);
+                    commandList.SetGraphicsResourceSet((uint) i + 4, resourceSet);
                 }
             }
             
@@ -270,7 +305,7 @@ public class Mesh : Disposable {
         }
         
         // Reset albedo material color.
-        this.Material.SetMapColor(MaterialMapType.Albedo, cachedColor);
+        this.Material.SetMapColor(MaterialMapType.Albedo.GetName(), cachedColor);
     }
 
     /// <summary>
@@ -290,11 +325,8 @@ public class Mesh : Disposable {
                 ScissorTestEnabled = false
             },
             PrimitiveTopology = PrimitiveTopology.TriangleList,
-            BufferLayouts = [
-                this._modelMatrixBufferLayout,
-                this._boneBufferLayout
-            ],
-            TextureLayouts = this.Material.GetTextureLayouts(),
+            BufferLayouts = this.Material.Effect.GetBufferLayouts(),
+            TextureLayouts = this.Material.Effect.GetTextureLayouts(),
             ShaderSet = new ShaderSetDescription() {
                 VertexLayouts = [
                     this.Material.Effect.VertexLayout

@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Graphics;
+using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Logging;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
@@ -59,7 +60,7 @@ public class Texture2D : Disposable {
     /// <summary>
     /// A dictionary that caches resource sets associated with samplers, used to avoid redundant resource set creation.
     /// </summary>
-    private Dictionary<(Sampler, ResourceLayout), ResourceSet> _cachedResourceSets;
+    private Dictionary<(Sampler, SimpleTextureLayout), ResourceSet> _cachedResourceSets;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Texture2D"/> class using an image file path.
@@ -102,7 +103,7 @@ public class Texture2D : Disposable {
         this.Format = srgb ? PixelFormat.R8G8B8A8UNormSRgb : PixelFormat.R8G8B8A8UNorm;
         this.DeviceTexture = this.CreateDeviceTexture();
         this._sampler = sampler ?? graphicsDevice.PointSampler;
-        this._cachedResourceSets = new Dictionary<(Sampler, ResourceLayout), ResourceSet>();
+        this._cachedResourceSets = new Dictionary<(Sampler, SimpleTextureLayout), ResourceSet>();
     }
 
     /// <summary>
@@ -136,9 +137,9 @@ public class Texture2D : Disposable {
     /// <param name="sampler">The sampler used for the resource set.</param>
     /// <param name="layout">The resource layout used for the resource set.</param>
     /// <returns>The resource set associated with the specified sampler and resource layout.</returns>
-    public ResourceSet GetResourceSet(Sampler sampler, ResourceLayout layout) { // TODO: MOVE TO SimpleTextureLayout!
+    public ResourceSet GetResourceSet(Sampler sampler, SimpleTextureLayout layout) { // TODO: MOVE TO SimpleTextureLayout!
         if (!this._cachedResourceSets.TryGetValue((sampler, layout), out ResourceSet? resourceSet)) {
-            ResourceSet newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(layout, this.DeviceTexture, sampler));
+            ResourceSet newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(layout.Layout, this.DeviceTexture, sampler));
 
             this._cachedResourceSets.Add((sampler, layout), newResourceSet);
             return newResourceSet;

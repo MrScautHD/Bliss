@@ -55,22 +55,22 @@ public struct Color : IEquatable<Color> {
     /// <summary>
     /// Represents the red component of the color in the range of 0 to 255.
     /// </summary>
-    public float R;
+    public readonly byte R;
 
     /// <summary>
     /// Represents the green component of the color in the range of 0 to 255.
     /// </summary>
-    public float G;
+    public readonly byte G;
 
     /// <summary>
     /// Represents the blue component of the color in the range of 0 to 255.
     /// </summary>
-    public float B;
+    public readonly byte B;
 
     /// <summary>
     /// Represents the alpha component of the color, indicating its transparency, in the range of 0 to 255.
     /// </summary>
-    public float A;
+    public readonly byte A;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="Color"/> class.
@@ -90,10 +90,10 @@ public struct Color : IEquatable<Color> {
     /// Represents a color with red, green, blue, and alpha components.
     /// </summary>
     public Color(RgbaFloat rgbaFloat) {
-        this.R = rgbaFloat.R * 255.0F;
-        this.G = rgbaFloat.G * 255.0F;
-        this.B = rgbaFloat.B * 255.0F;
-        this.A = rgbaFloat.A * 255.0F;
+        this.R = (byte) (rgbaFloat.R * 255.0F);
+        this.G = (byte) (rgbaFloat.G * 255.0F);
+        this.B = (byte) (rgbaFloat.B * 255.0F);
+        this.A = (byte) (rgbaFloat.A * 255.0F);
     }
 
     /// <summary>
@@ -101,9 +101,7 @@ public struct Color : IEquatable<Color> {
     /// </summary>
     /// <param name="left">The first Color to compare.</param>
     /// <param name="right">The second Color to compare.</param>
-    /// <returns>
-    /// <c>true</c> if the specified Color objects are equal; otherwise, <c>false</c>.
-    /// </returns>
+    /// <returns><c>true</c> if the specified Color objects are equal; otherwise, <c>false</c>.</returns>
     public static bool operator ==(Color left, Color right) {
         return left.Equals(right);
     }
@@ -119,11 +117,19 @@ public struct Color : IEquatable<Color> {
     }
 
     /// <summary>
-    /// Converts the color to an RgbaFloat value.
+    /// Converts the color to an <see cref="RgbaFloat"/> value.
     /// </summary>
-    /// <returns>A new instance of the RgbaFloat struct representing the color.</returns>
+    /// <returns>A new instance of the <see cref="RgbaFloat"/> struct representing the color.</returns>
     public RgbaFloat ToRgbaFloat() {
         return new RgbaFloat(this.R / 255.0F, this.G / 255.0F, this.B / 255.0F, this.A / 255.0F);
+    }
+
+    /// <summary>
+    /// Converts the color to a <see cref="Vector4"/> representation with each component normalized to the range of 0 to 1.
+    /// </summary>
+    /// <returns>A <see cref="Vector4"/> object representing the normalized RGBA components of the color.</returns>
+    public Vector4 ToRgbaFloatVec4() {
+        return new Vector4(this.R / 255.0F, this.G / 255.0F, this.B / 255.0F, this.A / 255.0F);
     }
 
     /// <summary>
