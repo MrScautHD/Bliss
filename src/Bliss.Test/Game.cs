@@ -192,7 +192,7 @@ public class Game : Disposable {
             if (this._playingAnim) {
                 this._playerModel.UpdateAnimationBones(commandList, this._playerModel.Animations[1], this._frameCount);
             }
-            this._playerModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, Color.Blue);
+            this._playerModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, Color.White);
         }
         
         this._cam3D.End();
@@ -241,13 +241,13 @@ public class Game : Disposable {
     
     protected override void Dispose(bool disposing) {
         if (disposing) {
-            this.GraphicsDevice.Dispose();
-            this.MainWindow.Dispose();
-            Input.Destroy();
-            GlobalResource.Destroy();
-            
             this._playerModel.Dispose();
             this._planeModel.Dispose();
+            
+            GlobalResource.Destroy();
+            Input.Destroy();
+            this.MainWindow.Dispose();
+            this.GraphicsDevice.Dispose();
         }
     }
 }
