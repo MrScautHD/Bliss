@@ -18,7 +18,7 @@
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <NoWarn>$(NoWarn);1591</NoWarn>
-        <Description>A fast, Cross-platform .NET 8 C# 12 Render Framework.</Description>
+        <Description>A fast, Cross-platform .NET 9 C# 13 Render Framework.</Description>
         <PackageProjectUrl>https://github.com/MrScautHD/Bliss</PackageProjectUrl>
         <PackageLicenseUrl>https://github.com/MrScautHD/Bliss/blob/main/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/MrScautHD/Bliss</RepositoryUrl>
