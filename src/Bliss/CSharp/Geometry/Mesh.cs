@@ -215,7 +215,7 @@ public class Mesh : Disposable {
         this._modelMatrixBuffer.UpdateBuffer(commandList);
         
         // Update color buffer.
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < this.Material.GetMaterialMaps().Length; i++) {
             Color? mapColor = this.Material.GetMapColor(((MaterialMapType) i).GetName());
 
             if (mapColor.HasValue) {
@@ -226,7 +226,7 @@ public class Mesh : Disposable {
         this._colorBuffer.UpdateBuffer(commandList);
         
         // Update value buffer.
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < this.Material.GetMaterialMaps().Length; i++) {
             this._valueBuffer.SetValue(i, this.Material.GetMapValue(((MaterialMapType) i).GetName()));
         }
         
