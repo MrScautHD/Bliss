@@ -11,10 +11,6 @@ __Bliss__ is a modern `Direct3D11`, `Vulkan`, `OpenGL`, `Metal`, `OpenGL-ES` Ren
 
 ![grafik](https://github.com/user-attachments/assets/97c5f6a7-b196-44f1-8043-c90c52e847b4)
 
-
-# <span style="color: red;">⚠️ WARNING: The last Bliss is not stable! 🚨</span>
-**For a smoother experience, please wait until it is a stable version released [[1.1.0]](https://github.com/MrScautHD/Bliss/issues/3)!**
-
 # ✨ Features ✨
 - 🎨 Efficient rendering of textures, fonts, and shapes using SpriteBatch.
 - 🎥 User-friendly Camera2D and Camera3D systems for intuitive control.
@@ -26,7 +22,7 @@ __Bliss__ is a modern `Direct3D11`, `Vulkan`, `OpenGL`, `Metal`, `OpenGL-ES` Ren
 
 # 🪙 Installation - [Nuget](https://www.nuget.org/packages/Bliss)
 ```
-dotnet add package Bliss --version 1.0.0
+dotnet add package Bliss --version 1.1.0
 ```
 
 # 📖 [Installation - From source]
