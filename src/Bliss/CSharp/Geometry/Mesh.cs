@@ -1,14 +1,17 @@
 using System.Numerics;
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Camera.Dim3;
-using Bliss.CSharp.Colors;
 using Bliss.CSharp.Geometry.Animations;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.VertexTypes;
+using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
 using Bliss.CSharp.Transformations;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
+using Color = Bliss.CSharp.Colors.Color;
 using Material = Bliss.CSharp.Materials.Material;
 using Matrix4x4 = System.Numerics.Matrix4x4;
 
@@ -112,7 +115,7 @@ public class Mesh : Disposable {
     /// <param name="vertices">An optional array of <see cref="Vertex3D"/> instances representing the mesh's vertices.</param>
     /// <param name="indices">An optional array of indices used for defining the mesh's primitive topology.</param>
     /// <param name="boneInfos">An optional dictionary containing bone information used for skeletal animation, where the key is a bone name and the value is a dictionary of bone indices mapped to bone data.</param>
-    public Mesh(GraphicsDevice graphicsDevice, Material material, Vertex3D[]? vertices = default, uint[]? indices = default, Dictionary<string, Dictionary<int, BoneInfo[]>>? boneInfos = default) {
+    public Mesh(GraphicsDevice graphicsDevice, Material material, Vertex3D[]? vertices = null, uint[]? indices = null, Dictionary<string, Dictionary<int, BoneInfo[]>>? boneInfos = null) {
         this.GraphicsDevice = graphicsDevice;
         this.Material = material;
         this.Vertices = vertices ?? [];
@@ -161,7 +164,835 @@ public class Mesh : Disposable {
         // Create pipeline description.
         this._pipelineDescription = this.CreatePipelineDescription();
     }
+    
+    // TODO: FIX IT!!!!
+    public static Mesh GenPoly(GraphicsDevice graphicsDevice, int sides, float radius) {
+        if (sides < 3) {
+            sides = 3;
+        }
+        
+        Vertex3D[] vertices = new Vertex3D[sides + 1];
+        uint[] indices = new uint[sides * 3];
 
+        // Center vertex
+        vertices[0] = new Vertex3D() {
+            Position = new Vector3(0, 0, 0),
+            TexCoords = new Vector2(0.5f, 0.5f),
+            Normal = new Vector3(0, 0, 1)
+        };
+
+        float angleStep = MathF.PI * 2 / sides;
+
+        for (int i = 0; i < sides; i++) {
+            float angle = i * angleStep;
+            float x = MathF.Cos(angle) * radius;
+            float y = MathF.Sin(angle) * radius;
+
+            vertices[i + 1] = new Vertex3D() {
+                Position = new Vector3(x, y, 0),
+                TexCoords = new Vector2((x / radius + 1) * 0.5f, (y / radius + 1) * 0.5f),
+                Normal = new Vector3(0, 0, 1)
+            };
+
+            // Define indices for the triangle
+            indices[i * 3] = 0; // Center vertex
+            indices[i * 3 + 1] = (uint)(i + 1); // Current vertex
+            indices[i * 3 + 2] = (uint)(i + 2 <= sides ? i + 2 : 1); // Next vertex (wrap around)
+        }
+
+        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
+    
+        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap() {
+            Texture = GlobalResource.DefaultModelTexture,
+            Color = Color.White
+        });
+
+        return new Mesh(graphicsDevice, material, vertices, indices);
+    }
+
+    /// <summary>
+    /// Generates a cuboid mesh with the specified dimensions and initializes it with default material and texture settings.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device that manages GPU resources for the mesh.</param>
+    /// <param name="width">The width of the cuboid.</param>
+    /// <param name="height">The height of the cuboid.</param>
+    /// <param name="length">The length of the cuboid.</param>
+    /// <returns>A new instance of the <see cref="Mesh"/> class representing the cuboid.</returns>
+    public static Mesh GenCube(GraphicsDevice graphicsDevice, float width, float height, float length) {
+        Vector3[] normals = [
+            new Vector3(0.0F, 0.0F, -1.0F), new Vector3(0.0F, 0.0F, 1.0F),
+            new Vector3(-1.0F, 0.0F, 0.0F), new Vector3(1.0F, 0.0F, 0.0F),
+            new Vector3(0.0F, 1.0F, 0.0F), new Vector3(0.0F, -1.0F, 0.0F)
+        ];
+    
+        Vector2[] texCoords = [
+            new Vector2(0.0F, 1.0F), new Vector2(1.0F, 1.0F),
+            new Vector2(1.0F, 0.0F), new Vector2(0.0F, 0.0F)
+        ];
+    
+        Vector3[] positions = [
+            // Front face
+            new Vector3(-1.0F, -1.0F, -1.0F), new Vector3(1.0F, -1.0F, -1.0F), new Vector3(1.0F, 1.0F, -1.0F), new Vector3(-1.0F, 1.0F, -1.0F),
+            // Back face
+            new Vector3(1.0F, -1.0F, 1.0F), new Vector3(-1.0F, -1.0F, 1.0F), new Vector3(-1.0F, 1.0F, 1.0F), new Vector3(1.0F, 1.0F, 1.0F),
+            // Left face
+            new Vector3(-1.0F, -1.0F, 1.0F), new Vector3(-1.0F, -1.0F, -1.0F), new Vector3(-1.0F, 1.0F, -1.0F), new Vector3(-1.0F, 1.0F, 1.0F),
+            // Right face
+            new Vector3(1.0F, -1.0F, -1.0F), new Vector3(1.0F, -1.0F, 1.0F), new Vector3(1.0F, 1.0F, 1.0F), new Vector3(1.0F, 1.0F, -1.0F),
+            // Top face
+            new Vector3(-1.0F, 1.0F, -1.0F), new Vector3(1.0F, 1.0F, -1.0F), new Vector3(1.0F, 1.0F, 1.0F), new Vector3(-1.0F, 1.0F, 1.0F),
+            // Bottom face
+            new Vector3(-1.0F, -1.0F, 1.0F), new Vector3(1.0F, -1.0F, 1.0F), new Vector3(1.0F, -1.0F, -1.0F), new Vector3(-1.0F, -1.0F, -1.0F)
+        ];
+        
+        Vertex3D[] vertices = new Vertex3D[24];
+        
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 4; j++) {
+                int index = i * 4 + j;
+                vertices[index] = new Vertex3D() {
+                    Position = positions[index] * new Vector3(width / 2.0F, height / 2.0F, length / 2.0F),
+                    TexCoords = texCoords[j],
+                    Normal = normals[i]
+                };
+            }
+        }
+    
+        uint[] indices = [
+            // Front face
+            0, 1, 2,
+            2, 3, 0,
+    
+            // Back face
+            4, 5, 6,
+            6, 7, 4,
+    
+            // Left face
+            8, 9, 10,
+            10, 11, 8,
+    
+            // Right face
+            12, 13, 14,
+            14, 15, 12,
+    
+            // Top face
+            16, 17, 18,
+            18, 19, 16,
+    
+            // Bottom face
+            20, 21, 22,
+            22, 23, 20
+        ];
+    
+        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
+    
+        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap() {
+            Texture = GlobalResource.DefaultModelTexture,
+            Color = Color.White
+        });
+    
+        return new Mesh(graphicsDevice, material, vertices, indices);
+    }
+
+    /// <summary>
+    /// Generates a sphere mesh with the specified radius, rings, and slices.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used to create and manage the GPU resources needed for the mesh.</param>
+    /// <param name="radius">The radius of the sphere.</param>
+    /// <param name="rings">The number of horizontal segments dividing the sphere.</param>
+    /// <param name="slices">The number of vertical segments dividing the sphere.</param>
+    /// <returns>A new instance of the <see cref="Mesh"/> class representing the generated sphere.</returns>
+    public static Mesh GenSphere(GraphicsDevice graphicsDevice, float radius, int rings, int slices) {
+        if (slices < 3) {
+            slices = 3;
+            Logger.Warn("The number of slices must be at least 3. The value is now set to 3.");
+        }
+        
+        Vector3[] positions = new Vector3[(rings + 1) * (slices + 1)];
+        Vector2[] texCoords = new Vector2[(rings + 1) * (slices + 1)];
+        Vector3[] normals = new Vector3[(rings + 1) * (slices + 1)];
+        Vertex3D[] vertices = new Vertex3D[(rings + 1) * (slices + 1)];
+        uint[] indices = new uint[rings * slices * 6];
+
+        for (int ring = 0; ring <= rings; ring++) {
+            float theta = ring * MathF.PI / rings;
+            float sinTheta = MathF.Sin(theta);
+            float cosTheta = MathF.Cos(theta);
+
+            for (int slice = 0; slice <= slices; slice++) {
+                float phi = slice * 2.0F * MathF.PI / slices;
+                float sinPhi = MathF.Sin(phi);
+                float cosPhi = MathF.Cos(phi);
+
+                int index = ring * (slices + 1) + slice;
+
+                Vector3 position = new Vector3(
+                    radius / 2.0F * sinTheta * cosPhi,
+                    radius / 2.0F * cosTheta,
+                    radius / 2.0F * sinTheta * sinPhi
+                );
+
+                positions[index] = position;
+                texCoords[index] = new Vector2((float) slice / slices, (float) ring / rings);
+                normals[index] = Vector3.Normalize(position);
+
+                vertices[index] = new Vertex3D() {
+                    Position = positions[index],
+                    TexCoords = texCoords[index],
+                    Normal = normals[index]
+                };
+            }
+        }
+
+        int counter = 0;
+
+        for (int ring = 0; ring < rings; ring++) {
+            for (int slice = 0; slice < slices; slice++) {
+                int first = ring * (slices + 1) + slice;
+                int second = first + slices + 1;
+
+                indices[counter++] = (uint) first;
+                indices[counter++] = (uint) second;
+                indices[counter++] = (uint) (first + 1);
+ 
+                indices[counter++] = (uint) second;
+                indices[counter++] = (uint) (second + 1);
+                indices[counter++] = (uint) (first + 1);
+            }
+        }
+
+        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
+
+        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap() {
+            Texture = GlobalResource.DefaultModelTexture,
+            Color = Color.White
+        });
+
+        return new Mesh(graphicsDevice, material, vertices, indices);
+    }
+
+    /// <summary>
+    /// Generates a 3D hemisphere mesh with a specified radius, number of rings, and slices.
+    /// </summary>
+    /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> instance used to allocate GPU resources for the mesh.</param>
+    /// <param name="radius">The radius of the hemisphere.</param>
+    /// <param name="rings">The number of subdivisions along the vertical (Y-axis) direction of the hemisphere.</param>
+    /// <param name="slices">The number of subdivisions around the horizontal (XZ-plane) direction of the hemisphere.</param>
+    /// <returns>A new instance of the <see cref="Mesh"/> class representing the generated hemisphere model.</returns>
+    public static Mesh GenHemisphere(GraphicsDevice graphicsDevice, float radius, int rings, int slices) {
+        if (slices < 3) { // TODO: ADD A BOTTOM.
+            slices = 3;
+            Logger.Warn("The number of slices must be at least 3. The value is now set to 3.");
+        }
+        
+        Vector3[] positions = new Vector3[(rings + 1) * (slices + 1)];
+        Vector2[] texCoords = new Vector2[(rings + 1) * (slices + 1)];
+        Vector3[] normals = new Vector3[(rings + 1) * (slices + 1)];
+        Vertex3D[] vertices = new Vertex3D[(rings + 1) * (slices + 1)];
+        uint[] indices = new uint[rings * slices * 6 / 2];
+        
+        for (int ring = 0; ring <= rings / 2; ring++) {
+            float theta = ring * MathF.PI / rings;
+            float sinTheta = MathF.Sin(theta);
+            float cosTheta = MathF.Cos(theta);
+
+            for (int slice = 0; slice <= slices; slice++) {
+                float phi = slice * 2.0F * MathF.PI / slices;
+                float sinPhi = MathF.Sin(phi);
+                float cosPhi = MathF.Cos(phi);
+
+                int index = ring * (slices + 1) + slice;
+
+                Vector3 position = new Vector3(
+                    radius / 2.0F * sinTheta * cosPhi,
+                    radius / 2.0F * cosTheta,
+                    radius / 2.0F * sinTheta * sinPhi
+                );
+
+                positions[index] = position;
+                texCoords[index] = new Vector2((float) slice / slices, (float) ring / rings);
+                normals[index] = Vector3.Normalize(position);
+
+                vertices[index] = new Vertex3D() {
+                    Position = positions[index],
+                    TexCoords = texCoords[index],
+                    Normal = normals[index]
+                };
+            }
+        }
+
+        int counter = 0;
+
+        for (int ring = 0; ring < rings / 2; ring++) {
+            for (int slice = 0; slice < slices; slice++) {
+                int first = ring * (slices + 1) + slice;
+                int second = first + slices + 1;
+
+                indices[counter++] = (uint) first;
+                indices[counter++] = (uint) second;
+                indices[counter++] = (uint) (first + 1);
+ 
+                indices[counter++] = (uint) second;
+                indices[counter++] = (uint) (second + 1);
+                indices[counter++] = (uint) (first + 1);
+            }
+        }
+
+        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
+
+        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap() {
+            Texture = GlobalResource.DefaultModelTexture,
+            Color = Color.White
+        });
+
+        return new Mesh(graphicsDevice, material, vertices, indices);
+    }
+
+    /// <summary>
+    /// Generates a cylindrical mesh with specified dimensions and resolution.
+    /// </summary>
+    /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> responsible for managing GPU resources.</param>
+    /// <param name="radius">The radius of the cylinder's base and top.</param>
+    /// <param name="height">The height of the cylinder.</param>
+    /// <param name="slices">The number of slices (or segments) used to approximate the cylinder. Must be at least 3.</param>
+    /// <returns>A new instance of <see cref="Mesh"/> representing the generated cylindrical geometry.</returns>
+    public static Mesh GenCylinder(GraphicsDevice graphicsDevice, float radius, float height, int slices) {
+        if (slices < 3) {
+            slices = 3;
+            Logger.Warn("The number of slices must be at least 3. The value is now set to 3.");
+        }
+    
+        List<Vertex3D> vertices = new List<Vertex3D>();
+        List<uint> indices = new List<uint>();
+    
+        float halfHeight = height / 2.0F;
+    
+        // Generate the side vertices.
+        for (int slice = 0; slice <= slices; slice++) {
+            float angle = slice * MathF.Tau / slices;
+            float x = MathF.Cos(angle) * (radius / 2.0F);
+            float z = MathF.Sin(angle) * (radius / 2.0F);
+            float u = (float) slice / slices;
+    
+            // Bottom vertex.
+            vertices.Add(new Vertex3D {
+                Position = new Vector3(x, -halfHeight, z),
+                Normal = Vector3.Normalize(new Vector3(x, 0.0F, z)),
+                TexCoords = new Vector2(u, 1.0F)
+            });
+    
+            // Top vertex.
+            vertices.Add(new Vertex3D {
+                Position = new Vector3(x, halfHeight, z),
+                Normal = Vector3.Normalize(new Vector3(x, 0.0F, z)),
+                TexCoords = new Vector2(u, 0.0F)
+            });
+        }
+    
+        // Generate the side indices.
+        for (int slice = 0; slice < slices; slice++) {
+            int baseIndex = slice * 2;
+            int nextIndex = (slice + 1) * 2;
+            
+            indices.Add((uint) (baseIndex + 1));
+            indices.Add((uint) baseIndex);
+            indices.Add((uint) nextIndex);
+            
+            indices.Add((uint) (baseIndex + 1));
+            indices.Add((uint) nextIndex);
+            indices.Add((uint) (nextIndex + 1));
+        }
+    
+        // Generate the bottom cap.
+        int bottomCenterIndex = vertices.Count;
+        
+        vertices.Add(new Vertex3D {
+            Position = new Vector3(0, -halfHeight, 0),
+            Normal = -Vector3.UnitY,
+            TexCoords = new Vector2(0.5F, 0.5F)
+        });
+    
+        for (int slice = 0; slice < slices; slice++) {
+            int baseIndex = slice * 2;
+    
+            indices.Add((uint) bottomCenterIndex);
+            indices.Add((uint) (baseIndex + 2));
+            indices.Add((uint) baseIndex);
+        }
+    
+        // Generate the top cap.
+        int topCenterIndex = vertices.Count;
+        
+        vertices.Add(new Vertex3D {
+            Position = new Vector3(0.0F, halfHeight, 0.0F),
+            Normal = Vector3.UnitY,
+            TexCoords = new Vector2(0.5F, 0.5F)
+        });
+    
+        for (int slice = 0; slice < slices; slice++) {
+            int baseIndex = slice * 2 + 1;
+    
+            indices.Add((uint) topCenterIndex);
+            indices.Add((uint) baseIndex);
+            indices.Add((uint) (baseIndex + 2));
+        }
+    
+        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
+        
+        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap {
+            Texture = GlobalResource.DefaultModelTexture,
+            Color = Color.White
+        });
+    
+        return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
+    }
+
+    /// <summary>
+    /// Generates a 3D cone mesh with a specified radius, height, and number of slices.
+    /// </summary>
+    /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used to manage GPU resources for the mesh.</param>
+    /// <param name="radius">The radius of the cone's base.</param>
+    /// <param name="height">The height of the cone from base to tip.</param>
+    /// <param name="slices">The number of slices dividing the circular base. Must be at least 3.</param>
+    /// <returns>A new instance of the <see cref="Mesh"/> class representing the generated cone.</returns>
+    public static Mesh GenCone(GraphicsDevice graphicsDevice, float radius, float height, int slices) {
+        if (slices < 3) {
+            slices = 3;
+            Logger.Warn("The number of slices must be at least 3. The value is now set to 3.");
+        }
+        
+        float halfHeight = height / 2.0F;
+
+        List<Vertex3D> vertices = new List<Vertex3D>();
+        List<uint> indices = new List<uint>();
+
+        // Generate the side vertices.
+        for (int slice = 0; slice <= slices; slice++) {
+            float angle = slice * MathF.Tau / slices;
+            float x = MathF.Cos(angle) * (radius / 2.0F);
+            float z = MathF.Sin(angle) * (radius / 2.0F);
+            float u = (float) slice / slices;
+
+            // Bottom vertex.
+            vertices.Add(new Vertex3D {
+                Position = new Vector3(x, -halfHeight, z),
+                Normal = Vector3.Normalize(new Vector3(x, radius / 2.0F, z)),
+                TexCoords = new Vector2(u, 1.0F)
+            });
+
+            // Top vertex (tip of the cone).
+            vertices.Add(new Vertex3D {
+                Position = new Vector3(0.0F, halfHeight, 0.0F),
+                Normal = Vector3.Normalize(new Vector3(x, radius / 2.0F, z)),
+                TexCoords = new Vector2(u, 0.0F)
+            });
+        }
+
+        // Generate the side indices.
+        for (int slice = 0; slice < slices; slice++) {
+            int baseIndex = slice * 2;
+            int nextIndex = (slice + 1) * 2;
+
+            indices.Add((uint) (baseIndex + 1));
+            indices.Add((uint) baseIndex);
+            indices.Add((uint) nextIndex);
+        }
+
+        // Generate the bottom cap.
+        int bottomCenterIndex = vertices.Count;
+
+        vertices.Add(new Vertex3D {
+            Position = new Vector3(0, -halfHeight, 0),
+            Normal = Vector3.UnitY,
+            TexCoords = new Vector2(0.5F, 0.5F)
+        });
+
+        for (int slice = 0; slice < slices; slice++) {
+            int baseIndex = slice * 2;
+
+            indices.Add((uint) bottomCenterIndex);
+            indices.Add((uint) (baseIndex + 2));
+            indices.Add((uint) baseIndex);
+        }
+
+        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
+
+        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap {
+            Texture = GlobalResource.DefaultModelTexture,
+            Color = Color.White
+        });
+
+        return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
+    }
+
+    /// <summary>
+    /// Generates a torus-shaped mesh with specified dimensions and detail.
+    /// </summary>
+    /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used for managing GPU resources.</param>
+    /// <param name="radius">The radius of the torus from the center to the middle of the tube.</param>
+    /// <param name="size">The thickness of the torus tube.</param>
+    /// <param name="radSeg">The number of radial segments in the torus.</param>
+    /// <param name="sides">The number of segments around the tube's circular cross-section.</param>
+    /// <returns>A new instance of <see cref="Mesh"/> representing the generated torus.</returns>
+    public static Mesh GenTorus(GraphicsDevice graphicsDevice, float radius, float size, int radSeg, int sides) {
+        if (radSeg < 3) {
+            radSeg = 3;
+            Logger.Warn("The number of radial segments must be at least 3. The value is now set to 3.");
+        }
+        
+        if (sides < 3) {
+            sides = 3;
+            Logger.Warn("The number of sides must be at least 3. The value is now set to 3.");
+        }
+
+        List<Vertex3D> vertices = new List<Vertex3D>();
+        List<uint> indices = new List<uint>();
+
+        float circusStep = MathF.Tau / radSeg;
+        float sideStep = MathF.Tau / sides;
+
+        // Generate the vertices.
+        for (int rad = 0; rad <= radSeg; rad++) {
+            float radAngle = rad * circusStep;
+            float cosRad = MathF.Cos(radAngle);
+            float sinRad = MathF.Sin(radAngle);
+
+            for (int side = 0; side <= sides; side++) {
+                float sideAngle = side * sideStep;
+                float cosSide = MathF.Cos(sideAngle);
+                float sinSide = MathF.Sin(sideAngle);
+
+                Vector3 normal = new Vector3(cosSide * cosRad, sinSide, cosSide * sinRad);
+                Vector3 position = normal * (size / 4) + new Vector3(cosRad * (radius / 4), 0, sinRad * (radius / 4));
+                Vector2 texCoords = new Vector2((float) rad / radSeg, (float) side / sides);
+
+                vertices.Add(new Vertex3D {
+                    Position = position,
+                    Normal = Vector3.Normalize(normal),
+                    TexCoords = texCoords
+                });
+            }
+        }
+
+        // Generate the indices.
+        for (int rad = 0; rad < radSeg; rad++) {
+            for (int side = 0; side < sides; side++) {
+                int current = rad * (sides + 1) + side;
+                int next = current + sides + 1;
+
+                indices.Add((uint) current);
+                indices.Add((uint) next);
+                indices.Add((uint) (next + 1));
+ 
+                indices.Add((uint) current);
+                indices.Add((uint) (next + 1));
+                indices.Add((uint) (current + 1));
+            }
+        }
+
+        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
+        
+        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap {
+            Texture = GlobalResource.DefaultModelTexture,
+            Color = Color.White
+        });
+
+        return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
+    }
+
+    /// <summary>
+    /// Generates a torus knot mesh with the specified parameters.
+    /// </summary>
+    /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used to manage GPU resources for the mesh.</param>
+    /// <param name="radius">The radius of the torus knot.</param>
+    /// <param name="tubeRadius">The thickness of the tube forming the torus knot.</param>
+    /// <param name="radSeg">The number of radial segments for the torus knot. The minimum value is 3.</param>
+    /// <param name="sides">The number of sides forming the cross-section of the tube. The minimum value is 3.</param>
+    /// <returns>A <see cref="Mesh"/> representing the torus knot with the specified parameters.</returns>
+    public static Mesh GenKnot(GraphicsDevice graphicsDevice, float radius, float tubeRadius, int radSeg, int sides) {
+        if (radSeg < 3) {
+            radSeg = 3;
+            Logger.Warn("The number of radial segments must be at least 3. The value is now set to 3.");
+        }
+    
+        if (sides < 3) {
+            sides = 3;
+            Logger.Warn("The number of sides must be at least 3. The value is now set to 3.");
+        }
+    
+        List<Vertex3D> vertices = new List<Vertex3D>();
+        List<uint> indices = new List<uint>();
+    
+        float step = MathF.Tau / radSeg;
+        float sideStep = MathF.Tau / sides;
+    
+        // Generate the vertices.
+        for (int rad = 0; rad <= radSeg; rad++) {
+            float t = rad * step;
+    
+            float x = MathF.Sin(t) + 2.0F * MathF.Sin(2.0F * t);
+            float y = MathF.Cos(t) - 2.0F * MathF.Cos(2.0F * t);
+            float z = -MathF.Sin(3.0F * t);
+    
+            Vector3 center = new Vector3(x, y, z) * (radius / 6.0F);
+    
+            Vector3 tangent = Vector3.Normalize(new Vector3(
+                MathF.Cos(t) + 4.0F * MathF.Cos(2.0F * t),
+                -MathF.Sin(t) + 4.0F * MathF.Sin(2.0F * t),
+                -3.0F * MathF.Cos(3.0F * t)
+            ));
+            
+            Vector3 normal = Vector3.Normalize(new Vector3(-tangent.Y, tangent.X, 0.0F));
+            Vector3 binormal = Vector3.Cross(tangent, normal);
+
+            for (int side = 0; side <= sides; side++) {
+                float sideAngle = side * sideStep;
+                float cosAngle = MathF.Cos(sideAngle);
+                float sinAngle = MathF.Sin(sideAngle);
+    
+                Vector3 offset = normal * cosAngle * (tubeRadius / 6.0F) + binormal * sinAngle * (tubeRadius / 6.0F);
+                Vector3 position = center + offset;
+    
+                Vector3 vertexNormal = Vector3.Normalize(offset);
+                Vector2 texCoords = new Vector2((float) rad / radSeg, (float) side / sides);
+    
+                vertices.Add(new Vertex3D {
+                    Position = position,
+                    Normal = vertexNormal,
+                    TexCoords = texCoords
+                });
+            }
+        }
+        
+        // Generate the indices.
+        for (int rad = 0; rad < radSeg; rad++) {
+            for (int side = 0; side < sides; side++) {
+                int current = rad * (sides + 1) + side;
+                int next = current + sides + 1;
+    
+                indices.Add((uint) current);
+                indices.Add((uint) next);
+                indices.Add((uint) (next + 1));
+                
+                indices.Add((uint) current);
+                indices.Add((uint) (next + 1));
+                indices.Add((uint) (current + 1));
+            }
+        }
+        
+        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
+        
+        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap {
+            Texture = GlobalResource.DefaultModelTexture,
+            Color = Color.White
+        });
+        
+        return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
+    }
+
+    /// <summary>
+    /// Generates a heightmap-based 3D mesh from the given heightmap image and dimensions.
+    /// </summary>
+    /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used for managing GPU resources and rendering the generated mesh.</param>
+    /// <param name="heightmap">The heightmap image used to determine the height of each vertex in the mesh.</param>
+    /// <param name="size">The 3D size of the heightmap mesh in world units, where X and Z represent the width and depth, and Y represents the height scale.</param>
+    /// <returns>A new <see cref="Mesh"/> instance representing the generated heightmap mesh based on the input parameters.</returns>
+    public static Mesh GenHeightmap(GraphicsDevice graphicsDevice, Image<Rgba32> heightmap, Vector3 size) {
+        float xStep = size.X / (heightmap.Width - 1.0F);
+        float zStep = size.Z / (heightmap.Height - 1.0F);
+        float heightScale = size.Y / 255.0F;
+
+        List<Vertex3D> vertices = new List<Vertex3D>();
+        List<uint> indices = new List<uint>();
+
+        // Generate the vertices.
+        for (int z = 0; z < heightmap.Height; z++) {
+            for (int x = 0; x < heightmap.Width; x++) {
+                Rgba32 pixel = heightmap[x, z];
+                float height = pixel.R * heightScale;
+                Vector3 position = new Vector3(x * xStep, height, z * zStep);
+                Vector3 normal = Vector3.UnitY;
+                Vector2 texCoords = new Vector2(x / (heightmap.Width - 1.0F), z / (heightmap.Height - 1.0F));
+
+                vertices.Add(new Vertex3D {
+                    Position = position,
+                    Normal = normal,
+                    TexCoords = texCoords
+                });
+            }
+        }
+
+        // Generate the indices.
+        for (int z = 0; z < heightmap.Height - 1; z++) {
+            for (int x = 0; x < heightmap.Width - 1; x++) {
+                uint topLeft = (uint) (z * heightmap.Width + x);
+                uint topRight = (uint) (z * heightmap.Width + x + 1);
+                uint bottomLeft = (uint) ((z + 1) * heightmap.Width + x);
+                uint bottomRight = (uint) ((z + 1) * heightmap.Width + x + 1);
+
+                indices.Add(topLeft);
+                indices.Add(topRight);
+                indices.Add(bottomLeft);
+
+                indices.Add(bottomLeft);
+                indices.Add(topRight);
+                indices.Add(bottomRight);
+            }
+        }
+        
+        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
+
+        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap {
+            Texture = GlobalResource.DefaultModelTexture,
+            Color = Color.White
+        });
+
+        return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
+    }
+
+    public static Mesh GenCubemap(GraphicsDevice graphicsDevice, Image<Rgba32> cubemap, Vector3 size) { //TODO: FIX THIS!
+        List<Vertex3D> vertices = new List<Vertex3D>();
+        List<uint> indices = new List<uint>();
+
+        float xSize = size.X / 2.0f;
+        float ySize = size.Y / 2.0f;
+        float zSize = size.Z / 2.0f;
+
+        // The 8 corners of the cube
+        Vector3[] corners = [
+            new Vector3(-xSize, -ySize, -zSize), // Bottom-left-front
+            new Vector3(xSize, -ySize, -zSize),  // Bottom-right-front
+            new Vector3(xSize, ySize, -zSize),   // Top-right-front
+            new Vector3(-xSize, ySize, -zSize),  // Top-left-front
+            new Vector3(-xSize, -ySize, zSize),  // Bottom-left-back
+            new Vector3(xSize, -ySize, zSize),   // Bottom-right-back
+            new Vector3(xSize, ySize, zSize),    // Top-right-back
+            new Vector3(-xSize, ySize, zSize)    // Top-left-back
+        ];
+
+        // Defining each face of the cube (6 faces)
+        int[][] faces = new int[][] {
+            [0, 1, 2, 3], // Front face
+            [4, 5, 6, 7], // Back face
+            [3, 2, 6, 7], // Top face
+            new int[] { 0, 1, 5, 4 }, // Bottom face
+            new int[] { 0, 3, 7, 4 }, // Left face
+            new int[] { 1, 2, 6, 5 }  // Right face
+        };
+
+        // Map each face of the cube to a specific part of the cubemap texture
+        Vector2[][] uvMapping = new Vector2[][] {
+            new Vector2[] { new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f) }, // Front
+            new Vector2[] { new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f) }, // Back
+            new Vector2[] { new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f) }, // Top
+            new Vector2[] { new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f) }, // Bottom
+            new Vector2[] { new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f) }, // Left
+            new Vector2[] { new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f) }  // Right
+        };
+
+        // Process each face
+        for (int f = 0; f < faces.Length; f++) {
+            int[] face = faces[f];
+            Vector2[] uvs = uvMapping[f];
+
+            int startIndex = vertices.Count;
+
+            // Create vertices for each face
+            for (int v = 0; v < 4; v++) {
+                Vector3 position = corners[face[v]];
+                Vector3 normal = Vector3.Normalize(position); // Normal pointing outwards from the cube
+                Vector2 texCoords = uvs[v];
+
+                vertices.Add(new Vertex3D {
+                    Position = position,
+                    Normal = normal,
+                    TexCoords = texCoords
+                });
+            }
+
+            // Create indices for the two triangles of the face
+            indices.Add((uint)startIndex);
+            indices.Add((uint)(startIndex + 1));
+            indices.Add((uint)(startIndex + 2));
+
+            indices.Add((uint)startIndex);
+            indices.Add((uint)(startIndex + 2));
+            indices.Add((uint)(startIndex + 3));
+        }
+
+        // Create a material using the provided cubemap
+        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
+
+        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap {
+            Texture = GlobalResource.DefaultModelTexture,
+            Color = Color.White
+        });
+
+        // Return the mesh
+        return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
+        
+    }
+    
+    // TODO: Check if it works correct.
+    public void GenerateTangents() {
+        if (this.Vertices.Length < 3 || this.Indices.Length < 3) {
+            return;
+        }
+
+        Vector3[] tan1 = new Vector3[this.Vertices.Length];
+        Vector3[] tan2 = new Vector3[this.Vertices.Length];
+
+        for (int i = 0; i < this.Indices.Length; i += 3) {
+            int i1 = (int) this.Indices[i];
+            int i2 = (int) this.Indices[i + 1];
+            int i3 = (int) this.Indices[i + 2];
+
+            Vertex3D v1 = this.Vertices[i1];
+            Vertex3D v2 = this.Vertices[i2];
+            Vertex3D v3 = this.Vertices[i3];
+
+            Vector3 p1 = v1.Position;
+            Vector3 p2 = v2.Position;
+            Vector3 p3 = v3.Position;
+
+            Vector3 w1 = new Vector3(v1.TexCoords.X, v1.TexCoords.Y, 1.0f);
+            Vector3 w2 = new Vector3(v2.TexCoords.X, v2.TexCoords.Y, 1.0f);
+            Vector3 w3 = new Vector3(v3.TexCoords.X, v3.TexCoords.Y, 1.0f);
+
+            Vector3 q1 = p2 - p1;
+            Vector3 q2 = p3 - p1;
+
+            Vector3 sdir = new Vector3(
+                w2.Y * q1.X - w1.Y * q2.X,
+                w2.Y * q1.Y - w1.Y * q2.Y,
+                w2.Y * q1.Z - w1.Y * q2.Z
+            );
+            
+            Vector3 tdir = new Vector3(
+                w1.X * q2.X - w2.X * q1.X,
+                w1.X * q2.Y - w2.X * q1.Y,
+                w1.X * q2.Z - w2.X * q1.Z
+            );
+
+            tan1[i1] += sdir;
+            tan1[i2] += sdir;
+            tan1[i3] += sdir;
+
+            tan2[i1] += tdir;
+            tan2[i2] += tdir;
+            tan2[i3] += tdir;
+        }
+
+        for (int i = 0; i < this.Vertices.Length; i++) {
+            Vertex3D vertex = this.Vertices[i];
+            Vector3 n = vertex.Normal;
+            Vector3 t = tan1[i];
+
+            Vector3 tangent = Vector3.Normalize(t - (n * Vector3.Dot(n, t)));
+            this.Vertices[i].Tangent = tangent;
+        }
+    }
+    
     /// <summary>
     /// Updates the transformation matrices of the animation bones for a specific frame using the provided command list and animation data.
     /// </summary>
@@ -360,6 +1191,9 @@ public class Mesh : Disposable {
             this._vertexBuffer.Dispose();
             this._indexBuffer.Dispose();
             this._modelMatrixBuffer.Dispose();
+            this._boneBuffer.Dispose();
+            this._colorBuffer.Dispose();
+            this._valueBuffer.Dispose();
         }
     }
 }

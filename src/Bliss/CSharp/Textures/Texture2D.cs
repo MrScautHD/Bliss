@@ -137,7 +137,7 @@ public class Texture2D : Disposable {
     /// <param name="sampler">The sampler used for the resource set.</param>
     /// <param name="layout">The resource layout used for the resource set.</param>
     /// <returns>The resource set associated with the specified sampler and resource layout.</returns>
-    public ResourceSet GetResourceSet(Sampler sampler, SimpleTextureLayout layout) { // TODO: MOVE TO SimpleTextureLayout!
+    public ResourceSet GetResourceSet(Sampler sampler, SimpleTextureLayout layout) {
         if (!this._cachedResourceSets.TryGetValue((sampler, layout), out ResourceSet? resourceSet)) {
             ResourceSet newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(layout.Layout, this.DeviceTexture, sampler));
 

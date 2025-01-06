@@ -1,5 +1,6 @@
 using System.Numerics;
 using Bliss.CSharp;
+using Bliss.CSharp.Audio;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Geometry;
@@ -11,6 +12,7 @@ using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Contexts;
 using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Logging;
+using Bliss.CSharp.Materials;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
@@ -47,6 +49,17 @@ public class Game : Disposable {
     private Cam3D _cam3D;
     private Model _playerModel;
     private Model _planeModel;
+    
+    private Mesh _customPoly;
+    private Mesh _customCube;
+    private Mesh _customSphere;
+    private Mesh _customHemishpere;
+    private Mesh _customCylinder;
+    private Mesh _customCone;
+    private Mesh _customTorus;
+    private Mesh _customKnot;
+    private Mesh _customHeighmap;
+    private Mesh _customCubemap;
 
     private int _frameCount;
     private bool _playingAnim;
@@ -102,6 +115,9 @@ public class Game : Disposable {
         else {
             throw new Exception("This type of window is not supported by the InputContext!");
         }
+        
+        Logger.Info("Initialize audio device...");
+        AudioDevice.Init();
 
         this.Init();
         
@@ -118,7 +134,8 @@ public class Game : Disposable {
             if (!this.MainWindow.Exists) {
                 break;
             }
-
+            
+            AudioDevice.Update();
             this.Update();
             this.AfterUpdate();
 
@@ -148,6 +165,38 @@ public class Game : Disposable {
         this._cam3D = new Cam3D((uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0), default, ProjectionType.Perspective, CameraMode.Free);
         this._playerModel = Model.Load(this.GraphicsDevice, "content/player.glb");
         this._planeModel = Model.Load(this.GraphicsDevice, "content/plane.glb");
+
+        Texture2D customMeshTexture = new Texture2D(this.GraphicsDevice, "content/cube.png");
+
+        this._customPoly = Mesh.GenPoly(this.GraphicsDevice, 9, 1);
+        this._customPoly.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
+
+        this._customCube = Mesh.GenCube(this.GraphicsDevice, 1, 1, 1);
+        this._customCube.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
+
+        this._customSphere = Mesh.GenSphere(this.GraphicsDevice, 1F, 40, 40);
+        this._customSphere.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
+
+        this._customHemishpere = Mesh.GenHemisphere(this.GraphicsDevice, 1F, 40, 40);
+        this._customHemishpere.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
+
+        this._customCylinder = Mesh.GenCylinder(this.GraphicsDevice, 1F, 1F, 40);
+        this._customCylinder.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
+
+        this._customCone = Mesh.GenCone(this.GraphicsDevice, 1F, 1F, 40);
+        this._customCone.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
+
+        this._customTorus = Mesh.GenTorus(this.GraphicsDevice, 2.0F, 1F, 40, 40);
+        this._customTorus.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
+
+        this._customKnot = Mesh.GenKnot(this.GraphicsDevice, 1F, 1F, 40, 40);
+        this._customKnot.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
+        
+        this._customHeighmap = Mesh.GenHeightmap(this.GraphicsDevice, Image.Load<Rgba32>("content/heightmap.png"), new Vector3(10, 10, 10));
+        this._customHeighmap.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
+
+        this._customCubemap = Mesh.GenCubemap(this.GraphicsDevice, Image.Load<Rgba32>("content/cubemap.png"), Vector3.One);
+        this._customCubemap.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
     }
 
     protected virtual void Update() {
@@ -178,6 +227,17 @@ public class Game : Disposable {
         // Drawing 3D.
         this._cam3D.Begin(commandList);
         
+        this._customPoly.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(7, 0, 0)}, Color.White);
+        this._customCube.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(9, 0, 0)}, Color.White);
+        this._customSphere.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(13, 0, 0)}, Color.White);
+        this._customHemishpere.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(15, 0, 0)}, Color.White);
+        this._customCylinder.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(17, 0, 0)}, Color.White);
+        this._customCone.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(19, 0, 0)}, Color.White);
+        this._customTorus.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(21, 0, 0)}, Color.White);
+        this._customKnot.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(23, 0, 0)}, Color.White);
+        this._customHeighmap.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(26, 0, 0)}, Color.White);
+        this._customCubemap.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(34, 0, 0)}, Color.White);
+
         if (this._cam3D.GetFrustum().ContainsBox(this._planeModel.BoundingBox)) {
             this._planeModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform(), Color.White);
         }
@@ -244,6 +304,7 @@ public class Game : Disposable {
             this._playerModel.Dispose();
             this._planeModel.Dispose();
             
+            AudioDevice.Destroy();
             GlobalResource.Destroy();
             Input.Destroy();
             this.MainWindow.Dispose();

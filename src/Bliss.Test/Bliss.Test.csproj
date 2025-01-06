@@ -7,6 +7,7 @@
         <Nullable>enable</Nullable>
         <OutputType>Exe</OutputType>
         <LangVersion>13</LangVersion>
+        <ApplicationIcon>..\Bliss\content\images\icon.ico</ApplicationIcon>
     </PropertyGroup>
     
     <!-- References -->

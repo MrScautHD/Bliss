@@ -186,6 +186,8 @@ public class Material : Disposable {
     
     protected override void Dispose(bool disposing) {
         if (disposing) {
+            // TODO: Remove dispose when you get it managed to dispose the textures and shaders with the model.
+            
             // TODO: Add a Dispose for the material resources! (but maybe with a dispose variable... idk).
         }
     }

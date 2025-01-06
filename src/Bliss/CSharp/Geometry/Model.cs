@@ -66,8 +66,7 @@ public class Model : Disposable {
 
     /// <summary>
     /// Collection of animations associated with the model.
-    /// Each animation encapsulates skeletal transformations over time,
-    /// enabling the model to exhibit complex motions.
+    /// Each animation encapsulates skeletal transformations over time, enabling the model to exhibit complex motions.
     /// </summary>
     public ModelAnimation[] Animations { get; private set; }
     
