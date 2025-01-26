@@ -6,12 +6,11 @@ using Bliss.CSharp.Effects;
 using Bliss.CSharp.Geometry.Animations;
 using Bliss.CSharp.Geometry.Animations.Keyframes;
 using Bliss.CSharp.Graphics.VertexTypes;
+using Bliss.CSharp.Images;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
 using AMesh = Assimp.Mesh;
 using ShaderMaterialProperties = Assimp.Material.ShaderMaterialProperties;
@@ -319,9 +318,7 @@ public class Model : Disposable {
                     byte[] compressedData = embeddedTexture.CompressedData;
 
                     using (MemoryStream memoryStream = new MemoryStream(compressedData)) {
-                        using (Image<Rgba32> image = Image.Load<Rgba32>(memoryStream)) {
-                            return new Texture2D(graphicsDevice, image);
-                        }
+                        return new Texture2D(graphicsDevice, new Image(memoryStream));
                     }
                 }
             }

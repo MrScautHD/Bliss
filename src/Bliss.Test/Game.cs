@@ -8,6 +8,7 @@ using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Rendering.Batches.Primitives;
 using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 using Bliss.CSharp.Graphics.Rendering.Passes;
+using Bliss.CSharp.Images;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Contexts;
 using Bliss.CSharp.Interact.Keyboards;
@@ -16,8 +17,6 @@ using Bliss.CSharp.Materials;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
 using Color = Bliss.CSharp.Colors.Color;
 using Rectangle = Bliss.CSharp.Transformations.Rectangle;
@@ -94,7 +93,7 @@ public class Game : Disposable {
         this.GraphicsDevice = graphicsDevice;
         
         Logger.Info("Loading window icon...");
-        this.MainWindow.SetIcon(this.Settings.IconPath != string.Empty ? Image.Load<Rgba32>(this.Settings.IconPath) : Image.Load<Rgba32>("content/images/icon.png"));
+        this.MainWindow.SetIcon(this.Settings.IconPath != string.Empty ? new Image(this.Settings.IconPath) : new Image("content/images/icon.png"));
         
         Logger.Info("Initialize time...");
         Time.Init();
@@ -192,10 +191,10 @@ public class Game : Disposable {
         this._customKnot = Mesh.GenKnot(this.GraphicsDevice, 1F, 1F, 40, 40);
         this._customKnot.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
         
-        this._customHeighmap = Mesh.GenHeightmap(this.GraphicsDevice, Image.Load<Rgba32>("content/heightmap.png"), new Vector3(10, 10, 10));
-        this._customHeighmap.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
+        this._customHeighmap = Mesh.GenHeightmap(this.GraphicsDevice, new Image("content/heightmap.png"), new Vector3(1, 1, 1));
+        this._customHeighmap.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), new Texture2D(this.GraphicsDevice, "content/heightmap.png"));
 
-        this._customCubemap = Mesh.GenCubemap(this.GraphicsDevice, Image.Load<Rgba32>("content/cubemap.png"), Vector3.One);
+        this._customCubemap = Mesh.GenCubemap(this.GraphicsDevice, new Image("content/cubemap.png"), Vector3.One);
         this._customCubemap.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
     }
 
@@ -227,16 +226,16 @@ public class Game : Disposable {
         // Drawing 3D.
         this._cam3D.Begin(commandList);
         
-        this._customPoly.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(7, 0, 0)}, Color.White);
-        this._customCube.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(9, 0, 0)}, Color.White);
+        this._customPoly.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(9, 0, 0)}, Color.White);
+        this._customCube.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(11, 0, 0)}, Color.White);
         this._customSphere.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(13, 0, 0)}, Color.White);
         this._customHemishpere.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(15, 0, 0)}, Color.White);
         this._customCylinder.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(17, 0, 0)}, Color.White);
         this._customCone.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(19, 0, 0)}, Color.White);
         this._customTorus.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(21, 0, 0)}, Color.White);
         this._customKnot.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(23, 0, 0)}, Color.White);
-        this._customHeighmap.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(26, 0, 0)}, Color.White);
-        this._customCubemap.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(34, 0, 0)}, Color.White);
+        this._customHeighmap.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(25, 0, 0)}, Color.White);
+        this._customCubemap.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(27, 0, 0)}, Color.White);
 
         if (this._cam3D.GetFrustum().ContainsBox(this._planeModel.BoundingBox)) {
             this._planeModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform(), Color.White);

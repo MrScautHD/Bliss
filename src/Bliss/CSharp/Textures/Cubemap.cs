@@ -1,6 +1,4 @@
-using System.Runtime.InteropServices;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
+using Bliss.CSharp.Images;
 using Veldrid;
 
 namespace Bliss.CSharp.Textures;
@@ -10,7 +8,7 @@ public class Cubemap : Disposable {
     /// <summary>
     /// Gets the mipmap levels of images for each face of the cubemap.
     /// </summary>
-    public Image<Rgba32>[][] Images { get; }
+    public Image[][] Images { get; }
 
     /// <summary>
     /// Gets the width of the cubemap.
@@ -63,12 +61,12 @@ public class Cubemap : Disposable {
     /// <param name="srgb">Specifies whether the images should be loaded as sRGB.</param>
     public Cubemap(GraphicsDevice graphicsDevice, string positiveXPath, string negativeXPath, string positiveYPath, string negativeYPath, string positiveZPath, string negativeZPath, bool mipmap = true, bool srgb = false) : this(
         graphicsDevice,
-        Image.Load<Rgba32>(positiveXPath),
-        Image.Load<Rgba32>(negativeXPath),
-        Image.Load<Rgba32>(positiveYPath),
-        Image.Load<Rgba32>(negativeYPath),
-        Image.Load<Rgba32>(positiveZPath), 
-        Image.Load<Rgba32>(negativeZPath),
+        new Image(positiveXPath),
+        new Image(negativeXPath),
+        new Image(positiveYPath),
+        new Image(negativeYPath),
+        new Image(positiveZPath), 
+        new Image(negativeZPath),
         mipmap,
         srgb) { }
     
@@ -86,12 +84,12 @@ public class Cubemap : Disposable {
     /// <param name="srgb">Specifies whether the images should be loaded as sRGB.</param>
     public Cubemap(GraphicsDevice graphicsDevice, Stream positiveXStream, Stream negativeXStream, Stream positiveYStream, Stream negativeYStream, Stream positiveZStream, Stream negativeZStream, bool mipmap = true, bool srgb = false) : this(
         graphicsDevice,
-        Image.Load<Rgba32>(positiveXStream),
-        Image.Load<Rgba32>(negativeXStream),
-        Image.Load<Rgba32>(positiveYStream),
-        Image.Load<Rgba32>(negativeYStream),
-        Image.Load<Rgba32>(positiveZStream),
-        Image.Load<Rgba32>(negativeZStream),
+        new Image(positiveXStream),
+        new Image(negativeXStream),
+        new Image(positiveYStream),
+        new Image(negativeYStream),
+        new Image(positiveZStream),
+        new Image(negativeZStream),
         mipmap,
         srgb) { }
 
@@ -107,8 +105,8 @@ public class Cubemap : Disposable {
     /// <param name="negativeZ">The image for the negative Z face of the cubemap.</param>
     /// <param name="mipmap">Specifies whether to generate mipmaps.</param>
     /// <param name="srgb">Specifies whether the images should be loaded as sRGB.</param>
-    public Cubemap(GraphicsDevice graphicsDevice, Image<Rgba32> positiveX, Image<Rgba32> negativeX, Image<Rgba32> positiveY, Image<Rgba32> negativeY, Image<Rgba32> positiveZ, Image<Rgba32> negativeZ, bool mipmap = true, bool srgb = false) {
-        this.Images = new Image<Rgba32>[6][];
+    public Cubemap(GraphicsDevice graphicsDevice, Image positiveX, Image negativeX, Image positiveY, Image negativeY, Image positiveZ, Image negativeZ, bool mipmap = true, bool srgb = false) {
+        this.Images = new Image[6][];
         
         if (mipmap) {
             this.Images[0] = MipmapHelper.GenerateMipmaps(positiveX);
@@ -135,52 +133,20 @@ public class Cubemap : Disposable {
     /// Creates a device texture for the Cubemap.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device.</param>
-    private unsafe void CreateDeviceTexture(GraphicsDevice graphicsDevice) {
+    private void CreateDeviceTexture(GraphicsDevice graphicsDevice) {
         this.DeviceTexture = graphicsDevice.ResourceFactory.CreateTexture(TextureDescription.Texture2D(this.Width, this.Height, this.MipLevels, 1, this.Format, TextureUsage.Sampled | TextureUsage.Cubemap));
-            
+        
         for (int level = 0; level < this.MipLevels; level++) {
-            if (!this.Images[PositiveXArrayLayer][level].DangerousTryGetSinglePixelMemory(out Memory<Rgba32> pixelMemoryPosX)) {
-                throw new VeldridException("Unable to get positive x image pixel data!");
-            }
-            if (!this.Images[NegativeXArrayLayer][level].DangerousTryGetSinglePixelMemory(out Memory<Rgba32> pixelMemoryNegX)) {
-                throw new VeldridException("Unable to get negative x image pixel data!");
-            }
-            if (!this.Images[PositiveYArrayLayer][level].DangerousTryGetSinglePixelMemory(out Memory<Rgba32> pixelMemoryPosY)) {
-                throw new VeldridException("Unable to get positive y image pixel data!");
-            }
-            if (!this.Images[NegativeYArrayLayer][level].DangerousTryGetSinglePixelMemory(out Memory<Rgba32> pixelMemoryNegY)) {
-                throw new VeldridException("Unable to get negative y image pixel data!");
-            }
-            if (!this.Images[PositiveZArrayLayer][level].DangerousTryGetSinglePixelMemory(out Memory<Rgba32> pixelMemoryPosZ)) {
-                throw new VeldridException("Unable to get positive z image pixel data!");
-            }
-            if (!this.Images[NegativeZArrayLayer][level].DangerousTryGetSinglePixelMemory(out Memory<Rgba32> pixelMemoryNegZ)) {
-                throw new VeldridException("Unable to get negative z image pixel data!");
-            }
-            
-            fixed (Rgba32* positiveXPin = &MemoryMarshal.GetReference(pixelMemoryPosX.Span)) {
-                fixed (Rgba32* negativeXPin = &MemoryMarshal.GetReference(pixelMemoryNegX.Span)) {
-                    fixed (Rgba32* positiveYPin = &MemoryMarshal.GetReference(pixelMemoryPosY.Span)) {
-                        fixed (Rgba32* negativeYPin = &MemoryMarshal.GetReference(pixelMemoryNegY.Span)) {
-                            fixed (Rgba32* positiveZPin = &MemoryMarshal.GetReference(pixelMemoryPosZ.Span)) {
-                                fixed (Rgba32* negativeZPin = &MemoryMarshal.GetReference(pixelMemoryNegZ.Span)) {
-                                    Image<Rgba32> image = this.Images[0][level];
-                                    uint width = (uint) image.Width;
-                                    uint height = (uint) image.Height;
-                                    uint faceSize = width * height * this.PixelSizeInBytes;
+            Image image = this.Images[0][level];
+            uint width = (uint) image.Width;
+            uint height = (uint) image.Height;
                 
-                                    graphicsDevice.UpdateTexture(this.DeviceTexture, (nint) positiveXPin, faceSize, 0, 0, 0, width, height, 1, (uint) level, PositiveXArrayLayer);
-                                    graphicsDevice.UpdateTexture(this.DeviceTexture, (nint) negativeXPin, faceSize, 0, 0, 0, width, height, 1, (uint) level, NegativeXArrayLayer);
-                                    graphicsDevice.UpdateTexture(this.DeviceTexture, (nint) positiveYPin, faceSize, 0, 0, 0, width, height, 1, (uint) level, PositiveYArrayLayer);
-                                    graphicsDevice.UpdateTexture(this.DeviceTexture, (nint) negativeYPin, faceSize, 0, 0, 0, width, height, 1, (uint) level, NegativeYArrayLayer);
-                                    graphicsDevice.UpdateTexture(this.DeviceTexture, (nint) positiveZPin, faceSize, 0, 0, 0, width, height, 1, (uint) level, PositiveZArrayLayer);
-                                    graphicsDevice.UpdateTexture(this.DeviceTexture, (nint) negativeZPin, faceSize, 0, 0, 0, width, height, 1, (uint) level, NegativeZArrayLayer);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            graphicsDevice.UpdateTexture(this.DeviceTexture, this.Images[PositiveXArrayLayer][level].Data, 0, 0, 0, width, height, 1, (uint) level, PositiveXArrayLayer);
+            graphicsDevice.UpdateTexture(this.DeviceTexture, this.Images[NegativeXArrayLayer][level].Data, 0, 0, 0, width, height, 1, (uint) level, NegativeXArrayLayer);
+            graphicsDevice.UpdateTexture(this.DeviceTexture, this.Images[PositiveYArrayLayer][level].Data, 0, 0, 0, width, height, 1, (uint) level, PositiveYArrayLayer);
+            graphicsDevice.UpdateTexture(this.DeviceTexture, this.Images[NegativeYArrayLayer][level].Data, 0, 0, 0, width, height, 1, (uint) level, NegativeYArrayLayer);
+            graphicsDevice.UpdateTexture(this.DeviceTexture, this.Images[PositiveZArrayLayer][level].Data, 0, 0, 0, width, height, 1, (uint) level, PositiveZArrayLayer);
+            graphicsDevice.UpdateTexture(this.DeviceTexture, this.Images[NegativeZArrayLayer][level].Data, 0, 0, 0, width, height, 1, (uint) level, NegativeZArrayLayer);            
         }
     }
 

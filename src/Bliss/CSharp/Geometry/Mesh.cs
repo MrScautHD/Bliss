@@ -5,11 +5,10 @@ using Bliss.CSharp.Geometry.Animations;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.VertexTypes;
+using Bliss.CSharp.Images;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
 using Bliss.CSharp.Transformations;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
 using Color = Bliss.CSharp.Colors.Color;
 using Material = Bliss.CSharp.Materials.Material;
@@ -380,71 +379,120 @@ public class Mesh : Disposable {
     /// <param name="slices">The number of subdivisions around the horizontal (XZ-plane) direction of the hemisphere.</param>
     /// <returns>A new instance of the <see cref="Mesh"/> class representing the generated hemisphere model.</returns>
     public static Mesh GenHemisphere(GraphicsDevice graphicsDevice, float radius, int rings, int slices) {
-        if (slices < 3) { // TODO: ADD A BOTTOM.
+        if (slices < 3) {
             slices = 3;
             Logger.Warn("The number of slices must be at least 3. The value is now set to 3.");
         }
-        
-        Vector3[] positions = new Vector3[(rings + 1) * (slices + 1)];
-        Vector2[] texCoords = new Vector2[(rings + 1) * (slices + 1)];
-        Vector3[] normals = new Vector3[(rings + 1) * (slices + 1)];
-        Vertex3D[] vertices = new Vertex3D[(rings + 1) * (slices + 1)];
-        uint[] indices = new uint[rings * slices * 6 / 2];
-        
+    
+        Vector3[] positions = new Vector3[(rings / 2 + 1) * (slices + 1) + slices + 2];
+        Vector2[] texCoords = new Vector2[(rings / 2 + 1) * (slices + 1) + slices + 2];
+        Vector3[] normals = new Vector3[(rings / 2 + 1) * (slices + 1) + slices + 2];
+        Vertex3D[] vertices = new Vertex3D[(rings / 2 + 1) * (slices + 1) + slices + 2];
+        uint[] indices = new uint[rings / 2 * slices * 6 + 3 * slices];
+    
+        int vertexIndex = 0;
+        int counter = 0;
+    
+        // Generate positions, normals, and texture coordinates for the hemisphere.
         for (int ring = 0; ring <= rings / 2; ring++) {
             float theta = ring * MathF.PI / rings;
             float sinTheta = MathF.Sin(theta);
             float cosTheta = MathF.Cos(theta);
-
+    
             for (int slice = 0; slice <= slices; slice++) {
                 float phi = slice * 2.0F * MathF.PI / slices;
                 float sinPhi = MathF.Sin(phi);
                 float cosPhi = MathF.Cos(phi);
-
-                int index = ring * (slices + 1) + slice;
-
+    
                 Vector3 position = new Vector3(
                     radius / 2.0F * sinTheta * cosPhi,
-                    radius / 2.0F * cosTheta,
+                    radius / 2.0F * cosTheta - radius / 2.0F,
                     radius / 2.0F * sinTheta * sinPhi
                 );
-
-                positions[index] = position;
-                texCoords[index] = new Vector2((float) slice / slices, (float) ring / rings);
-                normals[index] = Vector3.Normalize(position);
-
-                vertices[index] = new Vertex3D() {
-                    Position = positions[index],
-                    TexCoords = texCoords[index],
-                    Normal = normals[index]
+    
+                positions[vertexIndex] = position;
+                texCoords[vertexIndex] = new Vector2((float) slice / slices, (float) ring / rings);
+                normals[vertexIndex] = Vector3.Normalize(position);
+    
+                vertices[vertexIndex] = new Vertex3D() {
+                    Position = positions[vertexIndex],
+                    TexCoords = texCoords[vertexIndex],
+                    Normal = normals[vertexIndex]
                 };
+    
+                vertexIndex++;
             }
         }
-
-        int counter = 0;
-
+    
+        // Generate indices for the hemisphere.
         for (int ring = 0; ring < rings / 2; ring++) {
             for (int slice = 0; slice < slices; slice++) {
                 int first = ring * (slices + 1) + slice;
                 int second = first + slices + 1;
-
+    
                 indices[counter++] = (uint) first;
                 indices[counter++] = (uint) second;
                 indices[counter++] = (uint) (first + 1);
- 
+                
                 indices[counter++] = (uint) second;
                 indices[counter++] = (uint) (second + 1);
                 indices[counter++] = (uint) (first + 1);
             }
         }
-
+    
+        // Add center point for the circle.
+        Vector3 centerPosition = new Vector3(0.0F, -radius / 2.0F, 0.0F);
+        positions[vertexIndex] = centerPosition;
+        texCoords[vertexIndex] = new Vector2(0.5F, 0.5F);
+        normals[vertexIndex] = Vector3.UnitY;
+    
+        vertices[vertexIndex] = new Vertex3D() {
+            Position = positions[vertexIndex],
+            TexCoords = texCoords[vertexIndex],
+            Normal = normals[vertexIndex]
+        };
+    
+        int centerIndex = vertexIndex++;
+        
+        // Add circle vertices.
+        for (int slice = 0; slice <= slices; slice++) {
+            float phi = slice * 2.0F * MathF.PI / slices;
+            float sinPhi = MathF.Sin(phi);
+            float cosPhi = MathF.Cos(phi);
+    
+            Vector3 position = new Vector3(
+                radius / 2.0F * cosPhi,
+                -radius / 2.0F,
+                radius / 2.0F * sinPhi
+            );
+    
+            positions[vertexIndex] = position;
+            texCoords[vertexIndex] = new Vector2((cosPhi + 1.0F) / 2.0F, (sinPhi + 1.0F) / 2.0F);
+            normals[vertexIndex] = Vector3.UnitY;
+    
+            vertices[vertexIndex] = new Vertex3D() {
+                Position = positions[vertexIndex],
+                TexCoords = texCoords[vertexIndex],
+                Normal = normals[vertexIndex]
+            };
+    
+            vertexIndex++;
+        }
+    
+        // Generate indices for the circle
+        for (int slice = 0; slice < slices; slice++) {
+            indices[counter++] = (uint) centerIndex;
+            indices[counter++] = (uint) (centerIndex + slice + 2);
+            indices[counter++] = (uint) (centerIndex + slice + 1);
+        }
+    
         Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
-
+    
         material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap() {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
-
+    
         return new Mesh(graphicsDevice, material, vertices, indices);
     }
 
@@ -797,7 +845,7 @@ public class Mesh : Disposable {
     /// <param name="heightmap">The heightmap image used to determine the height of each vertex in the mesh.</param>
     /// <param name="size">The 3D size of the heightmap mesh in world units, where X and Z represent the width and depth, and Y represents the height scale.</param>
     /// <returns>A new <see cref="Mesh"/> instance representing the generated heightmap mesh based on the input parameters.</returns>
-    public static Mesh GenHeightmap(GraphicsDevice graphicsDevice, Image<Rgba32> heightmap, Vector3 size) {
+    public static Mesh GenHeightmap(GraphicsDevice graphicsDevice, Image heightmap, Vector3 size) {
         float xStep = size.X / (heightmap.Width - 1.0F);
         float zStep = size.Z / (heightmap.Height - 1.0F);
         float heightScale = size.Y / 255.0F;
@@ -806,13 +854,15 @@ public class Mesh : Disposable {
         List<uint> indices = new List<uint>();
 
         // Generate the vertices.
-        for (int z = 0; z < heightmap.Height; z++) {
+        for (int y = 0; y < heightmap.Height; y++) {
             for (int x = 0; x < heightmap.Width; x++) {
-                Rgba32 pixel = heightmap[x, z];
-                float height = pixel.R * heightScale;
-                Vector3 position = new Vector3(x * xStep, height, z * zStep);
+                int pixelIndex = (y * heightmap.Width + x) * 4;
+                byte redChannel = heightmap.Data[pixelIndex];
+                float height = (redChannel * heightScale) - (size.Y / 2);
+                
+                Vector3 position = new Vector3(x * xStep - size.X / 2, height, y * zStep - size.Z / 2);
                 Vector3 normal = Vector3.UnitY;
-                Vector2 texCoords = new Vector2(x / (heightmap.Width - 1.0F), z / (heightmap.Height - 1.0F));
+                Vector2 texCoords = new Vector2(x / (heightmap.Width - 1.0F), y / (heightmap.Height - 1.0F));
 
                 vertices.Add(new Vertex3D {
                     Position = position,
@@ -850,7 +900,7 @@ public class Mesh : Disposable {
         return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
     }
 
-    public static Mesh GenCubemap(GraphicsDevice graphicsDevice, Image<Rgba32> cubemap, Vector3 size) { //TODO: FIX THIS!
+    public static Mesh GenCubemap(GraphicsDevice graphicsDevice, Image cubemap, Vector3 size) { //TODO: FIX THIS!
         List<Vertex3D> vertices = new List<Vertex3D>();
         List<uint> indices = new List<uint>();
 
@@ -875,19 +925,19 @@ public class Mesh : Disposable {
             [0, 1, 2, 3], // Front face
             [4, 5, 6, 7], // Back face
             [3, 2, 6, 7], // Top face
-            new int[] { 0, 1, 5, 4 }, // Bottom face
-            new int[] { 0, 3, 7, 4 }, // Left face
-            new int[] { 1, 2, 6, 5 }  // Right face
+            [0, 1, 5, 4], // Bottom face
+            [0, 3, 7, 4], // Left face
+            [1, 2, 6, 5] // Right face
         };
 
         // Map each face of the cube to a specific part of the cubemap texture
         Vector2[][] uvMapping = new Vector2[][] {
-            new Vector2[] { new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f) }, // Front
-            new Vector2[] { new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f) }, // Back
-            new Vector2[] { new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f) }, // Top
-            new Vector2[] { new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f) }, // Bottom
-            new Vector2[] { new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f) }, // Left
-            new Vector2[] { new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f) }  // Right
+            [new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f)], // Front
+            [new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f)], // Back
+            [new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f)], // Top
+            [new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f)], // Bottom
+            [new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f)], // Left
+            [new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f)]  // Right
         };
 
         // Process each face

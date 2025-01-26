@@ -1,7 +1,6 @@
+using Bliss.CSharp.Images;
 using Bliss.CSharp.Logging;
 using SDL;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
 
 namespace Bliss.CSharp.Interact.Mice.Cursors;
 
@@ -25,7 +24,7 @@ public class Sdl3Cursor : Disposable, ICursor {
     /// <param name="image">The image used to create the cursor.</param>
     /// <param name="offsetX">The X-axis offset for the cursor's hotspot.</param>
     /// <param name="offsetY">The Y-axis offset for the cursor's hotspot.</param>
-    public unsafe Sdl3Cursor(Image<Rgba32> image, int offsetX, int offsetY) {
+    public unsafe Sdl3Cursor(Image image, int offsetX, int offsetY) {
         this._cursor = this.CreateColorCursor(image, offsetX, offsetY);
     }
 
@@ -57,11 +56,8 @@ public class Sdl3Cursor : Disposable, ICursor {
     /// <param name="offsetX">The x-coordinate offset for the cursor hotspot.</param>
     /// <param name="offsetY">The y-coordinate offset for the cursor hotspot.</param>
     /// <returns>Returns an SDL_Cursor pointer representing the created color cursor.</returns>
-    private unsafe SDL_Cursor* CreateColorCursor(Image<Rgba32> image, int offsetX, int offsetY) {
-        byte[] data = new byte[image.Width * image.Height * 4];
-        image.CopyPixelDataTo(data);
-
-        fixed (byte* dataPtr = data) {
+    private unsafe SDL_Cursor* CreateColorCursor(Image image, int offsetX, int offsetY) {
+        fixed (byte* dataPtr = image.Data) {
             SDL_Surface* surface = SDL3.SDL_CreateSurfaceFrom(image.Width, image.Height, SDL_PixelFormat.SDL_PIXELFORMAT_ABGR8888, (nint) dataPtr, image.Width * 4);
 
             if ((nint) surface == nint.Zero) {

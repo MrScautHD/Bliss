@@ -1,10 +1,9 @@
 using System.Numerics;
 using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
+using Bliss.CSharp.Images;
 using Bliss.CSharp.Textures;
 using FontStashSharp;
 using FontStashSharp.Interfaces;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
 using Point = System.Drawing.Point;
 using Rectangle = Bliss.CSharp.Transformations.Rectangle;
@@ -48,7 +47,7 @@ internal class FontStashAdapter : ITexture2DManager, IFontStashRenderer {
     /// <param name="height">The height of the new texture.</param>
     /// <returns>A new texture object.</returns>
     public object CreateTexture(int width, int height) {
-        return new Texture2D(this.GraphicsDevice, new Image<Rgba32>(width, height));
+        return new Texture2D(this.GraphicsDevice, new Image(width, height));
     }
 
     /// <summary>
@@ -87,6 +86,6 @@ internal class FontStashAdapter : ITexture2DManager, IFontStashRenderer {
         Rectangle? source = src != null ? new Rectangle(src.Value.X, src.Value.Y, src.Value.Width, src.Value.Height) : null;
         Color color = new Color(fsColor.R, fsColor.G, fsColor.B, fsColor.A);
 
-        this.SpriteBatch.DrawTexture(texture2D, position, source, scale, Vector2.Zero, Single.RadiansToDegrees(rotation), color);
+        this.SpriteBatch.DrawTexture(texture2D, position, source, scale, Vector2.Zero, float.RadiansToDegrees(rotation), color);
     }
 }

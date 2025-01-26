@@ -35,6 +35,5 @@ public static class AudioDevice {
 
     public static void Destroy() {
         AudioContext.Deinitialize();
-
     }
 }

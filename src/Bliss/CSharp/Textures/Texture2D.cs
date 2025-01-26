@@ -1,15 +1,12 @@
-using System.Runtime.InteropServices;
 using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
+using Bliss.CSharp.Images;
 using Bliss.CSharp.Logging;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
 using Rectangle = Bliss.CSharp.Transformations.Rectangle;
 
 namespace Bliss.CSharp.Textures;
 
-// TODO: Take a look if ImageSharp can get replaced with that one that just returns ImageResult. (Make a gif system)
 public class Texture2D : Disposable {
     
     /// <summary>
@@ -20,7 +17,7 @@ public class Texture2D : Disposable {
     /// <summary>
     /// Gets the array of images representing the mip levels of the texture.
     /// </summary>
-    public Image<Rgba32>[] Images { get; private set; }
+    public Image[] Images { get; private set; }
 
     /// <summary>
     /// Gets the width of the texture in pixels.
@@ -71,7 +68,7 @@ public class Texture2D : Disposable {
     /// <param name="sampler">The sampler used for texture sampling.</param>
     /// <param name="mipmap">Indicates whether to generate mipmaps for the texture.</param>
     /// <param name="srgb">Indicates whether to use sRGB color space for the texture.</param>
-    public Texture2D(GraphicsDevice graphicsDevice, string path, Sampler? sampler = null, bool mipmap = true, bool srgb = false) : this(graphicsDevice, Image.Load<Rgba32>(path), sampler, mipmap, srgb) {
+    public Texture2D(GraphicsDevice graphicsDevice, string path, Sampler? sampler = null, bool mipmap = true, bool srgb = false) : this(graphicsDevice, new Image(path), sampler, mipmap, srgb) {
         Logger.Info($"Texture loaded successfully from path: [{path}]");
     }
 
@@ -84,12 +81,12 @@ public class Texture2D : Disposable {
     /// <param name="sampler">The sampler used for texture sampling.</param>
     /// <param name="mipmap">Indicates whether to generate mipmaps for the texture.</param>
     /// <param name="srgb">Indicates whether to use sRGB color space for the texture.</param>
-    public Texture2D(GraphicsDevice graphicsDevice, Stream stream, Sampler? sampler = null, bool mipmap = true, bool srgb = false) : this(graphicsDevice, Image.Load<Rgba32>(stream), sampler, mipmap, srgb) {
+    public Texture2D(GraphicsDevice graphicsDevice, Stream stream, Sampler? sampler = null, bool mipmap = true, bool srgb = false) : this(graphicsDevice, new Image(stream), sampler, mipmap, srgb) {
         Logger.Info($"Texture loaded successfully from stream: [{stream}]");
     }
     
     /// <summary>
-    /// Initializes a new instance of the <see cref="Texture2D"/> class using an <see cref="Image{Rgba32}"/> object.
+    /// Initializes a new instance of the <see cref="Texture2D"/> class using an <see cref="Image"/> object.
     /// Creates a device texture, applies the specified sampler, and stores mipmap and color format information.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used for rendering the texture.</param>
@@ -97,7 +94,7 @@ public class Texture2D : Disposable {
     /// <param name="sampler">The sampler used for texture sampling.</param>
     /// <param name="mipmap">Indicates whether to generate mipmaps for the texture.</param>
     /// <param name="srgb">Indicates whether to use sRGB color space for the texture.</param>
-    public Texture2D(GraphicsDevice graphicsDevice, Image<Rgba32> image, Sampler? sampler = null, bool mipmap = true, bool srgb = false) {
+    public Texture2D(GraphicsDevice graphicsDevice, Image image, Sampler? sampler = null, bool mipmap = true, bool srgb = false) {
         this.GraphicsDevice = graphicsDevice;
         this.Images = mipmap ? MipmapHelper.GenerateMipmaps(image) : [image];
         this.Format = srgb ? PixelFormat.R8G8B8A8UNormSRgb : PixelFormat.R8G8B8A8UNorm;
@@ -153,17 +150,14 @@ public class Texture2D : Disposable {
     /// </summary>
     /// <returns>A byte array containing the texture data.</returns>
     public byte[] GetDataFromBytes() {
-        byte[] textureData = new byte[this.Width * this.Height * this.PixelSizeInBytes];
-        this.Images[0].CopyPixelDataTo(textureData);
-        
-        return textureData;
+        return this.Images[0].Data;
     }
 
     /// <summary>
     /// Retrieves the image data from the first image in the texture array.
     /// </summary>
-    /// <returns>An <see cref="Image{Rgba32}"/> representing the image data.</returns>
-    public Image<Rgba32> GetDataFromImage() {
+    /// <returns>An <see cref="Image"/> representing the image data.</returns>
+    public Image GetDataFromImage() {
         return this.Images[0];
     }
 
@@ -174,20 +168,17 @@ public class Texture2D : Disposable {
     /// <param name="area">The rectangular area within the texture to update. If null, it updates the entire texture.</param>
     public void SetData(byte[] data, Rectangle? area = null) {
         Rectangle rect = area ?? new Rectangle(0, 0, (int) this.Width, (int) this.Height);
+        Image originalImage = this.GetDataFromImage();
 
-        // Use ImageSharp's LoadPixelData to create the bounded image directly from data.
-        using (Image<Rgba32> boundedImage = Image.LoadPixelData<Rgba32>(data, rect.Width, rect.Height)) {
-            Image<Rgba32> image = this.GetDataFromImage();
-        
-            // Copy boundedImage into the image within the specified.
-            for (int y = 0; y < rect.Height; y++) {
-                for (int x = 0; x < rect.Width; x++) {
-                    image[rect.X + x, rect.Y + y] = boundedImage[x, y];
-                }
-            }
-        
-            this.SetData(image);
+        int rowLengthInBytes = rect.Width * (int) this.PixelSizeInBytes;
+        for (int y = 0; y < rect.Height; y++) {
+            int sourceOffset = y * rowLengthInBytes;
+            int destinationOffset = ((rect.Y + y) * originalImage.Width + rect.X) * (int) this.PixelSizeInBytes;
+
+            Array.Copy(data, sourceOffset, originalImage.Data, destinationOffset, rowLengthInBytes);
         }
+
+        this.SetData(originalImage);
     }
 
     /// <summary>
@@ -195,7 +186,7 @@ public class Texture2D : Disposable {
     /// The image data is then split into mip levels if required and updated in the device texture.
     /// </summary>
     /// <param name="data">The image data to be loaded into the texture.</param>
-    public unsafe void SetData(Image<Rgba32> data) {
+    public void SetData(Image data) {
         if (data.Width != this.Width || data.Height != this.Height) {
             throw new ArgumentException("Image size do not match texture size!");
         }
@@ -203,34 +194,20 @@ public class Texture2D : Disposable {
         this.Images = this.MipLevels > 1 ? MipmapHelper.GenerateMipmaps(data) : [data];
         
         for (int i = 0; i < this.MipLevels; i++) {
-            Image<Rgba32> image = this.Images[i];
-            
-            if (!image.DangerousTryGetSinglePixelMemory(out Memory<Rgba32> pixelMemory)) {
-                throw new VeldridException("Unable to get image pixel data!");
-            }
-            
-            fixed (void* dataPtr = &MemoryMarshal.GetReference(pixelMemory.Span)) {
-                this.GraphicsDevice.UpdateTexture(this.DeviceTexture, (nint) dataPtr, (uint) (this.PixelSizeInBytes * image.Width * image.Height), 0, 0, 0, (uint) image.Width, (uint) image.Height, 1, (uint) i, 0);
-            }
+            Image image = this.Images[i];
+            this.GraphicsDevice.UpdateTexture(this.DeviceTexture, image.Data, 0, 0, 0, (uint) image.Width, (uint) image.Height, 1, (uint) i, 0);
         }
     }
 
     /// <summary>
     /// Creates a device texture from provided images and graphics device.
     /// </summary>
-    private unsafe Texture CreateDeviceTexture() {
+    private Texture CreateDeviceTexture() {
         Texture texture = this.GraphicsDevice.ResourceFactory.CreateTexture(TextureDescription.Texture2D(this.Width, this.Height, this.MipLevels, 1, this.Format, TextureUsage.Sampled));
         
         for (int i = 0; i < this.MipLevels; i++) {
-            Image<Rgba32> image = this.Images[i];
-            
-            if (!image.DangerousTryGetSinglePixelMemory(out Memory<Rgba32> pixelMemory)) {
-                throw new VeldridException("Unable to get image pixel data!");
-            }
-
-            fixed (void* dataPtr = &MemoryMarshal.GetReference(pixelMemory.Span)) {
-                this.GraphicsDevice.UpdateTexture(texture, (nint) dataPtr, (uint) (this.PixelSizeInBytes * image.Width * image.Height), 0, 0, 0, (uint) image.Width, (uint) image.Height, 1, (uint) i, 0);
-            }
+            Image image = this.Images[i];
+            this.GraphicsDevice.UpdateTexture(texture, image.Data, 0, 0, 0, (uint) image.Width, (uint) image.Height, 1, (uint) i, 0);
         }
         
         return texture;

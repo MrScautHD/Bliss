@@ -1,8 +1,7 @@
 using System.Numerics;
+using Bliss.CSharp.Images;
 using Bliss.CSharp.Interact.Gamepads;
 using Bliss.CSharp.Windowing.Events;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
 using Veldrid.OpenGL;
 using Point = Bliss.CSharp.Transformations.Point;
@@ -278,7 +277,7 @@ public interface IWindow : IDisposable {
     /// Sets the icon of the window.
     /// </summary>
     /// <param name="image">The image to set as the window icon, represented as an Image of Rgba32 format.</param>
-    void SetIcon(Image<Rgba32> image);
+    void SetIcon(Image image);
     
     /// <summary>
     /// Processes all pending window events.

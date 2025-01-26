@@ -1,13 +1,12 @@
 using System.Numerics;
 using System.Runtime.InteropServices;
+using Bliss.CSharp.Images;
 using Bliss.CSharp.Interact.Gamepads;
 using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Interact.Mice;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Windowing.Events;
 using SDL;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
 using Veldrid.OpenGL;
 using Point = Bliss.CSharp.Transformations.Point;
@@ -440,13 +439,10 @@ public class Sdl3Window : Disposable, IWindow {
     /// <summary>
     /// Sets the icon for the SDL3 window using the provided image.
     /// </summary>
-    /// <param name="image">The image to set as the window icon. It should be of type <see cref="Image{Rgba32}"/>.</param>
+    /// <param name="image">The image to set as the window icon. It should be of type <see cref="Image"/>.</param>
     /// <exception cref="Exception">Thrown if an error occurs while setting the window icon.</exception>
-    public unsafe void SetIcon(Image<Rgba32> image) {
-        byte[] data = new byte[image.Width * image.Height * 4];
-        image.CopyPixelDataTo(data);
-
-        fixed (byte* dataPtr = data) {
+    public unsafe void SetIcon(Image image) {
+        fixed (byte* dataPtr = image.Data) {
             SDL_Surface* surface = SDL3.SDL_CreateSurfaceFrom(image.Width, image.Height, SDL_PixelFormat.SDL_PIXELFORMAT_ABGR8888, (nint) dataPtr, image.Width * 4);
 
             if ((nint) surface == nint.Zero) {

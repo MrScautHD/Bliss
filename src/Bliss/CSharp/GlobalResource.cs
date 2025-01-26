@@ -1,11 +1,11 @@
+using Bliss.CSharp.Colors;
 using Bliss.CSharp.Effects;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Graphics.VertexTypes;
+using Bliss.CSharp.Images;
 using Bliss.CSharp.Materials;
 using Bliss.CSharp.Textures;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
 using Veldrid;
 
 namespace Bliss.CSharp;
@@ -68,9 +68,7 @@ public static class GlobalResource {
         DefaultModelEffect.AddTextureLayout(CreateTextureLayout(MaterialMapType.Albedo.GetName()));
         
         // Default model texture.
-        using (Image<Rgba32> image = new Image<Rgba32>(1, 1, new Rgba32(128, 128, 128, 255))) {
-            DefaultModelTexture = new Texture2D(graphicsDevice, image);
-        }
+        DefaultModelTexture = new Texture2D(graphicsDevice, new Image(1, 1, Color.Gray));
     }
 
     /// <summary>
