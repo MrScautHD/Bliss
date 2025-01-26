@@ -2,6 +2,7 @@ using MiniAudioEx;
 
 namespace Bliss.CSharp.Audio;
 
+// TODO: Done a whole audio system.
 public static class AudioDevice {
 
     public static int SampleRate => AudioContext.SampleRate;

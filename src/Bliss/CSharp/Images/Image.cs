@@ -44,7 +44,7 @@ public class Image : ICloneable {
     /// <param name="stream">The stream containing image data.</param>
     public Image(Stream stream) {
         if (!stream.CanRead) {
-            Logger.Fatal($"Failed to read stream [{stream}]");
+            Logger.Fatal($"Failed to read stream [{stream}]!");
         }
         
         ImageResult result = ImageResult.FromStream(stream, ColorComponents.RedGreenBlueAlpha);

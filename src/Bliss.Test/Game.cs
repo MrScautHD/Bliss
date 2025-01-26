@@ -196,6 +196,12 @@ public class Game : Disposable {
 
         this._customCubemap = Mesh.GenCubemap(this.GraphicsDevice, new Image("content/cubemap.png"), Vector3.One);
         this._customCubemap.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
+
+        AnimatedImage animatedImage = new AnimatedImage("content/animated.gif");
+
+        for (int i = 0; i < animatedImage.GetFramesCount(); i++) {
+            Logger.Error(animatedImage.GetFrame(i).Item1 + " " + i + " " + animatedImage.GetFrame(i).Item2);
+        }
     }
 
     protected virtual void Update() {
