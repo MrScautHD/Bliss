@@ -1,7 +1,7 @@
-using Bliss.CSharp.Colors;
 using Bliss.CSharp.Logging;
 using StbImageSharp;
 using StbImageWriteSharp;
+using Color = Bliss.CSharp.Colors.Color;
 using ColorComponents = StbImageSharp.ColorComponents;
 using WriteColorComponents = StbImageWriteSharp.ColorComponents;
 
@@ -10,19 +10,19 @@ namespace Bliss.CSharp.Images;
 public class Image : ICloneable {
     
     /// <summary>
-    /// Gets the width of the image in pixels.
+    /// Stores the width of the image in pixels.
     /// </summary>
-    public int Width { get; private set; }
+    private int _width;
     
     /// <summary>
-    /// Gets the height of the image in pixels.
+    /// Stores the height of the image in pixels.
     /// </summary>
-    public int Height { get; private set; }
+    private int _height;
     
     /// <summary>
-    /// Gets the raw pixel data of the image in RGBA format.
+    /// Stores the raw pixel data of the image. The data is in RGBA format, where each pixel is represented by 4 bytes.
     /// </summary>
-    public byte[] Data { get; private set; }
+    private byte[] _data;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Image"/> class by loading it from a file path.
@@ -94,6 +94,60 @@ public class Image : ICloneable {
         this.Width = width;
         this.Height = height;
         this.Data = data ?? new byte[width * height * 4];
+    }
+
+    /// <summary>
+    /// Gets or sets the width of the image in pixels.
+    /// </summary>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// Thrown when a negative or zero value is assigned to the width.
+    /// </exception>
+    public int Width {
+        get => this._width;
+        set {
+            if (value > 0) {
+                this._width = value;
+            }
+            else {
+                throw new ArgumentOutOfRangeException($"Width: {value} must be positive.");
+            }
+        }
+    }
+
+    /// <summary>
+    /// Gets or sets the height of the image in pixels.
+    /// </summary>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// Thrown when a non-positive value is assigned to the height.
+    /// </exception>
+    public int Height {
+        get => this._height;
+        set {
+            if (value > 0) {
+                this._height = value;
+            }
+            else {
+                throw new ArgumentOutOfRangeException($"Height: {value} must be positive.");
+            }
+        }
+    }
+
+    /// <summary>
+    /// Gets or sets the raw image data as a byte array, typically in RGBA format.
+    /// </summary>
+    /// <exception cref="ArgumentException">
+    /// Thrown when the assigned data size does not match the product of the image's width, height, and the number of color components (4 for RGBA).
+    /// </exception>
+    public byte[] Data {
+        get => this._data;
+        set {
+            if (value.Length == this.Width * this.Height * 4) {
+                this._data = value;
+            }
+            else {
+                throw new ArgumentException("Invalid data size.");
+            }
+        }
     }
 
     /// <summary>
@@ -176,7 +230,7 @@ public class Image : ICloneable {
         byte[] resizedData = new byte[newWidth * newHeight * 4];
         float xRatio = (float)this.Width / newWidth;
         float yRatio = (float)this.Height / newHeight;
-    
+        
         for (int y = 0; y < newHeight; y++) {
             int nearestY = (int)(y * yRatio);
             for (int x = 0; x < newWidth; x++) {
