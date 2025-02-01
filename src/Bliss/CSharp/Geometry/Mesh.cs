@@ -164,49 +164,57 @@ public class Mesh : Disposable {
         this._pipelineDescription = this.CreatePipelineDescription();
     }
     
-    // TODO: FIX IT!!!!
+    /// <summary>
+    /// Generates a 3D polygon mesh with the specified number of sides and radius.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used to manage GPU resources for the generated mesh.</param>
+    /// <param name="sides">The number of sides of the polygon. Must be at least 3.</param>
+    /// <param name="radius">The radius of the polygon.</param>
+    /// <returns>A new instance of the <see cref="Mesh"/> class representing the 3D polygon.</returns>
     public static Mesh GenPoly(GraphicsDevice graphicsDevice, int sides, float radius) {
         if (sides < 3) {
             sides = 3;
+            Logger.Warn("The number of sides must be at least 3. The value is now set to 3.");
         }
-        
-        Vertex3D[] vertices = new Vertex3D[sides + 1];
-        uint[] indices = new uint[sides * 3];
-
-        // Center vertex
-        vertices[0] = new Vertex3D() {
+    
+        List<Vertex3D> vertices = new List<Vertex3D>();
+        List<uint> indices = new List<uint>();
+    
+        // Center vertex.
+        vertices.Add(new Vertex3D {
             Position = new Vector3(0, 0, 0),
-            TexCoords = new Vector2(0.5f, 0.5f),
-            Normal = new Vector3(0, 0, 1)
-        };
-
-        float angleStep = MathF.PI * 2 / sides;
-
+            Normal = Vector3.UnitY,
+            TexCoords = new Vector2(0.5f, 0.5f)
+        });
+    
+        // Generate vertices for the outer circle.
         for (int i = 0; i < sides; i++) {
-            float angle = i * angleStep;
-            float x = MathF.Cos(angle) * radius;
-            float y = MathF.Sin(angle) * radius;
-
-            vertices[i + 1] = new Vertex3D() {
-                Position = new Vector3(x, y, 0),
-                TexCoords = new Vector2((x / radius + 1) * 0.5f, (y / radius + 1) * 0.5f),
-                Normal = new Vector3(0, 0, 1)
-            };
-
-            // Define indices for the triangle
-            indices[i * 3] = 0; // Center vertex
-            indices[i * 3 + 1] = (uint)(i + 1); // Current vertex
-            indices[i * 3 + 2] = (uint)(i + 2 <= sides ? i + 2 : 1); // Next vertex (wrap around)
+            float angle = i * MathF.Tau / sides;
+            float x = MathF.Cos(angle) * radius / 2.0f;
+            float z = MathF.Sin(angle) * radius / 2.0f;
+    
+            vertices.Add(new Vertex3D {
+                Position = new Vector3(x, 0, z),
+                Normal = Vector3.UnitY,
+                TexCoords = new Vector2(x / radius + 0.5f, z / radius + 0.5f)
+            });
         }
-
+    
+        // Generate indices.
+        for (int i = 1; i <= sides; i++) {
+            indices.Add(0);
+            indices.Add((uint) i);
+            indices.Add((uint) ((i % sides) + 1));
+        }
+    
         Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
     
-        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap() {
+        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
-
-        return new Mesh(graphicsDevice, material, vertices, indices);
+    
+        return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
     }
 
     /// <summary>
@@ -378,7 +386,7 @@ public class Mesh : Disposable {
     /// <param name="rings">The number of subdivisions along the vertical (Y-axis) direction of the hemisphere.</param>
     /// <param name="slices">The number of subdivisions around the horizontal (XZ-plane) direction of the hemisphere.</param>
     /// <returns>A new instance of the <see cref="Mesh"/> class representing the generated hemisphere model.</returns>
-    public static Mesh GenHemisphere(GraphicsDevice graphicsDevice, float radius, int rings, int slices) {
+    public static Mesh GenHemisphere(GraphicsDevice graphicsDevice, float radius, int rings, int slices) { // TODO: FIX IT
         if (slices < 3) {
             slices = 3;
             Logger.Warn("The number of slices must be at least 3. The value is now set to 3.");

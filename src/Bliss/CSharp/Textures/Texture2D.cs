@@ -7,7 +7,6 @@ using Rectangle = Bliss.CSharp.Transformations.Rectangle;
 
 namespace Bliss.CSharp.Textures;
 
-// TODO: Do a animated texture system.
 public class Texture2D : Disposable {
     
     /// <summary>
@@ -103,7 +102,7 @@ public class Texture2D : Disposable {
         this._sampler = sampler ?? graphicsDevice.PointSampler;
         this._cachedResourceSets = new Dictionary<(Sampler, SimpleTextureLayout), ResourceSet>();
     }
-
+    
     /// <summary>
     /// Gets the sampler associated with this texture.
     /// </summary>

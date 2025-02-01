@@ -42,7 +42,8 @@ public class Game : Disposable {
 
     private SpriteBatch _spriteBatch;
     private PrimitiveBatch _primitiveBatch;
-    private Texture2D _texture;
+    private AnimatedImage _animatedImage;
+    private Texture2D _gif;
     private Font _font;
     
     private Cam3D _cam3D;
@@ -165,8 +166,8 @@ public class Game : Disposable {
         this._planeModel = Model.Load(this.GraphicsDevice, "content/plane.glb");
 
         Texture2D customMeshTexture = new Texture2D(this.GraphicsDevice, "content/cube.png");
-
-        this._customPoly = Mesh.GenPoly(this.GraphicsDevice, 9, 1);
+        
+        this._customPoly = Mesh.GenPoly(this.GraphicsDevice, 40, 1);
         this._customPoly.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
 
         this._customCube = Mesh.GenCube(this.GraphicsDevice, 1, 1, 1);
@@ -196,22 +197,8 @@ public class Game : Disposable {
         this._customCubemap = Mesh.GenCubemap(this.GraphicsDevice, new Image("content/cubemap.png"), Vector3.One);
         this._customCubemap.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
 
-        AnimatedImage animatedImage = new AnimatedImage("content/animated.gif");
-
-
-        Image testImage = new Image("content/images/logo.png");
-
-        //for (int x = 0; x < testImage.Width; x++) {
-        //    for (int y = 0; y < testImage.Height; y++) {
-        //        testImage.SetPixel(x, y, Color.Green);
-        //    }
-        //}
-        
-        //testImage.Resize(testImage.Width * 6, testImage.Height * 6);
-        
-        testImage.Tint(Color.LightBlue);
-        
-        this._texture = new Texture2D(this.GraphicsDevice, testImage);
+        this._animatedImage = new AnimatedImage("content/animated.gif");
+        this._gif = new Texture2D(this.GraphicsDevice, this._animatedImage.SpriteSheet);
     }
 
     protected virtual void Update() {
@@ -275,7 +262,11 @@ public class Game : Disposable {
         // SpriteBatch Drawing.
         this._spriteBatch.Begin(commandList);
         this._spriteBatch.DrawText(this._font, $"FPS: {(int) (1.0F / Time.Delta)}", new Vector2(5, 5), 18);
-        this._spriteBatch.DrawTexture(this._texture, new Vector2(10, 10));
+        
+        int frame = 0;
+        this._animatedImage.GetFrameInfo(frame, out int width, out int height, out float duration);
+        this._spriteBatch.DrawTexture(this._gif, new Vector2(10, 10), new Rectangle(width * frame, 0, width, height));
+        
         this._spriteBatch.End();
         
         commandList.End();

@@ -25,14 +25,15 @@ public class Image : ICloneable {
     private byte[] _data;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Image"/> class by loading it from a file path.
+    /// Initializes a new instance of the <see cref="Image"/> class by loading an image from the specified file path.
     /// </summary>
-    /// <param name="path">The path to the image file.</param>
+    /// <param name="path">The file path of the image to load.</param>
+    /// <exception cref="FileNotFoundException">Thrown when the specified file does not exist.</exception>
     public Image(string path) {
         if (!File.Exists(path)) {
             Logger.Fatal($"Failed to find path [{path}]!");
         }
-
+        
         ImageResult result = ImageResult.FromMemory(File.ReadAllBytes(path), ColorComponents.RedGreenBlueAlpha);
         this.Width = result.Width;
         this.Height = result.Height;
@@ -40,9 +41,10 @@ public class Image : ICloneable {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Image"/> class by loading it from a stream.
+    /// Initializes a new instance of the <see cref="Image"/> class by loading an image from the specified stream.
     /// </summary>
-    /// <param name="stream">The stream containing image data.</param>
+    /// <param name="stream">The input stream containing image data to load.</param>
+    /// <exception cref="ArgumentException">Thrown if the stream cannot be read.</exception>
     public Image(Stream stream) {
         if (!stream.CanRead) {
             Logger.Fatal($"Failed to read stream [{stream}]!");
@@ -53,7 +55,30 @@ public class Image : ICloneable {
         this.Height = result.Height;
         this.Data = result.Data;
     }
-
+    
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Image"/> class from raw byte data.
+    /// </summary>
+    /// <param name="data">The raw image data in RGBA format.</param>
+    public Image(byte[] data) {
+        ImageResult result = ImageResult.FromMemory(data, ColorComponents.RedGreenBlueAlpha);
+        this.Width = result.Width;
+        this.Height = result.Height;
+        this.Data = result.Data;
+    }
+    
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Image"/> class with the specified dimensions and optional data.
+    /// </summary>
+    /// <param name="width">The width of the image in pixels.</param>
+    /// <param name="height">The height of the image in pixels.</param>
+    /// <param name="data">The optional raw data to initialize the image with.</param>
+    public Image(int width, int height, byte[]? data = null) {
+        this.Width = width;
+        this.Height = height;
+        this.Data = data ?? new byte[width * height * 4];
+    }
+    
     /// <summary>
     /// Initializes a new instance of the <see cref="Image"/> class with a solid color.
     /// </summary>
@@ -71,29 +96,6 @@ public class Image : ICloneable {
             this.Data[i + 2] = color.B;
             this.Data[i + 3] = color.A;
         }
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Image"/> class from raw byte data.
-    /// </summary>
-    /// <param name="data">The raw image data in RGBA format.</param>
-    public Image(byte[] data) {
-        ImageResult result = ImageResult.FromMemory(data, ColorComponents.RedGreenBlueAlpha);
-        this.Width = result.Width;
-        this.Height = result.Height;
-        this.Data = result.Data;
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Image"/> class with the specified dimensions and optional data.
-    /// </summary>
-    /// <param name="width">The width of the image in pixels.</param>
-    /// <param name="height">The height of the image in pixels.</param>
-    /// <param name="data">The optional raw data to initialize the image with.</param>
-    public Image(int width, int height, byte[]? data = null) {
-        this.Width = width;
-        this.Height = height;
-        this.Data = data ?? new byte[width * height * 4];
     }
 
     /// <summary>

@@ -5,81 +5,96 @@ namespace Bliss.CSharp.Images;
 
 public class AnimatedImage {
     
-    /// <summary>
-    /// A private dictionary that maps each frame of the animated image to its associated delay time in milliseconds.
-    /// </summary>
-    private Dictionary<Image, int> _frames;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="AnimatedImage"/> class from a file path.
-    /// </summary>
-    /// <param name="path">The path to the animated image file.</param>
+    public IReadOnlyDictionary<Image, int> Frames { get; private set; }
+    public Image SpriteSheet { get; private set; }
+    
+    private float[] _durationPerFrame;
+    
     public AnimatedImage(string path) {
         if (!File.Exists(path)) {
             Logger.Fatal($"Failed to find path [{path}]!");
         }
         
-        this._frames = new Dictionary<Image, int>();
-
+        Dictionary<Image, int> frames = new Dictionary<Image, int>();
+        
         using (FileStream stream = File.OpenRead(path)) {
             foreach (AnimatedFrameResult result in ImageResult.AnimatedGifFramesFromStream(stream)) {
-                Image frame = new Image(result.Width, result.Height, result.Data);
+                byte[] frameData = new byte[result.Data.Length];
+                Array.Copy(result.Data, frameData, result.Data.Length);
                 
-                if (!this._frames.TryAdd(frame, result.DelayInMs)) {
+                Image frame = new Image(result.Width, result.Height, frameData);
+                
+                if (!frames.TryAdd(frame, result.DelayInMs)) {
                     Logger.Error("Failed to add current Frame!");
                 }
             }
         }
+        
+        this.Frames = frames;
+        this.SpriteSheet = CreateSpriteSheet(out float[] durationPerFrame);
+        this._durationPerFrame = durationPerFrame;
     }
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="AnimatedImage"/> class from a stream.
-    /// </summary>
-    /// <param name="stream">The stream containing the animated image data.</param>
     public AnimatedImage(Stream stream) {
         if (!stream.CanRead) {
             Logger.Fatal($"Failed to read stream [{stream}]!");
         }
         
-        this._frames = new Dictionary<Image, int>();
+        Dictionary<Image, int> frames = new Dictionary<Image, int>();
         
         foreach (AnimatedFrameResult result in ImageResult.AnimatedGifFramesFromStream(stream)) {
-            Image frame = new Image(result.Width, result.Height, result.Data);
+            byte[] frameData = new byte[result.Data.Length];
+            Array.Copy(result.Data, frameData, result.Data.Length);
             
-            if (!this._frames.TryAdd(frame, result.DelayInMs)) {
+            Image frame = new Image(result.Width, result.Height, frameData);
+            
+            if (!frames.TryAdd(frame, result.DelayInMs)) {
                 Logger.Error("Failed to add current Frame!");
             }
         }
+        
+        this.Frames = frames;
+        this.SpriteSheet = CreateSpriteSheet(out float[] durationPerFrame);
+        this._durationPerFrame = durationPerFrame;
     }
 
-    /// <summary>
-    /// Gets the total number of frames in the animated image.
-    /// </summary>
-    /// <returns>The total number of frames.</returns>
-    public int GetFramesCount() {
-        return this._frames.Count;
+    public int GetFrameCount() {
+        return this.Frames.Count;
     }
 
-    /// <summary>
-    /// Gets all the frames and their associated delays.
-    /// </summary>
-    /// <returns>A dictionary where keys are <see cref="Image"/> instances representing frames and values are delays in milliseconds.</returns>
-    public Dictionary<Image, int> GetFrames() {
-        return this._frames;
+    public void GetFrameInfo(int frameIndex, out int width, out int height, out float duration) {
+        width = this.Frames.ElementAt(frameIndex).Key.Width;
+        height = this.Frames.ElementAt(frameIndex).Key.Height;
+        duration = this._durationPerFrame[frameIndex];
     }
 
-    /// <summary>
-    /// Gets the frame and its delay at the specified index.
-    /// </summary>
-    /// <param name="index">The index of the frame to retrieve.</param>
-    /// <returns>A tuple containing the <see cref="Image"/> and its delay in milliseconds.</returns>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown if the index is out of range.</exception>
-    public (Image, int) GetFrame(int index) {
-        if (index > this._frames.Count) {
-            Logger.Fatal("An attempt was made to access an index that is out of range. Ensure the index is within the valid bounds.");
+    private Image CreateSpriteSheet(out float[] durationPerFrame) {
+        durationPerFrame = new float[this.Frames.Count];
+        durationPerFrame[0] = 0;
+        
+        int totalWidth = this.Frames.Sum(frame => frame.Key.Width);
+        int maxHeight = this.Frames.Max(frame => frame.Key.Height);
+    
+        // Create a new blank sprite sheet image.
+        byte[] spriteSheetData = new byte[totalWidth * maxHeight * 4];
+        Image spriteSheet = new Image(totalWidth, maxHeight, spriteSheetData);
+    
+        // Position each frame image horizontally in the sprite sheet.
+        int offsetX = 0;
+        foreach (Image frame in this.Frames.Keys) {
+            for (int y = 0; y < frame.Height; y++) {
+                for (int x = 0; x < frame.Width; x++) {
+                    int sourceIndex = (y * frame.Width + x) * 4;
+                    int targetIndex = (y * totalWidth + (x + offsetX)) * 4;
+    
+                    // Copy pixel data.
+                    Array.Copy(frame.Data, sourceIndex, spriteSheet.Data, targetIndex, 4);
+                }
+            }
+            
+            offsetX += frame.Width;
         }
-
-        KeyValuePair<Image, int> frame = this._frames.ElementAt(index);
-        return (frame.Key, frame.Value);
+    
+        return spriteSheet;
     }
 }
