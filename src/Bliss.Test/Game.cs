@@ -158,7 +158,6 @@ public class Game : Disposable {
         
         this._spriteBatch = new SpriteBatch(this.GraphicsDevice, this.MainWindow, this.FullScreenTexture.Framebuffer.OutputDescription);
         this._primitiveBatch = new PrimitiveBatch(this.GraphicsDevice, this.MainWindow, this.FullScreenTexture.Framebuffer.OutputDescription);
-        this._texture = new Texture2D(this.GraphicsDevice, "content/images/logo.png");
         this._font = new Font("content/fonts/fontoe.ttf");
         
         this._cam3D = new Cam3D((uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0), default, ProjectionType.Perspective, CameraMode.Free);
@@ -199,9 +198,20 @@ public class Game : Disposable {
 
         AnimatedImage animatedImage = new AnimatedImage("content/animated.gif");
 
-        for (int i = 0; i < animatedImage.GetFramesCount(); i++) {
-            Logger.Error(animatedImage.GetFrame(i).Item1 + " " + i + " " + animatedImage.GetFrame(i).Item2);
-        }
+
+        Image testImage = new Image("content/images/logo.png");
+
+        //for (int x = 0; x < testImage.Width; x++) {
+        //    for (int y = 0; y < testImage.Height; y++) {
+        //        testImage.SetPixel(x, y, Color.Green);
+        //    }
+        //}
+        
+        //testImage.Resize(testImage.Width * 6, testImage.Height * 6);
+        
+        testImage.Tint(Color.LightBlue);
+        
+        this._texture = new Texture2D(this.GraphicsDevice, testImage);
     }
 
     protected virtual void Update() {
@@ -265,6 +275,7 @@ public class Game : Disposable {
         // SpriteBatch Drawing.
         this._spriteBatch.Begin(commandList);
         this._spriteBatch.DrawText(this._font, $"FPS: {(int) (1.0F / Time.Delta)}", new Vector2(5, 5), 18);
+        this._spriteBatch.DrawTexture(this._texture, new Vector2(10, 10));
         this._spriteBatch.End();
         
         commandList.End();

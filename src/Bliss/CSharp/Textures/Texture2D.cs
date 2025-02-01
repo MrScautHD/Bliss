@@ -7,6 +7,7 @@ using Rectangle = Bliss.CSharp.Transformations.Rectangle;
 
 namespace Bliss.CSharp.Textures;
 
+// TODO: Do a animated texture system.
 public class Texture2D : Disposable {
     
     /// <summary>
