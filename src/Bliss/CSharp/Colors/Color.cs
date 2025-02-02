@@ -3,7 +3,7 @@ using Veldrid;
 
 namespace Bliss.CSharp.Colors;
 
-public struct Color : IEquatable<Color> {
+public readonly struct Color : IEquatable<Color> {
     
     public static readonly Color White = new Color(255, 255, 255, 255);
     public static readonly Color Black = new Color(0, 0, 0, 255);
