@@ -16,5 +16,5 @@ void main() {
     fTexCoords = vTexCoords;
     fColor = vColor;
     
-    gl_Position = uProj * uView * vec4(vPosition, 0.0, 1.0);
+    gl_Position = uProj * uView * vec4(vPosition, 0.0F, 1.0F);
 }

@@ -31,6 +31,8 @@ public static class GlobalResource {
     /// </summary>
     public static Effect PrimitiveEffect { get; private set; }
     
+    public static Effect FullScreenRenderPassEffect { get; private set; }
+    
     /// <summary>
     /// The default <see cref="Effect"/> used for rendering 3D models.
     /// </summary>
@@ -58,6 +60,10 @@ public static class GlobalResource {
         // Primitive effect.
         PrimitiveEffect = new Effect(graphicsDevice, PrimitiveVertex2D.VertexLayout, "content/shaders/primitive.vert", "content/shaders/primitive.frag");
         PrimitiveEffect.AddBufferLayout(CreateBufferLayout("ProjectionViewBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
+        
+        // FullScreenRenderPass effect.
+        FullScreenRenderPassEffect = new Effect(graphicsDevice, SpriteVertex2D.VertexLayout, "content/shaders/full_screen_render_pass.vert", "content/shaders/full_screen_render_pass.frag");
+        FullScreenRenderPassEffect.AddTextureLayout(CreateTextureLayout("fTexture"));
         
         // Default model effect.
         DefaultModelEffect = new Effect(graphicsDevice, Vertex3D.VertexLayout, "content/shaders/default_model.vert", "content/shaders/default_model.frag");

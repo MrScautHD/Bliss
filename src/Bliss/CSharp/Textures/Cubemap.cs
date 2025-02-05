@@ -3,6 +3,7 @@ using Veldrid;
 
 namespace Bliss.CSharp.Textures;
 
+// TODO: Rework this!
 public class Cubemap : Disposable {
 
     /// <summary>
@@ -140,7 +141,7 @@ public class Cubemap : Disposable {
             Image image = this.Images[0][level];
             uint width = (uint) image.Width;
             uint height = (uint) image.Height;
-                
+            
             graphicsDevice.UpdateTexture(this.DeviceTexture, this.Images[PositiveXArrayLayer][level].Data, 0, 0, 0, width, height, 1, (uint) level, PositiveXArrayLayer);
             graphicsDevice.UpdateTexture(this.DeviceTexture, this.Images[NegativeXArrayLayer][level].Data, 0, 0, 0, width, height, 1, (uint) level, NegativeXArrayLayer);
             graphicsDevice.UpdateTexture(this.DeviceTexture, this.Images[PositiveYArrayLayer][level].Data, 0, 0, 0, width, height, 1, (uint) level, PositiveYArrayLayer);

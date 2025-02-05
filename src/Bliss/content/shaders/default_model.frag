@@ -24,7 +24,7 @@ layout (location = 0) out vec4 fFragColor;
 void main() {
     vec4 texelColor = texture(sampler2D(fAlbedo, fAlbedoSampler), fTexCoords);
 
-    if (texelColor.a <= 0.0) {
+    if (texelColor.a <= 0.0F) {
         discard;
     }
 

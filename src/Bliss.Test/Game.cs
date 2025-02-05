@@ -59,7 +59,7 @@ public class Game : Disposable {
     private Mesh _customTorus;
     private Mesh _customKnot;
     private Mesh _customHeighmap;
-    private Mesh _customCubemap;
+    //private Mesh _customCubemap;
 
     private int _frameCount;
     private bool _playingAnim;
@@ -194,8 +194,8 @@ public class Game : Disposable {
         this._customHeighmap = Mesh.GenHeightmap(this.GraphicsDevice, new Image("content/heightmap.png"), new Vector3(1, 1, 1));
         this._customHeighmap.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), new Texture2D(this.GraphicsDevice, "content/heightmap.png"));
 
-        this._customCubemap = Mesh.GenCubemap(this.GraphicsDevice, new Image("content/cubemap.png"), Vector3.One);
-        this._customCubemap.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
+        //this._customCubemap = Mesh.GenCubemap(this.GraphicsDevice, new Image("content/cubemap.png"), Vector3.One);
+        //this._customCubemap.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
 
         this._animatedImage = new AnimatedImage("content/animated.gif");
         this._gif = new Texture2D(this.GraphicsDevice, this._animatedImage.SpriteSheet);
@@ -238,7 +238,7 @@ public class Game : Disposable {
         this._customTorus.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(21, 0, 0)}, Color.White);
         this._customKnot.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(23, 0, 0)}, Color.White);
         this._customHeighmap.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(25, 0, 0)}, Color.White);
-        this._customCubemap.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(27, 0, 0)}, Color.White);
+        //this._customCubemap.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(27, 0, 0)}, Color.White);
 
         if (this._cam3D.GetFrustum().ContainsBox(this._planeModel.BoundingBox)) {
             this._planeModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform(), Color.White);

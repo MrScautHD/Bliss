@@ -184,27 +184,27 @@ public class Mesh : Disposable {
         vertices.Add(new Vertex3D {
             Position = new Vector3(0, 0, 0),
             Normal = Vector3.UnitY,
-            TexCoords = new Vector2(0.5f, 0.5f)
+            TexCoords = new Vector2(0.5F, 0.5F)
         });
-    
+        
         // Generate vertices for the outer circle.
         for (int i = 0; i < sides; i++) {
             float angle = i * MathF.Tau / sides;
-            float x = MathF.Cos(angle) * radius / 2.0f;
-            float z = MathF.Sin(angle) * radius / 2.0f;
+            float x = MathF.Cos(angle) * radius / 2.0F;
+            float z = MathF.Sin(angle) * radius / 2.0F;
     
             vertices.Add(new Vertex3D {
                 Position = new Vector3(x, 0, z),
                 Normal = Vector3.UnitY,
-                TexCoords = new Vector2(x / radius + 0.5f, z / radius + 0.5f)
+                TexCoords = new Vector2(x / radius + 0.5F, z / radius + 0.5F)
             });
         }
-    
+        
         // Generate indices.
-        for (int i = 1; i <= sides; i++) {
+        for (uint i = 1; i <= sides; i++) {
             indices.Add(0);
-            indices.Add((uint) i);
-            indices.Add((uint) ((i % sides) + 1));
+            indices.Add(i);
+            indices.Add((uint) (i % sides + 1));
         }
     
         Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
@@ -419,7 +419,10 @@ public class Mesh : Disposable {
                 );
     
                 positions[vertexIndex] = position;
-                texCoords[vertexIndex] = new Vector2((float) slice / slices, (float) ring / rings);
+                texCoords[vertexIndex] = new Vector2(
+                    (0.5F + cosPhi * sinTheta * 0.5F),
+                    (0.5F + sinPhi * sinTheta * 0.5F)
+                );
                 normals[vertexIndex] = Vector3.Normalize(position);
     
                 vertices[vertexIndex] = new Vertex3D() {
@@ -475,7 +478,10 @@ public class Mesh : Disposable {
             );
     
             positions[vertexIndex] = position;
-            texCoords[vertexIndex] = new Vector2((cosPhi + 1.0F) / 2.0F, (sinPhi + 1.0F) / 2.0F);
+            texCoords[vertexIndex] = new Vector2(
+                (0.5F + cosPhi * 0.5F),
+                (0.5F + sinPhi * 0.5F)
+            );
             normals[vertexIndex] = Vector3.UnitY;
     
             vertices[vertexIndex] = new Vertex3D() {
@@ -908,90 +914,15 @@ public class Mesh : Disposable {
         return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
     }
 
-    public static Mesh GenCubemap(GraphicsDevice graphicsDevice, Image cubemap, Vector3 size) { //TODO: FIX THIS!
-        List<Vertex3D> vertices = new List<Vertex3D>();
-        List<uint> indices = new List<uint>();
-
-        float xSize = size.X / 2.0f;
-        float ySize = size.Y / 2.0f;
-        float zSize = size.Z / 2.0f;
-
-        // The 8 corners of the cube
-        Vector3[] corners = [
-            new Vector3(-xSize, -ySize, -zSize), // Bottom-left-front
-            new Vector3(xSize, -ySize, -zSize),  // Bottom-right-front
-            new Vector3(xSize, ySize, -zSize),   // Top-right-front
-            new Vector3(-xSize, ySize, -zSize),  // Top-left-front
-            new Vector3(-xSize, -ySize, zSize),  // Bottom-left-back
-            new Vector3(xSize, -ySize, zSize),   // Bottom-right-back
-            new Vector3(xSize, ySize, zSize),    // Top-right-back
-            new Vector3(-xSize, ySize, zSize)    // Top-left-back
-        ];
-
-        // Defining each face of the cube (6 faces)
-        int[][] faces = new int[][] {
-            [0, 1, 2, 3], // Front face
-            [4, 5, 6, 7], // Back face
-            [3, 2, 6, 7], // Top face
-            [0, 1, 5, 4], // Bottom face
-            [0, 3, 7, 4], // Left face
-            [1, 2, 6, 5] // Right face
-        };
-
-        // Map each face of the cube to a specific part of the cubemap texture
-        Vector2[][] uvMapping = new Vector2[][] {
-            [new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f)], // Front
-            [new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f)], // Back
-            [new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f)], // Top
-            [new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f)], // Bottom
-            [new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f)], // Left
-            [new Vector2(0.0f, 0.0f), new Vector2(1.0f, 0.0f), new Vector2(1.0f, 1.0f), new Vector2(0.0f, 1.0f)]  // Right
-        };
-
-        // Process each face
-        for (int f = 0; f < faces.Length; f++) {
-            int[] face = faces[f];
-            Vector2[] uvs = uvMapping[f];
-
-            int startIndex = vertices.Count;
-
-            // Create vertices for each face
-            for (int v = 0; v < 4; v++) {
-                Vector3 position = corners[face[v]];
-                Vector3 normal = Vector3.Normalize(position); // Normal pointing outwards from the cube
-                Vector2 texCoords = uvs[v];
-
-                vertices.Add(new Vertex3D {
-                    Position = position,
-                    Normal = normal,
-                    TexCoords = texCoords
-                });
-            }
-
-            // Create indices for the two triangles of the face
-            indices.Add((uint)startIndex);
-            indices.Add((uint)(startIndex + 1));
-            indices.Add((uint)(startIndex + 2));
-
-            indices.Add((uint)startIndex);
-            indices.Add((uint)(startIndex + 2));
-            indices.Add((uint)(startIndex + 3));
-        }
-
-        // Create a material using the provided cubemap
-        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
-
-        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap {
-            Texture = GlobalResource.DefaultModelTexture,
-            Color = Color.White
-        });
-
-        // Return the mesh
-        return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
-        
-    }
+    // TODO: FIX first Cubemap class for it.
+    //public static Mesh GenCubemap(GraphicsDevice graphicsDevice, Texture2D cubemap, Vector3 size) {
+    //    
+    //}
     
     // TODO: Check if it works correct.
+    /// <summary>
+    /// Generates tangent vectors for the mesh's vertices based on the provided geometric and UV coordinate data.
+    /// </summary>
     public void GenerateTangents() {
         if (this.Vertices.Length < 3 || this.Indices.Length < 3) {
             return;
