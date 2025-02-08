@@ -354,7 +354,7 @@ public class SpriteBatch : Disposable {
         this._vertices[index + 2] = bottomLeft;
         this._vertices[index + 3] = bottomRight;
 
-        this._currentBatchCount += 1;
+        this._currentBatchCount++;
     }
     
     /// <summary>

@@ -1,9 +1,10 @@
 using System.Numerics;
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Camera.Dim3;
-using Bliss.CSharp.Colors;
+using Bliss.CSharp.Effects;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.VertexTypes;
+using Bliss.CSharp.Logging;
 using Bliss.CSharp.Transformations;
 using Veldrid;
 
@@ -13,29 +14,33 @@ public class ImmediateRenderer : Disposable {
     
     public GraphicsDevice GraphicsDevice { get; private set; }
     public OutputDescription Output { get; private set; }
+    public Effect Effect { get; private set; }
     public uint Capacity { get; private set; }
     public int DrawCallCount { get; private set; }
 
-    private Vertex3D[] _vertices;
+    private ImmediateVertex3D[] _vertices;
     private uint[] _indices;
+
+    private int _vertexCount;
+    private int _indexCount;
 
     private DeviceBuffer _vertexBuffer;
     private DeviceBuffer _indexBuffer;
 
     private SimpleBuffer<Matrix4x4> _matrixBuffer;
-    private SimpleBuffer<Vector4> _colorBuffer;
     
     private bool _begun;
     private CommandList _currentCommandList;
     
-    public ImmediateRenderer(GraphicsDevice graphicsDevice, OutputDescription output, uint capacity = 30720) {
+    public ImmediateRenderer(GraphicsDevice graphicsDevice, OutputDescription output, Effect? effect, uint capacity = 30720) {
         this.GraphicsDevice = graphicsDevice;
         this.Output = output;
+        this.Effect = effect ?? GlobalResource.FullScreenRenderPassEffect;
         this.Capacity = capacity;
         
         // Create vertex buffer.
         uint vertexBufferSize = capacity * (uint) Marshal.SizeOf<Vertex3D>();
-        this._vertices = new Vertex3D[capacity];
+        this._vertices = new ImmediateVertex3D[capacity];
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
         
         // Create index buffer.
@@ -44,12 +49,11 @@ public class ImmediateRenderer : Disposable {
         this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
         
         this._matrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 3, SimpleBufferType.Uniform, ShaderStages.Vertex);
-        this._colorBuffer = new SimpleBuffer<Vector4>(graphicsDevice, 1, SimpleBufferType.Uniform, ShaderStages.Fragment);
     }
 
     public void Begin(CommandList commandList) {
         if (this._begun) {
-            throw new Exception("The PrimitiveBatch has already begun!");
+            throw new Exception("The ImmediateRenderer has already begun!");
         }
         
         this._begun = true;
@@ -59,32 +63,117 @@ public class ImmediateRenderer : Disposable {
 
     public void End() {
         if (!this._begun) {
-            throw new Exception("The PrimitiveBatch has not begun yet!");
+            throw new Exception("The ImmediateRenderer has not begun yet!");
         }
         
         this._begun = false;
         this.Flush();
     }
 
-    public void DrawCube3D(Transform transform, Color? color = null) {
-        Cam3D? cam3D = Cam3D.ActiveCamera;
+    public void DrawVertices(ImmediateVertex3D[] vertices, uint[] indices, Transform transform) {
+        if (!this._begun) {
+            throw new Exception("You must begin the ImmediateRenderer before calling draw methods!");
+        }
         
+        Cam3D? cam3D = Cam3D.ActiveCamera;
+
         if (cam3D == null) {
             return;
         }
-    }
 
-    public void DrawLine3D() {
+        if (this._vertexCount + vertices.Length > this.Capacity) {
+            this.Flush();
+        }
+
+        if (this._indexCount + indices.Length > this.Capacity) {
+            this.Flush();
+        }
+
+        if (this._vertexCount + vertices.Length > this.Capacity) {
+            Logger.Fatal(new InvalidOperationException($"The number of provided vertices exceeds the maximum batch size! [{this._vertices.Length + vertices.Length} > {this.Capacity}]"));
+        }
+
+        if (this._indexCount + indices.Length > this.Capacity) {
+            Logger.Fatal(new InvalidOperationException($"The number of provided indices exceeds the maximum batch size! [{this._indices.Length + indices.Length} > {this.Capacity}]"));
+        }
         
-    }
+        // Add vertices.
+        for (int i = 0; i < vertices.Length; i++) {
+            this._vertices[this._vertexCount + i] = vertices[i];
+        }
+        
+        this._vertexCount += vertices.Length;
+        
+        // Add indices.
+        for (int i = 0; i < indices.Length; i++) {
+            this._indices[this._indexCount + i] = indices[i];
+        }
 
+        this._indexCount += indices.Length;
+        
+        // Update matrix buffer.
+        this._matrixBuffer.SetValue(0, cam3D.GetProjection());
+        this._matrixBuffer.SetValue(1, cam3D.GetView());
+        this._matrixBuffer.SetValue(2, transform.GetTransform());
+        this._matrixBuffer.UpdateBuffer(this._currentCommandList);
+    }
+    
     private void Flush() {
+        if (this._vertexCount == 0) {
+            return;
+        }
+
+        if (this._indexCount > 0) {
+            
+            // Update vertex and index buffer.
+            this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, this._vertices);
+            this._currentCommandList.UpdateBuffer(this._indexBuffer, 0, this._indices);
+            
+            // Set vertex and index buffer.
+            this._currentCommandList.SetVertexBuffer(0, this._vertexBuffer);
+            this._currentCommandList.SetIndexBuffer(this._indexBuffer, IndexFormat.UInt32);
+
+            // Set pipeline.
+            this._currentCommandList.SetPipeline(null);
         
+            // Set matrix buffer.
+            this._currentCommandList.SetGraphicsResourceSet(0, this._matrixBuffer.GetResourceSet(this.Effect.GetBufferLayout("MatrixBuffer")));
+        
+            // Draw.
+            this._currentCommandList.DrawIndexed((uint) this._indexCount);
+        }
+        else {
+            
+            // Update vertex buffer.
+            this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, this._vertices);
+            
+            // Set vertex buffer.
+            this._currentCommandList.SetVertexBuffer(0, this._vertexBuffer);
+
+            // Set pipeline.
+            this._currentCommandList.SetPipeline(null);
+        
+            // Set matrix buffer.
+            this._currentCommandList.SetGraphicsResourceSet(0, this._matrixBuffer.GetResourceSet(this.Effect.GetBufferLayout("MatrixBuffer")));
+        
+            // Draw.
+            this._currentCommandList.Draw((uint) this._vertexCount);
+        }
+        
+        this._vertexCount = 0;
+        this._indexCount = 0;
+        
+        Array.Clear(this._vertices);
+        Array.Clear(this._indices);
+        
+        this.DrawCallCount++;
     }
 
     protected override void Dispose(bool disposing) {
         if (disposing) {
-            
+            this._vertexBuffer.Dispose();
+            this._indexBuffer.Dispose();
+            this._matrixBuffer.Dispose();
         }
     }
 }

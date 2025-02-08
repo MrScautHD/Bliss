@@ -7,6 +7,7 @@ using Rectangle = Bliss.CSharp.Transformations.Rectangle;
 
 namespace Bliss.CSharp.Textures;
 
+// TODO: Do a euqal system like for Texture with the DeviceTexture so you may dont need the sampler anymore in SpriteBatch!
 public class Texture2D : Disposable {
     
     /// <summary>

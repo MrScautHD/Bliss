@@ -762,7 +762,7 @@ public class PrimitiveBatch : Disposable {
 
         for (int i = 0; i < count; i++) {
             this._vertices[this._currentBatchCount] = this._tempVertices[i];
-            this._currentBatchCount += 1;
+            this._currentBatchCount++;
         }
         
         Array.Clear(this._tempVertices);
@@ -801,11 +801,8 @@ public class PrimitiveBatch : Disposable {
     
     protected override void Dispose(bool disposing) {
         if (disposing) {
-            this._effect.Dispose();
-            this._projViewBuffer.Dispose();
-            this._pipelineTriangleList.Dispose();
-            this._pipelineTriangleStrip.Dispose();
             this._vertexBuffer.Dispose();
+            this._projViewBuffer.Dispose();
         }
     }
 }
