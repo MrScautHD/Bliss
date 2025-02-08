@@ -8,7 +8,7 @@ namespace Bliss.CSharp.Graphics.VertexTypes;
 public struct ImmediateVertex3D {
     
     /// <summary>
-    /// Represents the layout description for the <see cref="Vertex3D"/> structure.
+    /// Represents the layout description for the <see cref="ImmediateVertex3D"/> structure.
     /// </summary>
     public static VertexLayoutDescription VertexLayout = new VertexLayoutDescription(
         new VertexElementDescription("vPosition", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float3),
