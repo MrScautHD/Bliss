@@ -48,11 +48,11 @@ dotnet add package Bliss --version 1.1.0
 
 [<img src="https://github.com/MrScautHD/Sparkle/assets/65916181/f9e643a8-4d46-450c-91ac-d220394ecd42" alt="Linux" width="70" height="70" align="left">](https://www.ubuntu.com/)
 ### Linux
-- Graphics APIs `Vulkan`, `OpenGL`, `OpenGL-ES`
+- Graphics APIs: `Vulkan`, `OpenGL`, `OpenGL-ES`
 
 [<img src="https://github.com/MrScautHD/Sparkle/assets/65916181/e37eb15f-4237-47ae-9ae7-e4455f7c3d92" alt="macOS" width="70" height="70" align="left">](https://www.apple.com/at/macos/sonoma/)
 ### MacOS
-- Graphics APIs `Metal`, `OpenGL`, `OpenGL-ES`
+- Graphics APIs: `Metal`, `OpenGL`, `OpenGL-ES`
 
 # 🧑 Contributors
 <a href="https://github.com/mrscauthd/Bliss/graphs/contributors">
