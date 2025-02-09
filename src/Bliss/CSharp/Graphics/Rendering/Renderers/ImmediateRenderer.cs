@@ -375,10 +375,8 @@ public class ImmediateRenderer : Disposable {
         
         this._vertexCount = 0;
         this._indexCount = 0;
-        
         Array.Clear(this._vertices);
         Array.Clear(this._indices);
-        
         this.DrawCallCount++;
     }
     
