@@ -12,6 +12,7 @@ public struct ImmediateVertex3D {
     /// </summary>
     public static VertexLayoutDescription VertexLayout = new VertexLayoutDescription(
         new VertexElementDescription("vPosition", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float3),
+        new VertexElementDescription("vTexCoords", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float2),
         new VertexElementDescription("vColor", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float4)
     );
     
@@ -19,6 +20,11 @@ public struct ImmediateVertex3D {
     /// The position of the vertex in 3D space.
     /// </summary>
     public Vector3 Position;
+
+    /// <summary>
+    /// The primary texture coordinates of the vertex.
+    /// </summary>
+    public Vector2 TexCoords;
     
     /// <summary>
     /// The color of the vertex.
@@ -26,12 +32,14 @@ public struct ImmediateVertex3D {
     public Vector4 Color;
     
     /// <summary>
-    /// Initializes a new instance of the <see cref="ImmediateVertex3D"/> struct with the specified position and color.
+    /// Initializes a new instance of the <see cref="ImmediateVertex3D"/> structure with the specified position, texture coordinates, and color.
     /// </summary>
     /// <param name="position">The position of the vertex in 3D space.</param>
+    /// <param name="texCoords">The texture coordinates associated with the vertex.</param>
     /// <param name="color">The color of the vertex.</param>
-    public ImmediateVertex3D(Vector3 position, Vector4 color) {
+    public ImmediateVertex3D(Vector3 position, Vector2 texCoords, Vector4 color) {
         this.Position = position;
+        this.TexCoords = texCoords;
         this.Color = color;
     }
 }

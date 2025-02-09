@@ -1,4 +1,3 @@
-using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Logging;
@@ -7,7 +6,6 @@ using Rectangle = Bliss.CSharp.Transformations.Rectangle;
 
 namespace Bliss.CSharp.Textures;
 
-// TODO: Do a euqal system like for Texture with the DeviceTexture so you may dont need the sampler anymore in SpriteBatch!
 public class Texture2D : Disposable {
     
     /// <summary>
@@ -51,11 +49,6 @@ public class Texture2D : Disposable {
     public Texture DeviceTexture { get; }
 
     /// <summary>
-    /// Represents the sampler associated with the `Texture2D` instance, used for sampling textures.
-    /// </summary>
-    private Sampler _sampler;
-    
-    /// <summary>
     /// A dictionary that caches resource sets associated with samplers, used to avoid redundant resource set creation.
     /// </summary>
     private Dictionary<(Sampler, SimpleTextureLayout), ResourceSet> _cachedResourceSets;
@@ -66,10 +59,9 @@ public class Texture2D : Disposable {
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used for rendering the texture.</param>
     /// <param name="path">The file path of the image to load as a texture.</param>
-    /// <param name="sampler">The sampler used for texture sampling.</param>
     /// <param name="mipmap">Indicates whether to generate mipmaps for the texture.</param>
     /// <param name="srgb">Indicates whether to use sRGB color space for the texture.</param>
-    public Texture2D(GraphicsDevice graphicsDevice, string path, Sampler? sampler = null, bool mipmap = true, bool srgb = false) : this(graphicsDevice, new Image(path), sampler, mipmap, srgb) {
+    public Texture2D(GraphicsDevice graphicsDevice, string path, bool mipmap = true, bool srgb = false) : this(graphicsDevice, new Image(path), mipmap, srgb) {
         Logger.Info($"Texture loaded successfully from path: [{path}]");
     }
 
@@ -79,10 +71,9 @@ public class Texture2D : Disposable {
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used for rendering the texture.</param>
     /// <param name="stream">The image stream to load as a texture.</param>
-    /// <param name="sampler">The sampler used for texture sampling.</param>
     /// <param name="mipmap">Indicates whether to generate mipmaps for the texture.</param>
     /// <param name="srgb">Indicates whether to use sRGB color space for the texture.</param>
-    public Texture2D(GraphicsDevice graphicsDevice, Stream stream, Sampler? sampler = null, bool mipmap = true, bool srgb = false) : this(graphicsDevice, new Image(stream), sampler, mipmap, srgb) {
+    public Texture2D(GraphicsDevice graphicsDevice, Stream stream, bool mipmap = true, bool srgb = false) : this(graphicsDevice, new Image(stream), mipmap, srgb) {
         Logger.Info($"Texture loaded successfully from stream: [{stream}]");
     }
     
@@ -92,40 +83,14 @@ public class Texture2D : Disposable {
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used for rendering the texture.</param>
     /// <param name="image">The image object used to create the texture.</param>
-    /// <param name="sampler">The sampler used for texture sampling.</param>
     /// <param name="mipmap">Indicates whether to generate mipmaps for the texture.</param>
     /// <param name="srgb">Indicates whether to use sRGB color space for the texture.</param>
-    public Texture2D(GraphicsDevice graphicsDevice, Image image, Sampler? sampler = null, bool mipmap = true, bool srgb = false) {
+    public Texture2D(GraphicsDevice graphicsDevice, Image image, bool mipmap = true, bool srgb = false) {
         this.GraphicsDevice = graphicsDevice;
         this.Images = mipmap ? MipmapHelper.GenerateMipmaps(image) : [image];
         this.Format = srgb ? PixelFormat.R8G8B8A8UNormSRgb : PixelFormat.R8G8B8A8UNorm;
         this.DeviceTexture = this.CreateDeviceTexture();
-        this._sampler = sampler ?? graphicsDevice.PointSampler;
         this._cachedResourceSets = new Dictionary<(Sampler, SimpleTextureLayout), ResourceSet>();
-    }
-    
-    /// <summary>
-    /// Gets the sampler associated with this texture.
-    /// </summary>
-    /// <returns>The sampler instance used by this texture.</returns>
-    public Sampler GetSampler() {
-        return this._sampler;
-    }
-
-    /// <summary>
-    /// Sets the sampler for the texture.
-    /// </summary>
-    /// <param name="sampler">The sampler to set.</param>
-    public void SetSampler(Sampler sampler) {
-        this._sampler = sampler;
-    }
-
-    /// <summary>
-    /// Sets the sampler for the texture using the specified sampler type.
-    /// </summary>
-    /// <param name="samplerType">The type of the sampler to be set for the texture.</param>
-    public void SetSampler(SamplerType samplerType) {
-        this._sampler = GraphicsHelper.GetSampler(this.GraphicsDevice, samplerType);
     }
 
     /// <summary>

@@ -1,11 +1,13 @@
 using System.Numerics;
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Camera.Dim3;
+using Bliss.CSharp.Colors;
 using Bliss.CSharp.Effects;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Logging;
+using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
 using Veldrid;
 
@@ -34,21 +36,25 @@ public class ImmediateRenderer : Disposable {
     
     private bool _begun;
     private CommandList _currentCommandList;
+
+    private Sampler? _currentSampler;
     private BlendState _currentBlendState;
+    
+    private Texture2D? _currentTexture;
     
     public ImmediateRenderer(GraphicsDevice graphicsDevice, OutputDescription output, Effect? effect = null, uint capacity = 30720) {
         this.GraphicsDevice = graphicsDevice;
         this.Output = output;
-        this.Effect = effect ?? GlobalResource.FullScreenRenderPassEffect;
+        this.Effect = effect ?? GlobalResource.ImmediateRendererEffect;
         this.Capacity = capacity;
         
         // Create vertex buffer.
-        uint vertexBufferSize = capacity * (uint) Marshal.SizeOf<Vertex3D>();
+        uint vertexBufferSize = capacity * (uint) Marshal.SizeOf<ImmediateVertex3D>();
         this._vertices = new ImmediateVertex3D[capacity];
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
         
         // Create index buffer.
-        uint indexBufferSize = capacity * sizeof(uint);
+        uint indexBufferSize = capacity * 3 * sizeof(uint);
         this._indices = new uint[capacity * 3];
         this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
         
@@ -57,6 +63,10 @@ public class ImmediateRenderer : Disposable {
 
         // Create pipeline description.
         this._pipelineDescription = this.CreatePipelineDescription();
+        
+        // Set default texture and sampler.
+        this._currentTexture = GlobalResource.DefaultImmediateRendererTexture;
+        this._currentSampler = GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
     }
 
     public void Begin(CommandList commandList, BlendState? blendState = null) {
@@ -66,7 +76,7 @@ public class ImmediateRenderer : Disposable {
         
         this._begun = true;
         this._currentCommandList = commandList;
-
+        
         if (this._currentBlendState != blendState) {
             this.Flush();
         }
@@ -84,6 +94,83 @@ public class ImmediateRenderer : Disposable {
         this._begun = false;
         this.Flush();
     }
+    
+    public void SetTexture(Texture2D? texture, Sampler? sampler = null) {
+        texture ??= GlobalResource.DefaultImmediateRendererTexture;
+        sampler ??= GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
+
+        if (this._currentTexture != texture || this._currentSampler != sampler) {
+            this.Flush();
+        }
+
+        this._currentTexture = texture;
+        this._currentSampler = sampler;
+    }
+    
+    public void DrawCube(Transform transform, Vector3 size, Color? color = null) {
+        Color finalColor = color ?? Color.White;
+    
+        Vector2[] texCoords = [
+            new Vector2(0.0F, 1.0F), new Vector2(1.0F, 1.0F),
+            new Vector2(1.0F, 0.0F), new Vector2(0.0F, 0.0F)
+        ];
+        
+        Vector3[] positions = [
+            // Front face
+            new Vector3(-1.0F, -1.0F, -1.0F), new Vector3(1.0F, -1.0F, -1.0F), new Vector3(1.0F, 1.0F, -1.0F), new Vector3(-1.0F, 1.0F, -1.0F),
+            // Back face
+            new Vector3(1.0F, -1.0F, 1.0F), new Vector3(-1.0F, -1.0F, 1.0F), new Vector3(-1.0F, 1.0F, 1.0F), new Vector3(1.0F, 1.0F, 1.0F),
+            // Left face
+            new Vector3(-1.0F, -1.0F, 1.0F), new Vector3(-1.0F, -1.0F, -1.0F), new Vector3(-1.0F, 1.0F, -1.0F), new Vector3(-1.0F, 1.0F, 1.0F),
+            // Right face
+            new Vector3(1.0F, -1.0F, -1.0F), new Vector3(1.0F, -1.0F, 1.0F), new Vector3(1.0F, 1.0F, 1.0F), new Vector3(1.0F, 1.0F, -1.0F),
+            // Top face
+            new Vector3(-1.0F, 1.0F, -1.0F), new Vector3(1.0F, 1.0F, -1.0F), new Vector3(1.0F, 1.0F, 1.0F), new Vector3(-1.0F, 1.0F, 1.0F),
+            // Bottom face
+            new Vector3(-1.0F, -1.0F, 1.0F), new Vector3(1.0F, -1.0F, 1.0F), new Vector3(1.0F, -1.0F, -1.0F), new Vector3(-1.0F, -1.0F, -1.0F)
+        ];
+    
+        ImmediateVertex3D[] vertices = new ImmediateVertex3D[24];
+        
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 4; j++) {
+                int index = i * 4 + j;
+                vertices[index] = new ImmediateVertex3D() {
+                    Position = positions[index] * new Vector3(size.X / 2.0F, size.Y / 2.0F, size.Z / 2.0F),
+                    TexCoords = texCoords[j],
+                    Color = finalColor.ToRgbaFloatVec4()
+                };
+            }
+        }
+    
+        uint[] indices = [
+            // Front face
+            0, 1, 2,
+            2, 3, 0,
+    
+            // Back face
+            4, 5, 6,
+            6, 7, 4,
+    
+            // Left face
+            8, 9, 10,
+            10, 11, 8,
+    
+            // Right face
+            12, 13, 14,
+            14, 15, 12,
+    
+            // Top face
+            16, 17, 18,
+            18, 19, 16,
+    
+            // Bottom face
+            20, 21, 22,
+            22, 23, 20
+        ];
+    
+        this.DrawVertices(vertices, indices, transform);
+    }
 
     public void DrawVertices(ImmediateVertex3D[] vertices, uint[] indices, Transform transform) {
         if (!this._begun) {
@@ -95,7 +182,7 @@ public class ImmediateRenderer : Disposable {
         if (cam3D == null) {
             return;
         }
-
+        
         if (this._vertexCount + vertices.Length > this.Capacity) {
             this.Flush();
         }
@@ -153,7 +240,12 @@ public class ImmediateRenderer : Disposable {
         
             // Set matrix buffer.
             this._currentCommandList.SetGraphicsResourceSet(0, this._matrixBuffer.GetResourceSet(this.Effect.GetBufferLayout("MatrixBuffer")));
-        
+
+            // Set resourceSet of the texture.
+            if (this._currentTexture != null && this._currentSampler != null) {
+                this._currentCommandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this.Effect.GetTextureLayout("fTexture")));
+            }
+            
             // Draw.
             this._currentCommandList.DrawIndexed((uint) this._indexCount);
         }
@@ -171,6 +263,11 @@ public class ImmediateRenderer : Disposable {
             // Set matrix buffer.
             this._currentCommandList.SetGraphicsResourceSet(0, this._matrixBuffer.GetResourceSet(this.Effect.GetBufferLayout("MatrixBuffer")));
         
+            // Set resourceSet of the texture.
+            if (this._currentTexture != null && this._currentSampler != null) {
+                this._currentCommandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this.Effect.GetTextureLayout("fTexture")));
+            }
+            
             // Draw.
             this._currentCommandList.Draw((uint) this._vertexCount);
         }
@@ -194,7 +291,7 @@ public class ImmediateRenderer : Disposable {
                 DepthClipEnabled = true,
                 ScissorTestEnabled = false
             },
-            PrimitiveTopology = PrimitiveTopology.TriangleList, // TODO: Maybe need handled like blendstate
+            PrimitiveTopology = PrimitiveTopology.TriangleList,
             BufferLayouts = this.Effect.GetBufferLayouts(),
             TextureLayouts = this.Effect.GetTextureLayouts(),
             ShaderSet = new ShaderSetDescription() {

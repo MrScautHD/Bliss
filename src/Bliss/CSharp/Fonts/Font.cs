@@ -73,7 +73,7 @@ public class Font : Disposable {
         Color finalColor = color ?? Color.White;
         Vector2 finalOrigin = origin ?? new Vector2(0.0F, 0.0F);
         
-        this._fontSystem.GetFont(size).DrawText(batch.FontStashAdapter, text, position, new FSColor(finalColor.R, finalColor.G, finalColor.B, finalColor.A), Single.DegreesToRadians(rotation), finalOrigin, scale, default, characterSpacing, lineSpacing, style, effect, effectAmount);
+        this._fontSystem.GetFont(size).DrawText(batch.FontStashAdapter, text, position, new FSColor(finalColor.R, finalColor.G, finalColor.B, finalColor.A), float.DegreesToRadians(rotation), finalOrigin, scale, 0, characterSpacing, lineSpacing, style, effect, effectAmount);
     }
 
     /// <summary>

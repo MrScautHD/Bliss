@@ -16,9 +16,15 @@ public static class GlobalResource {
     /// Provides access to the global graphics device used for rendering operations.
     /// </summary>
     public static GraphicsDevice GraphicsDevice { get; private set; }
-    
+
+    /// <summary>
+    /// Stores a collection of globally accessible buffer layouts used in rendering pipelines.
+    /// </summary>
     public static List<SimpleBufferLayout> BufferLayouts { get; private set; }
-    
+
+    /// <summary>
+    /// Maintains a collection of texture layouts used for configuring and managing texture bindings in graphics rendering operations.
+    /// </summary>
     public static List<SimpleTextureLayout> TextureLayouts { get; private set; }
     
     /// <summary>
@@ -31,13 +37,26 @@ public static class GlobalResource {
     /// </summary>
     public static Effect PrimitiveEffect { get; private set; }
     
+    /// <summary>
+    /// Gets the default <see cref="Effect"/> used for full-screen render passes.
+    /// </summary>
     public static Effect FullScreenRenderPassEffect { get; private set; }
+    
+    /// <summary>
+    /// Gets the default <see cref="Effect"/> used for immediate mode rendering operations.
+    /// </summary>
+    public static Effect ImmediateRendererEffect { get; private set; }
     
     /// <summary>
     /// The default <see cref="Effect"/> used for rendering 3D models.
     /// </summary>
     public static Effect DefaultModelEffect { get; private set; }
-    
+
+    /// <summary>
+    /// The default <see cref="Texture2D"/> used for immediate mode rendering.
+    /// </summary>
+    public static Texture2D DefaultImmediateRendererTexture { get; private set; }
+
     /// <summary>
     /// The default <see cref="Texture2D"/> used for rendering 3D models.
     /// </summary>
@@ -65,6 +84,11 @@ public static class GlobalResource {
         FullScreenRenderPassEffect = new Effect(graphicsDevice, SpriteVertex2D.VertexLayout, "content/shaders/full_screen_render_pass.vert", "content/shaders/full_screen_render_pass.frag");
         FullScreenRenderPassEffect.AddTextureLayout(CreateTextureLayout("fTexture"));
         
+        // ImmediateRenderer effect.
+        ImmediateRendererEffect = new Effect(graphicsDevice, ImmediateVertex3D.VertexLayout, "content/shaders/immediate_renderer.vert", "content/shaders/immediate_renderer.frag");
+        ImmediateRendererEffect.AddBufferLayout(CreateBufferLayout("MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
+        ImmediateRendererEffect.AddTextureLayout(CreateTextureLayout("fTexture"));
+        
         // Default model effect.
         DefaultModelEffect = new Effect(graphicsDevice, Vertex3D.VertexLayout, "content/shaders/default_model.vert", "content/shaders/default_model.frag");
         DefaultModelEffect.AddBufferLayout(CreateBufferLayout("MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
@@ -72,6 +96,9 @@ public static class GlobalResource {
         DefaultModelEffect.AddBufferLayout(CreateBufferLayout("ColorBuffer", SimpleBufferType.Uniform, ShaderStages.Fragment));
         DefaultModelEffect.AddBufferLayout(CreateBufferLayout("ValueBuffer", SimpleBufferType.Uniform, ShaderStages.Fragment));
         DefaultModelEffect.AddTextureLayout(CreateTextureLayout(MaterialMapType.Albedo.GetName()));
+
+        // Default immediate renderer texture.
+        DefaultImmediateRendererTexture = new Texture2D(graphicsDevice, new Image(1, 1, Color.White));
         
         // Default model texture.
         DefaultModelTexture = new Texture2D(graphicsDevice, new Image(1, 1, Color.Gray));

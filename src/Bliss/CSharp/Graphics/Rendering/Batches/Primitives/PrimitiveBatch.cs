@@ -254,22 +254,22 @@ public class PrimitiveBatch : Disposable {
 
         PrimitiveVertex2D topLeft = new PrimitiveVertex2D() {
             Position = Vector2.Transform(new Vector2(rectangle.X, rectangle.Y) - finalOrigin, transform),
-            Color = finalColor.ToRgbaFloat().ToVector4()
+            Color = finalColor.ToRgbaFloatVec4()
         };
         
         PrimitiveVertex2D topRight = new PrimitiveVertex2D() {
             Position = Vector2.Transform(new Vector2(rectangle.X + rectangle.Width, rectangle.Y) - finalOrigin, transform),
-            Color = finalColor.ToRgbaFloat().ToVector4()
+            Color = finalColor.ToRgbaFloatVec4()
         };
         
         PrimitiveVertex2D bottomLeft = new PrimitiveVertex2D() {
             Position = Vector2.Transform(new Vector2(rectangle.X, rectangle.Y + rectangle.Height) - finalOrigin, transform),
-            Color = finalColor.ToRgbaFloat().ToVector4()
+            Color = finalColor.ToRgbaFloatVec4()
         };
         
         PrimitiveVertex2D bottomRight = new PrimitiveVertex2D() {
             Position = Vector2.Transform(new Vector2(rectangle.X + rectangle.Width, rectangle.Y + rectangle.Height) - finalOrigin, transform),
-            Color = finalColor.ToRgbaFloat().ToVector4()
+            Color = finalColor.ToRgbaFloatVec4()
         };
 
         this._tempVertices[0] = bottomLeft;
@@ -357,15 +357,15 @@ public class PrimitiveBatch : Disposable {
 
             this._tempVertices[0] = new PrimitiveVertex2D() {
                 Position = position,
-                Color = finalColor.ToRgbaFloat().ToVector4()
+                Color = finalColor.ToRgbaFloatVec4()
             };
             this._tempVertices[1] = new PrimitiveVertex2D() {
                 Position = lastPoint,
-                Color = finalColor.ToRgbaFloat().ToVector4()
+                Color = finalColor.ToRgbaFloatVec4()
             };
             this._tempVertices[2] = new PrimitiveVertex2D() {
                 Position = currentPoint,
-                Color = finalColor.ToRgbaFloat().ToVector4()
+                Color = finalColor.ToRgbaFloatVec4()
             };
         
             this.AddVertices(this._pipelineTriangleList, 3);
@@ -444,15 +444,15 @@ public class PrimitiveBatch : Disposable {
 
             this._tempVertices[0] = new PrimitiveVertex2D() {
                 Position = position,
-                Color = finalColor.ToRgbaFloat().ToVector4()
+                Color = finalColor.ToRgbaFloatVec4()
             };
             this._tempVertices[1] = new PrimitiveVertex2D() {
                 Position = lastPoint,
-                Color = finalColor.ToRgbaFloat().ToVector4()
+                Color = finalColor.ToRgbaFloatVec4()
             };
             this._tempVertices[2] = new PrimitiveVertex2D() {
                 Position = currentPoint,
-                Color = finalColor.ToRgbaFloat().ToVector4()
+                Color = finalColor.ToRgbaFloatVec4()
             };
             
             this.AddVertices(this._pipelineTriangleList, 3);
@@ -573,28 +573,28 @@ public class PrimitiveBatch : Disposable {
             // Define the vertices for the triangle as part of the ring segment.
             this._tempVertices[0] = new PrimitiveVertex2D() {
                 Position = innerStart,
-                Color = finalColor.ToRgbaFloat().ToVector4()
+                Color = finalColor.ToRgbaFloatVec4()
             };
             this._tempVertices[1] = new PrimitiveVertex2D() {
                 Position = outerStart,
-                Color = finalColor.ToRgbaFloat().ToVector4()
+                Color = finalColor.ToRgbaFloatVec4()
             };
             this._tempVertices[2] = new PrimitiveVertex2D() {
                 Position = outerEnd,
-                Color = finalColor.ToRgbaFloat().ToVector4()
+                Color = finalColor.ToRgbaFloatVec4()
             };
     
             this._tempVertices[3] = new PrimitiveVertex2D() {
                 Position = innerStart,
-                Color = finalColor.ToRgbaFloat().ToVector4()
+                Color = finalColor.ToRgbaFloatVec4()
             };
             this._tempVertices[4] = new PrimitiveVertex2D() {
                 Position = outerEnd,
-                Color = finalColor.ToRgbaFloat().ToVector4()
+                Color = finalColor.ToRgbaFloatVec4()
             };
             this._tempVertices[5] = new PrimitiveVertex2D() {
                 Position = innerEnd,
-                Color = finalColor.ToRgbaFloat().ToVector4()
+                Color = finalColor.ToRgbaFloatVec4()
             };
     
             this.AddVertices(this._pipelineTriangleList, 6);
@@ -678,17 +678,17 @@ public class PrimitiveBatch : Disposable {
 
             this._tempVertices[0] = new PrimitiveVertex2D {
                 Position = position,
-                Color = finalColor.ToRgbaFloat().ToVector4()
+                Color = finalColor.ToRgbaFloatVec4()
             };
             
             this._tempVertices[1] = new PrimitiveVertex2D {
                 Position = startPoint,
-                Color = finalColor.ToRgbaFloat().ToVector4()
+                Color = finalColor.ToRgbaFloatVec4()
             };
             
             this._tempVertices[2] = new PrimitiveVertex2D {
                 Position = endPoint,
-                Color = finalColor.ToRgbaFloat().ToVector4()
+                Color = finalColor.ToRgbaFloatVec4()
             };
 
             this.AddVertices(this._pipelineTriangleList, 3);
@@ -723,17 +723,17 @@ public class PrimitiveBatch : Disposable {
 
         this._tempVertices[0] = new PrimitiveVertex2D {
             Position = point1,
-            Color = finalColor.ToRgbaFloat().ToVector4()
+            Color = finalColor.ToRgbaFloatVec4()
         };
 
         this._tempVertices[1] = new PrimitiveVertex2D {
             Position = point2,
-            Color = finalColor.ToRgbaFloat().ToVector4()
+            Color = finalColor.ToRgbaFloatVec4()
         };
 
         this._tempVertices[2] = new PrimitiveVertex2D {
             Position = point3,
-            Color = finalColor.ToRgbaFloat().ToVector4()
+            Color = finalColor.ToRgbaFloatVec4()
         };
 
         this.AddVertices(this._pipelineTriangleList, 3);

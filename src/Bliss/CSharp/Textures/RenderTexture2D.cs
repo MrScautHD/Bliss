@@ -3,7 +3,6 @@ using Veldrid;
 
 namespace Bliss.CSharp.Textures;
 
-// TODO: Add Sampler count here! Do a ITexture so the sampler would be placed there!
 public class RenderTexture2D : Disposable {
     
     /// <summary>

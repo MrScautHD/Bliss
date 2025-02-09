@@ -470,6 +470,38 @@ public class Cam3D : ICam {
         this._frustum.Extract(this.GetView() * this.GetProjection());
         return this._frustum;
     }
+    
+    /// <summary>
+    /// Converts a given screen position to world coordinates using the camera projection and view matrices.
+    /// </summary>
+    /// <param name="position">The screen position to transform.</param>
+    /// <returns>A <see cref="Vector3"/> representing the corresponding world coordinates.</returns>
+    public Vector3 GetScreenToWorld(Vector2 position) {
+        Matrix4x4.Invert(this.GetView() * this.GetProjection(), out Matrix4x4 result);
+        Vector4 screenPosition = new Vector4(position, 1.0F, 1.0F);
+        Vector4 worldPosition = Vector4.Transform(screenPosition, result);
+        
+        if (worldPosition.W != 0.0F) {
+            worldPosition /= worldPosition.W;
+        }
+    
+        return new Vector3(worldPosition.X, worldPosition.Y, worldPosition.Z);
+    }
+    
+    /// <summary>
+    /// Converts a given world position to screen coordinates based on the camera's current view and projection matrices.
+    /// </summary>
+    /// <param name="position">The world position to convert.</param>
+    /// <returns>A <see cref="Vector2"/> representing the screen coordinates corresponding to the given world position.</returns>
+    public Vector2 GetWorldToScreen(Vector3 position) {
+        Vector4 worldPosition = Vector4.Transform(new Vector4(position, 1.0F), this.GetView() * this.GetProjection());
+        
+        if (worldPosition.W != 0.0F) {
+            worldPosition /= worldPosition.W;
+        }
+    
+        return new Vector2(worldPosition.X, worldPosition.Y);
+    }
 
     /// <summary>
     /// Updates the camera's projection matrix based on its current projection type,

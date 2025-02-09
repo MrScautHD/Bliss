@@ -800,7 +800,7 @@ public class Sdl3Window : Disposable, IWindow {
                 this.MouseWheel?.Invoke(new Vector2(sdlEvent.wheel.x, sdlEvent.wheel.y));
                 break;
             case SDL_EventType.SDL_EVENT_MOUSE_MOTION:
-                this.MouseMove?.Invoke(new Vector2(sdlEvent.motion.y, sdlEvent.motion.x));
+                this.MouseMove?.Invoke(new Vector2(sdlEvent.motion.x, sdlEvent.motion.y));
                 break;
             case SDL_EventType.SDL_EVENT_MOUSE_BUTTON_DOWN:
                 this.MouseButtonDown?.Invoke(new MouseEvent(this.MapMouseButton(sdlEvent.button.Button), sdlEvent.button.down));

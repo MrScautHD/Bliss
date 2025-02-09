@@ -2,6 +2,7 @@ using System.Numerics;
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Geometry.Animations;
+using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.VertexTypes;
@@ -126,7 +127,7 @@ public class Mesh : Disposable {
         this.IndexCount = (uint) this.Indices.Length;
         
         uint vertexBufferSize = this.VertexCount * (uint) Marshal.SizeOf<Vertex3D>();
-        uint indexBufferSize = this.IndexCount * 4;
+        uint indexBufferSize = this.IndexCount * sizeof(uint);
         
         // Create vertex buffer.
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
@@ -1009,15 +1010,16 @@ public class Mesh : Disposable {
         
         this._boneBuffer.UpdateBuffer(commandList);
     }
-    
+
     /// <summary>
-    /// Renders the mesh using the specified command list, output description, transformation, and optional color.
+    /// Renders the mesh using the specified command list, transformation parameters, and pipeline configurations.
     /// </summary>
-    /// <param name="commandList">The command list used for issuing rendering commands.</param>
-    /// <param name="output">The output description for the rendering pipeline.</param>
-    /// <param name="transform">The transformation to apply to the mesh.</param>
-    /// <param name="color">Optional color parameter for coloring the mesh.</param>
-    public void Draw(CommandList commandList, OutputDescription output, Transform transform, Color? color = null) {
+    /// <param name="commandList">The <see cref="CommandList"/> used for submitting rendering commands to the GPU.</param>
+    /// <param name="transform">The <see cref="Transform"/> applied to the mesh, which defines its position, rotation, and scale.</param>
+    /// <param name="output">The <see cref="OutputDescription"/> that describes the render target configuration for the mesh rendering.</param>
+    /// <param name="sampler">An optional <see cref="Sampler"/> used to sample textures for rendering the mesh, overriding the default sampler if specified.</param>
+    /// <param name="color">An optional <see cref="Color"/> used to override the default material color for the mesh if specified.</param>
+    public void Draw(CommandList commandList, Transform transform, OutputDescription output, Sampler? sampler = null, Color? color = null) {
         Cam3D? cam3D = Cam3D.ActiveCamera;
 
         if (cam3D == null) {
@@ -1080,7 +1082,7 @@ public class Mesh : Disposable {
             // Set material texture.
             for (int i = 0; i < this.Material.Effect.GetTextureLayoutKeys().Length; i++) {
                 string key = this.Material.Effect.GetTextureLayoutKeys()[i];
-                ResourceSet? resourceSet = this.Material.GetResourceSet(this.Material.Effect.GetTextureLayout(key), key);
+                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point), this.Material.Effect.GetTextureLayout(key), key);
 
                 if (resourceSet != null) {
                     commandList.SetGraphicsResourceSet((uint) i + 4, resourceSet);
@@ -1113,7 +1115,7 @@ public class Mesh : Disposable {
             // Set material texture.
             for (int i = 0; i < this.Material.Effect.GetTextureLayoutKeys().Length; i++) {
                 string key = this.Material.Effect.GetTextureLayoutKeys()[i];
-                ResourceSet? resourceSet = this.Material.GetResourceSet(this.Material.Effect.GetTextureLayout(key), key);
+                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point), this.Material.Effect.GetTextureLayout(key), key);
 
                 if (resourceSet != null) {
                     commandList.SetGraphicsResourceSet((uint) i + 4, resourceSet);

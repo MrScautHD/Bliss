@@ -8,6 +8,7 @@ using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Rendering.Batches.Primitives;
 using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 using Bliss.CSharp.Graphics.Rendering.Passes;
+using Bliss.CSharp.Graphics.Rendering.Renderers;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Contexts;
@@ -40,16 +41,19 @@ public class Game : Disposable {
     public FullScreenRenderPass FullScreenRenderPass { get; private set; }
     public RenderTexture2D FullScreenTexture { get; private set; }
 
+    private ImmediateRenderer _immediateRenderer;
     private SpriteBatch _spriteBatch;
     private PrimitiveBatch _primitiveBatch;
     private AnimatedImage _animatedImage;
     private Texture2D _gif;
     private Font _font;
+    private Texture2D _logoTexture;
     
     private Cam3D _cam3D;
     private Model _playerModel;
     private Model _planeModel;
-    
+
+    private Texture2D _customMeshTexture;
     private Mesh _customPoly;
     private Mesh _customCube;
     private Mesh _customSphere;
@@ -157,39 +161,41 @@ public class Game : Disposable {
         this.FullScreenRenderPass = new FullScreenRenderPass(this.GraphicsDevice, this.GraphicsDevice.SwapchainFramebuffer.OutputDescription);
         this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), this.Settings.SampleCount);
         
+        this._immediateRenderer = new ImmediateRenderer(this.GraphicsDevice, this.FullScreenTexture.Framebuffer.OutputDescription);
         this._spriteBatch = new SpriteBatch(this.GraphicsDevice, this.MainWindow, this.FullScreenTexture.Framebuffer.OutputDescription);
         this._primitiveBatch = new PrimitiveBatch(this.GraphicsDevice, this.MainWindow, this.FullScreenTexture.Framebuffer.OutputDescription);
         this._font = new Font("content/fonts/fontoe.ttf");
+        this._logoTexture = new Texture2D(this.GraphicsDevice, "content/images/logo.png");
         
         this._cam3D = new Cam3D((uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0), default, ProjectionType.Perspective, CameraMode.Free);
         this._playerModel = Model.Load(this.GraphicsDevice, "content/player.glb");
         this._planeModel = Model.Load(this.GraphicsDevice, "content/plane.glb");
-
-        Texture2D customMeshTexture = new Texture2D(this.GraphicsDevice, "content/cube.png");
+        
+        this._customMeshTexture = new Texture2D(this.GraphicsDevice, "content/cube.png");
         
         this._customPoly = Mesh.GenPoly(this.GraphicsDevice, 40, 1);
-        this._customPoly.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
+        this._customPoly.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
 
         this._customCube = Mesh.GenCube(this.GraphicsDevice, 1, 1, 1);
-        this._customCube.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
+        this._customCube.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
 
         this._customSphere = Mesh.GenSphere(this.GraphicsDevice, 1F, 40, 40);
-        this._customSphere.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
+        this._customSphere.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
 
         this._customHemishpere = Mesh.GenHemisphere(this.GraphicsDevice, 1F, 40, 40);
-        this._customHemishpere.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
+        this._customHemishpere.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
 
         this._customCylinder = Mesh.GenCylinder(this.GraphicsDevice, 1F, 1F, 40);
-        this._customCylinder.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
+        this._customCylinder.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
 
         this._customCone = Mesh.GenCone(this.GraphicsDevice, 1F, 1F, 40);
-        this._customCone.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
+        this._customCone.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
 
         this._customTorus = Mesh.GenTorus(this.GraphicsDevice, 2.0F, 1F, 40, 40);
-        this._customTorus.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
+        this._customTorus.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
 
         this._customKnot = Mesh.GenKnot(this.GraphicsDevice, 1F, 1F, 40, 40);
-        this._customKnot.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
+        this._customKnot.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
         
         this._customHeighmap = Mesh.GenHeightmap(this.GraphicsDevice, new Image("content/heightmap.png"), new Vector3(1, 1, 1));
         this._customHeighmap.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), new Texture2D(this.GraphicsDevice, "content/heightmap.png"));
@@ -229,19 +235,25 @@ public class Game : Disposable {
         // Drawing 3D.
         this._cam3D.Begin(commandList);
         
-        this._customPoly.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(9, 0, 0)}, Color.White);
-        this._customCube.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(11, 0, 0)}, Color.White);
-        this._customSphere.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(13, 0, 0)}, Color.White);
-        this._customHemishpere.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(15, 0, 0)}, Color.White);
-        this._customCylinder.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(17, 0, 0)}, Color.White);
-        this._customCone.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(19, 0, 0)}, Color.White);
-        this._customTorus.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(21, 0, 0)}, Color.White);
-        this._customKnot.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(23, 0, 0)}, Color.White);
-        this._customHeighmap.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(25, 0, 0)}, Color.White);
+        this._immediateRenderer.Begin(this.CommandList);
+        
+        this._immediateRenderer.SetTexture(this._customMeshTexture);
+        this._immediateRenderer.DrawCube(new Transform() { Translation = new Vector3(9, 0, 6)}, new Vector3(1, 1, 1));
+        this._immediateRenderer.End();
+        
+        this._customPoly.Draw(commandList, new Transform() { Translation = new Vector3(9, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._customCube.Draw(commandList, new Transform() { Translation = new Vector3(11, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._customSphere.Draw(commandList, new Transform() { Translation = new Vector3(13, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._customHemishpere.Draw(commandList, new Transform() { Translation = new Vector3(15, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._customCylinder.Draw(commandList, new Transform() { Translation = new Vector3(17, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._customCone.Draw(commandList, new Transform() { Translation = new Vector3(19, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._customTorus.Draw(commandList, new Transform() { Translation = new Vector3(21, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._customKnot.Draw(commandList, new Transform() { Translation = new Vector3(23, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._customHeighmap.Draw(commandList, new Transform() { Translation = new Vector3(25, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
         //this._customCubemap.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(27, 0, 0)}, Color.White);
 
         if (this._cam3D.GetFrustum().ContainsBox(this._planeModel.BoundingBox)) {
-            this._planeModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform(), Color.White);
+            this._planeModel.Draw(commandList, new Transform(), this.FullScreenTexture.Framebuffer.OutputDescription);
         }
         
         if (Input.IsKeyPressed(KeyboardKey.G)) {
@@ -254,7 +266,7 @@ public class Game : Disposable {
             if (this._playingAnim) {
                 this._playerModel.UpdateAnimationBones(commandList, this._playerModel.Animations[1], this._frameCount);
             }
-            this._playerModel.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, Color.White);
+            this._playerModel.Draw(commandList, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
         }
         
         this._cam3D.End();
@@ -282,7 +294,7 @@ public class Game : Disposable {
         commandList.SetFramebuffer(graphicsDevice.SwapchainFramebuffer);
         commandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
         
-        this.FullScreenRenderPass.Draw(commandList, this.FullScreenTexture, SamplerType.Point);
+        this.FullScreenRenderPass.Draw(commandList, this.FullScreenTexture);
         
         commandList.End();
         

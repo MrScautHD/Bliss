@@ -90,51 +90,51 @@ public class FullScreenRenderPass : Disposable {
             new SpriteVertex2D() {
                 Position = new Vector2(-1.0F, -1.0F),
                 TexCoords = new Vector2(0.0F, top),
-                Color = color.ToRgbaFloat().ToVector4()
+                Color = color.ToRgbaFloatVec4()
             },
         
             new SpriteVertex2D() {
                 Position = new Vector2(1.0F, -1.0F),
                 TexCoords = new Vector2(1.0F, top),
-                Color = color.ToRgbaFloat().ToVector4()
+                Color = color.ToRgbaFloatVec4()
             },
         
             new SpriteVertex2D() {
                 Position = new Vector2(1.0F, 1.0F),
                 TexCoords = new Vector2(1.0F, bottom),
-                Color = color.ToRgbaFloat().ToVector4()
+                Color = color.ToRgbaFloatVec4()
             },
         
             new SpriteVertex2D() {
                 Position = new Vector2(-1.0F, -1.0F),
                 TexCoords = new Vector2(0.0F, top),
-                Color = color.ToRgbaFloat().ToVector4()
+                Color = color.ToRgbaFloatVec4()
             },
             
             new SpriteVertex2D() {
                 Position = new Vector2(1.0F, 1.0F),
                 TexCoords = new Vector2(1.0F, bottom),
-                Color = color.ToRgbaFloat().ToVector4()
+                Color = color.ToRgbaFloatVec4()
             },
             
             new SpriteVertex2D() {
                 Position = new Vector2(-1.0F, 1.0F),
                 TexCoords = new Vector2(0.0F, bottom),
-                Color = color.ToRgbaFloat().ToVector4()
+                Color = color.ToRgbaFloatVec4()
             }
         ];
     }
 
     /// <summary>
-    /// Renders a full-screen quad with the provided render texture and sampler type.
+    /// Executes the draw call using the provided command list, render texture, and optional sampler.
     /// </summary>
-    /// <param name="commandList">The command list used for recording rendering commands.</param>
-    /// <param name="renderTexture">The render texture to draw onto the full-screen quad.</param>
-    /// <param name="samplerType">The type of sampler to use for texture sampling.</param>
-    public void Draw(CommandList commandList, RenderTexture2D renderTexture, SamplerType samplerType) {
+    /// <param name="commandList">The command list used to issue draw commands.</param>
+    /// <param name="renderTexture">The render texture to be used for rendering.</param>
+    /// <param name="sampler">The optional sampler for texture sampling. If not provided, a default sampler is used.</param>
+    public void Draw(CommandList commandList, RenderTexture2D renderTexture, Sampler? sampler = null) {
         commandList.SetPipeline(this._effect.GetPipeline(this._pipelineDescription).Pipeline);
         commandList.SetVertexBuffer(0, this._vertexBuffer);
-        commandList.SetGraphicsResourceSet(0, renderTexture.GetResourceSet(GraphicsHelper.GetSampler(this.GraphicsDevice, samplerType), this._effect.GetTextureLayout("fTexture").Layout));
+        commandList.SetGraphicsResourceSet(0, renderTexture.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point), this._effect.GetTextureLayout("fTexture").Layout));
         commandList.Draw(6);
     }
 

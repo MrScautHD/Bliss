@@ -81,7 +81,7 @@ public class SpriteBatch : Disposable {
     internal readonly FontStashAdapter FontStashAdapter;
 
     /// <summary>
-    /// An array of <see cref="Vertex2D"/> structures representing the vertices used for rendering.
+    /// An array of <see cref="SpriteVertex2D"/> structures representing the vertices used for rendering.
     /// The array is initialized with a specified capacity and holds vertex data for drawing 2D sprites or shapes.
     /// </summary>
     private SpriteVertex2D[] _vertices;
@@ -130,6 +130,11 @@ public class SpriteBatch : Disposable {
     private uint _currentBatchCount;
 
     /// <summary>
+    /// Represents the current <see cref="Sampler"/> used for texture sampling operations in the <see cref="SpriteBatch"/>.
+    /// </summary>
+    private Sampler? _currentSampler;
+
+    /// <summary>
     /// Holds the current blend state used by the <see cref="SpriteBatch"/> for rendering operations.
     /// Determines how the colors of the rendered sprites are blended with the background.
     /// </summary>
@@ -139,11 +144,6 @@ public class SpriteBatch : Disposable {
     /// The currently active texture that is being used for rendering. This field may be null if no texture is currently set.
     /// </summary>
     private Texture2D? _currentTexture;
-    
-    /// <summary>
-    /// The currently active sampler that is being used with the texture. This field may be null if no sampler is currently set.
-    /// </summary>
-    private Sampler? _currentSampler;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="SpriteBatch"/> class for batching and rendering 2D sprites.
@@ -192,15 +192,15 @@ public class SpriteBatch : Disposable {
     }
 
     /// <summary>
-    /// Begins a new drawing session using the specified command list and optional parameters for blending, projection, and view matrices.
-    /// This method prepares the batch for drawing operations and resets the draw call count to zero.
+    /// Begins a sprite batch rendering operation, initializing necessary states and setting up the rendering context.
     /// </summary>
-    /// <param name="commandList">The command list to be used for the drawing session.</param>
-    /// <param name="blendState">An optional blend state to configure how the sprites are blended. If null, <see cref="BlendState.AlphaBlend"/> is used by default.</param>
-    /// <param name="projection">An optional projection matrix. If null, an orthographic projection covering the screen dimensions is used.</param>
-    /// <param name="view">An optional view matrix. If null, the identity matrix is used by default.</param>
-    /// <exception cref="Exception">Thrown if the SpriteBatch is already in a begun state (i.e., <see cref="Begin"/> was called without a corresponding call to <see cref="End"/>).</exception>
-    public void Begin(CommandList commandList, BlendState? blendState = null, Matrix4x4? projection = null, Matrix4x4? view = null) {
+    /// <param name="commandList">The <see cref="CommandList"/> used to issue rendering commands during this session.</param>
+    /// <param name="sampler">The <see cref="Sampler"/> used to determine texture sampling behavior. If null, a default point sampler is applied.</param>
+    /// <param name="blendState">The <see cref="BlendState"/> used to define blending operations for the current session. If null, defaults to alpha blending.</param>
+    /// <param name="projection">The projection <see cref="Matrix4x4"/> applied to convert coordinates to clip space. If null, an orthographic projection fit to the window size is used.</param>
+    /// <param name="view">The view <see cref="Matrix4x4"/> applied to define the camera's transformation in the scene. If null, defaults to an identity matrix.</param>
+    /// <exception cref="Exception">Thrown if <see cref="Begin"/> is called while the SpriteBatch is already in a begun state.</exception>
+    public void Begin(CommandList commandList, Sampler? sampler = null, BlendState? blendState = null, Matrix4x4? projection = null, Matrix4x4? view = null) {
         if (this._begun) {
             throw new Exception("The SpriteBatch has already begun!");
         }
@@ -208,10 +208,11 @@ public class SpriteBatch : Disposable {
         this._begun = true;
         this._currentCommandList = commandList;
 
-        if (this._currentBlendState != blendState) {
+        if (this._currentSampler != sampler || this._currentBlendState != blendState) {
             this.Flush();
         }
-        
+
+        this._currentSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
         this._currentBlendState = blendState ?? BlendState.AlphaBlend;
         this._pipelineDescription.BlendState = this._currentBlendState.Description;
         
@@ -292,7 +293,7 @@ public class SpriteBatch : Disposable {
             TexCoords = new Vector2(
                 flipX ? (finalSource.X + finalSource.Width) * texelWidth : finalSource.X * texelWidth,
                 flipY ? (finalSource.Y + finalSource.Height) * texelHeight : finalSource.Y * texelHeight),
-            Color = finalColor.ToRgbaFloat().ToVector4()
+            Color = finalColor.ToRgbaFloatVec4()
         };
         
         SpriteVertex2D topRight = new SpriteVertex2D() {
@@ -300,7 +301,7 @@ public class SpriteBatch : Disposable {
             TexCoords = new Vector2(
                 flipX ? finalSource.X * texelWidth : (finalSource.X + finalSource.Width) * texelWidth,
                 flipY ? (finalSource.Y + finalSource.Height) * texelHeight : finalSource.Y * texelHeight),
-            Color = finalColor.ToRgbaFloat().ToVector4()
+            Color = finalColor.ToRgbaFloatVec4()
         };
         
         SpriteVertex2D bottomLeft = new SpriteVertex2D() {
@@ -308,7 +309,7 @@ public class SpriteBatch : Disposable {
             TexCoords = new Vector2(
                 flipX ? (finalSource.X + finalSource.Width) * texelWidth : finalSource.X * texelWidth,
                 flipY ? finalSource.Y * texelHeight : (finalSource.Y + finalSource.Height) * texelHeight),
-            Color = finalColor.ToRgbaFloat().ToVector4()
+            Color = finalColor.ToRgbaFloatVec4()
         };
         
         SpriteVertex2D bottomRight = new SpriteVertex2D() {
@@ -316,32 +317,31 @@ public class SpriteBatch : Disposable {
             TexCoords = new Vector2(
                 flipX ? finalSource.X * texelWidth : (finalSource.X + finalSource.Width) * texelWidth,
                 flipY ? finalSource.Y * texelHeight : (finalSource.Y + finalSource.Height) * texelHeight),
-            Color = finalColor.ToRgbaFloat().ToVector4()
+            Color = finalColor.ToRgbaFloatVec4()
         };
         
         this.AddQuad(texture, topLeft, topRight, bottomLeft, bottomRight);
     }
-    
+
     /// <summary>
-    /// Adds a quad to the sprite batch using the provided texture, sampler, and sprite vertices.
+    /// Adds a quad to the sprite batch for rendering.
     /// </summary>
-    /// <param name="texture">The texture to be applied to the quad.</param>
-    /// <param name="topLeft">The vertex at the top-left corner of the quad.</param>
-    /// <param name="topRight">The vertex at the top-right corner of the quad.</param>
-    /// <param name="bottomLeft">The vertex at the bottom-left corner of the quad.</param>
-    /// <param name="bottomRight">The vertex at the bottom-right corner of the quad.</param>
-    /// <exception cref="Exception">Thrown if the SpriteBatch has not been begun before drawing.</exception>
+    /// <param name="texture">The <see cref="Texture2D"/> to be used for the quad's rendering.</param>
+    /// <param name="topLeft">The <see cref="SpriteVertex2D"/> defining the top-left vertex of the quad.</param>
+    /// <param name="topRight">The <see cref="SpriteVertex2D"/> defining the top-right vertex of the quad.</param>
+    /// <param name="bottomLeft">The <see cref="SpriteVertex2D"/> defining the bottom-left vertex of the quad.</param>
+    /// <param name="bottomRight">The <see cref="SpriteVertex2D"/> defining the bottom-right vertex of the quad.</param>
+    /// <exception cref="Exception">Thrown if the SpriteBatch has not been started by calling <c>Begin</c>.</exception>
     public void AddQuad(Texture2D texture, SpriteVertex2D topLeft, SpriteVertex2D topRight, SpriteVertex2D bottomLeft, SpriteVertex2D bottomRight) {
         if (!this._begun) {
             throw new Exception("You must begin the SpriteBatch before calling draw methods!");
         }
         
-        if (this._currentTexture != texture || this._currentSampler != texture.GetSampler()) {
+        if (this._currentTexture != texture) {
             this.Flush();
         }
         
         this._currentTexture = texture;
-        this._currentSampler = texture.GetSampler();
         
         if (this._currentBatchCount >= (this.Capacity - 1)) {
             this.Flush();
@@ -378,7 +378,7 @@ public class SpriteBatch : Disposable {
         // Set projection view buffer.
         this._currentCommandList.SetGraphicsResourceSet(0, this._projViewBuffer.GetResourceSet(this.Effect.GetBufferLayout("ProjectionViewBuffer")));
 
-        // Create or get texture.
+        // Set resourceSet of the texture.
         if (this._currentTexture != null && this._currentSampler != null) {
             this._currentCommandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this.Effect.GetTextureLayout("fTexture")));
         }
