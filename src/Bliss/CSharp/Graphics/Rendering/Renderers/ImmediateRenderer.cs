@@ -15,33 +15,103 @@ namespace Bliss.CSharp.Graphics.Rendering.Renderers;
 
 public class ImmediateRenderer : Disposable {
     
+    /// <summary>
+    /// Gets the graphics device used for rendering.
+    /// </summary>
     public GraphicsDevice GraphicsDevice { get; private set; }
+    
+    /// <summary>
+    /// Gets the output description used for rendering.
+    /// </summary>
     public OutputDescription Output { get; private set; }
+    
+    /// <summary>
+    /// Gets the effect (shader) used for rendering.
+    /// </summary>
     public Effect Effect { get; private set; }
+    
+    /// <summary>
+    /// Gets the maximum number of vertices that can be batched.
+    /// </summary>
     public uint Capacity { get; private set; }
+    
+    /// <summary>
+    /// Gets the number of draw calls issued.
+    /// </summary>
     public int DrawCallCount { get; private set; }
 
+    /// <summary>
+    /// The array of vertices used for batching immediate mode geometry.
+    /// </summary>
     private ImmediateVertex3D[] _vertices;
+    
+    /// <summary>
+    /// The array of indices used for batching immediate mode geometry.
+    /// </summary>
     private uint[] _indices;
 
+    /// <summary>
+    /// The current count of batched vertices.
+    /// </summary>
     private int _vertexCount;
+    
+    /// <summary>
+    /// The current count of batched indices.
+    /// </summary>
     private int _indexCount;
 
+    /// <summary>
+    /// The GPU buffer that stores vertex data.
+    /// </summary>
     private DeviceBuffer _vertexBuffer;
+    
+    /// <summary>
+    /// The GPU buffer that stores index data.
+    /// </summary>
     private DeviceBuffer _indexBuffer;
 
+    /// <summary>
+    /// The uniform buffer that holds transformation matrices (projection, view, and transform).
+    /// </summary>
     private SimpleBuffer<Matrix4x4> _matrixBuffer;
 
+    /// <summary>
+    /// The pipeline description used to configure the graphics pipeline for rendering.
+    /// </summary>
     private SimplePipelineDescription _pipelineDescription;
     
+    /// <summary>
+    /// Indicates whether the rendering process has begun.
+    /// </summary>
     private bool _begun;
+    
+    /// <summary>
+    /// The current command list used for recording rendering commands.
+    /// </summary>
     private CommandList _currentCommandList;
-
-    private Sampler? _currentSampler;
+    
+    /// <summary>
+    /// The currently active blend state.
+    /// </summary>
     private BlendState _currentBlendState;
     
+    /// <summary>
+    /// The currently bound texture.
+    /// </summary>
     private Texture2D? _currentTexture;
     
+    /// <summary>
+    /// The currently active sampler.
+    /// </summary>
+    private Sampler? _currentSampler;
+    
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ImmediateRenderer"/> class with the specified graphics device, output, effect, and capacity.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used for rendering.</param>
+    /// <param name="output">The output description for rendering.</param>
+    /// <param name="effect">An optional effect (shader) to use; if null, the default immediate renderer effect is used.</param>
+    /// <param name="capacity">The maximum number of vertices that can be batched. Defaults to 30720.</param>
     public ImmediateRenderer(GraphicsDevice graphicsDevice, OutputDescription output, Effect? effect = null, uint capacity = 30720) {
         this.GraphicsDevice = graphicsDevice;
         this.Output = output;
@@ -69,6 +139,12 @@ public class ImmediateRenderer : Disposable {
         this._currentSampler = GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
     }
 
+    /// <summary>
+    /// Begins the rendering process by setting up the command list and pipeline state.
+    /// </summary>
+    /// <param name="commandList">The command list used for recording rendering commands.</param>
+    /// <param name="blendState">An optional blend state; if null, the default alpha blend state is used.</param>
+    /// <exception cref="Exception">Thrown if the renderer has already begun.</exception>
     public void Begin(CommandList commandList, BlendState? blendState = null) {
         if (this._begun) {
             throw new Exception("The ImmediateRenderer has already begun!");
@@ -86,6 +162,10 @@ public class ImmediateRenderer : Disposable {
         this.DrawCallCount = 0;
     }
 
+    /// <summary>
+    /// Ends the rendering process, flushing any remaining batched geometry.
+    /// </summary>
+    /// <exception cref="Exception">Thrown if the renderer has not begun rendering.</exception>
     public void End() {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -95,6 +175,11 @@ public class ImmediateRenderer : Disposable {
         this.Flush();
     }
     
+    /// <summary>
+    /// Sets the current texture and sampler to be used for rendering.
+    /// </summary>
+    /// <param name="texture">The texture to use; if null, the default immediate renderer texture is used.</param>
+    /// <param name="sampler">The sampler to use; if null, a default point sampler is used.</param>
     public void SetTexture(Texture2D? texture, Sampler? sampler = null) {
         texture ??= GlobalResource.DefaultImmediateRendererTexture;
         sampler ??= GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
@@ -107,6 +192,12 @@ public class ImmediateRenderer : Disposable {
         this._currentSampler = sampler;
     }
     
+    /// <summary>
+    /// Draws a cube with the specified transformation, size, and optional color.
+    /// </summary>
+    /// <param name="transform">The transformation to be applied to the cube.</param>
+    /// <param name="size">The size of the cube in 3D space.</param>
+    /// <param name="color">An optional color for the cube; if null, white is used.</param>
     public void DrawCube(Transform transform, Vector3 size, Color? color = null) {
         Color finalColor = color ?? Color.White;
     
@@ -169,10 +260,17 @@ public class ImmediateRenderer : Disposable {
             22, 23, 20
         ];
     
-        this.DrawVertices(vertices, indices, transform);
+        this.DrawVertices(transform, vertices, indices);
     }
 
-    public void DrawVertices(ImmediateVertex3D[] vertices, uint[] indices, Transform transform) {
+    /// <summary>
+    /// Draws the provided vertices and indices, applying the specified transformation.
+    /// </summary>
+    /// <param name="transform">The transformation to apply to the vertices.</param>
+    /// <param name="vertices">An array of vertices to draw.</param>
+    /// <param name="indices">An array of indices specifying the order to draw vertices.</param>
+    /// <exception cref="Exception">Thrown if the renderer has not begun rendering.</exception>
+    public void DrawVertices(Transform transform, ImmediateVertex3D[] vertices, uint[] indices) {
         if (!this._begun) {
             throw new Exception("You must begin the ImmediateRenderer before calling draw methods!");
         }
@@ -220,6 +318,9 @@ public class ImmediateRenderer : Disposable {
         this._matrixBuffer.UpdateBuffer(this._currentCommandList);
     }
     
+    /// <summary>
+    /// Flushes the current batch of geometry, issuing draw calls and resetting the batch.
+    /// </summary>
     private void Flush() {
         if (this._vertexCount == 0) {
             return;
@@ -281,6 +382,10 @@ public class ImmediateRenderer : Disposable {
         this.DrawCallCount++;
     }
     
+    /// <summary>
+    /// Creates a new pipeline description used for configuring the graphics pipeline.
+    /// </summary>
+    /// <returns>A <see cref="SimplePipelineDescription"/> configured with depth/stencil, rasterizer, topology, and shader settings.</returns>
     private SimplePipelineDescription CreatePipelineDescription() {
         return new SimplePipelineDescription() {
             DepthStencilState = new DepthStencilStateDescription(true, true, ComparisonKind.LessEqual),

@@ -236,9 +236,11 @@ public class Game : Disposable {
         this._cam3D.Begin(commandList);
         
         this._immediateRenderer.Begin(this.CommandList);
-        
         this._immediateRenderer.SetTexture(this._customMeshTexture);
         this._immediateRenderer.DrawCube(new Transform() { Translation = new Vector3(9, 0, 6)}, new Vector3(1, 1, 1));
+        
+        this._immediateRenderer.SetTexture(null);
+        this._immediateRenderer.DrawCube(new Transform() { Translation = new Vector3(11, 0, 6)}, new Vector3(1, 1, 1), Color.Purple);
         this._immediateRenderer.End();
         
         this._customPoly.Draw(commandList, new Transform() { Translation = new Vector3(9, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
