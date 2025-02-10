@@ -611,6 +611,155 @@ public class Mesh : Disposable {
     }
 
     /// <summary>
+    /// Generates a capsule mesh with the specified radius, height, and number of slices.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used to create and manage the mesh's GPU resources.</param>
+    /// <param name="radius">The radius of the capsule.</param>
+    /// <param name="height">The cylindrical midsection's height of the capsule.</param>
+    /// <param name="slices">The number of slices used to approximate the capsule. Must be at least 3.</param>
+    /// <returns>A <see cref="Mesh"/> representing a capsule with the given parameters.</returns>
+    public static Mesh GenCapsule(GraphicsDevice graphicsDevice, float radius, float height, int slices) {
+        if (slices < 3) {
+            slices = 3;
+            Logger.Warn("The number of slices must be at least 3. The value is now set to 3.");
+        }
+        
+        List<Vertex3D> vertices = new List<Vertex3D>();
+        List<uint> indices = new List<uint>();
+        
+        float halfRadius = radius / 2;
+        float halfHeight = height / 4.0F;
+        int rings = slices / 2;
+    
+        // Create top hemisphere vertices.
+        for (int ring = 0; ring <= rings; ring++) {
+            float theta = ring * MathF.PI / (rings * 2);
+            float cosTheta = MathF.Cos(theta);
+            float sinTheta = MathF.Sin(theta);
+    
+            for (int slice = 0; slice <= slices; slice++) {
+                float phi = slice * 2 * MathF.PI / slices;
+                float cosPhi = MathF.Cos(phi);
+                float sinPhi = MathF.Sin(phi);
+    
+                float x = halfRadius * sinTheta * cosPhi;
+                float y = halfRadius * cosTheta + halfHeight + halfRadius;
+                float z = halfRadius * sinTheta * sinPhi;
+    
+                vertices.Add(new Vertex3D {
+                    Position = new Vector3(x, y, z),
+                    TexCoords = new Vector2((float) slice / slices, (float) ring / rings),
+                    Normal = Vector3.Normalize(new Vector3(x, y - halfRadius - halfHeight, z))
+                });
+            }
+        }
+    
+        // Create cylindrical body vertices.
+        for (int yStep = 0; yStep <= 1; yStep++) {
+            float y = yStep == 0 ? -halfHeight + halfRadius : halfHeight + halfRadius;
+    
+            for (int slice = 0; slice <= slices; slice++) {
+                float phi = slice * 2 * MathF.PI / slices;
+                float cosPhi = MathF.Cos(phi);
+                float sinPhi = MathF.Sin(phi);
+    
+                float x = halfRadius * cosPhi;
+                float z = halfRadius * sinPhi;
+    
+                // Add vertex
+                vertices.Add(new Vertex3D {
+                    Position = new Vector3(x, y, z),
+                    TexCoords = new Vector2((float) slice / slices, yStep),
+                    Normal = Vector3.Normalize(new Vector3(x, 0, z))
+                });
+            }
+        }
+    
+        // Create bottom hemisphere vertices.
+        for (int ring = 0; ring <= rings; ring++) {
+            float theta = ring * MathF.PI / (rings * 2) + MathF.PI;
+            float cosTheta = MathF.Cos(theta);
+            float sinTheta = MathF.Sin(theta);
+    
+            for (int slice = 0; slice <= slices; slice++) {
+                float phi = slice * 2 * MathF.PI / slices;
+                float cosPhi = MathF.Cos(phi);
+                float sinPhi = MathF.Sin(phi);
+    
+                float x = halfRadius * sinTheta * cosPhi;
+                float y = halfRadius * cosTheta - halfHeight + halfRadius;
+                float z = halfRadius * sinTheta * sinPhi;
+                
+                // Add vertex
+                vertices.Add(new Vertex3D {
+                    Position = new Vector3(-x, y, -z),
+                    TexCoords = new Vector2((float) slice / slices, (float) ring / rings),
+                    Normal = Vector3.Normalize(new Vector3(-x, y + halfRadius + halfHeight, -z))
+                });
+            }
+        }
+    
+        // Generate indices for top hemisphere.
+        for (int ring = 0; ring < rings; ring++) {
+            for (int slice = 0; slice < slices; slice++) {
+                uint first = (uint) (ring * (slices + 1) + slice);
+                uint second = first + (uint) (slices + 1);
+    
+                indices.Add(first);
+                indices.Add(second);
+                indices.Add(first + 1);
+    
+                indices.Add(second);
+                indices.Add(second + 1);
+                indices.Add(first + 1);
+            }
+        }
+    
+        // Generate indices for the cylindrical body.
+        int cylinderStartIndex = (rings + 1) * (slices + 1);
+        for (int step = 0; step < 1; step++) {
+            for (int slice = 0; slice < slices; slice++) {
+                uint first = (uint) (cylinderStartIndex + step * (slices + 1) + slice);
+                uint second = first + (uint) (slices + 1);
+    
+                indices.Add(first);
+                indices.Add(first + 1);
+                indices.Add(second);
+    
+                indices.Add(first + 1);
+                indices.Add(second + 1);
+                indices.Add(second);
+            }
+        }
+    
+        // Generate indices for bottom hemisphere.
+        int bottomStartIndex = cylinderStartIndex + 2 * (slices + 1);
+        for (int ring = 0; ring < rings; ring++) {
+            for (int slice = 0; slice < slices; slice++) {
+                uint first = (uint) (bottomStartIndex + ring * (slices + 1) + slice);
+                uint second = first + (uint) (slices + 1);
+    
+                indices.Add(first);
+                indices.Add(first + 1);
+                indices.Add(second);
+    
+                indices.Add(second);
+                indices.Add(first + 1);
+                indices.Add(second + 1);
+            }
+        }
+    
+        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
+    
+        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap {
+            Texture = GlobalResource.DefaultModelTexture,
+            Color = Color.White
+        });
+    
+        return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
+    }
+
+    /// <summary>
     /// Generates a 3D cone mesh with a specified radius, height, and number of slices.
     /// </summary>
     /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used to manage GPU resources for the mesh.</param>

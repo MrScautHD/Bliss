@@ -263,6 +263,54 @@ public class ImmediateRenderer : Disposable {
         this.DrawVertices(transform, vertices, indices);
     }
 
+    public void DrawCubeWires() {
+        
+    }
+
+    public void DrawSphere() {
+        
+    }
+
+    public void DrawSphereWires() {
+        
+    }
+
+    public void DrawHemisphere() {
+        
+    }
+
+    public void DrawHemisphereWires() {
+        
+    }
+
+    public void DrawCylinder() {
+        
+    }
+
+    public void DrawCylinderWires() {
+        
+    }
+
+    public void DrawCapsule() {
+        
+    }
+
+    public void DrawCapsuleWires() {
+        
+    }
+
+    public void DrawGird() {
+        
+    }
+
+    public void DrawBoundingBox() {
+        
+    }
+
+    public void DrawBillboard() {
+        
+    }
+
     /// <summary>
     /// Draws the provided vertices and indices, applying the specified transformation.
     /// </summary>

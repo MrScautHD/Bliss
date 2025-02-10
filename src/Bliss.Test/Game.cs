@@ -59,6 +59,7 @@ public class Game : Disposable {
     private Mesh _customSphere;
     private Mesh _customHemishpere;
     private Mesh _customCylinder;
+    private Mesh _customCapsule;
     private Mesh _customCone;
     private Mesh _customTorus;
     private Mesh _customKnot;
@@ -187,6 +188,9 @@ public class Game : Disposable {
 
         this._customCylinder = Mesh.GenCylinder(this.GraphicsDevice, 1F, 1F, 40);
         this._customCylinder.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
+        
+        this._customCapsule = Mesh.GenCapsule(this.GraphicsDevice, 1, 2, 60);
+        this._customCapsule.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
 
         this._customCone = Mesh.GenCone(this.GraphicsDevice, 1F, 1F, 40);
         this._customCone.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
@@ -248,10 +252,11 @@ public class Game : Disposable {
         this._customSphere.Draw(commandList, new Transform() { Translation = new Vector3(13, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
         this._customHemishpere.Draw(commandList, new Transform() { Translation = new Vector3(15, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
         this._customCylinder.Draw(commandList, new Transform() { Translation = new Vector3(17, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
-        this._customCone.Draw(commandList, new Transform() { Translation = new Vector3(19, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
-        this._customTorus.Draw(commandList, new Transform() { Translation = new Vector3(21, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
-        this._customKnot.Draw(commandList, new Transform() { Translation = new Vector3(23, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
-        this._customHeighmap.Draw(commandList, new Transform() { Translation = new Vector3(25, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._customCapsule.Draw(commandList, new Transform() { Translation = new Vector3(19, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._customCone.Draw(commandList, new Transform() { Translation = new Vector3(21, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._customTorus.Draw(commandList, new Transform() { Translation = new Vector3(23, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._customKnot.Draw(commandList, new Transform() { Translation = new Vector3(25, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._customHeighmap.Draw(commandList, new Transform() { Translation = new Vector3(27, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
         //this._customCubemap.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(27, 0, 0)}, Color.White);
 
         if (this._cam3D.GetFrustum().ContainsBox(this._planeModel.BoundingBox)) {
