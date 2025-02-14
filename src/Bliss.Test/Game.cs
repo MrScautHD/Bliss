@@ -206,7 +206,7 @@ public class Game : Disposable {
 
         //this._customCubemap = Mesh.GenCubemap(this.GraphicsDevice, new Image("content/cubemap.png"), Vector3.One);
         //this._customCubemap.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
-
+        
         this._animatedImage = new AnimatedImage("content/animated.gif");
         this._gif = new Texture2D(this.GraphicsDevice, this._animatedImage.SpriteSheet);
     }
