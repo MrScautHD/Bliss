@@ -244,7 +244,17 @@ public class Game : Disposable {
         this._immediateRenderer.DrawCube(new Transform() { Translation = new Vector3(9, 0, 6)}, new Vector3(1, 1, 1));
         
         this._immediateRenderer.SetTexture(null);
-        this._immediateRenderer.DrawCube(new Transform() { Translation = new Vector3(11, 0, 6)}, new Vector3(1, 1, 1), Color.Purple);
+        this._immediateRenderer.DrawCubeWires(new Transform() { Translation = new Vector3(11, 0, 6)}, new Vector3(1, 1, 1), Color.Green);
+        
+        this._immediateRenderer.SetTexture(this._customMeshTexture);
+        this._immediateRenderer.DrawSphere(new Transform() {Translation = new Vector3(13, 0, 6)}, 1, 100, 100);
+        
+        this._immediateRenderer.SetTexture(null);
+        this._immediateRenderer.DrawSphereWires(new Transform() {Translation = new Vector3(15, 0, 6)}, 1, 60, 60, Color.Green);
+        
+        this._immediateRenderer.SetTexture(this._customMeshTexture);
+        this._immediateRenderer.DrawHemisphere(new Transform() { Translation = new Vector3(17, 0, 6)}, 1, 60, 60);
+        
         this._immediateRenderer.End();
         
         this._customPoly.Draw(commandList, new Transform() { Translation = new Vector3(9, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);

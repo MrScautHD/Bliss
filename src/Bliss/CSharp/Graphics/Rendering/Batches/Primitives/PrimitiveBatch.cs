@@ -777,7 +777,7 @@ public class PrimitiveBatch : Disposable {
         }
         
         // Update vertex buffer.
-        this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, this._vertices);
+        this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, new ReadOnlySpan<PrimitiveVertex2D>(this._vertices, 0, (int) this._currentBatchCount));
         
         // Set vertex buffer.
         this._currentCommandList.SetVertexBuffer(0, this._vertexBuffer);

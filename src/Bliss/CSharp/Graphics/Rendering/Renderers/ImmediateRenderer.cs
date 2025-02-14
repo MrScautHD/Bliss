@@ -34,11 +34,6 @@ public class ImmediateRenderer : Disposable {
     /// Gets the maximum number of vertices that can be batched.
     /// </summary>
     public uint Capacity { get; private set; }
-    
-    /// <summary>
-    /// Gets the number of draw calls issued.
-    /// </summary>
-    public int DrawCallCount { get; private set; }
 
     /// <summary>
     /// The array of vertices used for batching immediate mode geometry.
@@ -50,6 +45,16 @@ public class ImmediateRenderer : Disposable {
     /// </summary>
     private uint[] _indices;
 
+    /// <summary>
+    /// A temporary storage of vertices used for rendering operations.
+    /// </summary>
+    private List<ImmediateVertex3D> _tempVertices;
+
+    /// <summary>
+    /// A Temporary storage of indices used for rendering operations.
+    /// </summary>
+    private List<uint> _tempIndices;
+    
     /// <summary>
     /// The current count of batched vertices.
     /// </summary>
@@ -91,19 +96,14 @@ public class ImmediateRenderer : Disposable {
     private CommandList _currentCommandList;
     
     /// <summary>
-    /// The currently active blend state.
-    /// </summary>
-    private BlendState _currentBlendState;
-    
-    /// <summary>
     /// The currently bound texture.
     /// </summary>
-    private Texture2D? _currentTexture;
+    private Texture2D _currentTexture;
     
     /// <summary>
     /// The currently active sampler.
     /// </summary>
-    private Sampler? _currentSampler;
+    private Sampler _currentSampler;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="ImmediateRenderer"/> class with the specified graphics device, output, effect, and capacity.
@@ -121,11 +121,13 @@ public class ImmediateRenderer : Disposable {
         // Create vertex buffer.
         uint vertexBufferSize = capacity * (uint) Marshal.SizeOf<ImmediateVertex3D>();
         this._vertices = new ImmediateVertex3D[capacity];
+        this._tempVertices = new List<ImmediateVertex3D>();
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
         
         // Create index buffer.
         uint indexBufferSize = capacity * 3 * sizeof(uint);
         this._indices = new uint[capacity * 3];
+        this._tempIndices = new List<uint>();
         this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
         
         // Create matrix buffer.
@@ -153,13 +155,8 @@ public class ImmediateRenderer : Disposable {
         this._begun = true;
         this._currentCommandList = commandList;
         
-        if (this._currentBlendState != blendState) {
-            this.Flush();
-        }
-
-        this._currentBlendState = blendState ?? BlendState.AlphaBlend;
-        this._pipelineDescription.BlendState = this._currentBlendState.Description;
-        this.DrawCallCount = 0;
+        // Update BlendState.
+        this._pipelineDescription.BlendState = blendState?.Description ?? BlendState.AlphaBlend.Description;
     }
 
     /// <summary>
@@ -172,7 +169,6 @@ public class ImmediateRenderer : Disposable {
         }
         
         this._begun = false;
-        this.Flush();
     }
     
     /// <summary>
@@ -181,15 +177,8 @@ public class ImmediateRenderer : Disposable {
     /// <param name="texture">The texture to use; if null, the default immediate renderer texture is used.</param>
     /// <param name="sampler">The sampler to use; if null, a default point sampler is used.</param>
     public void SetTexture(Texture2D? texture, Sampler? sampler = null) {
-        texture ??= GlobalResource.DefaultImmediateRendererTexture;
-        sampler ??= GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
-
-        if (this._currentTexture != texture || this._currentSampler != sampler) {
-            this.Flush();
-        }
-
-        this._currentTexture = texture;
-        this._currentSampler = sampler;
+        this._currentTexture = texture ?? GlobalResource.DefaultImmediateRendererTexture;
+        this._currentSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
     }
     
     /// <summary>
@@ -205,120 +194,289 @@ public class ImmediateRenderer : Disposable {
             new Vector2(0.0F, 1.0F), new Vector2(1.0F, 1.0F),
             new Vector2(1.0F, 0.0F), new Vector2(0.0F, 0.0F)
         ];
-        
+    
         Vector3[] positions = [
-            // Front face
+            // Front face.
             new Vector3(-1.0F, -1.0F, -1.0F), new Vector3(1.0F, -1.0F, -1.0F), new Vector3(1.0F, 1.0F, -1.0F), new Vector3(-1.0F, 1.0F, -1.0F),
-            // Back face
+            // Back face.
             new Vector3(1.0F, -1.0F, 1.0F), new Vector3(-1.0F, -1.0F, 1.0F), new Vector3(-1.0F, 1.0F, 1.0F), new Vector3(1.0F, 1.0F, 1.0F),
-            // Left face
+            // Left face.
             new Vector3(-1.0F, -1.0F, 1.0F), new Vector3(-1.0F, -1.0F, -1.0F), new Vector3(-1.0F, 1.0F, -1.0F), new Vector3(-1.0F, 1.0F, 1.0F),
-            // Right face
+            // Right face.
             new Vector3(1.0F, -1.0F, -1.0F), new Vector3(1.0F, -1.0F, 1.0F), new Vector3(1.0F, 1.0F, 1.0F), new Vector3(1.0F, 1.0F, -1.0F),
-            // Top face
+            // Top face.
             new Vector3(-1.0F, 1.0F, -1.0F), new Vector3(1.0F, 1.0F, -1.0F), new Vector3(1.0F, 1.0F, 1.0F), new Vector3(-1.0F, 1.0F, 1.0F),
-            // Bottom face
+            // Bottom face.
             new Vector3(-1.0F, -1.0F, 1.0F), new Vector3(1.0F, -1.0F, 1.0F), new Vector3(1.0F, -1.0F, -1.0F), new Vector3(-1.0F, -1.0F, -1.0F)
         ];
-    
-        ImmediateVertex3D[] vertices = new ImmediateVertex3D[24];
         
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 4; j++) {
-                int index = i * 4 + j;
-                vertices[index] = new ImmediateVertex3D() {
-                    Position = positions[index] * new Vector3(size.X / 2.0F, size.Y / 2.0F, size.Z / 2.0F),
+                this._tempVertices.Add(new ImmediateVertex3D() {
+                    Position = positions[i * 4 + j] * new Vector3(size.X / 2.0F, size.Y / 2.0F, size.Z / 2.0F),
                     TexCoords = texCoords[j],
                     Color = finalColor.ToRgbaFloatVec4()
-                };
+                });
             }
         }
-    
+
         uint[] indices = [
-            // Front face
+            // Front face.
             0, 1, 2,
             2, 3, 0,
-    
-            // Back face
+            
+            // Back face.
             4, 5, 6,
             6, 7, 4,
-    
-            // Left face
+            
+            // Left face.
             8, 9, 10,
             10, 11, 8,
-    
-            // Right face
+            
+            // Right face.
             12, 13, 14,
             14, 15, 12,
-    
-            // Top face
+            
+            // Top face.
             16, 17, 18,
             18, 19, 16,
-    
-            // Bottom face
+            
+            // Bottom face.
             20, 21, 22,
             22, 23, 20
         ];
-    
-        this.DrawVertices(transform, vertices, indices);
-    }
 
-    public void DrawCubeWires() {
+        for (int i = 0; i < indices.Length; i++) {
+            this._tempIndices.Add(indices[i]);
+        }
         
-    }
-
-    public void DrawSphere() {
-        
-    }
-
-    public void DrawSphereWires() {
-        
-    }
-
-    public void DrawHemisphere() {
-        
-    }
-
-    public void DrawHemisphereWires() {
-        
-    }
-
-    public void DrawCylinder() {
-        
-    }
-
-    public void DrawCylinderWires() {
-        
-    }
-
-    public void DrawCapsule() {
-        
-    }
-
-    public void DrawCapsuleWires() {
-        
-    }
-
-    public void DrawGird() {
-        
-    }
-
-    public void DrawBoundingBox() {
-        
-    }
-
-    public void DrawBillboard() {
-        
+        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
 
     /// <summary>
-    /// Draws the provided vertices and indices, applying the specified transformation.
+    /// Draws the wireframe of a cube with the specified transform, size, and optional color.
     /// </summary>
-    /// <param name="transform">The transformation to apply to the vertices.</param>
-    /// <param name="vertices">An array of vertices to draw.</param>
-    /// <param name="indices">An array of indices specifying the order to draw vertices.</param>
-    /// <exception cref="Exception">Thrown if the renderer has not begun rendering.</exception>
-    public void DrawVertices(Transform transform, ImmediateVertex3D[] vertices, uint[] indices) {
+    /// <param name="transform">The transformation to apply to the cube, which includes position, rotation, and scale.</param>
+    /// <param name="size">The dimensions of the cube to draw.</param>
+    /// <param name="color">An optional color for the wireframe. If null, the default color is white.</param>
+    public void DrawCubeWires(Transform transform, Vector3 size, Color? color = null) {
+        Color finalColor = color ?? Color.White;
+    
+        Vector3[] positions = [
+            // Front face.
+            new Vector3(-1.0F, -1.0F, -1.0F), new Vector3(1.0F, -1.0F, -1.0F),
+            new Vector3(1.0F, 1.0F, -1.0F), new Vector3(-1.0F, 1.0F, -1.0F),
+            // Back face.
+            new Vector3(-1.0F, -1.0F, 1.0F), new Vector3(1.0F, -1.0F, 1.0F),
+            new Vector3(1.0F, 1.0F, 1.0F), new Vector3(-1.0F, 1.0F, 1.0F)
+        ];
+    
+        foreach (Vector3 pos in positions) {
+            this._tempVertices.Add(new ImmediateVertex3D {
+                Position = pos * new Vector3(size.X / 2.0F, size.Y / 2.0F, size.Z / 2.0F),
+                Color = finalColor.ToRgbaFloatVec4()
+            });
+        }
+        
+        uint[] indices = [
+            // Front edges.
+            0, 1, 1, 2, 2, 3, 3, 0,
+            
+            // Back edges.
+            4, 5, 5, 6, 6, 7, 7, 4,
+            
+            // Connecting edges.
+            0, 4, 1, 5, 2, 6, 3, 7
+        ];
+    
+        foreach (var index in indices) {
+            this._tempIndices.Add(index);
+        }
+    
+        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
+    }
+    
+    /// <summary>
+    /// Draws a sphere with the specified transformation, radius, number of rings, slices, and optional color.
+    /// </summary>
+    /// <param name="transform">The transformation to be applied to the sphere.</param>
+    /// <param name="radius">The radius of the sphere.</param>
+    /// <param name="rings">The number of horizontal subdivisions of the sphere.</param>
+    /// <param name="slices">The number of vertical subdivisions of the sphere.</param>
+    /// <param name="color">An optional color for the sphere; defaults to white.</param>
+    public void DrawSphere(Transform transform, float radius, int rings, int slices, Color? color = null) {
+        Color finalColor = color ?? Color.White;
+    
+        // Generate vertices.
+        for (int ring = 0; ring <= rings; ring++) {
+            float ringAngle = MathF.PI * ring / rings;
+    
+            for (int slice = 0; slice <= slices; slice++) {
+                float sliceAngle = MathF.PI * 2 * slice / slices;
+    
+                float x = MathF.Sin(ringAngle) * MathF.Cos(sliceAngle);
+                float y = MathF.Cos(ringAngle);
+                float z = MathF.Sin(ringAngle) * MathF.Sin(sliceAngle);
+    
+                this._tempVertices.Add(new ImmediateVertex3D() {
+                    Position = new Vector3(x, y, z) * (radius / 2),
+                    TexCoords = new Vector2(slice / (float) slices, ring / (float) rings),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+            }
+        }
+    
+        // Generate indices.
+        for (int ring = 0; ring < rings; ring++) {
+            for (int slice = 0; slice < slices; slice++) {
+                int current = ring * (slices + 1) + slice;
+                int next = current + slices + 1;
+    
+                // Two triangles per quad.
+                this._tempIndices.Add((uint) current);
+                this._tempIndices.Add((uint) (next + 1));
+                this._tempIndices.Add((uint) (current + 1));
+    
+                this._tempIndices.Add((uint) current);
+                this._tempIndices.Add((uint) next);
+                this._tempIndices.Add((uint) (next + 1));
+            }
+        }
+        
+        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
+    }
+    
+    /// <summary>
+    /// Draws the wireframe of a sphere with the given transform, radius, number of rings, slices, and optional color.
+    /// </summary>
+    /// <param name="transform">The transformation to apply to the sphere (position, rotation, and scaling).</param>
+    /// <param name="radius">The radius of the sphere.</param>
+    /// <param name="rings">The number of horizontal subdivisions of the sphere.</param>
+    /// <param name="slices">The number of vertical subdivisions of the sphere.</param>
+    /// <param name="color">An optional color for the wireframe; defaults to white.</param>
+    public void DrawSphereWires(Transform transform, float radius, int rings, int slices, Color? color = null) {
+        Color finalColor = color ?? Color.White;
+    
+        // Generate wireframe vertices.
+        for (int ring = 0; ring <= rings; ring++) {
+            float ringAngle = MathF.PI * ring / rings;
+            float y = MathF.Cos(ringAngle) * (radius / 2);
+            float ringRadius = MathF.Sin(ringAngle) * (radius / 2);
+    
+            for (int slice = 0; slice <= slices; slice++) {
+                float sliceAngle = MathF.PI * 2 * slice / slices;
+    
+                float x = MathF.Cos(sliceAngle) * ringRadius;
+                float z = MathF.Sin(sliceAngle) * ringRadius;
+    
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(x, y, z),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+            }
+        }
+    
+        // Generate wireframe indices.
+        for (int ring = 0; ring < rings; ring++) {
+            for (int slice = 0; slice < slices; slice++) {
+                int current = ring * (slices + 1) + slice;
+                int next = current + slices + 1;
+    
+                // Connect horizontal lines.
+                this._tempIndices.Add((uint) current);
+                this._tempIndices.Add((uint) (current + 1));
+    
+                // Connect vertical lines.
+                this._tempIndices.Add((uint) current);
+                this._tempIndices.Add((uint) next);
+            }
+        }
+    
+        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
+    }
+    
+    public void DrawHemisphere(Transform transform, float radius, int rings, int slices, Color? color = null) {
+        Color finalColor = color ?? Color.White;
+    
+        // Generate vertices for the upper half of the sphere.
+        for (int ring = 0; ring <= rings; ring++) {
+            float ringAngle = MathF.PI * ring / (2 * rings);
+    
+            for (int slice = 0; slice <= slices; slice++) {
+                float sliceAngle = MathF.PI * 2 * slice / slices;
+    
+                float x = MathF.Sin(ringAngle) * MathF.Cos(sliceAngle);
+                float y = MathF.Cos(ringAngle);
+                float z = MathF.Sin(ringAngle) * MathF.Sin(sliceAngle);
+    
+                this._tempVertices.Add(new ImmediateVertex3D() {
+                    Position = new Vector3(x, y, z) * (radius / 2),
+                    TexCoords = new Vector2(slice / (float) slices, ring / (float) rings),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+            }
+        }
+    
+        // Generate indices.
+        for (int ring = 0; ring < rings; ring++) {
+            for (int slice = 0; slice < slices; slice++) {
+                int current = ring * (slices + 1) + slice;
+                int next = current + slices + 1;
+    
+                // Two triangles per quad.
+                this._tempIndices.Add((uint) current);
+                this._tempIndices.Add((uint) (next + 1));
+                this._tempIndices.Add((uint) (current + 1));
+                
+                this._tempIndices.Add((uint) current);
+                this._tempIndices.Add((uint) next);
+                this._tempIndices.Add((uint) (next + 1));
+            }
+        }
+    
+        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
+    }
+    
+    public void DrawHemisphereWires() {
+        throw new NotImplementedException("DrawHemisphereWires is not implemented yet.");
+    }
+    
+    public void DrawCylinder() {
+        throw new NotImplementedException("DrawCylinder is not implemented yet.");
+    }
+    
+    public void DrawCylinderWires() {
+        throw new NotImplementedException("DrawCylinderWires is not implemented yet.");
+    }
+    
+    public void DrawCapsule() {
+        throw new NotImplementedException("DrawCapsule is not implemented yet.");
+    }
+    
+    public void DrawCapsuleWires() {
+        throw new NotImplementedException("DrawCapsuleWires is not implemented yet.");
+    }
+    
+    public void DrawGird() {
+        throw new NotImplementedException("DrawGird is not implemented yet.");
+    }
+    
+    public void DrawBoundingBox() {
+        throw new NotImplementedException("DrawBoundingBox is not implemented yet.");
+    }
+    
+    public void DrawBillboard() {
+        throw new NotImplementedException("DrawBillboard is not implemented yet.");
+    }
+
+    /// <summary>
+    /// Draws a set of vertices using the specified transformation, vertex data, indices, and topology.
+    /// </summary>
+    /// <param name="transform">The transformation matrix to apply to the vertices.</param>
+    /// <param name="vertices">The list of vertices to be rendered.</param>
+    /// <param name="indices">The list of indices defining the order in which the vertices are connected.</param>
+    /// <param name="topology">The primitive topology specifying how the vertices are interpreted (e.g., triangle list, line strip).</param>
+    public void DrawVertices(Transform transform, List<ImmediateVertex3D> vertices, List<uint> indices, PrimitiveTopology topology) {
         if (!this._begun) {
             throw new Exception("You must begin the ImmediateRenderer before calling draw methods!");
         }
@@ -329,56 +487,42 @@ public class ImmediateRenderer : Disposable {
             return;
         }
         
-        if (this._vertexCount + vertices.Length > this.Capacity) {
-            this.Flush();
+        if (vertices.Count > this.Capacity) {
+            Logger.Fatal(new InvalidOperationException($"The number of provided vertices exceeds the maximum batch size! [{vertices.Count} > {this.Capacity}]"));
         }
 
-        if (this._indexCount + indices.Length > this.Capacity) {
-            this.Flush();
-        }
-
-        if (this._vertexCount + vertices.Length > this.Capacity) {
-            Logger.Fatal(new InvalidOperationException($"The number of provided vertices exceeds the maximum batch size! [{this._vertices.Length + vertices.Length} > {this.Capacity}]"));
-        }
-
-        if (this._indexCount + indices.Length > this.Capacity) {
-            Logger.Fatal(new InvalidOperationException($"The number of provided indices exceeds the maximum batch size! [{this._indices.Length + indices.Length} > {this.Capacity}]"));
+        if (indices.Count > this.Capacity * 3) {
+            Logger.Fatal(new InvalidOperationException($"The number of provided indices exceeds the maximum batch size! [{indices.Count} > {this.Capacity * 3}]"));
         }
         
         // Add vertices.
-        for (int i = 0; i < vertices.Length; i++) {
-            this._vertices[this._vertexCount + i] = vertices[i];
+        for (int i = 0; i < vertices.Count; i++) {
+            this._vertices[i] = vertices[i];
         }
-        
-        this._vertexCount += vertices.Length;
         
         // Add indices.
-        for (int i = 0; i < indices.Length; i++) {
-            this._indices[this._indexCount + i] = indices[i];
+        for (int i = 0; i < indices.Count; i++) {
+            this._indices[i] = indices[i];
         }
 
-        this._indexCount += indices.Length;
+        // Set vertices and indices count.
+        this._vertexCount = vertices.Count;
+        this._indexCount = indices.Count;
         
         // Update matrix buffer.
         this._matrixBuffer.SetValue(0, cam3D.GetProjection());
         this._matrixBuffer.SetValue(1, cam3D.GetView());
         this._matrixBuffer.SetValue(2, transform.GetTransform());
         this._matrixBuffer.UpdateBuffer(this._currentCommandList);
-    }
-    
-    /// <summary>
-    /// Flushes the current batch of geometry, issuing draw calls and resetting the batch.
-    /// </summary>
-    private void Flush() {
-        if (this._vertexCount == 0) {
-            return;
-        }
-
+        
+        // Update topology.
+        this._pipelineDescription.PrimitiveTopology = topology;
+        
         if (this._indexCount > 0) {
             
             // Update vertex and index buffer.
-            this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, this._vertices);
-            this._currentCommandList.UpdateBuffer(this._indexBuffer, 0, this._indices);
+            this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, new ReadOnlySpan<ImmediateVertex3D>(this._vertices, 0, this._vertexCount));
+            this._currentCommandList.UpdateBuffer(this._indexBuffer, 0, new ReadOnlySpan<uint>(this._indices, 0, this._indexCount));
             
             // Set vertex and index buffer.
             this._currentCommandList.SetVertexBuffer(0, this._vertexBuffer);
@@ -391,9 +535,7 @@ public class ImmediateRenderer : Disposable {
             this._currentCommandList.SetGraphicsResourceSet(0, this._matrixBuffer.GetResourceSet(this.Effect.GetBufferLayout("MatrixBuffer")));
 
             // Set resourceSet of the texture.
-            if (this._currentTexture != null && this._currentSampler != null) {
-                this._currentCommandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this.Effect.GetTextureLayout("fTexture")));
-            }
+            this._currentCommandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this.Effect.GetTextureLayout("fTexture")));
             
             // Draw.
             this._currentCommandList.DrawIndexed((uint) this._indexCount);
@@ -401,7 +543,7 @@ public class ImmediateRenderer : Disposable {
         else {
             
             // Update vertex buffer.
-            this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, this._vertices);
+            this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, new ReadOnlySpan<ImmediateVertex3D>(this._vertices, 0, this._vertexCount));
             
             // Set vertex buffer.
             this._currentCommandList.SetVertexBuffer(0, this._vertexBuffer);
@@ -413,19 +555,23 @@ public class ImmediateRenderer : Disposable {
             this._currentCommandList.SetGraphicsResourceSet(0, this._matrixBuffer.GetResourceSet(this.Effect.GetBufferLayout("MatrixBuffer")));
         
             // Set resourceSet of the texture.
-            if (this._currentTexture != null && this._currentSampler != null) {
-                this._currentCommandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this.Effect.GetTextureLayout("fTexture")));
-            }
+            this._currentCommandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this.Effect.GetTextureLayout("fTexture")));
             
             // Draw.
             this._currentCommandList.Draw((uint) this._vertexCount);
         }
         
+        // Reset indexer.
         this._vertexCount = 0;
         this._indexCount = 0;
+        
+        // Clear data.
         Array.Clear(this._vertices);
         Array.Clear(this._indices);
-        this.DrawCallCount++;
+        
+        // Clear temp data.
+        this._tempVertices.Clear();
+        this._tempIndices.Clear();
     }
     
     /// <summary>
@@ -442,7 +588,6 @@ public class ImmediateRenderer : Disposable {
                 DepthClipEnabled = true,
                 ScissorTestEnabled = false
             },
-            PrimitiveTopology = PrimitiveTopology.TriangleList,
             BufferLayouts = this.Effect.GetBufferLayouts(),
             TextureLayouts = this.Effect.GetTextureLayouts(),
             ShaderSet = new ShaderSetDescription() {
