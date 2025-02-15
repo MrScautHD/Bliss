@@ -352,18 +352,19 @@ public class Model : Disposable {
             mesh.ResetAnimationBones(commandList);
         }
     }
-
+    
     /// <summary>
-    /// Renders the model by drawing each of its meshes with the specified parameters.
+    /// Draws the model using the specified command list, transformation, and output settings.
     /// </summary>
-    /// <param name="commandList">The <see cref="CommandList"/> used to issue rendering commands.</param>
-    /// <param name="transform">The <see cref="Transform"/> defining the position, rotation, and scale of the model.</param>
-    /// <param name="output">The <see cref="OutputDescription"/> describing the target rendering output.</param>
-    /// <param name="sampler">The optional <see cref="Sampler"/> for texture sampling, defaulting to null if not specified.</param>
-    /// <param name="color">An optional <see cref="Color"/> to apply to the model during rendering, defaulting to null if not specified.</param>
-    public void Draw(CommandList commandList, Transform transform, OutputDescription output, Sampler? sampler = null, Color? color = null) {
+    /// <param name="commandList">The <see cref="CommandList"/> used for issuing rendering commands.</param>
+    /// <param name="transform">The <see cref="Transform"/> applied to the model during rendering.</param>
+    /// <param name="output">The <see cref="OutputDescription"/> specifying the rendering output settings.</param>
+    /// <param name="sampler">An optional <see cref="Sampler"/> for texture sampling. If null, the default sampler is used.</param>
+    /// <param name="wires">A boolean flag indicating whether to render the model in wireframe mode.</param>
+    /// <param name="color">An optional <see cref="Color"/> to apply a tint or override default color settings. Defaults to null.</param>
+    public void Draw(CommandList commandList, Transform transform, OutputDescription output, Sampler? sampler = null, bool wires = false, Color? color = null) {
         foreach (Mesh mesh in this.Meshes) {
-            mesh.Draw(commandList, transform, output, sampler, color);
+            mesh.Draw(commandList, transform, output, sampler, wires, color);
         }
     }
 

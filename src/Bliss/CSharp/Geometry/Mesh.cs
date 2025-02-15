@@ -1137,14 +1137,15 @@ public class Mesh : Disposable {
     }
 
     /// <summary>
-    /// Renders the mesh using the specified command list, transformation parameters, and pipeline configurations.
+    /// Renders the mesh using the provided command list and transformation, with customizable rendering options.
     /// </summary>
-    /// <param name="commandList">The <see cref="CommandList"/> used for submitting rendering commands to the GPU.</param>
-    /// <param name="transform">The <see cref="Transform"/> applied to the mesh, which defines its position, rotation, and scale.</param>
-    /// <param name="output">The <see cref="OutputDescription"/> that describes the render target configuration for the mesh rendering.</param>
-    /// <param name="sampler">An optional <see cref="Sampler"/> used to sample textures for rendering the mesh, overriding the default sampler if specified.</param>
-    /// <param name="color">An optional <see cref="Color"/> used to override the default material color for the mesh if specified.</param>
-    public void Draw(CommandList commandList, Transform transform, OutputDescription output, Sampler? sampler = null, Color? color = null) {
+    /// <param name="commandList">The <see cref="CommandList"/> used to issue draw calls and update resources in the rendering process.</param>
+    /// <param name="transform">The <see cref="Transform"/> representing the position, rotation, and scale for rendering the mesh.</param>
+    /// <param name="output">The <see cref="OutputDescription"/> specifying the render target and depth buffer setup for the rendering pipeline.</param>
+    /// <param name="sampler">An optional <see cref="Sampler"/> instance defining how textures are sampled. If null, a default sampler will be used.</param>
+    /// <param name="wires">A boolean indicating whether to render the mesh in wireframe mode (true) or solid mode (false).</param>
+    /// <param name="color">An optional <see cref="Color"/> to override the default material color used for rendering. If null, the default material color is applied.</param>
+    public void Draw(CommandList commandList, Transform transform, OutputDescription output, Sampler? sampler = null, bool wires = false, Color? color = null) {
         Cam3D? cam3D = Cam3D.ActiveCamera;
 
         if (cam3D == null) {
@@ -1181,6 +1182,8 @@ public class Mesh : Disposable {
 
         // Update pipeline description.
         this._pipelineDescription.BlendState = this.Material.BlendState.Description;
+        this._pipelineDescription.RasterizerState.CullMode = wires ? FaceCullMode.None : FaceCullMode.Back;
+        this._pipelineDescription.RasterizerState.FillMode = wires ? PolygonFillMode.Wireframe : PolygonFillMode.Solid;
         this._pipelineDescription.Outputs = output;
         
         if (this.IndexCount > 0) {
