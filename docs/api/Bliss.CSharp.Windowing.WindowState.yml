@@ -1,0 +1,371 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Windowing.WindowState
+  commentId: T:Bliss.CSharp.Windowing.WindowState
+  id: WindowState
+  parent: Bliss.CSharp.Windowing
+  children:
+  - Bliss.CSharp.Windowing.WindowState.AlwaysOnTop
+  - Bliss.CSharp.Windowing.WindowState.BorderlessFullScreen
+  - Bliss.CSharp.Windowing.WindowState.CaptureMouse
+  - Bliss.CSharp.Windowing.WindowState.FullScreen
+  - Bliss.CSharp.Windowing.WindowState.Hidden
+  - Bliss.CSharp.Windowing.WindowState.Maximized
+  - Bliss.CSharp.Windowing.WindowState.Minimized
+  - Bliss.CSharp.Windowing.WindowState.None
+  - Bliss.CSharp.Windowing.WindowState.Resizable
+  - Bliss.CSharp.Windowing.WindowState.Transparent
+  langs:
+  - csharp
+  - vb
+  name: WindowState
+  nameWithType: WindowState
+  fullName: Bliss.CSharp.Windowing.WindowState
+  type: Enum
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/WindowState.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: WindowState
+    path: ../src/Bliss/CSharp/Windowing/WindowState.cs
+    startLine: 2
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  syntax:
+    content: >-
+      [Flags]
+
+      public enum WindowState
+    content.vb: >-
+      <Flags>
+
+      Public Enum WindowState
+  attributes:
+  - type: System.FlagsAttribute
+    ctor: System.FlagsAttribute.#ctor
+    arguments: []
+- uid: Bliss.CSharp.Windowing.WindowState.None
+  commentId: F:Bliss.CSharp.Windowing.WindowState.None
+  id: None
+  parent: Bliss.CSharp.Windowing.WindowState
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: WindowState.None
+  fullName: Bliss.CSharp.Windowing.WindowState.None
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/WindowState.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: None
+    path: ../src/Bliss/CSharp/Windowing/WindowState.cs
+    startLine: 8
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Indicates that the window has no specific state.
+  example: []
+  syntax:
+    content: None = 0
+    return:
+      type: Bliss.CSharp.Windowing.WindowState
+- uid: Bliss.CSharp.Windowing.WindowState.Resizable
+  commentId: F:Bliss.CSharp.Windowing.WindowState.Resizable
+  id: Resizable
+  parent: Bliss.CSharp.Windowing.WindowState
+  langs:
+  - csharp
+  - vb
+  name: Resizable
+  nameWithType: WindowState.Resizable
+  fullName: Bliss.CSharp.Windowing.WindowState.Resizable
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/WindowState.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Resizable
+    path: ../src/Bliss/CSharp/Windowing/WindowState.cs
+    startLine: 13
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: The window is resizable, allowing the user to adjust its size.
+  example: []
+  syntax:
+    content: Resizable = 1
+    return:
+      type: Bliss.CSharp.Windowing.WindowState
+- uid: Bliss.CSharp.Windowing.WindowState.FullScreen
+  commentId: F:Bliss.CSharp.Windowing.WindowState.FullScreen
+  id: FullScreen
+  parent: Bliss.CSharp.Windowing.WindowState
+  langs:
+  - csharp
+  - vb
+  name: FullScreen
+  nameWithType: WindowState.FullScreen
+  fullName: Bliss.CSharp.Windowing.WindowState.FullScreen
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/WindowState.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: FullScreen
+    path: ../src/Bliss/CSharp/Windowing/WindowState.cs
+    startLine: 18
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: The window is in full-screen mode, occupying the entire screen.
+  example: []
+  syntax:
+    content: FullScreen = 2
+    return:
+      type: Bliss.CSharp.Windowing.WindowState
+- uid: Bliss.CSharp.Windowing.WindowState.BorderlessFullScreen
+  commentId: F:Bliss.CSharp.Windowing.WindowState.BorderlessFullScreen
+  id: BorderlessFullScreen
+  parent: Bliss.CSharp.Windowing.WindowState
+  langs:
+  - csharp
+  - vb
+  name: BorderlessFullScreen
+  nameWithType: WindowState.BorderlessFullScreen
+  fullName: Bliss.CSharp.Windowing.WindowState.BorderlessFullScreen
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/WindowState.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: BorderlessFullScreen
+    path: ../src/Bliss/CSharp/Windowing/WindowState.cs
+    startLine: 23
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: The window is borderless, removing the title bar and window borders.
+  example: []
+  syntax:
+    content: BorderlessFullScreen = Resizable | FullScreen
+    return:
+      type: Bliss.CSharp.Windowing.WindowState
+    content.vb: BorderlessFullScreen = Resizable Or FullScreen
+- uid: Bliss.CSharp.Windowing.WindowState.Maximized
+  commentId: F:Bliss.CSharp.Windowing.WindowState.Maximized
+  id: Maximized
+  parent: Bliss.CSharp.Windowing.WindowState
+  langs:
+  - csharp
+  - vb
+  name: Maximized
+  nameWithType: WindowState.Maximized
+  fullName: Bliss.CSharp.Windowing.WindowState.Maximized
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/WindowState.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Maximized
+    path: ../src/Bliss/CSharp/Windowing/WindowState.cs
+    startLine: 28
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: The window is maximized, taking up the largest possible area on the screen.
+  example: []
+  syntax:
+    content: Maximized = 4
+    return:
+      type: Bliss.CSharp.Windowing.WindowState
+- uid: Bliss.CSharp.Windowing.WindowState.Minimized
+  commentId: F:Bliss.CSharp.Windowing.WindowState.Minimized
+  id: Minimized
+  parent: Bliss.CSharp.Windowing.WindowState
+  langs:
+  - csharp
+  - vb
+  name: Minimized
+  nameWithType: WindowState.Minimized
+  fullName: Bliss.CSharp.Windowing.WindowState.Minimized
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/WindowState.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Minimized
+    path: ../src/Bliss/CSharp/Windowing/WindowState.cs
+    startLine: 33
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: The window is minimized, reducing it to an icon or taskbar entry.
+  example: []
+  syntax:
+    content: Minimized = Resizable | Maximized
+    return:
+      type: Bliss.CSharp.Windowing.WindowState
+    content.vb: Minimized = Resizable Or Maximized
+- uid: Bliss.CSharp.Windowing.WindowState.Hidden
+  commentId: F:Bliss.CSharp.Windowing.WindowState.Hidden
+  id: Hidden
+  parent: Bliss.CSharp.Windowing.WindowState
+  langs:
+  - csharp
+  - vb
+  name: Hidden
+  nameWithType: WindowState.Hidden
+  fullName: Bliss.CSharp.Windowing.WindowState.Hidden
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/WindowState.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Hidden
+    path: ../src/Bliss/CSharp/Windowing/WindowState.cs
+    startLine: 38
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: The window is hidden and not visible to the user.
+  example: []
+  syntax:
+    content: Hidden = FullScreen | Maximized
+    return:
+      type: Bliss.CSharp.Windowing.WindowState
+    content.vb: Hidden = FullScreen Or Maximized
+- uid: Bliss.CSharp.Windowing.WindowState.CaptureMouse
+  commentId: F:Bliss.CSharp.Windowing.WindowState.CaptureMouse
+  id: CaptureMouse
+  parent: Bliss.CSharp.Windowing.WindowState
+  langs:
+  - csharp
+  - vb
+  name: CaptureMouse
+  nameWithType: WindowState.CaptureMouse
+  fullName: Bliss.CSharp.Windowing.WindowState.CaptureMouse
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/WindowState.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: CaptureMouse
+    path: ../src/Bliss/CSharp/Windowing/WindowState.cs
+    startLine: 43
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: The window captures the mouse, confining its movement to the window area.
+  example: []
+  syntax:
+    content: CaptureMouse = Resizable | Hidden
+    return:
+      type: Bliss.CSharp.Windowing.WindowState
+    content.vb: CaptureMouse = Resizable Or Hidden
+- uid: Bliss.CSharp.Windowing.WindowState.AlwaysOnTop
+  commentId: F:Bliss.CSharp.Windowing.WindowState.AlwaysOnTop
+  id: AlwaysOnTop
+  parent: Bliss.CSharp.Windowing.WindowState
+  langs:
+  - csharp
+  - vb
+  name: AlwaysOnTop
+  nameWithType: WindowState.AlwaysOnTop
+  fullName: Bliss.CSharp.Windowing.WindowState.AlwaysOnTop
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/WindowState.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: AlwaysOnTop
+    path: ../src/Bliss/CSharp/Windowing/WindowState.cs
+    startLine: 48
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: The window is always on top of other windows, maintaining its topmost position.
+  example: []
+  syntax:
+    content: AlwaysOnTop = 8
+    return:
+      type: Bliss.CSharp.Windowing.WindowState
+- uid: Bliss.CSharp.Windowing.WindowState.Transparent
+  commentId: F:Bliss.CSharp.Windowing.WindowState.Transparent
+  id: Transparent
+  parent: Bliss.CSharp.Windowing.WindowState
+  langs:
+  - csharp
+  - vb
+  name: Transparent
+  nameWithType: WindowState.Transparent
+  fullName: Bliss.CSharp.Windowing.WindowState.Transparent
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/WindowState.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Transparent
+    path: ../src/Bliss/CSharp/Windowing/WindowState.cs
+    startLine: 53
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: The window is transparent, allowing content behind it to be partially visible.
+  example: []
+  syntax:
+    content: Transparent = Resizable | AlwaysOnTop
+    return:
+      type: Bliss.CSharp.Windowing.WindowState
+    content.vb: Transparent = Resizable Or AlwaysOnTop
+references:
+- uid: Bliss.CSharp.Windowing
+  commentId: N:Bliss.CSharp.Windowing
+  href: Bliss.html
+  name: Bliss.CSharp.Windowing
+  nameWithType: Bliss.CSharp.Windowing
+  fullName: Bliss.CSharp.Windowing
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Windowing
+    name: Windowing
+    href: Bliss.CSharp.Windowing.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Windowing
+    name: Windowing
+    href: Bliss.CSharp.Windowing.html
+- uid: Bliss.CSharp.Windowing.WindowState
+  commentId: T:Bliss.CSharp.Windowing.WindowState
+  parent: Bliss.CSharp.Windowing
+  href: Bliss.CSharp.Windowing.WindowState.html
+  name: WindowState
+  nameWithType: WindowState
+  fullName: Bliss.CSharp.Windowing.WindowState

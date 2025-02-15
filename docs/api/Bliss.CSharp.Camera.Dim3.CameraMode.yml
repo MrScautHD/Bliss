@@ -1,0 +1,219 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Camera.Dim3.CameraMode
+  commentId: T:Bliss.CSharp.Camera.Dim3.CameraMode
+  id: CameraMode
+  parent: Bliss.CSharp.Camera.Dim3
+  children:
+  - Bliss.CSharp.Camera.Dim3.CameraMode.Custom
+  - Bliss.CSharp.Camera.Dim3.CameraMode.FirstPerson
+  - Bliss.CSharp.Camera.Dim3.CameraMode.Free
+  - Bliss.CSharp.Camera.Dim3.CameraMode.Orbital
+  - Bliss.CSharp.Camera.Dim3.CameraMode.ThirdPerson
+  langs:
+  - csharp
+  - vb
+  name: CameraMode
+  nameWithType: CameraMode
+  fullName: Bliss.CSharp.Camera.Dim3.CameraMode
+  type: Enum
+  source:
+    remote:
+      path: src/Bliss/CSharp/Camera/Dim3/CameraMode.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: CameraMode
+    path: ../src/Bliss/CSharp/Camera/Dim3/CameraMode.cs
+    startLine: 2
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Camera.Dim3
+  syntax:
+    content: public enum CameraMode
+    content.vb: Public Enum CameraMode
+- uid: Bliss.CSharp.Camera.Dim3.CameraMode.Custom
+  commentId: F:Bliss.CSharp.Camera.Dim3.CameraMode.Custom
+  id: Custom
+  parent: Bliss.CSharp.Camera.Dim3.CameraMode
+  langs:
+  - csharp
+  - vb
+  name: Custom
+  nameWithType: CameraMode.Custom
+  fullName: Bliss.CSharp.Camera.Dim3.CameraMode.Custom
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Camera/Dim3/CameraMode.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Custom
+    path: ../src/Bliss/CSharp/Camera/Dim3/CameraMode.cs
+    startLine: 7
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Camera.Dim3
+  summary: Custom mode, allowing for user-defined camera behavior and controls.
+  example: []
+  syntax:
+    content: Custom = 0
+    return:
+      type: Bliss.CSharp.Camera.Dim3.CameraMode
+- uid: Bliss.CSharp.Camera.Dim3.CameraMode.Free
+  commentId: F:Bliss.CSharp.Camera.Dim3.CameraMode.Free
+  id: Free
+  parent: Bliss.CSharp.Camera.Dim3.CameraMode
+  langs:
+  - csharp
+  - vb
+  name: Free
+  nameWithType: CameraMode.Free
+  fullName: Bliss.CSharp.Camera.Dim3.CameraMode.Free
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Camera/Dim3/CameraMode.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Free
+    path: ../src/Bliss/CSharp/Camera/Dim3/CameraMode.cs
+    startLine: 12
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Camera.Dim3
+  summary: Free mode, where the camera can move freely in 3D space.
+  example: []
+  syntax:
+    content: Free = 1
+    return:
+      type: Bliss.CSharp.Camera.Dim3.CameraMode
+- uid: Bliss.CSharp.Camera.Dim3.CameraMode.Orbital
+  commentId: F:Bliss.CSharp.Camera.Dim3.CameraMode.Orbital
+  id: Orbital
+  parent: Bliss.CSharp.Camera.Dim3.CameraMode
+  langs:
+  - csharp
+  - vb
+  name: Orbital
+  nameWithType: CameraMode.Orbital
+  fullName: Bliss.CSharp.Camera.Dim3.CameraMode.Orbital
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Camera/Dim3/CameraMode.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Orbital
+    path: ../src/Bliss/CSharp/Camera/Dim3/CameraMode.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Camera.Dim3
+  summary: Orbital mode, where the camera orbits around a target point.
+  example: []
+  syntax:
+    content: Orbital = 2
+    return:
+      type: Bliss.CSharp.Camera.Dim3.CameraMode
+- uid: Bliss.CSharp.Camera.Dim3.CameraMode.FirstPerson
+  commentId: F:Bliss.CSharp.Camera.Dim3.CameraMode.FirstPerson
+  id: FirstPerson
+  parent: Bliss.CSharp.Camera.Dim3.CameraMode
+  langs:
+  - csharp
+  - vb
+  name: FirstPerson
+  nameWithType: CameraMode.FirstPerson
+  fullName: Bliss.CSharp.Camera.Dim3.CameraMode.FirstPerson
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Camera/Dim3/CameraMode.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: FirstPerson
+    path: ../src/Bliss/CSharp/Camera/Dim3/CameraMode.cs
+    startLine: 22
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Camera.Dim3
+  summary: First-person mode, where the camera simulates the view of a character.
+  example: []
+  syntax:
+    content: FirstPerson = 3
+    return:
+      type: Bliss.CSharp.Camera.Dim3.CameraMode
+- uid: Bliss.CSharp.Camera.Dim3.CameraMode.ThirdPerson
+  commentId: F:Bliss.CSharp.Camera.Dim3.CameraMode.ThirdPerson
+  id: ThirdPerson
+  parent: Bliss.CSharp.Camera.Dim3.CameraMode
+  langs:
+  - csharp
+  - vb
+  name: ThirdPerson
+  nameWithType: CameraMode.ThirdPerson
+  fullName: Bliss.CSharp.Camera.Dim3.CameraMode.ThirdPerson
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Camera/Dim3/CameraMode.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ThirdPerson
+    path: ../src/Bliss/CSharp/Camera/Dim3/CameraMode.cs
+    startLine: 27
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Camera.Dim3
+  summary: Third-person mode, where the camera follows a character from a distance.
+  example: []
+  syntax:
+    content: ThirdPerson = 4
+    return:
+      type: Bliss.CSharp.Camera.Dim3.CameraMode
+references:
+- uid: Bliss.CSharp.Camera.Dim3
+  commentId: N:Bliss.CSharp.Camera.Dim3
+  href: Bliss.html
+  name: Bliss.CSharp.Camera.Dim3
+  nameWithType: Bliss.CSharp.Camera.Dim3
+  fullName: Bliss.CSharp.Camera.Dim3
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Camera
+    name: Camera
+    href: Bliss.CSharp.Camera.html
+  - name: .
+  - uid: Bliss.CSharp.Camera.Dim3
+    name: Dim3
+    href: Bliss.CSharp.Camera.Dim3.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Camera
+    name: Camera
+    href: Bliss.CSharp.Camera.html
+  - name: .
+  - uid: Bliss.CSharp.Camera.Dim3
+    name: Dim3
+    href: Bliss.CSharp.Camera.Dim3.html
+- uid: Bliss.CSharp.Camera.Dim3.CameraMode
+  commentId: T:Bliss.CSharp.Camera.Dim3.CameraMode
+  parent: Bliss.CSharp.Camera.Dim3
+  href: Bliss.CSharp.Camera.Dim3.CameraMode.html
+  name: CameraMode
+  nameWithType: CameraMode
+  fullName: Bliss.CSharp.Camera.Dim3.CameraMode

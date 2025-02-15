@@ -1,0 +1,93 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Windowing.WindowType
+  commentId: T:Bliss.CSharp.Windowing.WindowType
+  id: WindowType
+  parent: Bliss.CSharp.Windowing
+  children:
+  - Bliss.CSharp.Windowing.WindowType.Sdl3
+  langs:
+  - csharp
+  - vb
+  name: WindowType
+  nameWithType: WindowType
+  fullName: Bliss.CSharp.Windowing.WindowType
+  type: Enum
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/WindowType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: WindowType
+    path: ../src/Bliss/CSharp/Windowing/WindowType.cs
+    startLine: 3
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  syntax:
+    content: public enum WindowType
+    content.vb: Public Enum WindowType
+- uid: Bliss.CSharp.Windowing.WindowType.Sdl3
+  commentId: F:Bliss.CSharp.Windowing.WindowType.Sdl3
+  id: Sdl3
+  parent: Bliss.CSharp.Windowing.WindowType
+  langs:
+  - csharp
+  - vb
+  name: Sdl3
+  nameWithType: WindowType.Sdl3
+  fullName: Bliss.CSharp.Windowing.WindowType.Sdl3
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/WindowType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Sdl3
+    path: ../src/Bliss/CSharp/Windowing/WindowType.cs
+    startLine: 4
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  syntax:
+    content: Sdl3 = 0
+    return:
+      type: Bliss.CSharp.Windowing.WindowType
+references:
+- uid: Bliss.CSharp.Windowing
+  commentId: N:Bliss.CSharp.Windowing
+  href: Bliss.html
+  name: Bliss.CSharp.Windowing
+  nameWithType: Bliss.CSharp.Windowing
+  fullName: Bliss.CSharp.Windowing
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Windowing
+    name: Windowing
+    href: Bliss.CSharp.Windowing.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Windowing
+    name: Windowing
+    href: Bliss.CSharp.Windowing.html
+- uid: Bliss.CSharp.Windowing.WindowType
+  commentId: T:Bliss.CSharp.Windowing.WindowType
+  parent: Bliss.CSharp.Windowing
+  href: Bliss.CSharp.Windowing.WindowType.html
+  name: WindowType
+  nameWithType: WindowType
+  fullName: Bliss.CSharp.Windowing.WindowType

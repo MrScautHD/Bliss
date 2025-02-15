@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers
+  id: Bliss.CSharp.Graphics.Rendering.Renderers
+  children:
+  - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Graphics.Rendering.Renderers
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Renderers
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html
+  name: ImmediateRenderer
+  nameWithType: ImmediateRenderer
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer

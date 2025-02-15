@@ -1,0 +1,1894 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  id: PrimitiveBatch
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  children:
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Windowing.IWindow,Veldrid.OutputDescription,System.UInt32)
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Capacity
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Dispose(System.Boolean)
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawCallCount
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.End
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GraphicsDevice
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Output
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Window
+  langs:
+  - csharp
+  - vb
+  name: PrimitiveBatch
+  nameWithType: PrimitiveBatch
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  type: Class
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: PrimitiveBatch
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 13
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  syntax:
+    content: 'public class PrimitiveBatch : Disposable, IDisposable'
+    content.vb: Public Class PrimitiveBatch Inherits Disposable Implements IDisposable
+  inheritance:
+  - System.Object
+  - Bliss.CSharp.Disposable
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - Bliss.CSharp.Disposable.HasDisposed
+  - Bliss.CSharp.Disposable.Dispose
+  - Bliss.CSharp.Disposable.ThrowIfDisposed
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GraphicsDevice
+  commentId: P:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GraphicsDevice
+  id: GraphicsDevice
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: GraphicsDevice
+  nameWithType: PrimitiveBatch.GraphicsDevice
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GraphicsDevice
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GraphicsDevice
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 19
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: >-
+    Represents the graphics device used for rendering operations within the <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch" data-throw-if-not-resolved="false"></xref> class.
+
+    The <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GraphicsDevice" data-throw-if-not-resolved="false"></xref> is used to create resources, manage rendering pipelines, and issue draw commands.
+  example: []
+  syntax:
+    content: public GraphicsDevice GraphicsDevice { get; }
+    parameters: []
+    return:
+      type: Veldrid.GraphicsDevice
+    content.vb: Public Property GraphicsDevice As GraphicsDevice
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GraphicsDevice*
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Window
+  commentId: P:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Window
+  id: Window
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: Window
+  nameWithType: PrimitiveBatch.Window
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Window
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Window
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 24
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: Represents the window used for rendering graphics.
+  example: []
+  syntax:
+    content: public IWindow Window { get; }
+    parameters: []
+    return:
+      type: Bliss.CSharp.Windowing.IWindow
+    content.vb: Public Property Window As IWindow
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Window*
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Output
+  commentId: P:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Output
+  id: Output
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: Output
+  nameWithType: PrimitiveBatch.Output
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Output
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Output
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 30
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: >-
+    Represents the output description utilized by the <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch" data-throw-if-not-resolved="false"></xref> for rendering configurations.
+
+    The <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Output" data-throw-if-not-resolved="false"></xref> property specifies how the rendering results are presented on the screen.
+  example: []
+  syntax:
+    content: public OutputDescription Output { get; }
+    parameters: []
+    return:
+      type: Veldrid.OutputDescription
+    content.vb: Public Property Output As OutputDescription
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Output*
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Capacity
+  commentId: P:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Capacity
+  id: Capacity
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: Capacity
+  nameWithType: PrimitiveBatch.Capacity
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Capacity
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Capacity
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 35
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: Specifies the maximum number of sprites that the PrimitiveBatch can process in a single draw call.
+  example: []
+  syntax:
+    content: public uint Capacity { get; }
+    parameters: []
+    return:
+      type: System.UInt32
+    content.vb: Public Property Capacity As UInteger
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Capacity*
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawCallCount
+  commentId: P:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawCallCount
+  id: DrawCallCount
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: DrawCallCount
+  nameWithType: PrimitiveBatch.DrawCallCount
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawCallCount
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DrawCallCount
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 41
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: >-
+    Gets the number of draw calls made during the current batch rendering session.
+
+    This count is reset to zero each time <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList%2cSystem.Nullable%7bSystem.Numerics.Matrix4x4%7d%2cSystem.Nullable%7bSystem.Numerics.Matrix4x4%7d)" data-throw-if-not-resolved="false"></xref> is called and increments with each call to <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Flush" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public int DrawCallCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property DrawCallCount As Integer
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawCallCount*
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Windowing.IWindow,Veldrid.OutputDescription,System.UInt32)
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Windowing.IWindow,Veldrid.OutputDescription,System.UInt32)
+  id: '#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Windowing.IWindow,Veldrid.OutputDescription,System.UInt32)'
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: PrimitiveBatch(GraphicsDevice, IWindow, OutputDescription, uint)
+  nameWithType: PrimitiveBatch.PrimitiveBatch(GraphicsDevice, IWindow, OutputDescription, uint)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.PrimitiveBatch(Veldrid.GraphicsDevice, Bliss.CSharp.Windowing.IWindow, Veldrid.OutputDescription, uint)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 105
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: Initializes a new instance of the PrimitiveBatch class for rendering 2D primitives.
+  example: []
+  syntax:
+    content: public PrimitiveBatch(GraphicsDevice graphicsDevice, IWindow window, OutputDescription output, uint capacity = 30720)
+    parameters:
+    - id: graphicsDevice
+      type: Veldrid.GraphicsDevice
+      description: The graphics device used for rendering.
+    - id: window
+      type: Bliss.CSharp.Windowing.IWindow
+      description: The window representing the rendering context.
+    - id: output
+      type: Veldrid.OutputDescription
+      description: The output description defining the render target.
+    - id: capacity
+      type: System.UInt32
+      description: Optional. The initial capacity of the vertex buffer.
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, window As IWindow, output As OutputDescription, capacity As UInteger = 30720)
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.#ctor*
+  nameWithType.vb: PrimitiveBatch.New(GraphicsDevice, IWindow, OutputDescription, UInteger)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.New(Veldrid.GraphicsDevice, Bliss.CSharp.Windowing.IWindow, Veldrid.OutputDescription, UInteger)
+  name.vb: New(GraphicsDevice, IWindow, OutputDescription, UInteger)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
+  id: Begin(Veldrid.CommandList,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: Begin(CommandList, Matrix4x4?, Matrix4x4?)
+  nameWithType: PrimitiveBatch.Begin(CommandList, Matrix4x4?, Matrix4x4?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList, System.Numerics.Matrix4x4?, System.Numerics.Matrix4x4?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Begin
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 157
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: Begins a new batch of primitive drawing operations.
+  example: []
+  syntax:
+    content: public void Begin(CommandList commandList, Matrix4x4? projection = null, Matrix4x4? view = null)
+    parameters:
+    - id: commandList
+      type: Veldrid.CommandList
+      description: The command list to record drawing commands.
+    - id: projection
+      type: System.Nullable{System.Numerics.Matrix4x4}
+      description: Optional projection transformation matrix. If null, defaults to an orthographic projection matrix.
+    - id: view
+      type: System.Nullable{System.Numerics.Matrix4x4}
+      description: Optional view transformation matrix. If null, defaults to the identity matrix.
+    content.vb: Public Sub Begin(commandList As CommandList, projection As Matrix4x4? = Nothing, view As Matrix4x4? = Nothing)
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown when the method is called before the previous batch is ended.
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.End
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.End
+  id: End
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: End()
+  nameWithType: PrimitiveBatch.End()
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.End()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: End
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 178
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: Ends the current batch of primitive drawing operations.
+  example: []
+  syntax:
+    content: public void End()
+    content.vb: Public Sub [End]()
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.End*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown when the method is called before calling Begin().
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: DrawLine(Vector2, Vector2, float, Color?)
+  nameWithType: PrimitiveBatch.DrawLine(Vector2, Vector2, float, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2, System.Numerics.Vector2, float, Bliss.CSharp.Colors.Color?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DrawLine
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 194
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: Draws a line between two points with the specified thickness and color.
+  example: []
+  syntax:
+    content: public void DrawLine(Vector2 start, Vector2 end, float thickness, Color? color = null)
+    parameters:
+    - id: start
+      type: System.Numerics.Vector2
+      description: The start point of the line.
+    - id: end
+      type: System.Numerics.Vector2
+      description: The end point of the line.
+    - id: thickness
+      type: System.Single
+      description: The thickness of the line. Default is 1.0.
+    - id: color
+      type: System.Nullable{Bliss.CSharp.Colors.Color}
+      description: The color of the line. If null, defaults to white.
+    content.vb: Public Sub DrawLine(start As Vector2, [end] As Vector2, thickness As Single, color As Color? = Nothing)
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine*
+  nameWithType.vb: PrimitiveBatch.DrawLine(Vector2, Vector2, Single, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2, System.Numerics.Vector2, Single, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawLine(Vector2, Vector2, Single, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: DrawEmptyRectangle(RectangleF, float, Vector2?, float, Color?)
+  nameWithType: PrimitiveBatch.DrawEmptyRectangle(RectangleF, float, Vector2?, float, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF, float, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DrawEmptyRectangle
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 210
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: Draws an empty rectangle with the specified dimensions, outline size, origin point, rotation, and color.
+  example: []
+  syntax:
+    content: public void DrawEmptyRectangle(RectangleF rectangle, float thickness, Vector2? origin = null, float rotation = 0, Color? color = null)
+    parameters:
+    - id: rectangle
+      type: Bliss.CSharp.Transformations.RectangleF
+      description: Specifies the position and size of the rectangle.
+    - id: thickness
+      type: System.Single
+      description: Width of the rectangle's outline.
+    - id: origin
+      type: System.Nullable{System.Numerics.Vector2}
+      description: Optional origin point for rotation and positioning. Defaults to (0,0).
+    - id: rotation
+      type: System.Single
+      description: Optional rotation angle in degrees. Defaults to 0.0F.
+    - id: color
+      type: System.Nullable{Bliss.CSharp.Colors.Color}
+      description: Optional color for the rectangle's outline. Defaults to white.
+    content.vb: Public Sub DrawEmptyRectangle(rectangle As RectangleF, thickness As Single, origin As Vector2? = Nothing, rotation As Single = 0, color As Color? = Nothing)
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle*
+  nameWithType.vb: PrimitiveBatch.DrawEmptyRectangle(RectangleF, Single, Vector2?, Single, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF, Single, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawEmptyRectangle(RectangleF, Single, Vector2?, Single, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: DrawFilledRectangle(RectangleF, Vector2?, float, Color?)
+  nameWithType: PrimitiveBatch.DrawFilledRectangle(RectangleF, Vector2?, float, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DrawFilledRectangle
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 247
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: Draws a rectangle with optional origin point, rotation, and color.
+  example: []
+  syntax:
+    content: public void DrawFilledRectangle(RectangleF rectangle, Vector2? origin = null, float rotation = 0, Color? color = null)
+    parameters:
+    - id: rectangle
+      type: Bliss.CSharp.Transformations.RectangleF
+      description: The rectangle specifying the position and size.
+    - id: origin
+      type: System.Nullable{System.Numerics.Vector2}
+      description: Optional origin point for the rectangle, defaults to the top-left corner.
+    - id: rotation
+      type: System.Single
+      description: Optional rotation angle in radians, defaults to 0.0F.
+    - id: color
+      type: System.Nullable{Bliss.CSharp.Colors.Color}
+      description: Optional color for the rectangle, defaults to White.
+    content.vb: Public Sub DrawFilledRectangle(rectangle As RectangleF, origin As Vector2? = Nothing, rotation As Single = 0, color As Color? = Nothing)
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle*
+  nameWithType.vb: PrimitiveBatch.DrawFilledRectangle(RectangleF, Vector2?, Single, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawFilledRectangle(RectangleF, Vector2?, Single, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawEmptyCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: DrawEmptyCircleSector(Vector2, float, float, float, int, int, Color?)
+  nameWithType: PrimitiveBatch.DrawEmptyCircleSector(Vector2, float, float, float, int, int, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2, float, float, float, int, int, Bliss.CSharp.Colors.Color?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DrawEmptyCircleSector
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 294
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: Draws an empty circle sector using the specified parameters.
+  example: []
+  syntax:
+    content: public void DrawEmptyCircleSector(Vector2 position, float radius, float startAngle, float endAngle, int thickness, int segments, Color? color = null)
+    parameters:
+    - id: position
+      type: System.Numerics.Vector2
+      description: The position of the center of the circle.
+    - id: radius
+      type: System.Single
+      description: The radius of the circle sector.
+    - id: startAngle
+      type: System.Single
+      description: The starting angle of the sector in degrees.
+    - id: endAngle
+      type: System.Single
+      description: The ending angle of the sector in degrees.
+    - id: thickness
+      type: System.Int32
+      description: The thickness of the circle sector line.
+    - id: segments
+      type: System.Int32
+      description: The number of segments used to draw the sector. Minimum value is 4.
+    - id: color
+      type: System.Nullable{Bliss.CSharp.Colors.Color}
+      description: The color of the circle sector line. Defaults to white if null.
+    content.vb: Public Sub DrawEmptyCircleSector(position As Vector2, radius As Single, startAngle As Single, endAngle As Single, thickness As Integer, segments As Integer, color As Color? = Nothing)
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector*
+  nameWithType.vb: PrimitiveBatch.DrawEmptyCircleSector(Vector2, Single, Single, Single, Integer, Integer, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2, Single, Single, Single, Integer, Integer, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawEmptyCircleSector(Vector2, Single, Single, Single, Integer, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawFilledCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: DrawFilledCircleSector(Vector2, float, float, float, int, Color?)
+  nameWithType: PrimitiveBatch.DrawFilledCircleSector(Vector2, float, float, float, int, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2, float, float, float, int, Bliss.CSharp.Colors.Color?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DrawFilledCircleSector
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 336
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: Draws a filled sector of a circle on the screen at the specified position with the given parameters.
+  example: []
+  syntax:
+    content: public void DrawFilledCircleSector(Vector2 position, float radius, float startAngle, float endAngle, int segments, Color? color = null)
+    parameters:
+    - id: position
+      type: System.Numerics.Vector2
+      description: The center position of the circle sector.
+    - id: radius
+      type: System.Single
+      description: The radius of the circle sector.
+    - id: startAngle
+      type: System.Single
+      description: The starting angle of the sector in degrees.
+    - id: endAngle
+      type: System.Single
+      description: The ending angle of the sector in degrees.
+    - id: segments
+      type: System.Int32
+      description: Number of segments to use for drawing the sector.
+    - id: color
+      type: System.Nullable{Bliss.CSharp.Colors.Color}
+      description: Optional color to use for the sector. Defaults to white if null.
+    content.vb: Public Sub DrawFilledCircleSector(position As Vector2, radius As Single, startAngle As Single, endAngle As Single, segments As Integer, color As Color? = Nothing)
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector*
+  nameWithType.vb: PrimitiveBatch.DrawFilledCircleSector(Vector2, Single, Single, Single, Integer, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2, Single, Single, Single, Integer, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawFilledCircleSector(Vector2, Single, Single, Single, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawEmptyCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: DrawEmptyCircle(Vector2, float, int, int, Color?)
+  nameWithType: PrimitiveBatch.DrawEmptyCircle(Vector2, float, int, int, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2, float, int, int, Bliss.CSharp.Colors.Color?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DrawEmptyCircle
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 383
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: Draws an empty circle at the specified position with the given radius, thickness, and number of segments.
+  example: []
+  syntax:
+    content: public void DrawEmptyCircle(Vector2 position, float radius, int thickness, int segments, Color? color = null)
+    parameters:
+    - id: position
+      type: System.Numerics.Vector2
+      description: The center position of the circle.
+    - id: radius
+      type: System.Single
+      description: The radius of the circle.
+    - id: thickness
+      type: System.Int32
+      description: The thickness of the circle's outline.
+    - id: segments
+      type: System.Int32
+      description: The number of segments to divide the circle into. Must be at least 4.
+    - id: color
+      type: System.Nullable{Bliss.CSharp.Colors.Color}
+      description: The color of the circle's outline. Defaults to white if not specified.
+    content.vb: Public Sub DrawEmptyCircle(position As Vector2, radius As Single, thickness As Integer, segments As Integer, color As Color? = Nothing)
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle*
+  nameWithType.vb: PrimitiveBatch.DrawEmptyCircle(Vector2, Single, Integer, Integer, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2, Single, Integer, Integer, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawEmptyCircle(Vector2, Single, Integer, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawFilledCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: DrawFilledCircle(Vector2, float, int, Color?)
+  nameWithType: PrimitiveBatch.DrawFilledCircle(Vector2, float, int, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2, float, int, Bliss.CSharp.Colors.Color?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DrawFilledCircle
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 429
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: Draws a filled circle at the specified position with the given radius, number of segments, and optional color.
+  example: []
+  syntax:
+    content: public void DrawFilledCircle(Vector2 position, float radius, int segments, Color? color = null)
+    parameters:
+    - id: position
+      type: System.Numerics.Vector2
+      description: The position of the center of the circle.
+    - id: radius
+      type: System.Single
+      description: The radius of the circle.
+    - id: segments
+      type: System.Int32
+      description: The number of segments to use for drawing the circle.
+    - id: color
+      type: System.Nullable{Bliss.CSharp.Colors.Color}
+      description: The optional color of the circle. If null, defaults to white.
+    content.vb: Public Sub DrawFilledCircle(position As Vector2, radius As Single, segments As Integer, color As Color? = Nothing)
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle*
+  nameWithType.vb: PrimitiveBatch.DrawFilledCircle(Vector2, Single, Integer, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2, Single, Integer, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawFilledCircle(Vector2, Single, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawEmptyRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: DrawEmptyRing(Vector2, float, float, int, int, Color?)
+  nameWithType: PrimitiveBatch.DrawEmptyRing(Vector2, float, float, int, int, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2, float, float, int, int, Bliss.CSharp.Colors.Color?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DrawEmptyRing
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 471
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: Draws an empty ring at the specified position with given inner and outer radii, thickness, segments, and optional color.
+  example: []
+  syntax:
+    content: public void DrawEmptyRing(Vector2 position, float innerRadius, float outerRadius, int thickness, int segments, Color? color = null)
+    parameters:
+    - id: position
+      type: System.Numerics.Vector2
+      description: The position where the ring will be drawn.
+    - id: innerRadius
+      type: System.Single
+      description: The inner radius of the ring.
+    - id: outerRadius
+      type: System.Single
+      description: The outer radius of the ring.
+    - id: thickness
+      type: System.Int32
+      description: The thickness of the ring.
+    - id: segments
+      type: System.Int32
+      description: The number of segments to use for drawing the ring. Minimum is 4.
+    - id: color
+      type: System.Nullable{Bliss.CSharp.Colors.Color}
+      description: Optional color to use for drawing the ring. Defaults to white if not provided.
+    content.vb: Public Sub DrawEmptyRing(position As Vector2, innerRadius As Single, outerRadius As Single, thickness As Integer, segments As Integer, color As Color? = Nothing)
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing*
+  nameWithType.vb: PrimitiveBatch.DrawEmptyRing(Vector2, Single, Single, Integer, Integer, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2, Single, Single, Integer, Integer, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawEmptyRing(Vector2, Single, Single, Integer, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawFilledRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: DrawFilledRing(Vector2, float, float, int, Color?)
+  nameWithType: PrimitiveBatch.DrawFilledRing(Vector2, float, float, int, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2, float, float, int, Bliss.CSharp.Colors.Color?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DrawFilledRing
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 542
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: Draws a filled ring at the specified position with the given inner and outer radii, segment count, and optional color.
+  example: []
+  syntax:
+    content: public void DrawFilledRing(Vector2 position, float innerRadius, float outerRadius, int segments, Color? color = null)
+    parameters:
+    - id: position
+      type: System.Numerics.Vector2
+      description: The center position of the ring.
+    - id: innerRadius
+      type: System.Single
+      description: The inner radius of the ring.
+    - id: outerRadius
+      type: System.Single
+      description: The outer radius of the ring.
+    - id: segments
+      type: System.Int32
+      description: The number of segments to use for drawing the ring.
+    - id: color
+      type: System.Nullable{Bliss.CSharp.Colors.Color}
+      description: The color of the ring. If not provided, defaults to white.
+    content.vb: Public Sub DrawFilledRing(position As Vector2, innerRadius As Single, outerRadius As Single, segments As Integer, color As Color? = Nothing)
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing*
+  nameWithType.vb: PrimitiveBatch.DrawFilledRing(Vector2, Single, Single, Integer, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2, Single, Single, Integer, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawFilledRing(Vector2, Single, Single, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawEmptyEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: DrawEmptyEllipse(Vector2, Vector2, int, int, Color?)
+  nameWithType: PrimitiveBatch.DrawEmptyEllipse(Vector2, Vector2, int, int, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2, System.Numerics.Vector2, int, int, Bliss.CSharp.Colors.Color?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DrawEmptyEllipse
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 611
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: Draws an empty ellipse at the specified position with the given radius, thickness, and number of segments.
+  example: []
+  syntax:
+    content: public void DrawEmptyEllipse(Vector2 position, Vector2 radius, int thickness, int segments, Color? color = null)
+    parameters:
+    - id: position
+      type: System.Numerics.Vector2
+      description: The center position of the ellipse in 2D space.
+    - id: radius
+      type: System.Numerics.Vector2
+      description: The radius of the ellipse along the X and Y axes.
+    - id: thickness
+      type: System.Int32
+      description: The thickness of the ellipse outline.
+    - id: segments
+      type: System.Int32
+      description: The number of segments to use for drawing the ellipse. Minimum value is 4.
+    - id: color
+      type: System.Nullable{Bliss.CSharp.Colors.Color}
+      description: The color to use for the ellipse outline. If not specified, defaults to white.
+    content.vb: Public Sub DrawEmptyEllipse(position As Vector2, radius As Vector2, thickness As Integer, segments As Integer, color As Color? = Nothing)
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse*
+  nameWithType.vb: PrimitiveBatch.DrawEmptyEllipse(Vector2, Vector2, Integer, Integer, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2, System.Numerics.Vector2, Integer, Integer, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawEmptyEllipse(Vector2, Vector2, Integer, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawFilledEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: DrawFilledEllipse(Vector2, Vector2, int, Color?)
+  nameWithType: PrimitiveBatch.DrawFilledEllipse(Vector2, Vector2, int, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2, System.Numerics.Vector2, int, Bliss.CSharp.Colors.Color?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DrawFilledEllipse
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 658
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: Draws a filled ellipse at the specified position with the given radius, number of segments, and optional color.
+  example: []
+  syntax:
+    content: public void DrawFilledEllipse(Vector2 position, Vector2 radius, int segments, Color? color = null)
+    parameters:
+    - id: position
+      type: System.Numerics.Vector2
+      description: The center position of the ellipse.
+    - id: radius
+      type: System.Numerics.Vector2
+      description: The horizontal and vertical radii of the ellipse.
+    - id: segments
+      type: System.Int32
+      description: The number of segments to divide the ellipse into.
+    - id: color
+      type: System.Nullable{Bliss.CSharp.Colors.Color}
+      description: The color used to fill the ellipse. Defaults to white if not specified.
+    content.vb: Public Sub DrawFilledEllipse(position As Vector2, radius As Vector2, segments As Integer, color As Color? = Nothing)
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse*
+  nameWithType.vb: PrimitiveBatch.DrawFilledEllipse(Vector2, Vector2, Integer, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2, System.Numerics.Vector2, Integer, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawFilledEllipse(Vector2, Vector2, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawEmptyTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: DrawEmptyTriangle(Vector2, Vector2, Vector2, int, Color?)
+  nameWithType: PrimitiveBatch.DrawEmptyTriangle(Vector2, Vector2, Vector2, int, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector2, int, Bliss.CSharp.Colors.Color?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DrawEmptyTriangle
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 705
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: Draws an empty triangle between the specified points with a given thickness and color.
+  example: []
+  syntax:
+    content: public void DrawEmptyTriangle(Vector2 point1, Vector2 point2, Vector2 point3, int thickness, Color? color = null)
+    parameters:
+    - id: point1
+      type: System.Numerics.Vector2
+      description: The first vertex of the triangle.
+    - id: point2
+      type: System.Numerics.Vector2
+      description: The second vertex of the triangle.
+    - id: point3
+      type: System.Numerics.Vector2
+      description: The third vertex of the triangle.
+    - id: thickness
+      type: System.Int32
+      description: The thickness of the triangle edges.
+    - id: color
+      type: System.Nullable{Bliss.CSharp.Colors.Color}
+      description: The color of the triangle edges. Defaults to white if not specified.
+    content.vb: Public Sub DrawEmptyTriangle(point1 As Vector2, point2 As Vector2, point3 As Vector2, thickness As Integer, color As Color? = Nothing)
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle*
+  nameWithType.vb: PrimitiveBatch.DrawEmptyTriangle(Vector2, Vector2, Vector2, Integer, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector2, Integer, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawEmptyTriangle(Vector2, Vector2, Vector2, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawFilledTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Nullable{Bliss.CSharp.Colors.Color})
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: DrawFilledTriangle(Vector2, Vector2, Vector2, Color?)
+  nameWithType: PrimitiveBatch.DrawFilledTriangle(Vector2, Vector2, Vector2, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle(System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector2, Bliss.CSharp.Colors.Color?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DrawFilledTriangle
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 720
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: Draws a filled triangle using the specified vertices and an optional color.
+  example: []
+  syntax:
+    content: public void DrawFilledTriangle(Vector2 point1, Vector2 point2, Vector2 point3, Color? color = null)
+    parameters:
+    - id: point1
+      type: System.Numerics.Vector2
+      description: The first vertex of the triangle.
+    - id: point2
+      type: System.Numerics.Vector2
+      description: The second vertex of the triangle.
+    - id: point3
+      type: System.Numerics.Vector2
+      description: The third vertex of the triangle.
+    - id: color
+      type: System.Nullable{Bliss.CSharp.Colors.Color}
+      description: The color of the triangle. If null, the default color is white.
+    content.vb: Public Sub DrawFilledTriangle(point1 As Vector2, point2 As Vector2, point3 As Vector2, color As Color? = Nothing)
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle*
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Dispose(System.Boolean)
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: Dispose(bool)
+  nameWithType: PrimitiveBatch.Dispose(bool)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Dispose(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Dispose
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
+    startLine: 801
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  summary: Disposes of the object and releases associated resources.
+  example: []
+  syntax:
+    content: protected override void Dispose(bool disposing)
+    parameters:
+    - id: disposing
+      type: System.Boolean
+      description: True if called from user code; false if called from a finalizer.
+    content.vb: Protected Overrides Sub Dispose(disposing As Boolean)
+  overridden: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Dispose*
+  nameWithType.vb: PrimitiveBatch.Dispose(Boolean)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+references:
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches
+    name: Batches
+    href: Bliss.CSharp.Graphics.Rendering.Batches.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+    name: Primitives
+    href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches
+    name: Batches
+    href: Bliss.CSharp.Graphics.Rendering.Batches.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
+    name: Primitives
+    href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bliss.CSharp.Disposable
+  commentId: T:Bliss.CSharp.Disposable
+  parent: Bliss.CSharp
+  href: Bliss.CSharp.Disposable.html
+  name: Disposable
+  nameWithType: Disposable
+  fullName: Bliss.CSharp.Disposable
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Bliss.CSharp.Disposable.HasDisposed
+  commentId: P:Bliss.CSharp.Disposable.HasDisposed
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_HasDisposed
+  name: HasDisposed
+  nameWithType: Disposable.HasDisposed
+  fullName: Bliss.CSharp.Disposable.HasDisposed
+- uid: Bliss.CSharp.Disposable.Dispose
+  commentId: M:Bliss.CSharp.Disposable.Dispose
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  name: Dispose()
+  nameWithType: Disposable.Dispose()
+  fullName: Bliss.CSharp.Disposable.Dispose()
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.Dispose
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.Dispose
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+  commentId: M:Bliss.CSharp.Disposable.ThrowIfDisposed
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  name: ThrowIfDisposed()
+  nameWithType: Disposable.ThrowIfDisposed()
+  fullName: Bliss.CSharp.Disposable.ThrowIfDisposed()
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+    name: ThrowIfDisposed
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+    name: ThrowIfDisposed
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp
+  commentId: N:Bliss.CSharp
+  href: Bliss.html
+  name: Bliss.CSharp
+  nameWithType: Bliss.CSharp
+  fullName: Bliss.CSharp
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html
+  name: PrimitiveBatch
+  nameWithType: PrimitiveBatch
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GraphicsDevice
+  commentId: P:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GraphicsDevice
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_GraphicsDevice
+  name: GraphicsDevice
+  nameWithType: PrimitiveBatch.GraphicsDevice
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GraphicsDevice
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GraphicsDevice*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GraphicsDevice
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_GraphicsDevice
+  name: GraphicsDevice
+  nameWithType: PrimitiveBatch.GraphicsDevice
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GraphicsDevice
+- uid: Veldrid.GraphicsDevice
+  commentId: T:Veldrid.GraphicsDevice
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsDevice.cs
+  name: GraphicsDevice
+  nameWithType: GraphicsDevice
+  fullName: Veldrid.GraphicsDevice
+- uid: Veldrid
+  commentId: N:Veldrid
+  isExternal: true
+  name: Veldrid
+  nameWithType: Veldrid
+  fullName: Veldrid
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Window*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Window
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Window
+  name: Window
+  nameWithType: PrimitiveBatch.Window
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Window
+- uid: Bliss.CSharp.Windowing.IWindow
+  commentId: T:Bliss.CSharp.Windowing.IWindow
+  parent: Bliss.CSharp.Windowing
+  href: Bliss.CSharp.Windowing.IWindow.html
+  name: IWindow
+  nameWithType: IWindow
+  fullName: Bliss.CSharp.Windowing.IWindow
+- uid: Bliss.CSharp.Windowing
+  commentId: N:Bliss.CSharp.Windowing
+  href: Bliss.html
+  name: Bliss.CSharp.Windowing
+  nameWithType: Bliss.CSharp.Windowing
+  fullName: Bliss.CSharp.Windowing
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Windowing
+    name: Windowing
+    href: Bliss.CSharp.Windowing.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Windowing
+    name: Windowing
+    href: Bliss.CSharp.Windowing.html
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Output
+  commentId: P:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Output
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Output
+  name: Output
+  nameWithType: PrimitiveBatch.Output
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Output
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Output*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Output
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Output
+  name: Output
+  nameWithType: PrimitiveBatch.Output
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Output
+- uid: Veldrid.OutputDescription
+  commentId: T:Veldrid.OutputDescription
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs
+  name: OutputDescription
+  nameWithType: OutputDescription
+  fullName: Veldrid.OutputDescription
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Capacity*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Capacity
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Capacity
+  name: Capacity
+  nameWithType: PrimitiveBatch.Capacity
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Capacity
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
+  isExternal: true
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Begin_Veldrid_CommandList_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__
+  name: Begin(CommandList, Matrix4x4?, Matrix4x4?)
+  nameWithType: PrimitiveBatch.Begin(CommandList, Matrix4x4?, Matrix4x4?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList, System.Numerics.Matrix4x4?, System.Numerics.Matrix4x4?)
+  spec.csharp:
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
+    name: Begin
+    href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Begin_Veldrid_CommandList_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__
+  - name: (
+  - uid: Veldrid.CommandList
+    name: CommandList
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
+  - name: ','
+  - name: " "
+  - uid: System.Numerics.Matrix4x4
+    name: Matrix4x4
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Numerics.Matrix4x4
+    name: Matrix4x4
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
+  - name: '?'
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
+    name: Begin
+    href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Begin_Veldrid_CommandList_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__
+  - name: (
+  - uid: Veldrid.CommandList
+    name: CommandList
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
+  - name: ','
+  - name: " "
+  - uid: System.Numerics.Matrix4x4
+    name: Matrix4x4
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Numerics.Matrix4x4
+    name: Matrix4x4
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
+  - name: '?'
+  - name: )
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Flush
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Flush
+  name: Flush()
+  nameWithType: PrimitiveBatch.Flush()
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Flush()
+  spec.csharp:
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Flush
+    name: Flush
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Flush
+    name: Flush
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawCallCount*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawCallCount
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawCallCount
+  name: DrawCallCount
+  nameWithType: PrimitiveBatch.DrawCallCount
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawCallCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.#ctor*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.#ctor
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Windowing_IWindow_Veldrid_OutputDescription_System_UInt32_
+  name: PrimitiveBatch
+  nameWithType: PrimitiveBatch.PrimitiveBatch
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.PrimitiveBatch
+  nameWithType.vb: PrimitiveBatch.New
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.New
+  name.vb: New
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Begin_Veldrid_CommandList_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__
+  name: Begin
+  nameWithType: PrimitiveBatch.Begin
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin
+- uid: Veldrid.CommandList
+  commentId: T:Veldrid.CommandList
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
+  name: CommandList
+  nameWithType: CommandList
+  fullName: Veldrid.CommandList
+- uid: System.Nullable{System.Numerics.Matrix4x4}
+  commentId: T:System.Nullable{System.Numerics.Matrix4x4}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
+  name: Matrix4x4?
+  nameWithType: Matrix4x4?
+  fullName: System.Numerics.Matrix4x4?
+  spec.csharp:
+  - uid: System.Numerics.Matrix4x4
+    name: Matrix4x4
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
+  - name: '?'
+  spec.vb:
+  - uid: System.Numerics.Matrix4x4
+    name: Matrix4x4
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.End*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.End
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_End
+  name: End
+  nameWithType: PrimitiveBatch.End
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.End
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawLine_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
+  name: DrawLine
+  nameWithType: PrimitiveBatch.DrawLine
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine
+- uid: System.Numerics.Vector2
+  commentId: T:System.Numerics.Vector2
+  parent: System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.vector2
+  name: Vector2
+  nameWithType: Vector2
+  fullName: System.Numerics.Vector2
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System.Nullable{Bliss.CSharp.Colors.Color}
+  commentId: T:System.Nullable{Bliss.CSharp.Colors.Color}
+  parent: System
+  definition: System.Nullable`1
+  href: Bliss.CSharp.Colors.Color.html
+  name: Color?
+  nameWithType: Color?
+  fullName: Bliss.CSharp.Colors.Color?
+  spec.csharp:
+  - uid: Bliss.CSharp.Colors.Color
+    name: Color
+    href: Bliss.CSharp.Colors.Color.html
+  - name: '?'
+  spec.vb:
+  - uid: Bliss.CSharp.Colors.Color
+    name: Color
+    href: Bliss.CSharp.Colors.Color.html
+  - name: '?'
+- uid: System.Numerics
+  commentId: N:System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Numerics
+  nameWithType: System.Numerics
+  fullName: System.Numerics
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyRectangle_Bliss_CSharp_Transformations_RectangleF_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
+  name: DrawEmptyRectangle
+  nameWithType: PrimitiveBatch.DrawEmptyRectangle
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle
+- uid: Bliss.CSharp.Transformations.RectangleF
+  commentId: T:Bliss.CSharp.Transformations.RectangleF
+  parent: Bliss.CSharp.Transformations
+  href: Bliss.CSharp.Transformations.RectangleF.html
+  name: RectangleF
+  nameWithType: RectangleF
+  fullName: Bliss.CSharp.Transformations.RectangleF
+- uid: System.Nullable{System.Numerics.Vector2}
+  commentId: T:System.Nullable{System.Numerics.Vector2}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.vector2
+  name: Vector2?
+  nameWithType: Vector2?
+  fullName: System.Numerics.Vector2?
+  spec.csharp:
+  - uid: System.Numerics.Vector2
+    name: Vector2
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.vector2
+  - name: '?'
+  spec.vb:
+  - uid: System.Numerics.Vector2
+    name: Vector2
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.vector2
+  - name: '?'
+- uid: Bliss.CSharp.Transformations
+  commentId: N:Bliss.CSharp.Transformations
+  href: Bliss.html
+  name: Bliss.CSharp.Transformations
+  nameWithType: Bliss.CSharp.Transformations
+  fullName: Bliss.CSharp.Transformations
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Transformations
+    name: Transformations
+    href: Bliss.CSharp.Transformations.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Transformations
+    name: Transformations
+    href: Bliss.CSharp.Transformations.html
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledRectangle_Bliss_CSharp_Transformations_RectangleF_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
+  name: DrawFilledRectangle
+  nameWithType: PrimitiveBatch.DrawFilledRectangle
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyCircleSector_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  name: DrawEmptyCircleSector
+  nameWithType: PrimitiveBatch.DrawEmptyCircleSector
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledCircleSector_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  name: DrawFilledCircleSector
+  nameWithType: PrimitiveBatch.DrawFilledCircleSector
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyCircle_System_Numerics_Vector2_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  name: DrawEmptyCircle
+  nameWithType: PrimitiveBatch.DrawEmptyCircle
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledCircle_System_Numerics_Vector2_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  name: DrawFilledCircle
+  nameWithType: PrimitiveBatch.DrawFilledCircle
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyRing_System_Numerics_Vector2_System_Single_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  name: DrawEmptyRing
+  nameWithType: PrimitiveBatch.DrawEmptyRing
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledRing_System_Numerics_Vector2_System_Single_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  name: DrawFilledRing
+  nameWithType: PrimitiveBatch.DrawFilledRing
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyEllipse_System_Numerics_Vector2_System_Numerics_Vector2_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  name: DrawEmptyEllipse
+  nameWithType: PrimitiveBatch.DrawEmptyEllipse
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledEllipse_System_Numerics_Vector2_System_Numerics_Vector2_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  name: DrawFilledEllipse
+  nameWithType: PrimitiveBatch.DrawFilledEllipse
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyTriangle_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  name: DrawEmptyTriangle
+  nameWithType: PrimitiveBatch.DrawEmptyTriangle
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledTriangle_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Nullable_Bliss_CSharp_Colors_Color__
+  name: DrawFilledTriangle
+  nameWithType: PrimitiveBatch.DrawFilledTriangle
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle
+- uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  commentId: M:Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  parent: Bliss.CSharp.Disposable
+  isExternal: true
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  name: Dispose(bool)
+  nameWithType: Disposable.Dispose(bool)
+  fullName: Bliss.CSharp.Disposable.Dispose(bool)
+  nameWithType.vb: Disposable.Dispose(Boolean)
+  fullName.vb: Bliss.CSharp.Disposable.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Dispose*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Dispose
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Dispose_System_Boolean_
+  name: Dispose
+  nameWithType: PrimitiveBatch.Dispose
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Dispose
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

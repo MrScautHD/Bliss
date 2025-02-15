@@ -1,0 +1,1094 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Transformations.Rectangle
+  commentId: T:Bliss.CSharp.Transformations.Rectangle
+  id: Rectangle
+  parent: Bliss.CSharp.Transformations
+  children:
+  - Bliss.CSharp.Transformations.Rectangle.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)
+  - Bliss.CSharp.Transformations.Rectangle.Contains(System.Numerics.Vector2)
+  - Bliss.CSharp.Transformations.Rectangle.Contains(System.Single,System.Single)
+  - Bliss.CSharp.Transformations.Rectangle.Equals(Bliss.CSharp.Transformations.Rectangle)
+  - Bliss.CSharp.Transformations.Rectangle.Equals(System.Object)
+  - Bliss.CSharp.Transformations.Rectangle.GetHashCode
+  - Bliss.CSharp.Transformations.Rectangle.Height
+  - Bliss.CSharp.Transformations.Rectangle.Position
+  - Bliss.CSharp.Transformations.Rectangle.Size
+  - Bliss.CSharp.Transformations.Rectangle.ToString
+  - Bliss.CSharp.Transformations.Rectangle.Width
+  - Bliss.CSharp.Transformations.Rectangle.X
+  - Bliss.CSharp.Transformations.Rectangle.Y
+  - Bliss.CSharp.Transformations.Rectangle.op_Equality(Bliss.CSharp.Transformations.Rectangle,Bliss.CSharp.Transformations.Rectangle)
+  - Bliss.CSharp.Transformations.Rectangle.op_Inequality(Bliss.CSharp.Transformations.Rectangle,Bliss.CSharp.Transformations.Rectangle)
+  langs:
+  - csharp
+  - vb
+  name: Rectangle
+  nameWithType: Rectangle
+  fullName: Bliss.CSharp.Transformations.Rectangle
+  type: Struct
+  source:
+    remote:
+      path: src/Bliss/CSharp/Transformations/Rectangle.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Rectangle
+    path: ../src/Bliss/CSharp/Transformations/Rectangle.cs
+    startLine: 4
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Transformations
+  syntax:
+    content: 'public struct Rectangle : IEquatable<Rectangle>'
+    content.vb: Public Structure Rectangle Implements IEquatable(Of Rectangle)
+  implements:
+  - System.IEquatable{Bliss.CSharp.Transformations.Rectangle}
+  inheritedMembers:
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Bliss.CSharp.Transformations.Rectangle.X
+  commentId: F:Bliss.CSharp.Transformations.Rectangle.X
+  id: X
+  parent: Bliss.CSharp.Transformations.Rectangle
+  langs:
+  - csharp
+  - vb
+  name: X
+  nameWithType: Rectangle.X
+  fullName: Bliss.CSharp.Transformations.Rectangle.X
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Transformations/Rectangle.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: X
+    path: ../src/Bliss/CSharp/Transformations/Rectangle.cs
+    startLine: 9
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Transformations
+  summary: The X-coordinate of the rectangle's top-left corner.
+  example: []
+  syntax:
+    content: public int X
+    return:
+      type: System.Int32
+    content.vb: Public X As Integer
+- uid: Bliss.CSharp.Transformations.Rectangle.Y
+  commentId: F:Bliss.CSharp.Transformations.Rectangle.Y
+  id: Y
+  parent: Bliss.CSharp.Transformations.Rectangle
+  langs:
+  - csharp
+  - vb
+  name: Y
+  nameWithType: Rectangle.Y
+  fullName: Bliss.CSharp.Transformations.Rectangle.Y
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Transformations/Rectangle.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Y
+    path: ../src/Bliss/CSharp/Transformations/Rectangle.cs
+    startLine: 14
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Transformations
+  summary: The Y-coordinate of the rectangle's top-left corner.
+  example: []
+  syntax:
+    content: public int Y
+    return:
+      type: System.Int32
+    content.vb: Public Y As Integer
+- uid: Bliss.CSharp.Transformations.Rectangle.Width
+  commentId: F:Bliss.CSharp.Transformations.Rectangle.Width
+  id: Width
+  parent: Bliss.CSharp.Transformations.Rectangle
+  langs:
+  - csharp
+  - vb
+  name: Width
+  nameWithType: Rectangle.Width
+  fullName: Bliss.CSharp.Transformations.Rectangle.Width
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Transformations/Rectangle.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Width
+    path: ../src/Bliss/CSharp/Transformations/Rectangle.cs
+    startLine: 19
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Transformations
+  summary: The width of the rectangle.
+  example: []
+  syntax:
+    content: public int Width
+    return:
+      type: System.Int32
+    content.vb: Public Width As Integer
+- uid: Bliss.CSharp.Transformations.Rectangle.Height
+  commentId: F:Bliss.CSharp.Transformations.Rectangle.Height
+  id: Height
+  parent: Bliss.CSharp.Transformations.Rectangle
+  langs:
+  - csharp
+  - vb
+  name: Height
+  nameWithType: Rectangle.Height
+  fullName: Bliss.CSharp.Transformations.Rectangle.Height
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Transformations/Rectangle.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Height
+    path: ../src/Bliss/CSharp/Transformations/Rectangle.cs
+    startLine: 24
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Transformations
+  summary: The height of the rectangle.
+  example: []
+  syntax:
+    content: public int Height
+    return:
+      type: System.Int32
+    content.vb: Public Height As Integer
+- uid: Bliss.CSharp.Transformations.Rectangle.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)
+  commentId: M:Bliss.CSharp.Transformations.Rectangle.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)
+  id: '#ctor(System.Int32,System.Int32,System.Int32,System.Int32)'
+  parent: Bliss.CSharp.Transformations.Rectangle
+  langs:
+  - csharp
+  - vb
+  name: Rectangle(int, int, int, int)
+  nameWithType: Rectangle.Rectangle(int, int, int, int)
+  fullName: Bliss.CSharp.Transformations.Rectangle.Rectangle(int, int, int, int)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Transformations/Rectangle.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Transformations/Rectangle.cs
+    startLine: 33
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Transformations
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Transformations.Rectangle" data-throw-if-not-resolved="false"></xref> struct with the specified position and size.
+  example: []
+  syntax:
+    content: public Rectangle(int x, int y, int width, int height)
+    parameters:
+    - id: x
+      type: System.Int32
+      description: The X-coordinate of the rectangle's top-left corner.
+    - id: y
+      type: System.Int32
+      description: The Y-coordinate of the rectangle's top-left corner.
+    - id: width
+      type: System.Int32
+      description: The width of the rectangle.
+    - id: height
+      type: System.Int32
+      description: The height of the rectangle.
+    content.vb: Public Sub New(x As Integer, y As Integer, width As Integer, height As Integer)
+  overload: Bliss.CSharp.Transformations.Rectangle.#ctor*
+  nameWithType.vb: Rectangle.New(Integer, Integer, Integer, Integer)
+  fullName.vb: Bliss.CSharp.Transformations.Rectangle.New(Integer, Integer, Integer, Integer)
+  name.vb: New(Integer, Integer, Integer, Integer)
+- uid: Bliss.CSharp.Transformations.Rectangle.op_Equality(Bliss.CSharp.Transformations.Rectangle,Bliss.CSharp.Transformations.Rectangle)
+  commentId: M:Bliss.CSharp.Transformations.Rectangle.op_Equality(Bliss.CSharp.Transformations.Rectangle,Bliss.CSharp.Transformations.Rectangle)
+  id: op_Equality(Bliss.CSharp.Transformations.Rectangle,Bliss.CSharp.Transformations.Rectangle)
+  parent: Bliss.CSharp.Transformations.Rectangle
+  langs:
+  - csharp
+  - vb
+  name: operator ==(Rectangle, Rectangle)
+  nameWithType: Rectangle.operator ==(Rectangle, Rectangle)
+  fullName: Bliss.CSharp.Transformations.Rectangle.operator ==(Bliss.CSharp.Transformations.Rectangle, Bliss.CSharp.Transformations.Rectangle)
+  type: Operator
+  source:
+    remote:
+      path: src/Bliss/CSharp/Transformations/Rectangle.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: op_Equality
+    path: ../src/Bliss/CSharp/Transformations/Rectangle.cs
+    startLine: 46
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Transformations
+  summary: Determines whether two <xref href="Bliss.CSharp.Transformations.Rectangle" data-throw-if-not-resolved="false"></xref> instances are equal.
+  example: []
+  syntax:
+    content: public static bool operator ==(Rectangle left, Rectangle right)
+    parameters:
+    - id: left
+      type: Bliss.CSharp.Transformations.Rectangle
+      description: The first <xref href="Bliss.CSharp.Transformations.Rectangle" data-throw-if-not-resolved="false"></xref> to compare.
+    - id: right
+      type: Bliss.CSharp.Transformations.Rectangle
+      description: The second <xref href="Bliss.CSharp.Transformations.Rectangle" data-throw-if-not-resolved="false"></xref> to compare.
+    return:
+      type: System.Boolean
+      description: True if both rectangles are equal; otherwise, false.
+    content.vb: Public Shared Operator =(left As Rectangle, right As Rectangle) As Boolean
+  overload: Bliss.CSharp.Transformations.Rectangle.op_Equality*
+  nameWithType.vb: Rectangle.=(Rectangle, Rectangle)
+  fullName.vb: Bliss.CSharp.Transformations.Rectangle.=(Bliss.CSharp.Transformations.Rectangle, Bliss.CSharp.Transformations.Rectangle)
+  name.vb: =(Rectangle, Rectangle)
+- uid: Bliss.CSharp.Transformations.Rectangle.op_Inequality(Bliss.CSharp.Transformations.Rectangle,Bliss.CSharp.Transformations.Rectangle)
+  commentId: M:Bliss.CSharp.Transformations.Rectangle.op_Inequality(Bliss.CSharp.Transformations.Rectangle,Bliss.CSharp.Transformations.Rectangle)
+  id: op_Inequality(Bliss.CSharp.Transformations.Rectangle,Bliss.CSharp.Transformations.Rectangle)
+  parent: Bliss.CSharp.Transformations.Rectangle
+  langs:
+  - csharp
+  - vb
+  name: operator !=(Rectangle, Rectangle)
+  nameWithType: Rectangle.operator !=(Rectangle, Rectangle)
+  fullName: Bliss.CSharp.Transformations.Rectangle.operator !=(Bliss.CSharp.Transformations.Rectangle, Bliss.CSharp.Transformations.Rectangle)
+  type: Operator
+  source:
+    remote:
+      path: src/Bliss/CSharp/Transformations/Rectangle.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: op_Inequality
+    path: ../src/Bliss/CSharp/Transformations/Rectangle.cs
+    startLine: 54
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Transformations
+  summary: Determines whether two <xref href="Bliss.CSharp.Transformations.Rectangle" data-throw-if-not-resolved="false"></xref> instances are not equal.
+  example: []
+  syntax:
+    content: public static bool operator !=(Rectangle left, Rectangle right)
+    parameters:
+    - id: left
+      type: Bliss.CSharp.Transformations.Rectangle
+      description: The first <xref href="Bliss.CSharp.Transformations.Rectangle" data-throw-if-not-resolved="false"></xref> to compare.
+    - id: right
+      type: Bliss.CSharp.Transformations.Rectangle
+      description: The second <xref href="Bliss.CSharp.Transformations.Rectangle" data-throw-if-not-resolved="false"></xref> to compare.
+    return:
+      type: System.Boolean
+      description: True if the rectangles are not equal; otherwise, false.
+    content.vb: Public Shared Operator <>(left As Rectangle, right As Rectangle) As Boolean
+  overload: Bliss.CSharp.Transformations.Rectangle.op_Inequality*
+  nameWithType.vb: Rectangle.<>(Rectangle, Rectangle)
+  fullName.vb: Bliss.CSharp.Transformations.Rectangle.<>(Bliss.CSharp.Transformations.Rectangle, Bliss.CSharp.Transformations.Rectangle)
+  name.vb: <>(Rectangle, Rectangle)
+- uid: Bliss.CSharp.Transformations.Rectangle.Position
+  commentId: P:Bliss.CSharp.Transformations.Rectangle.Position
+  id: Position
+  parent: Bliss.CSharp.Transformations.Rectangle
+  langs:
+  - csharp
+  - vb
+  name: Position
+  nameWithType: Rectangle.Position
+  fullName: Bliss.CSharp.Transformations.Rectangle.Position
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Transformations/Rectangle.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Position
+    path: ../src/Bliss/CSharp/Transformations/Rectangle.cs
+    startLine: 59
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Transformations
+  summary: Gets or sets the position (X, Y) of the rectangle's top-left corner.
+  example: []
+  syntax:
+    content: public Vector2 Position { get; set; }
+    parameters: []
+    return:
+      type: System.Numerics.Vector2
+    content.vb: Public Property Position As Vector2
+  overload: Bliss.CSharp.Transformations.Rectangle.Position*
+- uid: Bliss.CSharp.Transformations.Rectangle.Size
+  commentId: P:Bliss.CSharp.Transformations.Rectangle.Size
+  id: Size
+  parent: Bliss.CSharp.Transformations.Rectangle
+  langs:
+  - csharp
+  - vb
+  name: Size
+  nameWithType: Rectangle.Size
+  fullName: Bliss.CSharp.Transformations.Rectangle.Size
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Transformations/Rectangle.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Size
+    path: ../src/Bliss/CSharp/Transformations/Rectangle.cs
+    startLine: 70
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Transformations
+  summary: Gets or sets the size (Width, Height) of the rectangle.
+  example: []
+  syntax:
+    content: public Vector2 Size { get; set; }
+    parameters: []
+    return:
+      type: System.Numerics.Vector2
+    content.vb: Public Property Size As Vector2
+  overload: Bliss.CSharp.Transformations.Rectangle.Size*
+- uid: Bliss.CSharp.Transformations.Rectangle.Contains(System.Numerics.Vector2)
+  commentId: M:Bliss.CSharp.Transformations.Rectangle.Contains(System.Numerics.Vector2)
+  id: Contains(System.Numerics.Vector2)
+  parent: Bliss.CSharp.Transformations.Rectangle
+  langs:
+  - csharp
+  - vb
+  name: Contains(Vector2)
+  nameWithType: Rectangle.Contains(Vector2)
+  fullName: Bliss.CSharp.Transformations.Rectangle.Contains(System.Numerics.Vector2)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Transformations/Rectangle.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Contains
+    path: ../src/Bliss/CSharp/Transformations/Rectangle.cs
+    startLine: 83
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Transformations
+  summary: Determines whether the specified point is contained within the rectangle.
+  example: []
+  syntax:
+    content: public bool Contains(Vector2 p)
+    parameters:
+    - id: p
+      type: System.Numerics.Vector2
+      description: The point to check.
+    return:
+      type: System.Boolean
+      description: True if the point is inside the rectangle; otherwise, false.
+    content.vb: Public Function Contains(p As Vector2) As Boolean
+  overload: Bliss.CSharp.Transformations.Rectangle.Contains*
+- uid: Bliss.CSharp.Transformations.Rectangle.Contains(System.Single,System.Single)
+  commentId: M:Bliss.CSharp.Transformations.Rectangle.Contains(System.Single,System.Single)
+  id: Contains(System.Single,System.Single)
+  parent: Bliss.CSharp.Transformations.Rectangle
+  langs:
+  - csharp
+  - vb
+  name: Contains(float, float)
+  nameWithType: Rectangle.Contains(float, float)
+  fullName: Bliss.CSharp.Transformations.Rectangle.Contains(float, float)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Transformations/Rectangle.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Contains
+    path: ../src/Bliss/CSharp/Transformations/Rectangle.cs
+    startLine: 91
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Transformations
+  summary: Determines whether the specified coordinates are contained within the rectangle.
+  example: []
+  syntax:
+    content: public bool Contains(float x, float y)
+    parameters:
+    - id: x
+      type: System.Single
+      description: The X-coordinate of the point to check.
+    - id: y
+      type: System.Single
+      description: The Y-coordinate of the point to check.
+    return:
+      type: System.Boolean
+      description: True if the point is inside the rectangle; otherwise, false.
+    content.vb: Public Function Contains(x As Single, y As Single) As Boolean
+  overload: Bliss.CSharp.Transformations.Rectangle.Contains*
+  nameWithType.vb: Rectangle.Contains(Single, Single)
+  fullName.vb: Bliss.CSharp.Transformations.Rectangle.Contains(Single, Single)
+  name.vb: Contains(Single, Single)
+- uid: Bliss.CSharp.Transformations.Rectangle.Equals(Bliss.CSharp.Transformations.Rectangle)
+  commentId: M:Bliss.CSharp.Transformations.Rectangle.Equals(Bliss.CSharp.Transformations.Rectangle)
+  id: Equals(Bliss.CSharp.Transformations.Rectangle)
+  parent: Bliss.CSharp.Transformations.Rectangle
+  langs:
+  - csharp
+  - vb
+  name: Equals(Rectangle)
+  nameWithType: Rectangle.Equals(Rectangle)
+  fullName: Bliss.CSharp.Transformations.Rectangle.Equals(Bliss.CSharp.Transformations.Rectangle)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Transformations/Rectangle.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Equals
+    path: ../src/Bliss/CSharp/Transformations/Rectangle.cs
+    startLine: 100
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Transformations
+  summary: Determines whether the current rectangle is equal to another <xref href="Bliss.CSharp.Transformations.Rectangle" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool Equals(Rectangle other)
+    parameters:
+    - id: other
+      type: Bliss.CSharp.Transformations.Rectangle
+      description: The rectangle to compare with the current rectangle.
+    return:
+      type: System.Boolean
+      description: True if the rectangles are equal; otherwise, false.
+    content.vb: Public Function Equals(other As Rectangle) As Boolean
+  overload: Bliss.CSharp.Transformations.Rectangle.Equals*
+  implements:
+  - System.IEquatable{Bliss.CSharp.Transformations.Rectangle}.Equals(Bliss.CSharp.Transformations.Rectangle)
+- uid: Bliss.CSharp.Transformations.Rectangle.Equals(System.Object)
+  commentId: M:Bliss.CSharp.Transformations.Rectangle.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: Bliss.CSharp.Transformations.Rectangle
+  langs:
+  - csharp
+  - vb
+  name: Equals(object?)
+  nameWithType: Rectangle.Equals(object?)
+  fullName: Bliss.CSharp.Transformations.Rectangle.Equals(object?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Transformations/Rectangle.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Equals
+    path: ../src/Bliss/CSharp/Transformations/Rectangle.cs
+    startLine: 109
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Transformations
+  summary: Determines whether the specified object is equal to the current rectangle.
+  example: []
+  syntax:
+    content: public override bool Equals(object? obj)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The object to compare with the current rectangle.
+    return:
+      type: System.Boolean
+      description: True if the object is a <xref href="Bliss.CSharp.Transformations.Rectangle" data-throw-if-not-resolved="false"></xref> and is equal to the current rectangle; otherwise, false.
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.ValueType.Equals(System.Object)
+  overload: Bliss.CSharp.Transformations.Rectangle.Equals*
+  nameWithType.vb: Rectangle.Equals(Object)
+  fullName.vb: Bliss.CSharp.Transformations.Rectangle.Equals(Object)
+  name.vb: Equals(Object)
+- uid: Bliss.CSharp.Transformations.Rectangle.GetHashCode
+  commentId: M:Bliss.CSharp.Transformations.Rectangle.GetHashCode
+  id: GetHashCode
+  parent: Bliss.CSharp.Transformations.Rectangle
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: Rectangle.GetHashCode()
+  fullName: Bliss.CSharp.Transformations.Rectangle.GetHashCode()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Transformations/Rectangle.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetHashCode
+    path: ../src/Bliss/CSharp/Transformations/Rectangle.cs
+    startLine: 117
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Transformations
+  summary: Returns a hash code for the current rectangle.
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+      description: A hash code for the current rectangle.
+    content.vb: Public Overrides Function GetHashCode() As Integer
+  overridden: System.ValueType.GetHashCode
+  overload: Bliss.CSharp.Transformations.Rectangle.GetHashCode*
+- uid: Bliss.CSharp.Transformations.Rectangle.ToString
+  commentId: M:Bliss.CSharp.Transformations.Rectangle.ToString
+  id: ToString
+  parent: Bliss.CSharp.Transformations.Rectangle
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: Rectangle.ToString()
+  fullName: Bliss.CSharp.Transformations.Rectangle.ToString()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Transformations/Rectangle.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ToString
+    path: ../src/Bliss/CSharp/Transformations/Rectangle.cs
+    startLine: 125
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Transformations
+  summary: Returns a string that represents the current rectangle.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: A string that represents the rectangle's position and size.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.ValueType.ToString
+  overload: Bliss.CSharp.Transformations.Rectangle.ToString*
+references:
+- uid: Bliss.CSharp.Transformations
+  commentId: N:Bliss.CSharp.Transformations
+  href: Bliss.html
+  name: Bliss.CSharp.Transformations
+  nameWithType: Bliss.CSharp.Transformations
+  fullName: Bliss.CSharp.Transformations
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Transformations
+    name: Transformations
+    href: Bliss.CSharp.Transformations.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Transformations
+    name: Transformations
+    href: Bliss.CSharp.Transformations.html
+- uid: System.IEquatable{Bliss.CSharp.Transformations.Rectangle}
+  commentId: T:System.IEquatable{Bliss.CSharp.Transformations.Rectangle}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<Rectangle>
+  nameWithType: IEquatable<Rectangle>
+  fullName: System.IEquatable<Bliss.CSharp.Transformations.Rectangle>
+  nameWithType.vb: IEquatable(Of Rectangle)
+  fullName.vb: System.IEquatable(Of Bliss.CSharp.Transformations.Rectangle)
+  name.vb: IEquatable(Of Rectangle)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Bliss.CSharp.Transformations.Rectangle
+    name: Rectangle
+    href: Bliss.CSharp.Transformations.Rectangle.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bliss.CSharp.Transformations.Rectangle
+    name: Rectangle
+    href: Bliss.CSharp.Transformations.Rectangle.html
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bliss.CSharp.Transformations.Rectangle
+  commentId: T:Bliss.CSharp.Transformations.Rectangle
+  parent: Bliss.CSharp.Transformations
+  href: Bliss.CSharp.Transformations.Rectangle.html
+  name: Rectangle
+  nameWithType: Rectangle
+  fullName: Bliss.CSharp.Transformations.Rectangle
+- uid: Bliss.CSharp.Transformations.Rectangle.#ctor*
+  commentId: Overload:Bliss.CSharp.Transformations.Rectangle.#ctor
+  href: Bliss.CSharp.Transformations.Rectangle.html#Bliss_CSharp_Transformations_Rectangle__ctor_System_Int32_System_Int32_System_Int32_System_Int32_
+  name: Rectangle
+  nameWithType: Rectangle.Rectangle
+  fullName: Bliss.CSharp.Transformations.Rectangle.Rectangle
+  nameWithType.vb: Rectangle.New
+  fullName.vb: Bliss.CSharp.Transformations.Rectangle.New
+  name.vb: New
+- uid: Bliss.CSharp.Transformations.Rectangle.op_Equality*
+  commentId: Overload:Bliss.CSharp.Transformations.Rectangle.op_Equality
+  href: Bliss.CSharp.Transformations.Rectangle.html#Bliss_CSharp_Transformations_Rectangle_op_Equality_Bliss_CSharp_Transformations_Rectangle_Bliss_CSharp_Transformations_Rectangle_
+  name: operator ==
+  nameWithType: Rectangle.operator ==
+  fullName: Bliss.CSharp.Transformations.Rectangle.operator ==
+  nameWithType.vb: Rectangle.=
+  fullName.vb: Bliss.CSharp.Transformations.Rectangle.=
+  name.vb: =
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bliss.CSharp.Transformations.Rectangle.op_Equality*
+    name: ==
+    href: Bliss.CSharp.Transformations.Rectangle.html#Bliss_CSharp_Transformations_Rectangle_op_Equality_Bliss_CSharp_Transformations_Rectangle_Bliss_CSharp_Transformations_Rectangle_
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bliss.CSharp.Transformations.Rectangle.op_Inequality*
+  commentId: Overload:Bliss.CSharp.Transformations.Rectangle.op_Inequality
+  href: Bliss.CSharp.Transformations.Rectangle.html#Bliss_CSharp_Transformations_Rectangle_op_Inequality_Bliss_CSharp_Transformations_Rectangle_Bliss_CSharp_Transformations_Rectangle_
+  name: operator !=
+  nameWithType: Rectangle.operator !=
+  fullName: Bliss.CSharp.Transformations.Rectangle.operator !=
+  nameWithType.vb: Rectangle.<>
+  fullName.vb: Bliss.CSharp.Transformations.Rectangle.<>
+  name.vb: <>
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bliss.CSharp.Transformations.Rectangle.op_Inequality*
+    name: '!='
+    href: Bliss.CSharp.Transformations.Rectangle.html#Bliss_CSharp_Transformations_Rectangle_op_Inequality_Bliss_CSharp_Transformations_Rectangle_Bliss_CSharp_Transformations_Rectangle_
+- uid: Bliss.CSharp.Transformations.Rectangle.Position*
+  commentId: Overload:Bliss.CSharp.Transformations.Rectangle.Position
+  href: Bliss.CSharp.Transformations.Rectangle.html#Bliss_CSharp_Transformations_Rectangle_Position
+  name: Position
+  nameWithType: Rectangle.Position
+  fullName: Bliss.CSharp.Transformations.Rectangle.Position
+- uid: System.Numerics.Vector2
+  commentId: T:System.Numerics.Vector2
+  parent: System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.vector2
+  name: Vector2
+  nameWithType: Vector2
+  fullName: System.Numerics.Vector2
+- uid: System.Numerics
+  commentId: N:System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Numerics
+  nameWithType: System.Numerics
+  fullName: System.Numerics
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+- uid: Bliss.CSharp.Transformations.Rectangle.Size*
+  commentId: Overload:Bliss.CSharp.Transformations.Rectangle.Size
+  href: Bliss.CSharp.Transformations.Rectangle.html#Bliss_CSharp_Transformations_Rectangle_Size
+  name: Size
+  nameWithType: Rectangle.Size
+  fullName: Bliss.CSharp.Transformations.Rectangle.Size
+- uid: Bliss.CSharp.Transformations.Rectangle.Contains*
+  commentId: Overload:Bliss.CSharp.Transformations.Rectangle.Contains
+  href: Bliss.CSharp.Transformations.Rectangle.html#Bliss_CSharp_Transformations_Rectangle_Contains_System_Numerics_Vector2_
+  name: Contains
+  nameWithType: Rectangle.Contains
+  fullName: Bliss.CSharp.Transformations.Rectangle.Contains
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Bliss.CSharp.Transformations.Rectangle.Equals*
+  commentId: Overload:Bliss.CSharp.Transformations.Rectangle.Equals
+  href: Bliss.CSharp.Transformations.Rectangle.html#Bliss_CSharp_Transformations_Rectangle_Equals_Bliss_CSharp_Transformations_Rectangle_
+  name: Equals
+  nameWithType: Rectangle.Equals
+  fullName: Bliss.CSharp.Transformations.Rectangle.Equals
+- uid: System.IEquatable{Bliss.CSharp.Transformations.Rectangle}.Equals(Bliss.CSharp.Transformations.Rectangle)
+  commentId: M:System.IEquatable{Bliss.CSharp.Transformations.Rectangle}.Equals(Bliss.CSharp.Transformations.Rectangle)
+  parent: System.IEquatable{Bliss.CSharp.Transformations.Rectangle}
+  definition: System.IEquatable`1.Equals(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(Rectangle)
+  nameWithType: IEquatable<Rectangle>.Equals(Rectangle)
+  fullName: System.IEquatable<Bliss.CSharp.Transformations.Rectangle>.Equals(Bliss.CSharp.Transformations.Rectangle)
+  nameWithType.vb: IEquatable(Of Rectangle).Equals(Rectangle)
+  fullName.vb: System.IEquatable(Of Bliss.CSharp.Transformations.Rectangle).Equals(Bliss.CSharp.Transformations.Rectangle)
+  spec.csharp:
+  - uid: System.IEquatable{Bliss.CSharp.Transformations.Rectangle}.Equals(Bliss.CSharp.Transformations.Rectangle)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Bliss.CSharp.Transformations.Rectangle
+    name: Rectangle
+    href: Bliss.CSharp.Transformations.Rectangle.html
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable{Bliss.CSharp.Transformations.Rectangle}.Equals(Bliss.CSharp.Transformations.Rectangle)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Bliss.CSharp.Transformations.Rectangle
+    name: Rectangle
+    href: Bliss.CSharp.Transformations.Rectangle.html
+  - name: )
+- uid: System.IEquatable`1.Equals(`0)
+  commentId: M:System.IEquatable`1.Equals(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(T)
+  nameWithType: IEquatable<T>.Equals(T)
+  fullName: System.IEquatable<T>.Equals(T)
+  nameWithType.vb: IEquatable(Of T).Equals(T)
+  fullName.vb: System.IEquatable(Of T).Equals(T)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Transformations.Rectangle.GetHashCode*
+  commentId: Overload:Bliss.CSharp.Transformations.Rectangle.GetHashCode
+  href: Bliss.CSharp.Transformations.Rectangle.html#Bliss_CSharp_Transformations_Rectangle_GetHashCode
+  name: GetHashCode
+  nameWithType: Rectangle.GetHashCode
+  fullName: Bliss.CSharp.Transformations.Rectangle.GetHashCode
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Transformations.Rectangle.ToString*
+  commentId: Overload:Bliss.CSharp.Transformations.Rectangle.ToString
+  href: Bliss.CSharp.Transformations.Rectangle.html#Bliss_CSharp_Transformations_Rectangle_ToString
+  name: ToString
+  nameWithType: Rectangle.ToString
+  fullName: Bliss.CSharp.Transformations.Rectangle.ToString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

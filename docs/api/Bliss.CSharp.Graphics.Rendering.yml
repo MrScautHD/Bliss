@@ -1,0 +1,62 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Rendering
+  commentId: N:Bliss.CSharp.Graphics.Rendering
+  id: Bliss.CSharp.Graphics.Rendering
+  children:
+  - Bliss.CSharp.Graphics.Rendering.Frustum
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Graphics.Rendering
+  nameWithType: Bliss.CSharp.Graphics.Rendering
+  fullName: Bliss.CSharp.Graphics.Rendering
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Graphics.Rendering.Frustum
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Frustum
+  parent: Bliss.CSharp.Graphics.Rendering
+  href: Bliss.CSharp.Graphics.Rendering.Frustum.html
+  name: Frustum
+  nameWithType: Frustum
+  fullName: Bliss.CSharp.Graphics.Rendering.Frustum
+- uid: Bliss.CSharp.Graphics.Rendering
+  commentId: N:Bliss.CSharp.Graphics.Rendering
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Rendering
+  nameWithType: Bliss.CSharp.Graphics.Rendering
+  fullName: Bliss.CSharp.Graphics.Rendering
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html

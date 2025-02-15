@@ -1,0 +1,70 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Pipelines.Textures
+  commentId: N:Bliss.CSharp.Graphics.Pipelines.Textures
+  id: Bliss.CSharp.Graphics.Pipelines.Textures
+  children:
+  - Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Graphics.Pipelines.Textures
+  nameWithType: Bliss.CSharp.Graphics.Pipelines.Textures
+  fullName: Bliss.CSharp.Graphics.Pipelines.Textures
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+  parent: Bliss.CSharp.Graphics.Pipelines.Textures
+  href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
+  name: SimpleTextureLayout
+  nameWithType: SimpleTextureLayout
+  fullName: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+- uid: Bliss.CSharp.Graphics.Pipelines.Textures
+  commentId: N:Bliss.CSharp.Graphics.Pipelines.Textures
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Pipelines.Textures
+  nameWithType: Bliss.CSharp.Graphics.Pipelines.Textures
+  fullName: Bliss.CSharp.Graphics.Pipelines.Textures
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Textures
+    name: Textures
+    href: Bliss.CSharp.Graphics.Pipelines.Textures.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Textures
+    name: Textures
+    href: Bliss.CSharp.Graphics.Pipelines.Textures.html

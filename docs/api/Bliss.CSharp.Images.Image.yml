@@ -1,0 +1,1478 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Images.Image
+  commentId: T:Bliss.CSharp.Images.Image
+  id: Image
+  parent: Bliss.CSharp.Images
+  children:
+  - Bliss.CSharp.Images.Image.#ctor(System.Byte[])
+  - Bliss.CSharp.Images.Image.#ctor(System.IO.Stream)
+  - Bliss.CSharp.Images.Image.#ctor(System.Int32,System.Int32,Bliss.CSharp.Colors.Color)
+  - Bliss.CSharp.Images.Image.#ctor(System.Int32,System.Int32,System.Byte[])
+  - Bliss.CSharp.Images.Image.#ctor(System.String)
+  - Bliss.CSharp.Images.Image.Clone
+  - Bliss.CSharp.Images.Image.Data
+  - Bliss.CSharp.Images.Image.FlipHorizontal
+  - Bliss.CSharp.Images.Image.FlipVertical
+  - Bliss.CSharp.Images.Image.GetColor(System.Int32,System.Int32)
+  - Bliss.CSharp.Images.Image.Height
+  - Bliss.CSharp.Images.Image.Resize(System.Int32,System.Int32)
+  - Bliss.CSharp.Images.Image.ResizeNN(System.Int32,System.Int32)
+  - Bliss.CSharp.Images.Image.Rotate(System.Int32)
+  - Bliss.CSharp.Images.Image.RotateCCW
+  - Bliss.CSharp.Images.Image.RotateCW
+  - Bliss.CSharp.Images.Image.SaveAsBmp(System.String)
+  - Bliss.CSharp.Images.Image.SaveAsHdr(System.String)
+  - Bliss.CSharp.Images.Image.SaveAsJpg(System.String,System.Int32)
+  - Bliss.CSharp.Images.Image.SaveAsPng(System.String)
+  - Bliss.CSharp.Images.Image.SaveAsTga(System.String)
+  - Bliss.CSharp.Images.Image.SetPixel(System.Int32,System.Int32,Bliss.CSharp.Colors.Color)
+  - Bliss.CSharp.Images.Image.Tint(Bliss.CSharp.Colors.Color)
+  - Bliss.CSharp.Images.Image.Width
+  langs:
+  - csharp
+  - vb
+  name: Image
+  nameWithType: Image
+  fullName: Bliss.CSharp.Images.Image
+  type: Class
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Image
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 9
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  syntax:
+    content: 'public class Image : ICloneable'
+    content.vb: Public Class Image Implements ICloneable
+  inheritance:
+  - System.Object
+  implements:
+  - System.ICloneable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bliss.CSharp.Images.Image.#ctor(System.String)
+  commentId: M:Bliss.CSharp.Images.Image.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: Image(string)
+  nameWithType: Image.Image(string)
+  fullName: Bliss.CSharp.Images.Image.Image(string)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 31
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Images.Image" data-throw-if-not-resolved="false"></xref> class by loading an image from the specified file path.
+  example: []
+  syntax:
+    content: public Image(string path)
+    parameters:
+    - id: path
+      type: System.String
+      description: The file path of the image to load.
+    content.vb: Public Sub New(path As String)
+  overload: Bliss.CSharp.Images.Image.#ctor*
+  exceptions:
+  - type: System.IO.FileNotFoundException
+    commentId: T:System.IO.FileNotFoundException
+    description: Thrown when the specified file does not exist.
+  nameWithType.vb: Image.New(String)
+  fullName.vb: Bliss.CSharp.Images.Image.New(String)
+  name.vb: New(String)
+- uid: Bliss.CSharp.Images.Image.#ctor(System.IO.Stream)
+  commentId: M:Bliss.CSharp.Images.Image.#ctor(System.IO.Stream)
+  id: '#ctor(System.IO.Stream)'
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: Image(Stream)
+  nameWithType: Image.Image(Stream)
+  fullName: Bliss.CSharp.Images.Image.Image(System.IO.Stream)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 47
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Images.Image" data-throw-if-not-resolved="false"></xref> class by loading an image from the specified stream.
+  example: []
+  syntax:
+    content: public Image(Stream stream)
+    parameters:
+    - id: stream
+      type: System.IO.Stream
+      description: The input stream containing image data to load.
+    content.vb: Public Sub New(stream As Stream)
+  overload: Bliss.CSharp.Images.Image.#ctor*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown if the stream cannot be read.
+  nameWithType.vb: Image.New(Stream)
+  fullName.vb: Bliss.CSharp.Images.Image.New(System.IO.Stream)
+  name.vb: New(Stream)
+- uid: Bliss.CSharp.Images.Image.#ctor(System.Byte[])
+  commentId: M:Bliss.CSharp.Images.Image.#ctor(System.Byte[])
+  id: '#ctor(System.Byte[])'
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: Image(byte[])
+  nameWithType: Image.Image(byte[])
+  fullName: Bliss.CSharp.Images.Image.Image(byte[])
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 62
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Images.Image" data-throw-if-not-resolved="false"></xref> class from raw byte data.
+  example: []
+  syntax:
+    content: public Image(byte[] data)
+    parameters:
+    - id: data
+      type: System.Byte[]
+      description: The raw image data in RGBA format.
+    content.vb: Public Sub New(data As Byte())
+  overload: Bliss.CSharp.Images.Image.#ctor*
+  nameWithType.vb: Image.New(Byte())
+  fullName.vb: Bliss.CSharp.Images.Image.New(Byte())
+  name.vb: New(Byte())
+- uid: Bliss.CSharp.Images.Image.#ctor(System.Int32,System.Int32,System.Byte[])
+  commentId: M:Bliss.CSharp.Images.Image.#ctor(System.Int32,System.Int32,System.Byte[])
+  id: '#ctor(System.Int32,System.Int32,System.Byte[])'
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: Image(int, int, byte[]?)
+  nameWithType: Image.Image(int, int, byte[]?)
+  fullName: Bliss.CSharp.Images.Image.Image(int, int, byte[]?)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 75
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Images.Image" data-throw-if-not-resolved="false"></xref> class with the specified dimensions and optional data.
+  example: []
+  syntax:
+    content: public Image(int width, int height, byte[]? data = null)
+    parameters:
+    - id: width
+      type: System.Int32
+      description: The width of the image in pixels.
+    - id: height
+      type: System.Int32
+      description: The height of the image in pixels.
+    - id: data
+      type: System.Byte[]
+      description: The optional raw data to initialize the image with.
+    content.vb: Public Sub New(width As Integer, height As Integer, data As Byte() = Nothing)
+  overload: Bliss.CSharp.Images.Image.#ctor*
+  nameWithType.vb: Image.New(Integer, Integer, Byte())
+  fullName.vb: Bliss.CSharp.Images.Image.New(Integer, Integer, Byte())
+  name.vb: New(Integer, Integer, Byte())
+- uid: Bliss.CSharp.Images.Image.#ctor(System.Int32,System.Int32,Bliss.CSharp.Colors.Color)
+  commentId: M:Bliss.CSharp.Images.Image.#ctor(System.Int32,System.Int32,Bliss.CSharp.Colors.Color)
+  id: '#ctor(System.Int32,System.Int32,Bliss.CSharp.Colors.Color)'
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: Image(int, int, Color)
+  nameWithType: Image.Image(int, int, Color)
+  fullName: Bliss.CSharp.Images.Image.Image(int, int, Bliss.CSharp.Colors.Color)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 87
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Images.Image" data-throw-if-not-resolved="false"></xref> class with a solid color.
+  example: []
+  syntax:
+    content: public Image(int width, int height, Color color)
+    parameters:
+    - id: width
+      type: System.Int32
+      description: The width of the image in pixels.
+    - id: height
+      type: System.Int32
+      description: The height of the image in pixels.
+    - id: color
+      type: Bliss.CSharp.Colors.Color
+      description: The color to fill the image with.
+    content.vb: Public Sub New(width As Integer, height As Integer, color As Color)
+  overload: Bliss.CSharp.Images.Image.#ctor*
+  nameWithType.vb: Image.New(Integer, Integer, Color)
+  fullName.vb: Bliss.CSharp.Images.Image.New(Integer, Integer, Bliss.CSharp.Colors.Color)
+  name.vb: New(Integer, Integer, Color)
+- uid: Bliss.CSharp.Images.Image.Width
+  commentId: P:Bliss.CSharp.Images.Image.Width
+  id: Width
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: Width
+  nameWithType: Image.Width
+  fullName: Bliss.CSharp.Images.Image.Width
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Width
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 106
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Gets or sets the width of the image in pixels.
+  example: []
+  syntax:
+    content: public int Width { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Width As Integer
+  overload: Bliss.CSharp.Images.Image.Width*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Thrown when a negative or zero value is assigned to the width.
+- uid: Bliss.CSharp.Images.Image.Height
+  commentId: P:Bliss.CSharp.Images.Image.Height
+  id: Height
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: Height
+  nameWithType: Image.Height
+  fullName: Bliss.CSharp.Images.Image.Height
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Height
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 124
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Gets or sets the height of the image in pixels.
+  example: []
+  syntax:
+    content: public int Height { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Height As Integer
+  overload: Bliss.CSharp.Images.Image.Height*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Thrown when a non-positive value is assigned to the height.
+- uid: Bliss.CSharp.Images.Image.Data
+  commentId: P:Bliss.CSharp.Images.Image.Data
+  id: Data
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: Data
+  nameWithType: Image.Data
+  fullName: Bliss.CSharp.Images.Image.Data
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Data
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 142
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Gets or sets the raw image data as a byte array, typically in RGBA format.
+  example: []
+  syntax:
+    content: public byte[] Data { get; set; }
+    parameters: []
+    return:
+      type: System.Byte[]
+    content.vb: Public Property Data As Byte()
+  overload: Bliss.CSharp.Images.Image.Data*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when the assigned data size does not match the product of the image's width, height, and the number of color components (4 for RGBA).
+- uid: Bliss.CSharp.Images.Image.GetColor(System.Int32,System.Int32)
+  commentId: M:Bliss.CSharp.Images.Image.GetColor(System.Int32,System.Int32)
+  id: GetColor(System.Int32,System.Int32)
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: GetColor(int, int)
+  nameWithType: Image.GetColor(int, int)
+  fullName: Bliss.CSharp.Images.Image.GetColor(int, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetColor
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 160
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Gets the color of a specific pixel in the image.
+  example: []
+  syntax:
+    content: public Color GetColor(int x, int y)
+    parameters:
+    - id: x
+      type: System.Int32
+      description: The x-coordinate of the pixel.
+    - id: y
+      type: System.Int32
+      description: The y-coordinate of the pixel.
+    return:
+      type: Bliss.CSharp.Colors.Color
+      description: The color of the specified pixel.
+    content.vb: Public Function GetColor(x As Integer, y As Integer) As Color
+  overload: Bliss.CSharp.Images.Image.GetColor*
+  nameWithType.vb: Image.GetColor(Integer, Integer)
+  fullName.vb: Bliss.CSharp.Images.Image.GetColor(Integer, Integer)
+  name.vb: GetColor(Integer, Integer)
+- uid: Bliss.CSharp.Images.Image.SetPixel(System.Int32,System.Int32,Bliss.CSharp.Colors.Color)
+  commentId: M:Bliss.CSharp.Images.Image.SetPixel(System.Int32,System.Int32,Bliss.CSharp.Colors.Color)
+  id: SetPixel(System.Int32,System.Int32,Bliss.CSharp.Colors.Color)
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: SetPixel(int, int, Color)
+  nameWithType: Image.SetPixel(int, int, Color)
+  fullName: Bliss.CSharp.Images.Image.SetPixel(int, int, Bliss.CSharp.Colors.Color)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetPixel
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 175
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Sets the color of a specific pixel in the image.
+  example: []
+  syntax:
+    content: public void SetPixel(int x, int y, Color color)
+    parameters:
+    - id: x
+      type: System.Int32
+      description: The x-coordinate of the pixel.
+    - id: y
+      type: System.Int32
+      description: The y-coordinate of the pixel.
+    - id: color
+      type: Bliss.CSharp.Colors.Color
+      description: The new color of the pixel.
+    content.vb: Public Sub SetPixel(x As Integer, y As Integer, color As Color)
+  overload: Bliss.CSharp.Images.Image.SetPixel*
+  nameWithType.vb: Image.SetPixel(Integer, Integer, Color)
+  fullName.vb: Bliss.CSharp.Images.Image.SetPixel(Integer, Integer, Bliss.CSharp.Colors.Color)
+  name.vb: SetPixel(Integer, Integer, Color)
+- uid: Bliss.CSharp.Images.Image.Resize(System.Int32,System.Int32)
+  commentId: M:Bliss.CSharp.Images.Image.Resize(System.Int32,System.Int32)
+  id: Resize(System.Int32,System.Int32)
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: Resize(int, int)
+  nameWithType: Image.Resize(int, int)
+  fullName: Bliss.CSharp.Images.Image.Resize(int, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Resize
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 192
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Resizes the image to the specified width and height, maintaining proportional scaling.
+  example: []
+  syntax:
+    content: public void Resize(int newWidth, int newHeight)
+    parameters:
+    - id: newWidth
+      type: System.Int32
+      description: The desired width of the resized image.
+    - id: newHeight
+      type: System.Int32
+      description: The desired height of the resized image.
+    content.vb: Public Sub Resize(newWidth As Integer, newHeight As Integer)
+  overload: Bliss.CSharp.Images.Image.Resize*
+  nameWithType.vb: Image.Resize(Integer, Integer)
+  fullName.vb: Bliss.CSharp.Images.Image.Resize(Integer, Integer)
+  name.vb: Resize(Integer, Integer)
+- uid: Bliss.CSharp.Images.Image.ResizeNN(System.Int32,System.Int32)
+  commentId: M:Bliss.CSharp.Images.Image.ResizeNN(System.Int32,System.Int32)
+  id: ResizeNN(System.Int32,System.Int32)
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: ResizeNN(int, int)
+  nameWithType: Image.ResizeNN(int, int)
+  fullName: Bliss.CSharp.Images.Image.ResizeNN(int, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ResizeNN
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 230
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Resizes the image to the specified width and height using the nearest-neighbor algorithm.
+  example: []
+  syntax:
+    content: public void ResizeNN(int newWidth, int newHeight)
+    parameters:
+    - id: newWidth
+      type: System.Int32
+      description: The new width of the image.
+    - id: newHeight
+      type: System.Int32
+      description: The new height of the image.
+    content.vb: Public Sub ResizeNN(newWidth As Integer, newHeight As Integer)
+  overload: Bliss.CSharp.Images.Image.ResizeNN*
+  nameWithType.vb: Image.ResizeNN(Integer, Integer)
+  fullName.vb: Bliss.CSharp.Images.Image.ResizeNN(Integer, Integer)
+  name.vb: ResizeNN(Integer, Integer)
+- uid: Bliss.CSharp.Images.Image.FlipVertical
+  commentId: M:Bliss.CSharp.Images.Image.FlipVertical
+  id: FlipVertical
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: FlipVertical()
+  nameWithType: Image.FlipVertical()
+  fullName: Bliss.CSharp.Images.Image.FlipVertical()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: FlipVertical
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 257
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Flips the image vertically by inverting the order of rows in the image data.
+  example: []
+  syntax:
+    content: public void FlipVertical()
+    content.vb: Public Sub FlipVertical()
+  overload: Bliss.CSharp.Images.Image.FlipVertical*
+- uid: Bliss.CSharp.Images.Image.FlipHorizontal
+  commentId: M:Bliss.CSharp.Images.Image.FlipHorizontal
+  id: FlipHorizontal
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: FlipHorizontal()
+  nameWithType: Image.FlipHorizontal()
+  fullName: Bliss.CSharp.Images.Image.FlipHorizontal()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: FlipHorizontal
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 279
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Flips the image horizontally by mirroring its pixel data across the vertical axis.
+  example: []
+  syntax:
+    content: public void FlipHorizontal()
+    content.vb: Public Sub FlipHorizontal()
+  overload: Bliss.CSharp.Images.Image.FlipHorizontal*
+- uid: Bliss.CSharp.Images.Image.Rotate(System.Int32)
+  commentId: M:Bliss.CSharp.Images.Image.Rotate(System.Int32)
+  id: Rotate(System.Int32)
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: Rotate(int)
+  nameWithType: Image.Rotate(int)
+  fullName: Bliss.CSharp.Images.Image.Rotate(int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Rotate
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 302
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Rotates the image by the specified degrees in a clockwise direction.
+  example: []
+  syntax:
+    content: public void Rotate(int degrees)
+    parameters:
+    - id: degrees
+      type: System.Int32
+      description: The angle in degrees to rotate the image. Must be a multiple of 90.
+    content.vb: Public Sub Rotate(degrees As Integer)
+  overload: Bliss.CSharp.Images.Image.Rotate*
+  nameWithType.vb: Image.Rotate(Integer)
+  fullName.vb: Bliss.CSharp.Images.Image.Rotate(Integer)
+  name.vb: Rotate(Integer)
+- uid: Bliss.CSharp.Images.Image.RotateCW
+  commentId: M:Bliss.CSharp.Images.Image.RotateCW
+  id: RotateCW
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: RotateCW()
+  nameWithType: Image.RotateCW()
+  fullName: Bliss.CSharp.Images.Image.RotateCW()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: RotateCW
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 316
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Rotates the current <xref href="Bliss.CSharp.Images.Image" data-throw-if-not-resolved="false"></xref> 90 degrees clockwise. Updates the image's dimensions and pixel data accordingly.
+  example: []
+  syntax:
+    content: public void RotateCW()
+    content.vb: Public Sub RotateCW()
+  overload: Bliss.CSharp.Images.Image.RotateCW*
+- uid: Bliss.CSharp.Images.Image.RotateCCW
+  commentId: M:Bliss.CSharp.Images.Image.RotateCCW
+  id: RotateCCW
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: RotateCCW()
+  nameWithType: Image.RotateCCW()
+  fullName: Bliss.CSharp.Images.Image.RotateCCW()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: RotateCCW
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 343
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Rotates the current <xref href="Bliss.CSharp.Images.Image" data-throw-if-not-resolved="false"></xref> instance counterclockwise by 90 degrees.
+  example: []
+  syntax:
+    content: public void RotateCCW()
+    content.vb: Public Sub RotateCCW()
+  overload: Bliss.CSharp.Images.Image.RotateCCW*
+- uid: Bliss.CSharp.Images.Image.Tint(Bliss.CSharp.Colors.Color)
+  commentId: M:Bliss.CSharp.Images.Image.Tint(Bliss.CSharp.Colors.Color)
+  id: Tint(Bliss.CSharp.Colors.Color)
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: Tint(Color)
+  nameWithType: Image.Tint(Color)
+  fullName: Bliss.CSharp.Images.Image.Tint(Bliss.CSharp.Colors.Color)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Tint
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 371
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Applies a tint to the image by adjusting its pixel color values based on the specified tint color.
+  example: []
+  syntax:
+    content: public void Tint(Color tint)
+    parameters:
+    - id: tint
+      type: Bliss.CSharp.Colors.Color
+      description: The color tint to be applied to the image.
+    content.vb: Public Sub Tint(tint As Color)
+  overload: Bliss.CSharp.Images.Image.Tint*
+- uid: Bliss.CSharp.Images.Image.SaveAsBmp(System.String)
+  commentId: M:Bliss.CSharp.Images.Image.SaveAsBmp(System.String)
+  id: SaveAsBmp(System.String)
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: SaveAsBmp(string)
+  nameWithType: Image.SaveAsBmp(string)
+  fullName: Bliss.CSharp.Images.Image.SaveAsBmp(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SaveAsBmp
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 384
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Saves the image as a BMP file.
+  example: []
+  syntax:
+    content: public void SaveAsBmp(string path)
+    parameters:
+    - id: path
+      type: System.String
+      description: The path where the BMP file should be saved.
+    content.vb: Public Sub SaveAsBmp(path As String)
+  overload: Bliss.CSharp.Images.Image.SaveAsBmp*
+  nameWithType.vb: Image.SaveAsBmp(String)
+  fullName.vb: Bliss.CSharp.Images.Image.SaveAsBmp(String)
+  name.vb: SaveAsBmp(String)
+- uid: Bliss.CSharp.Images.Image.SaveAsTga(System.String)
+  commentId: M:Bliss.CSharp.Images.Image.SaveAsTga(System.String)
+  id: SaveAsTga(System.String)
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: SaveAsTga(string)
+  nameWithType: Image.SaveAsTga(string)
+  fullName: Bliss.CSharp.Images.Image.SaveAsTga(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SaveAsTga
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 395
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Saves the image as a TGA file.
+  example: []
+  syntax:
+    content: public void SaveAsTga(string path)
+    parameters:
+    - id: path
+      type: System.String
+      description: The path where the TGA file should be saved.
+    content.vb: Public Sub SaveAsTga(path As String)
+  overload: Bliss.CSharp.Images.Image.SaveAsTga*
+  nameWithType.vb: Image.SaveAsTga(String)
+  fullName.vb: Bliss.CSharp.Images.Image.SaveAsTga(String)
+  name.vb: SaveAsTga(String)
+- uid: Bliss.CSharp.Images.Image.SaveAsHdr(System.String)
+  commentId: M:Bliss.CSharp.Images.Image.SaveAsHdr(System.String)
+  id: SaveAsHdr(System.String)
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: SaveAsHdr(string)
+  nameWithType: Image.SaveAsHdr(string)
+  fullName: Bliss.CSharp.Images.Image.SaveAsHdr(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SaveAsHdr
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 406
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Saves the image as an HDR file.
+  example: []
+  syntax:
+    content: public void SaveAsHdr(string path)
+    parameters:
+    - id: path
+      type: System.String
+      description: The path where the HDR file should be saved.
+    content.vb: Public Sub SaveAsHdr(path As String)
+  overload: Bliss.CSharp.Images.Image.SaveAsHdr*
+  nameWithType.vb: Image.SaveAsHdr(String)
+  fullName.vb: Bliss.CSharp.Images.Image.SaveAsHdr(String)
+  name.vb: SaveAsHdr(String)
+- uid: Bliss.CSharp.Images.Image.SaveAsPng(System.String)
+  commentId: M:Bliss.CSharp.Images.Image.SaveAsPng(System.String)
+  id: SaveAsPng(System.String)
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: SaveAsPng(string)
+  nameWithType: Image.SaveAsPng(string)
+  fullName: Bliss.CSharp.Images.Image.SaveAsPng(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SaveAsPng
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 417
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Saves the image as a PNG file.
+  example: []
+  syntax:
+    content: public void SaveAsPng(string path)
+    parameters:
+    - id: path
+      type: System.String
+      description: The path where the PNG file should be saved.
+    content.vb: Public Sub SaveAsPng(path As String)
+  overload: Bliss.CSharp.Images.Image.SaveAsPng*
+  nameWithType.vb: Image.SaveAsPng(String)
+  fullName.vb: Bliss.CSharp.Images.Image.SaveAsPng(String)
+  name.vb: SaveAsPng(String)
+- uid: Bliss.CSharp.Images.Image.SaveAsJpg(System.String,System.Int32)
+  commentId: M:Bliss.CSharp.Images.Image.SaveAsJpg(System.String,System.Int32)
+  id: SaveAsJpg(System.String,System.Int32)
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: SaveAsJpg(string, int)
+  nameWithType: Image.SaveAsJpg(string, int)
+  fullName: Bliss.CSharp.Images.Image.SaveAsJpg(string, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SaveAsJpg
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 429
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Saves the image as a JPG file with the specified quality.
+  example: []
+  syntax:
+    content: public void SaveAsJpg(string path, int quality)
+    parameters:
+    - id: path
+      type: System.String
+      description: The path where the JPG file should be saved.
+    - id: quality
+      type: System.Int32
+      description: The quality of the JPG image (1-100).
+    content.vb: Public Sub SaveAsJpg(path As String, quality As Integer)
+  overload: Bliss.CSharp.Images.Image.SaveAsJpg*
+  nameWithType.vb: Image.SaveAsJpg(String, Integer)
+  fullName.vb: Bliss.CSharp.Images.Image.SaveAsJpg(String, Integer)
+  name.vb: SaveAsJpg(String, Integer)
+- uid: Bliss.CSharp.Images.Image.Clone
+  commentId: M:Bliss.CSharp.Images.Image.Clone
+  id: Clone
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: Image.Clone()
+  fullName: Bliss.CSharp.Images.Image.Clone()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Clone
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 440
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Creates a deep copy of this image.
+  example: []
+  syntax:
+    content: public object Clone()
+    return:
+      type: System.Object
+      description: A new <xref href="Bliss.CSharp.Images.Image" data-throw-if-not-resolved="false"></xref> instance with identical data.
+    content.vb: Public Function Clone() As Object
+  overload: Bliss.CSharp.Images.Image.Clone*
+  implements:
+  - System.ICloneable.Clone
+references:
+- uid: Bliss.CSharp.Images
+  commentId: N:Bliss.CSharp.Images
+  href: Bliss.html
+  name: Bliss.CSharp.Images
+  nameWithType: Bliss.CSharp.Images
+  fullName: Bliss.CSharp.Images
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Images
+    name: Images
+    href: Bliss.CSharp.Images.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Images
+    name: Images
+    href: Bliss.CSharp.Images.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.ICloneable
+  commentId: T:System.ICloneable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.icloneable
+  name: ICloneable
+  nameWithType: ICloneable
+  fullName: System.ICloneable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp.Images.Image
+  commentId: T:Bliss.CSharp.Images.Image
+  parent: Bliss.CSharp.Images
+  href: Bliss.CSharp.Images.Image.html
+  name: Image
+  nameWithType: Image
+  fullName: Bliss.CSharp.Images.Image
+- uid: System.IO.FileNotFoundException
+  commentId: T:System.IO.FileNotFoundException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.filenotfoundexception
+  name: FileNotFoundException
+  nameWithType: FileNotFoundException
+  fullName: System.IO.FileNotFoundException
+- uid: Bliss.CSharp.Images.Image.#ctor*
+  commentId: Overload:Bliss.CSharp.Images.Image.#ctor
+  href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image__ctor_System_String_
+  name: Image
+  nameWithType: Image.Image
+  fullName: Bliss.CSharp.Images.Image.Image
+  nameWithType.vb: Image.New
+  fullName.vb: Bliss.CSharp.Images.Image.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentexception
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.IO.Stream
+  commentId: T:System.IO.Stream
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.stream
+  name: Stream
+  nameWithType: Stream
+  fullName: System.IO.Stream
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bliss.CSharp.Colors.Color
+  commentId: T:Bliss.CSharp.Colors.Color
+  parent: Bliss.CSharp.Colors
+  href: Bliss.CSharp.Colors.Color.html
+  name: Color
+  nameWithType: Color
+  fullName: Bliss.CSharp.Colors.Color
+- uid: Bliss.CSharp.Colors
+  commentId: N:Bliss.CSharp.Colors
+  href: Bliss.html
+  name: Bliss.CSharp.Colors
+  nameWithType: Bliss.CSharp.Colors
+  fullName: Bliss.CSharp.Colors
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Colors
+    name: Colors
+    href: Bliss.CSharp.Colors.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Colors
+    name: Colors
+    href: Bliss.CSharp.Colors.html
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: Bliss.CSharp.Images.Image.Width*
+  commentId: Overload:Bliss.CSharp.Images.Image.Width
+  href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_Width
+  name: Width
+  nameWithType: Image.Width
+  fullName: Bliss.CSharp.Images.Image.Width
+- uid: Bliss.CSharp.Images.Image.Height*
+  commentId: Overload:Bliss.CSharp.Images.Image.Height
+  href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_Height
+  name: Height
+  nameWithType: Image.Height
+  fullName: Bliss.CSharp.Images.Image.Height
+- uid: Bliss.CSharp.Images.Image.Data*
+  commentId: Overload:Bliss.CSharp.Images.Image.Data
+  href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_Data
+  name: Data
+  nameWithType: Image.Data
+  fullName: Bliss.CSharp.Images.Image.Data
+- uid: Bliss.CSharp.Images.Image.GetColor*
+  commentId: Overload:Bliss.CSharp.Images.Image.GetColor
+  href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_GetColor_System_Int32_System_Int32_
+  name: GetColor
+  nameWithType: Image.GetColor
+  fullName: Bliss.CSharp.Images.Image.GetColor
+- uid: Bliss.CSharp.Images.Image.SetPixel*
+  commentId: Overload:Bliss.CSharp.Images.Image.SetPixel
+  href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_SetPixel_System_Int32_System_Int32_Bliss_CSharp_Colors_Color_
+  name: SetPixel
+  nameWithType: Image.SetPixel
+  fullName: Bliss.CSharp.Images.Image.SetPixel
+- uid: Bliss.CSharp.Images.Image.Resize*
+  commentId: Overload:Bliss.CSharp.Images.Image.Resize
+  href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_Resize_System_Int32_System_Int32_
+  name: Resize
+  nameWithType: Image.Resize
+  fullName: Bliss.CSharp.Images.Image.Resize
+- uid: Bliss.CSharp.Images.Image.ResizeNN*
+  commentId: Overload:Bliss.CSharp.Images.Image.ResizeNN
+  href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_ResizeNN_System_Int32_System_Int32_
+  name: ResizeNN
+  nameWithType: Image.ResizeNN
+  fullName: Bliss.CSharp.Images.Image.ResizeNN
+- uid: Bliss.CSharp.Images.Image.FlipVertical*
+  commentId: Overload:Bliss.CSharp.Images.Image.FlipVertical
+  href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_FlipVertical
+  name: FlipVertical
+  nameWithType: Image.FlipVertical
+  fullName: Bliss.CSharp.Images.Image.FlipVertical
+- uid: Bliss.CSharp.Images.Image.FlipHorizontal*
+  commentId: Overload:Bliss.CSharp.Images.Image.FlipHorizontal
+  href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_FlipHorizontal
+  name: FlipHorizontal
+  nameWithType: Image.FlipHorizontal
+  fullName: Bliss.CSharp.Images.Image.FlipHorizontal
+- uid: Bliss.CSharp.Images.Image.Rotate*
+  commentId: Overload:Bliss.CSharp.Images.Image.Rotate
+  href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_Rotate_System_Int32_
+  name: Rotate
+  nameWithType: Image.Rotate
+  fullName: Bliss.CSharp.Images.Image.Rotate
+- uid: Bliss.CSharp.Images.Image.RotateCW*
+  commentId: Overload:Bliss.CSharp.Images.Image.RotateCW
+  href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_RotateCW
+  name: RotateCW
+  nameWithType: Image.RotateCW
+  fullName: Bliss.CSharp.Images.Image.RotateCW
+- uid: Bliss.CSharp.Images.Image.RotateCCW*
+  commentId: Overload:Bliss.CSharp.Images.Image.RotateCCW
+  href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_RotateCCW
+  name: RotateCCW
+  nameWithType: Image.RotateCCW
+  fullName: Bliss.CSharp.Images.Image.RotateCCW
+- uid: Bliss.CSharp.Images.Image.Tint*
+  commentId: Overload:Bliss.CSharp.Images.Image.Tint
+  href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_Tint_Bliss_CSharp_Colors_Color_
+  name: Tint
+  nameWithType: Image.Tint
+  fullName: Bliss.CSharp.Images.Image.Tint
+- uid: Bliss.CSharp.Images.Image.SaveAsBmp*
+  commentId: Overload:Bliss.CSharp.Images.Image.SaveAsBmp
+  href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_SaveAsBmp_System_String_
+  name: SaveAsBmp
+  nameWithType: Image.SaveAsBmp
+  fullName: Bliss.CSharp.Images.Image.SaveAsBmp
+- uid: Bliss.CSharp.Images.Image.SaveAsTga*
+  commentId: Overload:Bliss.CSharp.Images.Image.SaveAsTga
+  href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_SaveAsTga_System_String_
+  name: SaveAsTga
+  nameWithType: Image.SaveAsTga
+  fullName: Bliss.CSharp.Images.Image.SaveAsTga
+- uid: Bliss.CSharp.Images.Image.SaveAsHdr*
+  commentId: Overload:Bliss.CSharp.Images.Image.SaveAsHdr
+  href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_SaveAsHdr_System_String_
+  name: SaveAsHdr
+  nameWithType: Image.SaveAsHdr
+  fullName: Bliss.CSharp.Images.Image.SaveAsHdr
+- uid: Bliss.CSharp.Images.Image.SaveAsPng*
+  commentId: Overload:Bliss.CSharp.Images.Image.SaveAsPng
+  href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_SaveAsPng_System_String_
+  name: SaveAsPng
+  nameWithType: Image.SaveAsPng
+  fullName: Bliss.CSharp.Images.Image.SaveAsPng
+- uid: Bliss.CSharp.Images.Image.SaveAsJpg*
+  commentId: Overload:Bliss.CSharp.Images.Image.SaveAsJpg
+  href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_SaveAsJpg_System_String_System_Int32_
+  name: SaveAsJpg
+  nameWithType: Image.SaveAsJpg
+  fullName: Bliss.CSharp.Images.Image.SaveAsJpg
+- uid: Bliss.CSharp.Images.Image.Clone*
+  commentId: Overload:Bliss.CSharp.Images.Image.Clone
+  href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_Clone
+  name: Clone
+  nameWithType: Image.Clone
+  fullName: Bliss.CSharp.Images.Image.Clone
+- uid: System.ICloneable.Clone
+  commentId: M:System.ICloneable.Clone
+  parent: System.ICloneable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.icloneable.clone
+  name: Clone()
+  nameWithType: ICloneable.Clone()
+  fullName: System.ICloneable.Clone()
+  spec.csharp:
+  - uid: System.ICloneable.Clone
+    name: Clone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icloneable.clone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ICloneable.Clone
+    name: Clone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icloneable.clone
+  - name: (
+  - name: )

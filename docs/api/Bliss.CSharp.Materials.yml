@@ -1,0 +1,78 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Materials
+  commentId: N:Bliss.CSharp.Materials
+  id: Bliss.CSharp.Materials
+  children:
+  - Bliss.CSharp.Materials.Material
+  - Bliss.CSharp.Materials.MaterialMap
+  - Bliss.CSharp.Materials.MaterialMapType
+  - Bliss.CSharp.Materials.MaterialMapTypeExtensions
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Materials
+  nameWithType: Bliss.CSharp.Materials
+  fullName: Bliss.CSharp.Materials
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Materials.Material
+  commentId: T:Bliss.CSharp.Materials.Material
+  parent: Bliss.CSharp.Materials
+  href: Bliss.CSharp.Materials.Material.html
+  name: Material
+  nameWithType: Material
+  fullName: Bliss.CSharp.Materials.Material
+- uid: Bliss.CSharp.Materials.MaterialMap
+  commentId: T:Bliss.CSharp.Materials.MaterialMap
+  parent: Bliss.CSharp.Materials
+  href: Bliss.CSharp.Materials.MaterialMap.html
+  name: MaterialMap
+  nameWithType: MaterialMap
+  fullName: Bliss.CSharp.Materials.MaterialMap
+- uid: Bliss.CSharp.Materials.MaterialMapType
+  commentId: T:Bliss.CSharp.Materials.MaterialMapType
+  parent: Bliss.CSharp.Materials
+  href: Bliss.CSharp.Materials.MaterialMapType.html
+  name: MaterialMapType
+  nameWithType: MaterialMapType
+  fullName: Bliss.CSharp.Materials.MaterialMapType
+- uid: Bliss.CSharp.Materials.MaterialMapTypeExtensions
+  commentId: T:Bliss.CSharp.Materials.MaterialMapTypeExtensions
+  parent: Bliss.CSharp.Materials
+  href: Bliss.CSharp.Materials.MaterialMapTypeExtensions.html
+  name: MaterialMapTypeExtensions
+  nameWithType: MaterialMapTypeExtensions
+  fullName: Bliss.CSharp.Materials.MaterialMapTypeExtensions
+- uid: Bliss.CSharp.Materials
+  commentId: N:Bliss.CSharp.Materials
+  href: Bliss.html
+  name: Bliss.CSharp.Materials
+  nameWithType: Bliss.CSharp.Materials
+  fullName: Bliss.CSharp.Materials
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Materials
+    name: Materials
+    href: Bliss.CSharp.Materials.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Materials
+    name: Materials
+    href: Bliss.CSharp.Materials.html

@@ -1,0 +1,169 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+  id: SimpleBufferType
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers
+  children:
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.StructuredReadOnly
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.StructuredReadWrite
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.Uniform
+  langs:
+  - csharp
+  - vb
+  name: SimpleBufferType
+  nameWithType: SimpleBufferType
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+  type: Enum
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBufferType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SimpleBufferType
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBufferType.cs
+    startLine: 2
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  syntax:
+    content: public enum SimpleBufferType
+    content.vb: Public Enum SimpleBufferType
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.Uniform
+  commentId: F:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.Uniform
+  id: Uniform
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+  langs:
+  - csharp
+  - vb
+  name: Uniform
+  nameWithType: SimpleBufferType.Uniform
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.Uniform
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBufferType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Uniform
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBufferType.cs
+    startLine: 7
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: A buffer type that holds uniform data.
+  example: []
+  syntax:
+    content: Uniform = 0
+    return:
+      type: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.StructuredReadOnly
+  commentId: F:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.StructuredReadOnly
+  id: StructuredReadOnly
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+  langs:
+  - csharp
+  - vb
+  name: StructuredReadOnly
+  nameWithType: SimpleBufferType.StructuredReadOnly
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.StructuredReadOnly
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBufferType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: StructuredReadOnly
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBufferType.cs
+    startLine: 12
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: A read-only buffer that supports structured data access.
+  example: []
+  syntax:
+    content: StructuredReadOnly = 1
+    return:
+      type: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.StructuredReadWrite
+  commentId: F:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.StructuredReadWrite
+  id: StructuredReadWrite
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+  langs:
+  - csharp
+  - vb
+  name: StructuredReadWrite
+  nameWithType: SimpleBufferType.StructuredReadWrite
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.StructuredReadWrite
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBufferType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: StructuredReadWrite
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBufferType.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: A read-write buffer that supports structured data access.
+  example: []
+  syntax:
+    content: StructuredReadWrite = 2
+    return:
+      type: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+references:
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+  commentId: N:Bliss.CSharp.Graphics.Pipelines.Buffers
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Pipelines.Buffers
+  nameWithType: Bliss.CSharp.Graphics.Pipelines.Buffers
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+    name: Buffers
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+    name: Buffers
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.html
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.html
+  name: SimpleBufferType
+  nameWithType: SimpleBufferType
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType

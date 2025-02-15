@@ -1,0 +1,70 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Pipelines
+  commentId: N:Bliss.CSharp.Graphics.Pipelines
+  id: Bliss.CSharp.Graphics.Pipelines
+  children:
+  - Bliss.CSharp.Graphics.Pipelines.SimplePipeline
+  - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Graphics.Pipelines
+  nameWithType: Bliss.CSharp.Graphics.Pipelines
+  fullName: Bliss.CSharp.Graphics.Pipelines
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipeline
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.SimplePipeline
+  parent: Bliss.CSharp.Graphics.Pipelines
+  href: Bliss.CSharp.Graphics.Pipelines.SimplePipeline.html
+  name: SimplePipeline
+  nameWithType: SimplePipeline
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipeline
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  parent: Bliss.CSharp.Graphics.Pipelines
+  href: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.html
+  name: SimplePipelineDescription
+  nameWithType: SimplePipelineDescription
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+- uid: Bliss.CSharp.Graphics.Pipelines
+  commentId: N:Bliss.CSharp.Graphics.Pipelines
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Pipelines
+  nameWithType: Bliss.CSharp.Graphics.Pipelines
+  fullName: Bliss.CSharp.Graphics.Pipelines
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html

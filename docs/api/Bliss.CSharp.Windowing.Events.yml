@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Windowing.Events
+  commentId: N:Bliss.CSharp.Windowing.Events
+  id: Bliss.CSharp.Windowing.Events
+  children:
+  - Bliss.CSharp.Windowing.Events.KeyEvent
+  - Bliss.CSharp.Windowing.Events.MouseEvent
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Windowing.Events
+  nameWithType: Bliss.CSharp.Windowing.Events
+  fullName: Bliss.CSharp.Windowing.Events
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Windowing.Events.KeyEvent
+  commentId: T:Bliss.CSharp.Windowing.Events.KeyEvent
+  href: Bliss.CSharp.Windowing.Events.KeyEvent.html
+  name: KeyEvent
+  nameWithType: KeyEvent
+  fullName: Bliss.CSharp.Windowing.Events.KeyEvent
+- uid: Bliss.CSharp.Windowing.Events.MouseEvent
+  commentId: T:Bliss.CSharp.Windowing.Events.MouseEvent
+  href: Bliss.CSharp.Windowing.Events.MouseEvent.html
+  name: MouseEvent
+  nameWithType: MouseEvent
+  fullName: Bliss.CSharp.Windowing.Events.MouseEvent

@@ -1,0 +1,166 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+  id: ISimpleBuffer
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers
+  children:
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer
+  langs:
+  - csharp
+  - vb
+  name: ISimpleBuffer
+  nameWithType: ISimpleBuffer
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+  type: Interface
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/ISimpleBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ISimpleBuffer
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/ISimpleBuffer.cs
+    startLine: 4
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  syntax:
+    content: 'public interface ISimpleBuffer : IDisposable'
+    content.vb: Public Interface ISimpleBuffer Inherits IDisposable
+  inheritedMembers:
+  - System.IDisposable.Dispose
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer
+  commentId: P:Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer
+  id: DeviceBuffer
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+  langs:
+  - csharp
+  - vb
+  name: DeviceBuffer
+  nameWithType: ISimpleBuffer.DeviceBuffer
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/ISimpleBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DeviceBuffer
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/ISimpleBuffer.cs
+    startLine: 9
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: The device buffer associated with this instance.
+  example: []
+  syntax:
+    content: DeviceBuffer DeviceBuffer { get; }
+    parameters: []
+    return:
+      type: Veldrid.DeviceBuffer
+    content.vb: ReadOnly Property DeviceBuffer As DeviceBuffer
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer*
+references:
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+  commentId: N:Bliss.CSharp.Graphics.Pipelines.Buffers
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Pipelines.Buffers
+  nameWithType: Bliss.CSharp.Graphics.Pipelines.Buffers
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+    name: Buffers
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+    name: Buffers
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.html
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.html#Bliss_CSharp_Graphics_Pipelines_Buffers_ISimpleBuffer_DeviceBuffer
+  name: DeviceBuffer
+  nameWithType: ISimpleBuffer.DeviceBuffer
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer
+- uid: Veldrid.DeviceBuffer
+  commentId: T:Veldrid.DeviceBuffer
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Buffer.cs
+  name: DeviceBuffer
+  nameWithType: DeviceBuffer
+  fullName: Veldrid.DeviceBuffer
+- uid: Veldrid
+  commentId: N:Veldrid
+  isExternal: true
+  name: Veldrid
+  nameWithType: Veldrid
+  fullName: Veldrid

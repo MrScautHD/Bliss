@@ -1,0 +1,70 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Camera.Dim2
+  commentId: N:Bliss.CSharp.Camera.Dim2
+  id: Bliss.CSharp.Camera.Dim2
+  children:
+  - Bliss.CSharp.Camera.Dim2.Cam2D
+  - Bliss.CSharp.Camera.Dim2.CameraFollowMode
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Camera.Dim2
+  nameWithType: Bliss.CSharp.Camera.Dim2
+  fullName: Bliss.CSharp.Camera.Dim2
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Camera.Dim2.Cam2D
+  commentId: T:Bliss.CSharp.Camera.Dim2.Cam2D
+  parent: Bliss.CSharp.Camera.Dim2
+  href: Bliss.CSharp.Camera.Dim2.Cam2D.html
+  name: Cam2D
+  nameWithType: Cam2D
+  fullName: Bliss.CSharp.Camera.Dim2.Cam2D
+- uid: Bliss.CSharp.Camera.Dim2.CameraFollowMode
+  commentId: T:Bliss.CSharp.Camera.Dim2.CameraFollowMode
+  parent: Bliss.CSharp.Camera.Dim2
+  href: Bliss.CSharp.Camera.Dim2.CameraFollowMode.html
+  name: CameraFollowMode
+  nameWithType: CameraFollowMode
+  fullName: Bliss.CSharp.Camera.Dim2.CameraFollowMode
+- uid: Bliss.CSharp.Camera.Dim2
+  commentId: N:Bliss.CSharp.Camera.Dim2
+  href: Bliss.html
+  name: Bliss.CSharp.Camera.Dim2
+  nameWithType: Bliss.CSharp.Camera.Dim2
+  fullName: Bliss.CSharp.Camera.Dim2
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Camera
+    name: Camera
+    href: Bliss.CSharp.Camera.html
+  - name: .
+  - uid: Bliss.CSharp.Camera.Dim2
+    name: Dim2
+    href: Bliss.CSharp.Camera.Dim2.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Camera
+    name: Camera
+    href: Bliss.CSharp.Camera.html
+  - name: .
+  - uid: Bliss.CSharp.Camera.Dim2
+    name: Dim2
+    href: Bliss.CSharp.Camera.Dim2.html

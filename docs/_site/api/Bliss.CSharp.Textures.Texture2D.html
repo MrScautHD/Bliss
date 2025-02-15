@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Texture2D | Bliss </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Texture2D | Bliss ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MrScautHD/Bliss/new/main/apiSpec/new?filename=Bliss_CSharp_Textures_Texture2D.md&amp;value=---%0Auid%3A%20Bliss.CSharp.Textures.Texture2D%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Bliss">
+            Bliss
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Bliss.CSharp.Textures.Texture2D">
+
+
+
+  <h1 id="Bliss_CSharp_Textures_Texture2D" data-uid="Bliss.CSharp.Textures.Texture2D" class="text-break">
+Class Texture2D  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Textures/Texture2D.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Bliss.html">Bliss</a>.<a class="xref" href="Bliss.CSharp.html">CSharp</a>.<a class="xref" href="Bliss.CSharp.Textures.html">Textures</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Bliss.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Texture2D : Disposable, IDisposable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Bliss.CSharp.Disposable.html">Disposable</a></div>
+      <div><span class="xref">Texture2D</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_HasDisposed">Disposable.HasDisposed</a>
+    </div>
+    <div>
+      <a class="xref" href="Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose">Disposable.Dispose()</a>
+    </div>
+    <div>
+      <a class="xref" href="Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed">Disposable.ThrowIfDisposed()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Bliss_CSharp_Textures_Texture2D__ctor_" data-uid="Bliss.CSharp.Textures.Texture2D.#ctor*"></a>
+
+  <h3 id="Bliss_CSharp_Textures_Texture2D__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Images_Image_System_Boolean_System_Boolean_" data-uid="Bliss.CSharp.Textures.Texture2D.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Images.Image,System.Boolean,System.Boolean)">
+  Texture2D(GraphicsDevice, Image, bool, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Textures/Texture2D.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Bliss.CSharp.Textures.Texture2D.html">Texture2D</a> class using an <a class="xref" href="Bliss.CSharp.Images.Image.html">Image</a> object.
+Creates a device texture, applies the specified sampler, and stores mipmap and color format information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Texture2D(GraphicsDevice graphicsDevice, Image image, bool mipmap = true, bool srgb = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dd><p>The graphics device used for rendering the texture.</p>
+</dd>
+    <dt><code>image</code> <a class="xref" href="Bliss.CSharp.Images.Image.html">Image</a></dt>
+    <dd><p>The image object used to create the texture.</p>
+</dd>
+    <dt><code>mipmap</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Indicates whether to generate mipmaps for the texture.</p>
+</dd>
+    <dt><code>srgb</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Indicates whether to use sRGB color space for the texture.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Textures_Texture2D__ctor_" data-uid="Bliss.CSharp.Textures.Texture2D.#ctor*"></a>
+
+  <h3 id="Bliss_CSharp_Textures_Texture2D__ctor_Veldrid_GraphicsDevice_System_IO_Stream_System_Boolean_System_Boolean_" data-uid="Bliss.CSharp.Textures.Texture2D.#ctor(Veldrid.GraphicsDevice,System.IO.Stream,System.Boolean,System.Boolean)">
+  Texture2D(GraphicsDevice, Stream, bool, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Textures/Texture2D.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Bliss.CSharp.Textures.Texture2D.html">Texture2D</a> class using an image stream.
+Loads the texture from the specified stream and applies the given sampler, mipmap, and sRGB settings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Texture2D(GraphicsDevice graphicsDevice, Stream stream, bool mipmap = true, bool srgb = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dd><p>The graphics device used for rendering the texture.</p>
+</dd>
+    <dt><code>stream</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></dt>
+    <dd><p>The image stream to load as a texture.</p>
+</dd>
+    <dt><code>mipmap</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Indicates whether to generate mipmaps for the texture.</p>
+</dd>
+    <dt><code>srgb</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Indicates whether to use sRGB color space for the texture.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Textures_Texture2D__ctor_" data-uid="Bliss.CSharp.Textures.Texture2D.#ctor*"></a>
+
+  <h3 id="Bliss_CSharp_Textures_Texture2D__ctor_Veldrid_GraphicsDevice_System_String_System_Boolean_System_Boolean_" data-uid="Bliss.CSharp.Textures.Texture2D.#ctor(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean)">
+  Texture2D(GraphicsDevice, string, bool, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Textures/Texture2D.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Bliss.CSharp.Textures.Texture2D.html">Texture2D</a> class using an image file path.
+Loads the texture from the specified path and applies the given sampler, mipmap, and sRGB settings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Texture2D(GraphicsDevice graphicsDevice, string path, bool mipmap = true, bool srgb = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dd><p>The graphics device used for rendering the texture.</p>
+</dd>
+    <dt><code>path</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The file path of the image to load as a texture.</p>
+</dd>
+    <dt><code>mipmap</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Indicates whether to generate mipmaps for the texture.</p>
+</dd>
+    <dt><code>srgb</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Indicates whether to use sRGB color space for the texture.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Bliss_CSharp_Textures_Texture2D_DeviceTexture_" data-uid="Bliss.CSharp.Textures.Texture2D.DeviceTexture*"></a>
+
+  <h3 id="Bliss_CSharp_Textures_Texture2D_DeviceTexture" data-uid="Bliss.CSharp.Textures.Texture2D.DeviceTexture">
+  DeviceTexture
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Textures/Texture2D.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the device texture created from the images.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Texture DeviceTexture { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Texture.cs">Texture</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Textures_Texture2D_Format_" data-uid="Bliss.CSharp.Textures.Texture2D.Format*"></a>
+
+  <h3 id="Bliss_CSharp_Textures_Texture2D_Format" data-uid="Bliss.CSharp.Textures.Texture2D.Format">
+  Format
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Textures/Texture2D.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the pixel format of the texture.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PixelFormat Format { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/PixelFormat.cs">PixelFormat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Textures_Texture2D_GraphicsDevice_" data-uid="Bliss.CSharp.Textures.Texture2D.GraphicsDevice*"></a>
+
+  <h3 id="Bliss_CSharp_Textures_Texture2D_GraphicsDevice" data-uid="Bliss.CSharp.Textures.Texture2D.GraphicsDevice">
+  GraphicsDevice
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Textures/Texture2D.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the graphics device associated with this texture.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GraphicsDevice GraphicsDevice { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Textures_Texture2D_Height_" data-uid="Bliss.CSharp.Textures.Texture2D.Height*"></a>
+
+  <h3 id="Bliss_CSharp_Textures_Texture2D_Height" data-uid="Bliss.CSharp.Textures.Texture2D.Height">
+  Height
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Textures/Texture2D.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the height of the texture in pixels.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint Height { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Textures_Texture2D_Images_" data-uid="Bliss.CSharp.Textures.Texture2D.Images*"></a>
+
+  <h3 id="Bliss_CSharp_Textures_Texture2D_Images" data-uid="Bliss.CSharp.Textures.Texture2D.Images">
+  Images
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Textures/Texture2D.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the array of images representing the mip levels of the texture.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Image[] Images { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Images.Image.html">Image</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Textures_Texture2D_MipLevels_" data-uid="Bliss.CSharp.Textures.Texture2D.MipLevels*"></a>
+
+  <h3 id="Bliss_CSharp_Textures_Texture2D_MipLevels" data-uid="Bliss.CSharp.Textures.Texture2D.MipLevels">
+  MipLevels
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Textures/Texture2D.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the number of mip levels in the texture.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint MipLevels { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Textures_Texture2D_PixelSizeInBytes_" data-uid="Bliss.CSharp.Textures.Texture2D.PixelSizeInBytes*"></a>
+
+  <h3 id="Bliss_CSharp_Textures_Texture2D_PixelSizeInBytes" data-uid="Bliss.CSharp.Textures.Texture2D.PixelSizeInBytes">
+  PixelSizeInBytes
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Textures/Texture2D.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the size of a pixel in bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint PixelSizeInBytes { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Textures_Texture2D_Width_" data-uid="Bliss.CSharp.Textures.Texture2D.Width*"></a>
+
+  <h3 id="Bliss_CSharp_Textures_Texture2D_Width" data-uid="Bliss.CSharp.Textures.Texture2D.Width">
+  Width
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Textures/Texture2D.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the width of the texture in pixels.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint Width { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Bliss_CSharp_Textures_Texture2D_Dispose_" data-uid="Bliss.CSharp.Textures.Texture2D.Dispose*"></a>
+
+  <h3 id="Bliss_CSharp_Textures_Texture2D_Dispose_System_Boolean_" data-uid="Bliss.CSharp.Textures.Texture2D.Dispose(System.Boolean)">
+  Dispose(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Textures/Texture2D.cs/#L182"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Disposes of the object and releases associated resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Dispose(bool disposing)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>disposing</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if called from user code; false if called from a finalizer.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Textures_Texture2D_GetDataFromBytes_" data-uid="Bliss.CSharp.Textures.Texture2D.GetDataFromBytes*"></a>
+
+  <h3 id="Bliss_CSharp_Textures_Texture2D_GetDataFromBytes" data-uid="Bliss.CSharp.Textures.Texture2D.GetDataFromBytes">
+  GetDataFromBytes()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Textures/Texture2D.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the texture data as a byte array.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] GetDataFromBytes()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd><p>A byte array containing the texture data.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Textures_Texture2D_GetDataFromImage_" data-uid="Bliss.CSharp.Textures.Texture2D.GetDataFromImage*"></a>
+
+  <h3 id="Bliss_CSharp_Textures_Texture2D_GetDataFromImage" data-uid="Bliss.CSharp.Textures.Texture2D.GetDataFromImage">
+  GetDataFromImage()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Textures/Texture2D.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the image data from the first image in the texture array.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Image GetDataFromImage()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Images.Image.html">Image</a></dt>
+    <dd><p>An <a class="xref" href="Bliss.CSharp.Images.Image.html">Image</a> representing the image data.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Textures_Texture2D_GetResourceSet_" data-uid="Bliss.CSharp.Textures.Texture2D.GetResourceSet*"></a>
+
+  <h3 id="Bliss_CSharp_Textures_Texture2D_GetResourceSet_Veldrid_Sampler_Bliss_CSharp_Graphics_Pipelines_Textures_SimpleTextureLayout_" data-uid="Bliss.CSharp.Textures.Texture2D.GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)">
+  GetResourceSet(Sampler, SimpleTextureLayout)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Textures/Texture2D.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a resource set associated with the specified sampler and resource layout.
+If the resource set is already cached, it returns the cached resource set; otherwise, it creates and caches a new one.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ResourceSet GetResourceSet(Sampler sampler, SimpleTextureLayout layout)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sampler</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs">Sampler</a></dt>
+    <dd><p>The sampler used for the resource set.</p>
+</dd>
+    <dt><code>layout</code> <a class="xref" href="Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html">SimpleTextureLayout</a></dt>
+    <dd><p>The resource layout used for the resource set.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/ResourceSet.cs">ResourceSet</a></dt>
+    <dd><p>The resource set associated with the specified sampler and resource layout.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Textures_Texture2D_SetData_" data-uid="Bliss.CSharp.Textures.Texture2D.SetData*"></a>
+
+  <h3 id="Bliss_CSharp_Textures_Texture2D_SetData_Bliss_CSharp_Images_Image_" data-uid="Bliss.CSharp.Textures.Texture2D.SetData(Bliss.CSharp.Images.Image)">
+  SetData(Image)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Textures/Texture2D.cs/#L155"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Loads the provided image data into the texture. If the image dimensions do not match the texture dimensions, an exception is thrown.
+The image data is then split into mip levels if required and updated in the device texture.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetData(Image data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>data</code> <a class="xref" href="Bliss.CSharp.Images.Image.html">Image</a></dt>
+    <dd><p>The image data to be loaded into the texture.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Textures_Texture2D_SetData_" data-uid="Bliss.CSharp.Textures.Texture2D.SetData*"></a>
+
+  <h3 id="Bliss_CSharp_Textures_Texture2D_SetData_System_Byte___System_Nullable_Bliss_CSharp_Transformations_Rectangle__" data-uid="Bliss.CSharp.Textures.Texture2D.SetData(System.Byte[],System.Nullable{Bliss.CSharp.Transformations.Rectangle})">
+  SetData(byte[], Rectangle?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Textures/Texture2D.cs/#L135"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the texture data from a byte array, optionally specifying a rectangular area within the texture to update.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetData(byte[] data, Rectangle? area = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd><p>The byte array containing the texture data.</p>
+</dd>
+    <dt><code>area</code> <a class="xref" href="Bliss.CSharp.Transformations.Rectangle.html">Rectangle</a>?</dt>
+    <dd><p>The rectangular area within the texture to update. If null, it updates the entire texture.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Textures/Texture2D.cs/#L9" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

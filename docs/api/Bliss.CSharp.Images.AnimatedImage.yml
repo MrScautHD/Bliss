@@ -1,0 +1,749 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Images.AnimatedImage
+  commentId: T:Bliss.CSharp.Images.AnimatedImage
+  id: AnimatedImage
+  parent: Bliss.CSharp.Images
+  children:
+  - Bliss.CSharp.Images.AnimatedImage.#ctor(System.IO.Stream)
+  - Bliss.CSharp.Images.AnimatedImage.#ctor(System.String)
+  - Bliss.CSharp.Images.AnimatedImage.Frames
+  - Bliss.CSharp.Images.AnimatedImage.GetFrameCount
+  - Bliss.CSharp.Images.AnimatedImage.GetFrameInfo(System.Int32,System.Int32@,System.Int32@,System.Single@)
+  - Bliss.CSharp.Images.AnimatedImage.SpriteSheet
+  langs:
+  - csharp
+  - vb
+  name: AnimatedImage
+  nameWithType: AnimatedImage
+  fullName: Bliss.CSharp.Images.AnimatedImage
+  type: Class
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/AnimatedImage.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: AnimatedImage
+    path: ../src/Bliss/CSharp/Images/AnimatedImage.cs
+    startLine: 5
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  syntax:
+    content: public class AnimatedImage
+    content.vb: Public Class AnimatedImage
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bliss.CSharp.Images.AnimatedImage.Frames
+  commentId: P:Bliss.CSharp.Images.AnimatedImage.Frames
+  id: Frames
+  parent: Bliss.CSharp.Images.AnimatedImage
+  langs:
+  - csharp
+  - vb
+  name: Frames
+  nameWithType: AnimatedImage.Frames
+  fullName: Bliss.CSharp.Images.AnimatedImage.Frames
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/AnimatedImage.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Frames
+    path: ../src/Bliss/CSharp/Images/AnimatedImage.cs
+    startLine: 10
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Gets a read-only dictionary containing the frames of the animated image and their respective delays (in milliseconds).
+  example: []
+  syntax:
+    content: public IReadOnlyDictionary<Image, int> Frames { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyDictionary{Bliss.CSharp.Images.Image,System.Int32}
+    content.vb: Public Property Frames As IReadOnlyDictionary(Of Image, Integer)
+  overload: Bliss.CSharp.Images.AnimatedImage.Frames*
+- uid: Bliss.CSharp.Images.AnimatedImage.SpriteSheet
+  commentId: P:Bliss.CSharp.Images.AnimatedImage.SpriteSheet
+  id: SpriteSheet
+  parent: Bliss.CSharp.Images.AnimatedImage
+  langs:
+  - csharp
+  - vb
+  name: SpriteSheet
+  nameWithType: AnimatedImage.SpriteSheet
+  fullName: Bliss.CSharp.Images.AnimatedImage.SpriteSheet
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/AnimatedImage.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SpriteSheet
+    path: ../src/Bliss/CSharp/Images/AnimatedImage.cs
+    startLine: 15
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Gets the sprite sheet representation of the animated image, where all frames are arranged in a single image.
+  example: []
+  syntax:
+    content: public Image SpriteSheet { get; }
+    parameters: []
+    return:
+      type: Bliss.CSharp.Images.Image
+    content.vb: Public Property SpriteSheet As Image
+  overload: Bliss.CSharp.Images.AnimatedImage.SpriteSheet*
+- uid: Bliss.CSharp.Images.AnimatedImage.#ctor(System.String)
+  commentId: M:Bliss.CSharp.Images.AnimatedImage.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Bliss.CSharp.Images.AnimatedImage
+  langs:
+  - csharp
+  - vb
+  name: AnimatedImage(string)
+  nameWithType: AnimatedImage.AnimatedImage(string)
+  fullName: Bliss.CSharp.Images.AnimatedImage.AnimatedImage(string)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/AnimatedImage.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Images/AnimatedImage.cs
+    startLine: 21
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Images.AnimatedImage" data-throw-if-not-resolved="false"></xref> class from a file path.
+  example: []
+  syntax:
+    content: public AnimatedImage(string path)
+    parameters:
+    - id: path
+      type: System.String
+      description: The file path to the animated image (e.g., a GIF).
+    content.vb: Public Sub New(path As String)
+  overload: Bliss.CSharp.Images.AnimatedImage.#ctor*
+  nameWithType.vb: AnimatedImage.New(String)
+  fullName.vb: Bliss.CSharp.Images.AnimatedImage.New(String)
+  name.vb: New(String)
+- uid: Bliss.CSharp.Images.AnimatedImage.#ctor(System.IO.Stream)
+  commentId: M:Bliss.CSharp.Images.AnimatedImage.#ctor(System.IO.Stream)
+  id: '#ctor(System.IO.Stream)'
+  parent: Bliss.CSharp.Images.AnimatedImage
+  langs:
+  - csharp
+  - vb
+  name: AnimatedImage(Stream)
+  nameWithType: AnimatedImage.AnimatedImage(Stream)
+  fullName: Bliss.CSharp.Images.AnimatedImage.AnimatedImage(System.IO.Stream)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/AnimatedImage.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Images/AnimatedImage.cs
+    startLine: 49
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Images.AnimatedImage" data-throw-if-not-resolved="false"></xref> class from a stream.
+  example: []
+  syntax:
+    content: public AnimatedImage(Stream stream)
+    parameters:
+    - id: stream
+      type: System.IO.Stream
+      description: The stream containing the animated image data.
+    content.vb: Public Sub New(stream As Stream)
+  overload: Bliss.CSharp.Images.AnimatedImage.#ctor*
+  nameWithType.vb: AnimatedImage.New(Stream)
+  fullName.vb: Bliss.CSharp.Images.AnimatedImage.New(System.IO.Stream)
+  name.vb: New(Stream)
+- uid: Bliss.CSharp.Images.AnimatedImage.GetFrameCount
+  commentId: M:Bliss.CSharp.Images.AnimatedImage.GetFrameCount
+  id: GetFrameCount
+  parent: Bliss.CSharp.Images.AnimatedImage
+  langs:
+  - csharp
+  - vb
+  name: GetFrameCount()
+  nameWithType: AnimatedImage.GetFrameCount()
+  fullName: Bliss.CSharp.Images.AnimatedImage.GetFrameCount()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/AnimatedImage.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetFrameCount
+    path: ../src/Bliss/CSharp/Images/AnimatedImage.cs
+    startLine: 75
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Retrieves the total number of frames in the animated image.
+  example: []
+  syntax:
+    content: public int GetFrameCount()
+    return:
+      type: System.Int32
+      description: The number of frames in the animated image.
+    content.vb: Public Function GetFrameCount() As Integer
+  overload: Bliss.CSharp.Images.AnimatedImage.GetFrameCount*
+- uid: Bliss.CSharp.Images.AnimatedImage.GetFrameInfo(System.Int32,System.Int32@,System.Int32@,System.Single@)
+  commentId: M:Bliss.CSharp.Images.AnimatedImage.GetFrameInfo(System.Int32,System.Int32@,System.Int32@,System.Single@)
+  id: GetFrameInfo(System.Int32,System.Int32@,System.Int32@,System.Single@)
+  parent: Bliss.CSharp.Images.AnimatedImage
+  langs:
+  - csharp
+  - vb
+  name: GetFrameInfo(int, out int, out int, out float)
+  nameWithType: AnimatedImage.GetFrameInfo(int, out int, out int, out float)
+  fullName: Bliss.CSharp.Images.AnimatedImage.GetFrameInfo(int, out int, out int, out float)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/AnimatedImage.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetFrameInfo
+    path: ../src/Bliss/CSharp/Images/AnimatedImage.cs
+    startLine: 86
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Retrieves information of a specific frame in the animated image, including its dimensions and duration.
+  example: []
+  syntax:
+    content: public void GetFrameInfo(int frameIndex, out int width, out int height, out float duration)
+    parameters:
+    - id: frameIndex
+      type: System.Int32
+      description: The index of the frame to retrieve information for.
+    - id: width
+      type: System.Int32
+      description: The output parameter that returns the width of the specified frame.
+    - id: height
+      type: System.Int32
+      description: The output parameter that returns the height of the specified frame.
+    - id: duration
+      type: System.Single
+      description: The output parameter that returns the duration of the specified frame in milliseconds.
+    content.vb: Public Sub GetFrameInfo(frameIndex As Integer, width As Integer, height As Integer, duration As Single)
+  overload: Bliss.CSharp.Images.AnimatedImage.GetFrameInfo*
+  nameWithType.vb: AnimatedImage.GetFrameInfo(Integer, Integer, Integer, Single)
+  fullName.vb: Bliss.CSharp.Images.AnimatedImage.GetFrameInfo(Integer, Integer, Integer, Single)
+  name.vb: GetFrameInfo(Integer, Integer, Integer, Single)
+references:
+- uid: Bliss.CSharp.Images
+  commentId: N:Bliss.CSharp.Images
+  href: Bliss.html
+  name: Bliss.CSharp.Images
+  nameWithType: Bliss.CSharp.Images
+  fullName: Bliss.CSharp.Images
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Images
+    name: Images
+    href: Bliss.CSharp.Images.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Images
+    name: Images
+    href: Bliss.CSharp.Images.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp.Images.AnimatedImage.Frames*
+  commentId: Overload:Bliss.CSharp.Images.AnimatedImage.Frames
+  href: Bliss.CSharp.Images.AnimatedImage.html#Bliss_CSharp_Images_AnimatedImage_Frames
+  name: Frames
+  nameWithType: AnimatedImage.Frames
+  fullName: Bliss.CSharp.Images.AnimatedImage.Frames
+- uid: System.Collections.Generic.IReadOnlyDictionary{Bliss.CSharp.Images.Image,System.Int32}
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary{Bliss.CSharp.Images.Image,System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<Image, int>
+  nameWithType: IReadOnlyDictionary<Image, int>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<Bliss.CSharp.Images.Image, int>
+  nameWithType.vb: IReadOnlyDictionary(Of Image, Integer)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of Bliss.CSharp.Images.Image, Integer)
+  name.vb: IReadOnlyDictionary(Of Image, Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: Bliss.CSharp.Images.Image
+    name: Image
+    href: Bliss.CSharp.Images.Image.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bliss.CSharp.Images.Image
+    name: Image
+    href: Bliss.CSharp.Images.Image.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary`2
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<TKey, TValue>
+  nameWithType: IReadOnlyDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue)
+  name.vb: IReadOnlyDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Bliss.CSharp.Images.AnimatedImage.SpriteSheet*
+  commentId: Overload:Bliss.CSharp.Images.AnimatedImage.SpriteSheet
+  href: Bliss.CSharp.Images.AnimatedImage.html#Bliss_CSharp_Images_AnimatedImage_SpriteSheet
+  name: SpriteSheet
+  nameWithType: AnimatedImage.SpriteSheet
+  fullName: Bliss.CSharp.Images.AnimatedImage.SpriteSheet
+- uid: Bliss.CSharp.Images.Image
+  commentId: T:Bliss.CSharp.Images.Image
+  parent: Bliss.CSharp.Images
+  href: Bliss.CSharp.Images.Image.html
+  name: Image
+  nameWithType: Image
+  fullName: Bliss.CSharp.Images.Image
+- uid: Bliss.CSharp.Images.AnimatedImage
+  commentId: T:Bliss.CSharp.Images.AnimatedImage
+  href: Bliss.CSharp.Images.AnimatedImage.html
+  name: AnimatedImage
+  nameWithType: AnimatedImage
+  fullName: Bliss.CSharp.Images.AnimatedImage
+- uid: Bliss.CSharp.Images.AnimatedImage.#ctor*
+  commentId: Overload:Bliss.CSharp.Images.AnimatedImage.#ctor
+  href: Bliss.CSharp.Images.AnimatedImage.html#Bliss_CSharp_Images_AnimatedImage__ctor_System_String_
+  name: AnimatedImage
+  nameWithType: AnimatedImage.AnimatedImage
+  fullName: Bliss.CSharp.Images.AnimatedImage.AnimatedImage
+  nameWithType.vb: AnimatedImage.New
+  fullName.vb: Bliss.CSharp.Images.AnimatedImage.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.IO.Stream
+  commentId: T:System.IO.Stream
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.stream
+  name: Stream
+  nameWithType: Stream
+  fullName: System.IO.Stream
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: Bliss.CSharp.Images.AnimatedImage.GetFrameCount*
+  commentId: Overload:Bliss.CSharp.Images.AnimatedImage.GetFrameCount
+  href: Bliss.CSharp.Images.AnimatedImage.html#Bliss_CSharp_Images_AnimatedImage_GetFrameCount
+  name: GetFrameCount
+  nameWithType: AnimatedImage.GetFrameCount
+  fullName: Bliss.CSharp.Images.AnimatedImage.GetFrameCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bliss.CSharp.Images.AnimatedImage.GetFrameInfo*
+  commentId: Overload:Bliss.CSharp.Images.AnimatedImage.GetFrameInfo
+  href: Bliss.CSharp.Images.AnimatedImage.html#Bliss_CSharp_Images_AnimatedImage_GetFrameInfo_System_Int32_System_Int32__System_Int32__System_Single__
+  name: GetFrameInfo
+  nameWithType: AnimatedImage.GetFrameInfo
+  fullName: Bliss.CSharp.Images.AnimatedImage.GetFrameInfo
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single

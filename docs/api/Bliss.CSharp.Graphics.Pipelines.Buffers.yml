@@ -1,0 +1,112 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+  commentId: N:Bliss.CSharp.Graphics.Pipelines.Buffers
+  id: Bliss.CSharp.Graphics.Pipelines.Buffers
+  children:
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Graphics.Pipelines.Buffers
+  nameWithType: Bliss.CSharp.Graphics.Pipelines.Buffers
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.html
+  name: ISimpleBuffer
+  nameWithType: ISimpleBuffer
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html
+  name: SimpleBuffer<T>
+  nameWithType: SimpleBuffer<T>
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>
+  nameWithType.vb: SimpleBuffer(Of T)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T)
+  name.vb: SimpleBuffer(Of T)
+  spec.csharp:
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+    name: SimpleBuffer
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+    name: SimpleBuffer
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
+  name: SimpleBufferLayout
+  nameWithType: SimpleBufferLayout
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.html
+  name: SimpleBufferType
+  nameWithType: SimpleBufferType
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+  commentId: N:Bliss.CSharp.Graphics.Pipelines.Buffers
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Pipelines.Buffers
+  nameWithType: Bliss.CSharp.Graphics.Pipelines.Buffers
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+    name: Buffers
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+    name: Buffers
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.html

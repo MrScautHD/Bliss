@@ -1,0 +1,1616 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Materials.Material
+  commentId: T:Bliss.CSharp.Materials.Material
+  id: Material
+  parent: Bliss.CSharp.Materials
+  children:
+  - Bliss.CSharp.Materials.Material.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState)
+  - Bliss.CSharp.Materials.Material.AddMaterialMap(System.String,Bliss.CSharp.Materials.MaterialMap)
+  - Bliss.CSharp.Materials.Material.BlendState
+  - Bliss.CSharp.Materials.Material.Dispose(System.Boolean)
+  - Bliss.CSharp.Materials.Material.Effect
+  - Bliss.CSharp.Materials.Material.GetMapColor(System.String)
+  - Bliss.CSharp.Materials.Material.GetMapTexture(System.String)
+  - Bliss.CSharp.Materials.Material.GetMapValue(System.String)
+  - Bliss.CSharp.Materials.Material.GetMaterialMap(System.String)
+  - Bliss.CSharp.Materials.Material.GetMaterialMapNames
+  - Bliss.CSharp.Materials.Material.GetMaterialMaps
+  - Bliss.CSharp.Materials.Material.GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout,System.String)
+  - Bliss.CSharp.Materials.Material.GraphicsDevice
+  - Bliss.CSharp.Materials.Material.Parameters
+  - Bliss.CSharp.Materials.Material.SetMapColor(System.String,Bliss.CSharp.Colors.Color)
+  - Bliss.CSharp.Materials.Material.SetMapTexture(System.String,Bliss.CSharp.Textures.Texture2D)
+  - Bliss.CSharp.Materials.Material.SetMapValue(System.String,System.Single)
+  langs:
+  - csharp
+  - vb
+  name: Material
+  nameWithType: Material
+  fullName: Bliss.CSharp.Materials.Material
+  type: Class
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/Material.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Material
+    path: ../src/Bliss/CSharp/Materials/Material.cs
+    startLine: 10
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  syntax:
+    content: 'public class Material : Disposable, IDisposable'
+    content.vb: Public Class Material Inherits Disposable Implements IDisposable
+  inheritance:
+  - System.Object
+  - Bliss.CSharp.Disposable
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - Bliss.CSharp.Disposable.HasDisposed
+  - Bliss.CSharp.Disposable.Dispose
+  - Bliss.CSharp.Disposable.ThrowIfDisposed
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bliss.CSharp.Materials.Material.GraphicsDevice
+  commentId: P:Bliss.CSharp.Materials.Material.GraphicsDevice
+  id: GraphicsDevice
+  parent: Bliss.CSharp.Materials.Material
+  langs:
+  - csharp
+  - vb
+  name: GraphicsDevice
+  nameWithType: Material.GraphicsDevice
+  fullName: Bliss.CSharp.Materials.Material.GraphicsDevice
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/Material.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GraphicsDevice
+    path: ../src/Bliss/CSharp/Materials/Material.cs
+    startLine: 15
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: The graphics device associated with this material, used to manage rendering resources.
+  example: []
+  syntax:
+    content: public GraphicsDevice GraphicsDevice { get; }
+    parameters: []
+    return:
+      type: Veldrid.GraphicsDevice
+    content.vb: Public Property GraphicsDevice As GraphicsDevice
+  overload: Bliss.CSharp.Materials.Material.GraphicsDevice*
+- uid: Bliss.CSharp.Materials.Material.Effect
+  commentId: P:Bliss.CSharp.Materials.Material.Effect
+  id: Effect
+  parent: Bliss.CSharp.Materials.Material
+  langs:
+  - csharp
+  - vb
+  name: Effect
+  nameWithType: Material.Effect
+  fullName: Bliss.CSharp.Materials.Material.Effect
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/Material.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Effect
+    path: ../src/Bliss/CSharp/Materials/Material.cs
+    startLine: 20
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: The effect (shader program) applied to this material.
+  example: []
+  syntax:
+    content: public Effect Effect { get; }
+    parameters: []
+    return:
+      type: Bliss.CSharp.Effects.Effect
+    content.vb: Public Property Effect As Effect
+  overload: Bliss.CSharp.Materials.Material.Effect*
+- uid: Bliss.CSharp.Materials.Material.BlendState
+  commentId: F:Bliss.CSharp.Materials.Material.BlendState
+  id: BlendState
+  parent: Bliss.CSharp.Materials.Material
+  langs:
+  - csharp
+  - vb
+  name: BlendState
+  nameWithType: Material.BlendState
+  fullName: Bliss.CSharp.Materials.Material.BlendState
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/Material.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: BlendState
+    path: ../src/Bliss/CSharp/Materials/Material.cs
+    startLine: 25
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: Specifies the blend state for rendering, determining how colors are blended on the screen.
+  example: []
+  syntax:
+    content: public BlendState BlendState
+    return:
+      type: Bliss.CSharp.Graphics.BlendState
+    content.vb: Public BlendState As BlendState
+- uid: Bliss.CSharp.Materials.Material.Parameters
+  commentId: F:Bliss.CSharp.Materials.Material.Parameters
+  id: Parameters
+  parent: Bliss.CSharp.Materials.Material
+  langs:
+  - csharp
+  - vb
+  name: Parameters
+  nameWithType: Material.Parameters
+  fullName: Bliss.CSharp.Materials.Material.Parameters
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/Material.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Parameters
+    path: ../src/Bliss/CSharp/Materials/Material.cs
+    startLine: 30
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: A list of floating-point parameters for configuring material properties.
+  example: []
+  syntax:
+    content: public List<float> Parameters
+    return:
+      type: System.Collections.Generic.List{System.Single}
+    content.vb: Public Parameters As List(Of Single)
+- uid: Bliss.CSharp.Materials.Material.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState)
+  commentId: M:Bliss.CSharp.Materials.Material.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState)
+  id: '#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState)'
+  parent: Bliss.CSharp.Materials.Material
+  langs:
+  - csharp
+  - vb
+  name: Material(GraphicsDevice, Effect, BlendState?)
+  nameWithType: Material.Material(GraphicsDevice, Effect, BlendState?)
+  fullName: Bliss.CSharp.Materials.Material.Material(Veldrid.GraphicsDevice, Bliss.CSharp.Effects.Effect, Bliss.CSharp.Graphics.BlendState?)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/Material.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Materials/Material.cs
+    startLine: 44
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: >-
+    Initializes a new instance of the <xref href="Bliss.CSharp.Materials.Material" data-throw-if-not-resolved="false"></xref> class, configuring it with the specified
+
+    graphics device, shader effect, and optional blend state.
+  example: []
+  syntax:
+    content: public Material(GraphicsDevice graphicsDevice, Effect effect, BlendState? blendState = null)
+    parameters:
+    - id: graphicsDevice
+      type: Veldrid.GraphicsDevice
+      description: The graphics device to associate with this material.
+    - id: effect
+      type: Bliss.CSharp.Effects.Effect
+      description: The effect (shader) to apply to the material.
+    - id: blendState
+      type: Bliss.CSharp.Graphics.BlendState
+      description: The optional blend state to define how this material blends with others during rendering. If not specified, blending is disabled by default.
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, effect As Effect, blendState As BlendState = Nothing)
+  overload: Bliss.CSharp.Materials.Material.#ctor*
+  nameWithType.vb: Material.New(GraphicsDevice, Effect, BlendState)
+  fullName.vb: Bliss.CSharp.Materials.Material.New(Veldrid.GraphicsDevice, Bliss.CSharp.Effects.Effect, Bliss.CSharp.Graphics.BlendState)
+  name.vb: New(GraphicsDevice, Effect, BlendState)
+- uid: Bliss.CSharp.Materials.Material.GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout,System.String)
+  commentId: M:Bliss.CSharp.Materials.Material.GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout,System.String)
+  id: GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout,System.String)
+  parent: Bliss.CSharp.Materials.Material
+  langs:
+  - csharp
+  - vb
+  name: GetResourceSet(Sampler, SimpleTextureLayout, string)
+  nameWithType: Material.GetResourceSet(Sampler, SimpleTextureLayout, string)
+  fullName: Bliss.CSharp.Materials.Material.GetResourceSet(Veldrid.Sampler, Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout, string)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/Material.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetResourceSet
+    path: ../src/Bliss/CSharp/Materials/Material.cs
+    startLine: 60
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: >-
+    Retrieves the resource set associated with a specified texture in the material's map collection,
+
+    based on the provided sampler, texture layout, and map name.
+  example: []
+  syntax:
+    content: public ResourceSet? GetResourceSet(Sampler sampler, SimpleTextureLayout layout, string mapName)
+    parameters:
+    - id: sampler
+      type: Veldrid.Sampler
+      description: The sampler to use when accessing the texture.
+    - id: layout
+      type: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+      description: The texture layout that defines the structure of the resource set.
+    - id: mapName
+      type: System.String
+      description: The name of the map whose associated texture's resource set is to be retrieved.
+    return:
+      type: Veldrid.ResourceSet
+      description: The resource set for the specified texture if found, or null if the texture does not exist in the map collection.
+    content.vb: Public Function GetResourceSet(sampler As Sampler, layout As SimpleTextureLayout, mapName As String) As ResourceSet
+  overload: Bliss.CSharp.Materials.Material.GetResourceSet*
+  nameWithType.vb: Material.GetResourceSet(Sampler, SimpleTextureLayout, String)
+  fullName.vb: Bliss.CSharp.Materials.Material.GetResourceSet(Veldrid.Sampler, Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout, String)
+  name.vb: GetResourceSet(Sampler, SimpleTextureLayout, String)
+- uid: Bliss.CSharp.Materials.Material.GetMaterialMapNames
+  commentId: M:Bliss.CSharp.Materials.Material.GetMaterialMapNames
+  id: GetMaterialMapNames
+  parent: Bliss.CSharp.Materials.Material
+  langs:
+  - csharp
+  - vb
+  name: GetMaterialMapNames()
+  nameWithType: Material.GetMaterialMapNames()
+  fullName: Bliss.CSharp.Materials.Material.GetMaterialMapNames()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/Material.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetMaterialMapNames
+    path: ../src/Bliss/CSharp/Materials/Material.cs
+    startLine: 69
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: Retrieves an array of all the material map names associated with the material.
+  example: []
+  syntax:
+    content: public string[] GetMaterialMapNames()
+    return:
+      type: System.String[]
+      description: An array of strings representing the names of the material maps.
+    content.vb: Public Function GetMaterialMapNames() As String()
+  overload: Bliss.CSharp.Materials.Material.GetMaterialMapNames*
+- uid: Bliss.CSharp.Materials.Material.GetMaterialMaps
+  commentId: M:Bliss.CSharp.Materials.Material.GetMaterialMaps
+  id: GetMaterialMaps
+  parent: Bliss.CSharp.Materials.Material
+  langs:
+  - csharp
+  - vb
+  name: GetMaterialMaps()
+  nameWithType: Material.GetMaterialMaps()
+  fullName: Bliss.CSharp.Materials.Material.GetMaterialMaps()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/Material.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetMaterialMaps
+    path: ../src/Bliss/CSharp/Materials/Material.cs
+    startLine: 79
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: Retrieves an array of all material maps associated with the current material.
+  example: []
+  syntax:
+    content: public MaterialMap[] GetMaterialMaps()
+    return:
+      type: Bliss.CSharp.Materials.MaterialMap[]
+      description: An array of <xref href="Bliss.CSharp.Materials.MaterialMap" data-throw-if-not-resolved="false"></xref> objects representing the material maps.
+    content.vb: Public Function GetMaterialMaps() As MaterialMap()
+  overload: Bliss.CSharp.Materials.Material.GetMaterialMaps*
+- uid: Bliss.CSharp.Materials.Material.GetMaterialMap(System.String)
+  commentId: M:Bliss.CSharp.Materials.Material.GetMaterialMap(System.String)
+  id: GetMaterialMap(System.String)
+  parent: Bliss.CSharp.Materials.Material
+  langs:
+  - csharp
+  - vb
+  name: GetMaterialMap(string)
+  nameWithType: Material.GetMaterialMap(string)
+  fullName: Bliss.CSharp.Materials.Material.GetMaterialMap(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/Material.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetMaterialMap
+    path: ../src/Bliss/CSharp/Materials/Material.cs
+    startLine: 88
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: Retrieves the material map associated with the specified name.
+  example: []
+  syntax:
+    content: public MaterialMap? GetMaterialMap(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the material map to retrieve.
+    return:
+      type: Bliss.CSharp.Materials.MaterialMap
+      description: The <xref href="Bliss.CSharp.Materials.MaterialMap" data-throw-if-not-resolved="false"></xref> associated with the specified name.
+    content.vb: Public Function GetMaterialMap(name As String) As MaterialMap
+  overload: Bliss.CSharp.Materials.Material.GetMaterialMap*
+  nameWithType.vb: Material.GetMaterialMap(String)
+  fullName.vb: Bliss.CSharp.Materials.Material.GetMaterialMap(String)
+  name.vb: GetMaterialMap(String)
+- uid: Bliss.CSharp.Materials.Material.AddMaterialMap(System.String,Bliss.CSharp.Materials.MaterialMap)
+  commentId: M:Bliss.CSharp.Materials.Material.AddMaterialMap(System.String,Bliss.CSharp.Materials.MaterialMap)
+  id: AddMaterialMap(System.String,Bliss.CSharp.Materials.MaterialMap)
+  parent: Bliss.CSharp.Materials.Material
+  langs:
+  - csharp
+  - vb
+  name: AddMaterialMap(string, MaterialMap)
+  nameWithType: Material.AddMaterialMap(string, MaterialMap)
+  fullName: Bliss.CSharp.Materials.Material.AddMaterialMap(string, Bliss.CSharp.Materials.MaterialMap)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/Material.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: AddMaterialMap
+    path: ../src/Bliss/CSharp/Materials/Material.cs
+    startLine: 101
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: Adds a MaterialMap to the material's collection, associating it with a specified name.
+  example: []
+  syntax:
+    content: public void AddMaterialMap(string name, MaterialMap map)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name to associate with the MaterialMap.
+    - id: map
+      type: Bliss.CSharp.Materials.MaterialMap
+      description: The MaterialMap to be added to the material's collection.
+    content.vb: Public Sub AddMaterialMap(name As String, map As MaterialMap)
+  overload: Bliss.CSharp.Materials.Material.AddMaterialMap*
+  nameWithType.vb: Material.AddMaterialMap(String, MaterialMap)
+  fullName.vb: Bliss.CSharp.Materials.Material.AddMaterialMap(String, Bliss.CSharp.Materials.MaterialMap)
+  name.vb: AddMaterialMap(String, MaterialMap)
+- uid: Bliss.CSharp.Materials.Material.GetMapTexture(System.String)
+  commentId: M:Bliss.CSharp.Materials.Material.GetMapTexture(System.String)
+  id: GetMapTexture(System.String)
+  parent: Bliss.CSharp.Materials.Material
+  langs:
+  - csharp
+  - vb
+  name: GetMapTexture(string)
+  nameWithType: Material.GetMapTexture(string)
+  fullName: Bliss.CSharp.Materials.Material.GetMapTexture(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/Material.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetMapTexture
+    path: ../src/Bliss/CSharp/Materials/Material.cs
+    startLine: 112
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: Retrieves the texture associated with the specified material map name.
+  example: []
+  syntax:
+    content: public Texture2D? GetMapTexture(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the material map whose texture is to be retrieved.
+    return:
+      type: Bliss.CSharp.Textures.Texture2D
+      description: The texture associated with the specified material map, or null if no such texture exists.
+    content.vb: Public Function GetMapTexture(name As String) As Texture2D
+  overload: Bliss.CSharp.Materials.Material.GetMapTexture*
+  nameWithType.vb: Material.GetMapTexture(String)
+  fullName.vb: Bliss.CSharp.Materials.Material.GetMapTexture(String)
+  name.vb: GetMapTexture(String)
+- uid: Bliss.CSharp.Materials.Material.SetMapTexture(System.String,Bliss.CSharp.Textures.Texture2D)
+  commentId: M:Bliss.CSharp.Materials.Material.SetMapTexture(System.String,Bliss.CSharp.Textures.Texture2D)
+  id: SetMapTexture(System.String,Bliss.CSharp.Textures.Texture2D)
+  parent: Bliss.CSharp.Materials.Material
+  langs:
+  - csharp
+  - vb
+  name: SetMapTexture(string, Texture2D?)
+  nameWithType: Material.SetMapTexture(string, Texture2D?)
+  fullName: Bliss.CSharp.Materials.Material.SetMapTexture(string, Bliss.CSharp.Textures.Texture2D?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/Material.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetMapTexture
+    path: ../src/Bliss/CSharp/Materials/Material.cs
+    startLine: 125
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: Sets the texture for the specified material map.
+  example: []
+  syntax:
+    content: public void SetMapTexture(string name, Texture2D? texture)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the material map to set the texture for.
+    - id: texture
+      type: Bliss.CSharp.Textures.Texture2D
+      description: The texture to be set. If null, the material map's texture will be removed.
+    content.vb: Public Sub SetMapTexture(name As String, texture As Texture2D)
+  overload: Bliss.CSharp.Materials.Material.SetMapTexture*
+  nameWithType.vb: Material.SetMapTexture(String, Texture2D)
+  fullName.vb: Bliss.CSharp.Materials.Material.SetMapTexture(String, Bliss.CSharp.Textures.Texture2D)
+  name.vb: SetMapTexture(String, Texture2D)
+- uid: Bliss.CSharp.Materials.Material.GetMapColor(System.String)
+  commentId: M:Bliss.CSharp.Materials.Material.GetMapColor(System.String)
+  id: GetMapColor(System.String)
+  parent: Bliss.CSharp.Materials.Material
+  langs:
+  - csharp
+  - vb
+  name: GetMapColor(string)
+  nameWithType: Material.GetMapColor(string)
+  fullName: Bliss.CSharp.Materials.Material.GetMapColor(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/Material.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetMapColor
+    path: ../src/Bliss/CSharp/Materials/Material.cs
+    startLine: 139
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: Retrieves the color associated with the specified material map.
+  example: []
+  syntax:
+    content: public Color? GetMapColor(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the material map from which to retrieve the color.
+    return:
+      type: System.Nullable{Bliss.CSharp.Colors.Color}
+      description: The <xref href="Bliss.CSharp.Colors.Color" data-throw-if-not-resolved="false"></xref> associated with the specified material map, or null if the map does not exist or does not have a color defined.
+    content.vb: Public Function GetMapColor(name As String) As Color?
+  overload: Bliss.CSharp.Materials.Material.GetMapColor*
+  nameWithType.vb: Material.GetMapColor(String)
+  fullName.vb: Bliss.CSharp.Materials.Material.GetMapColor(String)
+  name.vb: GetMapColor(String)
+- uid: Bliss.CSharp.Materials.Material.SetMapColor(System.String,Bliss.CSharp.Colors.Color)
+  commentId: M:Bliss.CSharp.Materials.Material.SetMapColor(System.String,Bliss.CSharp.Colors.Color)
+  id: SetMapColor(System.String,Bliss.CSharp.Colors.Color)
+  parent: Bliss.CSharp.Materials.Material
+  langs:
+  - csharp
+  - vb
+  name: SetMapColor(string, Color)
+  nameWithType: Material.SetMapColor(string, Color)
+  fullName: Bliss.CSharp.Materials.Material.SetMapColor(string, Bliss.CSharp.Colors.Color)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/Material.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetMapColor
+    path: ../src/Bliss/CSharp/Materials/Material.cs
+    startLine: 152
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: Sets the color of a specified material map.
+  example: []
+  syntax:
+    content: public void SetMapColor(string name, Color color)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the material map whose color is to be set.
+    - id: color
+      type: Bliss.CSharp.Colors.Color
+      description: The color to assign to the material map.
+    content.vb: Public Sub SetMapColor(name As String, color As Color)
+  overload: Bliss.CSharp.Materials.Material.SetMapColor*
+  nameWithType.vb: Material.SetMapColor(String, Color)
+  fullName.vb: Bliss.CSharp.Materials.Material.SetMapColor(String, Bliss.CSharp.Colors.Color)
+  name.vb: SetMapColor(String, Color)
+- uid: Bliss.CSharp.Materials.Material.GetMapValue(System.String)
+  commentId: M:Bliss.CSharp.Materials.Material.GetMapValue(System.String)
+  id: GetMapValue(System.String)
+  parent: Bliss.CSharp.Materials.Material
+  langs:
+  - csharp
+  - vb
+  name: GetMapValue(string)
+  nameWithType: Material.GetMapValue(string)
+  fullName: Bliss.CSharp.Materials.Material.GetMapValue(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/Material.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetMapValue
+    path: ../src/Bliss/CSharp/Materials/Material.cs
+    startLine: 166
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: Gets the value associated with the specified material map name.
+  example: []
+  syntax:
+    content: public float GetMapValue(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the material map for which to retrieve the value.
+    return:
+      type: System.Single
+      description: The floating-point value associated with the specified material map name.
+    content.vb: Public Function GetMapValue(name As String) As Single
+  overload: Bliss.CSharp.Materials.Material.GetMapValue*
+  nameWithType.vb: Material.GetMapValue(String)
+  fullName.vb: Bliss.CSharp.Materials.Material.GetMapValue(String)
+  name.vb: GetMapValue(String)
+- uid: Bliss.CSharp.Materials.Material.SetMapValue(System.String,System.Single)
+  commentId: M:Bliss.CSharp.Materials.Material.SetMapValue(System.String,System.Single)
+  id: SetMapValue(System.String,System.Single)
+  parent: Bliss.CSharp.Materials.Material
+  langs:
+  - csharp
+  - vb
+  name: SetMapValue(string, float)
+  nameWithType: Material.SetMapValue(string, float)
+  fullName: Bliss.CSharp.Materials.Material.SetMapValue(string, float)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/Material.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetMapValue
+    path: ../src/Bliss/CSharp/Materials/Material.cs
+    startLine: 179
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: Sets the value of the specified material map.
+  example: []
+  syntax:
+    content: public void SetMapValue(string name, float value)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the material map to update.
+    - id: value
+      type: System.Single
+      description: The floating-point value to set for the specified material map.
+    content.vb: Public Sub SetMapValue(name As String, value As Single)
+  overload: Bliss.CSharp.Materials.Material.SetMapValue*
+  nameWithType.vb: Material.SetMapValue(String, Single)
+  fullName.vb: Bliss.CSharp.Materials.Material.SetMapValue(String, Single)
+  name.vb: SetMapValue(String, Single)
+- uid: Bliss.CSharp.Materials.Material.Dispose(System.Boolean)
+  commentId: M:Bliss.CSharp.Materials.Material.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: Bliss.CSharp.Materials.Material
+  langs:
+  - csharp
+  - vb
+  name: Dispose(bool)
+  nameWithType: Material.Dispose(bool)
+  fullName: Bliss.CSharp.Materials.Material.Dispose(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/Material.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Dispose
+    path: ../src/Bliss/CSharp/Materials/Material.cs
+    startLine: 188
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: Disposes of the object and releases associated resources.
+  example: []
+  syntax:
+    content: protected override void Dispose(bool disposing)
+    parameters:
+    - id: disposing
+      type: System.Boolean
+      description: True if called from user code; false if called from a finalizer.
+    content.vb: Protected Overrides Sub Dispose(disposing As Boolean)
+  overridden: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  overload: Bliss.CSharp.Materials.Material.Dispose*
+  nameWithType.vb: Material.Dispose(Boolean)
+  fullName.vb: Bliss.CSharp.Materials.Material.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+references:
+- uid: Bliss.CSharp.Materials
+  commentId: N:Bliss.CSharp.Materials
+  href: Bliss.html
+  name: Bliss.CSharp.Materials
+  nameWithType: Bliss.CSharp.Materials
+  fullName: Bliss.CSharp.Materials
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Materials
+    name: Materials
+    href: Bliss.CSharp.Materials.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Materials
+    name: Materials
+    href: Bliss.CSharp.Materials.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bliss.CSharp.Disposable
+  commentId: T:Bliss.CSharp.Disposable
+  parent: Bliss.CSharp
+  href: Bliss.CSharp.Disposable.html
+  name: Disposable
+  nameWithType: Disposable
+  fullName: Bliss.CSharp.Disposable
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Bliss.CSharp.Disposable.HasDisposed
+  commentId: P:Bliss.CSharp.Disposable.HasDisposed
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_HasDisposed
+  name: HasDisposed
+  nameWithType: Disposable.HasDisposed
+  fullName: Bliss.CSharp.Disposable.HasDisposed
+- uid: Bliss.CSharp.Disposable.Dispose
+  commentId: M:Bliss.CSharp.Disposable.Dispose
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  name: Dispose()
+  nameWithType: Disposable.Dispose()
+  fullName: Bliss.CSharp.Disposable.Dispose()
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.Dispose
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.Dispose
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+  commentId: M:Bliss.CSharp.Disposable.ThrowIfDisposed
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  name: ThrowIfDisposed()
+  nameWithType: Disposable.ThrowIfDisposed()
+  fullName: Bliss.CSharp.Disposable.ThrowIfDisposed()
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+    name: ThrowIfDisposed
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+    name: ThrowIfDisposed
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp
+  commentId: N:Bliss.CSharp
+  href: Bliss.html
+  name: Bliss.CSharp
+  nameWithType: Bliss.CSharp
+  fullName: Bliss.CSharp
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+- uid: Bliss.CSharp.Materials.Material.GraphicsDevice*
+  commentId: Overload:Bliss.CSharp.Materials.Material.GraphicsDevice
+  href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_GraphicsDevice
+  name: GraphicsDevice
+  nameWithType: Material.GraphicsDevice
+  fullName: Bliss.CSharp.Materials.Material.GraphicsDevice
+- uid: Veldrid.GraphicsDevice
+  commentId: T:Veldrid.GraphicsDevice
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsDevice.cs
+  name: GraphicsDevice
+  nameWithType: GraphicsDevice
+  fullName: Veldrid.GraphicsDevice
+- uid: Veldrid
+  commentId: N:Veldrid
+  isExternal: true
+  name: Veldrid
+  nameWithType: Veldrid
+  fullName: Veldrid
+- uid: Bliss.CSharp.Materials.Material.Effect*
+  commentId: Overload:Bliss.CSharp.Materials.Material.Effect
+  href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_Effect
+  name: Effect
+  nameWithType: Material.Effect
+  fullName: Bliss.CSharp.Materials.Material.Effect
+- uid: Bliss.CSharp.Effects.Effect
+  commentId: T:Bliss.CSharp.Effects.Effect
+  parent: Bliss.CSharp.Effects
+  href: Bliss.CSharp.Effects.Effect.html
+  name: Effect
+  nameWithType: Effect
+  fullName: Bliss.CSharp.Effects.Effect
+- uid: Bliss.CSharp.Effects
+  commentId: N:Bliss.CSharp.Effects
+  href: Bliss.html
+  name: Bliss.CSharp.Effects
+  nameWithType: Bliss.CSharp.Effects
+  fullName: Bliss.CSharp.Effects
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Effects
+    name: Effects
+    href: Bliss.CSharp.Effects.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Effects
+    name: Effects
+    href: Bliss.CSharp.Effects.html
+- uid: Bliss.CSharp.Graphics.BlendState
+  commentId: T:Bliss.CSharp.Graphics.BlendState
+  parent: Bliss.CSharp.Graphics
+  href: Bliss.CSharp.Graphics.BlendState.html
+  name: BlendState
+  nameWithType: BlendState
+  fullName: Bliss.CSharp.Graphics.BlendState
+- uid: Bliss.CSharp.Graphics
+  commentId: N:Bliss.CSharp.Graphics
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics
+  nameWithType: Bliss.CSharp.Graphics
+  fullName: Bliss.CSharp.Graphics
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+- uid: System.Collections.Generic.List{System.Single}
+  commentId: T:System.Collections.Generic.List{System.Single}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<float>
+  nameWithType: List<float>
+  fullName: System.Collections.Generic.List<float>
+  nameWithType.vb: List(Of Single)
+  fullName.vb: System.Collections.Generic.List(Of Single)
+  name.vb: List(Of Single)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Bliss.CSharp.Materials.Material
+  commentId: T:Bliss.CSharp.Materials.Material
+  parent: Bliss.CSharp.Materials
+  href: Bliss.CSharp.Materials.Material.html
+  name: Material
+  nameWithType: Material
+  fullName: Bliss.CSharp.Materials.Material
+- uid: Bliss.CSharp.Materials.Material.#ctor*
+  commentId: Overload:Bliss.CSharp.Materials.Material.#ctor
+  href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Effects_Effect_Bliss_CSharp_Graphics_BlendState_
+  name: Material
+  nameWithType: Material.Material
+  fullName: Bliss.CSharp.Materials.Material.Material
+  nameWithType.vb: Material.New
+  fullName.vb: Bliss.CSharp.Materials.Material.New
+  name.vb: New
+- uid: Bliss.CSharp.Materials.Material.GetResourceSet*
+  commentId: Overload:Bliss.CSharp.Materials.Material.GetResourceSet
+  href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_GetResourceSet_Veldrid_Sampler_Bliss_CSharp_Graphics_Pipelines_Textures_SimpleTextureLayout_System_String_
+  name: GetResourceSet
+  nameWithType: Material.GetResourceSet
+  fullName: Bliss.CSharp.Materials.Material.GetResourceSet
+- uid: Veldrid.Sampler
+  commentId: T:Veldrid.Sampler
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs
+  name: Sampler
+  nameWithType: Sampler
+  fullName: Veldrid.Sampler
+- uid: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+  parent: Bliss.CSharp.Graphics.Pipelines.Textures
+  href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
+  name: SimpleTextureLayout
+  nameWithType: SimpleTextureLayout
+  fullName: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Veldrid.ResourceSet
+  commentId: T:Veldrid.ResourceSet
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/ResourceSet.cs
+  name: ResourceSet
+  nameWithType: ResourceSet
+  fullName: Veldrid.ResourceSet
+- uid: Bliss.CSharp.Graphics.Pipelines.Textures
+  commentId: N:Bliss.CSharp.Graphics.Pipelines.Textures
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Pipelines.Textures
+  nameWithType: Bliss.CSharp.Graphics.Pipelines.Textures
+  fullName: Bliss.CSharp.Graphics.Pipelines.Textures
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Textures
+    name: Textures
+    href: Bliss.CSharp.Graphics.Pipelines.Textures.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Textures
+    name: Textures
+    href: Bliss.CSharp.Graphics.Pipelines.Textures.html
+- uid: Bliss.CSharp.Materials.Material.GetMaterialMapNames*
+  commentId: Overload:Bliss.CSharp.Materials.Material.GetMaterialMapNames
+  href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_GetMaterialMapNames
+  name: GetMaterialMapNames
+  nameWithType: Material.GetMaterialMapNames
+  fullName: Bliss.CSharp.Materials.Material.GetMaterialMapNames
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Materials.MaterialMap
+  commentId: T:Bliss.CSharp.Materials.MaterialMap
+  parent: Bliss.CSharp.Materials
+  href: Bliss.CSharp.Materials.MaterialMap.html
+  name: MaterialMap
+  nameWithType: MaterialMap
+  fullName: Bliss.CSharp.Materials.MaterialMap
+- uid: Bliss.CSharp.Materials.Material.GetMaterialMaps*
+  commentId: Overload:Bliss.CSharp.Materials.Material.GetMaterialMaps
+  href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_GetMaterialMaps
+  name: GetMaterialMaps
+  nameWithType: Material.GetMaterialMaps
+  fullName: Bliss.CSharp.Materials.Material.GetMaterialMaps
+- uid: Bliss.CSharp.Materials.MaterialMap[]
+  isExternal: true
+  href: Bliss.CSharp.Materials.MaterialMap.html
+  name: MaterialMap[]
+  nameWithType: MaterialMap[]
+  fullName: Bliss.CSharp.Materials.MaterialMap[]
+  nameWithType.vb: MaterialMap()
+  fullName.vb: Bliss.CSharp.Materials.MaterialMap()
+  name.vb: MaterialMap()
+  spec.csharp:
+  - uid: Bliss.CSharp.Materials.MaterialMap
+    name: MaterialMap
+    href: Bliss.CSharp.Materials.MaterialMap.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Bliss.CSharp.Materials.MaterialMap
+    name: MaterialMap
+    href: Bliss.CSharp.Materials.MaterialMap.html
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Materials.Material.GetMaterialMap*
+  commentId: Overload:Bliss.CSharp.Materials.Material.GetMaterialMap
+  href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_GetMaterialMap_System_String_
+  name: GetMaterialMap
+  nameWithType: Material.GetMaterialMap
+  fullName: Bliss.CSharp.Materials.Material.GetMaterialMap
+- uid: Bliss.CSharp.Materials.Material.AddMaterialMap*
+  commentId: Overload:Bliss.CSharp.Materials.Material.AddMaterialMap
+  href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_AddMaterialMap_System_String_Bliss_CSharp_Materials_MaterialMap_
+  name: AddMaterialMap
+  nameWithType: Material.AddMaterialMap
+  fullName: Bliss.CSharp.Materials.Material.AddMaterialMap
+- uid: Bliss.CSharp.Materials.Material.GetMapTexture*
+  commentId: Overload:Bliss.CSharp.Materials.Material.GetMapTexture
+  href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_GetMapTexture_System_String_
+  name: GetMapTexture
+  nameWithType: Material.GetMapTexture
+  fullName: Bliss.CSharp.Materials.Material.GetMapTexture
+- uid: Bliss.CSharp.Textures.Texture2D
+  commentId: T:Bliss.CSharp.Textures.Texture2D
+  parent: Bliss.CSharp.Textures
+  href: Bliss.CSharp.Textures.Texture2D.html
+  name: Texture2D
+  nameWithType: Texture2D
+  fullName: Bliss.CSharp.Textures.Texture2D
+- uid: Bliss.CSharp.Textures
+  commentId: N:Bliss.CSharp.Textures
+  href: Bliss.html
+  name: Bliss.CSharp.Textures
+  nameWithType: Bliss.CSharp.Textures
+  fullName: Bliss.CSharp.Textures
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Textures
+    name: Textures
+    href: Bliss.CSharp.Textures.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Textures
+    name: Textures
+    href: Bliss.CSharp.Textures.html
+- uid: Bliss.CSharp.Materials.Material.SetMapTexture*
+  commentId: Overload:Bliss.CSharp.Materials.Material.SetMapTexture
+  href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_SetMapTexture_System_String_Bliss_CSharp_Textures_Texture2D_
+  name: SetMapTexture
+  nameWithType: Material.SetMapTexture
+  fullName: Bliss.CSharp.Materials.Material.SetMapTexture
+- uid: Bliss.CSharp.Colors.Color
+  commentId: T:Bliss.CSharp.Colors.Color
+  parent: Bliss.CSharp.Colors
+  href: Bliss.CSharp.Colors.Color.html
+  name: Color
+  nameWithType: Color
+  fullName: Bliss.CSharp.Colors.Color
+- uid: Bliss.CSharp.Materials.Material.GetMapColor*
+  commentId: Overload:Bliss.CSharp.Materials.Material.GetMapColor
+  href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_GetMapColor_System_String_
+  name: GetMapColor
+  nameWithType: Material.GetMapColor
+  fullName: Bliss.CSharp.Materials.Material.GetMapColor
+- uid: System.Nullable{Bliss.CSharp.Colors.Color}
+  commentId: T:System.Nullable{Bliss.CSharp.Colors.Color}
+  parent: System
+  definition: System.Nullable`1
+  href: Bliss.CSharp.Colors.Color.html
+  name: Color?
+  nameWithType: Color?
+  fullName: Bliss.CSharp.Colors.Color?
+  spec.csharp:
+  - uid: Bliss.CSharp.Colors.Color
+    name: Color
+    href: Bliss.CSharp.Colors.Color.html
+  - name: '?'
+  spec.vb:
+  - uid: Bliss.CSharp.Colors.Color
+    name: Color
+    href: Bliss.CSharp.Colors.Color.html
+  - name: '?'
+- uid: Bliss.CSharp.Colors
+  commentId: N:Bliss.CSharp.Colors
+  href: Bliss.html
+  name: Bliss.CSharp.Colors
+  nameWithType: Bliss.CSharp.Colors
+  fullName: Bliss.CSharp.Colors
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Colors
+    name: Colors
+    href: Bliss.CSharp.Colors.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Colors
+    name: Colors
+    href: Bliss.CSharp.Colors.html
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bliss.CSharp.Materials.Material.SetMapColor*
+  commentId: Overload:Bliss.CSharp.Materials.Material.SetMapColor
+  href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_SetMapColor_System_String_Bliss_CSharp_Colors_Color_
+  name: SetMapColor
+  nameWithType: Material.SetMapColor
+  fullName: Bliss.CSharp.Materials.Material.SetMapColor
+- uid: Bliss.CSharp.Materials.Material.GetMapValue*
+  commentId: Overload:Bliss.CSharp.Materials.Material.GetMapValue
+  href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_GetMapValue_System_String_
+  name: GetMapValue
+  nameWithType: Material.GetMapValue
+  fullName: Bliss.CSharp.Materials.Material.GetMapValue
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Bliss.CSharp.Materials.Material.SetMapValue*
+  commentId: Overload:Bliss.CSharp.Materials.Material.SetMapValue
+  href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_SetMapValue_System_String_System_Single_
+  name: SetMapValue
+  nameWithType: Material.SetMapValue
+  fullName: Bliss.CSharp.Materials.Material.SetMapValue
+- uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  commentId: M:Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  parent: Bliss.CSharp.Disposable
+  isExternal: true
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  name: Dispose(bool)
+  nameWithType: Disposable.Dispose(bool)
+  fullName: Bliss.CSharp.Disposable.Dispose(bool)
+  nameWithType.vb: Disposable.Dispose(Boolean)
+  fullName.vb: Bliss.CSharp.Disposable.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Bliss.CSharp.Materials.Material.Dispose*
+  commentId: Overload:Bliss.CSharp.Materials.Material.Dispose
+  href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_Dispose_System_Boolean_
+  name: Dispose
+  nameWithType: Material.Dispose
+  fullName: Bliss.CSharp.Materials.Material.Dispose
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Rendering.Passes
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Passes
+  id: Bliss.CSharp.Graphics.Rendering.Passes
+  children:
+  - Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Graphics.Rendering.Passes
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Passes
+  fullName: Bliss.CSharp.Graphics.Rendering.Passes
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
+  href: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html
+  name: FullScreenRenderPass
+  nameWithType: FullScreenRenderPass
+  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass

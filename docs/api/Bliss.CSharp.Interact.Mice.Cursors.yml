@@ -1,0 +1,85 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Interact.Mice.Cursors
+  commentId: N:Bliss.CSharp.Interact.Mice.Cursors
+  id: Bliss.CSharp.Interact.Mice.Cursors
+  children:
+  - Bliss.CSharp.Interact.Mice.Cursors.ICursor
+  - Bliss.CSharp.Interact.Mice.Cursors.Sdl3Cursor
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Interact.Mice.Cursors
+  nameWithType: Bliss.CSharp.Interact.Mice.Cursors
+  fullName: Bliss.CSharp.Interact.Mice.Cursors
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Interact.Mice.Cursors.ICursor
+  commentId: T:Bliss.CSharp.Interact.Mice.Cursors.ICursor
+  parent: Bliss.CSharp.Interact.Mice.Cursors
+  href: Bliss.CSharp.Interact.Mice.Cursors.ICursor.html
+  name: ICursor
+  nameWithType: ICursor
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.ICursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.Sdl3Cursor
+  commentId: T:Bliss.CSharp.Interact.Mice.Cursors.Sdl3Cursor
+  href: Bliss.CSharp.Interact.Mice.Cursors.Sdl3Cursor.html
+  name: Sdl3Cursor
+  nameWithType: Sdl3Cursor
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.Sdl3Cursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  commentId: T:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  parent: Bliss.CSharp.Interact.Mice.Cursors
+  href: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.html
+  name: SystemCursor
+  nameWithType: SystemCursor
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors
+  commentId: N:Bliss.CSharp.Interact.Mice.Cursors
+  href: Bliss.html
+  name: Bliss.CSharp.Interact.Mice.Cursors
+  nameWithType: Bliss.CSharp.Interact.Mice.Cursors
+  fullName: Bliss.CSharp.Interact.Mice.Cursors
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice
+    name: Mice
+    href: Bliss.CSharp.Interact.Mice.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice.Cursors
+    name: Cursors
+    href: Bliss.CSharp.Interact.Mice.Cursors.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice
+    name: Mice
+    href: Bliss.CSharp.Interact.Mice.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice.Cursors
+    name: Cursors
+    href: Bliss.CSharp.Interact.Mice.Cursors.html

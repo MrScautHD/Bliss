@@ -1,0 +1,886 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  commentId: T:Bliss.CSharp.Interact.Gamepads.GamepadButton
+  id: GamepadButton
+  parent: Bliss.CSharp.Interact.Gamepads
+  children:
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.Back
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.Count
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.DpadDown
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.DpadLeft
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.DpadRight
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.DpadUp
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.East
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.Guide
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.Invalid
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.LeftPaddle1
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.LeftPaddle2
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.LeftShoulder
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.LeftStick
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc1
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc2
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc3
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc4
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc5
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc6
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.North
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.RightPaddle1
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.RightPaddle2
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.RightShoulder
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.RightStick
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.South
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.Start
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.Touchpad
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton.West
+  langs:
+  - csharp
+  - vb
+  name: GamepadButton
+  nameWithType: GamepadButton
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  type: Enum
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GamepadButton
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 2
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  syntax:
+    content: public enum GamepadButton
+    content.vb: Public Enum GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.Invalid
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.Invalid
+  id: Invalid
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: Invalid
+  nameWithType: GamepadButton.Invalid
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.Invalid
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Invalid
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 7
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: Represents an invalid button.
+  example: []
+  syntax:
+    content: Invalid = -1
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.South
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.South
+  id: South
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: South
+  nameWithType: GamepadButton.South
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.South
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: South
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 12
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: The "South" face button (often the bottom button, typically labeled A or X).
+  example: []
+  syntax:
+    content: South = 0
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.East
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.East
+  id: East
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: East
+  nameWithType: GamepadButton.East
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.East
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: East
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: The "East" face button (often the right button, typically labeled B or Circle).
+  example: []
+  syntax:
+    content: East = 1
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.West
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.West
+  id: West
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: West
+  nameWithType: GamepadButton.West
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.West
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: West
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 22
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: The "West" face button (often the left button, typically labeled X or Square).
+  example: []
+  syntax:
+    content: West = 2
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.North
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.North
+  id: North
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: North
+  nameWithType: GamepadButton.North
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.North
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: North
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 27
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: The "North" face button (often the top button, typically labeled Y or Triangle).
+  example: []
+  syntax:
+    content: North = 3
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.Back
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.Back
+  id: Back
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: Back
+  nameWithType: GamepadButton.Back
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.Back
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Back
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 32
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: The "Back" button on the gamepad.
+  example: []
+  syntax:
+    content: Back = 4
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.Guide
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.Guide
+  id: Guide
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: Guide
+  nameWithType: GamepadButton.Guide
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.Guide
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Guide
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 37
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: The "Guide" button, often used to open system menus.
+  example: []
+  syntax:
+    content: Guide = 5
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.Start
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.Start
+  id: Start
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: Start
+  nameWithType: GamepadButton.Start
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.Start
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Start
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 42
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: The "Start" button on the gamepad.
+  example: []
+  syntax:
+    content: Start = 6
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.LeftStick
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.LeftStick
+  id: LeftStick
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: LeftStick
+  nameWithType: GamepadButton.LeftStick
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.LeftStick
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LeftStick
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 47
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: The left analog stick button (when pressed down).
+  example: []
+  syntax:
+    content: LeftStick = 7
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.RightStick
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.RightStick
+  id: RightStick
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: RightStick
+  nameWithType: GamepadButton.RightStick
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.RightStick
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: RightStick
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 52
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: The right analog stick button (when pressed down).
+  example: []
+  syntax:
+    content: RightStick = 8
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.LeftShoulder
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.LeftShoulder
+  id: LeftShoulder
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: LeftShoulder
+  nameWithType: GamepadButton.LeftShoulder
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.LeftShoulder
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LeftShoulder
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 57
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: The left shoulder button.
+  example: []
+  syntax:
+    content: LeftShoulder = 9
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.RightShoulder
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.RightShoulder
+  id: RightShoulder
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: RightShoulder
+  nameWithType: GamepadButton.RightShoulder
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.RightShoulder
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: RightShoulder
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 62
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: The right shoulder button.
+  example: []
+  syntax:
+    content: RightShoulder = 10
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.DpadUp
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.DpadUp
+  id: DpadUp
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: DpadUp
+  nameWithType: GamepadButton.DpadUp
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.DpadUp
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DpadUp
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 67
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: The directional pad "Up" button.
+  example: []
+  syntax:
+    content: DpadUp = 11
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.DpadDown
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.DpadDown
+  id: DpadDown
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: DpadDown
+  nameWithType: GamepadButton.DpadDown
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.DpadDown
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DpadDown
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 72
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: The directional pad "Down" button.
+  example: []
+  syntax:
+    content: DpadDown = 12
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.DpadLeft
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.DpadLeft
+  id: DpadLeft
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: DpadLeft
+  nameWithType: GamepadButton.DpadLeft
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.DpadLeft
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DpadLeft
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 77
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: The directional pad "Left" button.
+  example: []
+  syntax:
+    content: DpadLeft = 13
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.DpadRight
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.DpadRight
+  id: DpadRight
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: DpadRight
+  nameWithType: GamepadButton.DpadRight
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.DpadRight
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DpadRight
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 82
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: The directional pad "Right" button.
+  example: []
+  syntax:
+    content: DpadRight = 14
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc1
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc1
+  id: Misc1
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: Misc1
+  nameWithType: GamepadButton.Misc1
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc1
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Misc1
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 87
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: A miscellaneous button (Misc1).
+  example: []
+  syntax:
+    content: Misc1 = 15
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.RightPaddle1
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.RightPaddle1
+  id: RightPaddle1
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: RightPaddle1
+  nameWithType: GamepadButton.RightPaddle1
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.RightPaddle1
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: RightPaddle1
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 92
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: The first right paddle button.
+  example: []
+  syntax:
+    content: RightPaddle1 = 16
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.LeftPaddle1
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.LeftPaddle1
+  id: LeftPaddle1
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: LeftPaddle1
+  nameWithType: GamepadButton.LeftPaddle1
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.LeftPaddle1
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LeftPaddle1
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 97
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: The first left paddle button.
+  example: []
+  syntax:
+    content: LeftPaddle1 = 17
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.RightPaddle2
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.RightPaddle2
+  id: RightPaddle2
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: RightPaddle2
+  nameWithType: GamepadButton.RightPaddle2
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.RightPaddle2
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: RightPaddle2
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 102
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: The second right paddle button.
+  example: []
+  syntax:
+    content: RightPaddle2 = 18
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.LeftPaddle2
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.LeftPaddle2
+  id: LeftPaddle2
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: LeftPaddle2
+  nameWithType: GamepadButton.LeftPaddle2
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.LeftPaddle2
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LeftPaddle2
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 107
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: The second left paddle button.
+  example: []
+  syntax:
+    content: LeftPaddle2 = 19
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.Touchpad
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.Touchpad
+  id: Touchpad
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: Touchpad
+  nameWithType: GamepadButton.Touchpad
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.Touchpad
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Touchpad
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 112
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: The touchpad button, commonly found on some controllers.
+  example: []
+  syntax:
+    content: Touchpad = 20
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc2
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc2
+  id: Misc2
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: Misc2
+  nameWithType: GamepadButton.Misc2
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc2
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Misc2
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 117
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: A miscellaneous button (Misc2).
+  example: []
+  syntax:
+    content: Misc2 = 21
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc3
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc3
+  id: Misc3
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: Misc3
+  nameWithType: GamepadButton.Misc3
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc3
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Misc3
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 122
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: A miscellaneous button (Misc3).
+  example: []
+  syntax:
+    content: Misc3 = 22
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc4
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc4
+  id: Misc4
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: Misc4
+  nameWithType: GamepadButton.Misc4
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc4
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Misc4
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 127
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: A miscellaneous button (Misc4).
+  example: []
+  syntax:
+    content: Misc4 = 23
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc5
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc5
+  id: Misc5
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: Misc5
+  nameWithType: GamepadButton.Misc5
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc5
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Misc5
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 132
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: A miscellaneous button (Misc5).
+  example: []
+  syntax:
+    content: Misc5 = 24
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc6
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc6
+  id: Misc6
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: Misc6
+  nameWithType: GamepadButton.Misc6
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.Misc6
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Misc6
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 137
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: A miscellaneous button (Misc6).
+  example: []
+  syntax:
+    content: Misc6 = 25
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton.Count
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadButton.Count
+  id: Count
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: GamepadButton.Count
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton.Count
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Count
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadButton.cs
+    startLine: 142
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: Represents the total number of available buttons.
+  example: []
+  syntax:
+    content: Count = 26
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+references:
+- uid: Bliss.CSharp.Interact.Gamepads
+  commentId: N:Bliss.CSharp.Interact.Gamepads
+  href: Bliss.html
+  name: Bliss.CSharp.Interact.Gamepads
+  nameWithType: Bliss.CSharp.Interact.Gamepads
+  fullName: Bliss.CSharp.Interact.Gamepads
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Gamepads
+    name: Gamepads
+    href: Bliss.CSharp.Interact.Gamepads.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Gamepads
+    name: Gamepads
+    href: Bliss.CSharp.Interact.Gamepads.html
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  commentId: T:Bliss.CSharp.Interact.Gamepads.GamepadButton
+  parent: Bliss.CSharp.Interact.Gamepads
+  href: Bliss.CSharp.Interact.Gamepads.GamepadButton.html
+  name: GamepadButton
+  nameWithType: GamepadButton
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton

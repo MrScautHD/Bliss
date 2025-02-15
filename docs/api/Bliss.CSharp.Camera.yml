@@ -1,0 +1,54 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Camera
+  commentId: N:Bliss.CSharp.Camera
+  id: Bliss.CSharp.Camera
+  children:
+  - Bliss.CSharp.Camera.ICam
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Camera
+  nameWithType: Bliss.CSharp.Camera
+  fullName: Bliss.CSharp.Camera
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Camera.ICam
+  commentId: T:Bliss.CSharp.Camera.ICam
+  parent: Bliss.CSharp.Camera
+  href: Bliss.CSharp.Camera.ICam.html
+  name: ICam
+  nameWithType: ICam
+  fullName: Bliss.CSharp.Camera.ICam
+- uid: Bliss.CSharp.Camera
+  commentId: N:Bliss.CSharp.Camera
+  href: Bliss.html
+  name: Bliss.CSharp.Camera
+  nameWithType: Bliss.CSharp.Camera
+  fullName: Bliss.CSharp.Camera
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Camera
+    name: Camera
+    href: Bliss.CSharp.Camera.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Camera
+    name: Camera
+    href: Bliss.CSharp.Camera.html

@@ -1,0 +1,691 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  commentId: T:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  id: SystemCursor
+  parent: Bliss.CSharp.Interact.Mice.Cursors
+  children:
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Count
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Crosshair
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Default
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.EResize
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.EWResize
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Move
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NEResize
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NESWResize
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NResize
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NSResize
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NWResize
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NWSEResize
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NotAllowed
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Pointer
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Progress
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.SEResize
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.SResize
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.SWResize
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Text
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.WResize
+  - Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Wait
+  langs:
+  - csharp
+  - vb
+  name: SystemCursor
+  nameWithType: SystemCursor
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  type: Enum
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SystemCursor
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 2
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  syntax:
+    content: public enum SystemCursor
+    content.vb: Public Enum SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Default
+  commentId: F:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Default
+  id: Default
+  parent: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: SystemCursor.Default
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Default
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Default
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 7
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: The default system cursor.
+  example: []
+  syntax:
+    content: Default = 0
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Text
+  commentId: F:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Text
+  id: Text
+  parent: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: Text
+  nameWithType: SystemCursor.Text
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Text
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Text
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 12
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: The cursor displayed when over text.
+  example: []
+  syntax:
+    content: Text = 1
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Wait
+  commentId: F:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Wait
+  id: Wait
+  parent: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: Wait
+  nameWithType: SystemCursor.Wait
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Wait
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Wait
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: The cursor indicating the system is busy (wait state).
+  example: []
+  syntax:
+    content: Wait = 2
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Crosshair
+  commentId: F:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Crosshair
+  id: Crosshair
+  parent: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: Crosshair
+  nameWithType: SystemCursor.Crosshair
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Crosshair
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Crosshair
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 22
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: The crosshair cursor, typically used for precise selection.
+  example: []
+  syntax:
+    content: Crosshair = 3
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Progress
+  commentId: F:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Progress
+  id: Progress
+  parent: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: Progress
+  nameWithType: SystemCursor.Progress
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Progress
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Progress
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 27
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: The cursor indicating progress without preventing interaction.
+  example: []
+  syntax:
+    content: Progress = 4
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NWSEResize
+  commentId: F:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NWSEResize
+  id: NWSEResize
+  parent: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: NWSEResize
+  nameWithType: SystemCursor.NWSEResize
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NWSEResize
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: NWSEResize
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 32
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: The resize cursor used for diagonal resizing (NW-SE direction).
+  example: []
+  syntax:
+    content: NWSEResize = 5
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NESWResize
+  commentId: F:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NESWResize
+  id: NESWResize
+  parent: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: NESWResize
+  nameWithType: SystemCursor.NESWResize
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NESWResize
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: NESWResize
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 37
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: The resize cursor used for diagonal resizing (NE-SW direction).
+  example: []
+  syntax:
+    content: NESWResize = 6
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.EWResize
+  commentId: F:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.EWResize
+  id: EWResize
+  parent: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: EWResize
+  nameWithType: SystemCursor.EWResize
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.EWResize
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: EWResize
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 42
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: The cursor used for horizontal resizing (E-W direction).
+  example: []
+  syntax:
+    content: EWResize = 7
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NSResize
+  commentId: F:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NSResize
+  id: NSResize
+  parent: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: NSResize
+  nameWithType: SystemCursor.NSResize
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NSResize
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: NSResize
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 47
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: The cursor used for vertical resizing (N-S direction).
+  example: []
+  syntax:
+    content: NSResize = 8
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Move
+  commentId: F:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Move
+  id: Move
+  parent: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: Move
+  nameWithType: SystemCursor.Move
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Move
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Move
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 52
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: The move cursor, typically used for dragging objects.
+  example: []
+  syntax:
+    content: Move = 9
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NotAllowed
+  commentId: F:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NotAllowed
+  id: NotAllowed
+  parent: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: NotAllowed
+  nameWithType: SystemCursor.NotAllowed
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NotAllowed
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: NotAllowed
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 57
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: The cursor indicating an action is not allowed.
+  example: []
+  syntax:
+    content: NotAllowed = 10
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Pointer
+  commentId: F:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Pointer
+  id: Pointer
+  parent: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: Pointer
+  nameWithType: SystemCursor.Pointer
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Pointer
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Pointer
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 62
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: The pointer cursor, typically used for links and clickable items.
+  example: []
+  syntax:
+    content: Pointer = 11
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NWResize
+  commentId: F:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NWResize
+  id: NWResize
+  parent: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: NWResize
+  nameWithType: SystemCursor.NWResize
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NWResize
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: NWResize
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 67
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: The resize cursor for resizing from the northwest corner.
+  example: []
+  syntax:
+    content: NWResize = 12
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NResize
+  commentId: F:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NResize
+  id: NResize
+  parent: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: NResize
+  nameWithType: SystemCursor.NResize
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NResize
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: NResize
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 72
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: The resize cursor for resizing from the north side.
+  example: []
+  syntax:
+    content: NResize = 13
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NEResize
+  commentId: F:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NEResize
+  id: NEResize
+  parent: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: NEResize
+  nameWithType: SystemCursor.NEResize
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.NEResize
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: NEResize
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 77
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: The resize cursor for resizing from the northeast corner.
+  example: []
+  syntax:
+    content: NEResize = 14
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.EResize
+  commentId: F:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.EResize
+  id: EResize
+  parent: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: EResize
+  nameWithType: SystemCursor.EResize
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.EResize
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: EResize
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 82
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: The resize cursor for resizing from the east side.
+  example: []
+  syntax:
+    content: EResize = 15
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.SEResize
+  commentId: F:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.SEResize
+  id: SEResize
+  parent: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: SEResize
+  nameWithType: SystemCursor.SEResize
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.SEResize
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SEResize
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 87
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: The resize cursor for resizing from the southeast corner.
+  example: []
+  syntax:
+    content: SEResize = 16
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.SResize
+  commentId: F:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.SResize
+  id: SResize
+  parent: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: SResize
+  nameWithType: SystemCursor.SResize
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.SResize
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SResize
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 92
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: The resize cursor for resizing from the south side.
+  example: []
+  syntax:
+    content: SResize = 17
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.SWResize
+  commentId: F:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.SWResize
+  id: SWResize
+  parent: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: SWResize
+  nameWithType: SystemCursor.SWResize
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.SWResize
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SWResize
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 97
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: The resize cursor for resizing from the southwest corner.
+  example: []
+  syntax:
+    content: SWResize = 18
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.WResize
+  commentId: F:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.WResize
+  id: WResize
+  parent: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: WResize
+  nameWithType: SystemCursor.WResize
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.WResize
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: WResize
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 102
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: The resize cursor for resizing from the west side.
+  example: []
+  syntax:
+    content: WResize = 19
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Count
+  commentId: F:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Count
+  id: Count
+  parent: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: SystemCursor.Count
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.Count
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Count
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/SystemCursor.cs
+    startLine: 107
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: The total number of cursor types available.
+  example: []
+  syntax:
+    content: Count = 20
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+references:
+- uid: Bliss.CSharp.Interact.Mice.Cursors
+  commentId: N:Bliss.CSharp.Interact.Mice.Cursors
+  href: Bliss.html
+  name: Bliss.CSharp.Interact.Mice.Cursors
+  nameWithType: Bliss.CSharp.Interact.Mice.Cursors
+  fullName: Bliss.CSharp.Interact.Mice.Cursors
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice
+    name: Mice
+    href: Bliss.CSharp.Interact.Mice.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice.Cursors
+    name: Cursors
+    href: Bliss.CSharp.Interact.Mice.Cursors.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice
+    name: Mice
+    href: Bliss.CSharp.Interact.Mice.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice.Cursors
+    name: Cursors
+    href: Bliss.CSharp.Interact.Mice.Cursors.html
+- uid: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  commentId: T:Bliss.CSharp.Interact.Mice.Cursors.SystemCursor
+  parent: Bliss.CSharp.Interact.Mice.Cursors
+  href: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.html
+  name: SystemCursor
+  nameWithType: SystemCursor
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.SystemCursor

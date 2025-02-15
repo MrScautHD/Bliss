@@ -1,0 +1,61 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Images
+  commentId: N:Bliss.CSharp.Images
+  id: Bliss.CSharp.Images
+  children:
+  - Bliss.CSharp.Images.AnimatedImage
+  - Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Images
+  nameWithType: Bliss.CSharp.Images
+  fullName: Bliss.CSharp.Images
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Images.AnimatedImage
+  commentId: T:Bliss.CSharp.Images.AnimatedImage
+  href: Bliss.CSharp.Images.AnimatedImage.html
+  name: AnimatedImage
+  nameWithType: AnimatedImage
+  fullName: Bliss.CSharp.Images.AnimatedImage
+- uid: Bliss.CSharp.Images.Image
+  commentId: T:Bliss.CSharp.Images.Image
+  parent: Bliss.CSharp.Images
+  href: Bliss.CSharp.Images.Image.html
+  name: Image
+  nameWithType: Image
+  fullName: Bliss.CSharp.Images.Image
+- uid: Bliss.CSharp.Images
+  commentId: N:Bliss.CSharp.Images
+  href: Bliss.html
+  name: Bliss.CSharp.Images
+  nameWithType: Bliss.CSharp.Images
+  fullName: Bliss.CSharp.Images
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Images
+    name: Images
+    href: Bliss.CSharp.Images.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Images
+    name: Images
+    href: Bliss.CSharp.Images.html

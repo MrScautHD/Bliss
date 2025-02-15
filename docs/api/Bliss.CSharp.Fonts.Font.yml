@@ -1,0 +1,1101 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Fonts.Font
+  commentId: T:Bliss.CSharp.Fonts.Font
+  id: Font
+  parent: Bliss.CSharp.Fonts
+  children:
+  - Bliss.CSharp.Fonts.Font.#ctor(System.Byte[])
+  - Bliss.CSharp.Fonts.Font.#ctor(System.String)
+  - Bliss.CSharp.Fonts.Font.Dispose(System.Boolean)
+  - Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  - Bliss.CSharp.Fonts.Font.FontData
+  - Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Int32)
+  - Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Int32)
+  - Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: Font
+  nameWithType: Font
+  fullName: Bliss.CSharp.Fonts.Font
+  type: Class
+  source:
+    remote:
+      path: src/Bliss/CSharp/Fonts/Font.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Font
+    path: ../src/Bliss/CSharp/Fonts/Font.cs
+    startLine: 9
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Fonts
+  syntax:
+    content: 'public class Font : Disposable, IDisposable'
+    content.vb: Public Class Font Inherits Disposable Implements IDisposable
+  inheritance:
+  - System.Object
+  - Bliss.CSharp.Disposable
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - Bliss.CSharp.Disposable.HasDisposed
+  - Bliss.CSharp.Disposable.Dispose
+  - Bliss.CSharp.Disposable.ThrowIfDisposed
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bliss.CSharp.Fonts.Font.FontData
+  commentId: P:Bliss.CSharp.Fonts.Font.FontData
+  id: FontData
+  parent: Bliss.CSharp.Fonts.Font
+  langs:
+  - csharp
+  - vb
+  name: FontData
+  nameWithType: Font.FontData
+  fullName: Bliss.CSharp.Fonts.Font.FontData
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Fonts/Font.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: FontData
+    path: ../src/Bliss/CSharp/Fonts/Font.cs
+    startLine: 14
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Fonts
+  summary: Gets the byte array containing the raw font data.
+  example: []
+  syntax:
+    content: public byte[] FontData { get; }
+    parameters: []
+    return:
+      type: System.Byte[]
+    content.vb: Public Property FontData As Byte()
+  overload: Bliss.CSharp.Fonts.Font.FontData*
+- uid: Bliss.CSharp.Fonts.Font.#ctor(System.String)
+  commentId: M:Bliss.CSharp.Fonts.Font.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Bliss.CSharp.Fonts.Font
+  langs:
+  - csharp
+  - vb
+  name: Font(string)
+  nameWithType: Font.Font(string)
+  fullName: Bliss.CSharp.Fonts.Font.Font(string)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Fonts/Font.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Fonts/Font.cs
+    startLine: 25
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Fonts
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Fonts.Font" data-throw-if-not-resolved="false"></xref> class, loading font data from the specified file path.
+  example: []
+  syntax:
+    content: public Font(string path)
+    parameters:
+    - id: path
+      type: System.String
+      description: The file path to the font data.
+    content.vb: Public Sub New(path As String)
+  overload: Bliss.CSharp.Fonts.Font.#ctor*
+  nameWithType.vb: Font.New(String)
+  fullName.vb: Bliss.CSharp.Fonts.Font.New(String)
+  name.vb: New(String)
+- uid: Bliss.CSharp.Fonts.Font.#ctor(System.Byte[])
+  commentId: M:Bliss.CSharp.Fonts.Font.#ctor(System.Byte[])
+  id: '#ctor(System.Byte[])'
+  parent: Bliss.CSharp.Fonts.Font
+  langs:
+  - csharp
+  - vb
+  name: Font(byte[])
+  nameWithType: Font.Font(byte[])
+  fullName: Bliss.CSharp.Fonts.Font.Font(byte[])
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Fonts/Font.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Fonts/Font.cs
+    startLine: 31
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Fonts
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Fonts.Font" data-throw-if-not-resolved="false"></xref> class with the specified font data.
+  example: []
+  syntax:
+    content: public Font(byte[] data)
+    parameters:
+    - id: data
+      type: System.Byte[]
+      description: A byte array containing the font data.
+    content.vb: Public Sub New(data As Byte())
+  overload: Bliss.CSharp.Fonts.Font.#ctor*
+  nameWithType.vb: Font.New(Byte())
+  fullName.vb: Bliss.CSharp.Fonts.Font.New(Byte())
+  name.vb: New(Byte())
+- uid: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  commentId: M:Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  id: Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  parent: Bliss.CSharp.Fonts.Font
+  langs:
+  - csharp
+  - vb
+  name: Draw(SpriteBatch, string, Vector2, int, float, float, Vector2?, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
+  nameWithType: Font.Draw(SpriteBatch, string, Vector2, int, float, float, Vector2?, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
+  fullName: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch, string, System.Numerics.Vector2, int, float, float, System.Numerics.Vector2?, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Fonts/Font.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Draw
+    path: ../src/Bliss/CSharp/Fonts/Font.cs
+    startLine: 71
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Fonts
+  summary: Draws text using the specified parameters.
+  example: []
+  syntax:
+    content: public void Draw(SpriteBatch batch, string text, Vector2 position, int size, float characterSpacing = 0, float lineSpacing = 0, Vector2? scale = null, Vector2? origin = null, float rotation = 0, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0)
+    parameters:
+    - id: batch
+      type: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
+      description: The sprite batch used for rendering.
+    - id: text
+      type: System.String
+      description: The text to be drawn.
+    - id: position
+      type: System.Numerics.Vector2
+      description: The position where the text should be drawn.
+    - id: size
+      type: System.Int32
+      description: The size of the font.
+    - id: characterSpacing
+      type: System.Single
+      description: The spacing between characters. Default is 0.0F.
+    - id: lineSpacing
+      type: System.Single
+      description: The spacing between lines. Default is 0.0F.
+    - id: scale
+      type: System.Nullable{System.Numerics.Vector2}
+      description: The scaling factor for the text. Default is null.
+    - id: origin
+      type: System.Nullable{System.Numerics.Vector2}
+      description: The origin for rotation and scaling. Default is null.
+    - id: rotation
+      type: System.Single
+      description: The rotation angle for the text. Default is 0.0F.
+    - id: color
+      type: System.Nullable{Bliss.CSharp.Colors.Color}
+      description: The color of the text. Default is white.
+    - id: style
+      type: FontStashSharp.TextStyle
+      description: The style of the text. Default is none.
+    - id: effect
+      type: FontStashSharp.FontSystemEffect
+      description: The effect to apply to the text. Default is none.
+    - id: effectAmount
+      type: System.Int32
+      description: The intensity of the applied effect. Default is 0.
+    content.vb: Public Sub Draw(batch As SpriteBatch, text As String, position As Vector2, size As Integer, characterSpacing As Single = 0, lineSpacing As Single = 0, scale As Vector2? = Nothing, origin As Vector2? = Nothing, rotation As Single = 0, color As Color? = Nothing, style As TextStyle = TextStyle.None, effect As FontSystemEffect = FontSystemEffect.None, effectAmount As Integer = 0)
+  overload: Bliss.CSharp.Fonts.Font.Draw*
+  nameWithType.vb: Font.Draw(SpriteBatch, String, Vector2, Integer, Single, Single, Vector2?, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
+  fullName.vb: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch, String, System.Numerics.Vector2, Integer, Single, Single, System.Numerics.Vector2?, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, Integer)
+  name.vb: Draw(SpriteBatch, String, Vector2, Integer, Single, Single, Vector2?, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
+- uid: Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Int32)
+  commentId: M:Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Int32)
+  id: MeasureText(System.String,System.Int32)
+  parent: Bliss.CSharp.Fonts.Font
+  langs:
+  - csharp
+  - vb
+  name: MeasureText(string, int)
+  nameWithType: Font.MeasureText(string, int)
+  fullName: Bliss.CSharp.Fonts.Font.MeasureText(string, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Fonts/Font.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: MeasureText
+    path: ../src/Bliss/CSharp/Fonts/Font.cs
+    startLine: 84
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Fonts
+  summary: Measures the dimensions of the specified text using the given font size.
+  example: []
+  syntax:
+    content: public Vector2 MeasureText(string text, int size)
+    parameters:
+    - id: text
+      type: System.String
+      description: The text to measure.
+    - id: size
+      type: System.Int32
+      description: The font size to use for measurement.
+    return:
+      type: System.Numerics.Vector2
+      description: A Vector2 representing the width and height of the text.
+    content.vb: Public Function MeasureText(text As String, size As Integer) As Vector2
+  overload: Bliss.CSharp.Fonts.Font.MeasureText*
+  nameWithType.vb: Font.MeasureText(String, Integer)
+  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureText(String, Integer)
+  name.vb: MeasureText(String, Integer)
+- uid: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Int32)
+  commentId: M:Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Int32)
+  id: MeasureTextTrimmed(System.String,System.Int32)
+  parent: Bliss.CSharp.Fonts.Font
+  langs:
+  - csharp
+  - vb
+  name: MeasureTextTrimmed(string, int)
+  nameWithType: Font.MeasureTextTrimmed(string, int)
+  fullName: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(string, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Fonts/Font.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: MeasureTextTrimmed
+    path: ../src/Bliss/CSharp/Fonts/Font.cs
+    startLine: 97
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Fonts
+  summary: Measures the dimensions of the specified trimmed text using the given font size.
+  example: []
+  syntax:
+    content: public Vector2 MeasureTextTrimmed(string text, int size)
+    parameters:
+    - id: text
+      type: System.String
+      description: The text to measure.
+    - id: size
+      type: System.Int32
+      description: The size of the font.
+    return:
+      type: System.Numerics.Vector2
+      description: A <xref href="System.Numerics.Vector2" data-throw-if-not-resolved="false"></xref> representing the width and height of the trimmed text.
+    content.vb: Public Function MeasureTextTrimmed(text As String, size As Integer) As Vector2
+  overload: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed*
+  nameWithType.vb: Font.MeasureTextTrimmed(String, Integer)
+  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(String, Integer)
+  name.vb: MeasureTextTrimmed(String, Integer)
+- uid: Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Int32)
+  commentId: M:Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Int32)
+  id: MeasureTextRect(System.String,System.Int32)
+  parent: Bliss.CSharp.Fonts.Font
+  langs:
+  - csharp
+  - vb
+  name: MeasureTextRect(string, int)
+  nameWithType: Font.MeasureTextRect(string, int)
+  fullName: Bliss.CSharp.Fonts.Font.MeasureTextRect(string, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Fonts/Font.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: MeasureTextRect
+    path: ../src/Bliss/CSharp/Fonts/Font.cs
+    startLine: 110
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Fonts
+  summary: Measures the rectangular bounds of the given text with specified font size.
+  example: []
+  syntax:
+    content: public RectangleF MeasureTextRect(string text, int size)
+    parameters:
+    - id: text
+      type: System.String
+      description: The text to measure.
+    - id: size
+      type: System.Int32
+      description: The size of the font.
+    return:
+      type: Bliss.CSharp.Transformations.RectangleF
+    content.vb: Public Function MeasureTextRect(text As String, size As Integer) As RectangleF
+  overload: Bliss.CSharp.Fonts.Font.MeasureTextRect*
+  nameWithType.vb: Font.MeasureTextRect(String, Integer)
+  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureTextRect(String, Integer)
+  name.vb: MeasureTextRect(String, Integer)
+- uid: Bliss.CSharp.Fonts.Font.Dispose(System.Boolean)
+  commentId: M:Bliss.CSharp.Fonts.Font.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: Bliss.CSharp.Fonts.Font
+  langs:
+  - csharp
+  - vb
+  name: Dispose(bool)
+  nameWithType: Font.Dispose(bool)
+  fullName: Bliss.CSharp.Fonts.Font.Dispose(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Fonts/Font.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Dispose
+    path: ../src/Bliss/CSharp/Fonts/Font.cs
+    startLine: 128
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Fonts
+  summary: Disposes of the object and releases associated resources.
+  example: []
+  syntax:
+    content: protected override void Dispose(bool disposing)
+    parameters:
+    - id: disposing
+      type: System.Boolean
+      description: True if called from user code; false if called from a finalizer.
+    content.vb: Protected Overrides Sub Dispose(disposing As Boolean)
+  overridden: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  overload: Bliss.CSharp.Fonts.Font.Dispose*
+  nameWithType.vb: Font.Dispose(Boolean)
+  fullName.vb: Bliss.CSharp.Fonts.Font.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+references:
+- uid: Bliss.CSharp.Fonts
+  commentId: N:Bliss.CSharp.Fonts
+  href: Bliss.html
+  name: Bliss.CSharp.Fonts
+  nameWithType: Bliss.CSharp.Fonts
+  fullName: Bliss.CSharp.Fonts
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Fonts
+    name: Fonts
+    href: Bliss.CSharp.Fonts.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Fonts
+    name: Fonts
+    href: Bliss.CSharp.Fonts.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bliss.CSharp.Disposable
+  commentId: T:Bliss.CSharp.Disposable
+  parent: Bliss.CSharp
+  href: Bliss.CSharp.Disposable.html
+  name: Disposable
+  nameWithType: Disposable
+  fullName: Bliss.CSharp.Disposable
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Bliss.CSharp.Disposable.HasDisposed
+  commentId: P:Bliss.CSharp.Disposable.HasDisposed
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_HasDisposed
+  name: HasDisposed
+  nameWithType: Disposable.HasDisposed
+  fullName: Bliss.CSharp.Disposable.HasDisposed
+- uid: Bliss.CSharp.Disposable.Dispose
+  commentId: M:Bliss.CSharp.Disposable.Dispose
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  name: Dispose()
+  nameWithType: Disposable.Dispose()
+  fullName: Bliss.CSharp.Disposable.Dispose()
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.Dispose
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.Dispose
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+  commentId: M:Bliss.CSharp.Disposable.ThrowIfDisposed
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  name: ThrowIfDisposed()
+  nameWithType: Disposable.ThrowIfDisposed()
+  fullName: Bliss.CSharp.Disposable.ThrowIfDisposed()
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+    name: ThrowIfDisposed
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+    name: ThrowIfDisposed
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp
+  commentId: N:Bliss.CSharp
+  href: Bliss.html
+  name: Bliss.CSharp
+  nameWithType: Bliss.CSharp
+  fullName: Bliss.CSharp
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+- uid: Bliss.CSharp.Fonts.Font.FontData*
+  commentId: Overload:Bliss.CSharp.Fonts.Font.FontData
+  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_FontData
+  name: FontData
+  nameWithType: Font.FontData
+  fullName: Bliss.CSharp.Fonts.Font.FontData
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Fonts.Font
+  commentId: T:Bliss.CSharp.Fonts.Font
+  parent: Bliss.CSharp.Fonts
+  href: Bliss.CSharp.Fonts.Font.html
+  name: Font
+  nameWithType: Font
+  fullName: Bliss.CSharp.Fonts.Font
+- uid: Bliss.CSharp.Fonts.Font.#ctor*
+  commentId: Overload:Bliss.CSharp.Fonts.Font.#ctor
+  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font__ctor_System_String_
+  name: Font
+  nameWithType: Font.Font
+  fullName: Bliss.CSharp.Fonts.Font.Font
+  nameWithType.vb: Font.New
+  fullName.vb: Bliss.CSharp.Fonts.Font.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bliss.CSharp.Fonts.Font.Draw*
+  commentId: Overload:Bliss.CSharp.Fonts.Font.Draw
+  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_Draw_Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_System_String_System_Numerics_Vector2_System_Int32_System_Single_System_Single_System_Nullable_System_Numerics_Vector2__System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__FontStashSharp_TextStyle_FontStashSharp_FontSystemEffect_System_Int32_
+  name: Draw
+  nameWithType: Font.Draw
+  fullName: Bliss.CSharp.Fonts.Font.Draw
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html
+  name: SpriteBatch
+  nameWithType: SpriteBatch
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
+- uid: System.Numerics.Vector2
+  commentId: T:System.Numerics.Vector2
+  parent: System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.vector2
+  name: Vector2
+  nameWithType: Vector2
+  fullName: System.Numerics.Vector2
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System.Nullable{System.Numerics.Vector2}
+  commentId: T:System.Nullable{System.Numerics.Vector2}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.vector2
+  name: Vector2?
+  nameWithType: Vector2?
+  fullName: System.Numerics.Vector2?
+  spec.csharp:
+  - uid: System.Numerics.Vector2
+    name: Vector2
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.vector2
+  - name: '?'
+  spec.vb:
+  - uid: System.Numerics.Vector2
+    name: Vector2
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.vector2
+  - name: '?'
+- uid: System.Nullable{Bliss.CSharp.Colors.Color}
+  commentId: T:System.Nullable{Bliss.CSharp.Colors.Color}
+  parent: System
+  definition: System.Nullable`1
+  href: Bliss.CSharp.Colors.Color.html
+  name: Color?
+  nameWithType: Color?
+  fullName: Bliss.CSharp.Colors.Color?
+  spec.csharp:
+  - uid: Bliss.CSharp.Colors.Color
+    name: Color
+    href: Bliss.CSharp.Colors.Color.html
+  - name: '?'
+  spec.vb:
+  - uid: Bliss.CSharp.Colors.Color
+    name: Color
+    href: Bliss.CSharp.Colors.Color.html
+  - name: '?'
+- uid: FontStashSharp.TextStyle
+  commentId: T:FontStashSharp.TextStyle
+  parent: FontStashSharp
+  isExternal: true
+  name: TextStyle
+  nameWithType: TextStyle
+  fullName: FontStashSharp.TextStyle
+- uid: FontStashSharp.FontSystemEffect
+  commentId: T:FontStashSharp.FontSystemEffect
+  parent: FontStashSharp
+  isExternal: true
+  name: FontSystemEffect
+  nameWithType: FontSystemEffect
+  fullName: FontStashSharp.FontSystemEffect
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches
+    name: Batches
+    href: Bliss.CSharp.Graphics.Rendering.Batches.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+    name: Sprites
+    href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches
+    name: Batches
+    href: Bliss.CSharp.Graphics.Rendering.Batches.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+    name: Sprites
+    href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.html
+- uid: System.Numerics
+  commentId: N:System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Numerics
+  nameWithType: System.Numerics
+  fullName: System.Numerics
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: FontStashSharp
+  commentId: N:FontStashSharp
+  isExternal: true
+  name: FontStashSharp
+  nameWithType: FontStashSharp
+  fullName: FontStashSharp
+- uid: Bliss.CSharp.Fonts.Font.MeasureText*
+  commentId: Overload:Bliss.CSharp.Fonts.Font.MeasureText
+  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureText_System_String_System_Int32_
+  name: MeasureText
+  nameWithType: Font.MeasureText
+  fullName: Bliss.CSharp.Fonts.Font.MeasureText
+- uid: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed*
+  commentId: Overload:Bliss.CSharp.Fonts.Font.MeasureTextTrimmed
+  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextTrimmed_System_String_System_Int32_
+  name: MeasureTextTrimmed
+  nameWithType: Font.MeasureTextTrimmed
+  fullName: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed
+- uid: Bliss.CSharp.Fonts.Font.MeasureTextRect*
+  commentId: Overload:Bliss.CSharp.Fonts.Font.MeasureTextRect
+  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextRect_System_String_System_Int32_
+  name: MeasureTextRect
+  nameWithType: Font.MeasureTextRect
+  fullName: Bliss.CSharp.Fonts.Font.MeasureTextRect
+- uid: Bliss.CSharp.Transformations.RectangleF
+  commentId: T:Bliss.CSharp.Transformations.RectangleF
+  parent: Bliss.CSharp.Transformations
+  href: Bliss.CSharp.Transformations.RectangleF.html
+  name: RectangleF
+  nameWithType: RectangleF
+  fullName: Bliss.CSharp.Transformations.RectangleF
+- uid: Bliss.CSharp.Transformations
+  commentId: N:Bliss.CSharp.Transformations
+  href: Bliss.html
+  name: Bliss.CSharp.Transformations
+  nameWithType: Bliss.CSharp.Transformations
+  fullName: Bliss.CSharp.Transformations
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Transformations
+    name: Transformations
+    href: Bliss.CSharp.Transformations.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Transformations
+    name: Transformations
+    href: Bliss.CSharp.Transformations.html
+- uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  commentId: M:Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  parent: Bliss.CSharp.Disposable
+  isExternal: true
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  name: Dispose(bool)
+  nameWithType: Disposable.Dispose(bool)
+  fullName: Bliss.CSharp.Disposable.Dispose(bool)
+  nameWithType.vb: Disposable.Dispose(Boolean)
+  fullName.vb: Bliss.CSharp.Disposable.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Bliss.CSharp.Fonts.Font.Dispose*
+  commentId: Overload:Bliss.CSharp.Fonts.Font.Dispose
+  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_Dispose_System_Boolean_
+  name: Dispose
+  nameWithType: Font.Dispose
+  fullName: Bliss.CSharp.Fonts.Font.Dispose
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

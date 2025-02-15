@@ -1,0 +1,85 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Interact.Gamepads
+  commentId: N:Bliss.CSharp.Interact.Gamepads
+  id: Bliss.CSharp.Interact.Gamepads
+  children:
+  - Bliss.CSharp.Interact.Gamepads.GamepadAxis
+  - Bliss.CSharp.Interact.Gamepads.GamepadButton
+  - Bliss.CSharp.Interact.Gamepads.IGamepad
+  - Bliss.CSharp.Interact.Gamepads.Sdl3Gamepad
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Interact.Gamepads
+  nameWithType: Bliss.CSharp.Interact.Gamepads
+  fullName: Bliss.CSharp.Interact.Gamepads
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+  commentId: T:Bliss.CSharp.Interact.Gamepads.GamepadAxis
+  parent: Bliss.CSharp.Interact.Gamepads
+  href: Bliss.CSharp.Interact.Gamepads.GamepadAxis.html
+  name: GamepadAxis
+  nameWithType: GamepadAxis
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  commentId: T:Bliss.CSharp.Interact.Gamepads.GamepadButton
+  parent: Bliss.CSharp.Interact.Gamepads
+  href: Bliss.CSharp.Interact.Gamepads.GamepadButton.html
+  name: GamepadButton
+  nameWithType: GamepadButton
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Gamepads.IGamepad
+  commentId: T:Bliss.CSharp.Interact.Gamepads.IGamepad
+  parent: Bliss.CSharp.Interact.Gamepads
+  href: Bliss.CSharp.Interact.Gamepads.IGamepad.html
+  name: IGamepad
+  nameWithType: IGamepad
+  fullName: Bliss.CSharp.Interact.Gamepads.IGamepad
+- uid: Bliss.CSharp.Interact.Gamepads.Sdl3Gamepad
+  commentId: T:Bliss.CSharp.Interact.Gamepads.Sdl3Gamepad
+  href: Bliss.CSharp.Interact.Gamepads.Sdl3Gamepad.html
+  name: Sdl3Gamepad
+  nameWithType: Sdl3Gamepad
+  fullName: Bliss.CSharp.Interact.Gamepads.Sdl3Gamepad
+- uid: Bliss.CSharp.Interact.Gamepads
+  commentId: N:Bliss.CSharp.Interact.Gamepads
+  href: Bliss.html
+  name: Bliss.CSharp.Interact.Gamepads
+  nameWithType: Bliss.CSharp.Interact.Gamepads
+  fullName: Bliss.CSharp.Interact.Gamepads
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Gamepads
+    name: Gamepads
+    href: Bliss.CSharp.Interact.Gamepads.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Gamepads
+    name: Gamepads
+    href: Bliss.CSharp.Interact.Gamepads.html

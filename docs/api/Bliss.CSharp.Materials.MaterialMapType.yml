@@ -1,0 +1,433 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Materials.MaterialMapType
+  commentId: T:Bliss.CSharp.Materials.MaterialMapType
+  id: MaterialMapType
+  parent: Bliss.CSharp.Materials
+  children:
+  - Bliss.CSharp.Materials.MaterialMapType.Albedo
+  - Bliss.CSharp.Materials.MaterialMapType.Emission
+  - Bliss.CSharp.Materials.MaterialMapType.Height
+  - Bliss.CSharp.Materials.MaterialMapType.Metallic
+  - Bliss.CSharp.Materials.MaterialMapType.Normal
+  - Bliss.CSharp.Materials.MaterialMapType.Occlusion
+  - Bliss.CSharp.Materials.MaterialMapType.Roughness
+  langs:
+  - csharp
+  - vb
+  name: MaterialMapType
+  nameWithType: MaterialMapType
+  fullName: Bliss.CSharp.Materials.MaterialMapType
+  type: Enum
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/MaterialMapType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: MaterialMapType
+    path: ../src/Bliss/CSharp/Materials/MaterialMapType.cs
+    startLine: 4
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  syntax:
+    content: public enum MaterialMapType
+    content.vb: Public Enum MaterialMapType
+  extensionMethods:
+  - Bliss.CSharp.Materials.MaterialMapType.Bliss.CSharp.Materials.MaterialMapTypeExtensions.GetName
+- uid: Bliss.CSharp.Materials.MaterialMapType.Albedo
+  commentId: F:Bliss.CSharp.Materials.MaterialMapType.Albedo
+  id: Albedo
+  parent: Bliss.CSharp.Materials.MaterialMapType
+  langs:
+  - csharp
+  - vb
+  name: Albedo
+  nameWithType: MaterialMapType.Albedo
+  fullName: Bliss.CSharp.Materials.MaterialMapType.Albedo
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/MaterialMapType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Albedo
+    path: ../src/Bliss/CSharp/Materials/MaterialMapType.cs
+    startLine: 9
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: Albedo map, which defines the base color of the material.
+  example: []
+  syntax:
+    content: >-
+      [EnumMember(Value = "fAlbedo")]
+
+      Albedo = 0
+    return:
+      type: Bliss.CSharp.Materials.MaterialMapType
+    content.vb: >-
+      <EnumMember(Value:="fAlbedo")>
+
+      Albedo = 0
+  attributes:
+  - type: System.Runtime.Serialization.EnumMemberAttribute
+    ctor: System.Runtime.Serialization.EnumMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Value
+      type: System.String
+      value: fAlbedo
+- uid: Bliss.CSharp.Materials.MaterialMapType.Metallic
+  commentId: F:Bliss.CSharp.Materials.MaterialMapType.Metallic
+  id: Metallic
+  parent: Bliss.CSharp.Materials.MaterialMapType
+  langs:
+  - csharp
+  - vb
+  name: Metallic
+  nameWithType: MaterialMapType.Metallic
+  fullName: Bliss.CSharp.Materials.MaterialMapType.Metallic
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/MaterialMapType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Metallic
+    path: ../src/Bliss/CSharp/Materials/MaterialMapType.cs
+    startLine: 15
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: Metallic map, which defines the metallic properties of the material.
+  example: []
+  syntax:
+    content: >-
+      [EnumMember(Value = "fMetallic")]
+
+      Metallic = 1
+    return:
+      type: Bliss.CSharp.Materials.MaterialMapType
+    content.vb: >-
+      <EnumMember(Value:="fMetallic")>
+
+      Metallic = 1
+  attributes:
+  - type: System.Runtime.Serialization.EnumMemberAttribute
+    ctor: System.Runtime.Serialization.EnumMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Value
+      type: System.String
+      value: fMetallic
+- uid: Bliss.CSharp.Materials.MaterialMapType.Normal
+  commentId: F:Bliss.CSharp.Materials.MaterialMapType.Normal
+  id: Normal
+  parent: Bliss.CSharp.Materials.MaterialMapType
+  langs:
+  - csharp
+  - vb
+  name: Normal
+  nameWithType: MaterialMapType.Normal
+  fullName: Bliss.CSharp.Materials.MaterialMapType.Normal
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/MaterialMapType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Normal
+    path: ../src/Bliss/CSharp/Materials/MaterialMapType.cs
+    startLine: 21
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: Normal map, which adds detail to the surface of the material by simulating bumps and grooves.
+  example: []
+  syntax:
+    content: >-
+      [EnumMember(Value = "fNormal")]
+
+      Normal = 2
+    return:
+      type: Bliss.CSharp.Materials.MaterialMapType
+    content.vb: >-
+      <EnumMember(Value:="fNormal")>
+
+      Normal = 2
+  attributes:
+  - type: System.Runtime.Serialization.EnumMemberAttribute
+    ctor: System.Runtime.Serialization.EnumMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Value
+      type: System.String
+      value: fNormal
+- uid: Bliss.CSharp.Materials.MaterialMapType.Roughness
+  commentId: F:Bliss.CSharp.Materials.MaterialMapType.Roughness
+  id: Roughness
+  parent: Bliss.CSharp.Materials.MaterialMapType
+  langs:
+  - csharp
+  - vb
+  name: Roughness
+  nameWithType: MaterialMapType.Roughness
+  fullName: Bliss.CSharp.Materials.MaterialMapType.Roughness
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/MaterialMapType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Roughness
+    path: ../src/Bliss/CSharp/Materials/MaterialMapType.cs
+    startLine: 27
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: Roughness map, which defines the roughness level of the material's surface.
+  example: []
+  syntax:
+    content: >-
+      [EnumMember(Value = "fRoughness")]
+
+      Roughness = 3
+    return:
+      type: Bliss.CSharp.Materials.MaterialMapType
+    content.vb: >-
+      <EnumMember(Value:="fRoughness")>
+
+      Roughness = 3
+  attributes:
+  - type: System.Runtime.Serialization.EnumMemberAttribute
+    ctor: System.Runtime.Serialization.EnumMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Value
+      type: System.String
+      value: fRoughness
+- uid: Bliss.CSharp.Materials.MaterialMapType.Occlusion
+  commentId: F:Bliss.CSharp.Materials.MaterialMapType.Occlusion
+  id: Occlusion
+  parent: Bliss.CSharp.Materials.MaterialMapType
+  langs:
+  - csharp
+  - vb
+  name: Occlusion
+  nameWithType: MaterialMapType.Occlusion
+  fullName: Bliss.CSharp.Materials.MaterialMapType.Occlusion
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/MaterialMapType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Occlusion
+    path: ../src/Bliss/CSharp/Materials/MaterialMapType.cs
+    startLine: 33
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: Occlusion map, which adds shadows in crevices to enhance the appearance of depth.
+  example: []
+  syntax:
+    content: >-
+      [EnumMember(Value = "fOcclusion")]
+
+      Occlusion = 4
+    return:
+      type: Bliss.CSharp.Materials.MaterialMapType
+    content.vb: >-
+      <EnumMember(Value:="fOcclusion")>
+
+      Occlusion = 4
+  attributes:
+  - type: System.Runtime.Serialization.EnumMemberAttribute
+    ctor: System.Runtime.Serialization.EnumMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Value
+      type: System.String
+      value: fOcclusion
+- uid: Bliss.CSharp.Materials.MaterialMapType.Emission
+  commentId: F:Bliss.CSharp.Materials.MaterialMapType.Emission
+  id: Emission
+  parent: Bliss.CSharp.Materials.MaterialMapType
+  langs:
+  - csharp
+  - vb
+  name: Emission
+  nameWithType: MaterialMapType.Emission
+  fullName: Bliss.CSharp.Materials.MaterialMapType.Emission
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/MaterialMapType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Emission
+    path: ../src/Bliss/CSharp/Materials/MaterialMapType.cs
+    startLine: 39
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: Emission map, which defines areas of the material that emit light.
+  example: []
+  syntax:
+    content: >-
+      [EnumMember(Value = "fEmissive")]
+
+      Emission = 5
+    return:
+      type: Bliss.CSharp.Materials.MaterialMapType
+    content.vb: >-
+      <EnumMember(Value:="fEmissive")>
+
+      Emission = 5
+  attributes:
+  - type: System.Runtime.Serialization.EnumMemberAttribute
+    ctor: System.Runtime.Serialization.EnumMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Value
+      type: System.String
+      value: fEmissive
+- uid: Bliss.CSharp.Materials.MaterialMapType.Height
+  commentId: F:Bliss.CSharp.Materials.MaterialMapType.Height
+  id: Height
+  parent: Bliss.CSharp.Materials.MaterialMapType
+  langs:
+  - csharp
+  - vb
+  name: Height
+  nameWithType: MaterialMapType.Height
+  fullName: Bliss.CSharp.Materials.MaterialMapType.Height
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/MaterialMapType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Height
+    path: ../src/Bliss/CSharp/Materials/MaterialMapType.cs
+    startLine: 45
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: Height map, which provides height data for the material to simulate depth effects.
+  example: []
+  syntax:
+    content: >-
+      [EnumMember(Value = "fHeight")]
+
+      Height = 6
+    return:
+      type: Bliss.CSharp.Materials.MaterialMapType
+    content.vb: >-
+      <EnumMember(Value:="fHeight")>
+
+      Height = 6
+  attributes:
+  - type: System.Runtime.Serialization.EnumMemberAttribute
+    ctor: System.Runtime.Serialization.EnumMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Value
+      type: System.String
+      value: fHeight
+references:
+- uid: Bliss.CSharp.Materials
+  commentId: N:Bliss.CSharp.Materials
+  href: Bliss.html
+  name: Bliss.CSharp.Materials
+  nameWithType: Bliss.CSharp.Materials
+  fullName: Bliss.CSharp.Materials
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Materials
+    name: Materials
+    href: Bliss.CSharp.Materials.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Materials
+    name: Materials
+    href: Bliss.CSharp.Materials.html
+- uid: Bliss.CSharp.Materials.MaterialMapType.Bliss.CSharp.Materials.MaterialMapTypeExtensions.GetName
+  commentId: M:Bliss.CSharp.Materials.MaterialMapTypeExtensions.GetName(Bliss.CSharp.Materials.MaterialMapType)
+  parent: Bliss.CSharp.Materials.MaterialMapTypeExtensions
+  definition: Bliss.CSharp.Materials.MaterialMapTypeExtensions.GetName(Bliss.CSharp.Materials.MaterialMapType)
+  href: Bliss.CSharp.Materials.MaterialMapTypeExtensions.html#Bliss_CSharp_Materials_MaterialMapTypeExtensions_GetName_Bliss_CSharp_Materials_MaterialMapType_
+  name: GetName(MaterialMapType)
+  nameWithType: MaterialMapTypeExtensions.GetName(MaterialMapType)
+  fullName: Bliss.CSharp.Materials.MaterialMapTypeExtensions.GetName(Bliss.CSharp.Materials.MaterialMapType)
+  spec.csharp:
+  - uid: Bliss.CSharp.Materials.MaterialMapTypeExtensions.GetName(Bliss.CSharp.Materials.MaterialMapType)
+    name: GetName
+    href: Bliss.CSharp.Materials.MaterialMapTypeExtensions.html#Bliss_CSharp_Materials_MaterialMapTypeExtensions_GetName_Bliss_CSharp_Materials_MaterialMapType_
+  - name: (
+  - uid: Bliss.CSharp.Materials.MaterialMapType
+    name: MaterialMapType
+    href: Bliss.CSharp.Materials.MaterialMapType.html
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Materials.MaterialMapTypeExtensions.GetName(Bliss.CSharp.Materials.MaterialMapType)
+    name: GetName
+    href: Bliss.CSharp.Materials.MaterialMapTypeExtensions.html#Bliss_CSharp_Materials_MaterialMapTypeExtensions_GetName_Bliss_CSharp_Materials_MaterialMapType_
+  - name: (
+  - uid: Bliss.CSharp.Materials.MaterialMapType
+    name: MaterialMapType
+    href: Bliss.CSharp.Materials.MaterialMapType.html
+  - name: )
+- uid: Bliss.CSharp.Materials.MaterialMapTypeExtensions.GetName(Bliss.CSharp.Materials.MaterialMapType)
+  commentId: M:Bliss.CSharp.Materials.MaterialMapTypeExtensions.GetName(Bliss.CSharp.Materials.MaterialMapType)
+  href: Bliss.CSharp.Materials.MaterialMapTypeExtensions.html#Bliss_CSharp_Materials_MaterialMapTypeExtensions_GetName_Bliss_CSharp_Materials_MaterialMapType_
+  name: GetName(MaterialMapType)
+  nameWithType: MaterialMapTypeExtensions.GetName(MaterialMapType)
+  fullName: Bliss.CSharp.Materials.MaterialMapTypeExtensions.GetName(Bliss.CSharp.Materials.MaterialMapType)
+  spec.csharp:
+  - uid: Bliss.CSharp.Materials.MaterialMapTypeExtensions.GetName(Bliss.CSharp.Materials.MaterialMapType)
+    name: GetName
+    href: Bliss.CSharp.Materials.MaterialMapTypeExtensions.html#Bliss_CSharp_Materials_MaterialMapTypeExtensions_GetName_Bliss_CSharp_Materials_MaterialMapType_
+  - name: (
+  - uid: Bliss.CSharp.Materials.MaterialMapType
+    name: MaterialMapType
+    href: Bliss.CSharp.Materials.MaterialMapType.html
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Materials.MaterialMapTypeExtensions.GetName(Bliss.CSharp.Materials.MaterialMapType)
+    name: GetName
+    href: Bliss.CSharp.Materials.MaterialMapTypeExtensions.html#Bliss_CSharp_Materials_MaterialMapTypeExtensions_GetName_Bliss_CSharp_Materials_MaterialMapType_
+  - name: (
+  - uid: Bliss.CSharp.Materials.MaterialMapType
+    name: MaterialMapType
+    href: Bliss.CSharp.Materials.MaterialMapType.html
+  - name: )
+- uid: Bliss.CSharp.Materials.MaterialMapTypeExtensions
+  commentId: T:Bliss.CSharp.Materials.MaterialMapTypeExtensions
+  parent: Bliss.CSharp.Materials
+  href: Bliss.CSharp.Materials.MaterialMapTypeExtensions.html
+  name: MaterialMapTypeExtensions
+  nameWithType: MaterialMapTypeExtensions
+  fullName: Bliss.CSharp.Materials.MaterialMapTypeExtensions
+- uid: Bliss.CSharp.Materials.MaterialMapType
+  commentId: T:Bliss.CSharp.Materials.MaterialMapType
+  parent: Bliss.CSharp.Materials
+  href: Bliss.CSharp.Materials.MaterialMapType.html
+  name: MaterialMapType
+  nameWithType: MaterialMapType
+  fullName: Bliss.CSharp.Materials.MaterialMapType

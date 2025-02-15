@@ -1,0 +1,206 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip
+  id: SpriteFlip
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  children:
+  - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip.Both
+  - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip.Horizontal
+  - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip.None
+  - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip.Vertical
+  langs:
+  - csharp
+  - vb
+  name: SpriteFlip
+  nameWithType: SpriteFlip
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip
+  type: Enum
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteFlip.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SpriteFlip
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteFlip.cs
+    startLine: 2
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  syntax:
+    content: public enum SpriteFlip
+    content.vb: Public Enum SpriteFlip
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip.None
+  commentId: F:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip.None
+  id: None
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: SpriteFlip.None
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip.None
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteFlip.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: None
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteFlip.cs
+    startLine: 7
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  summary: No flipping applied to the sprite.
+  example: []
+  syntax:
+    content: None = 0
+    return:
+      type: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip.Vertical
+  commentId: F:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip.Vertical
+  id: Vertical
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip
+  langs:
+  - csharp
+  - vb
+  name: Vertical
+  nameWithType: SpriteFlip.Vertical
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip.Vertical
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteFlip.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Vertical
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteFlip.cs
+    startLine: 12
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  summary: The sprite is flipped vertically.
+  example: []
+  syntax:
+    content: Vertical = 1
+    return:
+      type: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip.Horizontal
+  commentId: F:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip.Horizontal
+  id: Horizontal
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip
+  langs:
+  - csharp
+  - vb
+  name: Horizontal
+  nameWithType: SpriteFlip.Horizontal
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip.Horizontal
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteFlip.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Horizontal
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteFlip.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  summary: The sprite is flipped horizontally.
+  example: []
+  syntax:
+    content: Horizontal = 2
+    return:
+      type: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip.Both
+  commentId: F:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip.Both
+  id: Both
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip
+  langs:
+  - csharp
+  - vb
+  name: Both
+  nameWithType: SpriteFlip.Both
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip.Both
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteFlip.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Both
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteFlip.cs
+    startLine: 22
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  summary: The sprite is flipped both vertically and horizontally.
+  example: []
+  syntax:
+    content: Both = 3
+    return:
+      type: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip
+references:
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches
+    name: Batches
+    href: Bliss.CSharp.Graphics.Rendering.Batches.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+    name: Sprites
+    href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches
+    name: Batches
+    href: Bliss.CSharp.Graphics.Rendering.Batches.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+    name: Sprites
+    href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.html
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip.html
+  name: SpriteFlip
+  nameWithType: SpriteFlip
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip

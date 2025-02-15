@@ -1,0 +1,219 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Interact.Mice.MouseButton
+  commentId: T:Bliss.CSharp.Interact.Mice.MouseButton
+  id: MouseButton
+  parent: Bliss.CSharp.Interact.Mice
+  children:
+  - Bliss.CSharp.Interact.Mice.MouseButton.Left
+  - Bliss.CSharp.Interact.Mice.MouseButton.Middle
+  - Bliss.CSharp.Interact.Mice.MouseButton.Right
+  - Bliss.CSharp.Interact.Mice.MouseButton.X1
+  - Bliss.CSharp.Interact.Mice.MouseButton.X2
+  langs:
+  - csharp
+  - vb
+  name: MouseButton
+  nameWithType: MouseButton
+  fullName: Bliss.CSharp.Interact.Mice.MouseButton
+  type: Enum
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/MouseButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: MouseButton
+    path: ../src/Bliss/CSharp/Interact/Mice/MouseButton.cs
+    startLine: 2
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice
+  syntax:
+    content: public enum MouseButton
+    content.vb: Public Enum MouseButton
+- uid: Bliss.CSharp.Interact.Mice.MouseButton.Left
+  commentId: F:Bliss.CSharp.Interact.Mice.MouseButton.Left
+  id: Left
+  parent: Bliss.CSharp.Interact.Mice.MouseButton
+  langs:
+  - csharp
+  - vb
+  name: Left
+  nameWithType: MouseButton.Left
+  fullName: Bliss.CSharp.Interact.Mice.MouseButton.Left
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/MouseButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Left
+    path: ../src/Bliss/CSharp/Interact/Mice/MouseButton.cs
+    startLine: 7
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice
+  summary: The left mouse button.
+  example: []
+  syntax:
+    content: Left = 1
+    return:
+      type: Bliss.CSharp.Interact.Mice.MouseButton
+- uid: Bliss.CSharp.Interact.Mice.MouseButton.Middle
+  commentId: F:Bliss.CSharp.Interact.Mice.MouseButton.Middle
+  id: Middle
+  parent: Bliss.CSharp.Interact.Mice.MouseButton
+  langs:
+  - csharp
+  - vb
+  name: Middle
+  nameWithType: MouseButton.Middle
+  fullName: Bliss.CSharp.Interact.Mice.MouseButton.Middle
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/MouseButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Middle
+    path: ../src/Bliss/CSharp/Interact/Mice/MouseButton.cs
+    startLine: 12
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice
+  summary: The middle mouse button (typically the scroll wheel button).
+  example: []
+  syntax:
+    content: Middle = 2
+    return:
+      type: Bliss.CSharp.Interact.Mice.MouseButton
+- uid: Bliss.CSharp.Interact.Mice.MouseButton.Right
+  commentId: F:Bliss.CSharp.Interact.Mice.MouseButton.Right
+  id: Right
+  parent: Bliss.CSharp.Interact.Mice.MouseButton
+  langs:
+  - csharp
+  - vb
+  name: Right
+  nameWithType: MouseButton.Right
+  fullName: Bliss.CSharp.Interact.Mice.MouseButton.Right
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/MouseButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Right
+    path: ../src/Bliss/CSharp/Interact/Mice/MouseButton.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice
+  summary: The right mouse button.
+  example: []
+  syntax:
+    content: Right = 3
+    return:
+      type: Bliss.CSharp.Interact.Mice.MouseButton
+- uid: Bliss.CSharp.Interact.Mice.MouseButton.X1
+  commentId: F:Bliss.CSharp.Interact.Mice.MouseButton.X1
+  id: X1
+  parent: Bliss.CSharp.Interact.Mice.MouseButton
+  langs:
+  - csharp
+  - vb
+  name: X1
+  nameWithType: MouseButton.X1
+  fullName: Bliss.CSharp.Interact.Mice.MouseButton.X1
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/MouseButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: X1
+    path: ../src/Bliss/CSharp/Interact/Mice/MouseButton.cs
+    startLine: 22
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice
+  summary: The first extra (X1) mouse button.
+  example: []
+  syntax:
+    content: X1 = 4
+    return:
+      type: Bliss.CSharp.Interact.Mice.MouseButton
+- uid: Bliss.CSharp.Interact.Mice.MouseButton.X2
+  commentId: F:Bliss.CSharp.Interact.Mice.MouseButton.X2
+  id: X2
+  parent: Bliss.CSharp.Interact.Mice.MouseButton
+  langs:
+  - csharp
+  - vb
+  name: X2
+  nameWithType: MouseButton.X2
+  fullName: Bliss.CSharp.Interact.Mice.MouseButton.X2
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/MouseButton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: X2
+    path: ../src/Bliss/CSharp/Interact/Mice/MouseButton.cs
+    startLine: 27
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice
+  summary: The second extra (X2) mouse button.
+  example: []
+  syntax:
+    content: X2 = 5
+    return:
+      type: Bliss.CSharp.Interact.Mice.MouseButton
+references:
+- uid: Bliss.CSharp.Interact.Mice
+  commentId: N:Bliss.CSharp.Interact.Mice
+  href: Bliss.html
+  name: Bliss.CSharp.Interact.Mice
+  nameWithType: Bliss.CSharp.Interact.Mice
+  fullName: Bliss.CSharp.Interact.Mice
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice
+    name: Mice
+    href: Bliss.CSharp.Interact.Mice.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice
+    name: Mice
+    href: Bliss.CSharp.Interact.Mice.html
+- uid: Bliss.CSharp.Interact.Mice.MouseButton
+  commentId: T:Bliss.CSharp.Interact.Mice.MouseButton
+  parent: Bliss.CSharp.Interact.Mice
+  href: Bliss.CSharp.Interact.Mice.MouseButton.html
+  name: MouseButton
+  nameWithType: MouseButton
+  fullName: Bliss.CSharp.Interact.Mice.MouseButton

@@ -1,0 +1,78 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Transformations
+  commentId: N:Bliss.CSharp.Transformations
+  id: Bliss.CSharp.Transformations
+  children:
+  - Bliss.CSharp.Transformations.Point
+  - Bliss.CSharp.Transformations.Rectangle
+  - Bliss.CSharp.Transformations.RectangleF
+  - Bliss.CSharp.Transformations.Transform
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Transformations
+  nameWithType: Bliss.CSharp.Transformations
+  fullName: Bliss.CSharp.Transformations
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Transformations.Point
+  commentId: T:Bliss.CSharp.Transformations.Point
+  parent: Bliss.CSharp.Transformations
+  href: Bliss.CSharp.Transformations.Point.html
+  name: Point
+  nameWithType: Point
+  fullName: Bliss.CSharp.Transformations.Point
+- uid: Bliss.CSharp.Transformations.Rectangle
+  commentId: T:Bliss.CSharp.Transformations.Rectangle
+  parent: Bliss.CSharp.Transformations
+  href: Bliss.CSharp.Transformations.Rectangle.html
+  name: Rectangle
+  nameWithType: Rectangle
+  fullName: Bliss.CSharp.Transformations.Rectangle
+- uid: Bliss.CSharp.Transformations.RectangleF
+  commentId: T:Bliss.CSharp.Transformations.RectangleF
+  parent: Bliss.CSharp.Transformations
+  href: Bliss.CSharp.Transformations.RectangleF.html
+  name: RectangleF
+  nameWithType: RectangleF
+  fullName: Bliss.CSharp.Transformations.RectangleF
+- uid: Bliss.CSharp.Transformations.Transform
+  commentId: T:Bliss.CSharp.Transformations.Transform
+  parent: Bliss.CSharp.Transformations
+  href: Bliss.CSharp.Transformations.Transform.html
+  name: Transform
+  nameWithType: Transform
+  fullName: Bliss.CSharp.Transformations.Transform
+- uid: Bliss.CSharp.Transformations
+  commentId: N:Bliss.CSharp.Transformations
+  href: Bliss.html
+  name: Bliss.CSharp.Transformations
+  nameWithType: Bliss.CSharp.Transformations
+  fullName: Bliss.CSharp.Transformations
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Transformations
+    name: Transformations
+    href: Bliss.CSharp.Transformations.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Transformations
+    name: Transformations
+    href: Bliss.CSharp.Transformations.html

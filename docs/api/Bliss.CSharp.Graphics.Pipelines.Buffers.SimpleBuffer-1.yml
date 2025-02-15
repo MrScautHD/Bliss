@@ -1,0 +1,1230 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  id: SimpleBuffer`1
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers
+  children:
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.#ctor(Veldrid.GraphicsDevice,System.UInt32,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType,Veldrid.ShaderStages)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.BufferType
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Data
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.DeviceBuffer
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Dispose(System.Boolean)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.GraphicsDevice
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValue(System.Int32,`0)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValueDeferred(Veldrid.CommandList,System.Int32,`0)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValueImmediate(System.Int32,`0)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.ShaderStages
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Size
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.UpdateBuffer(Veldrid.CommandList)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.UpdateBufferImmediate
+  langs:
+  - csharp
+  - vb
+  name: SimpleBuffer<T>
+  nameWithType: SimpleBuffer<T>
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>
+  type: Class
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SimpleBuffer
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+    startLine: 5
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  syntax:
+    content: 'public class SimpleBuffer<T> : Disposable, ISimpleBuffer, IDisposable where T : unmanaged'
+    typeParameters:
+    - id: T
+    content.vb: Public Class SimpleBuffer(Of T As Structure) Inherits Disposable Implements ISimpleBuffer, IDisposable
+  inheritance:
+  - System.Object
+  - Bliss.CSharp.Disposable
+  implements:
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+  - System.IDisposable
+  inheritedMembers:
+  - Bliss.CSharp.Disposable.HasDisposed
+  - Bliss.CSharp.Disposable.Dispose
+  - Bliss.CSharp.Disposable.ThrowIfDisposed
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: SimpleBuffer(Of T)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T)
+  name.vb: SimpleBuffer(Of T)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.GraphicsDevice
+  commentId: P:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.GraphicsDevice
+  id: GraphicsDevice
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  langs:
+  - csharp
+  - vb
+  name: GraphicsDevice
+  nameWithType: SimpleBuffer<T>.GraphicsDevice
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.GraphicsDevice
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GraphicsDevice
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+    startLine: 10
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: The graphics device used to create the buffer and related resources.
+  example: []
+  syntax:
+    content: public GraphicsDevice GraphicsDevice { get; }
+    parameters: []
+    return:
+      type: Veldrid.GraphicsDevice
+    content.vb: Public Property GraphicsDevice As GraphicsDevice
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.GraphicsDevice*
+  nameWithType.vb: SimpleBuffer(Of T).GraphicsDevice
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).GraphicsDevice
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Size
+  commentId: P:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Size
+  id: Size
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  langs:
+  - csharp
+  - vb
+  name: Size
+  nameWithType: SimpleBuffer<T>.Size
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.Size
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Size
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+    startLine: 15
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: The size of the buffer in elements.
+  example: []
+  syntax:
+    content: public uint Size { get; }
+    parameters: []
+    return:
+      type: System.UInt32
+    content.vb: Public Property Size As UInteger
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Size*
+  nameWithType.vb: SimpleBuffer(Of T).Size
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).Size
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.BufferType
+  commentId: P:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.BufferType
+  id: BufferType
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  langs:
+  - csharp
+  - vb
+  name: BufferType
+  nameWithType: SimpleBuffer<T>.BufferType
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.BufferType
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: BufferType
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+    startLine: 20
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: The type of the buffer, which defines its usage.
+  example: []
+  syntax:
+    content: public SimpleBufferType BufferType { get; }
+    parameters: []
+    return:
+      type: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+    content.vb: Public Property BufferType As SimpleBufferType
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.BufferType*
+  nameWithType.vb: SimpleBuffer(Of T).BufferType
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).BufferType
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.ShaderStages
+  commentId: P:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.ShaderStages
+  id: ShaderStages
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  langs:
+  - csharp
+  - vb
+  name: ShaderStages
+  nameWithType: SimpleBuffer<T>.ShaderStages
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.ShaderStages
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ShaderStages
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+    startLine: 25
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: The shader stages where this buffer will be used.
+  example: []
+  syntax:
+    content: public ShaderStages ShaderStages { get; }
+    parameters: []
+    return:
+      type: Veldrid.ShaderStages
+    content.vb: Public Property ShaderStages As ShaderStages
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.ShaderStages*
+  nameWithType.vb: SimpleBuffer(Of T).ShaderStages
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).ShaderStages
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.DeviceBuffer
+  commentId: P:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.DeviceBuffer
+  id: DeviceBuffer
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  langs:
+  - csharp
+  - vb
+  name: DeviceBuffer
+  nameWithType: SimpleBuffer<T>.DeviceBuffer
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.DeviceBuffer
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DeviceBuffer
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+    startLine: 30
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Represents the buffer resource allocated on the graphics device.
+  example: []
+  syntax:
+    content: public DeviceBuffer DeviceBuffer { get; }
+    parameters: []
+    return:
+      type: Veldrid.DeviceBuffer
+    content.vb: Public Property DeviceBuffer As DeviceBuffer
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.DeviceBuffer*
+  implements:
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer
+  nameWithType.vb: SimpleBuffer(Of T).DeviceBuffer
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).DeviceBuffer
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Data
+  commentId: P:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Data
+  id: Data
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  langs:
+  - csharp
+  - vb
+  name: Data
+  nameWithType: SimpleBuffer<T>.Data
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.Data
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Data
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+    startLine: 35
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: An array containing the data stored in the buffer.
+  example: []
+  syntax:
+    content: public T[] Data { get; }
+    parameters: []
+    return:
+      type: '{T}[]'
+    content.vb: Public Property Data As T()
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Data*
+  nameWithType.vb: SimpleBuffer(Of T).Data
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).Data
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.#ctor(Veldrid.GraphicsDevice,System.UInt32,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType,Veldrid.ShaderStages)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.#ctor(Veldrid.GraphicsDevice,System.UInt32,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType,Veldrid.ShaderStages)
+  id: '#ctor(Veldrid.GraphicsDevice,System.UInt32,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType,Veldrid.ShaderStages)'
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  langs:
+  - csharp
+  - vb
+  name: SimpleBuffer(GraphicsDevice, uint, SimpleBufferType, ShaderStages)
+  nameWithType: SimpleBuffer<T>.SimpleBuffer(GraphicsDevice, uint, SimpleBufferType, ShaderStages)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.SimpleBuffer(Veldrid.GraphicsDevice, uint, Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType, Veldrid.ShaderStages)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+    startLine: 49
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer%601" data-throw-if-not-resolved="false"></xref> class with the specified graphics device, buffer name, size, buffer type, and shader stages.
+  example: []
+  syntax:
+    content: public SimpleBuffer(GraphicsDevice graphicsDevice, uint size, SimpleBufferType bufferType, ShaderStages stages)
+    parameters:
+    - id: graphicsDevice
+      type: Veldrid.GraphicsDevice
+      description: The graphics device used to create the buffer and related resources.
+    - id: size
+      type: System.UInt32
+      description: The size of the buffer in elements.
+    - id: bufferType
+      type: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+      description: The type of the buffer, which defines its usage.
+    - id: stages
+      type: Veldrid.ShaderStages
+      description: The shader stages where this buffer will be used.
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, size As UInteger, bufferType As SimpleBufferType, stages As ShaderStages)
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.#ctor*
+  nameWithType.vb: SimpleBuffer(Of T).New(GraphicsDevice, UInteger, SimpleBufferType, ShaderStages)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).New(Veldrid.GraphicsDevice, UInteger, Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType, Veldrid.ShaderStages)
+  name.vb: New(GraphicsDevice, UInteger, SimpleBufferType, ShaderStages)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  id: GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  langs:
+  - csharp
+  - vb
+  name: GetResourceSet(SimpleBufferLayout)
+  nameWithType: SimpleBuffer<T>.GetResourceSet(SimpleBufferLayout)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetResourceSet
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+    startLine: 70
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Retrieves a cached resource set or creates a new one based on the provided buffer layout.
+  example: []
+  syntax:
+    content: public ResourceSet GetResourceSet(SimpleBufferLayout layout)
+    parameters:
+    - id: layout
+      type: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+      description: The layout defining the structure and configuration of the resource set.
+    return:
+      type: Veldrid.ResourceSet
+      description: The resource set corresponding to the specified layout.
+    content.vb: Public Function GetResourceSet(layout As SimpleBufferLayout) As ResourceSet
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.GetResourceSet*
+  nameWithType.vb: SimpleBuffer(Of T).GetResourceSet(SimpleBufferLayout)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValue(System.Int32,`0)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValue(System.Int32,`0)
+  id: SetValue(System.Int32,`0)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  langs:
+  - csharp
+  - vb
+  name: SetValue(int, T)
+  nameWithType: SimpleBuffer<T>.SetValue(int, T)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.SetValue(int, T)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetValue
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+    startLine: 86
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Sets the value at the specified index in the buffer.
+  example: []
+  syntax:
+    content: public void SetValue(int index, T value)
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The index in the buffer where the value should be set.
+    - id: value
+      type: '{T}'
+      description: The value to set in the buffer.
+    content.vb: Public Sub SetValue(index As Integer, value As T)
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValue*
+  nameWithType.vb: SimpleBuffer(Of T).SetValue(Integer, T)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).SetValue(Integer, T)
+  name.vb: SetValue(Integer, T)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValueImmediate(System.Int32,`0)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValueImmediate(System.Int32,`0)
+  id: SetValueImmediate(System.Int32,`0)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  langs:
+  - csharp
+  - vb
+  name: SetValueImmediate(int, T)
+  nameWithType: SimpleBuffer<T>.SetValueImmediate(int, T)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.SetValueImmediate(int, T)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetValueImmediate
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+    startLine: 95
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Sets the value of the buffer at the specified index and updates the buffer on the graphics device immediately.
+  example: []
+  syntax:
+    content: public void SetValueImmediate(int index, T value)
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The index at which the value should be set.
+    - id: value
+      type: '{T}'
+      description: The value to set at the specified index.
+    content.vb: Public Sub SetValueImmediate(index As Integer, value As T)
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValueImmediate*
+  nameWithType.vb: SimpleBuffer(Of T).SetValueImmediate(Integer, T)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).SetValueImmediate(Integer, T)
+  name.vb: SetValueImmediate(Integer, T)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValueDeferred(Veldrid.CommandList,System.Int32,`0)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValueDeferred(Veldrid.CommandList,System.Int32,`0)
+  id: SetValueDeferred(Veldrid.CommandList,System.Int32,`0)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  langs:
+  - csharp
+  - vb
+  name: SetValueDeferred(CommandList, int, T)
+  nameWithType: SimpleBuffer<T>.SetValueDeferred(CommandList, int, T)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.SetValueDeferred(Veldrid.CommandList, int, T)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetValueDeferred
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+    startLine: 106
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Sets the value at the specified index in the buffer and schedules a command to update the buffer on the command list.
+  example: []
+  syntax:
+    content: public void SetValueDeferred(CommandList commandList, int index, T value)
+    parameters:
+    - id: commandList
+      type: Veldrid.CommandList
+      description: The command list to which the buffer update command will be added.
+    - id: index
+      type: System.Int32
+      description: The index of the buffer element to set.
+    - id: value
+      type: '{T}'
+      description: The value to set at the specified index.
+    content.vb: Public Sub SetValueDeferred(commandList As CommandList, index As Integer, value As T)
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValueDeferred*
+  nameWithType.vb: SimpleBuffer(Of T).SetValueDeferred(CommandList, Integer, T)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).SetValueDeferred(Veldrid.CommandList, Integer, T)
+  name.vb: SetValueDeferred(CommandList, Integer, T)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.UpdateBufferImmediate
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.UpdateBufferImmediate
+  id: UpdateBufferImmediate
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  langs:
+  - csharp
+  - vb
+  name: UpdateBufferImmediate()
+  nameWithType: SimpleBuffer<T>.UpdateBufferImmediate()
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.UpdateBufferImmediate()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: UpdateBufferImmediate
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+    startLine: 114
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Immediately updates the GPU buffer with the current data held in the CPU buffer.
+  example: []
+  syntax:
+    content: public void UpdateBufferImmediate()
+    content.vb: Public Sub UpdateBufferImmediate()
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.UpdateBufferImmediate*
+  nameWithType.vb: SimpleBuffer(Of T).UpdateBufferImmediate()
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).UpdateBufferImmediate()
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.UpdateBuffer(Veldrid.CommandList)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.UpdateBuffer(Veldrid.CommandList)
+  id: UpdateBuffer(Veldrid.CommandList)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  langs:
+  - csharp
+  - vb
+  name: UpdateBuffer(CommandList)
+  nameWithType: SimpleBuffer<T>.UpdateBuffer(CommandList)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.UpdateBuffer(Veldrid.CommandList)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: UpdateBuffer
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+    startLine: 122
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Updates the contents of the device buffer with the current data.
+  example: []
+  syntax:
+    content: public void UpdateBuffer(CommandList commandList)
+    parameters:
+    - id: commandList
+      type: Veldrid.CommandList
+      description: The command list used to record the buffer update command.
+    content.vb: Public Sub UpdateBuffer(commandList As CommandList)
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.UpdateBuffer*
+  nameWithType.vb: SimpleBuffer(Of T).UpdateBuffer(CommandList)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).UpdateBuffer(Veldrid.CommandList)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Dispose(System.Boolean)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  langs:
+  - csharp
+  - vb
+  name: Dispose(bool)
+  nameWithType: SimpleBuffer<T>.Dispose(bool)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.Dispose(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Dispose
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs
+    startLine: 140
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Disposes of the object and releases associated resources.
+  example: []
+  syntax:
+    content: protected override void Dispose(bool disposing)
+    parameters:
+    - id: disposing
+      type: System.Boolean
+      description: True if called from user code; false if called from a finalizer.
+    content.vb: Protected Overrides Sub Dispose(disposing As Boolean)
+  overridden: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Dispose*
+  nameWithType.vb: SimpleBuffer(Of T).Dispose(Boolean)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+references:
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+  commentId: N:Bliss.CSharp.Graphics.Pipelines.Buffers
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Pipelines.Buffers
+  nameWithType: Bliss.CSharp.Graphics.Pipelines.Buffers
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+    name: Buffers
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+    name: Buffers
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bliss.CSharp.Disposable
+  commentId: T:Bliss.CSharp.Disposable
+  parent: Bliss.CSharp
+  href: Bliss.CSharp.Disposable.html
+  name: Disposable
+  nameWithType: Disposable
+  fullName: Bliss.CSharp.Disposable
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.html
+  name: ISimpleBuffer
+  nameWithType: ISimpleBuffer
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Bliss.CSharp.Disposable.HasDisposed
+  commentId: P:Bliss.CSharp.Disposable.HasDisposed
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_HasDisposed
+  name: HasDisposed
+  nameWithType: Disposable.HasDisposed
+  fullName: Bliss.CSharp.Disposable.HasDisposed
+- uid: Bliss.CSharp.Disposable.Dispose
+  commentId: M:Bliss.CSharp.Disposable.Dispose
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  name: Dispose()
+  nameWithType: Disposable.Dispose()
+  fullName: Bliss.CSharp.Disposable.Dispose()
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.Dispose
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.Dispose
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+  commentId: M:Bliss.CSharp.Disposable.ThrowIfDisposed
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  name: ThrowIfDisposed()
+  nameWithType: Disposable.ThrowIfDisposed()
+  fullName: Bliss.CSharp.Disposable.ThrowIfDisposed()
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+    name: ThrowIfDisposed
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+    name: ThrowIfDisposed
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp
+  commentId: N:Bliss.CSharp
+  href: Bliss.html
+  name: Bliss.CSharp
+  nameWithType: Bliss.CSharp
+  fullName: Bliss.CSharp
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.GraphicsDevice*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.GraphicsDevice
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_GraphicsDevice
+  name: GraphicsDevice
+  nameWithType: SimpleBuffer<T>.GraphicsDevice
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.GraphicsDevice
+  nameWithType.vb: SimpleBuffer(Of T).GraphicsDevice
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).GraphicsDevice
+- uid: Veldrid.GraphicsDevice
+  commentId: T:Veldrid.GraphicsDevice
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsDevice.cs
+  name: GraphicsDevice
+  nameWithType: GraphicsDevice
+  fullName: Veldrid.GraphicsDevice
+- uid: Veldrid
+  commentId: N:Veldrid
+  isExternal: true
+  name: Veldrid
+  nameWithType: Veldrid
+  fullName: Veldrid
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Size*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Size
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_Size
+  name: Size
+  nameWithType: SimpleBuffer<T>.Size
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.Size
+  nameWithType.vb: SimpleBuffer(Of T).Size
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).Size
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.BufferType*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.BufferType
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_BufferType
+  name: BufferType
+  nameWithType: SimpleBuffer<T>.BufferType
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.BufferType
+  nameWithType.vb: SimpleBuffer(Of T).BufferType
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).BufferType
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.html
+  name: SimpleBufferType
+  nameWithType: SimpleBufferType
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.ShaderStages*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.ShaderStages
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_ShaderStages
+  name: ShaderStages
+  nameWithType: SimpleBuffer<T>.ShaderStages
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.ShaderStages
+  nameWithType.vb: SimpleBuffer(Of T).ShaderStages
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).ShaderStages
+- uid: Veldrid.ShaderStages
+  commentId: T:Veldrid.ShaderStages
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/ShaderStages.cs
+  name: ShaderStages
+  nameWithType: ShaderStages
+  fullName: Veldrid.ShaderStages
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.DeviceBuffer*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.DeviceBuffer
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_DeviceBuffer
+  name: DeviceBuffer
+  nameWithType: SimpleBuffer<T>.DeviceBuffer
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.DeviceBuffer
+  nameWithType.vb: SimpleBuffer(Of T).DeviceBuffer
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).DeviceBuffer
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer
+  commentId: P:Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.html#Bliss_CSharp_Graphics_Pipelines_Buffers_ISimpleBuffer_DeviceBuffer
+  name: DeviceBuffer
+  nameWithType: ISimpleBuffer.DeviceBuffer
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer
+- uid: Veldrid.DeviceBuffer
+  commentId: T:Veldrid.DeviceBuffer
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Buffer.cs
+  name: DeviceBuffer
+  nameWithType: DeviceBuffer
+  fullName: Veldrid.DeviceBuffer
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Data*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Data
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_Data
+  name: Data
+  nameWithType: SimpleBuffer<T>.Data
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.Data
+  nameWithType.vb: SimpleBuffer(Of T).Data
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).Data
+- uid: '{T}[]'
+  isExternal: true
+  name: T[]
+  nameWithType: T[]
+  fullName: T[]
+  nameWithType.vb: T()
+  fullName.vb: T()
+  name.vb: T()
+  spec.csharp:
+  - name: T
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - name: T
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html
+  name: SimpleBuffer<T>
+  nameWithType: SimpleBuffer<T>
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>
+  nameWithType.vb: SimpleBuffer(Of T)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T)
+  name.vb: SimpleBuffer(Of T)
+  spec.csharp:
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+    name: SimpleBuffer
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+    name: SimpleBuffer
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.#ctor*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.#ctor
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1__ctor_Veldrid_GraphicsDevice_System_UInt32_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferType_Veldrid_ShaderStages_
+  name: SimpleBuffer
+  nameWithType: SimpleBuffer<T>.SimpleBuffer
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.SimpleBuffer
+  nameWithType.vb: SimpleBuffer(Of T).New
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).New
+  name.vb: New
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.GetResourceSet*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.GetResourceSet
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_GetResourceSet_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferLayout_
+  name: GetResourceSet
+  nameWithType: SimpleBuffer<T>.GetResourceSet
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.GetResourceSet
+  nameWithType.vb: SimpleBuffer(Of T).GetResourceSet
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).GetResourceSet
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
+  name: SimpleBufferLayout
+  nameWithType: SimpleBufferLayout
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+- uid: Veldrid.ResourceSet
+  commentId: T:Veldrid.ResourceSet
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/ResourceSet.cs
+  name: ResourceSet
+  nameWithType: ResourceSet
+  fullName: Veldrid.ResourceSet
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValue*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValue
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_SetValue_System_Int32__0_
+  name: SetValue
+  nameWithType: SimpleBuffer<T>.SetValue
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.SetValue
+  nameWithType.vb: SimpleBuffer(Of T).SetValue
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).SetValue
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValueImmediate*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValueImmediate
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_SetValueImmediate_System_Int32__0_
+  name: SetValueImmediate
+  nameWithType: SimpleBuffer<T>.SetValueImmediate
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.SetValueImmediate
+  nameWithType.vb: SimpleBuffer(Of T).SetValueImmediate
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).SetValueImmediate
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValueDeferred*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValueDeferred
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_SetValueDeferred_Veldrid_CommandList_System_Int32__0_
+  name: SetValueDeferred
+  nameWithType: SimpleBuffer<T>.SetValueDeferred
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.SetValueDeferred
+  nameWithType.vb: SimpleBuffer(Of T).SetValueDeferred
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).SetValueDeferred
+- uid: Veldrid.CommandList
+  commentId: T:Veldrid.CommandList
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
+  name: CommandList
+  nameWithType: CommandList
+  fullName: Veldrid.CommandList
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.UpdateBufferImmediate*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.UpdateBufferImmediate
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_UpdateBufferImmediate
+  name: UpdateBufferImmediate
+  nameWithType: SimpleBuffer<T>.UpdateBufferImmediate
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.UpdateBufferImmediate
+  nameWithType.vb: SimpleBuffer(Of T).UpdateBufferImmediate
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).UpdateBufferImmediate
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.UpdateBuffer*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.UpdateBuffer
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_UpdateBuffer_Veldrid_CommandList_
+  name: UpdateBuffer
+  nameWithType: SimpleBuffer<T>.UpdateBuffer
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.UpdateBuffer
+  nameWithType.vb: SimpleBuffer(Of T).UpdateBuffer
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).UpdateBuffer
+- uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  commentId: M:Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  parent: Bliss.CSharp.Disposable
+  isExternal: true
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  name: Dispose(bool)
+  nameWithType: Disposable.Dispose(bool)
+  fullName: Bliss.CSharp.Disposable.Dispose(bool)
+  nameWithType.vb: Disposable.Dispose(Boolean)
+  fullName.vb: Bliss.CSharp.Disposable.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Dispose*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Dispose
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_Dispose_System_Boolean_
+  name: Dispose
+  nameWithType: SimpleBuffer<T>.Dispose
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>.Dispose
+  nameWithType.vb: SimpleBuffer(Of T).Dispose
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T).Dispose
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

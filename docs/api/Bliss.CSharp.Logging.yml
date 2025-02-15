@@ -1,0 +1,85 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Logging
+  commentId: N:Bliss.CSharp.Logging
+  id: Bliss.CSharp.Logging
+  children:
+  - Bliss.CSharp.Logging.LogType
+  - Bliss.CSharp.Logging.Logger
+  - Bliss.CSharp.Logging.Logger.OnMessage
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Logging
+  nameWithType: Bliss.CSharp.Logging
+  fullName: Bliss.CSharp.Logging
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Logging.Logger
+  commentId: T:Bliss.CSharp.Logging.Logger
+  href: Bliss.CSharp.Logging.Logger.html
+  name: Logger
+  nameWithType: Logger
+  fullName: Bliss.CSharp.Logging.Logger
+- uid: Bliss.CSharp.Logging.Logger.OnMessage
+  commentId: T:Bliss.CSharp.Logging.Logger.OnMessage
+  parent: Bliss.CSharp.Logging
+  href: Bliss.CSharp.Logging.Logger.html
+  name: Logger.OnMessage
+  nameWithType: Logger.OnMessage
+  fullName: Bliss.CSharp.Logging.Logger.OnMessage
+  spec.csharp:
+  - uid: Bliss.CSharp.Logging.Logger
+    name: Logger
+    href: Bliss.CSharp.Logging.Logger.html
+  - name: .
+  - uid: Bliss.CSharp.Logging.Logger.OnMessage
+    name: OnMessage
+    href: Bliss.CSharp.Logging.Logger.OnMessage.html
+  spec.vb:
+  - uid: Bliss.CSharp.Logging.Logger
+    name: Logger
+    href: Bliss.CSharp.Logging.Logger.html
+  - name: .
+  - uid: Bliss.CSharp.Logging.Logger.OnMessage
+    name: OnMessage
+    href: Bliss.CSharp.Logging.Logger.OnMessage.html
+- uid: Bliss.CSharp.Logging.LogType
+  commentId: T:Bliss.CSharp.Logging.LogType
+  parent: Bliss.CSharp.Logging
+  href: Bliss.CSharp.Logging.LogType.html
+  name: LogType
+  nameWithType: LogType
+  fullName: Bliss.CSharp.Logging.LogType
+- uid: Bliss.CSharp.Logging
+  commentId: N:Bliss.CSharp.Logging
+  href: Bliss.html
+  name: Bliss.CSharp.Logging
+  nameWithType: Bliss.CSharp.Logging
+  fullName: Bliss.CSharp.Logging
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Logging
+    name: Logging
+    href: Bliss.CSharp.Logging.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Logging
+    name: Logging
+    href: Bliss.CSharp.Logging.html

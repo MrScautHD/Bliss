@@ -1,0 +1,161 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Camera.Dim2.CameraFollowMode
+  commentId: T:Bliss.CSharp.Camera.Dim2.CameraFollowMode
+  id: CameraFollowMode
+  parent: Bliss.CSharp.Camera.Dim2
+  children:
+  - Bliss.CSharp.Camera.Dim2.CameraFollowMode.Custom
+  - Bliss.CSharp.Camera.Dim2.CameraFollowMode.FollowTarget
+  - Bliss.CSharp.Camera.Dim2.CameraFollowMode.FollowTargetSmooth
+  langs:
+  - csharp
+  - vb
+  name: CameraFollowMode
+  nameWithType: CameraFollowMode
+  fullName: Bliss.CSharp.Camera.Dim2.CameraFollowMode
+  type: Enum
+  source:
+    remote:
+      path: src/Bliss/CSharp/Camera/Dim2/CameraFollowMode.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: CameraFollowMode
+    path: ../src/Bliss/CSharp/Camera/Dim2/CameraFollowMode.cs
+    startLine: 2
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Camera.Dim2
+  syntax:
+    content: public enum CameraFollowMode
+    content.vb: Public Enum CameraFollowMode
+- uid: Bliss.CSharp.Camera.Dim2.CameraFollowMode.Custom
+  commentId: F:Bliss.CSharp.Camera.Dim2.CameraFollowMode.Custom
+  id: Custom
+  parent: Bliss.CSharp.Camera.Dim2.CameraFollowMode
+  langs:
+  - csharp
+  - vb
+  name: Custom
+  nameWithType: CameraFollowMode.Custom
+  fullName: Bliss.CSharp.Camera.Dim2.CameraFollowMode.Custom
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Camera/Dim2/CameraFollowMode.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Custom
+    path: ../src/Bliss/CSharp/Camera/Dim2/CameraFollowMode.cs
+    startLine: 7
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Camera.Dim2
+  summary: Custom follow behavior, allowing manual control of the camera's movement.
+  example: []
+  syntax:
+    content: Custom = 0
+    return:
+      type: Bliss.CSharp.Camera.Dim2.CameraFollowMode
+- uid: Bliss.CSharp.Camera.Dim2.CameraFollowMode.FollowTarget
+  commentId: F:Bliss.CSharp.Camera.Dim2.CameraFollowMode.FollowTarget
+  id: FollowTarget
+  parent: Bliss.CSharp.Camera.Dim2.CameraFollowMode
+  langs:
+  - csharp
+  - vb
+  name: FollowTarget
+  nameWithType: CameraFollowMode.FollowTarget
+  fullName: Bliss.CSharp.Camera.Dim2.CameraFollowMode.FollowTarget
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Camera/Dim2/CameraFollowMode.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: FollowTarget
+    path: ../src/Bliss/CSharp/Camera/Dim2/CameraFollowMode.cs
+    startLine: 12
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Camera.Dim2
+  summary: Directly follows the target position without any smoothing or delay.
+  example: []
+  syntax:
+    content: FollowTarget = 1
+    return:
+      type: Bliss.CSharp.Camera.Dim2.CameraFollowMode
+- uid: Bliss.CSharp.Camera.Dim2.CameraFollowMode.FollowTargetSmooth
+  commentId: F:Bliss.CSharp.Camera.Dim2.CameraFollowMode.FollowTargetSmooth
+  id: FollowTargetSmooth
+  parent: Bliss.CSharp.Camera.Dim2.CameraFollowMode
+  langs:
+  - csharp
+  - vb
+  name: FollowTargetSmooth
+  nameWithType: CameraFollowMode.FollowTargetSmooth
+  fullName: Bliss.CSharp.Camera.Dim2.CameraFollowMode.FollowTargetSmooth
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Camera/Dim2/CameraFollowMode.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: FollowTargetSmooth
+    path: ../src/Bliss/CSharp/Camera/Dim2/CameraFollowMode.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Camera.Dim2
+  summary: Smoothly follows the target with a gradual transition, creating a smoother effect.
+  example: []
+  syntax:
+    content: FollowTargetSmooth = 2
+    return:
+      type: Bliss.CSharp.Camera.Dim2.CameraFollowMode
+references:
+- uid: Bliss.CSharp.Camera.Dim2
+  commentId: N:Bliss.CSharp.Camera.Dim2
+  href: Bliss.html
+  name: Bliss.CSharp.Camera.Dim2
+  nameWithType: Bliss.CSharp.Camera.Dim2
+  fullName: Bliss.CSharp.Camera.Dim2
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Camera
+    name: Camera
+    href: Bliss.CSharp.Camera.html
+  - name: .
+  - uid: Bliss.CSharp.Camera.Dim2
+    name: Dim2
+    href: Bliss.CSharp.Camera.Dim2.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Camera
+    name: Camera
+    href: Bliss.CSharp.Camera.html
+  - name: .
+  - uid: Bliss.CSharp.Camera.Dim2
+    name: Dim2
+    href: Bliss.CSharp.Camera.Dim2.html
+- uid: Bliss.CSharp.Camera.Dim2.CameraFollowMode
+  commentId: T:Bliss.CSharp.Camera.Dim2.CameraFollowMode
+  parent: Bliss.CSharp.Camera.Dim2
+  href: Bliss.CSharp.Camera.Dim2.CameraFollowMode.html
+  name: CameraFollowMode
+  nameWithType: CameraFollowMode
+  fullName: Bliss.CSharp.Camera.Dim2.CameraFollowMode

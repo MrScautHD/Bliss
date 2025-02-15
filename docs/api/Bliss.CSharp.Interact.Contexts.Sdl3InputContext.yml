@@ -1,0 +1,3433 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  commentId: T:Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  id: Sdl3InputContext
+  parent: Bliss.CSharp.Interact.Contexts
+  children:
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.#ctor(Bliss.CSharp.Windowing.IWindow)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.Begin
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.DisableRelativeMouseMode
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.Dispose(System.Boolean)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.EnableRelativeMouseMode
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.End
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetAvailableGamepadCount
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetClipboardText
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetGamepadAxisMovement(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadAxis)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetGamepadName(System.UInt32)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMouseCursor
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMouseDelta
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMousePosition
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetPressedChars
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.HideCursor
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsCursorShown
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsFileDragDropped(System.String@)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadAvailable(System.UInt32)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonDown(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonPressed(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonReleased(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonUp(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyDown(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyReleased(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyUp(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonDown(Bliss.CSharp.Interact.Mice.MouseButton)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonPressed(Bliss.CSharp.Interact.Mice.MouseButton)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonReleased(Bliss.CSharp.Interact.Mice.MouseButton)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonUp(Bliss.CSharp.Interact.Mice.MouseButton)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseMoving(System.Numerics.Vector2@)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseScrolling(System.Numerics.Vector2@)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsRelativeMouseModeEnabled
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.RumbleGamepad(System.UInt32,System.UInt16,System.UInt16,System.UInt32)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetClipboardText(System.String)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetMouseCursor(Bliss.CSharp.Interact.Mice.Cursors.ICursor)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetMousePosition(System.Numerics.Vector2)
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext.ShowCursor
+  langs:
+  - csharp
+  - vb
+  name: Sdl3InputContext
+  nameWithType: Sdl3InputContext
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  type: Class
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Sdl3InputContext
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 11
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  syntax:
+    content: 'public class Sdl3InputContext : Disposable, IInputContext, IDisposable'
+    content.vb: Public Class Sdl3InputContext Inherits Disposable Implements IInputContext, IDisposable
+  inheritance:
+  - System.Object
+  - Bliss.CSharp.Disposable
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext
+  - System.IDisposable
+  inheritedMembers:
+  - Bliss.CSharp.Disposable.HasDisposed
+  - Bliss.CSharp.Disposable.Dispose
+  - Bliss.CSharp.Disposable.ThrowIfDisposed
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.#ctor(Bliss.CSharp.Windowing.IWindow)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.#ctor(Bliss.CSharp.Windowing.IWindow)
+  id: '#ctor(Bliss.CSharp.Windowing.IWindow)'
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: Sdl3InputContext(IWindow)
+  nameWithType: Sdl3InputContext.Sdl3InputContext(IWindow)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.Sdl3InputContext(Bliss.CSharp.Windowing.IWindow)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 84
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Interact.Contexts.Sdl3InputContext" data-throw-if-not-resolved="false"></xref> class for handling input events from a window.
+  example: []
+  syntax:
+    content: public Sdl3InputContext(IWindow window)
+    parameters:
+    - id: window
+      type: Bliss.CSharp.Windowing.IWindow
+      description: The window associated with the input context. Must be an SDL3 window.
+    content.vb: Public Sub New(window As IWindow)
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.#ctor*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown if the provided window is not an SDL3 window.
+  nameWithType.vb: Sdl3InputContext.New(IWindow)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.New(Bliss.CSharp.Windowing.IWindow)
+  name.vb: New(IWindow)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.Begin
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.Begin
+  id: Begin
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: Begin()
+  nameWithType: Sdl3InputContext.Begin()
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.Begin()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Begin
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 119
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Begins input processing for the current frame.
+  example: []
+  syntax:
+    content: public void Begin()
+    content.vb: Public Sub Begin()
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.Begin*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.Begin
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.End
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.End
+  id: End
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: End()
+  nameWithType: Sdl3InputContext.End()
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.End()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: End
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 123
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Ends input processing for the current frame.
+  example: []
+  syntax:
+    content: public void End()
+    content.vb: Public Sub [End]()
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.End*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.End
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsCursorShown
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsCursorShown
+  id: IsCursorShown
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: IsCursorShown()
+  nameWithType: Sdl3InputContext.IsCursorShown()
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsCursorShown()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsCursorShown
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 150
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Checks if the cursor is currently shown.
+  example: []
+  syntax:
+    content: public bool IsCursorShown()
+    return:
+      type: System.Boolean
+      description: True if the cursor is shown; otherwise, false.
+    content.vb: Public Function IsCursorShown() As Boolean
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsCursorShown*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.IsCursorShown
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.ShowCursor
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.ShowCursor
+  id: ShowCursor
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: ShowCursor()
+  nameWithType: Sdl3InputContext.ShowCursor()
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.ShowCursor()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ShowCursor
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 154
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Shows the mouse cursor.
+  example: []
+  syntax:
+    content: public void ShowCursor()
+    content.vb: Public Sub ShowCursor()
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.ShowCursor*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.ShowCursor
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.HideCursor
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.HideCursor
+  id: HideCursor
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: HideCursor()
+  nameWithType: Sdl3InputContext.HideCursor()
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.HideCursor()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: HideCursor
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 158
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Hides the mouse cursor.
+  example: []
+  syntax:
+    content: public void HideCursor()
+    content.vb: Public Sub HideCursor()
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.HideCursor*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.HideCursor
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMouseCursor
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMouseCursor
+  id: GetMouseCursor
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: GetMouseCursor()
+  nameWithType: Sdl3InputContext.GetMouseCursor()
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMouseCursor()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetMouseCursor
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 162
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Gets the current mouse cursor.
+  example: []
+  syntax:
+    content: public ICursor GetMouseCursor()
+    return:
+      type: Bliss.CSharp.Interact.Mice.Cursors.ICursor
+      description: The current mouse cursor.
+    content.vb: Public Function GetMouseCursor() As ICursor
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMouseCursor*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.GetMouseCursor
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetMouseCursor(Bliss.CSharp.Interact.Mice.Cursors.ICursor)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetMouseCursor(Bliss.CSharp.Interact.Mice.Cursors.ICursor)
+  id: SetMouseCursor(Bliss.CSharp.Interact.Mice.Cursors.ICursor)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: SetMouseCursor(ICursor)
+  nameWithType: Sdl3InputContext.SetMouseCursor(ICursor)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetMouseCursor(Bliss.CSharp.Interact.Mice.Cursors.ICursor)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetMouseCursor
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 166
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Sets the mouse cursor to the specified cursor.
+  example: []
+  syntax:
+    content: public void SetMouseCursor(ICursor cursor)
+    parameters:
+    - id: cursor
+      type: Bliss.CSharp.Interact.Mice.Cursors.ICursor
+      description: The cursor to set.
+    content.vb: Public Sub SetMouseCursor(cursor As ICursor)
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetMouseCursor*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.SetMouseCursor(Bliss.CSharp.Interact.Mice.Cursors.ICursor)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsRelativeMouseModeEnabled
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsRelativeMouseModeEnabled
+  id: IsRelativeMouseModeEnabled
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: IsRelativeMouseModeEnabled()
+  nameWithType: Sdl3InputContext.IsRelativeMouseModeEnabled()
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsRelativeMouseModeEnabled()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsRelativeMouseModeEnabled
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 170
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Checks if relative mouse mode is enabled, where the cursor is locked to the window.
+  example: []
+  syntax:
+    content: public bool IsRelativeMouseModeEnabled()
+    return:
+      type: System.Boolean
+      description: True if relative mouse mode is enabled; otherwise, false.
+    content.vb: Public Function IsRelativeMouseModeEnabled() As Boolean
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsRelativeMouseModeEnabled*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.IsRelativeMouseModeEnabled
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.EnableRelativeMouseMode
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.EnableRelativeMouseMode
+  id: EnableRelativeMouseMode
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: EnableRelativeMouseMode()
+  nameWithType: Sdl3InputContext.EnableRelativeMouseMode()
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.EnableRelativeMouseMode()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: EnableRelativeMouseMode
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 174
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Enables relative mouse mode.
+  example: []
+  syntax:
+    content: public void EnableRelativeMouseMode()
+    content.vb: Public Sub EnableRelativeMouseMode()
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.EnableRelativeMouseMode*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.EnableRelativeMouseMode
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.DisableRelativeMouseMode
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.DisableRelativeMouseMode
+  id: DisableRelativeMouseMode
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: DisableRelativeMouseMode()
+  nameWithType: Sdl3InputContext.DisableRelativeMouseMode()
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.DisableRelativeMouseMode()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DisableRelativeMouseMode
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 178
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Disables relative mouse mode.
+  example: []
+  syntax:
+    content: public void DisableRelativeMouseMode()
+    content.vb: Public Sub DisableRelativeMouseMode()
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.DisableRelativeMouseMode*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.DisableRelativeMouseMode
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMousePosition
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMousePosition
+  id: GetMousePosition
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: GetMousePosition()
+  nameWithType: Sdl3InputContext.GetMousePosition()
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMousePosition()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetMousePosition
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 182
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Gets the current position of the mouse in window coordinates.
+  example: []
+  syntax:
+    content: public Vector2 GetMousePosition()
+    return:
+      type: System.Numerics.Vector2
+      description: The mouse position as a <xref href="System.Numerics.Vector2" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Function GetMousePosition() As Vector2
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMousePosition*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.GetMousePosition
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMouseDelta
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMouseDelta
+  id: GetMouseDelta
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: GetMouseDelta()
+  nameWithType: Sdl3InputContext.GetMouseDelta()
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMouseDelta()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetMouseDelta
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 190
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Retrieves the change in mouse position since the last frame.
+  example: []
+  syntax:
+    content: public Vector2 GetMouseDelta()
+    return:
+      type: System.Numerics.Vector2
+      description: A Vector2 representing the delta of the mouse movement.
+    content.vb: Public Function GetMouseDelta() As Vector2
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMouseDelta*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.GetMouseDelta
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetMousePosition(System.Numerics.Vector2)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetMousePosition(System.Numerics.Vector2)
+  id: SetMousePosition(System.Numerics.Vector2)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: SetMousePosition(Vector2)
+  nameWithType: Sdl3InputContext.SetMousePosition(Vector2)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetMousePosition(System.Numerics.Vector2)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetMousePosition
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 194
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Sets the mouse position to the specified coordinates.
+  example: []
+  syntax:
+    content: public void SetMousePosition(Vector2 position)
+    parameters:
+    - id: position
+      type: System.Numerics.Vector2
+      description: The position to set the mouse to.
+    content.vb: Public Sub SetMousePosition(position As Vector2)
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetMousePosition*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.SetMousePosition(System.Numerics.Vector2)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonPressed(Bliss.CSharp.Interact.Mice.MouseButton)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonPressed(Bliss.CSharp.Interact.Mice.MouseButton)
+  id: IsMouseButtonPressed(Bliss.CSharp.Interact.Mice.MouseButton)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: IsMouseButtonPressed(MouseButton)
+  nameWithType: Sdl3InputContext.IsMouseButtonPressed(MouseButton)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonPressed(Bliss.CSharp.Interact.Mice.MouseButton)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsMouseButtonPressed
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 198
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Checks if the specified mouse button was pressed in the current frame.
+  example: []
+  syntax:
+    content: public bool IsMouseButtonPressed(MouseButton button)
+    parameters:
+    - id: button
+      type: Bliss.CSharp.Interact.Mice.MouseButton
+      description: The mouse button to check.
+    return:
+      type: System.Boolean
+      description: True if the button was pressed; otherwise, false.
+    content.vb: Public Function IsMouseButtonPressed(button As MouseButton) As Boolean
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonPressed*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonPressed(Bliss.CSharp.Interact.Mice.MouseButton)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonDown(Bliss.CSharp.Interact.Mice.MouseButton)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonDown(Bliss.CSharp.Interact.Mice.MouseButton)
+  id: IsMouseButtonDown(Bliss.CSharp.Interact.Mice.MouseButton)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: IsMouseButtonDown(MouseButton)
+  nameWithType: Sdl3InputContext.IsMouseButtonDown(MouseButton)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonDown(Bliss.CSharp.Interact.Mice.MouseButton)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsMouseButtonDown
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 202
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Checks if the specified mouse button is currently being held down.
+  example: []
+  syntax:
+    content: public bool IsMouseButtonDown(MouseButton button)
+    parameters:
+    - id: button
+      type: Bliss.CSharp.Interact.Mice.MouseButton
+      description: The mouse button to check.
+    return:
+      type: System.Boolean
+      description: True if the button is down; otherwise, false.
+    content.vb: Public Function IsMouseButtonDown(button As MouseButton) As Boolean
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonDown*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonDown(Bliss.CSharp.Interact.Mice.MouseButton)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonReleased(Bliss.CSharp.Interact.Mice.MouseButton)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonReleased(Bliss.CSharp.Interact.Mice.MouseButton)
+  id: IsMouseButtonReleased(Bliss.CSharp.Interact.Mice.MouseButton)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: IsMouseButtonReleased(MouseButton)
+  nameWithType: Sdl3InputContext.IsMouseButtonReleased(MouseButton)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonReleased(Bliss.CSharp.Interact.Mice.MouseButton)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsMouseButtonReleased
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 206
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Checks if the specified mouse button was released in the current frame.
+  example: []
+  syntax:
+    content: public bool IsMouseButtonReleased(MouseButton button)
+    parameters:
+    - id: button
+      type: Bliss.CSharp.Interact.Mice.MouseButton
+      description: The mouse button to check.
+    return:
+      type: System.Boolean
+      description: True if the button was released; otherwise, false.
+    content.vb: Public Function IsMouseButtonReleased(button As MouseButton) As Boolean
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonReleased*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonReleased(Bliss.CSharp.Interact.Mice.MouseButton)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonUp(Bliss.CSharp.Interact.Mice.MouseButton)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonUp(Bliss.CSharp.Interact.Mice.MouseButton)
+  id: IsMouseButtonUp(Bliss.CSharp.Interact.Mice.MouseButton)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: IsMouseButtonUp(MouseButton)
+  nameWithType: Sdl3InputContext.IsMouseButtonUp(MouseButton)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonUp(Bliss.CSharp.Interact.Mice.MouseButton)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsMouseButtonUp
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 210
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Checks if the specified mouse button is currently up (not pressed).
+  example: []
+  syntax:
+    content: public bool IsMouseButtonUp(MouseButton button)
+    parameters:
+    - id: button
+      type: Bliss.CSharp.Interact.Mice.MouseButton
+      description: The mouse button to check.
+    return:
+      type: System.Boolean
+      description: True if the button is up; otherwise, false.
+    content.vb: Public Function IsMouseButtonUp(button As MouseButton) As Boolean
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonUp*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonUp(Bliss.CSharp.Interact.Mice.MouseButton)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseMoving(System.Numerics.Vector2@)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseMoving(System.Numerics.Vector2@)
+  id: IsMouseMoving(System.Numerics.Vector2@)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: IsMouseMoving(out Vector2)
+  nameWithType: Sdl3InputContext.IsMouseMoving(out Vector2)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseMoving(out System.Numerics.Vector2)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsMouseMoving
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 214
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Checks if the mouse is moving and returns the current position if it is.
+  example: []
+  syntax:
+    content: public bool IsMouseMoving(out Vector2 position)
+    parameters:
+    - id: position
+      type: System.Numerics.Vector2
+      description: The current mouse position.
+    return:
+      type: System.Boolean
+      description: True if the mouse is moving; otherwise, false.
+    content.vb: Public Function IsMouseMoving(position As Vector2) As Boolean
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseMoving*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseMoving(System.Numerics.Vector2@)
+  nameWithType.vb: Sdl3InputContext.IsMouseMoving(Vector2)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseMoving(System.Numerics.Vector2)
+  name.vb: IsMouseMoving(Vector2)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseScrolling(System.Numerics.Vector2@)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseScrolling(System.Numerics.Vector2@)
+  id: IsMouseScrolling(System.Numerics.Vector2@)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: IsMouseScrolling(out Vector2)
+  nameWithType: Sdl3InputContext.IsMouseScrolling(out Vector2)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseScrolling(out System.Numerics.Vector2)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsMouseScrolling
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 219
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Checks if the mouse is scrolling and returns the scroll delta if it is.
+  example: []
+  syntax:
+    content: public bool IsMouseScrolling(out Vector2 wheelDelta)
+    parameters:
+    - id: wheelDelta
+      type: System.Numerics.Vector2
+      description: The scroll delta of the mouse.
+    return:
+      type: System.Boolean
+      description: True if the mouse is scrolling; otherwise, false.
+    content.vb: Public Function IsMouseScrolling(wheelDelta As Vector2) As Boolean
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseScrolling*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseScrolling(System.Numerics.Vector2@)
+  nameWithType.vb: Sdl3InputContext.IsMouseScrolling(Vector2)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseScrolling(System.Numerics.Vector2)
+  name.vb: IsMouseScrolling(Vector2)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  id: IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: IsKeyPressed(KeyboardKey)
+  nameWithType: Sdl3InputContext.IsKeyPressed(KeyboardKey)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsKeyPressed
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 226
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Checks if the specified keyboard key is currently pressed.
+  example: []
+  syntax:
+    content: public bool IsKeyPressed(KeyboardKey key)
+    parameters:
+    - id: key
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+      description: The keyboard key to check.
+    return:
+      type: System.Boolean
+      description: True if the specified key is pressed; otherwise, false.
+    content.vb: Public Function IsKeyPressed(key As KeyboardKey) As Boolean
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyPressed*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyDown(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyDown(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  id: IsKeyDown(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: IsKeyDown(KeyboardKey)
+  nameWithType: Sdl3InputContext.IsKeyDown(KeyboardKey)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyDown(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsKeyDown
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 230
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Checks if a specified key is currently pressed down.
+  example: []
+  syntax:
+    content: public bool IsKeyDown(KeyboardKey key)
+    parameters:
+    - id: key
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+      description: The key to check the state of.
+    return:
+      type: System.Boolean
+      description: True if the key is pressed, false otherwise.
+    content.vb: Public Function IsKeyDown(key As KeyboardKey) As Boolean
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyDown*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyDown(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyReleased(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyReleased(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  id: IsKeyReleased(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: IsKeyReleased(KeyboardKey)
+  nameWithType: Sdl3InputContext.IsKeyReleased(KeyboardKey)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyReleased(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsKeyReleased
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 234
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Checks if a specified keyboard key has been released.
+  example: []
+  syntax:
+    content: public bool IsKeyReleased(KeyboardKey key)
+    parameters:
+    - id: key
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+      description: The keyboard key to check.
+    return:
+      type: System.Boolean
+      description: True if the key has been released, otherwise false.
+    content.vb: Public Function IsKeyReleased(key As KeyboardKey) As Boolean
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyReleased*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyReleased(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyUp(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyUp(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  id: IsKeyUp(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: IsKeyUp(KeyboardKey)
+  nameWithType: Sdl3InputContext.IsKeyUp(KeyboardKey)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyUp(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsKeyUp
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 238
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Checks if a specific keyboard key is currently in the released state.
+  example: []
+  syntax:
+    content: public bool IsKeyUp(KeyboardKey key)
+    parameters:
+    - id: key
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+      description: The keyboard key to check.
+    return:
+      type: System.Boolean
+      description: Returns true if the specified key is up; otherwise, false.
+    content.vb: Public Function IsKeyUp(key As KeyboardKey) As Boolean
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyUp*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyUp(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetPressedChars
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetPressedChars
+  id: GetPressedChars
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: GetPressedChars()
+  nameWithType: Sdl3InputContext.GetPressedChars()
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetPressedChars()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetPressedChars
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 242
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Retrieves characters that were pressed in the current frame.
+  example: []
+  syntax:
+    content: public char[] GetPressedChars()
+    return:
+      type: System.Char[]
+      description: An array of characters pressed in the current frame.
+    content.vb: Public Function GetPressedChars() As Char()
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetPressedChars*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetClipboardText
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetClipboardText
+  id: GetClipboardText
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: GetClipboardText()
+  nameWithType: Sdl3InputContext.GetClipboardText()
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetClipboardText()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetClipboardText
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 246
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Retrieves the current text from the system clipboard.
+  example: []
+  syntax:
+    content: public string GetClipboardText()
+    return:
+      type: System.String
+      description: The clipboard text.
+    content.vb: Public Function GetClipboardText() As String
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetClipboardText*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.GetClipboardText
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetClipboardText(System.String)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetClipboardText(System.String)
+  id: SetClipboardText(System.String)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: SetClipboardText(string)
+  nameWithType: Sdl3InputContext.SetClipboardText(string)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetClipboardText(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetClipboardText
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 250
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Sets the clipboard content to the specified text.
+  example: []
+  syntax:
+    content: public void SetClipboardText(string text)
+    parameters:
+    - id: text
+      type: System.String
+      description: The text to set to the clipboard.
+    content.vb: Public Sub SetClipboardText(text As String)
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetClipboardText*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.SetClipboardText(System.String)
+  nameWithType.vb: Sdl3InputContext.SetClipboardText(String)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetClipboardText(String)
+  name.vb: SetClipboardText(String)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetAvailableGamepadCount
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetAvailableGamepadCount
+  id: GetAvailableGamepadCount
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: GetAvailableGamepadCount()
+  nameWithType: Sdl3InputContext.GetAvailableGamepadCount()
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetAvailableGamepadCount()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetAvailableGamepadCount
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 256
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Gets the count of available gamepads.
+  example: []
+  syntax:
+    content: public uint GetAvailableGamepadCount()
+    return:
+      type: System.UInt32
+      description: The number of available gamepads.
+    content.vb: Public Function GetAvailableGamepadCount() As UInteger
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetAvailableGamepadCount*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.GetAvailableGamepadCount
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadAvailable(System.UInt32)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadAvailable(System.UInt32)
+  id: IsGamepadAvailable(System.UInt32)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: IsGamepadAvailable(uint)
+  nameWithType: Sdl3InputContext.IsGamepadAvailable(uint)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadAvailable(uint)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsGamepadAvailable
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 260
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Checks if the specified gamepad is available.
+  example: []
+  syntax:
+    content: public bool IsGamepadAvailable(uint gamepad)
+    parameters:
+    - id: gamepad
+      type: System.UInt32
+      description: The index of the gamepad to check.
+    return:
+      type: System.Boolean
+      description: True if the gamepad is available; otherwise, false.
+    content.vb: Public Function IsGamepadAvailable(gamepad As UInteger) As Boolean
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadAvailable*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadAvailable(System.UInt32)
+  nameWithType.vb: Sdl3InputContext.IsGamepadAvailable(UInteger)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadAvailable(UInteger)
+  name.vb: IsGamepadAvailable(UInteger)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetGamepadName(System.UInt32)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetGamepadName(System.UInt32)
+  id: GetGamepadName(System.UInt32)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: GetGamepadName(uint)
+  nameWithType: Sdl3InputContext.GetGamepadName(uint)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetGamepadName(uint)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetGamepadName
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 264
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Gets the name of the specified gamepad.
+  example: []
+  syntax:
+    content: public string GetGamepadName(uint gamepad)
+    parameters:
+    - id: gamepad
+      type: System.UInt32
+      description: The index of the gamepad.
+    return:
+      type: System.String
+      description: The name of the specified gamepad.
+    content.vb: Public Function GetGamepadName(gamepad As UInteger) As String
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetGamepadName*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.GetGamepadName(System.UInt32)
+  nameWithType.vb: Sdl3InputContext.GetGamepadName(UInteger)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetGamepadName(UInteger)
+  name.vb: GetGamepadName(UInteger)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.RumbleGamepad(System.UInt32,System.UInt16,System.UInt16,System.UInt32)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.RumbleGamepad(System.UInt32,System.UInt16,System.UInt16,System.UInt32)
+  id: RumbleGamepad(System.UInt32,System.UInt16,System.UInt16,System.UInt32)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: RumbleGamepad(uint, ushort, ushort, uint)
+  nameWithType: Sdl3InputContext.RumbleGamepad(uint, ushort, ushort, uint)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.RumbleGamepad(uint, ushort, ushort, uint)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: RumbleGamepad
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 268
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Generates a rumble effect on the specified gamepad.
+  example: []
+  syntax:
+    content: public void RumbleGamepad(uint gamepad, ushort lowFrequencyRumble, ushort highFrequencyRumble, uint durationMs)
+    parameters:
+    - id: gamepad
+      type: System.UInt32
+      description: The index of the gamepad to rumble.
+    - id: lowFrequencyRumble
+      type: System.UInt16
+      description: The intensity of the low-frequency rumble.
+    - id: highFrequencyRumble
+      type: System.UInt16
+      description: The intensity of the high-frequency rumble.
+    - id: durationMs
+      type: System.UInt32
+      description: Duration of the rumble effect in milliseconds.
+    content.vb: Public Sub RumbleGamepad(gamepad As UInteger, lowFrequencyRumble As UShort, highFrequencyRumble As UShort, durationMs As UInteger)
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.RumbleGamepad*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.RumbleGamepad(System.UInt32,System.UInt16,System.UInt16,System.UInt32)
+  nameWithType.vb: Sdl3InputContext.RumbleGamepad(UInteger, UShort, UShort, UInteger)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.RumbleGamepad(UInteger, UShort, UShort, UInteger)
+  name.vb: RumbleGamepad(UInteger, UShort, UShort, UInteger)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetGamepadAxisMovement(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadAxis)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetGamepadAxisMovement(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadAxis)
+  id: GetGamepadAxisMovement(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadAxis)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: GetGamepadAxisMovement(uint, GamepadAxis)
+  nameWithType: Sdl3InputContext.GetGamepadAxisMovement(uint, GamepadAxis)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetGamepadAxisMovement(uint, Bliss.CSharp.Interact.Gamepads.GamepadAxis)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetGamepadAxisMovement
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 272
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Retrieves the movement value of the specified axis on the given gamepad.
+  example: []
+  syntax:
+    content: public float GetGamepadAxisMovement(uint gamepad, GamepadAxis axis)
+    parameters:
+    - id: gamepad
+      type: System.UInt32
+      description: The index of the gamepad.
+    - id: axis
+      type: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+      description: The axis of the gamepad to check.
+    return:
+      type: System.Single
+      description: The movement value of the specified axis.
+    content.vb: Public Function GetGamepadAxisMovement(gamepad As UInteger, axis As GamepadAxis) As Single
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetGamepadAxisMovement*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.GetGamepadAxisMovement(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadAxis)
+  nameWithType.vb: Sdl3InputContext.GetGamepadAxisMovement(UInteger, GamepadAxis)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetGamepadAxisMovement(UInteger, Bliss.CSharp.Interact.Gamepads.GamepadAxis)
+  name.vb: GetGamepadAxisMovement(UInteger, GamepadAxis)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonPressed(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonPressed(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  id: IsGamepadButtonPressed(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: IsGamepadButtonPressed(uint, GamepadButton)
+  nameWithType: Sdl3InputContext.IsGamepadButtonPressed(uint, GamepadButton)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonPressed(uint, Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsGamepadButtonPressed
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 276
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Checks if a specific gamepad button is pressed.
+  example: []
+  syntax:
+    content: public bool IsGamepadButtonPressed(uint gamepad, GamepadButton button)
+    parameters:
+    - id: gamepad
+      type: System.UInt32
+      description: The identifier of the gamepad.
+    - id: button
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+      description: The button on the gamepad to check.
+    return:
+      type: System.Boolean
+      description: True if the specified button is pressed; otherwise, false.
+    content.vb: Public Function IsGamepadButtonPressed(gamepad As UInteger, button As GamepadButton) As Boolean
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonPressed*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonPressed(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  nameWithType.vb: Sdl3InputContext.IsGamepadButtonPressed(UInteger, GamepadButton)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonPressed(UInteger, Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  name.vb: IsGamepadButtonPressed(UInteger, GamepadButton)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonDown(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonDown(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  id: IsGamepadButtonDown(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: IsGamepadButtonDown(uint, GamepadButton)
+  nameWithType: Sdl3InputContext.IsGamepadButtonDown(uint, GamepadButton)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonDown(uint, Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsGamepadButtonDown
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 280
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Checks if the specified button on the given gamepad is currently being pressed.
+  example: []
+  syntax:
+    content: public bool IsGamepadButtonDown(uint gamepad, GamepadButton button)
+    parameters:
+    - id: gamepad
+      type: System.UInt32
+      description: The index of the gamepad.
+    - id: button
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+      description: The button on the gamepad to check.
+    return:
+      type: System.Boolean
+      description: True if the specified button is pressed, otherwise false.
+    content.vb: Public Function IsGamepadButtonDown(gamepad As UInteger, button As GamepadButton) As Boolean
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonDown*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonDown(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  nameWithType.vb: Sdl3InputContext.IsGamepadButtonDown(UInteger, GamepadButton)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonDown(UInteger, Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  name.vb: IsGamepadButtonDown(UInteger, GamepadButton)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonReleased(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonReleased(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  id: IsGamepadButtonReleased(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: IsGamepadButtonReleased(uint, GamepadButton)
+  nameWithType: Sdl3InputContext.IsGamepadButtonReleased(uint, GamepadButton)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonReleased(uint, Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsGamepadButtonReleased
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 284
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Determines whether a specific button on a specified gamepad has been released.
+  example: []
+  syntax:
+    content: public bool IsGamepadButtonReleased(uint gamepad, GamepadButton button)
+    parameters:
+    - id: gamepad
+      type: System.UInt32
+      description: The identifier of the gamepad.
+    - id: button
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+      description: The gamepad button to check.
+    return:
+      type: System.Boolean
+      description: True if the button was released; otherwise, false.
+    content.vb: Public Function IsGamepadButtonReleased(gamepad As UInteger, button As GamepadButton) As Boolean
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonReleased*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonReleased(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  nameWithType.vb: Sdl3InputContext.IsGamepadButtonReleased(UInteger, GamepadButton)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonReleased(UInteger, Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  name.vb: IsGamepadButtonReleased(UInteger, GamepadButton)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonUp(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonUp(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  id: IsGamepadButtonUp(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: IsGamepadButtonUp(uint, GamepadButton)
+  nameWithType: Sdl3InputContext.IsGamepadButtonUp(uint, GamepadButton)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonUp(uint, Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsGamepadButtonUp
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 288
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Determines whether a specified button on the specified gamepad is currently not pressed.
+  example: []
+  syntax:
+    content: public bool IsGamepadButtonUp(uint gamepad, GamepadButton button)
+    parameters:
+    - id: gamepad
+      type: System.UInt32
+      description: The identifier of the gamepad.
+    - id: button
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+      description: The gamepad button to check.
+    return:
+      type: System.Boolean
+      description: True if the button is up (not pressed); otherwise, false.
+    content.vb: Public Function IsGamepadButtonUp(gamepad As UInteger, button As GamepadButton) As Boolean
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonUp*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonUp(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  nameWithType.vb: Sdl3InputContext.IsGamepadButtonUp(UInteger, GamepadButton)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonUp(UInteger, Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  name.vb: IsGamepadButtonUp(UInteger, GamepadButton)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsFileDragDropped(System.String@)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsFileDragDropped(System.String@)
+  id: IsFileDragDropped(System.String@)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: IsFileDragDropped(out string)
+  nameWithType: Sdl3InputContext.IsFileDragDropped(out string)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsFileDragDropped(out string)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsFileDragDropped
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 294
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Checks if a file has been drag-dropped onto the application.
+  example: []
+  syntax:
+    content: public bool IsFileDragDropped(out string path)
+    parameters:
+    - id: path
+      type: System.String
+      description: When this method returns, contains the path of the file that was drag-dropped.
+    return:
+      type: System.Boolean
+      description: True if a file was drag-dropped; otherwise, false.
+    content.vb: Public Function IsFileDragDropped(path As String) As Boolean
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsFileDragDropped*
+  implements:
+  - Bliss.CSharp.Interact.Contexts.IInputContext.IsFileDragDropped(System.String@)
+  nameWithType.vb: Sdl3InputContext.IsFileDragDropped(String)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsFileDragDropped(String)
+  name.vb: IsFileDragDropped(String)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.Dispose(System.Boolean)
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: Dispose(bool)
+  nameWithType: Sdl3InputContext.Dispose(bool)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.Dispose(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Dispose
+    path: ../src/Bliss/CSharp/Interact/Contexts/Sdl3InputContext.cs
+    startLine: 398
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Disposes of the object and releases associated resources.
+  example: []
+  syntax:
+    content: protected override void Dispose(bool disposing)
+    parameters:
+    - id: disposing
+      type: System.Boolean
+      description: True if called from user code; false if called from a finalizer.
+    content.vb: Protected Overrides Sub Dispose(disposing As Boolean)
+  overridden: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  overload: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.Dispose*
+  nameWithType.vb: Sdl3InputContext.Dispose(Boolean)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+references:
+- uid: Bliss.CSharp.Interact.Contexts
+  commentId: N:Bliss.CSharp.Interact.Contexts
+  href: Bliss.html
+  name: Bliss.CSharp.Interact.Contexts
+  nameWithType: Bliss.CSharp.Interact.Contexts
+  fullName: Bliss.CSharp.Interact.Contexts
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Contexts
+    name: Contexts
+    href: Bliss.CSharp.Interact.Contexts.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Contexts
+    name: Contexts
+    href: Bliss.CSharp.Interact.Contexts.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bliss.CSharp.Disposable
+  commentId: T:Bliss.CSharp.Disposable
+  parent: Bliss.CSharp
+  href: Bliss.CSharp.Disposable.html
+  name: Disposable
+  nameWithType: Disposable
+  fullName: Bliss.CSharp.Disposable
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext
+  commentId: T:Bliss.CSharp.Interact.Contexts.IInputContext
+  parent: Bliss.CSharp.Interact.Contexts
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html
+  name: IInputContext
+  nameWithType: IInputContext
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Bliss.CSharp.Disposable.HasDisposed
+  commentId: P:Bliss.CSharp.Disposable.HasDisposed
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_HasDisposed
+  name: HasDisposed
+  nameWithType: Disposable.HasDisposed
+  fullName: Bliss.CSharp.Disposable.HasDisposed
+- uid: Bliss.CSharp.Disposable.Dispose
+  commentId: M:Bliss.CSharp.Disposable.Dispose
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  name: Dispose()
+  nameWithType: Disposable.Dispose()
+  fullName: Bliss.CSharp.Disposable.Dispose()
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.Dispose
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.Dispose
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+  commentId: M:Bliss.CSharp.Disposable.ThrowIfDisposed
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  name: ThrowIfDisposed()
+  nameWithType: Disposable.ThrowIfDisposed()
+  fullName: Bliss.CSharp.Disposable.ThrowIfDisposed()
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+    name: ThrowIfDisposed
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+    name: ThrowIfDisposed
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp
+  commentId: N:Bliss.CSharp
+  href: Bliss.html
+  name: Bliss.CSharp
+  nameWithType: Bliss.CSharp
+  fullName: Bliss.CSharp
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  commentId: T:Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html
+  name: Sdl3InputContext
+  nameWithType: Sdl3InputContext
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.#ctor*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.#ctor
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext__ctor_Bliss_CSharp_Windowing_IWindow_
+  name: Sdl3InputContext
+  nameWithType: Sdl3InputContext.Sdl3InputContext
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.Sdl3InputContext
+  nameWithType.vb: Sdl3InputContext.New
+  fullName.vb: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.New
+  name.vb: New
+- uid: Bliss.CSharp.Windowing.IWindow
+  commentId: T:Bliss.CSharp.Windowing.IWindow
+  parent: Bliss.CSharp.Windowing
+  href: Bliss.CSharp.Windowing.IWindow.html
+  name: IWindow
+  nameWithType: IWindow
+  fullName: Bliss.CSharp.Windowing.IWindow
+- uid: Bliss.CSharp.Windowing
+  commentId: N:Bliss.CSharp.Windowing
+  href: Bliss.html
+  name: Bliss.CSharp.Windowing
+  nameWithType: Bliss.CSharp.Windowing
+  fullName: Bliss.CSharp.Windowing
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Windowing
+    name: Windowing
+    href: Bliss.CSharp.Windowing.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Windowing
+    name: Windowing
+    href: Bliss.CSharp.Windowing.html
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.Begin*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.Begin
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_Begin
+  name: Begin
+  nameWithType: Sdl3InputContext.Begin
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.Begin
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.Begin
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.Begin
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_Begin
+  name: Begin()
+  nameWithType: IInputContext.Begin()
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.Begin()
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.Begin
+    name: Begin
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_Begin
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.Begin
+    name: Begin
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_Begin
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.End*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.End
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_End
+  name: End
+  nameWithType: Sdl3InputContext.End
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.End
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.End
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.End
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_End
+  name: End()
+  nameWithType: IInputContext.End()
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.End()
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.End
+    name: End
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_End
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.End
+    name: End
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_End
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsCursorShown*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsCursorShown
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsCursorShown
+  name: IsCursorShown
+  nameWithType: Sdl3InputContext.IsCursorShown
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsCursorShown
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsCursorShown
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsCursorShown
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsCursorShown
+  name: IsCursorShown()
+  nameWithType: IInputContext.IsCursorShown()
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsCursorShown()
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsCursorShown
+    name: IsCursorShown
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsCursorShown
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsCursorShown
+    name: IsCursorShown
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsCursorShown
+  - name: (
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.ShowCursor*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.ShowCursor
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_ShowCursor
+  name: ShowCursor
+  nameWithType: Sdl3InputContext.ShowCursor
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.ShowCursor
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.ShowCursor
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.ShowCursor
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_ShowCursor
+  name: ShowCursor()
+  nameWithType: IInputContext.ShowCursor()
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.ShowCursor()
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.ShowCursor
+    name: ShowCursor
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_ShowCursor
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.ShowCursor
+    name: ShowCursor
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_ShowCursor
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.HideCursor*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.HideCursor
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_HideCursor
+  name: HideCursor
+  nameWithType: Sdl3InputContext.HideCursor
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.HideCursor
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.HideCursor
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.HideCursor
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_HideCursor
+  name: HideCursor()
+  nameWithType: IInputContext.HideCursor()
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.HideCursor()
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.HideCursor
+    name: HideCursor
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_HideCursor
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.HideCursor
+    name: HideCursor
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_HideCursor
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMouseCursor*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMouseCursor
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_GetMouseCursor
+  name: GetMouseCursor
+  nameWithType: Sdl3InputContext.GetMouseCursor
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMouseCursor
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetMouseCursor
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.GetMouseCursor
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetMouseCursor
+  name: GetMouseCursor()
+  nameWithType: IInputContext.GetMouseCursor()
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.GetMouseCursor()
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetMouseCursor
+    name: GetMouseCursor
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetMouseCursor
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetMouseCursor
+    name: GetMouseCursor
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetMouseCursor
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Interact.Mice.Cursors.ICursor
+  commentId: T:Bliss.CSharp.Interact.Mice.Cursors.ICursor
+  parent: Bliss.CSharp.Interact.Mice.Cursors
+  href: Bliss.CSharp.Interact.Mice.Cursors.ICursor.html
+  name: ICursor
+  nameWithType: ICursor
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.ICursor
+- uid: Bliss.CSharp.Interact.Mice.Cursors
+  commentId: N:Bliss.CSharp.Interact.Mice.Cursors
+  href: Bliss.html
+  name: Bliss.CSharp.Interact.Mice.Cursors
+  nameWithType: Bliss.CSharp.Interact.Mice.Cursors
+  fullName: Bliss.CSharp.Interact.Mice.Cursors
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice
+    name: Mice
+    href: Bliss.CSharp.Interact.Mice.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice.Cursors
+    name: Cursors
+    href: Bliss.CSharp.Interact.Mice.Cursors.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice
+    name: Mice
+    href: Bliss.CSharp.Interact.Mice.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice.Cursors
+    name: Cursors
+    href: Bliss.CSharp.Interact.Mice.Cursors.html
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetMouseCursor*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetMouseCursor
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_SetMouseCursor_Bliss_CSharp_Interact_Mice_Cursors_ICursor_
+  name: SetMouseCursor
+  nameWithType: Sdl3InputContext.SetMouseCursor
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetMouseCursor
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.SetMouseCursor(Bliss.CSharp.Interact.Mice.Cursors.ICursor)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.SetMouseCursor(Bliss.CSharp.Interact.Mice.Cursors.ICursor)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_SetMouseCursor_Bliss_CSharp_Interact_Mice_Cursors_ICursor_
+  name: SetMouseCursor(ICursor)
+  nameWithType: IInputContext.SetMouseCursor(ICursor)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.SetMouseCursor(Bliss.CSharp.Interact.Mice.Cursors.ICursor)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.SetMouseCursor(Bliss.CSharp.Interact.Mice.Cursors.ICursor)
+    name: SetMouseCursor
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_SetMouseCursor_Bliss_CSharp_Interact_Mice_Cursors_ICursor_
+  - name: (
+  - uid: Bliss.CSharp.Interact.Mice.Cursors.ICursor
+    name: ICursor
+    href: Bliss.CSharp.Interact.Mice.Cursors.ICursor.html
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.SetMouseCursor(Bliss.CSharp.Interact.Mice.Cursors.ICursor)
+    name: SetMouseCursor
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_SetMouseCursor_Bliss_CSharp_Interact_Mice_Cursors_ICursor_
+  - name: (
+  - uid: Bliss.CSharp.Interact.Mice.Cursors.ICursor
+    name: ICursor
+    href: Bliss.CSharp.Interact.Mice.Cursors.ICursor.html
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsRelativeMouseModeEnabled*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsRelativeMouseModeEnabled
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsRelativeMouseModeEnabled
+  name: IsRelativeMouseModeEnabled
+  nameWithType: Sdl3InputContext.IsRelativeMouseModeEnabled
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsRelativeMouseModeEnabled
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsRelativeMouseModeEnabled
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsRelativeMouseModeEnabled
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsRelativeMouseModeEnabled
+  name: IsRelativeMouseModeEnabled()
+  nameWithType: IInputContext.IsRelativeMouseModeEnabled()
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsRelativeMouseModeEnabled()
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsRelativeMouseModeEnabled
+    name: IsRelativeMouseModeEnabled
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsRelativeMouseModeEnabled
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsRelativeMouseModeEnabled
+    name: IsRelativeMouseModeEnabled
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsRelativeMouseModeEnabled
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.EnableRelativeMouseMode*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.EnableRelativeMouseMode
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_EnableRelativeMouseMode
+  name: EnableRelativeMouseMode
+  nameWithType: Sdl3InputContext.EnableRelativeMouseMode
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.EnableRelativeMouseMode
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.EnableRelativeMouseMode
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.EnableRelativeMouseMode
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_EnableRelativeMouseMode
+  name: EnableRelativeMouseMode()
+  nameWithType: IInputContext.EnableRelativeMouseMode()
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.EnableRelativeMouseMode()
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.EnableRelativeMouseMode
+    name: EnableRelativeMouseMode
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_EnableRelativeMouseMode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.EnableRelativeMouseMode
+    name: EnableRelativeMouseMode
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_EnableRelativeMouseMode
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.DisableRelativeMouseMode*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.DisableRelativeMouseMode
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_DisableRelativeMouseMode
+  name: DisableRelativeMouseMode
+  nameWithType: Sdl3InputContext.DisableRelativeMouseMode
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.DisableRelativeMouseMode
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.DisableRelativeMouseMode
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.DisableRelativeMouseMode
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_DisableRelativeMouseMode
+  name: DisableRelativeMouseMode()
+  nameWithType: IInputContext.DisableRelativeMouseMode()
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.DisableRelativeMouseMode()
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.DisableRelativeMouseMode
+    name: DisableRelativeMouseMode
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_DisableRelativeMouseMode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.DisableRelativeMouseMode
+    name: DisableRelativeMouseMode
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_DisableRelativeMouseMode
+  - name: (
+  - name: )
+- uid: System.Numerics.Vector2
+  commentId: T:System.Numerics.Vector2
+  parent: System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.vector2
+  name: Vector2
+  nameWithType: Vector2
+  fullName: System.Numerics.Vector2
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMousePosition*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMousePosition
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_GetMousePosition
+  name: GetMousePosition
+  nameWithType: Sdl3InputContext.GetMousePosition
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMousePosition
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetMousePosition
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.GetMousePosition
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetMousePosition
+  name: GetMousePosition()
+  nameWithType: IInputContext.GetMousePosition()
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.GetMousePosition()
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetMousePosition
+    name: GetMousePosition
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetMousePosition
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetMousePosition
+    name: GetMousePosition
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetMousePosition
+  - name: (
+  - name: )
+- uid: System.Numerics
+  commentId: N:System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Numerics
+  nameWithType: System.Numerics
+  fullName: System.Numerics
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMouseDelta*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMouseDelta
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_GetMouseDelta
+  name: GetMouseDelta
+  nameWithType: Sdl3InputContext.GetMouseDelta
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMouseDelta
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetMouseDelta
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.GetMouseDelta
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetMouseDelta
+  name: GetMouseDelta()
+  nameWithType: IInputContext.GetMouseDelta()
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.GetMouseDelta()
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetMouseDelta
+    name: GetMouseDelta
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetMouseDelta
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetMouseDelta
+    name: GetMouseDelta
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetMouseDelta
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetMousePosition*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetMousePosition
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_SetMousePosition_System_Numerics_Vector2_
+  name: SetMousePosition
+  nameWithType: Sdl3InputContext.SetMousePosition
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetMousePosition
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.SetMousePosition(System.Numerics.Vector2)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.SetMousePosition(System.Numerics.Vector2)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  isExternal: true
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_SetMousePosition_System_Numerics_Vector2_
+  name: SetMousePosition(Vector2)
+  nameWithType: IInputContext.SetMousePosition(Vector2)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.SetMousePosition(System.Numerics.Vector2)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.SetMousePosition(System.Numerics.Vector2)
+    name: SetMousePosition
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_SetMousePosition_System_Numerics_Vector2_
+  - name: (
+  - uid: System.Numerics.Vector2
+    name: Vector2
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.vector2
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.SetMousePosition(System.Numerics.Vector2)
+    name: SetMousePosition
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_SetMousePosition_System_Numerics_Vector2_
+  - name: (
+  - uid: System.Numerics.Vector2
+    name: Vector2
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.vector2
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonPressed*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonPressed
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsMouseButtonPressed_Bliss_CSharp_Interact_Mice_MouseButton_
+  name: IsMouseButtonPressed
+  nameWithType: Sdl3InputContext.IsMouseButtonPressed
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonPressed
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonPressed(Bliss.CSharp.Interact.Mice.MouseButton)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonPressed(Bliss.CSharp.Interact.Mice.MouseButton)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonPressed_Bliss_CSharp_Interact_Mice_MouseButton_
+  name: IsMouseButtonPressed(MouseButton)
+  nameWithType: IInputContext.IsMouseButtonPressed(MouseButton)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonPressed(Bliss.CSharp.Interact.Mice.MouseButton)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonPressed(Bliss.CSharp.Interact.Mice.MouseButton)
+    name: IsMouseButtonPressed
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonPressed_Bliss_CSharp_Interact_Mice_MouseButton_
+  - name: (
+  - uid: Bliss.CSharp.Interact.Mice.MouseButton
+    name: MouseButton
+    href: Bliss.CSharp.Interact.Mice.MouseButton.html
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonPressed(Bliss.CSharp.Interact.Mice.MouseButton)
+    name: IsMouseButtonPressed
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonPressed_Bliss_CSharp_Interact_Mice_MouseButton_
+  - name: (
+  - uid: Bliss.CSharp.Interact.Mice.MouseButton
+    name: MouseButton
+    href: Bliss.CSharp.Interact.Mice.MouseButton.html
+  - name: )
+- uid: Bliss.CSharp.Interact.Mice.MouseButton
+  commentId: T:Bliss.CSharp.Interact.Mice.MouseButton
+  parent: Bliss.CSharp.Interact.Mice
+  href: Bliss.CSharp.Interact.Mice.MouseButton.html
+  name: MouseButton
+  nameWithType: MouseButton
+  fullName: Bliss.CSharp.Interact.Mice.MouseButton
+- uid: Bliss.CSharp.Interact.Mice
+  commentId: N:Bliss.CSharp.Interact.Mice
+  href: Bliss.html
+  name: Bliss.CSharp.Interact.Mice
+  nameWithType: Bliss.CSharp.Interact.Mice
+  fullName: Bliss.CSharp.Interact.Mice
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice
+    name: Mice
+    href: Bliss.CSharp.Interact.Mice.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice
+    name: Mice
+    href: Bliss.CSharp.Interact.Mice.html
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonDown*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonDown
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsMouseButtonDown_Bliss_CSharp_Interact_Mice_MouseButton_
+  name: IsMouseButtonDown
+  nameWithType: Sdl3InputContext.IsMouseButtonDown
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonDown
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonDown(Bliss.CSharp.Interact.Mice.MouseButton)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonDown(Bliss.CSharp.Interact.Mice.MouseButton)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonDown_Bliss_CSharp_Interact_Mice_MouseButton_
+  name: IsMouseButtonDown(MouseButton)
+  nameWithType: IInputContext.IsMouseButtonDown(MouseButton)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonDown(Bliss.CSharp.Interact.Mice.MouseButton)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonDown(Bliss.CSharp.Interact.Mice.MouseButton)
+    name: IsMouseButtonDown
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonDown_Bliss_CSharp_Interact_Mice_MouseButton_
+  - name: (
+  - uid: Bliss.CSharp.Interact.Mice.MouseButton
+    name: MouseButton
+    href: Bliss.CSharp.Interact.Mice.MouseButton.html
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonDown(Bliss.CSharp.Interact.Mice.MouseButton)
+    name: IsMouseButtonDown
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonDown_Bliss_CSharp_Interact_Mice_MouseButton_
+  - name: (
+  - uid: Bliss.CSharp.Interact.Mice.MouseButton
+    name: MouseButton
+    href: Bliss.CSharp.Interact.Mice.MouseButton.html
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonReleased*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonReleased
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsMouseButtonReleased_Bliss_CSharp_Interact_Mice_MouseButton_
+  name: IsMouseButtonReleased
+  nameWithType: Sdl3InputContext.IsMouseButtonReleased
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonReleased
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonReleased(Bliss.CSharp.Interact.Mice.MouseButton)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonReleased(Bliss.CSharp.Interact.Mice.MouseButton)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonReleased_Bliss_CSharp_Interact_Mice_MouseButton_
+  name: IsMouseButtonReleased(MouseButton)
+  nameWithType: IInputContext.IsMouseButtonReleased(MouseButton)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonReleased(Bliss.CSharp.Interact.Mice.MouseButton)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonReleased(Bliss.CSharp.Interact.Mice.MouseButton)
+    name: IsMouseButtonReleased
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonReleased_Bliss_CSharp_Interact_Mice_MouseButton_
+  - name: (
+  - uid: Bliss.CSharp.Interact.Mice.MouseButton
+    name: MouseButton
+    href: Bliss.CSharp.Interact.Mice.MouseButton.html
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonReleased(Bliss.CSharp.Interact.Mice.MouseButton)
+    name: IsMouseButtonReleased
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonReleased_Bliss_CSharp_Interact_Mice_MouseButton_
+  - name: (
+  - uid: Bliss.CSharp.Interact.Mice.MouseButton
+    name: MouseButton
+    href: Bliss.CSharp.Interact.Mice.MouseButton.html
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonUp*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonUp
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsMouseButtonUp_Bliss_CSharp_Interact_Mice_MouseButton_
+  name: IsMouseButtonUp
+  nameWithType: Sdl3InputContext.IsMouseButtonUp
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonUp
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonUp(Bliss.CSharp.Interact.Mice.MouseButton)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonUp(Bliss.CSharp.Interact.Mice.MouseButton)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonUp_Bliss_CSharp_Interact_Mice_MouseButton_
+  name: IsMouseButtonUp(MouseButton)
+  nameWithType: IInputContext.IsMouseButtonUp(MouseButton)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonUp(Bliss.CSharp.Interact.Mice.MouseButton)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonUp(Bliss.CSharp.Interact.Mice.MouseButton)
+    name: IsMouseButtonUp
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonUp_Bliss_CSharp_Interact_Mice_MouseButton_
+  - name: (
+  - uid: Bliss.CSharp.Interact.Mice.MouseButton
+    name: MouseButton
+    href: Bliss.CSharp.Interact.Mice.MouseButton.html
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonUp(Bliss.CSharp.Interact.Mice.MouseButton)
+    name: IsMouseButtonUp
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonUp_Bliss_CSharp_Interact_Mice_MouseButton_
+  - name: (
+  - uid: Bliss.CSharp.Interact.Mice.MouseButton
+    name: MouseButton
+    href: Bliss.CSharp.Interact.Mice.MouseButton.html
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseMoving*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseMoving
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsMouseMoving_System_Numerics_Vector2__
+  name: IsMouseMoving
+  nameWithType: Sdl3InputContext.IsMouseMoving
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseMoving
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseMoving(System.Numerics.Vector2@)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseMoving(System.Numerics.Vector2@)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  isExternal: true
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseMoving_System_Numerics_Vector2__
+  name: IsMouseMoving(out Vector2)
+  nameWithType: IInputContext.IsMouseMoving(out Vector2)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseMoving(out System.Numerics.Vector2)
+  nameWithType.vb: IInputContext.IsMouseMoving(Vector2)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseMoving(System.Numerics.Vector2)
+  name.vb: IsMouseMoving(Vector2)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseMoving(System.Numerics.Vector2@)
+    name: IsMouseMoving
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseMoving_System_Numerics_Vector2__
+  - name: (
+  - name: out
+  - name: " "
+  - uid: System.Numerics.Vector2
+    name: Vector2
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.vector2
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseMoving(System.Numerics.Vector2@)
+    name: IsMouseMoving
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseMoving_System_Numerics_Vector2__
+  - name: (
+  - uid: System.Numerics.Vector2
+    name: Vector2
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.vector2
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseScrolling*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseScrolling
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsMouseScrolling_System_Numerics_Vector2__
+  name: IsMouseScrolling
+  nameWithType: Sdl3InputContext.IsMouseScrolling
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseScrolling
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseScrolling(System.Numerics.Vector2@)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseScrolling(System.Numerics.Vector2@)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  isExternal: true
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseScrolling_System_Numerics_Vector2__
+  name: IsMouseScrolling(out Vector2)
+  nameWithType: IInputContext.IsMouseScrolling(out Vector2)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseScrolling(out System.Numerics.Vector2)
+  nameWithType.vb: IInputContext.IsMouseScrolling(Vector2)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseScrolling(System.Numerics.Vector2)
+  name.vb: IsMouseScrolling(Vector2)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseScrolling(System.Numerics.Vector2@)
+    name: IsMouseScrolling
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseScrolling_System_Numerics_Vector2__
+  - name: (
+  - name: out
+  - name: " "
+  - uid: System.Numerics.Vector2
+    name: Vector2
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.vector2
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseScrolling(System.Numerics.Vector2@)
+    name: IsMouseScrolling
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseScrolling_System_Numerics_Vector2__
+  - name: (
+  - uid: System.Numerics.Vector2
+    name: Vector2
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.vector2
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyPressed*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyPressed
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsKeyPressed_Bliss_CSharp_Interact_Keyboards_KeyboardKey_
+  name: IsKeyPressed
+  nameWithType: Sdl3InputContext.IsKeyPressed
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyPressed
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyPressed_Bliss_CSharp_Interact_Keyboards_KeyboardKey_
+  name: IsKeyPressed(KeyboardKey)
+  nameWithType: IInputContext.IsKeyPressed(KeyboardKey)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+    name: IsKeyPressed
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyPressed_Bliss_CSharp_Interact_Keyboards_KeyboardKey_
+  - name: (
+  - uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+    name: KeyboardKey
+    href: Bliss.CSharp.Interact.Keyboards.KeyboardKey.html
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+    name: IsKeyPressed
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyPressed_Bliss_CSharp_Interact_Keyboards_KeyboardKey_
+  - name: (
+  - uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+    name: KeyboardKey
+    href: Bliss.CSharp.Interact.Keyboards.KeyboardKey.html
+  - name: )
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  commentId: T:Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  parent: Bliss.CSharp.Interact.Keyboards
+  href: Bliss.CSharp.Interact.Keyboards.KeyboardKey.html
+  name: KeyboardKey
+  nameWithType: KeyboardKey
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards
+  commentId: N:Bliss.CSharp.Interact.Keyboards
+  href: Bliss.html
+  name: Bliss.CSharp.Interact.Keyboards
+  nameWithType: Bliss.CSharp.Interact.Keyboards
+  fullName: Bliss.CSharp.Interact.Keyboards
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Keyboards
+    name: Keyboards
+    href: Bliss.CSharp.Interact.Keyboards.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Keyboards
+    name: Keyboards
+    href: Bliss.CSharp.Interact.Keyboards.html
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyDown*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyDown
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsKeyDown_Bliss_CSharp_Interact_Keyboards_KeyboardKey_
+  name: IsKeyDown
+  nameWithType: Sdl3InputContext.IsKeyDown
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyDown
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyDown(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyDown(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyDown_Bliss_CSharp_Interact_Keyboards_KeyboardKey_
+  name: IsKeyDown(KeyboardKey)
+  nameWithType: IInputContext.IsKeyDown(KeyboardKey)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyDown(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyDown(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+    name: IsKeyDown
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyDown_Bliss_CSharp_Interact_Keyboards_KeyboardKey_
+  - name: (
+  - uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+    name: KeyboardKey
+    href: Bliss.CSharp.Interact.Keyboards.KeyboardKey.html
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyDown(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+    name: IsKeyDown
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyDown_Bliss_CSharp_Interact_Keyboards_KeyboardKey_
+  - name: (
+  - uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+    name: KeyboardKey
+    href: Bliss.CSharp.Interact.Keyboards.KeyboardKey.html
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyReleased*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyReleased
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsKeyReleased_Bliss_CSharp_Interact_Keyboards_KeyboardKey_
+  name: IsKeyReleased
+  nameWithType: Sdl3InputContext.IsKeyReleased
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyReleased
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyReleased(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyReleased(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyReleased_Bliss_CSharp_Interact_Keyboards_KeyboardKey_
+  name: IsKeyReleased(KeyboardKey)
+  nameWithType: IInputContext.IsKeyReleased(KeyboardKey)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyReleased(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyReleased(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+    name: IsKeyReleased
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyReleased_Bliss_CSharp_Interact_Keyboards_KeyboardKey_
+  - name: (
+  - uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+    name: KeyboardKey
+    href: Bliss.CSharp.Interact.Keyboards.KeyboardKey.html
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyReleased(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+    name: IsKeyReleased
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyReleased_Bliss_CSharp_Interact_Keyboards_KeyboardKey_
+  - name: (
+  - uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+    name: KeyboardKey
+    href: Bliss.CSharp.Interact.Keyboards.KeyboardKey.html
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyUp*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyUp
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsKeyUp_Bliss_CSharp_Interact_Keyboards_KeyboardKey_
+  name: IsKeyUp
+  nameWithType: Sdl3InputContext.IsKeyUp
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyUp
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyUp(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyUp(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyUp_Bliss_CSharp_Interact_Keyboards_KeyboardKey_
+  name: IsKeyUp(KeyboardKey)
+  nameWithType: IInputContext.IsKeyUp(KeyboardKey)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyUp(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyUp(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+    name: IsKeyUp
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyUp_Bliss_CSharp_Interact_Keyboards_KeyboardKey_
+  - name: (
+  - uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+    name: KeyboardKey
+    href: Bliss.CSharp.Interact.Keyboards.KeyboardKey.html
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyUp(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+    name: IsKeyUp
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyUp_Bliss_CSharp_Interact_Keyboards_KeyboardKey_
+  - name: (
+  - uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+    name: KeyboardKey
+    href: Bliss.CSharp.Interact.Keyboards.KeyboardKey.html
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetPressedChars*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetPressedChars
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_GetPressedChars
+  name: GetPressedChars
+  nameWithType: Sdl3InputContext.GetPressedChars
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetPressedChars
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetPressedChars
+  name: GetPressedChars()
+  nameWithType: IInputContext.GetPressedChars()
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars()
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars
+    name: GetPressedChars
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetPressedChars
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars
+    name: GetPressedChars
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetPressedChars
+  - name: (
+  - name: )
+- uid: System.Char[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.char
+  name: char[]
+  nameWithType: char[]
+  fullName: char[]
+  nameWithType.vb: Char()
+  fullName.vb: Char()
+  name.vb: Char()
+  spec.csharp:
+  - uid: System.Char
+    name: char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Char
+    name: Char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetClipboardText*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetClipboardText
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_GetClipboardText
+  name: GetClipboardText
+  nameWithType: Sdl3InputContext.GetClipboardText
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetClipboardText
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetClipboardText
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.GetClipboardText
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetClipboardText
+  name: GetClipboardText()
+  nameWithType: IInputContext.GetClipboardText()
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.GetClipboardText()
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetClipboardText
+    name: GetClipboardText
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetClipboardText
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetClipboardText
+    name: GetClipboardText
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetClipboardText
+  - name: (
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetClipboardText*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetClipboardText
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_SetClipboardText_System_String_
+  name: SetClipboardText
+  nameWithType: Sdl3InputContext.SetClipboardText
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.SetClipboardText
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.SetClipboardText(System.String)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.SetClipboardText(System.String)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  isExternal: true
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_SetClipboardText_System_String_
+  name: SetClipboardText(string)
+  nameWithType: IInputContext.SetClipboardText(string)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.SetClipboardText(string)
+  nameWithType.vb: IInputContext.SetClipboardText(String)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.IInputContext.SetClipboardText(String)
+  name.vb: SetClipboardText(String)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.SetClipboardText(System.String)
+    name: SetClipboardText
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_SetClipboardText_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.SetClipboardText(System.String)
+    name: SetClipboardText
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_SetClipboardText_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetAvailableGamepadCount*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetAvailableGamepadCount
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_GetAvailableGamepadCount
+  name: GetAvailableGamepadCount
+  nameWithType: Sdl3InputContext.GetAvailableGamepadCount
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetAvailableGamepadCount
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetAvailableGamepadCount
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.GetAvailableGamepadCount
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetAvailableGamepadCount
+  name: GetAvailableGamepadCount()
+  nameWithType: IInputContext.GetAvailableGamepadCount()
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.GetAvailableGamepadCount()
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetAvailableGamepadCount
+    name: GetAvailableGamepadCount
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetAvailableGamepadCount
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetAvailableGamepadCount
+    name: GetAvailableGamepadCount
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetAvailableGamepadCount
+  - name: (
+  - name: )
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadAvailable*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadAvailable
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsGamepadAvailable_System_UInt32_
+  name: IsGamepadAvailable
+  nameWithType: Sdl3InputContext.IsGamepadAvailable
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadAvailable
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadAvailable(System.UInt32)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadAvailable(System.UInt32)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  isExternal: true
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadAvailable_System_UInt32_
+  name: IsGamepadAvailable(uint)
+  nameWithType: IInputContext.IsGamepadAvailable(uint)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadAvailable(uint)
+  nameWithType.vb: IInputContext.IsGamepadAvailable(UInteger)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadAvailable(UInteger)
+  name.vb: IsGamepadAvailable(UInteger)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadAvailable(System.UInt32)
+    name: IsGamepadAvailable
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadAvailable_System_UInt32_
+  - name: (
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadAvailable(System.UInt32)
+    name: IsGamepadAvailable
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadAvailable_System_UInt32_
+  - name: (
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetGamepadName*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetGamepadName
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_GetGamepadName_System_UInt32_
+  name: GetGamepadName
+  nameWithType: Sdl3InputContext.GetGamepadName
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetGamepadName
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetGamepadName(System.UInt32)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.GetGamepadName(System.UInt32)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  isExternal: true
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetGamepadName_System_UInt32_
+  name: GetGamepadName(uint)
+  nameWithType: IInputContext.GetGamepadName(uint)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.GetGamepadName(uint)
+  nameWithType.vb: IInputContext.GetGamepadName(UInteger)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.IInputContext.GetGamepadName(UInteger)
+  name.vb: GetGamepadName(UInteger)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetGamepadName(System.UInt32)
+    name: GetGamepadName
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetGamepadName_System_UInt32_
+  - name: (
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetGamepadName(System.UInt32)
+    name: GetGamepadName
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetGamepadName_System_UInt32_
+  - name: (
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.RumbleGamepad*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.RumbleGamepad
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_RumbleGamepad_System_UInt32_System_UInt16_System_UInt16_System_UInt32_
+  name: RumbleGamepad
+  nameWithType: Sdl3InputContext.RumbleGamepad
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.RumbleGamepad
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.RumbleGamepad(System.UInt32,System.UInt16,System.UInt16,System.UInt32)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.RumbleGamepad(System.UInt32,System.UInt16,System.UInt16,System.UInt32)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  isExternal: true
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_RumbleGamepad_System_UInt32_System_UInt16_System_UInt16_System_UInt32_
+  name: RumbleGamepad(uint, ushort, ushort, uint)
+  nameWithType: IInputContext.RumbleGamepad(uint, ushort, ushort, uint)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.RumbleGamepad(uint, ushort, ushort, uint)
+  nameWithType.vb: IInputContext.RumbleGamepad(UInteger, UShort, UShort, UInteger)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.IInputContext.RumbleGamepad(UInteger, UShort, UShort, UInteger)
+  name.vb: RumbleGamepad(UInteger, UShort, UShort, UInteger)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.RumbleGamepad(System.UInt32,System.UInt16,System.UInt16,System.UInt32)
+    name: RumbleGamepad
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_RumbleGamepad_System_UInt32_System_UInt16_System_UInt16_System_UInt32_
+  - name: (
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: ','
+  - name: " "
+  - uid: System.UInt16
+    name: ushort
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint16
+  - name: ','
+  - name: " "
+  - uid: System.UInt16
+    name: ushort
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint16
+  - name: ','
+  - name: " "
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.RumbleGamepad(System.UInt32,System.UInt16,System.UInt16,System.UInt32)
+    name: RumbleGamepad
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_RumbleGamepad_System_UInt32_System_UInt16_System_UInt16_System_UInt32_
+  - name: (
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: ','
+  - name: " "
+  - uid: System.UInt16
+    name: UShort
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint16
+  - name: ','
+  - name: " "
+  - uid: System.UInt16
+    name: UShort
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint16
+  - name: ','
+  - name: " "
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: )
+- uid: System.UInt16
+  commentId: T:System.UInt16
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint16
+  name: ushort
+  nameWithType: ushort
+  fullName: ushort
+  nameWithType.vb: UShort
+  fullName.vb: UShort
+  name.vb: UShort
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetGamepadAxisMovement*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetGamepadAxisMovement
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_GetGamepadAxisMovement_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadAxis_
+  name: GetGamepadAxisMovement
+  nameWithType: Sdl3InputContext.GetGamepadAxisMovement
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetGamepadAxisMovement
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetGamepadAxisMovement(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadAxis)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.GetGamepadAxisMovement(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadAxis)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  isExternal: true
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetGamepadAxisMovement_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadAxis_
+  name: GetGamepadAxisMovement(uint, GamepadAxis)
+  nameWithType: IInputContext.GetGamepadAxisMovement(uint, GamepadAxis)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.GetGamepadAxisMovement(uint, Bliss.CSharp.Interact.Gamepads.GamepadAxis)
+  nameWithType.vb: IInputContext.GetGamepadAxisMovement(UInteger, GamepadAxis)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.IInputContext.GetGamepadAxisMovement(UInteger, Bliss.CSharp.Interact.Gamepads.GamepadAxis)
+  name.vb: GetGamepadAxisMovement(UInteger, GamepadAxis)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetGamepadAxisMovement(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadAxis)
+    name: GetGamepadAxisMovement
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetGamepadAxisMovement_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadAxis_
+  - name: (
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: ','
+  - name: " "
+  - uid: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+    name: GamepadAxis
+    href: Bliss.CSharp.Interact.Gamepads.GamepadAxis.html
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetGamepadAxisMovement(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadAxis)
+    name: GetGamepadAxisMovement
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetGamepadAxisMovement_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadAxis_
+  - name: (
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: ','
+  - name: " "
+  - uid: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+    name: GamepadAxis
+    href: Bliss.CSharp.Interact.Gamepads.GamepadAxis.html
+  - name: )
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+  commentId: T:Bliss.CSharp.Interact.Gamepads.GamepadAxis
+  parent: Bliss.CSharp.Interact.Gamepads
+  href: Bliss.CSharp.Interact.Gamepads.GamepadAxis.html
+  name: GamepadAxis
+  nameWithType: GamepadAxis
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Bliss.CSharp.Interact.Gamepads
+  commentId: N:Bliss.CSharp.Interact.Gamepads
+  href: Bliss.html
+  name: Bliss.CSharp.Interact.Gamepads
+  nameWithType: Bliss.CSharp.Interact.Gamepads
+  fullName: Bliss.CSharp.Interact.Gamepads
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Gamepads
+    name: Gamepads
+    href: Bliss.CSharp.Interact.Gamepads.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Gamepads
+    name: Gamepads
+    href: Bliss.CSharp.Interact.Gamepads.html
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonPressed*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonPressed
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsGamepadButtonPressed_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_
+  name: IsGamepadButtonPressed
+  nameWithType: Sdl3InputContext.IsGamepadButtonPressed
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonPressed
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonPressed(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonPressed(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  isExternal: true
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadButtonPressed_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_
+  name: IsGamepadButtonPressed(uint, GamepadButton)
+  nameWithType: IInputContext.IsGamepadButtonPressed(uint, GamepadButton)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonPressed(uint, Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  nameWithType.vb: IInputContext.IsGamepadButtonPressed(UInteger, GamepadButton)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonPressed(UInteger, Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  name.vb: IsGamepadButtonPressed(UInteger, GamepadButton)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonPressed(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+    name: IsGamepadButtonPressed
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadButtonPressed_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_
+  - name: (
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: ','
+  - name: " "
+  - uid: Bliss.CSharp.Interact.Gamepads.GamepadButton
+    name: GamepadButton
+    href: Bliss.CSharp.Interact.Gamepads.GamepadButton.html
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonPressed(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+    name: IsGamepadButtonPressed
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadButtonPressed_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_
+  - name: (
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: ','
+  - name: " "
+  - uid: Bliss.CSharp.Interact.Gamepads.GamepadButton
+    name: GamepadButton
+    href: Bliss.CSharp.Interact.Gamepads.GamepadButton.html
+  - name: )
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  commentId: T:Bliss.CSharp.Interact.Gamepads.GamepadButton
+  parent: Bliss.CSharp.Interact.Gamepads
+  href: Bliss.CSharp.Interact.Gamepads.GamepadButton.html
+  name: GamepadButton
+  nameWithType: GamepadButton
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonDown*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonDown
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsGamepadButtonDown_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_
+  name: IsGamepadButtonDown
+  nameWithType: Sdl3InputContext.IsGamepadButtonDown
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonDown
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonDown(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonDown(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  isExternal: true
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadButtonDown_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_
+  name: IsGamepadButtonDown(uint, GamepadButton)
+  nameWithType: IInputContext.IsGamepadButtonDown(uint, GamepadButton)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonDown(uint, Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  nameWithType.vb: IInputContext.IsGamepadButtonDown(UInteger, GamepadButton)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonDown(UInteger, Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  name.vb: IsGamepadButtonDown(UInteger, GamepadButton)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonDown(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+    name: IsGamepadButtonDown
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadButtonDown_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_
+  - name: (
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: ','
+  - name: " "
+  - uid: Bliss.CSharp.Interact.Gamepads.GamepadButton
+    name: GamepadButton
+    href: Bliss.CSharp.Interact.Gamepads.GamepadButton.html
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonDown(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+    name: IsGamepadButtonDown
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadButtonDown_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_
+  - name: (
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: ','
+  - name: " "
+  - uid: Bliss.CSharp.Interact.Gamepads.GamepadButton
+    name: GamepadButton
+    href: Bliss.CSharp.Interact.Gamepads.GamepadButton.html
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonReleased*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonReleased
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsGamepadButtonReleased_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_
+  name: IsGamepadButtonReleased
+  nameWithType: Sdl3InputContext.IsGamepadButtonReleased
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonReleased
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonReleased(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonReleased(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  isExternal: true
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadButtonReleased_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_
+  name: IsGamepadButtonReleased(uint, GamepadButton)
+  nameWithType: IInputContext.IsGamepadButtonReleased(uint, GamepadButton)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonReleased(uint, Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  nameWithType.vb: IInputContext.IsGamepadButtonReleased(UInteger, GamepadButton)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonReleased(UInteger, Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  name.vb: IsGamepadButtonReleased(UInteger, GamepadButton)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonReleased(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+    name: IsGamepadButtonReleased
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadButtonReleased_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_
+  - name: (
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: ','
+  - name: " "
+  - uid: Bliss.CSharp.Interact.Gamepads.GamepadButton
+    name: GamepadButton
+    href: Bliss.CSharp.Interact.Gamepads.GamepadButton.html
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonReleased(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+    name: IsGamepadButtonReleased
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadButtonReleased_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_
+  - name: (
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: ','
+  - name: " "
+  - uid: Bliss.CSharp.Interact.Gamepads.GamepadButton
+    name: GamepadButton
+    href: Bliss.CSharp.Interact.Gamepads.GamepadButton.html
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonUp*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonUp
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsGamepadButtonUp_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_
+  name: IsGamepadButtonUp
+  nameWithType: Sdl3InputContext.IsGamepadButtonUp
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsGamepadButtonUp
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonUp(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonUp(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  isExternal: true
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadButtonUp_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_
+  name: IsGamepadButtonUp(uint, GamepadButton)
+  nameWithType: IInputContext.IsGamepadButtonUp(uint, GamepadButton)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonUp(uint, Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  nameWithType.vb: IInputContext.IsGamepadButtonUp(UInteger, GamepadButton)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonUp(UInteger, Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  name.vb: IsGamepadButtonUp(UInteger, GamepadButton)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonUp(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+    name: IsGamepadButtonUp
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadButtonUp_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_
+  - name: (
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: ','
+  - name: " "
+  - uid: Bliss.CSharp.Interact.Gamepads.GamepadButton
+    name: GamepadButton
+    href: Bliss.CSharp.Interact.Gamepads.GamepadButton.html
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonUp(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)
+    name: IsGamepadButtonUp
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadButtonUp_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_
+  - name: (
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: ','
+  - name: " "
+  - uid: Bliss.CSharp.Interact.Gamepads.GamepadButton
+    name: GamepadButton
+    href: Bliss.CSharp.Interact.Gamepads.GamepadButton.html
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsFileDragDropped*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsFileDragDropped
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsFileDragDropped_System_String__
+  name: IsFileDragDropped
+  nameWithType: Sdl3InputContext.IsFileDragDropped
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsFileDragDropped
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsFileDragDropped(System.String@)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsFileDragDropped(System.String@)
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  isExternal: true
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsFileDragDropped_System_String__
+  name: IsFileDragDropped(out string)
+  nameWithType: IInputContext.IsFileDragDropped(out string)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsFileDragDropped(out string)
+  nameWithType.vb: IInputContext.IsFileDragDropped(String)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.IInputContext.IsFileDragDropped(String)
+  name.vb: IsFileDragDropped(String)
+  spec.csharp:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsFileDragDropped(System.String@)
+    name: IsFileDragDropped
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsFileDragDropped_System_String__
+  - name: (
+  - name: out
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsFileDragDropped(System.String@)
+    name: IsFileDragDropped
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsFileDragDropped_System_String__
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  commentId: M:Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  parent: Bliss.CSharp.Disposable
+  isExternal: true
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  name: Dispose(bool)
+  nameWithType: Disposable.Dispose(bool)
+  fullName: Bliss.CSharp.Disposable.Dispose(bool)
+  nameWithType.vb: Disposable.Dispose(Boolean)
+  fullName.vb: Bliss.CSharp.Disposable.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.Dispose*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.Dispose
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_Dispose_System_Boolean_
+  name: Dispose
+  nameWithType: Sdl3InputContext.Dispose
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.Dispose

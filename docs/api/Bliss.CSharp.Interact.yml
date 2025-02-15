@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Interact
+  commentId: N:Bliss.CSharp.Interact
+  id: Bliss.CSharp.Interact
+  children:
+  - Bliss.CSharp.Interact.Input
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Interact
+  nameWithType: Bliss.CSharp.Interact
+  fullName: Bliss.CSharp.Interact
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Interact.Input
+  commentId: T:Bliss.CSharp.Interact.Input
+  href: Bliss.CSharp.Interact.Input.html
+  name: Input
+  nameWithType: Input
+  fullName: Bliss.CSharp.Interact.Input

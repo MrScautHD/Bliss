@@ -1,0 +1,552 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Disposable
+  commentId: T:Bliss.CSharp.Disposable
+  id: Disposable
+  parent: Bliss.CSharp
+  children:
+  - Bliss.CSharp.Disposable.Dispose
+  - Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  - Bliss.CSharp.Disposable.Finalize
+  - Bliss.CSharp.Disposable.HasDisposed
+  - Bliss.CSharp.Disposable.ThrowIfDisposed
+  langs:
+  - csharp
+  - vb
+  name: Disposable
+  nameWithType: Disposable
+  fullName: Bliss.CSharp.Disposable
+  type: Class
+  source:
+    remote:
+      path: src/Bliss/CSharp/Disposable.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Disposable
+    path: ../src/Bliss/CSharp/Disposable.cs
+    startLine: 4
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  syntax:
+    content: 'public abstract class Disposable : IDisposable'
+    content.vb: Public MustInherit Class Disposable Implements IDisposable
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Bliss.CSharp.Effects.Effect
+  - Bliss.CSharp.Fonts.Font
+  - Bliss.CSharp.Geometry.Mesh
+  - Bliss.CSharp.Geometry.Model
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  - Bliss.CSharp.Graphics.Pipelines.SimplePipeline
+  - Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
+  - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
+  - Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
+  - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  - Bliss.CSharp.Interact.Gamepads.Sdl3Gamepad
+  - Bliss.CSharp.Interact.Mice.Cursors.Sdl3Cursor
+  - Bliss.CSharp.Materials.Material
+  - Bliss.CSharp.Textures.Cubemap
+  - Bliss.CSharp.Textures.RenderTexture2D
+  - Bliss.CSharp.Textures.Texture2D
+  - Bliss.CSharp.Windowing.Sdl3Window
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bliss.CSharp.Disposable.HasDisposed
+  commentId: P:Bliss.CSharp.Disposable.HasDisposed
+  id: HasDisposed
+  parent: Bliss.CSharp.Disposable
+  langs:
+  - csharp
+  - vb
+  name: HasDisposed
+  nameWithType: Disposable.HasDisposed
+  fullName: Bliss.CSharp.Disposable.HasDisposed
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Disposable.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: HasDisposed
+    path: ../src/Bliss/CSharp/Disposable.cs
+    startLine: 10
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: Indicates whether the object has been disposed.
+  example: []
+  syntax:
+    content: public bool HasDisposed { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: True if the object has been disposed; otherwise, false.
+    content.vb: Public Property HasDisposed As Boolean
+  overload: Bliss.CSharp.Disposable.HasDisposed*
+- uid: Bliss.CSharp.Disposable.Finalize
+  commentId: M:Bliss.CSharp.Disposable.Finalize
+  id: Finalize
+  parent: Bliss.CSharp.Disposable
+  langs:
+  - csharp
+  - vb
+  name: ~Disposable()
+  nameWithType: Disposable.~Disposable()
+  fullName: Bliss.CSharp.Disposable.~Disposable()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Disposable.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Finalize
+    path: ../src/Bliss/CSharp/Disposable.cs
+    startLine: 15
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: Disposes of the object, allowing for proper resource cleanup and finalization.
+  example: []
+  syntax:
+    content: protected ~Disposable()
+    content.vb: 'Protected '
+  overload: Bliss.CSharp.Disposable.Finalize*
+  nameWithType.vb: ''
+  fullName.vb: ''
+  name.vb: ''
+- uid: Bliss.CSharp.Disposable.Dispose
+  commentId: M:Bliss.CSharp.Disposable.Dispose
+  id: Dispose
+  parent: Bliss.CSharp.Disposable
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: Disposable.Dispose()
+  fullName: Bliss.CSharp.Disposable.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Disposable.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Dispose
+    path: ../src/Bliss/CSharp/Disposable.cs
+    startLine: 22
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: Disposes of the object, allowing for proper resource cleanup and finalization.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Bliss.CSharp.Disposable.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+- uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  commentId: M:Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: Bliss.CSharp.Disposable
+  langs:
+  - csharp
+  - vb
+  name: Dispose(bool)
+  nameWithType: Disposable.Dispose(bool)
+  fullName: Bliss.CSharp.Disposable.Dispose(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Disposable.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Dispose
+    path: ../src/Bliss/CSharp/Disposable.cs
+    startLine: 37
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: Disposes of the object and releases associated resources.
+  example: []
+  syntax:
+    content: protected abstract void Dispose(bool disposing)
+    parameters:
+    - id: disposing
+      type: System.Boolean
+      description: True if called from user code; false if called from a finalizer.
+    content.vb: Protected MustOverride Sub Dispose(disposing As Boolean)
+  overload: Bliss.CSharp.Disposable.Dispose*
+  nameWithType.vb: Disposable.Dispose(Boolean)
+  fullName.vb: Bliss.CSharp.Disposable.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+- uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+  commentId: M:Bliss.CSharp.Disposable.ThrowIfDisposed
+  id: ThrowIfDisposed
+  parent: Bliss.CSharp.Disposable
+  langs:
+  - csharp
+  - vb
+  name: ThrowIfDisposed()
+  nameWithType: Disposable.ThrowIfDisposed()
+  fullName: Bliss.CSharp.Disposable.ThrowIfDisposed()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Disposable.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ThrowIfDisposed
+    path: ../src/Bliss/CSharp/Disposable.cs
+    startLine: 42
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: Throws an exception if the object has been disposed, indicating that it is no longer usable.
+  example: []
+  syntax:
+    content: protected void ThrowIfDisposed()
+    content.vb: Protected Sub ThrowIfDisposed()
+  overload: Bliss.CSharp.Disposable.ThrowIfDisposed*
+references:
+- uid: Bliss.CSharp
+  commentId: N:Bliss.CSharp
+  href: Bliss.html
+  name: Bliss.CSharp
+  nameWithType: Bliss.CSharp
+  fullName: Bliss.CSharp
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp.Disposable.HasDisposed*
+  commentId: Overload:Bliss.CSharp.Disposable.HasDisposed
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_HasDisposed
+  name: HasDisposed
+  nameWithType: Disposable.HasDisposed
+  fullName: Bliss.CSharp.Disposable.HasDisposed
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bliss.CSharp.Disposable.Finalize*
+  commentId: Overload:Bliss.CSharp.Disposable.Finalize
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Finalize
+  name: ~Disposable
+  nameWithType: Disposable.~Disposable
+  fullName: Bliss.CSharp.Disposable.~Disposable
+  spec.csharp:
+  - name: "~"
+  - uid: Bliss.CSharp.Disposable.Finalize*
+    name: Disposable
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Finalize
+- uid: Bliss.CSharp.Disposable.Dispose*
+  commentId: Overload:Bliss.CSharp.Disposable.Dispose
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  name: Dispose
+  nameWithType: Disposable.Dispose
+  fullName: Bliss.CSharp.Disposable.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Disposable.ThrowIfDisposed*
+  commentId: Overload:Bliss.CSharp.Disposable.ThrowIfDisposed
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  name: ThrowIfDisposed
+  nameWithType: Disposable.ThrowIfDisposed
+  fullName: Bliss.CSharp.Disposable.ThrowIfDisposed

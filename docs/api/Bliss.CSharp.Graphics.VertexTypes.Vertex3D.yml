@@ -1,0 +1,795 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+  commentId: T:Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+  id: Vertex3D
+  parent: Bliss.CSharp.Graphics.VertexTypes
+  children:
+  - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.#ctor(System.Numerics.Vector3,System.Numerics.Vector4,Vortice.Mathematics.UInt4,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector4)
+  - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.AddBone(System.UInt32,System.Single)
+  - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.BoneIndices
+  - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.BoneWeights
+  - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Color
+  - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Normal
+  - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Position
+  - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Tangent
+  - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.TexCoords
+  - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.TexCoords2
+  - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.VertexLayout
+  langs:
+  - csharp
+  - vb
+  name: Vertex3D
+  nameWithType: Vertex3D
+  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+  type: Struct
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Vertex3D
+    path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+    startLine: 7
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.VertexTypes
+  syntax:
+    content: public struct Vertex3D
+    content.vb: Public Structure Vertex3D
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.VertexLayout
+  commentId: F:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.VertexLayout
+  id: VertexLayout
+  parent: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+  langs:
+  - csharp
+  - vb
+  name: VertexLayout
+  nameWithType: Vertex3D.VertexLayout
+  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.VertexLayout
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: VertexLayout
+    path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+    startLine: 13
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.VertexTypes
+  summary: Represents the layout description for the <xref href="Bliss.CSharp.Graphics.VertexTypes.Vertex3D" data-throw-if-not-resolved="false"></xref> structure.
+  example: []
+  syntax:
+    content: public static VertexLayoutDescription VertexLayout
+    return:
+      type: Veldrid.VertexLayoutDescription
+    content.vb: Public Shared VertexLayout As VertexLayoutDescription
+- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Position
+  commentId: F:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Position
+  id: Position
+  parent: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+  langs:
+  - csharp
+  - vb
+  name: Position
+  nameWithType: Vertex3D.Position
+  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Position
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Position
+    path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+    startLine: 27
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.VertexTypes
+  summary: The position of the vertex in 3D space.
+  example: []
+  syntax:
+    content: public Vector3 Position
+    return:
+      type: System.Numerics.Vector3
+    content.vb: Public Position As Vector3
+- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.BoneWeights
+  commentId: F:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.BoneWeights
+  id: BoneWeights
+  parent: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+  langs:
+  - csharp
+  - vb
+  name: BoneWeights
+  nameWithType: Vertex3D.BoneWeights
+  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.BoneWeights
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: BoneWeights
+    path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+    startLine: 32
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.VertexTypes
+  summary: Represents the weights of the vertex's associated bones, used for skinning in skeletal animation.
+  example: []
+  syntax:
+    content: public Vector4 BoneWeights
+    return:
+      type: System.Numerics.Vector4
+    content.vb: Public BoneWeights As Vector4
+- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.BoneIndices
+  commentId: F:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.BoneIndices
+  id: BoneIndices
+  parent: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+  langs:
+  - csharp
+  - vb
+  name: BoneIndices
+  nameWithType: Vertex3D.BoneIndices
+  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.BoneIndices
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: BoneIndices
+    path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+    startLine: 37
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.VertexTypes
+  summary: Represents the indices of the vertex's associated bones, used in conjunction with bone weights for skeletal animation.
+  example: []
+  syntax:
+    content: public UInt4 BoneIndices
+    return:
+      type: Vortice.Mathematics.UInt4
+    content.vb: Public BoneIndices As UInt4
+- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.TexCoords
+  commentId: F:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.TexCoords
+  id: TexCoords
+  parent: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+  langs:
+  - csharp
+  - vb
+  name: TexCoords
+  nameWithType: Vertex3D.TexCoords
+  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.TexCoords
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: TexCoords
+    path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+    startLine: 42
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.VertexTypes
+  summary: The primary texture coordinates of the vertex.
+  example: []
+  syntax:
+    content: public Vector2 TexCoords
+    return:
+      type: System.Numerics.Vector2
+    content.vb: Public TexCoords As Vector2
+- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.TexCoords2
+  commentId: F:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.TexCoords2
+  id: TexCoords2
+  parent: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+  langs:
+  - csharp
+  - vb
+  name: TexCoords2
+  nameWithType: Vertex3D.TexCoords2
+  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.TexCoords2
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: TexCoords2
+    path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+    startLine: 47
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.VertexTypes
+  summary: The secondary texture coordinates of the vertex.
+  example: []
+  syntax:
+    content: public Vector2 TexCoords2
+    return:
+      type: System.Numerics.Vector2
+    content.vb: Public TexCoords2 As Vector2
+- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Normal
+  commentId: F:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Normal
+  id: Normal
+  parent: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+  langs:
+  - csharp
+  - vb
+  name: Normal
+  nameWithType: Vertex3D.Normal
+  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Normal
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Normal
+    path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+    startLine: 52
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.VertexTypes
+  summary: The normal vector of the vertex, used for lighting calculations.
+  example: []
+  syntax:
+    content: public Vector3 Normal
+    return:
+      type: System.Numerics.Vector3
+    content.vb: Public Normal As Vector3
+- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Tangent
+  commentId: F:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Tangent
+  id: Tangent
+  parent: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+  langs:
+  - csharp
+  - vb
+  name: Tangent
+  nameWithType: Vertex3D.Tangent
+  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Tangent
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Tangent
+    path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+    startLine: 57
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.VertexTypes
+  summary: The tangent vector of the vertex, used for normal mapping.
+  example: []
+  syntax:
+    content: public Vector3 Tangent
+    return:
+      type: System.Numerics.Vector3
+    content.vb: Public Tangent As Vector3
+- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Color
+  commentId: F:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Color
+  id: Color
+  parent: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+  langs:
+  - csharp
+  - vb
+  name: Color
+  nameWithType: Vertex3D.Color
+  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Color
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Color
+    path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+    startLine: 62
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.VertexTypes
+  summary: The color of the vertex.
+  example: []
+  syntax:
+    content: public Vector4 Color
+    return:
+      type: System.Numerics.Vector4
+    content.vb: Public Color As Vector4
+- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.#ctor(System.Numerics.Vector3,System.Numerics.Vector4,Vortice.Mathematics.UInt4,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector4)
+  commentId: M:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.#ctor(System.Numerics.Vector3,System.Numerics.Vector4,Vortice.Mathematics.UInt4,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector4)
+  id: '#ctor(System.Numerics.Vector3,System.Numerics.Vector4,Vortice.Mathematics.UInt4,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector4)'
+  parent: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+  langs:
+  - csharp
+  - vb
+  name: Vertex3D(Vector3, Vector4, UInt4, Vector2, Vector2, Vector3, Vector3, Vector4)
+  nameWithType: Vertex3D.Vertex3D(Vector3, Vector4, UInt4, Vector2, Vector2, Vector3, Vector3, Vector4)
+  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Vertex3D(System.Numerics.Vector3, System.Numerics.Vector4, Vortice.Mathematics.UInt4, System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector3, System.Numerics.Vector3, System.Numerics.Vector4)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+    startLine: 75
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.VertexTypes
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Graphics.VertexTypes.Vertex3D" data-throw-if-not-resolved="false"></xref> struct with the specified position, bone weights, bone indices, texture coordinates, normal, tangent, and color values.
+  example: []
+  syntax:
+    content: public Vertex3D(Vector3 position, Vector4 boneWeights, UInt4 boneIndices, Vector2 texCoords, Vector2 texCoords2, Vector3 normal, Vector3 tangent, Vector4 color)
+    parameters:
+    - id: position
+      type: System.Numerics.Vector3
+      description: The position of the vertex in 3D space.
+    - id: boneWeights
+      type: System.Numerics.Vector4
+      description: The weights associated with bones for skeletal animation.
+    - id: boneIndices
+      type: Vortice.Mathematics.UInt4
+      description: The indices of bones influencing this vertex.
+    - id: texCoords
+      type: System.Numerics.Vector2
+      description: The primary texture coordinates of the vertex.
+    - id: texCoords2
+      type: System.Numerics.Vector2
+      description: The secondary texture coordinates of the vertex.
+    - id: normal
+      type: System.Numerics.Vector3
+      description: The normal vector at the vertex, used for lighting calculations.
+    - id: tangent
+      type: System.Numerics.Vector3
+      description: The tangent vector at the vertex, used for normal mapping.
+    - id: color
+      type: System.Numerics.Vector4
+      description: The color of the vertex, stored as an RGBA float vector.
+    content.vb: Public Sub New(position As Vector3, boneWeights As Vector4, boneIndices As UInt4, texCoords As Vector2, texCoords2 As Vector2, normal As Vector3, tangent As Vector3, color As Vector4)
+  overload: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.#ctor*
+  nameWithType.vb: Vertex3D.New(Vector3, Vector4, UInt4, Vector2, Vector2, Vector3, Vector3, Vector4)
+  fullName.vb: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.New(System.Numerics.Vector3, System.Numerics.Vector4, Vortice.Mathematics.UInt4, System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector3, System.Numerics.Vector3, System.Numerics.Vector4)
+  name.vb: New(Vector3, Vector4, UInt4, Vector2, Vector2, Vector3, Vector3, Vector4)
+- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.AddBone(System.UInt32,System.Single)
+  commentId: M:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.AddBone(System.UInt32,System.Single)
+  id: AddBone(System.UInt32,System.Single)
+  parent: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+  langs:
+  - csharp
+  - vb
+  name: AddBone(uint, float)
+  nameWithType: Vertex3D.AddBone(uint, float)
+  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.AddBone(uint, float)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: AddBone
+    path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+    startLine: 91
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.VertexTypes
+  summary: Adds a bone to the vertex and assigns a weight to it.
+  example: []
+  syntax:
+    content: public void AddBone(uint id, float weight)
+    parameters:
+    - id: id
+      type: System.UInt32
+      description: The identifier of the bone.
+    - id: weight
+      type: System.Single
+      description: The weight of the bone influence.
+    content.vb: Public Sub AddBone(id As UInteger, weight As Single)
+  overload: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.AddBone*
+  nameWithType.vb: Vertex3D.AddBone(UInteger, Single)
+  fullName.vb: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.AddBone(UInteger, Single)
+  name.vb: AddBone(UInteger, Single)
+references:
+- uid: Bliss.CSharp.Graphics.VertexTypes
+  commentId: N:Bliss.CSharp.Graphics.VertexTypes
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.VertexTypes
+  nameWithType: Bliss.CSharp.Graphics.VertexTypes
+  fullName: Bliss.CSharp.Graphics.VertexTypes
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.VertexTypes
+    name: VertexTypes
+    href: Bliss.CSharp.Graphics.VertexTypes.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.VertexTypes
+    name: VertexTypes
+    href: Bliss.CSharp.Graphics.VertexTypes.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+  commentId: T:Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+  href: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.html
+  name: Vertex3D
+  nameWithType: Vertex3D
+  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+- uid: Veldrid.VertexLayoutDescription
+  commentId: T:Veldrid.VertexLayoutDescription
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/VertexLayoutDescription.cs
+  name: VertexLayoutDescription
+  nameWithType: VertexLayoutDescription
+  fullName: Veldrid.VertexLayoutDescription
+- uid: Veldrid
+  commentId: N:Veldrid
+  isExternal: true
+  name: Veldrid
+  nameWithType: Veldrid
+  fullName: Veldrid
+- uid: System.Numerics.Vector3
+  commentId: T:System.Numerics.Vector3
+  parent: System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.vector3
+  name: Vector3
+  nameWithType: Vector3
+  fullName: System.Numerics.Vector3
+- uid: System.Numerics
+  commentId: N:System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Numerics
+  nameWithType: System.Numerics
+  fullName: System.Numerics
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+- uid: System.Numerics.Vector4
+  commentId: T:System.Numerics.Vector4
+  parent: System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.vector4
+  name: Vector4
+  nameWithType: Vector4
+  fullName: System.Numerics.Vector4
+- uid: Vortice.Mathematics.UInt4
+  commentId: T:Vortice.Mathematics.UInt4
+  parent: Vortice.Mathematics
+  isExternal: true
+  href: https://github.com/amerkoleci/Vortice.Mathematics/blob/d5728c1c41b854cb75814005f16e9078c09a91d3/src/Vortice.Mathematics/UInt4.cs
+  name: UInt4
+  nameWithType: UInt4
+  fullName: Vortice.Mathematics.UInt4
+- uid: Vortice.Mathematics
+  commentId: N:Vortice.Mathematics
+  isExternal: true
+  name: Vortice.Mathematics
+  nameWithType: Vortice.Mathematics
+  fullName: Vortice.Mathematics
+  spec.csharp:
+  - uid: Vortice
+    name: Vortice
+    isExternal: true
+  - name: .
+  - uid: Vortice.Mathematics
+    name: Mathematics
+    isExternal: true
+  spec.vb:
+  - uid: Vortice
+    name: Vortice
+    isExternal: true
+  - name: .
+  - uid: Vortice.Mathematics
+    name: Mathematics
+    isExternal: true
+- uid: System.Numerics.Vector2
+  commentId: T:System.Numerics.Vector2
+  parent: System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.vector2
+  name: Vector2
+  nameWithType: Vector2
+  fullName: System.Numerics.Vector2
+- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.#ctor*
+  commentId: Overload:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.#ctor
+  href: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.html#Bliss_CSharp_Graphics_VertexTypes_Vertex3D__ctor_System_Numerics_Vector3_System_Numerics_Vector4_Vortice_Mathematics_UInt4_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector3_System_Numerics_Vector3_System_Numerics_Vector4_
+  name: Vertex3D
+  nameWithType: Vertex3D.Vertex3D
+  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Vertex3D
+  nameWithType.vb: Vertex3D.New
+  fullName.vb: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.New
+  name.vb: New
+- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.AddBone*
+  commentId: Overload:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.AddBone
+  href: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.html#Bliss_CSharp_Graphics_VertexTypes_Vertex3D_AddBone_System_UInt32_System_Single_
+  name: AddBone
+  nameWithType: Vertex3D.AddBone
+  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.AddBone
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single

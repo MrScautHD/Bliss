@@ -1,0 +1,211 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Logging.LogType
+  commentId: T:Bliss.CSharp.Logging.LogType
+  id: LogType
+  parent: Bliss.CSharp.Logging
+  children:
+  - Bliss.CSharp.Logging.LogType.Debug
+  - Bliss.CSharp.Logging.LogType.Error
+  - Bliss.CSharp.Logging.LogType.Fatal
+  - Bliss.CSharp.Logging.LogType.Info
+  - Bliss.CSharp.Logging.LogType.Warn
+  langs:
+  - csharp
+  - vb
+  name: LogType
+  nameWithType: LogType
+  fullName: Bliss.CSharp.Logging.LogType
+  type: Enum
+  source:
+    remote:
+      path: src/Bliss/CSharp/Logging/LogType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LogType
+    path: ../src/Bliss/CSharp/Logging/LogType.cs
+    startLine: 2
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Logging
+  syntax:
+    content: public enum LogType
+    content.vb: Public Enum LogType
+- uid: Bliss.CSharp.Logging.LogType.Debug
+  commentId: F:Bliss.CSharp.Logging.LogType.Debug
+  id: Debug
+  parent: Bliss.CSharp.Logging.LogType
+  langs:
+  - csharp
+  - vb
+  name: Debug
+  nameWithType: LogType.Debug
+  fullName: Bliss.CSharp.Logging.LogType.Debug
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Logging/LogType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Debug
+    path: ../src/Bliss/CSharp/Logging/LogType.cs
+    startLine: 7
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Logging
+  summary: Debug level logging, used for detailed diagnostic messages.
+  example: []
+  syntax:
+    content: Debug = 0
+    return:
+      type: Bliss.CSharp.Logging.LogType
+- uid: Bliss.CSharp.Logging.LogType.Info
+  commentId: F:Bliss.CSharp.Logging.LogType.Info
+  id: Info
+  parent: Bliss.CSharp.Logging.LogType
+  langs:
+  - csharp
+  - vb
+  name: Info
+  nameWithType: LogType.Info
+  fullName: Bliss.CSharp.Logging.LogType.Info
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Logging/LogType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Info
+    path: ../src/Bliss/CSharp/Logging/LogType.cs
+    startLine: 12
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Logging
+  summary: Info level logging, used for general informational messages.
+  example: []
+  syntax:
+    content: Info = 1
+    return:
+      type: Bliss.CSharp.Logging.LogType
+- uid: Bliss.CSharp.Logging.LogType.Warn
+  commentId: F:Bliss.CSharp.Logging.LogType.Warn
+  id: Warn
+  parent: Bliss.CSharp.Logging.LogType
+  langs:
+  - csharp
+  - vb
+  name: Warn
+  nameWithType: LogType.Warn
+  fullName: Bliss.CSharp.Logging.LogType.Warn
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Logging/LogType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Warn
+    path: ../src/Bliss/CSharp/Logging/LogType.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Logging
+  summary: Warn level logging, used to indicate potential issues or warnings.
+  example: []
+  syntax:
+    content: Warn = 2
+    return:
+      type: Bliss.CSharp.Logging.LogType
+- uid: Bliss.CSharp.Logging.LogType.Error
+  commentId: F:Bliss.CSharp.Logging.LogType.Error
+  id: Error
+  parent: Bliss.CSharp.Logging.LogType
+  langs:
+  - csharp
+  - vb
+  name: Error
+  nameWithType: LogType.Error
+  fullName: Bliss.CSharp.Logging.LogType.Error
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Logging/LogType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Error
+    path: ../src/Bliss/CSharp/Logging/LogType.cs
+    startLine: 22
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Logging
+  summary: Error level logging, used for error messages that indicate a failure.
+  example: []
+  syntax:
+    content: Error = 3
+    return:
+      type: Bliss.CSharp.Logging.LogType
+- uid: Bliss.CSharp.Logging.LogType.Fatal
+  commentId: F:Bliss.CSharp.Logging.LogType.Fatal
+  id: Fatal
+  parent: Bliss.CSharp.Logging.LogType
+  langs:
+  - csharp
+  - vb
+  name: Fatal
+  nameWithType: LogType.Fatal
+  fullName: Bliss.CSharp.Logging.LogType.Fatal
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Logging/LogType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Fatal
+    path: ../src/Bliss/CSharp/Logging/LogType.cs
+    startLine: 27
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Logging
+  summary: Fatal level logging, used for critical errors that cause termination.
+  example: []
+  syntax:
+    content: Fatal = 4
+    return:
+      type: Bliss.CSharp.Logging.LogType
+references:
+- uid: Bliss.CSharp.Logging
+  commentId: N:Bliss.CSharp.Logging
+  href: Bliss.html
+  name: Bliss.CSharp.Logging
+  nameWithType: Bliss.CSharp.Logging
+  fullName: Bliss.CSharp.Logging
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Logging
+    name: Logging
+    href: Bliss.CSharp.Logging.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Logging
+    name: Logging
+    href: Bliss.CSharp.Logging.html
+- uid: Bliss.CSharp.Logging.LogType
+  commentId: T:Bliss.CSharp.Logging.LogType
+  parent: Bliss.CSharp.Logging
+  href: Bliss.CSharp.Logging.LogType.html
+  name: LogType
+  nameWithType: LogType
+  fullName: Bliss.CSharp.Logging.LogType

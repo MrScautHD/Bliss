@@ -1,0 +1,163 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Interact.Mice.Cursors.ICursor
+  commentId: T:Bliss.CSharp.Interact.Mice.Cursors.ICursor
+  id: ICursor
+  parent: Bliss.CSharp.Interact.Mice.Cursors
+  children:
+  - Bliss.CSharp.Interact.Mice.Cursors.ICursor.GetHandle
+  langs:
+  - csharp
+  - vb
+  name: ICursor
+  nameWithType: ICursor
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.ICursor
+  type: Interface
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/ICursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ICursor
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/ICursor.cs
+    startLine: 2
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  syntax:
+    content: 'public interface ICursor : IDisposable'
+    content.vb: Public Interface ICursor Inherits IDisposable
+  inheritedMembers:
+  - System.IDisposable.Dispose
+- uid: Bliss.CSharp.Interact.Mice.Cursors.ICursor.GetHandle
+  commentId: M:Bliss.CSharp.Interact.Mice.Cursors.ICursor.GetHandle
+  id: GetHandle
+  parent: Bliss.CSharp.Interact.Mice.Cursors.ICursor
+  langs:
+  - csharp
+  - vb
+  name: GetHandle()
+  nameWithType: ICursor.GetHandle()
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.ICursor.GetHandle()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Mice/Cursors/ICursor.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetHandle
+    path: ../src/Bliss/CSharp/Interact/Mice/Cursors/ICursor.cs
+    startLine: 8
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Mice.Cursors
+  summary: Retrieves the handle of the current cursor.
+  example: []
+  syntax:
+    content: nint GetHandle()
+    return:
+      type: System.IntPtr
+      description: A pointer to the cursor handle.
+    content.vb: Function GetHandle() As IntPtr
+  overload: Bliss.CSharp.Interact.Mice.Cursors.ICursor.GetHandle*
+references:
+- uid: Bliss.CSharp.Interact.Mice.Cursors
+  commentId: N:Bliss.CSharp.Interact.Mice.Cursors
+  href: Bliss.html
+  name: Bliss.CSharp.Interact.Mice.Cursors
+  nameWithType: Bliss.CSharp.Interact.Mice.Cursors
+  fullName: Bliss.CSharp.Interact.Mice.Cursors
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice
+    name: Mice
+    href: Bliss.CSharp.Interact.Mice.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice.Cursors
+    name: Cursors
+    href: Bliss.CSharp.Interact.Mice.Cursors.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice
+    name: Mice
+    href: Bliss.CSharp.Interact.Mice.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice.Cursors
+    name: Cursors
+    href: Bliss.CSharp.Interact.Mice.Cursors.html
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp.Interact.Mice.Cursors.ICursor.GetHandle*
+  commentId: Overload:Bliss.CSharp.Interact.Mice.Cursors.ICursor.GetHandle
+  href: Bliss.CSharp.Interact.Mice.Cursors.ICursor.html#Bliss_CSharp_Interact_Mice_Cursors_ICursor_GetHandle
+  name: GetHandle
+  nameWithType: ICursor.GetHandle
+  fullName: Bliss.CSharp.Interact.Mice.Cursors.ICursor.GetHandle
+- uid: System.IntPtr
+  commentId: T:System.IntPtr
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.intptr
+  name: nint
+  nameWithType: nint
+  fullName: nint
+  nameWithType.vb: IntPtr
+  fullName.vb: System.IntPtr
+  name.vb: IntPtr

@@ -1,0 +1,78 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Geometry.Animations.Keyframes
+  commentId: N:Bliss.CSharp.Geometry.Animations.Keyframes
+  id: Bliss.CSharp.Geometry.Animations.Keyframes
+  children:
+  - Bliss.CSharp.Geometry.Animations.Keyframes.QuatKey
+  - Bliss.CSharp.Geometry.Animations.Keyframes.Vector3Key
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Geometry.Animations.Keyframes
+  nameWithType: Bliss.CSharp.Geometry.Animations.Keyframes
+  fullName: Bliss.CSharp.Geometry.Animations.Keyframes
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Geometry.Animations.Keyframes.QuatKey
+  commentId: T:Bliss.CSharp.Geometry.Animations.Keyframes.QuatKey
+  parent: Bliss.CSharp.Geometry.Animations.Keyframes
+  href: Bliss.CSharp.Geometry.Animations.Keyframes.QuatKey.html
+  name: QuatKey
+  nameWithType: QuatKey
+  fullName: Bliss.CSharp.Geometry.Animations.Keyframes.QuatKey
+- uid: Bliss.CSharp.Geometry.Animations.Keyframes.Vector3Key
+  commentId: T:Bliss.CSharp.Geometry.Animations.Keyframes.Vector3Key
+  parent: Bliss.CSharp.Geometry.Animations.Keyframes
+  href: Bliss.CSharp.Geometry.Animations.Keyframes.Vector3Key.html
+  name: Vector3Key
+  nameWithType: Vector3Key
+  fullName: Bliss.CSharp.Geometry.Animations.Keyframes.Vector3Key
+- uid: Bliss.CSharp.Geometry.Animations.Keyframes
+  commentId: N:Bliss.CSharp.Geometry.Animations.Keyframes
+  href: Bliss.html
+  name: Bliss.CSharp.Geometry.Animations.Keyframes
+  nameWithType: Bliss.CSharp.Geometry.Animations.Keyframes
+  fullName: Bliss.CSharp.Geometry.Animations.Keyframes
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animations
+    name: Animations
+    href: Bliss.CSharp.Geometry.Animations.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animations.Keyframes
+    name: Keyframes
+    href: Bliss.CSharp.Geometry.Animations.Keyframes.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animations
+    name: Animations
+    href: Bliss.CSharp.Geometry.Animations.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animations.Keyframes
+    name: Keyframes
+    href: Bliss.CSharp.Geometry.Animations.Keyframes.html

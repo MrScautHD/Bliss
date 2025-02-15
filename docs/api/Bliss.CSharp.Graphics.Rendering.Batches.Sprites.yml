@@ -1,0 +1,86 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  id: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  children:
+  - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
+  - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html
+  name: SpriteBatch
+  nameWithType: SpriteBatch
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip.html
+  name: SpriteFlip
+  nameWithType: SpriteFlip
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches
+    name: Batches
+    href: Bliss.CSharp.Graphics.Rendering.Batches.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+    name: Sprites
+    href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches
+    name: Batches
+    href: Bliss.CSharp.Graphics.Rendering.Batches.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+    name: Sprites
+    href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.html

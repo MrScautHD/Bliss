@@ -1,0 +1,1199 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.GlobalResource
+  commentId: T:Bliss.CSharp.GlobalResource
+  id: GlobalResource
+  parent: Bliss.CSharp
+  children:
+  - Bliss.CSharp.GlobalResource.BufferLayouts
+  - Bliss.CSharp.GlobalResource.CreateBufferLayout(System.String,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType,Veldrid.ShaderStages)
+  - Bliss.CSharp.GlobalResource.CreateTextureLayout(System.String)
+  - Bliss.CSharp.GlobalResource.DefaultImmediateRendererTexture
+  - Bliss.CSharp.GlobalResource.DefaultModelEffect
+  - Bliss.CSharp.GlobalResource.DefaultModelTexture
+  - Bliss.CSharp.GlobalResource.DefaultSpriteEffect
+  - Bliss.CSharp.GlobalResource.Destroy
+  - Bliss.CSharp.GlobalResource.FullScreenRenderPassEffect
+  - Bliss.CSharp.GlobalResource.GraphicsDevice
+  - Bliss.CSharp.GlobalResource.ImmediateRendererEffect
+  - Bliss.CSharp.GlobalResource.Init(Veldrid.GraphicsDevice)
+  - Bliss.CSharp.GlobalResource.PrimitiveEffect
+  - Bliss.CSharp.GlobalResource.TextureLayouts
+  langs:
+  - csharp
+  - vb
+  name: GlobalResource
+  nameWithType: GlobalResource
+  fullName: Bliss.CSharp.GlobalResource
+  type: Class
+  source:
+    remote:
+      path: src/Bliss/CSharp/GlobalResource.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GlobalResource
+    path: ../src/Bliss/CSharp/GlobalResource.cs
+    startLine: 12
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  syntax:
+    content: public static class GlobalResource
+    content.vb: Public Module GlobalResource
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bliss.CSharp.GlobalResource.GraphicsDevice
+  commentId: P:Bliss.CSharp.GlobalResource.GraphicsDevice
+  id: GraphicsDevice
+  parent: Bliss.CSharp.GlobalResource
+  langs:
+  - csharp
+  - vb
+  name: GraphicsDevice
+  nameWithType: GlobalResource.GraphicsDevice
+  fullName: Bliss.CSharp.GlobalResource.GraphicsDevice
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/GlobalResource.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GraphicsDevice
+    path: ../src/Bliss/CSharp/GlobalResource.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: Provides access to the global graphics device used for rendering operations.
+  example: []
+  syntax:
+    content: public static GraphicsDevice GraphicsDevice { get; }
+    parameters: []
+    return:
+      type: Veldrid.GraphicsDevice
+    content.vb: Public Shared Property GraphicsDevice As GraphicsDevice
+  overload: Bliss.CSharp.GlobalResource.GraphicsDevice*
+- uid: Bliss.CSharp.GlobalResource.BufferLayouts
+  commentId: P:Bliss.CSharp.GlobalResource.BufferLayouts
+  id: BufferLayouts
+  parent: Bliss.CSharp.GlobalResource
+  langs:
+  - csharp
+  - vb
+  name: BufferLayouts
+  nameWithType: GlobalResource.BufferLayouts
+  fullName: Bliss.CSharp.GlobalResource.BufferLayouts
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/GlobalResource.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: BufferLayouts
+    path: ../src/Bliss/CSharp/GlobalResource.cs
+    startLine: 22
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: Stores a collection of globally accessible buffer layouts used in rendering pipelines.
+  example: []
+  syntax:
+    content: public static List<SimpleBufferLayout> BufferLayouts { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout}
+    content.vb: Public Shared Property BufferLayouts As List(Of SimpleBufferLayout)
+  overload: Bliss.CSharp.GlobalResource.BufferLayouts*
+- uid: Bliss.CSharp.GlobalResource.TextureLayouts
+  commentId: P:Bliss.CSharp.GlobalResource.TextureLayouts
+  id: TextureLayouts
+  parent: Bliss.CSharp.GlobalResource
+  langs:
+  - csharp
+  - vb
+  name: TextureLayouts
+  nameWithType: GlobalResource.TextureLayouts
+  fullName: Bliss.CSharp.GlobalResource.TextureLayouts
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/GlobalResource.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: TextureLayouts
+    path: ../src/Bliss/CSharp/GlobalResource.cs
+    startLine: 27
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: Maintains a collection of texture layouts used for configuring and managing texture bindings in graphics rendering operations.
+  example: []
+  syntax:
+    content: public static List<SimpleTextureLayout> TextureLayouts { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout}
+    content.vb: Public Shared Property TextureLayouts As List(Of SimpleTextureLayout)
+  overload: Bliss.CSharp.GlobalResource.TextureLayouts*
+- uid: Bliss.CSharp.GlobalResource.DefaultSpriteEffect
+  commentId: P:Bliss.CSharp.GlobalResource.DefaultSpriteEffect
+  id: DefaultSpriteEffect
+  parent: Bliss.CSharp.GlobalResource
+  langs:
+  - csharp
+  - vb
+  name: DefaultSpriteEffect
+  nameWithType: GlobalResource.DefaultSpriteEffect
+  fullName: Bliss.CSharp.GlobalResource.DefaultSpriteEffect
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/GlobalResource.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DefaultSpriteEffect
+    path: ../src/Bliss/CSharp/GlobalResource.cs
+    startLine: 32
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: Gets the default <xref href="Bliss.CSharp.Effects.Effect" data-throw-if-not-resolved="false"></xref> used for rendering sprites.
+  example: []
+  syntax:
+    content: public static Effect DefaultSpriteEffect { get; }
+    parameters: []
+    return:
+      type: Bliss.CSharp.Effects.Effect
+    content.vb: Public Shared Property DefaultSpriteEffect As Effect
+  overload: Bliss.CSharp.GlobalResource.DefaultSpriteEffect*
+- uid: Bliss.CSharp.GlobalResource.PrimitiveEffect
+  commentId: P:Bliss.CSharp.GlobalResource.PrimitiveEffect
+  id: PrimitiveEffect
+  parent: Bliss.CSharp.GlobalResource
+  langs:
+  - csharp
+  - vb
+  name: PrimitiveEffect
+  nameWithType: GlobalResource.PrimitiveEffect
+  fullName: Bliss.CSharp.GlobalResource.PrimitiveEffect
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/GlobalResource.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: PrimitiveEffect
+    path: ../src/Bliss/CSharp/GlobalResource.cs
+    startLine: 37
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: Gets the <xref href="Bliss.CSharp.Effects.Effect" data-throw-if-not-resolved="false"></xref> used for rendering primitive shapes.
+  example: []
+  syntax:
+    content: public static Effect PrimitiveEffect { get; }
+    parameters: []
+    return:
+      type: Bliss.CSharp.Effects.Effect
+    content.vb: Public Shared Property PrimitiveEffect As Effect
+  overload: Bliss.CSharp.GlobalResource.PrimitiveEffect*
+- uid: Bliss.CSharp.GlobalResource.FullScreenRenderPassEffect
+  commentId: P:Bliss.CSharp.GlobalResource.FullScreenRenderPassEffect
+  id: FullScreenRenderPassEffect
+  parent: Bliss.CSharp.GlobalResource
+  langs:
+  - csharp
+  - vb
+  name: FullScreenRenderPassEffect
+  nameWithType: GlobalResource.FullScreenRenderPassEffect
+  fullName: Bliss.CSharp.GlobalResource.FullScreenRenderPassEffect
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/GlobalResource.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: FullScreenRenderPassEffect
+    path: ../src/Bliss/CSharp/GlobalResource.cs
+    startLine: 42
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: Gets the default <xref href="Bliss.CSharp.Effects.Effect" data-throw-if-not-resolved="false"></xref> used for full-screen render passes.
+  example: []
+  syntax:
+    content: public static Effect FullScreenRenderPassEffect { get; }
+    parameters: []
+    return:
+      type: Bliss.CSharp.Effects.Effect
+    content.vb: Public Shared Property FullScreenRenderPassEffect As Effect
+  overload: Bliss.CSharp.GlobalResource.FullScreenRenderPassEffect*
+- uid: Bliss.CSharp.GlobalResource.ImmediateRendererEffect
+  commentId: P:Bliss.CSharp.GlobalResource.ImmediateRendererEffect
+  id: ImmediateRendererEffect
+  parent: Bliss.CSharp.GlobalResource
+  langs:
+  - csharp
+  - vb
+  name: ImmediateRendererEffect
+  nameWithType: GlobalResource.ImmediateRendererEffect
+  fullName: Bliss.CSharp.GlobalResource.ImmediateRendererEffect
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/GlobalResource.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ImmediateRendererEffect
+    path: ../src/Bliss/CSharp/GlobalResource.cs
+    startLine: 47
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: Gets the default <xref href="Bliss.CSharp.Effects.Effect" data-throw-if-not-resolved="false"></xref> used for immediate mode rendering operations.
+  example: []
+  syntax:
+    content: public static Effect ImmediateRendererEffect { get; }
+    parameters: []
+    return:
+      type: Bliss.CSharp.Effects.Effect
+    content.vb: Public Shared Property ImmediateRendererEffect As Effect
+  overload: Bliss.CSharp.GlobalResource.ImmediateRendererEffect*
+- uid: Bliss.CSharp.GlobalResource.DefaultModelEffect
+  commentId: P:Bliss.CSharp.GlobalResource.DefaultModelEffect
+  id: DefaultModelEffect
+  parent: Bliss.CSharp.GlobalResource
+  langs:
+  - csharp
+  - vb
+  name: DefaultModelEffect
+  nameWithType: GlobalResource.DefaultModelEffect
+  fullName: Bliss.CSharp.GlobalResource.DefaultModelEffect
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/GlobalResource.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DefaultModelEffect
+    path: ../src/Bliss/CSharp/GlobalResource.cs
+    startLine: 52
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: The default <xref href="Bliss.CSharp.Effects.Effect" data-throw-if-not-resolved="false"></xref> used for rendering 3D models.
+  example: []
+  syntax:
+    content: public static Effect DefaultModelEffect { get; }
+    parameters: []
+    return:
+      type: Bliss.CSharp.Effects.Effect
+    content.vb: Public Shared Property DefaultModelEffect As Effect
+  overload: Bliss.CSharp.GlobalResource.DefaultModelEffect*
+- uid: Bliss.CSharp.GlobalResource.DefaultImmediateRendererTexture
+  commentId: P:Bliss.CSharp.GlobalResource.DefaultImmediateRendererTexture
+  id: DefaultImmediateRendererTexture
+  parent: Bliss.CSharp.GlobalResource
+  langs:
+  - csharp
+  - vb
+  name: DefaultImmediateRendererTexture
+  nameWithType: GlobalResource.DefaultImmediateRendererTexture
+  fullName: Bliss.CSharp.GlobalResource.DefaultImmediateRendererTexture
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/GlobalResource.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DefaultImmediateRendererTexture
+    path: ../src/Bliss/CSharp/GlobalResource.cs
+    startLine: 57
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: The default <xref href="Bliss.CSharp.Textures.Texture2D" data-throw-if-not-resolved="false"></xref> used for immediate mode rendering.
+  example: []
+  syntax:
+    content: public static Texture2D DefaultImmediateRendererTexture { get; }
+    parameters: []
+    return:
+      type: Bliss.CSharp.Textures.Texture2D
+    content.vb: Public Shared Property DefaultImmediateRendererTexture As Texture2D
+  overload: Bliss.CSharp.GlobalResource.DefaultImmediateRendererTexture*
+- uid: Bliss.CSharp.GlobalResource.DefaultModelTexture
+  commentId: P:Bliss.CSharp.GlobalResource.DefaultModelTexture
+  id: DefaultModelTexture
+  parent: Bliss.CSharp.GlobalResource
+  langs:
+  - csharp
+  - vb
+  name: DefaultModelTexture
+  nameWithType: GlobalResource.DefaultModelTexture
+  fullName: Bliss.CSharp.GlobalResource.DefaultModelTexture
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/GlobalResource.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DefaultModelTexture
+    path: ../src/Bliss/CSharp/GlobalResource.cs
+    startLine: 62
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: The default <xref href="Bliss.CSharp.Textures.Texture2D" data-throw-if-not-resolved="false"></xref> used for rendering 3D models.
+  example: []
+  syntax:
+    content: public static Texture2D DefaultModelTexture { get; }
+    parameters: []
+    return:
+      type: Bliss.CSharp.Textures.Texture2D
+    content.vb: Public Shared Property DefaultModelTexture As Texture2D
+  overload: Bliss.CSharp.GlobalResource.DefaultModelTexture*
+- uid: Bliss.CSharp.GlobalResource.Init(Veldrid.GraphicsDevice)
+  commentId: M:Bliss.CSharp.GlobalResource.Init(Veldrid.GraphicsDevice)
+  id: Init(Veldrid.GraphicsDevice)
+  parent: Bliss.CSharp.GlobalResource
+  langs:
+  - csharp
+  - vb
+  name: Init(GraphicsDevice)
+  nameWithType: GlobalResource.Init(GraphicsDevice)
+  fullName: Bliss.CSharp.GlobalResource.Init(Veldrid.GraphicsDevice)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/GlobalResource.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Init
+    path: ../src/Bliss/CSharp/GlobalResource.cs
+    startLine: 68
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: Initializes global resources.
+  example: []
+  syntax:
+    content: public static void Init(GraphicsDevice graphicsDevice)
+    parameters:
+    - id: graphicsDevice
+      type: Veldrid.GraphicsDevice
+      description: The graphics device to be used for resource creation and rendering.
+    content.vb: Public Shared Sub Init(graphicsDevice As GraphicsDevice)
+  overload: Bliss.CSharp.GlobalResource.Init*
+- uid: Bliss.CSharp.GlobalResource.CreateBufferLayout(System.String,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType,Veldrid.ShaderStages)
+  commentId: M:Bliss.CSharp.GlobalResource.CreateBufferLayout(System.String,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType,Veldrid.ShaderStages)
+  id: CreateBufferLayout(System.String,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType,Veldrid.ShaderStages)
+  parent: Bliss.CSharp.GlobalResource
+  langs:
+  - csharp
+  - vb
+  name: CreateBufferLayout(string, SimpleBufferType, ShaderStages)
+  nameWithType: GlobalResource.CreateBufferLayout(string, SimpleBufferType, ShaderStages)
+  fullName: Bliss.CSharp.GlobalResource.CreateBufferLayout(string, Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType, Veldrid.ShaderStages)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/GlobalResource.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: CreateBufferLayout
+    path: ../src/Bliss/CSharp/GlobalResource.cs
+    startLine: 113
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: Creates a new buffer layout and adds it to the global list of buffer layouts.
+  example: []
+  syntax:
+    content: public static SimpleBufferLayout CreateBufferLayout(string name, SimpleBufferType bufferType, ShaderStages stages)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the buffer layout to create.
+    - id: bufferType
+      type: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+      description: The type of buffer being created, such as uniform or structured.
+    - id: stages
+      type: Veldrid.ShaderStages
+      description: The shader stages where the buffer will be used.
+    return:
+      type: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+      description: The created <code>SimpleBufferLayout</code>.
+    content.vb: Public Shared Function CreateBufferLayout(name As String, bufferType As SimpleBufferType, stages As ShaderStages) As SimpleBufferLayout
+  overload: Bliss.CSharp.GlobalResource.CreateBufferLayout*
+  nameWithType.vb: GlobalResource.CreateBufferLayout(String, SimpleBufferType, ShaderStages)
+  fullName.vb: Bliss.CSharp.GlobalResource.CreateBufferLayout(String, Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType, Veldrid.ShaderStages)
+  name.vb: CreateBufferLayout(String, SimpleBufferType, ShaderStages)
+- uid: Bliss.CSharp.GlobalResource.CreateTextureLayout(System.String)
+  commentId: M:Bliss.CSharp.GlobalResource.CreateTextureLayout(System.String)
+  id: CreateTextureLayout(System.String)
+  parent: Bliss.CSharp.GlobalResource
+  langs:
+  - csharp
+  - vb
+  name: CreateTextureLayout(string)
+  nameWithType: GlobalResource.CreateTextureLayout(string)
+  fullName: Bliss.CSharp.GlobalResource.CreateTextureLayout(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/GlobalResource.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: CreateTextureLayout
+    path: ../src/Bliss/CSharp/GlobalResource.cs
+    startLine: 124
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: Creates a new texture layout and adds it to the global collection of texture layouts.
+  example: []
+  syntax:
+    content: public static SimpleTextureLayout CreateTextureLayout(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the texture layout.
+    return:
+      type: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+      description: A new <code>SimpleTextureLayout</code> instance initialized with the specified name.
+    content.vb: Public Shared Function CreateTextureLayout(name As String) As SimpleTextureLayout
+  overload: Bliss.CSharp.GlobalResource.CreateTextureLayout*
+  nameWithType.vb: GlobalResource.CreateTextureLayout(String)
+  fullName.vb: Bliss.CSharp.GlobalResource.CreateTextureLayout(String)
+  name.vb: CreateTextureLayout(String)
+- uid: Bliss.CSharp.GlobalResource.Destroy
+  commentId: M:Bliss.CSharp.GlobalResource.Destroy
+  id: Destroy
+  parent: Bliss.CSharp.GlobalResource
+  langs:
+  - csharp
+  - vb
+  name: Destroy()
+  nameWithType: GlobalResource.Destroy()
+  fullName: Bliss.CSharp.GlobalResource.Destroy()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/GlobalResource.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Destroy
+    path: ../src/Bliss/CSharp/GlobalResource.cs
+    startLine: 133
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: Releases and disposes of all global resources.
+  example: []
+  syntax:
+    content: public static void Destroy()
+    content.vb: Public Shared Sub Destroy()
+  overload: Bliss.CSharp.GlobalResource.Destroy*
+references:
+- uid: Bliss.CSharp
+  commentId: N:Bliss.CSharp
+  href: Bliss.html
+  name: Bliss.CSharp
+  nameWithType: Bliss.CSharp
+  fullName: Bliss.CSharp
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp.GlobalResource.GraphicsDevice*
+  commentId: Overload:Bliss.CSharp.GlobalResource.GraphicsDevice
+  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_GraphicsDevice
+  name: GraphicsDevice
+  nameWithType: GlobalResource.GraphicsDevice
+  fullName: Bliss.CSharp.GlobalResource.GraphicsDevice
+- uid: Veldrid.GraphicsDevice
+  commentId: T:Veldrid.GraphicsDevice
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsDevice.cs
+  name: GraphicsDevice
+  nameWithType: GraphicsDevice
+  fullName: Veldrid.GraphicsDevice
+- uid: Veldrid
+  commentId: N:Veldrid
+  isExternal: true
+  name: Veldrid
+  nameWithType: Veldrid
+  fullName: Veldrid
+- uid: Bliss.CSharp.GlobalResource.BufferLayouts*
+  commentId: Overload:Bliss.CSharp.GlobalResource.BufferLayouts
+  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_BufferLayouts
+  name: BufferLayouts
+  nameWithType: GlobalResource.BufferLayouts
+  fullName: Bliss.CSharp.GlobalResource.BufferLayouts
+- uid: System.Collections.Generic.List{Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout}
+  commentId: T:System.Collections.Generic.List{Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<SimpleBufferLayout>
+  nameWithType: List<SimpleBufferLayout>
+  fullName: System.Collections.Generic.List<Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout>
+  nameWithType.vb: List(Of SimpleBufferLayout)
+  fullName.vb: System.Collections.Generic.List(Of Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  name.vb: List(Of SimpleBufferLayout)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+    name: SimpleBufferLayout
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+    name: SimpleBufferLayout
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Bliss.CSharp.GlobalResource.TextureLayouts*
+  commentId: Overload:Bliss.CSharp.GlobalResource.TextureLayouts
+  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_TextureLayouts
+  name: TextureLayouts
+  nameWithType: GlobalResource.TextureLayouts
+  fullName: Bliss.CSharp.GlobalResource.TextureLayouts
+- uid: System.Collections.Generic.List{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout}
+  commentId: T:System.Collections.Generic.List{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<SimpleTextureLayout>
+  nameWithType: List<SimpleTextureLayout>
+  fullName: System.Collections.Generic.List<Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout>
+  nameWithType.vb: List(Of SimpleTextureLayout)
+  fullName.vb: System.Collections.Generic.List(Of Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+  name.vb: List(Of SimpleTextureLayout)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+    name: SimpleTextureLayout
+    href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+    name: SimpleTextureLayout
+    href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
+  - name: )
+- uid: Bliss.CSharp.Effects.Effect
+  commentId: T:Bliss.CSharp.Effects.Effect
+  parent: Bliss.CSharp.Effects
+  href: Bliss.CSharp.Effects.Effect.html
+  name: Effect
+  nameWithType: Effect
+  fullName: Bliss.CSharp.Effects.Effect
+- uid: Bliss.CSharp.GlobalResource.DefaultSpriteEffect*
+  commentId: Overload:Bliss.CSharp.GlobalResource.DefaultSpriteEffect
+  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_DefaultSpriteEffect
+  name: DefaultSpriteEffect
+  nameWithType: GlobalResource.DefaultSpriteEffect
+  fullName: Bliss.CSharp.GlobalResource.DefaultSpriteEffect
+- uid: Bliss.CSharp.Effects
+  commentId: N:Bliss.CSharp.Effects
+  href: Bliss.html
+  name: Bliss.CSharp.Effects
+  nameWithType: Bliss.CSharp.Effects
+  fullName: Bliss.CSharp.Effects
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Effects
+    name: Effects
+    href: Bliss.CSharp.Effects.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Effects
+    name: Effects
+    href: Bliss.CSharp.Effects.html
+- uid: Bliss.CSharp.GlobalResource.PrimitiveEffect*
+  commentId: Overload:Bliss.CSharp.GlobalResource.PrimitiveEffect
+  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_PrimitiveEffect
+  name: PrimitiveEffect
+  nameWithType: GlobalResource.PrimitiveEffect
+  fullName: Bliss.CSharp.GlobalResource.PrimitiveEffect
+- uid: Bliss.CSharp.GlobalResource.FullScreenRenderPassEffect*
+  commentId: Overload:Bliss.CSharp.GlobalResource.FullScreenRenderPassEffect
+  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_FullScreenRenderPassEffect
+  name: FullScreenRenderPassEffect
+  nameWithType: GlobalResource.FullScreenRenderPassEffect
+  fullName: Bliss.CSharp.GlobalResource.FullScreenRenderPassEffect
+- uid: Bliss.CSharp.GlobalResource.ImmediateRendererEffect*
+  commentId: Overload:Bliss.CSharp.GlobalResource.ImmediateRendererEffect
+  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_ImmediateRendererEffect
+  name: ImmediateRendererEffect
+  nameWithType: GlobalResource.ImmediateRendererEffect
+  fullName: Bliss.CSharp.GlobalResource.ImmediateRendererEffect
+- uid: Bliss.CSharp.GlobalResource.DefaultModelEffect*
+  commentId: Overload:Bliss.CSharp.GlobalResource.DefaultModelEffect
+  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_DefaultModelEffect
+  name: DefaultModelEffect
+  nameWithType: GlobalResource.DefaultModelEffect
+  fullName: Bliss.CSharp.GlobalResource.DefaultModelEffect
+- uid: Bliss.CSharp.Textures.Texture2D
+  commentId: T:Bliss.CSharp.Textures.Texture2D
+  parent: Bliss.CSharp.Textures
+  href: Bliss.CSharp.Textures.Texture2D.html
+  name: Texture2D
+  nameWithType: Texture2D
+  fullName: Bliss.CSharp.Textures.Texture2D
+- uid: Bliss.CSharp.GlobalResource.DefaultImmediateRendererTexture*
+  commentId: Overload:Bliss.CSharp.GlobalResource.DefaultImmediateRendererTexture
+  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_DefaultImmediateRendererTexture
+  name: DefaultImmediateRendererTexture
+  nameWithType: GlobalResource.DefaultImmediateRendererTexture
+  fullName: Bliss.CSharp.GlobalResource.DefaultImmediateRendererTexture
+- uid: Bliss.CSharp.Textures
+  commentId: N:Bliss.CSharp.Textures
+  href: Bliss.html
+  name: Bliss.CSharp.Textures
+  nameWithType: Bliss.CSharp.Textures
+  fullName: Bliss.CSharp.Textures
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Textures
+    name: Textures
+    href: Bliss.CSharp.Textures.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Textures
+    name: Textures
+    href: Bliss.CSharp.Textures.html
+- uid: Bliss.CSharp.GlobalResource.DefaultModelTexture*
+  commentId: Overload:Bliss.CSharp.GlobalResource.DefaultModelTexture
+  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_DefaultModelTexture
+  name: DefaultModelTexture
+  nameWithType: GlobalResource.DefaultModelTexture
+  fullName: Bliss.CSharp.GlobalResource.DefaultModelTexture
+- uid: Bliss.CSharp.GlobalResource.Init*
+  commentId: Overload:Bliss.CSharp.GlobalResource.Init
+  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_Init_Veldrid_GraphicsDevice_
+  name: Init
+  nameWithType: GlobalResource.Init
+  fullName: Bliss.CSharp.GlobalResource.Init
+- uid: Bliss.CSharp.GlobalResource.CreateBufferLayout*
+  commentId: Overload:Bliss.CSharp.GlobalResource.CreateBufferLayout
+  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_CreateBufferLayout_System_String_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferType_Veldrid_ShaderStages_
+  name: CreateBufferLayout
+  nameWithType: GlobalResource.CreateBufferLayout
+  fullName: Bliss.CSharp.GlobalResource.CreateBufferLayout
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.html
+  name: SimpleBufferType
+  nameWithType: SimpleBufferType
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+- uid: Veldrid.ShaderStages
+  commentId: T:Veldrid.ShaderStages
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/ShaderStages.cs
+  name: ShaderStages
+  nameWithType: ShaderStages
+  fullName: Veldrid.ShaderStages
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
+  name: SimpleBufferLayout
+  nameWithType: SimpleBufferLayout
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+  commentId: N:Bliss.CSharp.Graphics.Pipelines.Buffers
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Pipelines.Buffers
+  nameWithType: Bliss.CSharp.Graphics.Pipelines.Buffers
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+    name: Buffers
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+    name: Buffers
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.html
+- uid: Bliss.CSharp.GlobalResource.CreateTextureLayout*
+  commentId: Overload:Bliss.CSharp.GlobalResource.CreateTextureLayout
+  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_CreateTextureLayout_System_String_
+  name: CreateTextureLayout
+  nameWithType: GlobalResource.CreateTextureLayout
+  fullName: Bliss.CSharp.GlobalResource.CreateTextureLayout
+- uid: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+  parent: Bliss.CSharp.Graphics.Pipelines.Textures
+  href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
+  name: SimpleTextureLayout
+  nameWithType: SimpleTextureLayout
+  fullName: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+- uid: Bliss.CSharp.Graphics.Pipelines.Textures
+  commentId: N:Bliss.CSharp.Graphics.Pipelines.Textures
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Pipelines.Textures
+  nameWithType: Bliss.CSharp.Graphics.Pipelines.Textures
+  fullName: Bliss.CSharp.Graphics.Pipelines.Textures
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Textures
+    name: Textures
+    href: Bliss.CSharp.Graphics.Pipelines.Textures.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Textures
+    name: Textures
+    href: Bliss.CSharp.Graphics.Pipelines.Textures.html
+- uid: Bliss.CSharp.GlobalResource.Destroy*
+  commentId: Overload:Bliss.CSharp.GlobalResource.Destroy
+  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_Destroy
+  name: Destroy
+  nameWithType: GlobalResource.Destroy
+  fullName: Bliss.CSharp.GlobalResource.Destroy

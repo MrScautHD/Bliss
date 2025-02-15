@@ -1,0 +1,696 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Geometry.Animations.ModelAnimation
+  commentId: T:Bliss.CSharp.Geometry.Animations.ModelAnimation
+  id: ModelAnimation
+  parent: Bliss.CSharp.Geometry.Animations
+  children:
+  - Bliss.CSharp.Geometry.Animations.ModelAnimation.#ctor(System.String,System.Single,System.Single,System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animations.NodeAnimChannel})
+  - Bliss.CSharp.Geometry.Animations.ModelAnimation.AnimationChannels
+  - Bliss.CSharp.Geometry.Animations.ModelAnimation.DurationInTicks
+  - Bliss.CSharp.Geometry.Animations.ModelAnimation.FrameCount
+  - Bliss.CSharp.Geometry.Animations.ModelAnimation.Name
+  - Bliss.CSharp.Geometry.Animations.ModelAnimation.TicksPerSecond
+  langs:
+  - csharp
+  - vb
+  name: ModelAnimation
+  nameWithType: ModelAnimation
+  fullName: Bliss.CSharp.Geometry.Animations.ModelAnimation
+  type: Class
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animations/ModelAnimation.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ModelAnimation
+    path: ../src/Bliss/CSharp/Geometry/Animations/ModelAnimation.cs
+    startLine: 2
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animations
+  syntax:
+    content: public class ModelAnimation
+    content.vb: Public Class ModelAnimation
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bliss.CSharp.Geometry.Animations.ModelAnimation.Name
+  commentId: P:Bliss.CSharp.Geometry.Animations.ModelAnimation.Name
+  id: Name
+  parent: Bliss.CSharp.Geometry.Animations.ModelAnimation
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: ModelAnimation.Name
+  fullName: Bliss.CSharp.Geometry.Animations.ModelAnimation.Name
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animations/ModelAnimation.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Name
+    path: ../src/Bliss/CSharp/Geometry/Animations/ModelAnimation.cs
+    startLine: 7
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animations
+  summary: The name of the animation.
+  example: []
+  syntax:
+    content: public string Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: Bliss.CSharp.Geometry.Animations.ModelAnimation.Name*
+- uid: Bliss.CSharp.Geometry.Animations.ModelAnimation.DurationInTicks
+  commentId: P:Bliss.CSharp.Geometry.Animations.ModelAnimation.DurationInTicks
+  id: DurationInTicks
+  parent: Bliss.CSharp.Geometry.Animations.ModelAnimation
+  langs:
+  - csharp
+  - vb
+  name: DurationInTicks
+  nameWithType: ModelAnimation.DurationInTicks
+  fullName: Bliss.CSharp.Geometry.Animations.ModelAnimation.DurationInTicks
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animations/ModelAnimation.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DurationInTicks
+    path: ../src/Bliss/CSharp/Geometry/Animations/ModelAnimation.cs
+    startLine: 12
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animations
+  summary: The total duration of the animation in ticks.
+  example: []
+  syntax:
+    content: public float DurationInTicks { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property DurationInTicks As Single
+  overload: Bliss.CSharp.Geometry.Animations.ModelAnimation.DurationInTicks*
+- uid: Bliss.CSharp.Geometry.Animations.ModelAnimation.TicksPerSecond
+  commentId: P:Bliss.CSharp.Geometry.Animations.ModelAnimation.TicksPerSecond
+  id: TicksPerSecond
+  parent: Bliss.CSharp.Geometry.Animations.ModelAnimation
+  langs:
+  - csharp
+  - vb
+  name: TicksPerSecond
+  nameWithType: ModelAnimation.TicksPerSecond
+  fullName: Bliss.CSharp.Geometry.Animations.ModelAnimation.TicksPerSecond
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animations/ModelAnimation.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: TicksPerSecond
+    path: ../src/Bliss/CSharp/Geometry/Animations/ModelAnimation.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animations
+  summary: The number of ticks per second for the animation, determining its playback speed.
+  example: []
+  syntax:
+    content: public float TicksPerSecond { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property TicksPerSecond As Single
+  overload: Bliss.CSharp.Geometry.Animations.ModelAnimation.TicksPerSecond*
+- uid: Bliss.CSharp.Geometry.Animations.ModelAnimation.FrameCount
+  commentId: P:Bliss.CSharp.Geometry.Animations.ModelAnimation.FrameCount
+  id: FrameCount
+  parent: Bliss.CSharp.Geometry.Animations.ModelAnimation
+  langs:
+  - csharp
+  - vb
+  name: FrameCount
+  nameWithType: ModelAnimation.FrameCount
+  fullName: Bliss.CSharp.Geometry.Animations.ModelAnimation.FrameCount
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animations/ModelAnimation.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: FrameCount
+    path: ../src/Bliss/CSharp/Geometry/Animations/ModelAnimation.cs
+    startLine: 22
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animations
+  summary: The total number of frames in the animation, calculated based on duration and ticks per second.
+  example: []
+  syntax:
+    content: public int FrameCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property FrameCount As Integer
+  overload: Bliss.CSharp.Geometry.Animations.ModelAnimation.FrameCount*
+- uid: Bliss.CSharp.Geometry.Animations.ModelAnimation.AnimationChannels
+  commentId: P:Bliss.CSharp.Geometry.Animations.ModelAnimation.AnimationChannels
+  id: AnimationChannels
+  parent: Bliss.CSharp.Geometry.Animations.ModelAnimation
+  langs:
+  - csharp
+  - vb
+  name: AnimationChannels
+  nameWithType: ModelAnimation.AnimationChannels
+  fullName: Bliss.CSharp.Geometry.Animations.ModelAnimation.AnimationChannels
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animations/ModelAnimation.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: AnimationChannels
+    path: ../src/Bliss/CSharp/Geometry/Animations/ModelAnimation.cs
+    startLine: 27
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animations
+  summary: A list of animation channels that define the per-node transformations during the animation.
+  example: []
+  syntax:
+    content: public IReadOnlyList<NodeAnimChannel> AnimationChannels { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animations.NodeAnimChannel}
+    content.vb: Public Property AnimationChannels As IReadOnlyList(Of NodeAnimChannel)
+  overload: Bliss.CSharp.Geometry.Animations.ModelAnimation.AnimationChannels*
+- uid: Bliss.CSharp.Geometry.Animations.ModelAnimation.#ctor(System.String,System.Single,System.Single,System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animations.NodeAnimChannel})
+  commentId: M:Bliss.CSharp.Geometry.Animations.ModelAnimation.#ctor(System.String,System.Single,System.Single,System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animations.NodeAnimChannel})
+  id: '#ctor(System.String,System.Single,System.Single,System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animations.NodeAnimChannel})'
+  parent: Bliss.CSharp.Geometry.Animations.ModelAnimation
+  langs:
+  - csharp
+  - vb
+  name: ModelAnimation(string, float, float, IReadOnlyList<NodeAnimChannel>)
+  nameWithType: ModelAnimation.ModelAnimation(string, float, float, IReadOnlyList<NodeAnimChannel>)
+  fullName: Bliss.CSharp.Geometry.Animations.ModelAnimation.ModelAnimation(string, float, float, System.Collections.Generic.IReadOnlyList<Bliss.CSharp.Geometry.Animations.NodeAnimChannel>)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animations/ModelAnimation.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Geometry/Animations/ModelAnimation.cs
+    startLine: 36
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animations
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Geometry.Animations.ModelAnimation" data-throw-if-not-resolved="false"></xref> class with the specified properties and animation channels.
+  example: []
+  syntax:
+    content: public ModelAnimation(string name, float durationInTicks, float ticksPerSecond, IReadOnlyList<NodeAnimChannel> channels)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the animation.
+    - id: durationInTicks
+      type: System.Single
+      description: The total duration of the animation in ticks.
+    - id: ticksPerSecond
+      type: System.Single
+      description: The number of ticks per second, determining playback speed.
+    - id: channels
+      type: System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animations.NodeAnimChannel}
+      description: The list of animation channels associated with this animation.
+    content.vb: Public Sub New(name As String, durationInTicks As Single, ticksPerSecond As Single, channels As IReadOnlyList(Of NodeAnimChannel))
+  overload: Bliss.CSharp.Geometry.Animations.ModelAnimation.#ctor*
+  nameWithType.vb: ModelAnimation.New(String, Single, Single, IReadOnlyList(Of NodeAnimChannel))
+  fullName.vb: Bliss.CSharp.Geometry.Animations.ModelAnimation.New(String, Single, Single, System.Collections.Generic.IReadOnlyList(Of Bliss.CSharp.Geometry.Animations.NodeAnimChannel))
+  name.vb: New(String, Single, Single, IReadOnlyList(Of NodeAnimChannel))
+references:
+- uid: Bliss.CSharp.Geometry.Animations
+  commentId: N:Bliss.CSharp.Geometry.Animations
+  href: Bliss.html
+  name: Bliss.CSharp.Geometry.Animations
+  nameWithType: Bliss.CSharp.Geometry.Animations
+  fullName: Bliss.CSharp.Geometry.Animations
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animations
+    name: Animations
+    href: Bliss.CSharp.Geometry.Animations.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animations
+    name: Animations
+    href: Bliss.CSharp.Geometry.Animations.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp.Geometry.Animations.ModelAnimation.Name*
+  commentId: Overload:Bliss.CSharp.Geometry.Animations.ModelAnimation.Name
+  href: Bliss.CSharp.Geometry.Animations.ModelAnimation.html#Bliss_CSharp_Geometry_Animations_ModelAnimation_Name
+  name: Name
+  nameWithType: ModelAnimation.Name
+  fullName: Bliss.CSharp.Geometry.Animations.ModelAnimation.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bliss.CSharp.Geometry.Animations.ModelAnimation.DurationInTicks*
+  commentId: Overload:Bliss.CSharp.Geometry.Animations.ModelAnimation.DurationInTicks
+  href: Bliss.CSharp.Geometry.Animations.ModelAnimation.html#Bliss_CSharp_Geometry_Animations_ModelAnimation_DurationInTicks
+  name: DurationInTicks
+  nameWithType: ModelAnimation.DurationInTicks
+  fullName: Bliss.CSharp.Geometry.Animations.ModelAnimation.DurationInTicks
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Bliss.CSharp.Geometry.Animations.ModelAnimation.TicksPerSecond*
+  commentId: Overload:Bliss.CSharp.Geometry.Animations.ModelAnimation.TicksPerSecond
+  href: Bliss.CSharp.Geometry.Animations.ModelAnimation.html#Bliss_CSharp_Geometry_Animations_ModelAnimation_TicksPerSecond
+  name: TicksPerSecond
+  nameWithType: ModelAnimation.TicksPerSecond
+  fullName: Bliss.CSharp.Geometry.Animations.ModelAnimation.TicksPerSecond
+- uid: Bliss.CSharp.Geometry.Animations.ModelAnimation.FrameCount*
+  commentId: Overload:Bliss.CSharp.Geometry.Animations.ModelAnimation.FrameCount
+  href: Bliss.CSharp.Geometry.Animations.ModelAnimation.html#Bliss_CSharp_Geometry_Animations_ModelAnimation_FrameCount
+  name: FrameCount
+  nameWithType: ModelAnimation.FrameCount
+  fullName: Bliss.CSharp.Geometry.Animations.ModelAnimation.FrameCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bliss.CSharp.Geometry.Animations.ModelAnimation.AnimationChannels*
+  commentId: Overload:Bliss.CSharp.Geometry.Animations.ModelAnimation.AnimationChannels
+  href: Bliss.CSharp.Geometry.Animations.ModelAnimation.html#Bliss_CSharp_Geometry_Animations_ModelAnimation_AnimationChannels
+  name: AnimationChannels
+  nameWithType: ModelAnimation.AnimationChannels
+  fullName: Bliss.CSharp.Geometry.Animations.ModelAnimation.AnimationChannels
+- uid: System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animations.NodeAnimChannel}
+  commentId: T:System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animations.NodeAnimChannel}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<NodeAnimChannel>
+  nameWithType: IReadOnlyList<NodeAnimChannel>
+  fullName: System.Collections.Generic.IReadOnlyList<Bliss.CSharp.Geometry.Animations.NodeAnimChannel>
+  nameWithType.vb: IReadOnlyList(Of NodeAnimChannel)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of Bliss.CSharp.Geometry.Animations.NodeAnimChannel)
+  name.vb: IReadOnlyList(Of NodeAnimChannel)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: Bliss.CSharp.Geometry.Animations.NodeAnimChannel
+    name: NodeAnimChannel
+    href: Bliss.CSharp.Geometry.Animations.NodeAnimChannel.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bliss.CSharp.Geometry.Animations.NodeAnimChannel
+    name: NodeAnimChannel
+    href: Bliss.CSharp.Geometry.Animations.NodeAnimChannel.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Bliss.CSharp.Geometry.Animations.ModelAnimation
+  commentId: T:Bliss.CSharp.Geometry.Animations.ModelAnimation
+  parent: Bliss.CSharp.Geometry.Animations
+  href: Bliss.CSharp.Geometry.Animations.ModelAnimation.html
+  name: ModelAnimation
+  nameWithType: ModelAnimation
+  fullName: Bliss.CSharp.Geometry.Animations.ModelAnimation
+- uid: Bliss.CSharp.Geometry.Animations.ModelAnimation.#ctor*
+  commentId: Overload:Bliss.CSharp.Geometry.Animations.ModelAnimation.#ctor
+  href: Bliss.CSharp.Geometry.Animations.ModelAnimation.html#Bliss_CSharp_Geometry_Animations_ModelAnimation__ctor_System_String_System_Single_System_Single_System_Collections_Generic_IReadOnlyList_Bliss_CSharp_Geometry_Animations_NodeAnimChannel__
+  name: ModelAnimation
+  nameWithType: ModelAnimation.ModelAnimation
+  fullName: Bliss.CSharp.Geometry.Animations.ModelAnimation.ModelAnimation
+  nameWithType.vb: ModelAnimation.New
+  fullName.vb: Bliss.CSharp.Geometry.Animations.ModelAnimation.New
+  name.vb: New

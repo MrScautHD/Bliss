@@ -1,0 +1,69 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Interact.Contexts
+  commentId: N:Bliss.CSharp.Interact.Contexts
+  id: Bliss.CSharp.Interact.Contexts
+  children:
+  - Bliss.CSharp.Interact.Contexts.IInputContext
+  - Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Interact.Contexts
+  nameWithType: Bliss.CSharp.Interact.Contexts
+  fullName: Bliss.CSharp.Interact.Contexts
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext
+  commentId: T:Bliss.CSharp.Interact.Contexts.IInputContext
+  parent: Bliss.CSharp.Interact.Contexts
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html
+  name: IInputContext
+  nameWithType: IInputContext
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  commentId: T:Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+  href: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html
+  name: Sdl3InputContext
+  nameWithType: Sdl3InputContext
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
+- uid: Bliss.CSharp.Interact.Contexts
+  commentId: N:Bliss.CSharp.Interact.Contexts
+  href: Bliss.html
+  name: Bliss.CSharp.Interact.Contexts
+  nameWithType: Bliss.CSharp.Interact.Contexts
+  fullName: Bliss.CSharp.Interact.Contexts
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Contexts
+    name: Contexts
+    href: Bliss.CSharp.Interact.Contexts.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Contexts
+    name: Contexts
+    href: Bliss.CSharp.Interact.Contexts.html

@@ -618,7 +618,7 @@ public class ImmediateRenderer : Disposable {
         throw new NotImplementedException("DrawBoundingBox is not implemented yet.");
     }
     
-    public void DrawBillboard() {
+    public void DrawBillboard() { // TODO: Do for the texture a Rectangle: source (For example if you want to play a GIF yu will need that.)
         throw new NotImplementedException("DrawBillboard is not implemented yet.");
     }
 

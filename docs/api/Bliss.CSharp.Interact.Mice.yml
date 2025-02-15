@@ -1,0 +1,62 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Interact.Mice
+  commentId: N:Bliss.CSharp.Interact.Mice
+  id: Bliss.CSharp.Interact.Mice
+  children:
+  - Bliss.CSharp.Interact.Mice.MouseButton
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Interact.Mice
+  nameWithType: Bliss.CSharp.Interact.Mice
+  fullName: Bliss.CSharp.Interact.Mice
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Interact.Mice.MouseButton
+  commentId: T:Bliss.CSharp.Interact.Mice.MouseButton
+  parent: Bliss.CSharp.Interact.Mice
+  href: Bliss.CSharp.Interact.Mice.MouseButton.html
+  name: MouseButton
+  nameWithType: MouseButton
+  fullName: Bliss.CSharp.Interact.Mice.MouseButton
+- uid: Bliss.CSharp.Interact.Mice
+  commentId: N:Bliss.CSharp.Interact.Mice
+  href: Bliss.html
+  name: Bliss.CSharp.Interact.Mice
+  nameWithType: Bliss.CSharp.Interact.Mice
+  fullName: Bliss.CSharp.Interact.Mice
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice
+    name: Mice
+    href: Bliss.CSharp.Interact.Mice.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice
+    name: Mice
+    href: Bliss.CSharp.Interact.Mice.html

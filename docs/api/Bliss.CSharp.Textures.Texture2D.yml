@@ -1,0 +1,1431 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Textures.Texture2D
+  commentId: T:Bliss.CSharp.Textures.Texture2D
+  id: Texture2D
+  parent: Bliss.CSharp.Textures
+  children:
+  - Bliss.CSharp.Textures.Texture2D.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Images.Image,System.Boolean,System.Boolean)
+  - Bliss.CSharp.Textures.Texture2D.#ctor(Veldrid.GraphicsDevice,System.IO.Stream,System.Boolean,System.Boolean)
+  - Bliss.CSharp.Textures.Texture2D.#ctor(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean)
+  - Bliss.CSharp.Textures.Texture2D.DeviceTexture
+  - Bliss.CSharp.Textures.Texture2D.Dispose(System.Boolean)
+  - Bliss.CSharp.Textures.Texture2D.Format
+  - Bliss.CSharp.Textures.Texture2D.GetDataFromBytes
+  - Bliss.CSharp.Textures.Texture2D.GetDataFromImage
+  - Bliss.CSharp.Textures.Texture2D.GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+  - Bliss.CSharp.Textures.Texture2D.GraphicsDevice
+  - Bliss.CSharp.Textures.Texture2D.Height
+  - Bliss.CSharp.Textures.Texture2D.Images
+  - Bliss.CSharp.Textures.Texture2D.MipLevels
+  - Bliss.CSharp.Textures.Texture2D.PixelSizeInBytes
+  - Bliss.CSharp.Textures.Texture2D.SetData(Bliss.CSharp.Images.Image)
+  - Bliss.CSharp.Textures.Texture2D.SetData(System.Byte[],System.Nullable{Bliss.CSharp.Transformations.Rectangle})
+  - Bliss.CSharp.Textures.Texture2D.Width
+  langs:
+  - csharp
+  - vb
+  name: Texture2D
+  nameWithType: Texture2D
+  fullName: Bliss.CSharp.Textures.Texture2D
+  type: Class
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Texture2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Texture2D
+    path: ../src/Bliss/CSharp/Textures/Texture2D.cs
+    startLine: 8
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  syntax:
+    content: 'public class Texture2D : Disposable, IDisposable'
+    content.vb: Public Class Texture2D Inherits Disposable Implements IDisposable
+  inheritance:
+  - System.Object
+  - Bliss.CSharp.Disposable
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - Bliss.CSharp.Disposable.HasDisposed
+  - Bliss.CSharp.Disposable.Dispose
+  - Bliss.CSharp.Disposable.ThrowIfDisposed
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bliss.CSharp.Textures.Texture2D.GraphicsDevice
+  commentId: P:Bliss.CSharp.Textures.Texture2D.GraphicsDevice
+  id: GraphicsDevice
+  parent: Bliss.CSharp.Textures.Texture2D
+  langs:
+  - csharp
+  - vb
+  name: GraphicsDevice
+  nameWithType: Texture2D.GraphicsDevice
+  fullName: Bliss.CSharp.Textures.Texture2D.GraphicsDevice
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Texture2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GraphicsDevice
+    path: ../src/Bliss/CSharp/Textures/Texture2D.cs
+    startLine: 13
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Gets the graphics device associated with this texture.
+  example: []
+  syntax:
+    content: public GraphicsDevice GraphicsDevice { get; }
+    parameters: []
+    return:
+      type: Veldrid.GraphicsDevice
+    content.vb: Public Property GraphicsDevice As GraphicsDevice
+  overload: Bliss.CSharp.Textures.Texture2D.GraphicsDevice*
+- uid: Bliss.CSharp.Textures.Texture2D.Images
+  commentId: P:Bliss.CSharp.Textures.Texture2D.Images
+  id: Images
+  parent: Bliss.CSharp.Textures.Texture2D
+  langs:
+  - csharp
+  - vb
+  name: Images
+  nameWithType: Texture2D.Images
+  fullName: Bliss.CSharp.Textures.Texture2D.Images
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Texture2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Images
+    path: ../src/Bliss/CSharp/Textures/Texture2D.cs
+    startLine: 18
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Gets the array of images representing the mip levels of the texture.
+  example: []
+  syntax:
+    content: public Image[] Images { get; }
+    parameters: []
+    return:
+      type: Bliss.CSharp.Images.Image[]
+    content.vb: Public Property Images As Image()
+  overload: Bliss.CSharp.Textures.Texture2D.Images*
+- uid: Bliss.CSharp.Textures.Texture2D.Width
+  commentId: P:Bliss.CSharp.Textures.Texture2D.Width
+  id: Width
+  parent: Bliss.CSharp.Textures.Texture2D
+  langs:
+  - csharp
+  - vb
+  name: Width
+  nameWithType: Texture2D.Width
+  fullName: Bliss.CSharp.Textures.Texture2D.Width
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Texture2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Width
+    path: ../src/Bliss/CSharp/Textures/Texture2D.cs
+    startLine: 23
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Gets the width of the texture in pixels.
+  example: []
+  syntax:
+    content: public uint Width { get; }
+    parameters: []
+    return:
+      type: System.UInt32
+    content.vb: Public ReadOnly Property Width As UInteger
+  overload: Bliss.CSharp.Textures.Texture2D.Width*
+- uid: Bliss.CSharp.Textures.Texture2D.Height
+  commentId: P:Bliss.CSharp.Textures.Texture2D.Height
+  id: Height
+  parent: Bliss.CSharp.Textures.Texture2D
+  langs:
+  - csharp
+  - vb
+  name: Height
+  nameWithType: Texture2D.Height
+  fullName: Bliss.CSharp.Textures.Texture2D.Height
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Texture2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Height
+    path: ../src/Bliss/CSharp/Textures/Texture2D.cs
+    startLine: 28
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Gets the height of the texture in pixels.
+  example: []
+  syntax:
+    content: public uint Height { get; }
+    parameters: []
+    return:
+      type: System.UInt32
+    content.vb: Public ReadOnly Property Height As UInteger
+  overload: Bliss.CSharp.Textures.Texture2D.Height*
+- uid: Bliss.CSharp.Textures.Texture2D.Format
+  commentId: P:Bliss.CSharp.Textures.Texture2D.Format
+  id: Format
+  parent: Bliss.CSharp.Textures.Texture2D
+  langs:
+  - csharp
+  - vb
+  name: Format
+  nameWithType: Texture2D.Format
+  fullName: Bliss.CSharp.Textures.Texture2D.Format
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Texture2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Format
+    path: ../src/Bliss/CSharp/Textures/Texture2D.cs
+    startLine: 33
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Gets the pixel format of the texture.
+  example: []
+  syntax:
+    content: public PixelFormat Format { get; }
+    parameters: []
+    return:
+      type: Veldrid.PixelFormat
+    content.vb: Public ReadOnly Property Format As PixelFormat
+  overload: Bliss.CSharp.Textures.Texture2D.Format*
+- uid: Bliss.CSharp.Textures.Texture2D.PixelSizeInBytes
+  commentId: P:Bliss.CSharp.Textures.Texture2D.PixelSizeInBytes
+  id: PixelSizeInBytes
+  parent: Bliss.CSharp.Textures.Texture2D
+  langs:
+  - csharp
+  - vb
+  name: PixelSizeInBytes
+  nameWithType: Texture2D.PixelSizeInBytes
+  fullName: Bliss.CSharp.Textures.Texture2D.PixelSizeInBytes
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Texture2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: PixelSizeInBytes
+    path: ../src/Bliss/CSharp/Textures/Texture2D.cs
+    startLine: 38
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Gets the size of a pixel in bytes.
+  example: []
+  syntax:
+    content: public uint PixelSizeInBytes { get; }
+    parameters: []
+    return:
+      type: System.UInt32
+    content.vb: Public ReadOnly Property PixelSizeInBytes As UInteger
+  overload: Bliss.CSharp.Textures.Texture2D.PixelSizeInBytes*
+- uid: Bliss.CSharp.Textures.Texture2D.MipLevels
+  commentId: P:Bliss.CSharp.Textures.Texture2D.MipLevels
+  id: MipLevels
+  parent: Bliss.CSharp.Textures.Texture2D
+  langs:
+  - csharp
+  - vb
+  name: MipLevels
+  nameWithType: Texture2D.MipLevels
+  fullName: Bliss.CSharp.Textures.Texture2D.MipLevels
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Texture2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: MipLevels
+    path: ../src/Bliss/CSharp/Textures/Texture2D.cs
+    startLine: 43
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Gets the number of mip levels in the texture.
+  example: []
+  syntax:
+    content: public uint MipLevels { get; }
+    parameters: []
+    return:
+      type: System.UInt32
+    content.vb: Public ReadOnly Property MipLevels As UInteger
+  overload: Bliss.CSharp.Textures.Texture2D.MipLevels*
+- uid: Bliss.CSharp.Textures.Texture2D.DeviceTexture
+  commentId: P:Bliss.CSharp.Textures.Texture2D.DeviceTexture
+  id: DeviceTexture
+  parent: Bliss.CSharp.Textures.Texture2D
+  langs:
+  - csharp
+  - vb
+  name: DeviceTexture
+  nameWithType: Texture2D.DeviceTexture
+  fullName: Bliss.CSharp.Textures.Texture2D.DeviceTexture
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Texture2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DeviceTexture
+    path: ../src/Bliss/CSharp/Textures/Texture2D.cs
+    startLine: 48
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Gets the device texture created from the images.
+  example: []
+  syntax:
+    content: public Texture DeviceTexture { get; }
+    parameters: []
+    return:
+      type: Veldrid.Texture
+    content.vb: Public ReadOnly Property DeviceTexture As Texture
+  overload: Bliss.CSharp.Textures.Texture2D.DeviceTexture*
+- uid: Bliss.CSharp.Textures.Texture2D.#ctor(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean)
+  commentId: M:Bliss.CSharp.Textures.Texture2D.#ctor(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean)
+  id: '#ctor(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean)'
+  parent: Bliss.CSharp.Textures.Texture2D
+  langs:
+  - csharp
+  - vb
+  name: Texture2D(GraphicsDevice, string, bool, bool)
+  nameWithType: Texture2D.Texture2D(GraphicsDevice, string, bool, bool)
+  fullName: Bliss.CSharp.Textures.Texture2D.Texture2D(Veldrid.GraphicsDevice, string, bool, bool)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Texture2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Textures/Texture2D.cs
+    startLine: 63
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: >-
+    Initializes a new instance of the <xref href="Bliss.CSharp.Textures.Texture2D" data-throw-if-not-resolved="false"></xref> class using an image file path.
+
+    Loads the texture from the specified path and applies the given sampler, mipmap, and sRGB settings.
+  example: []
+  syntax:
+    content: public Texture2D(GraphicsDevice graphicsDevice, string path, bool mipmap = true, bool srgb = false)
+    parameters:
+    - id: graphicsDevice
+      type: Veldrid.GraphicsDevice
+      description: The graphics device used for rendering the texture.
+    - id: path
+      type: System.String
+      description: The file path of the image to load as a texture.
+    - id: mipmap
+      type: System.Boolean
+      description: Indicates whether to generate mipmaps for the texture.
+    - id: srgb
+      type: System.Boolean
+      description: Indicates whether to use sRGB color space for the texture.
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, path As String, mipmap As Boolean = True, srgb As Boolean = False)
+  overload: Bliss.CSharp.Textures.Texture2D.#ctor*
+  nameWithType.vb: Texture2D.New(GraphicsDevice, String, Boolean, Boolean)
+  fullName.vb: Bliss.CSharp.Textures.Texture2D.New(Veldrid.GraphicsDevice, String, Boolean, Boolean)
+  name.vb: New(GraphicsDevice, String, Boolean, Boolean)
+- uid: Bliss.CSharp.Textures.Texture2D.#ctor(Veldrid.GraphicsDevice,System.IO.Stream,System.Boolean,System.Boolean)
+  commentId: M:Bliss.CSharp.Textures.Texture2D.#ctor(Veldrid.GraphicsDevice,System.IO.Stream,System.Boolean,System.Boolean)
+  id: '#ctor(Veldrid.GraphicsDevice,System.IO.Stream,System.Boolean,System.Boolean)'
+  parent: Bliss.CSharp.Textures.Texture2D
+  langs:
+  - csharp
+  - vb
+  name: Texture2D(GraphicsDevice, Stream, bool, bool)
+  nameWithType: Texture2D.Texture2D(GraphicsDevice, Stream, bool, bool)
+  fullName: Bliss.CSharp.Textures.Texture2D.Texture2D(Veldrid.GraphicsDevice, System.IO.Stream, bool, bool)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Texture2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Textures/Texture2D.cs
+    startLine: 75
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: >-
+    Initializes a new instance of the <xref href="Bliss.CSharp.Textures.Texture2D" data-throw-if-not-resolved="false"></xref> class using an image stream.
+
+    Loads the texture from the specified stream and applies the given sampler, mipmap, and sRGB settings.
+  example: []
+  syntax:
+    content: public Texture2D(GraphicsDevice graphicsDevice, Stream stream, bool mipmap = true, bool srgb = false)
+    parameters:
+    - id: graphicsDevice
+      type: Veldrid.GraphicsDevice
+      description: The graphics device used for rendering the texture.
+    - id: stream
+      type: System.IO.Stream
+      description: The image stream to load as a texture.
+    - id: mipmap
+      type: System.Boolean
+      description: Indicates whether to generate mipmaps for the texture.
+    - id: srgb
+      type: System.Boolean
+      description: Indicates whether to use sRGB color space for the texture.
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, stream As Stream, mipmap As Boolean = True, srgb As Boolean = False)
+  overload: Bliss.CSharp.Textures.Texture2D.#ctor*
+  nameWithType.vb: Texture2D.New(GraphicsDevice, Stream, Boolean, Boolean)
+  fullName.vb: Bliss.CSharp.Textures.Texture2D.New(Veldrid.GraphicsDevice, System.IO.Stream, Boolean, Boolean)
+  name.vb: New(GraphicsDevice, Stream, Boolean, Boolean)
+- uid: Bliss.CSharp.Textures.Texture2D.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Images.Image,System.Boolean,System.Boolean)
+  commentId: M:Bliss.CSharp.Textures.Texture2D.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Images.Image,System.Boolean,System.Boolean)
+  id: '#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Images.Image,System.Boolean,System.Boolean)'
+  parent: Bliss.CSharp.Textures.Texture2D
+  langs:
+  - csharp
+  - vb
+  name: Texture2D(GraphicsDevice, Image, bool, bool)
+  nameWithType: Texture2D.Texture2D(GraphicsDevice, Image, bool, bool)
+  fullName: Bliss.CSharp.Textures.Texture2D.Texture2D(Veldrid.GraphicsDevice, Bliss.CSharp.Images.Image, bool, bool)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Texture2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Textures/Texture2D.cs
+    startLine: 87
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: >-
+    Initializes a new instance of the <xref href="Bliss.CSharp.Textures.Texture2D" data-throw-if-not-resolved="false"></xref> class using an <xref href="Bliss.CSharp.Images.Image" data-throw-if-not-resolved="false"></xref> object.
+
+    Creates a device texture, applies the specified sampler, and stores mipmap and color format information.
+  example: []
+  syntax:
+    content: public Texture2D(GraphicsDevice graphicsDevice, Image image, bool mipmap = true, bool srgb = false)
+    parameters:
+    - id: graphicsDevice
+      type: Veldrid.GraphicsDevice
+      description: The graphics device used for rendering the texture.
+    - id: image
+      type: Bliss.CSharp.Images.Image
+      description: The image object used to create the texture.
+    - id: mipmap
+      type: System.Boolean
+      description: Indicates whether to generate mipmaps for the texture.
+    - id: srgb
+      type: System.Boolean
+      description: Indicates whether to use sRGB color space for the texture.
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, image As Image, mipmap As Boolean = True, srgb As Boolean = False)
+  overload: Bliss.CSharp.Textures.Texture2D.#ctor*
+  nameWithType.vb: Texture2D.New(GraphicsDevice, Image, Boolean, Boolean)
+  fullName.vb: Bliss.CSharp.Textures.Texture2D.New(Veldrid.GraphicsDevice, Bliss.CSharp.Images.Image, Boolean, Boolean)
+  name.vb: New(GraphicsDevice, Image, Boolean, Boolean)
+- uid: Bliss.CSharp.Textures.Texture2D.GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+  commentId: M:Bliss.CSharp.Textures.Texture2D.GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+  id: GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+  parent: Bliss.CSharp.Textures.Texture2D
+  langs:
+  - csharp
+  - vb
+  name: GetResourceSet(Sampler, SimpleTextureLayout)
+  nameWithType: Texture2D.GetResourceSet(Sampler, SimpleTextureLayout)
+  fullName: Bliss.CSharp.Textures.Texture2D.GetResourceSet(Veldrid.Sampler, Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Texture2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetResourceSet
+    path: ../src/Bliss/CSharp/Textures/Texture2D.cs
+    startLine: 102
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: >-
+    Gets a resource set associated with the specified sampler and resource layout.
+
+    If the resource set is already cached, it returns the cached resource set; otherwise, it creates and caches a new one.
+  example: []
+  syntax:
+    content: public ResourceSet GetResourceSet(Sampler sampler, SimpleTextureLayout layout)
+    parameters:
+    - id: sampler
+      type: Veldrid.Sampler
+      description: The sampler used for the resource set.
+    - id: layout
+      type: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+      description: The resource layout used for the resource set.
+    return:
+      type: Veldrid.ResourceSet
+      description: The resource set associated with the specified sampler and resource layout.
+    content.vb: Public Function GetResourceSet(sampler As Sampler, layout As SimpleTextureLayout) As ResourceSet
+  overload: Bliss.CSharp.Textures.Texture2D.GetResourceSet*
+- uid: Bliss.CSharp.Textures.Texture2D.GetDataFromBytes
+  commentId: M:Bliss.CSharp.Textures.Texture2D.GetDataFromBytes
+  id: GetDataFromBytes
+  parent: Bliss.CSharp.Textures.Texture2D
+  langs:
+  - csharp
+  - vb
+  name: GetDataFromBytes()
+  nameWithType: Texture2D.GetDataFromBytes()
+  fullName: Bliss.CSharp.Textures.Texture2D.GetDataFromBytes()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Texture2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetDataFromBytes
+    path: ../src/Bliss/CSharp/Textures/Texture2D.cs
+    startLine: 117
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Retrieves the texture data as a byte array.
+  example: []
+  syntax:
+    content: public byte[] GetDataFromBytes()
+    return:
+      type: System.Byte[]
+      description: A byte array containing the texture data.
+    content.vb: Public Function GetDataFromBytes() As Byte()
+  overload: Bliss.CSharp.Textures.Texture2D.GetDataFromBytes*
+- uid: Bliss.CSharp.Textures.Texture2D.GetDataFromImage
+  commentId: M:Bliss.CSharp.Textures.Texture2D.GetDataFromImage
+  id: GetDataFromImage
+  parent: Bliss.CSharp.Textures.Texture2D
+  langs:
+  - csharp
+  - vb
+  name: GetDataFromImage()
+  nameWithType: Texture2D.GetDataFromImage()
+  fullName: Bliss.CSharp.Textures.Texture2D.GetDataFromImage()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Texture2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetDataFromImage
+    path: ../src/Bliss/CSharp/Textures/Texture2D.cs
+    startLine: 125
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Retrieves the image data from the first image in the texture array.
+  example: []
+  syntax:
+    content: public Image GetDataFromImage()
+    return:
+      type: Bliss.CSharp.Images.Image
+      description: An <xref href="Bliss.CSharp.Images.Image" data-throw-if-not-resolved="false"></xref> representing the image data.
+    content.vb: Public Function GetDataFromImage() As Image
+  overload: Bliss.CSharp.Textures.Texture2D.GetDataFromImage*
+- uid: Bliss.CSharp.Textures.Texture2D.SetData(System.Byte[],System.Nullable{Bliss.CSharp.Transformations.Rectangle})
+  commentId: M:Bliss.CSharp.Textures.Texture2D.SetData(System.Byte[],System.Nullable{Bliss.CSharp.Transformations.Rectangle})
+  id: SetData(System.Byte[],System.Nullable{Bliss.CSharp.Transformations.Rectangle})
+  parent: Bliss.CSharp.Textures.Texture2D
+  langs:
+  - csharp
+  - vb
+  name: SetData(byte[], Rectangle?)
+  nameWithType: Texture2D.SetData(byte[], Rectangle?)
+  fullName: Bliss.CSharp.Textures.Texture2D.SetData(byte[], Bliss.CSharp.Transformations.Rectangle?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Texture2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetData
+    path: ../src/Bliss/CSharp/Textures/Texture2D.cs
+    startLine: 134
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Sets the texture data from a byte array, optionally specifying a rectangular area within the texture to update.
+  example: []
+  syntax:
+    content: public void SetData(byte[] data, Rectangle? area = null)
+    parameters:
+    - id: data
+      type: System.Byte[]
+      description: The byte array containing the texture data.
+    - id: area
+      type: System.Nullable{Bliss.CSharp.Transformations.Rectangle}
+      description: The rectangular area within the texture to update. If null, it updates the entire texture.
+    content.vb: Public Sub SetData(data As Byte(), area As Rectangle? = Nothing)
+  overload: Bliss.CSharp.Textures.Texture2D.SetData*
+  nameWithType.vb: Texture2D.SetData(Byte(), Rectangle?)
+  fullName.vb: Bliss.CSharp.Textures.Texture2D.SetData(Byte(), Bliss.CSharp.Transformations.Rectangle?)
+  name.vb: SetData(Byte(), Rectangle?)
+- uid: Bliss.CSharp.Textures.Texture2D.SetData(Bliss.CSharp.Images.Image)
+  commentId: M:Bliss.CSharp.Textures.Texture2D.SetData(Bliss.CSharp.Images.Image)
+  id: SetData(Bliss.CSharp.Images.Image)
+  parent: Bliss.CSharp.Textures.Texture2D
+  langs:
+  - csharp
+  - vb
+  name: SetData(Image)
+  nameWithType: Texture2D.SetData(Image)
+  fullName: Bliss.CSharp.Textures.Texture2D.SetData(Bliss.CSharp.Images.Image)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Texture2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetData
+    path: ../src/Bliss/CSharp/Textures/Texture2D.cs
+    startLine: 154
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: >-
+    Loads the provided image data into the texture. If the image dimensions do not match the texture dimensions, an exception is thrown.
+
+    The image data is then split into mip levels if required and updated in the device texture.
+  example: []
+  syntax:
+    content: public void SetData(Image data)
+    parameters:
+    - id: data
+      type: Bliss.CSharp.Images.Image
+      description: The image data to be loaded into the texture.
+    content.vb: Public Sub SetData(data As Image)
+  overload: Bliss.CSharp.Textures.Texture2D.SetData*
+- uid: Bliss.CSharp.Textures.Texture2D.Dispose(System.Boolean)
+  commentId: M:Bliss.CSharp.Textures.Texture2D.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: Bliss.CSharp.Textures.Texture2D
+  langs:
+  - csharp
+  - vb
+  name: Dispose(bool)
+  nameWithType: Texture2D.Dispose(bool)
+  fullName: Bliss.CSharp.Textures.Texture2D.Dispose(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Texture2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Dispose
+    path: ../src/Bliss/CSharp/Textures/Texture2D.cs
+    startLine: 181
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Disposes of the object and releases associated resources.
+  example: []
+  syntax:
+    content: protected override void Dispose(bool disposing)
+    parameters:
+    - id: disposing
+      type: System.Boolean
+      description: True if called from user code; false if called from a finalizer.
+    content.vb: Protected Overrides Sub Dispose(disposing As Boolean)
+  overridden: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  overload: Bliss.CSharp.Textures.Texture2D.Dispose*
+  nameWithType.vb: Texture2D.Dispose(Boolean)
+  fullName.vb: Bliss.CSharp.Textures.Texture2D.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+references:
+- uid: Bliss.CSharp.Textures
+  commentId: N:Bliss.CSharp.Textures
+  href: Bliss.html
+  name: Bliss.CSharp.Textures
+  nameWithType: Bliss.CSharp.Textures
+  fullName: Bliss.CSharp.Textures
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Textures
+    name: Textures
+    href: Bliss.CSharp.Textures.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Textures
+    name: Textures
+    href: Bliss.CSharp.Textures.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bliss.CSharp.Disposable
+  commentId: T:Bliss.CSharp.Disposable
+  parent: Bliss.CSharp
+  href: Bliss.CSharp.Disposable.html
+  name: Disposable
+  nameWithType: Disposable
+  fullName: Bliss.CSharp.Disposable
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Bliss.CSharp.Disposable.HasDisposed
+  commentId: P:Bliss.CSharp.Disposable.HasDisposed
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_HasDisposed
+  name: HasDisposed
+  nameWithType: Disposable.HasDisposed
+  fullName: Bliss.CSharp.Disposable.HasDisposed
+- uid: Bliss.CSharp.Disposable.Dispose
+  commentId: M:Bliss.CSharp.Disposable.Dispose
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  name: Dispose()
+  nameWithType: Disposable.Dispose()
+  fullName: Bliss.CSharp.Disposable.Dispose()
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.Dispose
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.Dispose
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+  commentId: M:Bliss.CSharp.Disposable.ThrowIfDisposed
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  name: ThrowIfDisposed()
+  nameWithType: Disposable.ThrowIfDisposed()
+  fullName: Bliss.CSharp.Disposable.ThrowIfDisposed()
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+    name: ThrowIfDisposed
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+    name: ThrowIfDisposed
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp
+  commentId: N:Bliss.CSharp
+  href: Bliss.html
+  name: Bliss.CSharp
+  nameWithType: Bliss.CSharp
+  fullName: Bliss.CSharp
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+- uid: Bliss.CSharp.Textures.Texture2D.GraphicsDevice*
+  commentId: Overload:Bliss.CSharp.Textures.Texture2D.GraphicsDevice
+  href: Bliss.CSharp.Textures.Texture2D.html#Bliss_CSharp_Textures_Texture2D_GraphicsDevice
+  name: GraphicsDevice
+  nameWithType: Texture2D.GraphicsDevice
+  fullName: Bliss.CSharp.Textures.Texture2D.GraphicsDevice
+- uid: Veldrid.GraphicsDevice
+  commentId: T:Veldrid.GraphicsDevice
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsDevice.cs
+  name: GraphicsDevice
+  nameWithType: GraphicsDevice
+  fullName: Veldrid.GraphicsDevice
+- uid: Veldrid
+  commentId: N:Veldrid
+  isExternal: true
+  name: Veldrid
+  nameWithType: Veldrid
+  fullName: Veldrid
+- uid: Bliss.CSharp.Textures.Texture2D.Images*
+  commentId: Overload:Bliss.CSharp.Textures.Texture2D.Images
+  href: Bliss.CSharp.Textures.Texture2D.html#Bliss_CSharp_Textures_Texture2D_Images
+  name: Images
+  nameWithType: Texture2D.Images
+  fullName: Bliss.CSharp.Textures.Texture2D.Images
+- uid: Bliss.CSharp.Images.Image[]
+  isExternal: true
+  href: Bliss.CSharp.Images.Image.html
+  name: Image[]
+  nameWithType: Image[]
+  fullName: Bliss.CSharp.Images.Image[]
+  nameWithType.vb: Image()
+  fullName.vb: Bliss.CSharp.Images.Image()
+  name.vb: Image()
+  spec.csharp:
+  - uid: Bliss.CSharp.Images.Image
+    name: Image
+    href: Bliss.CSharp.Images.Image.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Bliss.CSharp.Images.Image
+    name: Image
+    href: Bliss.CSharp.Images.Image.html
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Textures.Texture2D.Width*
+  commentId: Overload:Bliss.CSharp.Textures.Texture2D.Width
+  href: Bliss.CSharp.Textures.Texture2D.html#Bliss_CSharp_Textures_Texture2D_Width
+  name: Width
+  nameWithType: Texture2D.Width
+  fullName: Bliss.CSharp.Textures.Texture2D.Width
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: Bliss.CSharp.Textures.Texture2D.Height*
+  commentId: Overload:Bliss.CSharp.Textures.Texture2D.Height
+  href: Bliss.CSharp.Textures.Texture2D.html#Bliss_CSharp_Textures_Texture2D_Height
+  name: Height
+  nameWithType: Texture2D.Height
+  fullName: Bliss.CSharp.Textures.Texture2D.Height
+- uid: Bliss.CSharp.Textures.Texture2D.Format*
+  commentId: Overload:Bliss.CSharp.Textures.Texture2D.Format
+  href: Bliss.CSharp.Textures.Texture2D.html#Bliss_CSharp_Textures_Texture2D_Format
+  name: Format
+  nameWithType: Texture2D.Format
+  fullName: Bliss.CSharp.Textures.Texture2D.Format
+- uid: Veldrid.PixelFormat
+  commentId: T:Veldrid.PixelFormat
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/PixelFormat.cs
+  name: PixelFormat
+  nameWithType: PixelFormat
+  fullName: Veldrid.PixelFormat
+- uid: Bliss.CSharp.Textures.Texture2D.PixelSizeInBytes*
+  commentId: Overload:Bliss.CSharp.Textures.Texture2D.PixelSizeInBytes
+  href: Bliss.CSharp.Textures.Texture2D.html#Bliss_CSharp_Textures_Texture2D_PixelSizeInBytes
+  name: PixelSizeInBytes
+  nameWithType: Texture2D.PixelSizeInBytes
+  fullName: Bliss.CSharp.Textures.Texture2D.PixelSizeInBytes
+- uid: Bliss.CSharp.Textures.Texture2D.MipLevels*
+  commentId: Overload:Bliss.CSharp.Textures.Texture2D.MipLevels
+  href: Bliss.CSharp.Textures.Texture2D.html#Bliss_CSharp_Textures_Texture2D_MipLevels
+  name: MipLevels
+  nameWithType: Texture2D.MipLevels
+  fullName: Bliss.CSharp.Textures.Texture2D.MipLevels
+- uid: Bliss.CSharp.Textures.Texture2D.DeviceTexture*
+  commentId: Overload:Bliss.CSharp.Textures.Texture2D.DeviceTexture
+  href: Bliss.CSharp.Textures.Texture2D.html#Bliss_CSharp_Textures_Texture2D_DeviceTexture
+  name: DeviceTexture
+  nameWithType: Texture2D.DeviceTexture
+  fullName: Bliss.CSharp.Textures.Texture2D.DeviceTexture
+- uid: Veldrid.Texture
+  commentId: T:Veldrid.Texture
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Texture.cs
+  name: Texture
+  nameWithType: Texture
+  fullName: Veldrid.Texture
+- uid: Bliss.CSharp.Textures.Texture2D
+  commentId: T:Bliss.CSharp.Textures.Texture2D
+  parent: Bliss.CSharp.Textures
+  href: Bliss.CSharp.Textures.Texture2D.html
+  name: Texture2D
+  nameWithType: Texture2D
+  fullName: Bliss.CSharp.Textures.Texture2D
+- uid: Bliss.CSharp.Textures.Texture2D.#ctor*
+  commentId: Overload:Bliss.CSharp.Textures.Texture2D.#ctor
+  href: Bliss.CSharp.Textures.Texture2D.html#Bliss_CSharp_Textures_Texture2D__ctor_Veldrid_GraphicsDevice_System_String_System_Boolean_System_Boolean_
+  name: Texture2D
+  nameWithType: Texture2D.Texture2D
+  fullName: Bliss.CSharp.Textures.Texture2D.Texture2D
+  nameWithType.vb: Texture2D.New
+  fullName.vb: Bliss.CSharp.Textures.Texture2D.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.IO.Stream
+  commentId: T:System.IO.Stream
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.stream
+  name: Stream
+  nameWithType: Stream
+  fullName: System.IO.Stream
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: Bliss.CSharp.Images.Image
+  commentId: T:Bliss.CSharp.Images.Image
+  parent: Bliss.CSharp.Images
+  href: Bliss.CSharp.Images.Image.html
+  name: Image
+  nameWithType: Image
+  fullName: Bliss.CSharp.Images.Image
+- uid: Bliss.CSharp.Images
+  commentId: N:Bliss.CSharp.Images
+  href: Bliss.html
+  name: Bliss.CSharp.Images
+  nameWithType: Bliss.CSharp.Images
+  fullName: Bliss.CSharp.Images
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Images
+    name: Images
+    href: Bliss.CSharp.Images.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Images
+    name: Images
+    href: Bliss.CSharp.Images.html
+- uid: Bliss.CSharp.Textures.Texture2D.GetResourceSet*
+  commentId: Overload:Bliss.CSharp.Textures.Texture2D.GetResourceSet
+  href: Bliss.CSharp.Textures.Texture2D.html#Bliss_CSharp_Textures_Texture2D_GetResourceSet_Veldrid_Sampler_Bliss_CSharp_Graphics_Pipelines_Textures_SimpleTextureLayout_
+  name: GetResourceSet
+  nameWithType: Texture2D.GetResourceSet
+  fullName: Bliss.CSharp.Textures.Texture2D.GetResourceSet
+- uid: Veldrid.Sampler
+  commentId: T:Veldrid.Sampler
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs
+  name: Sampler
+  nameWithType: Sampler
+  fullName: Veldrid.Sampler
+- uid: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+  parent: Bliss.CSharp.Graphics.Pipelines.Textures
+  href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
+  name: SimpleTextureLayout
+  nameWithType: SimpleTextureLayout
+  fullName: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+- uid: Veldrid.ResourceSet
+  commentId: T:Veldrid.ResourceSet
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/ResourceSet.cs
+  name: ResourceSet
+  nameWithType: ResourceSet
+  fullName: Veldrid.ResourceSet
+- uid: Bliss.CSharp.Graphics.Pipelines.Textures
+  commentId: N:Bliss.CSharp.Graphics.Pipelines.Textures
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Pipelines.Textures
+  nameWithType: Bliss.CSharp.Graphics.Pipelines.Textures
+  fullName: Bliss.CSharp.Graphics.Pipelines.Textures
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Textures
+    name: Textures
+    href: Bliss.CSharp.Graphics.Pipelines.Textures.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Textures
+    name: Textures
+    href: Bliss.CSharp.Graphics.Pipelines.Textures.html
+- uid: Bliss.CSharp.Textures.Texture2D.GetDataFromBytes*
+  commentId: Overload:Bliss.CSharp.Textures.Texture2D.GetDataFromBytes
+  href: Bliss.CSharp.Textures.Texture2D.html#Bliss_CSharp_Textures_Texture2D_GetDataFromBytes
+  name: GetDataFromBytes
+  nameWithType: Texture2D.GetDataFromBytes
+  fullName: Bliss.CSharp.Textures.Texture2D.GetDataFromBytes
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Textures.Texture2D.GetDataFromImage*
+  commentId: Overload:Bliss.CSharp.Textures.Texture2D.GetDataFromImage
+  href: Bliss.CSharp.Textures.Texture2D.html#Bliss_CSharp_Textures_Texture2D_GetDataFromImage
+  name: GetDataFromImage
+  nameWithType: Texture2D.GetDataFromImage
+  fullName: Bliss.CSharp.Textures.Texture2D.GetDataFromImage
+- uid: Bliss.CSharp.Textures.Texture2D.SetData*
+  commentId: Overload:Bliss.CSharp.Textures.Texture2D.SetData
+  href: Bliss.CSharp.Textures.Texture2D.html#Bliss_CSharp_Textures_Texture2D_SetData_System_Byte___System_Nullable_Bliss_CSharp_Transformations_Rectangle__
+  name: SetData
+  nameWithType: Texture2D.SetData
+  fullName: Bliss.CSharp.Textures.Texture2D.SetData
+- uid: System.Nullable{Bliss.CSharp.Transformations.Rectangle}
+  commentId: T:System.Nullable{Bliss.CSharp.Transformations.Rectangle}
+  parent: System
+  definition: System.Nullable`1
+  href: Bliss.CSharp.Transformations.Rectangle.html
+  name: Rectangle?
+  nameWithType: Rectangle?
+  fullName: Bliss.CSharp.Transformations.Rectangle?
+  spec.csharp:
+  - uid: Bliss.CSharp.Transformations.Rectangle
+    name: Rectangle
+    href: Bliss.CSharp.Transformations.Rectangle.html
+  - name: '?'
+  spec.vb:
+  - uid: Bliss.CSharp.Transformations.Rectangle
+    name: Rectangle
+    href: Bliss.CSharp.Transformations.Rectangle.html
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  commentId: M:Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  parent: Bliss.CSharp.Disposable
+  isExternal: true
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  name: Dispose(bool)
+  nameWithType: Disposable.Dispose(bool)
+  fullName: Bliss.CSharp.Disposable.Dispose(bool)
+  nameWithType.vb: Disposable.Dispose(Boolean)
+  fullName.vb: Bliss.CSharp.Disposable.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Bliss.CSharp.Textures.Texture2D.Dispose*
+  commentId: Overload:Bliss.CSharp.Textures.Texture2D.Dispose
+  href: Bliss.CSharp.Textures.Texture2D.html#Bliss_CSharp_Textures_Texture2D_Dispose_System_Boolean_
+  name: Dispose
+  nameWithType: Texture2D.Dispose
+  fullName: Bliss.CSharp.Textures.Texture2D.Dispose

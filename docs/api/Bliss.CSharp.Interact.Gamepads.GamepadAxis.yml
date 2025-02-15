@@ -1,0 +1,306 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+  commentId: T:Bliss.CSharp.Interact.Gamepads.GamepadAxis
+  id: GamepadAxis
+  parent: Bliss.CSharp.Interact.Gamepads
+  children:
+  - Bliss.CSharp.Interact.Gamepads.GamepadAxis.Invalid
+  - Bliss.CSharp.Interact.Gamepads.GamepadAxis.LeftX
+  - Bliss.CSharp.Interact.Gamepads.GamepadAxis.LeftY
+  - Bliss.CSharp.Interact.Gamepads.GamepadAxis.Max
+  - Bliss.CSharp.Interact.Gamepads.GamepadAxis.RightX
+  - Bliss.CSharp.Interact.Gamepads.GamepadAxis.RightY
+  - Bliss.CSharp.Interact.Gamepads.GamepadAxis.TriggerLeft
+  - Bliss.CSharp.Interact.Gamepads.GamepadAxis.TriggerRight
+  langs:
+  - csharp
+  - vb
+  name: GamepadAxis
+  nameWithType: GamepadAxis
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+  type: Enum
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadAxis.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GamepadAxis
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadAxis.cs
+    startLine: 2
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  syntax:
+    content: public enum GamepadAxis
+    content.vb: Public Enum GamepadAxis
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadAxis.Invalid
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadAxis.Invalid
+  id: Invalid
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+  langs:
+  - csharp
+  - vb
+  name: Invalid
+  nameWithType: GamepadAxis.Invalid
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadAxis.Invalid
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadAxis.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Invalid
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadAxis.cs
+    startLine: 7
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: Invalid axis.
+  example: []
+  syntax:
+    content: Invalid = -1
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadAxis.LeftX
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadAxis.LeftX
+  id: LeftX
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+  langs:
+  - csharp
+  - vb
+  name: LeftX
+  nameWithType: GamepadAxis.LeftX
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadAxis.LeftX
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadAxis.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LeftX
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadAxis.cs
+    startLine: 12
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: Left stick horizontal axis.
+  example: []
+  syntax:
+    content: LeftX = 0
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadAxis.LeftY
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadAxis.LeftY
+  id: LeftY
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+  langs:
+  - csharp
+  - vb
+  name: LeftY
+  nameWithType: GamepadAxis.LeftY
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadAxis.LeftY
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadAxis.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LeftY
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadAxis.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: Left stick vertical axis.
+  example: []
+  syntax:
+    content: LeftY = 1
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadAxis.RightX
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadAxis.RightX
+  id: RightX
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+  langs:
+  - csharp
+  - vb
+  name: RightX
+  nameWithType: GamepadAxis.RightX
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadAxis.RightX
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadAxis.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: RightX
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadAxis.cs
+    startLine: 22
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: Right stick horizontal axis.
+  example: []
+  syntax:
+    content: RightX = 2
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadAxis.RightY
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadAxis.RightY
+  id: RightY
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+  langs:
+  - csharp
+  - vb
+  name: RightY
+  nameWithType: GamepadAxis.RightY
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadAxis.RightY
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadAxis.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: RightY
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadAxis.cs
+    startLine: 27
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: Right stick vertical axis.
+  example: []
+  syntax:
+    content: RightY = 3
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadAxis.TriggerLeft
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadAxis.TriggerLeft
+  id: TriggerLeft
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+  langs:
+  - csharp
+  - vb
+  name: TriggerLeft
+  nameWithType: GamepadAxis.TriggerLeft
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadAxis.TriggerLeft
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadAxis.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: TriggerLeft
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadAxis.cs
+    startLine: 32
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: Left trigger axis.
+  example: []
+  syntax:
+    content: TriggerLeft = 4
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadAxis.TriggerRight
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadAxis.TriggerRight
+  id: TriggerRight
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+  langs:
+  - csharp
+  - vb
+  name: TriggerRight
+  nameWithType: GamepadAxis.TriggerRight
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadAxis.TriggerRight
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadAxis.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: TriggerRight
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadAxis.cs
+    startLine: 37
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: Right trigger axis.
+  example: []
+  syntax:
+    content: TriggerRight = 5
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadAxis.Max
+  commentId: F:Bliss.CSharp.Interact.Gamepads.GamepadAxis.Max
+  id: Max
+  parent: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+  langs:
+  - csharp
+  - vb
+  name: Max
+  nameWithType: GamepadAxis.Max
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadAxis.Max
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/GamepadAxis.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Max
+    path: ../src/Bliss/CSharp/Interact/Gamepads/GamepadAxis.cs
+    startLine: 42
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: Maximum axis value.
+  example: []
+  syntax:
+    content: Max = 6
+    return:
+      type: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+references:
+- uid: Bliss.CSharp.Interact.Gamepads
+  commentId: N:Bliss.CSharp.Interact.Gamepads
+  href: Bliss.html
+  name: Bliss.CSharp.Interact.Gamepads
+  nameWithType: Bliss.CSharp.Interact.Gamepads
+  fullName: Bliss.CSharp.Interact.Gamepads
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Gamepads
+    name: Gamepads
+    href: Bliss.CSharp.Interact.Gamepads.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Gamepads
+    name: Gamepads
+    href: Bliss.CSharp.Interact.Gamepads.html
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+  commentId: T:Bliss.CSharp.Interact.Gamepads.GamepadAxis
+  parent: Bliss.CSharp.Interact.Gamepads
+  href: Bliss.CSharp.Interact.Gamepads.GamepadAxis.html
+  name: GamepadAxis
+  nameWithType: GamepadAxis
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadAxis

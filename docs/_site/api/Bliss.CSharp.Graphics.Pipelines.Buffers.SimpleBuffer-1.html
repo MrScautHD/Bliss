@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class SimpleBuffer&lt;T&gt; | Bliss </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class SimpleBuffer&lt;T&gt; | Bliss ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MrScautHD/Bliss/new/main/apiSpec/new?filename=Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1.md&amp;value=---%0Auid%3A%20Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Bliss">
+            Bliss
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1">
+
+
+
+  <h1 id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1" class="text-break">
+Class SimpleBuffer&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs/#L6"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Bliss.html">Bliss</a>.<a class="xref" href="Bliss.CSharp.html">CSharp</a>.<a class="xref" href="Bliss.CSharp.Graphics.html">Graphics</a>.<a class="xref" href="Bliss.CSharp.Graphics.Pipelines.html">Pipelines</a>.<a class="xref" href="Bliss.CSharp.Graphics.Pipelines.Buffers.html">Buffers</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Bliss.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class SimpleBuffer&lt;T&gt; : Disposable, ISimpleBuffer, IDisposable where T : unmanaged</code></pre>
+  </div>
+
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Bliss.CSharp.Disposable.html">Disposable</a></div>
+      <div><span class="xref">SimpleBuffer&lt;T&gt;</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.html">ISimpleBuffer</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_HasDisposed">Disposable.HasDisposed</a>
+    </div>
+    <div>
+      <a class="xref" href="Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose">Disposable.Dispose()</a>
+    </div>
+    <div>
+      <a class="xref" href="Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed">Disposable.ThrowIfDisposed()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1__ctor_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.#ctor*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1__ctor_Veldrid_GraphicsDevice_System_UInt32_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferType_Veldrid_ShaderStages_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.#ctor(Veldrid.GraphicsDevice,System.UInt32,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType,Veldrid.ShaderStages)">
+  SimpleBuffer(GraphicsDevice, uint, SimpleBufferType, ShaderStages)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html">SimpleBuffer&lt;T&gt;</a> class with the specified graphics device, buffer name, size, buffer type, and shader stages.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SimpleBuffer(GraphicsDevice graphicsDevice, uint size, SimpleBufferType bufferType, ShaderStages stages)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dd><p>The graphics device used to create the buffer and related resources.</p>
+</dd>
+    <dt><code>size</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The size of the buffer in elements.</p>
+</dd>
+    <dt><code>bufferType</code> <a class="xref" href="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.html">SimpleBufferType</a></dt>
+    <dd><p>The type of the buffer, which defines its usage.</p>
+</dd>
+    <dt><code>stages</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/ShaderStages.cs">ShaderStages</a></dt>
+    <dd><p>The shader stages where this buffer will be used.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_BufferType_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.BufferType*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_BufferType" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.BufferType">
+  BufferType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The type of the buffer, which defines its usage.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SimpleBufferType BufferType { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.html">SimpleBufferType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_Data_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Data*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_Data" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Data">
+  Data
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>An array containing the data stored in the buffer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T[] Data { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt>T[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_DeviceBuffer_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.DeviceBuffer*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_DeviceBuffer" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.DeviceBuffer">
+  DeviceBuffer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Represents the buffer resource allocated on the graphics device.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DeviceBuffer DeviceBuffer { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Buffer.cs">DeviceBuffer</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_GraphicsDevice_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.GraphicsDevice*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_GraphicsDevice" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.GraphicsDevice">
+  GraphicsDevice
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The graphics device used to create the buffer and related resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GraphicsDevice GraphicsDevice { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_ShaderStages_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.ShaderStages*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_ShaderStages" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.ShaderStages">
+  ShaderStages
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The shader stages where this buffer will be used.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ShaderStages ShaderStages { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/ShaderStages.cs">ShaderStages</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_Size_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Size*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_Size" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Size">
+  Size
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The size of the buffer in elements.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint Size { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_Dispose_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Dispose*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_Dispose_System_Boolean_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.Dispose(System.Boolean)">
+  Dispose(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs/#L141"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Disposes of the object and releases associated resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Dispose(bool disposing)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>disposing</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if called from user code; false if called from a finalizer.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_GetResourceSet_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.GetResourceSet*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_GetResourceSet_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferLayout_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)">
+  GetResourceSet(SimpleBufferLayout)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a cached resource set or creates a new one based on the provided buffer layout.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ResourceSet GetResourceSet(SimpleBufferLayout layout)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>layout</code> <a class="xref" href="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html">SimpleBufferLayout</a></dt>
+    <dd><p>The layout defining the structure and configuration of the resource set.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/ResourceSet.cs">ResourceSet</a></dt>
+    <dd><p>The resource set corresponding to the specified layout.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_SetValue_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValue*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_SetValue_System_Int32__0_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValue(System.Int32,`0)">
+  SetValue(int, T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value at the specified index in the buffer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetValue(int index, T value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index in the buffer where the value should be set.</p>
+</dd>
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd><p>The value to set in the buffer.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_SetValueDeferred_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValueDeferred*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_SetValueDeferred_Veldrid_CommandList_System_Int32__0_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValueDeferred(Veldrid.CommandList,System.Int32,`0)">
+  SetValueDeferred(CommandList, int, T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value at the specified index in the buffer and schedules a command to update the buffer on the command list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetValueDeferred(CommandList commandList, int index, T value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs">CommandList</a></dt>
+    <dd><p>The command list to which the buffer update command will be added.</p>
+</dd>
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index of the buffer element to set.</p>
+</dd>
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd><p>The value to set at the specified index.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_SetValueImmediate_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValueImmediate*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_SetValueImmediate_System_Int32__0_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.SetValueImmediate(System.Int32,`0)">
+  SetValueImmediate(int, T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value of the buffer at the specified index and updates the buffer on the graphics device immediately.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetValueImmediate(int index, T value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index at which the value should be set.</p>
+</dd>
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd><p>The value to set at the specified index.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_UpdateBuffer_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.UpdateBuffer*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_UpdateBuffer_Veldrid_CommandList_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.UpdateBuffer(Veldrid.CommandList)">
+  UpdateBuffer(CommandList)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs/#L123"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the contents of the device buffer with the current data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateBuffer(CommandList commandList)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs">CommandList</a></dt>
+    <dd><p>The command list used to record the buffer update command.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_UpdateBufferImmediate_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.UpdateBufferImmediate*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBuffer_1_UpdateBufferImmediate" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1.UpdateBufferImmediate">
+  UpdateBufferImmediate()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Immediately updates the GPU buffer with the current data held in the CPU buffer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateBufferImmediate()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleBuffer.cs/#L6" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

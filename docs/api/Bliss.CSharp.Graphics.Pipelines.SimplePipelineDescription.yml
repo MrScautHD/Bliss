@@ -1,0 +1,1234 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  id: SimplePipelineDescription
+  parent: Bliss.CSharp.Graphics.Pipelines
+  children:
+  - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor
+  - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor(Veldrid.BlendStateDescription,Veldrid.DepthStencilStateDescription,Veldrid.RasterizerStateDescription,Veldrid.PrimitiveTopology,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[],Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[],Veldrid.ShaderSetDescription,Veldrid.OutputDescription)
+  - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.BlendState
+  - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.BufferLayouts
+  - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.DepthStencilState
+  - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.Equals(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.Equals(System.Object)
+  - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.GetHashCode
+  - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.Outputs
+  - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.PrimitiveTopology
+  - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.RasterizerState
+  - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.ResourceBindingModel
+  - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.ShaderSet
+  - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.TextureLayouts
+  - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.ToString
+  - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.op_Equality(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription,Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.op_Inequality(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription,Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  langs:
+  - csharp
+  - vb
+  name: SimplePipelineDescription
+  nameWithType: SimplePipelineDescription
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  type: Struct
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SimplePipelineDescription
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+    startLine: 6
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines
+  syntax:
+    content: 'public struct SimplePipelineDescription : IEquatable<SimplePipelineDescription>'
+    content.vb: Public Structure SimplePipelineDescription Implements IEquatable(Of SimplePipelineDescription)
+  implements:
+  - System.IEquatable{Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription}
+  inheritedMembers:
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.BlendState
+  commentId: F:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.BlendState
+  id: BlendState
+  parent: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  langs:
+  - csharp
+  - vb
+  name: BlendState
+  nameWithType: SimplePipelineDescription.BlendState
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.BlendState
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: BlendState
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+    startLine: 11
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines
+  summary: Defines the blend state configuration, controlling how colors are blended in the pipeline.
+  example: []
+  syntax:
+    content: public BlendStateDescription BlendState
+    return:
+      type: Veldrid.BlendStateDescription
+    content.vb: Public BlendState As BlendStateDescription
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.DepthStencilState
+  commentId: F:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.DepthStencilState
+  id: DepthStencilState
+  parent: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  langs:
+  - csharp
+  - vb
+  name: DepthStencilState
+  nameWithType: SimplePipelineDescription.DepthStencilState
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.DepthStencilState
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DepthStencilState
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+    startLine: 16
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines
+  summary: Defines the depth and stencil state configuration, controlling depth testing and stencil operations in the pipeline.
+  example: []
+  syntax:
+    content: public DepthStencilStateDescription DepthStencilState
+    return:
+      type: Veldrid.DepthStencilStateDescription
+    content.vb: Public DepthStencilState As DepthStencilStateDescription
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.RasterizerState
+  commentId: F:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.RasterizerState
+  id: RasterizerState
+  parent: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  langs:
+  - csharp
+  - vb
+  name: RasterizerState
+  nameWithType: SimplePipelineDescription.RasterizerState
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.RasterizerState
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: RasterizerState
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+    startLine: 21
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines
+  summary: Defines the rasterizer state configuration, which determines how primitives are rasterized (e.g., culling mode, fill mode).
+  example: []
+  syntax:
+    content: public RasterizerStateDescription RasterizerState
+    return:
+      type: Veldrid.RasterizerStateDescription
+    content.vb: Public RasterizerState As RasterizerStateDescription
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.PrimitiveTopology
+  commentId: F:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.PrimitiveTopology
+  id: PrimitiveTopology
+  parent: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  langs:
+  - csharp
+  - vb
+  name: PrimitiveTopology
+  nameWithType: SimplePipelineDescription.PrimitiveTopology
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.PrimitiveTopology
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: PrimitiveTopology
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+    startLine: 26
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines
+  summary: Specifies the primitive topology, which defines how the input vertices are interpreted (e.g., triangles, lines).
+  example: []
+  syntax:
+    content: public PrimitiveTopology PrimitiveTopology
+    return:
+      type: Veldrid.PrimitiveTopology
+    content.vb: Public PrimitiveTopology As PrimitiveTopology
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.BufferLayouts
+  commentId: F:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.BufferLayouts
+  id: BufferLayouts
+  parent: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  langs:
+  - csharp
+  - vb
+  name: BufferLayouts
+  nameWithType: SimplePipelineDescription.BufferLayouts
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.BufferLayouts
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: BufferLayouts
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+    startLine: 31
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines
+  summary: An array of buffers that are bound to the pipeline, containing vertex data and possibly other information.
+  example: []
+  syntax:
+    content: public SimpleBufferLayout[] BufferLayouts
+    return:
+      type: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[]
+    content.vb: Public BufferLayouts As SimpleBufferLayout()
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.TextureLayouts
+  commentId: F:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.TextureLayouts
+  id: TextureLayouts
+  parent: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  langs:
+  - csharp
+  - vb
+  name: TextureLayouts
+  nameWithType: SimplePipelineDescription.TextureLayouts
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.TextureLayouts
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: TextureLayouts
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+    startLine: 36
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines
+  summary: An array of texture layouts, describing how textures are arranged and accessed in the pipeline.
+  example: []
+  syntax:
+    content: public SimpleTextureLayout[] TextureLayouts
+    return:
+      type: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[]
+    content.vb: Public TextureLayouts As SimpleTextureLayout()
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.ShaderSet
+  commentId: F:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.ShaderSet
+  id: ShaderSet
+  parent: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  langs:
+  - csharp
+  - vb
+  name: ShaderSet
+  nameWithType: SimplePipelineDescription.ShaderSet
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.ShaderSet
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ShaderSet
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+    startLine: 41
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines
+  summary: Describes the shader set, including the vertex and fragment shaders used by the pipeline.
+  example: []
+  syntax:
+    content: public ShaderSetDescription ShaderSet
+    return:
+      type: Veldrid.ShaderSetDescription
+    content.vb: Public ShaderSet As ShaderSetDescription
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.Outputs
+  commentId: F:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.Outputs
+  id: Outputs
+  parent: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  langs:
+  - csharp
+  - vb
+  name: Outputs
+  nameWithType: SimplePipelineDescription.Outputs
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.Outputs
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Outputs
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+    startLine: 46
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines
+  summary: Defines the output configuration, specifying render targets and the depth-stencil buffer for the pipeline.
+  example: []
+  syntax:
+    content: public OutputDescription Outputs
+    return:
+      type: Veldrid.OutputDescription
+    content.vb: Public Outputs As OutputDescription
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.ResourceBindingModel
+  commentId: F:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.ResourceBindingModel
+  id: ResourceBindingModel
+  parent: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  langs:
+  - csharp
+  - vb
+  name: ResourceBindingModel
+  nameWithType: SimplePipelineDescription.ResourceBindingModel
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.ResourceBindingModel
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ResourceBindingModel
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+    startLine: 51
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines
+  summary: An optional resource binding model that maps resources such as textures and buffers to the pipeline.
+  example: []
+  syntax:
+    content: public ResourceBindingModel? ResourceBindingModel
+    return:
+      type: System.Nullable{Veldrid.ResourceBindingModel}
+    content.vb: Public ResourceBindingModel As ResourceBindingModel?
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor(Veldrid.BlendStateDescription,Veldrid.DepthStencilStateDescription,Veldrid.RasterizerStateDescription,Veldrid.PrimitiveTopology,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[],Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[],Veldrid.ShaderSetDescription,Veldrid.OutputDescription)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor(Veldrid.BlendStateDescription,Veldrid.DepthStencilStateDescription,Veldrid.RasterizerStateDescription,Veldrid.PrimitiveTopology,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[],Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[],Veldrid.ShaderSetDescription,Veldrid.OutputDescription)
+  id: '#ctor(Veldrid.BlendStateDescription,Veldrid.DepthStencilStateDescription,Veldrid.RasterizerStateDescription,Veldrid.PrimitiveTopology,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[],Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[],Veldrid.ShaderSetDescription,Veldrid.OutputDescription)'
+  parent: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  langs:
+  - csharp
+  - vb
+  name: SimplePipelineDescription(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, SimpleBufferLayout[], SimpleTextureLayout[], ShaderSetDescription, OutputDescription)
+  nameWithType: SimplePipelineDescription.SimplePipelineDescription(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, SimpleBufferLayout[], SimpleTextureLayout[], ShaderSetDescription, OutputDescription)
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.SimplePipelineDescription(Veldrid.BlendStateDescription, Veldrid.DepthStencilStateDescription, Veldrid.RasterizerStateDescription, Veldrid.PrimitiveTopology, Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[], Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[], Veldrid.ShaderSetDescription, Veldrid.OutputDescription)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+    startLine: 64
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription" data-throw-if-not-resolved="false"></xref> struct with the provided pipeline configuration details.
+  example: []
+  syntax:
+    content: public SimplePipelineDescription(BlendStateDescription blendState, DepthStencilStateDescription depthStencilState, RasterizerStateDescription rasterizerState, PrimitiveTopology primitiveTopology, SimpleBufferLayout[] bufferLayouts, SimpleTextureLayout[] textureLayouts, ShaderSetDescription shaderSet, OutputDescription outputs)
+    parameters:
+    - id: blendState
+      type: Veldrid.BlendStateDescription
+      description: The blend state configuration of the pipeline.
+    - id: depthStencilState
+      type: Veldrid.DepthStencilStateDescription
+      description: The depth and stencil state configuration of the pipeline.
+    - id: rasterizerState
+      type: Veldrid.RasterizerStateDescription
+      description: The rasterizer state configuration of the pipeline.
+    - id: primitiveTopology
+      type: Veldrid.PrimitiveTopology
+      description: The primitive topology that defines how vertex data is interpreted.
+    - id: bufferLayouts
+      type: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[]
+      description: An array of buffer layouts to be used by the pipeline.
+    - id: textureLayouts
+      type: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[]
+      description: An array of texture layouts to be used in the pipeline.
+    - id: shaderSet
+      type: Veldrid.ShaderSetDescription
+      description: The shader set description that defines the vertex and fragment shaders.
+    - id: outputs
+      type: Veldrid.OutputDescription
+      description: The output configuration of the pipeline, specifying the render targets and depth-stencil buffer.
+    content.vb: Public Sub New(blendState As BlendStateDescription, depthStencilState As DepthStencilStateDescription, rasterizerState As RasterizerStateDescription, primitiveTopology As PrimitiveTopology, bufferLayouts As SimpleBufferLayout(), textureLayouts As SimpleTextureLayout(), shaderSet As ShaderSetDescription, outputs As OutputDescription)
+  overload: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor*
+  nameWithType.vb: SimplePipelineDescription.New(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, SimpleBufferLayout(), SimpleTextureLayout(), ShaderSetDescription, OutputDescription)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.New(Veldrid.BlendStateDescription, Veldrid.DepthStencilStateDescription, Veldrid.RasterizerStateDescription, Veldrid.PrimitiveTopology, Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout(), Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout(), Veldrid.ShaderSetDescription, Veldrid.OutputDescription)
+  name.vb: New(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, SimpleBufferLayout(), SimpleTextureLayout(), ShaderSetDescription, OutputDescription)
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor
+  id: '#ctor'
+  parent: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  langs:
+  - csharp
+  - vb
+  name: SimplePipelineDescription()
+  nameWithType: SimplePipelineDescription.SimplePipelineDescription()
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.SimplePipelineDescription()
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+    startLine: 79
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription" data-throw-if-not-resolved="false"></xref> struct.
+  example: []
+  syntax:
+    content: public SimplePipelineDescription()
+    content.vb: Public Sub New()
+  overload: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor*
+  nameWithType.vb: SimplePipelineDescription.New()
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.New()
+  name.vb: New()
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.op_Equality(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription,Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.op_Equality(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription,Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  id: op_Equality(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription,Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  parent: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  langs:
+  - csharp
+  - vb
+  name: operator ==(SimplePipelineDescription, SimplePipelineDescription)
+  nameWithType: SimplePipelineDescription.operator ==(SimplePipelineDescription, SimplePipelineDescription)
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.operator ==(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription, Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  type: Operator
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: op_Equality
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+    startLine: 90
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines
+  summary: Determines whether two <xref href="Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription" data-throw-if-not-resolved="false"></xref> instances are equal based on their properties.
+  example: []
+  syntax:
+    content: public static bool operator ==(SimplePipelineDescription left, SimplePipelineDescription right)
+    parameters:
+    - id: left
+      type: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+      description: The first <xref href="Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription" data-throw-if-not-resolved="false"></xref> instance to compare.
+    - id: right
+      type: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+      description: The second <xref href="Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription" data-throw-if-not-resolved="false"></xref> instance to compare.
+    return:
+      type: System.Boolean
+      description: <code>true</code> if the instances are equal; otherwise, <code>false</code>.
+    content.vb: Public Shared Operator =(left As SimplePipelineDescription, right As SimplePipelineDescription) As Boolean
+  overload: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.op_Equality*
+  nameWithType.vb: SimplePipelineDescription.=(SimplePipelineDescription, SimplePipelineDescription)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.=(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription, Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  name.vb: =(SimplePipelineDescription, SimplePipelineDescription)
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.op_Inequality(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription,Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.op_Inequality(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription,Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  id: op_Inequality(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription,Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  parent: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  langs:
+  - csharp
+  - vb
+  name: operator !=(SimplePipelineDescription, SimplePipelineDescription)
+  nameWithType: SimplePipelineDescription.operator !=(SimplePipelineDescription, SimplePipelineDescription)
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.operator !=(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription, Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  type: Operator
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: op_Inequality
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+    startLine: 98
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines
+  summary: Determines whether two <xref href="Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription" data-throw-if-not-resolved="false"></xref> instances are equal.
+  example: []
+  syntax:
+    content: public static bool operator !=(SimplePipelineDescription left, SimplePipelineDescription right)
+    parameters:
+    - id: left
+      type: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+      description: The first <xref href="Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription" data-throw-if-not-resolved="false"></xref> to compare.
+    - id: right
+      type: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+      description: The second <xref href="Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription" data-throw-if-not-resolved="false"></xref> to compare.
+    return:
+      type: System.Boolean
+      description: True if both instances are equal; otherwise, false.
+    content.vb: Public Shared Operator <>(left As SimplePipelineDescription, right As SimplePipelineDescription) As Boolean
+  overload: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.op_Inequality*
+  nameWithType.vb: SimplePipelineDescription.<>(SimplePipelineDescription, SimplePipelineDescription)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.<>(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription, Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  name.vb: <>(SimplePipelineDescription, SimplePipelineDescription)
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.Equals(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.Equals(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  id: Equals(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  parent: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  langs:
+  - csharp
+  - vb
+  name: Equals(SimplePipelineDescription)
+  nameWithType: SimplePipelineDescription.Equals(SimplePipelineDescription)
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.Equals(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Equals
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+    startLine: 105
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines
+  summary: Determines whether the current <xref href="Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription" data-throw-if-not-resolved="false"></xref> instance is equal to another specified instance.
+  example: []
+  syntax:
+    content: public bool Equals(SimplePipelineDescription other)
+    parameters:
+    - id: other
+      type: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+      description: The other <xref href="Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription" data-throw-if-not-resolved="false"></xref> instance to compare with the current instance.
+    return:
+      type: System.Boolean
+      description: A boolean value indicating whether the two instances are equal.
+    content.vb: Public Function Equals(other As SimplePipelineDescription) As Boolean
+  overload: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.Equals*
+  implements:
+  - System.IEquatable{Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription}.Equals(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.Equals(System.Object)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  langs:
+  - csharp
+  - vb
+  name: Equals(object?)
+  nameWithType: SimplePipelineDescription.Equals(object?)
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.Equals(object?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Equals
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+    startLine: 122
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines
+  summary: Determines whether the specified object is equal to the current <xref href="Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription" data-throw-if-not-resolved="false"></xref> instance.
+  example: []
+  syntax:
+    content: public override bool Equals(object? obj)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The object to compare with the current instance.
+    return:
+      type: System.Boolean
+      description: A boolean value indicating whether the specified object is equal to the current instance.
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.ValueType.Equals(System.Object)
+  overload: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.Equals*
+  nameWithType.vb: SimplePipelineDescription.Equals(Object)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.Equals(Object)
+  name.vb: Equals(Object)
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.GetHashCode
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.GetHashCode
+  id: GetHashCode
+  parent: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: SimplePipelineDescription.GetHashCode()
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.GetHashCode()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetHashCode
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+    startLine: 130
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines
+  summary: Returns a hash code for this instance of <xref href="Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+      description: A 32-bit signed integer hash code that is representative of the object's current state and its members.
+    content.vb: Public Overrides Function GetHashCode() As Integer
+  overridden: System.ValueType.GetHashCode
+  overload: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.GetHashCode*
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.ToString
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.ToString
+  id: ToString
+  parent: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: SimplePipelineDescription.ToString()
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.ToString()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ToString
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs
+    startLine: 155
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines
+  summary: Returns a string representation of the <xref href="Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription" data-throw-if-not-resolved="false"></xref> instance, detailing its configuration and properties.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: A string that includes the blend state, depth-stencil state, rasterizer state, primitive topology, buffers, texture layouts, shader set, outputs, and resource binding model of the pipeline description.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.ValueType.ToString
+  overload: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.ToString*
+references:
+- uid: Bliss.CSharp.Graphics.Pipelines
+  commentId: N:Bliss.CSharp.Graphics.Pipelines
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Pipelines
+  nameWithType: Bliss.CSharp.Graphics.Pipelines
+  fullName: Bliss.CSharp.Graphics.Pipelines
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+- uid: System.IEquatable{Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription}
+  commentId: T:System.IEquatable{Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<SimplePipelineDescription>
+  nameWithType: IEquatable<SimplePipelineDescription>
+  fullName: System.IEquatable<Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription>
+  nameWithType.vb: IEquatable(Of SimplePipelineDescription)
+  fullName.vb: System.IEquatable(Of Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  name.vb: IEquatable(Of SimplePipelineDescription)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+    name: SimplePipelineDescription
+    href: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+    name: SimplePipelineDescription
+    href: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.html
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Veldrid.BlendStateDescription
+  commentId: T:Veldrid.BlendStateDescription
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+  name: BlendStateDescription
+  nameWithType: BlendStateDescription
+  fullName: Veldrid.BlendStateDescription
+- uid: Veldrid
+  commentId: N:Veldrid
+  isExternal: true
+  name: Veldrid
+  nameWithType: Veldrid
+  fullName: Veldrid
+- uid: Veldrid.DepthStencilStateDescription
+  commentId: T:Veldrid.DepthStencilStateDescription
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+  name: DepthStencilStateDescription
+  nameWithType: DepthStencilStateDescription
+  fullName: Veldrid.DepthStencilStateDescription
+- uid: Veldrid.RasterizerStateDescription
+  commentId: T:Veldrid.RasterizerStateDescription
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+  name: RasterizerStateDescription
+  nameWithType: RasterizerStateDescription
+  fullName: Veldrid.RasterizerStateDescription
+- uid: Veldrid.PrimitiveTopology
+  commentId: T:Veldrid.PrimitiveTopology
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/PrimitiveTopology.cs
+  name: PrimitiveTopology
+  nameWithType: PrimitiveTopology
+  fullName: Veldrid.PrimitiveTopology
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[]
+  isExternal: true
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
+  name: SimpleBufferLayout[]
+  nameWithType: SimpleBufferLayout[]
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[]
+  nameWithType.vb: SimpleBufferLayout()
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout()
+  name.vb: SimpleBufferLayout()
+  spec.csharp:
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+    name: SimpleBufferLayout
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+    name: SimpleBufferLayout
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[]
+  isExternal: true
+  href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
+  name: SimpleTextureLayout[]
+  nameWithType: SimpleTextureLayout[]
+  fullName: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[]
+  nameWithType.vb: SimpleTextureLayout()
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout()
+  name.vb: SimpleTextureLayout()
+  spec.csharp:
+  - uid: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+    name: SimpleTextureLayout
+    href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+    name: SimpleTextureLayout
+    href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
+  - name: (
+  - name: )
+- uid: Veldrid.ShaderSetDescription
+  commentId: T:Veldrid.ShaderSetDescription
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/ShaderSetDescription.cs
+  name: ShaderSetDescription
+  nameWithType: ShaderSetDescription
+  fullName: Veldrid.ShaderSetDescription
+- uid: Veldrid.OutputDescription
+  commentId: T:Veldrid.OutputDescription
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs
+  name: OutputDescription
+  nameWithType: OutputDescription
+  fullName: Veldrid.OutputDescription
+- uid: System.Nullable{Veldrid.ResourceBindingModel}
+  commentId: T:System.Nullable{Veldrid.ResourceBindingModel}
+  parent: System
+  definition: System.Nullable`1
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/ResourceBindingModel.cs
+  name: ResourceBindingModel?
+  nameWithType: ResourceBindingModel?
+  fullName: Veldrid.ResourceBindingModel?
+  spec.csharp:
+  - uid: Veldrid.ResourceBindingModel
+    name: ResourceBindingModel
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/ResourceBindingModel.cs
+  - name: '?'
+  spec.vb:
+  - uid: Veldrid.ResourceBindingModel
+    name: ResourceBindingModel
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/ResourceBindingModel.cs
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+  parent: Bliss.CSharp.Graphics.Pipelines
+  href: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.html
+  name: SimplePipelineDescription
+  nameWithType: SimplePipelineDescription
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor
+  href: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.html#Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription__ctor_Veldrid_BlendStateDescription_Veldrid_DepthStencilStateDescription_Veldrid_RasterizerStateDescription_Veldrid_PrimitiveTopology_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferLayout___Bliss_CSharp_Graphics_Pipelines_Textures_SimpleTextureLayout___Veldrid_ShaderSetDescription_Veldrid_OutputDescription_
+  name: SimplePipelineDescription
+  nameWithType: SimplePipelineDescription.SimplePipelineDescription
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.SimplePipelineDescription
+  nameWithType.vb: SimplePipelineDescription.New
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.New
+  name.vb: New
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.op_Equality*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.op_Equality
+  href: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.html#Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription_op_Equality_Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription_Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription_
+  name: operator ==
+  nameWithType: SimplePipelineDescription.operator ==
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.operator ==
+  nameWithType.vb: SimplePipelineDescription.=
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.=
+  name.vb: =
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.op_Equality*
+    name: ==
+    href: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.html#Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription_op_Equality_Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription_Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription_
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.op_Inequality*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.op_Inequality
+  href: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.html#Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription_op_Inequality_Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription_Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription_
+  name: operator !=
+  nameWithType: SimplePipelineDescription.operator !=
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.operator !=
+  nameWithType.vb: SimplePipelineDescription.<>
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.<>
+  name.vb: <>
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.op_Inequality*
+    name: '!='
+    href: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.html#Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription_op_Inequality_Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription_Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription_
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.Equals*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.Equals
+  href: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.html#Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription_Equals_Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription_
+  name: Equals
+  nameWithType: SimplePipelineDescription.Equals
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.Equals
+- uid: System.IEquatable{Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription}.Equals(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  commentId: M:System.IEquatable{Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription}.Equals(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  parent: System.IEquatable{Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription}
+  definition: System.IEquatable`1.Equals(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(SimplePipelineDescription)
+  nameWithType: IEquatable<SimplePipelineDescription>.Equals(SimplePipelineDescription)
+  fullName: System.IEquatable<Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription>.Equals(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  nameWithType.vb: IEquatable(Of SimplePipelineDescription).Equals(SimplePipelineDescription)
+  fullName.vb: System.IEquatable(Of Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription).Equals(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+  spec.csharp:
+  - uid: System.IEquatable{Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription}.Equals(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+    name: SimplePipelineDescription
+    href: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.html
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable{Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription}.Equals(Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
+    name: SimplePipelineDescription
+    href: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.html
+  - name: )
+- uid: System.IEquatable`1.Equals(`0)
+  commentId: M:System.IEquatable`1.Equals(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(T)
+  nameWithType: IEquatable<T>.Equals(T)
+  fullName: System.IEquatable<T>.Equals(T)
+  nameWithType.vb: IEquatable(Of T).Equals(T)
+  fullName.vb: System.IEquatable(Of T).Equals(T)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.GetHashCode*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.GetHashCode
+  href: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.html#Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription_GetHashCode
+  name: GetHashCode
+  nameWithType: SimplePipelineDescription.GetHashCode
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.GetHashCode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.ToString*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.ToString
+  href: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.html#Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription_ToString
+  name: ToString
+  nameWithType: SimplePipelineDescription.ToString
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.ToString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

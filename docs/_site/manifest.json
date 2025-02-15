@@ -1,0 +1,1218 @@
+{
+  "source_base_path": "F:/projects/Bliss/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Audio.AudioDevice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Audio.AudioDevice.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Audio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Audio.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Camera.Dim2.Cam2D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Camera.Dim2.Cam2D.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Camera.Dim2.CameraFollowMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Camera.Dim2.CameraFollowMode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Camera.Dim2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Camera.Dim2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Camera.Dim3.Cam3D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Camera.Dim3.Cam3D.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Camera.Dim3.CameraMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Camera.Dim3.CameraMode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Camera.Dim3.ProjectionType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Camera.Dim3.ProjectionType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Camera.Dim3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Camera.Dim3.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Camera.ICam.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Camera.ICam.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Camera.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Camera.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Colors.Color.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Colors.Color.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Colors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Colors.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Disposable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Disposable.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Effects.Effect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Effects.Effect.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Effects.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Effects.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Fonts.Font.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Fonts.Font.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Fonts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Fonts.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.Animations.BoneInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.Animations.BoneInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.Animations.Keyframes.QuatKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.Animations.Keyframes.QuatKey.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.Animations.Keyframes.Vector3Key.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.Animations.Keyframes.Vector3Key.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.Animations.Keyframes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.Animations.Keyframes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.Animations.MeshAmateurBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.Animations.MeshAmateurBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.Animations.ModelAnimation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.Animations.ModelAnimation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.Animations.NodeAnimChannel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.Animations.NodeAnimChannel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.Animations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.Animations.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.BoundingBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.BoundingBox.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.Mesh.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.Mesh.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.Model.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.Model.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.GlobalResource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.GlobalResource.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.BlendState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.BlendState.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.GraphicsHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.GraphicsHelper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Buffers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Buffers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Pipelines.SimplePipeline.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.SimplePipeline.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Textures.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Textures.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Pipelines.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Batches.Sprites.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Batches.Sprites.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Frustum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Frustum.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Passes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Passes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.SamplerType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.SamplerType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.VertexTypes.Vertex3D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.VertexTypes.Vertex3D.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.VertexTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.VertexTypes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Images.AnimatedImage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Images.AnimatedImage.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Images.Image.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Images.Image.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Images.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Images.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Interact.Contexts.IInputContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Interact.Contexts.IInputContext.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Interact.Contexts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Interact.Contexts.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Interact.Gamepads.GamepadAxis.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Interact.Gamepads.GamepadAxis.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Interact.Gamepads.GamepadButton.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Interact.Gamepads.GamepadButton.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Interact.Gamepads.IGamepad.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Interact.Gamepads.IGamepad.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Interact.Gamepads.Sdl3Gamepad.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Interact.Gamepads.Sdl3Gamepad.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Interact.Gamepads.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Interact.Gamepads.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Interact.Input.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Interact.Input.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Interact.Keyboards.KeyboardKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Interact.Keyboards.KeyboardKey.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Interact.Keyboards.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Interact.Keyboards.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Interact.Mice.Cursors.ICursor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Interact.Mice.Cursors.ICursor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Interact.Mice.Cursors.Sdl3Cursor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Interact.Mice.Cursors.Sdl3Cursor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Interact.Mice.Cursors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Interact.Mice.Cursors.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Interact.Mice.MouseButton.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Interact.Mice.MouseButton.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Interact.Mice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Interact.Mice.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Interact.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Interact.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Logging.LogType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Logging.LogType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Logging.Logger.OnMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Logging.Logger.OnMessage.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Logging.Logger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Logging.Logger.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Logging.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Logging.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Materials.Material.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Materials.Material.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Materials.MaterialMap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Materials.MaterialMap.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Materials.MaterialMapType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Materials.MaterialMapType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Materials.MaterialMapTypeExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Materials.MaterialMapTypeExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Materials.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Materials.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Mathematics.BlissMath.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Mathematics.BlissMath.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Mathematics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Mathematics.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Textures.Cubemap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Textures.Cubemap.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Textures.MipmapHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Textures.MipmapHelper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Textures.RenderTexture2D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Textures.RenderTexture2D.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Textures.Texture2D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Textures.Texture2D.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Textures.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Textures.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Transformations.Point.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Transformations.Point.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Transformations.Rectangle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Transformations.Rectangle.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Transformations.RectangleF.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Transformations.RectangleF.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Transformations.Transform.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Transformations.Transform.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Transformations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Transformations.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Windowing.Events.KeyEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Windowing.Events.KeyEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Windowing.Events.MouseEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Windowing.Events.MouseEvent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Windowing.Events.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Windowing.Events.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Windowing.IWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Windowing.IWindow.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Windowing.Sdl3Window.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Windowing.Sdl3Window.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Windowing.Window.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Windowing.Window.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Windowing.WindowState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Windowing.WindowState.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Windowing.WindowType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Windowing.WindowType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Windowing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Windowing.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

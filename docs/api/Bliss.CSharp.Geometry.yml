@@ -1,0 +1,70 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Geometry
+  commentId: N:Bliss.CSharp.Geometry
+  id: Bliss.CSharp.Geometry
+  children:
+  - Bliss.CSharp.Geometry.BoundingBox
+  - Bliss.CSharp.Geometry.Mesh
+  - Bliss.CSharp.Geometry.Model
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Geometry
+  nameWithType: Bliss.CSharp.Geometry
+  fullName: Bliss.CSharp.Geometry
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Geometry.BoundingBox
+  commentId: T:Bliss.CSharp.Geometry.BoundingBox
+  parent: Bliss.CSharp.Geometry
+  href: Bliss.CSharp.Geometry.BoundingBox.html
+  name: BoundingBox
+  nameWithType: BoundingBox
+  fullName: Bliss.CSharp.Geometry.BoundingBox
+- uid: Bliss.CSharp.Geometry.Mesh
+  commentId: T:Bliss.CSharp.Geometry.Mesh
+  parent: Bliss.CSharp.Geometry
+  href: Bliss.CSharp.Geometry.Mesh.html
+  name: Mesh
+  nameWithType: Mesh
+  fullName: Bliss.CSharp.Geometry.Mesh
+- uid: Bliss.CSharp.Geometry.Model
+  commentId: T:Bliss.CSharp.Geometry.Model
+  parent: Bliss.CSharp.Geometry
+  href: Bliss.CSharp.Geometry.Model.html
+  name: Model
+  nameWithType: Model
+  fullName: Bliss.CSharp.Geometry.Model
+- uid: Bliss.CSharp.Geometry
+  commentId: N:Bliss.CSharp.Geometry
+  href: Bliss.html
+  name: Bliss.CSharp.Geometry
+  nameWithType: Bliss.CSharp.Geometry
+  fullName: Bliss.CSharp.Geometry
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html

@@ -1,0 +1,69 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics
+  commentId: N:Bliss.CSharp.Graphics
+  id: Bliss.CSharp.Graphics
+  children:
+  - Bliss.CSharp.Graphics.BlendState
+  - Bliss.CSharp.Graphics.GraphicsHelper
+  - Bliss.CSharp.Graphics.SamplerType
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Graphics
+  nameWithType: Bliss.CSharp.Graphics
+  fullName: Bliss.CSharp.Graphics
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Graphics.BlendState
+  commentId: T:Bliss.CSharp.Graphics.BlendState
+  parent: Bliss.CSharp.Graphics
+  href: Bliss.CSharp.Graphics.BlendState.html
+  name: BlendState
+  nameWithType: BlendState
+  fullName: Bliss.CSharp.Graphics.BlendState
+- uid: Bliss.CSharp.Graphics.GraphicsHelper
+  commentId: T:Bliss.CSharp.Graphics.GraphicsHelper
+  href: Bliss.CSharp.Graphics.GraphicsHelper.html
+  name: GraphicsHelper
+  nameWithType: GraphicsHelper
+  fullName: Bliss.CSharp.Graphics.GraphicsHelper
+- uid: Bliss.CSharp.Graphics.SamplerType
+  commentId: T:Bliss.CSharp.Graphics.SamplerType
+  parent: Bliss.CSharp.Graphics
+  href: Bliss.CSharp.Graphics.SamplerType.html
+  name: SamplerType
+  nameWithType: SamplerType
+  fullName: Bliss.CSharp.Graphics.SamplerType
+- uid: Bliss.CSharp.Graphics
+  commentId: N:Bliss.CSharp.Graphics
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics
+  nameWithType: Bliss.CSharp.Graphics
+  fullName: Bliss.CSharp.Graphics
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html

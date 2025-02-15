@@ -1,0 +1,651 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Logging.Logger
+  commentId: T:Bliss.CSharp.Logging.Logger
+  id: Logger
+  parent: Bliss.CSharp.Logging
+  children:
+  - Bliss.CSharp.Logging.Logger.Debug(System.String,System.Int32)
+  - Bliss.CSharp.Logging.Logger.Error(System.String,System.Int32)
+  - Bliss.CSharp.Logging.Logger.Fatal(System.Exception,System.Int32)
+  - Bliss.CSharp.Logging.Logger.Fatal(System.String,System.Int32)
+  - Bliss.CSharp.Logging.Logger.Info(System.String,System.Int32)
+  - Bliss.CSharp.Logging.Logger.Message
+  - Bliss.CSharp.Logging.Logger.Warn(System.String,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: Logger
+  nameWithType: Logger
+  fullName: Bliss.CSharp.Logging.Logger
+  type: Class
+  source:
+    remote:
+      path: src/Bliss/CSharp/Logging/Logger.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Logger
+    path: ../src/Bliss/CSharp/Logging/Logger.cs
+    startLine: 5
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Logging
+  syntax:
+    content: public class Logger
+    content.vb: Public Class Logger
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bliss.CSharp.Logging.Logger.Message
+  commentId: E:Bliss.CSharp.Logging.Logger.Message
+  id: Message
+  parent: Bliss.CSharp.Logging.Logger
+  langs:
+  - csharp
+  - vb
+  name: Message
+  nameWithType: Logger.Message
+  fullName: Bliss.CSharp.Logging.Logger.Message
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Logging/Logger.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Message
+    path: ../src/Bliss/CSharp/Logging/Logger.cs
+    startLine: 8
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Logging
+  syntax:
+    content: public static event Logger.OnMessage? Message
+    return:
+      type: Bliss.CSharp.Logging.Logger.OnMessage
+    content.vb: Public Shared Event Message As Logger.OnMessage
+- uid: Bliss.CSharp.Logging.Logger.Debug(System.String,System.Int32)
+  commentId: M:Bliss.CSharp.Logging.Logger.Debug(System.String,System.Int32)
+  id: Debug(System.String,System.Int32)
+  parent: Bliss.CSharp.Logging.Logger
+  langs:
+  - csharp
+  - vb
+  name: Debug(string, int)
+  nameWithType: Logger.Debug(string, int)
+  fullName: Bliss.CSharp.Logging.Logger.Debug(string, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Logging/Logger.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Debug
+    path: ../src/Bliss/CSharp/Logging/Logger.cs
+    startLine: 15
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Logging
+  summary: Logs a debug message with optional stack frame information.
+  example: []
+  syntax:
+    content: public static void Debug(string msg, int skipFrames = 2)
+    parameters:
+    - id: msg
+      type: System.String
+      description: The debug message to be logged.
+    - id: skipFrames
+      type: System.Int32
+      description: The number of stack frames to skip (optional, default is 2).
+    content.vb: Public Shared Sub Debug(msg As String, skipFrames As Integer = 2)
+  overload: Bliss.CSharp.Logging.Logger.Debug*
+  nameWithType.vb: Logger.Debug(String, Integer)
+  fullName.vb: Bliss.CSharp.Logging.Logger.Debug(String, Integer)
+  name.vb: Debug(String, Integer)
+- uid: Bliss.CSharp.Logging.Logger.Info(System.String,System.Int32)
+  commentId: M:Bliss.CSharp.Logging.Logger.Info(System.String,System.Int32)
+  id: Info(System.String,System.Int32)
+  parent: Bliss.CSharp.Logging.Logger
+  langs:
+  - csharp
+  - vb
+  name: Info(string, int)
+  nameWithType: Logger.Info(string, int)
+  fullName: Bliss.CSharp.Logging.Logger.Info(string, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Logging/Logger.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Info
+    path: ../src/Bliss/CSharp/Logging/Logger.cs
+    startLine: 26
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Logging
+  summary: Logs an informational message with optional stack frame information.
+  example: []
+  syntax:
+    content: public static void Info(string msg, int skipFrames = 2)
+    parameters:
+    - id: msg
+      type: System.String
+      description: The informational message to be logged.
+    - id: skipFrames
+      type: System.Int32
+      description: The number of stack frames to skip (optional, default is 2).
+    content.vb: Public Shared Sub Info(msg As String, skipFrames As Integer = 2)
+  overload: Bliss.CSharp.Logging.Logger.Info*
+  nameWithType.vb: Logger.Info(String, Integer)
+  fullName.vb: Bliss.CSharp.Logging.Logger.Info(String, Integer)
+  name.vb: Info(String, Integer)
+- uid: Bliss.CSharp.Logging.Logger.Warn(System.String,System.Int32)
+  commentId: M:Bliss.CSharp.Logging.Logger.Warn(System.String,System.Int32)
+  id: Warn(System.String,System.Int32)
+  parent: Bliss.CSharp.Logging.Logger
+  langs:
+  - csharp
+  - vb
+  name: Warn(string, int)
+  nameWithType: Logger.Warn(string, int)
+  fullName: Bliss.CSharp.Logging.Logger.Warn(string, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Logging/Logger.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Warn
+    path: ../src/Bliss/CSharp/Logging/Logger.cs
+    startLine: 35
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Logging
+  summary: Logs a warning message with optional stack frame information.
+  example: []
+  syntax:
+    content: public static void Warn(string msg, int skipFrames = 2)
+    parameters:
+    - id: msg
+      type: System.String
+      description: The warning message to be logged.
+    - id: skipFrames
+      type: System.Int32
+      description: The number of stack frames to skip (optional, default is 2).
+    content.vb: Public Shared Sub Warn(msg As String, skipFrames As Integer = 2)
+  overload: Bliss.CSharp.Logging.Logger.Warn*
+  nameWithType.vb: Logger.Warn(String, Integer)
+  fullName.vb: Bliss.CSharp.Logging.Logger.Warn(String, Integer)
+  name.vb: Warn(String, Integer)
+- uid: Bliss.CSharp.Logging.Logger.Error(System.String,System.Int32)
+  commentId: M:Bliss.CSharp.Logging.Logger.Error(System.String,System.Int32)
+  id: Error(System.String,System.Int32)
+  parent: Bliss.CSharp.Logging.Logger
+  langs:
+  - csharp
+  - vb
+  name: Error(string, int)
+  nameWithType: Logger.Error(string, int)
+  fullName: Bliss.CSharp.Logging.Logger.Error(string, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Logging/Logger.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Error
+    path: ../src/Bliss/CSharp/Logging/Logger.cs
+    startLine: 44
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Logging
+  summary: Logs an error message with optional stack frame information.
+  example: []
+  syntax:
+    content: public static void Error(string msg, int skipFrames = 2)
+    parameters:
+    - id: msg
+      type: System.String
+      description: The error message to be logged.
+    - id: skipFrames
+      type: System.Int32
+      description: The number of stack frames to skip (optional, default is 2).
+    content.vb: Public Shared Sub [Error](msg As String, skipFrames As Integer = 2)
+  overload: Bliss.CSharp.Logging.Logger.Error*
+  nameWithType.vb: Logger.Error(String, Integer)
+  fullName.vb: Bliss.CSharp.Logging.Logger.Error(String, Integer)
+  name.vb: Error(String, Integer)
+- uid: Bliss.CSharp.Logging.Logger.Fatal(System.String,System.Int32)
+  commentId: M:Bliss.CSharp.Logging.Logger.Fatal(System.String,System.Int32)
+  id: Fatal(System.String,System.Int32)
+  parent: Bliss.CSharp.Logging.Logger
+  langs:
+  - csharp
+  - vb
+  name: Fatal(string, int)
+  nameWithType: Logger.Fatal(string, int)
+  fullName: Bliss.CSharp.Logging.Logger.Fatal(string, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Logging/Logger.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Fatal
+    path: ../src/Bliss/CSharp/Logging/Logger.cs
+    startLine: 53
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Logging
+  summary: Logs an error message and throws an exception with optional stack frame information.
+  example: []
+  syntax:
+    content: public static void Fatal(string msg, int skipFrames = 2)
+    parameters:
+    - id: msg
+      type: System.String
+      description: The fatal message to be logged.
+    - id: skipFrames
+      type: System.Int32
+      description: The number of stack frames to skip (optional, default is 2).
+    content.vb: Public Shared Sub Fatal(msg As String, skipFrames As Integer = 2)
+  overload: Bliss.CSharp.Logging.Logger.Fatal*
+  nameWithType.vb: Logger.Fatal(String, Integer)
+  fullName.vb: Bliss.CSharp.Logging.Logger.Fatal(String, Integer)
+  name.vb: Fatal(String, Integer)
+- uid: Bliss.CSharp.Logging.Logger.Fatal(System.Exception,System.Int32)
+  commentId: M:Bliss.CSharp.Logging.Logger.Fatal(System.Exception,System.Int32)
+  id: Fatal(System.Exception,System.Int32)
+  parent: Bliss.CSharp.Logging.Logger
+  langs:
+  - csharp
+  - vb
+  name: Fatal(Exception, int)
+  nameWithType: Logger.Fatal(Exception, int)
+  fullName: Bliss.CSharp.Logging.Logger.Fatal(System.Exception, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Logging/Logger.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Fatal
+    path: ../src/Bliss/CSharp/Logging/Logger.cs
+    startLine: 63
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Logging
+  summary: Logs an exception message with the color red and throws the exception.
+  example: []
+  syntax:
+    content: public static void Fatal(Exception exception, int skipFrames = 2)
+    parameters:
+    - id: exception
+      type: System.Exception
+      description: The exception to log and throw.
+    - id: skipFrames
+      type: System.Int32
+      description: The number of frames to skip when determining the source of the log message.
+    content.vb: Public Shared Sub Fatal(exception As Exception, skipFrames As Integer = 2)
+  overload: Bliss.CSharp.Logging.Logger.Fatal*
+  nameWithType.vb: Logger.Fatal(Exception, Integer)
+  fullName.vb: Bliss.CSharp.Logging.Logger.Fatal(System.Exception, Integer)
+  name.vb: Fatal(Exception, Integer)
+references:
+- uid: Bliss.CSharp.Logging
+  commentId: N:Bliss.CSharp.Logging
+  href: Bliss.html
+  name: Bliss.CSharp.Logging
+  nameWithType: Bliss.CSharp.Logging
+  fullName: Bliss.CSharp.Logging
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Logging
+    name: Logging
+    href: Bliss.CSharp.Logging.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Logging
+    name: Logging
+    href: Bliss.CSharp.Logging.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp.Logging.Logger.OnMessage
+  commentId: T:Bliss.CSharp.Logging.Logger.OnMessage
+  parent: Bliss.CSharp.Logging
+  href: Bliss.CSharp.Logging.Logger.html
+  name: Logger.OnMessage
+  nameWithType: Logger.OnMessage
+  fullName: Bliss.CSharp.Logging.Logger.OnMessage
+  spec.csharp:
+  - uid: Bliss.CSharp.Logging.Logger
+    name: Logger
+    href: Bliss.CSharp.Logging.Logger.html
+  - name: .
+  - uid: Bliss.CSharp.Logging.Logger.OnMessage
+    name: OnMessage
+    href: Bliss.CSharp.Logging.Logger.OnMessage.html
+  spec.vb:
+  - uid: Bliss.CSharp.Logging.Logger
+    name: Logger
+    href: Bliss.CSharp.Logging.Logger.html
+  - name: .
+  - uid: Bliss.CSharp.Logging.Logger.OnMessage
+    name: OnMessage
+    href: Bliss.CSharp.Logging.Logger.OnMessage.html
+- uid: Bliss.CSharp.Logging.Logger.Debug*
+  commentId: Overload:Bliss.CSharp.Logging.Logger.Debug
+  href: Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Debug_System_String_System_Int32_
+  name: Debug
+  nameWithType: Logger.Debug
+  fullName: Bliss.CSharp.Logging.Logger.Debug
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bliss.CSharp.Logging.Logger.Info*
+  commentId: Overload:Bliss.CSharp.Logging.Logger.Info
+  href: Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Info_System_String_System_Int32_
+  name: Info
+  nameWithType: Logger.Info
+  fullName: Bliss.CSharp.Logging.Logger.Info
+- uid: Bliss.CSharp.Logging.Logger.Warn*
+  commentId: Overload:Bliss.CSharp.Logging.Logger.Warn
+  href: Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Warn_System_String_System_Int32_
+  name: Warn
+  nameWithType: Logger.Warn
+  fullName: Bliss.CSharp.Logging.Logger.Warn
+- uid: Bliss.CSharp.Logging.Logger.Error*
+  commentId: Overload:Bliss.CSharp.Logging.Logger.Error
+  href: Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Error_System_String_System_Int32_
+  name: Error
+  nameWithType: Logger.Error
+  fullName: Bliss.CSharp.Logging.Logger.Error
+- uid: Bliss.CSharp.Logging.Logger.Fatal*
+  commentId: Overload:Bliss.CSharp.Logging.Logger.Fatal
+  href: Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Fatal_System_String_System_Int32_
+  name: Fatal
+  nameWithType: Logger.Fatal
+  fullName: Bliss.CSharp.Logging.Logger.Fatal
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception

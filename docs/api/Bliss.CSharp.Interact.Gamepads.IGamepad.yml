@@ -1,0 +1,534 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Interact.Gamepads.IGamepad
+  commentId: T:Bliss.CSharp.Interact.Gamepads.IGamepad
+  id: IGamepad
+  parent: Bliss.CSharp.Interact.Gamepads
+  children:
+  - Bliss.CSharp.Interact.Gamepads.IGamepad.CleanStates
+  - Bliss.CSharp.Interact.Gamepads.IGamepad.GetAxisMovement(Bliss.CSharp.Interact.Gamepads.GamepadAxis)
+  - Bliss.CSharp.Interact.Gamepads.IGamepad.GetHandle
+  - Bliss.CSharp.Interact.Gamepads.IGamepad.GetIndex
+  - Bliss.CSharp.Interact.Gamepads.IGamepad.GetName
+  - Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonDown(Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  - Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonPressed(Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  - Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonReleased(Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  - Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonUp(Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  langs:
+  - csharp
+  - vb
+  name: IGamepad
+  nameWithType: IGamepad
+  fullName: Bliss.CSharp.Interact.Gamepads.IGamepad
+  type: Interface
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/IGamepad.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IGamepad
+    path: ../src/Bliss/CSharp/Interact/Gamepads/IGamepad.cs
+    startLine: 2
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  syntax:
+    content: 'public interface IGamepad : IDisposable'
+    content.vb: Public Interface IGamepad Inherits IDisposable
+  inheritedMembers:
+  - System.IDisposable.Dispose
+- uid: Bliss.CSharp.Interact.Gamepads.IGamepad.GetName
+  commentId: M:Bliss.CSharp.Interact.Gamepads.IGamepad.GetName
+  id: GetName
+  parent: Bliss.CSharp.Interact.Gamepads.IGamepad
+  langs:
+  - csharp
+  - vb
+  name: GetName()
+  nameWithType: IGamepad.GetName()
+  fullName: Bliss.CSharp.Interact.Gamepads.IGamepad.GetName()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/IGamepad.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetName
+    path: ../src/Bliss/CSharp/Interact/Gamepads/IGamepad.cs
+    startLine: 8
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: Gets the name of the gamepad.
+  example: []
+  syntax:
+    content: string GetName()
+    return:
+      type: System.String
+      description: A string representing the gamepad's name.
+    content.vb: Function GetName() As String
+  overload: Bliss.CSharp.Interact.Gamepads.IGamepad.GetName*
+- uid: Bliss.CSharp.Interact.Gamepads.IGamepad.GetIndex
+  commentId: M:Bliss.CSharp.Interact.Gamepads.IGamepad.GetIndex
+  id: GetIndex
+  parent: Bliss.CSharp.Interact.Gamepads.IGamepad
+  langs:
+  - csharp
+  - vb
+  name: GetIndex()
+  nameWithType: IGamepad.GetIndex()
+  fullName: Bliss.CSharp.Interact.Gamepads.IGamepad.GetIndex()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/IGamepad.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetIndex
+    path: ../src/Bliss/CSharp/Interact/Gamepads/IGamepad.cs
+    startLine: 14
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: Gets the index of the gamepad.
+  example: []
+  syntax:
+    content: uint GetIndex()
+    return:
+      type: System.UInt32
+      description: An unsigned integer representing the gamepad's index.
+    content.vb: Function GetIndex() As UInteger
+  overload: Bliss.CSharp.Interact.Gamepads.IGamepad.GetIndex*
+- uid: Bliss.CSharp.Interact.Gamepads.IGamepad.GetHandle
+  commentId: M:Bliss.CSharp.Interact.Gamepads.IGamepad.GetHandle
+  id: GetHandle
+  parent: Bliss.CSharp.Interact.Gamepads.IGamepad
+  langs:
+  - csharp
+  - vb
+  name: GetHandle()
+  nameWithType: IGamepad.GetHandle()
+  fullName: Bliss.CSharp.Interact.Gamepads.IGamepad.GetHandle()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/IGamepad.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetHandle
+    path: ../src/Bliss/CSharp/Interact/Gamepads/IGamepad.cs
+    startLine: 20
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: Gets the handle of the gamepad.
+  example: []
+  syntax:
+    content: nint GetHandle()
+    return:
+      type: System.IntPtr
+      description: An integer pointer representing the gamepad's handle.
+    content.vb: Function GetHandle() As IntPtr
+  overload: Bliss.CSharp.Interact.Gamepads.IGamepad.GetHandle*
+- uid: Bliss.CSharp.Interact.Gamepads.IGamepad.CleanStates
+  commentId: M:Bliss.CSharp.Interact.Gamepads.IGamepad.CleanStates
+  id: CleanStates
+  parent: Bliss.CSharp.Interact.Gamepads.IGamepad
+  langs:
+  - csharp
+  - vb
+  name: CleanStates()
+  nameWithType: IGamepad.CleanStates()
+  fullName: Bliss.CSharp.Interact.Gamepads.IGamepad.CleanStates()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/IGamepad.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: CleanStates
+    path: ../src/Bliss/CSharp/Interact/Gamepads/IGamepad.cs
+    startLine: 25
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: Cleans or resets the internal states of the gamepad (e.g., button states).
+  example: []
+  syntax:
+    content: void CleanStates()
+    content.vb: Sub CleanStates()
+  overload: Bliss.CSharp.Interact.Gamepads.IGamepad.CleanStates*
+- uid: Bliss.CSharp.Interact.Gamepads.IGamepad.GetAxisMovement(Bliss.CSharp.Interact.Gamepads.GamepadAxis)
+  commentId: M:Bliss.CSharp.Interact.Gamepads.IGamepad.GetAxisMovement(Bliss.CSharp.Interact.Gamepads.GamepadAxis)
+  id: GetAxisMovement(Bliss.CSharp.Interact.Gamepads.GamepadAxis)
+  parent: Bliss.CSharp.Interact.Gamepads.IGamepad
+  langs:
+  - csharp
+  - vb
+  name: GetAxisMovement(GamepadAxis)
+  nameWithType: IGamepad.GetAxisMovement(GamepadAxis)
+  fullName: Bliss.CSharp.Interact.Gamepads.IGamepad.GetAxisMovement(Bliss.CSharp.Interact.Gamepads.GamepadAxis)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/IGamepad.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetAxisMovement
+    path: ../src/Bliss/CSharp/Interact/Gamepads/IGamepad.cs
+    startLine: 32
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: Gets the movement value of a specified axis on the gamepad.
+  example: []
+  syntax:
+    content: float GetAxisMovement(GamepadAxis axis)
+    parameters:
+    - id: axis
+      type: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+      description: The axis to check.
+    return:
+      type: System.Single
+      description: A float representing the axis movement.
+    content.vb: Function GetAxisMovement(axis As GamepadAxis) As Single
+  overload: Bliss.CSharp.Interact.Gamepads.IGamepad.GetAxisMovement*
+- uid: Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonPressed(Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  commentId: M:Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonPressed(Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  id: IsButtonPressed(Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  parent: Bliss.CSharp.Interact.Gamepads.IGamepad
+  langs:
+  - csharp
+  - vb
+  name: IsButtonPressed(GamepadButton)
+  nameWithType: IGamepad.IsButtonPressed(GamepadButton)
+  fullName: Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonPressed(Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/IGamepad.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsButtonPressed
+    path: ../src/Bliss/CSharp/Interact/Gamepads/IGamepad.cs
+    startLine: 39
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: Checks if the specified button was pressed in the current frame.
+  example: []
+  syntax:
+    content: bool IsButtonPressed(GamepadButton button)
+    parameters:
+    - id: button
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+      description: The button to check.
+    return:
+      type: System.Boolean
+      description: True if the button was pressed; otherwise, false.
+    content.vb: Function IsButtonPressed(button As GamepadButton) As Boolean
+  overload: Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonPressed*
+- uid: Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonDown(Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  commentId: M:Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonDown(Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  id: IsButtonDown(Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  parent: Bliss.CSharp.Interact.Gamepads.IGamepad
+  langs:
+  - csharp
+  - vb
+  name: IsButtonDown(GamepadButton)
+  nameWithType: IGamepad.IsButtonDown(GamepadButton)
+  fullName: Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonDown(Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/IGamepad.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsButtonDown
+    path: ../src/Bliss/CSharp/Interact/Gamepads/IGamepad.cs
+    startLine: 46
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: Checks if the specified button is currently being held down.
+  example: []
+  syntax:
+    content: bool IsButtonDown(GamepadButton button)
+    parameters:
+    - id: button
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+      description: The button to check.
+    return:
+      type: System.Boolean
+      description: True if the button is down; otherwise, false.
+    content.vb: Function IsButtonDown(button As GamepadButton) As Boolean
+  overload: Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonDown*
+- uid: Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonReleased(Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  commentId: M:Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonReleased(Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  id: IsButtonReleased(Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  parent: Bliss.CSharp.Interact.Gamepads.IGamepad
+  langs:
+  - csharp
+  - vb
+  name: IsButtonReleased(GamepadButton)
+  nameWithType: IGamepad.IsButtonReleased(GamepadButton)
+  fullName: Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonReleased(Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/IGamepad.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsButtonReleased
+    path: ../src/Bliss/CSharp/Interact/Gamepads/IGamepad.cs
+    startLine: 53
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: Checks if the specified button was released in the current frame.
+  example: []
+  syntax:
+    content: bool IsButtonReleased(GamepadButton button)
+    parameters:
+    - id: button
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+      description: The button to check.
+    return:
+      type: System.Boolean
+      description: True if the button was released; otherwise, false.
+    content.vb: Function IsButtonReleased(button As GamepadButton) As Boolean
+  overload: Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonReleased*
+- uid: Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonUp(Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  commentId: M:Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonUp(Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  id: IsButtonUp(Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  parent: Bliss.CSharp.Interact.Gamepads.IGamepad
+  langs:
+  - csharp
+  - vb
+  name: IsButtonUp(GamepadButton)
+  nameWithType: IGamepad.IsButtonUp(GamepadButton)
+  fullName: Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonUp(Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Gamepads/IGamepad.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsButtonUp
+    path: ../src/Bliss/CSharp/Interact/Gamepads/IGamepad.cs
+    startLine: 60
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Gamepads
+  summary: Checks if the specified button is currently up (not pressed).
+  example: []
+  syntax:
+    content: bool IsButtonUp(GamepadButton button)
+    parameters:
+    - id: button
+      type: Bliss.CSharp.Interact.Gamepads.GamepadButton
+      description: The button to check.
+    return:
+      type: System.Boolean
+      description: True if the button is up; otherwise, false.
+    content.vb: Function IsButtonUp(button As GamepadButton) As Boolean
+  overload: Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonUp*
+references:
+- uid: Bliss.CSharp.Interact.Gamepads
+  commentId: N:Bliss.CSharp.Interact.Gamepads
+  href: Bliss.html
+  name: Bliss.CSharp.Interact.Gamepads
+  nameWithType: Bliss.CSharp.Interact.Gamepads
+  fullName: Bliss.CSharp.Interact.Gamepads
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Gamepads
+    name: Gamepads
+    href: Bliss.CSharp.Interact.Gamepads.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Gamepads
+    name: Gamepads
+    href: Bliss.CSharp.Interact.Gamepads.html
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp.Interact.Gamepads.IGamepad.GetName*
+  commentId: Overload:Bliss.CSharp.Interact.Gamepads.IGamepad.GetName
+  href: Bliss.CSharp.Interact.Gamepads.IGamepad.html#Bliss_CSharp_Interact_Gamepads_IGamepad_GetName
+  name: GetName
+  nameWithType: IGamepad.GetName
+  fullName: Bliss.CSharp.Interact.Gamepads.IGamepad.GetName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bliss.CSharp.Interact.Gamepads.IGamepad.GetIndex*
+  commentId: Overload:Bliss.CSharp.Interact.Gamepads.IGamepad.GetIndex
+  href: Bliss.CSharp.Interact.Gamepads.IGamepad.html#Bliss_CSharp_Interact_Gamepads_IGamepad_GetIndex
+  name: GetIndex
+  nameWithType: IGamepad.GetIndex
+  fullName: Bliss.CSharp.Interact.Gamepads.IGamepad.GetIndex
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: Bliss.CSharp.Interact.Gamepads.IGamepad.GetHandle*
+  commentId: Overload:Bliss.CSharp.Interact.Gamepads.IGamepad.GetHandle
+  href: Bliss.CSharp.Interact.Gamepads.IGamepad.html#Bliss_CSharp_Interact_Gamepads_IGamepad_GetHandle
+  name: GetHandle
+  nameWithType: IGamepad.GetHandle
+  fullName: Bliss.CSharp.Interact.Gamepads.IGamepad.GetHandle
+- uid: System.IntPtr
+  commentId: T:System.IntPtr
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.intptr
+  name: nint
+  nameWithType: nint
+  fullName: nint
+  nameWithType.vb: IntPtr
+  fullName.vb: System.IntPtr
+  name.vb: IntPtr
+- uid: Bliss.CSharp.Interact.Gamepads.IGamepad.CleanStates*
+  commentId: Overload:Bliss.CSharp.Interact.Gamepads.IGamepad.CleanStates
+  href: Bliss.CSharp.Interact.Gamepads.IGamepad.html#Bliss_CSharp_Interact_Gamepads_IGamepad_CleanStates
+  name: CleanStates
+  nameWithType: IGamepad.CleanStates
+  fullName: Bliss.CSharp.Interact.Gamepads.IGamepad.CleanStates
+- uid: Bliss.CSharp.Interact.Gamepads.IGamepad.GetAxisMovement*
+  commentId: Overload:Bliss.CSharp.Interact.Gamepads.IGamepad.GetAxisMovement
+  href: Bliss.CSharp.Interact.Gamepads.IGamepad.html#Bliss_CSharp_Interact_Gamepads_IGamepad_GetAxisMovement_Bliss_CSharp_Interact_Gamepads_GamepadAxis_
+  name: GetAxisMovement
+  nameWithType: IGamepad.GetAxisMovement
+  fullName: Bliss.CSharp.Interact.Gamepads.IGamepad.GetAxisMovement
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+  commentId: T:Bliss.CSharp.Interact.Gamepads.GamepadAxis
+  parent: Bliss.CSharp.Interact.Gamepads
+  href: Bliss.CSharp.Interact.Gamepads.GamepadAxis.html
+  name: GamepadAxis
+  nameWithType: GamepadAxis
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonPressed*
+  commentId: Overload:Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonPressed
+  href: Bliss.CSharp.Interact.Gamepads.IGamepad.html#Bliss_CSharp_Interact_Gamepads_IGamepad_IsButtonPressed_Bliss_CSharp_Interact_Gamepads_GamepadButton_
+  name: IsButtonPressed
+  nameWithType: IGamepad.IsButtonPressed
+  fullName: Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonPressed
+- uid: Bliss.CSharp.Interact.Gamepads.GamepadButton
+  commentId: T:Bliss.CSharp.Interact.Gamepads.GamepadButton
+  parent: Bliss.CSharp.Interact.Gamepads
+  href: Bliss.CSharp.Interact.Gamepads.GamepadButton.html
+  name: GamepadButton
+  nameWithType: GamepadButton
+  fullName: Bliss.CSharp.Interact.Gamepads.GamepadButton
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonDown*
+  commentId: Overload:Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonDown
+  href: Bliss.CSharp.Interact.Gamepads.IGamepad.html#Bliss_CSharp_Interact_Gamepads_IGamepad_IsButtonDown_Bliss_CSharp_Interact_Gamepads_GamepadButton_
+  name: IsButtonDown
+  nameWithType: IGamepad.IsButtonDown
+  fullName: Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonDown
+- uid: Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonReleased*
+  commentId: Overload:Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonReleased
+  href: Bliss.CSharp.Interact.Gamepads.IGamepad.html#Bliss_CSharp_Interact_Gamepads_IGamepad_IsButtonReleased_Bliss_CSharp_Interact_Gamepads_GamepadButton_
+  name: IsButtonReleased
+  nameWithType: IGamepad.IsButtonReleased
+  fullName: Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonReleased
+- uid: Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonUp*
+  commentId: Overload:Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonUp
+  href: Bliss.CSharp.Interact.Gamepads.IGamepad.html#Bliss_CSharp_Interact_Gamepads_IGamepad_IsButtonUp_Bliss_CSharp_Interact_Gamepads_GamepadButton_
+  name: IsButtonUp
+  nameWithType: IGamepad.IsButtonUp
+  fullName: Bliss.CSharp.Interact.Gamepads.IGamepad.IsButtonUp

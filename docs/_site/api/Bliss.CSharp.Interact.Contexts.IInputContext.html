@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Interface IInputContext | Bliss </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IInputContext | Bliss ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MrScautHD/Bliss/new/main/apiSpec/new?filename=Bliss_CSharp_Interact_Contexts_IInputContext.md&amp;value=---%0Auid%3A%20Bliss.CSharp.Interact.Contexts.IInputContext%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Bliss">
+            Bliss
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Bliss.CSharp.Interact.Contexts.IInputContext">
+
+
+
+  <h1 id="Bliss_CSharp_Interact_Contexts_IInputContext" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext" class="text-break">
+Interface IInputContext  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Bliss.html">Bliss</a>.<a class="xref" href="Bliss.CSharp.html">CSharp</a>.<a class="xref" href="Bliss.CSharp.Interact.html">Interact</a>.<a class="xref" href="Bliss.CSharp.Interact.Contexts.html">Contexts</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Bliss.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IInputContext : IDisposable</code></pre>
+  </div>
+
+
+
+
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable.dispose">IDisposable.Dispose()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_Begin_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.Begin*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_Begin" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.Begin">
+  Begin()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Begins input processing for the current frame.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Begin()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_DisableRelativeMouseMode_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.DisableRelativeMouseMode*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_DisableRelativeMouseMode" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.DisableRelativeMouseMode">
+  DisableRelativeMouseMode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Disables relative mouse mode.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void DisableRelativeMouseMode()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_EnableRelativeMouseMode_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.EnableRelativeMouseMode*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_EnableRelativeMouseMode" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.EnableRelativeMouseMode">
+  EnableRelativeMouseMode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Enables relative mouse mode.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void EnableRelativeMouseMode()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_End_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.End*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_End" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.End">
+  End()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Ends input processing for the current frame.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void End()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_GetAvailableGamepadCount_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.GetAvailableGamepadCount*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_GetAvailableGamepadCount" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.GetAvailableGamepadCount">
+  GetAvailableGamepadCount()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L181"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the count of available gamepads.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">uint GetAvailableGamepadCount()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The number of available gamepads.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_GetClipboardText_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.GetClipboardText*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_GetClipboardText" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.GetClipboardText">
+  GetClipboardText()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L167"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the current text from the system clipboard.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string GetClipboardText()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The clipboard text.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_GetGamepadAxisMovement_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.GetGamepadAxisMovement*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_GetGamepadAxisMovement_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadAxis_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.GetGamepadAxisMovement(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadAxis)">
+  GetGamepadAxisMovement(uint, GamepadAxis)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L212"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the movement value of the specified axis on the given gamepad.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float GetGamepadAxisMovement(uint gamepad, GamepadAxis axis)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gamepad</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The index of the gamepad.</p>
+</dd>
+    <dt><code>axis</code> <a class="xref" href="Bliss.CSharp.Interact.Gamepads.GamepadAxis.html">GamepadAxis</a></dt>
+    <dd><p>The axis of the gamepad to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The movement value of the specified axis.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_GetGamepadName_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.GetGamepadName*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_GetGamepadName_System_UInt32_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.GetGamepadName(System.UInt32)">
+  GetGamepadName(uint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L195"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the name of the specified gamepad.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string GetGamepadName(uint gamepad)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gamepad</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The index of the gamepad.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the specified gamepad.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_GetMouseCursor_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.GetMouseCursor*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_GetMouseCursor" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.GetMouseCursor">
+  GetMouseCursor()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the current mouse cursor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ICursor GetMouseCursor()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Interact.Mice.Cursors.ICursor.html">ICursor</a></dt>
+    <dd><p>The current mouse cursor.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_GetMouseDelta_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.GetMouseDelta*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_GetMouseDelta" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.GetMouseDelta">
+  GetMouseDelta()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the change in mouse position since the last frame.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Vector2 GetMouseDelta()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a></dt>
+    <dd><p>A Vector2 representing the delta of the mouse movement.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_GetMousePosition_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.GetMousePosition*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_GetMousePosition" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.GetMousePosition">
+  GetMousePosition()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the current position of the mouse in window coordinates.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Vector2 GetMousePosition()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a></dt>
+    <dd><p>The mouse position as a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_GetPressedChars_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_GetPressedChars" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars">
+  GetPressedChars()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L161"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves characters that were pressed in the current frame.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">char[] GetPressedChars()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a>[]</dt>
+    <dd><p>An array of characters pressed in the current frame.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_HideCursor_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.HideCursor*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_HideCursor" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.HideCursor">
+  HideCursor()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hides the mouse cursor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void HideCursor()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_IsCursorShown_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsCursorShown*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_IsCursorShown" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsCursorShown">
+  IsCursorShown()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if the cursor is currently shown.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsCursorShown()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the cursor is shown; otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_IsFileDragDropped_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsFileDragDropped*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_IsFileDragDropped_System_String__" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsFileDragDropped(System.String@)">
+  IsFileDragDropped(out string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L253"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if a file has been drag-dropped onto the application.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsFileDragDropped(out string path)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>path</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>When this method returns, contains the path of the file that was drag-dropped.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if a file was drag-dropped; otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadAvailable_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadAvailable*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadAvailable_System_UInt32_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadAvailable(System.UInt32)">
+  IsGamepadAvailable(uint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L188"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if the specified gamepad is available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsGamepadAvailable(uint gamepad)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gamepad</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The index of the gamepad to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the gamepad is available; otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadButtonDown_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonDown*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadButtonDown_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonDown(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)">
+  IsGamepadButtonDown(uint, GamepadButton)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L228"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if the specified button on the given gamepad is currently being pressed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsGamepadButtonDown(uint gamepad, GamepadButton button)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gamepad</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The index of the gamepad.</p>
+</dd>
+    <dt><code>button</code> <a class="xref" href="Bliss.CSharp.Interact.Gamepads.GamepadButton.html">GamepadButton</a></dt>
+    <dd><p>The button on the gamepad to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the specified button is pressed, otherwise false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadButtonPressed_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonPressed*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadButtonPressed_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonPressed(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)">
+  IsGamepadButtonPressed(uint, GamepadButton)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L220"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if a specific gamepad button is pressed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsGamepadButtonPressed(uint gamepad, GamepadButton button)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gamepad</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The identifier of the gamepad.</p>
+</dd>
+    <dt><code>button</code> <a class="xref" href="Bliss.CSharp.Interact.Gamepads.GamepadButton.html">GamepadButton</a></dt>
+    <dd><p>The button on the gamepad to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the specified button is pressed; otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadButtonReleased_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonReleased*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadButtonReleased_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonReleased(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)">
+  IsGamepadButtonReleased(uint, GamepadButton)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L236"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether a specific button on a specified gamepad has been released.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsGamepadButtonReleased(uint gamepad, GamepadButton button)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gamepad</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The identifier of the gamepad.</p>
+</dd>
+    <dt><code>button</code> <a class="xref" href="Bliss.CSharp.Interact.Gamepads.GamepadButton.html">GamepadButton</a></dt>
+    <dd><p>The gamepad button to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the button was released; otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadButtonUp_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonUp*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_IsGamepadButtonUp_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsGamepadButtonUp(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)">
+  IsGamepadButtonUp(uint, GamepadButton)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L244"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether a specified button on the specified gamepad is currently not pressed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsGamepadButtonUp(uint gamepad, GamepadButton button)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gamepad</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The identifier of the gamepad.</p>
+</dd>
+    <dt><code>button</code> <a class="xref" href="Bliss.CSharp.Interact.Gamepads.GamepadButton.html">GamepadButton</a></dt>
+    <dd><p>The gamepad button to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the button is up (not pressed); otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyDown_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyDown*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyDown_Bliss_CSharp_Interact_Keyboards_KeyboardKey_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyDown(Bliss.CSharp.Interact.Keyboards.KeyboardKey)">
+  IsKeyDown(KeyboardKey)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L141"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if a specified key is currently pressed down.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsKeyDown(KeyboardKey key)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="Bliss.CSharp.Interact.Keyboards.KeyboardKey.html">KeyboardKey</a></dt>
+    <dd><p>The key to check the state of.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the key is pressed, false otherwise.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyPressed_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyPressed*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyPressed_Bliss_CSharp_Interact_Keyboards_KeyboardKey_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey)">
+  IsKeyPressed(KeyboardKey)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L134"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if the specified keyboard key is currently pressed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsKeyPressed(KeyboardKey key)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="Bliss.CSharp.Interact.Keyboards.KeyboardKey.html">KeyboardKey</a></dt>
+    <dd><p>The keyboard key to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the specified key is pressed; otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyReleased_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyReleased*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyReleased_Bliss_CSharp_Interact_Keyboards_KeyboardKey_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyReleased(Bliss.CSharp.Interact.Keyboards.KeyboardKey)">
+  IsKeyReleased(KeyboardKey)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L148"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if a specified keyboard key has been released.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsKeyReleased(KeyboardKey key)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="Bliss.CSharp.Interact.Keyboards.KeyboardKey.html">KeyboardKey</a></dt>
+    <dd><p>The keyboard key to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the key has been released, otherwise false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyUp_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyUp*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyUp_Bliss_CSharp_Interact_Keyboards_KeyboardKey_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyUp(Bliss.CSharp.Interact.Keyboards.KeyboardKey)">
+  IsKeyUp(KeyboardKey)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L155"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if a specific keyboard key is currently in the released state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsKeyUp(KeyboardKey key)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="Bliss.CSharp.Interact.Keyboards.KeyboardKey.html">KeyboardKey</a></dt>
+    <dd><p>The keyboard key to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if the specified key is up; otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonDown_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonDown*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonDown_Bliss_CSharp_Interact_Mice_MouseButton_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonDown(Bliss.CSharp.Interact.Mice.MouseButton)">
+  IsMouseButtonDown(MouseButton)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if the specified mouse button is currently being held down.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsMouseButtonDown(MouseButton button)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>button</code> <a class="xref" href="Bliss.CSharp.Interact.Mice.MouseButton.html">MouseButton</a></dt>
+    <dd><p>The mouse button to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the button is down; otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonPressed_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonPressed*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonPressed_Bliss_CSharp_Interact_Mice_MouseButton_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonPressed(Bliss.CSharp.Interact.Mice.MouseButton)">
+  IsMouseButtonPressed(MouseButton)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if the specified mouse button was pressed in the current frame.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsMouseButtonPressed(MouseButton button)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>button</code> <a class="xref" href="Bliss.CSharp.Interact.Mice.MouseButton.html">MouseButton</a></dt>
+    <dd><p>The mouse button to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the button was pressed; otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonReleased_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonReleased*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonReleased_Bliss_CSharp_Interact_Mice_MouseButton_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonReleased(Bliss.CSharp.Interact.Mice.MouseButton)">
+  IsMouseButtonReleased(MouseButton)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L104"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if the specified mouse button was released in the current frame.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsMouseButtonReleased(MouseButton button)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>button</code> <a class="xref" href="Bliss.CSharp.Interact.Mice.MouseButton.html">MouseButton</a></dt>
+    <dd><p>The mouse button to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the button was released; otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonUp_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonUp*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonUp_Bliss_CSharp_Interact_Mice_MouseButton_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonUp(Bliss.CSharp.Interact.Mice.MouseButton)">
+  IsMouseButtonUp(MouseButton)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if the specified mouse button is currently up (not pressed).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsMouseButtonUp(MouseButton button)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>button</code> <a class="xref" href="Bliss.CSharp.Interact.Mice.MouseButton.html">MouseButton</a></dt>
+    <dd><p>The mouse button to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the button is up; otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseMoving_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseMoving*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseMoving_System_Numerics_Vector2__" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseMoving(System.Numerics.Vector2@)">
+  IsMouseMoving(out Vector2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if the mouse is moving and returns the current position if it is.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsMouseMoving(out Vector2 position)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>position</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a></dt>
+    <dd><p>The current mouse position.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the mouse is moving; otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseScrolling_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseScrolling*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseScrolling_System_Numerics_Vector2__" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseScrolling(System.Numerics.Vector2@)">
+  IsMouseScrolling(out Vector2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if the mouse is scrolling and returns the scroll delta if it is.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsMouseScrolling(out Vector2 wheelDelta)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>wheelDelta</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a></dt>
+    <dd><p>The scroll delta of the mouse.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the mouse is scrolling; otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_IsRelativeMouseModeEnabled_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsRelativeMouseModeEnabled*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_IsRelativeMouseModeEnabled" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.IsRelativeMouseModeEnabled">
+  IsRelativeMouseModeEnabled()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if relative mouse mode is enabled, where the cursor is locked to the window.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsRelativeMouseModeEnabled()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if relative mouse mode is enabled; otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_RumbleGamepad_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.RumbleGamepad*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_RumbleGamepad_System_UInt32_System_UInt16_System_UInt16_System_UInt32_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.RumbleGamepad(System.UInt32,System.UInt16,System.UInt16,System.UInt32)">
+  RumbleGamepad(uint, ushort, ushort, uint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L204"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Generates a rumble effect on the specified gamepad.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RumbleGamepad(uint gamepad, ushort lowFrequencyRumble, ushort highFrequencyRumble, uint durationMs)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>gamepad</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The index of the gamepad to rumble.</p>
+</dd>
+    <dt><code>lowFrequencyRumble</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></dt>
+    <dd><p>The intensity of the low-frequency rumble.</p>
+</dd>
+    <dt><code>highFrequencyRumble</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></dt>
+    <dd><p>The intensity of the high-frequency rumble.</p>
+</dd>
+    <dt><code>durationMs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>Duration of the rumble effect in milliseconds.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_SetClipboardText_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.SetClipboardText*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_SetClipboardText_System_String_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.SetClipboardText(System.String)">
+  SetClipboardText(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L173"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the clipboard content to the specified text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetClipboardText(string text)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>text</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The text to set to the clipboard.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_SetMouseCursor_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.SetMouseCursor*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_SetMouseCursor_Bliss_CSharp_Interact_Mice_Cursors_ICursor_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.SetMouseCursor(Bliss.CSharp.Interact.Mice.Cursors.ICursor)">
+  SetMouseCursor(ICursor)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the mouse cursor to the specified cursor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetMouseCursor(ICursor cursor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cursor</code> <a class="xref" href="Bliss.CSharp.Interact.Mice.Cursors.ICursor.html">ICursor</a></dt>
+    <dd><p>The cursor to set.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_SetMousePosition_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.SetMousePosition*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_SetMousePosition_System_Numerics_Vector2_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.SetMousePosition(System.Numerics.Vector2)">
+  SetMousePosition(Vector2)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the mouse position to the specified coordinates.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetMousePosition(Vector2 position)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>position</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a></dt>
+    <dd><p>The position to set the mouse to.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Contexts_IInputContext_ShowCursor_" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.ShowCursor*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Contexts_IInputContext_ShowCursor" data-uid="Bliss.CSharp.Interact.Contexts.IInputContext.ShowCursor">
+  ShowCursor()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Shows the mouse cursor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ShowCursor()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Contexts/IInputContext.cs/#L9" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

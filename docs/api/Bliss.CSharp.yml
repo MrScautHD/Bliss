@@ -1,0 +1,53 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp
+  commentId: N:Bliss.CSharp
+  id: Bliss.CSharp
+  children:
+  - Bliss.CSharp.Disposable
+  - Bliss.CSharp.GlobalResource
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp
+  nameWithType: Bliss.CSharp
+  fullName: Bliss.CSharp
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Disposable
+  commentId: T:Bliss.CSharp.Disposable
+  parent: Bliss.CSharp
+  href: Bliss.CSharp.Disposable.html
+  name: Disposable
+  nameWithType: Disposable
+  fullName: Bliss.CSharp.Disposable
+- uid: Bliss.CSharp.GlobalResource
+  commentId: T:Bliss.CSharp.GlobalResource
+  href: Bliss.CSharp.GlobalResource.html
+  name: GlobalResource
+  nameWithType: GlobalResource
+  fullName: Bliss.CSharp.GlobalResource
+- uid: Bliss.CSharp
+  commentId: N:Bliss.CSharp
+  href: Bliss.html
+  name: Bliss.CSharp
+  nameWithType: Bliss.CSharp
+  fullName: Bliss.CSharp
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html

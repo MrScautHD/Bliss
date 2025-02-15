@@ -1,0 +1,262 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Camera.ICam
+  commentId: T:Bliss.CSharp.Camera.ICam
+  id: ICam
+  parent: Bliss.CSharp.Camera
+  children:
+  - Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
+  - Bliss.CSharp.Camera.ICam.End
+  - Bliss.CSharp.Camera.ICam.Resize(System.UInt32,System.UInt32)
+  - Bliss.CSharp.Camera.ICam.Update(System.Double)
+  langs:
+  - csharp
+  - vb
+  name: ICam
+  nameWithType: ICam
+  fullName: Bliss.CSharp.Camera.ICam
+  type: Interface
+  source:
+    remote:
+      path: src/Bliss/CSharp/Camera/ICam.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ICam
+    path: ../src/Bliss/CSharp/Camera/ICam.cs
+    startLine: 4
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Camera
+  syntax:
+    content: public interface ICam
+    content.vb: Public Interface ICam
+- uid: Bliss.CSharp.Camera.ICam.Update(System.Double)
+  commentId: M:Bliss.CSharp.Camera.ICam.Update(System.Double)
+  id: Update(System.Double)
+  parent: Bliss.CSharp.Camera.ICam
+  langs:
+  - csharp
+  - vb
+  name: Update(double)
+  nameWithType: ICam.Update(double)
+  fullName: Bliss.CSharp.Camera.ICam.Update(double)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Camera/ICam.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Update
+    path: ../src/Bliss/CSharp/Camera/ICam.cs
+    startLine: 9
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Camera
+  summary: Updates the camera's state, recalculating its parameters as needed.
+  example: []
+  syntax:
+    content: void Update(double timeStep)
+    parameters:
+    - id: timeStep
+      type: System.Double
+    content.vb: Sub Update(timeStep As Double)
+  overload: Bliss.CSharp.Camera.ICam.Update*
+  nameWithType.vb: ICam.Update(Double)
+  fullName.vb: Bliss.CSharp.Camera.ICam.Update(Double)
+  name.vb: Update(Double)
+- uid: Bliss.CSharp.Camera.ICam.Resize(System.UInt32,System.UInt32)
+  commentId: M:Bliss.CSharp.Camera.ICam.Resize(System.UInt32,System.UInt32)
+  id: Resize(System.UInt32,System.UInt32)
+  parent: Bliss.CSharp.Camera.ICam
+  langs:
+  - csharp
+  - vb
+  name: Resize(uint, uint)
+  nameWithType: ICam.Resize(uint, uint)
+  fullName: Bliss.CSharp.Camera.ICam.Resize(uint, uint)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Camera/ICam.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Resize
+    path: ../src/Bliss/CSharp/Camera/ICam.cs
+    startLine: 16
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Camera
+  summary: Resizes the viewport and updates the aspect ratio based on the given width and height.
+  example: []
+  syntax:
+    content: void Resize(uint width, uint height)
+    parameters:
+    - id: width
+      type: System.UInt32
+      description: The new width of the viewport.
+    - id: height
+      type: System.UInt32
+      description: The new height of the viewport.
+    content.vb: Sub Resize(width As UInteger, height As UInteger)
+  overload: Bliss.CSharp.Camera.ICam.Resize*
+  nameWithType.vb: ICam.Resize(UInteger, UInteger)
+  fullName.vb: Bliss.CSharp.Camera.ICam.Resize(UInteger, UInteger)
+  name.vb: Resize(UInteger, UInteger)
+- uid: Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
+  commentId: M:Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
+  id: Begin(Veldrid.CommandList)
+  parent: Bliss.CSharp.Camera.ICam
+  langs:
+  - csharp
+  - vb
+  name: Begin(CommandList)
+  nameWithType: ICam.Begin(CommandList)
+  fullName: Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Camera/ICam.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Begin
+    path: ../src/Bliss/CSharp/Camera/ICam.cs
+    startLine: 22
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Camera
+  summary: Initializes the camera's usage in the current frame and sets it as the active camera.
+  example: []
+  syntax:
+    content: void Begin(CommandList commandList)
+    parameters:
+    - id: commandList
+      type: Veldrid.CommandList
+      description: The command list to begin the camera's drawing operations.
+    content.vb: Sub Begin(commandList As CommandList)
+  overload: Bliss.CSharp.Camera.ICam.Begin*
+- uid: Bliss.CSharp.Camera.ICam.End
+  commentId: M:Bliss.CSharp.Camera.ICam.End
+  id: End
+  parent: Bliss.CSharp.Camera.ICam
+  langs:
+  - csharp
+  - vb
+  name: End()
+  nameWithType: ICam.End()
+  fullName: Bliss.CSharp.Camera.ICam.End()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Camera/ICam.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: End
+    path: ../src/Bliss/CSharp/Camera/ICam.cs
+    startLine: 27
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Camera
+  summary: Concludes the camera's operations for the current frame.
+  example: []
+  syntax:
+    content: void End()
+    content.vb: Sub [End]()
+  overload: Bliss.CSharp.Camera.ICam.End*
+references:
+- uid: Bliss.CSharp.Camera
+  commentId: N:Bliss.CSharp.Camera
+  href: Bliss.html
+  name: Bliss.CSharp.Camera
+  nameWithType: Bliss.CSharp.Camera
+  fullName: Bliss.CSharp.Camera
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Camera
+    name: Camera
+    href: Bliss.CSharp.Camera.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Camera
+    name: Camera
+    href: Bliss.CSharp.Camera.html
+- uid: Bliss.CSharp.Camera.ICam.Update*
+  commentId: Overload:Bliss.CSharp.Camera.ICam.Update
+  href: Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_Update_System_Double_
+  name: Update
+  nameWithType: ICam.Update
+  fullName: Bliss.CSharp.Camera.ICam.Update
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp.Camera.ICam.Resize*
+  commentId: Overload:Bliss.CSharp.Camera.ICam.Resize
+  href: Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_Resize_System_UInt32_System_UInt32_
+  name: Resize
+  nameWithType: ICam.Resize
+  fullName: Bliss.CSharp.Camera.ICam.Resize
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: Bliss.CSharp.Camera.ICam.Begin*
+  commentId: Overload:Bliss.CSharp.Camera.ICam.Begin
+  href: Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_Begin_Veldrid_CommandList_
+  name: Begin
+  nameWithType: ICam.Begin
+  fullName: Bliss.CSharp.Camera.ICam.Begin
+- uid: Veldrid.CommandList
+  commentId: T:Veldrid.CommandList
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
+  name: CommandList
+  nameWithType: CommandList
+  fullName: Veldrid.CommandList
+- uid: Veldrid
+  commentId: N:Veldrid
+  isExternal: true
+  name: Veldrid
+  nameWithType: Veldrid
+  fullName: Veldrid
+- uid: Bliss.CSharp.Camera.ICam.End*
+  commentId: Overload:Bliss.CSharp.Camera.ICam.End
+  href: Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_End
+  name: End
+  nameWithType: ICam.End
+  fullName: Bliss.CSharp.Camera.ICam.End

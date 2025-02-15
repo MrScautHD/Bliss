@@ -1,0 +1,455 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Windowing.Events.MouseEvent
+  commentId: T:Bliss.CSharp.Windowing.Events.MouseEvent
+  id: MouseEvent
+  parent: Bliss.CSharp.Windowing.Events
+  children:
+  - Bliss.CSharp.Windowing.Events.MouseEvent.#ctor(Bliss.CSharp.Interact.Mice.MouseButton,System.Boolean)
+  - Bliss.CSharp.Windowing.Events.MouseEvent.Button
+  - Bliss.CSharp.Windowing.Events.MouseEvent.IsDown
+  langs:
+  - csharp
+  - vb
+  name: MouseEvent
+  nameWithType: MouseEvent
+  fullName: Bliss.CSharp.Windowing.Events.MouseEvent
+  type: Struct
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Events/MouseEvent.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: MouseEvent
+    path: ../src/Bliss/CSharp/Windowing/Events/MouseEvent.cs
+    startLine: 4
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing.Events
+  syntax:
+    content: public struct MouseEvent
+    content.vb: Public Structure MouseEvent
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Bliss.CSharp.Windowing.Events.MouseEvent.Button
+  commentId: F:Bliss.CSharp.Windowing.Events.MouseEvent.Button
+  id: Button
+  parent: Bliss.CSharp.Windowing.Events.MouseEvent
+  langs:
+  - csharp
+  - vb
+  name: Button
+  nameWithType: MouseEvent.Button
+  fullName: Bliss.CSharp.Windowing.Events.MouseEvent.Button
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Events/MouseEvent.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Button
+    path: ../src/Bliss/CSharp/Windowing/Events/MouseEvent.cs
+    startLine: 9
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing.Events
+  summary: Represents the mouse button involved in the event.
+  example: []
+  syntax:
+    content: public MouseButton Button
+    return:
+      type: Bliss.CSharp.Interact.Mice.MouseButton
+    content.vb: Public Button As MouseButton
+- uid: Bliss.CSharp.Windowing.Events.MouseEvent.IsDown
+  commentId: F:Bliss.CSharp.Windowing.Events.MouseEvent.IsDown
+  id: IsDown
+  parent: Bliss.CSharp.Windowing.Events.MouseEvent
+  langs:
+  - csharp
+  - vb
+  name: IsDown
+  nameWithType: MouseEvent.IsDown
+  fullName: Bliss.CSharp.Windowing.Events.MouseEvent.IsDown
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Events/MouseEvent.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsDown
+    path: ../src/Bliss/CSharp/Windowing/Events/MouseEvent.cs
+    startLine: 14
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing.Events
+  summary: Indicates whether the mouse button is pressed down.
+  example: []
+  syntax:
+    content: public bool IsDown
+    return:
+      type: System.Boolean
+    content.vb: Public IsDown As Boolean
+- uid: Bliss.CSharp.Windowing.Events.MouseEvent.#ctor(Bliss.CSharp.Interact.Mice.MouseButton,System.Boolean)
+  commentId: M:Bliss.CSharp.Windowing.Events.MouseEvent.#ctor(Bliss.CSharp.Interact.Mice.MouseButton,System.Boolean)
+  id: '#ctor(Bliss.CSharp.Interact.Mice.MouseButton,System.Boolean)'
+  parent: Bliss.CSharp.Windowing.Events.MouseEvent
+  langs:
+  - csharp
+  - vb
+  name: MouseEvent(MouseButton, bool)
+  nameWithType: MouseEvent.MouseEvent(MouseButton, bool)
+  fullName: Bliss.CSharp.Windowing.Events.MouseEvent.MouseEvent(Bliss.CSharp.Interact.Mice.MouseButton, bool)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Events/MouseEvent.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Windowing/Events/MouseEvent.cs
+    startLine: 21
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing.Events
+  summary: Initializes a new instance of the MouseEvent class with the specified button and state.
+  example: []
+  syntax:
+    content: public MouseEvent(MouseButton button, bool isDown)
+    parameters:
+    - id: button
+      type: Bliss.CSharp.Interact.Mice.MouseButton
+      description: The mouse button that triggered the event.
+    - id: isDown
+      type: System.Boolean
+      description: A value indicating whether the button is pressed (true) or released (false).
+    content.vb: Public Sub New(button As MouseButton, isDown As Boolean)
+  overload: Bliss.CSharp.Windowing.Events.MouseEvent.#ctor*
+  nameWithType.vb: MouseEvent.New(MouseButton, Boolean)
+  fullName.vb: Bliss.CSharp.Windowing.Events.MouseEvent.New(Bliss.CSharp.Interact.Mice.MouseButton, Boolean)
+  name.vb: New(MouseButton, Boolean)
+references:
+- uid: Bliss.CSharp.Windowing.Events
+  commentId: N:Bliss.CSharp.Windowing.Events
+  href: Bliss.html
+  name: Bliss.CSharp.Windowing.Events
+  nameWithType: Bliss.CSharp.Windowing.Events
+  fullName: Bliss.CSharp.Windowing.Events
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Windowing
+    name: Windowing
+    href: Bliss.CSharp.Windowing.html
+  - name: .
+  - uid: Bliss.CSharp.Windowing.Events
+    name: Events
+    href: Bliss.CSharp.Windowing.Events.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Windowing
+    name: Windowing
+    href: Bliss.CSharp.Windowing.html
+  - name: .
+  - uid: Bliss.CSharp.Windowing.Events
+    name: Events
+    href: Bliss.CSharp.Windowing.Events.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp.Interact.Mice.MouseButton
+  commentId: T:Bliss.CSharp.Interact.Mice.MouseButton
+  parent: Bliss.CSharp.Interact.Mice
+  href: Bliss.CSharp.Interact.Mice.MouseButton.html
+  name: MouseButton
+  nameWithType: MouseButton
+  fullName: Bliss.CSharp.Interact.Mice.MouseButton
+- uid: Bliss.CSharp.Interact.Mice
+  commentId: N:Bliss.CSharp.Interact.Mice
+  href: Bliss.html
+  name: Bliss.CSharp.Interact.Mice
+  nameWithType: Bliss.CSharp.Interact.Mice
+  fullName: Bliss.CSharp.Interact.Mice
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice
+    name: Mice
+    href: Bliss.CSharp.Interact.Mice.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Mice
+    name: Mice
+    href: Bliss.CSharp.Interact.Mice.html
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bliss.CSharp.Windowing.Events.MouseEvent.#ctor*
+  commentId: Overload:Bliss.CSharp.Windowing.Events.MouseEvent.#ctor
+  href: Bliss.CSharp.Windowing.Events.MouseEvent.html#Bliss_CSharp_Windowing_Events_MouseEvent__ctor_Bliss_CSharp_Interact_Mice_MouseButton_System_Boolean_
+  name: MouseEvent
+  nameWithType: MouseEvent.MouseEvent
+  fullName: Bliss.CSharp.Windowing.Events.MouseEvent.MouseEvent
+  nameWithType.vb: MouseEvent.New
+  fullName.vb: Bliss.CSharp.Windowing.Events.MouseEvent.New
+  name.vb: New

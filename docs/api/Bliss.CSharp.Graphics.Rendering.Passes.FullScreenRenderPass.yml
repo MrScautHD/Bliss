@@ -1,0 +1,748 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
+  id: FullScreenRenderPass
+  parent: Bliss.CSharp.Graphics.Rendering.Passes
+  children:
+  - Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription)
+  - Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Dispose(System.Boolean)
+  - Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.Sampler)
+  - Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.GraphicsDevice
+  - Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Output
+  langs:
+  - csharp
+  - vb
+  name: FullScreenRenderPass
+  nameWithType: FullScreenRenderPass
+  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
+  type: Class
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: FullScreenRenderPass
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
+    startLine: 11
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Passes
+  syntax:
+    content: 'public class FullScreenRenderPass : Disposable, IDisposable'
+    content.vb: Public Class FullScreenRenderPass Inherits Disposable Implements IDisposable
+  inheritance:
+  - System.Object
+  - Bliss.CSharp.Disposable
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - Bliss.CSharp.Disposable.HasDisposed
+  - Bliss.CSharp.Disposable.Dispose
+  - Bliss.CSharp.Disposable.ThrowIfDisposed
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.GraphicsDevice
+  commentId: P:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.GraphicsDevice
+  id: GraphicsDevice
+  parent: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
+  langs:
+  - csharp
+  - vb
+  name: GraphicsDevice
+  nameWithType: FullScreenRenderPass.GraphicsDevice
+  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.GraphicsDevice
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GraphicsDevice
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
+    startLine: 16
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Passes
+  summary: The graphics device used for rendering.
+  example: []
+  syntax:
+    content: public GraphicsDevice GraphicsDevice { get; }
+    parameters: []
+    return:
+      type: Veldrid.GraphicsDevice
+    content.vb: Public Property GraphicsDevice As GraphicsDevice
+  overload: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.GraphicsDevice*
+- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Output
+  commentId: P:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Output
+  id: Output
+  parent: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
+  langs:
+  - csharp
+  - vb
+  name: Output
+  nameWithType: FullScreenRenderPass.Output
+  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Output
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Output
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
+    startLine: 21
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Passes
+  summary: The output description for the rendering pass.
+  example: []
+  syntax:
+    content: public OutputDescription Output { get; }
+    parameters: []
+    return:
+      type: Veldrid.OutputDescription
+    content.vb: Public Property Output As OutputDescription
+  overload: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Output*
+- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription)
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription)
+  id: '#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription)'
+  parent: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
+  langs:
+  - csharp
+  - vb
+  name: FullScreenRenderPass(GraphicsDevice, OutputDescription)
+  nameWithType: FullScreenRenderPass.FullScreenRenderPass(GraphicsDevice, OutputDescription)
+  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.FullScreenRenderPass(Veldrid.GraphicsDevice, Veldrid.OutputDescription)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
+    startLine: 44
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Passes
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public FullScreenRenderPass(GraphicsDevice graphicsDevice, OutputDescription output)
+    parameters:
+    - id: graphicsDevice
+      type: Veldrid.GraphicsDevice
+      description: The graphics device to use for rendering.
+    - id: output
+      type: Veldrid.OutputDescription
+      description: The output description for the rendering pass.
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, output As OutputDescription)
+  overload: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor*
+  nameWithType.vb: FullScreenRenderPass.New(GraphicsDevice, OutputDescription)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.New(Veldrid.GraphicsDevice, Veldrid.OutputDescription)
+  name.vb: New(GraphicsDevice, OutputDescription)
+- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.Sampler)
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.Sampler)
+  id: Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.Sampler)
+  parent: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
+  langs:
+  - csharp
+  - vb
+  name: Draw(CommandList, RenderTexture2D, Sampler?)
+  nameWithType: FullScreenRenderPass.Draw(CommandList, RenderTexture2D, Sampler?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList, Bliss.CSharp.Textures.RenderTexture2D, Veldrid.Sampler?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Draw
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
+    startLine: 133
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Passes
+  summary: Executes the draw call using the provided command list, render texture, and optional sampler.
+  example: []
+  syntax:
+    content: public void Draw(CommandList commandList, RenderTexture2D renderTexture, Sampler? sampler = null)
+    parameters:
+    - id: commandList
+      type: Veldrid.CommandList
+      description: The command list used to issue draw commands.
+    - id: renderTexture
+      type: Bliss.CSharp.Textures.RenderTexture2D
+      description: The render texture to be used for rendering.
+    - id: sampler
+      type: Veldrid.Sampler
+      description: The optional sampler for texture sampling. If not provided, a default sampler is used.
+    content.vb: Public Sub Draw(commandList As CommandList, renderTexture As RenderTexture2D, sampler As Sampler = Nothing)
+  overload: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw*
+  nameWithType.vb: FullScreenRenderPass.Draw(CommandList, RenderTexture2D, Sampler)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList, Bliss.CSharp.Textures.RenderTexture2D, Veldrid.Sampler)
+  name.vb: Draw(CommandList, RenderTexture2D, Sampler)
+- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Dispose(System.Boolean)
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
+  langs:
+  - csharp
+  - vb
+  name: Dispose(bool)
+  nameWithType: FullScreenRenderPass.Dispose(bool)
+  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Dispose(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Dispose
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
+    startLine: 140
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Passes
+  summary: Disposes of the object and releases associated resources.
+  example: []
+  syntax:
+    content: protected override void Dispose(bool disposing)
+    parameters:
+    - id: disposing
+      type: System.Boolean
+      description: True if called from user code; false if called from a finalizer.
+    content.vb: Protected Overrides Sub Dispose(disposing As Boolean)
+  overridden: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  overload: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Dispose*
+  nameWithType.vb: FullScreenRenderPass.Dispose(Boolean)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+references:
+- uid: Bliss.CSharp.Graphics.Rendering.Passes
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Passes
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Rendering.Passes
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Passes
+  fullName: Bliss.CSharp.Graphics.Rendering.Passes
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Passes
+    name: Passes
+    href: Bliss.CSharp.Graphics.Rendering.Passes.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Passes
+    name: Passes
+    href: Bliss.CSharp.Graphics.Rendering.Passes.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bliss.CSharp.Disposable
+  commentId: T:Bliss.CSharp.Disposable
+  parent: Bliss.CSharp
+  href: Bliss.CSharp.Disposable.html
+  name: Disposable
+  nameWithType: Disposable
+  fullName: Bliss.CSharp.Disposable
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Bliss.CSharp.Disposable.HasDisposed
+  commentId: P:Bliss.CSharp.Disposable.HasDisposed
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_HasDisposed
+  name: HasDisposed
+  nameWithType: Disposable.HasDisposed
+  fullName: Bliss.CSharp.Disposable.HasDisposed
+- uid: Bliss.CSharp.Disposable.Dispose
+  commentId: M:Bliss.CSharp.Disposable.Dispose
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  name: Dispose()
+  nameWithType: Disposable.Dispose()
+  fullName: Bliss.CSharp.Disposable.Dispose()
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.Dispose
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.Dispose
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+  commentId: M:Bliss.CSharp.Disposable.ThrowIfDisposed
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  name: ThrowIfDisposed()
+  nameWithType: Disposable.ThrowIfDisposed()
+  fullName: Bliss.CSharp.Disposable.ThrowIfDisposed()
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+    name: ThrowIfDisposed
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+    name: ThrowIfDisposed
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp
+  commentId: N:Bliss.CSharp
+  href: Bliss.html
+  name: Bliss.CSharp
+  nameWithType: Bliss.CSharp
+  fullName: Bliss.CSharp
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.GraphicsDevice*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.GraphicsDevice
+  href: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html#Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass_GraphicsDevice
+  name: GraphicsDevice
+  nameWithType: FullScreenRenderPass.GraphicsDevice
+  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.GraphicsDevice
+- uid: Veldrid.GraphicsDevice
+  commentId: T:Veldrid.GraphicsDevice
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsDevice.cs
+  name: GraphicsDevice
+  nameWithType: GraphicsDevice
+  fullName: Veldrid.GraphicsDevice
+- uid: Veldrid
+  commentId: N:Veldrid
+  isExternal: true
+  name: Veldrid
+  nameWithType: Veldrid
+  fullName: Veldrid
+- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Output*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Output
+  href: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html#Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass_Output
+  name: Output
+  nameWithType: FullScreenRenderPass.Output
+  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Output
+- uid: Veldrid.OutputDescription
+  commentId: T:Veldrid.OutputDescription
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs
+  name: OutputDescription
+  nameWithType: OutputDescription
+  fullName: Veldrid.OutputDescription
+- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
+  href: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html
+  name: FullScreenRenderPass
+  nameWithType: FullScreenRenderPass
+  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
+- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor
+  href: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html#Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass__ctor_Veldrid_GraphicsDevice_Veldrid_OutputDescription_
+  name: FullScreenRenderPass
+  nameWithType: FullScreenRenderPass.FullScreenRenderPass
+  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.FullScreenRenderPass
+  nameWithType.vb: FullScreenRenderPass.New
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.New
+  name.vb: New
+- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw
+  href: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html#Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass_Draw_Veldrid_CommandList_Bliss_CSharp_Textures_RenderTexture2D_Veldrid_Sampler_
+  name: Draw
+  nameWithType: FullScreenRenderPass.Draw
+  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw
+- uid: Veldrid.CommandList
+  commentId: T:Veldrid.CommandList
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
+  name: CommandList
+  nameWithType: CommandList
+  fullName: Veldrid.CommandList
+- uid: Bliss.CSharp.Textures.RenderTexture2D
+  commentId: T:Bliss.CSharp.Textures.RenderTexture2D
+  parent: Bliss.CSharp.Textures
+  href: Bliss.CSharp.Textures.RenderTexture2D.html
+  name: RenderTexture2D
+  nameWithType: RenderTexture2D
+  fullName: Bliss.CSharp.Textures.RenderTexture2D
+- uid: Veldrid.Sampler
+  commentId: T:Veldrid.Sampler
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs
+  name: Sampler
+  nameWithType: Sampler
+  fullName: Veldrid.Sampler
+- uid: Bliss.CSharp.Textures
+  commentId: N:Bliss.CSharp.Textures
+  href: Bliss.html
+  name: Bliss.CSharp.Textures
+  nameWithType: Bliss.CSharp.Textures
+  fullName: Bliss.CSharp.Textures
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Textures
+    name: Textures
+    href: Bliss.CSharp.Textures.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Textures
+    name: Textures
+    href: Bliss.CSharp.Textures.html
+- uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  commentId: M:Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  parent: Bliss.CSharp.Disposable
+  isExternal: true
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  name: Dispose(bool)
+  nameWithType: Disposable.Dispose(bool)
+  fullName: Bliss.CSharp.Disposable.Dispose(bool)
+  nameWithType.vb: Disposable.Dispose(Boolean)
+  fullName.vb: Bliss.CSharp.Disposable.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Dispose*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Dispose
+  href: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html#Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass_Dispose_System_Boolean_
+  name: Dispose
+  nameWithType: FullScreenRenderPass.Dispose
+  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Dispose
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

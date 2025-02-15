@@ -1,0 +1,78 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Camera.Dim3
+  commentId: N:Bliss.CSharp.Camera.Dim3
+  id: Bliss.CSharp.Camera.Dim3
+  children:
+  - Bliss.CSharp.Camera.Dim3.Cam3D
+  - Bliss.CSharp.Camera.Dim3.CameraMode
+  - Bliss.CSharp.Camera.Dim3.ProjectionType
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Camera.Dim3
+  nameWithType: Bliss.CSharp.Camera.Dim3
+  fullName: Bliss.CSharp.Camera.Dim3
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Camera.Dim3.Cam3D
+  commentId: T:Bliss.CSharp.Camera.Dim3.Cam3D
+  parent: Bliss.CSharp.Camera.Dim3
+  href: Bliss.CSharp.Camera.Dim3.Cam3D.html
+  name: Cam3D
+  nameWithType: Cam3D
+  fullName: Bliss.CSharp.Camera.Dim3.Cam3D
+- uid: Bliss.CSharp.Camera.Dim3.CameraMode
+  commentId: T:Bliss.CSharp.Camera.Dim3.CameraMode
+  parent: Bliss.CSharp.Camera.Dim3
+  href: Bliss.CSharp.Camera.Dim3.CameraMode.html
+  name: CameraMode
+  nameWithType: CameraMode
+  fullName: Bliss.CSharp.Camera.Dim3.CameraMode
+- uid: Bliss.CSharp.Camera.Dim3.ProjectionType
+  commentId: T:Bliss.CSharp.Camera.Dim3.ProjectionType
+  parent: Bliss.CSharp.Camera.Dim3
+  href: Bliss.CSharp.Camera.Dim3.ProjectionType.html
+  name: ProjectionType
+  nameWithType: ProjectionType
+  fullName: Bliss.CSharp.Camera.Dim3.ProjectionType
+- uid: Bliss.CSharp.Camera.Dim3
+  commentId: N:Bliss.CSharp.Camera.Dim3
+  href: Bliss.html
+  name: Bliss.CSharp.Camera.Dim3
+  nameWithType: Bliss.CSharp.Camera.Dim3
+  fullName: Bliss.CSharp.Camera.Dim3
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Camera
+    name: Camera
+    href: Bliss.CSharp.Camera.html
+  - name: .
+  - uid: Bliss.CSharp.Camera.Dim3
+    name: Dim3
+    href: Bliss.CSharp.Camera.Dim3.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Camera
+    name: Camera
+    href: Bliss.CSharp.Camera.html
+  - name: .
+  - uid: Bliss.CSharp.Camera.Dim3
+    name: Dim3
+    href: Bliss.CSharp.Camera.Dim3.html

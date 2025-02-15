@@ -1,0 +1,3902 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  commentId: T:Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  id: KeyboardKey
+  parent: Bliss.CSharp.Interact.Keyboards
+  children:
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.A
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.AltLeft
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.AltRight
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.B
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.BackSlash
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.BackSpace
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.BracketLeft
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.BracketRight
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.C
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.CapsLock
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Clear
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Comma
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.ControlLeft
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.ControlRight
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.D
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Delete
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Down
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.E
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.End
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Enter
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Escape
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F1
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F10
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F11
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F12
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F13
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F14
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F15
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F16
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F17
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F18
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F19
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F2
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F20
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F21
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F22
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F23
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F24
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F25
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F26
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F27
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F28
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F29
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F3
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F30
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F31
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F32
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F33
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F34
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F35
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F4
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F5
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F6
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F7
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F8
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.F9
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.G
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Grave
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.H
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Home
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.I
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Insert
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.J
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.K
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad0
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad1
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad2
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad3
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad4
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad5
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad6
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad7
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad8
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad9
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadDecimal
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadDivide
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadEnter
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadMinus
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadMultiply
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadPlus
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.L
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.LastKey
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Left
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.M
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Menu
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Minus
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.N
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.NonUsBackSlash
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.NumLock
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number0
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number1
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number2
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number3
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number4
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number5
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number6
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number7
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number8
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number9
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.O
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.P
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.PageDown
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.PageUp
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Pause
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Period
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Plus
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.PrintScreen
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Q
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Quote
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.R
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Right
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.S
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.ScrollLock
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Semicolon
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.ShiftLeft
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.ShiftRight
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Slash
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Sleep
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Space
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.T
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Tab
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.U
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Unknown
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Up
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.V
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.W
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.WinLeft
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.WinRight
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.X
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Y
+  - Bliss.CSharp.Interact.Keyboards.KeyboardKey.Z
+  langs:
+  - csharp
+  - vb
+  name: KeyboardKey
+  nameWithType: KeyboardKey
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  type: Enum
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: KeyboardKey
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 2
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  syntax:
+    content: public enum KeyboardKey
+    content.vb: Public Enum KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Unknown
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Unknown
+  id: Unknown
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Unknown
+  nameWithType: KeyboardKey.Unknown
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Unknown
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Unknown
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 7
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Represents an unknown key.
+  example: []
+  syntax:
+    content: Unknown = 0
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.ShiftLeft
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.ShiftLeft
+  id: ShiftLeft
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: ShiftLeft
+  nameWithType: KeyboardKey.ShiftLeft
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.ShiftLeft
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ShiftLeft
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 12
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The left Shift key.
+  example: []
+  syntax:
+    content: ShiftLeft = 1
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.ShiftRight
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.ShiftRight
+  id: ShiftRight
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: ShiftRight
+  nameWithType: KeyboardKey.ShiftRight
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.ShiftRight
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ShiftRight
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The right Shift key.
+  example: []
+  syntax:
+    content: ShiftRight = 2
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.ControlLeft
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.ControlLeft
+  id: ControlLeft
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: ControlLeft
+  nameWithType: KeyboardKey.ControlLeft
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.ControlLeft
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ControlLeft
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 22
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The left Control key.
+  example: []
+  syntax:
+    content: ControlLeft = 3
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.ControlRight
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.ControlRight
+  id: ControlRight
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: ControlRight
+  nameWithType: KeyboardKey.ControlRight
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.ControlRight
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ControlRight
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 27
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The right Control key.
+  example: []
+  syntax:
+    content: ControlRight = 4
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.AltLeft
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.AltLeft
+  id: AltLeft
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: AltLeft
+  nameWithType: KeyboardKey.AltLeft
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.AltLeft
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: AltLeft
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 32
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The left Alt key.
+  example: []
+  syntax:
+    content: AltLeft = 5
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.AltRight
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.AltRight
+  id: AltRight
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: AltRight
+  nameWithType: KeyboardKey.AltRight
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.AltRight
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: AltRight
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 37
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The right Alt key.
+  example: []
+  syntax:
+    content: AltRight = 6
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.WinLeft
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.WinLeft
+  id: WinLeft
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: WinLeft
+  nameWithType: KeyboardKey.WinLeft
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.WinLeft
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: WinLeft
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 42
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The left Windows key.
+  example: []
+  syntax:
+    content: WinLeft = 7
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.WinRight
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.WinRight
+  id: WinRight
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: WinRight
+  nameWithType: KeyboardKey.WinRight
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.WinRight
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: WinRight
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 47
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The right Windows key.
+  example: []
+  syntax:
+    content: WinRight = 8
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Menu
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Menu
+  id: Menu
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Menu
+  nameWithType: KeyboardKey.Menu
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Menu
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Menu
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 52
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Menu key, typically used to open context menus.
+  example: []
+  syntax:
+    content: Menu = 9
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F1
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F1
+  id: F1
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F1
+  nameWithType: KeyboardKey.F1
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F1
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F1
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 57
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F1.
+  example: []
+  syntax:
+    content: F1 = 10
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F2
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F2
+  id: F2
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F2
+  nameWithType: KeyboardKey.F2
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F2
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F2
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 62
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F2.
+  example: []
+  syntax:
+    content: F2 = 11
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F3
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F3
+  id: F3
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F3
+  nameWithType: KeyboardKey.F3
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F3
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F3
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 67
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F3.
+  example: []
+  syntax:
+    content: F3 = 12
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F4
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F4
+  id: F4
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F4
+  nameWithType: KeyboardKey.F4
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F4
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F4
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 72
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F4.
+  example: []
+  syntax:
+    content: F4 = 13
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F5
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F5
+  id: F5
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F5
+  nameWithType: KeyboardKey.F5
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F5
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F5
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 77
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F5.
+  example: []
+  syntax:
+    content: F5 = 14
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F6
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F6
+  id: F6
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F6
+  nameWithType: KeyboardKey.F6
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F6
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F6
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 82
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F6.
+  example: []
+  syntax:
+    content: F6 = 15
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F7
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F7
+  id: F7
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F7
+  nameWithType: KeyboardKey.F7
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F7
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F7
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 87
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F7.
+  example: []
+  syntax:
+    content: F7 = 16
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F8
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F8
+  id: F8
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F8
+  nameWithType: KeyboardKey.F8
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F8
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F8
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 92
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F8.
+  example: []
+  syntax:
+    content: F8 = 17
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F9
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F9
+  id: F9
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F9
+  nameWithType: KeyboardKey.F9
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F9
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F9
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 97
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F9.
+  example: []
+  syntax:
+    content: F9 = 18
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F10
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F10
+  id: F10
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F10
+  nameWithType: KeyboardKey.F10
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F10
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F10
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 102
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F10.
+  example: []
+  syntax:
+    content: F10 = 19
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F11
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F11
+  id: F11
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F11
+  nameWithType: KeyboardKey.F11
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F11
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F11
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 107
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F11.
+  example: []
+  syntax:
+    content: F11 = 20
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F12
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F12
+  id: F12
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F12
+  nameWithType: KeyboardKey.F12
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F12
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F12
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 112
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F12.
+  example: []
+  syntax:
+    content: F12 = 21
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F13
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F13
+  id: F13
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F13
+  nameWithType: KeyboardKey.F13
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F13
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F13
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 117
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F13.
+  example: []
+  syntax:
+    content: F13 = 22
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F14
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F14
+  id: F14
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F14
+  nameWithType: KeyboardKey.F14
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F14
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F14
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 122
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F14.
+  example: []
+  syntax:
+    content: F14 = 23
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F15
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F15
+  id: F15
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F15
+  nameWithType: KeyboardKey.F15
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F15
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F15
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 127
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F15.
+  example: []
+  syntax:
+    content: F15 = 24
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F16
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F16
+  id: F16
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F16
+  nameWithType: KeyboardKey.F16
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F16
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F16
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 132
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F16.
+  example: []
+  syntax:
+    content: F16 = 25
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F17
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F17
+  id: F17
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F17
+  nameWithType: KeyboardKey.F17
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F17
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F17
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 137
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F17.
+  example: []
+  syntax:
+    content: F17 = 26
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F18
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F18
+  id: F18
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F18
+  nameWithType: KeyboardKey.F18
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F18
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F18
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 142
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F18.
+  example: []
+  syntax:
+    content: F18 = 27
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F19
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F19
+  id: F19
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F19
+  nameWithType: KeyboardKey.F19
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F19
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F19
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 147
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F19.
+  example: []
+  syntax:
+    content: F19 = 28
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F20
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F20
+  id: F20
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F20
+  nameWithType: KeyboardKey.F20
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F20
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F20
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 152
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F20.
+  example: []
+  syntax:
+    content: F20 = 29
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F21
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F21
+  id: F21
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F21
+  nameWithType: KeyboardKey.F21
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F21
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F21
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 157
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F21.
+  example: []
+  syntax:
+    content: F21 = 30
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F22
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F22
+  id: F22
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F22
+  nameWithType: KeyboardKey.F22
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F22
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F22
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 162
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F22.
+  example: []
+  syntax:
+    content: F22 = 31
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F23
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F23
+  id: F23
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F23
+  nameWithType: KeyboardKey.F23
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F23
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F23
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 167
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F23.
+  example: []
+  syntax:
+    content: F23 = 32
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F24
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F24
+  id: F24
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F24
+  nameWithType: KeyboardKey.F24
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F24
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F24
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 172
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F24.
+  example: []
+  syntax:
+    content: F24 = 33
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F25
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F25
+  id: F25
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F25
+  nameWithType: KeyboardKey.F25
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F25
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F25
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 177
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F25.
+  example: []
+  syntax:
+    content: F25 = 34
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F26
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F26
+  id: F26
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F26
+  nameWithType: KeyboardKey.F26
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F26
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F26
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 182
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F26.
+  example: []
+  syntax:
+    content: F26 = 35
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F27
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F27
+  id: F27
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F27
+  nameWithType: KeyboardKey.F27
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F27
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F27
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 187
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F27.
+  example: []
+  syntax:
+    content: F27 = 36
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F28
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F28
+  id: F28
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F28
+  nameWithType: KeyboardKey.F28
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F28
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F28
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 192
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F28.
+  example: []
+  syntax:
+    content: F28 = 37
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F29
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F29
+  id: F29
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F29
+  nameWithType: KeyboardKey.F29
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F29
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F29
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 197
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F29.
+  example: []
+  syntax:
+    content: F29 = 38
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F30
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F30
+  id: F30
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F30
+  nameWithType: KeyboardKey.F30
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F30
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F30
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 202
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F30.
+  example: []
+  syntax:
+    content: F30 = 39
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F31
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F31
+  id: F31
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F31
+  nameWithType: KeyboardKey.F31
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F31
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F31
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 207
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F31.
+  example: []
+  syntax:
+    content: F31 = 40
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F32
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F32
+  id: F32
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F32
+  nameWithType: KeyboardKey.F32
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F32
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F32
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 212
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F32.
+  example: []
+  syntax:
+    content: F32 = 41
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F33
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F33
+  id: F33
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F33
+  nameWithType: KeyboardKey.F33
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F33
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F33
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 217
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F33.
+  example: []
+  syntax:
+    content: F33 = 42
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F34
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F34
+  id: F34
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F34
+  nameWithType: KeyboardKey.F34
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F34
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F34
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 222
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F34.
+  example: []
+  syntax:
+    content: F34 = 43
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F35
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F35
+  id: F35
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F35
+  nameWithType: KeyboardKey.F35
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F35
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F35
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 227
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Function key F35.
+  example: []
+  syntax:
+    content: F35 = 44
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Up
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Up
+  id: Up
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Up
+  nameWithType: KeyboardKey.Up
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Up
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Up
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 232
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Up arrow key.
+  example: []
+  syntax:
+    content: Up = 45
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Down
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Down
+  id: Down
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Down
+  nameWithType: KeyboardKey.Down
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Down
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Down
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 237
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Down arrow key.
+  example: []
+  syntax:
+    content: Down = 46
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Left
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Left
+  id: Left
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Left
+  nameWithType: KeyboardKey.Left
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Left
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Left
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 242
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Left arrow key.
+  example: []
+  syntax:
+    content: Left = 47
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Right
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Right
+  id: Right
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Right
+  nameWithType: KeyboardKey.Right
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Right
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Right
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 247
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Right arrow key.
+  example: []
+  syntax:
+    content: Right = 48
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Enter
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Enter
+  id: Enter
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Enter
+  nameWithType: KeyboardKey.Enter
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Enter
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Enter
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 252
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Enter key.
+  example: []
+  syntax:
+    content: Enter = 49
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Escape
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Escape
+  id: Escape
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Escape
+  nameWithType: KeyboardKey.Escape
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Escape
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Escape
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 257
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Escape key.
+  example: []
+  syntax:
+    content: Escape = 50
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Space
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Space
+  id: Space
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Space
+  nameWithType: KeyboardKey.Space
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Space
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Space
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 262
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Spacebar key.
+  example: []
+  syntax:
+    content: Space = 51
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Tab
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Tab
+  id: Tab
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Tab
+  nameWithType: KeyboardKey.Tab
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Tab
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Tab
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 267
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Tab key.
+  example: []
+  syntax:
+    content: Tab = 52
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.BackSpace
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.BackSpace
+  id: BackSpace
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: BackSpace
+  nameWithType: KeyboardKey.BackSpace
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.BackSpace
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: BackSpace
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 272
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Backspace key.
+  example: []
+  syntax:
+    content: BackSpace = 53
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Insert
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Insert
+  id: Insert
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Insert
+  nameWithType: KeyboardKey.Insert
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Insert
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Insert
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 277
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Insert key.
+  example: []
+  syntax:
+    content: Insert = 54
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Delete
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Delete
+  id: Delete
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Delete
+  nameWithType: KeyboardKey.Delete
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Delete
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Delete
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 282
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Delete key.
+  example: []
+  syntax:
+    content: Delete = 55
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.PageUp
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.PageUp
+  id: PageUp
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: PageUp
+  nameWithType: KeyboardKey.PageUp
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.PageUp
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: PageUp
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 287
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Page Up key.
+  example: []
+  syntax:
+    content: PageUp = 56
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.PageDown
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.PageDown
+  id: PageDown
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: PageDown
+  nameWithType: KeyboardKey.PageDown
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.PageDown
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: PageDown
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 292
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Page Down key.
+  example: []
+  syntax:
+    content: PageDown = 57
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Home
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Home
+  id: Home
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Home
+  nameWithType: KeyboardKey.Home
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Home
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Home
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 297
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Home key.
+  example: []
+  syntax:
+    content: Home = 58
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.End
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.End
+  id: End
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: End
+  nameWithType: KeyboardKey.End
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.End
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: End
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 302
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The End key.
+  example: []
+  syntax:
+    content: End = 59
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.CapsLock
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.CapsLock
+  id: CapsLock
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: CapsLock
+  nameWithType: KeyboardKey.CapsLock
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.CapsLock
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: CapsLock
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 307
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Caps Lock key.
+  example: []
+  syntax:
+    content: CapsLock = 60
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.ScrollLock
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.ScrollLock
+  id: ScrollLock
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: ScrollLock
+  nameWithType: KeyboardKey.ScrollLock
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.ScrollLock
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ScrollLock
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 312
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Scroll Lock key.
+  example: []
+  syntax:
+    content: ScrollLock = 61
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.PrintScreen
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.PrintScreen
+  id: PrintScreen
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: PrintScreen
+  nameWithType: KeyboardKey.PrintScreen
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.PrintScreen
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: PrintScreen
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 317
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Print Screen key.
+  example: []
+  syntax:
+    content: PrintScreen = 62
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Pause
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Pause
+  id: Pause
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Pause
+  nameWithType: KeyboardKey.Pause
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Pause
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Pause
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 322
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Pause key.
+  example: []
+  syntax:
+    content: Pause = 63
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.NumLock
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.NumLock
+  id: NumLock
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: NumLock
+  nameWithType: KeyboardKey.NumLock
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.NumLock
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: NumLock
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 327
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Num Lock key.
+  example: []
+  syntax:
+    content: NumLock = 64
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Clear
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Clear
+  id: Clear
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Clear
+  nameWithType: KeyboardKey.Clear
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Clear
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Clear
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 332
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Clear key.
+  example: []
+  syntax:
+    content: Clear = 65
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Sleep
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Sleep
+  id: Sleep
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Sleep
+  nameWithType: KeyboardKey.Sleep
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Sleep
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Sleep
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 337
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Sleep key.
+  example: []
+  syntax:
+    content: Sleep = 66
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad0
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad0
+  id: Keypad0
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Keypad0
+  nameWithType: KeyboardKey.Keypad0
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad0
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Keypad0
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 342
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Numeric keypad key 0.
+  example: []
+  syntax:
+    content: Keypad0 = 67
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad1
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad1
+  id: Keypad1
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Keypad1
+  nameWithType: KeyboardKey.Keypad1
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad1
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Keypad1
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 347
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Numeric keypad key 1.
+  example: []
+  syntax:
+    content: Keypad1 = 68
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad2
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad2
+  id: Keypad2
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Keypad2
+  nameWithType: KeyboardKey.Keypad2
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad2
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Keypad2
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 352
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Numeric keypad key 2.
+  example: []
+  syntax:
+    content: Keypad2 = 69
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad3
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad3
+  id: Keypad3
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Keypad3
+  nameWithType: KeyboardKey.Keypad3
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad3
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Keypad3
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 357
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Numeric keypad key 3.
+  example: []
+  syntax:
+    content: Keypad3 = 70
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad4
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad4
+  id: Keypad4
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Keypad4
+  nameWithType: KeyboardKey.Keypad4
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad4
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Keypad4
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 362
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Numeric keypad key 4.
+  example: []
+  syntax:
+    content: Keypad4 = 71
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad5
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad5
+  id: Keypad5
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Keypad5
+  nameWithType: KeyboardKey.Keypad5
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad5
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Keypad5
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 367
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Numeric keypad key 5.
+  example: []
+  syntax:
+    content: Keypad5 = 72
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad6
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad6
+  id: Keypad6
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Keypad6
+  nameWithType: KeyboardKey.Keypad6
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad6
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Keypad6
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 372
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Numeric keypad key 6.
+  example: []
+  syntax:
+    content: Keypad6 = 73
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad7
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad7
+  id: Keypad7
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Keypad7
+  nameWithType: KeyboardKey.Keypad7
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad7
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Keypad7
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 377
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Numeric keypad key 7.
+  example: []
+  syntax:
+    content: Keypad7 = 74
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad8
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad8
+  id: Keypad8
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Keypad8
+  nameWithType: KeyboardKey.Keypad8
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad8
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Keypad8
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 382
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Numeric keypad key 8.
+  example: []
+  syntax:
+    content: Keypad8 = 75
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad9
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad9
+  id: Keypad9
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Keypad9
+  nameWithType: KeyboardKey.Keypad9
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Keypad9
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Keypad9
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 387
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Numeric keypad key 9.
+  example: []
+  syntax:
+    content: Keypad9 = 76
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadDivide
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadDivide
+  id: KeypadDivide
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: KeypadDivide
+  nameWithType: KeyboardKey.KeypadDivide
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadDivide
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: KeypadDivide
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 392
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Numeric keypad divide key.
+  example: []
+  syntax:
+    content: KeypadDivide = 77
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadMultiply
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadMultiply
+  id: KeypadMultiply
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: KeypadMultiply
+  nameWithType: KeyboardKey.KeypadMultiply
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadMultiply
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: KeypadMultiply
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 397
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Numeric keypad multiply key.
+  example: []
+  syntax:
+    content: KeypadMultiply = 78
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadMinus
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadMinus
+  id: KeypadMinus
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: KeypadMinus
+  nameWithType: KeyboardKey.KeypadMinus
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadMinus
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: KeypadMinus
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 402
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Numeric keypad minus key.
+  example: []
+  syntax:
+    content: KeypadMinus = 79
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadPlus
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadPlus
+  id: KeypadPlus
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: KeypadPlus
+  nameWithType: KeyboardKey.KeypadPlus
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadPlus
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: KeypadPlus
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 407
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Numeric keypad plus key.
+  example: []
+  syntax:
+    content: KeypadPlus = 80
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadDecimal
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadDecimal
+  id: KeypadDecimal
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: KeypadDecimal
+  nameWithType: KeyboardKey.KeypadDecimal
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadDecimal
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: KeypadDecimal
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 412
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Numeric keypad decimal point key.
+  example: []
+  syntax:
+    content: KeypadDecimal = 81
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadEnter
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadEnter
+  id: KeypadEnter
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: KeypadEnter
+  nameWithType: KeyboardKey.KeypadEnter
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.KeypadEnter
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: KeypadEnter
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 417
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Numeric keypad Enter key.
+  example: []
+  syntax:
+    content: KeypadEnter = 82
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.A
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.A
+  id: A
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: A
+  nameWithType: KeyboardKey.A
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.A
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: A
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 422
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key A.
+  example: []
+  syntax:
+    content: A = 83
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.B
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.B
+  id: B
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: B
+  nameWithType: KeyboardKey.B
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.B
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: B
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 427
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key B.
+  example: []
+  syntax:
+    content: B = 84
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.C
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.C
+  id: C
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: C
+  nameWithType: KeyboardKey.C
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.C
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: C
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 432
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key C.
+  example: []
+  syntax:
+    content: C = 85
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.D
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.D
+  id: D
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: D
+  nameWithType: KeyboardKey.D
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.D
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: D
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 437
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key D.
+  example: []
+  syntax:
+    content: D = 86
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.E
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.E
+  id: E
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: E
+  nameWithType: KeyboardKey.E
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.E
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: E
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 442
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key E.
+  example: []
+  syntax:
+    content: E = 87
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.F
+  id: F
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: F
+  nameWithType: KeyboardKey.F
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.F
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: F
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 447
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key F.
+  example: []
+  syntax:
+    content: F = 88
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.G
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.G
+  id: G
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: G
+  nameWithType: KeyboardKey.G
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.G
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: G
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 452
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key G.
+  example: []
+  syntax:
+    content: G = 89
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.H
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.H
+  id: H
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: H
+  nameWithType: KeyboardKey.H
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.H
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: H
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 457
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key H.
+  example: []
+  syntax:
+    content: H = 90
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.I
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.I
+  id: I
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: I
+  nameWithType: KeyboardKey.I
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.I
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: I
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 462
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key I.
+  example: []
+  syntax:
+    content: I = 91
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.J
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.J
+  id: J
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: J
+  nameWithType: KeyboardKey.J
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.J
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: J
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 467
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key J.
+  example: []
+  syntax:
+    content: J = 92
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.K
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.K
+  id: K
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: K
+  nameWithType: KeyboardKey.K
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.K
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: K
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 472
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key K.
+  example: []
+  syntax:
+    content: K = 93
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.L
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.L
+  id: L
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: L
+  nameWithType: KeyboardKey.L
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.L
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: L
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 477
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key L.
+  example: []
+  syntax:
+    content: L = 94
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.M
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.M
+  id: M
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: M
+  nameWithType: KeyboardKey.M
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.M
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: M
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 482
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key M.
+  example: []
+  syntax:
+    content: M = 95
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.N
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.N
+  id: N
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: N
+  nameWithType: KeyboardKey.N
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.N
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: N
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 487
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key N.
+  example: []
+  syntax:
+    content: N = 96
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.O
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.O
+  id: O
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: O
+  nameWithType: KeyboardKey.O
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.O
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: O
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 492
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key O.
+  example: []
+  syntax:
+    content: O = 97
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.P
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.P
+  id: P
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: P
+  nameWithType: KeyboardKey.P
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.P
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: P
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 497
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key P.
+  example: []
+  syntax:
+    content: P = 98
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Q
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Q
+  id: Q
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Q
+  nameWithType: KeyboardKey.Q
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Q
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Q
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 502
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key Q.
+  example: []
+  syntax:
+    content: Q = 99
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.R
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.R
+  id: R
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: R
+  nameWithType: KeyboardKey.R
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.R
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: R
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 507
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key R.
+  example: []
+  syntax:
+    content: R = 100
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.S
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.S
+  id: S
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: S
+  nameWithType: KeyboardKey.S
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.S
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: S
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 512
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key S.
+  example: []
+  syntax:
+    content: S = 101
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.T
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.T
+  id: T
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: T
+  nameWithType: KeyboardKey.T
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.T
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: T
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 517
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key T.
+  example: []
+  syntax:
+    content: T = 102
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.U
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.U
+  id: U
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: U
+  nameWithType: KeyboardKey.U
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.U
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: U
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 522
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key U.
+  example: []
+  syntax:
+    content: U = 103
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.V
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.V
+  id: V
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: V
+  nameWithType: KeyboardKey.V
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.V
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: V
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 527
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key V.
+  example: []
+  syntax:
+    content: V = 104
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.W
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.W
+  id: W
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: W
+  nameWithType: KeyboardKey.W
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.W
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: W
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 532
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key W.
+  example: []
+  syntax:
+    content: W = 105
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.X
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.X
+  id: X
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: X
+  nameWithType: KeyboardKey.X
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.X
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: X
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 537
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key X.
+  example: []
+  syntax:
+    content: X = 106
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Y
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Y
+  id: Y
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Y
+  nameWithType: KeyboardKey.Y
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Y
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Y
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 542
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key Y.
+  example: []
+  syntax:
+    content: Y = 107
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Z
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Z
+  id: Z
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Z
+  nameWithType: KeyboardKey.Z
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Z
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Z
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 547
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Letter key Z.
+  example: []
+  syntax:
+    content: Z = 108
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number0
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number0
+  id: Number0
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Number0
+  nameWithType: KeyboardKey.Number0
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number0
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Number0
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 552
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Number key 0.
+  example: []
+  syntax:
+    content: Number0 = 109
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number1
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number1
+  id: Number1
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Number1
+  nameWithType: KeyboardKey.Number1
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number1
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Number1
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 557
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Number key 1.
+  example: []
+  syntax:
+    content: Number1 = 110
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number2
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number2
+  id: Number2
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Number2
+  nameWithType: KeyboardKey.Number2
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number2
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Number2
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 562
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Number key 2.
+  example: []
+  syntax:
+    content: Number2 = 111
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number3
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number3
+  id: Number3
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Number3
+  nameWithType: KeyboardKey.Number3
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number3
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Number3
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 567
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Number key 3.
+  example: []
+  syntax:
+    content: Number3 = 112
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number4
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number4
+  id: Number4
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Number4
+  nameWithType: KeyboardKey.Number4
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number4
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Number4
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 572
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Number key 4.
+  example: []
+  syntax:
+    content: Number4 = 113
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number5
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number5
+  id: Number5
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Number5
+  nameWithType: KeyboardKey.Number5
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number5
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Number5
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 577
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Number key 5.
+  example: []
+  syntax:
+    content: Number5 = 114
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number6
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number6
+  id: Number6
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Number6
+  nameWithType: KeyboardKey.Number6
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number6
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Number6
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 582
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Number key 6.
+  example: []
+  syntax:
+    content: Number6 = 115
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number7
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number7
+  id: Number7
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Number7
+  nameWithType: KeyboardKey.Number7
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number7
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Number7
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 587
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Number key 7.
+  example: []
+  syntax:
+    content: Number7 = 116
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number8
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number8
+  id: Number8
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Number8
+  nameWithType: KeyboardKey.Number8
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number8
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Number8
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 592
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Number key 8.
+  example: []
+  syntax:
+    content: Number8 = 117
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number9
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number9
+  id: Number9
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Number9
+  nameWithType: KeyboardKey.Number9
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Number9
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Number9
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 597
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: Number key 9.
+  example: []
+  syntax:
+    content: Number9 = 118
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Grave
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Grave
+  id: Grave
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Grave
+  nameWithType: KeyboardKey.Grave
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Grave
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Grave
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 602
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Grave key, also known as the Tilde key.
+  example: []
+  syntax:
+    content: Grave = 119
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Minus
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Minus
+  id: Minus
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Minus
+  nameWithType: KeyboardKey.Minus
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Minus
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Minus
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 607
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Minus key.
+  example: []
+  syntax:
+    content: Minus = 120
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Plus
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Plus
+  id: Plus
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Plus
+  nameWithType: KeyboardKey.Plus
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Plus
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Plus
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 612
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Plus key.
+  example: []
+  syntax:
+    content: Plus = 121
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.BracketLeft
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.BracketLeft
+  id: BracketLeft
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: BracketLeft
+  nameWithType: KeyboardKey.BracketLeft
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.BracketLeft
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: BracketLeft
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 617
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The left bracket key.
+  example: []
+  syntax:
+    content: BracketLeft = 122
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.BracketRight
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.BracketRight
+  id: BracketRight
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: BracketRight
+  nameWithType: KeyboardKey.BracketRight
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.BracketRight
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: BracketRight
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 622
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The right bracket key.
+  example: []
+  syntax:
+    content: BracketRight = 123
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Semicolon
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Semicolon
+  id: Semicolon
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Semicolon
+  nameWithType: KeyboardKey.Semicolon
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Semicolon
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Semicolon
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 627
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Semicolon key.
+  example: []
+  syntax:
+    content: Semicolon = 124
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Quote
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Quote
+  id: Quote
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Quote
+  nameWithType: KeyboardKey.Quote
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Quote
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Quote
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 632
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Quote key.
+  example: []
+  syntax:
+    content: Quote = 125
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Comma
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Comma
+  id: Comma
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Comma
+  nameWithType: KeyboardKey.Comma
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Comma
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Comma
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 637
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Comma key.
+  example: []
+  syntax:
+    content: Comma = 126
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Period
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Period
+  id: Period
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Period
+  nameWithType: KeyboardKey.Period
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Period
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Period
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 642
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Period key.
+  example: []
+  syntax:
+    content: Period = 127
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Slash
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.Slash
+  id: Slash
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: Slash
+  nameWithType: KeyboardKey.Slash
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.Slash
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Slash
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 647
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Slash key.
+  example: []
+  syntax:
+    content: Slash = 128
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.BackSlash
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.BackSlash
+  id: BackSlash
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: BackSlash
+  nameWithType: KeyboardKey.BackSlash
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.BackSlash
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: BackSlash
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 652
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Backslash key.
+  example: []
+  syntax:
+    content: BackSlash = 129
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.NonUsBackSlash
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.NonUsBackSlash
+  id: NonUsBackSlash
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: NonUsBackSlash
+  nameWithType: KeyboardKey.NonUsBackSlash
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.NonUsBackSlash
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: NonUsBackSlash
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 657
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The Non-US backslash key.
+  example: []
+  syntax:
+    content: NonUsBackSlash = 130
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey.LastKey
+  commentId: F:Bliss.CSharp.Interact.Keyboards.KeyboardKey.LastKey
+  id: LastKey
+  parent: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  langs:
+  - csharp
+  - vb
+  name: LastKey
+  nameWithType: KeyboardKey.LastKey
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey.LastKey
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LastKey
+    path: ../src/Bliss/CSharp/Interact/Keyboards/KeyboardKey.cs
+    startLine: 662
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Keyboards
+  summary: The last recognized key in the enumeration.
+  example: []
+  syntax:
+    content: LastKey = 131
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+references:
+- uid: Bliss.CSharp.Interact.Keyboards
+  commentId: N:Bliss.CSharp.Interact.Keyboards
+  href: Bliss.html
+  name: Bliss.CSharp.Interact.Keyboards
+  nameWithType: Bliss.CSharp.Interact.Keyboards
+  fullName: Bliss.CSharp.Interact.Keyboards
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Keyboards
+    name: Keyboards
+    href: Bliss.CSharp.Interact.Keyboards.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Keyboards
+    name: Keyboards
+    href: Bliss.CSharp.Interact.Keyboards.html
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  commentId: T:Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  parent: Bliss.CSharp.Interact.Keyboards
+  href: Bliss.CSharp.Interact.Keyboards.KeyboardKey.html
+  name: KeyboardKey
+  nameWithType: KeyboardKey
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey

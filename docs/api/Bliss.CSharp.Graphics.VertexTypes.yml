@@ -1,0 +1,83 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.VertexTypes
+  commentId: N:Bliss.CSharp.Graphics.VertexTypes
+  id: Bliss.CSharp.Graphics.VertexTypes
+  children:
+  - Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D
+  - Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D
+  - Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D
+  - Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Graphics.VertexTypes
+  nameWithType: Bliss.CSharp.Graphics.VertexTypes
+  fullName: Bliss.CSharp.Graphics.VertexTypes
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D
+  commentId: T:Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D
+  href: Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D.html
+  name: ImmediateVertex3D
+  nameWithType: ImmediateVertex3D
+  fullName: Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D
+- uid: Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D
+  commentId: T:Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D
+  href: Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D.html
+  name: PrimitiveVertex2D
+  nameWithType: PrimitiveVertex2D
+  fullName: Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D
+- uid: Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D
+  commentId: T:Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D
+  parent: Bliss.CSharp.Graphics.VertexTypes
+  href: Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.html
+  name: SpriteVertex2D
+  nameWithType: SpriteVertex2D
+  fullName: Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D
+- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+  commentId: T:Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+  href: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.html
+  name: Vertex3D
+  nameWithType: Vertex3D
+  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+- uid: Bliss.CSharp.Graphics.VertexTypes
+  commentId: N:Bliss.CSharp.Graphics.VertexTypes
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.VertexTypes
+  nameWithType: Bliss.CSharp.Graphics.VertexTypes
+  fullName: Bliss.CSharp.Graphics.VertexTypes
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.VertexTypes
+    name: VertexTypes
+    href: Bliss.CSharp.Graphics.VertexTypes.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.VertexTypes
+    name: VertexTypes
+    href: Bliss.CSharp.Graphics.VertexTypes.html

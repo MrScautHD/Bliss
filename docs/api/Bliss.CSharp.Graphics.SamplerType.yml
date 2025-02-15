@@ -1,0 +1,153 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.SamplerType
+  commentId: T:Bliss.CSharp.Graphics.SamplerType
+  id: SamplerType
+  parent: Bliss.CSharp.Graphics
+  children:
+  - Bliss.CSharp.Graphics.SamplerType.Aniso4X
+  - Bliss.CSharp.Graphics.SamplerType.Linear
+  - Bliss.CSharp.Graphics.SamplerType.Point
+  langs:
+  - csharp
+  - vb
+  name: SamplerType
+  nameWithType: SamplerType
+  fullName: Bliss.CSharp.Graphics.SamplerType
+  type: Enum
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/SamplerType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SamplerType
+    path: ../src/Bliss/CSharp/Graphics/SamplerType.cs
+    startLine: 2
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics
+  syntax:
+    content: public enum SamplerType
+    content.vb: Public Enum SamplerType
+- uid: Bliss.CSharp.Graphics.SamplerType.Point
+  commentId: F:Bliss.CSharp.Graphics.SamplerType.Point
+  id: Point
+  parent: Bliss.CSharp.Graphics.SamplerType
+  langs:
+  - csharp
+  - vb
+  name: Point
+  nameWithType: SamplerType.Point
+  fullName: Bliss.CSharp.Graphics.SamplerType.Point
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/SamplerType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Point
+    path: ../src/Bliss/CSharp/Graphics/SamplerType.cs
+    startLine: 7
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics
+  summary: Point sampling, which selects the nearest texel without filtering.
+  example: []
+  syntax:
+    content: Point = 0
+    return:
+      type: Bliss.CSharp.Graphics.SamplerType
+- uid: Bliss.CSharp.Graphics.SamplerType.Linear
+  commentId: F:Bliss.CSharp.Graphics.SamplerType.Linear
+  id: Linear
+  parent: Bliss.CSharp.Graphics.SamplerType
+  langs:
+  - csharp
+  - vb
+  name: Linear
+  nameWithType: SamplerType.Linear
+  fullName: Bliss.CSharp.Graphics.SamplerType.Linear
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/SamplerType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Linear
+    path: ../src/Bliss/CSharp/Graphics/SamplerType.cs
+    startLine: 12
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics
+  summary: Linear sampling, which performs linear interpolation between texels.
+  example: []
+  syntax:
+    content: Linear = 1
+    return:
+      type: Bliss.CSharp.Graphics.SamplerType
+- uid: Bliss.CSharp.Graphics.SamplerType.Aniso4X
+  commentId: F:Bliss.CSharp.Graphics.SamplerType.Aniso4X
+  id: Aniso4X
+  parent: Bliss.CSharp.Graphics.SamplerType
+  langs:
+  - csharp
+  - vb
+  name: Aniso4X
+  nameWithType: SamplerType.Aniso4X
+  fullName: Bliss.CSharp.Graphics.SamplerType.Aniso4X
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/SamplerType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Aniso4X
+    path: ../src/Bliss/CSharp/Graphics/SamplerType.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics
+  summary: Anisotropic sampling with a maximum of 4x sampling, providing better quality at glancing angles.
+  example: []
+  syntax:
+    content: Aniso4X = 2
+    return:
+      type: Bliss.CSharp.Graphics.SamplerType
+references:
+- uid: Bliss.CSharp.Graphics
+  commentId: N:Bliss.CSharp.Graphics
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics
+  nameWithType: Bliss.CSharp.Graphics
+  fullName: Bliss.CSharp.Graphics
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+- uid: Bliss.CSharp.Graphics.SamplerType
+  commentId: T:Bliss.CSharp.Graphics.SamplerType
+  parent: Bliss.CSharp.Graphics
+  href: Bliss.CSharp.Graphics.SamplerType.html
+  name: SamplerType
+  nameWithType: SamplerType
+  fullName: Bliss.CSharp.Graphics.SamplerType

@@ -1,0 +1,500 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Windowing.Events.KeyEvent
+  commentId: T:Bliss.CSharp.Windowing.Events.KeyEvent
+  id: KeyEvent
+  parent: Bliss.CSharp.Windowing.Events
+  children:
+  - Bliss.CSharp.Windowing.Events.KeyEvent.#ctor(Bliss.CSharp.Interact.Keyboards.KeyboardKey,System.Boolean,System.Boolean)
+  - Bliss.CSharp.Windowing.Events.KeyEvent.IsDown
+  - Bliss.CSharp.Windowing.Events.KeyEvent.KeyboardKey
+  - Bliss.CSharp.Windowing.Events.KeyEvent.Repeat
+  langs:
+  - csharp
+  - vb
+  name: KeyEvent
+  nameWithType: KeyEvent
+  fullName: Bliss.CSharp.Windowing.Events.KeyEvent
+  type: Struct
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Events/KeyEvent.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: KeyEvent
+    path: ../src/Bliss/CSharp/Windowing/Events/KeyEvent.cs
+    startLine: 4
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing.Events
+  syntax:
+    content: public struct KeyEvent
+    content.vb: Public Structure KeyEvent
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Bliss.CSharp.Windowing.Events.KeyEvent.KeyboardKey
+  commentId: F:Bliss.CSharp.Windowing.Events.KeyEvent.KeyboardKey
+  id: KeyboardKey
+  parent: Bliss.CSharp.Windowing.Events.KeyEvent
+  langs:
+  - csharp
+  - vb
+  name: KeyboardKey
+  nameWithType: KeyEvent.KeyboardKey
+  fullName: Bliss.CSharp.Windowing.Events.KeyEvent.KeyboardKey
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Events/KeyEvent.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: KeyboardKey
+    path: ../src/Bliss/CSharp/Windowing/Events/KeyEvent.cs
+    startLine: 9
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing.Events
+  summary: Represents a key on the keyboard that can trigger key events.
+  example: []
+  syntax:
+    content: public KeyboardKey KeyboardKey
+    return:
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+    content.vb: Public KeyboardKey As KeyboardKey
+- uid: Bliss.CSharp.Windowing.Events.KeyEvent.IsDown
+  commentId: F:Bliss.CSharp.Windowing.Events.KeyEvent.IsDown
+  id: IsDown
+  parent: Bliss.CSharp.Windowing.Events.KeyEvent
+  langs:
+  - csharp
+  - vb
+  name: IsDown
+  nameWithType: KeyEvent.IsDown
+  fullName: Bliss.CSharp.Windowing.Events.KeyEvent.IsDown
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Events/KeyEvent.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsDown
+    path: ../src/Bliss/CSharp/Windowing/Events/KeyEvent.cs
+    startLine: 14
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing.Events
+  summary: Indicates whether the key is currently pressed down.
+  example: []
+  syntax:
+    content: public bool IsDown
+    return:
+      type: System.Boolean
+    content.vb: Public IsDown As Boolean
+- uid: Bliss.CSharp.Windowing.Events.KeyEvent.Repeat
+  commentId: F:Bliss.CSharp.Windowing.Events.KeyEvent.Repeat
+  id: Repeat
+  parent: Bliss.CSharp.Windowing.Events.KeyEvent
+  langs:
+  - csharp
+  - vb
+  name: Repeat
+  nameWithType: KeyEvent.Repeat
+  fullName: Bliss.CSharp.Windowing.Events.KeyEvent.Repeat
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Events/KeyEvent.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Repeat
+    path: ../src/Bliss/CSharp/Windowing/Events/KeyEvent.cs
+    startLine: 19
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing.Events
+  summary: Indicates whether the key press event is a repeat of the previous key press action.
+  example: []
+  syntax:
+    content: public bool Repeat
+    return:
+      type: System.Boolean
+    content.vb: Public Repeat As Boolean
+- uid: Bliss.CSharp.Windowing.Events.KeyEvent.#ctor(Bliss.CSharp.Interact.Keyboards.KeyboardKey,System.Boolean,System.Boolean)
+  commentId: M:Bliss.CSharp.Windowing.Events.KeyEvent.#ctor(Bliss.CSharp.Interact.Keyboards.KeyboardKey,System.Boolean,System.Boolean)
+  id: '#ctor(Bliss.CSharp.Interact.Keyboards.KeyboardKey,System.Boolean,System.Boolean)'
+  parent: Bliss.CSharp.Windowing.Events.KeyEvent
+  langs:
+  - csharp
+  - vb
+  name: KeyEvent(KeyboardKey, bool, bool)
+  nameWithType: KeyEvent.KeyEvent(KeyboardKey, bool, bool)
+  fullName: Bliss.CSharp.Windowing.Events.KeyEvent.KeyEvent(Bliss.CSharp.Interact.Keyboards.KeyboardKey, bool, bool)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Events/KeyEvent.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Windowing/Events/KeyEvent.cs
+    startLine: 27
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing.Events
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Windowing.Events.KeyEvent" data-throw-if-not-resolved="false"></xref> class with the specified keyboard key, key state, and repeat flag.
+  example: []
+  syntax:
+    content: public KeyEvent(KeyboardKey keyboardKey, bool isDown, bool repeat)
+    parameters:
+    - id: keyboardKey
+      type: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+      description: The <xref href="Bliss.CSharp.Windowing.Events.KeyEvent.KeyboardKey" data-throw-if-not-resolved="false"></xref> representing the key involved in the event.
+    - id: isDown
+      type: System.Boolean
+      description: Indicates whether the key is pressed down (<code>true</code>) or released (<code>false</code>).
+    - id: repeat
+      type: System.Boolean
+      description: Indicates whether the key event is a repeated key press (<code>true</code>) or a single press (<code>false</code>).
+    content.vb: Public Sub New(keyboardKey As KeyboardKey, isDown As Boolean, repeat As Boolean)
+  overload: Bliss.CSharp.Windowing.Events.KeyEvent.#ctor*
+  nameWithType.vb: KeyEvent.New(KeyboardKey, Boolean, Boolean)
+  fullName.vb: Bliss.CSharp.Windowing.Events.KeyEvent.New(Bliss.CSharp.Interact.Keyboards.KeyboardKey, Boolean, Boolean)
+  name.vb: New(KeyboardKey, Boolean, Boolean)
+references:
+- uid: Bliss.CSharp.Windowing.Events
+  commentId: N:Bliss.CSharp.Windowing.Events
+  href: Bliss.html
+  name: Bliss.CSharp.Windowing.Events
+  nameWithType: Bliss.CSharp.Windowing.Events
+  fullName: Bliss.CSharp.Windowing.Events
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Windowing
+    name: Windowing
+    href: Bliss.CSharp.Windowing.html
+  - name: .
+  - uid: Bliss.CSharp.Windowing.Events
+    name: Events
+    href: Bliss.CSharp.Windowing.Events.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Windowing
+    name: Windowing
+    href: Bliss.CSharp.Windowing.html
+  - name: .
+  - uid: Bliss.CSharp.Windowing.Events
+    name: Events
+    href: Bliss.CSharp.Windowing.Events.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  commentId: T:Bliss.CSharp.Interact.Keyboards.KeyboardKey
+  parent: Bliss.CSharp.Interact.Keyboards
+  href: Bliss.CSharp.Interact.Keyboards.KeyboardKey.html
+  name: KeyboardKey
+  nameWithType: KeyboardKey
+  fullName: Bliss.CSharp.Interact.Keyboards.KeyboardKey
+- uid: Bliss.CSharp.Interact.Keyboards
+  commentId: N:Bliss.CSharp.Interact.Keyboards
+  href: Bliss.html
+  name: Bliss.CSharp.Interact.Keyboards
+  nameWithType: Bliss.CSharp.Interact.Keyboards
+  fullName: Bliss.CSharp.Interact.Keyboards
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Keyboards
+    name: Keyboards
+    href: Bliss.CSharp.Interact.Keyboards.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Interact
+    name: Interact
+    href: Bliss.CSharp.Interact.html
+  - name: .
+  - uid: Bliss.CSharp.Interact.Keyboards
+    name: Keyboards
+    href: Bliss.CSharp.Interact.Keyboards.html
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bliss.CSharp.Windowing.Events.KeyEvent
+  commentId: T:Bliss.CSharp.Windowing.Events.KeyEvent
+  href: Bliss.CSharp.Windowing.Events.KeyEvent.html
+  name: KeyEvent
+  nameWithType: KeyEvent
+  fullName: Bliss.CSharp.Windowing.Events.KeyEvent
+- uid: Bliss.CSharp.Windowing.Events.KeyEvent.KeyboardKey
+  commentId: F:Bliss.CSharp.Windowing.Events.KeyEvent.KeyboardKey
+  href: Bliss.CSharp.Windowing.Events.KeyEvent.html#Bliss_CSharp_Windowing_Events_KeyEvent_KeyboardKey
+  name: KeyboardKey
+  nameWithType: KeyEvent.KeyboardKey
+  fullName: Bliss.CSharp.Windowing.Events.KeyEvent.KeyboardKey
+- uid: Bliss.CSharp.Windowing.Events.KeyEvent.#ctor*
+  commentId: Overload:Bliss.CSharp.Windowing.Events.KeyEvent.#ctor
+  href: Bliss.CSharp.Windowing.Events.KeyEvent.html#Bliss_CSharp_Windowing_Events_KeyEvent__ctor_Bliss_CSharp_Interact_Keyboards_KeyboardKey_System_Boolean_System_Boolean_
+  name: KeyEvent
+  nameWithType: KeyEvent.KeyEvent
+  fullName: Bliss.CSharp.Windowing.Events.KeyEvent.KeyEvent
+  nameWithType.vb: KeyEvent.New
+  fullName.vb: Bliss.CSharp.Windowing.Events.KeyEvent.New
+  name.vb: New

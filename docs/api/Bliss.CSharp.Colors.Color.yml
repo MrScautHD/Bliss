@@ -1,0 +1,2077 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Colors.Color
+  commentId: T:Bliss.CSharp.Colors.Color
+  id: Color
+  parent: Bliss.CSharp.Colors
+  children:
+  - Bliss.CSharp.Colors.Color.#ctor(System.Byte,System.Byte,System.Byte,System.Byte)
+  - Bliss.CSharp.Colors.Color.#ctor(Veldrid.RgbaFloat)
+  - Bliss.CSharp.Colors.Color.A
+  - Bliss.CSharp.Colors.Color.B
+  - Bliss.CSharp.Colors.Color.Black
+  - Bliss.CSharp.Colors.Color.Blue
+  - Bliss.CSharp.Colors.Color.Brown
+  - Bliss.CSharp.Colors.Color.Cyan
+  - Bliss.CSharp.Colors.Color.DarkBlue
+  - Bliss.CSharp.Colors.Color.DarkBrown
+  - Bliss.CSharp.Colors.Color.DarkCyan
+  - Bliss.CSharp.Colors.Color.DarkGray
+  - Bliss.CSharp.Colors.Color.DarkGreen
+  - Bliss.CSharp.Colors.Color.DarkMagenta
+  - Bliss.CSharp.Colors.Color.DarkOrange
+  - Bliss.CSharp.Colors.Color.DarkPink
+  - Bliss.CSharp.Colors.Color.DarkPurple
+  - Bliss.CSharp.Colors.Color.DarkRed
+  - Bliss.CSharp.Colors.Color.DarkYellow
+  - Bliss.CSharp.Colors.Color.Equals(Bliss.CSharp.Colors.Color)
+  - Bliss.CSharp.Colors.Color.Equals(System.Object)
+  - Bliss.CSharp.Colors.Color.G
+  - Bliss.CSharp.Colors.Color.GetHashCode
+  - Bliss.CSharp.Colors.Color.Gray
+  - Bliss.CSharp.Colors.Color.Green
+  - Bliss.CSharp.Colors.Color.LightBlue
+  - Bliss.CSharp.Colors.Color.LightBrown
+  - Bliss.CSharp.Colors.Color.LightCyan
+  - Bliss.CSharp.Colors.Color.LightGray
+  - Bliss.CSharp.Colors.Color.LightGreen
+  - Bliss.CSharp.Colors.Color.LightMagenta
+  - Bliss.CSharp.Colors.Color.LightOrange
+  - Bliss.CSharp.Colors.Color.LightPink
+  - Bliss.CSharp.Colors.Color.LightPurple
+  - Bliss.CSharp.Colors.Color.LightRed
+  - Bliss.CSharp.Colors.Color.LightYellow
+  - Bliss.CSharp.Colors.Color.Magenta
+  - Bliss.CSharp.Colors.Color.Orange
+  - Bliss.CSharp.Colors.Color.Pink
+  - Bliss.CSharp.Colors.Color.Purple
+  - Bliss.CSharp.Colors.Color.R
+  - Bliss.CSharp.Colors.Color.Red
+  - Bliss.CSharp.Colors.Color.ToRgbaFloat
+  - Bliss.CSharp.Colors.Color.ToRgbaFloatVec4
+  - Bliss.CSharp.Colors.Color.ToString
+  - Bliss.CSharp.Colors.Color.ToVector4
+  - Bliss.CSharp.Colors.Color.White
+  - Bliss.CSharp.Colors.Color.Yellow
+  - Bliss.CSharp.Colors.Color.op_Equality(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  - Bliss.CSharp.Colors.Color.op_Inequality(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  langs:
+  - csharp
+  - vb
+  name: Color
+  nameWithType: Color
+  fullName: Bliss.CSharp.Colors.Color
+  type: Struct
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Color
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 5
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: 'public readonly struct Color : IEquatable<Color>'
+    content.vb: Public Structure Color Implements IEquatable(Of Color)
+  implements:
+  - System.IEquatable{Bliss.CSharp.Colors.Color}
+  inheritedMembers:
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Bliss.CSharp.Colors.Color.White
+  commentId: F:Bliss.CSharp.Colors.Color.White
+  id: White
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: White
+  nameWithType: Color.White
+  fullName: Bliss.CSharp.Colors.Color.White
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: White
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 7
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color White
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly White As Color
+- uid: Bliss.CSharp.Colors.Color.Black
+  commentId: F:Bliss.CSharp.Colors.Color.Black
+  id: Black
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: Black
+  nameWithType: Color.Black
+  fullName: Bliss.CSharp.Colors.Color.Black
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Black
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 8
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color Black
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly Black As Color
+- uid: Bliss.CSharp.Colors.Color.LightRed
+  commentId: F:Bliss.CSharp.Colors.Color.LightRed
+  id: LightRed
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: LightRed
+  nameWithType: Color.LightRed
+  fullName: Bliss.CSharp.Colors.Color.LightRed
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LightRed
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 10
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color LightRed
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly LightRed As Color
+- uid: Bliss.CSharp.Colors.Color.Red
+  commentId: F:Bliss.CSharp.Colors.Color.Red
+  id: Red
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: Red
+  nameWithType: Color.Red
+  fullName: Bliss.CSharp.Colors.Color.Red
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Red
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 11
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color Red
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly Red As Color
+- uid: Bliss.CSharp.Colors.Color.DarkRed
+  commentId: F:Bliss.CSharp.Colors.Color.DarkRed
+  id: DarkRed
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: DarkRed
+  nameWithType: Color.DarkRed
+  fullName: Bliss.CSharp.Colors.Color.DarkRed
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DarkRed
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 12
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color DarkRed
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly DarkRed As Color
+- uid: Bliss.CSharp.Colors.Color.LightGreen
+  commentId: F:Bliss.CSharp.Colors.Color.LightGreen
+  id: LightGreen
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: LightGreen
+  nameWithType: Color.LightGreen
+  fullName: Bliss.CSharp.Colors.Color.LightGreen
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LightGreen
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 14
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color LightGreen
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly LightGreen As Color
+- uid: Bliss.CSharp.Colors.Color.Green
+  commentId: F:Bliss.CSharp.Colors.Color.Green
+  id: Green
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: Green
+  nameWithType: Color.Green
+  fullName: Bliss.CSharp.Colors.Color.Green
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Green
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 15
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color Green
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly Green As Color
+- uid: Bliss.CSharp.Colors.Color.DarkGreen
+  commentId: F:Bliss.CSharp.Colors.Color.DarkGreen
+  id: DarkGreen
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: DarkGreen
+  nameWithType: Color.DarkGreen
+  fullName: Bliss.CSharp.Colors.Color.DarkGreen
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DarkGreen
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 16
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color DarkGreen
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly DarkGreen As Color
+- uid: Bliss.CSharp.Colors.Color.LightBlue
+  commentId: F:Bliss.CSharp.Colors.Color.LightBlue
+  id: LightBlue
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: LightBlue
+  nameWithType: Color.LightBlue
+  fullName: Bliss.CSharp.Colors.Color.LightBlue
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LightBlue
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 18
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color LightBlue
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly LightBlue As Color
+- uid: Bliss.CSharp.Colors.Color.Blue
+  commentId: F:Bliss.CSharp.Colors.Color.Blue
+  id: Blue
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: Blue
+  nameWithType: Color.Blue
+  fullName: Bliss.CSharp.Colors.Color.Blue
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Blue
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 19
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color Blue
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly Blue As Color
+- uid: Bliss.CSharp.Colors.Color.DarkBlue
+  commentId: F:Bliss.CSharp.Colors.Color.DarkBlue
+  id: DarkBlue
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: DarkBlue
+  nameWithType: Color.DarkBlue
+  fullName: Bliss.CSharp.Colors.Color.DarkBlue
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DarkBlue
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 20
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color DarkBlue
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly DarkBlue As Color
+- uid: Bliss.CSharp.Colors.Color.LightYellow
+  commentId: F:Bliss.CSharp.Colors.Color.LightYellow
+  id: LightYellow
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: LightYellow
+  nameWithType: Color.LightYellow
+  fullName: Bliss.CSharp.Colors.Color.LightYellow
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LightYellow
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 22
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color LightYellow
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly LightYellow As Color
+- uid: Bliss.CSharp.Colors.Color.Yellow
+  commentId: F:Bliss.CSharp.Colors.Color.Yellow
+  id: Yellow
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: Yellow
+  nameWithType: Color.Yellow
+  fullName: Bliss.CSharp.Colors.Color.Yellow
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Yellow
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 23
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color Yellow
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly Yellow As Color
+- uid: Bliss.CSharp.Colors.Color.DarkYellow
+  commentId: F:Bliss.CSharp.Colors.Color.DarkYellow
+  id: DarkYellow
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: DarkYellow
+  nameWithType: Color.DarkYellow
+  fullName: Bliss.CSharp.Colors.Color.DarkYellow
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DarkYellow
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 24
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color DarkYellow
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly DarkYellow As Color
+- uid: Bliss.CSharp.Colors.Color.LightCyan
+  commentId: F:Bliss.CSharp.Colors.Color.LightCyan
+  id: LightCyan
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: LightCyan
+  nameWithType: Color.LightCyan
+  fullName: Bliss.CSharp.Colors.Color.LightCyan
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LightCyan
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 26
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color LightCyan
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly LightCyan As Color
+- uid: Bliss.CSharp.Colors.Color.Cyan
+  commentId: F:Bliss.CSharp.Colors.Color.Cyan
+  id: Cyan
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: Cyan
+  nameWithType: Color.Cyan
+  fullName: Bliss.CSharp.Colors.Color.Cyan
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Cyan
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 27
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color Cyan
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly Cyan As Color
+- uid: Bliss.CSharp.Colors.Color.DarkCyan
+  commentId: F:Bliss.CSharp.Colors.Color.DarkCyan
+  id: DarkCyan
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: DarkCyan
+  nameWithType: Color.DarkCyan
+  fullName: Bliss.CSharp.Colors.Color.DarkCyan
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DarkCyan
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 28
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color DarkCyan
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly DarkCyan As Color
+- uid: Bliss.CSharp.Colors.Color.LightMagenta
+  commentId: F:Bliss.CSharp.Colors.Color.LightMagenta
+  id: LightMagenta
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: LightMagenta
+  nameWithType: Color.LightMagenta
+  fullName: Bliss.CSharp.Colors.Color.LightMagenta
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LightMagenta
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 30
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color LightMagenta
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly LightMagenta As Color
+- uid: Bliss.CSharp.Colors.Color.Magenta
+  commentId: F:Bliss.CSharp.Colors.Color.Magenta
+  id: Magenta
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: Magenta
+  nameWithType: Color.Magenta
+  fullName: Bliss.CSharp.Colors.Color.Magenta
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Magenta
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 31
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color Magenta
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly Magenta As Color
+- uid: Bliss.CSharp.Colors.Color.DarkMagenta
+  commentId: F:Bliss.CSharp.Colors.Color.DarkMagenta
+  id: DarkMagenta
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: DarkMagenta
+  nameWithType: Color.DarkMagenta
+  fullName: Bliss.CSharp.Colors.Color.DarkMagenta
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DarkMagenta
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 32
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color DarkMagenta
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly DarkMagenta As Color
+- uid: Bliss.CSharp.Colors.Color.LightOrange
+  commentId: F:Bliss.CSharp.Colors.Color.LightOrange
+  id: LightOrange
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: LightOrange
+  nameWithType: Color.LightOrange
+  fullName: Bliss.CSharp.Colors.Color.LightOrange
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LightOrange
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 34
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color LightOrange
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly LightOrange As Color
+- uid: Bliss.CSharp.Colors.Color.Orange
+  commentId: F:Bliss.CSharp.Colors.Color.Orange
+  id: Orange
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: Orange
+  nameWithType: Color.Orange
+  fullName: Bliss.CSharp.Colors.Color.Orange
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Orange
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 35
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color Orange
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly Orange As Color
+- uid: Bliss.CSharp.Colors.Color.DarkOrange
+  commentId: F:Bliss.CSharp.Colors.Color.DarkOrange
+  id: DarkOrange
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: DarkOrange
+  nameWithType: Color.DarkOrange
+  fullName: Bliss.CSharp.Colors.Color.DarkOrange
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DarkOrange
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 36
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color DarkOrange
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly DarkOrange As Color
+- uid: Bliss.CSharp.Colors.Color.LightBrown
+  commentId: F:Bliss.CSharp.Colors.Color.LightBrown
+  id: LightBrown
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: LightBrown
+  nameWithType: Color.LightBrown
+  fullName: Bliss.CSharp.Colors.Color.LightBrown
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LightBrown
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 38
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color LightBrown
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly LightBrown As Color
+- uid: Bliss.CSharp.Colors.Color.Brown
+  commentId: F:Bliss.CSharp.Colors.Color.Brown
+  id: Brown
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: Brown
+  nameWithType: Color.Brown
+  fullName: Bliss.CSharp.Colors.Color.Brown
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Brown
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 39
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color Brown
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly Brown As Color
+- uid: Bliss.CSharp.Colors.Color.DarkBrown
+  commentId: F:Bliss.CSharp.Colors.Color.DarkBrown
+  id: DarkBrown
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: DarkBrown
+  nameWithType: Color.DarkBrown
+  fullName: Bliss.CSharp.Colors.Color.DarkBrown
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DarkBrown
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 40
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color DarkBrown
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly DarkBrown As Color
+- uid: Bliss.CSharp.Colors.Color.LightPurple
+  commentId: F:Bliss.CSharp.Colors.Color.LightPurple
+  id: LightPurple
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: LightPurple
+  nameWithType: Color.LightPurple
+  fullName: Bliss.CSharp.Colors.Color.LightPurple
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LightPurple
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 42
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color LightPurple
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly LightPurple As Color
+- uid: Bliss.CSharp.Colors.Color.Purple
+  commentId: F:Bliss.CSharp.Colors.Color.Purple
+  id: Purple
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: Purple
+  nameWithType: Color.Purple
+  fullName: Bliss.CSharp.Colors.Color.Purple
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Purple
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 43
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color Purple
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly Purple As Color
+- uid: Bliss.CSharp.Colors.Color.DarkPurple
+  commentId: F:Bliss.CSharp.Colors.Color.DarkPurple
+  id: DarkPurple
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: DarkPurple
+  nameWithType: Color.DarkPurple
+  fullName: Bliss.CSharp.Colors.Color.DarkPurple
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DarkPurple
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 44
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color DarkPurple
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly DarkPurple As Color
+- uid: Bliss.CSharp.Colors.Color.LightPink
+  commentId: F:Bliss.CSharp.Colors.Color.LightPink
+  id: LightPink
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: LightPink
+  nameWithType: Color.LightPink
+  fullName: Bliss.CSharp.Colors.Color.LightPink
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LightPink
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 46
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color LightPink
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly LightPink As Color
+- uid: Bliss.CSharp.Colors.Color.Pink
+  commentId: F:Bliss.CSharp.Colors.Color.Pink
+  id: Pink
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: Pink
+  nameWithType: Color.Pink
+  fullName: Bliss.CSharp.Colors.Color.Pink
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Pink
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 47
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color Pink
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly Pink As Color
+- uid: Bliss.CSharp.Colors.Color.DarkPink
+  commentId: F:Bliss.CSharp.Colors.Color.DarkPink
+  id: DarkPink
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: DarkPink
+  nameWithType: Color.DarkPink
+  fullName: Bliss.CSharp.Colors.Color.DarkPink
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DarkPink
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 48
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color DarkPink
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly DarkPink As Color
+- uid: Bliss.CSharp.Colors.Color.LightGray
+  commentId: F:Bliss.CSharp.Colors.Color.LightGray
+  id: LightGray
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: LightGray
+  nameWithType: Color.LightGray
+  fullName: Bliss.CSharp.Colors.Color.LightGray
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LightGray
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 50
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color LightGray
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly LightGray As Color
+- uid: Bliss.CSharp.Colors.Color.Gray
+  commentId: F:Bliss.CSharp.Colors.Color.Gray
+  id: Gray
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: Gray
+  nameWithType: Color.Gray
+  fullName: Bliss.CSharp.Colors.Color.Gray
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Gray
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 51
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color Gray
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly Gray As Color
+- uid: Bliss.CSharp.Colors.Color.DarkGray
+  commentId: F:Bliss.CSharp.Colors.Color.DarkGray
+  id: DarkGray
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: DarkGray
+  nameWithType: Color.DarkGray
+  fullName: Bliss.CSharp.Colors.Color.DarkGray
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DarkGray
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 52
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  syntax:
+    content: public static readonly Color DarkGray
+    return:
+      type: Bliss.CSharp.Colors.Color
+    content.vb: Public Shared ReadOnly DarkGray As Color
+- uid: Bliss.CSharp.Colors.Color.R
+  commentId: F:Bliss.CSharp.Colors.Color.R
+  id: R
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: R
+  nameWithType: Color.R
+  fullName: Bliss.CSharp.Colors.Color.R
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: R
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 57
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Represents the red component of the color in the range of 0 to 255.
+  example: []
+  syntax:
+    content: public readonly byte R
+    return:
+      type: System.Byte
+    content.vb: Public ReadOnly R As Byte
+- uid: Bliss.CSharp.Colors.Color.G
+  commentId: F:Bliss.CSharp.Colors.Color.G
+  id: G
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: G
+  nameWithType: Color.G
+  fullName: Bliss.CSharp.Colors.Color.G
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: G
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 62
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Represents the green component of the color in the range of 0 to 255.
+  example: []
+  syntax:
+    content: public readonly byte G
+    return:
+      type: System.Byte
+    content.vb: Public ReadOnly G As Byte
+- uid: Bliss.CSharp.Colors.Color.B
+  commentId: F:Bliss.CSharp.Colors.Color.B
+  id: B
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: B
+  nameWithType: Color.B
+  fullName: Bliss.CSharp.Colors.Color.B
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: B
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 67
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Represents the blue component of the color in the range of 0 to 255.
+  example: []
+  syntax:
+    content: public readonly byte B
+    return:
+      type: System.Byte
+    content.vb: Public ReadOnly B As Byte
+- uid: Bliss.CSharp.Colors.Color.A
+  commentId: F:Bliss.CSharp.Colors.Color.A
+  id: A
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: A
+  nameWithType: Color.A
+  fullName: Bliss.CSharp.Colors.Color.A
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: A
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 72
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Represents the alpha component of the color, indicating its transparency, in the range of 0 to 255.
+  example: []
+  syntax:
+    content: public readonly byte A
+    return:
+      type: System.Byte
+    content.vb: Public ReadOnly A As Byte
+- uid: Bliss.CSharp.Colors.Color.#ctor(System.Byte,System.Byte,System.Byte,System.Byte)
+  commentId: M:Bliss.CSharp.Colors.Color.#ctor(System.Byte,System.Byte,System.Byte,System.Byte)
+  id: '#ctor(System.Byte,System.Byte,System.Byte,System.Byte)'
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: Color(byte, byte, byte, byte)
+  nameWithType: Color.Color(byte, byte, byte, byte)
+  fullName: Bliss.CSharp.Colors.Color.Color(byte, byte, byte, byte)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 81
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Colors.Color" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public Color(byte r, byte g, byte b, byte a)
+    parameters:
+    - id: r
+      type: System.Byte
+      description: The red component.
+    - id: g
+      type: System.Byte
+      description: The green component.
+    - id: b
+      type: System.Byte
+      description: The blue component.
+    - id: a
+      type: System.Byte
+      description: The alpha component.
+    content.vb: Public Sub New(r As Byte, g As Byte, b As Byte, a As Byte)
+  overload: Bliss.CSharp.Colors.Color.#ctor*
+  nameWithType.vb: Color.New(Byte, Byte, Byte, Byte)
+  fullName.vb: Bliss.CSharp.Colors.Color.New(Byte, Byte, Byte, Byte)
+  name.vb: New(Byte, Byte, Byte, Byte)
+- uid: Bliss.CSharp.Colors.Color.#ctor(Veldrid.RgbaFloat)
+  commentId: M:Bliss.CSharp.Colors.Color.#ctor(Veldrid.RgbaFloat)
+  id: '#ctor(Veldrid.RgbaFloat)'
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: Color(RgbaFloat)
+  nameWithType: Color.Color(RgbaFloat)
+  fullName: Bliss.CSharp.Colors.Color.Color(Veldrid.RgbaFloat)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 91
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Represents a color with red, green, blue, and alpha components.
+  example: []
+  syntax:
+    content: public Color(RgbaFloat rgbaFloat)
+    parameters:
+    - id: rgbaFloat
+      type: Veldrid.RgbaFloat
+    content.vb: Public Sub New(rgbaFloat As RgbaFloat)
+  overload: Bliss.CSharp.Colors.Color.#ctor*
+  nameWithType.vb: Color.New(RgbaFloat)
+  fullName.vb: Bliss.CSharp.Colors.Color.New(Veldrid.RgbaFloat)
+  name.vb: New(RgbaFloat)
+- uid: Bliss.CSharp.Colors.Color.op_Equality(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  commentId: M:Bliss.CSharp.Colors.Color.op_Equality(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  id: op_Equality(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: operator ==(Color, Color)
+  nameWithType: Color.operator ==(Color, Color)
+  fullName: Bliss.CSharp.Colors.Color.operator ==(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  type: Operator
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: op_Equality
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 104
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Determines whether two Color objects are equal.
+  example: []
+  syntax:
+    content: public static bool operator ==(Color left, Color right)
+    parameters:
+    - id: left
+      type: Bliss.CSharp.Colors.Color
+      description: The first Color to compare.
+    - id: right
+      type: Bliss.CSharp.Colors.Color
+      description: The second Color to compare.
+    return:
+      type: System.Boolean
+      description: <code>true</code> if the specified Color objects are equal; otherwise, <code>false</code>.
+    content.vb: Public Shared Operator =(left As Color, right As Color) As Boolean
+  overload: Bliss.CSharp.Colors.Color.op_Equality*
+  nameWithType.vb: Color.=(Color, Color)
+  fullName.vb: Bliss.CSharp.Colors.Color.=(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  name.vb: =(Color, Color)
+- uid: Bliss.CSharp.Colors.Color.op_Inequality(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  commentId: M:Bliss.CSharp.Colors.Color.op_Inequality(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  id: op_Inequality(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: operator !=(Color, Color)
+  nameWithType: Color.operator !=(Color, Color)
+  fullName: Bliss.CSharp.Colors.Color.operator !=(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  type: Operator
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: op_Inequality
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 114
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Represents the equality operator for comparing two colors for equality.
+  example: []
+  syntax:
+    content: public static bool operator !=(Color left, Color right)
+    parameters:
+    - id: left
+      type: Bliss.CSharp.Colors.Color
+      description: The first color to compare.
+    - id: right
+      type: Bliss.CSharp.Colors.Color
+      description: The second color to compare.
+    return:
+      type: System.Boolean
+      description: true if the colors are equal; otherwise, false.
+    content.vb: Public Shared Operator <>(left As Color, right As Color) As Boolean
+  overload: Bliss.CSharp.Colors.Color.op_Inequality*
+  nameWithType.vb: Color.<>(Color, Color)
+  fullName.vb: Bliss.CSharp.Colors.Color.<>(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  name.vb: <>(Color, Color)
+- uid: Bliss.CSharp.Colors.Color.ToRgbaFloat
+  commentId: M:Bliss.CSharp.Colors.Color.ToRgbaFloat
+  id: ToRgbaFloat
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: ToRgbaFloat()
+  nameWithType: Color.ToRgbaFloat()
+  fullName: Bliss.CSharp.Colors.Color.ToRgbaFloat()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ToRgbaFloat
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 122
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Converts the color to an <xref href="Veldrid.RgbaFloat" data-throw-if-not-resolved="false"></xref> value.
+  example: []
+  syntax:
+    content: public RgbaFloat ToRgbaFloat()
+    return:
+      type: Veldrid.RgbaFloat
+      description: A new instance of the <xref href="Veldrid.RgbaFloat" data-throw-if-not-resolved="false"></xref> struct representing the color.
+    content.vb: Public Function ToRgbaFloat() As RgbaFloat
+  overload: Bliss.CSharp.Colors.Color.ToRgbaFloat*
+- uid: Bliss.CSharp.Colors.Color.ToRgbaFloatVec4
+  commentId: M:Bliss.CSharp.Colors.Color.ToRgbaFloatVec4
+  id: ToRgbaFloatVec4
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: ToRgbaFloatVec4()
+  nameWithType: Color.ToRgbaFloatVec4()
+  fullName: Bliss.CSharp.Colors.Color.ToRgbaFloatVec4()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ToRgbaFloatVec4
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 130
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Converts the color to a <xref href="System.Numerics.Vector4" data-throw-if-not-resolved="false"></xref> representation with each component normalized to the range of 0 to 1.
+  example: []
+  syntax:
+    content: public Vector4 ToRgbaFloatVec4()
+    return:
+      type: System.Numerics.Vector4
+      description: A <xref href="System.Numerics.Vector4" data-throw-if-not-resolved="false"></xref> object representing the normalized RGBA components of the color.
+    content.vb: Public Function ToRgbaFloatVec4() As Vector4
+  overload: Bliss.CSharp.Colors.Color.ToRgbaFloatVec4*
+- uid: Bliss.CSharp.Colors.Color.ToVector4
+  commentId: M:Bliss.CSharp.Colors.Color.ToVector4
+  id: ToVector4
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: ToVector4()
+  nameWithType: Color.ToVector4()
+  fullName: Bliss.CSharp.Colors.Color.ToVector4()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ToVector4
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 138
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Converts the color to a Vector4 representation.
+  example: []
+  syntax:
+    content: public Vector4 ToVector4()
+    return:
+      type: System.Numerics.Vector4
+      description: A Vector4 representing the color.
+    content.vb: Public Function ToVector4() As Vector4
+  overload: Bliss.CSharp.Colors.Color.ToVector4*
+- uid: Bliss.CSharp.Colors.Color.Equals(Bliss.CSharp.Colors.Color)
+  commentId: M:Bliss.CSharp.Colors.Color.Equals(Bliss.CSharp.Colors.Color)
+  id: Equals(Bliss.CSharp.Colors.Color)
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: Equals(Color)
+  nameWithType: Color.Equals(Color)
+  fullName: Bliss.CSharp.Colors.Color.Equals(Bliss.CSharp.Colors.Color)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Equals
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 149
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Determines whether the current color object is equal to another color object.
+  example: []
+  syntax:
+    content: public bool Equals(Color other)
+    parameters:
+    - id: other
+      type: Bliss.CSharp.Colors.Color
+      description: The color to compare to.
+    return:
+      type: System.Boolean
+      description: True if the current color object is equal to the other color object; otherwise, false.
+    content.vb: Public Function Equals(other As Color) As Boolean
+  overload: Bliss.CSharp.Colors.Color.Equals*
+  implements:
+  - System.IEquatable{Bliss.CSharp.Colors.Color}.Equals(Bliss.CSharp.Colors.Color)
+- uid: Bliss.CSharp.Colors.Color.Equals(System.Object)
+  commentId: M:Bliss.CSharp.Colors.Color.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: Equals(object?)
+  nameWithType: Color.Equals(object?)
+  fullName: Bliss.CSharp.Colors.Color.Equals(object?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Equals
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 160
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Determines whether the current color object is equal to another color object.
+  example: []
+  syntax:
+    content: public override bool Equals(object? obj)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The color to compare to.
+    return:
+      type: System.Boolean
+      description: True if the current color object is equal to the other color object; otherwise, false.
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.ValueType.Equals(System.Object)
+  overload: Bliss.CSharp.Colors.Color.Equals*
+  nameWithType.vb: Color.Equals(Object)
+  fullName.vb: Bliss.CSharp.Colors.Color.Equals(Object)
+  name.vb: Equals(Object)
+- uid: Bliss.CSharp.Colors.Color.GetHashCode
+  commentId: M:Bliss.CSharp.Colors.Color.GetHashCode
+  id: GetHashCode
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: Color.GetHashCode()
+  fullName: Bliss.CSharp.Colors.Color.GetHashCode()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetHashCode
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 168
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Returns the hash code for this instance.
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+      description: The hash code for this instance.
+    content.vb: Public Overrides Function GetHashCode() As Integer
+  overridden: System.ValueType.GetHashCode
+  overload: Bliss.CSharp.Colors.Color.GetHashCode*
+- uid: Bliss.CSharp.Colors.Color.ToString
+  commentId: M:Bliss.CSharp.Colors.Color.ToString
+  id: ToString
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: Color.ToString()
+  fullName: Bliss.CSharp.Colors.Color.ToString()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ToString
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 176
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Returns a string that represents the current color.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: A string representation of the current color.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.ValueType.ToString
+  overload: Bliss.CSharp.Colors.Color.ToString*
+references:
+- uid: Bliss.CSharp.Colors
+  commentId: N:Bliss.CSharp.Colors
+  href: Bliss.html
+  name: Bliss.CSharp.Colors
+  nameWithType: Bliss.CSharp.Colors
+  fullName: Bliss.CSharp.Colors
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Colors
+    name: Colors
+    href: Bliss.CSharp.Colors.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Colors
+    name: Colors
+    href: Bliss.CSharp.Colors.html
+- uid: System.IEquatable{Bliss.CSharp.Colors.Color}
+  commentId: T:System.IEquatable{Bliss.CSharp.Colors.Color}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<Color>
+  nameWithType: IEquatable<Color>
+  fullName: System.IEquatable<Bliss.CSharp.Colors.Color>
+  nameWithType.vb: IEquatable(Of Color)
+  fullName.vb: System.IEquatable(Of Bliss.CSharp.Colors.Color)
+  name.vb: IEquatable(Of Color)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Bliss.CSharp.Colors.Color
+    name: Color
+    href: Bliss.CSharp.Colors.Color.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bliss.CSharp.Colors.Color
+    name: Color
+    href: Bliss.CSharp.Colors.Color.html
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bliss.CSharp.Colors.Color
+  commentId: T:Bliss.CSharp.Colors.Color
+  parent: Bliss.CSharp.Colors
+  href: Bliss.CSharp.Colors.Color.html
+  name: Color
+  nameWithType: Color
+  fullName: Bliss.CSharp.Colors.Color
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: Bliss.CSharp.Colors.Color.#ctor*
+  commentId: Overload:Bliss.CSharp.Colors.Color.#ctor
+  href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color__ctor_System_Byte_System_Byte_System_Byte_System_Byte_
+  name: Color
+  nameWithType: Color.Color
+  fullName: Bliss.CSharp.Colors.Color.Color
+  nameWithType.vb: Color.New
+  fullName.vb: Bliss.CSharp.Colors.Color.New
+  name.vb: New
+- uid: Veldrid.RgbaFloat
+  commentId: T:Veldrid.RgbaFloat
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RgbaFloat.cs
+  name: RgbaFloat
+  nameWithType: RgbaFloat
+  fullName: Veldrid.RgbaFloat
+- uid: Veldrid
+  commentId: N:Veldrid
+  isExternal: true
+  name: Veldrid
+  nameWithType: Veldrid
+  fullName: Veldrid
+- uid: Bliss.CSharp.Colors.Color.op_Equality*
+  commentId: Overload:Bliss.CSharp.Colors.Color.op_Equality
+  href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Equality_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+  name: operator ==
+  nameWithType: Color.operator ==
+  fullName: Bliss.CSharp.Colors.Color.operator ==
+  nameWithType.vb: Color.=
+  fullName.vb: Bliss.CSharp.Colors.Color.=
+  name.vb: =
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bliss.CSharp.Colors.Color.op_Equality*
+    name: ==
+    href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Equality_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bliss.CSharp.Colors.Color.op_Inequality*
+  commentId: Overload:Bliss.CSharp.Colors.Color.op_Inequality
+  href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Inequality_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+  name: operator !=
+  nameWithType: Color.operator !=
+  fullName: Bliss.CSharp.Colors.Color.operator !=
+  nameWithType.vb: Color.<>
+  fullName.vb: Bliss.CSharp.Colors.Color.<>
+  name.vb: <>
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bliss.CSharp.Colors.Color.op_Inequality*
+    name: '!='
+    href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Inequality_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+- uid: Bliss.CSharp.Colors.Color.ToRgbaFloat*
+  commentId: Overload:Bliss.CSharp.Colors.Color.ToRgbaFloat
+  href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_ToRgbaFloat
+  name: ToRgbaFloat
+  nameWithType: Color.ToRgbaFloat
+  fullName: Bliss.CSharp.Colors.Color.ToRgbaFloat
+- uid: System.Numerics.Vector4
+  commentId: T:System.Numerics.Vector4
+  parent: System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.vector4
+  name: Vector4
+  nameWithType: Vector4
+  fullName: System.Numerics.Vector4
+- uid: Bliss.CSharp.Colors.Color.ToRgbaFloatVec4*
+  commentId: Overload:Bliss.CSharp.Colors.Color.ToRgbaFloatVec4
+  href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_ToRgbaFloatVec4
+  name: ToRgbaFloatVec4
+  nameWithType: Color.ToRgbaFloatVec4
+  fullName: Bliss.CSharp.Colors.Color.ToRgbaFloatVec4
+- uid: System.Numerics
+  commentId: N:System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Numerics
+  nameWithType: System.Numerics
+  fullName: System.Numerics
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+- uid: Bliss.CSharp.Colors.Color.ToVector4*
+  commentId: Overload:Bliss.CSharp.Colors.Color.ToVector4
+  href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_ToVector4
+  name: ToVector4
+  nameWithType: Color.ToVector4
+  fullName: Bliss.CSharp.Colors.Color.ToVector4
+- uid: Bliss.CSharp.Colors.Color.Equals*
+  commentId: Overload:Bliss.CSharp.Colors.Color.Equals
+  href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_Equals_Bliss_CSharp_Colors_Color_
+  name: Equals
+  nameWithType: Color.Equals
+  fullName: Bliss.CSharp.Colors.Color.Equals
+- uid: System.IEquatable{Bliss.CSharp.Colors.Color}.Equals(Bliss.CSharp.Colors.Color)
+  commentId: M:System.IEquatable{Bliss.CSharp.Colors.Color}.Equals(Bliss.CSharp.Colors.Color)
+  parent: System.IEquatable{Bliss.CSharp.Colors.Color}
+  definition: System.IEquatable`1.Equals(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(Color)
+  nameWithType: IEquatable<Color>.Equals(Color)
+  fullName: System.IEquatable<Bliss.CSharp.Colors.Color>.Equals(Bliss.CSharp.Colors.Color)
+  nameWithType.vb: IEquatable(Of Color).Equals(Color)
+  fullName.vb: System.IEquatable(Of Bliss.CSharp.Colors.Color).Equals(Bliss.CSharp.Colors.Color)
+  spec.csharp:
+  - uid: System.IEquatable{Bliss.CSharp.Colors.Color}.Equals(Bliss.CSharp.Colors.Color)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Bliss.CSharp.Colors.Color
+    name: Color
+    href: Bliss.CSharp.Colors.Color.html
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable{Bliss.CSharp.Colors.Color}.Equals(Bliss.CSharp.Colors.Color)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Bliss.CSharp.Colors.Color
+    name: Color
+    href: Bliss.CSharp.Colors.Color.html
+  - name: )
+- uid: System.IEquatable`1.Equals(`0)
+  commentId: M:System.IEquatable`1.Equals(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(T)
+  nameWithType: IEquatable<T>.Equals(T)
+  fullName: System.IEquatable<T>.Equals(T)
+  nameWithType.vb: IEquatable(Of T).Equals(T)
+  fullName.vb: System.IEquatable(Of T).Equals(T)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Colors.Color.GetHashCode*
+  commentId: Overload:Bliss.CSharp.Colors.Color.GetHashCode
+  href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_GetHashCode
+  name: GetHashCode
+  nameWithType: Color.GetHashCode
+  fullName: Bliss.CSharp.Colors.Color.GetHashCode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Colors.Color.ToString*
+  commentId: Overload:Bliss.CSharp.Colors.Color.ToString
+  href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_ToString
+  name: ToString
+  nameWithType: Color.ToString
+  fullName: Bliss.CSharp.Colors.Color.ToString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

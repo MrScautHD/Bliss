@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Mathematics
+  commentId: N:Bliss.CSharp.Mathematics
+  id: Bliss.CSharp.Mathematics
+  children:
+  - Bliss.CSharp.Mathematics.BlissMath
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Mathematics
+  nameWithType: Bliss.CSharp.Mathematics
+  fullName: Bliss.CSharp.Mathematics
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Mathematics.BlissMath
+  commentId: T:Bliss.CSharp.Mathematics.BlissMath
+  href: Bliss.CSharp.Mathematics.BlissMath.html
+  name: BlissMath
+  nameWithType: BlissMath
+  fullName: Bliss.CSharp.Mathematics.BlissMath

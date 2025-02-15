@@ -1,0 +1,2644 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Windowing.IWindow
+  commentId: T:Bliss.CSharp.Windowing.IWindow
+  id: IWindow
+  parent: Bliss.CSharp.Windowing
+  children:
+  - Bliss.CSharp.Windowing.IWindow.ClearState
+  - Bliss.CSharp.Windowing.IWindow.ClientToScreen(Bliss.CSharp.Transformations.Point)
+  - Bliss.CSharp.Windowing.IWindow.Closed
+  - Bliss.CSharp.Windowing.IWindow.DragDrop
+  - Bliss.CSharp.Windowing.IWindow.Exists
+  - Bliss.CSharp.Windowing.IWindow.Exposed
+  - Bliss.CSharp.Windowing.IWindow.FocusGained
+  - Bliss.CSharp.Windowing.IWindow.FocusLost
+  - Bliss.CSharp.Windowing.IWindow.GamepadAdded
+  - Bliss.CSharp.Windowing.IWindow.GamepadAxisMoved
+  - Bliss.CSharp.Windowing.IWindow.GamepadButtonDown
+  - Bliss.CSharp.Windowing.IWindow.GamepadButtonUp
+  - Bliss.CSharp.Windowing.IWindow.GamepadRemoved
+  - Bliss.CSharp.Windowing.IWindow.GetHeight
+  - Bliss.CSharp.Windowing.IWindow.GetOrCreateOpenGlPlatformInfo(Veldrid.GraphicsDeviceOptions,Veldrid.GraphicsBackend)
+  - Bliss.CSharp.Windowing.IWindow.GetPosition
+  - Bliss.CSharp.Windowing.IWindow.GetSize
+  - Bliss.CSharp.Windowing.IWindow.GetState
+  - Bliss.CSharp.Windowing.IWindow.GetTitle
+  - Bliss.CSharp.Windowing.IWindow.GetWidth
+  - Bliss.CSharp.Windowing.IWindow.GetX
+  - Bliss.CSharp.Windowing.IWindow.GetY
+  - Bliss.CSharp.Windowing.IWindow.Handle
+  - Bliss.CSharp.Windowing.IWindow.HasState(Bliss.CSharp.Windowing.WindowState)
+  - Bliss.CSharp.Windowing.IWindow.Hidden
+  - Bliss.CSharp.Windowing.IWindow.Id
+  - Bliss.CSharp.Windowing.IWindow.IsFocused
+  - Bliss.CSharp.Windowing.IWindow.KeyDown
+  - Bliss.CSharp.Windowing.IWindow.KeyUp
+  - Bliss.CSharp.Windowing.IWindow.MouseButtonDown
+  - Bliss.CSharp.Windowing.IWindow.MouseButtonUp
+  - Bliss.CSharp.Windowing.IWindow.MouseEntered
+  - Bliss.CSharp.Windowing.IWindow.MouseLeft
+  - Bliss.CSharp.Windowing.IWindow.MouseMove
+  - Bliss.CSharp.Windowing.IWindow.MouseWheel
+  - Bliss.CSharp.Windowing.IWindow.Moved
+  - Bliss.CSharp.Windowing.IWindow.PumpEvents
+  - Bliss.CSharp.Windowing.IWindow.Resized
+  - Bliss.CSharp.Windowing.IWindow.ScreenToClient(Bliss.CSharp.Transformations.Point)
+  - Bliss.CSharp.Windowing.IWindow.SetHeight(System.Int32)
+  - Bliss.CSharp.Windowing.IWindow.SetIcon(Bliss.CSharp.Images.Image)
+  - Bliss.CSharp.Windowing.IWindow.SetPosition(System.Int32,System.Int32)
+  - Bliss.CSharp.Windowing.IWindow.SetSize(System.Int32,System.Int32)
+  - Bliss.CSharp.Windowing.IWindow.SetState(Bliss.CSharp.Windowing.WindowState)
+  - Bliss.CSharp.Windowing.IWindow.SetTitle(System.String)
+  - Bliss.CSharp.Windowing.IWindow.SetWidth(System.Int32)
+  - Bliss.CSharp.Windowing.IWindow.SetX(System.Int32)
+  - Bliss.CSharp.Windowing.IWindow.SetY(System.Int32)
+  - Bliss.CSharp.Windowing.IWindow.Shown
+  - Bliss.CSharp.Windowing.IWindow.SwapchainSource
+  - Bliss.CSharp.Windowing.IWindow.TextInput
+  langs:
+  - csharp
+  - vb
+  name: IWindow
+  nameWithType: IWindow
+  fullName: Bliss.CSharp.Windowing.IWindow
+  type: Interface
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IWindow
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 10
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  syntax:
+    content: 'public interface IWindow : IDisposable'
+    content.vb: Public Interface IWindow Inherits IDisposable
+  inheritedMembers:
+  - System.IDisposable.Dispose
+- uid: Bliss.CSharp.Windowing.IWindow.Handle
+  commentId: P:Bliss.CSharp.Windowing.IWindow.Handle
+  id: Handle
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: Handle
+  nameWithType: IWindow.Handle
+  fullName: Bliss.CSharp.Windowing.IWindow.Handle
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Handle
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: >-
+    Gets the native handle of the window. This handle can be used to interact
+
+    with low-level windowing operations directly through platform-specific
+
+    APIs or libraries.
+  example: []
+  syntax:
+    content: nint Handle { get; }
+    parameters: []
+    return:
+      type: System.IntPtr
+    content.vb: ReadOnly Property Handle As IntPtr
+  overload: Bliss.CSharp.Windowing.IWindow.Handle*
+- uid: Bliss.CSharp.Windowing.IWindow.Id
+  commentId: P:Bliss.CSharp.Windowing.IWindow.Id
+  id: Id
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: IWindow.Id
+  fullName: Bliss.CSharp.Windowing.IWindow.Id
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Id
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 23
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: >-
+    Gets the unique identifier for the window. This identifier can be used to
+
+    reference the window in various windowing and event handling operations.
+  example: []
+  syntax:
+    content: uint Id { get; }
+    parameters: []
+    return:
+      type: System.UInt32
+    content.vb: ReadOnly Property Id As UInteger
+  overload: Bliss.CSharp.Windowing.IWindow.Id*
+- uid: Bliss.CSharp.Windowing.IWindow.SwapchainSource
+  commentId: P:Bliss.CSharp.Windowing.IWindow.SwapchainSource
+  id: SwapchainSource
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: SwapchainSource
+  nameWithType: IWindow.SwapchainSource
+  fullName: Bliss.CSharp.Windowing.IWindow.SwapchainSource
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SwapchainSource
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 30
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: >-
+    Gets the source of the swapchain tied to the window. This source provides
+
+    the necessary information to create and manage swapchains for rendering
+
+    graphics content within the window.
+  example: []
+  syntax:
+    content: SwapchainSource SwapchainSource { get; }
+    parameters: []
+    return:
+      type: Veldrid.SwapchainSource
+    content.vb: ReadOnly Property SwapchainSource As SwapchainSource
+  overload: Bliss.CSharp.Windowing.IWindow.SwapchainSource*
+- uid: Bliss.CSharp.Windowing.IWindow.Exists
+  commentId: P:Bliss.CSharp.Windowing.IWindow.Exists
+  id: Exists
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: Exists
+  nameWithType: IWindow.Exists
+  fullName: Bliss.CSharp.Windowing.IWindow.Exists
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Exists
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 36
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: >-
+    Indicates whether the window currently exists.
+
+    This property can be used to check if the window has not been closed or destroyed.
+  example: []
+  syntax:
+    content: bool Exists { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property Exists As Boolean
+  overload: Bliss.CSharp.Windowing.IWindow.Exists*
+- uid: Bliss.CSharp.Windowing.IWindow.IsFocused
+  commentId: P:Bliss.CSharp.Windowing.IWindow.IsFocused
+  id: IsFocused
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: IsFocused
+  nameWithType: IWindow.IsFocused
+  fullName: Bliss.CSharp.Windowing.IWindow.IsFocused
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsFocused
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 43
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: >-
+    Indicates whether the window is currently focused. A window is considered focused
+
+    when it has received input focus and is the active window receiving user input.
+
+    This property can be used to check if the window is the foreground window.
+  example: []
+  syntax:
+    content: bool IsFocused { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsFocused As Boolean
+  overload: Bliss.CSharp.Windowing.IWindow.IsFocused*
+- uid: Bliss.CSharp.Windowing.IWindow.Resized
+  commentId: E:Bliss.CSharp.Windowing.IWindow.Resized
+  id: Resized
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: Resized
+  nameWithType: IWindow.Resized
+  fullName: Bliss.CSharp.Windowing.IWindow.Resized
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Resized
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 48
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Occurs when the window is resized.
+  example: []
+  syntax:
+    content: event Action? Resized
+    return:
+      type: System.Action
+    content.vb: Event Resized As Action
+- uid: Bliss.CSharp.Windowing.IWindow.Closed
+  commentId: E:Bliss.CSharp.Windowing.IWindow.Closed
+  id: Closed
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: Closed
+  nameWithType: IWindow.Closed
+  fullName: Bliss.CSharp.Windowing.IWindow.Closed
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Closed
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 53
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Occurs after the window has closed.
+  example: []
+  syntax:
+    content: event Action? Closed
+    return:
+      type: System.Action
+    content.vb: Event Closed As Action
+- uid: Bliss.CSharp.Windowing.IWindow.FocusGained
+  commentId: E:Bliss.CSharp.Windowing.IWindow.FocusGained
+  id: FocusGained
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: FocusGained
+  nameWithType: IWindow.FocusGained
+  fullName: Bliss.CSharp.Windowing.IWindow.FocusGained
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: FocusGained
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 58
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Occurs when the window gains focus.
+  example: []
+  syntax:
+    content: event Action? FocusGained
+    return:
+      type: System.Action
+    content.vb: Event FocusGained As Action
+- uid: Bliss.CSharp.Windowing.IWindow.FocusLost
+  commentId: E:Bliss.CSharp.Windowing.IWindow.FocusLost
+  id: FocusLost
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: FocusLost
+  nameWithType: IWindow.FocusLost
+  fullName: Bliss.CSharp.Windowing.IWindow.FocusLost
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: FocusLost
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 63
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Occurs when the window loses focus.
+  example: []
+  syntax:
+    content: event Action? FocusLost
+    return:
+      type: System.Action
+    content.vb: Event FocusLost As Action
+- uid: Bliss.CSharp.Windowing.IWindow.Shown
+  commentId: E:Bliss.CSharp.Windowing.IWindow.Shown
+  id: Shown
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: Shown
+  nameWithType: IWindow.Shown
+  fullName: Bliss.CSharp.Windowing.IWindow.Shown
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Shown
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 68
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Occurs when the window is shown.
+  example: []
+  syntax:
+    content: event Action? Shown
+    return:
+      type: System.Action
+    content.vb: Event Shown As Action
+- uid: Bliss.CSharp.Windowing.IWindow.Hidden
+  commentId: E:Bliss.CSharp.Windowing.IWindow.Hidden
+  id: Hidden
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: Hidden
+  nameWithType: IWindow.Hidden
+  fullName: Bliss.CSharp.Windowing.IWindow.Hidden
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Hidden
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 73
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Occurs when the window is hidden.
+  example: []
+  syntax:
+    content: event Action? Hidden
+    return:
+      type: System.Action
+    content.vb: Event Hidden As Action
+- uid: Bliss.CSharp.Windowing.IWindow.Exposed
+  commentId: E:Bliss.CSharp.Windowing.IWindow.Exposed
+  id: Exposed
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: Exposed
+  nameWithType: IWindow.Exposed
+  fullName: Bliss.CSharp.Windowing.IWindow.Exposed
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Exposed
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 78
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Occurs when the window is exposed (made visible or unhidden).
+  example: []
+  syntax:
+    content: event Action? Exposed
+    return:
+      type: System.Action
+    content.vb: Event Exposed As Action
+- uid: Bliss.CSharp.Windowing.IWindow.Moved
+  commentId: E:Bliss.CSharp.Windowing.IWindow.Moved
+  id: Moved
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: Moved
+  nameWithType: IWindow.Moved
+  fullName: Bliss.CSharp.Windowing.IWindow.Moved
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Moved
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 83
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Occurs when the window is moved.
+  example: []
+  syntax:
+    content: event Action<Point>? Moved
+    return:
+      type: System.Action{Bliss.CSharp.Transformations.Point}
+    content.vb: Event Moved As Action(Of Point)
+- uid: Bliss.CSharp.Windowing.IWindow.MouseEntered
+  commentId: E:Bliss.CSharp.Windowing.IWindow.MouseEntered
+  id: MouseEntered
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: MouseEntered
+  nameWithType: IWindow.MouseEntered
+  fullName: Bliss.CSharp.Windowing.IWindow.MouseEntered
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: MouseEntered
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 88
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Occurs when the mouse enters the window.
+  example: []
+  syntax:
+    content: event Action? MouseEntered
+    return:
+      type: System.Action
+    content.vb: Event MouseEntered As Action
+- uid: Bliss.CSharp.Windowing.IWindow.MouseLeft
+  commentId: E:Bliss.CSharp.Windowing.IWindow.MouseLeft
+  id: MouseLeft
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: MouseLeft
+  nameWithType: IWindow.MouseLeft
+  fullName: Bliss.CSharp.Windowing.IWindow.MouseLeft
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: MouseLeft
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 93
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Occurs when the mouse leaves the window.
+  example: []
+  syntax:
+    content: event Action? MouseLeft
+    return:
+      type: System.Action
+    content.vb: Event MouseLeft As Action
+- uid: Bliss.CSharp.Windowing.IWindow.MouseWheel
+  commentId: E:Bliss.CSharp.Windowing.IWindow.MouseWheel
+  id: MouseWheel
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: MouseWheel
+  nameWithType: IWindow.MouseWheel
+  fullName: Bliss.CSharp.Windowing.IWindow.MouseWheel
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: MouseWheel
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 98
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Occurs when the mouse wheel is scrolled.
+  example: []
+  syntax:
+    content: event Action<Vector2>? MouseWheel
+    return:
+      type: System.Action{System.Numerics.Vector2}
+    content.vb: Event MouseWheel As Action(Of Vector2)
+- uid: Bliss.CSharp.Windowing.IWindow.MouseMove
+  commentId: E:Bliss.CSharp.Windowing.IWindow.MouseMove
+  id: MouseMove
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: MouseMove
+  nameWithType: IWindow.MouseMove
+  fullName: Bliss.CSharp.Windowing.IWindow.MouseMove
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: MouseMove
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 103
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Occurs when the mouse is moved.
+  example: []
+  syntax:
+    content: event Action<Vector2>? MouseMove
+    return:
+      type: System.Action{System.Numerics.Vector2}
+    content.vb: Event MouseMove As Action(Of Vector2)
+- uid: Bliss.CSharp.Windowing.IWindow.MouseButtonDown
+  commentId: E:Bliss.CSharp.Windowing.IWindow.MouseButtonDown
+  id: MouseButtonDown
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: MouseButtonDown
+  nameWithType: IWindow.MouseButtonDown
+  fullName: Bliss.CSharp.Windowing.IWindow.MouseButtonDown
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: MouseButtonDown
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 108
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Occurs when a mouse button is pressed.
+  example: []
+  syntax:
+    content: event Action<MouseEvent>? MouseButtonDown
+    return:
+      type: System.Action{Bliss.CSharp.Windowing.Events.MouseEvent}
+    content.vb: Event MouseButtonDown As Action(Of MouseEvent)
+- uid: Bliss.CSharp.Windowing.IWindow.MouseButtonUp
+  commentId: E:Bliss.CSharp.Windowing.IWindow.MouseButtonUp
+  id: MouseButtonUp
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: MouseButtonUp
+  nameWithType: IWindow.MouseButtonUp
+  fullName: Bliss.CSharp.Windowing.IWindow.MouseButtonUp
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: MouseButtonUp
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 113
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Occurs when a mouse button is released.
+  example: []
+  syntax:
+    content: event Action<MouseEvent>? MouseButtonUp
+    return:
+      type: System.Action{Bliss.CSharp.Windowing.Events.MouseEvent}
+    content.vb: Event MouseButtonUp As Action(Of MouseEvent)
+- uid: Bliss.CSharp.Windowing.IWindow.KeyDown
+  commentId: E:Bliss.CSharp.Windowing.IWindow.KeyDown
+  id: KeyDown
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: KeyDown
+  nameWithType: IWindow.KeyDown
+  fullName: Bliss.CSharp.Windowing.IWindow.KeyDown
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: KeyDown
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 118
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Occurs when a key is pressed.
+  example: []
+  syntax:
+    content: event Action<KeyEvent>? KeyDown
+    return:
+      type: System.Action{Bliss.CSharp.Windowing.Events.KeyEvent}
+    content.vb: Event KeyDown As Action(Of KeyEvent)
+- uid: Bliss.CSharp.Windowing.IWindow.KeyUp
+  commentId: E:Bliss.CSharp.Windowing.IWindow.KeyUp
+  id: KeyUp
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: KeyUp
+  nameWithType: IWindow.KeyUp
+  fullName: Bliss.CSharp.Windowing.IWindow.KeyUp
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: KeyUp
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 123
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Occurs when a key is released.
+  example: []
+  syntax:
+    content: event Action<KeyEvent>? KeyUp
+    return:
+      type: System.Action{Bliss.CSharp.Windowing.Events.KeyEvent}
+    content.vb: Event KeyUp As Action(Of KeyEvent)
+- uid: Bliss.CSharp.Windowing.IWindow.TextInput
+  commentId: E:Bliss.CSharp.Windowing.IWindow.TextInput
+  id: TextInput
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: TextInput
+  nameWithType: IWindow.TextInput
+  fullName: Bliss.CSharp.Windowing.IWindow.TextInput
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: TextInput
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 129
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: >-
+    Occurs when text input is received from the user. The event handler receives an array of characters
+
+    representing the text that was entered.
+  example: []
+  syntax:
+    content: event Action<char[]>? TextInput
+    return:
+      type: System.Action{System.Char[]}
+    content.vb: Event TextInput As Action(Of Char())
+- uid: Bliss.CSharp.Windowing.IWindow.GamepadAdded
+  commentId: E:Bliss.CSharp.Windowing.IWindow.GamepadAdded
+  id: GamepadAdded
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: GamepadAdded
+  nameWithType: IWindow.GamepadAdded
+  fullName: Bliss.CSharp.Windowing.IWindow.GamepadAdded
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GamepadAdded
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 135
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: >-
+    Occurs when a new gamepad is detected and added to the system.
+
+    The event provides the ID of the newly connected gamepad.
+  example: []
+  syntax:
+    content: event Action<uint>? GamepadAdded
+    return:
+      type: System.Action{System.UInt32}
+    content.vb: Event GamepadAdded As Action(Of UInteger)
+- uid: Bliss.CSharp.Windowing.IWindow.GamepadRemoved
+  commentId: E:Bliss.CSharp.Windowing.IWindow.GamepadRemoved
+  id: GamepadRemoved
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: GamepadRemoved
+  nameWithType: IWindow.GamepadRemoved
+  fullName: Bliss.CSharp.Windowing.IWindow.GamepadRemoved
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GamepadRemoved
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 140
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Occurs when a gamepad is removed from the system. The event provides the ID of the removed gamepad as an argument.
+  example: []
+  syntax:
+    content: event Action<uint>? GamepadRemoved
+    return:
+      type: System.Action{System.UInt32}
+    content.vb: Event GamepadRemoved As Action(Of UInteger)
+- uid: Bliss.CSharp.Windowing.IWindow.GamepadAxisMoved
+  commentId: E:Bliss.CSharp.Windowing.IWindow.GamepadAxisMoved
+  id: GamepadAxisMoved
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: GamepadAxisMoved
+  nameWithType: IWindow.GamepadAxisMoved
+  fullName: Bliss.CSharp.Windowing.IWindow.GamepadAxisMoved
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GamepadAxisMoved
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 146
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: >-
+    Invoked when a gamepad's axis is moved. This event provides details such as
+
+    the gamepad ID, the specific axis, and the position value of the axis movement.
+  example: []
+  syntax:
+    content: event Action<uint, GamepadAxis, short>? GamepadAxisMoved
+    return:
+      type: System.Action{System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadAxis,System.Int16}
+    content.vb: Event GamepadAxisMoved As Action(Of UInteger, GamepadAxis, Short)
+- uid: Bliss.CSharp.Windowing.IWindow.GamepadButtonDown
+  commentId: E:Bliss.CSharp.Windowing.IWindow.GamepadButtonDown
+  id: GamepadButtonDown
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: GamepadButtonDown
+  nameWithType: IWindow.GamepadButtonDown
+  fullName: Bliss.CSharp.Windowing.IWindow.GamepadButtonDown
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GamepadButtonDown
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 152
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: >-
+    Occurs when a gamepad button is pressed down. The event provides the gamepad ID
+
+    and the button that was pressed.
+  example: []
+  syntax:
+    content: event Action<uint, GamepadButton>? GamepadButtonDown
+    return:
+      type: System.Action{System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton}
+    content.vb: Event GamepadButtonDown As Action(Of UInteger, GamepadButton)
+- uid: Bliss.CSharp.Windowing.IWindow.GamepadButtonUp
+  commentId: E:Bliss.CSharp.Windowing.IWindow.GamepadButtonUp
+  id: GamepadButtonUp
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: GamepadButtonUp
+  nameWithType: IWindow.GamepadButtonUp
+  fullName: Bliss.CSharp.Windowing.IWindow.GamepadButtonUp
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GamepadButtonUp
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 158
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: >-
+    Event triggered when a gamepad button is released.
+
+    The event handler receives two parameters: the ID of the gamepad and the button that was released.
+  example: []
+  syntax:
+    content: event Action<uint, GamepadButton>? GamepadButtonUp
+    return:
+      type: System.Action{System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton}
+    content.vb: Event GamepadButtonUp As Action(Of UInteger, GamepadButton)
+- uid: Bliss.CSharp.Windowing.IWindow.DragDrop
+  commentId: E:Bliss.CSharp.Windowing.IWindow.DragDrop
+  id: DragDrop
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: DragDrop
+  nameWithType: IWindow.DragDrop
+  fullName: Bliss.CSharp.Windowing.IWindow.DragDrop
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DragDrop
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 163
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Occurs when a drag-and-drop operation is performed.
+  example: []
+  syntax:
+    content: event Action<string>? DragDrop
+    return:
+      type: System.Action{System.String}
+    content.vb: Event DragDrop As Action(Of String)
+- uid: Bliss.CSharp.Windowing.IWindow.GetState
+  commentId: M:Bliss.CSharp.Windowing.IWindow.GetState
+  id: GetState
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: GetState()
+  nameWithType: IWindow.GetState()
+  fullName: Bliss.CSharp.Windowing.IWindow.GetState()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetState
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 169
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Retrieves the current state of the window.
+  example: []
+  syntax:
+    content: WindowState GetState()
+    return:
+      type: Bliss.CSharp.Windowing.WindowState
+      description: The current state of the window as a WindowState enum value.
+    content.vb: Function GetState() As WindowState
+  overload: Bliss.CSharp.Windowing.IWindow.GetState*
+- uid: Bliss.CSharp.Windowing.IWindow.HasState(Bliss.CSharp.Windowing.WindowState)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.HasState(Bliss.CSharp.Windowing.WindowState)
+  id: HasState(Bliss.CSharp.Windowing.WindowState)
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: HasState(WindowState)
+  nameWithType: IWindow.HasState(WindowState)
+  fullName: Bliss.CSharp.Windowing.IWindow.HasState(Bliss.CSharp.Windowing.WindowState)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: HasState
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 176
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Checks if the current state of the window matches the specified state.
+  example: []
+  syntax:
+    content: bool HasState(WindowState state)
+    parameters:
+    - id: state
+      type: Bliss.CSharp.Windowing.WindowState
+      description: The state to be checked against the current window state.
+    return:
+      type: System.Boolean
+      description: True if the current state of the window matches the specified state, otherwise false.
+    content.vb: Function HasState(state As WindowState) As Boolean
+  overload: Bliss.CSharp.Windowing.IWindow.HasState*
+- uid: Bliss.CSharp.Windowing.IWindow.SetState(Bliss.CSharp.Windowing.WindowState)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetState(Bliss.CSharp.Windowing.WindowState)
+  id: SetState(Bliss.CSharp.Windowing.WindowState)
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: SetState(WindowState)
+  nameWithType: IWindow.SetState(WindowState)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetState(Bliss.CSharp.Windowing.WindowState)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetState
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 182
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Sets the state of the window to the specified WindowState.
+  example: []
+  syntax:
+    content: void SetState(WindowState state)
+    parameters:
+    - id: state
+      type: Bliss.CSharp.Windowing.WindowState
+      description: The desired state to set the window to, represented by the WindowState enum.
+    content.vb: Sub SetState(state As WindowState)
+  overload: Bliss.CSharp.Windowing.IWindow.SetState*
+- uid: Bliss.CSharp.Windowing.IWindow.ClearState
+  commentId: M:Bliss.CSharp.Windowing.IWindow.ClearState
+  id: ClearState
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: ClearState()
+  nameWithType: IWindow.ClearState()
+  fullName: Bliss.CSharp.Windowing.IWindow.ClearState()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ClearState
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 187
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Clears the current state of the window, resetting it to its default state.
+  example: []
+  syntax:
+    content: void ClearState()
+    content.vb: Sub ClearState()
+  overload: Bliss.CSharp.Windowing.IWindow.ClearState*
+- uid: Bliss.CSharp.Windowing.IWindow.GetTitle
+  commentId: M:Bliss.CSharp.Windowing.IWindow.GetTitle
+  id: GetTitle
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: GetTitle()
+  nameWithType: IWindow.GetTitle()
+  fullName: Bliss.CSharp.Windowing.IWindow.GetTitle()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetTitle
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 193
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Retrieves the current title of the window.
+  example: []
+  syntax:
+    content: string GetTitle()
+    return:
+      type: System.String
+      description: The current window title as a string.
+    content.vb: Function GetTitle() As String
+  overload: Bliss.CSharp.Windowing.IWindow.GetTitle*
+- uid: Bliss.CSharp.Windowing.IWindow.SetTitle(System.String)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetTitle(System.String)
+  id: SetTitle(System.String)
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: SetTitle(string)
+  nameWithType: IWindow.SetTitle(string)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetTitle(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetTitle
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 199
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Sets the title of the window.
+  example: []
+  syntax:
+    content: void SetTitle(string title)
+    parameters:
+    - id: title
+      type: System.String
+      description: The new title to set for the window.
+    content.vb: Sub SetTitle(title As String)
+  overload: Bliss.CSharp.Windowing.IWindow.SetTitle*
+  nameWithType.vb: IWindow.SetTitle(String)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.SetTitle(String)
+  name.vb: SetTitle(String)
+- uid: Bliss.CSharp.Windowing.IWindow.GetSize
+  commentId: M:Bliss.CSharp.Windowing.IWindow.GetSize
+  id: GetSize
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: GetSize()
+  nameWithType: IWindow.GetSize()
+  fullName: Bliss.CSharp.Windowing.IWindow.GetSize()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetSize
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 205
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Retrieves the current size of the window.
+  example: []
+  syntax:
+    content: (int, int) GetSize()
+    return:
+      type: System.ValueTuple{System.Int32,System.Int32}
+      description: A tuple containing the width and height of the window.
+    content.vb: Function GetSize() As (Integer, Integer)
+  overload: Bliss.CSharp.Windowing.IWindow.GetSize*
+- uid: Bliss.CSharp.Windowing.IWindow.SetSize(System.Int32,System.Int32)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetSize(System.Int32,System.Int32)
+  id: SetSize(System.Int32,System.Int32)
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: SetSize(int, int)
+  nameWithType: IWindow.SetSize(int, int)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetSize(int, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetSize
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 212
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Sets the size of the window to the specified width and height.
+  example: []
+  syntax:
+    content: void SetSize(int width, int height)
+    parameters:
+    - id: width
+      type: System.Int32
+      description: The new width for the window.
+    - id: height
+      type: System.Int32
+      description: The new height for the window.
+    content.vb: Sub SetSize(width As Integer, height As Integer)
+  overload: Bliss.CSharp.Windowing.IWindow.SetSize*
+  nameWithType.vb: IWindow.SetSize(Integer, Integer)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.SetSize(Integer, Integer)
+  name.vb: SetSize(Integer, Integer)
+- uid: Bliss.CSharp.Windowing.IWindow.GetWidth
+  commentId: M:Bliss.CSharp.Windowing.IWindow.GetWidth
+  id: GetWidth
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: GetWidth()
+  nameWithType: IWindow.GetWidth()
+  fullName: Bliss.CSharp.Windowing.IWindow.GetWidth()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetWidth
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 218
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Retrieves the current width of the window.
+  example: []
+  syntax:
+    content: int GetWidth()
+    return:
+      type: System.Int32
+      description: The current window width as an integer.
+    content.vb: Function GetWidth() As Integer
+  overload: Bliss.CSharp.Windowing.IWindow.GetWidth*
+- uid: Bliss.CSharp.Windowing.IWindow.SetWidth(System.Int32)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetWidth(System.Int32)
+  id: SetWidth(System.Int32)
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: SetWidth(int)
+  nameWithType: IWindow.SetWidth(int)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetWidth(int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetWidth
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 224
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Sets the width of the window to the specified value.
+  example: []
+  syntax:
+    content: void SetWidth(int width)
+    parameters:
+    - id: width
+      type: System.Int32
+      description: The new width for the window.
+    content.vb: Sub SetWidth(width As Integer)
+  overload: Bliss.CSharp.Windowing.IWindow.SetWidth*
+  nameWithType.vb: IWindow.SetWidth(Integer)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.SetWidth(Integer)
+  name.vb: SetWidth(Integer)
+- uid: Bliss.CSharp.Windowing.IWindow.GetHeight
+  commentId: M:Bliss.CSharp.Windowing.IWindow.GetHeight
+  id: GetHeight
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: GetHeight()
+  nameWithType: IWindow.GetHeight()
+  fullName: Bliss.CSharp.Windowing.IWindow.GetHeight()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetHeight
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 230
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Retrieves the current height of the window.
+  example: []
+  syntax:
+    content: int GetHeight()
+    return:
+      type: System.Int32
+      description: The current window height as an integer.
+    content.vb: Function GetHeight() As Integer
+  overload: Bliss.CSharp.Windowing.IWindow.GetHeight*
+- uid: Bliss.CSharp.Windowing.IWindow.GetPosition
+  commentId: M:Bliss.CSharp.Windowing.IWindow.GetPosition
+  id: GetPosition
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: GetPosition()
+  nameWithType: IWindow.GetPosition()
+  fullName: Bliss.CSharp.Windowing.IWindow.GetPosition()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetPosition
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 236
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Retrieves the current position of the window.
+  example: []
+  syntax:
+    content: (int, int) GetPosition()
+    return:
+      type: System.ValueTuple{System.Int32,System.Int32}
+      description: A tuple containing the x and y coordinates of the window.
+    content.vb: Function GetPosition() As (Integer, Integer)
+  overload: Bliss.CSharp.Windowing.IWindow.GetPosition*
+- uid: Bliss.CSharp.Windowing.IWindow.SetPosition(System.Int32,System.Int32)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetPosition(System.Int32,System.Int32)
+  id: SetPosition(System.Int32,System.Int32)
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: SetPosition(int, int)
+  nameWithType: IWindow.SetPosition(int, int)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetPosition(int, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetPosition
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 243
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Sets the position of the window to the specified coordinates.
+  example: []
+  syntax:
+    content: void SetPosition(int x, int y)
+    parameters:
+    - id: x
+      type: System.Int32
+      description: The x-coordinate to set for the window position.
+    - id: y
+      type: System.Int32
+      description: The y-coordinate to set for the window position.
+    content.vb: Sub SetPosition(x As Integer, y As Integer)
+  overload: Bliss.CSharp.Windowing.IWindow.SetPosition*
+  nameWithType.vb: IWindow.SetPosition(Integer, Integer)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.SetPosition(Integer, Integer)
+  name.vb: SetPosition(Integer, Integer)
+- uid: Bliss.CSharp.Windowing.IWindow.GetX
+  commentId: M:Bliss.CSharp.Windowing.IWindow.GetX
+  id: GetX
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: GetX()
+  nameWithType: IWindow.GetX()
+  fullName: Bliss.CSharp.Windowing.IWindow.GetX()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetX
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 249
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Retrieves the current X coordinate of the window.
+  example: []
+  syntax:
+    content: int GetX()
+    return:
+      type: System.Int32
+      description: The current X coordinate of the window as an integer.
+    content.vb: Function GetX() As Integer
+  overload: Bliss.CSharp.Windowing.IWindow.GetX*
+- uid: Bliss.CSharp.Windowing.IWindow.SetX(System.Int32)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetX(System.Int32)
+  id: SetX(System.Int32)
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: SetX(int)
+  nameWithType: IWindow.SetX(int)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetX(int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetX
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 255
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Sets the X coordinate of the window to the specified value.
+  example: []
+  syntax:
+    content: void SetX(int x)
+    parameters:
+    - id: x
+      type: System.Int32
+      description: The new X coordinate for the window.
+    content.vb: Sub SetX(x As Integer)
+  overload: Bliss.CSharp.Windowing.IWindow.SetX*
+  nameWithType.vb: IWindow.SetX(Integer)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.SetX(Integer)
+  name.vb: SetX(Integer)
+- uid: Bliss.CSharp.Windowing.IWindow.GetY
+  commentId: M:Bliss.CSharp.Windowing.IWindow.GetY
+  id: GetY
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: GetY()
+  nameWithType: IWindow.GetY()
+  fullName: Bliss.CSharp.Windowing.IWindow.GetY()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetY
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 261
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Retrieves the current y-coordinate of the window's position.
+  example: []
+  syntax:
+    content: int GetY()
+    return:
+      type: System.Int32
+      description: The current y-coordinate of the window as an integer.
+    content.vb: Function GetY() As Integer
+  overload: Bliss.CSharp.Windowing.IWindow.GetY*
+- uid: Bliss.CSharp.Windowing.IWindow.SetY(System.Int32)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetY(System.Int32)
+  id: SetY(System.Int32)
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: SetY(int)
+  nameWithType: IWindow.SetY(int)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetY(int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetY
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 267
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Sets the y-coordinate of the window's position.
+  example: []
+  syntax:
+    content: void SetY(int y)
+    parameters:
+    - id: y
+      type: System.Int32
+      description: The new y-coordinate to set for the window.
+    content.vb: Sub SetY(y As Integer)
+  overload: Bliss.CSharp.Windowing.IWindow.SetY*
+  nameWithType.vb: IWindow.SetY(Integer)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.SetY(Integer)
+  name.vb: SetY(Integer)
+- uid: Bliss.CSharp.Windowing.IWindow.SetHeight(System.Int32)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetHeight(System.Int32)
+  id: SetHeight(System.Int32)
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: SetHeight(int)
+  nameWithType: IWindow.SetHeight(int)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetHeight(int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetHeight
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 273
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Sets the height of the window to the specified value.
+  example: []
+  syntax:
+    content: void SetHeight(int height)
+    parameters:
+    - id: height
+      type: System.Int32
+      description: The new height for the window.
+    content.vb: Sub SetHeight(height As Integer)
+  overload: Bliss.CSharp.Windowing.IWindow.SetHeight*
+  nameWithType.vb: IWindow.SetHeight(Integer)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.SetHeight(Integer)
+  name.vb: SetHeight(Integer)
+- uid: Bliss.CSharp.Windowing.IWindow.SetIcon(Bliss.CSharp.Images.Image)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetIcon(Bliss.CSharp.Images.Image)
+  id: SetIcon(Bliss.CSharp.Images.Image)
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: SetIcon(Image)
+  nameWithType: IWindow.SetIcon(Image)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetIcon(Bliss.CSharp.Images.Image)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetIcon
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 279
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Sets the icon of the window.
+  example: []
+  syntax:
+    content: void SetIcon(Image image)
+    parameters:
+    - id: image
+      type: Bliss.CSharp.Images.Image
+      description: The image to set as the window icon, represented as an Image of Rgba32 format.
+    content.vb: Sub SetIcon(image As Image)
+  overload: Bliss.CSharp.Windowing.IWindow.SetIcon*
+- uid: Bliss.CSharp.Windowing.IWindow.PumpEvents
+  commentId: M:Bliss.CSharp.Windowing.IWindow.PumpEvents
+  id: PumpEvents
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: PumpEvents()
+  nameWithType: IWindow.PumpEvents()
+  fullName: Bliss.CSharp.Windowing.IWindow.PumpEvents()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: PumpEvents
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 284
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Processes all pending window events.
+  example: []
+  syntax:
+    content: void PumpEvents()
+    content.vb: Sub PumpEvents()
+  overload: Bliss.CSharp.Windowing.IWindow.PumpEvents*
+- uid: Bliss.CSharp.Windowing.IWindow.ClientToScreen(Bliss.CSharp.Transformations.Point)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.ClientToScreen(Bliss.CSharp.Transformations.Point)
+  id: ClientToScreen(Bliss.CSharp.Transformations.Point)
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: ClientToScreen(Point)
+  nameWithType: IWindow.ClientToScreen(Point)
+  fullName: Bliss.CSharp.Windowing.IWindow.ClientToScreen(Bliss.CSharp.Transformations.Point)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ClientToScreen
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 291
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Converts the specified client-area point to screen coordinates.
+  example: []
+  syntax:
+    content: Point ClientToScreen(Point point)
+    parameters:
+    - id: point
+      type: Bliss.CSharp.Transformations.Point
+      description: The client-area point to be converted.
+    return:
+      type: Bliss.CSharp.Transformations.Point
+      description: The converted point in screen coordinates.
+    content.vb: Function ClientToScreen(point As Point) As Point
+  overload: Bliss.CSharp.Windowing.IWindow.ClientToScreen*
+- uid: Bliss.CSharp.Windowing.IWindow.ScreenToClient(Bliss.CSharp.Transformations.Point)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.ScreenToClient(Bliss.CSharp.Transformations.Point)
+  id: ScreenToClient(Bliss.CSharp.Transformations.Point)
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: ScreenToClient(Point)
+  nameWithType: IWindow.ScreenToClient(Point)
+  fullName: Bliss.CSharp.Windowing.IWindow.ScreenToClient(Bliss.CSharp.Transformations.Point)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ScreenToClient
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 298
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Converts the specified screen coordinates to client-area coordinates.
+  example: []
+  syntax:
+    content: Point ScreenToClient(Point point)
+    parameters:
+    - id: point
+      type: Bliss.CSharp.Transformations.Point
+      description: The screen coordinates to convert.
+    return:
+      type: Bliss.CSharp.Transformations.Point
+      description: The converted client-area coordinates as a Point.
+    content.vb: Function ScreenToClient(point As Point) As Point
+  overload: Bliss.CSharp.Windowing.IWindow.ScreenToClient*
+- uid: Bliss.CSharp.Windowing.IWindow.GetOrCreateOpenGlPlatformInfo(Veldrid.GraphicsDeviceOptions,Veldrid.GraphicsBackend)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.GetOrCreateOpenGlPlatformInfo(Veldrid.GraphicsDeviceOptions,Veldrid.GraphicsBackend)
+  id: GetOrCreateOpenGlPlatformInfo(Veldrid.GraphicsDeviceOptions,Veldrid.GraphicsBackend)
+  parent: Bliss.CSharp.Windowing.IWindow
+  langs:
+  - csharp
+  - vb
+  name: GetOrCreateOpenGlPlatformInfo(GraphicsDeviceOptions, GraphicsBackend)
+  nameWithType: IWindow.GetOrCreateOpenGlPlatformInfo(GraphicsDeviceOptions, GraphicsBackend)
+  fullName: Bliss.CSharp.Windowing.IWindow.GetOrCreateOpenGlPlatformInfo(Veldrid.GraphicsDeviceOptions, Veldrid.GraphicsBackend)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/IWindow.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetOrCreateOpenGlPlatformInfo
+    path: ../src/Bliss/CSharp/Windowing/IWindow.cs
+    startLine: 306
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Retrieves or creates the OpenGL platform information required for the specified graphics device options and backend.
+  example: []
+  syntax:
+    content: OpenGLPlatformInfo GetOrCreateOpenGlPlatformInfo(GraphicsDeviceOptions options, GraphicsBackend backend)
+    parameters:
+    - id: options
+      type: Veldrid.GraphicsDeviceOptions
+      description: The graphics device options to use.
+    - id: backend
+      type: Veldrid.GraphicsBackend
+      description: The graphics backend to use.
+    return:
+      type: Veldrid.OpenGL.OpenGLPlatformInfo
+      description: The OpenGL platform information.
+    content.vb: Function GetOrCreateOpenGlPlatformInfo(options As GraphicsDeviceOptions, backend As GraphicsBackend) As OpenGLPlatformInfo
+  overload: Bliss.CSharp.Windowing.IWindow.GetOrCreateOpenGlPlatformInfo*
+references:
+- uid: Bliss.CSharp.Windowing
+  commentId: N:Bliss.CSharp.Windowing
+  href: Bliss.html
+  name: Bliss.CSharp.Windowing
+  nameWithType: Bliss.CSharp.Windowing
+  fullName: Bliss.CSharp.Windowing
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Windowing
+    name: Windowing
+    href: Bliss.CSharp.Windowing.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Windowing
+    name: Windowing
+    href: Bliss.CSharp.Windowing.html
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp.Windowing.IWindow.Handle*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.Handle
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Handle
+  name: Handle
+  nameWithType: IWindow.Handle
+  fullName: Bliss.CSharp.Windowing.IWindow.Handle
+- uid: System.IntPtr
+  commentId: T:System.IntPtr
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.intptr
+  name: nint
+  nameWithType: nint
+  fullName: nint
+  nameWithType.vb: IntPtr
+  fullName.vb: System.IntPtr
+  name.vb: IntPtr
+- uid: Bliss.CSharp.Windowing.IWindow.Id*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.Id
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Id
+  name: Id
+  nameWithType: IWindow.Id
+  fullName: Bliss.CSharp.Windowing.IWindow.Id
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: Bliss.CSharp.Windowing.IWindow.SwapchainSource*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.SwapchainSource
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SwapchainSource
+  name: SwapchainSource
+  nameWithType: IWindow.SwapchainSource
+  fullName: Bliss.CSharp.Windowing.IWindow.SwapchainSource
+- uid: Veldrid.SwapchainSource
+  commentId: T:Veldrid.SwapchainSource
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/SwapchainSource.cs
+  name: SwapchainSource
+  nameWithType: SwapchainSource
+  fullName: Veldrid.SwapchainSource
+- uid: Veldrid
+  commentId: N:Veldrid
+  isExternal: true
+  name: Veldrid
+  nameWithType: Veldrid
+  fullName: Veldrid
+- uid: Bliss.CSharp.Windowing.IWindow.Exists*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.Exists
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Exists
+  name: Exists
+  nameWithType: IWindow.Exists
+  fullName: Bliss.CSharp.Windowing.IWindow.Exists
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bliss.CSharp.Windowing.IWindow.IsFocused*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.IsFocused
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_IsFocused
+  name: IsFocused
+  nameWithType: IWindow.IsFocused
+  fullName: Bliss.CSharp.Windowing.IWindow.IsFocused
+- uid: System.Action
+  commentId: T:System.Action
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action
+  name: Action
+  nameWithType: Action
+  fullName: System.Action
+- uid: System.Action{Bliss.CSharp.Transformations.Point}
+  commentId: T:System.Action{Bliss.CSharp.Transformations.Point}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<Point>
+  nameWithType: Action<Point>
+  fullName: System.Action<Bliss.CSharp.Transformations.Point>
+  nameWithType.vb: Action(Of Point)
+  fullName.vb: System.Action(Of Bliss.CSharp.Transformations.Point)
+  name.vb: Action(Of Point)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Bliss.CSharp.Transformations.Point
+    name: Point
+    href: Bliss.CSharp.Transformations.Point.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bliss.CSharp.Transformations.Point
+    name: Point
+    href: Bliss.CSharp.Transformations.Point.html
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Action{System.Numerics.Vector2}
+  commentId: T:System.Action{System.Numerics.Vector2}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<Vector2>
+  nameWithType: Action<Vector2>
+  fullName: System.Action<System.Numerics.Vector2>
+  nameWithType.vb: Action(Of Vector2)
+  fullName.vb: System.Action(Of System.Numerics.Vector2)
+  name.vb: Action(Of Vector2)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.Numerics.Vector2
+    name: Vector2
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.vector2
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Numerics.Vector2
+    name: Vector2
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.vector2
+  - name: )
+- uid: System.Action{Bliss.CSharp.Windowing.Events.MouseEvent}
+  commentId: T:System.Action{Bliss.CSharp.Windowing.Events.MouseEvent}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<MouseEvent>
+  nameWithType: Action<MouseEvent>
+  fullName: System.Action<Bliss.CSharp.Windowing.Events.MouseEvent>
+  nameWithType.vb: Action(Of MouseEvent)
+  fullName.vb: System.Action(Of Bliss.CSharp.Windowing.Events.MouseEvent)
+  name.vb: Action(Of MouseEvent)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Bliss.CSharp.Windowing.Events.MouseEvent
+    name: MouseEvent
+    href: Bliss.CSharp.Windowing.Events.MouseEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bliss.CSharp.Windowing.Events.MouseEvent
+    name: MouseEvent
+    href: Bliss.CSharp.Windowing.Events.MouseEvent.html
+  - name: )
+- uid: System.Action{Bliss.CSharp.Windowing.Events.KeyEvent}
+  commentId: T:System.Action{Bliss.CSharp.Windowing.Events.KeyEvent}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<KeyEvent>
+  nameWithType: Action<KeyEvent>
+  fullName: System.Action<Bliss.CSharp.Windowing.Events.KeyEvent>
+  nameWithType.vb: Action(Of KeyEvent)
+  fullName.vb: System.Action(Of Bliss.CSharp.Windowing.Events.KeyEvent)
+  name.vb: Action(Of KeyEvent)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Bliss.CSharp.Windowing.Events.KeyEvent
+    name: KeyEvent
+    href: Bliss.CSharp.Windowing.Events.KeyEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bliss.CSharp.Windowing.Events.KeyEvent
+    name: KeyEvent
+    href: Bliss.CSharp.Windowing.Events.KeyEvent.html
+  - name: )
+- uid: System.Action{System.Char[]}
+  commentId: T:System.Action{System.Char[]}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<char[]>
+  nameWithType: Action<char[]>
+  fullName: System.Action<char[]>
+  nameWithType.vb: Action(Of Char())
+  fullName.vb: System.Action(Of Char())
+  name.vb: Action(Of Char())
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.Char
+    name: char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Char
+    name: Char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: (
+  - name: )
+  - name: )
+- uid: System.Action{System.UInt32}
+  commentId: T:System.Action{System.UInt32}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<uint>
+  nameWithType: Action<uint>
+  fullName: System.Action<uint>
+  nameWithType.vb: Action(Of UInteger)
+  fullName.vb: System.Action(Of UInteger)
+  name.vb: Action(Of UInteger)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: )
+- uid: System.Action{System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadAxis,System.Int16}
+  commentId: T:System.Action{System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadAxis,System.Int16}
+  parent: System
+  definition: System.Action`3
+  href: https://learn.microsoft.com/dotnet/api/system.action-3
+  name: Action<uint, GamepadAxis, short>
+  nameWithType: Action<uint, GamepadAxis, short>
+  fullName: System.Action<uint, Bliss.CSharp.Interact.Gamepads.GamepadAxis, short>
+  nameWithType.vb: Action(Of UInteger, GamepadAxis, Short)
+  fullName.vb: System.Action(Of UInteger, Bliss.CSharp.Interact.Gamepads.GamepadAxis, Short)
+  name.vb: Action(Of UInteger, GamepadAxis, Short)
+  spec.csharp:
+  - uid: System.Action`3
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-3
+  - name: <
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: ','
+  - name: " "
+  - uid: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+    name: GamepadAxis
+    href: Bliss.CSharp.Interact.Gamepads.GamepadAxis.html
+  - name: ','
+  - name: " "
+  - uid: System.Int16
+    name: short
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int16
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`3
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-3
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: ','
+  - name: " "
+  - uid: Bliss.CSharp.Interact.Gamepads.GamepadAxis
+    name: GamepadAxis
+    href: Bliss.CSharp.Interact.Gamepads.GamepadAxis.html
+  - name: ','
+  - name: " "
+  - uid: System.Int16
+    name: Short
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int16
+  - name: )
+- uid: System.Action`3
+  commentId: T:System.Action`3
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-3
+  name: Action<T1, T2, T3>
+  nameWithType: Action<T1, T2, T3>
+  fullName: System.Action<T1, T2, T3>
+  nameWithType.vb: Action(Of T1, T2, T3)
+  fullName.vb: System.Action(Of T1, T2, T3)
+  name.vb: Action(Of T1, T2, T3)
+  spec.csharp:
+  - uid: System.Action`3
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-3
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`3
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-3
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )
+- uid: System.Action{System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton}
+  commentId: T:System.Action{System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton}
+  parent: System
+  definition: System.Action`2
+  href: https://learn.microsoft.com/dotnet/api/system.action-2
+  name: Action<uint, GamepadButton>
+  nameWithType: Action<uint, GamepadButton>
+  fullName: System.Action<uint, Bliss.CSharp.Interact.Gamepads.GamepadButton>
+  nameWithType.vb: Action(Of UInteger, GamepadButton)
+  fullName.vb: System.Action(Of UInteger, Bliss.CSharp.Interact.Gamepads.GamepadButton)
+  name.vb: Action(Of UInteger, GamepadButton)
+  spec.csharp:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-2
+  - name: <
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: ','
+  - name: " "
+  - uid: Bliss.CSharp.Interact.Gamepads.GamepadButton
+    name: GamepadButton
+    href: Bliss.CSharp.Interact.Gamepads.GamepadButton.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: ','
+  - name: " "
+  - uid: Bliss.CSharp.Interact.Gamepads.GamepadButton
+    name: GamepadButton
+    href: Bliss.CSharp.Interact.Gamepads.GamepadButton.html
+  - name: )
+- uid: System.Action`2
+  commentId: T:System.Action`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-2
+  name: Action<T1, T2>
+  nameWithType: Action<T1, T2>
+  fullName: System.Action<T1, T2>
+  nameWithType.vb: Action(Of T1, T2)
+  fullName.vb: System.Action(Of T1, T2)
+  name.vb: Action(Of T1, T2)
+  spec.csharp:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-2
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+- uid: System.Action{System.String}
+  commentId: T:System.Action{System.String}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<string>
+  nameWithType: Action<string>
+  fullName: System.Action<string>
+  nameWithType.vb: Action(Of String)
+  fullName.vb: System.Action(Of String)
+  name.vb: Action(Of String)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Bliss.CSharp.Windowing.IWindow.GetState*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.GetState
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetState
+  name: GetState
+  nameWithType: IWindow.GetState
+  fullName: Bliss.CSharp.Windowing.IWindow.GetState
+- uid: Bliss.CSharp.Windowing.WindowState
+  commentId: T:Bliss.CSharp.Windowing.WindowState
+  parent: Bliss.CSharp.Windowing
+  href: Bliss.CSharp.Windowing.WindowState.html
+  name: WindowState
+  nameWithType: WindowState
+  fullName: Bliss.CSharp.Windowing.WindowState
+- uid: Bliss.CSharp.Windowing.IWindow.HasState*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.HasState
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_HasState_Bliss_CSharp_Windowing_WindowState_
+  name: HasState
+  nameWithType: IWindow.HasState
+  fullName: Bliss.CSharp.Windowing.IWindow.HasState
+- uid: Bliss.CSharp.Windowing.IWindow.SetState*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.SetState
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetState_Bliss_CSharp_Windowing_WindowState_
+  name: SetState
+  nameWithType: IWindow.SetState
+  fullName: Bliss.CSharp.Windowing.IWindow.SetState
+- uid: Bliss.CSharp.Windowing.IWindow.ClearState*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.ClearState
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_ClearState
+  name: ClearState
+  nameWithType: IWindow.ClearState
+  fullName: Bliss.CSharp.Windowing.IWindow.ClearState
+- uid: Bliss.CSharp.Windowing.IWindow.GetTitle*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.GetTitle
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetTitle
+  name: GetTitle
+  nameWithType: IWindow.GetTitle
+  fullName: Bliss.CSharp.Windowing.IWindow.GetTitle
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bliss.CSharp.Windowing.IWindow.SetTitle*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.SetTitle
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetTitle_System_String_
+  name: SetTitle
+  nameWithType: IWindow.SetTitle
+  fullName: Bliss.CSharp.Windowing.IWindow.SetTitle
+- uid: Bliss.CSharp.Windowing.IWindow.GetSize*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.GetSize
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetSize
+  name: GetSize
+  nameWithType: IWindow.GetSize
+  fullName: Bliss.CSharp.Windowing.IWindow.GetSize
+- uid: System.ValueTuple{System.Int32,System.Int32}
+  commentId: T:System.ValueTuple{System.Int32,System.Int32}
+  parent: System
+  definition: System.ValueTuple`2
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: (int, int)
+  nameWithType: (int, int)
+  fullName: (int, int)
+  nameWithType.vb: (Integer, Integer)
+  fullName.vb: (Integer, Integer)
+  name.vb: (Integer, Integer)
+  spec.csharp:
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.ValueTuple`2
+  commentId: T:System.ValueTuple`2
+  name: (T1, T2)
+  nameWithType: (T1, T2)
+  fullName: (T1, T2)
+  spec.csharp:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+  spec.vb:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+- uid: Bliss.CSharp.Windowing.IWindow.SetSize*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.SetSize
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetSize_System_Int32_System_Int32_
+  name: SetSize
+  nameWithType: IWindow.SetSize
+  fullName: Bliss.CSharp.Windowing.IWindow.SetSize
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bliss.CSharp.Windowing.IWindow.GetWidth*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.GetWidth
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetWidth
+  name: GetWidth
+  nameWithType: IWindow.GetWidth
+  fullName: Bliss.CSharp.Windowing.IWindow.GetWidth
+- uid: Bliss.CSharp.Windowing.IWindow.SetWidth*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.SetWidth
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetWidth_System_Int32_
+  name: SetWidth
+  nameWithType: IWindow.SetWidth
+  fullName: Bliss.CSharp.Windowing.IWindow.SetWidth
+- uid: Bliss.CSharp.Windowing.IWindow.GetHeight*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.GetHeight
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetHeight
+  name: GetHeight
+  nameWithType: IWindow.GetHeight
+  fullName: Bliss.CSharp.Windowing.IWindow.GetHeight
+- uid: Bliss.CSharp.Windowing.IWindow.GetPosition*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.GetPosition
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetPosition
+  name: GetPosition
+  nameWithType: IWindow.GetPosition
+  fullName: Bliss.CSharp.Windowing.IWindow.GetPosition
+- uid: Bliss.CSharp.Windowing.IWindow.SetPosition*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.SetPosition
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetPosition_System_Int32_System_Int32_
+  name: SetPosition
+  nameWithType: IWindow.SetPosition
+  fullName: Bliss.CSharp.Windowing.IWindow.SetPosition
+- uid: Bliss.CSharp.Windowing.IWindow.GetX*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.GetX
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetX
+  name: GetX
+  nameWithType: IWindow.GetX
+  fullName: Bliss.CSharp.Windowing.IWindow.GetX
+- uid: Bliss.CSharp.Windowing.IWindow.SetX*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.SetX
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetX_System_Int32_
+  name: SetX
+  nameWithType: IWindow.SetX
+  fullName: Bliss.CSharp.Windowing.IWindow.SetX
+- uid: Bliss.CSharp.Windowing.IWindow.GetY*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.GetY
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetY
+  name: GetY
+  nameWithType: IWindow.GetY
+  fullName: Bliss.CSharp.Windowing.IWindow.GetY
+- uid: Bliss.CSharp.Windowing.IWindow.SetY*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.SetY
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetY_System_Int32_
+  name: SetY
+  nameWithType: IWindow.SetY
+  fullName: Bliss.CSharp.Windowing.IWindow.SetY
+- uid: Bliss.CSharp.Windowing.IWindow.SetHeight*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.SetHeight
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetHeight_System_Int32_
+  name: SetHeight
+  nameWithType: IWindow.SetHeight
+  fullName: Bliss.CSharp.Windowing.IWindow.SetHeight
+- uid: Bliss.CSharp.Windowing.IWindow.SetIcon*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.SetIcon
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetIcon_Bliss_CSharp_Images_Image_
+  name: SetIcon
+  nameWithType: IWindow.SetIcon
+  fullName: Bliss.CSharp.Windowing.IWindow.SetIcon
+- uid: Bliss.CSharp.Images.Image
+  commentId: T:Bliss.CSharp.Images.Image
+  parent: Bliss.CSharp.Images
+  href: Bliss.CSharp.Images.Image.html
+  name: Image
+  nameWithType: Image
+  fullName: Bliss.CSharp.Images.Image
+- uid: Bliss.CSharp.Images
+  commentId: N:Bliss.CSharp.Images
+  href: Bliss.html
+  name: Bliss.CSharp.Images
+  nameWithType: Bliss.CSharp.Images
+  fullName: Bliss.CSharp.Images
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Images
+    name: Images
+    href: Bliss.CSharp.Images.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Images
+    name: Images
+    href: Bliss.CSharp.Images.html
+- uid: Bliss.CSharp.Windowing.IWindow.PumpEvents*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.PumpEvents
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_PumpEvents
+  name: PumpEvents
+  nameWithType: IWindow.PumpEvents
+  fullName: Bliss.CSharp.Windowing.IWindow.PumpEvents
+- uid: Bliss.CSharp.Windowing.IWindow.ClientToScreen*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.ClientToScreen
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_ClientToScreen_Bliss_CSharp_Transformations_Point_
+  name: ClientToScreen
+  nameWithType: IWindow.ClientToScreen
+  fullName: Bliss.CSharp.Windowing.IWindow.ClientToScreen
+- uid: Bliss.CSharp.Transformations.Point
+  commentId: T:Bliss.CSharp.Transformations.Point
+  parent: Bliss.CSharp.Transformations
+  href: Bliss.CSharp.Transformations.Point.html
+  name: Point
+  nameWithType: Point
+  fullName: Bliss.CSharp.Transformations.Point
+- uid: Bliss.CSharp.Transformations
+  commentId: N:Bliss.CSharp.Transformations
+  href: Bliss.html
+  name: Bliss.CSharp.Transformations
+  nameWithType: Bliss.CSharp.Transformations
+  fullName: Bliss.CSharp.Transformations
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Transformations
+    name: Transformations
+    href: Bliss.CSharp.Transformations.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Transformations
+    name: Transformations
+    href: Bliss.CSharp.Transformations.html
+- uid: Bliss.CSharp.Windowing.IWindow.ScreenToClient*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.ScreenToClient
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_ScreenToClient_Bliss_CSharp_Transformations_Point_
+  name: ScreenToClient
+  nameWithType: IWindow.ScreenToClient
+  fullName: Bliss.CSharp.Windowing.IWindow.ScreenToClient
+- uid: Bliss.CSharp.Windowing.IWindow.GetOrCreateOpenGlPlatformInfo*
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.GetOrCreateOpenGlPlatformInfo
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetOrCreateOpenGlPlatformInfo_Veldrid_GraphicsDeviceOptions_Veldrid_GraphicsBackend_
+  name: GetOrCreateOpenGlPlatformInfo
+  nameWithType: IWindow.GetOrCreateOpenGlPlatformInfo
+  fullName: Bliss.CSharp.Windowing.IWindow.GetOrCreateOpenGlPlatformInfo
+- uid: Veldrid.GraphicsDeviceOptions
+  commentId: T:Veldrid.GraphicsDeviceOptions
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsDeviceOptions.cs
+  name: GraphicsDeviceOptions
+  nameWithType: GraphicsDeviceOptions
+  fullName: Veldrid.GraphicsDeviceOptions
+- uid: Veldrid.GraphicsBackend
+  commentId: T:Veldrid.GraphicsBackend
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsBackend.cs
+  name: GraphicsBackend
+  nameWithType: GraphicsBackend
+  fullName: Veldrid.GraphicsBackend
+- uid: Veldrid.OpenGL.OpenGLPlatformInfo
+  commentId: T:Veldrid.OpenGL.OpenGLPlatformInfo
+  parent: Veldrid.OpenGL
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OpenGL/OpenGLPlatformInfo.cs
+  name: OpenGLPlatformInfo
+  nameWithType: OpenGLPlatformInfo
+  fullName: Veldrid.OpenGL.OpenGLPlatformInfo
+- uid: Veldrid.OpenGL
+  commentId: N:Veldrid.OpenGL
+  isExternal: true
+  name: Veldrid.OpenGL
+  nameWithType: Veldrid.OpenGL
+  fullName: Veldrid.OpenGL
+  spec.csharp:
+  - uid: Veldrid
+    name: Veldrid
+    isExternal: true
+  - name: .
+  - uid: Veldrid.OpenGL
+    name: OpenGL
+    isExternal: true
+  spec.vb:
+  - uid: Veldrid
+    name: Veldrid
+    isExternal: true
+  - name: .
+  - uid: Veldrid.OpenGL
+    name: OpenGL
+    isExternal: true

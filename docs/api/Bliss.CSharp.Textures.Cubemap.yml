@@ -1,0 +1,1089 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Textures.Cubemap
+  commentId: T:Bliss.CSharp.Textures.Cubemap
+  id: Cubemap
+  parent: Bliss.CSharp.Textures
+  children:
+  - Bliss.CSharp.Textures.Cubemap.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Images.Image,Bliss.CSharp.Images.Image,Bliss.CSharp.Images.Image,Bliss.CSharp.Images.Image,Bliss.CSharp.Images.Image,Bliss.CSharp.Images.Image,System.Boolean,System.Boolean)
+  - Bliss.CSharp.Textures.Cubemap.#ctor(Veldrid.GraphicsDevice,System.IO.Stream,System.IO.Stream,System.IO.Stream,System.IO.Stream,System.IO.Stream,System.IO.Stream,System.Boolean,System.Boolean)
+  - Bliss.CSharp.Textures.Cubemap.#ctor(Veldrid.GraphicsDevice,System.String,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  - Bliss.CSharp.Textures.Cubemap.DeviceTexture
+  - Bliss.CSharp.Textures.Cubemap.Dispose(System.Boolean)
+  - Bliss.CSharp.Textures.Cubemap.Format
+  - Bliss.CSharp.Textures.Cubemap.Height
+  - Bliss.CSharp.Textures.Cubemap.Images
+  - Bliss.CSharp.Textures.Cubemap.MipLevels
+  - Bliss.CSharp.Textures.Cubemap.PixelSizeInBytes
+  - Bliss.CSharp.Textures.Cubemap.Width
+  langs:
+  - csharp
+  - vb
+  name: Cubemap
+  nameWithType: Cubemap
+  fullName: Bliss.CSharp.Textures.Cubemap
+  type: Class
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemap.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Cubemap
+    path: ../src/Bliss/CSharp/Textures/Cubemap.cs
+    startLine: 6
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  syntax:
+    content: 'public class Cubemap : Disposable, IDisposable'
+    content.vb: Public Class Cubemap Inherits Disposable Implements IDisposable
+  inheritance:
+  - System.Object
+  - Bliss.CSharp.Disposable
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - Bliss.CSharp.Disposable.HasDisposed
+  - Bliss.CSharp.Disposable.Dispose
+  - Bliss.CSharp.Disposable.ThrowIfDisposed
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bliss.CSharp.Textures.Cubemap.Images
+  commentId: P:Bliss.CSharp.Textures.Cubemap.Images
+  id: Images
+  parent: Bliss.CSharp.Textures.Cubemap
+  langs:
+  - csharp
+  - vb
+  name: Images
+  nameWithType: Cubemap.Images
+  fullName: Bliss.CSharp.Textures.Cubemap.Images
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemap.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Images
+    path: ../src/Bliss/CSharp/Textures/Cubemap.cs
+    startLine: 11
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Gets the mipmap levels of images for each face of the cubemap.
+  example: []
+  syntax:
+    content: public Image[][] Images { get; }
+    parameters: []
+    return:
+      type: Bliss.CSharp.Images.Image[][]
+    content.vb: Public ReadOnly Property Images As Image()()
+  overload: Bliss.CSharp.Textures.Cubemap.Images*
+- uid: Bliss.CSharp.Textures.Cubemap.Width
+  commentId: P:Bliss.CSharp.Textures.Cubemap.Width
+  id: Width
+  parent: Bliss.CSharp.Textures.Cubemap
+  langs:
+  - csharp
+  - vb
+  name: Width
+  nameWithType: Cubemap.Width
+  fullName: Bliss.CSharp.Textures.Cubemap.Width
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemap.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Width
+    path: ../src/Bliss/CSharp/Textures/Cubemap.cs
+    startLine: 16
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Gets the width of the cubemap.
+  example: []
+  syntax:
+    content: public uint Width { get; }
+    parameters: []
+    return:
+      type: System.UInt32
+    content.vb: Public ReadOnly Property Width As UInteger
+  overload: Bliss.CSharp.Textures.Cubemap.Width*
+- uid: Bliss.CSharp.Textures.Cubemap.Height
+  commentId: P:Bliss.CSharp.Textures.Cubemap.Height
+  id: Height
+  parent: Bliss.CSharp.Textures.Cubemap
+  langs:
+  - csharp
+  - vb
+  name: Height
+  nameWithType: Cubemap.Height
+  fullName: Bliss.CSharp.Textures.Cubemap.Height
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemap.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Height
+    path: ../src/Bliss/CSharp/Textures/Cubemap.cs
+    startLine: 21
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Gets the height of the cubemap.
+  example: []
+  syntax:
+    content: public uint Height { get; }
+    parameters: []
+    return:
+      type: System.UInt32
+    content.vb: Public ReadOnly Property Height As UInteger
+  overload: Bliss.CSharp.Textures.Cubemap.Height*
+- uid: Bliss.CSharp.Textures.Cubemap.Format
+  commentId: P:Bliss.CSharp.Textures.Cubemap.Format
+  id: Format
+  parent: Bliss.CSharp.Textures.Cubemap
+  langs:
+  - csharp
+  - vb
+  name: Format
+  nameWithType: Cubemap.Format
+  fullName: Bliss.CSharp.Textures.Cubemap.Format
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemap.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Format
+    path: ../src/Bliss/CSharp/Textures/Cubemap.cs
+    startLine: 26
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Gets the pixel format of the cubemap.
+  example: []
+  syntax:
+    content: public PixelFormat Format { get; }
+    parameters: []
+    return:
+      type: Veldrid.PixelFormat
+    content.vb: Public ReadOnly Property Format As PixelFormat
+  overload: Bliss.CSharp.Textures.Cubemap.Format*
+- uid: Bliss.CSharp.Textures.Cubemap.PixelSizeInBytes
+  commentId: P:Bliss.CSharp.Textures.Cubemap.PixelSizeInBytes
+  id: PixelSizeInBytes
+  parent: Bliss.CSharp.Textures.Cubemap
+  langs:
+  - csharp
+  - vb
+  name: PixelSizeInBytes
+  nameWithType: Cubemap.PixelSizeInBytes
+  fullName: Bliss.CSharp.Textures.Cubemap.PixelSizeInBytes
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemap.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: PixelSizeInBytes
+    path: ../src/Bliss/CSharp/Textures/Cubemap.cs
+    startLine: 31
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Gets the size of a pixel in bytes.
+  example: []
+  syntax:
+    content: public uint PixelSizeInBytes { get; }
+    parameters: []
+    return:
+      type: System.UInt32
+    content.vb: Public ReadOnly Property PixelSizeInBytes As UInteger
+  overload: Bliss.CSharp.Textures.Cubemap.PixelSizeInBytes*
+- uid: Bliss.CSharp.Textures.Cubemap.MipLevels
+  commentId: P:Bliss.CSharp.Textures.Cubemap.MipLevels
+  id: MipLevels
+  parent: Bliss.CSharp.Textures.Cubemap
+  langs:
+  - csharp
+  - vb
+  name: MipLevels
+  nameWithType: Cubemap.MipLevels
+  fullName: Bliss.CSharp.Textures.Cubemap.MipLevels
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemap.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: MipLevels
+    path: ../src/Bliss/CSharp/Textures/Cubemap.cs
+    startLine: 36
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Gets the number of mip levels of the cubemap.
+  example: []
+  syntax:
+    content: public uint MipLevels { get; }
+    parameters: []
+    return:
+      type: System.UInt32
+    content.vb: Public ReadOnly Property MipLevels As UInteger
+  overload: Bliss.CSharp.Textures.Cubemap.MipLevels*
+- uid: Bliss.CSharp.Textures.Cubemap.DeviceTexture
+  commentId: P:Bliss.CSharp.Textures.Cubemap.DeviceTexture
+  id: DeviceTexture
+  parent: Bliss.CSharp.Textures.Cubemap
+  langs:
+  - csharp
+  - vb
+  name: DeviceTexture
+  nameWithType: Cubemap.DeviceTexture
+  fullName: Bliss.CSharp.Textures.Cubemap.DeviceTexture
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemap.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DeviceTexture
+    path: ../src/Bliss/CSharp/Textures/Cubemap.cs
+    startLine: 41
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Gets the device texture.
+  example: []
+  syntax:
+    content: public Texture DeviceTexture { get; }
+    parameters: []
+    return:
+      type: Veldrid.Texture
+    content.vb: Public Property DeviceTexture As Texture
+  overload: Bliss.CSharp.Textures.Cubemap.DeviceTexture*
+- uid: Bliss.CSharp.Textures.Cubemap.#ctor(Veldrid.GraphicsDevice,System.String,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  commentId: M:Bliss.CSharp.Textures.Cubemap.#ctor(Veldrid.GraphicsDevice,System.String,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  id: '#ctor(Veldrid.GraphicsDevice,System.String,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)'
+  parent: Bliss.CSharp.Textures.Cubemap
+  langs:
+  - csharp
+  - vb
+  name: Cubemap(GraphicsDevice, string, string, string, string, string, string, bool, bool)
+  nameWithType: Cubemap.Cubemap(GraphicsDevice, string, string, string, string, string, string, bool, bool)
+  fullName: Bliss.CSharp.Textures.Cubemap.Cubemap(Veldrid.GraphicsDevice, string, string, string, string, string, string, bool, bool)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemap.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Textures/Cubemap.cs
+    startLine: 62
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Textures.Cubemap" data-throw-if-not-resolved="false"></xref> class from file paths.
+  example: []
+  syntax:
+    content: public Cubemap(GraphicsDevice graphicsDevice, string positiveXPath, string negativeXPath, string positiveYPath, string negativeYPath, string positiveZPath, string negativeZPath, bool mipmap = true, bool srgb = false)
+    parameters:
+    - id: graphicsDevice
+      type: Veldrid.GraphicsDevice
+      description: The graphics device.
+    - id: positiveXPath
+      type: System.String
+      description: The file path for the positive X face of the cubemap.
+    - id: negativeXPath
+      type: System.String
+      description: The file path for the negative X face of the cubemap.
+    - id: positiveYPath
+      type: System.String
+      description: The file path for the positive Y face of the cubemap.
+    - id: negativeYPath
+      type: System.String
+      description: The file path for the negative Y face of the cubemap.
+    - id: positiveZPath
+      type: System.String
+      description: The file path for the positive Z face of the cubemap.
+    - id: negativeZPath
+      type: System.String
+      description: The file path for the negative Z face of the cubemap.
+    - id: mipmap
+      type: System.Boolean
+      description: Specifies whether to generate mipmaps.
+    - id: srgb
+      type: System.Boolean
+      description: Specifies whether the images should be loaded as sRGB.
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, positiveXPath As String, negativeXPath As String, positiveYPath As String, negativeYPath As String, positiveZPath As String, negativeZPath As String, mipmap As Boolean = True, srgb As Boolean = False)
+  overload: Bliss.CSharp.Textures.Cubemap.#ctor*
+  nameWithType.vb: Cubemap.New(GraphicsDevice, String, String, String, String, String, String, Boolean, Boolean)
+  fullName.vb: Bliss.CSharp.Textures.Cubemap.New(Veldrid.GraphicsDevice, String, String, String, String, String, String, Boolean, Boolean)
+  name.vb: New(GraphicsDevice, String, String, String, String, String, String, Boolean, Boolean)
+- uid: Bliss.CSharp.Textures.Cubemap.#ctor(Veldrid.GraphicsDevice,System.IO.Stream,System.IO.Stream,System.IO.Stream,System.IO.Stream,System.IO.Stream,System.IO.Stream,System.Boolean,System.Boolean)
+  commentId: M:Bliss.CSharp.Textures.Cubemap.#ctor(Veldrid.GraphicsDevice,System.IO.Stream,System.IO.Stream,System.IO.Stream,System.IO.Stream,System.IO.Stream,System.IO.Stream,System.Boolean,System.Boolean)
+  id: '#ctor(Veldrid.GraphicsDevice,System.IO.Stream,System.IO.Stream,System.IO.Stream,System.IO.Stream,System.IO.Stream,System.IO.Stream,System.Boolean,System.Boolean)'
+  parent: Bliss.CSharp.Textures.Cubemap
+  langs:
+  - csharp
+  - vb
+  name: Cubemap(GraphicsDevice, Stream, Stream, Stream, Stream, Stream, Stream, bool, bool)
+  nameWithType: Cubemap.Cubemap(GraphicsDevice, Stream, Stream, Stream, Stream, Stream, Stream, bool, bool)
+  fullName: Bliss.CSharp.Textures.Cubemap.Cubemap(Veldrid.GraphicsDevice, System.IO.Stream, System.IO.Stream, System.IO.Stream, System.IO.Stream, System.IO.Stream, System.IO.Stream, bool, bool)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemap.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Textures/Cubemap.cs
+    startLine: 85
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Textures.Cubemap" data-throw-if-not-resolved="false"></xref> class from streams.
+  example: []
+  syntax:
+    content: public Cubemap(GraphicsDevice graphicsDevice, Stream positiveXStream, Stream negativeXStream, Stream positiveYStream, Stream negativeYStream, Stream positiveZStream, Stream negativeZStream, bool mipmap = true, bool srgb = false)
+    parameters:
+    - id: graphicsDevice
+      type: Veldrid.GraphicsDevice
+      description: The graphics device.
+    - id: positiveXStream
+      type: System.IO.Stream
+      description: The stream for the positive X face of the cubemap.
+    - id: negativeXStream
+      type: System.IO.Stream
+      description: The stream for the negative X face of the cubemap.
+    - id: positiveYStream
+      type: System.IO.Stream
+      description: The stream for the positive Y face of the cubemap.
+    - id: negativeYStream
+      type: System.IO.Stream
+      description: The stream for the negative Y face of the cubemap.
+    - id: positiveZStream
+      type: System.IO.Stream
+      description: The stream for the positive Z face of the cubemap.
+    - id: negativeZStream
+      type: System.IO.Stream
+      description: The stream for the negative Z face of the cubemap.
+    - id: mipmap
+      type: System.Boolean
+      description: Specifies whether to generate mipmaps.
+    - id: srgb
+      type: System.Boolean
+      description: Specifies whether the images should be loaded as sRGB.
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, positiveXStream As Stream, negativeXStream As Stream, positiveYStream As Stream, negativeYStream As Stream, positiveZStream As Stream, negativeZStream As Stream, mipmap As Boolean = True, srgb As Boolean = False)
+  overload: Bliss.CSharp.Textures.Cubemap.#ctor*
+  nameWithType.vb: Cubemap.New(GraphicsDevice, Stream, Stream, Stream, Stream, Stream, Stream, Boolean, Boolean)
+  fullName.vb: Bliss.CSharp.Textures.Cubemap.New(Veldrid.GraphicsDevice, System.IO.Stream, System.IO.Stream, System.IO.Stream, System.IO.Stream, System.IO.Stream, System.IO.Stream, Boolean, Boolean)
+  name.vb: New(GraphicsDevice, Stream, Stream, Stream, Stream, Stream, Stream, Boolean, Boolean)
+- uid: Bliss.CSharp.Textures.Cubemap.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Images.Image,Bliss.CSharp.Images.Image,Bliss.CSharp.Images.Image,Bliss.CSharp.Images.Image,Bliss.CSharp.Images.Image,Bliss.CSharp.Images.Image,System.Boolean,System.Boolean)
+  commentId: M:Bliss.CSharp.Textures.Cubemap.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Images.Image,Bliss.CSharp.Images.Image,Bliss.CSharp.Images.Image,Bliss.CSharp.Images.Image,Bliss.CSharp.Images.Image,Bliss.CSharp.Images.Image,System.Boolean,System.Boolean)
+  id: '#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Images.Image,Bliss.CSharp.Images.Image,Bliss.CSharp.Images.Image,Bliss.CSharp.Images.Image,Bliss.CSharp.Images.Image,Bliss.CSharp.Images.Image,System.Boolean,System.Boolean)'
+  parent: Bliss.CSharp.Textures.Cubemap
+  langs:
+  - csharp
+  - vb
+  name: Cubemap(GraphicsDevice, Image, Image, Image, Image, Image, Image, bool, bool)
+  nameWithType: Cubemap.Cubemap(GraphicsDevice, Image, Image, Image, Image, Image, Image, bool, bool)
+  fullName: Bliss.CSharp.Textures.Cubemap.Cubemap(Veldrid.GraphicsDevice, Bliss.CSharp.Images.Image, Bliss.CSharp.Images.Image, Bliss.CSharp.Images.Image, Bliss.CSharp.Images.Image, Bliss.CSharp.Images.Image, Bliss.CSharp.Images.Image, bool, bool)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemap.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Textures/Cubemap.cs
+    startLine: 108
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Textures.Cubemap" data-throw-if-not-resolved="false"></xref> class from images.
+  example: []
+  syntax:
+    content: public Cubemap(GraphicsDevice graphicsDevice, Image positiveX, Image negativeX, Image positiveY, Image negativeY, Image positiveZ, Image negativeZ, bool mipmap = true, bool srgb = false)
+    parameters:
+    - id: graphicsDevice
+      type: Veldrid.GraphicsDevice
+      description: The graphics device.
+    - id: positiveX
+      type: Bliss.CSharp.Images.Image
+      description: The image for the positive X face of the cubemap.
+    - id: negativeX
+      type: Bliss.CSharp.Images.Image
+      description: The image for the negative X face of the cubemap.
+    - id: positiveY
+      type: Bliss.CSharp.Images.Image
+      description: The image for the positive Y face of the cubemap.
+    - id: negativeY
+      type: Bliss.CSharp.Images.Image
+      description: The image for the negative Y face of the cubemap.
+    - id: positiveZ
+      type: Bliss.CSharp.Images.Image
+      description: The image for the positive Z face of the cubemap.
+    - id: negativeZ
+      type: Bliss.CSharp.Images.Image
+      description: The image for the negative Z face of the cubemap.
+    - id: mipmap
+      type: System.Boolean
+      description: Specifies whether to generate mipmaps.
+    - id: srgb
+      type: System.Boolean
+      description: Specifies whether the images should be loaded as sRGB.
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, positiveX As Image, negativeX As Image, positiveY As Image, negativeY As Image, positiveZ As Image, negativeZ As Image, mipmap As Boolean = True, srgb As Boolean = False)
+  overload: Bliss.CSharp.Textures.Cubemap.#ctor*
+  nameWithType.vb: Cubemap.New(GraphicsDevice, Image, Image, Image, Image, Image, Image, Boolean, Boolean)
+  fullName.vb: Bliss.CSharp.Textures.Cubemap.New(Veldrid.GraphicsDevice, Bliss.CSharp.Images.Image, Bliss.CSharp.Images.Image, Bliss.CSharp.Images.Image, Bliss.CSharp.Images.Image, Bliss.CSharp.Images.Image, Bliss.CSharp.Images.Image, Boolean, Boolean)
+  name.vb: New(GraphicsDevice, Image, Image, Image, Image, Image, Image, Boolean, Boolean)
+- uid: Bliss.CSharp.Textures.Cubemap.Dispose(System.Boolean)
+  commentId: M:Bliss.CSharp.Textures.Cubemap.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: Bliss.CSharp.Textures.Cubemap
+  langs:
+  - csharp
+  - vb
+  name: Dispose(bool)
+  nameWithType: Cubemap.Dispose(bool)
+  fullName: Bliss.CSharp.Textures.Cubemap.Dispose(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemap.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Dispose
+    path: ../src/Bliss/CSharp/Textures/Cubemap.cs
+    startLine: 153
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Disposes of the object and releases associated resources.
+  example: []
+  syntax:
+    content: protected override void Dispose(bool disposing)
+    parameters:
+    - id: disposing
+      type: System.Boolean
+      description: True if called from user code; false if called from a finalizer.
+    content.vb: Protected Overrides Sub Dispose(disposing As Boolean)
+  overridden: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  overload: Bliss.CSharp.Textures.Cubemap.Dispose*
+  nameWithType.vb: Cubemap.Dispose(Boolean)
+  fullName.vb: Bliss.CSharp.Textures.Cubemap.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+references:
+- uid: Bliss.CSharp.Textures
+  commentId: N:Bliss.CSharp.Textures
+  href: Bliss.html
+  name: Bliss.CSharp.Textures
+  nameWithType: Bliss.CSharp.Textures
+  fullName: Bliss.CSharp.Textures
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Textures
+    name: Textures
+    href: Bliss.CSharp.Textures.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Textures
+    name: Textures
+    href: Bliss.CSharp.Textures.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bliss.CSharp.Disposable
+  commentId: T:Bliss.CSharp.Disposable
+  parent: Bliss.CSharp
+  href: Bliss.CSharp.Disposable.html
+  name: Disposable
+  nameWithType: Disposable
+  fullName: Bliss.CSharp.Disposable
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Bliss.CSharp.Disposable.HasDisposed
+  commentId: P:Bliss.CSharp.Disposable.HasDisposed
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_HasDisposed
+  name: HasDisposed
+  nameWithType: Disposable.HasDisposed
+  fullName: Bliss.CSharp.Disposable.HasDisposed
+- uid: Bliss.CSharp.Disposable.Dispose
+  commentId: M:Bliss.CSharp.Disposable.Dispose
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  name: Dispose()
+  nameWithType: Disposable.Dispose()
+  fullName: Bliss.CSharp.Disposable.Dispose()
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.Dispose
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.Dispose
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+  commentId: M:Bliss.CSharp.Disposable.ThrowIfDisposed
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  name: ThrowIfDisposed()
+  nameWithType: Disposable.ThrowIfDisposed()
+  fullName: Bliss.CSharp.Disposable.ThrowIfDisposed()
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+    name: ThrowIfDisposed
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+    name: ThrowIfDisposed
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp
+  commentId: N:Bliss.CSharp
+  href: Bliss.html
+  name: Bliss.CSharp
+  nameWithType: Bliss.CSharp
+  fullName: Bliss.CSharp
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+- uid: Bliss.CSharp.Textures.Cubemap.Images*
+  commentId: Overload:Bliss.CSharp.Textures.Cubemap.Images
+  href: Bliss.CSharp.Textures.Cubemap.html#Bliss_CSharp_Textures_Cubemap_Images
+  name: Images
+  nameWithType: Cubemap.Images
+  fullName: Bliss.CSharp.Textures.Cubemap.Images
+- uid: Bliss.CSharp.Images.Image[][]
+  isExternal: true
+  href: Bliss.CSharp.Images.Image.html
+  name: Image[][]
+  nameWithType: Image[][]
+  fullName: Bliss.CSharp.Images.Image[][]
+  nameWithType.vb: Image()()
+  fullName.vb: Bliss.CSharp.Images.Image()()
+  name.vb: Image()()
+  spec.csharp:
+  - uid: Bliss.CSharp.Images.Image
+    name: Image
+    href: Bliss.CSharp.Images.Image.html
+  - name: '['
+  - name: ']'
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Bliss.CSharp.Images.Image
+    name: Image
+    href: Bliss.CSharp.Images.Image.html
+  - name: (
+  - name: )
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Textures.Cubemap.Width*
+  commentId: Overload:Bliss.CSharp.Textures.Cubemap.Width
+  href: Bliss.CSharp.Textures.Cubemap.html#Bliss_CSharp_Textures_Cubemap_Width
+  name: Width
+  nameWithType: Cubemap.Width
+  fullName: Bliss.CSharp.Textures.Cubemap.Width
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: Bliss.CSharp.Textures.Cubemap.Height*
+  commentId: Overload:Bliss.CSharp.Textures.Cubemap.Height
+  href: Bliss.CSharp.Textures.Cubemap.html#Bliss_CSharp_Textures_Cubemap_Height
+  name: Height
+  nameWithType: Cubemap.Height
+  fullName: Bliss.CSharp.Textures.Cubemap.Height
+- uid: Bliss.CSharp.Textures.Cubemap.Format*
+  commentId: Overload:Bliss.CSharp.Textures.Cubemap.Format
+  href: Bliss.CSharp.Textures.Cubemap.html#Bliss_CSharp_Textures_Cubemap_Format
+  name: Format
+  nameWithType: Cubemap.Format
+  fullName: Bliss.CSharp.Textures.Cubemap.Format
+- uid: Veldrid.PixelFormat
+  commentId: T:Veldrid.PixelFormat
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/PixelFormat.cs
+  name: PixelFormat
+  nameWithType: PixelFormat
+  fullName: Veldrid.PixelFormat
+- uid: Veldrid
+  commentId: N:Veldrid
+  isExternal: true
+  name: Veldrid
+  nameWithType: Veldrid
+  fullName: Veldrid
+- uid: Bliss.CSharp.Textures.Cubemap.PixelSizeInBytes*
+  commentId: Overload:Bliss.CSharp.Textures.Cubemap.PixelSizeInBytes
+  href: Bliss.CSharp.Textures.Cubemap.html#Bliss_CSharp_Textures_Cubemap_PixelSizeInBytes
+  name: PixelSizeInBytes
+  nameWithType: Cubemap.PixelSizeInBytes
+  fullName: Bliss.CSharp.Textures.Cubemap.PixelSizeInBytes
+- uid: Bliss.CSharp.Textures.Cubemap.MipLevels*
+  commentId: Overload:Bliss.CSharp.Textures.Cubemap.MipLevels
+  href: Bliss.CSharp.Textures.Cubemap.html#Bliss_CSharp_Textures_Cubemap_MipLevels
+  name: MipLevels
+  nameWithType: Cubemap.MipLevels
+  fullName: Bliss.CSharp.Textures.Cubemap.MipLevels
+- uid: Bliss.CSharp.Textures.Cubemap.DeviceTexture*
+  commentId: Overload:Bliss.CSharp.Textures.Cubemap.DeviceTexture
+  href: Bliss.CSharp.Textures.Cubemap.html#Bliss_CSharp_Textures_Cubemap_DeviceTexture
+  name: DeviceTexture
+  nameWithType: Cubemap.DeviceTexture
+  fullName: Bliss.CSharp.Textures.Cubemap.DeviceTexture
+- uid: Veldrid.Texture
+  commentId: T:Veldrid.Texture
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Texture.cs
+  name: Texture
+  nameWithType: Texture
+  fullName: Veldrid.Texture
+- uid: Bliss.CSharp.Textures.Cubemap
+  commentId: T:Bliss.CSharp.Textures.Cubemap
+  href: Bliss.CSharp.Textures.Cubemap.html
+  name: Cubemap
+  nameWithType: Cubemap
+  fullName: Bliss.CSharp.Textures.Cubemap
+- uid: Bliss.CSharp.Textures.Cubemap.#ctor*
+  commentId: Overload:Bliss.CSharp.Textures.Cubemap.#ctor
+  href: Bliss.CSharp.Textures.Cubemap.html#Bliss_CSharp_Textures_Cubemap__ctor_Veldrid_GraphicsDevice_System_String_System_String_System_String_System_String_System_String_System_String_System_Boolean_System_Boolean_
+  name: Cubemap
+  nameWithType: Cubemap.Cubemap
+  fullName: Bliss.CSharp.Textures.Cubemap.Cubemap
+  nameWithType.vb: Cubemap.New
+  fullName.vb: Bliss.CSharp.Textures.Cubemap.New
+  name.vb: New
+- uid: Veldrid.GraphicsDevice
+  commentId: T:Veldrid.GraphicsDevice
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsDevice.cs
+  name: GraphicsDevice
+  nameWithType: GraphicsDevice
+  fullName: Veldrid.GraphicsDevice
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.IO.Stream
+  commentId: T:System.IO.Stream
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.stream
+  name: Stream
+  nameWithType: Stream
+  fullName: System.IO.Stream
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: Bliss.CSharp.Images.Image
+  commentId: T:Bliss.CSharp.Images.Image
+  parent: Bliss.CSharp.Images
+  href: Bliss.CSharp.Images.Image.html
+  name: Image
+  nameWithType: Image
+  fullName: Bliss.CSharp.Images.Image
+- uid: Bliss.CSharp.Images
+  commentId: N:Bliss.CSharp.Images
+  href: Bliss.html
+  name: Bliss.CSharp.Images
+  nameWithType: Bliss.CSharp.Images
+  fullName: Bliss.CSharp.Images
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Images
+    name: Images
+    href: Bliss.CSharp.Images.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Images
+    name: Images
+    href: Bliss.CSharp.Images.html
+- uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  commentId: M:Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  parent: Bliss.CSharp.Disposable
+  isExternal: true
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  name: Dispose(bool)
+  nameWithType: Disposable.Dispose(bool)
+  fullName: Bliss.CSharp.Disposable.Dispose(bool)
+  nameWithType.vb: Disposable.Dispose(Boolean)
+  fullName.vb: Bliss.CSharp.Disposable.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Bliss.CSharp.Textures.Cubemap.Dispose*
+  commentId: Overload:Bliss.CSharp.Textures.Cubemap.Dispose
+  href: Bliss.CSharp.Textures.Cubemap.html#Bliss_CSharp_Textures_Cubemap_Dispose_System_Boolean_
+  name: Dispose
+  nameWithType: Cubemap.Dispose
+  fullName: Bliss.CSharp.Textures.Cubemap.Dispose

@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Audio
+  commentId: N:Bliss.CSharp.Audio
+  id: Bliss.CSharp.Audio
+  children:
+  - Bliss.CSharp.Audio.AudioDevice
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Audio
+  nameWithType: Bliss.CSharp.Audio
+  fullName: Bliss.CSharp.Audio
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Audio.AudioDevice
+  commentId: T:Bliss.CSharp.Audio.AudioDevice
+  href: Bliss.CSharp.Audio.AudioDevice.html
+  name: AudioDevice
+  nameWithType: AudioDevice
+  fullName: Bliss.CSharp.Audio.AudioDevice
