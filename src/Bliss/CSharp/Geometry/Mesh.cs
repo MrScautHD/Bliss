@@ -451,6 +451,7 @@ public class Mesh : Disposable {
     
         // Add center point for the circle.
         int centerIndex = vertices.Count;
+        
         vertices.Add(new Vertex3D() {
             Position = new Vector3(0.0F, -halfHeight, 0.0F),
             TexCoords = new Vector2(0.5F, 0.5F),

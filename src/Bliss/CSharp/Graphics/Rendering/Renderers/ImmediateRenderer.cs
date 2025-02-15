@@ -189,67 +189,81 @@ public class ImmediateRenderer : Disposable {
     /// <param name="color">An optional color for the cube; if null, white is used.</param>
     public void DrawCube(Transform transform, Vector3 size, Color? color = null) {
         Color finalColor = color ?? Color.White;
-    
-        Vector2[] texCoords = [
-            new Vector2(0.0F, 1.0F), new Vector2(1.0F, 1.0F),
-            new Vector2(1.0F, 0.0F), new Vector2(0.0F, 0.0F)
-        ];
-    
-        Vector3[] positions = [
-            // Front face.
-            new Vector3(-1.0F, -1.0F, -1.0F), new Vector3(1.0F, -1.0F, -1.0F), new Vector3(1.0F, 1.0F, -1.0F), new Vector3(-1.0F, 1.0F, -1.0F),
-            // Back face.
-            new Vector3(1.0F, -1.0F, 1.0F), new Vector3(-1.0F, -1.0F, 1.0F), new Vector3(-1.0F, 1.0F, 1.0F), new Vector3(1.0F, 1.0F, 1.0F),
-            // Left face.
-            new Vector3(-1.0F, -1.0F, 1.0F), new Vector3(-1.0F, -1.0F, -1.0F), new Vector3(-1.0F, 1.0F, -1.0F), new Vector3(-1.0F, 1.0F, 1.0F),
-            // Right face.
-            new Vector3(1.0F, -1.0F, -1.0F), new Vector3(1.0F, -1.0F, 1.0F), new Vector3(1.0F, 1.0F, 1.0F), new Vector3(1.0F, 1.0F, -1.0F),
-            // Top face.
-            new Vector3(-1.0F, 1.0F, -1.0F), new Vector3(1.0F, 1.0F, -1.0F), new Vector3(1.0F, 1.0F, 1.0F), new Vector3(-1.0F, 1.0F, 1.0F),
-            // Bottom face.
-            new Vector3(-1.0F, -1.0F, 1.0F), new Vector3(1.0F, -1.0F, 1.0F), new Vector3(1.0F, -1.0F, -1.0F), new Vector3(-1.0F, -1.0F, -1.0F)
-        ];
         
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 4; j++) {
-                this._tempVertices.Add(new ImmediateVertex3D() {
-                    Position = positions[i * 4 + j] * new Vector3(size.X / 2.0F, size.Y / 2.0F, size.Z / 2.0F),
-                    TexCoords = texCoords[j],
+        for (int face = 0; face < 6; face++) {
+            
+            // Define the normal for each face.
+            Vector3 faceNormal = face switch {
+                // Front.
+                0 => new Vector3(0.0F, 0.0F, -1.0F),
+                // Back.
+                1 => new Vector3(0.0F, 0.0F, 1.0F),
+                // Left.
+                2 => new Vector3(-1.0F, 0.0F, 0.0F),
+                // Right.
+                3 => new Vector3(1.0F, 0.0F, 0.0F),
+                // Top.
+                4 => new Vector3(0.0F, 1.0F, 0.0F),
+                // Bottom.
+                5 => new Vector3(0.0F, -1.0F, 0.0F),
+                _ => Vector3.Zero
+            };
+
+            // Define the tangent for each face.
+            Vector3 tangent = face switch {
+                // Front.
+                0 => new Vector3(1.0F, 0.0F, 0.0F),
+                // Back.
+                1 => new Vector3(-1.0F, 0.0F, 0.0F),
+                // Left.
+                2 => new Vector3(0.0F, 0.0F, -1.0F),
+                // Right.
+                3 => new Vector3(0.0F, 0.0F, 1.0F),
+                // Top.
+                4 => new Vector3(1.0F, 0.0F, 0.0F),
+                // Bottom.
+                5 => new Vector3(1.0F, 0.0F, 0.0F),
+                _ => Vector3.Zero
+            };
+
+            // Compute the bitangent as the cross product of the normal and tangent.
+            Vector3 bitangent = Vector3.Cross(faceNormal, tangent);
+
+            // Generate the 4 corners for the current face.
+            for (int corner = 0; corner < 4; corner++) {
+                
+                // Calculate the position of each corner.
+                Vector3 position = faceNormal
+                    + ((corner == 0 || corner == 3) ? -tangent : tangent)
+                    + ((corner == 0 || corner == 1) ? -bitangent : bitangent);
+
+                // Assign texture coordinates for the current corner.
+                Vector2 texCoord = corner switch {
+                    0 => new Vector2(0.0F, 0.0F),
+                    1 => new Vector2(1.0F, 0.0F),
+                    2 => new Vector2(1.0F, 1.0F),
+                    3 => new Vector2(0.0F, 1.0F),
+                    _ => Vector2.Zero
+                };
+                
+                // Add the generated vertex.
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = position * new Vector3(size.X / 2.0F, size.Y / 2.0F, size.Z / 2.0F),
+                    TexCoords = texCoord,
                     Color = finalColor.ToRgbaFloatVec4()
                 });
             }
+
+            // Add the indices for the two triangles that make up the current face.
+            int vertexOffset = face * 4;
+            this._tempIndices.Add((uint) (vertexOffset + 0));
+            this._tempIndices.Add((uint) (vertexOffset + 3));
+            this._tempIndices.Add((uint) (vertexOffset + 2));
+            this._tempIndices.Add((uint) (vertexOffset + 2));
+            this._tempIndices.Add((uint) (vertexOffset + 1));
+            this._tempIndices.Add((uint) (vertexOffset + 0));
         }
 
-        uint[] indices = [
-            // Front face.
-            0, 1, 2,
-            2, 3, 0,
-            
-            // Back face.
-            4, 5, 6,
-            6, 7, 4,
-            
-            // Left face.
-            8, 9, 10,
-            10, 11, 8,
-            
-            // Right face.
-            12, 13, 14,
-            14, 15, 12,
-            
-            // Top face.
-            16, 17, 18,
-            18, 19, 16,
-            
-            // Bottom face.
-            20, 21, 22,
-            22, 23, 20
-        ];
-
-        for (int i = 0; i < indices.Length; i++) {
-            this._tempIndices.Add(indices[i]);
-        }
-        
         this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
 
@@ -261,38 +275,30 @@ public class ImmediateRenderer : Disposable {
     /// <param name="color">An optional color for the wireframe. If null, the default color is white.</param>
     public void DrawCubeWires(Transform transform, Vector3 size, Color? color = null) {
         Color finalColor = color ?? Color.White;
-    
-        Vector3[] positions = [
-            // Front face.
-            new Vector3(-1.0F, -1.0F, -1.0F), new Vector3(1.0F, -1.0F, -1.0F),
-            new Vector3(1.0F, 1.0F, -1.0F), new Vector3(-1.0F, 1.0F, -1.0F),
-            // Back face.
-            new Vector3(-1.0F, -1.0F, 1.0F), new Vector3(1.0F, -1.0F, 1.0F),
-            new Vector3(1.0F, 1.0F, 1.0F), new Vector3(-1.0F, 1.0F, 1.0F)
-        ];
-    
-        foreach (Vector3 pos in positions) {
+        
+        for (int i = 0; i < 8; i++) {
+            
+            // Calculate the x, y, z coordinates.
+            float x = (i & 1) == 0 ? -1.0F : 1.0F;
+            float y = (i & 2) == 0 ? -1.0F : 1.0F;
+            float z = (i & 4) == 0 ? -1.0F : 1.0F;
+            
+            // Add the vertex to the list.
             this._tempVertices.Add(new ImmediateVertex3D {
-                Position = pos * new Vector3(size.X / 2.0F, size.Y / 2.0F, size.Z / 2.0F),
+                Position = new Vector3(x, y, z) * new Vector3(size.X / 2.0F, size.Y / 2.0F, size.Z / 2.0F),
                 Color = finalColor.ToRgbaFloatVec4()
             });
-        }
-        
-        uint[] indices = [
-            // Front edges.
-            0, 1, 1, 2, 2, 3, 3, 0,
             
-            // Back edges.
-            4, 5, 5, 6, 6, 7, 7, 4,
-            
-            // Connecting edges.
-            0, 4, 1, 5, 2, 6, 3, 7
-        ];
-    
-        foreach (var index in indices) {
-            this._tempIndices.Add(index);
+            // Connect the vertex to its neighbors.
+            for (int bit = 0; bit < 3; bit++) {
+                if ((i & (1 << bit)) == 0) {
+                    int neighbor = i | (1 << bit);
+                    this._tempIndices.Add((uint) i);
+                    this._tempIndices.Add((uint) neighbor);
+                }
+            }
         }
-    
+
         this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
     
@@ -306,6 +312,14 @@ public class ImmediateRenderer : Disposable {
     /// <param name="color">An optional color for the sphere; defaults to white.</param>
     public void DrawSphere(Transform transform, float radius, int rings, int slices, Color? color = null) {
         Color finalColor = color ?? Color.White;
+        
+        if (rings < 3) {
+            rings = 3;
+        }
+        
+        if (slices < 3) {
+            slices = 3;
+        }
     
         // Generate vertices.
         for (int ring = 0; ring <= rings; ring++) {
@@ -356,6 +370,14 @@ public class ImmediateRenderer : Disposable {
     /// <param name="color">An optional color for the wireframe; defaults to white.</param>
     public void DrawSphereWires(Transform transform, float radius, int rings, int slices, Color? color = null) {
         Color finalColor = color ?? Color.White;
+        
+        if (rings < 3) {
+            rings = 3;
+        }
+        
+        if (slices < 3) {
+            slices = 3;
+        }
     
         // Generate wireframe vertices.
         for (int ring = 0; ring <= rings; ring++) {
@@ -394,51 +416,186 @@ public class ImmediateRenderer : Disposable {
     
         this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
-    
+
+    /// <summary>
+    /// Renders a 3D hemisphere with the specified transformation, radius, rings, slices, and optional color.
+    /// </summary>
+    /// <param name="transform">The transformation to apply to the hemisphere.</param>
+    /// <param name="radius">The radius of the hemisphere.</param>
+    /// <param name="rings">The number of rings used to construct the hemisphere. Must be 3 or greater.</param>
+    /// <param name="slices">The number of slices used to construct the hemisphere. Must be 3 or greater.</param>
+    /// <param name="color">An optional color to apply to the hemisphere. If null, the default color will be white.</param>
     public void DrawHemisphere(Transform transform, float radius, int rings, int slices, Color? color = null) {
         Color finalColor = color ?? Color.White;
-    
-        // Generate vertices for the upper half of the sphere.
-        for (int ring = 0; ring <= rings; ring++) {
-            float ringAngle = MathF.PI * ring / (2 * rings);
-    
+        
+        if (rings < 3) {
+            rings = 3;
+        }
+        
+        if (slices < 3) {
+            slices = 3;
+        }
+        
+        float halfHeight = radius / 4.0F;
+        
+        // Generate positions, normals, and texture coordinates for the hemisphere.
+        for (int ring = 0; ring <= rings / 2; ring++) {
+            float theta = ring * MathF.PI / (rings % 2 == 0 ? rings : rings - 1);
+            float sinTheta = MathF.Sin(theta);
+            float cosTheta = MathF.Cos(theta);
+
             for (int slice = 0; slice <= slices; slice++) {
-                float sliceAngle = MathF.PI * 2 * slice / slices;
-    
-                float x = MathF.Sin(ringAngle) * MathF.Cos(sliceAngle);
-                float y = MathF.Cos(ringAngle);
-                float z = MathF.Sin(ringAngle) * MathF.Sin(sliceAngle);
-    
+                float phi = slice * 2.0F * MathF.PI / slices;
+                float sinPhi = MathF.Sin(phi);
+                float cosPhi = MathF.Cos(phi);
+
+                Vector3 position = new Vector3(
+                    radius / 2.0F * sinTheta * cosPhi,
+                    radius / 2.0F * cosTheta - halfHeight,
+                    radius / 2.0F * sinTheta * sinPhi
+                );
+
                 this._tempVertices.Add(new ImmediateVertex3D() {
-                    Position = new Vector3(x, y, z) * (radius / 2),
-                    TexCoords = new Vector2(slice / (float) slices, ring / (float) rings),
+                    Position = position,
+                    TexCoords = new Vector2(
+                        0.5F + cosPhi * sinTheta * 0.5F,
+                        0.5F + sinPhi * sinTheta * 0.5F
+                    ),
                     Color = finalColor.ToRgbaFloatVec4()
                 });
             }
         }
-    
-        // Generate indices.
-        for (int ring = 0; ring < rings; ring++) {
+
+        int baseCenterIndex = this._tempVertices.Count;
+
+        // Add center vertex for the circular base.
+        this._tempVertices.Add(new ImmediateVertex3D() {
+            Position = new Vector3(0.0F, -halfHeight, 0.0F),
+            TexCoords = new Vector2(0.5F, 0.5F),
+            Color = finalColor.ToRgbaFloatVec4()
+        });
+
+        // Generate vertices for the base circle.
+        for (int slice = 0; slice <= slices; slice++) {
+            float sliceAngle = MathF.PI * 2.0F * slice / slices;
+
+            float x = MathF.Cos(sliceAngle) * (radius / 2.0F);
+            float z = MathF.Sin(sliceAngle) * (radius / 2.0F);
+
+            this._tempVertices.Add(new ImmediateVertex3D() {
+                Position = new Vector3(x, -halfHeight, z),
+                TexCoords = new Vector2(0.5F + x / radius, 0.5F + z / radius),
+                Color = finalColor.ToRgbaFloatVec4()
+            });
+        }
+
+        // Generate indices for the hemisphere.
+        for (int ring = 0; ring < rings / 2; ring++) {
             for (int slice = 0; slice < slices; slice++) {
                 int current = ring * (slices + 1) + slice;
                 int next = current + slices + 1;
-    
+
                 // Two triangles per quad.
                 this._tempIndices.Add((uint) current);
                 this._tempIndices.Add((uint) (next + 1));
                 this._tempIndices.Add((uint) (current + 1));
-                
+
                 this._tempIndices.Add((uint) current);
                 this._tempIndices.Add((uint) next);
                 this._tempIndices.Add((uint) (next + 1));
             }
         }
-    
+
+        // Generate indices for the base circle.
+        for (int slice = 0; slice < slices; slice++) {
+            this._tempIndices.Add((uint) baseCenterIndex);
+            this._tempIndices.Add((uint) (baseCenterIndex + slice + 2));
+            this._tempIndices.Add((uint) (baseCenterIndex + slice + 1));
+        }
+
         this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
+
+    /// <summary>
+    /// Draws the wireframe outline of a hemisphere using the specified transformation, radius, number of rings, and slices.
+    /// </summary>
+    /// <param name="transform">The transformation to apply to the hemisphere.</param>
+    /// <param name="radius">The radius of the hemisphere.</param>
+    /// <param name="rings">The number of horizontal subdivisions (rings) for the hemisphere.</param>
+    /// <param name="slices">The number of vertical subdivisions (slices) for the hemisphere.</param>
+    /// <param name="color">An optional color for the hemisphere. If null, the color defaults to white.</param>
+    public void DrawHemisphereWires(Transform transform, float radius, int rings, int slices, Color? color = null) {
+        Color finalColor = color ?? Color.White;
+        float halfHeight = radius / 4.0F;
     
-    public void DrawHemisphereWires() {
-        throw new NotImplementedException("DrawHemisphereWires is not implemented yet.");
+        // Generate vertices for the hemisphere.
+        for (int ring = 0; ring <= rings / 2; ring++) {
+            float ringAngle = ring * MathF.PI / (rings % 2 == 0 ? rings : rings - 1);
+            float y = MathF.Cos(ringAngle) * (radius / 2.0F);
+            float ringRadius = MathF.Sin(ringAngle) * (radius / 2.0F);
+    
+            for (int slice = 0; slice <= slices; slice++) {
+                float sliceAngle = MathF.PI * 2.0F * slice / slices;
+    
+                float x = MathF.Cos(sliceAngle) * ringRadius;
+                float z = MathF.Sin(sliceAngle) * ringRadius;
+    
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(x, y - halfHeight, z),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+            }
+        }
+    
+        // Generate vertices for the base circle.
+        int baseCenterIndex = this._tempVertices.Count;
+        
+        this._tempVertices.Add(new ImmediateVertex3D {
+            Position = new Vector3(0.0F, -halfHeight, 0.0F),
+            Color = finalColor.ToRgbaFloatVec4()
+        });
+        
+        for (int slice = 0; slice <= slices; slice++) {
+            float sliceAngle = MathF.PI * 2.0F * slice / slices;
+        
+            float x = MathF.Cos(sliceAngle) * (radius / 2.0F);
+            float z = MathF.Sin(sliceAngle) * (radius / 2.0F);
+        
+            this._tempVertices.Add(new ImmediateVertex3D {
+                Position = new Vector3(x, -halfHeight, z),
+                Color = finalColor.ToRgbaFloatVec4()
+            });
+        
+            // Connect the central vertex to the base circle.
+            this._tempIndices.Add((uint) baseCenterIndex);
+            this._tempIndices.Add((uint) (baseCenterIndex + slice));
+        }
+    
+        // Generate wireframe indices.
+        for (int ring = 0; ring < rings / 2; ring++) {
+            for (int slice = 0; slice < slices; slice++) {
+                int current = ring * (slices + 1) + slice;
+                int next = current + slices + 1;
+    
+                // Connect horizontal lines for hemispherical surface.
+                this._tempIndices.Add((uint) current);
+                this._tempIndices.Add((uint) (current + 1));
+    
+                // Connect vertical lines for hemispherical surface.
+                this._tempIndices.Add((uint) current);
+                this._tempIndices.Add((uint) next);
+            }
+        }
+    
+        // Connect base circle.
+        int baseStartIndex = baseCenterIndex + 1;
+        
+        for (int slice = 0; slice < slices; slice++) {
+            this._tempIndices.Add((uint) (baseStartIndex + slice));
+            this._tempIndices.Add((uint) (baseStartIndex + slice + 1));
+        }
+    
+        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
     
     public void DrawCylinder() {
@@ -457,16 +614,100 @@ public class ImmediateRenderer : Disposable {
         throw new NotImplementedException("DrawCapsuleWires is not implemented yet.");
     }
     
-    public void DrawGird() {
-        throw new NotImplementedException("DrawGird is not implemented yet.");
-    }
-    
     public void DrawBoundingBox() {
         throw new NotImplementedException("DrawBoundingBox is not implemented yet.");
     }
     
     public void DrawBillboard() {
         throw new NotImplementedException("DrawBillboard is not implemented yet.");
+    }
+
+    /// <summary>
+    /// Renders a grid using the specified transformation matrix, slice count, spacing, and optional color.
+    /// </summary>
+    /// <param name="transform">The transformation applied to the grid.</param>
+    /// <param name="slices">The number of divisions (slices) in the grid. Must be greater than or equal to 1.</param>
+    /// <param name="spacing">The distance (spacing) between each grid line. Must be greater than or equal to 1.</param>
+    /// <param name="color">An optional color for the grid lines. Defaults to white if not specified.</param>
+    public void DrawGird(Transform transform, int slices, int spacing, Color? color = null) {
+        Color finalColor = color ?? Color.White;
+    
+        if (spacing < 1) {
+            spacing = 1;
+        }
+        
+        if (slices < 1) {
+            slices = 1;
+        }
+        
+        float halfSize = slices * spacing * 0.5f;
+    
+        for (int i = 0; i <= slices; i++) {
+            float offset = -halfSize + i * spacing;
+    
+            // Draw lines along the X axis.
+            this._tempVertices.Add(new ImmediateVertex3D {
+                Position = new Vector3(offset, 0, -halfSize),
+                Color = finalColor.ToRgbaFloatVec4()
+            });
+            
+            this._tempVertices.Add(new ImmediateVertex3D {
+                Position = new Vector3(offset, 0, halfSize),
+                Color = finalColor.ToRgbaFloatVec4()
+            });
+    
+            // Draw lines along the Z axis.
+            this._tempVertices.Add(new ImmediateVertex3D {
+                Position = new Vector3(-halfSize, 0, offset),
+                Color = finalColor.ToRgbaFloatVec4()
+            });
+            
+            this._tempVertices.Add(new ImmediateVertex3D {
+                Position = new Vector3(halfSize, 0, offset),
+                Color = finalColor.ToRgbaFloatVec4()
+            });
+    
+            // Add indices for line pairs along X and Z.
+            this._tempIndices.Add((uint) (i * 4 + 0));
+            this._tempIndices.Add((uint) (i * 4 + 1));
+            this._tempIndices.Add((uint) (i * 4 + 2));
+            this._tempIndices.Add((uint) (i * 4 + 3));
+        }
+    
+        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
+    }
+
+    /// <summary>
+    /// Draws a line between two points in 3D space with an optional color.
+    /// </summary>
+    /// <param name="startPos">The starting position of the line in 3D space.</param>
+    /// <param name="endPos">The ending position of the line in 3D space.</param>
+    /// <param name="color">The optional color of the line. If null, the default color is white.</param>
+    public void DrawLine(Vector3 startPos, Vector3 endPos, Color? color = null) {
+        Color finalColor = color ?? Color.White;
+        
+        // Add start vertex.
+        this._tempVertices.Add(new ImmediateVertex3D {
+            Position = startPos,
+            Color = finalColor.ToRgbaFloatVec4()
+        });
+        
+        // Add end vertex.
+        this._tempVertices.Add(new ImmediateVertex3D {
+            Position = endPos,
+            Color = finalColor.ToRgbaFloatVec4()
+        });
+        
+        // Add indices for the line.
+        this._tempIndices.Add(0);
+        this._tempIndices.Add(1);
+
+        // Set transform.
+        Transform transform = new Transform() {
+            Translation = Vector3.Zero
+        };
+        
+        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
 
     /// <summary>
