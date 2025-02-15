@@ -4,7 +4,6 @@ using Bliss.CSharp.Audio;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Geometry;
-using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Rendering.Batches.Primitives;
 using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 using Bliss.CSharp.Graphics.Rendering.Passes;
@@ -189,7 +188,7 @@ public class Game : Disposable {
         this._customCylinder = Mesh.GenCylinder(this.GraphicsDevice, 1F, 1F, 40);
         this._customCylinder.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
         
-        this._customCapsule = Mesh.GenCapsule(this.GraphicsDevice, 1, 2, 60);
+        this._customCapsule = Mesh.GenCapsule(this.GraphicsDevice, 1, 1, 60);
         this._customCapsule.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
 
         this._customCone = Mesh.GenCone(this.GraphicsDevice, 1F, 1F, 40);
@@ -241,19 +240,28 @@ public class Game : Disposable {
         
         this._immediateRenderer.Begin(this.CommandList);
         this._immediateRenderer.SetTexture(this._customMeshTexture);
-        this._immediateRenderer.DrawCube(new Transform() { Translation = new Vector3(9, 0, 6)}, new Vector3(1, 1, 1));
+        this._immediateRenderer.DrawCube(new Transform() { Translation = new Vector3(9, 0, 6) }, new Vector3(1, 1, 1));
         
         this._immediateRenderer.SetTexture(null);
-        this._immediateRenderer.DrawCubeWires(new Transform() { Translation = new Vector3(11, 0, 6)}, new Vector3(1, 1, 1), Color.Green);
+        this._immediateRenderer.DrawCubeWires(new Transform() { Translation = new Vector3(11, 0, 6) }, new Vector3(1, 1, 1), Color.Green);
         
         this._immediateRenderer.SetTexture(this._customMeshTexture);
-        this._immediateRenderer.DrawSphere(new Transform() {Translation = new Vector3(13, 0, 6)}, 1, 100, 100);
+        this._immediateRenderer.DrawSphere(new Transform() { Translation = new Vector3(13, 0, 6) }, 1, 40, 40);
         
         this._immediateRenderer.SetTexture(null);
-        this._immediateRenderer.DrawSphereWires(new Transform() {Translation = new Vector3(15, 0, 6)}, 1, 60, 60, Color.Green);
+        this._immediateRenderer.DrawSphereWires(new Transform() { Translation = new Vector3(15, 0, 6) }, 1, 40, 40, Color.Green);
         
         this._immediateRenderer.SetTexture(this._customMeshTexture);
-        this._immediateRenderer.DrawHemisphere(new Transform() { Translation = new Vector3(17, 0, 6)}, 1, 60, 60);
+        this._immediateRenderer.DrawHemisphere(new Transform() { Translation = new Vector3(17, 0, 6) }, 1, 40, 40);
+        
+        this._immediateRenderer.SetTexture(null);
+        this._immediateRenderer.DrawHemisphereWires(new Transform() { Translation = new Vector3(19, 0, 6) }, 1, 40, 40, Color.Green);
+        
+        this._immediateRenderer.SetTexture(null);
+        this._immediateRenderer.DrawLine(new Vector3(20.5F, 0, 6), new Vector3(21.5F, 0, 6), Color.Green);
+        
+        this._immediateRenderer.SetTexture(null);
+        this._immediateRenderer.DrawGird(new Transform() { Translation = Vector3.Zero }, 100, 1, Color.Gray);
         
         this._immediateRenderer.End();
         
