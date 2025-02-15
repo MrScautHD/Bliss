@@ -49,11 +49,11 @@ public struct Transform : IEquatable<Transform> {
     /// </summary>
     /// <returns>The transformation matrix.</returns>
     public Matrix4x4 GetTransform() {
-        Matrix4x4 matTranslation = Matrix4x4.CreateTranslation(this.Translation);
-        Matrix4x4 matRotation = Matrix4x4.CreateFromQuaternion(this.Rotation);
         Matrix4x4 matScale = Matrix4x4.CreateScale(this.Scale);
+        Matrix4x4 matRotation = Matrix4x4.CreateFromQuaternion(this.Rotation);
+        Matrix4x4 matTranslation = Matrix4x4.CreateTranslation(this.Translation);
         
-        return matTranslation * matRotation * matScale;
+        return matScale * matRotation * matTranslation;
     }
 
     /// <summary>
