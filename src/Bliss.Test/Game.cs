@@ -309,7 +309,7 @@ public class Game : Disposable {
         commandList.End();
         graphicsDevice.SubmitCommands(commandList);
         
-        // Draw ScreenPass.
+        // Draw ScreenPass. 
         commandList.Begin();
         
         if (this.FullScreenTexture.SampleCount != TextureSampleCount.Count1) {
