@@ -567,7 +567,7 @@ items:
     target, orientation, projection type, camera mode, field of view, and clipping planes.
   example: []
   syntax:
-    content: public Cam3D(uint width, uint height, Vector3 position, Vector3 target, Vector3? up = null, ProjectionType projectionType = ProjectionType.Perspective, CameraMode mode = CameraMode.Free, float fov = 70, float nearPlane = 0.001, float farPlane = 1000)
+    content: public Cam3D(uint width, uint height, Vector3 position, Vector3 target, Vector3? up = null, ProjectionType projectionType = ProjectionType.Perspective, CameraMode mode = CameraMode.Free, float fov = 70, float nearPlane = 0.1, float farPlane = 1000)
     parameters:
     - id: width
       type: System.UInt32
@@ -599,7 +599,7 @@ items:
     - id: farPlane
       type: System.Single
       description: The distance to the far clipping plane; defaults to 1000.0 units.
-    content.vb: Public Sub New(width As UInteger, height As UInteger, position As Vector3, target As Vector3, up As Vector3? = Nothing, projectionType As ProjectionType = ProjectionType.Perspective, mode As CameraMode = CameraMode.Free, fov As Single = 70, nearPlane As Single = 0.001, farPlane As Single = 1000)
+    content.vb: Public Sub New(width As UInteger, height As UInteger, position As Vector3, target As Vector3, up As Vector3? = Nothing, projectionType As ProjectionType = ProjectionType.Perspective, mode As CameraMode = CameraMode.Free, fov As Single = 70, nearPlane As Single = 0.1, farPlane As Single = 1000)
   overload: Bliss.CSharp.Camera.Dim3.Cam3D.#ctor*
   nameWithType.vb: Cam3D.New(UInteger, UInteger, Vector3, Vector3, Vector3?, ProjectionType, CameraMode, Single, Single, Single)
   fullName.vb: Bliss.CSharp.Camera.Dim3.Cam3D.New(UInteger, UInteger, System.Numerics.Vector3, System.Numerics.Vector3, System.Numerics.Vector3?, Bliss.CSharp.Camera.Dim3.ProjectionType, Bliss.CSharp.Camera.Dim3.CameraMode, Single, Single, Single)
