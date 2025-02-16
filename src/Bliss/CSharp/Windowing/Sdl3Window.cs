@@ -699,8 +699,8 @@ public class Sdl3Window : Disposable, IWindow {
         else if (OperatingSystem.IsLinux()) {
             if (SDL3.SDL_strcmp(SDL3.SDL_GetCurrentVideoDriver(), "x11") == 0) {
                 nint display = SDL3.SDL_GetPointerProperty(SDL3.SDL_GetWindowProperties((SDL_Window*) this.Handle), SDL3.SDL_PROP_WINDOW_X11_DISPLAY_POINTER, nint.Zero);
-                nint surface = SDL3.SDL_GetPointerProperty(SDL3.SDL_GetWindowProperties((SDL_Window*) this.Handle), SDL3.SDL_PROP_WINDOW_X11_WINDOW_NUMBER, 0);
-                return SwapchainSource.CreateXlib(display, surface);
+                long surface = SDL3.SDL_GetNumberProperty(SDL3.SDL_GetWindowProperties((SDL_Window*) this.Handle), SDL3.SDL_PROP_WINDOW_X11_WINDOW_NUMBER, 0);
+                return SwapchainSource.CreateXlib(display, (nint) surface);
             }
             else if (SDL3.SDL_strcmp(SDL3.SDL_GetCurrentVideoDriver(), "wayland") == 0) {
                 nint display = SDL3.SDL_GetPointerProperty(SDL3.SDL_GetWindowProperties((SDL_Window*) this.Handle), SDL3.SDL_PROP_WINDOW_WAYLAND_DISPLAY_POINTER, nint.Zero);
