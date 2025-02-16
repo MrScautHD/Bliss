@@ -604,28 +604,29 @@ public class Mesh : Disposable {
         List<Vertex3D> vertices = new List<Vertex3D>();
         List<uint> indices = new List<uint>();
         
-        float halfRadius = radius / 2.0f;
-        float halfHeight = height / 2.0f; // Center the capsule by using height / 2
+        float halfRadius = radius / 2.0F;
+        float halfHeight = height / 2.0F;
         int rings = slices / 2;
         
         // Create top hemisphere vertices.
         for (int ring = 0; ring <= rings; ring++) {
-            float theta = ring * MathF.PI / (rings * 2);
+            float theta = ring * MathF.PI / (rings * 2.0F);
             float cosTheta = MathF.Cos(theta);
             float sinTheta = MathF.Sin(theta);
             
             for (int slice = 0; slice <= slices; slice++) {
-                float phi = slice * 2 * MathF.PI / slices;
+                float phi = slice * 2.0F * MathF.PI / slices;
                 float cosPhi = MathF.Cos(phi);
                 float sinPhi = MathF.Sin(phi);
                 
                 float x = halfRadius * sinTheta * cosPhi;
-                float y = halfRadius * cosTheta + halfHeight; // Adjusted to center vertically
+                float y = halfRadius * cosTheta + halfHeight;
                 float z = halfRadius * sinTheta * sinPhi;
                 
+                // Add vertex.
                 vertices.Add(new Vertex3D {
                     Position = new Vector3(x, y, z),
-                    TexCoords = new Vector2((float)slice / slices, (float)ring / rings),
+                    TexCoords = new Vector2((float) slice / slices, (float) ring / rings),
                     Normal = Vector3.Normalize(new Vector3(x, y - halfHeight, z))
                 });
             }
@@ -636,17 +637,17 @@ public class Mesh : Disposable {
             float y = yStep == 0 ? -halfHeight : halfHeight;
             
             for (int slice = 0; slice <= slices; slice++) {
-                float phi = slice * 2 * MathF.PI / slices;
+                float phi = slice * 2.0F * MathF.PI / slices;
                 float cosPhi = MathF.Cos(phi);
                 float sinPhi = MathF.Sin(phi);
                 
                 float x = halfRadius * cosPhi;
                 float z = halfRadius * sinPhi;
                 
-                // Add vertex
+                // Add vertex.
                 vertices.Add(new Vertex3D {
                     Position = new Vector3(x, y, z),
-                    TexCoords = new Vector2((float)slice / slices, yStep),
+                    TexCoords = new Vector2((float) slice / slices, yStep),
                     Normal = Vector3.Normalize(new Vector3(x, 0, z))
                 });
             }
@@ -654,23 +655,23 @@ public class Mesh : Disposable {
         
         // Create bottom hemisphere vertices.
         for (int ring = 0; ring <= rings; ring++) {
-            float theta = ring * MathF.PI / (rings * 2) + MathF.PI;
+            float theta = ring * MathF.PI / (rings * 2.0F) + MathF.PI;
             float cosTheta = MathF.Cos(theta);
             float sinTheta = MathF.Sin(theta);
             
             for (int slice = 0; slice <= slices; slice++) {
-                float phi = slice * 2 * MathF.PI / slices;
+                float phi = slice * 2.0F * MathF.PI / slices;
                 float cosPhi = MathF.Cos(phi);
                 float sinPhi = MathF.Sin(phi);
                 
                 float x = halfRadius * sinTheta * cosPhi;
-                float y = halfRadius * cosTheta - halfHeight; // Adjusted to center vertically
+                float y = halfRadius * cosTheta - halfHeight;
                 float z = halfRadius * sinTheta * sinPhi;
                 
-                // Add vertex
+                // Add vertex.
                 vertices.Add(new Vertex3D {
                     Position = new Vector3(-x, y, -z),
-                    TexCoords = new Vector2((float)slice / slices, (float)ring / rings),
+                    TexCoords = new Vector2((float) slice / slices, (float) ring / rings),
                     Normal = Vector3.Normalize(new Vector3(-x, y + halfHeight, -z))
                 });
             }
@@ -679,8 +680,8 @@ public class Mesh : Disposable {
         // Generate indices for top hemisphere.
         for (int ring = 0; ring < rings; ring++) {
             for (int slice = 0; slice < slices; slice++) {
-                uint first = (uint)(ring * (slices + 1) + slice);
-                uint second = first + (uint)(slices + 1);
+                uint first = (uint) (ring * (slices + 1) + slice);
+                uint second = first + (uint) (slices + 1);
                 
                 indices.Add(first);
                 indices.Add(second);
@@ -696,8 +697,8 @@ public class Mesh : Disposable {
         int cylinderStartIndex = (rings + 1) * (slices + 1);
         for (int step = 0; step < 1; step++) {
             for (int slice = 0; slice < slices; slice++) {
-                uint first = (uint)(cylinderStartIndex + step * (slices + 1) + slice);
-                uint second = first + (uint)(slices + 1);
+                uint first = (uint) (cylinderStartIndex + step * (slices + 1) + slice);
+                uint second = first + (uint) (slices + 1);
                 
                 indices.Add(first);
                 indices.Add(first + 1);
@@ -713,8 +714,8 @@ public class Mesh : Disposable {
         int bottomStartIndex = cylinderStartIndex + 2 * (slices + 1);
         for (int ring = 0; ring < rings; ring++) {
             for (int slice = 0; slice < slices; slice++) {
-                uint first = (uint)(bottomStartIndex + ring * (slices + 1) + slice);
-                uint second = first + (uint)(slices + 1);
+                uint first = (uint) (bottomStartIndex + ring * (slices + 1) + slice);
+                uint second = first + (uint) (slices + 1);
     
                 indices.Add(first);
                 indices.Add(first + 1);

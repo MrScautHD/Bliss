@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Effects;
+using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.VertexTypes;
@@ -597,31 +598,457 @@ public class ImmediateRenderer : Disposable {
     
         this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
+
+    /// <summary>
+    /// Renders a cylinder using the specified transform, dimensions, slice count, and optional color.
+    /// </summary>
+    /// <param name="transform">The transform used to position and orient the cylinder in 3D space.</param>
+    /// <param name="radius">The radius of the cylinder's top and bottom caps.</param>
+    /// <param name="height">The height of the cylinder from bottom to top cap.</param>
+    /// <param name="slices">The number of segments used to approximate the cylindrical surface. Minimum value is 3.</param>
+    /// <param name="color">The optional color of the cylinder. If null, a default white color is applied.</param>
+    public void DrawCylinder(Transform transform, float radius, float height, int slices, Color? color = null) {
+        Color finalColor = color ?? Color.White;
+        
+        if (slices < 3) {
+            slices = 3;
+        }
     
-    public void DrawCylinder() {
-        throw new NotImplementedException("DrawCylinder is not implemented yet.");
+        float halfHeight = height / 2.0F;
+    
+        // Generate vertices for the side.
+        for (int slice = 0; slice <= slices; slice++) {
+            float angle = slice * MathF.Tau / slices;
+            float x = MathF.Cos(angle) * (radius / 2.0F);
+            float z = MathF.Sin(angle) * (radius / 2.0F);
+            float u = (float) slice / slices;
+    
+            // Bottom vertex.
+            this._tempVertices.Add(new ImmediateVertex3D {
+                Position = new Vector3(x, -halfHeight, z),
+                TexCoords = new Vector2(u, 1.0F),
+                Color = finalColor.ToRgbaFloatVec4()
+            });
+    
+            // Top vertex.
+            this._tempVertices.Add(new ImmediateVertex3D {
+                Position = new Vector3(x, halfHeight, z),
+                TexCoords = new Vector2(u, 0.0F),
+                Color = finalColor.ToRgbaFloatVec4()
+            });
+        }
+    
+        // Generate indices for the side.
+        for (int slice = 0; slice < slices; slice++) {
+            int baseIndex = slice * 2;
+            int nextIndex = (slice + 1) * 2;
+    
+            this._tempIndices.Add((uint) (baseIndex + 1));
+            this._tempIndices.Add((uint) baseIndex);
+            this._tempIndices.Add((uint) nextIndex);
+            
+            this._tempIndices.Add((uint) (baseIndex + 1));
+            this._tempIndices.Add((uint) nextIndex);
+            this._tempIndices.Add((uint) (nextIndex + 1));
+        }
+    
+        // Bottom cap.
+        int bottomCenterIndex = this._tempVertices.Count;
+    
+        this._tempVertices.Add(new ImmediateVertex3D {
+            Position = new Vector3(0, -halfHeight, 0),
+            TexCoords = new Vector2(0.5F, 0.5F),
+            Color = finalColor.ToRgbaFloatVec4()
+        });
+    
+        for (int slice = 0; slice < slices; slice++) {
+            int baseIndex = slice * 2;
+    
+            this._tempIndices.Add((uint) bottomCenterIndex);
+            this._tempIndices.Add((uint) (baseIndex + 2));
+            this._tempIndices.Add((uint) baseIndex);
+        }
+    
+        // Top cap.
+        int topCenterIndex = this._tempVertices.Count;
+    
+        this._tempVertices.Add(new ImmediateVertex3D {
+            Position = new Vector3(0.0F, halfHeight, 0.0F),
+            TexCoords = new Vector2(0.5F, 0.5F),
+            Color = finalColor.ToRgbaFloatVec4()
+        });
+    
+        for (int slice = 0; slice < slices; slice++) {
+            int baseIndex = slice * 2 + 1;
+    
+            this._tempIndices.Add((uint) topCenterIndex);
+            this._tempIndices.Add((uint) baseIndex);
+            this._tempIndices.Add((uint) (baseIndex + 2));
+        }
+    
+        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
     
-    public void DrawCylinderWires() {
-        throw new NotImplementedException("DrawCylinderWires is not implemented yet.");
+    public void DrawCylinderWires(Transform transform, float radius, float height, int slices, Color? color = null) {
+        Color finalColor = color ?? Color.White;
+
+        if (slices < 3) {
+            slices = 3;
+        }
+
+        float halfHeight = height / 2.0F;
+
+        // Generate vertices for top and bottom circles, and the side edges.
+        for (int slice = 0; slice <= slices; slice++) {
+            float angle = slice * MathF.Tau / slices;
+            float x = MathF.Cos(angle) * (radius / 2.0F);
+            float z = MathF.Sin(angle) * (radius / 2.0F);
+
+            // Bottom circle vertex.
+            this._tempVertices.Add(new ImmediateVertex3D {
+                Position = new Vector3(x, -halfHeight, z),
+                Color = finalColor.ToRgbaFloatVec4()
+            });
+
+            // Top circle vertex.
+            this._tempVertices.Add(new ImmediateVertex3D {
+                Position = new Vector3(x, halfHeight, z),
+                Color = finalColor.ToRgbaFloatVec4()
+            });
+        }
+
+        // Generate indices for the top and bottom circles.
+        for (int slice = 0; slice < slices; slice++) {
+            int bottomIndex = slice * 2;
+            int topIndex = bottomIndex + 1;
+
+            // Bottom circle edge.
+            this._tempIndices.Add((uint) bottomIndex);
+            this._tempIndices.Add((uint) ((bottomIndex + 2) % (slices * 2)));
+
+            // Top circle edge.
+            this._tempIndices.Add((uint) topIndex);
+            this._tempIndices.Add((uint) ((topIndex + 2) % (slices * 2)));
+        }
+
+        // Center vertices for bottom and top circles.
+        int bottomCenterIndex = this._tempVertices.Count;
+        this._tempVertices.Add(new ImmediateVertex3D {
+            Position = new Vector3(0, -halfHeight, 0),
+            Color = finalColor.ToRgbaFloatVec4()
+        });
+
+        int topCenterIndex = this._tempVertices.Count;
+        this._tempVertices.Add(new ImmediateVertex3D {
+            Position = new Vector3(0, halfHeight, 0),
+            Color = finalColor.ToRgbaFloatVec4()
+        });
+
+        // Generate indices for lines from center to edge for bottom and top circles.
+        for (int slice = 0; slice <= slices; slice++) {
+            int bottomEdgeIndex = slice * 2;
+            int topEdgeIndex = bottomEdgeIndex + 1;
+
+            // Line from center of bottom circle to edge.
+            this._tempIndices.Add((uint) bottomCenterIndex);
+            this._tempIndices.Add((uint) bottomEdgeIndex);
+
+            // Line from center of top circle to edge.
+            this._tempIndices.Add((uint) topCenterIndex);
+            this._tempIndices.Add((uint) topEdgeIndex);
+        }
+
+        // Generate indices for the vertical edges.
+        for (int slice = 0; slice < slices; slice++) {
+            int bottomIndex = slice * 2;
+            int topIndex = bottomIndex + 1;
+
+            this._tempIndices.Add((uint) bottomIndex);
+            this._tempIndices.Add((uint) topIndex);
+        }
+
+        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
     
-    public void DrawCapsule() {
-        throw new NotImplementedException("DrawCapsule is not implemented yet.");
-    }
+    public void DrawCapsule(Transform transform, float radius, float height, int slices, Color? color = null) {
+        Color finalColor = color ?? Color.White;
     
-    public void DrawCapsuleWires() {
-        throw new NotImplementedException("DrawCapsuleWires is not implemented yet.");
-    }
+        if (slices < 3) {
+            slices = 3;
+        }
     
-    public void DrawBoundingBox() {
-        throw new NotImplementedException("DrawBoundingBox is not implemented yet.");
-    }
+        float halfRadius = radius / 2.0F;
+        float halfHeight = height / 2.0F;
+        int rings = slices / 2;
     
-    public void DrawBillboard() { // TODO: Do for the texture a Rectangle: source (For example if you want to play a GIF yu will need that.)
-        throw new NotImplementedException("DrawBillboard is not implemented yet.");
+        // Create top hemisphere vertices.
+        for (int ring = 0; ring <= rings; ring++) {
+            float theta = ring * MathF.PI / (rings * 2);
+            float sinTheta = MathF.Sin(theta);
+            float cosTheta = MathF.Cos(theta);
+    
+            for (int slice = 0; slice <= slices; slice++) {
+                float phi = slice * 2 * MathF.PI / slices;
+                float cosPhi = MathF.Cos(phi);
+                float sinPhi = MathF.Sin(phi);
+                
+                float x = halfRadius * sinTheta * cosPhi;
+                float y = halfRadius * cosTheta + halfHeight;
+                float z = halfRadius * sinTheta * sinPhi;
+    
+                // Add vertex.
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(x, y, z),
+                    TexCoords = new Vector2((float) slice / slices, (float) ring / rings),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+            }
+        }
+    
+        // Create cylindrical body vertices.
+        for (int yStep = 0; yStep <= 1; yStep++) {
+            float y = yStep == 0 ? -halfHeight : halfHeight;
+            
+            for (int slice = 0; slice <= slices; slice++) {
+                float phi = slice * 2 * MathF.PI / slices;
+                float cosPhi = MathF.Cos(phi);
+                float sinPhi = MathF.Sin(phi);
+                
+                float x = halfRadius * cosPhi;
+                float z = halfRadius * sinPhi;
+                
+                // Add vertex.
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(x, y, z),
+                    TexCoords = new Vector2((float) slice / slices, yStep),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+            }
+        }
+    
+        // Create bottom hemisphere vertices.
+        for (int ring = 0; ring <= rings; ring++) {
+            float theta = ring * MathF.PI / (rings * 2) + MathF.PI;
+            float sinTheta = MathF.Sin(theta);
+            float cosTheta = MathF.Cos(theta);
+    
+            for (int slice = 0; slice <= slices; slice++) {
+                float phi = slice * 2 * MathF.PI / slices;
+                float cosPhi = MathF.Cos(phi);
+                float sinPhi = MathF.Sin(phi);
+                
+                float x = halfRadius * sinTheta * cosPhi;
+                float y = halfRadius * cosTheta - halfHeight;
+                float z = halfRadius * sinTheta * sinPhi;
+    
+                // Add vertex.
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(-x, y, -z),
+                    TexCoords = new Vector2((float) slice / slices, (float) ring / rings),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+            }
+        }
+    
+        // Generate indices for top hemisphere.
+        for (int ring = 0; ring < rings; ring++) {
+            for (int slice = 0; slice < slices; slice++) {
+                uint first = (uint) (ring * (slices + 1) + slice);
+                uint second = first + (uint) (slices + 1);
+                
+                this._tempIndices.Add(first);
+                this._tempIndices.Add(second);
+                this._tempIndices.Add(first + 1);
+                
+                this._tempIndices.Add(second);
+                this._tempIndices.Add(second + 1);
+                this._tempIndices.Add(first + 1);
+            }
+        }
+
+        // Generate indices for the cylindrical body.
+        int cylinderStartIndex = (rings + 1) * (slices + 1);
+        
+        for (int step = 0; step < 1; step++) {
+            for (int slice = 0; slice < slices; slice++) {
+                uint first = (uint) (cylinderStartIndex + step * (slices + 1) + slice);
+                uint second = first + (uint) (slices + 1);
+                
+                this._tempIndices.Add(first);
+                this._tempIndices.Add(first + 1);
+                this._tempIndices.Add(second);
+                
+                this._tempIndices.Add(first + 1);
+                this._tempIndices.Add(second + 1);
+                this._tempIndices.Add(second);
+            }
+        }
+        
+        // Generate indices for bottom hemisphere.
+        int bottomStartIndex = cylinderStartIndex + 2 * (slices + 1);
+        
+        for (int ring = 0; ring < rings; ring++) {
+            for (int slice = 0; slice < slices; slice++) {
+                uint first = (uint) (bottomStartIndex + ring * (slices + 1) + slice);
+                uint second = first + (uint) (slices + 1);
+    
+                this._tempIndices.Add(first);
+                this._tempIndices.Add(first + 1);
+                this._tempIndices.Add(second);
+    
+                this._tempIndices.Add(second);
+                this._tempIndices.Add(first + 1);
+                this._tempIndices.Add(second + 1);
+            }
+        }
+    
+        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
 
+    /// <summary>
+    /// Draws the wireframe of a capsule based on the specified transform, dimensions, and color.
+    /// </summary>
+    /// <param name="transform">The transformation applied to the capsule, such as position, rotation, and scale.</param>
+    /// <param name="radius">The radius of the capsule's hemispherical ends and cylindrical body.</param>
+    /// <param name="height">The height of the cylindrical body of the capsule.</param>
+    /// <param name="slices">The number of divisions for rendering the capsule's rounded surface. Must be at least 3.</param>
+    /// <param name="color">The optional color of the capsule wireframe. Defaults to white if not specified.</param>
+    public void DrawCapsuleWires(Transform transform, float radius, float height, int slices, Color? color = null) {
+        Color finalColor = color ?? Color.White;
+        
+        if (slices < 3) {
+            slices = 3;
+        }
+        
+        float halfRadius = radius / 2.0F;
+        float halfHeight = height / 2.0F;
+        int rings = slices / 2;
+        
+        // Create top hemisphere vertices.
+        for (int ring = 0; ring <= rings; ring++) {
+            float theta = ring * MathF.PI / (rings * 2.0F);
+            float sinTheta = MathF.Sin(theta);
+            float cosTheta = MathF.Cos(theta);
+            
+            for (int slice = 0; slice <= slices; slice++) {
+                float phi = slice * 2.0F * MathF.PI / slices;
+                float cosPhi = MathF.Cos(phi);
+                float sinPhi = MathF.Sin(phi);
+                
+                float x = halfRadius * sinTheta * cosPhi;
+                float y = halfRadius * cosTheta + halfHeight;
+                float z = halfRadius * sinTheta * sinPhi;
+                
+                // Add vertex.
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(x, y, z),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+                
+                // Connect vertical edges for the hemisphere.
+                if (ring < rings) {
+                    int current = ring * (slices + 1) + slice;
+                    int next = current + slices + 1;
+    
+                    this._tempIndices.Add((uint) current);
+                    this._tempIndices.Add((uint) next);
+                }
+            }
+        }
+        
+        // Create cylindrical body vertices.
+        int cylinderStartIndex = this._tempVertices.Count;
+        
+        for (int yStep = 0; yStep <= 1; yStep++) {
+            float y = yStep == 0 ? -halfHeight : halfHeight;
+            
+            for (int slice = 0; slice <= slices; slice++) {
+                float phi = slice * 2.0F * MathF.PI / slices;
+                float cosPhi = MathF.Cos(phi);
+                float sinPhi = MathF.Sin(phi);
+                
+                float x = halfRadius * cosPhi;
+                float z = halfRadius * sinPhi;
+                
+                // Add vertex.
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(x, y, z),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+                
+                // Connect vertical edges for the cylinder.
+                if (yStep == 0) {
+                    int current = cylinderStartIndex + slice;
+                    int next = current + slices + 1;
+                    
+                    this._tempIndices.Add((uint) current);
+                    this._tempIndices.Add((uint) next);
+                }
+            }
+        }
+        
+        // Create bottom hemisphere vertices.
+        int bottomStartIndex = this._tempVertices.Count;
+        
+        for (int ring = 0; ring <= rings; ring++) {
+            float theta = MathF.PI - ring * MathF.PI / (rings * 2.0F);
+            float sinTheta = MathF.Sin(theta);
+            float cosTheta = MathF.Cos(theta);
+            
+            for (int slice = 0; slice <= slices; slice++) {
+                float phi = slice * 2.0F * MathF.PI / slices;
+                float cosPhi = MathF.Cos(phi);
+                float sinPhi = MathF.Sin(phi);
+                
+                float x = halfRadius * sinTheta * cosPhi;
+                float y = halfRadius * cosTheta - halfHeight;
+                float z = halfRadius * sinTheta * sinPhi;
+                
+                // Add vertex.
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(x, y, z),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+                
+                // Connect vertical edges for the hemisphere.
+                if (ring < rings) {
+                    int current = bottomStartIndex + ring * (slices + 1) + slice;
+                    int next = current + slices + 1;
+                    
+                    this._tempIndices.Add((uint) current);
+                    this._tempIndices.Add((uint) next);
+                }
+            }
+        }
+        
+        // Connect horizontal edges.
+        for (int slice = 0; slice < slices; slice++) {
+            
+            // First hemisphere.
+            for (int ring = 0; ring <= rings; ring++) {
+                int current = ring * (slices + 1) + slice;
+                this._tempIndices.Add((uint) current);
+                this._tempIndices.Add((uint) (current + 1));
+            }
+            
+            // Cylindrical body.
+            for (int step = 0; step <= 1; step++) {
+                int current = cylinderStartIndex + step * (slices + 1) + slice;
+                this._tempIndices.Add((uint) current);
+                this._tempIndices.Add((uint) (current + 1));
+            }
+            
+            // Second hemisphere.
+            for (int ring = 0; ring <= rings; ring++) {
+                int current = bottomStartIndex + ring * (slices + 1) + slice;
+                this._tempIndices.Add((uint) current);
+                this._tempIndices.Add((uint) (current + 1));
+            }
+        }
+        
+        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
+    }
+    
     /// <summary>
     /// Renders a grid using the specified transformation matrix, slice count, spacing, and optional color.
     /// </summary>
@@ -631,7 +1058,7 @@ public class ImmediateRenderer : Disposable {
     /// <param name="color">An optional color for the grid lines. Defaults to white if not specified.</param>
     public void DrawGird(Transform transform, int slices, int spacing, Color? color = null) {
         Color finalColor = color ?? Color.White;
-    
+        
         if (spacing < 1) {
             spacing = 1;
         }
@@ -644,7 +1071,7 @@ public class ImmediateRenderer : Disposable {
     
         for (int i = 0; i <= slices; i++) {
             float offset = -halfSize + i * spacing;
-    
+            
             // Draw lines along the X axis.
             this._tempVertices.Add(new ImmediateVertex3D {
                 Position = new Vector3(offset, 0, -halfSize),
@@ -655,7 +1082,7 @@ public class ImmediateRenderer : Disposable {
                 Position = new Vector3(offset, 0, halfSize),
                 Color = finalColor.ToRgbaFloatVec4()
             });
-    
+            
             // Draw lines along the Z axis.
             this._tempVertices.Add(new ImmediateVertex3D {
                 Position = new Vector3(-halfSize, 0, offset),
@@ -666,14 +1093,49 @@ public class ImmediateRenderer : Disposable {
                 Position = new Vector3(halfSize, 0, offset),
                 Color = finalColor.ToRgbaFloatVec4()
             });
-    
+            
             // Add indices for line pairs along X and Z.
             this._tempIndices.Add((uint) (i * 4 + 0));
             this._tempIndices.Add((uint) (i * 4 + 1));
             this._tempIndices.Add((uint) (i * 4 + 2));
             this._tempIndices.Add((uint) (i * 4 + 3));
         }
-    
+        
+        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
+    }
+
+    /// <summary>
+    /// Draws the edges of the specified bounding box using the given transformation and color.
+    /// </summary>
+    /// <param name="transform">The transformation to apply to the bounding box before rendering.</param>
+    /// <param name="box">The bounding box to be drawn.</param>
+    /// <param name="color">The color to use for the bounding box edges. If null, white is used as the default color.</param>
+    public void DrawBoundingBox(Transform transform, BoundingBox box, Color? color = null) {
+        Color finalColor = color ?? Color.White;
+        
+        for (int i = 0; i < 8; i++) {
+            
+            // Calculate the x, y, z coordinates.
+            float x = (i & 1) == 0 ? box.Min.X : box.Max.X;
+            float y = (i & 2) == 0 ? box.Min.Y : box.Max.Y;
+            float z = (i & 4) == 0 ? box.Min.Z : box.Max.Z;
+            
+            // Add the vertex to the list.
+            this._tempVertices.Add(new ImmediateVertex3D {
+                Position = new Vector3(x, y, z),
+                Color = finalColor.ToRgbaFloatVec4()
+            });
+            
+            // Connect the vertex to its neighbors.
+            for (int bit = 0; bit < 3; bit++) {
+                if ((i & (1 << bit)) == 0) {
+                    int neighbor = i | (1 << bit);
+                    this._tempIndices.Add((uint) i);
+                    this._tempIndices.Add((uint) neighbor);
+                }
+            }
+        }
+
         this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
 
@@ -701,13 +1163,12 @@ public class ImmediateRenderer : Disposable {
         // Add indices for the line.
         this._tempIndices.Add(0);
         this._tempIndices.Add(1);
-
-        // Set transform.
-        Transform transform = new Transform() {
-            Translation = Vector3.Zero
-        };
         
-        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
+        this.DrawVertices(new Transform(), this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
+    }
+    
+    public void DrawBillboard() { // TODO: Do for the texture a Rectangle: source (For example if you want to play a GIF yu will need that.)
+        throw new NotImplementedException("DrawBillboard is not implemented yet.");
     }
 
     /// <summary>

@@ -261,7 +261,22 @@ public class Game : Disposable {
         this._immediateRenderer.DrawLine(new Vector3(20.5F, 0, 6), new Vector3(21.5F, 0, 6), Color.Green);
         
         this._immediateRenderer.SetTexture(null);
-        this._immediateRenderer.DrawGird(new Transform() { Translation = Vector3.Zero }, 100, 1, Color.Gray);
+        this._immediateRenderer.DrawGird(new Transform(), 100, 1, Color.Gray);
+        
+        this._immediateRenderer.SetTexture(this._customMeshTexture);
+        this._immediateRenderer.DrawCylinder(new Transform() { Translation = new Vector3(23, 0, 6) }, 1, 1, 40);
+        
+        this._immediateRenderer.SetTexture(null);
+        this._immediateRenderer.DrawCylinderWires(new Transform() { Translation = new Vector3(25, 0, 6) }, 1, 1, 40, Color.Green);
+        
+        this._immediateRenderer.SetTexture(null);
+        this._immediateRenderer.DrawBoundingBox(new Transform() { Translation = new Vector3(28, 0, 6) }, this._playerModel.BoundingBox, Color.Green);
+        
+        this._immediateRenderer.SetTexture(this._customMeshTexture);
+        this._immediateRenderer.DrawCapsule(new Transform() { Translation = new Vector3(31, 0, 6) }, 1, 1, 40);
+        
+        this._immediateRenderer.SetTexture(null);
+        this._immediateRenderer.DrawCapsuleWires(new Transform() { Translation = new Vector3(33, 0, 6) }, 1, 1, 40, Color.Green);
         
         this._immediateRenderer.End();
         
@@ -309,7 +324,7 @@ public class Game : Disposable {
         commandList.End();
         graphicsDevice.SubmitCommands(commandList);
         
-        // Draw ScreenPass. 
+        // Draw ScreenPass.
         commandList.Begin();
         
         if (this.FullScreenTexture.SampleCount != TextureSampleCount.Count1) {
