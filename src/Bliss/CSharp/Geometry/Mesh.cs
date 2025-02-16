@@ -159,7 +159,7 @@ public class Mesh : Disposable {
         this._colorBuffer.UpdateBufferImmediate();
         
         // Create value buffer.
-        this._valueBuffer = new SimpleBuffer<float>(graphicsDevice, 7, SimpleBufferType.Uniform, ShaderStages.Fragment);
+        this._valueBuffer = new SimpleBuffer<float>(graphicsDevice, 8, SimpleBufferType.Uniform, ShaderStages.Fragment);
 
         // Create pipeline description.
         this._pipelineDescription = this.CreatePipelineDescription();
