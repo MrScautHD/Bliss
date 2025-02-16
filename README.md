@@ -30,6 +30,9 @@ dotnet add package Bliss --version 1.1.0
 > 2. Add `Bliss.csproj` as a reference to your project.
 ---
 
+# ⭐ Getting Started
+> Explore our [Documentation](https://mrscauthd.github.io/Bliss/) to kick off smoothly.
+
 📚 Libraries - [Nuget](https://www.nuget.org/packages)
 ======================================================
 - [`ppy.Veldrid`](https://www.nuget.org/packages/ppy.Veldrid)
