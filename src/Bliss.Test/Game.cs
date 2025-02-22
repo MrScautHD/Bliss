@@ -278,6 +278,9 @@ public class Game : Disposable {
         this._immediateRenderer.SetTexture(null);
         this._immediateRenderer.DrawCapsuleWires(new Transform() { Translation = new Vector3(33, 0, 6) }, 1, 1, 40, Color.Green);
         
+        this._immediateRenderer.SetTexture(this._logoTexture, sourceRect: new Rectangle(20, 0, (int) this._logoTexture.Width - 20, (int) this._logoTexture.Height));
+        this._immediateRenderer.DrawBillboard(new Vector3(35, 0, 6));
+        
         this._immediateRenderer.End();
         
         this._customPoly.Draw(commandList, new Transform() { Translation = new Vector3(9, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);

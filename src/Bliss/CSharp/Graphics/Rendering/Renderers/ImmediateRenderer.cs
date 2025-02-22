@@ -105,6 +105,8 @@ public class ImmediateRenderer : Disposable {
     /// The currently active sampler.
     /// </summary>
     private Sampler _currentSampler;
+
+    private Rectangle _currentSourceRec;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="ImmediateRenderer"/> class with the specified graphics device, output, effect, and capacity.
@@ -140,6 +142,7 @@ public class ImmediateRenderer : Disposable {
         // Set default texture and sampler.
         this._currentTexture = GlobalResource.DefaultImmediateRendererTexture;
         this._currentSampler = GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
+        this._currentSourceRec = new Rectangle(0, 0, (int) this._currentTexture.Width, (int) this._currentTexture.Height);
     }
 
     /// <summary>
@@ -171,15 +174,28 @@ public class ImmediateRenderer : Disposable {
         
         this._begun = false;
     }
+
+    public Texture2D GetCurrentTexture() {
+        return this._currentTexture;
+    }
+
+    public Sampler GetCurrentSampler() {
+        return this._currentSampler;
+    }
+
+    public Rectangle GetCurrentSourceRec() {
+        return this._currentSourceRec;
+    }
     
     /// <summary>
     /// Sets the current texture and sampler to be used for rendering.
     /// </summary>
     /// <param name="texture">The texture to use; if null, the default immediate renderer texture is used.</param>
     /// <param name="sampler">The sampler to use; if null, a default point sampler is used.</param>
-    public void SetTexture(Texture2D? texture, Sampler? sampler = null) {
+    public void SetTexture(Texture2D? texture, Sampler? sampler = null, Rectangle? sourceRect = null) {
         this._currentTexture = texture ?? GlobalResource.DefaultImmediateRendererTexture;
         this._currentSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
+        this._currentSourceRec = sourceRect ?? new Rectangle(0, 0, (int) this._currentTexture.Width, (int) this._currentTexture.Height);
     }
     
     /// <summary>
@@ -1166,9 +1182,80 @@ public class ImmediateRenderer : Disposable {
         
         this.DrawVertices(new Transform(), this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
+
+    public void DrawBillboard(Vector3 position, Vector3? scale = null, bool constrained = true, Color? color = null) {
+        Color finalColor = color ?? Color.White;
+        Vector3 finalScale = scale ?? Vector3.One;
     
-    public void DrawBillboard() { // TODO: Do for the texture a Rectangle: source (For example if you want to play a GIF yu will need that.)
-        throw new NotImplementedException("DrawBillboard is not implemented yet.");
+        // Get the active camera.
+        Cam3D? cam3D = Cam3D.ActiveCamera;
+        
+        if (cam3D == null) {
+            return;
+        }
+        
+        // Calculate Rotation and set transform.
+        Quaternion billboardRotation;
+        
+        if (constrained) {
+            billboardRotation = Quaternion.CreateFromRotationMatrix(Matrix4x4.CreateConstrainedBillboard(position, cam3D.Position, Vector3.UnitY, cam3D.GetForward(), Vector3.UnitX));
+        }
+        else {
+            billboardRotation = Quaternion.CreateFromRotationMatrix(Matrix4x4.CreateBillboard(position, cam3D.Position, cam3D.Up, cam3D.GetForward()));
+        }
+        
+        Transform billboardTransform = new Transform {
+            Translation = position,
+            Rotation = billboardRotation,
+            Scale = finalScale
+        };
+        
+        Texture2D texture = this._currentTexture;
+        Rectangle sourceRec = this._currentSourceRec;
+        
+        // Calculate source rectangle UVs.
+        float uLeft = sourceRec.X / (float) texture.Width;
+        float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
+        float vTop = sourceRec.Y / (float) texture.Height;
+        float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
+        
+        // Calculate half size.
+        Vector3 halfSize = new Vector3(sourceRec.Width / 100.0F, sourceRec.Height / 100.0F, 0.0F) / 2.0F;
+        
+        // Add vertices.
+        this._tempVertices.Add(new ImmediateVertex3D {
+            Position = new Vector3(-halfSize.X, -halfSize.Y, 0.0F),
+            TexCoords = new Vector2(uRight, vBottom),
+            Color = finalColor.ToRgbaFloatVec4()
+        });
+        
+        this._tempVertices.Add(new ImmediateVertex3D {
+            Position = new Vector3(halfSize.X, -halfSize.Y, 0.0F),
+            TexCoords = new Vector2(uLeft, vBottom),
+            Color = finalColor.ToRgbaFloatVec4()
+        });
+        
+        this._tempVertices.Add(new ImmediateVertex3D {
+            Position = new Vector3(halfSize.X, halfSize.Y, 0.0F),
+            TexCoords = new Vector2(uLeft, vTop),
+            Color = finalColor.ToRgbaFloatVec4()
+        });
+        
+        this._tempVertices.Add(new ImmediateVertex3D {
+            Position = new Vector3(-halfSize.X, halfSize.Y, 0.0F),
+            TexCoords = new Vector2(uRight, vTop),
+            Color = finalColor.ToRgbaFloatVec4()
+        });
+    
+        // Add indices for 2 triangles making up the quad.
+        this._tempIndices.Add(0);
+        this._tempIndices.Add(1);
+        this._tempIndices.Add(2);
+        this._tempIndices.Add(2);
+        this._tempIndices.Add(3);
+        this._tempIndices.Add(0);
+    
+        this.DrawVertices(billboardTransform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
 
     /// <summary>
@@ -1186,6 +1273,9 @@ public class ImmediateRenderer : Disposable {
         Cam3D? cam3D = Cam3D.ActiveCamera;
 
         if (cam3D == null) {
+            // Clear temp data.
+            this._tempVertices.Clear();
+            this._tempIndices.Clear();
             return;
         }
         
