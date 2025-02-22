@@ -1275,9 +1275,80 @@ public class ImmediateRenderer : Disposable {
     
         this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
+
+    /// <summary>
+    /// Renders a torus shape using the specified transformation, dimensions, and color.
+    /// </summary>
+    /// <param name="transform">The transformation to apply to the torus, including position, rotation, and scale.</param>
+    /// <param name="radius">The radius of the inner circle of the torus.</param>
+    /// <param name="size">The thickness of the torus.</param>
+    /// <param name="radSeg">The number of segments along the radial direction of the torus. Must be 3 or greater.</param>
+    /// <param name="sides">The number of sides to approximate the circular cross-section of the torus. Must be 3 or greater.</param>
+    /// <param name="color">The color of the torus. If null, the default color will be white.</param>
+    public void DrawTorus(Transform transform, float radius, float size, int radSeg, int sides, Color? color = null) {
+        Color finalColor = color ?? Color.White;
+        Texture2D texture = this._currentTexture;
+        Rectangle sourceRec = this._currentSourceRec;
         
-    public void DrawTorus() {
+        if (radSeg < 3) {
+            radSeg = 3;
+        }
         
+        if (sides < 3) {
+            sides = 3;
+        }
+        
+        // Calculate source rectangle UVs.
+        float uLeft = sourceRec.X / (float) texture.Width;
+        float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
+        float vTop = sourceRec.Y / (float) texture.Height;
+        float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
+        
+        float circusStep = MathF.Tau / radSeg;
+        float sideStep = MathF.Tau / sides;
+
+        // Calculate the vertices.
+        for (int rad = 0; rad <= radSeg; rad++) {
+            float radAngle = rad * circusStep;
+            float cosRad = MathF.Cos(radAngle);
+            float sinRad = MathF.Sin(radAngle);
+
+            for (int side = 0; side <= sides; side++) {
+                float sideAngle = side * sideStep;
+                float cosSide = MathF.Cos(sideAngle);
+                float sinSide = MathF.Sin(sideAngle);
+
+                Vector3 position = new Vector3(cosSide * cosRad, sinSide, cosSide * sinRad) * (size / 4.0F) + new Vector3(cosRad * (radius / 4.0F), 0.0F, sinRad * (radius / 4.0F));
+                Vector2 texCoords = new Vector2(
+                    uLeft + (uRight - uLeft) * ((float) rad / radSeg),
+                    vTop + (vBottom - vTop) * ((float) side / sides)
+                );
+
+                this._tempVertices.Add(new ImmediateVertex3D() {
+                    Position = position,
+                    TexCoords = texCoords,
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+            }
+        }
+
+        // Calculate the indices.
+        for (int rad = 0; rad < radSeg; rad++) {
+            for (int side = 0; side < sides; side++) {
+                int current = rad * (sides + 1) + side;
+                int next = current + sides + 1;
+
+                this._tempIndices.Add((uint) current);
+                this._tempIndices.Add((uint) next);
+                this._tempIndices.Add((uint) (next + 1));
+ 
+                this._tempIndices.Add((uint) current);
+                this._tempIndices.Add((uint) (next + 1));
+                this._tempIndices.Add((uint) (current + 1));
+            }
+        }
+        
+        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
 
     public void DrawTorusWires() {

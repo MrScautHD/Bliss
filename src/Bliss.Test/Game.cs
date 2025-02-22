@@ -287,6 +287,9 @@ public class Game : Disposable {
         this._immediateRenderer.SetTexture(null);
         this._immediateRenderer.DrawConeWires(new Transform() { Translation = new Vector3(40, 0, 6)}, 1, 1, 40, Color.Green);
         
+        this._immediateRenderer.SetTexture(this._customMeshTexture);
+        this._immediateRenderer.DrawTorus(new Transform() { Translation = new Vector3(42, 0, 6) }, 2, 1, 40, 40);
+        
         this._immediateRenderer.End();
         
         this._customPoly.Draw(commandList, new Transform() { Translation = new Vector3(9, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
