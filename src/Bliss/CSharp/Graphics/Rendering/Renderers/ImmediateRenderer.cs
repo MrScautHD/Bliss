@@ -107,6 +107,9 @@ public class ImmediateRenderer : Disposable {
     /// </summary>
     private Sampler _currentSampler;
 
+    /// <summary>
+    /// The currently active source rectangle.
+    /// </summary>
     private Rectangle _currentSourceRec;
     
     /// <summary>
@@ -176,23 +179,36 @@ public class ImmediateRenderer : Disposable {
         this._begun = false;
     }
 
+    /// <summary>
+    /// Retrieves the currently active texture being used by the renderer.
+    /// </summary>
+    /// <returns>The active <see cref="Texture2D"/> object currently bound to the renderer.</returns>
     public Texture2D GetCurrentTexture() {
         return this._currentTexture;
     }
 
+    /// <summary>
+    /// Retrieves the currently active sampler used by the renderer.
+    /// </summary>
+    /// <returns>The active <see cref="Sampler"/> instance.</returns>
     public Sampler GetCurrentSampler() {
         return this._currentSampler;
     }
 
+    /// <summary>
+    /// Retrieves the current source rectangle used for rendering operations.
+    /// </summary>
+    /// <returns>The current <see cref="Rectangle"/> source used for rendering.</returns>
     public Rectangle GetCurrentSourceRec() {
         return this._currentSourceRec;
     }
     
     /// <summary>
-    /// Sets the current texture and sampler to be used for rendering.
+    /// Sets the current texture, sampler, and optional source rectangle for rendering.
     /// </summary>
-    /// <param name="texture">The texture to use; if null, the default immediate renderer texture is used.</param>
-    /// <param name="sampler">The sampler to use; if null, a default point sampler is used.</param>
+    /// <param name="texture">The texture to be used for rendering. If null, a default texture is used.</param>
+    /// <param name="sampler">The sampler to be applied to the texture. Defaults to a point sampler if null.</param>
+    /// <param name="sourceRect">The source rectangle specifying a portion of the texture to be used. If null, the entire texture is used.</param>
     public void SetTexture(Texture2D? texture, Sampler? sampler = null, Rectangle? sourceRect = null) {
         this._currentTexture = texture ?? GlobalResource.DefaultImmediateRendererTexture;
         this._currentSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
@@ -260,8 +276,8 @@ public class ImmediateRenderer : Disposable {
                 
                 // Calculate the position of each corner.
                 Vector3 position = faceNormal
-                    + ((corner == 0 || corner == 3) ? -tangent : tangent)
-                    + ((corner == 0 || corner == 1) ? -bitangent : bitangent);
+                    + (corner == 0 || corner == 3 ? -tangent : tangent)
+                    + (corner == 0 || corner == 1 ? -bitangent : bitangent);
 
                 // Assign texture coordinates for the current corner.
                 Vector2 texCoord = corner switch {
@@ -752,7 +768,15 @@ public class ImmediateRenderer : Disposable {
     
         this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
-    
+
+    /// <summary>
+    /// Draws the wireframe representation of a cylinder using the specified transform, radius, height, and number of slices.
+    /// </summary>
+    /// <param name="transform">The transformation to apply to the cylinder, defining its position, rotation, and scale in the scene.</param>
+    /// <param name="radius">The radius of the cylinder.</param>
+    /// <param name="height">The height of the cylinder.</param>
+    /// <param name="slices">The number of subdivisions around the cylinder's circumference. Must be at least 3.</param>
+    /// <param name="color">The color of the cylinder's wires. If null, the default color is white.</param>
     public void DrawCylinderWires(Transform transform, float radius, float height, int slices, Color? color = null) {
         Color finalColor = color ?? Color.White;
 
@@ -833,7 +857,15 @@ public class ImmediateRenderer : Disposable {
 
         this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
-    
+
+    /// <summary>
+    /// Renders a 3D capsule using the specified transformation, dimensions, and visual properties.
+    /// </summary>
+    /// <param name="transform">The transformation to apply to the capsule, including position, rotation, and scaling.</param>
+    /// <param name="radius">The radius of the capsule's hemispherical ends and cylindrical body.</param>
+    /// <param name="height">The total height of the capsule.</param>
+    /// <param name="slices">The number of subdivisions around the circumference of the capsule. Minimum value is 3.</param>
+    /// <param name="color">The color of the capsule. If null, defaults to white.</param>
     public void DrawCapsule(Transform transform, float radius, float height, int slices, Color? color = null) {
         Color finalColor = color ?? Color.White;
         Texture2D texture = this._currentTexture;
@@ -1410,8 +1442,93 @@ public class ImmediateRenderer : Disposable {
         this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
 
-    public void DrawKnot() {
+    /// <summary>
+    /// Draws a knot shape with the specified parameters using transformations, radii, segments, and color.
+    /// </summary>
+    /// <param name="transform">The transformation applied to the knot.</param>
+    /// <param name="radius">The overall radius of the knot.</param>
+    /// <param name="tubeRadius">The radius of the tube forming the knot.</param>
+    /// <param name="radSeg">The number of segments along the radial direction. Minimum value is 3.</param>
+    /// <param name="sides">The number of sides of the tube forming the knot. Minimum value is 3.</param>
+    /// <param name="color">An optional color for the knot. Defaults to white if null.</param>
+    public void DrawKnot(Transform transform, float radius, float tubeRadius, int radSeg, int sides, Color? color = null) {
+        Color finalColor = color ?? Color.White;
+        Texture2D texture = this._currentTexture;
+        Rectangle sourceRec = this._currentSourceRec;
         
+        if (radSeg < 3) {
+            radSeg = 3;
+        }
+        
+        if (sides < 3) {
+            sides = 3;
+        }
+        
+        // Calculate source rectangle UVs.
+        float uLeft = sourceRec.X / (float) texture.Width;
+        float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
+        float vTop = sourceRec.Y / (float) texture.Height;
+        float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
+
+        float step = MathF.Tau / radSeg;
+        float sideStep = MathF.Tau / sides;
+    
+        // Calculate the vertices.
+        for (int rad = 0; rad <= radSeg; rad++) {
+            float t = rad * step;
+    
+            float x = MathF.Sin(t) + 2.0F * MathF.Sin(2.0F * t);
+            float y = MathF.Cos(t) - 2.0F * MathF.Cos(2.0F * t);
+            float z = -MathF.Sin(3.0F * t);
+    
+            Vector3 center = new Vector3(x, y, z) * (radius / 6.0F);
+    
+            Vector3 tangent = Vector3.Normalize(new Vector3(
+                MathF.Cos(t) + 4.0F * MathF.Cos(2.0F * t),
+                -MathF.Sin(t) + 4.0F * MathF.Sin(2.0F * t),
+                -3.0F * MathF.Cos(3.0F * t)
+            ));
+            
+            Vector3 normal = Vector3.Normalize(new Vector3(-tangent.Y, tangent.X, 0.0F));
+            Vector3 binormal = Vector3.Cross(tangent, normal);
+
+            for (int side = 0; side <= sides; side++) {
+                float sideAngle = side * sideStep;
+                float cosAngle = MathF.Cos(sideAngle);
+                float sinAngle = MathF.Sin(sideAngle);
+    
+                Vector3 offset = normal * cosAngle * (tubeRadius / 6.0F) + binormal * sinAngle * (tubeRadius / 6.0F);
+                Vector3 position = center + offset;
+                Vector2 texCoords = new Vector2(
+                    float.Lerp(uLeft, uRight, (float) rad / radSeg),
+                    float.Lerp(vTop, vBottom, (float) side / sides)
+                );
+    
+                this._tempVertices.Add(new ImmediateVertex3D() {
+                    Position = position,
+                    TexCoords = texCoords,
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+            }
+        }
+        
+        // Calculate the indices.
+        for (int rad = 0; rad < radSeg; rad++) {
+            for (int side = 0; side < sides; side++) {
+                int current = rad * (sides + 1) + side;
+                int next = current + sides + 1;
+    
+                this._tempIndices.Add((uint) current);
+                this._tempIndices.Add((uint) next);
+                this._tempIndices.Add((uint) (next + 1));
+                
+                this._tempIndices.Add((uint) current);
+                this._tempIndices.Add((uint) (next + 1));
+                this._tempIndices.Add((uint) (current + 1));
+            }
+        }
+        
+        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
 
     public void DrawKnotWires() {
