@@ -56,7 +56,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Cam3D
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 12
+    startLine: 13
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -93,7 +93,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ActiveCamera
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 19
+    startLine: 20
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -129,7 +129,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Size
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 25
+    startLine: 26
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -163,7 +163,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: AspectRatio
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 31
+    startLine: 32
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -197,7 +197,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Position
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 37
+    startLine: 38
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -229,7 +229,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Target
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 43
+    startLine: 44
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -261,7 +261,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Up
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 49
+    startLine: 50
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -293,7 +293,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ProjectionType
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 55
+    startLine: 56
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -325,7 +325,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Mode
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 62
+    startLine: 63
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -359,7 +359,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Fov
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 68
+    startLine: 69
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -391,7 +391,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: NearPlane
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 74
+    startLine: 75
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -423,7 +423,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: FarPlane
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 80
+    startLine: 81
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -455,7 +455,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MouseSensitivity
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 87
+    startLine: 88
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -489,7 +489,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MovementSpeed
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 94
+    startLine: 95
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -523,7 +523,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: OrbitalSpeed
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 101
+    startLine: 102
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -557,7 +557,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 144
+    startLine: 145
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -622,7 +622,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Update
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 160
+    startLine: 161
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -658,7 +658,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Resize
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 255
+    startLine: 256
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -698,7 +698,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Begin
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 265
+    startLine: 266
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -735,7 +735,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: End
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 277
+    startLine: 278
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -765,7 +765,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetProjection
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 286
+    startLine: 287
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -796,7 +796,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetView
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 294
+    startLine: 295
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -827,7 +827,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetForward
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 302
+    startLine: 303
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -858,7 +858,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MoveForward
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 311
+    startLine: 312
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -896,7 +896,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetRight
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 326
+    startLine: 330
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -927,7 +927,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MoveRight
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 335
+    startLine: 339
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -965,7 +965,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MoveUp
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 350
+    startLine: 357
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1000,7 +1000,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MoveToTarget
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 361
+    startLine: 368
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1035,7 +1035,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetRotation
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 375
+    startLine: 382
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1066,7 +1066,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetYaw
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 384
+    startLine: 391
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1097,7 +1097,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetYaw
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 393
+    startLine: 400
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1135,7 +1135,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetPitch
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 414
+    startLine: 421
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1166,7 +1166,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetPitch
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 423
+    startLine: 430
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1204,7 +1204,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetRoll
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 451
+    startLine: 458
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1235,7 +1235,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetRoll
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 459
+    startLine: 466
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1270,7 +1270,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetFrustum
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 468
+    startLine: 475
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1301,7 +1301,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetScreenToWorld
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 478
+    startLine: 485
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1336,7 +1336,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetWorldToScreen
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 495
+    startLine: 502
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3

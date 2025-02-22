@@ -687,7 +687,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenCone
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 746
+    startLine: 747
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -734,7 +734,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenTorus
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 825
+    startLine: 826
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -784,7 +784,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenKnot
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 900
+    startLine: 901
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -834,7 +834,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenHeightmap
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 988
+    startLine: 989
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -875,7 +875,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenerateTangents
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1052
+    startLine: 1053
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -903,7 +903,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: UpdateAnimationBones
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1117
+    startLine: 1118
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -944,7 +944,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ResetAnimationBones
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1131
+    startLine: 1132
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -976,7 +976,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Draw
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1148
+    startLine: 1149
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1026,7 +1026,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1308
+    startLine: 1309
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry

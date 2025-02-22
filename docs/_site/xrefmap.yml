@@ -4862,12 +4862,12 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Dispose
   nameWithType: ImmediateRenderer.Dispose
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawBillboard
-  name: DrawBillboard()
-  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawBillboard
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawBillboard
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawBillboard()
-  nameWithType: ImmediateRenderer.DrawBillboard()
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawBillboard(System.Numerics.Vector3,System.Nullable{System.Numerics.Vector2},System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawBillboard(Vector3, Vector2?, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawBillboard_System_Numerics_Vector3_System_Nullable_System_Numerics_Vector2__System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawBillboard(System.Numerics.Vector3,System.Nullable{System.Numerics.Vector2},System.Nullable{Bliss.CSharp.Colors.Color})
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawBillboard(System.Numerics.Vector3, System.Numerics.Vector2?, Bliss.CSharp.Colors.Color?)
+  nameWithType: ImmediateRenderer.DrawBillboard(Vector3, Vector2?, Color?)
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawBillboard*
   name: DrawBillboard
   href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawBillboard_
@@ -4875,12 +4875,12 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawBillboard
   nameWithType: ImmediateRenderer.DrawBillboard
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawBoundingBox
-  name: DrawBoundingBox()
-  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawBoundingBox
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawBoundingBox
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawBoundingBox()
-  nameWithType: ImmediateRenderer.DrawBoundingBox()
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawBoundingBox(Bliss.CSharp.Transformations.Transform,Bliss.CSharp.Geometry.BoundingBox,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawBoundingBox(Transform, BoundingBox, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawBoundingBox_Bliss_CSharp_Transformations_Transform_Bliss_CSharp_Geometry_BoundingBox_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawBoundingBox(Bliss.CSharp.Transformations.Transform,Bliss.CSharp.Geometry.BoundingBox,System.Nullable{Bliss.CSharp.Colors.Color})
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawBoundingBox(Bliss.CSharp.Transformations.Transform, Bliss.CSharp.Geometry.BoundingBox, Bliss.CSharp.Colors.Color?)
+  nameWithType: ImmediateRenderer.DrawBoundingBox(Transform, BoundingBox, Color?)
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawBoundingBox*
   name: DrawBoundingBox
   href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawBoundingBox_
@@ -4888,12 +4888,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawBoundingBox
   nameWithType: ImmediateRenderer.DrawBoundingBox
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCapsule
-  name: DrawCapsule()
-  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCapsule
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCapsule
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCapsule()
-  nameWithType: ImmediateRenderer.DrawCapsule()
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCapsule(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawCapsule(Transform, float, float, int, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCapsule_Bliss_CSharp_Transformations_Transform_System_Single_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCapsule(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawCapsule(Transform, Single, Single, Integer, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCapsule(Bliss.CSharp.Transformations.Transform, float, float, int, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCapsule(Bliss.CSharp.Transformations.Transform, Single, Single, Integer, Bliss.CSharp.Colors.Color?)
+  nameWithType: ImmediateRenderer.DrawCapsule(Transform, float, float, int, Color?)
+  nameWithType.vb: ImmediateRenderer.DrawCapsule(Transform, Single, Single, Integer, Color?)
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCapsule*
   name: DrawCapsule
   href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCapsule_
@@ -4901,12 +4904,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCapsule
   nameWithType: ImmediateRenderer.DrawCapsule
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCapsuleWires
-  name: DrawCapsuleWires()
-  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCapsuleWires
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCapsuleWires
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCapsuleWires()
-  nameWithType: ImmediateRenderer.DrawCapsuleWires()
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCapsuleWires(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawCapsuleWires(Transform, float, float, int, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCapsuleWires_Bliss_CSharp_Transformations_Transform_System_Single_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCapsuleWires(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawCapsuleWires(Transform, Single, Single, Integer, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCapsuleWires(Bliss.CSharp.Transformations.Transform, float, float, int, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCapsuleWires(Bliss.CSharp.Transformations.Transform, Single, Single, Integer, Bliss.CSharp.Colors.Color?)
+  nameWithType: ImmediateRenderer.DrawCapsuleWires(Transform, float, float, int, Color?)
+  nameWithType.vb: ImmediateRenderer.DrawCapsuleWires(Transform, Single, Single, Integer, Color?)
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCapsuleWires*
   name: DrawCapsuleWires
   href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCapsuleWires_
@@ -4914,6 +4920,38 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCapsuleWires
   nameWithType: ImmediateRenderer.DrawCapsuleWires
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCone(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawCone(Transform, float, float, int, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCone_Bliss_CSharp_Transformations_Transform_System_Single_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCone(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawCone(Transform, Single, Single, Integer, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCone(Bliss.CSharp.Transformations.Transform, float, float, int, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCone(Bliss.CSharp.Transformations.Transform, Single, Single, Integer, Bliss.CSharp.Colors.Color?)
+  nameWithType: ImmediateRenderer.DrawCone(Transform, float, float, int, Color?)
+  nameWithType.vb: ImmediateRenderer.DrawCone(Transform, Single, Single, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCone*
+  name: DrawCone
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCone_
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCone
+  isSpec: "True"
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCone
+  nameWithType: ImmediateRenderer.DrawCone
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawConeWires(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawConeWires(Transform, float, float, int, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawConeWires_Bliss_CSharp_Transformations_Transform_System_Single_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawConeWires(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawConeWires(Transform, Single, Single, Integer, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawConeWires(Bliss.CSharp.Transformations.Transform, float, float, int, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawConeWires(Bliss.CSharp.Transformations.Transform, Single, Single, Integer, Bliss.CSharp.Colors.Color?)
+  nameWithType: ImmediateRenderer.DrawConeWires(Transform, float, float, int, Color?)
+  nameWithType.vb: ImmediateRenderer.DrawConeWires(Transform, Single, Single, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawConeWires*
+  name: DrawConeWires
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawConeWires_
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawConeWires
+  isSpec: "True"
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawConeWires
+  nameWithType: ImmediateRenderer.DrawConeWires
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCube(Bliss.CSharp.Transformations.Transform,System.Numerics.Vector3,System.Nullable{Bliss.CSharp.Colors.Color})
   name: DrawCube(Transform, Vector3, Color?)
   href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCube_Bliss_CSharp_Transformations_Transform_System_Numerics_Vector3_System_Nullable_Bliss_CSharp_Colors_Color__
@@ -4940,12 +4978,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCubeWires
   nameWithType: ImmediateRenderer.DrawCubeWires
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCylinder
-  name: DrawCylinder()
-  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCylinder
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCylinder
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCylinder()
-  nameWithType: ImmediateRenderer.DrawCylinder()
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCylinder(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawCylinder(Transform, float, float, int, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCylinder_Bliss_CSharp_Transformations_Transform_System_Single_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCylinder(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawCylinder(Transform, Single, Single, Integer, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCylinder(Bliss.CSharp.Transformations.Transform, float, float, int, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCylinder(Bliss.CSharp.Transformations.Transform, Single, Single, Integer, Bliss.CSharp.Colors.Color?)
+  nameWithType: ImmediateRenderer.DrawCylinder(Transform, float, float, int, Color?)
+  nameWithType.vb: ImmediateRenderer.DrawCylinder(Transform, Single, Single, Integer, Color?)
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCylinder*
   name: DrawCylinder
   href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCylinder_
@@ -4953,12 +4994,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCylinder
   nameWithType: ImmediateRenderer.DrawCylinder
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCylinderWires
-  name: DrawCylinderWires()
-  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCylinderWires
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCylinderWires
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCylinderWires()
-  nameWithType: ImmediateRenderer.DrawCylinderWires()
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCylinderWires(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawCylinderWires(Transform, float, float, int, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCylinderWires_Bliss_CSharp_Transformations_Transform_System_Single_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCylinderWires(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawCylinderWires(Transform, Single, Single, Integer, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCylinderWires(Bliss.CSharp.Transformations.Transform, float, float, int, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCylinderWires(Bliss.CSharp.Transformations.Transform, Single, Single, Integer, Bliss.CSharp.Colors.Color?)
+  nameWithType: ImmediateRenderer.DrawCylinderWires(Transform, float, float, int, Color?)
+  nameWithType.vb: ImmediateRenderer.DrawCylinderWires(Transform, Single, Single, Integer, Color?)
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCylinderWires*
   name: DrawCylinderWires
   href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCylinderWires_
@@ -5014,6 +5058,38 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawHemisphereWires
   nameWithType: ImmediateRenderer.DrawHemisphereWires
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawKnot(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawKnot(Transform, float, float, int, int, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawKnot_Bliss_CSharp_Transformations_Transform_System_Single_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawKnot(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawKnot(Transform, Single, Single, Integer, Integer, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawKnot(Bliss.CSharp.Transformations.Transform, float, float, int, int, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawKnot(Bliss.CSharp.Transformations.Transform, Single, Single, Integer, Integer, Bliss.CSharp.Colors.Color?)
+  nameWithType: ImmediateRenderer.DrawKnot(Transform, float, float, int, int, Color?)
+  nameWithType.vb: ImmediateRenderer.DrawKnot(Transform, Single, Single, Integer, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawKnot*
+  name: DrawKnot
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawKnot_
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawKnot
+  isSpec: "True"
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawKnot
+  nameWithType: ImmediateRenderer.DrawKnot
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawKnotWires(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawKnotWires(Transform, float, float, int, int, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawKnotWires_Bliss_CSharp_Transformations_Transform_System_Single_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawKnotWires(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawKnotWires(Transform, Single, Single, Integer, Integer, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawKnotWires(Bliss.CSharp.Transformations.Transform, float, float, int, int, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawKnotWires(Bliss.CSharp.Transformations.Transform, Single, Single, Integer, Integer, Bliss.CSharp.Colors.Color?)
+  nameWithType: ImmediateRenderer.DrawKnotWires(Transform, float, float, int, int, Color?)
+  nameWithType.vb: ImmediateRenderer.DrawKnotWires(Transform, Single, Single, Integer, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawKnotWires*
+  name: DrawKnotWires
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawKnotWires_
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawKnotWires
+  isSpec: "True"
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawKnotWires
+  nameWithType: ImmediateRenderer.DrawKnotWires
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawLine(System.Numerics.Vector3,System.Numerics.Vector3,System.Nullable{Bliss.CSharp.Colors.Color})
   name: DrawLine(Vector3, Vector3, Color?)
   href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawLine_System_Numerics_Vector3_System_Numerics_Vector3_System_Nullable_Bliss_CSharp_Colors_Color__
@@ -5059,6 +5135,38 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawSphereWires
   nameWithType: ImmediateRenderer.DrawSphereWires
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawTorus(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawTorus(Transform, float, float, int, int, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawTorus_Bliss_CSharp_Transformations_Transform_System_Single_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawTorus(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawTorus(Transform, Single, Single, Integer, Integer, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawTorus(Bliss.CSharp.Transformations.Transform, float, float, int, int, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawTorus(Bliss.CSharp.Transformations.Transform, Single, Single, Integer, Integer, Bliss.CSharp.Colors.Color?)
+  nameWithType: ImmediateRenderer.DrawTorus(Transform, float, float, int, int, Color?)
+  nameWithType.vb: ImmediateRenderer.DrawTorus(Transform, Single, Single, Integer, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawTorus*
+  name: DrawTorus
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawTorus_
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawTorus
+  isSpec: "True"
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawTorus
+  nameWithType: ImmediateRenderer.DrawTorus
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawTorusWires(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawTorusWires(Transform, float, float, int, int, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawTorusWires_Bliss_CSharp_Transformations_Transform_System_Single_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawTorusWires(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawTorusWires(Transform, Single, Single, Integer, Integer, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawTorusWires(Bliss.CSharp.Transformations.Transform, float, float, int, int, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawTorusWires(Bliss.CSharp.Transformations.Transform, Single, Single, Integer, Integer, Bliss.CSharp.Colors.Color?)
+  nameWithType: ImmediateRenderer.DrawTorusWires(Transform, float, float, int, int, Color?)
+  nameWithType.vb: ImmediateRenderer.DrawTorusWires(Transform, Single, Single, Integer, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawTorusWires*
+  name: DrawTorusWires
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawTorusWires_
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawTorusWires
+  isSpec: "True"
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawTorusWires
+  nameWithType: ImmediateRenderer.DrawTorusWires
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawVertices(Bliss.CSharp.Transformations.Transform,System.Collections.Generic.List{Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D},System.Collections.Generic.List{System.UInt32},Veldrid.PrimitiveTopology)
   name: DrawVertices(Transform, List<ImmediateVertex3D>, List<uint>, PrimitiveTopology)
   href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawVertices_Bliss_CSharp_Transformations_Transform_System_Collections_Generic_List_Bliss_CSharp_Graphics_VertexTypes_ImmediateVertex3D__System_Collections_Generic_List_System_UInt32__Veldrid_PrimitiveTopology_
@@ -5101,6 +5209,45 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.End
   nameWithType: ImmediateRenderer.End
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentSampler
+  name: GetCurrentSampler()
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_GetCurrentSampler
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentSampler
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentSampler()
+  nameWithType: ImmediateRenderer.GetCurrentSampler()
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentSampler*
+  name: GetCurrentSampler
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_GetCurrentSampler_
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentSampler
+  isSpec: "True"
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentSampler
+  nameWithType: ImmediateRenderer.GetCurrentSampler
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentSourceRec
+  name: GetCurrentSourceRec()
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_GetCurrentSourceRec
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentSourceRec
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentSourceRec()
+  nameWithType: ImmediateRenderer.GetCurrentSourceRec()
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentSourceRec*
+  name: GetCurrentSourceRec
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_GetCurrentSourceRec_
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentSourceRec
+  isSpec: "True"
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentSourceRec
+  nameWithType: ImmediateRenderer.GetCurrentSourceRec
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentTexture
+  name: GetCurrentTexture()
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_GetCurrentTexture
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentTexture
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentTexture()
+  nameWithType: ImmediateRenderer.GetCurrentTexture()
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentTexture*
+  name: GetCurrentTexture
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_GetCurrentTexture_
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentTexture
+  isSpec: "True"
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentTexture
+  nameWithType: ImmediateRenderer.GetCurrentTexture
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GraphicsDevice
   name: GraphicsDevice
   href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_GraphicsDevice
@@ -5127,15 +5274,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Output
   nameWithType: ImmediateRenderer.Output
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.SetTexture(Bliss.CSharp.Textures.Texture2D,Veldrid.Sampler)
-  name: SetTexture(Texture2D?, Sampler?)
-  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_SetTexture_Bliss_CSharp_Textures_Texture2D_Veldrid_Sampler_
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.SetTexture(Bliss.CSharp.Textures.Texture2D,Veldrid.Sampler)
-  name.vb: SetTexture(Texture2D, Sampler)
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.SetTexture(Bliss.CSharp.Textures.Texture2D?, Veldrid.Sampler?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.SetTexture(Bliss.CSharp.Textures.Texture2D, Veldrid.Sampler)
-  nameWithType: ImmediateRenderer.SetTexture(Texture2D?, Sampler?)
-  nameWithType.vb: ImmediateRenderer.SetTexture(Texture2D, Sampler)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.SetTexture(Bliss.CSharp.Textures.Texture2D,Veldrid.Sampler,System.Nullable{Bliss.CSharp.Transformations.Rectangle})
+  name: SetTexture(Texture2D?, Sampler?, Rectangle?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_SetTexture_Bliss_CSharp_Textures_Texture2D_Veldrid_Sampler_System_Nullable_Bliss_CSharp_Transformations_Rectangle__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.SetTexture(Bliss.CSharp.Textures.Texture2D,Veldrid.Sampler,System.Nullable{Bliss.CSharp.Transformations.Rectangle})
+  name.vb: SetTexture(Texture2D, Sampler, Rectangle?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.SetTexture(Bliss.CSharp.Textures.Texture2D?, Veldrid.Sampler?, Bliss.CSharp.Transformations.Rectangle?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.SetTexture(Bliss.CSharp.Textures.Texture2D, Veldrid.Sampler, Bliss.CSharp.Transformations.Rectangle?)
+  nameWithType: ImmediateRenderer.SetTexture(Texture2D?, Sampler?, Rectangle?)
+  nameWithType.vb: ImmediateRenderer.SetTexture(Texture2D, Sampler, Rectangle?)
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.SetTexture*
   name: SetTexture
   href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_SetTexture_
