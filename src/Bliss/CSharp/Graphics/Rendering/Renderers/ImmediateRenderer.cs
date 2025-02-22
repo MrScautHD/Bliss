@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Effects;
+using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
@@ -1129,14 +1130,152 @@ public class ImmediateRenderer : Disposable {
         this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
 
-    public void DrawCone() {
+    /// <summary>
+    /// Draws a 3D cone using the specified transform, radius, height, and slices.
+    /// </summary>
+    /// <param name="transform">The transform applied to the cone in the world space.</param>
+    /// <param name="radius">The radius of the base of the cone.</param>
+    /// <param name="height">The height of the cone from base to apex.</param>
+    /// <param name="slices">The number of slices (segments around the base) for the cone. Must be at least 3.</param>
+    /// <param name="color">Optional color of the cone. Defaults to white if not specified.</param>
+    public void DrawCone(Transform transform, float radius, float height, int slices, Color? color = null) {
+        Color finalColor = color ?? Color.White;
+        Texture2D texture = this._currentTexture;
+        Rectangle sourceRec = this._currentSourceRec;
         
+        if (slices < 3) {
+            slices = 3;
+        }
+        
+        // Calculate source rectangle UVs.
+        float uLeft = sourceRec.X / (float) texture.Width;
+        float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
+        float vTop = sourceRec.Y / (float) texture.Height;
+        float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
+        
+        float halfHeight = height / 2.0F;
+        
+        // Calculate the side vertices.
+        for (int slice = 0; slice <= slices; slice++) {
+            float angle = slice * MathF.Tau / slices;
+            float x = MathF.Cos(angle) * (radius / 2.0F);
+            float z = MathF.Sin(angle) * (radius / 2.0F);
+            float u = uLeft + (uRight - uLeft) * ((float) slice / slices);
+
+            // Bottom vertex.
+            this._tempVertices.Add(new ImmediateVertex3D() {
+                Position = new Vector3(x, -halfHeight, z),
+                TexCoords = new Vector2(u, vBottom),
+                Color = finalColor.ToRgbaFloatVec4()
+            });
+
+            // Top vertex (tip of the cone).
+            this._tempVertices.Add(new ImmediateVertex3D {
+                Position = new Vector3(0.0F, halfHeight, 0.0F),
+                TexCoords = new Vector2(u, 0.0F),
+                Color = finalColor.ToRgbaFloatVec4()
+            });
+        }
+        
+        // Calculate the side indices.
+        for (int slice = 0; slice < slices; slice++) {
+            int baseIndex = slice * 2;
+            int nextIndex = (slice + 1) * 2;
+
+            this._tempIndices.Add((uint) (baseIndex + 1));
+            this._tempIndices.Add((uint) baseIndex);
+            this._tempIndices.Add((uint) nextIndex);
+        }
+        
+        // Calculate the bottom cap.
+        int bottomCenterIndex = this._tempVertices.Count;
+
+        this._tempVertices.Add(new ImmediateVertex3D() {
+            Position = new Vector3(0, -halfHeight, 0),
+            TexCoords = new Vector2((uLeft + uRight) / 2.0F, (vTop + vBottom) / 2.0F),
+            Color = finalColor.ToRgbaFloatVec4()
+        });
+
+        for (int slice = 0; slice < slices; slice++) {
+            int baseIndex = slice * 2;
+
+            this._tempIndices.Add((uint) bottomCenterIndex);
+            this._tempIndices.Add((uint) (baseIndex + 2));
+            this._tempIndices.Add((uint) baseIndex);
+        }
+        
+        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
 
-    public void DrawConeWires() {
-        
+    /// <summary>
+    /// Draws a wireframe representation of a cone in 3D space.
+    /// </summary>
+    /// <param name="transform">The transformation to apply to the cone, including position, rotation, and scale.</param>
+    /// <param name="radius">The radius of the cone's base.</param>
+    /// <param name="height">The height of the cone from the base to its tip.</param>
+    /// <param name="slices">The number of slices used to approximate the circular base. Must be at least 3.</param>
+    /// <param name="color">An optional color for the wireframe. Defaults to white if null.</param>
+    public void DrawConeWires(Transform transform, float radius, float height, int slices, Color? color = null) {
+        Color finalColor = color ?? Color.White;
+    
+        if (slices < 3) {
+            slices = 3;
+        }
+    
+        float halfHeight = height / 2.0F;
+    
+        // Generate vertices for the cone.
+        for (int slice = 0; slice <= slices; slice++) {
+            float angle = slice * MathF.Tau / slices;
+            float x = MathF.Cos(angle) * (radius / 2.0F);
+            float z = MathF.Sin(angle) * (radius / 2.0F);
+    
+            // Bottom edge vertex.
+            this._tempVertices.Add(new ImmediateVertex3D {
+                Position = new Vector3(x, -halfHeight, z),
+                Color = finalColor.ToRgbaFloatVec4()
+            });
+    
+            // Top vertex (tip of the cone).
+            this._tempVertices.Add(new ImmediateVertex3D {
+                Position = new Vector3(0.0F, halfHeight, 0.0F),
+                Color = finalColor.ToRgbaFloatVec4()
+            });
+        }
+    
+        // Generate indices for the cone edges.
+        for (int slice = 0; slice < slices; slice++) {
+            int baseIndex = slice * 2;
+    
+            // Edge from bottom to tip.
+            this._tempIndices.Add((uint) baseIndex);
+            this._tempIndices.Add((uint) (baseIndex + 1));
+    
+            // Edge along the base.
+            this._tempIndices.Add((uint) baseIndex);
+            this._tempIndices.Add((uint) ((baseIndex + 2) % (slices * 2)));
+        }
+    
+        // Center vertex for the bottom cap.
+        int bottomCenterIndex = this._tempVertices.Count;
+    
+        this._tempVertices.Add(new ImmediateVertex3D {
+            Position = new Vector3(0.0F, -halfHeight, 0.0F),
+            Color = finalColor.ToRgbaFloatVec4()
+        });
+    
+        // Generate indices for the bottom cap.
+        for (int slice = 0; slice < slices; slice++) {
+            int baseIndex = slice * 2;
+    
+            this._tempIndices.Add((uint) bottomCenterIndex);
+            this._tempIndices.Add((uint) baseIndex);
+            this._tempIndices.Add((uint) ((baseIndex + 2) % (slices * 2)));
+        }
+    
+        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
-
+        
     public void DrawTorus() {
         
     }
@@ -1349,7 +1488,7 @@ public class ImmediateRenderer : Disposable {
     
         this.DrawVertices(billboardTransform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
-
+    
     /// <summary>
     /// Draws a set of vertices using the specified transformation, vertex data, indices, and topology.
     /// </summary>

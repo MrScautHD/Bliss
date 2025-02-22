@@ -281,6 +281,12 @@ public class Game : Disposable {
         this._immediateRenderer.SetTexture(this._logoTexture, sourceRect: new Rectangle(0, 0, (int) this._logoTexture.Width, (int) this._logoTexture.Height));
         this._immediateRenderer.DrawBillboard(new Vector3(35, 0, 6));
         
+        this._immediateRenderer.SetTexture(this._customMeshTexture);
+        this._immediateRenderer.DrawCone(new Transform() { Translation = new Vector3(38, 0, 6)}, 1, 1, 40);
+        
+        this._immediateRenderer.SetTexture(null);
+        this._immediateRenderer.DrawConeWires(new Transform() { Translation = new Vector3(40, 0, 6)}, 1, 1, 40, Color.Green);
+        
         this._immediateRenderer.End();
         
         this._customPoly.Draw(commandList, new Transform() { Translation = new Vector3(9, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
