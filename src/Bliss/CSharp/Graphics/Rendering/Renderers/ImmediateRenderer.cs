@@ -1351,8 +1351,63 @@ public class ImmediateRenderer : Disposable {
         this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
 
-    public void DrawTorusWires() {
-        
+    /// <summary>
+    /// Renders a wireframe torus using the specified transformation, dimensions, and color.
+    /// </summary>
+    /// <param name="transform">The transformation applied to the torus, including position, rotation, and scale.</param>
+    /// <param name="radius">The radius of the inner circle of the torus.</param>
+    /// <param name="size">The thickness of the torus.</param>
+    /// <param name="radSeg">The number of segments in the radial direction. Minimum value is 3.</param>
+    /// <param name="sides">The number of subdivisions of the circular cross-section. Minimum value is 3.</param>
+    /// <param name="color">The optional color for rendering the torus wireframe.</param>
+    public void DrawTorusWires(Transform transform, float radius, float size, int radSeg, int sides, Color? color = null) {
+        Color finalColor = color ?? Color.White;
+    
+        if (radSeg < 3) {
+            radSeg = 3;
+        }
+    
+        if (sides < 3) {
+            sides = 3;
+        }
+    
+        float circusStep = MathF.Tau / radSeg;
+        float sideStep = MathF.Tau / sides;
+    
+        // Calculate the vertices for wireframe.
+        for (int rad = 0; rad <= radSeg; rad++) {
+            float radAngle = rad * circusStep;
+            float cosRad = MathF.Cos(radAngle);
+            float sinRad = MathF.Sin(radAngle);
+    
+            for (int side = 0; side <= sides; side++) {
+                float sideAngle = side * sideStep;
+                float cosSide = MathF.Cos(sideAngle);
+                float sinSide = MathF.Sin(sideAngle);
+    
+                Vector3 position = new Vector3(cosSide * cosRad, sinSide, cosSide * sinRad) * (size / 4.0F) + new Vector3(cosRad * (radius / 4.0F), 0.0F, sinRad * (radius / 4.0F));
+    
+                this._tempVertices.Add(new ImmediateVertex3D() {
+                    Position = position,
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+    
+                // Add indices for connecting radial and side segments.
+                if (rad < radSeg && side < sides) {
+                    int current = rad * (sides + 1) + side;
+                    int nextSide = current + 1;
+                    int nextRad = current + (sides + 1);
+    
+                    this._tempIndices.Add((uint) current);
+                    this._tempIndices.Add((uint) nextSide);
+    
+                    this._tempIndices.Add((uint) current);
+                    this._tempIndices.Add((uint) nextRad);
+                }
+            }
+        }
+    
+        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
 
     public void DrawKnot() {
