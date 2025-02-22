@@ -23,7 +23,7 @@
         <PackageLicenseUrl>https://github.com/MrScautHD/Bliss/blob/main/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/MrScautHD/Bliss</RepositoryUrl>
         <PackageTags>Renderer, Framework, Direct3D, Vulkan, Metal, OpenGL, OpenGLES, Net9, C#13, 3D, 2D, Fast, Cross-platform, Audio</PackageTags>
-        <PackageIcon>content\images\icon.png</PackageIcon>
+        <PackageIcon>icon.png</PackageIcon>
     </PropertyGroup>
 
     <!-- Backends -->
