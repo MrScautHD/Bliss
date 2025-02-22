@@ -647,7 +647,7 @@ public class Mesh : Disposable {
                 // Add vertex.
                 vertices.Add(new Vertex3D {
                     Position = new Vector3(x, y, z),
-                    TexCoords = new Vector2((float) slice / slices, yStep),
+                    TexCoords = new Vector2((float) slice / slices, -yStep),
                     Normal = Vector3.Normalize(new Vector3(x, 0, z))
                 });
             }
@@ -671,7 +671,7 @@ public class Mesh : Disposable {
                 // Add vertex.
                 vertices.Add(new Vertex3D {
                     Position = new Vector3(-x, y, -z),
-                    TexCoords = new Vector2((float) slice / slices, (float) ring / rings),
+                    TexCoords = new Vector2((float) slice / slices, 1.0F - (float) ring / rings),
                     Normal = Vector3.Normalize(new Vector3(-x, y + halfHeight, -z))
                 });
             }

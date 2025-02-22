@@ -206,6 +206,14 @@ public class ImmediateRenderer : Disposable {
     /// <param name="color">An optional color for the cube; if null, white is used.</param>
     public void DrawCube(Transform transform, Vector3 size, Color? color = null) {
         Color finalColor = color ?? Color.White;
+        Texture2D texture = this._currentTexture;
+        Rectangle sourceRec = this._currentSourceRec;
+        
+        // Calculate source rectangle UVs.
+        float uLeft = sourceRec.X / (float) texture.Width;
+        float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
+        float vTop = sourceRec.Y / (float) texture.Height;
+        float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
         
         for (int face = 0; face < 6; face++) {
             
@@ -256,10 +264,10 @@ public class ImmediateRenderer : Disposable {
 
                 // Assign texture coordinates for the current corner.
                 Vector2 texCoord = corner switch {
-                    0 => new Vector2(0.0F, 0.0F),
-                    1 => new Vector2(1.0F, 0.0F),
-                    2 => new Vector2(1.0F, 1.0F),
-                    3 => new Vector2(0.0F, 1.0F),
+                    0 => new Vector2(uLeft, vTop),
+                    1 => new Vector2(uRight, vTop),
+                    2 => new Vector2(uRight, vBottom),
+                    3 => new Vector2(uLeft, vBottom),
                     _ => Vector2.Zero
                 };
                 
@@ -329,6 +337,8 @@ public class ImmediateRenderer : Disposable {
     /// <param name="color">An optional color for the sphere; defaults to white.</param>
     public void DrawSphere(Transform transform, float radius, int rings, int slices, Color? color = null) {
         Color finalColor = color ?? Color.White;
+        Texture2D texture = this._currentTexture;
+        Rectangle sourceRec = this._currentSourceRec;
         
         if (rings < 3) {
             rings = 3;
@@ -337,6 +347,12 @@ public class ImmediateRenderer : Disposable {
         if (slices < 3) {
             slices = 3;
         }
+        
+        // Calculate source rectangle UVs.
+        float uLeft = sourceRec.X / (float) texture.Width;
+        float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
+        float vTop = sourceRec.Y / (float) texture.Height;
+        float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
     
         // Generate vertices.
         for (int ring = 0; ring <= rings; ring++) {
@@ -351,7 +367,10 @@ public class ImmediateRenderer : Disposable {
     
                 this._tempVertices.Add(new ImmediateVertex3D() {
                     Position = new Vector3(x, y, z) * (radius / 2),
-                    TexCoords = new Vector2(slice / (float) slices, ring / (float) rings),
+                    TexCoords = new Vector2(
+                        uLeft + (uRight - uLeft) * (slice / (float) slices),
+                        vTop + (vBottom - vTop) * (ring / (float) rings)
+                    ),
                     Color = finalColor.ToRgbaFloatVec4()
                 });
             }
@@ -444,6 +463,8 @@ public class ImmediateRenderer : Disposable {
     /// <param name="color">An optional color to apply to the hemisphere. If null, the default color will be white.</param>
     public void DrawHemisphere(Transform transform, float radius, int rings, int slices, Color? color = null) {
         Color finalColor = color ?? Color.White;
+        Texture2D texture = this._currentTexture;
+        Rectangle sourceRec = this._currentSourceRec;
         
         if (rings < 3) {
             rings = 3;
@@ -452,6 +473,12 @@ public class ImmediateRenderer : Disposable {
         if (slices < 3) {
             slices = 3;
         }
+        
+        // Calculate source rectangle UVs.
+        float uLeft = sourceRec.X / (float) texture.Width;
+        float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
+        float vTop = sourceRec.Y / (float) texture.Height;
+        float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
         
         float halfHeight = radius / 4.0F;
         
@@ -475,8 +502,8 @@ public class ImmediateRenderer : Disposable {
                 this._tempVertices.Add(new ImmediateVertex3D() {
                     Position = position,
                     TexCoords = new Vector2(
-                        0.5F + cosPhi * sinTheta * 0.5F,
-                        0.5F + sinPhi * sinTheta * 0.5F
+                        uLeft + (uRight - uLeft) * (0.5F + cosPhi * sinTheta * 0.5F),
+                        vTop + (vBottom - vTop) * (0.5F + sinPhi * sinTheta * 0.5F)
                     ),
                     Color = finalColor.ToRgbaFloatVec4()
                 });
@@ -488,7 +515,10 @@ public class ImmediateRenderer : Disposable {
         // Add center vertex for the circular base.
         this._tempVertices.Add(new ImmediateVertex3D() {
             Position = new Vector3(0.0F, -halfHeight, 0.0F),
-            TexCoords = new Vector2(0.5F, 0.5F),
+            TexCoords = new Vector2(
+                uLeft + (uRight - uLeft) * 0.5F,
+                vTop + (vBottom - vTop) * 0.5F
+            ),
             Color = finalColor.ToRgbaFloatVec4()
         });
 
@@ -501,7 +531,10 @@ public class ImmediateRenderer : Disposable {
 
             this._tempVertices.Add(new ImmediateVertex3D() {
                 Position = new Vector3(x, -halfHeight, z),
-                TexCoords = new Vector2(0.5F + x / radius, 0.5F + z / radius),
+                TexCoords = new Vector2(
+                    uLeft + (uRight - uLeft) * (0.5F + x / radius),
+                    vTop + (vBottom - vTop) * (0.5F + z / radius)
+                ),
                 Color = finalColor.ToRgbaFloatVec4()
             });
         }
@@ -625,10 +658,18 @@ public class ImmediateRenderer : Disposable {
     /// <param name="color">The optional color of the cylinder. If null, a default white color is applied.</param>
     public void DrawCylinder(Transform transform, float radius, float height, int slices, Color? color = null) {
         Color finalColor = color ?? Color.White;
+        Texture2D texture = this._currentTexture;
+        Rectangle sourceRec = this._currentSourceRec;
         
         if (slices < 3) {
             slices = 3;
         }
+        
+        // Calculate source rectangle UVs.
+        float uLeft = sourceRec.X / (float) texture.Width;
+        float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
+        float vTop = sourceRec.Y / (float) texture.Height;
+        float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
     
         float halfHeight = height / 2.0F;
     
@@ -642,14 +683,14 @@ public class ImmediateRenderer : Disposable {
             // Bottom vertex.
             this._tempVertices.Add(new ImmediateVertex3D {
                 Position = new Vector3(x, -halfHeight, z),
-                TexCoords = new Vector2(u, 1.0F),
+                TexCoords = new Vector2(float.Lerp(uLeft, uRight, u), vBottom),
                 Color = finalColor.ToRgbaFloatVec4()
             });
     
             // Top vertex.
             this._tempVertices.Add(new ImmediateVertex3D {
                 Position = new Vector3(x, halfHeight, z),
-                TexCoords = new Vector2(u, 0.0F),
+                TexCoords = new Vector2(float.Lerp(uLeft, uRight, u), vTop),
                 Color = finalColor.ToRgbaFloatVec4()
             });
         }
@@ -673,7 +714,10 @@ public class ImmediateRenderer : Disposable {
     
         this._tempVertices.Add(new ImmediateVertex3D {
             Position = new Vector3(0, -halfHeight, 0),
-            TexCoords = new Vector2(0.5F, 0.5F),
+            TexCoords = new Vector2(
+                float.Lerp(uLeft, uRight, 0.5F), 
+                float.Lerp(vBottom, vTop, 0.5F)
+            ),
             Color = finalColor.ToRgbaFloatVec4()
         });
     
@@ -690,7 +734,10 @@ public class ImmediateRenderer : Disposable {
     
         this._tempVertices.Add(new ImmediateVertex3D {
             Position = new Vector3(0.0F, halfHeight, 0.0F),
-            TexCoords = new Vector2(0.5F, 0.5F),
+            TexCoords = new Vector2(
+                float.Lerp(uLeft, uRight, 0.5F),
+                float.Lerp(vBottom, vTop, 0.5F)
+            ),
             Color = finalColor.ToRgbaFloatVec4()
         });
     
@@ -788,6 +835,8 @@ public class ImmediateRenderer : Disposable {
     
     public void DrawCapsule(Transform transform, float radius, float height, int slices, Color? color = null) {
         Color finalColor = color ?? Color.White;
+        Texture2D texture = this._currentTexture;
+        Rectangle sourceRec = this._currentSourceRec;
     
         if (slices < 3) {
             slices = 3;
@@ -796,15 +845,21 @@ public class ImmediateRenderer : Disposable {
         float halfRadius = radius / 2.0F;
         float halfHeight = height / 2.0F;
         int rings = slices / 2;
+        
+        // Calculate source rectangle UVs.
+        float uLeft = sourceRec.X / (float) texture.Width;
+        float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
+        float vTop = sourceRec.Y / (float) texture.Height;
+        float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
     
         // Create top hemisphere vertices.
         for (int ring = 0; ring <= rings; ring++) {
-            float theta = ring * MathF.PI / (rings * 2);
+            float theta = ring * MathF.PI / (rings * 2.0F);
             float sinTheta = MathF.Sin(theta);
             float cosTheta = MathF.Cos(theta);
     
             for (int slice = 0; slice <= slices; slice++) {
-                float phi = slice * 2 * MathF.PI / slices;
+                float phi = slice * 2.0F * MathF.PI / slices;
                 float cosPhi = MathF.Cos(phi);
                 float sinPhi = MathF.Sin(phi);
                 
@@ -815,7 +870,10 @@ public class ImmediateRenderer : Disposable {
                 // Add vertex.
                 this._tempVertices.Add(new ImmediateVertex3D {
                     Position = new Vector3(x, y, z),
-                    TexCoords = new Vector2((float) slice / slices, (float) ring / rings),
+                    TexCoords = new Vector2(
+                        uLeft + (uRight - uLeft) * slice / slices,
+                        vTop + (vBottom - vTop) * ring / rings
+                    ),
                     Color = finalColor.ToRgbaFloatVec4()
                 });
             }
@@ -826,7 +884,7 @@ public class ImmediateRenderer : Disposable {
             float y = yStep == 0 ? -halfHeight : halfHeight;
             
             for (int slice = 0; slice <= slices; slice++) {
-                float phi = slice * 2 * MathF.PI / slices;
+                float phi = slice * 2.0F * MathF.PI / slices;
                 float cosPhi = MathF.Cos(phi);
                 float sinPhi = MathF.Sin(phi);
                 
@@ -836,7 +894,10 @@ public class ImmediateRenderer : Disposable {
                 // Add vertex.
                 this._tempVertices.Add(new ImmediateVertex3D {
                     Position = new Vector3(x, y, z),
-                    TexCoords = new Vector2((float) slice / slices, yStep),
+                    TexCoords = new Vector2(
+                        uLeft + (uRight - uLeft) * slice / slices,
+                        yStep == 0 ? vBottom : vTop 
+                    ),
                     Color = finalColor.ToRgbaFloatVec4()
                 });
             }
@@ -844,12 +905,12 @@ public class ImmediateRenderer : Disposable {
     
         // Create bottom hemisphere vertices.
         for (int ring = 0; ring <= rings; ring++) {
-            float theta = ring * MathF.PI / (rings * 2) + MathF.PI;
+            float theta = ring * MathF.PI / (rings * 2.0F) + MathF.PI;
             float sinTheta = MathF.Sin(theta);
             float cosTheta = MathF.Cos(theta);
     
             for (int slice = 0; slice <= slices; slice++) {
-                float phi = slice * 2 * MathF.PI / slices;
+                float phi = slice * 2.0F * MathF.PI / slices;
                 float cosPhi = MathF.Cos(phi);
                 float sinPhi = MathF.Sin(phi);
                 
@@ -860,7 +921,10 @@ public class ImmediateRenderer : Disposable {
                 // Add vertex.
                 this._tempVertices.Add(new ImmediateVertex3D {
                     Position = new Vector3(-x, y, -z),
-                    TexCoords = new Vector2((float) slice / slices, (float) ring / rings),
+                    TexCoords = new Vector2(
+                        uLeft + (uRight - uLeft) * slice / slices,
+                        vBottom - (vBottom - vTop) * ring / rings
+                    ),
                     Color = finalColor.ToRgbaFloatVec4()
                 });
             }
@@ -1064,6 +1128,30 @@ public class ImmediateRenderer : Disposable {
         
         this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
+
+    public void DrawCone() {
+        
+    }
+
+    public void DrawConeWires() {
+        
+    }
+
+    public void DrawTorus() {
+        
+    }
+
+    public void DrawTorusWires() {
+        
+    }
+
+    public void DrawKnot() {
+        
+    }
+
+    public void DrawKnotWires() {
+        
+    }
     
     /// <summary>
     /// Renders a grid using the specified transformation matrix, slice count, spacing, and optional color.
@@ -1183,35 +1271,39 @@ public class ImmediateRenderer : Disposable {
         this.DrawVertices(new Transform(), this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
 
-    public void DrawBillboard(Vector3 position, Vector3? scale = null, bool constrained = true, Color? color = null) {
+    /// <summary>
+    /// Renders a billboard at the specified position with optional scaling and color.
+    /// </summary>
+    /// <param name="position">The world position where the billboard will be rendered.</param>
+    /// <param name="scale">The optional scaling factor for the billboard's size. Defaults to a uniform scale of 1 if not provided.</param>
+    /// <param name="color">The optional color to be applied to the billboard. Defaults to white if not provided.</param>
+    public void DrawBillboard(Vector3 position, Vector2? scale = null, Color? color = null) {
         Color finalColor = color ?? Color.White;
-        Vector3 finalScale = scale ?? Vector3.One;
-    
-        // Get the active camera.
+        Vector2 finalScale = scale ?? Vector2.One;
+        Texture2D texture = this._currentTexture;
+        Rectangle sourceRec = this._currentSourceRec;
+        
         Cam3D? cam3D = Cam3D.ActiveCamera;
         
         if (cam3D == null) {
             return;
         }
         
-        // Calculate Rotation and set transform.
-        Quaternion billboardRotation;
+        // Calculate the direction from billboard position to camera position.
+        Vector3 directionToCamera = -Vector3.Normalize(cam3D.Position - position);
+
+        // Project the camera's forward direction onto the horizontal plane (yaw axis).
+        Vector3 cameraForwardFlat = -Vector3.Normalize(new Vector3(cam3D.GetForward().X, 0, cam3D.GetForward().Z));
+
+        // Calculate the rotation angle between the projected camera forward and the direction to camera.
+        float angle = (float) Math.Atan2(directionToCamera.X - cameraForwardFlat.X, directionToCamera.Z - cameraForwardFlat.Z);
         
-        if (constrained) {
-            billboardRotation = Quaternion.CreateFromRotationMatrix(Matrix4x4.CreateConstrainedBillboard(position, cam3D.Position, Vector3.UnitY, cam3D.GetForward(), Vector3.UnitX));
-        }
-        else {
-            billboardRotation = Quaternion.CreateFromRotationMatrix(Matrix4x4.CreateBillboard(position, cam3D.Position, cam3D.Up, cam3D.GetForward()));
-        }
-        
+        // Create billboard transform.
         Transform billboardTransform = new Transform {
             Translation = position,
-            Rotation = billboardRotation,
-            Scale = finalScale
+            Rotation = Quaternion.CreateFromAxisAngle(Vector3.UnitY, angle),
+            Scale = new Vector3(finalScale, 0)
         };
-        
-        Texture2D texture = this._currentTexture;
-        Rectangle sourceRec = this._currentSourceRec;
         
         // Calculate source rectangle UVs.
         float uLeft = sourceRec.X / (float) texture.Width;

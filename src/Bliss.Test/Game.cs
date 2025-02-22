@@ -166,6 +166,8 @@ public class Game : Disposable {
         this._primitiveBatch = new PrimitiveBatch(this.GraphicsDevice, this.MainWindow, this.FullScreenTexture.Framebuffer.OutputDescription);
         this._font = new Font("content/fonts/fontoe.ttf");
         this._logoTexture = new Texture2D(this.GraphicsDevice, "content/images/logo.png");
+        this._animatedImage = new AnimatedImage("content/animated.gif");
+        this._gif = new Texture2D(this.GraphicsDevice, this._animatedImage.SpriteSheet);
         
         this._cam3D = new Cam3D((uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0), default, ProjectionType.Perspective, CameraMode.Free);
         this._playerModel = Model.Load(this.GraphicsDevice, "content/player.glb");
@@ -205,9 +207,6 @@ public class Game : Disposable {
 
         //this._customCubemap = Mesh.GenCubemap(this.GraphicsDevice, new Image("content/cubemap.png"), Vector3.One);
         //this._customCubemap.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
-        
-        this._animatedImage = new AnimatedImage("content/animated.gif");
-        this._gif = new Texture2D(this.GraphicsDevice, this._animatedImage.SpriteSheet);
     }
 
     protected virtual void Update() {
@@ -239,6 +238,7 @@ public class Game : Disposable {
         this._cam3D.Begin(commandList);
         
         this._immediateRenderer.Begin(this.CommandList);
+
         this._immediateRenderer.SetTexture(this._customMeshTexture);
         this._immediateRenderer.DrawCube(new Transform() { Translation = new Vector3(9, 0, 6) }, new Vector3(1, 1, 1));
         
@@ -278,7 +278,7 @@ public class Game : Disposable {
         this._immediateRenderer.SetTexture(null);
         this._immediateRenderer.DrawCapsuleWires(new Transform() { Translation = new Vector3(33, 0, 6) }, 1, 1, 40, Color.Green);
         
-        this._immediateRenderer.SetTexture(this._logoTexture, sourceRect: new Rectangle(20, 0, (int) this._logoTexture.Width - 20, (int) this._logoTexture.Height));
+        this._immediateRenderer.SetTexture(this._logoTexture, sourceRect: new Rectangle(0, 0, (int) this._logoTexture.Width, (int) this._logoTexture.Height));
         this._immediateRenderer.DrawBillboard(new Vector3(35, 0, 6));
         
         this._immediateRenderer.End();
