@@ -3,6 +3,7 @@ using Bliss.CSharp.Graphics.Rendering;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Gamepads;
 using Bliss.CSharp.Interact.Keyboards;
+using Bliss.CSharp.Logging;
 using Bliss.CSharp.Mathematics;
 using Bliss.CSharp.Transformations;
 using Veldrid;
@@ -310,11 +311,14 @@ public class Cam3D : ICam {
     /// <param name="distance">The distance by which to move the camera forward.</param>
     /// <param name="moveInWorldPlane">Determines whether to constrain movement to the world plane, ignoring the Y component.</param>
     public void MoveForward(float distance, bool moveInWorldPlane) {
-        Vector3 forward = this.GetForward() * distance;
+        Vector3 forward = this.GetForward();
         
         if (moveInWorldPlane) {
             forward.Y = 0;
+            forward = Vector3.Normalize(forward);
         }
+
+        forward *= distance;
 
         this.Position += forward;
         this.Target += forward;
@@ -334,11 +338,14 @@ public class Cam3D : ICam {
     /// <param name="distance">The distance to move the camera to the right.</param>
     /// <param name="moveInWorldPlane">If set to <c>true</c>, the camera will move parallel to the ground plane and will not change its Y position.</param>
     public void MoveRight(float distance, bool moveInWorldPlane) {
-        Vector3 right = this.GetRight() * distance;
+        Vector3 right = this.GetRight();
         
         if (moveInWorldPlane) {
             right.Y = 0;
+            right = Vector3.Normalize(right);
         }
+
+        right *= distance;
 
         this.Position += right;
         this.Target += right;
