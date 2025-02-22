@@ -296,6 +296,9 @@ public class Game : Disposable {
         this._immediateRenderer.SetTexture(this._customMeshTexture);
         this._immediateRenderer.DrawKnot(new Transform() { Translation = new Vector3(46, 0, 6) }, 1, 1, 40, 40);
         
+        this._immediateRenderer.SetTexture(null);
+        this._immediateRenderer.DrawKnotWires(new Transform() { Translation = new Vector3(48, 0, 6) }, 1, 1, 40, 40, Color.Green);
+        
         this._immediateRenderer.End();
         
         this._customPoly.Draw(commandList, new Transform() { Translation = new Vector3(9, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);

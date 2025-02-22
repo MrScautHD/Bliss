@@ -1531,8 +1531,77 @@ public class ImmediateRenderer : Disposable {
         this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
 
-    public void DrawKnotWires() {
-        
+
+    /// <summary>
+    /// Renders the wireframe of a knot shape using the specified transformation, radii, and segments.
+    /// </summary>
+    /// <param name="transform">The transformation applied to the knot wireframe.</param>
+    /// <param name="radius">The radius of the knot.</param>
+    /// <param name="tubeRadius">The radius of the tube comprising the knot's wireframe.</param>
+    /// <param name="radSeg">The number of radial segments making up the knot. Minimum value is 3.</param>
+    /// <param name="sides">The number of sides for the tube cross-section. Minimum value is 3.</param>
+    /// <param name="color">An optional color to use for the wireframe; if null, the default is white.</param
+    public void DrawKnotWires(Transform transform, float radius, float tubeRadius, int radSeg, int sides, Color? color = null) {
+        Color finalColor = color ?? Color.White;
+    
+        if (radSeg < 3) {
+            radSeg = 3;
+        }
+    
+        if (sides < 3) {
+            sides = 3;
+        }
+    
+        float step = MathF.Tau / radSeg;
+        float sideStep = MathF.Tau / sides;
+    
+        // Calculate vertices and edges for the wireframe.
+        for (int rad = 0; rad <= radSeg; rad++) {
+            float t = rad * step;
+    
+            float x = MathF.Sin(t) + 2.0F * MathF.Sin(2.0F * t);
+            float y = MathF.Cos(t) - 2.0F * MathF.Cos(2.0F * t);
+            float z = -MathF.Sin(3.0F * t);
+    
+            Vector3 center = new Vector3(x, y, z) * (radius / 6.0F);
+    
+            Vector3 tangent = Vector3.Normalize(new Vector3(
+                MathF.Cos(t) + 4.0F * MathF.Cos(2.0F * t),
+                -MathF.Sin(t) + 4.0F * MathF.Sin(2.0F * t),
+                -3.0F * MathF.Cos(3.0F * t)
+            ));
+    
+            Vector3 normal = Vector3.Normalize(new Vector3(-tangent.Y, tangent.X, 0.0F));
+            Vector3 binormal = Vector3.Cross(tangent, normal);
+    
+            for (int side = 0; side <= sides; side++) {
+                float sideAngle = side * sideStep;
+                float cosAngle = MathF.Cos(sideAngle);
+                float sinAngle = MathF.Sin(sideAngle);
+    
+                Vector3 offset = normal * cosAngle * (tubeRadius / 6.0F) + binormal * sinAngle * (tubeRadius / 6.0F);
+                Vector3 position = center + offset;
+    
+                this._tempVertices.Add(new ImmediateVertex3D() {
+                    Position = position,
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+    
+                // Connect to next radial segment.
+                if (rad < radSeg) {
+                    this._tempIndices.Add((uint)(rad * (sides + 1) + side));
+                    this._tempIndices.Add((uint)((rad + 1) * (sides + 1) + side));
+                }
+    
+                // Connect to the next side (wrapping around at the end).
+                if (side < sides) {
+                    this._tempIndices.Add((uint)(rad * (sides + 1) + side));
+                    this._tempIndices.Add((uint)(rad * (sides + 1) + side + 1));
+                }
+            }
+        }
+    
+        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
     
     /// <summary>
