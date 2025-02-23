@@ -45,17 +45,26 @@ dotnet add package Bliss --version 1.2.0
 - [`MiniAudioEx`](https://www.nuget.org/packages/JAJ.Packages.MiniAudioEx)
 
 # 💻 Platforms
-[<img src="https://github.com/MrScautHD/Sparkle/assets/65916181/a92bd5fa-517b-44c2-ab58-cc01b5ae5751" alt="windows" width="70" height="70" align="left">](https://www.microsoft.com/de-at/windows)
+
+[<img src="https://github.com/user-attachments/assets/f8b66880-9037-4ba8-acc4-6ea390e1dde9" alt="windows" width="70" height="70" align="left">](https://www.microsoft.com/de-at/windows)
 ### Windows
 - Graphics APIs: `Direct3D11`, `Vulkan`, `OpenGL`, `OpenGL-ES`
 
-[<img src="https://github.com/MrScautHD/Sparkle/assets/65916181/f9e643a8-4d46-450c-91ac-d220394ecd42" alt="Linux" width="70" height="70" align="left">](https://www.ubuntu.com/)
+[<img src="https://github.com/user-attachments/assets/814ce8c3-5242-47f4-a51b-b185680d38ff" alt="Linux" width="70" height="70" align="left">](https://www.ubuntu.com/)
 ### Linux
 - Graphics APIs: `Vulkan`, `OpenGL`, `OpenGL-ES`
 
-[<img src="https://github.com/MrScautHD/Sparkle/assets/65916181/e37eb15f-4237-47ae-9ae7-e4455f7c3d92" alt="macOS" width="70" height="70" align="left">](https://www.apple.com/at/macos/sonoma/)
+[<img src="https://github.com/user-attachments/assets/99605868-0590-42ce-a72a-f6feb1cabf6e" alt="macOS" width="70" height="70" align="left">](https://www.apple.com/at/macos/sonoma/)
 ### MacOS
 - Graphics APIs: `Metal`, `OpenGL`, `OpenGL-ES`
+
+[<img src="https://github.com/user-attachments/assets/8ec16850-3a1e-42e1-b35e-cf3d3ea32d46" alt="macOS" width="70" height="70" align="left">](https://www.apple.com/at/macos/sonoma/)
+### Android
+- Graphics APIs: `Vulkan`, `OpenGL-ES` (Soon!)
+
+[<img src="https://github.com/user-attachments/assets/a0f33f2f-bd7c-4049-a207-85d3a67bef78" alt="macOS" width="70" height="70" align="left">](https://www.apple.com/at/macos/sonoma/)
+### iOS
+- Graphics APIs: `Metal`, `OpenGL-ES` (Soon!)
 
 # 🧑 Contributors
 <a href="https://github.com/mrscauthd/Bliss/graphs/contributors">
