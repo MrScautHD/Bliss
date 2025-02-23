@@ -8,7 +8,7 @@ using Veldrid;
 
 namespace Bliss.CSharp.Materials;
 
-public class Material : Disposable {
+public class Material {
     
     /// <summary>
     /// The graphics device associated with this material, used to manage rendering resources.
@@ -183,14 +183,6 @@ public class Material : Disposable {
         }
         else {
             Logger.Warn($"Failed to set value for: [{name}]. The map might not exist.");
-        }
-    }
-    
-    protected override void Dispose(bool disposing) {
-        if (disposing) {
-            // TODO: Remove dispose when you get it managed to dispose the textures and shaders with the model.
-            
-            // TODO: Add a Dispose for the material resources! (but maybe with a dispose variable... idk).
         }
     }
 }

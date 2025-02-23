@@ -52,6 +52,16 @@ public class Model : Disposable {
         new FBXImportCamerasConfig(false),
         new FBXStrictModeConfig(false)
     ];
+
+    /// <summary>
+    /// Caches loaded effect of the <see cref="Load"/> method.
+    /// </summary>
+    private static Dictionary<(Model, Mesh), Effect> _effectCache = new();
+    
+    /// <summary>
+    /// Caches loaded textures of the <see cref="Load"/> method.
+    /// </summary>
+    private static Dictionary<(Model, Mesh), Texture2D> _textureCache = new();
     
     /// <summary>
     /// The graphics device used for rendering the model.
@@ -150,7 +160,7 @@ public class Model : Disposable {
             AMesh mesh = scene.Meshes[i];
             
             // Load effect.
-            Effect? effect = null;
+            Effect effect = GlobalResource.DefaultModelEffect;
 
             if (scene.HasMaterials && loadMaterial) {
                 AMaterial aMaterial = scene.Materials[mesh.MaterialIndex];
@@ -160,8 +170,6 @@ public class Model : Disposable {
                     effect = new Effect(graphicsDevice, Vertex3D.VertexLayout, Encoding.UTF8.GetBytes(shaderProperties.VertexShader), Encoding.UTF8.GetBytes(shaderProperties.FragmentShader));
                 }
             }
-
-            effect ??= GlobalResource.DefaultModelEffect;
             
             // Load material maps.
             Material material = new Material(graphicsDevice, effect);
@@ -294,8 +302,28 @@ public class Model : Disposable {
         Logger.Info($"Model loaded successfully from path: [{path}]");
         Logger.Info($"\t> Meshes: {meshes.Count}");
         Logger.Info($"\t> Animations: {scene.AnimationCount}");
+        
+        // Create model.
+        Model model = new Model(graphicsDevice, meshes.ToArray(), animations.ToArray());
 
-        return new Model(graphicsDevice, meshes.ToArray(), animations.ToArray());
+        // Store cache resources.
+        foreach (Mesh mesh in model.Meshes) {
+            // Store loaded effect.
+            if (mesh.Material.Effect != GlobalResource.DefaultModelEffect) {
+                _effectCache.Add((model, mesh), mesh.Material.Effect);
+            }
+            
+            // Store loaded texture.
+            foreach (MaterialMap materialMap in mesh.Material.GetMaterialMaps()) {
+                Texture2D? texture = materialMap.Texture;
+                
+                if (texture != null && texture != GlobalResource.DefaultModelTexture) {
+                    _textureCache.Add((model, mesh), texture);
+                }
+            }
+        }
+        
+        return model;
     }
     
     /// <summary>
@@ -307,7 +335,7 @@ public class Model : Disposable {
     /// <param name="path">The path to the model file, used to resolve texture file paths.</param>
     /// <param name="textureType">The type of texture to load from the material.</param>
     /// <returns>A Texture2D object if the texture is successfully loaded, otherwise null.</returns>
-    private static Texture2D? LoadMaterialTexture(GraphicsDevice graphicsDevice, Scene scene, AMaterial aMaterial, string path, TextureType textureType) { // TODO: Take care to dispose it!
+    private static Texture2D? LoadMaterialTexture(GraphicsDevice graphicsDevice, Scene scene, AMaterial aMaterial, string path, TextureType textureType) {
         if (aMaterial.GetMaterialTexture(textureType, 0, out TextureSlot textureSlot)) {
             string filePath = textureSlot.FilePath;
             
@@ -389,10 +417,19 @@ public class Model : Disposable {
     protected override void Dispose(bool disposing) {
         if (disposing) {
             foreach (Mesh mesh in this.Meshes) {
+                // Dispose effects.
+                if (_effectCache.TryGetValue((this, mesh), out Effect? effect)) {
+                    effect.Dispose();
+                }
+
+                // Dispose textures.
+                if (_textureCache.TryGetValue((this, mesh), out Texture2D? texture)) {
+                    texture.Dispose();
+                }
+                
+                // Dispose meshes.
                 mesh.Dispose();
             }
-
-            // TODO: Unload cached resources (materials)
         }
     }
 }
