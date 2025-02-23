@@ -788,6 +788,9 @@ public class PrimitiveBatch : Disposable {
         // Set projection view buffer.
         this._currentCommandList.SetGraphicsResourceSet(0, this._projViewBuffer.GetResourceSet(this._effect.GetBufferLayout("ProjectionViewBuffer")));
         
+        // Apply effect.
+        this._effect.Apply();
+        
         // Draw.
         this._currentCommandList.Draw(this._currentBatchCount);
 

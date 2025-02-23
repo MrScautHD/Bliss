@@ -24,7 +24,7 @@ public class FullScreenRenderPass : Disposable {
     /// <summary>
     /// The shader effect used for rendering in the full-screen pass.
     /// </summary>
-    private Effect _effect;
+    public Effect Effect { get; private set; }
     
     /// <summary>
     /// The vertex buffer that stores the vertex data for rendering a full-screen quad.
@@ -36,16 +36,16 @@ public class FullScreenRenderPass : Disposable {
     /// </summary>
     private SimplePipelineDescription _pipelineDescription;
     
-    // TODO: Check pipeline + effect to maybe allow post processing to!
     /// <summary>
-    /// Initializes a new instance of the <see cref="FullScreenRenderPass"/> class.
+    /// Initializes a new instance of the <see cref="FullScreenRenderPass"/> class, setting up the necessary buffers and pipeline for full-screen rendering.
     /// </summary>
-    /// <param name="graphicsDevice">The graphics device to use for rendering.</param>
-    /// <param name="output">The output description for the rendering pass.</param>
-    public FullScreenRenderPass(GraphicsDevice graphicsDevice, OutputDescription output) {
+    /// <param name="graphicsDevice">The graphics device used for resource creation and rendering.</param>
+    /// <param name="output">The output description that defines the render target configuration.</param>
+    /// <param name="effect">An optional effect (shader) to use for the render pass. If null, the default full-screen render pass effect from <see cref="GlobalResource.FullScreenRenderPassEffect"/> is used.</param>
+    public FullScreenRenderPass(GraphicsDevice graphicsDevice, OutputDescription output, Effect? effect = null) {
         this.GraphicsDevice = graphicsDevice;
         this.Output = output;
-        this._effect = GlobalResource.FullScreenRenderPassEffect;
+        this.Effect = effect ?? GlobalResource.FullScreenRenderPassEffect;
 
         uint vertexBufferSize = (uint) (6 * Marshal.SizeOf<SpriteVertex2D>());
         
@@ -54,28 +54,32 @@ public class FullScreenRenderPass : Disposable {
         graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this.GetVertices(graphicsDevice.IsUvOriginTopLeft));
         
         // Create pipeline.
-        this._pipelineDescription = new SimplePipelineDescription() {
-            BlendState = BlendState.AlphaBlend.Description,
-            DepthStencilState = new DepthStencilStateDescription(false, false, ComparisonKind.LessEqual),
-            RasterizerState = new RasterizerStateDescription() {
-                DepthClipEnabled = true,
-                CullMode = FaceCullMode.None
-            },
-            PrimitiveTopology = PrimitiveTopology.TriangleList,
-            TextureLayouts = this._effect.GetTextureLayouts(),
-            ShaderSet = new ShaderSetDescription() {
-                VertexLayouts = [
-                    SpriteVertex2D.VertexLayout
-                ],
-                Shaders = [
-                    this._effect.Shader.Item1,
-                    this._effect.Shader.Item2
-                ]
-            },
-            Outputs = output
-        };
+        this._pipelineDescription = this.CreatePipelineDescription();
     }
-
+    
+    /// <summary>
+    /// Executes the draw call using the provided command list, render texture, and optional sampler.
+    /// </summary>
+    /// <param name="commandList">The command list used to issue draw commands.</param>
+    /// <param name="renderTexture">The render texture to be used for rendering.</param>
+    /// <param name="sampler">The optional sampler for texture sampling. If not provided, a default sampler is used.</param>
+    public void Draw(CommandList commandList, RenderTexture2D renderTexture, Sampler? sampler = null) {
+        // Set vertex and index buffer.
+        commandList.SetVertexBuffer(0, this._vertexBuffer);
+        
+        // Set pipeline.
+        commandList.SetPipeline(this.Effect.GetPipeline(this._pipelineDescription).Pipeline);
+        
+        // Set resourceSet of the texture.
+        commandList.SetGraphicsResourceSet(0, renderTexture.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point), this.Effect.GetTextureLayout("fTexture").Layout));
+        
+        // Apply effect.
+        this.Effect.Apply();
+        
+        // Draw.
+        commandList.Draw(6);
+    }
+    
     /// <summary>
     /// Generates the vertices for a full-screen quad, which can be used for rendering textures or post-processing effects.
     /// </summary>
@@ -124,23 +128,36 @@ public class FullScreenRenderPass : Disposable {
             }
         ];
     }
-
+    
     /// <summary>
-    /// Executes the draw call using the provided command list, render texture, and optional sampler.
+    /// Creates and returns a <see cref="SimplePipelineDescription"/> configured for full-screen rendering.
     /// </summary>
-    /// <param name="commandList">The command list used to issue draw commands.</param>
-    /// <param name="renderTexture">The render texture to be used for rendering.</param>
-    /// <param name="sampler">The optional sampler for texture sampling. If not provided, a default sampler is used.</param>
-    public void Draw(CommandList commandList, RenderTexture2D renderTexture, Sampler? sampler = null) {
-        commandList.SetPipeline(this._effect.GetPipeline(this._pipelineDescription).Pipeline);
-        commandList.SetVertexBuffer(0, this._vertexBuffer);
-        commandList.SetGraphicsResourceSet(0, renderTexture.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point), this._effect.GetTextureLayout("fTexture").Layout));
-        commandList.Draw(6);
+    /// <returns>A configured <see cref="SimplePipelineDescription"/> object.</returns>
+    private SimplePipelineDescription CreatePipelineDescription() {
+        return new SimplePipelineDescription() {
+            BlendState = BlendState.AlphaBlend.Description,
+            DepthStencilState = new DepthStencilStateDescription(false, false, ComparisonKind.LessEqual),
+            RasterizerState = new RasterizerStateDescription() {
+                DepthClipEnabled = true,
+                CullMode = FaceCullMode.None
+            },
+            PrimitiveTopology = PrimitiveTopology.TriangleList,
+            TextureLayouts = this.Effect.GetTextureLayouts(),
+            ShaderSet = new ShaderSetDescription() {
+                VertexLayouts = [
+                    SpriteVertex2D.VertexLayout
+                ],
+                Shaders = [
+                    this.Effect.Shader.Item1,
+                    this.Effect.Shader.Item2
+                ]
+            },
+            Outputs = this.Output
+        };
     }
 
     protected override void Dispose(bool disposing) {
         if (disposing) {
-            this._effect.Dispose();
             this._vertexBuffer.Dispose();
         }
     }

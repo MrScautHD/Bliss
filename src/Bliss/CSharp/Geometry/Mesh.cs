@@ -1219,6 +1219,9 @@ public class Mesh : Disposable {
                 }
             }
             
+            // Apply effect.
+            this.Material.Effect.Apply(this.Material);
+            
             // Draw.
             commandList.DrawIndexed(this.IndexCount);
         }
@@ -1251,6 +1254,9 @@ public class Mesh : Disposable {
                     commandList.SetGraphicsResourceSet((uint) i + 4, resourceSet);
                 }
             }
+            
+            // Apply effect.
+            this.Material.Effect.Apply(this.Material);
             
             // Draw.
             commandList.Draw(this.VertexCount);

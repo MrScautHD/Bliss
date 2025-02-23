@@ -383,6 +383,9 @@ public class SpriteBatch : Disposable {
             this._currentCommandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this.Effect.GetTextureLayout("fTexture")));
         }
         
+        // Apply effect.
+        this.Effect.Apply();
+        
         // Draw.
         this._currentCommandList.DrawIndexed(this._currentBatchCount * IndicesPerQuad);
         

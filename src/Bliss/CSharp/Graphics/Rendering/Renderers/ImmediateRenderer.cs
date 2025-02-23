@@ -3,7 +3,6 @@ using System.Runtime.InteropServices;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Effects;
-using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
@@ -1872,6 +1871,9 @@ public class ImmediateRenderer : Disposable {
             // Set resourceSet of the texture.
             this._currentCommandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this.Effect.GetTextureLayout("fTexture")));
             
+            // Apply effect.
+            this.Effect.Apply();
+            
             // Draw.
             this._currentCommandList.DrawIndexed((uint) this._indexCount);
         }
@@ -1891,6 +1893,9 @@ public class ImmediateRenderer : Disposable {
         
             // Set resourceSet of the texture.
             this._currentCommandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this.Effect.GetTextureLayout("fTexture")));
+            
+            // Apply effect.
+            this.Effect.Apply();
             
             // Draw.
             this._currentCommandList.Draw((uint) this._vertexCount);
