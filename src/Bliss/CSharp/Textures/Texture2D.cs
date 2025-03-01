@@ -62,7 +62,7 @@ public class Texture2D : Disposable {
     /// <param name="mipmap">Indicates whether to generate mipmaps for the texture.</param>
     /// <param name="srgb">Indicates whether to use sRGB color space for the texture.</param>
     public Texture2D(GraphicsDevice graphicsDevice, string path, bool mipmap = true, bool srgb = false) : this(graphicsDevice, new Image(path), mipmap, srgb) {
-        Logger.Info($"Texture loaded successfully from path: [{path}]");
+        Logger.Info($"Loading texture from path: [{path}]");
     }
 
     /// <summary>
@@ -74,7 +74,7 @@ public class Texture2D : Disposable {
     /// <param name="mipmap">Indicates whether to generate mipmaps for the texture.</param>
     /// <param name="srgb">Indicates whether to use sRGB color space for the texture.</param>
     public Texture2D(GraphicsDevice graphicsDevice, Stream stream, bool mipmap = true, bool srgb = false) : this(graphicsDevice, new Image(stream), mipmap, srgb) {
-        Logger.Info($"Texture loaded successfully from stream: [{stream}]");
+        Logger.Info($"Loading texture from stream: [{stream}]");
     }
     
     /// <summary>

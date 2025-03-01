@@ -19,6 +19,7 @@ using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
 using Bliss.CSharp.Textures;
+using Bliss.CSharp.Textures.Cubemaps;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
 using Veldrid;
@@ -51,6 +52,8 @@ public class Game : Disposable {
     private Texture2D _gif;
     private Font _font;
     private Texture2D _logoTexture;
+    private Cubemap _cubemap;
+    private Texture2D _cubemapTest;
     
     private Cam3D _cam3D;
     private Model _playerModel;
@@ -209,8 +212,8 @@ public class Game : Disposable {
         this._customHeighmap = Mesh.GenHeightmap(this.GraphicsDevice, new Image("content/heightmap.png"), new Vector3(1, 1, 1));
         this._customHeighmap.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), new Texture2D(this.GraphicsDevice, "content/heightmap.png"));
 
-        //this._customCubemap = Mesh.GenCubemap(this.GraphicsDevice, new Image("content/cubemap.png"), Vector3.One);
-        //this._customCubemap.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), customMeshTexture);
+        this._cubemap = new Cubemap(this.GraphicsDevice, "content/cubemap.png");
+        this._cubemapTest = new Texture2D(this.GraphicsDevice, this._cubemap.Images[(int) CubemapLayer.NegativeZ][0]);
     }
 
     protected virtual void Update() {
@@ -315,7 +318,6 @@ public class Game : Disposable {
         this._customTorus.Draw(commandList, new Transform() { Translation = new Vector3(23, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
         this._customKnot.Draw(commandList, new Transform() { Translation = new Vector3(25, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
         this._customHeighmap.Draw(commandList, new Transform() { Translation = new Vector3(27, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
-        //this._customCubemap.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(27, 0, 0)}, Color.White);
 
         if (this._cam3D.GetFrustum().ContainsBox(this._planeModel.BoundingBox)) {
             this._planeModel.Draw(commandList, new Transform(), this.FullScreenTexture.Framebuffer.OutputDescription);
@@ -343,6 +345,8 @@ public class Game : Disposable {
         int frame = 4;
         this._animatedImage.GetFrameInfo(frame, out int width, out int height, out float duration);
         this._spriteBatch.DrawTexture(this._gif, new Vector2(30, 30), new Rectangle(width * frame, 0, width, height), new Vector2(0.2F, 0.2F));
+        
+        this._spriteBatch.DrawTexture(this._cubemapTest, new Vector2(50, 50));
         
         this._spriteBatch.End();
         

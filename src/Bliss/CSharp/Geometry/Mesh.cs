@@ -9,6 +9,7 @@ using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
+using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
 using Veldrid;
 using Color = Bliss.CSharp.Colors.Color;
@@ -1041,11 +1042,6 @@ public class Mesh : Disposable {
 
         return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
     }
-
-    // TODO: FIX first Cubemap class for it.
-    //public static Mesh GenCubemap(GraphicsDevice graphicsDevice, Texture2D cubemap, Vector3 size) {
-    //    
-    //}
     
     // TODO: Check if it works correct.
     /// <summary>
@@ -1072,9 +1068,9 @@ public class Mesh : Disposable {
             Vector3 p2 = v2.Position;
             Vector3 p3 = v3.Position;
 
-            Vector3 w1 = new Vector3(v1.TexCoords.X, v1.TexCoords.Y, 1.0f);
-            Vector3 w2 = new Vector3(v2.TexCoords.X, v2.TexCoords.Y, 1.0f);
-            Vector3 w3 = new Vector3(v3.TexCoords.X, v3.TexCoords.Y, 1.0f);
+            Vector3 w1 = new Vector3(v1.TexCoords.X, v1.TexCoords.Y, 1.0F);
+            Vector3 w2 = new Vector3(v2.TexCoords.X, v2.TexCoords.Y, 1.0F);
+            Vector3 w3 = new Vector3(v3.TexCoords.X, v3.TexCoords.Y, 1.0F);
 
             Vector3 q1 = p2 - p1;
             Vector3 q2 = p3 - p1;
@@ -1105,7 +1101,7 @@ public class Mesh : Disposable {
             Vector3 n = vertex.Normal;
             Vector3 t = tan1[i];
 
-            Vector3 tangent = Vector3.Normalize(t - (n * Vector3.Dot(n, t)));
+            Vector3 tangent = Vector3.Normalize(t - n * Vector3.Dot(n, t));
             this.Vertices[i].Tangent = tangent;
         }
     }

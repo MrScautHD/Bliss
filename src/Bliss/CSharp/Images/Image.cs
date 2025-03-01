@@ -1,4 +1,5 @@
 using Bliss.CSharp.Logging;
+using Bliss.CSharp.Transformations;
 using StbImageSharp;
 using StbImageWriteSharp;
 using Color = Bliss.CSharp.Colors.Color;
@@ -363,6 +364,37 @@ public class Image : ICloneable {
         this.Width = newWidth;
         this.Height = newHeight;
         this.Data = rotatedData;
+    }
+
+    /// <summary>
+    /// Crops the image to the specified rectangular region.
+    /// </summary>
+    /// <param name="crop">The rectangular area to crop the image to.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the specified rectangle is outside the bounds of the image.</exception>
+    public void Crop(Rectangle crop) {
+        if (crop.X < 0 || crop.Y < 0 || crop.X + crop.Width > this.Width || crop.Y + crop.Height > this.Height) {
+            throw new ArgumentOutOfRangeException(nameof(crop), $"The crop rectangle (X: {crop.X}, Y: {crop.Y}, Width: {crop.Width}, Height: {crop.Height}) is out of bounds for the image dimensions (Width: {this.Width}, Height: {this.Height}).");
+        }
+        
+        int newWidth = crop.Width;
+        int newHeight = crop.Height;
+        byte[] croppedData = new byte[newWidth * newHeight * 4];
+        
+        for (int y = 0; y < newHeight; y++) {
+            for (int x = 0; x < newWidth; x++) {
+                int originalIndex = ((crop.Y + y) * this.Width + (crop.X + x)) * 4;
+                int croppedIndex = (y * newWidth + x) * 4;
+                
+                croppedData[croppedIndex] = this.Data[originalIndex];
+                croppedData[croppedIndex + 1] = this.Data[originalIndex + 1];
+                croppedData[croppedIndex + 2] = this.Data[originalIndex + 2];
+                croppedData[croppedIndex + 3] = this.Data[originalIndex + 3];
+            }
+        }
+        
+        this.Width = newWidth;
+        this.Height = newHeight;
+        this.Data = croppedData;
     }
 
     /// <summary>

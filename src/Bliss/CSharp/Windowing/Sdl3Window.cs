@@ -217,11 +217,16 @@ public class Sdl3Window : Disposable, IWindow {
         // Enable events.
         SDL3.SDL_SetGamepadEventsEnabled(true);
         SDL3.SDL_SetJoystickEventsEnabled(true);
-        
+
+        // Create window.
         this.Handle = (nint) SDL3.SDL_CreateWindow(title, width, height, this.MapWindowState(state) | SDL_WindowFlags.SDL_WINDOW_OPENGL);
+        
+        if (this.Handle == nint.Zero) {
+            throw new Exception($"Failed to create window! Error: {SDL3.SDL_GetError()}");
+        }
+        
         this.Id = (uint) SDL3.SDL_GetWindowID((SDL_Window*) this.Handle);
         this.SwapchainSource = this.CreateSwapchainSource();
-        
         this._events = new SDL_Event[EventsPerPeep];
     }
     
@@ -715,8 +720,23 @@ public class Sdl3Window : Disposable, IWindow {
             nint surface = SDL3.SDL_GetPointerProperty(SDL3.SDL_GetWindowProperties((SDL_Window*) this.Handle), SDL3.SDL_PROP_WINDOW_COCOA_WINDOW_POINTER, nint.Zero);
             return SwapchainSource.CreateNSWindow(surface);
         }
+        else if (OperatingSystem.IsAndroid()) {
+            nint surface = SDL3.SDL_GetPointerProperty(SDL3.SDL_GetWindowProperties((SDL_Window*) this.Handle), SDL3.SDL_PROP_WINDOW_ANDROID_SURFACE_POINTER, nint.Zero);
+            
+            if (surface == nint.Zero) {
+                throw new Exception("Failed to retrieve the Android surface pointer!");
+            }
+            
+            nint jniEnv = SDL3.SDL_GetAndroidJNIEnv();
+            
+            if (jniEnv == nint.Zero) {
+                throw new Exception("Failed to retrieve the JNI environment!");
+            }
+            
+            return SwapchainSource.CreateAndroidSurface(surface, jniEnv);
+        }
         
-        throw new PlatformNotSupportedException("Filed to create a SwapchainSource!");
+        throw new PlatformNotSupportedException("Failed to create a SwapchainSource!");
     }
 
     /// <summary>
