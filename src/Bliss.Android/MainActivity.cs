@@ -1,3 +1,5 @@
+using Android.Content;
+using Bliss.CSharp.Windowing;
 using Bliss.Test;
 using Org.Libsdl.App;
 
@@ -16,27 +18,34 @@ public class MainActivity : SDLActivity {
     // 4. dotnet run
     // 5. Bliss.Test is "<OutputType>Exe</OutputType>" set it to "<OutputType>Library</OutputType>" for testing it! (If you not doing that it will crash.)
     
-    //protected override void OnCreate(Bundle? savedInstanceState) {
-    //    base.OnCreate(savedInstanceState);
-    //    
-    //    //Java.Lang.JavaSystem.LoadLibrary("SDL3");
-    //    //this.Main();
-    //    
-    //    
-    //    // Set our view from the "main" layout resource.
-    //    //this.SetContentView(Resource.Layout.activity_main);
-    //}
+    protected override void OnCreate(Bundle? savedInstanceState) {
+        base.OnCreate(savedInstanceState);
+        
+        //Java.Lang.JavaSystem.LoadLibrary("SDL3");
+        //this.Main();
+        
+        
+        // Set our view from the "main" layout resource.
+        //this.SetContentView(Resource.Layout.activity_main);
+    }
 
     protected override void Main() {
         GameSettings settings = new GameSettings() {
             Title = "Bliss - [Test]"
         };
-    
+        
+        Sdl3Window.AndroidSurface = MSurface?.NativeSurface?.Handle ?? nint.Zero;
+        
         this.Game = new Game(settings);
         this.Game.Run();
     }
 
     protected override string[] GetLibraries() => ["SDL3"];
+
+    protected override SDLSurface? CreateSDLSurface(Context? p0) {
+        return base.CreateSDLSurface(p0);
+        
+    }
 
     //protected override void Dispose(bool disposing) {
     //    base.Dispose(disposing);

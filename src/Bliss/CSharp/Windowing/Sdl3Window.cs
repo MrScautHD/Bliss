@@ -196,6 +196,8 @@ public class Sdl3Window : Disposable, IWindow {
     /// The value is a tuple where the first item represents the major version, and the second item represents the minor version.
     /// </summary>
     private (int, int)? _maxSupportedGlEsVersion;
+
+    public static nint AndroidSurface;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="Sdl3Window"/> class with the specified width, height, title, and window state.
@@ -722,7 +724,7 @@ public class Sdl3Window : Disposable, IWindow {
             return SwapchainSource.CreateNSWindow(surface);
         }
         else if (OperatingSystem.IsAndroid()) {
-            nint surface = SDL3.SDL_GetPointerProperty(SDL3.SDL_GetWindowProperties((SDL_Window*) this.Handle), SDL3.SDL_PROP_WINDOW_ANDROID_SURFACE_POINTER, nint.Zero);
+            nint surface = AndroidSurface; //SDL3.SDL_GetPointerProperty(SDL3.SDL_GetWindowProperties((SDL_Window*) this.Handle), SDL3.SDL_PROP_WINDOW_ANDROID_SURFACE_POINTER, nint.Zero);
             nint jniEnv = SDL3.SDL_GetAndroidJNIEnv();
             return SwapchainSource.CreateAndroidSurface(surface, jniEnv);
         }
