@@ -33,11 +33,17 @@ public static class Window {
     /// </summary>
     /// <returns>The default <see cref="GraphicsBackend"/> for the current platform.</returns>
     public static GraphicsBackend GetPlatformDefaultBackend() {
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
+        if (OperatingSystem.IsWindows()) {
             return GraphicsBackend.Direct3D11;
         }
-        else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) {
+        else if (OperatingSystem.IsMacOS()) {
             return GraphicsDevice.IsBackendSupported(GraphicsBackend.Metal) ? GraphicsBackend.Metal : GraphicsBackend.OpenGL;
+        }
+        else if (OperatingSystem.IsAndroid()) {
+            return GraphicsDevice.IsBackendSupported(GraphicsBackend.Vulkan) ? GraphicsBackend.Vulkan : GraphicsBackend.OpenGLES;
+        }
+        else if (OperatingSystem.IsIOS()) {
+            return GraphicsDevice.IsBackendSupported(GraphicsBackend.Metal) ? GraphicsBackend.Metal : GraphicsBackend.OpenGLES;
         }
         else {
             return GraphicsDevice.IsBackendSupported(GraphicsBackend.Vulkan) ? GraphicsBackend.Vulkan : GraphicsBackend.OpenGL;

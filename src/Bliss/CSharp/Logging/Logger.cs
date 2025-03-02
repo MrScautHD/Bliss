@@ -84,9 +84,14 @@ public class Logger {
 
         MethodBase? stackFrame = new StackFrame(skipFrames).GetMethod();
         string text = $"[{stackFrame!.DeclaringType!} :: {stackFrame.Name}] {msg}";
-        
-        Console.ForegroundColor = color;
-        Console.WriteLine(text);
-        Console.ResetColor();
+
+        if (!OperatingSystem.IsAndroid()) {
+            Console.ForegroundColor = color;
+            Console.WriteLine(text);
+            Console.ResetColor();
+        }
+        else {
+            Console.WriteLine(text);
+        }
     }
 }

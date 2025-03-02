@@ -207,8 +207,10 @@ public class Sdl3Window : Disposable, IWindow {
     /// <exception cref="Exception">Thrown if SDL fails to initialize the subsystem required for creating the window.</exception>
     public unsafe Sdl3Window(int width, int height, string title, WindowState state) {
         this.Exists = true;
+        
+        SDL3.SDL_SetHint(SDL3.SDL_HINT_WINDOWS_CLOSE_ON_ALT_F4, "1");
         SDL3.SDL_SetHint(SDL3.SDL_HINT_MOUSE_FOCUS_CLICKTHROUGH, "1");
-
+        
         if (!SDL3.SDL_InitSubSystem(InitFlags)) {
             throw new Exception($"Failed to initialise SDL! Error: {SDL3.SDL_GetError()}");
         }
@@ -221,7 +223,7 @@ public class Sdl3Window : Disposable, IWindow {
         this.Handle = (nint) SDL3.SDL_CreateWindow(title, width, height, this.MapWindowState(state) | SDL_WindowFlags.SDL_WINDOW_OPENGL);
         
         if (this.Handle == nint.Zero) {
-            throw new Exception($"Failed to create window! Error: {SDL3.SDL_GetError()}");
+            throw new InvalidOperationException($"Failed to create window! Error: {SDL3.SDL_GetError()}");
         }
         
         this.Id = (uint) SDL3.SDL_GetWindowID((SDL_Window*) this.Handle);
@@ -724,10 +726,14 @@ public class Sdl3Window : Disposable, IWindow {
             nint jniEnv = SDL3.SDL_GetAndroidJNIEnv();
             return SwapchainSource.CreateAndroidSurface(surface, jniEnv);
         }
+        else if (OperatingSystem.IsIOS()) {
+            nint surface = SDL3.SDL_GetPointerProperty(SDL3.SDL_GetWindowProperties((SDL_Window*) this.Handle), SDL3.SDL_PROP_WINDOW_UIKIT_WINDOW_POINTER, nint.Zero);
+            return SwapchainSource.CreateUIView(surface);
+        }
         
         throw new PlatformNotSupportedException("Failed to create a SwapchainSource!");
     }
-
+    
     /// <summary>
     /// Maps a given <see cref="WindowState"/> to the corresponding <see cref="SDL_WindowFlags"/>.
     /// </summary>
