@@ -1,0 +1,248 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayout
+  commentId: T:Bliss.CSharp.Textures.Cubemaps.CubemapLayout
+  id: CubemapLayout
+  parent: Bliss.CSharp.Textures.Cubemaps
+  children:
+  - Bliss.CSharp.Textures.Cubemaps.CubemapLayout.AutoDetect
+  - Bliss.CSharp.Textures.Cubemaps.CubemapLayout.CrossFourByThree
+  - Bliss.CSharp.Textures.Cubemaps.CubemapLayout.CrossThreeByFour
+  - Bliss.CSharp.Textures.Cubemaps.CubemapLayout.LineHorizontal
+  - Bliss.CSharp.Textures.Cubemaps.CubemapLayout.LineVertical
+  - Bliss.CSharp.Textures.Cubemaps.CubemapLayout.Panorama
+  langs:
+  - csharp
+  - vb
+  name: CubemapLayout
+  nameWithType: CubemapLayout
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayout
+  type: Enum
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemaps/CubemapLayout.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: CubemapLayout
+    path: ../src/Bliss/CSharp/Textures/Cubemaps/CubemapLayout.cs
+    startLine: 2
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures.Cubemaps
+  syntax:
+    content: public enum CubemapLayout
+    content.vb: Public Enum CubemapLayout
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.AutoDetect
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayout.AutoDetect
+  id: AutoDetect
+  parent: Bliss.CSharp.Textures.Cubemaps.CubemapLayout
+  langs:
+  - csharp
+  - vb
+  name: AutoDetect
+  nameWithType: CubemapLayout.AutoDetect
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.AutoDetect
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemaps/CubemapLayout.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: AutoDetect
+    path: ../src/Bliss/CSharp/Textures/Cubemaps/CubemapLayout.cs
+    startLine: 7
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures.Cubemaps
+  summary: Automatically detects the cubemap layout based on the texture dimensions and aspect ratio.
+  example: []
+  syntax:
+    content: AutoDetect = 0
+    return:
+      type: Bliss.CSharp.Textures.Cubemaps.CubemapLayout
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.LineVertical
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayout.LineVertical
+  id: LineVertical
+  parent: Bliss.CSharp.Textures.Cubemaps.CubemapLayout
+  langs:
+  - csharp
+  - vb
+  name: LineVertical
+  nameWithType: CubemapLayout.LineVertical
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.LineVertical
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemaps/CubemapLayout.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LineVertical
+    path: ../src/Bliss/CSharp/Textures/Cubemaps/CubemapLayout.cs
+    startLine: 12
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures.Cubemaps
+  summary: Specifies a vertical line layout where cubemap faces are stacked vertically in a single column.
+  example: []
+  syntax:
+    content: LineVertical = 1
+    return:
+      type: Bliss.CSharp.Textures.Cubemaps.CubemapLayout
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.LineHorizontal
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayout.LineHorizontal
+  id: LineHorizontal
+  parent: Bliss.CSharp.Textures.Cubemaps.CubemapLayout
+  langs:
+  - csharp
+  - vb
+  name: LineHorizontal
+  nameWithType: CubemapLayout.LineHorizontal
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.LineHorizontal
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemaps/CubemapLayout.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LineHorizontal
+    path: ../src/Bliss/CSharp/Textures/Cubemaps/CubemapLayout.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures.Cubemaps
+  summary: Specifies a horizontal line layout where cubemap faces are aligned horizontally in a single row.
+  example: []
+  syntax:
+    content: LineHorizontal = 2
+    return:
+      type: Bliss.CSharp.Textures.Cubemaps.CubemapLayout
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.CrossThreeByFour
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayout.CrossThreeByFour
+  id: CrossThreeByFour
+  parent: Bliss.CSharp.Textures.Cubemaps.CubemapLayout
+  langs:
+  - csharp
+  - vb
+  name: CrossThreeByFour
+  nameWithType: CubemapLayout.CrossThreeByFour
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.CrossThreeByFour
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemaps/CubemapLayout.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: CrossThreeByFour
+    path: ../src/Bliss/CSharp/Textures/Cubemaps/CubemapLayout.cs
+    startLine: 22
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures.Cubemaps
+  summary: Specifies a 3x4 cross layout for cubemaps, with three columns and four rows of faces.
+  example: []
+  syntax:
+    content: CrossThreeByFour = 3
+    return:
+      type: Bliss.CSharp.Textures.Cubemaps.CubemapLayout
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.CrossFourByThree
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayout.CrossFourByThree
+  id: CrossFourByThree
+  parent: Bliss.CSharp.Textures.Cubemaps.CubemapLayout
+  langs:
+  - csharp
+  - vb
+  name: CrossFourByThree
+  nameWithType: CubemapLayout.CrossFourByThree
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.CrossFourByThree
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemaps/CubemapLayout.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: CrossFourByThree
+    path: ../src/Bliss/CSharp/Textures/Cubemaps/CubemapLayout.cs
+    startLine: 27
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures.Cubemaps
+  summary: Specifies a 4x3 cross layout for cubemaps, with four columns and three rows of faces.
+  example: []
+  syntax:
+    content: CrossFourByThree = 4
+    return:
+      type: Bliss.CSharp.Textures.Cubemaps.CubemapLayout
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.Panorama
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayout.Panorama
+  id: Panorama
+  parent: Bliss.CSharp.Textures.Cubemaps.CubemapLayout
+  langs:
+  - csharp
+  - vb
+  name: Panorama
+  nameWithType: CubemapLayout.Panorama
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.Panorama
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemaps/CubemapLayout.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Panorama
+    path: ../src/Bliss/CSharp/Textures/Cubemaps/CubemapLayout.cs
+    startLine: 32
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures.Cubemaps
+  summary: Specifies a panoramic layout, used for spherical or equirectangular textures that can be converted to cubemaps.
+  example: []
+  syntax:
+    content: Panorama = 5
+    return:
+      type: Bliss.CSharp.Textures.Cubemaps.CubemapLayout
+references:
+- uid: Bliss.CSharp.Textures.Cubemaps
+  commentId: N:Bliss.CSharp.Textures.Cubemaps
+  href: Bliss.html
+  name: Bliss.CSharp.Textures.Cubemaps
+  nameWithType: Bliss.CSharp.Textures.Cubemaps
+  fullName: Bliss.CSharp.Textures.Cubemaps
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Textures
+    name: Textures
+    href: Bliss.CSharp.Textures.html
+  - name: .
+  - uid: Bliss.CSharp.Textures.Cubemaps
+    name: Cubemaps
+    href: Bliss.CSharp.Textures.Cubemaps.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Textures
+    name: Textures
+    href: Bliss.CSharp.Textures.html
+  - name: .
+  - uid: Bliss.CSharp.Textures.Cubemaps
+    name: Cubemaps
+    href: Bliss.CSharp.Textures.Cubemaps.html
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayout
+  commentId: T:Bliss.CSharp.Textures.Cubemaps.CubemapLayout
+  parent: Bliss.CSharp.Textures.Cubemaps
+  href: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.html
+  name: CubemapLayout
+  nameWithType: CubemapLayout
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayout

@@ -148,6 +148,38 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Audio.AudioDevice.Update
   nameWithType: AudioDevice.Update
+- uid: Bliss.CSharp.Audio.Vector3FExtensions
+  name: Vector3FExtensions
+  href: api/Bliss.CSharp.Audio.Vector3FExtensions.html
+  commentId: T:Bliss.CSharp.Audio.Vector3FExtensions
+  fullName: Bliss.CSharp.Audio.Vector3FExtensions
+  nameWithType: Vector3FExtensions
+- uid: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3(MiniAudioEx.Vector3f)
+  name: ToVector3(Vector3f)
+  href: api/Bliss.CSharp.Audio.Vector3FExtensions.html#Bliss_CSharp_Audio_Vector3FExtensions_ToVector3_MiniAudioEx_Vector3f_
+  commentId: M:Bliss.CSharp.Audio.Vector3FExtensions.ToVector3(MiniAudioEx.Vector3f)
+  fullName: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3(MiniAudioEx.Vector3f)
+  nameWithType: Vector3FExtensions.ToVector3(Vector3f)
+- uid: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3*
+  name: ToVector3
+  href: api/Bliss.CSharp.Audio.Vector3FExtensions.html#Bliss_CSharp_Audio_Vector3FExtensions_ToVector3_
+  commentId: Overload:Bliss.CSharp.Audio.Vector3FExtensions.ToVector3
+  isSpec: "True"
+  fullName: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3
+  nameWithType: Vector3FExtensions.ToVector3
+- uid: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3F(System.Numerics.Vector3)
+  name: ToVector3F(Vector3)
+  href: api/Bliss.CSharp.Audio.Vector3FExtensions.html#Bliss_CSharp_Audio_Vector3FExtensions_ToVector3F_System_Numerics_Vector3_
+  commentId: M:Bliss.CSharp.Audio.Vector3FExtensions.ToVector3F(System.Numerics.Vector3)
+  fullName: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3F(System.Numerics.Vector3)
+  nameWithType: Vector3FExtensions.ToVector3F(Vector3)
+- uid: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3F*
+  name: ToVector3F
+  href: api/Bliss.CSharp.Audio.Vector3FExtensions.html#Bliss_CSharp_Audio_Vector3FExtensions_ToVector3F_
+  commentId: Overload:Bliss.CSharp.Audio.Vector3FExtensions.ToVector3F
+  isSpec: "True"
+  fullName: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3F
+  nameWithType: Vector3FExtensions.ToVector3F
 - uid: Bliss.CSharp.Camera
   name: Bliss.CSharp.Camera
   href: api/Bliss.CSharp.Camera.html
@@ -4709,15 +4741,15 @@ references:
   commentId: T:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
   fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
   nameWithType: FullScreenRenderPass
-- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription)
-  name: FullScreenRenderPass(GraphicsDevice, OutputDescription)
-  href: api/Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html#Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass__ctor_Veldrid_GraphicsDevice_Veldrid_OutputDescription_
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription)
-  name.vb: New(GraphicsDevice, OutputDescription)
-  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.FullScreenRenderPass(Veldrid.GraphicsDevice, Veldrid.OutputDescription)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.New(Veldrid.GraphicsDevice, Veldrid.OutputDescription)
-  nameWithType: FullScreenRenderPass.FullScreenRenderPass(GraphicsDevice, OutputDescription)
-  nameWithType.vb: FullScreenRenderPass.New(GraphicsDevice, OutputDescription)
+- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect)
+  name: FullScreenRenderPass(GraphicsDevice, OutputDescription, Effect?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html#Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass__ctor_Veldrid_GraphicsDevice_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect)
+  name.vb: New(GraphicsDevice, OutputDescription, Effect)
+  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.FullScreenRenderPass(Veldrid.GraphicsDevice, Veldrid.OutputDescription, Bliss.CSharp.Effects.Effect?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.New(Veldrid.GraphicsDevice, Veldrid.OutputDescription, Bliss.CSharp.Effects.Effect)
+  nameWithType: FullScreenRenderPass.FullScreenRenderPass(GraphicsDevice, OutputDescription, Effect?)
+  nameWithType.vb: FullScreenRenderPass.New(GraphicsDevice, OutputDescription, Effect)
 - uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor*
   name: FullScreenRenderPass
   href: api/Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html#Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass__ctor_
@@ -4760,6 +4792,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw
   nameWithType: FullScreenRenderPass.Draw
+- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Effect
+  name: Effect
+  href: api/Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html#Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass_Effect
+  commentId: P:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Effect
+  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Effect
+  nameWithType: FullScreenRenderPass.Effect
+- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Effect*
+  name: Effect
+  href: api/Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html#Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass_Effect_
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Effect
+  isSpec: "True"
+  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Effect
+  nameWithType: FullScreenRenderPass.Effect
 - uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.GraphicsDevice
   name: GraphicsDevice
   href: api/Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html#Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass_GraphicsDevice
@@ -5725,6 +5770,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Images.Image.Clone
   nameWithType: Image.Clone
+- uid: Bliss.CSharp.Images.Image.Crop(Bliss.CSharp.Transformations.Rectangle)
+  name: Crop(Rectangle)
+  href: api/Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_Crop_Bliss_CSharp_Transformations_Rectangle_
+  commentId: M:Bliss.CSharp.Images.Image.Crop(Bliss.CSharp.Transformations.Rectangle)
+  fullName: Bliss.CSharp.Images.Image.Crop(Bliss.CSharp.Transformations.Rectangle)
+  nameWithType: Image.Crop(Rectangle)
+- uid: Bliss.CSharp.Images.Image.Crop*
+  name: Crop
+  href: api/Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_Crop_
+  commentId: Overload:Bliss.CSharp.Images.Image.Crop
+  isSpec: "True"
+  fullName: Bliss.CSharp.Images.Image.Crop
+  nameWithType: Image.Crop
 - uid: Bliss.CSharp.Images.Image.Data
   name: Data
   href: api/Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_Data
@@ -9410,22 +9468,6 @@ references:
   commentId: F:Bliss.CSharp.Materials.Material.BlendState
   fullName: Bliss.CSharp.Materials.Material.BlendState
   nameWithType: Material.BlendState
-- uid: Bliss.CSharp.Materials.Material.Dispose(System.Boolean)
-  name: Dispose(bool)
-  href: api/Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_Dispose_System_Boolean_
-  commentId: M:Bliss.CSharp.Materials.Material.Dispose(System.Boolean)
-  name.vb: Dispose(Boolean)
-  fullName: Bliss.CSharp.Materials.Material.Dispose(bool)
-  fullName.vb: Bliss.CSharp.Materials.Material.Dispose(Boolean)
-  nameWithType: Material.Dispose(bool)
-  nameWithType.vb: Material.Dispose(Boolean)
-- uid: Bliss.CSharp.Materials.Material.Dispose*
-  name: Dispose
-  href: api/Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_Dispose_
-  commentId: Overload:Bliss.CSharp.Materials.Material.Dispose
-  isSpec: "True"
-  fullName: Bliss.CSharp.Materials.Material.Dispose
-  nameWithType: Material.Dispose
 - uid: Bliss.CSharp.Materials.Material.Effect
   name: Effect
   href: api/Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_Effect
@@ -9919,6 +9961,352 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Textures.Cubemap.Width
   nameWithType: Cubemap.Width
+- uid: Bliss.CSharp.Textures.Cubemaps
+  name: Bliss.CSharp.Textures.Cubemaps
+  href: api/Bliss.CSharp.Textures.Cubemaps.html
+  commentId: N:Bliss.CSharp.Textures.Cubemaps
+  fullName: Bliss.CSharp.Textures.Cubemaps
+  nameWithType: Bliss.CSharp.Textures.Cubemaps
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap
+  name: Cubemap
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html
+  commentId: T:Bliss.CSharp.Textures.Cubemaps.Cubemap
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap
+  nameWithType: Cubemap
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Images.Image,Bliss.CSharp.Textures.Cubemaps.CubemapLayout,System.Boolean,System.Boolean)
+  name: Cubemap(GraphicsDevice, Image, CubemapLayout, bool, bool)
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Images_Image_Bliss_CSharp_Textures_Cubemaps_CubemapLayout_System_Boolean_System_Boolean_
+  commentId: M:Bliss.CSharp.Textures.Cubemaps.Cubemap.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Images.Image,Bliss.CSharp.Textures.Cubemaps.CubemapLayout,System.Boolean,System.Boolean)
+  name.vb: New(GraphicsDevice, Image, CubemapLayout, Boolean, Boolean)
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.Cubemap(Veldrid.GraphicsDevice, Bliss.CSharp.Images.Image, Bliss.CSharp.Textures.Cubemaps.CubemapLayout, bool, bool)
+  fullName.vb: Bliss.CSharp.Textures.Cubemaps.Cubemap.New(Veldrid.GraphicsDevice, Bliss.CSharp.Images.Image, Bliss.CSharp.Textures.Cubemaps.CubemapLayout, Boolean, Boolean)
+  nameWithType: Cubemap.Cubemap(GraphicsDevice, Image, CubemapLayout, bool, bool)
+  nameWithType.vb: Cubemap.New(GraphicsDevice, Image, CubemapLayout, Boolean, Boolean)
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.#ctor(Veldrid.GraphicsDevice,System.IO.Stream,Bliss.CSharp.Textures.Cubemaps.CubemapLayout,System.Boolean,System.Boolean)
+  name: Cubemap(GraphicsDevice, Stream, CubemapLayout, bool, bool)
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap__ctor_Veldrid_GraphicsDevice_System_IO_Stream_Bliss_CSharp_Textures_Cubemaps_CubemapLayout_System_Boolean_System_Boolean_
+  commentId: M:Bliss.CSharp.Textures.Cubemaps.Cubemap.#ctor(Veldrid.GraphicsDevice,System.IO.Stream,Bliss.CSharp.Textures.Cubemaps.CubemapLayout,System.Boolean,System.Boolean)
+  name.vb: New(GraphicsDevice, Stream, CubemapLayout, Boolean, Boolean)
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.Cubemap(Veldrid.GraphicsDevice, System.IO.Stream, Bliss.CSharp.Textures.Cubemaps.CubemapLayout, bool, bool)
+  fullName.vb: Bliss.CSharp.Textures.Cubemaps.Cubemap.New(Veldrid.GraphicsDevice, System.IO.Stream, Bliss.CSharp.Textures.Cubemaps.CubemapLayout, Boolean, Boolean)
+  nameWithType: Cubemap.Cubemap(GraphicsDevice, Stream, CubemapLayout, bool, bool)
+  nameWithType.vb: Cubemap.New(GraphicsDevice, Stream, CubemapLayout, Boolean, Boolean)
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.#ctor(Veldrid.GraphicsDevice,System.String,Bliss.CSharp.Textures.Cubemaps.CubemapLayout,System.Boolean,System.Boolean)
+  name: Cubemap(GraphicsDevice, string, CubemapLayout, bool, bool)
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap__ctor_Veldrid_GraphicsDevice_System_String_Bliss_CSharp_Textures_Cubemaps_CubemapLayout_System_Boolean_System_Boolean_
+  commentId: M:Bliss.CSharp.Textures.Cubemaps.Cubemap.#ctor(Veldrid.GraphicsDevice,System.String,Bliss.CSharp.Textures.Cubemaps.CubemapLayout,System.Boolean,System.Boolean)
+  name.vb: New(GraphicsDevice, String, CubemapLayout, Boolean, Boolean)
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.Cubemap(Veldrid.GraphicsDevice, string, Bliss.CSharp.Textures.Cubemaps.CubemapLayout, bool, bool)
+  fullName.vb: Bliss.CSharp.Textures.Cubemaps.Cubemap.New(Veldrid.GraphicsDevice, String, Bliss.CSharp.Textures.Cubemaps.CubemapLayout, Boolean, Boolean)
+  nameWithType: Cubemap.Cubemap(GraphicsDevice, string, CubemapLayout, bool, bool)
+  nameWithType.vb: Cubemap.New(GraphicsDevice, String, CubemapLayout, Boolean, Boolean)
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.#ctor*
+  name: Cubemap
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap__ctor_
+  commentId: Overload:Bliss.CSharp.Textures.Cubemaps.Cubemap.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.Cubemap
+  fullName.vb: Bliss.CSharp.Textures.Cubemaps.Cubemap.New
+  nameWithType: Cubemap.Cubemap
+  nameWithType.vb: Cubemap.New
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.DeviceTexture
+  name: DeviceTexture
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_DeviceTexture
+  commentId: P:Bliss.CSharp.Textures.Cubemaps.Cubemap.DeviceTexture
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.DeviceTexture
+  nameWithType: Cubemap.DeviceTexture
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.DeviceTexture*
+  name: DeviceTexture
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_DeviceTexture_
+  commentId: Overload:Bliss.CSharp.Textures.Cubemaps.Cubemap.DeviceTexture
+  isSpec: "True"
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.DeviceTexture
+  nameWithType: Cubemap.DeviceTexture
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.Dispose(System.Boolean)
+  name: Dispose(bool)
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_Dispose_System_Boolean_
+  commentId: M:Bliss.CSharp.Textures.Cubemaps.Cubemap.Dispose(System.Boolean)
+  name.vb: Dispose(Boolean)
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.Dispose(bool)
+  fullName.vb: Bliss.CSharp.Textures.Cubemaps.Cubemap.Dispose(Boolean)
+  nameWithType: Cubemap.Dispose(bool)
+  nameWithType.vb: Cubemap.Dispose(Boolean)
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.Dispose*
+  name: Dispose
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_Dispose_
+  commentId: Overload:Bliss.CSharp.Textures.Cubemaps.Cubemap.Dispose
+  isSpec: "True"
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.Dispose
+  nameWithType: Cubemap.Dispose
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.Format
+  name: Format
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_Format
+  commentId: P:Bliss.CSharp.Textures.Cubemaps.Cubemap.Format
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.Format
+  nameWithType: Cubemap.Format
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.Format*
+  name: Format
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_Format_
+  commentId: Overload:Bliss.CSharp.Textures.Cubemaps.Cubemap.Format
+  isSpec: "True"
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.Format
+  nameWithType: Cubemap.Format
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetDataFromBytes(Bliss.CSharp.Textures.Cubemaps.CubemapLayer)
+  name: GetDataFromBytes(CubemapLayer)
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_GetDataFromBytes_Bliss_CSharp_Textures_Cubemaps_CubemapLayer_
+  commentId: M:Bliss.CSharp.Textures.Cubemaps.Cubemap.GetDataFromBytes(Bliss.CSharp.Textures.Cubemaps.CubemapLayer)
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetDataFromBytes(Bliss.CSharp.Textures.Cubemaps.CubemapLayer)
+  nameWithType: Cubemap.GetDataFromBytes(CubemapLayer)
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetDataFromBytes*
+  name: GetDataFromBytes
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_GetDataFromBytes_
+  commentId: Overload:Bliss.CSharp.Textures.Cubemaps.Cubemap.GetDataFromBytes
+  isSpec: "True"
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetDataFromBytes
+  nameWithType: Cubemap.GetDataFromBytes
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetDataFromImage(Bliss.CSharp.Textures.Cubemaps.CubemapLayer)
+  name: GetDataFromImage(CubemapLayer)
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_GetDataFromImage_Bliss_CSharp_Textures_Cubemaps_CubemapLayer_
+  commentId: M:Bliss.CSharp.Textures.Cubemaps.Cubemap.GetDataFromImage(Bliss.CSharp.Textures.Cubemaps.CubemapLayer)
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetDataFromImage(Bliss.CSharp.Textures.Cubemaps.CubemapLayer)
+  nameWithType: Cubemap.GetDataFromImage(CubemapLayer)
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetDataFromImage*
+  name: GetDataFromImage
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_GetDataFromImage_
+  commentId: Overload:Bliss.CSharp.Textures.Cubemaps.Cubemap.GetDataFromImage
+  isSpec: "True"
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetDataFromImage
+  nameWithType: Cubemap.GetDataFromImage
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+  name: GetResourceSet(Sampler, SimpleTextureLayout)
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_GetResourceSet_Veldrid_Sampler_Bliss_CSharp_Graphics_Pipelines_Textures_SimpleTextureLayout_
+  commentId: M:Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler, Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+  nameWithType: Cubemap.GetResourceSet(Sampler, SimpleTextureLayout)
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet*
+  name: GetResourceSet
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_GetResourceSet_
+  commentId: Overload:Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet
+  isSpec: "True"
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet
+  nameWithType: Cubemap.GetResourceSet
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.GraphicsDevice
+  name: GraphicsDevice
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_GraphicsDevice
+  commentId: P:Bliss.CSharp.Textures.Cubemaps.Cubemap.GraphicsDevice
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.GraphicsDevice
+  nameWithType: Cubemap.GraphicsDevice
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.GraphicsDevice*
+  name: GraphicsDevice
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_GraphicsDevice_
+  commentId: Overload:Bliss.CSharp.Textures.Cubemaps.Cubemap.GraphicsDevice
+  isSpec: "True"
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.GraphicsDevice
+  nameWithType: Cubemap.GraphicsDevice
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.Height
+  name: Height
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_Height
+  commentId: P:Bliss.CSharp.Textures.Cubemaps.Cubemap.Height
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.Height
+  nameWithType: Cubemap.Height
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.Height*
+  name: Height
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_Height_
+  commentId: Overload:Bliss.CSharp.Textures.Cubemaps.Cubemap.Height
+  isSpec: "True"
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.Height
+  nameWithType: Cubemap.Height
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.Images
+  name: Images
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_Images
+  commentId: P:Bliss.CSharp.Textures.Cubemaps.Cubemap.Images
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.Images
+  nameWithType: Cubemap.Images
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.Images*
+  name: Images
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_Images_
+  commentId: Overload:Bliss.CSharp.Textures.Cubemaps.Cubemap.Images
+  isSpec: "True"
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.Images
+  nameWithType: Cubemap.Images
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.MipLevels
+  name: MipLevels
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_MipLevels
+  commentId: P:Bliss.CSharp.Textures.Cubemaps.Cubemap.MipLevels
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.MipLevels
+  nameWithType: Cubemap.MipLevels
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.MipLevels*
+  name: MipLevels
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_MipLevels_
+  commentId: Overload:Bliss.CSharp.Textures.Cubemaps.Cubemap.MipLevels
+  isSpec: "True"
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.MipLevels
+  nameWithType: Cubemap.MipLevels
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.PixelSizeInBytes
+  name: PixelSizeInBytes
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_PixelSizeInBytes
+  commentId: P:Bliss.CSharp.Textures.Cubemaps.Cubemap.PixelSizeInBytes
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.PixelSizeInBytes
+  nameWithType: Cubemap.PixelSizeInBytes
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.PixelSizeInBytes*
+  name: PixelSizeInBytes
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_PixelSizeInBytes_
+  commentId: Overload:Bliss.CSharp.Textures.Cubemaps.Cubemap.PixelSizeInBytes
+  isSpec: "True"
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.PixelSizeInBytes
+  nameWithType: Cubemap.PixelSizeInBytes
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.SetData(Bliss.CSharp.Images.Image,Bliss.CSharp.Textures.Cubemaps.CubemapLayer)
+  name: SetData(Image, CubemapLayer)
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_SetData_Bliss_CSharp_Images_Image_Bliss_CSharp_Textures_Cubemaps_CubemapLayer_
+  commentId: M:Bliss.CSharp.Textures.Cubemaps.Cubemap.SetData(Bliss.CSharp.Images.Image,Bliss.CSharp.Textures.Cubemaps.CubemapLayer)
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.SetData(Bliss.CSharp.Images.Image, Bliss.CSharp.Textures.Cubemaps.CubemapLayer)
+  nameWithType: Cubemap.SetData(Image, CubemapLayer)
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.SetData(System.Byte[],Bliss.CSharp.Textures.Cubemaps.CubemapLayer,System.Nullable{Bliss.CSharp.Transformations.Rectangle})
+  name: SetData(byte[], CubemapLayer, Rectangle?)
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_SetData_System_Byte___Bliss_CSharp_Textures_Cubemaps_CubemapLayer_System_Nullable_Bliss_CSharp_Transformations_Rectangle__
+  commentId: M:Bliss.CSharp.Textures.Cubemaps.Cubemap.SetData(System.Byte[],Bliss.CSharp.Textures.Cubemaps.CubemapLayer,System.Nullable{Bliss.CSharp.Transformations.Rectangle})
+  name.vb: SetData(Byte(), CubemapLayer, Rectangle?)
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.SetData(byte[], Bliss.CSharp.Textures.Cubemaps.CubemapLayer, Bliss.CSharp.Transformations.Rectangle?)
+  fullName.vb: Bliss.CSharp.Textures.Cubemaps.Cubemap.SetData(Byte(), Bliss.CSharp.Textures.Cubemaps.CubemapLayer, Bliss.CSharp.Transformations.Rectangle?)
+  nameWithType: Cubemap.SetData(byte[], CubemapLayer, Rectangle?)
+  nameWithType.vb: Cubemap.SetData(Byte(), CubemapLayer, Rectangle?)
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.SetData*
+  name: SetData
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_SetData_
+  commentId: Overload:Bliss.CSharp.Textures.Cubemaps.Cubemap.SetData
+  isSpec: "True"
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.SetData
+  nameWithType: Cubemap.SetData
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.TextureView
+  name: TextureView
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_TextureView
+  commentId: P:Bliss.CSharp.Textures.Cubemaps.Cubemap.TextureView
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.TextureView
+  nameWithType: Cubemap.TextureView
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.TextureView*
+  name: TextureView
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_TextureView_
+  commentId: Overload:Bliss.CSharp.Textures.Cubemaps.Cubemap.TextureView
+  isSpec: "True"
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.TextureView
+  nameWithType: Cubemap.TextureView
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.Width
+  name: Width
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_Width
+  commentId: P:Bliss.CSharp.Textures.Cubemaps.Cubemap.Width
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.Width
+  nameWithType: Cubemap.Width
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.Width*
+  name: Width
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_Width_
+  commentId: Overload:Bliss.CSharp.Textures.Cubemaps.Cubemap.Width
+  isSpec: "True"
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.Width
+  nameWithType: Cubemap.Width
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapHelper
+  name: CubemapHelper
+  href: api/Bliss.CSharp.Textures.Cubemaps.CubemapHelper.html
+  commentId: T:Bliss.CSharp.Textures.Cubemaps.CubemapHelper
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapHelper
+  nameWithType: CubemapHelper
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapHelper.GenCubemapImages(Bliss.CSharp.Images.Image,Bliss.CSharp.Textures.Cubemaps.CubemapLayout)
+  name: GenCubemapImages(Image, CubemapLayout)
+  href: api/Bliss.CSharp.Textures.Cubemaps.CubemapHelper.html#Bliss_CSharp_Textures_Cubemaps_CubemapHelper_GenCubemapImages_Bliss_CSharp_Images_Image_Bliss_CSharp_Textures_Cubemaps_CubemapLayout_
+  commentId: M:Bliss.CSharp.Textures.Cubemaps.CubemapHelper.GenCubemapImages(Bliss.CSharp.Images.Image,Bliss.CSharp.Textures.Cubemaps.CubemapLayout)
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapHelper.GenCubemapImages(Bliss.CSharp.Images.Image, Bliss.CSharp.Textures.Cubemaps.CubemapLayout)
+  nameWithType: CubemapHelper.GenCubemapImages(Image, CubemapLayout)
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapHelper.GenCubemapImages*
+  name: GenCubemapImages
+  href: api/Bliss.CSharp.Textures.Cubemaps.CubemapHelper.html#Bliss_CSharp_Textures_Cubemaps_CubemapHelper_GenCubemapImages_
+  commentId: Overload:Bliss.CSharp.Textures.Cubemaps.CubemapHelper.GenCubemapImages
+  isSpec: "True"
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapHelper.GenCubemapImages
+  nameWithType: CubemapHelper.GenCubemapImages
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayer
+  name: CubemapLayer
+  href: api/Bliss.CSharp.Textures.Cubemaps.CubemapLayer.html
+  commentId: T:Bliss.CSharp.Textures.Cubemaps.CubemapLayer
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayer
+  nameWithType: CubemapLayer
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.NegativeX
+  name: NegativeX
+  href: api/Bliss.CSharp.Textures.Cubemaps.CubemapLayer.html#Bliss_CSharp_Textures_Cubemaps_CubemapLayer_NegativeX
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayer.NegativeX
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.NegativeX
+  nameWithType: CubemapLayer.NegativeX
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.NegativeY
+  name: NegativeY
+  href: api/Bliss.CSharp.Textures.Cubemaps.CubemapLayer.html#Bliss_CSharp_Textures_Cubemaps_CubemapLayer_NegativeY
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayer.NegativeY
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.NegativeY
+  nameWithType: CubemapLayer.NegativeY
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.NegativeZ
+  name: NegativeZ
+  href: api/Bliss.CSharp.Textures.Cubemaps.CubemapLayer.html#Bliss_CSharp_Textures_Cubemaps_CubemapLayer_NegativeZ
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayer.NegativeZ
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.NegativeZ
+  nameWithType: CubemapLayer.NegativeZ
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.PositiveX
+  name: PositiveX
+  href: api/Bliss.CSharp.Textures.Cubemaps.CubemapLayer.html#Bliss_CSharp_Textures_Cubemaps_CubemapLayer_PositiveX
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayer.PositiveX
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.PositiveX
+  nameWithType: CubemapLayer.PositiveX
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.PositiveY
+  name: PositiveY
+  href: api/Bliss.CSharp.Textures.Cubemaps.CubemapLayer.html#Bliss_CSharp_Textures_Cubemaps_CubemapLayer_PositiveY
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayer.PositiveY
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.PositiveY
+  nameWithType: CubemapLayer.PositiveY
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.PositiveZ
+  name: PositiveZ
+  href: api/Bliss.CSharp.Textures.Cubemaps.CubemapLayer.html#Bliss_CSharp_Textures_Cubemaps_CubemapLayer_PositiveZ
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayer.PositiveZ
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.PositiveZ
+  nameWithType: CubemapLayer.PositiveZ
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayout
+  name: CubemapLayout
+  href: api/Bliss.CSharp.Textures.Cubemaps.CubemapLayout.html
+  commentId: T:Bliss.CSharp.Textures.Cubemaps.CubemapLayout
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayout
+  nameWithType: CubemapLayout
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.AutoDetect
+  name: AutoDetect
+  href: api/Bliss.CSharp.Textures.Cubemaps.CubemapLayout.html#Bliss_CSharp_Textures_Cubemaps_CubemapLayout_AutoDetect
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayout.AutoDetect
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.AutoDetect
+  nameWithType: CubemapLayout.AutoDetect
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.CrossFourByThree
+  name: CrossFourByThree
+  href: api/Bliss.CSharp.Textures.Cubemaps.CubemapLayout.html#Bliss_CSharp_Textures_Cubemaps_CubemapLayout_CrossFourByThree
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayout.CrossFourByThree
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.CrossFourByThree
+  nameWithType: CubemapLayout.CrossFourByThree
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.CrossThreeByFour
+  name: CrossThreeByFour
+  href: api/Bliss.CSharp.Textures.Cubemaps.CubemapLayout.html#Bliss_CSharp_Textures_Cubemaps_CubemapLayout_CrossThreeByFour
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayout.CrossThreeByFour
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.CrossThreeByFour
+  nameWithType: CubemapLayout.CrossThreeByFour
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.LineHorizontal
+  name: LineHorizontal
+  href: api/Bliss.CSharp.Textures.Cubemaps.CubemapLayout.html#Bliss_CSharp_Textures_Cubemaps_CubemapLayout_LineHorizontal
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayout.LineHorizontal
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.LineHorizontal
+  nameWithType: CubemapLayout.LineHorizontal
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.LineVertical
+  name: LineVertical
+  href: api/Bliss.CSharp.Textures.Cubemaps.CubemapLayout.html#Bliss_CSharp_Textures_Cubemaps_CubemapLayout_LineVertical
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayout.LineVertical
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.LineVertical
+  nameWithType: CubemapLayout.LineVertical
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.Panorama
+  name: Panorama
+  href: api/Bliss.CSharp.Textures.Cubemaps.CubemapLayout.html#Bliss_CSharp_Textures_Cubemaps_CubemapLayout_Panorama
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayout.Panorama
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayout.Panorama
+  nameWithType: CubemapLayout.Panorama
 - uid: Bliss.CSharp.Textures.MipmapHelper
   name: MipmapHelper
   href: api/Bliss.CSharp.Textures.MipmapHelper.html

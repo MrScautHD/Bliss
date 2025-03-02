@@ -1,0 +1,248 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayer
+  commentId: T:Bliss.CSharp.Textures.Cubemaps.CubemapLayer
+  id: CubemapLayer
+  parent: Bliss.CSharp.Textures.Cubemaps
+  children:
+  - Bliss.CSharp.Textures.Cubemaps.CubemapLayer.NegativeX
+  - Bliss.CSharp.Textures.Cubemaps.CubemapLayer.NegativeY
+  - Bliss.CSharp.Textures.Cubemaps.CubemapLayer.NegativeZ
+  - Bliss.CSharp.Textures.Cubemaps.CubemapLayer.PositiveX
+  - Bliss.CSharp.Textures.Cubemaps.CubemapLayer.PositiveY
+  - Bliss.CSharp.Textures.Cubemaps.CubemapLayer.PositiveZ
+  langs:
+  - csharp
+  - vb
+  name: CubemapLayer
+  nameWithType: CubemapLayer
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayer
+  type: Enum
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemaps/CubemapLayer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: CubemapLayer
+    path: ../src/Bliss/CSharp/Textures/Cubemaps/CubemapLayer.cs
+    startLine: 2
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures.Cubemaps
+  syntax:
+    content: public enum CubemapLayer
+    content.vb: Public Enum CubemapLayer
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.PositiveX
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayer.PositiveX
+  id: PositiveX
+  parent: Bliss.CSharp.Textures.Cubemaps.CubemapLayer
+  langs:
+  - csharp
+  - vb
+  name: PositiveX
+  nameWithType: CubemapLayer.PositiveX
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.PositiveX
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemaps/CubemapLayer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: PositiveX
+    path: ../src/Bliss/CSharp/Textures/Cubemaps/CubemapLayer.cs
+    startLine: 7
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures.Cubemaps
+  summary: The positive X face of the cubemap (right).
+  example: []
+  syntax:
+    content: PositiveX = 0
+    return:
+      type: Bliss.CSharp.Textures.Cubemaps.CubemapLayer
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.NegativeX
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayer.NegativeX
+  id: NegativeX
+  parent: Bliss.CSharp.Textures.Cubemaps.CubemapLayer
+  langs:
+  - csharp
+  - vb
+  name: NegativeX
+  nameWithType: CubemapLayer.NegativeX
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.NegativeX
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemaps/CubemapLayer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: NegativeX
+    path: ../src/Bliss/CSharp/Textures/Cubemaps/CubemapLayer.cs
+    startLine: 12
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures.Cubemaps
+  summary: The negative X face of the cubemap (left).
+  example: []
+  syntax:
+    content: NegativeX = 1
+    return:
+      type: Bliss.CSharp.Textures.Cubemaps.CubemapLayer
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.PositiveY
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayer.PositiveY
+  id: PositiveY
+  parent: Bliss.CSharp.Textures.Cubemaps.CubemapLayer
+  langs:
+  - csharp
+  - vb
+  name: PositiveY
+  nameWithType: CubemapLayer.PositiveY
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.PositiveY
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemaps/CubemapLayer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: PositiveY
+    path: ../src/Bliss/CSharp/Textures/Cubemaps/CubemapLayer.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures.Cubemaps
+  summary: The positive Y face of the cubemap (top).
+  example: []
+  syntax:
+    content: PositiveY = 2
+    return:
+      type: Bliss.CSharp.Textures.Cubemaps.CubemapLayer
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.NegativeY
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayer.NegativeY
+  id: NegativeY
+  parent: Bliss.CSharp.Textures.Cubemaps.CubemapLayer
+  langs:
+  - csharp
+  - vb
+  name: NegativeY
+  nameWithType: CubemapLayer.NegativeY
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.NegativeY
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemaps/CubemapLayer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: NegativeY
+    path: ../src/Bliss/CSharp/Textures/Cubemaps/CubemapLayer.cs
+    startLine: 22
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures.Cubemaps
+  summary: The negative Y face of the cubemap (bottom).
+  example: []
+  syntax:
+    content: NegativeY = 3
+    return:
+      type: Bliss.CSharp.Textures.Cubemaps.CubemapLayer
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.PositiveZ
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayer.PositiveZ
+  id: PositiveZ
+  parent: Bliss.CSharp.Textures.Cubemaps.CubemapLayer
+  langs:
+  - csharp
+  - vb
+  name: PositiveZ
+  nameWithType: CubemapLayer.PositiveZ
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.PositiveZ
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemaps/CubemapLayer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: PositiveZ
+    path: ../src/Bliss/CSharp/Textures/Cubemaps/CubemapLayer.cs
+    startLine: 27
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures.Cubemaps
+  summary: The positive Z face of the cubemap (front).
+  example: []
+  syntax:
+    content: PositiveZ = 4
+    return:
+      type: Bliss.CSharp.Textures.Cubemaps.CubemapLayer
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.NegativeZ
+  commentId: F:Bliss.CSharp.Textures.Cubemaps.CubemapLayer.NegativeZ
+  id: NegativeZ
+  parent: Bliss.CSharp.Textures.Cubemaps.CubemapLayer
+  langs:
+  - csharp
+  - vb
+  name: NegativeZ
+  nameWithType: CubemapLayer.NegativeZ
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.NegativeZ
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/Cubemaps/CubemapLayer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: NegativeZ
+    path: ../src/Bliss/CSharp/Textures/Cubemaps/CubemapLayer.cs
+    startLine: 32
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures.Cubemaps
+  summary: The negative Z face of the cubemap (back).
+  example: []
+  syntax:
+    content: NegativeZ = 5
+    return:
+      type: Bliss.CSharp.Textures.Cubemaps.CubemapLayer
+references:
+- uid: Bliss.CSharp.Textures.Cubemaps
+  commentId: N:Bliss.CSharp.Textures.Cubemaps
+  href: Bliss.html
+  name: Bliss.CSharp.Textures.Cubemaps
+  nameWithType: Bliss.CSharp.Textures.Cubemaps
+  fullName: Bliss.CSharp.Textures.Cubemaps
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Textures
+    name: Textures
+    href: Bliss.CSharp.Textures.html
+  - name: .
+  - uid: Bliss.CSharp.Textures.Cubemaps
+    name: Cubemaps
+    href: Bliss.CSharp.Textures.Cubemaps.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Textures
+    name: Textures
+    href: Bliss.CSharp.Textures.html
+  - name: .
+  - uid: Bliss.CSharp.Textures.Cubemaps
+    name: Cubemaps
+    href: Bliss.CSharp.Textures.Cubemaps.html
+- uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayer
+  commentId: T:Bliss.CSharp.Textures.Cubemaps.CubemapLayer
+  parent: Bliss.CSharp.Textures.Cubemaps
+  href: Bliss.CSharp.Textures.Cubemaps.CubemapLayer.html
+  name: CubemapLayer
+  nameWithType: CubemapLayer
+  fullName: Bliss.CSharp.Textures.Cubemaps.CubemapLayer

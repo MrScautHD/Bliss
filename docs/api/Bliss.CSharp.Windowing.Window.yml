@@ -22,7 +22,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Window
     path: ../src/Bliss/CSharp/Windowing/Window.cs
-    startLine: 5
+    startLine: 4
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -57,7 +57,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: CreateWindow
     path: ../src/Bliss/CSharp/Windowing/Window.cs
-    startLine: 19
+    startLine: 18
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -116,7 +116,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetPlatformDefaultBackend
     path: ../src/Bliss/CSharp/Windowing/Window.cs
-    startLine: 34
+    startLine: 33
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -147,7 +147,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: CreateGraphicsDevice
     path: ../src/Bliss/CSharp/Windowing/Window.cs
-    startLine: 53
+    startLine: 52
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing

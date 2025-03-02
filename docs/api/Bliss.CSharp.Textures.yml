@@ -4,7 +4,6 @@ items:
   commentId: N:Bliss.CSharp.Textures
   id: Bliss.CSharp.Textures
   children:
-  - Bliss.CSharp.Textures.Cubemap
   - Bliss.CSharp.Textures.MipmapHelper
   - Bliss.CSharp.Textures.RenderTexture2D
   - Bliss.CSharp.Textures.Texture2D
@@ -18,12 +17,6 @@ items:
   assemblies:
   - Bliss
 references:
-- uid: Bliss.CSharp.Textures.Cubemap
-  commentId: T:Bliss.CSharp.Textures.Cubemap
-  href: Bliss.CSharp.Textures.Cubemap.html
-  name: Cubemap
-  nameWithType: Cubemap
-  fullName: Bliss.CSharp.Textures.Cubemap
 - uid: Bliss.CSharp.Textures.MipmapHelper
   commentId: T:Bliss.CSharp.Textures.MipmapHelper
   href: Bliss.CSharp.Textures.MipmapHelper.html

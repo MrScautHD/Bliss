@@ -1,6 +1,5 @@
 using System.Numerics;
 using Bliss.CSharp;
-using Bliss.CSharp.Audio;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Geometry;
@@ -122,7 +121,7 @@ public class Game : Disposable {
         }
         
         Logger.Info("Initialize audio device...");
-        AudioDevice.Init();
+        AudioContext.Initialize(44100, 2);
 
         this.Init();
         
@@ -140,7 +139,7 @@ public class Game : Disposable {
                 break;
             }
             
-            AudioDevice.Update();
+            AudioContext.Update();
             this.Update();
             this.AfterUpdate();
 
@@ -381,7 +380,7 @@ public class Game : Disposable {
             this._playerModel.Dispose();
             this._planeModel.Dispose();
             
-            AudioDevice.Destroy();
+            AudioContext.Deinitialize();
             GlobalResource.Destroy();
             Input.Destroy();
             this.MainWindow.Dispose();

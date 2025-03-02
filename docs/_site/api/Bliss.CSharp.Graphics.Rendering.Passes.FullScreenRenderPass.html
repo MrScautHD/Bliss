@@ -170,26 +170,29 @@ Class FullScreenRenderPass  <a class="header-action link-secondary" title="View 
 
   <a id="Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass__ctor_" data-uid="Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor*"></a>
 
-  <h3 id="Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass__ctor_Veldrid_GraphicsDevice_Veldrid_OutputDescription_" data-uid="Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription)">
-  FullScreenRenderPass(GraphicsDevice, OutputDescription)
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass__ctor_Veldrid_GraphicsDevice_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_" data-uid="Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect)">
+  FullScreenRenderPass(GraphicsDevice, OutputDescription, Effect?)
   <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs/#L45"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html">FullScreenRenderPass</a> class.</p>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html">FullScreenRenderPass</a> class, setting up the necessary buffers and pipeline for full-screen rendering.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FullScreenRenderPass(GraphicsDevice graphicsDevice, OutputDescription output)</code></pre>
+    <pre><code class="lang-csharp hljs">public FullScreenRenderPass(GraphicsDevice graphicsDevice, OutputDescription output, Effect? effect = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
-    <dd><p>The graphics device to use for rendering.</p>
+    <dd><p>The graphics device used for resource creation and rendering.</p>
 </dd>
     <dt><code>output</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs">OutputDescription</a></dt>
-    <dd><p>The output description for the rendering pass.</p>
+    <dd><p>The output description that defines the render target configuration.</p>
+</dd>
+    <dt><code>effect</code> <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a></dt>
+    <dd><p>An optional effect (shader) to use for the render pass. If null, the default full-screen render pass effect from <a class="xref" href="Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_FullScreenRenderPassEffect">FullScreenRenderPassEffect</a> is used.</p>
 </dd>
   </dl>
 
@@ -206,6 +209,38 @@ Class FullScreenRenderPass  <a class="header-action link-secondary" title="View 
 
   <h2 class="section" id="properties">Properties
 </h2>
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass_Effect_" data-uid="Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Effect*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass_Effect" data-uid="Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Effect">
+  Effect
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The shader effect used for rendering in the full-screen pass.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Effect Effect { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
 
 
   <a id="Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass_GraphicsDevice_" data-uid="Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.GraphicsDevice*"></a>
@@ -280,7 +315,7 @@ Class FullScreenRenderPass  <a class="header-action link-secondary" title="View 
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass_Dispose_System_Boolean_" data-uid="Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Dispose(System.Boolean)">
   Dispose(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs/#L141"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs/#L159"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Disposes of the object and releases associated resources.</p>
@@ -313,7 +348,7 @@ Class FullScreenRenderPass  <a class="header-action link-secondary" title="View 
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass_Draw_Veldrid_CommandList_Bliss_CSharp_Textures_RenderTexture2D_Veldrid_Sampler_" data-uid="Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.Sampler)">
   Draw(CommandList, RenderTexture2D, Sampler?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs/#L134"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs/#L66"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Executes the draw call using the provided command list, render texture, and optional sampler.</p>

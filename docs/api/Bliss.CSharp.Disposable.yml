@@ -49,8 +49,7 @@ items:
   - Bliss.CSharp.Interact.Contexts.Sdl3InputContext
   - Bliss.CSharp.Interact.Gamepads.Sdl3Gamepad
   - Bliss.CSharp.Interact.Mice.Cursors.Sdl3Cursor
-  - Bliss.CSharp.Materials.Material
-  - Bliss.CSharp.Textures.Cubemap
+  - Bliss.CSharp.Textures.Cubemaps.Cubemap
   - Bliss.CSharp.Textures.RenderTexture2D
   - Bliss.CSharp.Textures.Texture2D
   - Bliss.CSharp.Windowing.Sdl3Window

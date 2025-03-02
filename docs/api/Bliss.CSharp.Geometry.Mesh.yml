@@ -43,7 +43,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Mesh
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 19
+    startLine: 20
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -84,7 +84,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GraphicsDevice
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 25
+    startLine: 26
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -118,7 +118,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Material
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 32
+    startLine: 33
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -154,7 +154,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Vertices
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 39
+    startLine: 40
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -190,7 +190,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Indices
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 46
+    startLine: 47
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -226,7 +226,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: BoneInfos
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 52
+    startLine: 53
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -260,7 +260,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: BoundingBox
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 59
+    startLine: 60
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -296,7 +296,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: VertexCount
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 65
+    startLine: 66
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -330,7 +330,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IndexCount
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 70
+    startLine: 71
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -361,7 +361,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 117
+    startLine: 118
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -408,7 +408,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenPoly
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 174
+    startLine: 175
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -452,7 +452,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenCube
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 228
+    startLine: 229
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -499,7 +499,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenSphere
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 312
+    startLine: 313
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -546,7 +546,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenHemisphere
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 394
+    startLine: 395
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -593,7 +593,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenCylinder
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 498
+    startLine: 499
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -640,7 +640,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenCapsule
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 597
+    startLine: 598
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -687,7 +687,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenCone
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 747
+    startLine: 748
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -734,7 +734,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenTorus
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 826
+    startLine: 827
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -784,7 +784,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenKnot
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 901
+    startLine: 902
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -834,7 +834,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenHeightmap
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 989
+    startLine: 990
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -875,7 +875,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenerateTangents
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1053
+    startLine: 1049
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -903,7 +903,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: UpdateAnimationBones
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1118
+    startLine: 1114
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -944,7 +944,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ResetAnimationBones
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1132
+    startLine: 1128
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -976,7 +976,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Draw
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1149
+    startLine: 1145
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1026,7 +1026,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1309
+    startLine: 1311
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry

@@ -4,7 +4,7 @@ items:
   commentId: N:Bliss.CSharp.Audio
   id: Bliss.CSharp.Audio
   children:
-  - Bliss.CSharp.Audio.AudioDevice
+  - Bliss.CSharp.Audio.Vector3FExtensions
   langs:
   - csharp
   - vb
@@ -15,9 +15,9 @@ items:
   assemblies:
   - Bliss
 references:
-- uid: Bliss.CSharp.Audio.AudioDevice
-  commentId: T:Bliss.CSharp.Audio.AudioDevice
-  href: Bliss.CSharp.Audio.AudioDevice.html
-  name: AudioDevice
-  nameWithType: AudioDevice
-  fullName: Bliss.CSharp.Audio.AudioDevice
+- uid: Bliss.CSharp.Audio.Vector3FExtensions
+  commentId: T:Bliss.CSharp.Audio.Vector3FExtensions
+  href: Bliss.CSharp.Audio.Vector3FExtensions.html
+  name: Vector3FExtensions
+  nameWithType: Vector3FExtensions
+  fullName: Bliss.CSharp.Audio.Vector3FExtensions

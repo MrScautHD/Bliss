@@ -70,7 +70,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GraphicsDevice
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 58
+    startLine: 68
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -101,7 +101,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Meshes
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 63
+    startLine: 73
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -132,7 +132,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Animations
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 69
+    startLine: 79
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -166,7 +166,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: BoundingBox
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 74
+    startLine: 84
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -197,7 +197,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 82
+    startLine: 92
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -238,7 +238,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Load
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 97
+    startLine: 107
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -285,7 +285,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: UpdateAnimationBones
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 339
+    startLine: 367
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -326,7 +326,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ResetAnimationBones
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 349
+    startLine: 377
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -358,7 +358,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Draw
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 364
+    startLine: 392
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -408,7 +408,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 388
+    startLine: 416
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry

@@ -14,8 +14,8 @@ items:
   name: Bliss.CSharp.Audio
   type: Namespace
   items:
-  - uid: Bliss.CSharp.Audio.AudioDevice
-    name: AudioDevice
+  - uid: Bliss.CSharp.Audio.Vector3FExtensions
+    name: Vector3FExtensions
     type: Class
 - uid: Bliss.CSharp.Camera
   name: Bliss.CSharp.Camera
@@ -317,9 +317,6 @@ items:
   name: Bliss.CSharp.Textures
   type: Namespace
   items:
-  - uid: Bliss.CSharp.Textures.Cubemap
-    name: Cubemap
-    type: Class
   - uid: Bliss.CSharp.Textures.MipmapHelper
     name: MipmapHelper
     type: Class
@@ -329,6 +326,22 @@ items:
   - uid: Bliss.CSharp.Textures.Texture2D
     name: Texture2D
     type: Class
+- uid: Bliss.CSharp.Textures.Cubemaps
+  name: Bliss.CSharp.Textures.Cubemaps
+  type: Namespace
+  items:
+  - uid: Bliss.CSharp.Textures.Cubemaps.Cubemap
+    name: Cubemap
+    type: Class
+  - uid: Bliss.CSharp.Textures.Cubemaps.CubemapHelper
+    name: CubemapHelper
+    type: Class
+  - uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayer
+    name: CubemapLayer
+    type: Enum
+  - uid: Bliss.CSharp.Textures.Cubemaps.CubemapLayout
+    name: CubemapLayout
+    type: Enum
 - uid: Bliss.CSharp.Transformations
   name: Bliss.CSharp.Transformations
   type: Namespace

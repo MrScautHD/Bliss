@@ -11,6 +11,7 @@ items:
   - Bliss.CSharp.Images.Image.#ctor(System.Int32,System.Int32,System.Byte[])
   - Bliss.CSharp.Images.Image.#ctor(System.String)
   - Bliss.CSharp.Images.Image.Clone
+  - Bliss.CSharp.Images.Image.Crop(Bliss.CSharp.Transformations.Rectangle)
   - Bliss.CSharp.Images.Image.Data
   - Bliss.CSharp.Images.Image.FlipHorizontal
   - Bliss.CSharp.Images.Image.FlipVertical
@@ -43,7 +44,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Image
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 9
+    startLine: 10
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -80,7 +81,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 31
+    startLine: 32
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -119,7 +120,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 47
+    startLine: 48
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -158,7 +159,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 62
+    startLine: 63
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -193,7 +194,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 75
+    startLine: 76
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -234,7 +235,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 87
+    startLine: 88
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -275,7 +276,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Width
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 106
+    startLine: 107
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -310,7 +311,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Height
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 124
+    startLine: 125
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -345,7 +346,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Data
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 142
+    startLine: 143
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -380,7 +381,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetColor
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 160
+    startLine: 161
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -421,7 +422,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetPixel
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 175
+    startLine: 176
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -462,7 +463,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Resize
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 192
+    startLine: 193
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -500,7 +501,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ResizeNN
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 230
+    startLine: 231
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -538,7 +539,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: FlipVertical
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 257
+    startLine: 258
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -566,7 +567,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: FlipHorizontal
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 279
+    startLine: 280
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -594,7 +595,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Rotate
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 302
+    startLine: 303
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -629,7 +630,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: RotateCW
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 316
+    startLine: 317
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -657,7 +658,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: RotateCCW
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 343
+    startLine: 344
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -667,6 +668,42 @@ items:
     content: public void RotateCCW()
     content.vb: Public Sub RotateCCW()
   overload: Bliss.CSharp.Images.Image.RotateCCW*
+- uid: Bliss.CSharp.Images.Image.Crop(Bliss.CSharp.Transformations.Rectangle)
+  commentId: M:Bliss.CSharp.Images.Image.Crop(Bliss.CSharp.Transformations.Rectangle)
+  id: Crop(Bliss.CSharp.Transformations.Rectangle)
+  parent: Bliss.CSharp.Images.Image
+  langs:
+  - csharp
+  - vb
+  name: Crop(Rectangle)
+  nameWithType: Image.Crop(Rectangle)
+  fullName: Bliss.CSharp.Images.Image.Crop(Bliss.CSharp.Transformations.Rectangle)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/Image.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Crop
+    path: ../src/Bliss/CSharp/Images/Image.cs
+    startLine: 373
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Crops the image to the specified rectangular region.
+  example: []
+  syntax:
+    content: public void Crop(Rectangle crop)
+    parameters:
+    - id: crop
+      type: Bliss.CSharp.Transformations.Rectangle
+      description: The rectangular area to crop the image to.
+    content.vb: Public Sub Crop(crop As Rectangle)
+  overload: Bliss.CSharp.Images.Image.Crop*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Thrown when the specified rectangle is outside the bounds of the image.
 - uid: Bliss.CSharp.Images.Image.Tint(Bliss.CSharp.Colors.Color)
   commentId: M:Bliss.CSharp.Images.Image.Tint(Bliss.CSharp.Colors.Color)
   id: Tint(Bliss.CSharp.Colors.Color)
@@ -685,7 +722,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Tint
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 371
+    startLine: 403
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -717,7 +754,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SaveAsBmp
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 384
+    startLine: 416
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -752,7 +789,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SaveAsTga
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 395
+    startLine: 427
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -787,7 +824,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SaveAsHdr
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 406
+    startLine: 438
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -822,7 +859,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SaveAsPng
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 417
+    startLine: 449
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -857,7 +894,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SaveAsJpg
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 429
+    startLine: 461
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -895,7 +932,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Clone
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 440
+    startLine: 472
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -1412,6 +1449,49 @@ references:
   name: RotateCCW
   nameWithType: Image.RotateCCW
   fullName: Bliss.CSharp.Images.Image.RotateCCW
+- uid: Bliss.CSharp.Images.Image.Crop*
+  commentId: Overload:Bliss.CSharp.Images.Image.Crop
+  href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_Crop_Bliss_CSharp_Transformations_Rectangle_
+  name: Crop
+  nameWithType: Image.Crop
+  fullName: Bliss.CSharp.Images.Image.Crop
+- uid: Bliss.CSharp.Transformations.Rectangle
+  commentId: T:Bliss.CSharp.Transformations.Rectangle
+  parent: Bliss.CSharp.Transformations
+  href: Bliss.CSharp.Transformations.Rectangle.html
+  name: Rectangle
+  nameWithType: Rectangle
+  fullName: Bliss.CSharp.Transformations.Rectangle
+- uid: Bliss.CSharp.Transformations
+  commentId: N:Bliss.CSharp.Transformations
+  href: Bliss.html
+  name: Bliss.CSharp.Transformations
+  nameWithType: Bliss.CSharp.Transformations
+  fullName: Bliss.CSharp.Transformations
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Transformations
+    name: Transformations
+    href: Bliss.CSharp.Transformations.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Transformations
+    name: Transformations
+    href: Bliss.CSharp.Transformations.html
 - uid: Bliss.CSharp.Images.Image.Tint*
   commentId: Overload:Bliss.CSharp.Images.Image.Tint
   href: Bliss.CSharp.Images.Image.html#Bliss_CSharp_Images_Image_Tint_Bliss_CSharp_Colors_Color_

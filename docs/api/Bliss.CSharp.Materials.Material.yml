@@ -8,7 +8,6 @@ items:
   - Bliss.CSharp.Materials.Material.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState)
   - Bliss.CSharp.Materials.Material.AddMaterialMap(System.String,Bliss.CSharp.Materials.MaterialMap)
   - Bliss.CSharp.Materials.Material.BlendState
-  - Bliss.CSharp.Materials.Material.Dispose(System.Boolean)
   - Bliss.CSharp.Materials.Material.Effect
   - Bliss.CSharp.Materials.Material.GetMapColor(System.String)
   - Bliss.CSharp.Materials.Material.GetMapTexture(System.String)
@@ -41,17 +40,11 @@ items:
   - Bliss
   namespace: Bliss.CSharp.Materials
   syntax:
-    content: 'public class Material : Disposable, IDisposable'
-    content.vb: Public Class Material Inherits Disposable Implements IDisposable
+    content: public class Material
+    content.vb: Public Class Material
   inheritance:
   - System.Object
-  - Bliss.CSharp.Disposable
-  implements:
-  - System.IDisposable
   inheritedMembers:
-  - Bliss.CSharp.Disposable.HasDisposed
-  - Bliss.CSharp.Disposable.Dispose
-  - Bliss.CSharp.Disposable.ThrowIfDisposed
   - System.Object.Equals(System.Object)
   - System.Object.Equals(System.Object,System.Object)
   - System.Object.GetHashCode
@@ -636,42 +629,6 @@ items:
   nameWithType.vb: Material.SetMapValue(String, Single)
   fullName.vb: Bliss.CSharp.Materials.Material.SetMapValue(String, Single)
   name.vb: SetMapValue(String, Single)
-- uid: Bliss.CSharp.Materials.Material.Dispose(System.Boolean)
-  commentId: M:Bliss.CSharp.Materials.Material.Dispose(System.Boolean)
-  id: Dispose(System.Boolean)
-  parent: Bliss.CSharp.Materials.Material
-  langs:
-  - csharp
-  - vb
-  name: Dispose(bool)
-  nameWithType: Material.Dispose(bool)
-  fullName: Bliss.CSharp.Materials.Material.Dispose(bool)
-  type: Method
-  source:
-    remote:
-      path: src/Bliss/CSharp/Materials/Material.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: Dispose
-    path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 188
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Materials
-  summary: Disposes of the object and releases associated resources.
-  example: []
-  syntax:
-    content: protected override void Dispose(bool disposing)
-    parameters:
-    - id: disposing
-      type: System.Boolean
-      description: True if called from user code; false if called from a finalizer.
-    content.vb: Protected Overrides Sub Dispose(disposing As Boolean)
-  overridden: Bliss.CSharp.Disposable.Dispose(System.Boolean)
-  overload: Bliss.CSharp.Materials.Material.Dispose*
-  nameWithType.vb: Material.Dispose(Boolean)
-  fullName.vb: Bliss.CSharp.Materials.Material.Dispose(Boolean)
-  name.vb: Dispose(Boolean)
 references:
 - uid: Bliss.CSharp.Materials
   commentId: N:Bliss.CSharp.Materials
@@ -714,66 +671,6 @@ references:
   nameWithType.vb: Object
   fullName.vb: Object
   name.vb: Object
-- uid: Bliss.CSharp.Disposable
-  commentId: T:Bliss.CSharp.Disposable
-  parent: Bliss.CSharp
-  href: Bliss.CSharp.Disposable.html
-  name: Disposable
-  nameWithType: Disposable
-  fullName: Bliss.CSharp.Disposable
-- uid: System.IDisposable
-  commentId: T:System.IDisposable
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.idisposable
-  name: IDisposable
-  nameWithType: IDisposable
-  fullName: System.IDisposable
-- uid: Bliss.CSharp.Disposable.HasDisposed
-  commentId: P:Bliss.CSharp.Disposable.HasDisposed
-  parent: Bliss.CSharp.Disposable
-  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_HasDisposed
-  name: HasDisposed
-  nameWithType: Disposable.HasDisposed
-  fullName: Bliss.CSharp.Disposable.HasDisposed
-- uid: Bliss.CSharp.Disposable.Dispose
-  commentId: M:Bliss.CSharp.Disposable.Dispose
-  parent: Bliss.CSharp.Disposable
-  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
-  name: Dispose()
-  nameWithType: Disposable.Dispose()
-  fullName: Bliss.CSharp.Disposable.Dispose()
-  spec.csharp:
-  - uid: Bliss.CSharp.Disposable.Dispose
-    name: Dispose
-    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: Bliss.CSharp.Disposable.Dispose
-    name: Dispose
-    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
-  - name: (
-  - name: )
-- uid: Bliss.CSharp.Disposable.ThrowIfDisposed
-  commentId: M:Bliss.CSharp.Disposable.ThrowIfDisposed
-  parent: Bliss.CSharp.Disposable
-  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
-  name: ThrowIfDisposed()
-  nameWithType: Disposable.ThrowIfDisposed()
-  fullName: Bliss.CSharp.Disposable.ThrowIfDisposed()
-  spec.csharp:
-  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
-    name: ThrowIfDisposed
-    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
-    name: ThrowIfDisposed
-    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
-  - name: (
-  - name: )
 - uid: System.Object.Equals(System.Object)
   commentId: M:System.Object.Equals(System.Object)
   parent: System.Object
@@ -1000,28 +897,6 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: Bliss.CSharp
-  commentId: N:Bliss.CSharp
-  href: Bliss.html
-  name: Bliss.CSharp
-  nameWithType: Bliss.CSharp
-  fullName: Bliss.CSharp
-  spec.csharp:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  spec.vb:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
 - uid: Bliss.CSharp.Materials.Material.GraphicsDevice*
   commentId: Overload:Bliss.CSharp.Materials.Material.GraphicsDevice
   href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_GraphicsDevice
@@ -1566,51 +1441,3 @@ references:
   name: SetMapValue
   nameWithType: Material.SetMapValue
   fullName: Bliss.CSharp.Materials.Material.SetMapValue
-- uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
-  commentId: M:Bliss.CSharp.Disposable.Dispose(System.Boolean)
-  parent: Bliss.CSharp.Disposable
-  isExternal: true
-  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
-  name: Dispose(bool)
-  nameWithType: Disposable.Dispose(bool)
-  fullName: Bliss.CSharp.Disposable.Dispose(bool)
-  nameWithType.vb: Disposable.Dispose(Boolean)
-  fullName.vb: Bliss.CSharp.Disposable.Dispose(Boolean)
-  name.vb: Dispose(Boolean)
-  spec.csharp:
-  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
-    name: Dispose
-    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
-  - name: (
-  - uid: System.Boolean
-    name: bool
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.boolean
-  - name: )
-  spec.vb:
-  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
-    name: Dispose
-    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
-  - name: (
-  - uid: System.Boolean
-    name: Boolean
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.boolean
-  - name: )
-- uid: Bliss.CSharp.Materials.Material.Dispose*
-  commentId: Overload:Bliss.CSharp.Materials.Material.Dispose
-  href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_Dispose_System_Boolean_
-  name: Dispose
-  nameWithType: Material.Dispose
-  fullName: Bliss.CSharp.Materials.Material.Dispose
-- uid: System.Boolean
-  commentId: T:System.Boolean
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.boolean
-  name: bool
-  nameWithType: bool
-  fullName: bool
-  nameWithType.vb: Boolean
-  fullName.vb: Boolean
-  name.vb: Boolean

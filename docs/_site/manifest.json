@@ -22,6 +22,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Audio.Vector3FExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Audio.Vector3FExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Bliss.CSharp.Audio.yml",
       "output": {
         ".html": {
@@ -946,6 +956,56 @@
       "output": {
         ".html": {
           "relative_path": "api/Bliss.CSharp.Textures.Cubemap.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Textures.Cubemaps.Cubemap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Textures.Cubemaps.CubemapHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Textures.Cubemaps.CubemapHelper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Textures.Cubemaps.CubemapLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Textures.Cubemaps.CubemapLayer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Textures.Cubemaps.CubemapLayout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Textures.Cubemaps.CubemapLayout.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Textures.Cubemaps.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Textures.Cubemaps.html"
         }
       },
       "version": ""

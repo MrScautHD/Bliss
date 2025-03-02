@@ -20,7 +20,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: WindowType
     path: ../src/Bliss/CSharp/Windowing/WindowType.cs
-    startLine: 3
+    startLine: 2
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -45,7 +45,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Sdl3
     path: ../src/Bliss/CSharp/Windowing/WindowType.cs
-    startLine: 4
+    startLine: 3
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing

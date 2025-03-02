@@ -1073,7 +1073,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetState
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 240
+    startLine: 246
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1106,7 +1106,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: HasState
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 249
+    startLine: 255
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1143,7 +1143,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetState
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 257
+    startLine: 263
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1177,7 +1177,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ClearState
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 293
+    startLine: 299
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1211,7 +1211,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetTitle
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 308
+    startLine: 314
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1244,7 +1244,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetTitle
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 317
+    startLine: 323
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1285,7 +1285,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetSize
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 327
+    startLine: 333
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1318,7 +1318,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetSize
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 343
+    startLine: 349
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1358,7 +1358,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetWidth
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 353
+    startLine: 359
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1391,7 +1391,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetWidth
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 361
+    startLine: 367
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1428,7 +1428,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetHeight
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 369
+    startLine: 375
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1461,7 +1461,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetHeight
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 377
+    startLine: 383
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1498,7 +1498,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetPosition
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 386
+    startLine: 392
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1535,7 +1535,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetPosition
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 402
+    startLine: 408
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1575,7 +1575,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetX
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 410
+    startLine: 416
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1608,7 +1608,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetX
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 418
+    startLine: 424
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1645,7 +1645,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetY
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 426
+    startLine: 432
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1678,7 +1678,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetY
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 434
+    startLine: 440
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1715,7 +1715,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetIcon
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 443
+    startLine: 449
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1753,7 +1753,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: PumpEvents
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 460
+    startLine: 466
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1787,7 +1787,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ClientToScreen
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 477
+    startLine: 483
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1824,7 +1824,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ScreenToClient
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 486
+    startLine: 492
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1861,7 +1861,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetOrCreateOpenGlPlatformInfo
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 497
+    startLine: 503
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1905,7 +1905,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 1047
+    startLine: 1053
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing

@@ -1,0 +1,440 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Audio.Vector3FExtensions
+  commentId: T:Bliss.CSharp.Audio.Vector3FExtensions
+  id: Vector3FExtensions
+  parent: Bliss.CSharp.Audio
+  children:
+  - Bliss.CSharp.Audio.Vector3FExtensions.ToVector3(MiniAudioEx.Vector3f)
+  - Bliss.CSharp.Audio.Vector3FExtensions.ToVector3F(System.Numerics.Vector3)
+  langs:
+  - csharp
+  - vb
+  name: Vector3FExtensions
+  nameWithType: Vector3FExtensions
+  fullName: Bliss.CSharp.Audio.Vector3FExtensions
+  type: Class
+  source:
+    remote:
+      path: src/Bliss/CSharp/Audio/Vector3fExtensions.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Vector3FExtensions
+    path: ../src/Bliss/CSharp/Audio/Vector3fExtensions.cs
+    startLine: 5
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Audio
+  syntax:
+    content: public static class Vector3FExtensions
+    content.vb: Public Module Vector3FExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3(MiniAudioEx.Vector3f)
+  commentId: M:Bliss.CSharp.Audio.Vector3FExtensions.ToVector3(MiniAudioEx.Vector3f)
+  id: ToVector3(MiniAudioEx.Vector3f)
+  isExtensionMethod: true
+  parent: Bliss.CSharp.Audio.Vector3FExtensions
+  langs:
+  - csharp
+  - vb
+  name: ToVector3(Vector3f)
+  nameWithType: Vector3FExtensions.ToVector3(Vector3f)
+  fullName: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3(MiniAudioEx.Vector3f)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Audio/Vector3fExtensions.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ToVector3
+    path: ../src/Bliss/CSharp/Audio/Vector3fExtensions.cs
+    startLine: 12
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Audio
+  summary: Converts a <xref href="MiniAudioEx.Vector3f" data-throw-if-not-resolved="false"></xref> instance to a <xref href="System.Numerics.Vector3" data-throw-if-not-resolved="false"></xref> instance.
+  example: []
+  syntax:
+    content: public static Vector3 ToVector3(this Vector3f v)
+    parameters:
+    - id: v
+      type: MiniAudioEx.Vector3f
+      description: The <xref href="MiniAudioEx.Vector3f" data-throw-if-not-resolved="false"></xref> instance to convert.
+    return:
+      type: System.Numerics.Vector3
+      description: A <xref href="System.Numerics.Vector3" data-throw-if-not-resolved="false"></xref> instance corresponding to the given <xref href="MiniAudioEx.Vector3f" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Shared Function ToVector3(v As Vector3f) As Vector3
+  overload: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3*
+- uid: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3F(System.Numerics.Vector3)
+  commentId: M:Bliss.CSharp.Audio.Vector3FExtensions.ToVector3F(System.Numerics.Vector3)
+  id: ToVector3F(System.Numerics.Vector3)
+  isExtensionMethod: true
+  parent: Bliss.CSharp.Audio.Vector3FExtensions
+  langs:
+  - csharp
+  - vb
+  name: ToVector3F(Vector3)
+  nameWithType: Vector3FExtensions.ToVector3F(Vector3)
+  fullName: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3F(System.Numerics.Vector3)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Audio/Vector3fExtensions.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ToVector3F
+    path: ../src/Bliss/CSharp/Audio/Vector3fExtensions.cs
+    startLine: 21
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Audio
+  summary: Converts a <xref href="System.Numerics.Vector3" data-throw-if-not-resolved="false"></xref> instance to a <xref href="MiniAudioEx.Vector3f" data-throw-if-not-resolved="false"></xref> instance.
+  example: []
+  syntax:
+    content: public static Vector3f ToVector3F(this Vector3 v)
+    parameters:
+    - id: v
+      type: System.Numerics.Vector3
+      description: The <xref href="System.Numerics.Vector3" data-throw-if-not-resolved="false"></xref> instance to convert.
+    return:
+      type: MiniAudioEx.Vector3f
+      description: A <xref href="MiniAudioEx.Vector3f" data-throw-if-not-resolved="false"></xref> instance corresponding to the given <xref href="System.Numerics.Vector3" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Shared Function ToVector3F(v As Vector3) As Vector3f
+  overload: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3F*
+references:
+- uid: Bliss.CSharp.Audio
+  commentId: N:Bliss.CSharp.Audio
+  href: Bliss.html
+  name: Bliss.CSharp.Audio
+  nameWithType: Bliss.CSharp.Audio
+  fullName: Bliss.CSharp.Audio
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Audio
+    name: Audio
+    href: Bliss.CSharp.Audio.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Audio
+    name: Audio
+    href: Bliss.CSharp.Audio.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MiniAudioEx.Vector3f
+  commentId: T:MiniAudioEx.Vector3f
+  parent: MiniAudioEx
+  isExternal: true
+  name: Vector3f
+  nameWithType: Vector3f
+  fullName: MiniAudioEx.Vector3f
+- uid: System.Numerics.Vector3
+  commentId: T:System.Numerics.Vector3
+  parent: System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.vector3
+  name: Vector3
+  nameWithType: Vector3
+  fullName: System.Numerics.Vector3
+- uid: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3*
+  commentId: Overload:Bliss.CSharp.Audio.Vector3FExtensions.ToVector3
+  href: Bliss.CSharp.Audio.Vector3FExtensions.html#Bliss_CSharp_Audio_Vector3FExtensions_ToVector3_MiniAudioEx_Vector3f_
+  name: ToVector3
+  nameWithType: Vector3FExtensions.ToVector3
+  fullName: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3
+- uid: MiniAudioEx
+  commentId: N:MiniAudioEx
+  isExternal: true
+  name: MiniAudioEx
+  nameWithType: MiniAudioEx
+  fullName: MiniAudioEx
+- uid: System.Numerics
+  commentId: N:System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Numerics
+  nameWithType: System.Numerics
+  fullName: System.Numerics
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+- uid: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3F*
+  commentId: Overload:Bliss.CSharp.Audio.Vector3FExtensions.ToVector3F
+  href: Bliss.CSharp.Audio.Vector3FExtensions.html#Bliss_CSharp_Audio_Vector3FExtensions_ToVector3F_System_Numerics_Vector3_
+  name: ToVector3F
+  nameWithType: Vector3FExtensions.ToVector3F
+  fullName: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3F
