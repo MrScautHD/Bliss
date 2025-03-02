@@ -143,7 +143,7 @@ public class Cam3D : ICam {
     /// <param name="fov">The field of view angle in degrees; defaults to 70.0 degrees.</param>
     /// <param name="nearPlane">The distance to the near clipping plane; defaults to 0.001 units.</param>
     /// <param name="farPlane">The distance to the far clipping plane; defaults to 1000.0 units.</param>
-    public Cam3D(uint width, uint height, Vector3 position, Vector3 target, Vector3? up = default, ProjectionType projectionType = ProjectionType.Perspective, CameraMode mode = CameraMode.Free, float fov = 70.0F, float nearPlane = 0.1F, float farPlane = 1000.0F) {
+    public Cam3D(uint width, uint height, Vector3 position, Vector3 target, Vector3? up = null, ProjectionType projectionType = ProjectionType.Perspective, CameraMode mode = CameraMode.Free, float fov = 70.0F, float nearPlane = 0.1F, float farPlane = 1000.0F) {
         this.Position = position;
         this.Target = target;
         this.Up = up ?? Vector3.UnitY;
