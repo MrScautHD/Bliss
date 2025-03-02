@@ -60,11 +60,11 @@ dotnet add package Bliss --version 1.2.0
 
 [<img src="https://github.com/user-attachments/assets/8ec16850-3a1e-42e1-b35e-cf3d3ea32d46" alt="macOS" width="70" height="70" align="left">](https://www.apple.com/at/macos/sonoma/)
 ### Android
-- Graphics APIs: `Vulkan`, `OpenGL-ES` (Soon!)
+- Graphics APIs: `Vulkan`, `OpenGL-ES` (Planned!)
 
 [<img src="https://github.com/user-attachments/assets/a0f33f2f-bd7c-4049-a207-85d3a67bef78" alt="macOS" width="70" height="70" align="left">](https://www.apple.com/at/macos/sonoma/)
 ### iOS
-- Graphics APIs: `Metal`, `OpenGL-ES` (Soon!)
+- Graphics APIs: `Metal`, `OpenGL-ES` (Planned!)
 
 # 🧑 Contributors
 <a href="https://github.com/mrscauthd/Bliss/graphs/contributors">
