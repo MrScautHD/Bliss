@@ -197,7 +197,8 @@ public class Sdl3Window : Disposable, IWindow {
     /// </summary>
     private (int, int)? _maxSupportedGlEsVersion;
 
-    public static nint AndroidSurface;
+    public static Func<nint> AndroidSurface;
+    public static Func<nint> AndroidJNIEnv;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="Sdl3Window"/> class with the specified width, height, title, and window state.
@@ -222,7 +223,7 @@ public class Sdl3Window : Disposable, IWindow {
         SDL3.SDL_SetJoystickEventsEnabled(true);
 
         // Create window.
-        this.Handle = (nint) SDL3.SDL_CreateWindow(title, width, height, this.MapWindowState(state) | SDL_WindowFlags.SDL_WINDOW_OPENGL);
+        this.Handle = (nint) SDL3.SDL_CreateWindow(title, width, height, this.MapWindowState(state)); //TODO: Add "SDL_WindowFlags.SDL_WINDOW_OPENGL" back for Android yu need to disable it.
         
         if (this.Handle == nint.Zero) {
             throw new InvalidOperationException($"Failed to create window! Error: {SDL3.SDL_GetError()}");
@@ -724,8 +725,8 @@ public class Sdl3Window : Disposable, IWindow {
             return SwapchainSource.CreateNSWindow(surface);
         }
         else if (OperatingSystem.IsAndroid()) {
-            nint surface = AndroidSurface; //SDL3.SDL_GetPointerProperty(SDL3.SDL_GetWindowProperties((SDL_Window*) this.Handle), SDL3.SDL_PROP_WINDOW_ANDROID_SURFACE_POINTER, nint.Zero);
-            nint jniEnv = SDL3.SDL_GetAndroidJNIEnv();
+            nint surface = AndroidSurface.Invoke(); //SDL3.SDL_GetPointerProperty(SDL3.SDL_GetWindowProperties((SDL_Window*) this.Handle), SDL3.SDL_PROP_WINDOW_ANDROID_SURFACE_POINTER, nint.Zero);
+            nint jniEnv = AndroidJNIEnv.Invoke();
             return SwapchainSource.CreateAndroidSurface(surface, jniEnv);
         }
         else if (OperatingSystem.IsIOS()) {

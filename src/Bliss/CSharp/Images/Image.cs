@@ -32,7 +32,7 @@ public class Image : ICloneable {
     /// <exception cref="FileNotFoundException">Thrown when the specified file does not exist.</exception>
     public Image(string path) {
         if (!File.Exists(path)) {
-            Logger.Fatal($"Failed to find path [{path}]!");
+            Logger.Fatal($"Failed to find path! [{path}]");
         }
         
         ImageResult result = ImageResult.FromMemory(File.ReadAllBytes(path), ColorComponents.RedGreenBlueAlpha);
@@ -48,7 +48,7 @@ public class Image : ICloneable {
     /// <exception cref="ArgumentException">Thrown if the stream cannot be read.</exception>
     public Image(Stream stream) {
         if (!stream.CanRead) {
-            Logger.Fatal($"Failed to read stream [{stream}]!");
+            Logger.Fatal($"Failed to read stream! [{stream}]");
         }
         
         ImageResult result = ImageResult.FromStream(stream, ColorComponents.RedGreenBlueAlpha);

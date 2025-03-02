@@ -12,16 +12,21 @@
       Enables trim analyzers and full trimming during Release mode.
       To learn more, see: https://learn.microsoft.com/dotnet/core/deploying/trimming/trimming-options#trimming-granularity
     -->
-    <TrimMode>full</TrimMode>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  
+  <!--<TrimMode>full</TrimMode>-->
+  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+</PropertyGroup>
+
+<ItemGroup>
+  <ProjectReference Include="..\Bliss.Test\Bliss.Test.csproj" />
+</ItemGroup>
+
+<PropertyGroup>
+  <AcceptAndroidSDKLicenses>true</AcceptAndroidSDKLicenses>
+  <AndroidSdkDirectory>C:\Android\android-sdk</AndroidSdkDirectory>
+</PropertyGroup>
+
+  <!-- Content -->
   <ItemGroup>
-    <ProjectReference Include="..\Bliss.Test\Bliss.Test.csproj" />
+    <AndroidResource Include="content/**/*" />
   </ItemGroup>
-  
-  <PropertyGroup>
-    <AcceptAndroidSDKLicenses>true</AcceptAndroidSDKLicenses>
-    <AndroidSdkDirectory>C:\Android\android-sdk</AndroidSdkDirectory>
-  </PropertyGroup>
 </Project>
