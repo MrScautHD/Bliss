@@ -5,7 +5,7 @@
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <OutputType>Library</OutputType>
+        <OutputType>Exe</OutputType>
         <LangVersion>13</LangVersion>
         <ApplicationIcon>..\Bliss\content\images\icon.ico</ApplicationIcon>
     </PropertyGroup>

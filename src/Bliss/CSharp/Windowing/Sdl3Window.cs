@@ -196,9 +196,6 @@ public class Sdl3Window : Disposable, IWindow {
     /// The value is a tuple where the first item represents the major version, and the second item represents the minor version.
     /// </summary>
     private (int, int)? _maxSupportedGlEsVersion;
-
-    public static Func<nint> AndroidSurface;
-    public static Func<nint> AndroidJNIEnv;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="Sdl3Window"/> class with the specified width, height, title, and window state.
@@ -223,7 +220,7 @@ public class Sdl3Window : Disposable, IWindow {
         SDL3.SDL_SetJoystickEventsEnabled(true);
 
         // Create window.
-        this.Handle = (nint) SDL3.SDL_CreateWindow(title, width, height, this.MapWindowState(state)); //TODO: Add "SDL_WindowFlags.SDL_WINDOW_OPENGL" back for Android yu need to disable it.
+        this.Handle = (nint) SDL3.SDL_CreateWindow(title, width, height, this.MapWindowState(state) | SDL_WindowFlags.SDL_WINDOW_OPENGL);
         
         if (this.Handle == nint.Zero) {
             throw new InvalidOperationException($"Failed to create window! Error: {SDL3.SDL_GetError()}");
@@ -723,15 +720,6 @@ public class Sdl3Window : Disposable, IWindow {
         else if (OperatingSystem.IsMacOS()) {
             nint surface = SDL3.SDL_GetPointerProperty(SDL3.SDL_GetWindowProperties((SDL_Window*) this.Handle), SDL3.SDL_PROP_WINDOW_COCOA_WINDOW_POINTER, nint.Zero);
             return SwapchainSource.CreateNSWindow(surface);
-        }
-        else if (OperatingSystem.IsAndroid()) {
-            nint surface = AndroidSurface.Invoke(); //SDL3.SDL_GetPointerProperty(SDL3.SDL_GetWindowProperties((SDL_Window*) this.Handle), SDL3.SDL_PROP_WINDOW_ANDROID_SURFACE_POINTER, nint.Zero);
-            nint jniEnv = AndroidJNIEnv.Invoke();
-            return SwapchainSource.CreateAndroidSurface(surface, jniEnv);
-        }
-        else if (OperatingSystem.IsIOS()) {
-            nint surface = SDL3.SDL_GetPointerProperty(SDL3.SDL_GetWindowProperties((SDL_Window*) this.Handle), SDL3.SDL_PROP_WINDOW_UIKIT_WINDOW_POINTER, nint.Zero);
-            return SwapchainSource.CreateUIView(surface);
         }
         
         throw new PlatformNotSupportedException("Failed to create a SwapchainSource!");

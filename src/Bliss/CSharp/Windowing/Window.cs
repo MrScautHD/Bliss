@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices;
 using Veldrid;
 
 namespace Bliss.CSharp.Windowing;
@@ -38,12 +37,6 @@ public static class Window {
         }
         else if (OperatingSystem.IsMacOS()) {
             return GraphicsDevice.IsBackendSupported(GraphicsBackend.Metal) ? GraphicsBackend.Metal : GraphicsBackend.OpenGL;
-        }
-        else if (OperatingSystem.IsAndroid()) {
-            return GraphicsDevice.IsBackendSupported(GraphicsBackend.Vulkan) ? GraphicsBackend.Vulkan : GraphicsBackend.OpenGLES; // TODO: Remove OpenGLES, I dont think i get opengl running.
-        }
-        else if (OperatingSystem.IsIOS()) {
-            return GraphicsDevice.IsBackendSupported(GraphicsBackend.Metal) ? GraphicsBackend.Metal : GraphicsBackend.OpenGLES;
         }
         else {
             return GraphicsDevice.IsBackendSupported(GraphicsBackend.Vulkan) ? GraphicsBackend.Vulkan : GraphicsBackend.OpenGL;
