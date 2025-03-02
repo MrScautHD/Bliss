@@ -207,9 +207,8 @@ public class Sdl3Window : Disposable, IWindow {
     /// <exception cref="Exception">Thrown if SDL fails to initialize the subsystem required for creating the window.</exception>
     public unsafe Sdl3Window(int width, int height, string title, WindowState state) {
         this.Exists = true;
-        
         SDL3.SDL_SetHint(SDL3.SDL_HINT_MOUSE_FOCUS_CLICKTHROUGH, "1");
-        
+
         if (!SDL3.SDL_InitSubSystem(InitFlags)) {
             throw new Exception($"Failed to initialise SDL! Error: {SDL3.SDL_GetError()}");
         }
@@ -722,17 +721,7 @@ public class Sdl3Window : Disposable, IWindow {
         }
         else if (OperatingSystem.IsAndroid()) {
             nint surface = SDL3.SDL_GetPointerProperty(SDL3.SDL_GetWindowProperties((SDL_Window*) this.Handle), SDL3.SDL_PROP_WINDOW_ANDROID_SURFACE_POINTER, nint.Zero);
-            
-            if (surface == nint.Zero) {
-                throw new Exception("Failed to retrieve the Android surface pointer!");
-            }
-            
             nint jniEnv = SDL3.SDL_GetAndroidJNIEnv();
-            
-            if (jniEnv == nint.Zero) {
-                throw new Exception("Failed to retrieve the JNI environment!");
-            }
-            
             return SwapchainSource.CreateAndroidSurface(surface, jniEnv);
         }
         

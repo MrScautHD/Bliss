@@ -14,8 +14,9 @@
     -->
     <TrimMode>full</TrimMode>
   </PropertyGroup>
+  
   <ItemGroup>
-    <ProjectReference Include="..\Bliss\Bliss.csproj" />
+    <ProjectReference Include="..\Bliss.Test\Bliss.Test.csproj" />
   </ItemGroup>
   
   <PropertyGroup>

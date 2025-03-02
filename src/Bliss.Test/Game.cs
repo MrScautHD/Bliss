@@ -52,8 +52,6 @@ public class Game : Disposable {
     private Texture2D _gif;
     private Font _font;
     private Texture2D _logoTexture;
-    private Cubemap _cubemap;
-    private Texture2D _cubemapTest;
     
     private Cam3D _cam3D;
     private Model _playerModel;
@@ -211,9 +209,6 @@ public class Game : Disposable {
         
         this._customHeighmap = Mesh.GenHeightmap(this.GraphicsDevice, new Image("content/heightmap.png"), new Vector3(1, 1, 1));
         this._customHeighmap.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), new Texture2D(this.GraphicsDevice, "content/heightmap.png"));
-
-        this._cubemap = new Cubemap(this.GraphicsDevice, "content/cubemap.png");
-        this._cubemapTest = new Texture2D(this.GraphicsDevice, this._cubemap.Images[(int) CubemapLayer.NegativeZ][0]);
     }
 
     protected virtual void Update() {
@@ -345,8 +340,6 @@ public class Game : Disposable {
         int frame = 4;
         this._animatedImage.GetFrameInfo(frame, out int width, out int height, out float duration);
         this._spriteBatch.DrawTexture(this._gif, new Vector2(30, 30), new Rectangle(width * frame, 0, width, height), new Vector2(0.2F, 0.2F));
-        
-        this._spriteBatch.DrawTexture(this._cubemapTest, new Vector2(50, 50));
         
         this._spriteBatch.End();
         
