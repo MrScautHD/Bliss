@@ -1588,14 +1588,14 @@ public class ImmediateRenderer : Disposable {
     
                 // Connect to next radial segment.
                 if (rad < radSeg) {
-                    this._tempIndices.Add((uint)(rad * (sides + 1) + side));
-                    this._tempIndices.Add((uint)((rad + 1) * (sides + 1) + side));
+                    this._tempIndices.Add((uint) (rad * (sides + 1) + side));
+                    this._tempIndices.Add((uint) ((rad + 1) * (sides + 1) + side));
                 }
     
                 // Connect to the next side (wrapping around at the end).
                 if (side < sides) {
-                    this._tempIndices.Add((uint)(rad * (sides + 1) + side));
-                    this._tempIndices.Add((uint)(rad * (sides + 1) + side + 1));
+                    this._tempIndices.Add((uint) (rad * (sides + 1) + side));
+                    this._tempIndices.Add((uint) (rad * (sides + 1) + side + 1));
                 }
             }
         }
