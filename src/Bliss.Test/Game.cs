@@ -135,10 +135,6 @@ public class Game : Disposable {
             this.MainWindow.PumpEvents();
             Input.Begin();
             
-            if (!this.MainWindow.Exists) {
-                break;
-            }
-            
             AudioContext.Update();
             this.Update();
             this.AfterUpdate();
