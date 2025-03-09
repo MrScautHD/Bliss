@@ -18,7 +18,7 @@ public class Effect : Disposable {
     /// <summary>
     /// Represents a pair of shaders consisting of a vertex shader and a fragment shader.
     /// </summary>
-    public readonly (Shader, Shader) Shader;
+    public readonly (Shader VertShader, Shader FragShader) Shader;
 
     /// <summary>
     /// Describes the layout of vertex data for a graphics pipeline.
@@ -72,8 +72,8 @@ public class Effect : Disposable {
         
         Shader[] shaders = graphicsDevice.ResourceFactory.CreateFromSpirv(vertDescription, fragDescription);
 
-        this.Shader.Item1 = shaders[0];
-        this.Shader.Item2 = shaders[1];
+        this.Shader.VertShader = shaders[0];
+        this.Shader.FragShader = shaders[1];
         this.VertexLayout = vertexLayout;
         
         this.ShaderSet = new ShaderSetDescription() {
@@ -81,8 +81,8 @@ public class Effect : Disposable {
                 this.VertexLayout
             ],
             Shaders = [
-                this.Shader.Item1,
-                this.Shader.Item2
+                this.Shader.VertShader,
+                this.Shader.FragShader
             ],
             Specializations = constants ?? []
         };
@@ -207,8 +207,8 @@ public class Effect : Disposable {
                 pipeline.Dispose();
             }
             
-            this.Shader.Item1.Dispose();
-            this.Shader.Item2.Dispose();
+            this.Shader.VertShader.Dispose();
+            this.Shader.FragShader.Dispose();
         }
     }
 }
