@@ -124,15 +124,7 @@ public class PrimitiveBatch : Disposable {
                 CullMode = FaceCullMode.None
             },
             BufferLayouts = this._effect.GetBufferLayouts(),
-            ShaderSet = new ShaderSetDescription() {
-                VertexLayouts = [
-                    PrimitiveVertex2D.VertexLayout
-                ],
-                Shaders = [
-                    this._effect.Shader.Item1,
-                    this._effect.Shader.Item2
-                ]
-            },
+            ShaderSet = this._effect.ShaderSet,
             Outputs = output
         };
 

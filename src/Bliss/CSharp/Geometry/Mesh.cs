@@ -9,7 +9,6 @@ using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
-using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
 using Veldrid;
 using Color = Bliss.CSharp.Colors.Color;
@@ -1182,6 +1181,9 @@ public class Mesh : Disposable {
         this._pipelineDescription.BlendState = this.Material.BlendState.Description;
         this._pipelineDescription.RasterizerState.CullMode = wires ? FaceCullMode.None : FaceCullMode.Back;
         this._pipelineDescription.RasterizerState.FillMode = wires ? PolygonFillMode.Wireframe : PolygonFillMode.Solid;
+        this._pipelineDescription.BufferLayouts = this.Material.Effect.GetBufferLayouts();
+        this._pipelineDescription.TextureLayouts = this.Material.Effect.GetTextureLayouts();
+        this._pipelineDescription.ShaderSet = this.Material.Effect.ShaderSet;
         this._pipelineDescription.Outputs = output;
         
         if (this.IndexCount > 0) {
@@ -1281,15 +1283,7 @@ public class Mesh : Disposable {
             PrimitiveTopology = PrimitiveTopology.TriangleList,
             BufferLayouts = this.Material.Effect.GetBufferLayouts(),
             TextureLayouts = this.Material.Effect.GetTextureLayouts(),
-            ShaderSet = new ShaderSetDescription() {
-                VertexLayouts = [
-                    this.Material.Effect.VertexLayout
-                ],
-                Shaders = [
-                    this.Material.Effect.Shader.Item1,
-                    this.Material.Effect.Shader.Item2
-                ]
-            }
+            ShaderSet = this.Material.Effect.ShaderSet
         };
     }
     

@@ -410,15 +410,7 @@ public class SpriteBatch : Disposable {
             PrimitiveTopology = PrimitiveTopology.TriangleList,
             BufferLayouts = this.Effect.GetBufferLayouts(),
             TextureLayouts = this.Effect.GetTextureLayouts(),
-            ShaderSet = new ShaderSetDescription() {
-                VertexLayouts = [
-                    this.Effect.VertexLayout
-                ],
-                Shaders = [
-                    this.Effect.Shader.Item1,
-                    this.Effect.Shader.Item2
-                ]
-            },
+            ShaderSet = this.Effect.ShaderSet,
             Outputs = this.Output
         };
     }

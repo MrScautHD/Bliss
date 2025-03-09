@@ -143,15 +143,7 @@ public class FullScreenRenderPass : Disposable {
             },
             PrimitiveTopology = PrimitiveTopology.TriangleList,
             TextureLayouts = this.Effect.GetTextureLayouts(),
-            ShaderSet = new ShaderSetDescription() {
-                VertexLayouts = [
-                    SpriteVertex2D.VertexLayout
-                ],
-                Shaders = [
-                    this.Effect.Shader.Item1,
-                    this.Effect.Shader.Item2
-                ]
-            },
+            ShaderSet = this.Effect.ShaderSet,
             Outputs = this.Output
         };
     }

@@ -14,11 +14,11 @@ public class Material {
     /// The graphics device associated with this material, used to manage rendering resources.
     /// </summary>
     public GraphicsDevice GraphicsDevice { get; private set; }
-    
+
     /// <summary>
     /// The effect (shader program) applied to this material.
     /// </summary>
-    public Effect Effect { get; private set; }
+    public Effect Effect;
 
     /// <summary>
     /// Specifies the blend state for rendering, determining how colors are blended on the screen.

@@ -26,6 +26,11 @@ public class Effect : Disposable {
     public readonly VertexLayoutDescription VertexLayout;
 
     /// <summary>
+    /// Represents a description of a shader set, including vertex layout details, shader information, and optional specialization constants.
+    /// </summary>
+    public readonly ShaderSetDescription ShaderSet;
+
+    /// <summary>
     /// A dictionary that maps string keys to <see cref="SimpleTextureLayout"/> instances, used to define and manage buffer configurations for the Effect class.
     /// </summary>
     private Dictionary<string, SimpleBufferLayout> _bufferLayouts;
@@ -42,22 +47,24 @@ public class Effect : Disposable {
     private Dictionary<SimplePipelineDescription, SimplePipeline> _cachedPipelines;
     
     /// <summary>
-    /// Initializes a new instance of the <see cref="Effect"/> class by loading shaders from file paths.
+    /// Initializes a new instance of the <see cref="Effect"/> class using shader file paths.
     /// </summary>
-    /// <param name="graphicsDevice">The graphics device used for creating resources.</param>
-    /// <param name="vertexLayout">The vertex layout description for the pipeline.</param>
-    /// <param name="vertPath">The file path to the vertex shader source code.</param>
-    /// <param name="fragPath">The file path to the fragment shader source code.</param>
-    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, string vertPath, string fragPath) : this(graphicsDevice, vertexLayout, LoadBytecode(vertPath), LoadBytecode(fragPath)) { }
+    /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used for rendering.</param>
+    /// <param name="vertexLayout">The <see cref="VertexLayoutDescription"/> defining the vertex structure.</param>
+    /// <param name="vertPath">The path to the vertex shader file.</param>
+    /// <param name="fragPath">The path to the fragment shader file.</param>
+    /// <param name="constants">Optional specialization constants for shader customization.</param>
+    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, string vertPath, string fragPath, SpecializationConstant[]? constants = null) : this(graphicsDevice, vertexLayout, LoadBytecode(vertPath), LoadBytecode(fragPath), constants) { }
     
     /// <summary>
-    /// Initializes a new instance of the <see cref="Effect"/> class with precompiled shader bytecode.
+    /// Initializes a new instance of the <see cref="Effect"/> class using shader bytecode.
     /// </summary>
-    /// <param name="graphicsDevice">The graphics device used for creating resources.</param>
-    /// <param name="vertexLayout">The vertex layout description for the pipeline.</param>
-    /// <param name="vertBytes">The bytecode for the vertex shader.</param>
-    /// <param name="fragBytes">The bytecode for the fragment shader.</param>
-    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, byte[] vertBytes, byte[] fragBytes) {
+    /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used for rendering.</param>
+    /// <param name="vertexLayout">The <see cref="VertexLayoutDescription"/> defining the vertex structure.</param>
+    /// <param name="vertBytes">The compiled bytecode for the vertex shader.</param>
+    /// <param name="fragBytes">The compiled bytecode for the fragment shader.</param>
+    /// <param name="constants">Optional specialization constants for shader customization.</param>
+    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, byte[] vertBytes, byte[] fragBytes, SpecializationConstant[]? constants = null) {
         this.GraphicsDevice = graphicsDevice;
         
         ShaderDescription vertDescription = new ShaderDescription(ShaderStages.Vertex, vertBytes, "main");
@@ -67,8 +74,18 @@ public class Effect : Disposable {
 
         this.Shader.Item1 = shaders[0];
         this.Shader.Item2 = shaders[1];
-        
         this.VertexLayout = vertexLayout;
+        
+        this.ShaderSet = new ShaderSetDescription() {
+            VertexLayouts = [
+                this.VertexLayout
+            ],
+            Shaders = [
+                this.Shader.Item1,
+                this.Shader.Item2
+            ],
+            Specializations = constants ?? []
+        };
 
         this._bufferLayouts = new Dictionary<string, SimpleBufferLayout>();
         this._textureLayouts = new Dictionary<string, SimpleTextureLayout>();
