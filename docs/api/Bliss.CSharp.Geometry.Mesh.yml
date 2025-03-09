@@ -43,7 +43,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Mesh
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 20
+    startLine: 19
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -84,7 +84,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GraphicsDevice
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 26
+    startLine: 25
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -118,7 +118,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Material
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 33
+    startLine: 32
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -154,7 +154,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Vertices
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 40
+    startLine: 39
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -190,7 +190,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Indices
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 47
+    startLine: 46
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -226,7 +226,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: BoneInfos
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 53
+    startLine: 52
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -260,7 +260,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: BoundingBox
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 60
+    startLine: 59
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -296,7 +296,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: VertexCount
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 66
+    startLine: 65
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -330,7 +330,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IndexCount
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 71
+    startLine: 70
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -350,9 +350,9 @@ items:
   langs:
   - csharp
   - vb
-  name: Mesh(GraphicsDevice, Material, Vertex3D[]?, uint[]?, Dictionary<string, Dictionary<int, BoneInfo[]>>?)
-  nameWithType: Mesh.Mesh(GraphicsDevice, Material, Vertex3D[]?, uint[]?, Dictionary<string, Dictionary<int, BoneInfo[]>>?)
-  fullName: Bliss.CSharp.Geometry.Mesh.Mesh(Veldrid.GraphicsDevice, Bliss.CSharp.Materials.Material, Bliss.CSharp.Graphics.VertexTypes.Vertex3D[]?, uint[]?, System.Collections.Generic.Dictionary<string, System.Collections.Generic.Dictionary<int, Bliss.CSharp.Geometry.Animations.BoneInfo[]>>?)
+  name: Mesh(GraphicsDevice, Material, Vertex3D[], uint[]?, Dictionary<string, Dictionary<int, BoneInfo[]>>?)
+  nameWithType: Mesh.Mesh(GraphicsDevice, Material, Vertex3D[], uint[]?, Dictionary<string, Dictionary<int, BoneInfo[]>>?)
+  fullName: Bliss.CSharp.Geometry.Mesh.Mesh(Veldrid.GraphicsDevice, Bliss.CSharp.Materials.Material, Bliss.CSharp.Graphics.VertexTypes.Vertex3D[], uint[]?, System.Collections.Generic.Dictionary<string, System.Collections.Generic.Dictionary<int, Bliss.CSharp.Geometry.Animations.BoneInfo[]>>?)
   type: Constructor
   source:
     remote:
@@ -361,31 +361,31 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 118
+    startLine: 117
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
   summary: Initializes a new instance of the <xref href="Bliss.CSharp.Geometry.Mesh" data-throw-if-not-resolved="false"></xref> class with the specified properties.
   example: []
   syntax:
-    content: public Mesh(GraphicsDevice graphicsDevice, Material material, Vertex3D[]? vertices = null, uint[]? indices = null, Dictionary<string, Dictionary<int, BoneInfo[]>>? boneInfos = null)
+    content: public Mesh(GraphicsDevice graphicsDevice, Material material, Vertex3D[] vertices, uint[]? indices = null, Dictionary<string, Dictionary<int, BoneInfo[]>>? boneInfos = null)
     parameters:
     - id: graphicsDevice
       type: Veldrid.GraphicsDevice
-      description: The <xref href="Bliss.CSharp.Geometry.Mesh.GraphicsDevice" data-throw-if-not-resolved="false"></xref> used for managing GPU resources.
+      description: The graphics device used to create buffers.
     - id: material
       type: Bliss.CSharp.Materials.Material
-      description: The material applied to the mesh, which defines its appearance (textures, shaders, etc.).
+      description: The material applied to the mesh.
     - id: vertices
       type: Bliss.CSharp.Graphics.VertexTypes.Vertex3D[]
-      description: An optional array of <xref href="Bliss.CSharp.Graphics.VertexTypes.Vertex3D" data-throw-if-not-resolved="false"></xref> instances representing the mesh's vertices.
+      description: The vertex data for the mesh.
     - id: indices
       type: System.UInt32[]
-      description: An optional array of indices used for defining the mesh's primitive topology.
+      description: The index data defining triangle order (optional).
     - id: boneInfos
       type: System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.Int32,Bliss.CSharp.Geometry.Animations.BoneInfo[]}}
-      description: An optional dictionary containing bone information used for skeletal animation, where the key is a bone name and the value is a dictionary of bone indices mapped to bone data.
-    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, material As Material, vertices As Vertex3D() = Nothing, indices As UInteger() = Nothing, boneInfos As Dictionary(Of String, Dictionary(Of Integer, BoneInfo())) = Nothing)
+      description: The skeletal bone mapping information for animations (optional).
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, material As Material, vertices As Vertex3D(), indices As UInteger() = Nothing, boneInfos As Dictionary(Of String, Dictionary(Of Integer, BoneInfo())) = Nothing)
   overload: Bliss.CSharp.Geometry.Mesh.#ctor*
   nameWithType.vb: Mesh.New(GraphicsDevice, Material, Vertex3D(), UInteger(), Dictionary(Of String, Dictionary(Of Integer, BoneInfo())))
   fullName.vb: Bliss.CSharp.Geometry.Mesh.New(Veldrid.GraphicsDevice, Bliss.CSharp.Materials.Material, Bliss.CSharp.Graphics.VertexTypes.Vertex3D(), UInteger(), System.Collections.Generic.Dictionary(Of String, System.Collections.Generic.Dictionary(Of Integer, Bliss.CSharp.Geometry.Animations.BoneInfo())))
@@ -408,7 +408,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenPoly
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 175
+    startLine: 174
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -452,7 +452,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenCube
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 229
+    startLine: 228
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -499,7 +499,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenSphere
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 313
+    startLine: 312
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -546,7 +546,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenHemisphere
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 395
+    startLine: 394
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -593,7 +593,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenCylinder
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 499
+    startLine: 498
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -640,7 +640,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenCapsule
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 598
+    startLine: 597
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -687,7 +687,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenCone
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 748
+    startLine: 747
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -734,7 +734,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenTorus
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 827
+    startLine: 826
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -784,7 +784,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenKnot
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 902
+    startLine: 901
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -834,7 +834,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenHeightmap
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 990
+    startLine: 989
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -875,7 +875,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenerateTangents
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1049
+    startLine: 1048
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -903,7 +903,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: UpdateAnimationBones
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1114
+    startLine: 1113
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -944,7 +944,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ResetAnimationBones
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1128
+    startLine: 1127
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -976,7 +976,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Draw
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1145
+    startLine: 1144
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1026,7 +1026,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1311
+    startLine: 1305
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1708,18 +1708,6 @@ references:
   name: Mesh
   nameWithType: Mesh
   fullName: Bliss.CSharp.Geometry.Mesh
-- uid: Bliss.CSharp.Geometry.Mesh.GraphicsDevice
-  commentId: P:Bliss.CSharp.Geometry.Mesh.GraphicsDevice
-  href: Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_GraphicsDevice
-  name: GraphicsDevice
-  nameWithType: Mesh.GraphicsDevice
-  fullName: Bliss.CSharp.Geometry.Mesh.GraphicsDevice
-- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
-  commentId: T:Bliss.CSharp.Graphics.VertexTypes.Vertex3D
-  href: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.html
-  name: Vertex3D
-  nameWithType: Vertex3D
-  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
 - uid: Bliss.CSharp.Geometry.Mesh.#ctor*
   commentId: Overload:Bliss.CSharp.Geometry.Mesh.#ctor
   href: Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Materials_Material_Bliss_CSharp_Graphics_VertexTypes_Vertex3D___System_UInt32___System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_Dictionary_System_Int32_Bliss_CSharp_Geometry_Animations_BoneInfo_____
@@ -1769,6 +1757,12 @@ references:
   name: GenSphere
   nameWithType: Mesh.GenSphere
   fullName: Bliss.CSharp.Geometry.Mesh.GenSphere
+- uid: Bliss.CSharp.Geometry.Mesh.GraphicsDevice
+  commentId: P:Bliss.CSharp.Geometry.Mesh.GraphicsDevice
+  href: Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_GraphicsDevice
+  name: GraphicsDevice
+  nameWithType: Mesh.GraphicsDevice
+  fullName: Bliss.CSharp.Geometry.Mesh.GraphicsDevice
 - uid: Bliss.CSharp.Geometry.Mesh.GenHemisphere*
   commentId: Overload:Bliss.CSharp.Geometry.Mesh.GenHemisphere
   href: Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_GenHemisphere_Veldrid_GraphicsDevice_System_Single_System_Int32_System_Int32_

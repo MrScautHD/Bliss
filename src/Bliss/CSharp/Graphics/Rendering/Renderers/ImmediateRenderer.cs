@@ -1530,7 +1530,6 @@ public class ImmediateRenderer : Disposable {
         this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
 
-
     /// <summary>
     /// Renders the wireframe of a knot shape using the specified transformation, radii, and segments.
     /// </summary>
@@ -1539,7 +1538,7 @@ public class ImmediateRenderer : Disposable {
     /// <param name="tubeRadius">The radius of the tube comprising the knot's wireframe.</param>
     /// <param name="radSeg">The number of radial segments making up the knot. Minimum value is 3.</param>
     /// <param name="sides">The number of sides for the tube cross-section. Minimum value is 3.</param>
-    /// <param name="color">An optional color to use for the wireframe; if null, the default is white.</param
+    /// <param name="color">An optional color to use for the wireframe; if null, the default is white.</param>
     public void DrawKnotWires(Transform transform, float radius, float tubeRadius, int radSeg, int sides, Color? color = null) {
         Color finalColor = color ?? Color.White;
     

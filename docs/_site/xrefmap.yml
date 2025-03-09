@@ -1466,24 +1466,24 @@ references:
   commentId: T:Bliss.CSharp.Effects.Effect
   fullName: Bliss.CSharp.Effects.Effect
   nameWithType: Effect
-- uid: Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.Byte[],System.Byte[])
-  name: Effect(GraphicsDevice, VertexLayoutDescription, byte[], byte[])
-  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect__ctor_Veldrid_GraphicsDevice_Veldrid_VertexLayoutDescription_System_Byte___System_Byte___
-  commentId: M:Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.Byte[],System.Byte[])
-  name.vb: New(GraphicsDevice, VertexLayoutDescription, Byte(), Byte())
-  fullName: Bliss.CSharp.Effects.Effect.Effect(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, byte[], byte[])
-  fullName.vb: Bliss.CSharp.Effects.Effect.New(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, Byte(), Byte())
-  nameWithType: Effect.Effect(GraphicsDevice, VertexLayoutDescription, byte[], byte[])
-  nameWithType.vb: Effect.New(GraphicsDevice, VertexLayoutDescription, Byte(), Byte())
-- uid: Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String)
-  name: Effect(GraphicsDevice, VertexLayoutDescription, string, string)
-  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect__ctor_Veldrid_GraphicsDevice_Veldrid_VertexLayoutDescription_System_String_System_String_
-  commentId: M:Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String)
-  name.vb: New(GraphicsDevice, VertexLayoutDescription, String, String)
-  fullName: Bliss.CSharp.Effects.Effect.Effect(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, string, string)
-  fullName.vb: Bliss.CSharp.Effects.Effect.New(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, String, String)
-  nameWithType: Effect.Effect(GraphicsDevice, VertexLayoutDescription, string, string)
-  nameWithType.vb: Effect.New(GraphicsDevice, VertexLayoutDescription, String, String)
+- uid: Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.Byte[],System.Byte[],Veldrid.SpecializationConstant[])
+  name: Effect(GraphicsDevice, VertexLayoutDescription, byte[], byte[], SpecializationConstant[]?)
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect__ctor_Veldrid_GraphicsDevice_Veldrid_VertexLayoutDescription_System_Byte___System_Byte___Veldrid_SpecializationConstant___
+  commentId: M:Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.Byte[],System.Byte[],Veldrid.SpecializationConstant[])
+  name.vb: New(GraphicsDevice, VertexLayoutDescription, Byte(), Byte(), SpecializationConstant())
+  fullName: Bliss.CSharp.Effects.Effect.Effect(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, byte[], byte[], Veldrid.SpecializationConstant[]?)
+  fullName.vb: Bliss.CSharp.Effects.Effect.New(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, Byte(), Byte(), Veldrid.SpecializationConstant())
+  nameWithType: Effect.Effect(GraphicsDevice, VertexLayoutDescription, byte[], byte[], SpecializationConstant[]?)
+  nameWithType.vb: Effect.New(GraphicsDevice, VertexLayoutDescription, Byte(), Byte(), SpecializationConstant())
+- uid: Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String,Veldrid.SpecializationConstant[])
+  name: Effect(GraphicsDevice, VertexLayoutDescription, string, string, SpecializationConstant[]?)
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect__ctor_Veldrid_GraphicsDevice_Veldrid_VertexLayoutDescription_System_String_System_String_Veldrid_SpecializationConstant___
+  commentId: M:Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String,Veldrid.SpecializationConstant[])
+  name.vb: New(GraphicsDevice, VertexLayoutDescription, String, String, SpecializationConstant())
+  fullName: Bliss.CSharp.Effects.Effect.Effect(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, string, string, Veldrid.SpecializationConstant[]?)
+  fullName.vb: Bliss.CSharp.Effects.Effect.New(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, String, String, Veldrid.SpecializationConstant())
+  nameWithType: Effect.Effect(GraphicsDevice, VertexLayoutDescription, string, string, SpecializationConstant[]?)
+  nameWithType.vb: Effect.New(GraphicsDevice, VertexLayoutDescription, String, String, SpecializationConstant())
 - uid: Bliss.CSharp.Effects.Effect.#ctor*
   name: Effect
   href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect__ctor_
@@ -1668,6 +1668,12 @@ references:
   commentId: F:Bliss.CSharp.Effects.Effect.Shader
   fullName: Bliss.CSharp.Effects.Effect.Shader
   nameWithType: Effect.Shader
+- uid: Bliss.CSharp.Effects.Effect.ShaderSet
+  name: ShaderSet
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_ShaderSet
+  commentId: F:Bliss.CSharp.Effects.Effect.ShaderSet
+  fullName: Bliss.CSharp.Effects.Effect.ShaderSet
+  nameWithType: Effect.ShaderSet
 - uid: Bliss.CSharp.Effects.Effect.VertexLayout
   name: VertexLayout
   href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_VertexLayout
@@ -2463,13 +2469,13 @@ references:
   fullName: Bliss.CSharp.Geometry.Mesh
   nameWithType: Mesh
 - uid: Bliss.CSharp.Geometry.Mesh.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Materials.Material,Bliss.CSharp.Graphics.VertexTypes.Vertex3D[],System.UInt32[],System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.Int32,Bliss.CSharp.Geometry.Animations.BoneInfo[]}})
-  name: Mesh(GraphicsDevice, Material, Vertex3D[]?, uint[]?, Dictionary<string, Dictionary<int, BoneInfo[]>>?)
+  name: Mesh(GraphicsDevice, Material, Vertex3D[], uint[]?, Dictionary<string, Dictionary<int, BoneInfo[]>>?)
   href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Materials_Material_Bliss_CSharp_Graphics_VertexTypes_Vertex3D___System_UInt32___System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_Dictionary_System_Int32_Bliss_CSharp_Geometry_Animations_BoneInfo_____
   commentId: M:Bliss.CSharp.Geometry.Mesh.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Materials.Material,Bliss.CSharp.Graphics.VertexTypes.Vertex3D[],System.UInt32[],System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.Int32,Bliss.CSharp.Geometry.Animations.BoneInfo[]}})
   name.vb: New(GraphicsDevice, Material, Vertex3D(), UInteger(), Dictionary(Of String, Dictionary(Of Integer, BoneInfo())))
-  fullName: Bliss.CSharp.Geometry.Mesh.Mesh(Veldrid.GraphicsDevice, Bliss.CSharp.Materials.Material, Bliss.CSharp.Graphics.VertexTypes.Vertex3D[]?, uint[]?, System.Collections.Generic.Dictionary<string, System.Collections.Generic.Dictionary<int, Bliss.CSharp.Geometry.Animations.BoneInfo[]>>?)
+  fullName: Bliss.CSharp.Geometry.Mesh.Mesh(Veldrid.GraphicsDevice, Bliss.CSharp.Materials.Material, Bliss.CSharp.Graphics.VertexTypes.Vertex3D[], uint[]?, System.Collections.Generic.Dictionary<string, System.Collections.Generic.Dictionary<int, Bliss.CSharp.Geometry.Animations.BoneInfo[]>>?)
   fullName.vb: Bliss.CSharp.Geometry.Mesh.New(Veldrid.GraphicsDevice, Bliss.CSharp.Materials.Material, Bliss.CSharp.Graphics.VertexTypes.Vertex3D(), UInteger(), System.Collections.Generic.Dictionary(Of String, System.Collections.Generic.Dictionary(Of Integer, Bliss.CSharp.Geometry.Animations.BoneInfo())))
-  nameWithType: Mesh.Mesh(GraphicsDevice, Material, Vertex3D[]?, uint[]?, Dictionary<string, Dictionary<int, BoneInfo[]>>?)
+  nameWithType: Mesh.Mesh(GraphicsDevice, Material, Vertex3D[], uint[]?, Dictionary<string, Dictionary<int, BoneInfo[]>>?)
   nameWithType.vb: Mesh.New(GraphicsDevice, Material, Vertex3D(), UInteger(), Dictionary(Of String, Dictionary(Of Integer, BoneInfo())))
 - uid: Bliss.CSharp.Geometry.Mesh.#ctor*
   name: Mesh
@@ -9471,14 +9477,7 @@ references:
 - uid: Bliss.CSharp.Materials.Material.Effect
   name: Effect
   href: api/Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_Effect
-  commentId: P:Bliss.CSharp.Materials.Material.Effect
-  fullName: Bliss.CSharp.Materials.Material.Effect
-  nameWithType: Material.Effect
-- uid: Bliss.CSharp.Materials.Material.Effect*
-  name: Effect
-  href: api/Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_Effect_
-  commentId: Overload:Bliss.CSharp.Materials.Material.Effect
-  isSpec: "True"
+  commentId: F:Bliss.CSharp.Materials.Material.Effect
   fullName: Bliss.CSharp.Materials.Material.Effect
   nameWithType: Material.Effect
 - uid: Bliss.CSharp.Materials.Material.GetMapColor(System.String)

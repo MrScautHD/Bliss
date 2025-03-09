@@ -241,7 +241,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
-    startLine: 158
+    startLine: 150
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Passes

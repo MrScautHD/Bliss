@@ -84,7 +84,7 @@ items:
     content.vb: Public Property GraphicsDevice As GraphicsDevice
   overload: Bliss.CSharp.Materials.Material.GraphicsDevice*
 - uid: Bliss.CSharp.Materials.Material.Effect
-  commentId: P:Bliss.CSharp.Materials.Material.Effect
+  commentId: F:Bliss.CSharp.Materials.Material.Effect
   id: Effect
   parent: Bliss.CSharp.Materials.Material
   langs:
@@ -93,7 +93,7 @@ items:
   name: Effect
   nameWithType: Material.Effect
   fullName: Bliss.CSharp.Materials.Material.Effect
-  type: Property
+  type: Field
   source:
     remote:
       path: src/Bliss/CSharp/Materials/Material.cs
@@ -108,12 +108,10 @@ items:
   summary: The effect (shader program) applied to this material.
   example: []
   syntax:
-    content: public Effect Effect { get; }
-    parameters: []
+    content: public Effect Effect
     return:
       type: Bliss.CSharp.Effects.Effect
-    content.vb: Public Property Effect As Effect
-  overload: Bliss.CSharp.Materials.Material.Effect*
+    content.vb: Public Effect As Effect
 - uid: Bliss.CSharp.Materials.Material.BlendState
   commentId: F:Bliss.CSharp.Materials.Material.BlendState
   id: BlendState
@@ -917,12 +915,6 @@ references:
   name: Veldrid
   nameWithType: Veldrid
   fullName: Veldrid
-- uid: Bliss.CSharp.Materials.Material.Effect*
-  commentId: Overload:Bliss.CSharp.Materials.Material.Effect
-  href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_Effect
-  name: Effect
-  nameWithType: Material.Effect
-  fullName: Bliss.CSharp.Materials.Material.Effect
 - uid: Bliss.CSharp.Effects.Effect
   commentId: T:Bliss.CSharp.Effects.Effect
   parent: Bliss.CSharp.Effects

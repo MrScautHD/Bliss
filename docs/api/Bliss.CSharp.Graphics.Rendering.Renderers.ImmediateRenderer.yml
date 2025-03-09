@@ -1165,25 +1165,33 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawKnotWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1542
+    startLine: 1541
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
+  summary: Renders the wireframe of a knot shape using the specified transformation, radii, and segments.
+  example: []
   syntax:
     content: public void DrawKnotWires(Transform transform, float radius, float tubeRadius, int radSeg, int sides, Color? color = null)
     parameters:
     - id: transform
       type: Bliss.CSharp.Transformations.Transform
+      description: The transformation applied to the knot wireframe.
     - id: radius
       type: System.Single
+      description: The radius of the knot.
     - id: tubeRadius
       type: System.Single
+      description: The radius of the tube comprising the knot's wireframe.
     - id: radSeg
       type: System.Int32
+      description: The number of radial segments making up the knot. Minimum value is 3.
     - id: sides
       type: System.Int32
+      description: The number of sides for the tube cross-section. Minimum value is 3.
     - id: color
       type: System.Nullable{Bliss.CSharp.Colors.Color}
+      description: An optional color to use for the wireframe; if null, the default is white.
     content.vb: Public Sub DrawKnotWires(transform As Transform, radius As Single, tubeRadius As Single, radSeg As Integer, sides As Integer, color As Color? = Nothing)
   overload: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawKnotWires*
   nameWithType.vb: ImmediateRenderer.DrawKnotWires(Transform, Single, Single, Integer, Integer, Color?)
@@ -1207,7 +1215,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawGird
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1612
+    startLine: 1611
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1251,7 +1259,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawBoundingBox
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1666
+    startLine: 1665
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1289,7 +1297,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawLine
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1701
+    startLine: 1700
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1327,7 +1335,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawBillboard
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1729
+    startLine: 1728
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1365,7 +1373,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawVertices
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1809
+    startLine: 1808
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1409,7 +1417,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1945
+    startLine: 1936
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
