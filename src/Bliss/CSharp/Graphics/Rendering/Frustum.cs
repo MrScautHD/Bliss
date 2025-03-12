@@ -121,7 +121,6 @@ public class Frustum {
                 float z = (i & 4) == 0 ? box.Min.Z : box.Max.Z;
                 
                 Vector3 corner = new Vector3(x, y, z);
-                
                 float distance = Plane.DotCoordinate(plane, corner);
                 
                 if (distance >= 0) {
@@ -155,7 +154,6 @@ public class Frustum {
                 float z = (i & 4) == 0 ? box.Min.Z : box.Max.Z;
 
                 Vector3 corner = Vector3.Transform(new Vector3(x, y, z) - origin, rotation) + origin;
-                
                 float distance = Plane.DotCoordinate(plane, corner);
             
                 if (distance >= 0) {
