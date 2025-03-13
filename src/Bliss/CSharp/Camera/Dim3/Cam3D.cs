@@ -21,12 +21,6 @@ public class Cam3D : ICam {
     public static Cam3D? ActiveCamera { get; private set; }
 
     /// <summary>
-    /// Defines the portion of the render target that a camera will render to.
-    /// Specifies the region of the screen or render target the camera will draw its contents to.
-    /// </summary>
-    public Rectangle Size { get; private set; }
-
-    /// <summary>
     /// Represents the ratio between the width and height of the camera's viewport.
     /// Used to adjust the projection matrix for rendering the 3D scene correctly on the screen.
     /// </summary>
@@ -130,22 +124,21 @@ public class Cam3D : ICam {
     private CommandList _currentCommandList;
     
     /// <summary>
-    /// Initializes a new instance of the <see cref="Cam3D"/> class, configuring the camera's position, 
-    /// target, orientation, projection type, camera mode, field of view, and clipping planes.
+    /// Initializes a new instance of the <see cref="Cam3D"/> class.
     /// </summary>
-    /// <param name="width">The width of the viewport or rendering area.</param>
-    /// <param name="height">The height of the viewport or rendering area.</param>
-    /// <param name="position">The initial position of the camera in 3D space.</param>
-    /// <param name="target">The point in space that the camera is looking at.</param>
-    /// <param name="up">The up vector for the camera orientation; defaults to <see cref="Vector3.UnitY"/> if not specified.</param>
-    /// <param name="projectionType">The type of projection to use (e.g., perspective or orthographic); defaults to <see cref="ProjectionType.Perspective"/>.</param>
-    /// <param name="mode">The camera mode, such as <see cref="CameraMode.Free"/> or other modes; defaults to <see cref="CameraMode.Free"/>.</param>
-    /// <param name="fov">The field of view angle in degrees; defaults to 70.0 degrees.</param>
-    /// <param name="nearPlane">The distance to the near clipping plane; defaults to 0.001 units.</param>
-    /// <param name="farPlane">The distance to the far clipping plane; defaults to 1000.0 units.</param>
-    public Cam3D(uint width, uint height, Vector3 position, Vector3 target, Vector3? up = null, ProjectionType projectionType = ProjectionType.Perspective, CameraMode mode = CameraMode.Free, float fov = 70.0F, float nearPlane = 0.1F, float farPlane = 1000.0F) {
+    /// <param name="position">The camera position in world space.</param>
+    /// <param name="target">The target point the camera is looking at.</param>
+    /// <param name="aspectRatio">The aspect ratio (width / height). Must be greater than zero.</param>
+    /// <param name="up">The upward direction vector. Defaults to (0,1,0).</param>
+    /// <param name="projectionType">The type of projection (Perspective or Orthographic).</param>
+    /// <param name="mode">The camera movement mode.</param>
+    /// <param name="fov">The field of view in degrees. Should be between 1 and 179.</param>
+    /// <param name="nearPlane">The near clipping plane. Must be positive and smaller than <paramref name="farPlane"/>.</param>
+    /// <param name="farPlane">The far clipping plane. Must be positive and greater than <paramref name="nearPlane"/>.</param>
+    public Cam3D(Vector3 position, Vector3 target, float aspectRatio, Vector3? up = null, ProjectionType projectionType = ProjectionType.Perspective, CameraMode mode = CameraMode.Free, float fov = 70.0F, float nearPlane = 0.1F, float farPlane = 1000.0F) {
         this.Position = position;
         this.Target = target;
+        this.AspectRatio = aspectRatio;
         this.Up = up ?? Vector3.UnitY;
         this.ProjectionType = projectionType;
         this.Mode = mode;
@@ -156,7 +149,6 @@ public class Cam3D : ICam {
         this.MovementSpeed = 10.0F;
         this.OrbitalSpeed = 0.5F;
         this._frustum = new Frustum();
-        this.Resize(width, height);
     }
 
     public void Update(double timeStep) {
@@ -255,7 +247,6 @@ public class Cam3D : ICam {
     /// <param name="width">The new width of the viewport.</param>
     /// <param name="height">The new height of the viewport.</param>
     public void Resize(uint width, uint height) {
-        this.Size = new Rectangle(0, 0, (int) width, (int) height);
         this.AspectRatio = (float) width / (float) height;
     }
 

@@ -165,7 +165,8 @@ public class Game : Disposable {
         this._animatedImage = new AnimatedImage("content/animated.gif");
         this._gif = new Texture2D(this.GraphicsDevice, this._animatedImage.SpriteSheet);
         
-        this._cam3D = new Cam3D((uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0), default, ProjectionType.Perspective, CameraMode.Free);
+        float aspectRatio = (float) this.MainWindow.GetWidth() / (float) this.MainWindow.GetHeight();
+        this._cam3D = new Cam3D(new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0), aspectRatio);
         this._playerModel = Model.Load(this.GraphicsDevice, "content/player.glb");
         this._planeModel = Model.Load(this.GraphicsDevice, "content/plane.glb");
         
