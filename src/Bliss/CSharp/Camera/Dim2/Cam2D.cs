@@ -10,17 +10,7 @@ public class Cam2D : ICam {
     /// Gets or sets the active camera instance.
     /// </summary>
     public static Cam2D? ActiveCamera { get; private set; }
-
-    /// <summary>
-    /// Gets the current viewport settings of the camera.
-    /// </summary>
-    public Rectangle Size { get; private set; }
-
-    /// <summary>
-    /// Defines the camera's follow mode, determining how the camera follows its target.
-    /// </summary>
-    public CameraFollowMode Mode;
-
+    
     /// <summary>
     /// Gets or sets the position of the camera in 2D space.
     /// </summary>
@@ -30,6 +20,16 @@ public class Cam2D : ICam {
     /// Gets or sets the target position of the camera.
     /// </summary>
     public Vector2 Target;
+    
+    /// <summary>
+    /// Gets the current viewport settings of the camera.
+    /// </summary>
+    public Rectangle Size { get; private set; }
+
+    /// <summary>
+    /// Defines the camera's follow mode, determining how the camera follows its target.
+    /// </summary>
+    public CameraFollowMode Mode;
 
     /// <summary>
     /// Gets or sets the offset position of the camera.
