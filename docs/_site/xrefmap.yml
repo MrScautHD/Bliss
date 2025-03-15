@@ -198,15 +198,15 @@ references:
   commentId: T:Bliss.CSharp.Camera.Dim2.Cam2D
   fullName: Bliss.CSharp.Camera.Dim2.Cam2D
   nameWithType: Cam2D
-- uid: Bliss.CSharp.Camera.Dim2.Cam2D.#ctor(System.UInt32,System.UInt32,Bliss.CSharp.Camera.Dim2.CameraFollowMode,System.Numerics.Vector2,System.Numerics.Vector2,System.Nullable{System.Numerics.Vector2},System.Single,System.Single)
-  name: Cam2D(uint, uint, CameraFollowMode, Vector2, Vector2, Vector2?, float, float)
-  href: api/Bliss.CSharp.Camera.Dim2.Cam2D.html#Bliss_CSharp_Camera_Dim2_Cam2D__ctor_System_UInt32_System_UInt32_Bliss_CSharp_Camera_Dim2_CameraFollowMode_System_Numerics_Vector2_System_Numerics_Vector2_System_Nullable_System_Numerics_Vector2__System_Single_System_Single_
-  commentId: M:Bliss.CSharp.Camera.Dim2.Cam2D.#ctor(System.UInt32,System.UInt32,Bliss.CSharp.Camera.Dim2.CameraFollowMode,System.Numerics.Vector2,System.Numerics.Vector2,System.Nullable{System.Numerics.Vector2},System.Single,System.Single)
-  name.vb: New(UInteger, UInteger, CameraFollowMode, Vector2, Vector2, Vector2?, Single, Single)
-  fullName: Bliss.CSharp.Camera.Dim2.Cam2D.Cam2D(uint, uint, Bliss.CSharp.Camera.Dim2.CameraFollowMode, System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector2?, float, float)
-  fullName.vb: Bliss.CSharp.Camera.Dim2.Cam2D.New(UInteger, UInteger, Bliss.CSharp.Camera.Dim2.CameraFollowMode, System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector2?, Single, Single)
-  nameWithType: Cam2D.Cam2D(uint, uint, CameraFollowMode, Vector2, Vector2, Vector2?, float, float)
-  nameWithType.vb: Cam2D.New(UInteger, UInteger, CameraFollowMode, Vector2, Vector2, Vector2?, Single, Single)
+- uid: Bliss.CSharp.Camera.Dim2.Cam2D.#ctor(System.Numerics.Vector2,System.Numerics.Vector2,Bliss.CSharp.Transformations.Rectangle,Bliss.CSharp.Camera.Dim2.CameraFollowMode,System.Nullable{System.Numerics.Vector2},System.Single,System.Single)
+  name: Cam2D(Vector2, Vector2, Rectangle, CameraFollowMode, Vector2?, float, float)
+  href: api/Bliss.CSharp.Camera.Dim2.Cam2D.html#Bliss_CSharp_Camera_Dim2_Cam2D__ctor_System_Numerics_Vector2_System_Numerics_Vector2_Bliss_CSharp_Transformations_Rectangle_Bliss_CSharp_Camera_Dim2_CameraFollowMode_System_Nullable_System_Numerics_Vector2__System_Single_System_Single_
+  commentId: M:Bliss.CSharp.Camera.Dim2.Cam2D.#ctor(System.Numerics.Vector2,System.Numerics.Vector2,Bliss.CSharp.Transformations.Rectangle,Bliss.CSharp.Camera.Dim2.CameraFollowMode,System.Nullable{System.Numerics.Vector2},System.Single,System.Single)
+  name.vb: New(Vector2, Vector2, Rectangle, CameraFollowMode, Vector2?, Single, Single)
+  fullName: Bliss.CSharp.Camera.Dim2.Cam2D.Cam2D(System.Numerics.Vector2, System.Numerics.Vector2, Bliss.CSharp.Transformations.Rectangle, Bliss.CSharp.Camera.Dim2.CameraFollowMode, System.Numerics.Vector2?, float, float)
+  fullName.vb: Bliss.CSharp.Camera.Dim2.Cam2D.New(System.Numerics.Vector2, System.Numerics.Vector2, Bliss.CSharp.Transformations.Rectangle, Bliss.CSharp.Camera.Dim2.CameraFollowMode, System.Numerics.Vector2?, Single, Single)
+  nameWithType: Cam2D.Cam2D(Vector2, Vector2, Rectangle, CameraFollowMode, Vector2?, float, float)
+  nameWithType.vb: Cam2D.New(Vector2, Vector2, Rectangle, CameraFollowMode, Vector2?, Single, Single)
 - uid: Bliss.CSharp.Camera.Dim2.Cam2D.#ctor*
   name: Cam2D
   href: api/Bliss.CSharp.Camera.Dim2.Cam2D.html#Bliss_CSharp_Camera_Dim2_Cam2D__ctor_
@@ -430,15 +430,15 @@ references:
   commentId: T:Bliss.CSharp.Camera.Dim3.Cam3D
   fullName: Bliss.CSharp.Camera.Dim3.Cam3D
   nameWithType: Cam3D
-- uid: Bliss.CSharp.Camera.Dim3.Cam3D.#ctor(System.UInt32,System.UInt32,System.Numerics.Vector3,System.Numerics.Vector3,System.Nullable{System.Numerics.Vector3},Bliss.CSharp.Camera.Dim3.ProjectionType,Bliss.CSharp.Camera.Dim3.CameraMode,System.Single,System.Single,System.Single)
-  name: Cam3D(uint, uint, Vector3, Vector3, Vector3?, ProjectionType, CameraMode, float, float, float)
-  href: api/Bliss.CSharp.Camera.Dim3.Cam3D.html#Bliss_CSharp_Camera_Dim3_Cam3D__ctor_System_UInt32_System_UInt32_System_Numerics_Vector3_System_Numerics_Vector3_System_Nullable_System_Numerics_Vector3__Bliss_CSharp_Camera_Dim3_ProjectionType_Bliss_CSharp_Camera_Dim3_CameraMode_System_Single_System_Single_System_Single_
-  commentId: M:Bliss.CSharp.Camera.Dim3.Cam3D.#ctor(System.UInt32,System.UInt32,System.Numerics.Vector3,System.Numerics.Vector3,System.Nullable{System.Numerics.Vector3},Bliss.CSharp.Camera.Dim3.ProjectionType,Bliss.CSharp.Camera.Dim3.CameraMode,System.Single,System.Single,System.Single)
-  name.vb: New(UInteger, UInteger, Vector3, Vector3, Vector3?, ProjectionType, CameraMode, Single, Single, Single)
-  fullName: Bliss.CSharp.Camera.Dim3.Cam3D.Cam3D(uint, uint, System.Numerics.Vector3, System.Numerics.Vector3, System.Numerics.Vector3?, Bliss.CSharp.Camera.Dim3.ProjectionType, Bliss.CSharp.Camera.Dim3.CameraMode, float, float, float)
-  fullName.vb: Bliss.CSharp.Camera.Dim3.Cam3D.New(UInteger, UInteger, System.Numerics.Vector3, System.Numerics.Vector3, System.Numerics.Vector3?, Bliss.CSharp.Camera.Dim3.ProjectionType, Bliss.CSharp.Camera.Dim3.CameraMode, Single, Single, Single)
-  nameWithType: Cam3D.Cam3D(uint, uint, Vector3, Vector3, Vector3?, ProjectionType, CameraMode, float, float, float)
-  nameWithType.vb: Cam3D.New(UInteger, UInteger, Vector3, Vector3, Vector3?, ProjectionType, CameraMode, Single, Single, Single)
+- uid: Bliss.CSharp.Camera.Dim3.Cam3D.#ctor(System.Numerics.Vector3,System.Numerics.Vector3,System.Single,System.Nullable{System.Numerics.Vector3},Bliss.CSharp.Camera.Dim3.ProjectionType,Bliss.CSharp.Camera.Dim3.CameraMode,System.Single,System.Single,System.Single)
+  name: Cam3D(Vector3, Vector3, float, Vector3?, ProjectionType, CameraMode, float, float, float)
+  href: api/Bliss.CSharp.Camera.Dim3.Cam3D.html#Bliss_CSharp_Camera_Dim3_Cam3D__ctor_System_Numerics_Vector3_System_Numerics_Vector3_System_Single_System_Nullable_System_Numerics_Vector3__Bliss_CSharp_Camera_Dim3_ProjectionType_Bliss_CSharp_Camera_Dim3_CameraMode_System_Single_System_Single_System_Single_
+  commentId: M:Bliss.CSharp.Camera.Dim3.Cam3D.#ctor(System.Numerics.Vector3,System.Numerics.Vector3,System.Single,System.Nullable{System.Numerics.Vector3},Bliss.CSharp.Camera.Dim3.ProjectionType,Bliss.CSharp.Camera.Dim3.CameraMode,System.Single,System.Single,System.Single)
+  name.vb: New(Vector3, Vector3, Single, Vector3?, ProjectionType, CameraMode, Single, Single, Single)
+  fullName: Bliss.CSharp.Camera.Dim3.Cam3D.Cam3D(System.Numerics.Vector3, System.Numerics.Vector3, float, System.Numerics.Vector3?, Bliss.CSharp.Camera.Dim3.ProjectionType, Bliss.CSharp.Camera.Dim3.CameraMode, float, float, float)
+  fullName.vb: Bliss.CSharp.Camera.Dim3.Cam3D.New(System.Numerics.Vector3, System.Numerics.Vector3, Single, System.Numerics.Vector3?, Bliss.CSharp.Camera.Dim3.ProjectionType, Bliss.CSharp.Camera.Dim3.CameraMode, Single, Single, Single)
+  nameWithType: Cam3D.Cam3D(Vector3, Vector3, float, Vector3?, ProjectionType, CameraMode, float, float, float)
+  nameWithType.vb: Cam3D.New(Vector3, Vector3, Single, Vector3?, ProjectionType, CameraMode, Single, Single, Single)
 - uid: Bliss.CSharp.Camera.Dim3.Cam3D.#ctor*
   name: Cam3D
   href: api/Bliss.CSharp.Camera.Dim3.Cam3D.html#Bliss_CSharp_Camera_Dim3_Cam3D__ctor_
@@ -826,19 +826,6 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Camera.Dim3.Cam3D.SetYaw
   nameWithType: Cam3D.SetYaw
-- uid: Bliss.CSharp.Camera.Dim3.Cam3D.Size
-  name: Size
-  href: api/Bliss.CSharp.Camera.Dim3.Cam3D.html#Bliss_CSharp_Camera_Dim3_Cam3D_Size
-  commentId: P:Bliss.CSharp.Camera.Dim3.Cam3D.Size
-  fullName: Bliss.CSharp.Camera.Dim3.Cam3D.Size
-  nameWithType: Cam3D.Size
-- uid: Bliss.CSharp.Camera.Dim3.Cam3D.Size*
-  name: Size
-  href: api/Bliss.CSharp.Camera.Dim3.Cam3D.html#Bliss_CSharp_Camera_Dim3_Cam3D_Size_
-  commentId: Overload:Bliss.CSharp.Camera.Dim3.Cam3D.Size
-  isSpec: "True"
-  fullName: Bliss.CSharp.Camera.Dim3.Cam3D.Size
-  nameWithType: Cam3D.Size
 - uid: Bliss.CSharp.Camera.Dim3.Cam3D.Target
   name: Target
   href: api/Bliss.CSharp.Camera.Dim3.Cam3D.html#Bliss_CSharp_Camera_Dim3_Cam3D_Target

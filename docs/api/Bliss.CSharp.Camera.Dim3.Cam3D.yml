@@ -5,7 +5,7 @@ items:
   id: Cam3D
   parent: Bliss.CSharp.Camera.Dim3
   children:
-  - Bliss.CSharp.Camera.Dim3.Cam3D.#ctor(System.UInt32,System.UInt32,System.Numerics.Vector3,System.Numerics.Vector3,System.Nullable{System.Numerics.Vector3},Bliss.CSharp.Camera.Dim3.ProjectionType,Bliss.CSharp.Camera.Dim3.CameraMode,System.Single,System.Single,System.Single)
+  - Bliss.CSharp.Camera.Dim3.Cam3D.#ctor(System.Numerics.Vector3,System.Numerics.Vector3,System.Single,System.Nullable{System.Numerics.Vector3},Bliss.CSharp.Camera.Dim3.ProjectionType,Bliss.CSharp.Camera.Dim3.CameraMode,System.Single,System.Single,System.Single)
   - Bliss.CSharp.Camera.Dim3.Cam3D.ActiveCamera
   - Bliss.CSharp.Camera.Dim3.Cam3D.AspectRatio
   - Bliss.CSharp.Camera.Dim3.Cam3D.Begin(Veldrid.CommandList)
@@ -38,7 +38,6 @@ items:
   - Bliss.CSharp.Camera.Dim3.Cam3D.SetPitch(System.Single,System.Boolean)
   - Bliss.CSharp.Camera.Dim3.Cam3D.SetRoll(System.Single)
   - Bliss.CSharp.Camera.Dim3.Cam3D.SetYaw(System.Single,System.Boolean)
-  - Bliss.CSharp.Camera.Dim3.Cam3D.Size
   - Bliss.CSharp.Camera.Dim3.Cam3D.Target
   - Bliss.CSharp.Camera.Dim3.Cam3D.Up
   - Bliss.CSharp.Camera.Dim3.Cam3D.Update(System.Double)
@@ -111,40 +110,6 @@ items:
       type: Bliss.CSharp.Camera.Dim3.Cam3D
     content.vb: Public Shared Property ActiveCamera As Cam3D
   overload: Bliss.CSharp.Camera.Dim3.Cam3D.ActiveCamera*
-- uid: Bliss.CSharp.Camera.Dim3.Cam3D.Size
-  commentId: P:Bliss.CSharp.Camera.Dim3.Cam3D.Size
-  id: Size
-  parent: Bliss.CSharp.Camera.Dim3.Cam3D
-  langs:
-  - csharp
-  - vb
-  name: Size
-  nameWithType: Cam3D.Size
-  fullName: Bliss.CSharp.Camera.Dim3.Cam3D.Size
-  type: Property
-  source:
-    remote:
-      path: src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: Size
-    path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 26
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Camera.Dim3
-  summary: >-
-    Defines the portion of the render target that a camera will render to.
-
-    Specifies the region of the screen or render target the camera will draw its contents to.
-  example: []
-  syntax:
-    content: public Rectangle Size { get; }
-    parameters: []
-    return:
-      type: Bliss.CSharp.Transformations.Rectangle
-    content.vb: Public Property Size As Rectangle
-  overload: Bliss.CSharp.Camera.Dim3.Cam3D.Size*
 - uid: Bliss.CSharp.Camera.Dim3.Cam3D.AspectRatio
   commentId: P:Bliss.CSharp.Camera.Dim3.Cam3D.AspectRatio
   id: AspectRatio
@@ -163,7 +128,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: AspectRatio
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 32
+    startLine: 26
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -197,7 +162,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Position
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 38
+    startLine: 32
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -229,7 +194,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Target
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 44
+    startLine: 38
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -261,7 +226,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Up
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 50
+    startLine: 44
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -293,7 +258,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ProjectionType
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 56
+    startLine: 50
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -325,7 +290,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Mode
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 63
+    startLine: 57
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -359,7 +324,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Fov
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 69
+    startLine: 63
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -391,7 +356,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: NearPlane
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 75
+    startLine: 69
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -423,7 +388,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: FarPlane
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 81
+    startLine: 75
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -455,7 +420,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MouseSensitivity
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 88
+    startLine: 82
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -489,7 +454,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MovementSpeed
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 95
+    startLine: 89
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -523,7 +488,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: OrbitalSpeed
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 102
+    startLine: 96
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -539,16 +504,16 @@ items:
     return:
       type: System.Single
     content.vb: Public OrbitalSpeed As Single
-- uid: Bliss.CSharp.Camera.Dim3.Cam3D.#ctor(System.UInt32,System.UInt32,System.Numerics.Vector3,System.Numerics.Vector3,System.Nullable{System.Numerics.Vector3},Bliss.CSharp.Camera.Dim3.ProjectionType,Bliss.CSharp.Camera.Dim3.CameraMode,System.Single,System.Single,System.Single)
-  commentId: M:Bliss.CSharp.Camera.Dim3.Cam3D.#ctor(System.UInt32,System.UInt32,System.Numerics.Vector3,System.Numerics.Vector3,System.Nullable{System.Numerics.Vector3},Bliss.CSharp.Camera.Dim3.ProjectionType,Bliss.CSharp.Camera.Dim3.CameraMode,System.Single,System.Single,System.Single)
-  id: '#ctor(System.UInt32,System.UInt32,System.Numerics.Vector3,System.Numerics.Vector3,System.Nullable{System.Numerics.Vector3},Bliss.CSharp.Camera.Dim3.ProjectionType,Bliss.CSharp.Camera.Dim3.CameraMode,System.Single,System.Single,System.Single)'
+- uid: Bliss.CSharp.Camera.Dim3.Cam3D.#ctor(System.Numerics.Vector3,System.Numerics.Vector3,System.Single,System.Nullable{System.Numerics.Vector3},Bliss.CSharp.Camera.Dim3.ProjectionType,Bliss.CSharp.Camera.Dim3.CameraMode,System.Single,System.Single,System.Single)
+  commentId: M:Bliss.CSharp.Camera.Dim3.Cam3D.#ctor(System.Numerics.Vector3,System.Numerics.Vector3,System.Single,System.Nullable{System.Numerics.Vector3},Bliss.CSharp.Camera.Dim3.ProjectionType,Bliss.CSharp.Camera.Dim3.CameraMode,System.Single,System.Single,System.Single)
+  id: '#ctor(System.Numerics.Vector3,System.Numerics.Vector3,System.Single,System.Nullable{System.Numerics.Vector3},Bliss.CSharp.Camera.Dim3.ProjectionType,Bliss.CSharp.Camera.Dim3.CameraMode,System.Single,System.Single,System.Single)'
   parent: Bliss.CSharp.Camera.Dim3.Cam3D
   langs:
   - csharp
   - vb
-  name: Cam3D(uint, uint, Vector3, Vector3, Vector3?, ProjectionType, CameraMode, float, float, float)
-  nameWithType: Cam3D.Cam3D(uint, uint, Vector3, Vector3, Vector3?, ProjectionType, CameraMode, float, float, float)
-  fullName: Bliss.CSharp.Camera.Dim3.Cam3D.Cam3D(uint, uint, System.Numerics.Vector3, System.Numerics.Vector3, System.Numerics.Vector3?, Bliss.CSharp.Camera.Dim3.ProjectionType, Bliss.CSharp.Camera.Dim3.CameraMode, float, float, float)
+  name: Cam3D(Vector3, Vector3, float, Vector3?, ProjectionType, CameraMode, float, float, float)
+  nameWithType: Cam3D.Cam3D(Vector3, Vector3, float, Vector3?, ProjectionType, CameraMode, float, float, float)
+  fullName: Bliss.CSharp.Camera.Dim3.Cam3D.Cam3D(System.Numerics.Vector3, System.Numerics.Vector3, float, System.Numerics.Vector3?, Bliss.CSharp.Camera.Dim3.ProjectionType, Bliss.CSharp.Camera.Dim3.CameraMode, float, float, float)
   type: Constructor
   source:
     remote:
@@ -557,53 +522,47 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 145
+    startLine: 137
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
-  summary: >-
-    Initializes a new instance of the <xref href="Bliss.CSharp.Camera.Dim3.Cam3D" data-throw-if-not-resolved="false"></xref> class, configuring the camera's position, 
-
-    target, orientation, projection type, camera mode, field of view, and clipping planes.
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Camera.Dim3.Cam3D" data-throw-if-not-resolved="false"></xref> class.
   example: []
   syntax:
-    content: public Cam3D(uint width, uint height, Vector3 position, Vector3 target, Vector3? up = null, ProjectionType projectionType = ProjectionType.Perspective, CameraMode mode = CameraMode.Free, float fov = 70, float nearPlane = 0.1, float farPlane = 1000)
+    content: public Cam3D(Vector3 position, Vector3 target, float aspectRatio, Vector3? up = null, ProjectionType projectionType = ProjectionType.Perspective, CameraMode mode = CameraMode.Free, float fov = 70, float nearPlane = 0.1, float farPlane = 1000)
     parameters:
-    - id: width
-      type: System.UInt32
-      description: The width of the viewport or rendering area.
-    - id: height
-      type: System.UInt32
-      description: The height of the viewport or rendering area.
     - id: position
       type: System.Numerics.Vector3
-      description: The initial position of the camera in 3D space.
+      description: The camera position in world space.
     - id: target
       type: System.Numerics.Vector3
-      description: The point in space that the camera is looking at.
+      description: The target point the camera is looking at.
+    - id: aspectRatio
+      type: System.Single
+      description: The aspect ratio (width / height). Must be greater than zero.
     - id: up
       type: System.Nullable{System.Numerics.Vector3}
-      description: The up vector for the camera orientation; defaults to <xref href="System.Numerics.Vector3.UnitY" data-throw-if-not-resolved="false"></xref> if not specified.
+      description: The upward direction vector. Defaults to (0,1,0).
     - id: projectionType
       type: Bliss.CSharp.Camera.Dim3.ProjectionType
-      description: The type of projection to use (e.g., perspective or orthographic); defaults to <xref href="Bliss.CSharp.Camera.Dim3.ProjectionType.Perspective" data-throw-if-not-resolved="false"></xref>.
+      description: The type of projection (Perspective or Orthographic).
     - id: mode
       type: Bliss.CSharp.Camera.Dim3.CameraMode
-      description: The camera mode, such as <xref href="Bliss.CSharp.Camera.Dim3.CameraMode.Free" data-throw-if-not-resolved="false"></xref> or other modes; defaults to <xref href="Bliss.CSharp.Camera.Dim3.CameraMode.Free" data-throw-if-not-resolved="false"></xref>.
+      description: The camera movement mode.
     - id: fov
       type: System.Single
-      description: The field of view angle in degrees; defaults to 70.0 degrees.
+      description: The field of view in degrees. Should be between 1 and 179.
     - id: nearPlane
       type: System.Single
-      description: The distance to the near clipping plane; defaults to 0.001 units.
+      description: The near clipping plane. Must be positive and smaller than <code class="paramref">farPlane</code>.
     - id: farPlane
       type: System.Single
-      description: The distance to the far clipping plane; defaults to 1000.0 units.
-    content.vb: Public Sub New(width As UInteger, height As UInteger, position As Vector3, target As Vector3, up As Vector3? = Nothing, projectionType As ProjectionType = ProjectionType.Perspective, mode As CameraMode = CameraMode.Free, fov As Single = 70, nearPlane As Single = 0.1, farPlane As Single = 1000)
+      description: The far clipping plane. Must be positive and greater than <code class="paramref">nearPlane</code>.
+    content.vb: Public Sub New(position As Vector3, target As Vector3, aspectRatio As Single, up As Vector3? = Nothing, projectionType As ProjectionType = ProjectionType.Perspective, mode As CameraMode = CameraMode.Free, fov As Single = 70, nearPlane As Single = 0.1, farPlane As Single = 1000)
   overload: Bliss.CSharp.Camera.Dim3.Cam3D.#ctor*
-  nameWithType.vb: Cam3D.New(UInteger, UInteger, Vector3, Vector3, Vector3?, ProjectionType, CameraMode, Single, Single, Single)
-  fullName.vb: Bliss.CSharp.Camera.Dim3.Cam3D.New(UInteger, UInteger, System.Numerics.Vector3, System.Numerics.Vector3, System.Numerics.Vector3?, Bliss.CSharp.Camera.Dim3.ProjectionType, Bliss.CSharp.Camera.Dim3.CameraMode, Single, Single, Single)
-  name.vb: New(UInteger, UInteger, Vector3, Vector3, Vector3?, ProjectionType, CameraMode, Single, Single, Single)
+  nameWithType.vb: Cam3D.New(Vector3, Vector3, Single, Vector3?, ProjectionType, CameraMode, Single, Single, Single)
+  fullName.vb: Bliss.CSharp.Camera.Dim3.Cam3D.New(System.Numerics.Vector3, System.Numerics.Vector3, Single, System.Numerics.Vector3?, Bliss.CSharp.Camera.Dim3.ProjectionType, Bliss.CSharp.Camera.Dim3.CameraMode, Single, Single, Single)
+  name.vb: New(Vector3, Vector3, Single, Vector3?, ProjectionType, CameraMode, Single, Single, Single)
 - uid: Bliss.CSharp.Camera.Dim3.Cam3D.Update(System.Double)
   commentId: M:Bliss.CSharp.Camera.Dim3.Cam3D.Update(System.Double)
   id: Update(System.Double)
@@ -622,7 +581,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Update
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 161
+    startLine: 153
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -658,7 +617,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Resize
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 256
+    startLine: 248
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -698,7 +657,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Begin
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 266
+    startLine: 257
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -735,7 +694,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: End
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 278
+    startLine: 269
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -765,7 +724,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetProjection
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 287
+    startLine: 278
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -796,7 +755,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetView
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 295
+    startLine: 286
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -827,7 +786,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetForward
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 303
+    startLine: 294
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -858,7 +817,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MoveForward
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 312
+    startLine: 303
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -896,7 +855,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetRight
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 330
+    startLine: 321
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -927,7 +886,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MoveRight
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 339
+    startLine: 330
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -965,7 +924,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MoveUp
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 357
+    startLine: 348
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1000,7 +959,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MoveToTarget
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 368
+    startLine: 359
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1035,7 +994,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetRotation
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 382
+    startLine: 373
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1066,7 +1025,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetYaw
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 391
+    startLine: 382
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1097,7 +1056,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetYaw
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 400
+    startLine: 391
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1135,7 +1094,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetPitch
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 421
+    startLine: 412
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1166,7 +1125,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetPitch
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 430
+    startLine: 421
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1204,7 +1163,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetRoll
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 458
+    startLine: 449
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1235,7 +1194,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetRoll
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 466
+    startLine: 457
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1270,7 +1229,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetFrustum
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 475
+    startLine: 466
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1301,7 +1260,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetScreenToWorld
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 485
+    startLine: 476
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1336,7 +1295,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetWorldToScreen
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 502
+    startLine: 493
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1679,49 +1638,6 @@ references:
   name: Cam3D
   nameWithType: Cam3D
   fullName: Bliss.CSharp.Camera.Dim3.Cam3D
-- uid: Bliss.CSharp.Camera.Dim3.Cam3D.Size*
-  commentId: Overload:Bliss.CSharp.Camera.Dim3.Cam3D.Size
-  href: Bliss.CSharp.Camera.Dim3.Cam3D.html#Bliss_CSharp_Camera_Dim3_Cam3D_Size
-  name: Size
-  nameWithType: Cam3D.Size
-  fullName: Bliss.CSharp.Camera.Dim3.Cam3D.Size
-- uid: Bliss.CSharp.Transformations.Rectangle
-  commentId: T:Bliss.CSharp.Transformations.Rectangle
-  parent: Bliss.CSharp.Transformations
-  href: Bliss.CSharp.Transformations.Rectangle.html
-  name: Rectangle
-  nameWithType: Rectangle
-  fullName: Bliss.CSharp.Transformations.Rectangle
-- uid: Bliss.CSharp.Transformations
-  commentId: N:Bliss.CSharp.Transformations
-  href: Bliss.html
-  name: Bliss.CSharp.Transformations
-  nameWithType: Bliss.CSharp.Transformations
-  fullName: Bliss.CSharp.Transformations
-  spec.csharp:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Transformations
-    name: Transformations
-    href: Bliss.CSharp.Transformations.html
-  spec.vb:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Transformations
-    name: Transformations
-    href: Bliss.CSharp.Transformations.html
 - uid: Bliss.CSharp.Camera.Dim3.Cam3D.AspectRatio*
   commentId: Overload:Bliss.CSharp.Camera.Dim3.Cam3D.AspectRatio
   href: Bliss.CSharp.Camera.Dim3.Cam3D.html#Bliss_CSharp_Camera_Dim3_Cam3D_AspectRatio
@@ -1788,45 +1704,15 @@ references:
   name: CameraMode
   nameWithType: CameraMode
   fullName: Bliss.CSharp.Camera.Dim3.CameraMode
-- uid: System.Numerics.Vector3.UnitY
-  commentId: P:System.Numerics.Vector3.UnitY
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.numerics.vector3.unity
-  name: UnitY
-  nameWithType: Vector3.UnitY
-  fullName: System.Numerics.Vector3.UnitY
-- uid: Bliss.CSharp.Camera.Dim3.ProjectionType.Perspective
-  commentId: F:Bliss.CSharp.Camera.Dim3.ProjectionType.Perspective
-  href: Bliss.CSharp.Camera.Dim3.ProjectionType.html#Bliss_CSharp_Camera_Dim3_ProjectionType_Perspective
-  name: Perspective
-  nameWithType: ProjectionType.Perspective
-  fullName: Bliss.CSharp.Camera.Dim3.ProjectionType.Perspective
-- uid: Bliss.CSharp.Camera.Dim3.CameraMode.Free
-  commentId: F:Bliss.CSharp.Camera.Dim3.CameraMode.Free
-  href: Bliss.CSharp.Camera.Dim3.CameraMode.html#Bliss_CSharp_Camera_Dim3_CameraMode_Free
-  name: Free
-  nameWithType: CameraMode.Free
-  fullName: Bliss.CSharp.Camera.Dim3.CameraMode.Free
 - uid: Bliss.CSharp.Camera.Dim3.Cam3D.#ctor*
   commentId: Overload:Bliss.CSharp.Camera.Dim3.Cam3D.#ctor
-  href: Bliss.CSharp.Camera.Dim3.Cam3D.html#Bliss_CSharp_Camera_Dim3_Cam3D__ctor_System_UInt32_System_UInt32_System_Numerics_Vector3_System_Numerics_Vector3_System_Nullable_System_Numerics_Vector3__Bliss_CSharp_Camera_Dim3_ProjectionType_Bliss_CSharp_Camera_Dim3_CameraMode_System_Single_System_Single_System_Single_
+  href: Bliss.CSharp.Camera.Dim3.Cam3D.html#Bliss_CSharp_Camera_Dim3_Cam3D__ctor_System_Numerics_Vector3_System_Numerics_Vector3_System_Single_System_Nullable_System_Numerics_Vector3__Bliss_CSharp_Camera_Dim3_ProjectionType_Bliss_CSharp_Camera_Dim3_CameraMode_System_Single_System_Single_System_Single_
   name: Cam3D
   nameWithType: Cam3D.Cam3D
   fullName: Bliss.CSharp.Camera.Dim3.Cam3D.Cam3D
   nameWithType.vb: Cam3D.New
   fullName.vb: Bliss.CSharp.Camera.Dim3.Cam3D.New
   name.vb: New
-- uid: System.UInt32
-  commentId: T:System.UInt32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.uint32
-  name: uint
-  nameWithType: uint
-  fullName: uint
-  nameWithType.vb: UInteger
-  fullName.vb: UInteger
-  name.vb: UInteger
 - uid: System.Nullable{System.Numerics.Vector3}
   commentId: T:System.Nullable{System.Numerics.Vector3}
   parent: System
@@ -1972,6 +1858,17 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.uint32
   - name: )
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
 - uid: Bliss.CSharp.Camera.Dim3.Cam3D.Begin*
   commentId: Overload:Bliss.CSharp.Camera.Dim3.Cam3D.Begin
   href: Bliss.CSharp.Camera.Dim3.Cam3D.html#Bliss_CSharp_Camera_Dim3_Cam3D_Begin_Veldrid_CommandList_

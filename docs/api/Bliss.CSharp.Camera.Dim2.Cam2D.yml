@@ -5,7 +5,7 @@ items:
   id: Cam2D
   parent: Bliss.CSharp.Camera.Dim2
   children:
-  - Bliss.CSharp.Camera.Dim2.Cam2D.#ctor(System.UInt32,System.UInt32,Bliss.CSharp.Camera.Dim2.CameraFollowMode,System.Numerics.Vector2,System.Numerics.Vector2,System.Nullable{System.Numerics.Vector2},System.Single,System.Single)
+  - Bliss.CSharp.Camera.Dim2.Cam2D.#ctor(System.Numerics.Vector2,System.Numerics.Vector2,Bliss.CSharp.Transformations.Rectangle,Bliss.CSharp.Camera.Dim2.CameraFollowMode,System.Nullable{System.Numerics.Vector2},System.Single,System.Single)
   - Bliss.CSharp.Camera.Dim2.Cam2D.ActiveCamera
   - Bliss.CSharp.Camera.Dim2.Cam2D.Begin(Veldrid.CommandList)
   - Bliss.CSharp.Camera.Dim2.Cam2D.End
@@ -380,16 +380,16 @@ items:
     return:
       type: System.Single
     content.vb: Public FractionFollowSpeed As Single
-- uid: Bliss.CSharp.Camera.Dim2.Cam2D.#ctor(System.UInt32,System.UInt32,Bliss.CSharp.Camera.Dim2.CameraFollowMode,System.Numerics.Vector2,System.Numerics.Vector2,System.Nullable{System.Numerics.Vector2},System.Single,System.Single)
-  commentId: M:Bliss.CSharp.Camera.Dim2.Cam2D.#ctor(System.UInt32,System.UInt32,Bliss.CSharp.Camera.Dim2.CameraFollowMode,System.Numerics.Vector2,System.Numerics.Vector2,System.Nullable{System.Numerics.Vector2},System.Single,System.Single)
-  id: '#ctor(System.UInt32,System.UInt32,Bliss.CSharp.Camera.Dim2.CameraFollowMode,System.Numerics.Vector2,System.Numerics.Vector2,System.Nullable{System.Numerics.Vector2},System.Single,System.Single)'
+- uid: Bliss.CSharp.Camera.Dim2.Cam2D.#ctor(System.Numerics.Vector2,System.Numerics.Vector2,Bliss.CSharp.Transformations.Rectangle,Bliss.CSharp.Camera.Dim2.CameraFollowMode,System.Nullable{System.Numerics.Vector2},System.Single,System.Single)
+  commentId: M:Bliss.CSharp.Camera.Dim2.Cam2D.#ctor(System.Numerics.Vector2,System.Numerics.Vector2,Bliss.CSharp.Transformations.Rectangle,Bliss.CSharp.Camera.Dim2.CameraFollowMode,System.Nullable{System.Numerics.Vector2},System.Single,System.Single)
+  id: '#ctor(System.Numerics.Vector2,System.Numerics.Vector2,Bliss.CSharp.Transformations.Rectangle,Bliss.CSharp.Camera.Dim2.CameraFollowMode,System.Nullable{System.Numerics.Vector2},System.Single,System.Single)'
   parent: Bliss.CSharp.Camera.Dim2.Cam2D
   langs:
   - csharp
   - vb
-  name: Cam2D(uint, uint, CameraFollowMode, Vector2, Vector2, Vector2?, float, float)
-  nameWithType: Cam2D.Cam2D(uint, uint, CameraFollowMode, Vector2, Vector2, Vector2?, float, float)
-  fullName: Bliss.CSharp.Camera.Dim2.Cam2D.Cam2D(uint, uint, Bliss.CSharp.Camera.Dim2.CameraFollowMode, System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector2?, float, float)
+  name: Cam2D(Vector2, Vector2, Rectangle, CameraFollowMode, Vector2?, float, float)
+  nameWithType: Cam2D.Cam2D(Vector2, Vector2, Rectangle, CameraFollowMode, Vector2?, float, float)
+  fullName: Bliss.CSharp.Camera.Dim2.Cam2D.Cam2D(System.Numerics.Vector2, System.Numerics.Vector2, Bliss.CSharp.Transformations.Rectangle, Bliss.CSharp.Camera.Dim2.CameraFollowMode, System.Numerics.Vector2?, float, float)
   type: Constructor
   source:
     remote:
@@ -398,49 +398,41 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 81
+    startLine: 78
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
-  summary: >-
-    Initializes a new instance of the <xref href="Bliss.CSharp.Camera.Dim2.Cam2D" data-throw-if-not-resolved="false"></xref> class, setting up the camera with the specified
-
-    dimensions, follow mode, position, target position, and optional offset, rotation, and zoom level.
-
-    Additional properties are set to control camera follow speed and effect length.
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Camera.Dim2.Cam2D" data-throw-if-not-resolved="false"></xref> class.
   example: []
   syntax:
-    content: public Cam2D(uint width, uint height, CameraFollowMode mode, Vector2 position, Vector2 target, Vector2? offset = null, float rotation = 0, float zoom = 1)
+    content: public Cam2D(Vector2 position, Vector2 target, Rectangle size, CameraFollowMode mode, Vector2? offset = null, float rotation = 0, float zoom = 1)
     parameters:
-    - id: width
-      type: System.UInt32
-      description: The width of the camera view.
-    - id: height
-      type: System.UInt32
-      description: The height of the camera view.
-    - id: mode
-      type: Bliss.CSharp.Camera.Dim2.CameraFollowMode
-      description: The camera follow mode, determining how the camera follows the target.
     - id: position
       type: System.Numerics.Vector2
       description: The initial position of the camera.
     - id: target
       type: System.Numerics.Vector2
-      description: The target position for the camera to focus on.
+      description: The target position the camera follows.
+    - id: size
+      type: Bliss.CSharp.Transformations.Rectangle
+      description: The dimensions of the camera's viewport.
+    - id: mode
+      type: Bliss.CSharp.Camera.Dim2.CameraFollowMode
+      description: The camera follow mode determining how the camera tracks the target.
     - id: offset
       type: System.Nullable{System.Numerics.Vector2}
-      description: An optional offset from the target position. Defaults to zero vector.
+      description: Optional offset applied to the camera's position. Defaults to (0,0).
     - id: rotation
       type: System.Single
-      description: The rotation of the camera in degrees. Default is 0.0F.
+      description: The initial rotation of the camera in degrees.
     - id: zoom
       type: System.Single
-      description: The zoom level of the camera. Default is 1.0F.
-    content.vb: Public Sub New(width As UInteger, height As UInteger, mode As CameraFollowMode, position As Vector2, target As Vector2, offset As Vector2? = Nothing, rotation As Single = 0, zoom As Single = 1)
+      description: The zoom level of the camera. A value of 1.0 represents no zoom.
+    content.vb: Public Sub New(position As Vector2, target As Vector2, size As Rectangle, mode As CameraFollowMode, offset As Vector2? = Nothing, rotation As Single = 0, zoom As Single = 1)
   overload: Bliss.CSharp.Camera.Dim2.Cam2D.#ctor*
-  nameWithType.vb: Cam2D.New(UInteger, UInteger, CameraFollowMode, Vector2, Vector2, Vector2?, Single, Single)
-  fullName.vb: Bliss.CSharp.Camera.Dim2.Cam2D.New(UInteger, UInteger, Bliss.CSharp.Camera.Dim2.CameraFollowMode, System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector2?, Single, Single)
-  name.vb: New(UInteger, UInteger, CameraFollowMode, Vector2, Vector2, Vector2?, Single, Single)
+  nameWithType.vb: Cam2D.New(Vector2, Vector2, Rectangle, CameraFollowMode, Vector2?, Single, Single)
+  fullName.vb: Bliss.CSharp.Camera.Dim2.Cam2D.New(System.Numerics.Vector2, System.Numerics.Vector2, Bliss.CSharp.Transformations.Rectangle, Bliss.CSharp.Camera.Dim2.CameraFollowMode, System.Numerics.Vector2?, Single, Single)
+  name.vb: New(Vector2, Vector2, Rectangle, CameraFollowMode, Vector2?, Single, Single)
 - uid: Bliss.CSharp.Camera.Dim2.Cam2D.Update(System.Double)
   commentId: M:Bliss.CSharp.Camera.Dim2.Cam2D.Update(System.Double)
   id: Update(System.Double)
@@ -459,7 +451,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Update
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 98
+    startLine: 95
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -496,7 +488,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Resize
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 115
+    startLine: 112
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -536,7 +528,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Begin
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 123
+    startLine: 120
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -570,7 +562,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: End
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 131
+    startLine: 128
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -600,7 +592,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetView
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 139
+    startLine: 136
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -631,7 +623,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetScreenToWorld
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 148
+    startLine: 145
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -666,7 +658,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetWorldToScreen
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 158
+    startLine: 155
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -1107,24 +1099,13 @@ references:
   name.vb: Single
 - uid: Bliss.CSharp.Camera.Dim2.Cam2D.#ctor*
   commentId: Overload:Bliss.CSharp.Camera.Dim2.Cam2D.#ctor
-  href: Bliss.CSharp.Camera.Dim2.Cam2D.html#Bliss_CSharp_Camera_Dim2_Cam2D__ctor_System_UInt32_System_UInt32_Bliss_CSharp_Camera_Dim2_CameraFollowMode_System_Numerics_Vector2_System_Numerics_Vector2_System_Nullable_System_Numerics_Vector2__System_Single_System_Single_
+  href: Bliss.CSharp.Camera.Dim2.Cam2D.html#Bliss_CSharp_Camera_Dim2_Cam2D__ctor_System_Numerics_Vector2_System_Numerics_Vector2_Bliss_CSharp_Transformations_Rectangle_Bliss_CSharp_Camera_Dim2_CameraFollowMode_System_Nullable_System_Numerics_Vector2__System_Single_System_Single_
   name: Cam2D
   nameWithType: Cam2D.Cam2D
   fullName: Bliss.CSharp.Camera.Dim2.Cam2D.Cam2D
   nameWithType.vb: Cam2D.New
   fullName.vb: Bliss.CSharp.Camera.Dim2.Cam2D.New
   name.vb: New
-- uid: System.UInt32
-  commentId: T:System.UInt32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.uint32
-  name: uint
-  nameWithType: uint
-  fullName: uint
-  nameWithType.vb: UInteger
-  fullName.vb: UInteger
-  name.vb: UInteger
 - uid: System.Nullable{System.Numerics.Vector2}
   commentId: T:System.Nullable{System.Numerics.Vector2}
   parent: System
@@ -1270,6 +1251,17 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.uint32
   - name: )
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
 - uid: Bliss.CSharp.Camera.Dim2.Cam2D.Begin*
   commentId: Overload:Bliss.CSharp.Camera.Dim2.Cam2D.Begin
   href: Bliss.CSharp.Camera.Dim2.Cam2D.html#Bliss_CSharp_Camera_Dim2_Cam2D_Begin_Veldrid_CommandList_

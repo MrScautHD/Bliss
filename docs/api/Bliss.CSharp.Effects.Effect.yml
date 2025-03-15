@@ -115,10 +115,10 @@ items:
   summary: Represents a pair of shaders consisting of a vertex shader and a fragment shader.
   example: []
   syntax:
-    content: public readonly (Shader, Shader) Shader
+    content: public readonly (Shader VertShader, Shader FragShader) Shader
     return:
       type: System.ValueTuple{Veldrid.Shader,Veldrid.Shader}
-    content.vb: Public ReadOnly Shader As (Shader, Shader)
+    content.vb: Public ReadOnly Shader As (VertShader As Shader, FragShader As Shader)
 - uid: Bliss.CSharp.Effects.Effect.VertexLayout
   commentId: F:Bliss.CSharp.Effects.Effect.VertexLayout
   id: VertexLayout
@@ -1015,29 +1015,52 @@ references:
   parent: System
   definition: System.ValueTuple`2
   href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Shader.cs
-  name: (Shader, Shader)
-  nameWithType: (Shader, Shader)
-  fullName: (Veldrid.Shader, Veldrid.Shader)
+  name: (Shader VertShader, Shader FragShader)
+  nameWithType: (Shader VertShader, Shader FragShader)
+  fullName: (Veldrid.Shader VertShader, Veldrid.Shader FragShader)
+  nameWithType.vb: (VertShader As Shader, FragShader As Shader)
+  fullName.vb: (VertShader As Veldrid.Shader, FragShader As Veldrid.Shader)
+  name.vb: (VertShader As Shader, FragShader As Shader)
   spec.csharp:
   - name: (
   - uid: Veldrid.Shader
     name: Shader
     isExternal: true
     href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Shader.cs
+  - name: " "
+  - uid: System.ValueTuple{Veldrid.Shader,Veldrid.Shader}.VertShader
+    name: VertShader
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-veldrid.shader,veldrid.shader-.vertshader
   - name: ','
   - name: " "
   - uid: Veldrid.Shader
     name: Shader
     isExternal: true
     href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Shader.cs
+  - name: " "
+  - uid: System.ValueTuple{Veldrid.Shader,Veldrid.Shader}.FragShader
+    name: FragShader
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-veldrid.shader,veldrid.shader-.fragshader
   - name: )
   spec.vb:
   - name: (
+  - uid: System.ValueTuple{Veldrid.Shader,Veldrid.Shader}.VertShader
+    name: VertShader
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-veldrid.shader,veldrid.shader-.vertshader
+  - name: " "
+  - name: As
+  - name: " "
   - uid: Veldrid.Shader
     name: Shader
     isExternal: true
     href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Shader.cs
   - name: ','
+  - name: " "
+  - uid: System.ValueTuple{Veldrid.Shader,Veldrid.Shader}.FragShader
+    name: FragShader
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-veldrid.shader,veldrid.shader-.fragshader
+  - name: " "
+  - name: As
   - name: " "
   - uid: Veldrid.Shader
     name: Shader

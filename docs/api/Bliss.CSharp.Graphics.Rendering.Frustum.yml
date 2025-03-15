@@ -233,7 +233,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ContainsOrientedBox
     path: ../src/Bliss/CSharp/Graphics/Rendering/Frustum.cs
-    startLine: 147
+    startLine: 146
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering
