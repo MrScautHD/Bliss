@@ -67,29 +67,26 @@ public class Cam2D : ICam {
     private Matrix4x4 _view;
     
     /// <summary>
-    /// Initializes a new instance of the <see cref="Cam2D"/> class, setting up the camera with the specified
-    /// dimensions, follow mode, position, target position, and optional offset, rotation, and zoom level.
-    /// Additional properties are set to control camera follow speed and effect length.
+    /// Initializes a new instance of the <see cref="Cam2D"/> class.
     /// </summary>
-    /// <param name="width">The width of the camera view.</param>
-    /// <param name="height">The height of the camera view.</param>
-    /// <param name="mode">The camera follow mode, determining how the camera follows the target.</param>
     /// <param name="position">The initial position of the camera.</param>
-    /// <param name="target">The target position for the camera to focus on.</param>
-    /// <param name="offset">An optional offset from the target position. Defaults to zero vector.</param>
-    /// <param name="rotation">The rotation of the camera in degrees. Default is 0.0F.</param>
-    /// <param name="zoom">The zoom level of the camera. Default is 1.0F.</param>
-    public Cam2D(uint width, uint height, CameraFollowMode mode, Vector2 position, Vector2 target, Vector2? offset = null, float rotation = 0.0F, float zoom = 1.0F) {
-        this.Mode = mode;
+    /// <param name="target">The target position the camera follows.</param>
+    /// <param name="size">The dimensions of the camera's viewport.</param>
+    /// <param name="mode">The camera follow mode determining how the camera tracks the target.</param>
+    /// <param name="offset">Optional offset applied to the camera's position. Defaults to (0,0).</param>
+    /// <param name="rotation">The initial rotation of the camera in degrees.</param>
+    /// <param name="zoom">The zoom level of the camera. A value of 1.0 represents no zoom.</param>
+    public Cam2D(Vector2 position, Vector2 target, Rectangle size, CameraFollowMode mode, Vector2? offset = null, float rotation = 0.0F, float zoom = 1.0F) {
         this.Position = position;
         this.Target = target;
+        this.Size = new Rectangle(0, 0, size.Width, size.Height);
+        this.Mode = mode;
         this.Offset = offset ?? Vector2.Zero;
         this.Rotation = rotation;
         this.Zoom = zoom;
         this.MinFollowSpeed = 30;
         this.MinFollowEffectLength = 10;
         this.FractionFollowSpeed = 0.8F;
-        this.Resize(width, height);
     }
 
     /// <summary>
