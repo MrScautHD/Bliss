@@ -84,8 +84,8 @@ public class Cam2D : ICam {
         this.Offset = offset ?? Vector2.Zero;
         this.Rotation = rotation;
         this.Zoom = zoom;
-        this.MinFollowSpeed = 30;
-        this.MinFollowEffectLength = 10;
+        this.MinFollowSpeed = 30.0F;
+        this.MinFollowEffectLength = 10.0F;
         this.FractionFollowSpeed = 0.8F;
     }
 
