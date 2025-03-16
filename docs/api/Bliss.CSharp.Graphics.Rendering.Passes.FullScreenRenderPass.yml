@@ -5,12 +5,10 @@ items:
   id: FullScreenRenderPass
   parent: Bliss.CSharp.Graphics.Rendering.Passes
   children:
-  - Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect)
+  - Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor(Veldrid.GraphicsDevice)
   - Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Dispose(System.Boolean)
-  - Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.Sampler)
-  - Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Effect
+  - Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Veldrid.Sampler)
   - Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.GraphicsDevice
-  - Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Output
   langs:
   - csharp
   - vb
@@ -79,78 +77,16 @@ items:
       type: Veldrid.GraphicsDevice
     content.vb: Public Property GraphicsDevice As GraphicsDevice
   overload: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.GraphicsDevice*
-- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Output
-  commentId: P:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Output
-  id: Output
+- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor(Veldrid.GraphicsDevice)
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor(Veldrid.GraphicsDevice)
+  id: '#ctor(Veldrid.GraphicsDevice)'
   parent: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
   langs:
   - csharp
   - vb
-  name: Output
-  nameWithType: FullScreenRenderPass.Output
-  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Output
-  type: Property
-  source:
-    remote:
-      path: src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: Output
-    path: ../src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
-    startLine: 21
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Graphics.Rendering.Passes
-  summary: The output description for the rendering pass.
-  example: []
-  syntax:
-    content: public OutputDescription Output { get; }
-    parameters: []
-    return:
-      type: Veldrid.OutputDescription
-    content.vb: Public Property Output As OutputDescription
-  overload: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Output*
-- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Effect
-  commentId: P:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Effect
-  id: Effect
-  parent: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
-  langs:
-  - csharp
-  - vb
-  name: Effect
-  nameWithType: FullScreenRenderPass.Effect
-  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Effect
-  type: Property
-  source:
-    remote:
-      path: src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: Effect
-    path: ../src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
-    startLine: 26
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Graphics.Rendering.Passes
-  summary: The shader effect used for rendering in the full-screen pass.
-  example: []
-  syntax:
-    content: public Effect Effect { get; }
-    parameters: []
-    return:
-      type: Bliss.CSharp.Effects.Effect
-    content.vb: Public Property Effect As Effect
-  overload: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Effect*
-- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect)
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect)
-  id: '#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect)'
-  parent: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
-  langs:
-  - csharp
-  - vb
-  name: FullScreenRenderPass(GraphicsDevice, OutputDescription, Effect?)
-  nameWithType: FullScreenRenderPass.FullScreenRenderPass(GraphicsDevice, OutputDescription, Effect?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.FullScreenRenderPass(Veldrid.GraphicsDevice, Veldrid.OutputDescription, Bliss.CSharp.Effects.Effect?)
+  name: FullScreenRenderPass(GraphicsDevice)
+  nameWithType: FullScreenRenderPass.FullScreenRenderPass(GraphicsDevice)
+  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.FullScreenRenderPass(Veldrid.GraphicsDevice)
   type: Constructor
   source:
     remote:
@@ -159,39 +95,33 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
-    startLine: 44
+    startLine: 32
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Passes
   summary: Initializes a new instance of the <xref href="Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass" data-throw-if-not-resolved="false"></xref> class, setting up the necessary buffers and pipeline for full-screen rendering.
   example: []
   syntax:
-    content: public FullScreenRenderPass(GraphicsDevice graphicsDevice, OutputDescription output, Effect? effect = null)
+    content: public FullScreenRenderPass(GraphicsDevice graphicsDevice)
     parameters:
     - id: graphicsDevice
       type: Veldrid.GraphicsDevice
       description: The graphics device used for resource creation and rendering.
-    - id: output
-      type: Veldrid.OutputDescription
-      description: The output description that defines the render target configuration.
-    - id: effect
-      type: Bliss.CSharp.Effects.Effect
-      description: An optional effect (shader) to use for the render pass. If null, the default full-screen render pass effect from <xref href="Bliss.CSharp.GlobalResource.FullScreenRenderPassEffect" data-throw-if-not-resolved="false"></xref> is used.
-    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, output As OutputDescription, effect As Effect = Nothing)
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice)
   overload: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor*
-  nameWithType.vb: FullScreenRenderPass.New(GraphicsDevice, OutputDescription, Effect)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.New(Veldrid.GraphicsDevice, Veldrid.OutputDescription, Bliss.CSharp.Effects.Effect)
-  name.vb: New(GraphicsDevice, OutputDescription, Effect)
-- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.Sampler)
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.Sampler)
-  id: Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.Sampler)
+  nameWithType.vb: FullScreenRenderPass.New(GraphicsDevice)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.New(Veldrid.GraphicsDevice)
+  name.vb: New(GraphicsDevice)
+- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Veldrid.Sampler)
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Veldrid.Sampler)
+  id: Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Veldrid.Sampler)
   parent: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
   langs:
   - csharp
   - vb
-  name: Draw(CommandList, RenderTexture2D, Sampler?)
-  nameWithType: FullScreenRenderPass.Draw(CommandList, RenderTexture2D, Sampler?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList, Bliss.CSharp.Textures.RenderTexture2D, Veldrid.Sampler?)
+  name: Draw(CommandList, RenderTexture2D, OutputDescription, Effect?, Sampler?)
+  nameWithType: FullScreenRenderPass.Draw(CommandList, RenderTexture2D, OutputDescription, Effect?, Sampler?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList, Bliss.CSharp.Textures.RenderTexture2D, Veldrid.OutputDescription, Bliss.CSharp.Effects.Effect?, Veldrid.Sampler?)
   type: Method
   source:
     remote:
@@ -200,29 +130,35 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Draw
     path: ../src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
-    startLine: 65
+    startLine: 52
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Passes
-  summary: Executes the draw call using the provided command list, render texture, and optional sampler.
+  summary: Executes the draw call using the provided command list, render texture, effect, and optional sampler.
   example: []
   syntax:
-    content: public void Draw(CommandList commandList, RenderTexture2D renderTexture, Sampler? sampler = null)
+    content: public void Draw(CommandList commandList, RenderTexture2D renderTexture, OutputDescription output, Effect? effect = null, Sampler? sampler = null)
     parameters:
     - id: commandList
       type: Veldrid.CommandList
       description: The command list used to issue draw commands.
     - id: renderTexture
       type: Bliss.CSharp.Textures.RenderTexture2D
-      description: The render texture to be used for rendering.
+      description: The render texture used as the target for rendering.
+    - id: output
+      type: Veldrid.OutputDescription
+      description: The output description specifying render target and depth-stencil formats.
+    - id: effect
+      type: Bliss.CSharp.Effects.Effect
+      description: The effect (shader) to be used during the render pass. If null, the default effect associated with the render pass is used.
     - id: sampler
       type: Veldrid.Sampler
-      description: The optional sampler for texture sampling. If not provided, a default sampler is used.
-    content.vb: Public Sub Draw(commandList As CommandList, renderTexture As RenderTexture2D, sampler As Sampler = Nothing)
+      description: The optional sampler for texture sampling. If null, a default sampler is applied.
+    content.vb: Public Sub Draw(commandList As CommandList, renderTexture As RenderTexture2D, output As OutputDescription, effect As Effect = Nothing, sampler As Sampler = Nothing)
   overload: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw*
-  nameWithType.vb: FullScreenRenderPass.Draw(CommandList, RenderTexture2D, Sampler)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList, Bliss.CSharp.Textures.RenderTexture2D, Veldrid.Sampler)
-  name.vb: Draw(CommandList, RenderTexture2D, Sampler)
+  nameWithType.vb: FullScreenRenderPass.Draw(CommandList, RenderTexture2D, OutputDescription, Effect, Sampler)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList, Bliss.CSharp.Textures.RenderTexture2D, Veldrid.OutputDescription, Bliss.CSharp.Effects.Effect, Veldrid.Sampler)
+  name.vb: Draw(CommandList, RenderTexture2D, OutputDescription, Effect, Sampler)
 - uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Dispose(System.Boolean)
   commentId: M:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Dispose(System.Boolean)
   id: Dispose(System.Boolean)
@@ -241,7 +177,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
-    startLine: 150
+    startLine: 143
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Passes
@@ -645,78 +581,15 @@ references:
   name: Veldrid
   nameWithType: Veldrid
   fullName: Veldrid
-- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Output*
-  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Output
-  href: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html#Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass_Output
-  name: Output
-  nameWithType: FullScreenRenderPass.Output
-  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Output
-- uid: Veldrid.OutputDescription
-  commentId: T:Veldrid.OutputDescription
-  parent: Veldrid
-  isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs
-  name: OutputDescription
-  nameWithType: OutputDescription
-  fullName: Veldrid.OutputDescription
-- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Effect*
-  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Effect
-  href: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html#Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass_Effect
-  name: Effect
-  nameWithType: FullScreenRenderPass.Effect
-  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Effect
-- uid: Bliss.CSharp.Effects.Effect
-  commentId: T:Bliss.CSharp.Effects.Effect
-  parent: Bliss.CSharp.Effects
-  href: Bliss.CSharp.Effects.Effect.html
-  name: Effect
-  nameWithType: Effect
-  fullName: Bliss.CSharp.Effects.Effect
-- uid: Bliss.CSharp.Effects
-  commentId: N:Bliss.CSharp.Effects
-  href: Bliss.html
-  name: Bliss.CSharp.Effects
-  nameWithType: Bliss.CSharp.Effects
-  fullName: Bliss.CSharp.Effects
-  spec.csharp:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Effects
-    name: Effects
-    href: Bliss.CSharp.Effects.html
-  spec.vb:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Effects
-    name: Effects
-    href: Bliss.CSharp.Effects.html
 - uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
   commentId: T:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
   href: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html
   name: FullScreenRenderPass
   nameWithType: FullScreenRenderPass
   fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
-- uid: Bliss.CSharp.GlobalResource.FullScreenRenderPassEffect
-  commentId: P:Bliss.CSharp.GlobalResource.FullScreenRenderPassEffect
-  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_FullScreenRenderPassEffect
-  name: FullScreenRenderPassEffect
-  nameWithType: GlobalResource.FullScreenRenderPassEffect
-  fullName: Bliss.CSharp.GlobalResource.FullScreenRenderPassEffect
 - uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor
-  href: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html#Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass__ctor_Veldrid_GraphicsDevice_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_
+  href: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html#Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass__ctor_Veldrid_GraphicsDevice_
   name: FullScreenRenderPass
   nameWithType: FullScreenRenderPass.FullScreenRenderPass
   fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.FullScreenRenderPass
@@ -725,7 +598,7 @@ references:
   name.vb: New
 - uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw
-  href: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html#Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass_Draw_Veldrid_CommandList_Bliss_CSharp_Textures_RenderTexture2D_Veldrid_Sampler_
+  href: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html#Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass_Draw_Veldrid_CommandList_Bliss_CSharp_Textures_RenderTexture2D_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_Veldrid_Sampler_
   name: Draw
   nameWithType: FullScreenRenderPass.Draw
   fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw
@@ -744,6 +617,21 @@ references:
   name: RenderTexture2D
   nameWithType: RenderTexture2D
   fullName: Bliss.CSharp.Textures.RenderTexture2D
+- uid: Veldrid.OutputDescription
+  commentId: T:Veldrid.OutputDescription
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs
+  name: OutputDescription
+  nameWithType: OutputDescription
+  fullName: Veldrid.OutputDescription
+- uid: Bliss.CSharp.Effects.Effect
+  commentId: T:Bliss.CSharp.Effects.Effect
+  parent: Bliss.CSharp.Effects
+  href: Bliss.CSharp.Effects.Effect.html
+  name: Effect
+  nameWithType: Effect
+  fullName: Bliss.CSharp.Effects.Effect
 - uid: Veldrid.Sampler
   commentId: T:Veldrid.Sampler
   parent: Veldrid
@@ -782,6 +670,36 @@ references:
   - uid: Bliss.CSharp.Textures
     name: Textures
     href: Bliss.CSharp.Textures.html
+- uid: Bliss.CSharp.Effects
+  commentId: N:Bliss.CSharp.Effects
+  href: Bliss.html
+  name: Bliss.CSharp.Effects
+  nameWithType: Bliss.CSharp.Effects
+  fullName: Bliss.CSharp.Effects
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Effects
+    name: Effects
+    href: Bliss.CSharp.Effects.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Effects
+    name: Effects
+    href: Bliss.CSharp.Effects.html
 - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
   commentId: M:Bliss.CSharp.Disposable.Dispose(System.Boolean)
   parent: Bliss.CSharp.Disposable

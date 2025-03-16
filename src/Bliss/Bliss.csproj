@@ -14,7 +14,7 @@
     <PropertyGroup>
         <Title>Bliss</Title>
         <Authors>MrScautHD</Authors>
-        <Version>1.3.3</Version>
+        <Version>1.3.4</Version>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <NoWarn>$(NoWarn);1591</NoWarn>

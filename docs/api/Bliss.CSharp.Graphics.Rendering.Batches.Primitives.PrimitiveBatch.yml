@@ -6,7 +6,7 @@ items:
   parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
   children:
   - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Windowing.IWindow,Veldrid.OutputDescription,System.UInt32)
-  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
   - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Capacity
   - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Dispose(System.Boolean)
   - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawCallCount
@@ -219,7 +219,7 @@ items:
   summary: >-
     Gets the number of draw calls made during the current batch rendering session.
 
-    This count is reset to zero each time <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList%2cSystem.Nullable%7bSystem.Numerics.Matrix4x4%7d%2cSystem.Nullable%7bSystem.Numerics.Matrix4x4%7d)" data-throw-if-not-resolved="false"></xref> is called and increments with each call to <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Flush" data-throw-if-not-resolved="false"></xref>.
+    This count is reset to zero each time <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList%2cVeldrid.OutputDescription%2cBliss.CSharp.Effects.Effect%2cBliss.CSharp.Graphics.BlendState%2cSystem.Nullable%7bSystem.Numerics.Matrix4x4%7d%2cSystem.Nullable%7bSystem.Numerics.Matrix4x4%7d)" data-throw-if-not-resolved="false"></xref> is called and increments with each call to <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Flush" data-throw-if-not-resolved="false"></xref>.
   example: []
   syntax:
     content: public int DrawCallCount { get; }
@@ -272,16 +272,16 @@ items:
   nameWithType.vb: PrimitiveBatch.New(GraphicsDevice, IWindow, OutputDescription, UInteger)
   fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.New(Veldrid.GraphicsDevice, Bliss.CSharp.Windowing.IWindow, Veldrid.OutputDescription, UInteger)
   name.vb: New(GraphicsDevice, IWindow, OutputDescription, UInteger)
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
-  id: Begin(Veldrid.CommandList,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
+  id: Begin(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
   parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
   langs:
   - csharp
   - vb
-  name: Begin(CommandList, Matrix4x4?, Matrix4x4?)
-  nameWithType: PrimitiveBatch.Begin(CommandList, Matrix4x4?, Matrix4x4?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList, System.Numerics.Matrix4x4?, System.Numerics.Matrix4x4?)
+  name: Begin(CommandList, OutputDescription, Effect?, BlendState?, Matrix4x4?, Matrix4x4?)
+  nameWithType: PrimitiveBatch.Begin(CommandList, OutputDescription, Effect?, BlendState?, Matrix4x4?, Matrix4x4?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList, Veldrid.OutputDescription, Bliss.CSharp.Effects.Effect?, Bliss.CSharp.Graphics.BlendState?, System.Numerics.Matrix4x4?, System.Numerics.Matrix4x4?)
   type: Method
   source:
     remote:
@@ -290,30 +290,42 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Begin
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 149
+    startLine: 133
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
-  summary: Begins a new batch of primitive drawing operations.
+  summary: Begins a new batch of primitive drawing operations with specified rendering configurations.
   example: []
   syntax:
-    content: public void Begin(CommandList commandList, Matrix4x4? projection = null, Matrix4x4? view = null)
+    content: public void Begin(CommandList commandList, OutputDescription output, Effect? effect = null, BlendState? blendState = null, Matrix4x4? projection = null, Matrix4x4? view = null)
     parameters:
     - id: commandList
       type: Veldrid.CommandList
       description: The command list to record drawing commands.
+    - id: output
+      type: Veldrid.OutputDescription
+      description: The output description defining the render target configuration.
+    - id: effect
+      type: Bliss.CSharp.Effects.Effect
+      description: Optional. The effect to apply to the rendering. If null, no custom effect is used.
+    - id: blendState
+      type: Bliss.CSharp.Graphics.BlendState
+      description: Optional. The blend state to use for rendering. If null, the default blend state is applied.
     - id: projection
       type: System.Nullable{System.Numerics.Matrix4x4}
-      description: Optional projection transformation matrix. If null, defaults to an orthographic projection matrix.
+      description: Optional. The projection transformation matrix. If null, an orthographic projection matrix is used.
     - id: view
       type: System.Nullable{System.Numerics.Matrix4x4}
-      description: Optional view transformation matrix. If null, defaults to the identity matrix.
-    content.vb: Public Sub Begin(commandList As CommandList, projection As Matrix4x4? = Nothing, view As Matrix4x4? = Nothing)
+      description: Optional. The view transformation matrix. If null, the identity matrix is applied.
+    content.vb: Public Sub Begin(commandList As CommandList, output As OutputDescription, effect As Effect = Nothing, blendState As BlendState = Nothing, projection As Matrix4x4? = Nothing, view As Matrix4x4? = Nothing)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin*
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
     description: Thrown when the method is called before the previous batch is ended.
+  nameWithType.vb: PrimitiveBatch.Begin(CommandList, OutputDescription, Effect, BlendState, Matrix4x4?, Matrix4x4?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList, Veldrid.OutputDescription, Bliss.CSharp.Effects.Effect, Bliss.CSharp.Graphics.BlendState, System.Numerics.Matrix4x4?, System.Numerics.Matrix4x4?)
+  name.vb: Begin(CommandList, OutputDescription, Effect, BlendState, Matrix4x4?, Matrix4x4?)
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.End
   commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.End
   id: End
@@ -332,7 +344,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: End
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 170
+    startLine: 172
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -364,7 +376,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawLine
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 186
+    startLine: 188
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -408,7 +420,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawEmptyRectangle
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 202
+    startLine: 204
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -455,7 +467,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawFilledRectangle
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 239
+    startLine: 241
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -499,7 +511,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawEmptyCircleSector
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 286
+    startLine: 288
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -552,7 +564,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawFilledCircleSector
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 328
+    startLine: 330
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -602,7 +614,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawEmptyCircle
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 375
+    startLine: 377
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -649,7 +661,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawFilledCircle
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 421
+    startLine: 423
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -693,7 +705,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawEmptyRing
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 463
+    startLine: 465
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -743,7 +755,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawFilledRing
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 534
+    startLine: 536
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -790,7 +802,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawEmptyEllipse
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 603
+    startLine: 605
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -837,7 +849,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawFilledEllipse
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 650
+    startLine: 652
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -881,7 +893,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawEmptyTriangle
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 697
+    startLine: 699
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -928,7 +940,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawFilledTriangle
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 712
+    startLine: 714
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -969,7 +981,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 796
+    startLine: 803
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -1473,22 +1485,38 @@ references:
   nameWithType.vb: UInteger
   fullName.vb: UInteger
   name.vb: UInteger
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
   isExternal: true
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Begin_Veldrid_CommandList_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__
-  name: Begin(CommandList, Matrix4x4?, Matrix4x4?)
-  nameWithType: PrimitiveBatch.Begin(CommandList, Matrix4x4?, Matrix4x4?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList, System.Numerics.Matrix4x4?, System.Numerics.Matrix4x4?)
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_Bliss_CSharp_Graphics_BlendState_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__
+  name: Begin(CommandList, OutputDescription, Effect, BlendState, Matrix4x4?, Matrix4x4?)
+  nameWithType: PrimitiveBatch.Begin(CommandList, OutputDescription, Effect, BlendState, Matrix4x4?, Matrix4x4?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList, Veldrid.OutputDescription, Bliss.CSharp.Effects.Effect, Bliss.CSharp.Graphics.BlendState, System.Numerics.Matrix4x4?, System.Numerics.Matrix4x4?)
   spec.csharp:
-  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
     name: Begin
-    href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Begin_Veldrid_CommandList_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__
+    href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_Bliss_CSharp_Graphics_BlendState_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__
   - name: (
   - uid: Veldrid.CommandList
     name: CommandList
     isExternal: true
     href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
+  - name: ','
+  - name: " "
+  - uid: Veldrid.OutputDescription
+    name: OutputDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs
+  - name: ','
+  - name: " "
+  - uid: Bliss.CSharp.Effects.Effect
+    name: Effect
+    href: Bliss.CSharp.Effects.Effect.html
+  - name: ','
+  - name: " "
+  - uid: Bliss.CSharp.Graphics.BlendState
+    name: BlendState
+    href: Bliss.CSharp.Graphics.BlendState.html
   - name: ','
   - name: " "
   - uid: System.Numerics.Matrix4x4
@@ -1505,14 +1533,30 @@ references:
   - name: '?'
   - name: )
   spec.vb:
-  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
     name: Begin
-    href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Begin_Veldrid_CommandList_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__
+    href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_Bliss_CSharp_Graphics_BlendState_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__
   - name: (
   - uid: Veldrid.CommandList
     name: CommandList
     isExternal: true
     href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
+  - name: ','
+  - name: " "
+  - uid: Veldrid.OutputDescription
+    name: OutputDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs
+  - name: ','
+  - name: " "
+  - uid: Bliss.CSharp.Effects.Effect
+    name: Effect
+    href: Bliss.CSharp.Effects.Effect.html
+  - name: ','
+  - name: " "
+  - uid: Bliss.CSharp.Graphics.BlendState
+    name: BlendState
+    href: Bliss.CSharp.Graphics.BlendState.html
   - name: ','
   - name: " "
   - uid: System.Numerics.Matrix4x4
@@ -1579,7 +1623,7 @@ references:
   fullName: System.Exception
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Begin_Veldrid_CommandList_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_Bliss_CSharp_Graphics_BlendState_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__
   name: Begin
   nameWithType: PrimitiveBatch.Begin
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin
@@ -1591,6 +1635,20 @@ references:
   name: CommandList
   nameWithType: CommandList
   fullName: Veldrid.CommandList
+- uid: Bliss.CSharp.Effects.Effect
+  commentId: T:Bliss.CSharp.Effects.Effect
+  parent: Bliss.CSharp.Effects
+  href: Bliss.CSharp.Effects.Effect.html
+  name: Effect
+  nameWithType: Effect
+  fullName: Bliss.CSharp.Effects.Effect
+- uid: Bliss.CSharp.Graphics.BlendState
+  commentId: T:Bliss.CSharp.Graphics.BlendState
+  parent: Bliss.CSharp.Graphics
+  href: Bliss.CSharp.Graphics.BlendState.html
+  name: BlendState
+  nameWithType: BlendState
+  fullName: Bliss.CSharp.Graphics.BlendState
 - uid: System.Nullable{System.Numerics.Matrix4x4}
   commentId: T:System.Nullable{System.Numerics.Matrix4x4}
   parent: System
@@ -1611,6 +1669,66 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
   - name: '?'
+- uid: Bliss.CSharp.Effects
+  commentId: N:Bliss.CSharp.Effects
+  href: Bliss.html
+  name: Bliss.CSharp.Effects
+  nameWithType: Bliss.CSharp.Effects
+  fullName: Bliss.CSharp.Effects
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Effects
+    name: Effects
+    href: Bliss.CSharp.Effects.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Effects
+    name: Effects
+    href: Bliss.CSharp.Effects.html
+- uid: Bliss.CSharp.Graphics
+  commentId: N:Bliss.CSharp.Graphics
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics
+  nameWithType: Bliss.CSharp.Graphics
+  fullName: Bliss.CSharp.Graphics
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
 - uid: System.Nullable`1
   commentId: T:System.Nullable`1
   isExternal: true

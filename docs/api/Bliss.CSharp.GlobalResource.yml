@@ -8,16 +8,16 @@ items:
   - Bliss.CSharp.GlobalResource.BufferLayouts
   - Bliss.CSharp.GlobalResource.CreateBufferLayout(System.String,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType,Veldrid.ShaderStages)
   - Bliss.CSharp.GlobalResource.CreateTextureLayout(System.String)
+  - Bliss.CSharp.GlobalResource.DefaultFullScreenRenderPassEffect
+  - Bliss.CSharp.GlobalResource.DefaultImmediateRendererEffect
   - Bliss.CSharp.GlobalResource.DefaultImmediateRendererTexture
   - Bliss.CSharp.GlobalResource.DefaultModelEffect
   - Bliss.CSharp.GlobalResource.DefaultModelTexture
+  - Bliss.CSharp.GlobalResource.DefaultPrimitiveEffect
   - Bliss.CSharp.GlobalResource.DefaultSpriteEffect
   - Bliss.CSharp.GlobalResource.Destroy
-  - Bliss.CSharp.GlobalResource.FullScreenRenderPassEffect
   - Bliss.CSharp.GlobalResource.GraphicsDevice
-  - Bliss.CSharp.GlobalResource.ImmediateRendererEffect
   - Bliss.CSharp.GlobalResource.Init(Veldrid.GraphicsDevice)
-  - Bliss.CSharp.GlobalResource.PrimitiveEffect
   - Bliss.CSharp.GlobalResource.TextureLayouts
   langs:
   - csharp
@@ -174,23 +174,23 @@ items:
       type: Bliss.CSharp.Effects.Effect
     content.vb: Public Shared Property DefaultSpriteEffect As Effect
   overload: Bliss.CSharp.GlobalResource.DefaultSpriteEffect*
-- uid: Bliss.CSharp.GlobalResource.PrimitiveEffect
-  commentId: P:Bliss.CSharp.GlobalResource.PrimitiveEffect
-  id: PrimitiveEffect
+- uid: Bliss.CSharp.GlobalResource.DefaultPrimitiveEffect
+  commentId: P:Bliss.CSharp.GlobalResource.DefaultPrimitiveEffect
+  id: DefaultPrimitiveEffect
   parent: Bliss.CSharp.GlobalResource
   langs:
   - csharp
   - vb
-  name: PrimitiveEffect
-  nameWithType: GlobalResource.PrimitiveEffect
-  fullName: Bliss.CSharp.GlobalResource.PrimitiveEffect
+  name: DefaultPrimitiveEffect
+  nameWithType: GlobalResource.DefaultPrimitiveEffect
+  fullName: Bliss.CSharp.GlobalResource.DefaultPrimitiveEffect
   type: Property
   source:
     remote:
       path: src/Bliss/CSharp/GlobalResource.cs
       branch: main
       repo: https://github.com/MrScautHD/Bliss.git
-    id: PrimitiveEffect
+    id: DefaultPrimitiveEffect
     path: ../src/Bliss/CSharp/GlobalResource.cs
     startLine: 37
   assemblies:
@@ -199,29 +199,29 @@ items:
   summary: Gets the <xref href="Bliss.CSharp.Effects.Effect" data-throw-if-not-resolved="false"></xref> used for rendering primitive shapes.
   example: []
   syntax:
-    content: public static Effect PrimitiveEffect { get; }
+    content: public static Effect DefaultPrimitiveEffect { get; }
     parameters: []
     return:
       type: Bliss.CSharp.Effects.Effect
-    content.vb: Public Shared Property PrimitiveEffect As Effect
-  overload: Bliss.CSharp.GlobalResource.PrimitiveEffect*
-- uid: Bliss.CSharp.GlobalResource.FullScreenRenderPassEffect
-  commentId: P:Bliss.CSharp.GlobalResource.FullScreenRenderPassEffect
-  id: FullScreenRenderPassEffect
+    content.vb: Public Shared Property DefaultPrimitiveEffect As Effect
+  overload: Bliss.CSharp.GlobalResource.DefaultPrimitiveEffect*
+- uid: Bliss.CSharp.GlobalResource.DefaultFullScreenRenderPassEffect
+  commentId: P:Bliss.CSharp.GlobalResource.DefaultFullScreenRenderPassEffect
+  id: DefaultFullScreenRenderPassEffect
   parent: Bliss.CSharp.GlobalResource
   langs:
   - csharp
   - vb
-  name: FullScreenRenderPassEffect
-  nameWithType: GlobalResource.FullScreenRenderPassEffect
-  fullName: Bliss.CSharp.GlobalResource.FullScreenRenderPassEffect
+  name: DefaultFullScreenRenderPassEffect
+  nameWithType: GlobalResource.DefaultFullScreenRenderPassEffect
+  fullName: Bliss.CSharp.GlobalResource.DefaultFullScreenRenderPassEffect
   type: Property
   source:
     remote:
       path: src/Bliss/CSharp/GlobalResource.cs
       branch: main
       repo: https://github.com/MrScautHD/Bliss.git
-    id: FullScreenRenderPassEffect
+    id: DefaultFullScreenRenderPassEffect
     path: ../src/Bliss/CSharp/GlobalResource.cs
     startLine: 42
   assemblies:
@@ -230,29 +230,29 @@ items:
   summary: Gets the default <xref href="Bliss.CSharp.Effects.Effect" data-throw-if-not-resolved="false"></xref> used for full-screen render passes.
   example: []
   syntax:
-    content: public static Effect FullScreenRenderPassEffect { get; }
+    content: public static Effect DefaultFullScreenRenderPassEffect { get; }
     parameters: []
     return:
       type: Bliss.CSharp.Effects.Effect
-    content.vb: Public Shared Property FullScreenRenderPassEffect As Effect
-  overload: Bliss.CSharp.GlobalResource.FullScreenRenderPassEffect*
-- uid: Bliss.CSharp.GlobalResource.ImmediateRendererEffect
-  commentId: P:Bliss.CSharp.GlobalResource.ImmediateRendererEffect
-  id: ImmediateRendererEffect
+    content.vb: Public Shared Property DefaultFullScreenRenderPassEffect As Effect
+  overload: Bliss.CSharp.GlobalResource.DefaultFullScreenRenderPassEffect*
+- uid: Bliss.CSharp.GlobalResource.DefaultImmediateRendererEffect
+  commentId: P:Bliss.CSharp.GlobalResource.DefaultImmediateRendererEffect
+  id: DefaultImmediateRendererEffect
   parent: Bliss.CSharp.GlobalResource
   langs:
   - csharp
   - vb
-  name: ImmediateRendererEffect
-  nameWithType: GlobalResource.ImmediateRendererEffect
-  fullName: Bliss.CSharp.GlobalResource.ImmediateRendererEffect
+  name: DefaultImmediateRendererEffect
+  nameWithType: GlobalResource.DefaultImmediateRendererEffect
+  fullName: Bliss.CSharp.GlobalResource.DefaultImmediateRendererEffect
   type: Property
   source:
     remote:
       path: src/Bliss/CSharp/GlobalResource.cs
       branch: main
       repo: https://github.com/MrScautHD/Bliss.git
-    id: ImmediateRendererEffect
+    id: DefaultImmediateRendererEffect
     path: ../src/Bliss/CSharp/GlobalResource.cs
     startLine: 47
   assemblies:
@@ -261,12 +261,12 @@ items:
   summary: Gets the default <xref href="Bliss.CSharp.Effects.Effect" data-throw-if-not-resolved="false"></xref> used for immediate mode rendering operations.
   example: []
   syntax:
-    content: public static Effect ImmediateRendererEffect { get; }
+    content: public static Effect DefaultImmediateRendererEffect { get; }
     parameters: []
     return:
       type: Bliss.CSharp.Effects.Effect
-    content.vb: Public Shared Property ImmediateRendererEffect As Effect
-  overload: Bliss.CSharp.GlobalResource.ImmediateRendererEffect*
+    content.vb: Public Shared Property DefaultImmediateRendererEffect As Effect
+  overload: Bliss.CSharp.GlobalResource.DefaultImmediateRendererEffect*
 - uid: Bliss.CSharp.GlobalResource.DefaultModelEffect
   commentId: P:Bliss.CSharp.GlobalResource.DefaultModelEffect
   id: DefaultModelEffect
@@ -968,24 +968,24 @@ references:
   - uid: Bliss.CSharp.Effects
     name: Effects
     href: Bliss.CSharp.Effects.html
-- uid: Bliss.CSharp.GlobalResource.PrimitiveEffect*
-  commentId: Overload:Bliss.CSharp.GlobalResource.PrimitiveEffect
-  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_PrimitiveEffect
-  name: PrimitiveEffect
-  nameWithType: GlobalResource.PrimitiveEffect
-  fullName: Bliss.CSharp.GlobalResource.PrimitiveEffect
-- uid: Bliss.CSharp.GlobalResource.FullScreenRenderPassEffect*
-  commentId: Overload:Bliss.CSharp.GlobalResource.FullScreenRenderPassEffect
-  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_FullScreenRenderPassEffect
-  name: FullScreenRenderPassEffect
-  nameWithType: GlobalResource.FullScreenRenderPassEffect
-  fullName: Bliss.CSharp.GlobalResource.FullScreenRenderPassEffect
-- uid: Bliss.CSharp.GlobalResource.ImmediateRendererEffect*
-  commentId: Overload:Bliss.CSharp.GlobalResource.ImmediateRendererEffect
-  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_ImmediateRendererEffect
-  name: ImmediateRendererEffect
-  nameWithType: GlobalResource.ImmediateRendererEffect
-  fullName: Bliss.CSharp.GlobalResource.ImmediateRendererEffect
+- uid: Bliss.CSharp.GlobalResource.DefaultPrimitiveEffect*
+  commentId: Overload:Bliss.CSharp.GlobalResource.DefaultPrimitiveEffect
+  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_DefaultPrimitiveEffect
+  name: DefaultPrimitiveEffect
+  nameWithType: GlobalResource.DefaultPrimitiveEffect
+  fullName: Bliss.CSharp.GlobalResource.DefaultPrimitiveEffect
+- uid: Bliss.CSharp.GlobalResource.DefaultFullScreenRenderPassEffect*
+  commentId: Overload:Bliss.CSharp.GlobalResource.DefaultFullScreenRenderPassEffect
+  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_DefaultFullScreenRenderPassEffect
+  name: DefaultFullScreenRenderPassEffect
+  nameWithType: GlobalResource.DefaultFullScreenRenderPassEffect
+  fullName: Bliss.CSharp.GlobalResource.DefaultFullScreenRenderPassEffect
+- uid: Bliss.CSharp.GlobalResource.DefaultImmediateRendererEffect*
+  commentId: Overload:Bliss.CSharp.GlobalResource.DefaultImmediateRendererEffect
+  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_DefaultImmediateRendererEffect
+  name: DefaultImmediateRendererEffect
+  nameWithType: GlobalResource.DefaultImmediateRendererEffect
+  fullName: Bliss.CSharp.GlobalResource.DefaultImmediateRendererEffect
 - uid: Bliss.CSharp.GlobalResource.DefaultModelEffect*
   commentId: Overload:Bliss.CSharp.GlobalResource.DefaultModelEffect
   href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_DefaultModelEffect

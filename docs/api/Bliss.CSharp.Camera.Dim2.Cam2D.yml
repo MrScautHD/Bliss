@@ -88,6 +88,64 @@ items:
       type: Bliss.CSharp.Camera.Dim2.Cam2D
     content.vb: Public Shared Property ActiveCamera As Cam2D
   overload: Bliss.CSharp.Camera.Dim2.Cam2D.ActiveCamera*
+- uid: Bliss.CSharp.Camera.Dim2.Cam2D.Position
+  commentId: F:Bliss.CSharp.Camera.Dim2.Cam2D.Position
+  id: Position
+  parent: Bliss.CSharp.Camera.Dim2.Cam2D
+  langs:
+  - csharp
+  - vb
+  name: Position
+  nameWithType: Cam2D.Position
+  fullName: Bliss.CSharp.Camera.Dim2.Cam2D.Position
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Position
+    path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
+    startLine: 16
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Camera.Dim2
+  summary: Gets or sets the position of the camera in 2D space.
+  example: []
+  syntax:
+    content: public Vector2 Position
+    return:
+      type: System.Numerics.Vector2
+    content.vb: Public Position As Vector2
+- uid: Bliss.CSharp.Camera.Dim2.Cam2D.Target
+  commentId: F:Bliss.CSharp.Camera.Dim2.Cam2D.Target
+  id: Target
+  parent: Bliss.CSharp.Camera.Dim2.Cam2D
+  langs:
+  - csharp
+  - vb
+  name: Target
+  nameWithType: Cam2D.Target
+  fullName: Bliss.CSharp.Camera.Dim2.Cam2D.Target
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Target
+    path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
+    startLine: 21
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Camera.Dim2
+  summary: Gets or sets the target position of the camera.
+  example: []
+  syntax:
+    content: public Vector2 Target
+    return:
+      type: System.Numerics.Vector2
+    content.vb: Public Target As Vector2
 - uid: Bliss.CSharp.Camera.Dim2.Cam2D.Size
   commentId: P:Bliss.CSharp.Camera.Dim2.Cam2D.Size
   id: Size
@@ -106,7 +164,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Size
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 16
+    startLine: 26
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -137,7 +195,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Mode
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 21
+    startLine: 31
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -148,64 +206,6 @@ items:
     return:
       type: Bliss.CSharp.Camera.Dim2.CameraFollowMode
     content.vb: Public Mode As CameraFollowMode
-- uid: Bliss.CSharp.Camera.Dim2.Cam2D.Position
-  commentId: F:Bliss.CSharp.Camera.Dim2.Cam2D.Position
-  id: Position
-  parent: Bliss.CSharp.Camera.Dim2.Cam2D
-  langs:
-  - csharp
-  - vb
-  name: Position
-  nameWithType: Cam2D.Position
-  fullName: Bliss.CSharp.Camera.Dim2.Cam2D.Position
-  type: Field
-  source:
-    remote:
-      path: src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: Position
-    path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 26
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Camera.Dim2
-  summary: Gets or sets the position of the camera in 2D space.
-  example: []
-  syntax:
-    content: public Vector2 Position
-    return:
-      type: System.Numerics.Vector2
-    content.vb: Public Position As Vector2
-- uid: Bliss.CSharp.Camera.Dim2.Cam2D.Target
-  commentId: F:Bliss.CSharp.Camera.Dim2.Cam2D.Target
-  id: Target
-  parent: Bliss.CSharp.Camera.Dim2.Cam2D
-  langs:
-  - csharp
-  - vb
-  name: Target
-  nameWithType: Cam2D.Target
-  fullName: Bliss.CSharp.Camera.Dim2.Cam2D.Target
-  type: Field
-  source:
-    remote:
-      path: src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: Target
-    path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 31
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Camera.Dim2
-  summary: Gets or sets the target position of the camera.
-  example: []
-  syntax:
-    content: public Vector2 Target
-    return:
-      type: System.Numerics.Vector2
-    content.vb: Public Target As Vector2
 - uid: Bliss.CSharp.Camera.Dim2.Cam2D.Offset
   commentId: F:Bliss.CSharp.Camera.Dim2.Cam2D.Offset
   id: Offset
@@ -1001,6 +1001,41 @@ references:
   name: Cam2D
   nameWithType: Cam2D
   fullName: Bliss.CSharp.Camera.Dim2.Cam2D
+- uid: System.Numerics.Vector2
+  commentId: T:System.Numerics.Vector2
+  parent: System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.vector2
+  name: Vector2
+  nameWithType: Vector2
+  fullName: System.Numerics.Vector2
+- uid: System.Numerics
+  commentId: N:System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Numerics
+  nameWithType: System.Numerics
+  fullName: System.Numerics
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
 - uid: Bliss.CSharp.Camera.Dim2.Cam2D.Size*
   commentId: Overload:Bliss.CSharp.Camera.Dim2.Cam2D.Size
   href: Bliss.CSharp.Camera.Dim2.Cam2D.html#Bliss_CSharp_Camera_Dim2_Cam2D_Size
@@ -1051,41 +1086,6 @@ references:
   name: CameraFollowMode
   nameWithType: CameraFollowMode
   fullName: Bliss.CSharp.Camera.Dim2.CameraFollowMode
-- uid: System.Numerics.Vector2
-  commentId: T:System.Numerics.Vector2
-  parent: System.Numerics
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.numerics.vector2
-  name: Vector2
-  nameWithType: Vector2
-  fullName: System.Numerics.Vector2
-- uid: System.Numerics
-  commentId: N:System.Numerics
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System.Numerics
-  nameWithType: System.Numerics
-  fullName: System.Numerics
-  spec.csharp:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Numerics
-    name: Numerics
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.numerics
-  spec.vb:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Numerics
-    name: Numerics
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.numerics
 - uid: System.Single
   commentId: T:System.Single
   parent: System

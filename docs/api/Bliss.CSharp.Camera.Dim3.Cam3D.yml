@@ -529,7 +529,7 @@ items:
   summary: Initializes a new instance of the <xref href="Bliss.CSharp.Camera.Dim3.Cam3D" data-throw-if-not-resolved="false"></xref> class.
   example: []
   syntax:
-    content: public Cam3D(Vector3 position, Vector3 target, float aspectRatio, Vector3? up = null, ProjectionType projectionType = ProjectionType.Perspective, CameraMode mode = CameraMode.Free, float fov = 70, float nearPlane = 0.1, float farPlane = 1000)
+    content: public Cam3D(Vector3 position, Vector3 target, float aspectRatio, Vector3? up = null, ProjectionType projectionType = ProjectionType.Perspective, CameraMode mode = CameraMode.Free, float fov = 70, float nearPlane = 0.01, float farPlane = 10000)
     parameters:
     - id: position
       type: System.Numerics.Vector3
@@ -558,7 +558,7 @@ items:
     - id: farPlane
       type: System.Single
       description: The far clipping plane. Must be positive and greater than <code class="paramref">nearPlane</code>.
-    content.vb: Public Sub New(position As Vector3, target As Vector3, aspectRatio As Single, up As Vector3? = Nothing, projectionType As ProjectionType = ProjectionType.Perspective, mode As CameraMode = CameraMode.Free, fov As Single = 70, nearPlane As Single = 0.1, farPlane As Single = 1000)
+    content.vb: Public Sub New(position As Vector3, target As Vector3, aspectRatio As Single, up As Vector3? = Nothing, projectionType As ProjectionType = ProjectionType.Perspective, mode As CameraMode = CameraMode.Free, fov As Single = 70, nearPlane As Single = 0.01, farPlane As Single = 10000)
   overload: Bliss.CSharp.Camera.Dim3.Cam3D.#ctor*
   nameWithType.vb: Cam3D.New(Vector3, Vector3, Single, Vector3?, ProjectionType, CameraMode, Single, Single, Single)
   fullName.vb: Bliss.CSharp.Camera.Dim3.Cam3D.New(System.Numerics.Vector3, System.Numerics.Vector3, Single, System.Numerics.Vector3?, Bliss.CSharp.Camera.Dim3.ProjectionType, Bliss.CSharp.Camera.Dim3.CameraMode, Single, Single, Single)

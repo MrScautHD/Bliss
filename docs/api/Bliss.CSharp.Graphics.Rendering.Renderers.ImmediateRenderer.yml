@@ -5,8 +5,8 @@ items:
   id: ImmediateRenderer
   parent: Bliss.CSharp.Graphics.Rendering.Renderers
   children:
-  - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,System.UInt32)
-  - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Begin(Veldrid.CommandList,Bliss.CSharp.Graphics.BlendState)
+  - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.#ctor(Veldrid.GraphicsDevice,System.UInt32)
+  - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState)
   - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Capacity
   - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Dispose(System.Boolean)
   - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawBillboard(System.Numerics.Vector3,System.Nullable{System.Numerics.Vector2},System.Nullable{Bliss.CSharp.Colors.Color})
@@ -30,13 +30,11 @@ items:
   - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawTorus(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
   - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawTorusWires(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
   - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawVertices(Bliss.CSharp.Transformations.Transform,System.Collections.Generic.List{Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D},System.Collections.Generic.List{System.UInt32},Veldrid.PrimitiveTopology)
-  - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Effect
   - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.End
   - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentSampler
   - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentSourceRec
   - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentTexture
   - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GraphicsDevice
-  - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Output
   - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.SetTexture(Bliss.CSharp.Textures.Texture2D,Veldrid.Sampler,System.Nullable{Bliss.CSharp.Transformations.Rectangle})
   langs:
   - csharp
@@ -106,68 +104,6 @@ items:
       type: Veldrid.GraphicsDevice
     content.vb: Public Property GraphicsDevice As GraphicsDevice
   overload: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GraphicsDevice*
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Output
-  commentId: P:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Output
-  id: Output
-  parent: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer
-  langs:
-  - csharp
-  - vb
-  name: Output
-  nameWithType: ImmediateRenderer.Output
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Output
-  type: Property
-  source:
-    remote:
-      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: Output
-    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 26
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Graphics.Rendering.Renderers
-  summary: Gets the output description used for rendering.
-  example: []
-  syntax:
-    content: public OutputDescription Output { get; }
-    parameters: []
-    return:
-      type: Veldrid.OutputDescription
-    content.vb: Public Property Output As OutputDescription
-  overload: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Output*
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Effect
-  commentId: P:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Effect
-  id: Effect
-  parent: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer
-  langs:
-  - csharp
-  - vb
-  name: Effect
-  nameWithType: ImmediateRenderer.Effect
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Effect
-  type: Property
-  source:
-    remote:
-      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: Effect
-    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 31
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Graphics.Rendering.Renderers
-  summary: Gets the effect (shader) used for rendering.
-  example: []
-  syntax:
-    content: public Effect Effect { get; }
-    parameters: []
-    return:
-      type: Bliss.CSharp.Effects.Effect
-    content.vb: Public Property Effect As Effect
-  overload: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Effect*
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Capacity
   commentId: P:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Capacity
   id: Capacity
@@ -186,7 +122,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Capacity
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 36
+    startLine: 26
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -199,16 +135,16 @@ items:
       type: System.UInt32
     content.vb: Public Property Capacity As UInteger
   overload: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Capacity*
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,System.UInt32)
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,System.UInt32)
-  id: '#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,System.UInt32)'
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.#ctor(Veldrid.GraphicsDevice,System.UInt32)
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.#ctor(Veldrid.GraphicsDevice,System.UInt32)
+  id: '#ctor(Veldrid.GraphicsDevice,System.UInt32)'
   parent: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer
   langs:
   - csharp
   - vb
-  name: ImmediateRenderer(GraphicsDevice, OutputDescription, Effect?, uint)
-  nameWithType: ImmediateRenderer.ImmediateRenderer(GraphicsDevice, OutputDescription, Effect?, uint)
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.ImmediateRenderer(Veldrid.GraphicsDevice, Veldrid.OutputDescription, Bliss.CSharp.Effects.Effect?, uint)
+  name: ImmediateRenderer(GraphicsDevice, uint)
+  nameWithType: ImmediateRenderer.ImmediateRenderer(GraphicsDevice, uint)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.ImmediateRenderer(Veldrid.GraphicsDevice, uint)
   type: Constructor
   source:
     remote:
@@ -217,42 +153,36 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 120
+    startLine: 113
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
   summary: Initializes a new instance of the <xref href="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer" data-throw-if-not-resolved="false"></xref> class with the specified graphics device, output, effect, and capacity.
   example: []
   syntax:
-    content: public ImmediateRenderer(GraphicsDevice graphicsDevice, OutputDescription output, Effect? effect = null, uint capacity = 30720)
+    content: public ImmediateRenderer(GraphicsDevice graphicsDevice, uint capacity = 30720)
     parameters:
     - id: graphicsDevice
       type: Veldrid.GraphicsDevice
       description: The graphics device used for rendering.
-    - id: output
-      type: Veldrid.OutputDescription
-      description: The output description for rendering.
-    - id: effect
-      type: Bliss.CSharp.Effects.Effect
-      description: An optional effect (shader) to use; if null, the default immediate renderer effect is used.
     - id: capacity
       type: System.UInt32
       description: The maximum number of vertices that can be batched. Defaults to 30720.
-    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, output As OutputDescription, effect As Effect = Nothing, capacity As UInteger = 30720)
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, capacity As UInteger = 30720)
   overload: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.#ctor*
-  nameWithType.vb: ImmediateRenderer.New(GraphicsDevice, OutputDescription, Effect, UInteger)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.New(Veldrid.GraphicsDevice, Veldrid.OutputDescription, Bliss.CSharp.Effects.Effect, UInteger)
-  name.vb: New(GraphicsDevice, OutputDescription, Effect, UInteger)
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Begin(Veldrid.CommandList,Bliss.CSharp.Graphics.BlendState)
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Begin(Veldrid.CommandList,Bliss.CSharp.Graphics.BlendState)
-  id: Begin(Veldrid.CommandList,Bliss.CSharp.Graphics.BlendState)
+  nameWithType.vb: ImmediateRenderer.New(GraphicsDevice, UInteger)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.New(Veldrid.GraphicsDevice, UInteger)
+  name.vb: New(GraphicsDevice, UInteger)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState)
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState)
+  id: Begin(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState)
   parent: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer
   langs:
   - csharp
   - vb
-  name: Begin(CommandList, BlendState?)
-  nameWithType: ImmediateRenderer.Begin(CommandList, BlendState?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Begin(Veldrid.CommandList, Bliss.CSharp.Graphics.BlendState?)
+  name: Begin(CommandList, OutputDescription, Effect?, BlendState?)
+  nameWithType: ImmediateRenderer.Begin(CommandList, OutputDescription, Effect?, BlendState?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Begin(Veldrid.CommandList, Veldrid.OutputDescription, Bliss.CSharp.Effects.Effect?, Bliss.CSharp.Graphics.BlendState?)
   type: Method
   source:
     remote:
@@ -261,30 +191,36 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Begin
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 156
+    startLine: 149
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
-  summary: Begins the rendering process by setting up the command list and pipeline state.
+  summary: Begins the rendering process by configuring the command list, output, effect, and blend state for the pipeline.
   example: []
   syntax:
-    content: public void Begin(CommandList commandList, BlendState? blendState = null)
+    content: public void Begin(CommandList commandList, OutputDescription output, Effect? effect = null, BlendState? blendState = null)
     parameters:
     - id: commandList
       type: Veldrid.CommandList
-      description: The command list used for recording rendering commands.
+      description: The command list used to record rendering commands.
+    - id: output
+      type: Veldrid.OutputDescription
+      description: The output description that specifies the rendering target details.
+    - id: effect
+      type: Bliss.CSharp.Effects.Effect
+      description: An optional effect instance; if null, the default immediate renderer effect is used.
     - id: blendState
       type: Bliss.CSharp.Graphics.BlendState
-      description: An optional blend state; if null, the default alpha blend state is used.
-    content.vb: Public Sub Begin(commandList As CommandList, blendState As BlendState = Nothing)
+      description: An optional blend state instance; if null, the default alpha blend state is used.
+    content.vb: Public Sub Begin(commandList As CommandList, output As OutputDescription, effect As Effect = Nothing, blendState As BlendState = Nothing)
   overload: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Begin*
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
-    description: Thrown if the renderer has already begun.
-  nameWithType.vb: ImmediateRenderer.Begin(CommandList, BlendState)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Begin(Veldrid.CommandList, Bliss.CSharp.Graphics.BlendState)
-  name.vb: Begin(CommandList, BlendState)
+    description: Thrown if the rendering process has already been initiated.
+  nameWithType.vb: ImmediateRenderer.Begin(CommandList, OutputDescription, Effect, BlendState)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Begin(Veldrid.CommandList, Veldrid.OutputDescription, Bliss.CSharp.Effects.Effect, Bliss.CSharp.Graphics.BlendState)
+  name.vb: Begin(CommandList, OutputDescription, Effect, BlendState)
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.End
   commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.End
   id: End
@@ -303,7 +239,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: End
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 172
+    startLine: 170
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -335,7 +271,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentTexture
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 184
+    startLine: 182
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -366,7 +302,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentSampler
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 192
+    startLine: 190
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -397,7 +333,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentSourceRec
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 200
+    startLine: 198
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -428,7 +364,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetTexture
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 210
+    startLine: 208
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -469,7 +405,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawCube
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 222
+    startLine: 220
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -507,7 +443,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawCubeWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 316
+    startLine: 314
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -545,7 +481,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawSphere
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 353
+    startLine: 351
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -592,7 +528,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawSphereWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 422
+    startLine: 420
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -639,7 +575,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawHemisphere
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 479
+    startLine: 477
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -686,7 +622,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawHemisphereWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 592
+    startLine: 590
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -733,7 +669,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawCylinder
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 674
+    startLine: 672
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -780,7 +716,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawCylinderWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 778
+    startLine: 776
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -827,7 +763,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawCapsule
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 867
+    startLine: 865
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -874,7 +810,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawCapsuleWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1027
+    startLine: 1025
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -921,7 +857,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawCone
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1171
+    startLine: 1169
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -968,7 +904,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawConeWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1248
+    startLine: 1246
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1015,7 +951,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawTorus
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1318
+    startLine: 1316
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1065,7 +1001,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawTorusWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1393
+    startLine: 1391
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1115,7 +1051,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawKnot
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1452
+    startLine: 1450
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1165,7 +1101,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawKnotWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1541
+    startLine: 1539
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1215,7 +1151,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawGird
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1611
+    startLine: 1609
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1259,7 +1195,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawBoundingBox
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1665
+    startLine: 1663
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1297,7 +1233,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawLine
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1700
+    startLine: 1698
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1335,7 +1271,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawBillboard
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1728
+    startLine: 1726
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1373,7 +1309,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawVertices
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1808
+    startLine: 1806
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1417,7 +1353,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1936
+    startLine: 1930
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1821,12 +1757,60 @@ references:
   name: Veldrid
   nameWithType: Veldrid
   fullName: Veldrid
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Output*
-  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Output
-  href: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_Output
-  name: Output
-  nameWithType: ImmediateRenderer.Output
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Output
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Capacity*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Capacity
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_Capacity
+  name: Capacity
+  nameWithType: ImmediateRenderer.Capacity
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Capacity
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html
+  name: ImmediateRenderer
+  nameWithType: ImmediateRenderer
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.#ctor*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.#ctor
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer__ctor_Veldrid_GraphicsDevice_System_UInt32_
+  name: ImmediateRenderer
+  nameWithType: ImmediateRenderer.ImmediateRenderer
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.ImmediateRenderer
+  nameWithType.vb: ImmediateRenderer.New
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.New
+  name.vb: New
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Begin*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Begin
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_Begin_Veldrid_CommandList_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_Bliss_CSharp_Graphics_BlendState_
+  name: Begin
+  nameWithType: ImmediateRenderer.Begin
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Begin
+- uid: Veldrid.CommandList
+  commentId: T:Veldrid.CommandList
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
+  name: CommandList
+  nameWithType: CommandList
+  fullName: Veldrid.CommandList
 - uid: Veldrid.OutputDescription
   commentId: T:Veldrid.OutputDescription
   parent: Veldrid
@@ -1835,12 +1819,6 @@ references:
   name: OutputDescription
   nameWithType: OutputDescription
   fullName: Veldrid.OutputDescription
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Effect*
-  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Effect
-  href: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_Effect
-  name: Effect
-  nameWithType: ImmediateRenderer.Effect
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Effect
 - uid: Bliss.CSharp.Effects.Effect
   commentId: T:Bliss.CSharp.Effects.Effect
   parent: Bliss.CSharp.Effects
@@ -1848,6 +1826,13 @@ references:
   name: Effect
   nameWithType: Effect
   fullName: Bliss.CSharp.Effects.Effect
+- uid: Bliss.CSharp.Graphics.BlendState
+  commentId: T:Bliss.CSharp.Graphics.BlendState
+  parent: Bliss.CSharp.Graphics
+  href: Bliss.CSharp.Graphics.BlendState.html
+  name: BlendState
+  nameWithType: BlendState
+  fullName: Bliss.CSharp.Graphics.BlendState
 - uid: Bliss.CSharp.Effects
   commentId: N:Bliss.CSharp.Effects
   href: Bliss.html
@@ -1878,67 +1863,6 @@ references:
   - uid: Bliss.CSharp.Effects
     name: Effects
     href: Bliss.CSharp.Effects.html
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Capacity*
-  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Capacity
-  href: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_Capacity
-  name: Capacity
-  nameWithType: ImmediateRenderer.Capacity
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Capacity
-- uid: System.UInt32
-  commentId: T:System.UInt32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.uint32
-  name: uint
-  nameWithType: uint
-  fullName: uint
-  nameWithType.vb: UInteger
-  fullName.vb: UInteger
-  name.vb: UInteger
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer
-  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer
-  href: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html
-  name: ImmediateRenderer
-  nameWithType: ImmediateRenderer
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.#ctor*
-  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.#ctor
-  href: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer__ctor_Veldrid_GraphicsDevice_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_System_UInt32_
-  name: ImmediateRenderer
-  nameWithType: ImmediateRenderer.ImmediateRenderer
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.ImmediateRenderer
-  nameWithType.vb: ImmediateRenderer.New
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.New
-  name.vb: New
-- uid: System.Exception
-  commentId: T:System.Exception
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.exception
-  name: Exception
-  nameWithType: Exception
-  fullName: System.Exception
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Begin*
-  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Begin
-  href: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_Begin_Veldrid_CommandList_Bliss_CSharp_Graphics_BlendState_
-  name: Begin
-  nameWithType: ImmediateRenderer.Begin
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Begin
-- uid: Veldrid.CommandList
-  commentId: T:Veldrid.CommandList
-  parent: Veldrid
-  isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
-  name: CommandList
-  nameWithType: CommandList
-  fullName: Veldrid.CommandList
-- uid: Bliss.CSharp.Graphics.BlendState
-  commentId: T:Bliss.CSharp.Graphics.BlendState
-  parent: Bliss.CSharp.Graphics
-  href: Bliss.CSharp.Graphics.BlendState.html
-  name: BlendState
-  nameWithType: BlendState
-  fullName: Bliss.CSharp.Graphics.BlendState
 - uid: Bliss.CSharp.Graphics
   commentId: N:Bliss.CSharp.Graphics
   href: Bliss.html
