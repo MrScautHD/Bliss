@@ -42,24 +42,9 @@ public class PrimitiveBatch : Disposable {
     public int DrawCallCount { get; private set; }
     
     /// <summary>
-    /// The shader effect used to render graphics.
-    /// </summary>
-    private Effect _effect;
-    
-    /// <summary>
     /// Buffer storing the combined projection and view matrix for rendering.
     /// </summary>
     private SimpleBuffer<Matrix4x4> _projViewBuffer;
-    
-    /// <summary>
-    /// Pipeline configuration used for rendering a list of triangles.
-    /// </summary>
-    private SimplePipeline _pipelineTriangleList;
-    
-    /// <summary>
-    /// Pipeline configuration used for rendering a triangle strip.
-    /// </summary>
-    private SimplePipeline _pipelineTriangleStrip;
     
     /// <summary>
     /// Array of vertices used for rendering 2D primitives.
@@ -69,12 +54,17 @@ public class PrimitiveBatch : Disposable {
     /// <summary>
     /// Temporary array of vertices used during vertex manipulation.
     /// </summary>
-    private PrimitiveVertex2D[] _tempVertices;
+    private List<PrimitiveVertex2D> _tempVertices;
     
     /// <summary>
     /// Buffer that stores vertex data for rendering.
     /// </summary>
     private DeviceBuffer _vertexBuffer;
+
+    /// <summary>
+    /// Stores the description of the graphics pipeline, defining its configuration and behavior.
+    /// </summary>
+    private SimplePipelineDescription _pipelineDescription;
     
     /// <summary>
     /// Indicates whether the batch has begun.
@@ -90,11 +80,21 @@ public class PrimitiveBatch : Disposable {
     /// Tracks the number of vertices in the current batch.
     /// </summary>
     private uint _currentBatchCount;
-    
+
     /// <summary>
-    /// The pipeline used for the current rendering batch.
+    /// Holds the current <see cref="OutputDescription"/> being used by the <see cref="PrimitiveBatch"/> during rendering.
     /// </summary>
-    private SimplePipeline? _currentPipeline;
+    private OutputDescription _currentOutput;
+
+    /// <summary>
+    /// Holds the current rendering effect used by the <see cref="PrimitiveBatch"/> class.
+    /// </summary>
+    private Effect _currentEffect;
+
+    /// <summary>
+    /// Holds the current blending state used in the rendering pipeline of the <see cref="PrimitiveBatch"/> class.
+    /// </summary>
+    private BlendState _currentBlendState;
     
     /// <summary>
     /// Initializes a new instance of the PrimitiveBatch class for rendering 2D primitives.
@@ -109,52 +109,54 @@ public class PrimitiveBatch : Disposable {
         this.Output = output;
         this.Capacity = capacity;
         
-        // Create effects.
-        this._effect = GlobalResource.PrimitiveEffect;
-        
-        // Create projection view buffer.
-        this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
-
-        // Create pipelines.
-        SimplePipelineDescription pipelineDescription = new SimplePipelineDescription() {
-            BlendState = BlendState.AlphaBlend.Description,
-            DepthStencilState = new DepthStencilStateDescription(false, false, ComparisonKind.LessEqual),
-            RasterizerState = new RasterizerStateDescription() {
-                DepthClipEnabled = true,
-                CullMode = FaceCullMode.None
-            },
-            BufferLayouts = this._effect.GetBufferLayouts(),
-            ShaderSet = this._effect.ShaderSet,
-            Outputs = output
-        };
-
-        pipelineDescription.PrimitiveTopology = PrimitiveTopology.TriangleList;
-        this._pipelineTriangleList = this._effect.GetPipeline(pipelineDescription);
-        
-        pipelineDescription.PrimitiveTopology = PrimitiveTopology.TriangleStrip;
-        this._pipelineTriangleStrip = this._effect.GetPipeline(pipelineDescription);
-        
         // Create vertex buffer.
         this._vertices = new PrimitiveVertex2D[capacity];
-        this._tempVertices = new PrimitiveVertex2D[capacity];
+        this._tempVertices = new List<PrimitiveVertex2D>();
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (capacity * Marshal.SizeOf<PrimitiveVertex2D>()), BufferUsage.VertexBuffer | BufferUsage.Dynamic));
+
+        // Create projection view buffer.
+        this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        
+        // Create pipeline description.
+        this._pipelineDescription = this.CreatePipelineDescription();
     }
 
     /// <summary>
-    /// Begins a new batch of primitive drawing operations.
+    /// Begins a new batch of primitive drawing operations with specified rendering configurations.
     /// </summary>
     /// <param name="commandList">The command list to record drawing commands.</param>
-    /// <param name="projection">Optional projection transformation matrix. If null, defaults to an orthographic projection matrix.</param>
-    /// <param name="view">Optional view transformation matrix. If null, defaults to the identity matrix.</param>
+    /// <param name="output">The output description defining the render target configuration.</param>
+    /// <param name="effect">Optional. The effect to apply to the rendering. If null, no custom effect is used.</param>
+    /// <param name="blendState">Optional. The blend state to use for rendering. If null, the default blend state is applied.</param>
+    /// <param name="projection">Optional. The projection transformation matrix. If null, an orthographic projection matrix is used.</param>
+    /// <param name="view">Optional. The view transformation matrix. If null, the identity matrix is applied.</param>
     /// <exception cref="Exception">Thrown when the method is called before the previous batch is ended.</exception>
-    public void Begin(CommandList commandList, Matrix4x4? projection = null, Matrix4x4? view = null) {
+    public void Begin(CommandList commandList, OutputDescription output, Effect? effect = null, BlendState? blendState = null, Matrix4x4? projection = null, Matrix4x4? view = null) {
+        Effect finalEffect = effect ?? GlobalResource.DefaultPrimitiveEffect;
+        BlendState finalBlendState = blendState ?? BlendState.AlphaBlend;
+
         if (this._begun) {
             throw new Exception("The PrimitiveBatch has already begun!");
         }
-        
+
         this._begun = true;
         this._currentCommandList = commandList;
+
+        if (!this._currentOutput.Equals(output) || this._currentEffect != finalEffect || this._currentBlendState != finalBlendState) {
+            this.Flush();
+        }
+
+        this._currentOutput = output;
+        this._currentEffect = finalEffect;
+        this._currentBlendState = finalBlendState;
         
+        // Update pipeline description.
+        this._pipelineDescription.BlendState = this._currentBlendState.Description;
+        this._pipelineDescription.BufferLayouts = this._currentEffect.GetBufferLayouts();
+        this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
+        this._pipelineDescription.ShaderSet = this._currentEffect.ShaderSet;
+        this._pipelineDescription.Outputs = output;
+
         Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
         Matrix4x4 finalView = view ?? Matrix4x4.Identity;
 
@@ -263,15 +265,15 @@ public class PrimitiveBatch : Disposable {
             Position = Vector2.Transform(new Vector2(rectangle.X + rectangle.Width, rectangle.Y + rectangle.Height) - finalOrigin, transform),
             Color = finalColor.ToRgbaFloatVec4()
         };
-
-        this._tempVertices[0] = bottomLeft;
-        this._tempVertices[1] = topRight;
-        this._tempVertices[2] = topLeft;
-        this._tempVertices[3] = bottomLeft;
-        this._tempVertices[4] = bottomRight;
-        this._tempVertices[5] = topRight;
         
-        this.AddVertices(this._pipelineTriangleList, 6);
+        this._tempVertices.Add(bottomLeft);
+        this._tempVertices.Add(topRight);
+        this._tempVertices.Add(topLeft);
+        this._tempVertices.Add(bottomLeft);
+        this._tempVertices.Add(bottomRight);
+        this._tempVertices.Add(topRight);
+        
+        this.AddVertices(this._tempVertices);
     }
 
     /// <summary>
@@ -347,20 +349,20 @@ public class PrimitiveBatch : Disposable {
                 position.Y + radius * MathF.Sin(angle)
             );
 
-            this._tempVertices[0] = new PrimitiveVertex2D() {
+            this._tempVertices.Add(new PrimitiveVertex2D() {
                 Position = position,
                 Color = finalColor.ToRgbaFloatVec4()
-            };
-            this._tempVertices[1] = new PrimitiveVertex2D() {
+            });
+            this._tempVertices.Add(new PrimitiveVertex2D() {
                 Position = lastPoint,
                 Color = finalColor.ToRgbaFloatVec4()
-            };
-            this._tempVertices[2] = new PrimitiveVertex2D() {
+            });
+            this._tempVertices.Add(new PrimitiveVertex2D() {
                 Position = currentPoint,
                 Color = finalColor.ToRgbaFloatVec4()
-            };
+            });
         
-            this.AddVertices(this._pipelineTriangleList, 3);
+            this.AddVertices(this._tempVertices);
             lastPoint = currentPoint;
         }
     }
@@ -434,20 +436,20 @@ public class PrimitiveBatch : Disposable {
                 position.Y + radius * MathF.Sin(angle)
             );
 
-            this._tempVertices[0] = new PrimitiveVertex2D() {
+            this._tempVertices.Add(new PrimitiveVertex2D() {
                 Position = position,
                 Color = finalColor.ToRgbaFloatVec4()
-            };
-            this._tempVertices[1] = new PrimitiveVertex2D() {
+            });
+            this._tempVertices.Add(new PrimitiveVertex2D() {
                 Position = lastPoint,
                 Color = finalColor.ToRgbaFloatVec4()
-            };
-            this._tempVertices[2] = new PrimitiveVertex2D() {
+            });
+            this._tempVertices.Add(new PrimitiveVertex2D() {
                 Position = currentPoint,
                 Color = finalColor.ToRgbaFloatVec4()
-            };
+            });
             
-            this.AddVertices(this._pipelineTriangleList, 3);
+            this.AddVertices(this._tempVertices);
             lastPoint = currentPoint;
         }
     }
@@ -563,33 +565,33 @@ public class PrimitiveBatch : Disposable {
             );
     
             // Define the vertices for the triangle as part of the ring segment.
-            this._tempVertices[0] = new PrimitiveVertex2D() {
+            this._tempVertices.Add(new PrimitiveVertex2D() {
                 Position = innerStart,
                 Color = finalColor.ToRgbaFloatVec4()
-            };
-            this._tempVertices[1] = new PrimitiveVertex2D() {
+            });
+            this._tempVertices.Add(new PrimitiveVertex2D() {
                 Position = outerStart,
                 Color = finalColor.ToRgbaFloatVec4()
-            };
-            this._tempVertices[2] = new PrimitiveVertex2D() {
+            });
+            this._tempVertices.Add(new PrimitiveVertex2D() {
                 Position = outerEnd,
                 Color = finalColor.ToRgbaFloatVec4()
-            };
+            });
     
-            this._tempVertices[3] = new PrimitiveVertex2D() {
+            this._tempVertices.Add(new PrimitiveVertex2D() {
                 Position = innerStart,
                 Color = finalColor.ToRgbaFloatVec4()
-            };
-            this._tempVertices[4] = new PrimitiveVertex2D() {
+            });
+            this._tempVertices.Add(new PrimitiveVertex2D() {
                 Position = outerEnd,
                 Color = finalColor.ToRgbaFloatVec4()
-            };
-            this._tempVertices[5] = new PrimitiveVertex2D() {
+            });
+            this._tempVertices.Add(new PrimitiveVertex2D() {
                 Position = innerEnd,
                 Color = finalColor.ToRgbaFloatVec4()
-            };
+            });
     
-            this.AddVertices(this._pipelineTriangleList, 6);
+            this.AddVertices(this._tempVertices);
         }
     }
 
@@ -668,22 +670,22 @@ public class PrimitiveBatch : Disposable {
                 position.Y + radius.Y * MathF.Sin(endAngle)
             );
 
-            this._tempVertices[0] = new PrimitiveVertex2D {
+            this._tempVertices.Add(new PrimitiveVertex2D {
                 Position = position,
                 Color = finalColor.ToRgbaFloatVec4()
-            };
+            });
             
-            this._tempVertices[1] = new PrimitiveVertex2D {
+            this._tempVertices.Add(new PrimitiveVertex2D {
                 Position = startPoint,
                 Color = finalColor.ToRgbaFloatVec4()
-            };
+            });
             
-            this._tempVertices[2] = new PrimitiveVertex2D {
+            this._tempVertices.Add(new PrimitiveVertex2D {
                 Position = endPoint,
                 Color = finalColor.ToRgbaFloatVec4()
-            };
+            });
 
-            this.AddVertices(this._pipelineTriangleList, 3);
+            this.AddVertices(this._tempVertices);
         }
     }
 
@@ -713,58 +715,50 @@ public class PrimitiveBatch : Disposable {
     public void DrawFilledTriangle(Vector2 point1, Vector2 point2, Vector2 point3, Color? color = null) {
         Color finalColor = color ?? Color.White;
 
-        this._tempVertices[0] = new PrimitiveVertex2D {
+        this._tempVertices.Add(new PrimitiveVertex2D {
             Position = point1,
             Color = finalColor.ToRgbaFloatVec4()
-        };
+        });
 
-        this._tempVertices[1] = new PrimitiveVertex2D {
+        this._tempVertices.Add(new PrimitiveVertex2D {
             Position = point2,
             Color = finalColor.ToRgbaFloatVec4()
-        };
+        });
 
-        this._tempVertices[2] = new PrimitiveVertex2D {
+        this._tempVertices.Add(new PrimitiveVertex2D {
             Position = point3,
             Color = finalColor.ToRgbaFloatVec4()
-        };
+        });
 
-        this.AddVertices(this._pipelineTriangleList, 3);
+        this.AddVertices(this._tempVertices);
     }
 
     /// <summary>
-    /// Adds a specified number of vertices to the current batch for the given pipeline.
+    /// Adds a collection of vertices to the current batch for rendering.
     /// </summary>
-    /// <param name="pipeline">The rendering pipeline to use for this batch of vertices.</param>
-    /// <param name="count">The number of vertices to add to the batch.</param>
-    /// <exception cref="Exception">Thrown if the batch has not been begun before calling this method.</exception>
-    private void AddVertices(SimplePipeline pipeline, int count) {
+    /// <param name="vertices">The list of vertices to be added to the batch.</param>
+    private void AddVertices(List<PrimitiveVertex2D> vertices) {
         if (!this._begun) {
             throw new Exception("You must begin the PrimitiveBatch before calling draw methods!");
         }
         
-        if (this._currentPipeline != pipeline) {
+        if (this._currentBatchCount + vertices.Count >= this._vertices.Length) {
             this.Flush();
         }
 
-        this._currentPipeline = pipeline;
-        
-        if (this._currentBatchCount + count >= this._vertices.Length) {
-            this.Flush();
-        }
-
-        for (int i = 0; i < count; i++) {
-            this._vertices[this._currentBatchCount] = this._tempVertices[i];
+        for (int i = 0; i < vertices.Count; i++) {
+            this._vertices[this._currentBatchCount] = vertices[i];
             this._currentBatchCount++;
         }
         
-        Array.Clear(this._tempVertices);
+        this._tempVertices.Clear();
     }
 
     /// <summary>
     /// Flushes the current batch of primitives to the GPU for rendering.
     /// </summary>
     private void Flush() {
-        if (this._currentBatchCount == 0 || this._currentPipeline == null) {
+        if (this._currentBatchCount == 0) {
             return;
         }
         
@@ -775,23 +769,36 @@ public class PrimitiveBatch : Disposable {
         this._currentCommandList.SetVertexBuffer(0, this._vertexBuffer);
         
         // Set pipeline.
-        this._currentCommandList.SetPipeline(this._currentPipeline.Pipeline);
+        this._currentCommandList.SetPipeline(this._currentEffect.GetPipeline(this._pipelineDescription).Pipeline);
         
         // Set projection view buffer.
-        this._currentCommandList.SetGraphicsResourceSet(0, this._projViewBuffer.GetResourceSet(this._effect.GetBufferLayout("ProjectionViewBuffer")));
+        this._currentCommandList.SetGraphicsResourceSet(0, this._projViewBuffer.GetResourceSet(this._currentEffect.GetBufferLayout("ProjectionViewBuffer")));
         
         // Apply effect.
-        this._effect.Apply();
+        this._currentEffect.Apply();
         
         // Draw.
         this._currentCommandList.Draw(this._currentBatchCount);
 
         // Clean up.
         this._currentBatchCount = 0;
-        this._currentPipeline = null;
         Array.Clear(this._vertices);
         
         this.DrawCallCount++;
+    }
+
+    /// <summary>
+    /// Creates a new instance of <see cref="SimplePipelineDescription"/> with predefined settings for the graphics pipeline.
+    /// </summary>
+    /// <returns>A configured <see cref="SimplePipelineDescription"/> object.</returns>
+    private SimplePipelineDescription CreatePipelineDescription() {
+        return new SimplePipelineDescription() {
+            DepthStencilState = new DepthStencilStateDescription(false, false, ComparisonKind.LessEqual),
+            RasterizerState = new RasterizerStateDescription() {
+                DepthClipEnabled = true,
+                CullMode = FaceCullMode.None
+            }
+        };
     }
     
     protected override void Dispose(bool disposing) {

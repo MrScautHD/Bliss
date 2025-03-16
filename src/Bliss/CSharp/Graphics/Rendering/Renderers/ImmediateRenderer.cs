@@ -22,16 +22,6 @@ public class ImmediateRenderer : Disposable {
     public GraphicsDevice GraphicsDevice { get; private set; }
     
     /// <summary>
-    /// Gets the output description used for rendering.
-    /// </summary>
-    public OutputDescription Output { get; private set; }
-    
-    /// <summary>
-    /// Gets the effect (shader) used for rendering.
-    /// </summary>
-    public Effect Effect { get; private set; }
-    
-    /// <summary>
     /// Gets the maximum number of vertices that can be batched.
     /// </summary>
     public uint Capacity { get; private set; }
@@ -95,6 +85,11 @@ public class ImmediateRenderer : Disposable {
     /// The current command list used for recording rendering commands.
     /// </summary>
     private CommandList _currentCommandList;
+
+    /// <summary>
+    /// The currently bound effect.
+    /// </summary>
+    private Effect _currentEffect;
     
     /// <summary>
     /// The currently bound texture.
@@ -115,13 +110,9 @@ public class ImmediateRenderer : Disposable {
     /// Initializes a new instance of the <see cref="ImmediateRenderer"/> class with the specified graphics device, output, effect, and capacity.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used for rendering.</param>
-    /// <param name="output">The output description for rendering.</param>
-    /// <param name="effect">An optional effect (shader) to use; if null, the default immediate renderer effect is used.</param>
     /// <param name="capacity">The maximum number of vertices that can be batched. Defaults to 30720.</param>
-    public ImmediateRenderer(GraphicsDevice graphicsDevice, OutputDescription output, Effect? effect = null, uint capacity = 30720) {
+    public ImmediateRenderer(GraphicsDevice graphicsDevice, uint capacity = 30720) {
         this.GraphicsDevice = graphicsDevice;
-        this.Output = output;
-        this.Effect = effect ?? GlobalResource.ImmediateRendererEffect;
         this.Capacity = capacity;
         
         // Create vertex buffer.
@@ -149,21 +140,28 @@ public class ImmediateRenderer : Disposable {
     }
 
     /// <summary>
-    /// Begins the rendering process by setting up the command list and pipeline state.
+    /// Begins the rendering process by configuring the command list, output, effect, and blend state for the pipeline.
     /// </summary>
-    /// <param name="commandList">The command list used for recording rendering commands.</param>
-    /// <param name="blendState">An optional blend state; if null, the default alpha blend state is used.</param>
-    /// <exception cref="Exception">Thrown if the renderer has already begun.</exception>
-    public void Begin(CommandList commandList, BlendState? blendState = null) {
+    /// <param name="commandList">The command list used to record rendering commands.</param>
+    /// <param name="output">The output description that specifies the rendering target details.</param>
+    /// <param name="effect">An optional effect instance; if null, the default immediate renderer effect is used.</param>
+    /// <param name="blendState">An optional blend state instance; if null, the default alpha blend state is used.</param>
+    /// <exception cref="Exception">Thrown if the rendering process has already been initiated.</exception>
+    public void Begin(CommandList commandList, OutputDescription output, Effect? effect = null, BlendState? blendState = null) {
         if (this._begun) {
             throw new Exception("The ImmediateRenderer has already begun!");
         }
-        
+
         this._begun = true;
         this._currentCommandList = commandList;
-        
-        // Update BlendState.
+        this._currentEffect = effect ?? GlobalResource.DefaultImmediateRendererEffect;
+
+        // Update pipeline description.
         this._pipelineDescription.BlendState = blendState?.Description ?? BlendState.AlphaBlend.Description;
+        this._pipelineDescription.BufferLayouts = this._currentEffect.GetBufferLayouts();
+        this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
+        this._pipelineDescription.ShaderSet = this._currentEffect.ShaderSet;
+        this._pipelineDescription.Outputs = output;
     }
 
     /// <summary>
@@ -1862,16 +1860,16 @@ public class ImmediateRenderer : Disposable {
             this._currentCommandList.SetIndexBuffer(this._indexBuffer, IndexFormat.UInt32);
 
             // Set pipeline.
-            this._currentCommandList.SetPipeline(this.Effect.GetPipeline(this._pipelineDescription).Pipeline);
+            this._currentCommandList.SetPipeline(this._currentEffect.GetPipeline(this._pipelineDescription).Pipeline);
         
             // Set matrix buffer.
-            this._currentCommandList.SetGraphicsResourceSet(0, this._matrixBuffer.GetResourceSet(this.Effect.GetBufferLayout("MatrixBuffer")));
+            this._currentCommandList.SetGraphicsResourceSet(0, this._matrixBuffer.GetResourceSet(this._currentEffect.GetBufferLayout("MatrixBuffer")));
 
             // Set resourceSet of the texture.
-            this._currentCommandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this.Effect.GetTextureLayout("fTexture")));
+            this._currentCommandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this._currentEffect.GetTextureLayout("fTexture")));
             
             // Apply effect.
-            this.Effect.Apply();
+            this._currentEffect.Apply();
             
             // Draw.
             this._currentCommandList.DrawIndexed((uint) this._indexCount);
@@ -1885,16 +1883,16 @@ public class ImmediateRenderer : Disposable {
             this._currentCommandList.SetVertexBuffer(0, this._vertexBuffer);
 
             // Set pipeline.
-            this._currentCommandList.SetPipeline(this.Effect.GetPipeline(this._pipelineDescription).Pipeline);
+            this._currentCommandList.SetPipeline(this._currentEffect.GetPipeline(this._pipelineDescription).Pipeline);
         
             // Set matrix buffer.
-            this._currentCommandList.SetGraphicsResourceSet(0, this._matrixBuffer.GetResourceSet(this.Effect.GetBufferLayout("MatrixBuffer")));
+            this._currentCommandList.SetGraphicsResourceSet(0, this._matrixBuffer.GetResourceSet(this._currentEffect.GetBufferLayout("MatrixBuffer")));
         
             // Set resourceSet of the texture.
-            this._currentCommandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this.Effect.GetTextureLayout("fTexture")));
+            this._currentCommandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this._currentEffect.GetTextureLayout("fTexture")));
             
             // Apply effect.
-            this.Effect.Apply();
+            this._currentEffect.Apply();
             
             // Draw.
             this._currentCommandList.Draw((uint) this._vertexCount);
@@ -1926,11 +1924,7 @@ public class ImmediateRenderer : Disposable {
                 FrontFace = FrontFace.Clockwise,
                 DepthClipEnabled = true,
                 ScissorTestEnabled = false
-            },
-            BufferLayouts = this.Effect.GetBufferLayouts(),
-            TextureLayouts = this.Effect.GetTextureLayouts(),
-            ShaderSet = this.Effect.ShaderSet,
-            Outputs = this.Output
+            }
         };
     }
 

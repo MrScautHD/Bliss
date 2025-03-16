@@ -35,17 +35,17 @@ public static class GlobalResource {
     /// <summary>
     /// Gets the <see cref="Effect"/> used for rendering primitive shapes.
     /// </summary>
-    public static Effect PrimitiveEffect { get; private set; }
+    public static Effect DefaultPrimitiveEffect { get; private set; }
     
     /// <summary>
     /// Gets the default <see cref="Effect"/> used for full-screen render passes.
     /// </summary>
-    public static Effect FullScreenRenderPassEffect { get; private set; }
+    public static Effect DefaultFullScreenRenderPassEffect { get; private set; }
     
     /// <summary>
     /// Gets the default <see cref="Effect"/> used for immediate mode rendering operations.
     /// </summary>
-    public static Effect ImmediateRendererEffect { get; private set; }
+    public static Effect DefaultImmediateRendererEffect { get; private set; }
     
     /// <summary>
     /// The default <see cref="Effect"/> used for rendering 3D models.
@@ -77,17 +77,17 @@ public static class GlobalResource {
         DefaultSpriteEffect.AddTextureLayout(CreateTextureLayout("fTexture"));
         
         // Primitive effect.
-        PrimitiveEffect = new Effect(graphicsDevice, PrimitiveVertex2D.VertexLayout, "content/shaders/primitive.vert", "content/shaders/primitive.frag");
-        PrimitiveEffect.AddBufferLayout(CreateBufferLayout("ProjectionViewBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
+        DefaultPrimitiveEffect = new Effect(graphicsDevice, PrimitiveVertex2D.VertexLayout, "content/shaders/primitive.vert", "content/shaders/primitive.frag");
+        DefaultPrimitiveEffect.AddBufferLayout(CreateBufferLayout("ProjectionViewBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
         
         // FullScreenRenderPass effect.
-        FullScreenRenderPassEffect = new Effect(graphicsDevice, SpriteVertex2D.VertexLayout, "content/shaders/full_screen_render_pass.vert", "content/shaders/full_screen_render_pass.frag");
-        FullScreenRenderPassEffect.AddTextureLayout(CreateTextureLayout("fTexture"));
+        DefaultFullScreenRenderPassEffect = new Effect(graphicsDevice, SpriteVertex2D.VertexLayout, "content/shaders/full_screen_render_pass.vert", "content/shaders/full_screen_render_pass.frag");
+        DefaultFullScreenRenderPassEffect.AddTextureLayout(CreateTextureLayout("fTexture"));
         
         // ImmediateRenderer effect.
-        ImmediateRendererEffect = new Effect(graphicsDevice, ImmediateVertex3D.VertexLayout, "content/shaders/immediate_renderer.vert", "content/shaders/immediate_renderer.frag");
-        ImmediateRendererEffect.AddBufferLayout(CreateBufferLayout("MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
-        ImmediateRendererEffect.AddTextureLayout(CreateTextureLayout("fTexture"));
+        DefaultImmediateRendererEffect = new Effect(graphicsDevice, ImmediateVertex3D.VertexLayout, "content/shaders/immediate_renderer.vert", "content/shaders/immediate_renderer.frag");
+        DefaultImmediateRendererEffect.AddBufferLayout(CreateBufferLayout("MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
+        DefaultImmediateRendererEffect.AddTextureLayout(CreateTextureLayout("fTexture"));
         
         // Default model effect.
         DefaultModelEffect = new Effect(graphicsDevice, Vertex3D.VertexLayout, "content/shaders/default_model.vert", "content/shaders/default_model.frag");
@@ -133,7 +133,7 @@ public static class GlobalResource {
     /// </summary>
     public static void Destroy() {
         DefaultSpriteEffect.Dispose();
-        PrimitiveEffect.Dispose();
+        DefaultPrimitiveEffect.Dispose();
         DefaultModelEffect.Dispose();
         DefaultModelTexture.Dispose();
 

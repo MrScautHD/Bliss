@@ -17,16 +17,6 @@ public class FullScreenRenderPass : Disposable {
     public GraphicsDevice GraphicsDevice { get; private set; }
     
     /// <summary>
-    /// The output description for the rendering pass.
-    /// </summary>
-    public OutputDescription Output { get; private set; }
-
-    /// <summary>
-    /// The shader effect used for rendering in the full-screen pass.
-    /// </summary>
-    public Effect Effect { get; private set; }
-    
-    /// <summary>
     /// The vertex buffer that stores the vertex data for rendering a full-screen quad.
     /// </summary>
     private DeviceBuffer _vertexBuffer;
@@ -40,41 +30,47 @@ public class FullScreenRenderPass : Disposable {
     /// Initializes a new instance of the <see cref="FullScreenRenderPass"/> class, setting up the necessary buffers and pipeline for full-screen rendering.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used for resource creation and rendering.</param>
-    /// <param name="output">The output description that defines the render target configuration.</param>
-    /// <param name="effect">An optional effect (shader) to use for the render pass. If null, the default full-screen render pass effect from <see cref="GlobalResource.FullScreenRenderPassEffect"/> is used.</param>
-    public FullScreenRenderPass(GraphicsDevice graphicsDevice, OutputDescription output, Effect? effect = null) {
+    public FullScreenRenderPass(GraphicsDevice graphicsDevice) {
         this.GraphicsDevice = graphicsDevice;
-        this.Output = output;
-        this.Effect = effect ?? GlobalResource.FullScreenRenderPassEffect;
-
-        uint vertexBufferSize = (uint) (6 * Marshal.SizeOf<SpriteVertex2D>());
         
         // Create vertex buffer.
+        uint vertexBufferSize = (uint) (6 * Marshal.SizeOf<SpriteVertex2D>());
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
         graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this.GetVertices(graphicsDevice.IsUvOriginTopLeft));
         
         // Create pipeline.
         this._pipelineDescription = this.CreatePipelineDescription();
     }
-    
+
     /// <summary>
-    /// Executes the draw call using the provided command list, render texture, and optional sampler.
+    /// Executes the draw call using the provided command list, render texture, effect, and optional sampler.
     /// </summary>
     /// <param name="commandList">The command list used to issue draw commands.</param>
-    /// <param name="renderTexture">The render texture to be used for rendering.</param>
-    /// <param name="sampler">The optional sampler for texture sampling. If not provided, a default sampler is used.</param>
-    public void Draw(CommandList commandList, RenderTexture2D renderTexture, Sampler? sampler = null) {
+    /// <param name="renderTexture">The render texture used as the target for rendering.</param>
+    /// <param name="output">The output description specifying render target and depth-stencil formats.</param>
+    /// <param name="effect">The effect (shader) to be used during the render pass. If null, the default effect associated with the render pass is used.</param>
+    /// <param name="sampler">The optional sampler for texture sampling. If null, a default sampler is applied.</param>
+    public void Draw(CommandList commandList, RenderTexture2D renderTexture, OutputDescription output, Effect? effect = null, Sampler? sampler = null) {
+        Effect finalEffect = effect ?? GlobalResource.DefaultFullScreenRenderPassEffect;
+        Sampler finalSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
+
+        // Update pipeline description.
+        this._pipelineDescription.BufferLayouts = finalEffect.GetBufferLayouts();
+        this._pipelineDescription.TextureLayouts = finalEffect.GetTextureLayouts();
+        this._pipelineDescription.ShaderSet = finalEffect.ShaderSet;
+        this._pipelineDescription.Outputs = output;
+        
         // Set vertex and index buffer.
         commandList.SetVertexBuffer(0, this._vertexBuffer);
         
         // Set pipeline.
-        commandList.SetPipeline(this.Effect.GetPipeline(this._pipelineDescription).Pipeline);
+        commandList.SetPipeline(finalEffect.GetPipeline(this._pipelineDescription).Pipeline);
         
         // Set resourceSet of the texture.
-        commandList.SetGraphicsResourceSet(0, renderTexture.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point), this.Effect.GetTextureLayout("fTexture").Layout));
+        commandList.SetGraphicsResourceSet(0, renderTexture.GetResourceSet(finalSampler, finalEffect.GetTextureLayout("fTexture").Layout));
         
         // Apply effect.
-        this.Effect.Apply();
+        finalEffect.Apply();
         
         // Draw.
         commandList.Draw(6);
@@ -141,10 +137,7 @@ public class FullScreenRenderPass : Disposable {
                 DepthClipEnabled = true,
                 CullMode = FaceCullMode.None
             },
-            PrimitiveTopology = PrimitiveTopology.TriangleList,
-            TextureLayouts = this.Effect.GetTextureLayouts(),
-            ShaderSet = this.Effect.ShaderSet,
-            Outputs = this.Output
+            PrimitiveTopology = PrimitiveTopology.TriangleList
         };
     }
 

@@ -6,6 +6,7 @@ using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.VertexTypes;
+using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
@@ -48,13 +49,6 @@ public class SpriteBatch : Disposable {
     /// Represents the window used for rendering graphics.
     /// </summary>
     public IWindow Window { get; private set; }
-    
-    /// <summary>
-    /// Retrieves the current output configuration for the SpriteBatch.
-    /// This includes details such as the pixel format and any associated debug information
-    /// for rendering outputs.
-    /// </summary>
-    public OutputDescription Output { get; private set; }
 
     /// <summary>
     /// Specifies the maximum number of sprites that the SpriteBatch can process in a single draw call.
@@ -123,6 +117,12 @@ public class SpriteBatch : Disposable {
     private uint _currentBatchCount;
 
     /// <summary>
+    /// Stores the current output configuration for rendering operations within the SpriteBatch.
+    /// This includes details about the color and depth targets used when rendering.
+    /// </summary>
+    private OutputDescription _currentOutput;
+
+    /// <summary>
     /// Represents the current <see cref="Effect"/> used by the <see cref="SpriteBatch"/> during rendering operations.
     /// This effect determines the shaders, buffer layouts, and texture layouts applied when drawing.
     /// </summary>
@@ -149,12 +149,10 @@ public class SpriteBatch : Disposable {
     /// </summary>
     /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used for rendering.</param>
     /// <param name="window">The <see cref="IWindow"/> associated with the rendering context.</param>
-    /// <param name="output">The <see cref="OutputDescription"/> defining the output configuration for rendering.</param>
     /// <param name="capacity">The maximum number of sprites the batch can hold. Defaults to 15,360.</param>
-    public SpriteBatch(GraphicsDevice graphicsDevice, IWindow window, OutputDescription output, uint capacity = 15360) {
+    public SpriteBatch(GraphicsDevice graphicsDevice, IWindow window, uint capacity = 15360) {
         this.GraphicsDevice = graphicsDevice;
         this.Window = window;
-        this.Output = output;
         this.Capacity = capacity;
         this.FontStashAdapter = new FontStashAdapter(graphicsDevice, this);
         
@@ -189,16 +187,20 @@ public class SpriteBatch : Disposable {
     }
 
     /// <summary>
-    /// Begins a sprite batch rendering operation, initializing necessary states and setting up the rendering context.
+    /// Begins a new sprite batch rendering session with the specified parameters.
     /// </summary>
-    /// <param name="commandList">The <see cref="CommandList"/> used to issue rendering commands during this session.</param>
-    /// <param name="effect">The <see cref="Effect"/> defining custom shader effects for this rendering operation. If null, a default sprite effect is used.</param>
-    /// <param name="sampler">The <see cref="Sampler"/> used to determine texture sampling behavior. If null, a default point sampler is applied.</param>
-    /// <param name="blendState">The <see cref="BlendState"/> used to define blending operations for the current session. If null, defaults to alpha blending.</param>
-    /// <param name="projection">The projection <see cref="Matrix4x4"/> applied to convert coordinates to clip space. If null, an orthographic projection fit to the window size is used.</param>
-    /// <param name="view">The view <see cref="Matrix4x4"/> applied to define the camera's transformation in the scene. If null, defaults to an identity matrix.</param>
-    /// <exception cref="Exception">Thrown if <see cref="Begin"/> is called while the SpriteBatch is already in a begun state.</exception>
-    public void Begin(CommandList commandList, Effect? effect = null, Sampler? sampler = null, BlendState? blendState = null, Matrix4x4? projection = null, Matrix4x4? view = null) {
+    /// <param name="commandList">The <see cref="CommandList"/> used to issue rendering commands.</param>
+    /// <param name="output">The <see cref="OutputDescription"/> defining the target render output configuration.</param>
+    /// <param name="effect">Optional custom <see cref="Effect"/> to apply during rendering. Defaults to the global default sprite effect if null.</param>
+    /// <param name="sampler">Optional <see cref="Sampler"/> configuration for texture sampling. Defaults to a point sampler if null.</param>
+    /// <param name="blendState">Optional <see cref="BlendState"/> to control blending behavior. Defaults to alpha blending if null.</param>
+    /// <param name="projection">Optional projection matrix to apply for positioning and scaling. Defaults to an orthographic projection covering the rendering window if null.</param>
+    /// <param name="view">Optional view matrix to apply for camera transformations. Defaults to an identity matrix if null.</param>
+    public void Begin(CommandList commandList, OutputDescription output, Effect? effect = null, Sampler? sampler = null, BlendState? blendState = null, Matrix4x4? projection = null, Matrix4x4? view = null) {
+        Effect finalEffect = effect ?? GlobalResource.DefaultSpriteEffect;
+        Sampler finalSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
+        BlendState finalBlendState = blendState ?? BlendState.AlphaBlend;
+        
         if (this._begun) {
             throw new Exception("The SpriteBatch has already begun!");
         }
@@ -206,18 +208,21 @@ public class SpriteBatch : Disposable {
         this._begun = true;
         this._currentCommandList = commandList;
 
-        if (this._currentEffect != effect || this._currentSampler != sampler || this._currentBlendState != blendState) {
+        if (!this._currentOutput.Equals(output) || this._currentEffect != finalEffect || this._currentSampler != finalSampler || this._currentBlendState != finalBlendState) {
             this.Flush();
         }
 
-        this._currentEffect = effect ?? GlobalResource.DefaultSpriteEffect;
-        this._currentSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
-        this._currentBlendState = blendState ?? BlendState.AlphaBlend;
-        
+        this._currentOutput = output;
+        this._currentEffect = finalEffect;
+        this._currentSampler = finalSampler;
+        this._currentBlendState = finalBlendState;
+
+        // Update pipeline description.
         this._pipelineDescription.BlendState = this._currentBlendState.Description;
         this._pipelineDescription.BufferLayouts = this._currentEffect.GetBufferLayouts();
         this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
         this._pipelineDescription.ShaderSet = this._currentEffect.ShaderSet;
+        this._pipelineDescription.Outputs = output;
 
         Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
         Matrix4x4 finalView = view ?? Matrix4x4.Identity;
@@ -410,8 +415,7 @@ public class SpriteBatch : Disposable {
                 DepthClipEnabled = true,
                 CullMode = FaceCullMode.None
             },
-            PrimitiveTopology = PrimitiveTopology.TriangleList,
-            Outputs = this.Output
+            PrimitiveTopology = PrimitiveTopology.TriangleList
         };
     }
     

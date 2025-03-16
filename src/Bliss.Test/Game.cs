@@ -3,6 +3,7 @@ using Bliss.CSharp;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Geometry;
+using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Rendering.Batches.Primitives;
 using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
 using Bliss.CSharp.Graphics.Rendering.Passes;
@@ -154,11 +155,12 @@ public class Game : Disposable {
     }
     
     protected virtual void Init() {
-        this.FullScreenRenderPass = new FullScreenRenderPass(this.GraphicsDevice, this.GraphicsDevice.SwapchainFramebuffer.OutputDescription);
+        this.FullScreenRenderPass = new FullScreenRenderPass(this.GraphicsDevice);
         this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), this.Settings.SampleCount);
         
-        this._immediateRenderer = new ImmediateRenderer(this.GraphicsDevice, this.FullScreenTexture.Framebuffer.OutputDescription);
-        this._spriteBatch = new SpriteBatch(this.GraphicsDevice, this.MainWindow, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._immediateRenderer = new ImmediateRenderer(this.GraphicsDevice);
+        
+        this._spriteBatch = new SpriteBatch(this.GraphicsDevice, this.MainWindow);
         this._primitiveBatch = new PrimitiveBatch(this.GraphicsDevice, this.MainWindow, this.FullScreenTexture.Framebuffer.OutputDescription);
         this._font = new Font("content/fonts/fontoe.ttf");
         this._logoTexture = new Texture2D(this.GraphicsDevice, "content/images/logo.png");
@@ -231,7 +233,7 @@ public class Game : Disposable {
         // Drawing 3D.
         this._cam3D.Begin(commandList);
         
-        this._immediateRenderer.Begin(this.CommandList);
+        this._immediateRenderer.Begin(this.CommandList, this.FullScreenTexture.Framebuffer.OutputDescription);
 
         this._immediateRenderer.SetTexture(this._customMeshTexture);
         this._immediateRenderer.DrawCube(new Transform() { Translation = new Vector3(9, 0, 6) }, new Vector3(1, 1, 1));
@@ -326,7 +328,7 @@ public class Game : Disposable {
         this._cam3D.End();
         
         // SpriteBatch Drawing.
-        this._spriteBatch.Begin(commandList);
+        this._spriteBatch.Begin(commandList, this.FullScreenTexture.Framebuffer.OutputDescription);
         this._spriteBatch.DrawText(this._font, $"FPS: {(int) (1.0F / Time.Delta)}", new Vector2(5, 5), 18);
         
         int frame = 4;
@@ -334,6 +336,10 @@ public class Game : Disposable {
         this._spriteBatch.DrawTexture(this._gif, new Vector2(30, 30), new Rectangle(width * frame, 0, width, height), new Vector2(0.2F, 0.2F));
         
         this._spriteBatch.End();
+        
+        this._primitiveBatch.Begin(commandList, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._primitiveBatch.DrawFilledCircle(new Vector2(130, 130), 40, 40, new Color(130, 130, 255, 120));
+        this._primitiveBatch.End();
         
         commandList.End();
         graphicsDevice.SubmitCommands(commandList);
@@ -348,7 +354,7 @@ public class Game : Disposable {
         commandList.SetFramebuffer(graphicsDevice.SwapchainFramebuffer);
         commandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
         
-        this.FullScreenRenderPass.Draw(commandList, this.FullScreenTexture);
+        this.FullScreenRenderPass.Draw(commandList, this.FullScreenTexture, this.GraphicsDevice.SwapchainFramebuffer.OutputDescription);
         
         commandList.End();
         

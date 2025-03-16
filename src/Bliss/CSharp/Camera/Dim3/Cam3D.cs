@@ -135,7 +135,7 @@ public class Cam3D : ICam {
     /// <param name="fov">The field of view in degrees. Should be between 1 and 179.</param>
     /// <param name="nearPlane">The near clipping plane. Must be positive and smaller than <paramref name="farPlane"/>.</param>
     /// <param name="farPlane">The far clipping plane. Must be positive and greater than <paramref name="nearPlane"/>.</param>
-    public Cam3D(Vector3 position, Vector3 target, float aspectRatio, Vector3? up = null, ProjectionType projectionType = ProjectionType.Perspective, CameraMode mode = CameraMode.Free, float fov = 70.0F, float nearPlane = 0.1F, float farPlane = 1000.0F) {
+    public Cam3D(Vector3 position, Vector3 target, float aspectRatio, Vector3? up = null, ProjectionType projectionType = ProjectionType.Perspective, CameraMode mode = CameraMode.Free, float fov = 70.0F, float nearPlane = 0.01F, float farPlane = 10000.0F) {
         this.Position = position;
         this.Target = target;
         this.AspectRatio = aspectRatio;
