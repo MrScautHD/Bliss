@@ -298,7 +298,7 @@ public class ImmediateRenderer : Disposable {
     }
 
     /// <summary>
-    /// Resets the renderer to default settings.
+    /// Resets the <see cref="ImmediateRenderer"/> to default settings.
     /// </summary>
     public void ResetSettings() {
         this.SetEffect(null);

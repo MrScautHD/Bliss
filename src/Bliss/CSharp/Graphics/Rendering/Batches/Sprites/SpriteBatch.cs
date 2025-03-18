@@ -6,7 +6,6 @@ using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.VertexTypes;
-using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
@@ -115,34 +114,38 @@ public class SpriteBatch : Disposable {
     /// This count helps determine when to flush the batch to the GPU.
     /// </summary>
     private uint _currentBatchCount;
-
-    /// <summary>
-    /// Stores the current output configuration for rendering operations within the SpriteBatch.
-    /// This includes details about the color and depth targets used when rendering.
-    /// </summary>
-    private OutputDescription _currentOutput;
-
+    
     /// <summary>
     /// Represents the current <see cref="Effect"/> used by the <see cref="SpriteBatch"/> during rendering operations.
     /// This effect determines the shaders, buffer layouts, and texture layouts applied when drawing.
     /// </summary>
     private Effect _currentEffect;
-
-    /// <summary>
-    /// Represents the current <see cref="Sampler"/> used for texture sampling operations in the <see cref="SpriteBatch"/>.
-    /// </summary>
-    private Sampler _currentSampler;
     
     /// <summary>
     /// Holds the current blend state used by the <see cref="SpriteBatch"/> for rendering operations.
     /// Determines how the colors of the rendered sprites are blended with the background.
     /// </summary>
     private BlendState _currentBlendState;
+
+    /// <summary>
+    /// Represents the current depth and stencil state configuration used for rendering in the <see cref="SpriteBatch"/>.
+    /// </summary>
+    private DepthStencilStateDescription _currentDepthStencilState;
+
+    /// <summary>
+    /// Represents the current rasterizer state used for configuring rasterization settings in the rendering pipeline.
+    /// </summary>
+    private RasterizerStateDescription _currentRasterizerState;
+
+    /// <summary>
+    /// Represents the currently active texture used by the <see cref="SpriteBatch"/> for drawing operations.
+    /// </summary>
+    private Texture2D _currentTexture;
     
     /// <summary>
-    /// The currently active texture that is being used for rendering. This field may be null if no texture is currently set.
+    /// Represents the current <see cref="Sampler"/> used for texture sampling operations in the <see cref="SpriteBatch"/>.
     /// </summary>
-    private Texture2D? _currentTexture;
+    private Sampler _currentSampler;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="SpriteBatch"/> class for batching and rendering 2D sprites.
@@ -183,7 +186,12 @@ public class SpriteBatch : Disposable {
         this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
 
         // Create pipeline description.
-        this._pipelineDescription = this.CreatePipelineDescription();
+        this._pipelineDescription = new SimplePipelineDescription() {
+            PrimitiveTopology = PrimitiveTopology.TriangleList
+        };
+        
+        // Set default settings.
+        this.ResetSettings();
     }
 
     /// <summary>
@@ -191,16 +199,9 @@ public class SpriteBatch : Disposable {
     /// </summary>
     /// <param name="commandList">The <see cref="CommandList"/> used to issue rendering commands.</param>
     /// <param name="output">The <see cref="OutputDescription"/> defining the target render output configuration.</param>
-    /// <param name="effect">Optional custom <see cref="Effect"/> to apply during rendering. Defaults to the global default sprite effect if null.</param>
-    /// <param name="sampler">Optional <see cref="Sampler"/> configuration for texture sampling. Defaults to a point sampler if null.</param>
-    /// <param name="blendState">Optional <see cref="BlendState"/> to control blending behavior. Defaults to alpha blending if null.</param>
     /// <param name="projection">Optional projection matrix to apply for positioning and scaling. Defaults to an orthographic projection covering the rendering window if null.</param>
     /// <param name="view">Optional view matrix to apply for camera transformations. Defaults to an identity matrix if null.</param>
-    public void Begin(CommandList commandList, OutputDescription output, Effect? effect = null, Sampler? sampler = null, BlendState? blendState = null, Matrix4x4? projection = null, Matrix4x4? view = null) {
-        Effect finalEffect = effect ?? GlobalResource.DefaultSpriteEffect;
-        Sampler finalSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
-        BlendState finalBlendState = blendState ?? BlendState.AlphaBlend;
-        
+    public void Begin(CommandList commandList, OutputDescription output, Matrix4x4? projection = null, Matrix4x4? view = null) {
         if (this._begun) {
             throw new Exception("The SpriteBatch has already begun!");
         }
@@ -208,20 +209,11 @@ public class SpriteBatch : Disposable {
         this._begun = true;
         this._currentCommandList = commandList;
 
-        if (!this._currentOutput.Equals(output) || this._currentEffect != finalEffect || this._currentSampler != finalSampler || this._currentBlendState != finalBlendState) {
+        if (!this._pipelineDescription.Outputs.Equals(output)) {
             this.Flush();
         }
 
-        this._currentOutput = output;
-        this._currentEffect = finalEffect;
-        this._currentSampler = finalSampler;
-        this._currentBlendState = finalBlendState;
-
         // Update pipeline description.
-        this._pipelineDescription.BlendState = this._currentBlendState.Description;
-        this._pipelineDescription.BufferLayouts = this._currentEffect.GetBufferLayouts();
-        this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
-        this._pipelineDescription.ShaderSet = this._currentEffect.ShaderSet;
         this._pipelineDescription.Outputs = output;
 
         Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
@@ -247,6 +239,140 @@ public class SpriteBatch : Disposable {
         this.Flush();
     }
 
+    /// <summary>
+    /// Retrieves the current <see cref="Effect"/> being used by the <see cref="SpriteBatch"/>.
+    /// </summary>
+    /// <returns>The active <see cref="Effect"/> instance used for rendering, or null if no effect is set.</returns>
+    public Effect GetCurrentEffect() {
+        return this._currentEffect;
+    }
+
+    /// <summary>
+    /// Sets the rendering effect to be used by the <see cref="SpriteBatch"/> during draw operations.
+    /// </summary>
+    /// <param name="effect">The <see cref="Effect"/> to set for rendering. If null, the default effect is used.</param>
+    public void SetEffect(Effect? effect) {
+        Effect finalEffect = effect ?? GlobalResource.DefaultSpriteEffect;
+
+        if (this._currentEffect != finalEffect) {
+            this.Flush();
+        }
+        
+        this._currentEffect = finalEffect;
+
+        // Update pipeline description.
+        this._pipelineDescription.BufferLayouts = this._currentEffect.GetBufferLayouts();
+        this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
+        this._pipelineDescription.ShaderSet = this._currentEffect.ShaderSet;
+    }
+
+    /// <summary>
+    /// Retrieves the current blend state used by the <see cref="SpriteBatch"/> for rendering operations.
+    /// </summary>
+    /// <returns>The <see cref="BlendState"/> representing the current blending configuration.</returns>
+    public BlendState GetCurrentBlendState() {
+        return this._currentBlendState;
+    }
+
+    /// <summary>
+    /// Updates the current blend state of the <see cref="SpriteBatch"/> for rendering sprites.
+    /// </summary>
+    /// <param name="blendState">The <see cref="BlendState"/> to set. If null, defaults to <see cref="BlendState.AlphaBlend"/>.</param>
+    public void SetBlendState(BlendState? blendState) {
+        BlendState finalBlendState = blendState ?? BlendState.AlphaBlend;
+
+        if (this._currentBlendState != finalBlendState) {
+            this.Flush();
+        }
+
+        this._currentBlendState = finalBlendState;
+        
+        // Update pipeline description.
+        this._pipelineDescription.BlendState = this._currentBlendState.Description;
+    }
+
+    /// <summary>
+    /// Gets the current depth and stencil state configuration used for rendering in the <see cref="SpriteBatch"/>.
+    /// </summary>
+    /// <returns>The current <see cref="DepthStencilStateDescription"/> used by the <see cref="SpriteBatch"/> for rendering.</returns>
+    public DepthStencilStateDescription GetCurrentDepthStencilState() {
+        return this._currentDepthStencilState;
+    }
+
+    /// <summary>
+    /// Sets the depth-stencil state to be used by the <see cref="SpriteBatch"/> during rendering operations.
+    /// </summary>
+    /// <param name="depthStencilState">The <see cref="DepthStencilStateDescription"/> to use. If null, defaults to a disabled depth-stencil state.</param>
+    public void SetDepthStencilState(DepthStencilStateDescription? depthStencilState) {
+        DepthStencilStateDescription finalDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DISABLED;
+        
+        if (!this._currentDepthStencilState.Equals(finalDepthStencilState)) {
+            this.Flush();
+        }
+
+        this._currentDepthStencilState = finalDepthStencilState;
+
+        // Update pipeline description.
+        this._pipelineDescription.DepthStencilState = this._currentDepthStencilState;
+    }
+
+    /// <summary>
+    /// Gets the current rasterizer state used for configuring rasterization settings in the rendering pipeline.
+    /// </summary>
+    /// <returns>A <see cref="RasterizerStateDescription"/> representing the current rasterizer state.</returns>
+    public RasterizerStateDescription GetCurrentRasterizerState() {
+        return this._currentRasterizerState;
+    }
+
+    /// <summary>
+    /// Updates the current rasterizer state of the <see cref="SpriteBatch"/> to the specified value.
+    /// </summary>
+    /// <param name="rasterizerState">The new <see cref="RasterizerStateDescription"/> to be applied. If null, the default rasterizer state <see cref="RasterizerStateDescription.CULL_NONE"/> will be used.</param>
+    public void SetRasterizerState(RasterizerStateDescription? rasterizerState) {
+        RasterizerStateDescription finalRasterizerState = rasterizerState ?? RasterizerStateDescription.CULL_NONE;
+        
+        if (!this._currentRasterizerState.Equals(finalRasterizerState)) {
+            this.Flush();
+        }
+        
+        this._currentRasterizerState = finalRasterizerState;
+        
+        // Update pipeline description.
+        this._pipelineDescription.RasterizerState = this._currentRasterizerState;
+    }
+
+    /// <summary>
+    /// Retrieves the current <see cref="Sampler"/> used for texture sampling operations in the <see cref="SpriteBatch"/>.
+    /// </summary>
+    /// <returns>The current <see cref="Sampler"/> instance being used.</returns>
+    public Sampler GetCurrentSampler() {
+        return this._currentSampler;
+    }
+
+    /// <summary>
+    /// Updates the current sampler state for the <see cref="SpriteBatch"/> to the specified value.
+    /// </summary>
+    /// <param name="sampler">The new <see cref="Sampler"/> to use, or null to reset to the default sampler.</param>
+    public void SetSampler(Sampler? sampler) {
+        Sampler finalSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
+
+        if (this._currentSampler != finalSampler) {
+            this.Flush();
+        }
+
+        this._currentSampler = finalSampler;
+    }
+
+    /// <summary>
+    /// Resets the <see cref="SpriteBatch"/> to default settings.
+    /// </summary>
+    public void ResetSettings() {
+        this.SetEffect(null);
+        this.SetBlendState(null);
+        this.SetDepthStencilState(null);
+        this.SetRasterizerState(null);
+        this.SetSampler(null);
+    }
 
     /// <summary>
     /// Draws the specified text at the given position with the provided font and styling options.
@@ -388,9 +514,7 @@ public class SpriteBatch : Disposable {
         this._currentCommandList.SetGraphicsResourceSet(0, this._projViewBuffer.GetResourceSet(this._currentEffect.GetBufferLayout("ProjectionViewBuffer")));
 
         // Set resourceSet of the texture.
-        if (this._currentTexture != null) {
-            this._currentCommandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this._currentEffect.GetTextureLayout("fTexture")));
-        }
+        this._currentCommandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this._currentEffect.GetTextureLayout("fTexture")));
         
         // Apply effect.
         this._currentEffect.Apply();
@@ -403,21 +527,6 @@ public class SpriteBatch : Disposable {
         Array.Clear(this._vertices);
         
         this.DrawCallCount++;
-    }
-    
-    /// <summary>
-    /// Creates a new instance of <see cref="SimplePipelineDescription"/> with predefined settings for the graphics pipeline.
-    /// </summary>
-    /// <returns>A configured <see cref="SimplePipelineDescription"/> object.</returns>
-    private SimplePipelineDescription CreatePipelineDescription() {
-        return new SimplePipelineDescription() {
-            DepthStencilState = new DepthStencilStateDescription(false, false, ComparisonKind.LessEqual),
-            RasterizerState = new RasterizerStateDescription() {
-                DepthClipEnabled = true,
-                CullMode = FaceCullMode.None
-            },
-            PrimitiveTopology = PrimitiveTopology.TriangleList
-        };
     }
     
     protected override void Dispose(bool disposing) {
