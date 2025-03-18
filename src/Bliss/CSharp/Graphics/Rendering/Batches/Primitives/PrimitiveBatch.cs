@@ -23,12 +23,6 @@ public class PrimitiveBatch : Disposable {
     /// Represents the window used for rendering graphics.
     /// </summary>
     public IWindow Window { get; private set; }
-    
-    /// <summary>
-    /// Represents the output description utilized by the <see cref="PrimitiveBatch"/> for rendering configurations.
-    /// The <see cref="Output"/> property specifies how the rendering results are presented on the screen.
-    /// </summary>
-    public OutputDescription Output { get; private set; }
 
     /// <summary>
     /// Specifies the maximum number of sprites that the PrimitiveBatch can process in a single draw call.
@@ -101,12 +95,10 @@ public class PrimitiveBatch : Disposable {
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used for rendering.</param>
     /// <param name="window">The window representing the rendering context.</param>
-    /// <param name="output">The output description defining the render target.</param>
     /// <param name="capacity">Optional. The initial capacity of the vertex buffer.</param>
-    public PrimitiveBatch(GraphicsDevice graphicsDevice, IWindow window, OutputDescription output, uint capacity = 30720) {
+    public PrimitiveBatch(GraphicsDevice graphicsDevice, IWindow window, uint capacity = 30720) {
         this.GraphicsDevice = graphicsDevice;
         this.Window = window;
-        this.Output = output;
         this.Capacity = capacity;
         
         // Create vertex buffer.

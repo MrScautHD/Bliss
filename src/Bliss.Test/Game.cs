@@ -159,9 +159,9 @@ public class Game : Disposable {
         this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), this.Settings.SampleCount);
         
         this._immediateRenderer = new ImmediateRenderer(this.GraphicsDevice);
-        
         this._spriteBatch = new SpriteBatch(this.GraphicsDevice, this.MainWindow);
-        this._primitiveBatch = new PrimitiveBatch(this.GraphicsDevice, this.MainWindow, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._primitiveBatch = new PrimitiveBatch(this.GraphicsDevice, this.MainWindow);
+        
         this._font = new Font("content/fonts/fontoe.ttf");
         this._logoTexture = new Texture2D(this.GraphicsDevice, "content/images/logo.png");
         this._animatedImage = new AnimatedImage("content/animated.gif");

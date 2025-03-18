@@ -247,6 +247,7 @@ public class SpriteBatch : Disposable {
         this.Flush();
     }
 
+
     /// <summary>
     /// Draws the specified text at the given position with the provided font and styling options.
     /// </summary>

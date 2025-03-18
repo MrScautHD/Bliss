@@ -39,22 +39,33 @@ public class FullScreenRenderPass : Disposable {
         graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this.GetVertices(graphicsDevice.IsUvOriginTopLeft));
         
         // Create pipeline.
-        this._pipelineDescription = this.CreatePipelineDescription();
+        this._pipelineDescription = new SimplePipelineDescription() {
+            PrimitiveTopology = PrimitiveTopology.TriangleList
+        };
     }
 
     /// <summary>
-    /// Executes the draw call using the provided command list, render texture, effect, and optional sampler.
+    /// Executes the draw operation using the specified resources, rendering configurations, and GPU states.
     /// </summary>
-    /// <param name="commandList">The command list used to issue draw commands.</param>
-    /// <param name="renderTexture">The render texture used as the target for rendering.</param>
-    /// <param name="output">The output description specifying render target and depth-stencil formats.</param>
-    /// <param name="effect">The effect (shader) to be used during the render pass. If null, the default effect associated with the render pass is used.</param>
-    /// <param name="sampler">The optional sampler for texture sampling. If null, a default sampler is applied.</param>
-    public void Draw(CommandList commandList, RenderTexture2D renderTexture, OutputDescription output, Effect? effect = null, Sampler? sampler = null) {
+    /// <param name="commandList">The command list for issuing draw commands to the graphics device.</param>
+    /// <param name="renderTexture">The render texture used as the input or output target for rendering operations.</param>
+    /// <param name="output">The output description detailing the format and layout of render targets and depth-stencil buffers.</param>
+    /// <param name="effect">An optional shader effect utilized for rendering. A default effect is applied if none is specified.</param>
+    /// <param name="sampler">An optional sampler used for texture sampling in the rendering process. If not set, a default point sampler is used.</param>
+    /// <param name="blendState">An optional blend state configuration for blending operations. Defaults to alpha blending if not provided.</param>
+    /// <param name="depthStencilState">An optional depth-stencil state description to control depth and stencil testing. A disabled state is used by default.</param>
+    /// <param name="rasterizerState">An optional rasterizer state description to configure rasterization settings. Defaults to a standard rasterizer configuration if not specified.</param>
+    public void Draw(CommandList commandList, RenderTexture2D renderTexture, OutputDescription output, Effect? effect = null, Sampler? sampler = null, BlendState? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null) {
         Effect finalEffect = effect ?? GlobalResource.DefaultFullScreenRenderPassEffect;
         Sampler finalSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
+        BlendState finalBlendState = blendState ?? BlendState.AlphaBlend;
+        DepthStencilStateDescription finalDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DISABLED;
+        RasterizerStateDescription finalRasterizerState = rasterizerState ?? RasterizerStateDescription.CULL_NONE;
 
         // Update pipeline description.
+        this._pipelineDescription.BlendState = finalBlendState.Description;
+        this._pipelineDescription.DepthStencilState = finalDepthStencilState;
+        this._pipelineDescription.RasterizerState = finalRasterizerState;
         this._pipelineDescription.BufferLayouts = finalEffect.GetBufferLayouts();
         this._pipelineDescription.TextureLayouts = finalEffect.GetTextureLayouts();
         this._pipelineDescription.ShaderSet = finalEffect.ShaderSet;
@@ -123,22 +134,6 @@ public class FullScreenRenderPass : Disposable {
                 Color = color.ToRgbaFloatVec4()
             }
         ];
-    }
-    
-    /// <summary>
-    /// Creates and returns a <see cref="SimplePipelineDescription"/> configured for full-screen rendering.
-    /// </summary>
-    /// <returns>A configured <see cref="SimplePipelineDescription"/> object.</returns>
-    private SimplePipelineDescription CreatePipelineDescription() {
-        return new SimplePipelineDescription() {
-            BlendState = BlendState.AlphaBlend.Description,
-            DepthStencilState = new DepthStencilStateDescription(false, false, ComparisonKind.LessEqual),
-            RasterizerState = new RasterizerStateDescription() {
-                DepthClipEnabled = true,
-                CullMode = FaceCullMode.None
-            },
-            PrimitiveTopology = PrimitiveTopology.TriangleList
-        };
     }
 
     protected override void Dispose(bool disposing) {

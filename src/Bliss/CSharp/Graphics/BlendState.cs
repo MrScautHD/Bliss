@@ -45,8 +45,7 @@ public class BlendState {
     }
 
     /// <summary>
-    /// Creates a new or retrieves an existing <see cref="BlendState"/> instance based on the provided
-    /// <see cref="BlendStateDescription"/>.
+    /// Creates a new or retrieves an existing <see cref="BlendState"/> instance based on the provided <see cref="BlendStateDescription"/>.
     /// </summary>
     /// <param name="description">The description of the blend state to create or retrieve.</param>
     /// <returns>The <see cref="BlendState"/> instance corresponding to the provided description.</returns>

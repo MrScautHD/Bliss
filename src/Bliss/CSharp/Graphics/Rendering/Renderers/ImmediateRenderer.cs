@@ -90,6 +90,21 @@ public class ImmediateRenderer : Disposable {
     /// The currently bound effect.
     /// </summary>
     private Effect _currentEffect;
+
+    /// <summary>
+    /// The currently bound blendState.
+    /// </summary>
+    private BlendState _currentBlendState;
+
+    /// <summary>
+    /// The currently bound depthStencilState.
+    /// </summary>
+    private DepthStencilStateDescription _currentDepthStencilState;
+
+    /// <summary>
+    /// The currently bound rasterizerState.
+    /// </summary>
+    private RasterizerStateDescription _currentRasterizerState;
     
     /// <summary>
     /// The currently bound texture.
@@ -131,12 +146,10 @@ public class ImmediateRenderer : Disposable {
         this._matrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 3, SimpleBufferType.Uniform, ShaderStages.Vertex);
 
         // Create pipeline description.
-        this._pipelineDescription = this.CreatePipelineDescription();
+        this._pipelineDescription = new SimplePipelineDescription();
         
-        // Set default texture and sampler.
-        this._currentTexture = GlobalResource.DefaultImmediateRendererTexture;
-        this._currentSampler = GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
-        this._currentSourceRec = new Rectangle(0, 0, (int) this._currentTexture.Width, (int) this._currentTexture.Height);
+        // Set default settings.
+        this.ResetSettings();
     }
 
     /// <summary>
@@ -144,23 +157,16 @@ public class ImmediateRenderer : Disposable {
     /// </summary>
     /// <param name="commandList">The command list used to record rendering commands.</param>
     /// <param name="output">The output description that specifies the rendering target details.</param>
-    /// <param name="effect">An optional effect instance; if null, the default immediate renderer effect is used.</param>
-    /// <param name="blendState">An optional blend state instance; if null, the default alpha blend state is used.</param>
     /// <exception cref="Exception">Thrown if the rendering process has already been initiated.</exception>
-    public void Begin(CommandList commandList, OutputDescription output, Effect? effect = null, BlendState? blendState = null) {
+    public void Begin(CommandList commandList, OutputDescription output) {
         if (this._begun) {
             throw new Exception("The ImmediateRenderer has already begun!");
         }
 
         this._begun = true;
         this._currentCommandList = commandList;
-        this._currentEffect = effect ?? GlobalResource.DefaultImmediateRendererEffect;
 
         // Update pipeline description.
-        this._pipelineDescription.BlendState = blendState?.Description ?? BlendState.AlphaBlend.Description;
-        this._pipelineDescription.BufferLayouts = this._currentEffect.GetBufferLayouts();
-        this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
-        this._pipelineDescription.ShaderSet = this._currentEffect.ShaderSet;
         this._pipelineDescription.Outputs = output;
     }
 
@@ -174,6 +180,85 @@ public class ImmediateRenderer : Disposable {
         }
         
         this._begun = false;
+    }
+
+    /// <summary>
+    /// Retrieves the current effect being used by the renderer.
+    /// </summary>
+    /// <returns>The currently set <see cref="Effect"/> instance.</returns>
+    public Effect GetCurrentEffect() {
+        return this._currentEffect;
+    }
+
+    /// <summary>
+    /// Sets the current rendering effect for the ImmediateRenderer.
+    /// If the provided effect is null, it defaults to the global default immediate renderer effect.
+    /// </summary>
+    /// <param name="effect">The effect to be used. If null, the default ImmediateRenderer effect will be used.</param>
+    public void SetEffect(Effect? effect) {
+        this._currentEffect = effect ?? GlobalResource.DefaultImmediateRendererEffect;
+        
+        // Update pipeline description.
+        this._pipelineDescription.BufferLayouts = this._currentEffect.GetBufferLayouts();
+        this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
+        this._pipelineDescription.ShaderSet = this._currentEffect.ShaderSet;
+    }
+
+    /// <summary>
+    /// Retrieves the current blend state used by the renderer.
+    /// </summary>
+    /// <returns>The current <see cref="BlendState"/> instance.</returns>
+    public BlendState GetBlendState() {
+        return this._currentBlendState;
+    }
+
+    /// <summary>
+    /// Sets the current blend state for the renderer. If no blend state is provided, it defaults to <see cref="BlendState.AlphaBlend"/>.
+    /// </summary>
+    /// <param name="blendState">The blend state to apply. Defaults to <see cref="BlendState.AlphaBlend"/> if null.</param>
+    public void SetBlendState(BlendState? blendState) {
+        this._currentBlendState = blendState ?? BlendState.AlphaBlend;
+
+        // Update pipeline description.
+        this._pipelineDescription.BlendState = this._currentBlendState.Description;
+    }
+
+    /// <summary>
+    /// Retrieves the currently bound depth stencil state description.
+    /// </summary>
+    /// <returns>The current <see cref="DepthStencilStateDescription"/> instance being used.</returns>
+    public DepthStencilStateDescription GetCurrentDepthStencilState() {
+        return this._currentDepthStencilState;
+    }
+
+    /// <summary>
+    /// Sets the depth stencil state for the renderer. If no state is provided, a default state of depth-only less/equal is used.
+    /// </summary>
+    /// <param name="depthStencilState">The depth stencil state to set. If null, defaults to DepthStencilStateDescription.DEPTH_ONLY_LESS_EQUAL.</param>
+    public void SetDepthStencilState(DepthStencilStateDescription? depthStencilState) {
+        this._currentDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DEPTH_ONLY_LESS_EQUAL;
+        
+        // Update pipeline description.
+        this._pipelineDescription.DepthStencilState = this._currentDepthStencilState;
+    }
+
+    /// <summary>
+    /// Retrieves the current rasterizer state description used by the renderer.
+    /// </summary>
+    /// <returns>The currently bound rasterizer state.</returns>
+    public RasterizerStateDescription GetCurrentRasterizerState() {
+        return this._currentRasterizerState;
+    }
+
+    /// <summary>
+    /// Updates the current rasterizer state for the renderer. If no rasterizer state is provided, the default state is used.
+    /// </summary>
+    /// <param name="rasterizerState">The rasterizer state to apply to the pipeline. If null, the default rasterizer state is used.</param>
+    public void SetRasterizerState(RasterizerStateDescription? rasterizerState) {
+        this._currentRasterizerState = rasterizerState ?? RasterizerStateDescription.DEFAULT;
+        
+        // Update pipeline description.
+        this._pipelineDescription.RasterizerState = this._currentRasterizerState;
     }
 
     /// <summary>
@@ -210,6 +295,17 @@ public class ImmediateRenderer : Disposable {
         this._currentTexture = texture ?? GlobalResource.DefaultImmediateRendererTexture;
         this._currentSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
         this._currentSourceRec = sourceRect ?? new Rectangle(0, 0, (int) this._currentTexture.Width, (int) this._currentTexture.Height);
+    }
+
+    /// <summary>
+    /// Resets the renderer to default settings.
+    /// </summary>
+    public void ResetSettings() {
+        this.SetEffect(null);
+        this.SetBlendState(null);
+        this.SetDepthStencilState(null);
+        this.SetRasterizerState(null);
+        this.SetTexture(null);
     }
     
     /// <summary>
@@ -1909,23 +2005,6 @@ public class ImmediateRenderer : Disposable {
         // Clear temp data.
         this._tempVertices.Clear();
         this._tempIndices.Clear();
-    }
-    
-    /// <summary>
-    /// Creates a new pipeline description used for configuring the graphics pipeline.
-    /// </summary>
-    /// <returns>A <see cref="SimplePipelineDescription"/> configured with depth/stencil, rasterizer, topology, and shader settings.</returns>
-    private SimplePipelineDescription CreatePipelineDescription() {
-        return new SimplePipelineDescription() {
-            DepthStencilState = new DepthStencilStateDescription(true, true, ComparisonKind.LessEqual),
-            RasterizerState = new RasterizerStateDescription() {
-                CullMode = FaceCullMode.Back,
-                FillMode = PolygonFillMode.Solid,
-                FrontFace = FrontFace.Clockwise,
-                DepthClipEnabled = true,
-                ScissorTestEnabled = false
-            }
-        };
     }
 
     protected override void Dispose(bool disposing) {
