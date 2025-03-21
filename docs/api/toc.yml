@@ -111,9 +111,6 @@ items:
   name: Bliss.CSharp.Graphics
   type: Namespace
   items:
-  - uid: Bliss.CSharp.Graphics.BlendState
-    name: BlendState
-    type: Class
   - uid: Bliss.CSharp.Graphics.GraphicsHelper
     name: GraphicsHelper
     type: Class

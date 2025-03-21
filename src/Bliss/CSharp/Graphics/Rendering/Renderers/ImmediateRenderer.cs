@@ -94,7 +94,7 @@ public class ImmediateRenderer : Disposable {
     /// <summary>
     /// The currently bound blendState.
     /// </summary>
-    private BlendState _currentBlendState;
+    private BlendStateDescription _currentBlendState;
 
     /// <summary>
     /// The currently bound depthStencilState.
@@ -207,20 +207,20 @@ public class ImmediateRenderer : Disposable {
     /// <summary>
     /// Retrieves the current blend state used by the renderer.
     /// </summary>
-    /// <returns>The current <see cref="BlendState"/> instance.</returns>
-    public BlendState GetBlendState() {
+    /// <returns>The current <see cref="BlendStateDescription"/> instance.</returns>
+    public BlendStateDescription GetBlendState() {
         return this._currentBlendState;
     }
 
     /// <summary>
-    /// Sets the current blend state for the renderer. If no blend state is provided, it defaults to <see cref="BlendState.AlphaBlend"/>.
+    /// Sets the current blend state for the renderer. If no blend state is provided, it defaults to <see cref="BlendStateDescription.SINGLE_ALPHA_BLEND"/>.
     /// </summary>
-    /// <param name="blendState">The blend state to apply. Defaults to <see cref="BlendState.AlphaBlend"/> if null.</param>
-    public void SetBlendState(BlendState? blendState) {
-        this._currentBlendState = blendState ?? BlendState.AlphaBlend;
+    /// <param name="blendState">The blend state to apply. Defaults to <see cref="BlendStateDescription.SINGLE_ALPHA_BLEND"/> if null.</param>
+    public void SetBlendState(BlendStateDescription? blendState) {
+        this._currentBlendState = blendState ?? BlendStateDescription.SINGLE_ALPHA_BLEND;
 
         // Update pipeline description.
-        this._pipelineDescription.BlendState = this._currentBlendState.Description;
+        this._pipelineDescription.BlendState = this._currentBlendState;
     }
 
     /// <summary>

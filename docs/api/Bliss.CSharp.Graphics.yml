@@ -4,7 +4,6 @@ items:
   commentId: N:Bliss.CSharp.Graphics
   id: Bliss.CSharp.Graphics
   children:
-  - Bliss.CSharp.Graphics.BlendState
   - Bliss.CSharp.Graphics.GraphicsHelper
   - Bliss.CSharp.Graphics.SamplerType
   langs:
@@ -17,13 +16,6 @@ items:
   assemblies:
   - Bliss
 references:
-- uid: Bliss.CSharp.Graphics.BlendState
-  commentId: T:Bliss.CSharp.Graphics.BlendState
-  parent: Bliss.CSharp.Graphics
-  href: Bliss.CSharp.Graphics.BlendState.html
-  name: BlendState
-  nameWithType: BlendState
-  fullName: Bliss.CSharp.Graphics.BlendState
 - uid: Bliss.CSharp.Graphics.GraphicsHelper
   commentId: T:Bliss.CSharp.Graphics.GraphicsHelper
   href: Bliss.CSharp.Graphics.GraphicsHelper.html

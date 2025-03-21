@@ -348,7 +348,7 @@ Each animation encapsulates skeletal transformations over time, enabling the mod
 
   <h3 id="Bliss_CSharp_Geometry_Model_Dispose_System_Boolean_" data-uid="Bliss.CSharp.Geometry.Model.Dispose(System.Boolean)">
   Dispose(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L417"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L418"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Disposes of the object and releases associated resources.</p>
@@ -379,38 +379,41 @@ Each animation encapsulates skeletal transformations over time, enabling the mod
 
   <a id="Bliss_CSharp_Geometry_Model_Draw_" data-uid="Bliss.CSharp.Geometry.Model.Draw*"></a>
 
-  <h3 id="Bliss_CSharp_Geometry_Model_Draw_Veldrid_CommandList_Bliss_CSharp_Transformations_Transform_Veldrid_OutputDescription_Veldrid_Sampler_System_Boolean_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Geometry.Model.Draw(Veldrid.CommandList,Bliss.CSharp.Transformations.Transform,Veldrid.OutputDescription,Veldrid.Sampler,System.Boolean,System.Nullable{Bliss.CSharp.Colors.Color})">
-  Draw(CommandList, Transform, OutputDescription, Sampler?, bool, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L393"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Geometry_Model_Draw_Veldrid_CommandList_Bliss_CSharp_Transformations_Transform_Veldrid_OutputDescription_Veldrid_Sampler_System_Nullable_Veldrid_DepthStencilStateDescription__System_Nullable_Veldrid_RasterizerStateDescription__System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Geometry.Model.Draw(Veldrid.CommandList,Bliss.CSharp.Transformations.Transform,Veldrid.OutputDescription,Veldrid.Sampler,System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{Bliss.CSharp.Colors.Color})">
+  Draw(CommandList, Transform, OutputDescription, Sampler?, DepthStencilStateDescription?, RasterizerStateDescription?, Color?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L394"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Draws the model using the specified command list, transformation, and output settings.</p>
+  <div class="markdown level1 summary"><p>Draws the model using the specified command list, transform, and rendering configurations.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Draw(CommandList commandList, Transform transform, OutputDescription output, Sampler? sampler = null, bool wires = false, Color? color = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Draw(CommandList commandList, Transform transform, OutputDescription output, Sampler? sampler = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Color? color = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs">CommandList</a></dt>
-    <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs">CommandList</a> used for issuing rendering commands.</p>
+    <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs">CommandList</a> that issues the rendering commands.</p>
 </dd>
     <dt><code>transform</code> <a class="xref" href="Bliss.CSharp.Transformations.Transform.html">Transform</a></dt>
-    <dd><p>The <a class="xref" href="Bliss.CSharp.Transformations.Transform.html">Transform</a> applied to the model during rendering.</p>
+    <dd><p>The <a class="xref" href="Bliss.CSharp.Transformations.Transform.html">Transform</a> describing the position, rotation, and scale of the model in the scene.</p>
 </dd>
     <dt><code>output</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs">OutputDescription</a></dt>
-    <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs">OutputDescription</a> specifying the rendering output settings.</p>
+    <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs">OutputDescription</a> that defines the target rendering output settings, such as resolution and format.</p>
 </dd>
     <dt><code>sampler</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs">Sampler</a></dt>
-    <dd><p>An optional <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs">Sampler</a> for texture sampling. If null, the default sampler is used.</p>
+    <dd><p>An optional <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs">Sampler</a> used for texture sampling. If not provided, a default sampler is applied.</p>
 </dd>
-    <dt><code>wires</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>A boolean flag indicating whether to render the model in wireframe mode.</p>
+    <dt><code>depthStencilState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a>?</dt>
+    <dd><p>An optional <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a> to configure depth and stencil testing for the drawing process.</p>
+</dd>
+    <dt><code>rasterizerState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a>?</dt>
+    <dd><p>An optional <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a> that manages the rasterizer configuration, such as culling and fill mode.</p>
 </dd>
     <dt><code>color</code> <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a>?</dt>
-    <dd><p>An optional <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a> to apply a tint or override default color settings. Defaults to null.</p>
+    <dd><p>An optional <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a> to override or apply a custom tint to the model's rendered output.</p>
 </dd>
   </dl>
 

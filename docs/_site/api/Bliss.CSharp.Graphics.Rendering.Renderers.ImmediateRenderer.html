@@ -172,7 +172,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer__ctor_Veldrid_GraphicsDevice_System_UInt32_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.#ctor(Veldrid.GraphicsDevice,System.UInt32)">
   ImmediateRenderer(GraphicsDevice, uint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L114"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L129"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html">ImmediateRenderer</a> class with the specified graphics device, output, effect, and capacity.</p>
@@ -278,9 +278,9 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <a id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_Begin_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Begin*"></a>
 
-  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_Begin_Veldrid_CommandList_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_Bliss_CSharp_Graphics_BlendState_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState)">
-  Begin(CommandList, OutputDescription, Effect?, BlendState?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L150"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_Begin_Veldrid_CommandList_Veldrid_OutputDescription_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Begin(Veldrid.CommandList,Veldrid.OutputDescription)">
+  Begin(CommandList, OutputDescription)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L161"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Begins the rendering process by configuring the command list, output, effect, and blend state for the pipeline.</p>
@@ -288,7 +288,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Begin(CommandList commandList, OutputDescription output, Effect? effect = null, BlendState? blendState = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Begin(CommandList commandList, OutputDescription output)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -298,12 +298,6 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 </dd>
     <dt><code>output</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs">OutputDescription</a></dt>
     <dd><p>The output description that specifies the rendering target details.</p>
-</dd>
-    <dt><code>effect</code> <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a></dt>
-    <dd><p>An optional effect instance; if null, the default immediate renderer effect is used.</p>
-</dd>
-    <dt><code>blendState</code> <a class="xref" href="Bliss.CSharp.Graphics.BlendState.html">BlendState</a></dt>
-    <dd><p>An optional blend state instance; if null, the default alpha blend state is used.</p>
 </dd>
   </dl>
 
@@ -328,7 +322,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_Dispose_System_Boolean_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.Dispose(System.Boolean)">
   Dispose(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1931"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L2010"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Disposes of the object and releases associated resources.</p>
@@ -361,7 +355,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawBillboard_System_Numerics_Vector3_System_Nullable_System_Numerics_Vector2__System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawBillboard(System.Numerics.Vector3,System.Nullable{System.Numerics.Vector2},System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawBillboard(Vector3, Vector2?, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1727"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1823"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Renders a billboard at the specified position with optional scaling and color.</p>
@@ -400,7 +394,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawBoundingBox_Bliss_CSharp_Transformations_Transform_Bliss_CSharp_Geometry_BoundingBox_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawBoundingBox(Bliss.CSharp.Transformations.Transform,Bliss.CSharp.Geometry.BoundingBox,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawBoundingBox(Transform, BoundingBox, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1664"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1760"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws the edges of the specified bounding box using the given transformation and color.</p>
@@ -439,7 +433,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCapsule_Bliss_CSharp_Transformations_Transform_System_Single_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCapsule(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawCapsule(Transform, float, float, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L866"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L962"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Renders a 3D capsule using the specified transformation, dimensions, and visual properties.</p>
@@ -484,7 +478,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCapsuleWires_Bliss_CSharp_Transformations_Transform_System_Single_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCapsuleWires(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawCapsuleWires(Transform, float, float, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1026"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1122"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws the wireframe of a capsule based on the specified transform, dimensions, and color.</p>
@@ -529,7 +523,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCone_Bliss_CSharp_Transformations_Transform_System_Single_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCone(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawCone(Transform, float, float, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1170"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1266"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws a 3D cone using the specified transform, radius, height, and slices.</p>
@@ -574,7 +568,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawConeWires_Bliss_CSharp_Transformations_Transform_System_Single_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawConeWires(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawConeWires(Transform, float, float, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1247"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1343"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws a wireframe representation of a cone in 3D space.</p>
@@ -619,7 +613,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCube_Bliss_CSharp_Transformations_Transform_System_Numerics_Vector3_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCube(Bliss.CSharp.Transformations.Transform,System.Numerics.Vector3,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawCube(Transform, Vector3, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L221"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L317"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws a cube with the specified transformation, size, and optional color.</p>
@@ -658,7 +652,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCubeWires_Bliss_CSharp_Transformations_Transform_System_Numerics_Vector3_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCubeWires(Bliss.CSharp.Transformations.Transform,System.Numerics.Vector3,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawCubeWires(Transform, Vector3, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L315"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L411"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws the wireframe of a cube with the specified transform, size, and optional color.</p>
@@ -697,7 +691,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCylinder_Bliss_CSharp_Transformations_Transform_System_Single_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCylinder(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawCylinder(Transform, float, float, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L673"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L769"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Renders a cylinder using the specified transform, dimensions, slice count, and optional color.</p>
@@ -742,7 +736,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawCylinderWires_Bliss_CSharp_Transformations_Transform_System_Single_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCylinderWires(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawCylinderWires(Transform, float, float, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L777"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L873"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws the wireframe representation of a cylinder using the specified transform, radius, height, and number of slices.</p>
@@ -787,7 +781,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawGird_Bliss_CSharp_Transformations_Transform_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawGird(Bliss.CSharp.Transformations.Transform,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawGird(Transform, int, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1610"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1706"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Renders a grid using the specified transformation matrix, slice count, spacing, and optional color.</p>
@@ -829,7 +823,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawHemisphere_Bliss_CSharp_Transformations_Transform_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawHemisphere(Bliss.CSharp.Transformations.Transform,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawHemisphere(Transform, float, int, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L478"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L574"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Renders a 3D hemisphere with the specified transformation, radius, rings, slices, and optional color.</p>
@@ -874,7 +868,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawHemisphereWires_Bliss_CSharp_Transformations_Transform_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawHemisphereWires(Bliss.CSharp.Transformations.Transform,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawHemisphereWires(Transform, float, int, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L591"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L687"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws the wireframe outline of a hemisphere using the specified transformation, radius, number of rings, and slices.</p>
@@ -919,7 +913,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawKnot_Bliss_CSharp_Transformations_Transform_System_Single_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawKnot(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawKnot(Transform, float, float, int, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1451"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1547"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws a knot shape with the specified parameters using transformations, radii, segments, and color.</p>
@@ -967,7 +961,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawKnotWires_Bliss_CSharp_Transformations_Transform_System_Single_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawKnotWires(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawKnotWires(Transform, float, float, int, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1540"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1636"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Renders the wireframe of a knot shape using the specified transformation, radii, and segments.</p>
@@ -1015,7 +1009,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawLine_System_Numerics_Vector3_System_Numerics_Vector3_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawLine(System.Numerics.Vector3,System.Numerics.Vector3,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawLine(Vector3, Vector3, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1699"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1795"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws a line between two points in 3D space with an optional color.</p>
@@ -1054,7 +1048,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawSphere_Bliss_CSharp_Transformations_Transform_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawSphere(Bliss.CSharp.Transformations.Transform,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawSphere(Transform, float, int, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L352"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L448"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws a sphere with the specified transformation, radius, number of rings, slices, and optional color.</p>
@@ -1099,7 +1093,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawSphereWires_Bliss_CSharp_Transformations_Transform_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawSphereWires(Bliss.CSharp.Transformations.Transform,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawSphereWires(Transform, float, int, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L421"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L517"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws the wireframe of a sphere with the given transform, radius, number of rings, slices, and optional color.</p>
@@ -1144,7 +1138,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawTorus_Bliss_CSharp_Transformations_Transform_System_Single_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawTorus(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawTorus(Transform, float, float, int, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1317"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1413"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Renders a torus shape using the specified transformation, dimensions, and color.</p>
@@ -1192,7 +1186,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawTorusWires_Bliss_CSharp_Transformations_Transform_System_Single_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawTorusWires(Bliss.CSharp.Transformations.Transform,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawTorusWires(Transform, float, float, int, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1392"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1488"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Renders a wireframe torus using the specified transformation, dimensions, and color.</p>
@@ -1240,7 +1234,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawVertices_Bliss_CSharp_Transformations_Transform_System_Collections_Generic_List_Bliss_CSharp_Graphics_VertexTypes_ImmediateVertex3D__System_Collections_Generic_List_System_UInt32__Veldrid_PrimitiveTopology_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawVertices(Bliss.CSharp.Transformations.Transform,System.Collections.Generic.List{Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D},System.Collections.Generic.List{System.UInt32},Veldrid.PrimitiveTopology)">
   DrawVertices(Transform, List&lt;ImmediateVertex3D&gt;, List&lt;uint&gt;, PrimitiveTopology)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1807"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L1903"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws a set of vertices using the specified transformation, vertex data, indices, and topology.</p>
@@ -1282,7 +1276,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_End" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.End">
   End()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L171"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L177"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Ends the rendering process, flushing any remaining batched geometry.</p>
@@ -1311,11 +1305,143 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
 
 
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_GetBlendState_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetBlendState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_GetBlendState" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetBlendState">
+  GetBlendState()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L211"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the current blend state used by the renderer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlendStateDescription GetBlendState()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a></dt>
+    <dd><p>The current <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a> instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_GetCurrentDepthStencilState_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentDepthStencilState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_GetCurrentDepthStencilState" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentDepthStencilState">
+  GetCurrentDepthStencilState()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L230"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the currently bound depth stencil state description.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DepthStencilStateDescription GetCurrentDepthStencilState()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a></dt>
+    <dd><p>The current <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a> instance being used.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_GetCurrentEffect_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentEffect*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_GetCurrentEffect" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentEffect">
+  GetCurrentEffect()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L189"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the current effect being used by the renderer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Effect GetCurrentEffect()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a></dt>
+    <dd><p>The currently set <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a> instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_GetCurrentRasterizerState_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentRasterizerState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_GetCurrentRasterizerState" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentRasterizerState">
+  GetCurrentRasterizerState()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L249"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the current rasterizer state description used by the renderer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RasterizerStateDescription GetCurrentRasterizerState()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a></dt>
+    <dd><p>The currently bound rasterizer state.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_GetCurrentSampler_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentSampler*"></a>
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_GetCurrentSampler" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentSampler">
   GetCurrentSampler()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L191"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L276"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the currently active sampler used by the renderer.</p>
@@ -1348,7 +1474,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_GetCurrentSourceRec" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentSourceRec">
   GetCurrentSourceRec()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L199"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L284"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the current source rectangle used for rendering operations.</p>
@@ -1381,7 +1507,7 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_GetCurrentTexture" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentTexture">
   GetCurrentTexture()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L183"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L268"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the currently active texture being used by the renderer.</p>
@@ -1410,11 +1536,171 @@ Class ImmediateRenderer  <a class="header-action link-secondary" title="View sou
 
 
 
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_ResetSettings_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.ResetSettings*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_ResetSettings" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.ResetSettings">
+  ResetSettings()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L303"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Resets the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html">ImmediateRenderer</a> to default settings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ResetSettings()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_SetBlendState_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.SetBlendState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_SetBlendState_System_Nullable_Veldrid_BlendStateDescription__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.SetBlendState(System.Nullable{Veldrid.BlendStateDescription})">
+  SetBlendState(BlendStateDescription?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L219"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the current blend state for the renderer. If no blend state is provided, it defaults to <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs">SINGLE_ALPHA_BLEND</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetBlendState(BlendStateDescription? blendState)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blendState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a>?</dt>
+    <dd><p>The blend state to apply. Defaults to <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs">SINGLE_ALPHA_BLEND</a> if null.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_SetDepthStencilState_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.SetDepthStencilState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_SetDepthStencilState_System_Nullable_Veldrid_DepthStencilStateDescription__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.SetDepthStencilState(System.Nullable{Veldrid.DepthStencilStateDescription})">
+  SetDepthStencilState(DepthStencilStateDescription?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L238"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the depth stencil state for the renderer. If no state is provided, a default state of depth-only less/equal is used.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDepthStencilState(DepthStencilStateDescription? depthStencilState)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>depthStencilState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a>?</dt>
+    <dd><p>The depth stencil state to set. If null, defaults to DepthStencilStateDescription.DEPTH_ONLY_LESS_EQUAL.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_SetEffect_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.SetEffect*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_SetEffect_Bliss_CSharp_Effects_Effect_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.SetEffect(Bliss.CSharp.Effects.Effect)">
+  SetEffect(Effect?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L198"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the current rendering effect for the ImmediateRenderer.
+If the provided effect is null, it defaults to the global default immediate renderer effect.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetEffect(Effect? effect)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>effect</code> <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a></dt>
+    <dd><p>The effect to be used. If null, the default ImmediateRenderer effect will be used.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_SetRasterizerState_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.SetRasterizerState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_SetRasterizerState_System_Nullable_Veldrid_RasterizerStateDescription__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.SetRasterizerState(System.Nullable{Veldrid.RasterizerStateDescription})">
+  SetRasterizerState(RasterizerStateDescription?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L257"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the current rasterizer state for the renderer. If no rasterizer state is provided, the default state is used.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetRasterizerState(RasterizerStateDescription? rasterizerState)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rasterizerState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a>?</dt>
+    <dd><p>The rasterizer state to apply to the pipeline. If null, the default rasterizer state is used.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_SetTexture_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.SetTexture*"></a>
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_SetTexture_Bliss_CSharp_Textures_Texture2D_Veldrid_Sampler_System_Nullable_Bliss_CSharp_Transformations_Rectangle__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.SetTexture(Bliss.CSharp.Textures.Texture2D,Veldrid.Sampler,System.Nullable{Bliss.CSharp.Transformations.Rectangle})">
   SetTexture(Texture2D?, Sampler?, Rectangle?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L209"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs/#L294"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the current texture, sampler, and optional source rectangle for rendering.</p>

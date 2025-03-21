@@ -5,7 +5,7 @@ items:
   id: Material
   parent: Bliss.CSharp.Materials
   children:
-  - Bliss.CSharp.Materials.Material.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState)
+  - Bliss.CSharp.Materials.Material.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Effects.Effect,System.Nullable{Veldrid.BlendStateDescription})
   - Bliss.CSharp.Materials.Material.AddMaterialMap(System.String,Bliss.CSharp.Materials.MaterialMap)
   - Bliss.CSharp.Materials.Material.BlendState
   - Bliss.CSharp.Materials.Material.Effect
@@ -35,7 +35,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Material
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 10
+    startLine: 9
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -70,7 +70,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GraphicsDevice
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 15
+    startLine: 14
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -101,7 +101,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Effect
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 20
+    startLine: 19
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -130,17 +130,17 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: BlendState
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 25
+    startLine: 24
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
   summary: Specifies the blend state for rendering, determining how colors are blended on the screen.
   example: []
   syntax:
-    content: public BlendState BlendState
+    content: public BlendStateDescription BlendState
     return:
-      type: Bliss.CSharp.Graphics.BlendState
-    content.vb: Public BlendState As BlendState
+      type: Veldrid.BlendStateDescription
+    content.vb: Public BlendState As BlendStateDescription
 - uid: Bliss.CSharp.Materials.Material.Parameters
   commentId: F:Bliss.CSharp.Materials.Material.Parameters
   id: Parameters
@@ -159,7 +159,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Parameters
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 30
+    startLine: 29
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -170,16 +170,16 @@ items:
     return:
       type: System.Collections.Generic.List{System.Single}
     content.vb: Public Parameters As List(Of Single)
-- uid: Bliss.CSharp.Materials.Material.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState)
-  commentId: M:Bliss.CSharp.Materials.Material.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState)
-  id: '#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState)'
+- uid: Bliss.CSharp.Materials.Material.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Effects.Effect,System.Nullable{Veldrid.BlendStateDescription})
+  commentId: M:Bliss.CSharp.Materials.Material.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Effects.Effect,System.Nullable{Veldrid.BlendStateDescription})
+  id: '#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Effects.Effect,System.Nullable{Veldrid.BlendStateDescription})'
   parent: Bliss.CSharp.Materials.Material
   langs:
   - csharp
   - vb
-  name: Material(GraphicsDevice, Effect, BlendState?)
-  nameWithType: Material.Material(GraphicsDevice, Effect, BlendState?)
-  fullName: Bliss.CSharp.Materials.Material.Material(Veldrid.GraphicsDevice, Bliss.CSharp.Effects.Effect, Bliss.CSharp.Graphics.BlendState?)
+  name: Material(GraphicsDevice, Effect, BlendStateDescription?)
+  nameWithType: Material.Material(GraphicsDevice, Effect, BlendStateDescription?)
+  fullName: Bliss.CSharp.Materials.Material.Material(Veldrid.GraphicsDevice, Bliss.CSharp.Effects.Effect, Veldrid.BlendStateDescription?)
   type: Constructor
   source:
     remote:
@@ -188,7 +188,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 44
+    startLine: 43
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -198,7 +198,7 @@ items:
     graphics device, shader effect, and optional blend state.
   example: []
   syntax:
-    content: public Material(GraphicsDevice graphicsDevice, Effect effect, BlendState? blendState = null)
+    content: public Material(GraphicsDevice graphicsDevice, Effect effect, BlendStateDescription? blendState = null)
     parameters:
     - id: graphicsDevice
       type: Veldrid.GraphicsDevice
@@ -207,13 +207,13 @@ items:
       type: Bliss.CSharp.Effects.Effect
       description: The effect (shader) to apply to the material.
     - id: blendState
-      type: Bliss.CSharp.Graphics.BlendState
+      type: System.Nullable{Veldrid.BlendStateDescription}
       description: The optional blend state to define how this material blends with others during rendering. If not specified, blending is disabled by default.
-    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, effect As Effect, blendState As BlendState = Nothing)
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, effect As Effect, blendState As BlendStateDescription? = Nothing)
   overload: Bliss.CSharp.Materials.Material.#ctor*
-  nameWithType.vb: Material.New(GraphicsDevice, Effect, BlendState)
-  fullName.vb: Bliss.CSharp.Materials.Material.New(Veldrid.GraphicsDevice, Bliss.CSharp.Effects.Effect, Bliss.CSharp.Graphics.BlendState)
-  name.vb: New(GraphicsDevice, Effect, BlendState)
+  nameWithType.vb: Material.New(GraphicsDevice, Effect, BlendStateDescription?)
+  fullName.vb: Bliss.CSharp.Materials.Material.New(Veldrid.GraphicsDevice, Bliss.CSharp.Effects.Effect, Veldrid.BlendStateDescription?)
+  name.vb: New(GraphicsDevice, Effect, BlendStateDescription?)
 - uid: Bliss.CSharp.Materials.Material.GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout,System.String)
   commentId: M:Bliss.CSharp.Materials.Material.GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout,System.String)
   id: GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout,System.String)
@@ -232,7 +232,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetResourceSet
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 60
+    startLine: 59
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -279,7 +279,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetMaterialMapNames
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 69
+    startLine: 68
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -310,7 +310,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetMaterialMaps
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 79
+    startLine: 78
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -341,7 +341,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetMaterialMap
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 88
+    startLine: 87
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -379,7 +379,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: AddMaterialMap
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 101
+    startLine: 100
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -417,7 +417,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetMapTexture
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 112
+    startLine: 111
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -455,7 +455,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetMapTexture
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 125
+    startLine: 124
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -493,7 +493,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetMapColor
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 139
+    startLine: 138
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -531,7 +531,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetMapColor
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 152
+    startLine: 151
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -569,7 +569,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetMapValue
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 166
+    startLine: 165
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -607,7 +607,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetMapValue
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 179
+    startLine: 178
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -952,43 +952,14 @@ references:
   - uid: Bliss.CSharp.Effects
     name: Effects
     href: Bliss.CSharp.Effects.html
-- uid: Bliss.CSharp.Graphics.BlendState
-  commentId: T:Bliss.CSharp.Graphics.BlendState
-  parent: Bliss.CSharp.Graphics
-  href: Bliss.CSharp.Graphics.BlendState.html
-  name: BlendState
-  nameWithType: BlendState
-  fullName: Bliss.CSharp.Graphics.BlendState
-- uid: Bliss.CSharp.Graphics
-  commentId: N:Bliss.CSharp.Graphics
-  href: Bliss.html
-  name: Bliss.CSharp.Graphics
-  nameWithType: Bliss.CSharp.Graphics
-  fullName: Bliss.CSharp.Graphics
-  spec.csharp:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Graphics
-    name: Graphics
-    href: Bliss.CSharp.Graphics.html
-  spec.vb:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Graphics
-    name: Graphics
-    href: Bliss.CSharp.Graphics.html
+- uid: Veldrid.BlendStateDescription
+  commentId: T:Veldrid.BlendStateDescription
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+  name: BlendStateDescription
+  nameWithType: BlendStateDescription
+  fullName: Veldrid.BlendStateDescription
 - uid: System.Collections.Generic.List{System.Single}
   commentId: T:System.Collections.Generic.List{System.Single}
   parent: System.Collections.Generic
@@ -1098,13 +1069,61 @@ references:
   fullName: Bliss.CSharp.Materials.Material
 - uid: Bliss.CSharp.Materials.Material.#ctor*
   commentId: Overload:Bliss.CSharp.Materials.Material.#ctor
-  href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Effects_Effect_Bliss_CSharp_Graphics_BlendState_
+  href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Effects_Effect_System_Nullable_Veldrid_BlendStateDescription__
   name: Material
   nameWithType: Material.Material
   fullName: Bliss.CSharp.Materials.Material.Material
   nameWithType.vb: Material.New
   fullName.vb: Bliss.CSharp.Materials.Material.New
   name.vb: New
+- uid: System.Nullable{Veldrid.BlendStateDescription}
+  commentId: T:System.Nullable{Veldrid.BlendStateDescription}
+  parent: System
+  definition: System.Nullable`1
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+  name: BlendStateDescription?
+  nameWithType: BlendStateDescription?
+  fullName: Veldrid.BlendStateDescription?
+  spec.csharp:
+  - uid: Veldrid.BlendStateDescription
+    name: BlendStateDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+  - name: '?'
+  spec.vb:
+  - uid: Veldrid.BlendStateDescription
+    name: BlendStateDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
 - uid: Bliss.CSharp.Materials.Material.GetResourceSet*
   commentId: Overload:Bliss.CSharp.Materials.Material.GetResourceSet
   href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_GetResourceSet_Veldrid_Sampler_Bliss_CSharp_Graphics_Pipelines_Textures_SimpleTextureLayout_System_String_
@@ -1376,34 +1395,6 @@ references:
   - uid: Bliss.CSharp.Colors
     name: Colors
     href: Bliss.CSharp.Colors.html
-- uid: System.Nullable`1
-  commentId: T:System.Nullable`1
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
-  name: Nullable<T>
-  nameWithType: Nullable<T>
-  fullName: System.Nullable<T>
-  nameWithType.vb: Nullable(Of T)
-  fullName.vb: System.Nullable(Of T)
-  name.vb: Nullable(Of T)
-  spec.csharp:
-  - uid: System.Nullable`1
-    name: Nullable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: System.Nullable`1
-    name: Nullable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
 - uid: Bliss.CSharp.Materials.Material.SetMapColor*
   commentId: Overload:Bliss.CSharp.Materials.Material.SetMapColor
   href: Bliss.CSharp.Materials.Material.html#Bliss_CSharp_Materials_Material_SetMapColor_System_String_Bliss_CSharp_Colors_Color_

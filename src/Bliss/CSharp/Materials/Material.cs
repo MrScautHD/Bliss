@@ -1,6 +1,5 @@
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Effects;
-using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
@@ -23,7 +22,7 @@ public class Material {
     /// <summary>
     /// Specifies the blend state for rendering, determining how colors are blended on the screen.
     /// </summary>
-    public BlendState BlendState;
+    public BlendStateDescription BlendState;
     
     /// <summary>
     /// A list of floating-point parameters for configuring material properties.
@@ -42,10 +41,10 @@ public class Material {
     /// <param name="graphicsDevice">The graphics device to associate with this material.</param>
     /// <param name="effect">The effect (shader) to apply to the material.</param>
     /// <param name="blendState">The optional blend state to define how this material blends with others during rendering. If not specified, blending is disabled by default.</param>
-    public Material(GraphicsDevice graphicsDevice, Effect effect, BlendState? blendState = null) {
+    public Material(GraphicsDevice graphicsDevice, Effect effect, BlendStateDescription? blendState = null) {
         this.GraphicsDevice = graphicsDevice;
         this.Effect = effect;
-        this.BlendState = blendState ?? BlendState.Disabled;
+        this.BlendState = blendState ?? BlendStateDescription.SINGLE_DISABLED;
         this.Parameters = new List<float>();
         this._maps = new Dictionary<string, MaterialMap>();
     }

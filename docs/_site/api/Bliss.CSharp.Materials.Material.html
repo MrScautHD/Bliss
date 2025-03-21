@@ -89,7 +89,7 @@
 
 
   <h1 id="Bliss_CSharp_Materials_Material" data-uid="Bliss.CSharp.Materials.Material" class="text-break">
-Class Material  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L11"><i class="bi bi-code-slash"></i></a>
+Class Material  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -154,9 +154,9 @@ Class Material  <a class="header-action link-secondary" title="View source" href
 
   <a id="Bliss_CSharp_Materials_Material__ctor_" data-uid="Bliss.CSharp.Materials.Material.#ctor*"></a>
 
-  <h3 id="Bliss_CSharp_Materials_Material__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Effects_Effect_Bliss_CSharp_Graphics_BlendState_" data-uid="Bliss.CSharp.Materials.Material.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState)">
-  Material(GraphicsDevice, Effect, BlendState?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Materials_Material__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Effects_Effect_System_Nullable_Veldrid_BlendStateDescription__" data-uid="Bliss.CSharp.Materials.Material.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Effects.Effect,System.Nullable{Veldrid.BlendStateDescription})">
+  Material(GraphicsDevice, Effect, BlendStateDescription?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L44"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Bliss.CSharp.Materials.Material.html">Material</a> class, configuring it with the specified
@@ -165,7 +165,7 @@ graphics device, shader effect, and optional blend state.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Material(GraphicsDevice graphicsDevice, Effect effect, BlendState? blendState = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public Material(GraphicsDevice graphicsDevice, Effect effect, BlendStateDescription? blendState = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -176,7 +176,7 @@ graphics device, shader effect, and optional blend state.</p>
     <dt><code>effect</code> <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a></dt>
     <dd><p>The effect (shader) to apply to the material.</p>
 </dd>
-    <dt><code>blendState</code> <a class="xref" href="Bliss.CSharp.Graphics.BlendState.html">BlendState</a></dt>
+    <dt><code>blendState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a>?</dt>
     <dd><p>The optional blend state to define how this material blends with others during rendering. If not specified, blending is disabled by default.</p>
 </dd>
   </dl>
@@ -199,7 +199,7 @@ graphics device, shader effect, and optional blend state.</p>
 
   <h3 id="Bliss_CSharp_Materials_Material_BlendState" data-uid="Bliss.CSharp.Materials.Material.BlendState">
   BlendState
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Specifies the blend state for rendering, determining how colors are blended on the screen.</p>
@@ -207,7 +207,7 @@ graphics device, shader effect, and optional blend state.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BlendState BlendState</code></pre>
+    <pre><code class="lang-csharp hljs">public BlendStateDescription BlendState</code></pre>
   </div>
 
 
@@ -215,7 +215,7 @@ graphics device, shader effect, and optional blend state.</p>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Bliss.CSharp.Graphics.BlendState.html">BlendState</a></dt>
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a></dt>
     <dd></dd>
   </dl>
 
@@ -230,7 +230,7 @@ graphics device, shader effect, and optional blend state.</p>
 
   <h3 id="Bliss_CSharp_Materials_Material_Effect" data-uid="Bliss.CSharp.Materials.Material.Effect">
   Effect
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The effect (shader program) applied to this material.</p>
@@ -261,7 +261,7 @@ graphics device, shader effect, and optional blend state.</p>
 
   <h3 id="Bliss_CSharp_Materials_Material_Parameters" data-uid="Bliss.CSharp.Materials.Material.Parameters">
   Parameters
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>A list of floating-point parameters for configuring material properties.</p>
@@ -297,7 +297,7 @@ graphics device, shader effect, and optional blend state.</p>
 
   <h3 id="Bliss_CSharp_Materials_Material_GraphicsDevice" data-uid="Bliss.CSharp.Materials.Material.GraphicsDevice">
   GraphicsDevice
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The graphics device associated with this material, used to manage rendering resources.</p>
@@ -333,7 +333,7 @@ graphics device, shader effect, and optional blend state.</p>
 
   <h3 id="Bliss_CSharp_Materials_Material_AddMaterialMap_System_String_Bliss_CSharp_Materials_MaterialMap_" data-uid="Bliss.CSharp.Materials.Material.AddMaterialMap(System.String,Bliss.CSharp.Materials.MaterialMap)">
   AddMaterialMap(string, MaterialMap)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L101"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Adds a MaterialMap to the material's collection, associating it with a specified name.</p>
@@ -369,7 +369,7 @@ graphics device, shader effect, and optional blend state.</p>
 
   <h3 id="Bliss_CSharp_Materials_Material_GetMapColor_System_String_" data-uid="Bliss.CSharp.Materials.Material.GetMapColor(System.String)">
   GetMapColor(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L140"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L139"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the color associated with the specified material map.</p>
@@ -408,7 +408,7 @@ graphics device, shader effect, and optional blend state.</p>
 
   <h3 id="Bliss_CSharp_Materials_Material_GetMapTexture_System_String_" data-uid="Bliss.CSharp.Materials.Material.GetMapTexture(System.String)">
   GetMapTexture(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L112"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the texture associated with the specified material map name.</p>
@@ -447,7 +447,7 @@ graphics device, shader effect, and optional blend state.</p>
 
   <h3 id="Bliss_CSharp_Materials_Material_GetMapValue_System_String_" data-uid="Bliss.CSharp.Materials.Material.GetMapValue(System.String)">
   GetMapValue(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L167"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L166"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the value associated with the specified material map name.</p>
@@ -486,7 +486,7 @@ graphics device, shader effect, and optional blend state.</p>
 
   <h3 id="Bliss_CSharp_Materials_Material_GetMaterialMap_System_String_" data-uid="Bliss.CSharp.Materials.Material.GetMaterialMap(System.String)">
   GetMaterialMap(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L89"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L88"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the material map associated with the specified name.</p>
@@ -525,7 +525,7 @@ graphics device, shader effect, and optional blend state.</p>
 
   <h3 id="Bliss_CSharp_Materials_Material_GetMaterialMapNames" data-uid="Bliss.CSharp.Materials.Material.GetMaterialMapNames">
   GetMaterialMapNames()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L69"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves an array of all the material map names associated with the material.</p>
@@ -558,7 +558,7 @@ graphics device, shader effect, and optional blend state.</p>
 
   <h3 id="Bliss_CSharp_Materials_Material_GetMaterialMaps" data-uid="Bliss.CSharp.Materials.Material.GetMaterialMaps">
   GetMaterialMaps()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L79"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves an array of all material maps associated with the current material.</p>
@@ -591,7 +591,7 @@ graphics device, shader effect, and optional blend state.</p>
 
   <h3 id="Bliss_CSharp_Materials_Material_GetResourceSet_Veldrid_Sampler_Bliss_CSharp_Graphics_Pipelines_Textures_SimpleTextureLayout_System_String_" data-uid="Bliss.CSharp.Materials.Material.GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout,System.String)">
   GetResourceSet(Sampler, SimpleTextureLayout, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L60"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the resource set associated with a specified texture in the material's map collection,
@@ -637,7 +637,7 @@ based on the provided sampler, texture layout, and map name.</p>
 
   <h3 id="Bliss_CSharp_Materials_Material_SetMapColor_System_String_Bliss_CSharp_Colors_Color_" data-uid="Bliss.CSharp.Materials.Material.SetMapColor(System.String,Bliss.CSharp.Colors.Color)">
   SetMapColor(string, Color)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L153"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L152"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the color of a specified material map.</p>
@@ -673,7 +673,7 @@ based on the provided sampler, texture layout, and map name.</p>
 
   <h3 id="Bliss_CSharp_Materials_Material_SetMapTexture_System_String_Bliss_CSharp_Textures_Texture2D_" data-uid="Bliss.CSharp.Materials.Material.SetMapTexture(System.String,Bliss.CSharp.Textures.Texture2D)">
   SetMapTexture(string, Texture2D?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L125"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the texture for the specified material map.</p>
@@ -709,7 +709,7 @@ based on the provided sampler, texture layout, and map name.</p>
 
   <h3 id="Bliss_CSharp_Materials_Material_SetMapValue_System_String_System_Single_" data-uid="Bliss.CSharp.Materials.Material.SetMapValue(System.String,System.Single)">
   SetMapValue(string, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L180"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L179"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the value of the specified material map.</p>
@@ -745,7 +745,7 @@ based on the provided sampler, texture layout, and map name.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L11" class="edit-link">Edit this page</a>
+          <a href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L10" class="edit-link">Edit this page</a>
         </div>
 
 

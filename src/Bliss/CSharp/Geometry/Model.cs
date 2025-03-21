@@ -380,19 +380,20 @@ public class Model : Disposable {
             mesh.ResetAnimationBones(commandList);
         }
     }
-    
+
     /// <summary>
-    /// Draws the model using the specified command list, transformation, and output settings.
+    /// Draws the model using the specified command list, transform, and rendering configurations.
     /// </summary>
-    /// <param name="commandList">The <see cref="CommandList"/> used for issuing rendering commands.</param>
-    /// <param name="transform">The <see cref="Transform"/> applied to the model during rendering.</param>
-    /// <param name="output">The <see cref="OutputDescription"/> specifying the rendering output settings.</param>
-    /// <param name="sampler">An optional <see cref="Sampler"/> for texture sampling. If null, the default sampler is used.</param>
-    /// <param name="wires">A boolean flag indicating whether to render the model in wireframe mode.</param>
-    /// <param name="color">An optional <see cref="Color"/> to apply a tint or override default color settings. Defaults to null.</param>
-    public void Draw(CommandList commandList, Transform transform, OutputDescription output, Sampler? sampler = null, bool wires = false, Color? color = null) {
+    /// <param name="commandList">The <see cref="CommandList"/> that issues the rendering commands.</param>
+    /// <param name="transform">The <see cref="Transform"/> describing the position, rotation, and scale of the model in the scene.</param>
+    /// <param name="output">The <see cref="OutputDescription"/> that defines the target rendering output settings, such as resolution and format.</param>
+    /// <param name="sampler">An optional <see cref="Sampler"/> used for texture sampling. If not provided, a default sampler is applied.</param>
+    /// <param name="depthStencilState">An optional <see cref="DepthStencilStateDescription"/> to configure depth and stencil testing for the drawing process.</param>
+    /// <param name="rasterizerState">An optional <see cref="RasterizerStateDescription"/> that manages the rasterizer configuration, such as culling and fill mode.</param>
+    /// <param name="color">An optional <see cref="Color"/> to override or apply a custom tint to the model's rendered output.</param>
+    public void Draw(CommandList commandList, Transform transform, OutputDescription output, Sampler? sampler = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Color? color = null) {
         foreach (Mesh mesh in this.Meshes) {
-            mesh.Draw(commandList, transform, output, sampler, wires, color);
+            mesh.Draw(commandList, transform, output, sampler, depthStencilState, rasterizerState, color);
         }
     }
 

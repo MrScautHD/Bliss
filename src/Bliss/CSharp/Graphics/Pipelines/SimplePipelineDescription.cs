@@ -108,8 +108,8 @@ public struct SimplePipelineDescription : IEquatable<SimplePipelineDescription> 
                this.DepthStencilState.Equals(other.DepthStencilState) &&
                this.RasterizerState.Equals(other.RasterizerState) &&
                this.PrimitiveTopology == other.PrimitiveTopology &&
-               this.BufferLayouts.Select(layout => layout.Name).SequenceEqual(other.BufferLayouts.Select(layout => layout.Name)) &&
-               this.TextureLayouts.Select(layout => layout.Name).SequenceEqual(other.TextureLayouts.Select(layout => layout.Name)) &&
+               this.BufferLayouts.Select(layout => layout).SequenceEqual(other.BufferLayouts.Select(layout => layout)) &&
+               this.TextureLayouts.Select(layout => layout).SequenceEqual(other.TextureLayouts.Select(layout => layout)) &&
                this.ShaderSet.Equals(other.ShaderSet) &&
                this.Outputs.Equals(other.Outputs) &&
                this.ResourceBindingModel == other.ResourceBindingModel;
@@ -136,11 +136,11 @@ public struct SimplePipelineDescription : IEquatable<SimplePipelineDescription> 
         hashCode.Add((int) this.PrimitiveTopology);
 
         foreach (SimpleBufferLayout buffer in this.BufferLayouts) {
-            hashCode.Add(buffer.Name);
+            hashCode.Add(buffer);
         }
         
         foreach (SimpleTextureLayout layout in this.TextureLayouts) {
-            hashCode.Add(layout.Name);
+            hashCode.Add(layout);
         }
         
         hashCode.Add(this.ShaderSet);

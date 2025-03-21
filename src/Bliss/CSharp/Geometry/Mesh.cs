@@ -162,7 +162,9 @@ public class Mesh : Disposable {
         this._valueBuffer = new SimpleBuffer<float>(graphicsDevice, 8, SimpleBufferType.Uniform, ShaderStages.Fragment);
 
         // Create pipeline description.
-        this._pipelineDescription = this.CreatePipelineDescription();
+        this._pipelineDescription = new SimplePipelineDescription() {
+            PrimitiveTopology = PrimitiveTopology.TriangleList
+        };
     }
     
     /// <summary>
@@ -1134,31 +1136,32 @@ public class Mesh : Disposable {
     }
 
     /// <summary>
-    /// Renders the mesh using the provided command list and transformation, with customizable rendering options.
+    /// Renders the mesh with the specified properties and configurations.
     /// </summary>
-    /// <param name="commandList">The <see cref="CommandList"/> used to issue draw calls and update resources in the rendering process.</param>
-    /// <param name="transform">The <see cref="Transform"/> representing the position, rotation, and scale for rendering the mesh.</param>
-    /// <param name="output">The <see cref="OutputDescription"/> specifying the render target and depth buffer setup for the rendering pipeline.</param>
-    /// <param name="sampler">An optional <see cref="Sampler"/> instance defining how textures are sampled. If null, a default sampler will be used.</param>
-    /// <param name="wires">A boolean indicating whether to render the mesh in wireframe mode (true) or solid mode (false).</param>
-    /// <param name="color">An optional <see cref="Color"/> to override the default material color used for rendering. If null, the default material color is applied.</param>
-    public void Draw(CommandList commandList, Transform transform, OutputDescription output, Sampler? sampler = null, bool wires = false, Color? color = null) {
+    /// <param name="commandList">The command list used to issue rendering commands.</param>
+    /// <param name="transform">The transformation applied to the mesh.</param>
+    /// <param name="output">The output description specifying the rendering target and format.</param>
+    /// <param name="sampler">The optional sampler state for texture sampling.</param>
+    /// <param name="depthStencilState">The optional depth-stencil state description for depth testing.</param>
+    /// <param name="rasterizerState">The optional rasterizer state description for culling and rasterization.</param>
+    /// <param name="color">An optional color to override the material's albedo map color.</param>
+    public void Draw(CommandList commandList, Transform transform, OutputDescription output, Sampler? sampler = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Color? color = null) {
         Cam3D? cam3D = Cam3D.ActiveCamera;
 
         if (cam3D == null) {
             return;
         }
-        
+
         // Set optional color.
         Color cachedColor = this.Material.GetMapColor(MaterialMapType.Albedo.GetName()) ?? Color.White;
         this.Material.SetMapColor(MaterialMapType.Albedo.GetName(), color ?? cachedColor);
-        
+
         // Update matrix buffer.
         this._modelMatrixBuffer.SetValue(0, cam3D.GetProjection());
         this._modelMatrixBuffer.SetValue(1, cam3D.GetView());
         this._modelMatrixBuffer.SetValue(2, transform.GetTransform());
         this._modelMatrixBuffer.UpdateBuffer(commandList);
-        
+
         // Update color buffer.
         for (int i = 0; i < this.Material.GetMaterialMaps().Length; i++) {
             Color? mapColor = this.Material.GetMapColor(((MaterialMapType) i).GetName());
@@ -1178,9 +1181,9 @@ public class Mesh : Disposable {
         this._valueBuffer.UpdateBuffer(commandList);
 
         // Update pipeline description.
-        this._pipelineDescription.BlendState = this.Material.BlendState.Description;
-        this._pipelineDescription.RasterizerState.CullMode = wires ? FaceCullMode.None : FaceCullMode.Back;
-        this._pipelineDescription.RasterizerState.FillMode = wires ? PolygonFillMode.Wireframe : PolygonFillMode.Solid;
+        this._pipelineDescription.BlendState = this.Material.BlendState;
+        this._pipelineDescription.DepthStencilState = depthStencilState ?? DepthStencilStateDescription.DEPTH_ONLY_LESS_EQUAL;
+        this._pipelineDescription.RasterizerState = rasterizerState ?? RasterizerStateDescription.DEFAULT;
         this._pipelineDescription.BufferLayouts = this.Material.Effect.GetBufferLayouts();
         this._pipelineDescription.TextureLayouts = this.Material.Effect.GetTextureLayouts();
         this._pipelineDescription.ShaderSet = this.Material.Effect.ShaderSet;
@@ -1262,29 +1265,6 @@ public class Mesh : Disposable {
         
         // Reset albedo material color.
         this.Material.SetMapColor(MaterialMapType.Albedo.GetName(), cachedColor);
-    }
-
-    /// <summary>
-    /// Creates and returns a configured instance of <see cref="SimplePipelineDescription"/> for rendering the mesh.
-    /// </summary>
-    /// <returns>A <see cref="SimplePipelineDescription"/> containing settings for blend state, depth-stencil state, rasterizer state,
-    /// primitive topology, buffer bindings, texture layouts, and shader set configuration.</returns>
-    private SimplePipelineDescription CreatePipelineDescription() {
-        return new SimplePipelineDescription() {
-            BlendState = this.Material.BlendState.Description,
-            DepthStencilState = new DepthStencilStateDescription(true, true, ComparisonKind.LessEqual),
-            RasterizerState = new RasterizerStateDescription() {
-                CullMode = FaceCullMode.Back,
-                FillMode = PolygonFillMode.Solid,
-                FrontFace = FrontFace.Clockwise,
-                DepthClipEnabled = true,
-                ScissorTestEnabled = false
-            },
-            PrimitiveTopology = PrimitiveTopology.TriangleList,
-            BufferLayouts = this.Material.Effect.GetBufferLayouts(),
-            TextureLayouts = this.Material.Effect.GetTextureLayouts(),
-            ShaderSet = this.Material.Effect.ShaderSet
-        };
     }
     
     /// <summary>

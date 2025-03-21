@@ -55,15 +55,15 @@ public class FullScreenRenderPass : Disposable {
     /// <param name="blendState">An optional blend state configuration for blending operations. Defaults to alpha blending if not provided.</param>
     /// <param name="depthStencilState">An optional depth-stencil state description to control depth and stencil testing. A disabled state is used by default.</param>
     /// <param name="rasterizerState">An optional rasterizer state description to configure rasterization settings. Defaults to a standard rasterizer configuration if not specified.</param>
-    public void Draw(CommandList commandList, RenderTexture2D renderTexture, OutputDescription output, Effect? effect = null, Sampler? sampler = null, BlendState? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null) {
+    public void Draw(CommandList commandList, RenderTexture2D renderTexture, OutputDescription output, Effect? effect = null, Sampler? sampler = null, BlendStateDescription? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null) {
         Effect finalEffect = effect ?? GlobalResource.DefaultFullScreenRenderPassEffect;
         Sampler finalSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
-        BlendState finalBlendState = blendState ?? BlendState.AlphaBlend;
+        BlendStateDescription finalBlendState = blendState ?? BlendStateDescription.SINGLE_ALPHA_BLEND;
         DepthStencilStateDescription finalDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DISABLED;
         RasterizerStateDescription finalRasterizerState = rasterizerState ?? RasterizerStateDescription.CULL_NONE;
 
         // Update pipeline description.
-        this._pipelineDescription.BlendState = finalBlendState.Description;
+        this._pipelineDescription.BlendState = finalBlendState;
         this._pipelineDescription.DepthStencilState = finalDepthStencilState;
         this._pipelineDescription.RasterizerState = finalRasterizerState;
         this._pipelineDescription.BufferLayouts = finalEffect.GetBufferLayouts();

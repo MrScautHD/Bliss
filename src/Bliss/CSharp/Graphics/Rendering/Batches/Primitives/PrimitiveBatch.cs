@@ -74,21 +74,46 @@ public class PrimitiveBatch : Disposable {
     /// Tracks the number of vertices in the current batch.
     /// </summary>
     private uint _currentBatchCount;
-
+    
     /// <summary>
-    /// Holds the current <see cref="OutputDescription"/> being used by the <see cref="PrimitiveBatch"/> during rendering.
-    /// </summary>
-    private OutputDescription _currentOutput;
-
-    /// <summary>
-    /// Holds the current rendering effect used by the <see cref="PrimitiveBatch"/> class.
+    /// The current <see cref="Effect"/>.
     /// </summary>
     private Effect _currentEffect;
 
     /// <summary>
-    /// Holds the current blending state used in the rendering pipeline of the <see cref="PrimitiveBatch"/> class.
+    /// The requested <see cref="Effect"/>.
     /// </summary>
-    private BlendState _currentBlendState;
+    private Effect _requestedEffect;
+    
+    /// <summary>
+    /// The current <see cref="BlendStateDescription"/>.
+    /// </summary>
+    private BlendStateDescription _currentBlendState;
+    
+    /// <summary>
+    /// The requested <see cref="BlendStateDescription"/>.
+    /// </summary>
+    private BlendStateDescription _requestedBlendState;
+
+    /// <summary>
+    /// The current <see cref="DepthStencilStateDescription"/>.
+    /// </summary>
+    private DepthStencilStateDescription _currentDepthStencilState;
+    
+    /// <summary>
+    /// The requested <see cref="DepthStencilStateDescription"/>.
+    /// </summary>
+    private DepthStencilStateDescription _requestedDepthStencilState;
+    
+    /// <summary>
+    /// The current <see cref="RasterizerStateDescription"/>.
+    /// </summary>
+    private RasterizerStateDescription _currentRasterizerState;
+    
+    /// <summary>
+    /// The requested <see cref="RasterizerStateDescription"/>.
+    /// </summary>
+    private RasterizerStateDescription _requestedRasterizerState;
     
     /// <summary>
     /// Initializes a new instance of the PrimitiveBatch class for rendering 2D primitives.
@@ -110,7 +135,16 @@ public class PrimitiveBatch : Disposable {
         this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
         
         // Create pipeline description.
-        this._pipelineDescription = this.CreatePipelineDescription();
+        this._pipelineDescription = new SimplePipelineDescription();
+        
+        // Set (current) default settings.
+        this._currentEffect = GlobalResource.DefaultPrimitiveEffect;
+        this._currentBlendState = BlendStateDescription.SINGLE_ALPHA_BLEND;
+        this._currentDepthStencilState = DepthStencilStateDescription.DISABLED;
+        this._currentRasterizerState = RasterizerStateDescription.CULL_NONE;
+        
+        // Set (requested) default settings.
+        this.ResetSettings();
     }
 
     /// <summary>
@@ -118,15 +152,10 @@ public class PrimitiveBatch : Disposable {
     /// </summary>
     /// <param name="commandList">The command list to record drawing commands.</param>
     /// <param name="output">The output description defining the render target configuration.</param>
-    /// <param name="effect">Optional. The effect to apply to the rendering. If null, no custom effect is used.</param>
-    /// <param name="blendState">Optional. The blend state to use for rendering. If null, the default blend state is applied.</param>
     /// <param name="projection">Optional. The projection transformation matrix. If null, an orthographic projection matrix is used.</param>
     /// <param name="view">Optional. The view transformation matrix. If null, the identity matrix is applied.</param>
     /// <exception cref="Exception">Thrown when the method is called before the previous batch is ended.</exception>
-    public void Begin(CommandList commandList, OutputDescription output, Effect? effect = null, BlendState? blendState = null, Matrix4x4? projection = null, Matrix4x4? view = null) {
-        Effect finalEffect = effect ?? GlobalResource.DefaultPrimitiveEffect;
-        BlendState finalBlendState = blendState ?? BlendState.AlphaBlend;
-
+    public void Begin(CommandList commandList, OutputDescription output, Matrix4x4? projection = null, Matrix4x4? view = null) {
         if (this._begun) {
             throw new Exception("The PrimitiveBatch has already begun!");
         }
@@ -134,19 +163,11 @@ public class PrimitiveBatch : Disposable {
         this._begun = true;
         this._currentCommandList = commandList;
 
-        if (!this._currentOutput.Equals(output) || this._currentEffect != finalEffect || this._currentBlendState != finalBlendState) {
+        if (!this._pipelineDescription.Outputs.Equals(output)) {
             this.Flush();
         }
-
-        this._currentOutput = output;
-        this._currentEffect = finalEffect;
-        this._currentBlendState = finalBlendState;
         
         // Update pipeline description.
-        this._pipelineDescription.BlendState = this._currentBlendState.Description;
-        this._pipelineDescription.BufferLayouts = this._currentEffect.GetBufferLayouts();
-        this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
-        this._pipelineDescription.ShaderSet = this._currentEffect.ShaderSet;
         this._pipelineDescription.Outputs = output;
 
         Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
@@ -169,6 +190,80 @@ public class PrimitiveBatch : Disposable {
 
         this._begun = false;
         this.Flush();
+    }
+
+    /// <summary>
+    /// Retrieves the currently active effect for the PrimitiveBatch.
+    /// </summary>
+    /// <returns>The <see cref="Effect"/> that is currently being used by the PrimitiveBatch.</returns>
+    public Effect GetCurrentEffect() {
+        return this._currentEffect;
+    }
+
+    /// <summary>
+    /// Sets the effect to be used when rendering primitives.
+    /// </summary>
+    /// <param name="effect">The effect to be used. If null, the default primitive effect is used.</param>
+    public void SetEffect(Effect? effect) {
+        this._requestedEffect = effect ?? GlobalResource.DefaultPrimitiveEffect;
+    }
+
+    /// <summary>
+    /// Retrieves the current blend state configuration used for rendering operations.
+    /// </summary>
+    /// <returns>The current blend state configuration as a <see cref="BlendStateDescription"/>.</returns>
+    public BlendStateDescription GetCurrentBlendState() {
+        return this._currentBlendState;
+    }
+
+    /// <summary>
+    /// Sets the blend state description to be used for subsequent rendering operations.
+    /// </summary>
+    /// <param name="blendState">The blend state description to apply, or null to reset to the default single alpha blend state.</param>
+    public void SetBlendState(BlendStateDescription? blendState) {
+        this._requestedBlendState = blendState ?? BlendStateDescription.SINGLE_ALPHA_BLEND;
+    }
+
+    /// <summary>
+    /// Retrieves the current depth-stencil state configuration used for rendering.
+    /// </summary>
+    /// <returns>The current <see cref="DepthStencilStateDescription"/> being used in the rendering pipeline.</returns>
+    public DepthStencilStateDescription GetCurrentDepthStencilState() {
+        return this._currentDepthStencilState;
+    }
+
+    /// <summary>
+    /// Sets the depth-stencil state for rendering operations.
+    /// </summary>
+    /// <param name="depthStencilState">The depth-stencil state to be applied. If null, the default disabled state is used.</param>
+    public void SetDepthStencilState(DepthStencilStateDescription? depthStencilState) {
+        this._requestedDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DISABLED;
+    }
+
+    /// <summary>
+    /// Retrieves the current rasterizer state description used for rendering operations.
+    /// </summary>
+    /// <returns>The current <see cref="RasterizerStateDescription"/> instance.</returns>
+    public RasterizerStateDescription GetCurrentRasterizerState() {
+        return this._currentRasterizerState;
+    }
+
+    /// <summary>
+    /// Sets the current rasterizer state for rendering operations.
+    /// </summary>
+    /// <param name="rasterizerState">The rasterizer state description to apply. If null, a default state with no culling will be used.</param>
+    public void SetRasterizerState(RasterizerStateDescription? rasterizerState) {
+        this._requestedRasterizerState = rasterizerState ?? RasterizerStateDescription.CULL_NONE;
+    }
+
+    /// <summary>
+    /// Resets the <see cref="PrimitiveBatch"/> to default settings.
+    /// </summary>
+    public void ResetSettings() {
+        this.SetEffect(null);
+        this.SetBlendState(null);
+        this.SetDepthStencilState(null);
+        this.SetRasterizerState(null);
     }
 
     /// <summary>
@@ -729,10 +824,30 @@ public class PrimitiveBatch : Disposable {
     /// Adds a collection of vertices to the current batch for rendering.
     /// </summary>
     /// <param name="vertices">The list of vertices to be added to the batch.</param>
-    private void AddVertices(List<PrimitiveVertex2D> vertices) {
+    public void AddVertices(List<PrimitiveVertex2D> vertices) {
         if (!this._begun) {
             throw new Exception("You must begin the PrimitiveBatch before calling draw methods!");
         }
+        
+        if (this._currentEffect != this._requestedEffect ||
+            !this._currentBlendState.Equals(this._requestedBlendState) ||
+            !this._currentDepthStencilState.Equals(this._requestedDepthStencilState) ||
+            !this._currentRasterizerState.Equals(this._requestedRasterizerState)) {
+            this.Flush();
+        }
+        
+        this._currentEffect = this._requestedEffect;
+        this._currentBlendState = this._requestedBlendState;
+        this._currentDepthStencilState = this._requestedDepthStencilState;
+        this._currentRasterizerState = this._requestedRasterizerState;
+        
+        // Update pipeline description.
+        this._pipelineDescription.BlendState = this._currentBlendState;
+        this._pipelineDescription.DepthStencilState = this._currentDepthStencilState;
+        this._pipelineDescription.RasterizerState = this._currentRasterizerState;
+        this._pipelineDescription.BufferLayouts = this._currentEffect.GetBufferLayouts();
+        this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
+        this._pipelineDescription.ShaderSet = this._currentEffect.ShaderSet;
         
         if (this._currentBatchCount + vertices.Count >= this._vertices.Length) {
             this.Flush();
@@ -743,6 +858,7 @@ public class PrimitiveBatch : Disposable {
             this._currentBatchCount++;
         }
         
+        // Clear temp data.
         this._tempVertices.Clear();
     }
 
@@ -772,25 +888,11 @@ public class PrimitiveBatch : Disposable {
         // Draw.
         this._currentCommandList.Draw(this._currentBatchCount);
 
-        // Clean up.
+        // Clear data.
         this._currentBatchCount = 0;
         Array.Clear(this._vertices);
         
         this.DrawCallCount++;
-    }
-
-    /// <summary>
-    /// Creates a new instance of <see cref="SimplePipelineDescription"/> with predefined settings for the graphics pipeline.
-    /// </summary>
-    /// <returns>A configured <see cref="SimplePipelineDescription"/> object.</returns>
-    private SimplePipelineDescription CreatePipelineDescription() {
-        return new SimplePipelineDescription() {
-            DepthStencilState = new DepthStencilStateDescription(false, false, ComparisonKind.LessEqual),
-            RasterizerState = new RasterizerStateDescription() {
-                DepthClipEnabled = true,
-                CullMode = FaceCullMode.None
-            }
-        };
     }
     
     protected override void Dispose(bool disposing) {

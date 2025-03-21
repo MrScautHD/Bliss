@@ -172,7 +172,7 @@ Class SpriteBatch  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Windowing_IWindow_System_UInt32_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Windowing.IWindow,System.UInt32)">
   SpriteBatch(GraphicsDevice, IWindow, uint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L153"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L179"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> class for batching and rendering 2D sprites.</p>
@@ -251,7 +251,7 @@ Class SpriteBatch  <a class="header-action link-secondary" title="View source" h
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the number of draw calls made during the current batch rendering session.
-This count is reset to zero each time <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_Veldrid_Sampler_Bliss_CSharp_Graphics_BlendState_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__">Begin(CommandList, OutputDescription, Effect?, Sampler?, BlendState?, Matrix4x4?, Matrix4x4?)</a> is called and increments with each call to <span class="xref">Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Flush()</span>.</p>
+This count is reset to zero each time <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__">Begin(CommandList, OutputDescription, Matrix4x4?, Matrix4x4?)</a> is called and increments with each call to <span class="xref">Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Flush()</span>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -349,7 +349,7 @@ This device is responsible for managing and rendering graphics resources such as
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_AddQuad_Bliss_CSharp_Textures_Texture2D_Bliss_CSharp_Graphics_VertexTypes_SpriteVertex2D_Bliss_CSharp_Graphics_VertexTypes_SpriteVertex2D_Bliss_CSharp_Graphics_VertexTypes_SpriteVertex2D_Bliss_CSharp_Graphics_VertexTypes_SpriteVertex2D_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.AddQuad(Bliss.CSharp.Textures.Texture2D,Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D,Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D,Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D,Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D)">
   AddQuad(Texture2D, SpriteVertex2D, SpriteVertex2D, SpriteVertex2D, SpriteVertex2D)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L343"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L456"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Adds a quad to the sprite batch for rendering.</p>
@@ -398,9 +398,9 @@ This device is responsible for managing and rendering graphics resources such as
 
   <a id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_Begin_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin*"></a>
 
-  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_Veldrid_Sampler_Bliss_CSharp_Graphics_BlendState_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Veldrid.Sampler,Bliss.CSharp.Graphics.BlendState,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})">
-  Begin(CommandList, OutputDescription, Effect?, Sampler?, BlendState?, Matrix4x4?, Matrix4x4?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L199"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})">
+  Begin(CommandList, OutputDescription, Matrix4x4?, Matrix4x4?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L234"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Begins a new sprite batch rendering session with the specified parameters.</p>
@@ -408,7 +408,7 @@ This device is responsible for managing and rendering graphics resources such as
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Begin(CommandList commandList, OutputDescription output, Effect? effect = null, Sampler? sampler = null, BlendState? blendState = null, Matrix4x4? projection = null, Matrix4x4? view = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Begin(CommandList commandList, OutputDescription output, Matrix4x4? projection = null, Matrix4x4? view = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -418,15 +418,6 @@ This device is responsible for managing and rendering graphics resources such as
 </dd>
     <dt><code>output</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs">OutputDescription</a></dt>
     <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs">OutputDescription</a> defining the target render output configuration.</p>
-</dd>
-    <dt><code>effect</code> <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a></dt>
-    <dd><p>Optional custom <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a> to apply during rendering. Defaults to the global default sprite effect if null.</p>
-</dd>
-    <dt><code>sampler</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs">Sampler</a></dt>
-    <dd><p>Optional <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs">Sampler</a> configuration for texture sampling. Defaults to a point sampler if null.</p>
-</dd>
-    <dt><code>blendState</code> <a class="xref" href="Bliss.CSharp.Graphics.BlendState.html">BlendState</a></dt>
-    <dd><p>Optional <a class="xref" href="Bliss.CSharp.Graphics.BlendState.html">BlendState</a> to control blending behavior. Defaults to alpha blending if null.</p>
 </dd>
     <dt><code>projection</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a>?</dt>
     <dd><p>Optional projection matrix to apply for positioning and scaling. Defaults to an orthographic projection covering the rendering window if null.</p>
@@ -451,7 +442,7 @@ This device is responsible for managing and rendering graphics resources such as
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_Dispose_System_Boolean_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Dispose(System.Boolean)">
   Dispose(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L422"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L536"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Disposes of the object and releases associated resources.</p>
@@ -484,7 +475,7 @@ This device is responsible for managing and rendering graphics resources such as
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_DrawText_Bliss_CSharp_Fonts_Font_System_String_System_Numerics_Vector2_System_Int32_System_Single_System_Single_System_Nullable_System_Numerics_Vector2__System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__FontStashSharp_TextStyle_FontStashSharp_FontSystemEffect_System_Int32_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)">
   DrawText(Font, string, Vector2, int, float, float, Vector2?, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L266"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L379"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws the specified text at the given position with the provided font and styling options.</p>
@@ -553,7 +544,7 @@ This device is responsible for managing and rendering graphics resources such as
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_DrawTexture_Bliss_CSharp_Textures_Texture2D_System_Numerics_Vector2_System_Nullable_Bliss_CSharp_Transformations_Rectangle__System_Nullable_System_Numerics_Vector2__System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteFlip_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawTexture(Bliss.CSharp.Textures.Texture2D,System.Numerics.Vector2,System.Nullable{Bliss.CSharp.Transformations.Rectangle},System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip)">
   DrawTexture(Texture2D, Vector2, Rectangle?, Vector2?, Vector2?, float, Color?, SpriteFlip)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L281"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L394"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws a texture using the specified parameters, including position, source rectangle, scale, origin, rotation, color, and flipping.</p>
@@ -607,10 +598,10 @@ This device is responsible for managing and rendering graphics resources such as
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_End" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.End">
   End()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L241"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L263"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Ends the current drawing session that was initiated by a call to <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_Veldrid_Sampler_Bliss_CSharp_Graphics_BlendState_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__">Begin(CommandList, OutputDescription, Effect?, Sampler?, BlendState?, Matrix4x4?, Matrix4x4?)</a>.
+  <div class="markdown level1 summary"><p>Ends the current drawing session that was initiated by a call to <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__">Begin(CommandList, OutputDescription, Matrix4x4?, Matrix4x4?)</a>.
 This method finalizes the batch operations by flushing all pending draw calls.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -631,9 +622,366 @@ This method finalizes the batch operations by flushing all pending draw calls.</
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
-    <dd><p>Thrown if the SpriteBatch is in a state where <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_Veldrid_Sampler_Bliss_CSharp_Graphics_BlendState_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__">Begin(CommandList, OutputDescription, Effect?, Sampler?, BlendState?, Matrix4x4?, Matrix4x4?)</a> was not called beforehand.</p>
+    <dd><p>Thrown if the SpriteBatch is in a state where <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__">Begin(CommandList, OutputDescription, Matrix4x4?, Matrix4x4?)</a> was not called beforehand.</p>
 </dd>
   </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_GetCurrentBlendState_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentBlendState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_GetCurrentBlendState" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentBlendState">
+  GetCurrentBlendState()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L292"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the current blend state used by the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> for rendering operations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlendStateDescription GetCurrentBlendState()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a></dt>
+    <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a> representing the current blending configuration.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_GetCurrentDepthStencilState_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentDepthStencilState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_GetCurrentDepthStencilState" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentDepthStencilState">
+  GetCurrentDepthStencilState()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L308"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the current depth and stencil state configuration used for rendering in the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DepthStencilStateDescription GetCurrentDepthStencilState()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a></dt>
+    <dd><p>The current <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a> used by the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> for rendering.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_GetCurrentEffect_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentEffect*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_GetCurrentEffect" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentEffect">
+  GetCurrentEffect()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L276"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the current <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a> being used by the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Effect GetCurrentEffect()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a></dt>
+    <dd><p>The active <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a> instance used for rendering, or null if no effect is set.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_GetCurrentRasterizerState_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentRasterizerState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_GetCurrentRasterizerState" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentRasterizerState">
+  GetCurrentRasterizerState()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L324"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the current rasterizer state used for configuring rasterization settings in the rendering pipeline.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RasterizerStateDescription GetCurrentRasterizerState()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a></dt>
+    <dd><p>A <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a> representing the current rasterizer state.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_GetCurrentSampler_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentSampler*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_GetCurrentSampler" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentSampler">
+  GetCurrentSampler()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L340"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the current <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs">Sampler</a> used for texture sampling operations in the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Sampler GetCurrentSampler()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs">Sampler</a></dt>
+    <dd><p>The current <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs">Sampler</a> instance being used.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_ResetSettings_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.ResetSettings*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_ResetSettings" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.ResetSettings">
+  ResetSettings()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L355"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Resets the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> to default settings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ResetSettings()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_SetBlendState_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetBlendState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_SetBlendState_System_Nullable_Veldrid_BlendStateDescription__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetBlendState(System.Nullable{Veldrid.BlendStateDescription})">
+  SetBlendState(BlendStateDescription?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L300"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the current blend state of the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> for rendering sprites.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetBlendState(BlendStateDescription? blendState)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blendState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a>?</dt>
+    <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a> to set. If null, defaults to <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs">SINGLE_ALPHA_BLEND</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_SetDepthStencilState_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetDepthStencilState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_SetDepthStencilState_System_Nullable_Veldrid_DepthStencilStateDescription__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetDepthStencilState(System.Nullable{Veldrid.DepthStencilStateDescription})">
+  SetDepthStencilState(DepthStencilStateDescription?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L316"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the depth-stencil state to be used by the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> during rendering operations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDepthStencilState(DepthStencilStateDescription? depthStencilState)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>depthStencilState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a>?</dt>
+    <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a> to use. If null, defaults to a disabled depth-stencil state.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_SetEffect_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetEffect*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_SetEffect_Bliss_CSharp_Effects_Effect_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetEffect(Bliss.CSharp.Effects.Effect)">
+  SetEffect(Effect?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L284"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the rendering effect to be used by the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> during draw operations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetEffect(Effect? effect)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>effect</code> <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a></dt>
+    <dd><p>The <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a> to set for rendering. If null, the default effect is used.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_SetRasterizerState_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetRasterizerState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_SetRasterizerState_System_Nullable_Veldrid_RasterizerStateDescription__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetRasterizerState(System.Nullable{Veldrid.RasterizerStateDescription})">
+  SetRasterizerState(RasterizerStateDescription?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L332"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the current rasterizer state of the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> to the specified value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetRasterizerState(RasterizerStateDescription? rasterizerState)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rasterizerState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a>?</dt>
+    <dd><p>The new <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a> to be applied. If null, the default rasterizer state <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs">CULL_NONE</a> will be used.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_SetSampler_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetSampler*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_SetSampler_Veldrid_Sampler_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetSampler(Veldrid.Sampler)">
+  SetSampler(Sampler?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs/#L348"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the current sampler state for the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> to the specified value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetSampler(Sampler? sampler)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sampler</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs">Sampler</a></dt>
+    <dd><p>The new <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs">Sampler</a> to use, or null to reset to the default sampler.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
 
 
 

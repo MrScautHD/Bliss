@@ -170,9 +170,9 @@ Class PrimitiveBatch  <a class="header-action link-secondary" title="View source
 
   <a id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch__ctor_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.#ctor*"></a>
 
-  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Windowing_IWindow_Veldrid_OutputDescription_System_UInt32_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Windowing.IWindow,Veldrid.OutputDescription,System.UInt32)">
-  PrimitiveBatch(GraphicsDevice, IWindow, OutputDescription, uint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Windowing_IWindow_System_UInt32_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Windowing.IWindow,System.UInt32)">
+  PrimitiveBatch(GraphicsDevice, IWindow, uint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L124"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the PrimitiveBatch class for rendering 2D primitives.</p>
@@ -180,7 +180,7 @@ Class PrimitiveBatch  <a class="header-action link-secondary" title="View source
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PrimitiveBatch(GraphicsDevice graphicsDevice, IWindow window, OutputDescription output, uint capacity = 30720)</code></pre>
+    <pre><code class="lang-csharp hljs">public PrimitiveBatch(GraphicsDevice graphicsDevice, IWindow window, uint capacity = 30720)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -190,9 +190,6 @@ Class PrimitiveBatch  <a class="header-action link-secondary" title="View source
 </dd>
     <dt><code>window</code> <a class="xref" href="Bliss.CSharp.Windowing.IWindow.html">IWindow</a></dt>
     <dd><p>The window representing the rendering context.</p>
-</dd>
-    <dt><code>output</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs">OutputDescription</a></dt>
-    <dd><p>The output description defining the render target.</p>
 </dd>
     <dt><code>capacity</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
     <dd><p>Optional. The initial capacity of the vertex buffer.</p>
@@ -218,7 +215,7 @@ Class PrimitiveBatch  <a class="header-action link-secondary" title="View source
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Capacity" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Capacity">
   Capacity
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Specifies the maximum number of sprites that the PrimitiveBatch can process in a single draw call.</p>
@@ -250,11 +247,11 @@ Class PrimitiveBatch  <a class="header-action link-secondary" title="View source
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawCallCount" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawCallCount">
   DrawCallCount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the number of draw calls made during the current batch rendering session.
-This count is reset to zero each time <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_Bliss_CSharp_Graphics_BlendState_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__">Begin(CommandList, OutputDescription, Effect?, BlendState?, Matrix4x4?, Matrix4x4?)</a> is called and increments with each call to <span class="xref">Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Flush()</span>.</p>
+This count is reset to zero each time <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__">Begin(CommandList, OutputDescription, Matrix4x4?, Matrix4x4?)</a> is called and increments with each call to <span class="xref">Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Flush()</span>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -312,39 +309,6 @@ The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.Pri
 
 
 
-  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Output_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Output*"></a>
-
-  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Output" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Output">
-  Output
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L31"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Represents the output description utilized by the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html">PrimitiveBatch</a> for rendering configurations.
-The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Output">Output</a> property specifies how the rendering results are presented on the screen.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public OutputDescription Output { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs">OutputDescription</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
   <a id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Window_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Window*"></a>
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Window" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Window">
@@ -381,11 +345,44 @@ The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.Pri
 </h2>
 
 
+  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_AddVertices_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.AddVertices*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_AddVertices_System_Collections_Generic_List_Bliss_CSharp_Graphics_VertexTypes_PrimitiveVertex2D__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.AddVertices(System.Collections.Generic.List{Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D})">
+  AddVertices(List&lt;PrimitiveVertex2D&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L827"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds a collection of vertices to the current batch for rendering.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddVertices(List&lt;PrimitiveVertex2D&gt; vertices)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vertices</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D.html">PrimitiveVertex2D</a>&gt;</dt>
+    <dd><p>The list of vertices to be added to the batch.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Begin_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin*"></a>
 
-  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_Bliss_CSharp_Graphics_BlendState_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Bliss.CSharp.Graphics.BlendState,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})">
-  Begin(CommandList, OutputDescription, Effect?, BlendState?, Matrix4x4?, Matrix4x4?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L134"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription,System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})">
+  Begin(CommandList, OutputDescription, Matrix4x4?, Matrix4x4?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L158"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Begins a new batch of primitive drawing operations with specified rendering configurations.</p>
@@ -393,7 +390,7 @@ The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.Pri
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Begin(CommandList commandList, OutputDescription output, Effect? effect = null, BlendState? blendState = null, Matrix4x4? projection = null, Matrix4x4? view = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Begin(CommandList commandList, OutputDescription output, Matrix4x4? projection = null, Matrix4x4? view = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -403,12 +400,6 @@ The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.Pri
 </dd>
     <dt><code>output</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs">OutputDescription</a></dt>
     <dd><p>The output description defining the render target configuration.</p>
-</dd>
-    <dt><code>effect</code> <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a></dt>
-    <dd><p>Optional. The effect to apply to the rendering. If null, no custom effect is used.</p>
-</dd>
-    <dt><code>blendState</code> <a class="xref" href="Bliss.CSharp.Graphics.BlendState.html">BlendState</a></dt>
-    <dd><p>Optional. The blend state to use for rendering. If null, the default blend state is applied.</p>
 </dd>
     <dt><code>projection</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a>?</dt>
     <dd><p>Optional. The projection transformation matrix. If null, an orthographic projection matrix is used.</p>
@@ -439,7 +430,7 @@ The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.Pri
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_Dispose_System_Boolean_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Dispose(System.Boolean)">
   Dispose(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L804"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L898"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Disposes of the object and releases associated resources.</p>
@@ -472,7 +463,7 @@ The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.Pri
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyCircle_System_Numerics_Vector2_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawEmptyCircle(Vector2, float, int, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L378"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L465"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws an empty circle at the specified position with the given radius, thickness, and number of segments.</p>
@@ -517,7 +508,7 @@ The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.Pri
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyCircleSector_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawEmptyCircleSector(Vector2, float, float, float, int, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L289"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L376"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws an empty circle sector using the specified parameters.</p>
@@ -568,7 +559,7 @@ The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.Pri
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyEllipse_System_Numerics_Vector2_System_Numerics_Vector2_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawEmptyEllipse(Vector2, Vector2, int, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L606"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L693"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws an empty ellipse at the specified position with the given radius, thickness, and number of segments.</p>
@@ -613,7 +604,7 @@ The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.Pri
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyRectangle_Bliss_CSharp_Transformations_RectangleF_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawEmptyRectangle(RectangleF, float, Vector2?, float, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L205"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L292"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws an empty rectangle with the specified dimensions, outline size, origin point, rotation, and color.</p>
@@ -658,7 +649,7 @@ The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.Pri
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyRing_System_Numerics_Vector2_System_Single_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawEmptyRing(Vector2, float, float, int, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L466"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L553"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws an empty ring at the specified position with given inner and outer radii, thickness, segments, and optional color.</p>
@@ -706,7 +697,7 @@ The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.Pri
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyTriangle_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawEmptyTriangle(Vector2, Vector2, Vector2, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L700"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L787"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws an empty triangle between the specified points with a given thickness and color.</p>
@@ -751,7 +742,7 @@ The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.Pri
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledCircle_System_Numerics_Vector2_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawFilledCircle(Vector2, float, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L424"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L511"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws a filled circle at the specified position with the given radius, number of segments, and optional color.</p>
@@ -793,7 +784,7 @@ The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.Pri
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledCircleSector_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawFilledCircleSector(Vector2, float, float, float, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L331"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L418"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws a filled sector of a circle on the screen at the specified position with the given parameters.</p>
@@ -841,7 +832,7 @@ The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.Pri
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledEllipse_System_Numerics_Vector2_System_Numerics_Vector2_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawFilledEllipse(Vector2, Vector2, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L653"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L740"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws a filled ellipse at the specified position with the given radius, number of segments, and optional color.</p>
@@ -883,7 +874,7 @@ The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.Pri
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledRectangle_Bliss_CSharp_Transformations_RectangleF_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawFilledRectangle(RectangleF, Vector2?, float, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L242"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L329"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws a rectangle with optional origin point, rotation, and color.</p>
@@ -925,7 +916,7 @@ The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.Pri
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledRing_System_Numerics_Vector2_System_Single_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawFilledRing(Vector2, float, float, int, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L537"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L624"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws a filled ring at the specified position with the given inner and outer radii, segment count, and optional color.</p>
@@ -970,7 +961,7 @@ The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.Pri
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledTriangle_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawFilledTriangle(Vector2, Vector2, Vector2, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L715"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L802"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws a filled triangle using the specified vertices and an optional color.</p>
@@ -1012,7 +1003,7 @@ The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.Pri
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawLine_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})">
   DrawLine(Vector2, Vector2, float, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L189"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L276"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws a line between two points with the specified thickness and color.</p>
@@ -1054,7 +1045,7 @@ The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.Pri
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_End" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.End">
   End()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L173"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L186"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Ends the current batch of primitive drawing operations.</p>
@@ -1080,6 +1071,297 @@ The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.Pri
     <dd><p>Thrown when the method is called before calling Begin().</p>
 </dd>
   </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_GetCurrentBlendState_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GetCurrentBlendState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_GetCurrentBlendState" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GetCurrentBlendState">
+  GetCurrentBlendState()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L215"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the current blend state configuration used for rendering operations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlendStateDescription GetCurrentBlendState()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a></dt>
+    <dd><p>The current blend state configuration as a <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_GetCurrentDepthStencilState_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GetCurrentDepthStencilState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_GetCurrentDepthStencilState" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GetCurrentDepthStencilState">
+  GetCurrentDepthStencilState()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L231"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the current depth-stencil state configuration used for rendering.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DepthStencilStateDescription GetCurrentDepthStencilState()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a></dt>
+    <dd><p>The current <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a> being used in the rendering pipeline.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_GetCurrentEffect_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GetCurrentEffect*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_GetCurrentEffect" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GetCurrentEffect">
+  GetCurrentEffect()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L199"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the currently active effect for the PrimitiveBatch.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Effect GetCurrentEffect()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a></dt>
+    <dd><p>The <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a> that is currently being used by the PrimitiveBatch.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_GetCurrentRasterizerState_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GetCurrentRasterizerState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_GetCurrentRasterizerState" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GetCurrentRasterizerState">
+  GetCurrentRasterizerState()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L247"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the current rasterizer state description used for rendering operations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RasterizerStateDescription GetCurrentRasterizerState()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a></dt>
+    <dd><p>The current <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a> instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_ResetSettings_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.ResetSettings*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_ResetSettings" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.ResetSettings">
+  ResetSettings()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L262"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Resets the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html">PrimitiveBatch</a> to default settings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ResetSettings()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_SetBlendState_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.SetBlendState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_SetBlendState_System_Nullable_Veldrid_BlendStateDescription__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.SetBlendState(System.Nullable{Veldrid.BlendStateDescription})">
+  SetBlendState(BlendStateDescription?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L223"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the blend state description to be used for subsequent rendering operations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetBlendState(BlendStateDescription? blendState)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blendState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a>?</dt>
+    <dd><p>The blend state description to apply, or null to reset to the default single alpha blend state.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_SetDepthStencilState_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.SetDepthStencilState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_SetDepthStencilState_System_Nullable_Veldrid_DepthStencilStateDescription__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.SetDepthStencilState(System.Nullable{Veldrid.DepthStencilStateDescription})">
+  SetDepthStencilState(DepthStencilStateDescription?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L239"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the depth-stencil state for rendering operations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetDepthStencilState(DepthStencilStateDescription? depthStencilState)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>depthStencilState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a>?</dt>
+    <dd><p>The depth-stencil state to be applied. If null, the default disabled state is used.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_SetEffect_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.SetEffect*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_SetEffect_Bliss_CSharp_Effects_Effect_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.SetEffect(Bliss.CSharp.Effects.Effect)">
+  SetEffect(Effect?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L207"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the effect to be used when rendering primitives.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetEffect(Effect? effect)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>effect</code> <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a></dt>
+    <dd><p>The effect to be used. If null, the default primitive effect is used.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_SetRasterizerState_" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.SetRasterizerState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_SetRasterizerState_System_Nullable_Veldrid_RasterizerStateDescription__" data-uid="Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.SetRasterizerState(System.Nullable{Veldrid.RasterizerStateDescription})">
+  SetRasterizerState(RasterizerStateDescription?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs/#L255"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the current rasterizer state for rendering operations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetRasterizerState(RasterizerStateDescription? rasterizerState)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rasterizerState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a>?</dt>
+    <dd><p>The rasterizer state description to apply. If null, a default state with no culling will be used.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
 
 
 

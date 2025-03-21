@@ -7,7 +7,7 @@ items:
   children:
   - Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.#ctor(Veldrid.GraphicsDevice)
   - Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Dispose(System.Boolean)
-  - Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Veldrid.Sampler)
+  - Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Veldrid.Sampler,System.Nullable{Veldrid.BlendStateDescription},System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription})
   - Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.GraphicsDevice
   langs:
   - csharp
@@ -112,16 +112,16 @@ items:
   nameWithType.vb: FullScreenRenderPass.New(GraphicsDevice)
   fullName.vb: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.New(Veldrid.GraphicsDevice)
   name.vb: New(GraphicsDevice)
-- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Veldrid.Sampler)
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Veldrid.Sampler)
-  id: Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Veldrid.Sampler)
+- uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Veldrid.Sampler,System.Nullable{Veldrid.BlendStateDescription},System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Veldrid.Sampler,System.Nullable{Veldrid.BlendStateDescription},System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription})
+  id: Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Veldrid.Sampler,System.Nullable{Veldrid.BlendStateDescription},System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription})
   parent: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
   langs:
   - csharp
   - vb
-  name: Draw(CommandList, RenderTexture2D, OutputDescription, Effect?, Sampler?)
-  nameWithType: FullScreenRenderPass.Draw(CommandList, RenderTexture2D, OutputDescription, Effect?, Sampler?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList, Bliss.CSharp.Textures.RenderTexture2D, Veldrid.OutputDescription, Bliss.CSharp.Effects.Effect?, Veldrid.Sampler?)
+  name: Draw(CommandList, RenderTexture2D, OutputDescription, Effect?, Sampler?, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?)
+  nameWithType: FullScreenRenderPass.Draw(CommandList, RenderTexture2D, OutputDescription, Effect?, Sampler?, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList, Bliss.CSharp.Textures.RenderTexture2D, Veldrid.OutputDescription, Bliss.CSharp.Effects.Effect?, Veldrid.Sampler?, Veldrid.BlendStateDescription?, Veldrid.DepthStencilStateDescription?, Veldrid.RasterizerStateDescription?)
   type: Method
   source:
     remote:
@@ -130,35 +130,44 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Draw
     path: ../src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
-    startLine: 52
+    startLine: 57
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Passes
-  summary: Executes the draw call using the provided command list, render texture, effect, and optional sampler.
+  summary: Executes the draw operation using the specified resources, rendering configurations, and GPU states.
   example: []
   syntax:
-    content: public void Draw(CommandList commandList, RenderTexture2D renderTexture, OutputDescription output, Effect? effect = null, Sampler? sampler = null)
+    content: public void Draw(CommandList commandList, RenderTexture2D renderTexture, OutputDescription output, Effect? effect = null, Sampler? sampler = null, BlendStateDescription? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null)
     parameters:
     - id: commandList
       type: Veldrid.CommandList
-      description: The command list used to issue draw commands.
+      description: The command list for issuing draw commands to the graphics device.
     - id: renderTexture
       type: Bliss.CSharp.Textures.RenderTexture2D
-      description: The render texture used as the target for rendering.
+      description: The render texture used as the input or output target for rendering operations.
     - id: output
       type: Veldrid.OutputDescription
-      description: The output description specifying render target and depth-stencil formats.
+      description: The output description detailing the format and layout of render targets and depth-stencil buffers.
     - id: effect
       type: Bliss.CSharp.Effects.Effect
-      description: The effect (shader) to be used during the render pass. If null, the default effect associated with the render pass is used.
+      description: An optional shader effect utilized for rendering. A default effect is applied if none is specified.
     - id: sampler
       type: Veldrid.Sampler
-      description: The optional sampler for texture sampling. If null, a default sampler is applied.
-    content.vb: Public Sub Draw(commandList As CommandList, renderTexture As RenderTexture2D, output As OutputDescription, effect As Effect = Nothing, sampler As Sampler = Nothing)
+      description: An optional sampler used for texture sampling in the rendering process. If not set, a default point sampler is used.
+    - id: blendState
+      type: System.Nullable{Veldrid.BlendStateDescription}
+      description: An optional blend state configuration for blending operations. Defaults to alpha blending if not provided.
+    - id: depthStencilState
+      type: System.Nullable{Veldrid.DepthStencilStateDescription}
+      description: An optional depth-stencil state description to control depth and stencil testing. A disabled state is used by default.
+    - id: rasterizerState
+      type: System.Nullable{Veldrid.RasterizerStateDescription}
+      description: An optional rasterizer state description to configure rasterization settings. Defaults to a standard rasterizer configuration if not specified.
+    content.vb: Public Sub Draw(commandList As CommandList, renderTexture As RenderTexture2D, output As OutputDescription, effect As Effect = Nothing, sampler As Sampler = Nothing, blendState As BlendStateDescription? = Nothing, depthStencilState As DepthStencilStateDescription? = Nothing, rasterizerState As RasterizerStateDescription? = Nothing)
   overload: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw*
-  nameWithType.vb: FullScreenRenderPass.Draw(CommandList, RenderTexture2D, OutputDescription, Effect, Sampler)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList, Bliss.CSharp.Textures.RenderTexture2D, Veldrid.OutputDescription, Bliss.CSharp.Effects.Effect, Veldrid.Sampler)
-  name.vb: Draw(CommandList, RenderTexture2D, OutputDescription, Effect, Sampler)
+  nameWithType.vb: FullScreenRenderPass.Draw(CommandList, RenderTexture2D, OutputDescription, Effect, Sampler, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw(Veldrid.CommandList, Bliss.CSharp.Textures.RenderTexture2D, Veldrid.OutputDescription, Bliss.CSharp.Effects.Effect, Veldrid.Sampler, Veldrid.BlendStateDescription?, Veldrid.DepthStencilStateDescription?, Veldrid.RasterizerStateDescription?)
+  name.vb: Draw(CommandList, RenderTexture2D, OutputDescription, Effect, Sampler, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?)
 - uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Dispose(System.Boolean)
   commentId: M:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Dispose(System.Boolean)
   id: Dispose(System.Boolean)
@@ -177,7 +186,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Graphics/Rendering/Passes/FullScreenRenderPass.cs
-    startLine: 143
+    startLine: 138
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Passes
@@ -598,7 +607,7 @@ references:
   name.vb: New
 - uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw
-  href: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html#Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass_Draw_Veldrid_CommandList_Bliss_CSharp_Textures_RenderTexture2D_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_Veldrid_Sampler_
+  href: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html#Bliss_CSharp_Graphics_Rendering_Passes_FullScreenRenderPass_Draw_Veldrid_CommandList_Bliss_CSharp_Textures_RenderTexture2D_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_Veldrid_Sampler_System_Nullable_Veldrid_BlendStateDescription__System_Nullable_Veldrid_DepthStencilStateDescription__System_Nullable_Veldrid_RasterizerStateDescription__
   name: Draw
   nameWithType: FullScreenRenderPass.Draw
   fullName: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.Draw
@@ -640,6 +649,66 @@ references:
   name: Sampler
   nameWithType: Sampler
   fullName: Veldrid.Sampler
+- uid: System.Nullable{Veldrid.BlendStateDescription}
+  commentId: T:System.Nullable{Veldrid.BlendStateDescription}
+  parent: System
+  definition: System.Nullable`1
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+  name: BlendStateDescription?
+  nameWithType: BlendStateDescription?
+  fullName: Veldrid.BlendStateDescription?
+  spec.csharp:
+  - uid: Veldrid.BlendStateDescription
+    name: BlendStateDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+  - name: '?'
+  spec.vb:
+  - uid: Veldrid.BlendStateDescription
+    name: BlendStateDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+  - name: '?'
+- uid: System.Nullable{Veldrid.DepthStencilStateDescription}
+  commentId: T:System.Nullable{Veldrid.DepthStencilStateDescription}
+  parent: System
+  definition: System.Nullable`1
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+  name: DepthStencilStateDescription?
+  nameWithType: DepthStencilStateDescription?
+  fullName: Veldrid.DepthStencilStateDescription?
+  spec.csharp:
+  - uid: Veldrid.DepthStencilStateDescription
+    name: DepthStencilStateDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+  - name: '?'
+  spec.vb:
+  - uid: Veldrid.DepthStencilStateDescription
+    name: DepthStencilStateDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+  - name: '?'
+- uid: System.Nullable{Veldrid.RasterizerStateDescription}
+  commentId: T:System.Nullable{Veldrid.RasterizerStateDescription}
+  parent: System
+  definition: System.Nullable`1
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+  name: RasterizerStateDescription?
+  nameWithType: RasterizerStateDescription?
+  fullName: Veldrid.RasterizerStateDescription?
+  spec.csharp:
+  - uid: Veldrid.RasterizerStateDescription
+    name: RasterizerStateDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+  - name: '?'
+  spec.vb:
+  - uid: Veldrid.RasterizerStateDescription
+    name: RasterizerStateDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+  - name: '?'
 - uid: Bliss.CSharp.Textures
   commentId: N:Bliss.CSharp.Textures
   href: Bliss.html
@@ -700,6 +769,34 @@ references:
   - uid: Bliss.CSharp.Effects
     name: Effects
     href: Bliss.CSharp.Effects.html
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
 - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
   commentId: M:Bliss.CSharp.Disposable.Dispose(System.Boolean)
   parent: Bliss.CSharp.Disposable
