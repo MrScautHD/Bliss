@@ -75,16 +75,6 @@ public class ImmediateRenderer : Disposable {
     /// The pipeline description used to configure the graphics pipeline for rendering.
     /// </summary>
     private SimplePipelineDescription _pipelineDescription;
-    
-    /// <summary>
-    /// Indicates whether the rendering process has begun.
-    /// </summary>
-    private bool _begun;
-    
-    /// <summary>
-    /// The current command list used for recording rendering commands.
-    /// </summary>
-    private CommandList _currentCommandList;
 
     /// <summary>
     /// The currently bound effect.
@@ -150,36 +140,6 @@ public class ImmediateRenderer : Disposable {
         
         // Set default settings.
         this.ResetSettings();
-    }
-
-    /// <summary>
-    /// Begins the rendering process by configuring the command list, output, effect, and blend state for the pipeline.
-    /// </summary>
-    /// <param name="commandList">The command list used to record rendering commands.</param>
-    /// <param name="output">The output description that specifies the rendering target details.</param>
-    /// <exception cref="Exception">Thrown if the rendering process has already been initiated.</exception>
-    public void Begin(CommandList commandList, OutputDescription output) {
-        if (this._begun) {
-            throw new Exception("The ImmediateRenderer has already begun!");
-        }
-
-        this._begun = true;
-        this._currentCommandList = commandList;
-
-        // Update pipeline description.
-        this._pipelineDescription.Outputs = output;
-    }
-
-    /// <summary>
-    /// Ends the rendering process, flushing any remaining batched geometry.
-    /// </summary>
-    /// <exception cref="Exception">Thrown if the renderer has not begun rendering.</exception>
-    public void End() {
-        if (!this._begun) {
-            throw new Exception("The ImmediateRenderer has not begun yet!");
-        }
-        
-        this._begun = false;
     }
 
     /// <summary>
@@ -307,18 +267,20 @@ public class ImmediateRenderer : Disposable {
         this.SetRasterizerState(null);
         this.SetTexture(null);
     }
-    
+
     /// <summary>
-    /// Draws a cube with the specified transformation, size, and optional color.
+    /// Draws a cube with the specified command list, output description, transformation, size, and optional color.
     /// </summary>
+    /// <param name="commandList">The command list used for submitting rendering commands.</param>
+    /// <param name="output">The output description specifying the render target details.</param>
     /// <param name="transform">The transformation to be applied to the cube.</param>
     /// <param name="size">The size of the cube in 3D space.</param>
     /// <param name="color">An optional color for the cube; if null, white is used.</param>
-    public void DrawCube(Transform transform, Vector3 size, Color? color = null) {
+    public void DrawCube(CommandList commandList, OutputDescription output, Transform transform, Vector3 size, Color? color = null) {
         Color finalColor = color ?? Color.White;
         Texture2D texture = this._currentTexture;
         Rectangle sourceRec = this._currentSourceRec;
-        
+
         // Calculate source rectangle UVs.
         float uLeft = sourceRec.X / (float) texture.Width;
         float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
@@ -399,20 +361,21 @@ public class ImmediateRenderer : Disposable {
             this._tempIndices.Add((uint) (vertexOffset + 0));
         }
 
-        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
 
     /// <summary>
     /// Draws the wireframe of a cube with the specified transform, size, and optional color.
     /// </summary>
-    /// <param name="transform">The transformation to apply to the cube, which includes position, rotation, and scale.</param>
-    /// <param name="size">The dimensions of the cube to draw.</param>
-    /// <param name="color">An optional color for the wireframe. If null, the default color is white.</param>
-    public void DrawCubeWires(Transform transform, Vector3 size, Color? color = null) {
+    /// <param name="commandList">The command list used to issue rendering commands.</param>
+    /// <param name="output">The output description that specifies the target render output.</param>
+    /// <param name="transform">The transformation to apply to the cube, including position, rotation, and scale.</param>
+    /// <param name="size">The dimensions of the cube to be drawn.</param>
+    /// <param name="color">An optional color for the wireframe. If not provided, the default color is white.</param>
+    public void DrawCubeWires(CommandList commandList, OutputDescription output, Transform transform, Vector3 size, Color? color = null) {
         Color finalColor = color ?? Color.White;
-        
+
         for (int i = 0; i < 8; i++) {
-            
             // Calculate the x, y, z coordinates.
             float x = (i & 1) == 0 ? -1.0F : 1.0F;
             float y = (i & 2) == 0 ? -1.0F : 1.0F;
@@ -434,32 +397,34 @@ public class ImmediateRenderer : Disposable {
             }
         }
 
-        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
-    
+
     /// <summary>
     /// Draws a sphere with the specified transformation, radius, number of rings, slices, and optional color.
     /// </summary>
+    /// <param name="commandList">The command list used for issuing rendering commands.</param>
+    /// <param name="output">The output description determining the render target.</param>
     /// <param name="transform">The transformation to be applied to the sphere.</param>
     /// <param name="radius">The radius of the sphere.</param>
     /// <param name="rings">The number of horizontal subdivisions of the sphere.</param>
     /// <param name="slices">The number of vertical subdivisions of the sphere.</param>
-    /// <param name="color">An optional color for the sphere; defaults to white.</param>
-    public void DrawSphere(Transform transform, float radius, int rings, int slices, Color? color = null) {
+    /// <param name="color">An optional color for the sphere; defaults to white if not provided.</param>
+    public void DrawSphere(CommandList commandList, OutputDescription output, Transform transform, float radius, int rings, int slices, Color? color = null) {
         Color finalColor = color ?? Color.White;
         Texture2D texture = this._currentTexture;
         Rectangle sourceRec = this._currentSourceRec;
-        
+
         if (rings < 3) {
             rings = 3;
         }
-        
+
         if (slices < 3) {
             slices = 3;
         }
-        
+
         // Calculate source rectangle UVs.
-        float uLeft = sourceRec.X / (float) texture.Width;
+        float uLeft = sourceRec.X / (float)texture.Width;
         float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
         float vTop = sourceRec.Y / (float) texture.Height;
         float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
@@ -503,28 +468,30 @@ public class ImmediateRenderer : Disposable {
             }
         }
         
-        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
-    
+
     /// <summary>
-    /// Draws the wireframe of a sphere with the given transform, radius, number of rings, slices, and optional color.
+    /// Draws the wireframe of a sphere with the specified transform, radius, number of rings, slices, and optional color.
     /// </summary>
-    /// <param name="transform">The transformation to apply to the sphere (position, rotation, and scaling).</param>
+    /// <param name="commandList">The command list used for issuing draw commands to the GPU.</param>
+    /// <param name="output">The output description of the render target where the sphere will be drawn.</param>
+    /// <param name="transform">The transformation to apply to the sphere, including position, rotation, and scale.</param>
     /// <param name="radius">The radius of the sphere.</param>
-    /// <param name="rings">The number of horizontal subdivisions of the sphere.</param>
-    /// <param name="slices">The number of vertical subdivisions of the sphere.</param>
-    /// <param name="color">An optional color for the wireframe; defaults to white.</param>
-    public void DrawSphereWires(Transform transform, float radius, int rings, int slices, Color? color = null) {
+    /// <param name="rings">The number of horizontal subdivisions (rings) of the sphere.</param>
+    /// <param name="slices">The number of vertical subdivisions (slices) of the sphere.</param>
+    /// <param name="color">The optional color for the sphere's wireframe. Defaults to white if not specified.</param>
+    public void DrawSphereWires(CommandList commandList, OutputDescription output, Transform transform, float radius, int rings, int slices, Color? color = null) {
         Color finalColor = color ?? Color.White;
-        
+
         if (rings < 3) {
             rings = 3;
         }
-        
+
         if (slices < 3) {
             slices = 3;
         }
-    
+
         // Generate wireframe vertices.
         for (int ring = 0; ring <= rings; ring++) {
             float ringAngle = MathF.PI * ring / rings;
@@ -560,33 +527,35 @@ public class ImmediateRenderer : Disposable {
             }
         }
     
-        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
 
     /// <summary>
     /// Renders a 3D hemisphere with the specified transformation, radius, rings, slices, and optional color.
     /// </summary>
+    /// <param name="commandList">The command list used for issuing draw commands.</param>
+    /// <param name="output">The output description for the current render target.</param>
     /// <param name="transform">The transformation to apply to the hemisphere.</param>
     /// <param name="radius">The radius of the hemisphere.</param>
     /// <param name="rings">The number of rings used to construct the hemisphere. Must be 3 or greater.</param>
     /// <param name="slices">The number of slices used to construct the hemisphere. Must be 3 or greater.</param>
     /// <param name="color">An optional color to apply to the hemisphere. If null, the default color will be white.</param>
-    public void DrawHemisphere(Transform transform, float radius, int rings, int slices, Color? color = null) {
+    public void DrawHemisphere(CommandList commandList, OutputDescription output, Transform transform, float radius, int rings, int slices, Color? color = null) {
         Color finalColor = color ?? Color.White;
         Texture2D texture = this._currentTexture;
         Rectangle sourceRec = this._currentSourceRec;
-        
+
         if (rings < 3) {
             rings = 3;
         }
-        
+
         if (slices < 3) {
             slices = 3;
         }
-        
+
         // Calculate source rectangle UVs.
-        float uLeft = sourceRec.X / (float) texture.Width;
-        float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
+        float uLeft = sourceRec.X / (float)texture.Width;
+        float uRight = (sourceRec.X + sourceRec.Width) / (float)texture.Width;
         float vTop = sourceRec.Y / (float) texture.Height;
         float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
         
@@ -673,27 +642,29 @@ public class ImmediateRenderer : Disposable {
             this._tempIndices.Add((uint) (baseCenterIndex + slice + 1));
         }
 
-        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
 
     /// <summary>
-    /// Draws the wireframe outline of a hemisphere using the specified transformation, radius, number of rings, and slices.
+    /// Draws the wireframe outline of a hemisphere using the specified parameters.
     /// </summary>
+    /// <param name="commandList">The command list used for rendering commands.</param>
+    /// <param name="output">The output description that determines the rendering target.</param>
     /// <param name="transform">The transformation to apply to the hemisphere.</param>
     /// <param name="radius">The radius of the hemisphere.</param>
     /// <param name="rings">The number of horizontal subdivisions (rings) for the hemisphere.</param>
     /// <param name="slices">The number of vertical subdivisions (slices) for the hemisphere.</param>
-    /// <param name="color">An optional color for the hemisphere. If null, the color defaults to white.</param>
-    public void DrawHemisphereWires(Transform transform, float radius, int rings, int slices, Color? color = null) {
+    /// <param name="color">An optional color for the hemisphere. If null, it defaults to white.</param>
+    public void DrawHemisphereWires(CommandList commandList, OutputDescription output, Transform transform, float radius, int rings, int slices, Color? color = null) {
         Color finalColor = color ?? Color.White;
         float halfHeight = radius / 4.0F;
-    
+
         // Generate vertices for the hemisphere.
         for (int ring = 0; ring <= rings / 2; ring++) {
             float ringAngle = ring * MathF.PI / (rings % 2 == 0 ? rings : rings - 1);
             float y = MathF.Cos(ringAngle) * (radius / 2.0F);
             float ringRadius = MathF.Sin(ringAngle) * (radius / 2.0F);
-    
+
             for (int slice = 0; slice <= slices; slice++) {
                 float sliceAngle = MathF.PI * 2.0F * slice / slices;
     
@@ -755,30 +726,32 @@ public class ImmediateRenderer : Disposable {
             this._tempIndices.Add((uint) (baseStartIndex + slice + 1));
         }
     
-        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
 
     /// <summary>
-    /// Renders a cylinder using the specified transform, dimensions, slice count, and optional color.
+    /// Renders a cylinder using the specified command list, output description, transform, dimensions, slice count, and optional color.
     /// </summary>
+    /// <param name="commandList">The command list used for issuing rendering commands.</param>
+    /// <param name="output">The output description that defines the rendering target.</param>
     /// <param name="transform">The transform used to position and orient the cylinder in 3D space.</param>
     /// <param name="radius">The radius of the cylinder's top and bottom caps.</param>
     /// <param name="height">The height of the cylinder from bottom to top cap.</param>
     /// <param name="slices">The number of segments used to approximate the cylindrical surface. Minimum value is 3.</param>
     /// <param name="color">The optional color of the cylinder. If null, a default white color is applied.</param>
-    public void DrawCylinder(Transform transform, float radius, float height, int slices, Color? color = null) {
+    public void DrawCylinder(CommandList commandList, OutputDescription output, Transform transform, float radius, float height, int slices, Color? color = null) {
         Color finalColor = color ?? Color.White;
         Texture2D texture = this._currentTexture;
         Rectangle sourceRec = this._currentSourceRec;
-        
+
         if (slices < 3) {
             slices = 3;
         }
-        
+
         // Calculate source rectangle UVs.
-        float uLeft = sourceRec.X / (float) texture.Width;
-        float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
-        float vTop = sourceRec.Y / (float) texture.Height;
+        float uLeft = sourceRec.X / (float)texture.Width;
+        float uRight = (sourceRec.X + sourceRec.Width) / (float)texture.Width;
+        float vTop = sourceRec.Y / (float)texture.Height;
         float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
     
         float halfHeight = height / 2.0F;
@@ -859,18 +832,20 @@ public class ImmediateRenderer : Disposable {
             this._tempIndices.Add((uint) (baseIndex + 2));
         }
     
-        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
 
     /// <summary>
-    /// Draws the wireframe representation of a cylinder using the specified transform, radius, height, and number of slices.
+    /// Draws the wireframe representation of a cylinder using the specified transformation, radius, height, and number of slices.
     /// </summary>
-    /// <param name="transform">The transformation to apply to the cylinder, defining its position, rotation, and scale in the scene.</param>
+    /// <param name="commandList">The command list used to issue rendering commands.</param>
+    /// <param name="output">The output description that defines the rendering target.</param>
+    /// <param name="transform">The transformation applied to position, rotate, and scale the cylinder in the scene.</param>
     /// <param name="radius">The radius of the cylinder.</param>
     /// <param name="height">The height of the cylinder.</param>
-    /// <param name="slices">The number of subdivisions around the cylinder's circumference. Must be at least 3.</param>
-    /// <param name="color">The color of the cylinder's wires. If null, the default color is white.</param>
-    public void DrawCylinderWires(Transform transform, float radius, float height, int slices, Color? color = null) {
+    /// <param name="slices">The number of divisions around the cylinder's circumference. Must be 3 or greater.</param>
+    /// <param name="color">The color of the cylinder's wireframe. Defaults to white if not specified.</param>
+    public void DrawCylinderWires(CommandList commandList, OutputDescription output, Transform transform, float radius, float height, int slices, Color? color = null) {
         Color finalColor = color ?? Color.White;
 
         if (slices < 3) {
@@ -948,32 +923,34 @@ public class ImmediateRenderer : Disposable {
             this._tempIndices.Add((uint) topIndex);
         }
 
-        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
 
     /// <summary>
     /// Renders a 3D capsule using the specified transformation, dimensions, and visual properties.
     /// </summary>
-    /// <param name="transform">The transformation to apply to the capsule, including position, rotation, and scaling.</param>
+    /// <param name="commandList">The command list used to issue draw commands.</param>
+    /// <param name="output">The output description for the render target.</param>
+    /// <param name="transform">The transformation to apply to the capsule, including position, rotation, and scale.</param>
     /// <param name="radius">The radius of the capsule's hemispherical ends and cylindrical body.</param>
     /// <param name="height">The total height of the capsule.</param>
-    /// <param name="slices">The number of subdivisions around the circumference of the capsule. Minimum value is 3.</param>
+    /// <param name="slices">The number of subdivisions around the circumference of the capsule. Must be 3 or greater.</param>
     /// <param name="color">The color of the capsule. If null, defaults to white.</param>
-    public void DrawCapsule(Transform transform, float radius, float height, int slices, Color? color = null) {
+    public void DrawCapsule(CommandList commandList, OutputDescription output, Transform transform, float radius, float height, int slices, Color? color = null) {
         Color finalColor = color ?? Color.White;
         Texture2D texture = this._currentTexture;
         Rectangle sourceRec = this._currentSourceRec;
-    
+
         if (slices < 3) {
             slices = 3;
         }
-    
+
         float halfRadius = radius / 2.0F;
         float halfHeight = height / 2.0F;
         int rings = slices / 2;
-        
+
         // Calculate source rectangle UVs.
-        float uLeft = sourceRec.X / (float) texture.Width;
+        float uLeft = sourceRec.X / (float)texture.Width;
         float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
         float vTop = sourceRec.Y / (float) texture.Height;
         float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
@@ -1108,34 +1085,36 @@ public class ImmediateRenderer : Disposable {
             }
         }
     
-        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
 
     /// <summary>
     /// Draws the wireframe of a capsule based on the specified transform, dimensions, and color.
     /// </summary>
+    /// <param name="commandList">The command list used for issuing draw commands.</param>
+    /// <param name="output">The output description containing information about the render target and configurations.</param>
     /// <param name="transform">The transformation applied to the capsule, such as position, rotation, and scale.</param>
     /// <param name="radius">The radius of the capsule's hemispherical ends and cylindrical body.</param>
     /// <param name="height">The height of the cylindrical body of the capsule.</param>
     /// <param name="slices">The number of divisions for rendering the capsule's rounded surface. Must be at least 3.</param>
     /// <param name="color">The optional color of the capsule wireframe. Defaults to white if not specified.</param>
-    public void DrawCapsuleWires(Transform transform, float radius, float height, int slices, Color? color = null) {
+    public void DrawCapsuleWires(CommandList commandList, OutputDescription output, Transform transform, float radius, float height, int slices, Color? color = null) {
         Color finalColor = color ?? Color.White;
-        
+
         if (slices < 3) {
             slices = 3;
         }
-        
+
         float halfRadius = radius / 2.0F;
         float halfHeight = height / 2.0F;
         int rings = slices / 2;
-        
+
         // Create top hemisphere vertices.
         for (int ring = 0; ring <= rings; ring++) {
             float theta = ring * MathF.PI / (rings * 2.0F);
             float sinTheta = MathF.Sin(theta);
             float cosTheta = MathF.Cos(theta);
-            
+
             for (int slice = 0; slice <= slices; slice++) {
                 float phi = slice * 2.0F * MathF.PI / slices;
                 float cosPhi = MathF.Cos(phi);
@@ -1252,29 +1231,31 @@ public class ImmediateRenderer : Disposable {
             }
         }
         
-        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
 
     /// <summary>
-    /// Draws a 3D cone using the specified transform, radius, height, and slices.
+    /// Draws a 3D cone using the specified parameters.
     /// </summary>
-    /// <param name="transform">The transform applied to the cone in the world space.</param>
+    /// <param name="commandList">The command list to record drawing commands.</param>
+    /// <param name="output">The output description specifying the target rendering surface.</param>
+    /// <param name="transform">The transform specifying the position, rotation, and scale of the cone in world space.</param>
     /// <param name="radius">The radius of the base of the cone.</param>
-    /// <param name="height">The height of the cone from base to apex.</param>
-    /// <param name="slices">The number of slices (segments around the base) for the cone. Must be at least 3.</param>
-    /// <param name="color">Optional color of the cone. Defaults to white if not specified.</param>
-    public void DrawCone(Transform transform, float radius, float height, int slices, Color? color = null) {
+    /// <param name="height">The height of the cone from its base to its apex.</param>
+    /// <param name="slices">The number of slices used to construct the cone's base. Must be at least 3.</param>
+    /// <param name="color">An optional parameter to define the color of the cone. Defaults to white if not provided.</param>
+    public void DrawCone(CommandList commandList, OutputDescription output, Transform transform, float radius, float height, int slices, Color? color = null) {
         Color finalColor = color ?? Color.White;
         Texture2D texture = this._currentTexture;
         Rectangle sourceRec = this._currentSourceRec;
-        
+
         if (slices < 3) {
             slices = 3;
         }
-        
+
         // Calculate source rectangle UVs.
-        float uLeft = sourceRec.X / (float) texture.Width;
-        float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
+        float uLeft = sourceRec.X / (float)texture.Width;
+        float uRight = (sourceRec.X + sourceRec.Width) / (float)texture.Width;
         float vTop = sourceRec.Y / (float) texture.Height;
         float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
         
@@ -1329,26 +1310,28 @@ public class ImmediateRenderer : Disposable {
             this._tempIndices.Add((uint) baseIndex);
         }
         
-        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
 
     /// <summary>
     /// Draws a wireframe representation of a cone in 3D space.
     /// </summary>
+    /// <param name="commandList">The command list used to issue rendering commands.</param>
+    /// <param name="output">The output description that specifies render target details.</param>
     /// <param name="transform">The transformation to apply to the cone, including position, rotation, and scale.</param>
     /// <param name="radius">The radius of the cone's base.</param>
     /// <param name="height">The height of the cone from the base to its tip.</param>
     /// <param name="slices">The number of slices used to approximate the circular base. Must be at least 3.</param>
     /// <param name="color">An optional color for the wireframe. Defaults to white if null.</param>
-    public void DrawConeWires(Transform transform, float radius, float height, int slices, Color? color = null) {
+    public void DrawConeWires(CommandList commandList, OutputDescription output, Transform transform, float radius, float height, int slices, Color? color = null) {
         Color finalColor = color ?? Color.White;
-    
+
         if (slices < 3) {
             slices = 3;
         }
-    
+
         float halfHeight = height / 2.0F;
-    
+
         // Generate vertices for the cone.
         for (int slice = 0; slice <= slices; slice++) {
             float angle = slice * MathF.Tau / slices;
@@ -1398,35 +1381,37 @@ public class ImmediateRenderer : Disposable {
             this._tempIndices.Add((uint) ((baseIndex + 2) % (slices * 2)));
         }
     
-        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
 
     /// <summary>
     /// Renders a torus shape using the specified transformation, dimensions, and color.
     /// </summary>
+    /// <param name="commandList">The command list used for issuing rendering commands.</param>
+    /// <param name="output">The output description specifying render target details.</param>
     /// <param name="transform">The transformation to apply to the torus, including position, rotation, and scale.</param>
     /// <param name="radius">The radius of the inner circle of the torus.</param>
     /// <param name="size">The thickness of the torus.</param>
     /// <param name="radSeg">The number of segments along the radial direction of the torus. Must be 3 or greater.</param>
     /// <param name="sides">The number of sides to approximate the circular cross-section of the torus. Must be 3 or greater.</param>
     /// <param name="color">The color of the torus. If null, the default color will be white.</param>
-    public void DrawTorus(Transform transform, float radius, float size, int radSeg, int sides, Color? color = null) {
+    public void DrawTorus(CommandList commandList, OutputDescription output, Transform transform, float radius, float size, int radSeg, int sides, Color? color = null) {
         Color finalColor = color ?? Color.White;
         Texture2D texture = this._currentTexture;
         Rectangle sourceRec = this._currentSourceRec;
-        
+
         if (radSeg < 3) {
             radSeg = 3;
         }
-        
+
         if (sides < 3) {
             sides = 3;
         }
-        
+
         // Calculate source rectangle UVs.
-        float uLeft = sourceRec.X / (float) texture.Width;
-        float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
-        float vTop = sourceRec.Y / (float) texture.Height;
+        float uLeft = sourceRec.X / (float)texture.Width;
+        float uRight = (sourceRec.X + sourceRec.Width) / (float)texture.Width;
+        float vTop = sourceRec.Y / (float)texture.Height;
         float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
         
         float circusStep = MathF.Tau / radSeg;
@@ -1473,38 +1458,40 @@ public class ImmediateRenderer : Disposable {
             }
         }
         
-        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
 
     /// <summary>
     /// Renders a wireframe torus using the specified transformation, dimensions, and color.
     /// </summary>
+    /// <param name="commandList">The command list used for rendering the torus wireframe.</param>
+    /// <param name="output">The output description used for the rendering pipeline.</param>
     /// <param name="transform">The transformation applied to the torus, including position, rotation, and scale.</param>
     /// <param name="radius">The radius of the inner circle of the torus.</param>
     /// <param name="size">The thickness of the torus.</param>
-    /// <param name="radSeg">The number of segments in the radial direction. Minimum value is 3.</param>
-    /// <param name="sides">The number of subdivisions of the circular cross-section. Minimum value is 3.</param>
-    /// <param name="color">The optional color for rendering the torus wireframe.</param>
-    public void DrawTorusWires(Transform transform, float radius, float size, int radSeg, int sides, Color? color = null) {
+    /// <param name="radSeg">The number of radial segments. Must be 3 or greater.</param>
+    /// <param name="sides">The number of subdivisions around the circular cross-section. Must be 3 or greater.</param>
+    /// <param name="color">The optional color used for rendering the torus wireframe. Defaults to white if not specified.</param>
+    public void DrawTorusWires(CommandList commandList, OutputDescription output, Transform transform, float radius, float size, int radSeg, int sides, Color? color = null) {
         Color finalColor = color ?? Color.White;
-    
+
         if (radSeg < 3) {
             radSeg = 3;
         }
-    
+
         if (sides < 3) {
             sides = 3;
         }
-    
+
         float circusStep = MathF.Tau / radSeg;
         float sideStep = MathF.Tau / sides;
-    
+
         // Calculate the vertices for wireframe.
         for (int rad = 0; rad <= radSeg; rad++) {
             float radAngle = rad * circusStep;
             float cosRad = MathF.Cos(radAngle);
             float sinRad = MathF.Sin(radAngle);
-    
+
             for (int side = 0; side <= sides; side++) {
                 float sideAngle = side * sideStep;
                 float cosSide = MathF.Cos(sideAngle);
@@ -1531,35 +1518,37 @@ public class ImmediateRenderer : Disposable {
                 }
             }
         }
-    
-        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
+        
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
 
     /// <summary>
-    /// Draws a knot shape with the specified parameters using transformations, radii, segments, and color.
+    /// Draws a knot shape with the specified parameters using a command list and defined properties such as transformations, radii, number of segments, and optional color.
     /// </summary>
-    /// <param name="transform">The transformation applied to the knot.</param>
+    /// <param name="commandList">The command list used for rendering commands.</param>
+    /// <param name="output">The output description specifying the rendering context.</param>
+    /// <param name="transform">The transformation to apply to the knot during rendering.</param>
     /// <param name="radius">The overall radius of the knot.</param>
-    /// <param name="tubeRadius">The radius of the tube forming the knot.</param>
-    /// <param name="radSeg">The number of segments along the radial direction. Minimum value is 3.</param>
-    /// <param name="sides">The number of sides of the tube forming the knot. Minimum value is 3.</param>
-    /// <param name="color">An optional color for the knot. Defaults to white if null.</param>
-    public void DrawKnot(Transform transform, float radius, float tubeRadius, int radSeg, int sides, Color? color = null) {
+    /// <param name="tubeRadius">The radius of the tube forming the knot structure.</param>
+    /// <param name="radSeg">The number of radial segments forming the knot. Must be 3 or greater.</param>
+    /// <param name="sides">The number of sides of the tube forming the knot. Must be 3 or greater.</param>
+    /// <param name="color">An optional color to apply to the knot. Defaults to white when null.</param>
+    public void DrawKnot(CommandList commandList, OutputDescription output, Transform transform, float radius, float tubeRadius, int radSeg, int sides, Color? color = null) {
         Color finalColor = color ?? Color.White;
         Texture2D texture = this._currentTexture;
         Rectangle sourceRec = this._currentSourceRec;
-        
+
         if (radSeg < 3) {
             radSeg = 3;
         }
-        
+
         if (sides < 3) {
             sides = 3;
         }
-        
+
         // Calculate source rectangle UVs.
-        float uLeft = sourceRec.X / (float) texture.Width;
-        float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
+        float uLeft = sourceRec.X / (float)texture.Width;
+        float uRight = (sourceRec.X + sourceRec.Width) / (float)texture.Width;
         float vTop = sourceRec.Y / (float) texture.Height;
         float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
 
@@ -1621,36 +1610,38 @@ public class ImmediateRenderer : Disposable {
             }
         }
         
-        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
 
     /// <summary>
     /// Renders the wireframe of a knot shape using the specified transformation, radii, and segments.
     /// </summary>
+    /// <param name="commandList">The command list used for issuing rendering commands.</param>
+    /// <param name="output">The output description specifying the rendering target.</param>
     /// <param name="transform">The transformation applied to the knot wireframe.</param>
     /// <param name="radius">The radius of the knot.</param>
     /// <param name="tubeRadius">The radius of the tube comprising the knot's wireframe.</param>
     /// <param name="radSeg">The number of radial segments making up the knot. Minimum value is 3.</param>
     /// <param name="sides">The number of sides for the tube cross-section. Minimum value is 3.</param>
     /// <param name="color">An optional color to use for the wireframe; if null, the default is white.</param>
-    public void DrawKnotWires(Transform transform, float radius, float tubeRadius, int radSeg, int sides, Color? color = null) {
+    public void DrawKnotWires(CommandList commandList, OutputDescription output, Transform transform, float radius, float tubeRadius, int radSeg, int sides, Color? color = null) {
         Color finalColor = color ?? Color.White;
-    
+
         if (radSeg < 3) {
             radSeg = 3;
         }
-    
+
         if (sides < 3) {
             sides = 3;
         }
-    
+
         float step = MathF.Tau / radSeg;
         float sideStep = MathF.Tau / sides;
-    
+
         // Calculate vertices and edges for the wireframe.
         for (int rad = 0; rad <= radSeg; rad++) {
             float t = rad * step;
-    
+
             float x = MathF.Sin(t) + 2.0F * MathF.Sin(2.0F * t);
             float y = MathF.Cos(t) - 2.0F * MathF.Cos(2.0F * t);
             float z = -MathF.Sin(3.0F * t);
@@ -1693,32 +1684,34 @@ public class ImmediateRenderer : Disposable {
             }
         }
     
-        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
-    
+
     /// <summary>
-    /// Renders a grid using the specified transformation matrix, slice count, spacing, and optional color.
+    /// Renders a grid using the specified command list, output description, transformation matrix, slice count, spacing, and optional color.
     /// </summary>
+    /// <param name="commandList">The command list used for rendering the grid.</param>
+    /// <param name="output">The output description that defines the render target's properties.</param>
     /// <param name="transform">The transformation applied to the grid.</param>
     /// <param name="slices">The number of divisions (slices) in the grid. Must be greater than or equal to 1.</param>
     /// <param name="spacing">The distance (spacing) between each grid line. Must be greater than or equal to 1.</param>
     /// <param name="color">An optional color for the grid lines. Defaults to white if not specified.</param>
-    public void DrawGird(Transform transform, int slices, int spacing, Color? color = null) {
+    public void DrawGird(CommandList commandList, OutputDescription output, Transform transform, int slices, int spacing, Color? color = null) {
         Color finalColor = color ?? Color.White;
-        
+
         if (spacing < 1) {
             spacing = 1;
         }
-        
+
         if (slices < 1) {
             slices = 1;
         }
-        
+
         float halfSize = slices * spacing * 0.5f;
-    
+
         for (int i = 0; i <= slices; i++) {
             float offset = -halfSize + i * spacing;
-            
+
             // Draw lines along the X axis.
             this._tempVertices.Add(new ImmediateVertex3D {
                 Position = new Vector3(offset, 0, -halfSize),
@@ -1748,20 +1741,21 @@ public class ImmediateRenderer : Disposable {
             this._tempIndices.Add((uint) (i * 4 + 3));
         }
         
-        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
 
     /// <summary>
     /// Draws the edges of the specified bounding box using the given transformation and color.
     /// </summary>
+    /// <param name="commandList">The command list used for issuing rendering commands.</param>
+    /// <param name="output">The output description for the rendering target.</param>
     /// <param name="transform">The transformation to apply to the bounding box before rendering.</param>
     /// <param name="box">The bounding box to be drawn.</param>
     /// <param name="color">The color to use for the bounding box edges. If null, white is used as the default color.</param>
-    public void DrawBoundingBox(Transform transform, BoundingBox box, Color? color = null) {
+    public void DrawBoundingBox(CommandList commandList, OutputDescription output, Transform transform, BoundingBox box, Color? color = null) {
         Color finalColor = color ?? Color.White;
-        
+
         for (int i = 0; i < 8; i++) {
-            
             // Calculate the x, y, z coordinates.
             float x = (i & 1) == 0 ? box.Min.X : box.Max.X;
             float y = (i & 2) == 0 ? box.Min.Y : box.Max.Y;
@@ -1783,24 +1777,23 @@ public class ImmediateRenderer : Disposable {
             }
         }
 
-        this.DrawVertices(transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
 
     /// <summary>
-    /// Draws a line between two points in 3D space with an optional color.
+    /// Draws a line between two points in 3D space with a specified optional color.
     /// </summary>
+    /// <param name="commandList">The command list used for recording drawing commands.</param>
+    /// <param name="output">The output description of the render target.</param>
     /// <param name="startPos">The starting position of the line in 3D space.</param>
     /// <param name="endPos">The ending position of the line in 3D space.</param>
-    /// <param name="color">The optional color of the line. If null, the default color is white.</param>
-    public void DrawLine(Vector3 startPos, Vector3 endPos, Color? color = null) {
+    /// <param name="color">The optional color of the line. If not provided, defaults to white.</param>
+    public void DrawLine(CommandList commandList, OutputDescription output, Vector3 startPos, Vector3 endPos, Color? color = null) {
         Color finalColor = color ?? Color.White;
-        
+
         // Add start vertex.
-        this._tempVertices.Add(new ImmediateVertex3D {
-            Position = startPos,
-            Color = finalColor.ToRgbaFloatVec4()
-        });
-        
+        this._tempVertices.Add(new ImmediateVertex3D { Position = startPos, Color = finalColor.ToRgbaFloatVec4() });
+
         // Add end vertex.
         this._tempVertices.Add(new ImmediateVertex3D {
             Position = endPos,
@@ -1811,27 +1804,29 @@ public class ImmediateRenderer : Disposable {
         this._tempIndices.Add(0);
         this._tempIndices.Add(1);
         
-        this.DrawVertices(new Transform(), this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
+        this.DrawVertices(commandList, output, new Transform(), this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
 
     /// <summary>
-    /// Renders a billboard at the specified position with optional scaling and color.
+    /// Draws a billboard at the specified position with optional scaling and color parameters.
     /// </summary>
-    /// <param name="position">The world position where the billboard will be rendered.</param>
-    /// <param name="scale">The optional scaling factor for the billboard's size. Defaults to a uniform scale of 1 if not provided.</param>
-    /// <param name="color">The optional color to be applied to the billboard. Defaults to white if not provided.</param>
-    public void DrawBillboard(Vector3 position, Vector2? scale = null, Color? color = null) {
+    /// <param name="commandList">The command list used for rendering commands.</param>
+    /// <param name="output">The output description that defines rendering target properties.</param>
+    /// <param name="position">The 3D position where the billboard will be rendered.</param>
+    /// <param name="scale">The optional scale factor for the billboard. Defaults to a scale of 1 if not specified.</param>
+    /// <param name="color">The optional color of the billboard. Defaults to white if not specified.</param>
+    public void DrawBillboard(CommandList commandList, OutputDescription output, Vector3 position, Vector2? scale = null, Color? color = null) {
         Color finalColor = color ?? Color.White;
         Vector2 finalScale = scale ?? Vector2.One;
         Texture2D texture = this._currentTexture;
         Rectangle sourceRec = this._currentSourceRec;
-        
+
         Cam3D? cam3D = Cam3D.ActiveCamera;
-        
+
         if (cam3D == null) {
             return;
         }
-        
+
         // Calculate the direction from billboard position to camera position.
         Vector3 directionToCamera = -Vector3.Normalize(cam3D.Position - position);
 
@@ -1890,21 +1885,19 @@ public class ImmediateRenderer : Disposable {
         this._tempIndices.Add(3);
         this._tempIndices.Add(0);
     
-        this.DrawVertices(billboardTransform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
+        this.DrawVertices(commandList, output, billboardTransform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
     }
-    
+
     /// <summary>
-    /// Draws a set of vertices using the specified transformation, vertex data, indices, and topology.
+    /// Draws a set of vertices using the specified command list, output description, transformation, vertex data, indices, and primitive topology.
     /// </summary>
-    /// <param name="transform">The transformation matrix to apply to the vertices.</param>
-    /// <param name="vertices">The list of vertices to be rendered.</param>
-    /// <param name="indices">The list of indices defining the order in which the vertices are connected.</param>
-    /// <param name="topology">The primitive topology specifying how the vertices are interpreted (e.g., triangle list, line strip).</param>
-    public void DrawVertices(Transform transform, List<ImmediateVertex3D> vertices, List<uint> indices, PrimitiveTopology topology) {
-        if (!this._begun) {
-            throw new Exception("You must begin the ImmediateRenderer before calling draw methods!");
-        }
-        
+    /// <param name="commandList">The command list used for issuing drawing commands.</param>
+    /// <param name="output">The output description that defines how the rendered content is processed and displayed.</param>
+    /// <param name="transform">The transformation matrix to apply to the vertex data.</param>
+    /// <param name="vertices">The collection of vertices to render.</param>
+    /// <param name="indices">The collection of indices defining the order in which vertices are connected.</param>
+    /// <param name="topology">The primitive topology that specifies how the vertex data should be interpreted (e.g., triangle list, line strip).</param>
+    public void DrawVertices(CommandList commandList, OutputDescription output, Transform transform, List<ImmediateVertex3D> vertices, List<uint> indices, PrimitiveTopology topology) {
         Cam3D? cam3D = Cam3D.ActiveCamera;
 
         if (cam3D == null) {
@@ -1913,9 +1906,10 @@ public class ImmediateRenderer : Disposable {
             this._tempIndices.Clear();
             return;
         }
-        
+
         if (vertices.Count > this.Capacity) {
-            Logger.Fatal(new InvalidOperationException($"The number of provided vertices exceeds the maximum batch size! [{vertices.Count} > {this.Capacity}]"));
+            Logger.Fatal(new InvalidOperationException(
+                $"The number of provided vertices exceeds the maximum batch size! [{vertices.Count} > {this.Capacity}]"));
         }
 
         if (indices.Count > this.Capacity * 3) {
@@ -1940,58 +1934,59 @@ public class ImmediateRenderer : Disposable {
         this._matrixBuffer.SetValue(0, cam3D.GetProjection());
         this._matrixBuffer.SetValue(1, cam3D.GetView());
         this._matrixBuffer.SetValue(2, transform.GetTransform());
-        this._matrixBuffer.UpdateBuffer(this._currentCommandList);
+        this._matrixBuffer.UpdateBuffer(commandList);
         
-        // Update topology.
+        // Update pipeline description.
         this._pipelineDescription.PrimitiveTopology = topology;
+        this._pipelineDescription.Outputs = output;
         
         if (this._indexCount > 0) {
             
             // Update vertex and index buffer.
-            this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, new ReadOnlySpan<ImmediateVertex3D>(this._vertices, 0, this._vertexCount));
-            this._currentCommandList.UpdateBuffer(this._indexBuffer, 0, new ReadOnlySpan<uint>(this._indices, 0, this._indexCount));
+            commandList.UpdateBuffer(this._vertexBuffer, 0, new ReadOnlySpan<ImmediateVertex3D>(this._vertices, 0, this._vertexCount));
+            commandList.UpdateBuffer(this._indexBuffer, 0, new ReadOnlySpan<uint>(this._indices, 0, this._indexCount));
             
             // Set vertex and index buffer.
-            this._currentCommandList.SetVertexBuffer(0, this._vertexBuffer);
-            this._currentCommandList.SetIndexBuffer(this._indexBuffer, IndexFormat.UInt32);
+            commandList.SetVertexBuffer(0, this._vertexBuffer);
+            commandList.SetIndexBuffer(this._indexBuffer, IndexFormat.UInt32);
 
             // Set pipeline.
-            this._currentCommandList.SetPipeline(this._currentEffect.GetPipeline(this._pipelineDescription).Pipeline);
+            commandList.SetPipeline(this._currentEffect.GetPipeline(this._pipelineDescription).Pipeline);
         
             // Set matrix buffer.
-            this._currentCommandList.SetGraphicsResourceSet(0, this._matrixBuffer.GetResourceSet(this._currentEffect.GetBufferLayout("MatrixBuffer")));
+            commandList.SetGraphicsResourceSet(0, this._matrixBuffer.GetResourceSet(this._currentEffect.GetBufferLayout("MatrixBuffer")));
 
             // Set resourceSet of the texture.
-            this._currentCommandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this._currentEffect.GetTextureLayout("fTexture")));
+            commandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this._currentEffect.GetTextureLayout("fTexture")));
             
             // Apply effect.
             this._currentEffect.Apply();
             
             // Draw.
-            this._currentCommandList.DrawIndexed((uint) this._indexCount);
+            commandList.DrawIndexed((uint) this._indexCount);
         }
         else {
             
             // Update vertex buffer.
-            this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, new ReadOnlySpan<ImmediateVertex3D>(this._vertices, 0, this._vertexCount));
+            commandList.UpdateBuffer(this._vertexBuffer, 0, new ReadOnlySpan<ImmediateVertex3D>(this._vertices, 0, this._vertexCount));
             
             // Set vertex buffer.
-            this._currentCommandList.SetVertexBuffer(0, this._vertexBuffer);
+            commandList.SetVertexBuffer(0, this._vertexBuffer);
 
             // Set pipeline.
-            this._currentCommandList.SetPipeline(this._currentEffect.GetPipeline(this._pipelineDescription).Pipeline);
+            commandList.SetPipeline(this._currentEffect.GetPipeline(this._pipelineDescription).Pipeline);
         
             // Set matrix buffer.
-            this._currentCommandList.SetGraphicsResourceSet(0, this._matrixBuffer.GetResourceSet(this._currentEffect.GetBufferLayout("MatrixBuffer")));
+            commandList.SetGraphicsResourceSet(0, this._matrixBuffer.GetResourceSet(this._currentEffect.GetBufferLayout("MatrixBuffer")));
         
             // Set resourceSet of the texture.
-            this._currentCommandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this._currentEffect.GetTextureLayout("fTexture")));
+            commandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this._currentEffect.GetTextureLayout("fTexture")));
             
             // Apply effect.
             this._currentEffect.Apply();
             
             // Draw.
-            this._currentCommandList.Draw((uint) this._vertexCount);
+            commandList.Draw((uint) this._vertexCount);
         }
         
         // Reset indexer.

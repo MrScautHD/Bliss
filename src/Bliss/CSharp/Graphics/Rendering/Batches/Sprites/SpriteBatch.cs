@@ -6,7 +6,6 @@ using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.VertexTypes;
-using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
@@ -154,6 +153,26 @@ public class SpriteBatch : Disposable {
     /// The requested <see cref="RasterizerStateDescription"/>.
     /// </summary>
     private RasterizerStateDescription _requestedRasterizerState;
+
+    /// <summary>
+    /// The current <see cref="Matrix4x4"/> projection.
+    /// </summary>
+    private Matrix4x4 _currentProjection;
+
+    /// <summary>
+    /// The requested <see cref="Matrix4x4"/> projection.
+    /// </summary>
+    private Matrix4x4 _requestedProjection;
+
+    /// <summary>
+    /// The current <see cref="Matrix4x4"/> view.
+    /// </summary>
+    private Matrix4x4 _currentView;
+
+    /// <summary>
+    /// The requested <see cref="Matrix4x4"/> view.
+    /// </summary>
+    private Matrix4x4 _requestedView;
     
     /// <summary>
     /// The current <see cref="Sampler"/>.
@@ -218,6 +237,8 @@ public class SpriteBatch : Disposable {
         this._currentBlendState = BlendStateDescription.SINGLE_ALPHA_BLEND;
         this._currentDepthStencilState = DepthStencilStateDescription.DISABLED;
         this._currentRasterizerState = RasterizerStateDescription.CULL_NONE;
+        this._currentProjection = Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
+        this._currentView = Matrix4x4.Identity;
         this._currentSampler = GraphicsHelper.GetSampler(graphicsDevice, SamplerType.Point);
         
         // Set (requested) default settings.
@@ -229,29 +250,15 @@ public class SpriteBatch : Disposable {
     /// </summary>
     /// <param name="commandList">The <see cref="CommandList"/> used to issue rendering commands.</param>
     /// <param name="output">The <see cref="OutputDescription"/> defining the target render output configuration.</param>
-    /// <param name="projection">Optional projection matrix to apply for positioning and scaling. Defaults to an orthographic projection covering the rendering window if null.</param>
-    /// <param name="view">Optional view matrix to apply for camera transformations. Defaults to an identity matrix if null.</param>
-    public void Begin(CommandList commandList, OutputDescription output, Matrix4x4? projection = null, Matrix4x4? view = null) {
+    /// <exception cref="Exception">Thrown when the method is called before the previous batch is ended.</exception>
+    public void Begin(CommandList commandList, OutputDescription output) {
         if (this._begun) {
             throw new Exception("The SpriteBatch has already begun!");
         }
 
         this._begun = true;
         this._currentCommandList = commandList;
-
-        if (!this._pipelineDescription.Outputs.Equals(output)) {
-            this.Flush();
-        }
-
-        // Update pipeline description.
         this._pipelineDescription.Outputs = output;
-
-        Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
-        Matrix4x4 finalView = view ?? Matrix4x4.Identity;
-
-        this._projViewBuffer.SetValue(0, finalProj);
-        this._projViewBuffer.SetValue(1, finalView);
-        this._projViewBuffer.UpdateBufferImmediate();
         this.DrawCallCount = 0;
     }
 
@@ -334,6 +341,38 @@ public class SpriteBatch : Disposable {
     }
 
     /// <summary>
+    /// Retrieves the current projection matrix used by the <see cref="SpriteBatch"/>.
+    /// </summary>
+    /// <returns>The current <see cref="Matrix4x4"/> projection matrix.</returns>
+    public Matrix4x4 GetCurrentProjection() {
+        return this._currentProjection;
+    }
+
+    /// <summary>
+    /// Sets the projection matrix for rendering sprites.
+    /// </summary>
+    /// <param name="projection">The <see cref="Matrix4x4"/> to use as the projection matrix. If null, an orthographic projection will be created based on the window dimensions.</param>
+    public void SetProjection(Matrix4x4? projection) {
+        this._requestedProjection = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
+    }
+
+    /// <summary>
+    /// Retrieves the current view matrix used for rendering.
+    /// </summary>
+    /// <returns>The current <see cref="Matrix4x4"/> view matrix.</returns>
+    public Matrix4x4 GetCurrentView() {
+        return this._currentView;
+    }
+
+    /// <summary>
+    /// Sets the current view matrix for rendering.
+    /// </summary>
+    /// <param name="view">The <see cref="Matrix4x4"/> view matrix to apply. If null, the identity matrix will be used.</param>
+    public void SetView(Matrix4x4? view) {
+        this._requestedView = view ?? Matrix4x4.Identity;
+    }
+
+    /// <summary>
     /// Retrieves the current <see cref="Sampler"/> used for texture sampling operations in the <see cref="SpriteBatch"/>.
     /// </summary>
     /// <returns>The current <see cref="Sampler"/> instance being used.</returns>
@@ -357,6 +396,8 @@ public class SpriteBatch : Disposable {
         this.SetBlendState(null);
         this.SetDepthStencilState(null);
         this.SetRasterizerState(null);
+        this.SetProjection(null);
+        this.SetView(null);
         this.SetSampler(null);
     }
 
@@ -462,6 +503,8 @@ public class SpriteBatch : Disposable {
             !this._currentBlendState.Equals(this._requestedBlendState) ||
             !this._currentDepthStencilState.Equals(this._requestedDepthStencilState) ||
             !this._currentRasterizerState.Equals(this._requestedRasterizerState) ||
+            this._currentProjection != this._requestedProjection ||
+            this._currentView != this._requestedView ||
             this._currentSampler != this._requestedSampler ||
             this._currentTexture != texture) {
             this.Flush();
@@ -471,6 +514,8 @@ public class SpriteBatch : Disposable {
         this._currentBlendState = this._requestedBlendState;
         this._currentDepthStencilState = this._requestedDepthStencilState;
         this._currentRasterizerState = this._requestedRasterizerState;
+        this._currentProjection = this._requestedProjection;
+        this._currentView = this._requestedView;
         this._currentSampler = this._requestedSampler;
         this._currentTexture = texture;
         
@@ -503,6 +548,11 @@ public class SpriteBatch : Disposable {
         if (this._currentBatchCount == 0) {
             return;
         }
+        
+        // Update projection/view buffer.
+        this._projViewBuffer.SetValue(0, this._currentProjection);
+        this._projViewBuffer.SetValue(1, this._currentView);
+        this._projViewBuffer.UpdateBuffer(this._currentCommandList);
         
         // Update vertex buffer.
         this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, new ReadOnlySpan<SpriteVertex2D>(this._vertices, 0, (int) (this._currentBatchCount * VerticesPerQuad)));

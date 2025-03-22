@@ -116,6 +116,26 @@ public class PrimitiveBatch : Disposable {
     private RasterizerStateDescription _requestedRasterizerState;
     
     /// <summary>
+    /// The current <see cref="Matrix4x4"/> projection.
+    /// </summary>
+    private Matrix4x4 _currentProjection;
+
+    /// <summary>
+    /// The requested <see cref="Matrix4x4"/> projection.
+    /// </summary>
+    private Matrix4x4 _requestedProjection;
+
+    /// <summary>
+    /// The current <see cref="Matrix4x4"/> view.
+    /// </summary>
+    private Matrix4x4 _currentView;
+
+    /// <summary>
+    /// The requested <see cref="Matrix4x4"/> view.
+    /// </summary>
+    private Matrix4x4 _requestedView;
+    
+    /// <summary>
     /// Initializes a new instance of the PrimitiveBatch class for rendering 2D primitives.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used for rendering.</param>
@@ -142,6 +162,8 @@ public class PrimitiveBatch : Disposable {
         this._currentBlendState = BlendStateDescription.SINGLE_ALPHA_BLEND;
         this._currentDepthStencilState = DepthStencilStateDescription.DISABLED;
         this._currentRasterizerState = RasterizerStateDescription.CULL_NONE;
+        this._currentProjection = Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
+        this._currentView = Matrix4x4.Identity;
         
         // Set (requested) default settings.
         this.ResetSettings();
@@ -152,30 +174,15 @@ public class PrimitiveBatch : Disposable {
     /// </summary>
     /// <param name="commandList">The command list to record drawing commands.</param>
     /// <param name="output">The output description defining the render target configuration.</param>
-    /// <param name="projection">Optional. The projection transformation matrix. If null, an orthographic projection matrix is used.</param>
-    /// <param name="view">Optional. The view transformation matrix. If null, the identity matrix is applied.</param>
     /// <exception cref="Exception">Thrown when the method is called before the previous batch is ended.</exception>
-    public void Begin(CommandList commandList, OutputDescription output, Matrix4x4? projection = null, Matrix4x4? view = null) {
+    public void Begin(CommandList commandList, OutputDescription output) {
         if (this._begun) {
             throw new Exception("The PrimitiveBatch has already begun!");
         }
 
         this._begun = true;
         this._currentCommandList = commandList;
-
-        if (!this._pipelineDescription.Outputs.Equals(output)) {
-            this.Flush();
-        }
-        
-        // Update pipeline description.
         this._pipelineDescription.Outputs = output;
-
-        Matrix4x4 finalProj = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
-        Matrix4x4 finalView = view ?? Matrix4x4.Identity;
-
-        this._projViewBuffer.SetValue(0, finalProj);
-        this._projViewBuffer.SetValue(1, finalView);
-        this._projViewBuffer.UpdateBufferImmediate();
         this.DrawCallCount = 0;
     }
     
@@ -257,6 +264,38 @@ public class PrimitiveBatch : Disposable {
     }
 
     /// <summary>
+    /// Retrieves the current projection matrix being used for rendering operations.
+    /// </summary>
+    /// <returns>The current projection as a <see cref="Matrix4x4"/>.</returns>
+    public Matrix4x4 GetCurrentProjection() {
+        return this._currentProjection;
+    }
+
+    /// <summary>
+    /// Sets the projection matrix to be used for rendering.
+    /// </summary>
+    /// <param name="projection">The new projection matrix. If null, a default orthographic projection is applied.</param>
+    public void SetProjection(Matrix4x4? projection) {
+        this._requestedProjection = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
+    }
+
+    /// <summary>
+    /// Retrieves the current view matrix being used for rendering operations.
+    /// </summary>
+    /// <returns>The current <see cref="Matrix4x4"/> view matrix.</returns>
+    public Matrix4x4 GetCurrentView() {
+        return this._currentView;
+    }
+
+    /// <summary>
+    /// Sets the view matrix for the current rendering context.
+    /// </summary>
+    /// <param name="view">The view matrix to be applied. If null, the identity matrix is used.</param>
+    public void SetView(Matrix4x4? view) {
+        this._requestedView = view ?? Matrix4x4.Identity;
+    }
+
+    /// <summary>
     /// Resets the <see cref="PrimitiveBatch"/> to default settings.
     /// </summary>
     public void ResetSettings() {
@@ -264,6 +303,8 @@ public class PrimitiveBatch : Disposable {
         this.SetBlendState(null);
         this.SetDepthStencilState(null);
         this.SetRasterizerState(null);
+        this.SetProjection(null);
+        this.SetView(null);
     }
 
     /// <summary>
@@ -832,7 +873,9 @@ public class PrimitiveBatch : Disposable {
         if (this._currentEffect != this._requestedEffect ||
             !this._currentBlendState.Equals(this._requestedBlendState) ||
             !this._currentDepthStencilState.Equals(this._requestedDepthStencilState) ||
-            !this._currentRasterizerState.Equals(this._requestedRasterizerState)) {
+            !this._currentRasterizerState.Equals(this._requestedRasterizerState) ||
+            this._currentProjection != this._requestedProjection ||
+            this._currentView != this._requestedView) {
             this.Flush();
         }
         
@@ -840,6 +883,8 @@ public class PrimitiveBatch : Disposable {
         this._currentBlendState = this._requestedBlendState;
         this._currentDepthStencilState = this._requestedDepthStencilState;
         this._currentRasterizerState = this._requestedRasterizerState;
+        this._currentProjection = this._requestedProjection;
+        this._currentView = this._requestedView;
         
         // Update pipeline description.
         this._pipelineDescription.BlendState = this._currentBlendState;
@@ -869,6 +914,11 @@ public class PrimitiveBatch : Disposable {
         if (this._currentBatchCount == 0) {
             return;
         }
+        
+        // Update projection/view buffer.
+        this._projViewBuffer.SetValue(0, this._currentProjection);
+        this._projViewBuffer.SetValue(1, this._currentView);
+        this._projViewBuffer.UpdateBuffer(this._currentCommandList);
         
         // Update vertex buffer.
         this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, new ReadOnlySpan<PrimitiveVertex2D>(this._vertices, 0, (int) this._currentBatchCount));
