@@ -7,7 +7,7 @@ items:
   children:
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Windowing.IWindow,System.UInt32)
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.AddQuad(Bliss.CSharp.Textures.Texture2D,Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D,Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D,Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D,Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D)
-  - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription)
+  - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Veldrid.Sampler,Bliss.CSharp.Effects.Effect,System.Nullable{Veldrid.BlendStateDescription},System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Capacity
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Dispose(System.Boolean)
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawCallCount
@@ -17,6 +17,7 @@ items:
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentBlendState
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentDepthStencilState
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentEffect
+  - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentOutput
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentProjection
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentRasterizerState
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentSampler
@@ -26,6 +27,7 @@ items:
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetBlendState(System.Nullable{Veldrid.BlendStateDescription})
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetDepthStencilState(System.Nullable{Veldrid.DepthStencilStateDescription})
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetEffect(Bliss.CSharp.Effects.Effect)
+  - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetOutput(System.Nullable{Veldrid.OutputDescription})
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetProjection(System.Nullable{System.Numerics.Matrix4x4})
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetRasterizerState(System.Nullable{Veldrid.RasterizerStateDescription})
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetSampler(Veldrid.Sampler)
@@ -189,7 +191,7 @@ items:
   summary: >-
     Gets the number of draw calls made during the current batch rendering session.
 
-    This count is reset to zero each time <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList%2cVeldrid.OutputDescription)" data-throw-if-not-resolved="false"></xref> is called and increments with each call to <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Flush" data-throw-if-not-resolved="false"></xref>.
+    This count is reset to zero each time <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList%2cVeldrid.OutputDescription%2cVeldrid.Sampler%2cBliss.CSharp.Effects.Effect%2cSystem.Nullable%7bVeldrid.BlendStateDescription%7d%2cSystem.Nullable%7bVeldrid.DepthStencilStateDescription%7d%2cSystem.Nullable%7bVeldrid.RasterizerStateDescription%7d%2cSystem.Nullable%7bSystem.Numerics.Matrix4x4%7d%2cSystem.Nullable%7bSystem.Numerics.Matrix4x4%7d)" data-throw-if-not-resolved="false"></xref> is called and increments with each call to <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Flush" data-throw-if-not-resolved="false"></xref>.
   example: []
   syntax:
     content: public int DrawCallCount { get; }
@@ -216,7 +218,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 197
+    startLine: 212
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -239,16 +241,16 @@ items:
   nameWithType.vb: SpriteBatch.New(GraphicsDevice, IWindow, UInteger)
   fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.New(Veldrid.GraphicsDevice, Bliss.CSharp.Windowing.IWindow, UInteger)
   name.vb: New(GraphicsDevice, IWindow, UInteger)
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription)
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription)
-  id: Begin(Veldrid.CommandList,Veldrid.OutputDescription)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Veldrid.Sampler,Bliss.CSharp.Effects.Effect,System.Nullable{Veldrid.BlendStateDescription},System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Veldrid.Sampler,Bliss.CSharp.Effects.Effect,System.Nullable{Veldrid.BlendStateDescription},System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
+  id: Begin(Veldrid.CommandList,Veldrid.OutputDescription,Veldrid.Sampler,Bliss.CSharp.Effects.Effect,System.Nullable{Veldrid.BlendStateDescription},System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
   parent: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
   langs:
   - csharp
   - vb
-  name: Begin(CommandList, OutputDescription)
-  nameWithType: SpriteBatch.Begin(CommandList, OutputDescription)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList, Veldrid.OutputDescription)
+  name: Begin(CommandList, OutputDescription, Sampler?, Effect?, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?, Matrix4x4?, Matrix4x4?)
+  nameWithType: SpriteBatch.Begin(CommandList, OutputDescription, Sampler?, Effect?, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?, Matrix4x4?, Matrix4x4?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList, Veldrid.OutputDescription, Veldrid.Sampler?, Bliss.CSharp.Effects.Effect?, Veldrid.BlendStateDescription?, Veldrid.DepthStencilStateDescription?, Veldrid.RasterizerStateDescription?, System.Numerics.Matrix4x4?, System.Numerics.Matrix4x4?)
   type: Method
   source:
     remote:
@@ -257,27 +259,51 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Begin
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 253
+    startLine: 263
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
   summary: Begins a new sprite batch rendering session with the specified parameters.
   example: []
   syntax:
-    content: public void Begin(CommandList commandList, OutputDescription output)
+    content: public void Begin(CommandList commandList, OutputDescription output, Sampler? sampler = null, Effect? effect = null, BlendStateDescription? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Matrix4x4? projection = null, Matrix4x4? view = null)
     parameters:
     - id: commandList
       type: Veldrid.CommandList
       description: The <xref href="Veldrid.CommandList" data-throw-if-not-resolved="false"></xref> used to issue rendering commands.
     - id: output
       type: Veldrid.OutputDescription
-      description: The <xref href="Veldrid.OutputDescription" data-throw-if-not-resolved="false"></xref> defining the target render output configuration.
-    content.vb: Public Sub Begin(commandList As CommandList, output As OutputDescription)
+      description: The <xref href="Veldrid.OutputDescription" data-throw-if-not-resolved="false"></xref> specifying the target render output configuration.
+    - id: sampler
+      type: Veldrid.Sampler
+      description: The <xref href="Veldrid.Sampler" data-throw-if-not-resolved="false"></xref> defining sampler state for texture sampling. Defaults to a point sampler if not provided.
+    - id: effect
+      type: Bliss.CSharp.Effects.Effect
+      description: The <xref href="Bliss.CSharp.Effects.Effect" data-throw-if-not-resolved="false"></xref> used for rendering sprites. Defaults to the global default sprite effect if not specified.
+    - id: blendState
+      type: System.Nullable{Veldrid.BlendStateDescription}
+      description: The <xref href="Veldrid.BlendStateDescription" data-throw-if-not-resolved="false"></xref> describing the blending mode. Defaults to single alpha blend if not specified.
+    - id: depthStencilState
+      type: System.Nullable{Veldrid.DepthStencilStateDescription}
+      description: The <xref href="Veldrid.DepthStencilStateDescription" data-throw-if-not-resolved="false"></xref> specifying depth and stencil testing configuration. Defaults to disabled if not provided.
+    - id: rasterizerState
+      type: System.Nullable{Veldrid.RasterizerStateDescription}
+      description: The <xref href="Veldrid.RasterizerStateDescription" data-throw-if-not-resolved="false"></xref> defining rasterization settings. Defaults to no culling if not specified.
+    - id: projection
+      type: System.Nullable{System.Numerics.Matrix4x4}
+      description: The <xref href="System.Numerics.Matrix4x4" data-throw-if-not-resolved="false"></xref> representing the projection matrix. Defaults to an orthographic projection based on the window dimensions if not specified.
+    - id: view
+      type: System.Nullable{System.Numerics.Matrix4x4}
+      description: The <xref href="System.Numerics.Matrix4x4" data-throw-if-not-resolved="false"></xref> representing the view matrix. Defaults to the identity matrix if not specified.
+    content.vb: Public Sub Begin(commandList As CommandList, output As OutputDescription, sampler As Sampler = Nothing, effect As Effect = Nothing, blendState As BlendStateDescription? = Nothing, depthStencilState As DepthStencilStateDescription? = Nothing, rasterizerState As RasterizerStateDescription? = Nothing, projection As Matrix4x4? = Nothing, view As Matrix4x4? = Nothing)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin*
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
-    description: Thrown when the method is called before the previous batch is ended.
+    description: Thrown when the method is called before the previous batch has been ended with a call to <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.End" data-throw-if-not-resolved="false"></xref>.
+  nameWithType.vb: SpriteBatch.Begin(CommandList, OutputDescription, Sampler, Effect, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?, Matrix4x4?, Matrix4x4?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList, Veldrid.OutputDescription, Veldrid.Sampler, Bliss.CSharp.Effects.Effect, Veldrid.BlendStateDescription?, Veldrid.DepthStencilStateDescription?, Veldrid.RasterizerStateDescription?, System.Numerics.Matrix4x4?, System.Numerics.Matrix4x4?)
+  name.vb: Begin(CommandList, OutputDescription, Sampler, Effect, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?, Matrix4x4?, Matrix4x4?)
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.End
   commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.End
   id: End
@@ -296,12 +322,12 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: End
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 269
+    startLine: 290
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
   summary: >-
-    Ends the current drawing session that was initiated by a call to <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList%2cVeldrid.OutputDescription)" data-throw-if-not-resolved="false"></xref>.
+    Ends the current drawing session that was initiated by a call to <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList%2cVeldrid.OutputDescription%2cVeldrid.Sampler%2cBliss.CSharp.Effects.Effect%2cSystem.Nullable%7bVeldrid.BlendStateDescription%7d%2cSystem.Nullable%7bVeldrid.DepthStencilStateDescription%7d%2cSystem.Nullable%7bVeldrid.RasterizerStateDescription%7d%2cSystem.Nullable%7bSystem.Numerics.Matrix4x4%7d%2cSystem.Nullable%7bSystem.Numerics.Matrix4x4%7d)" data-throw-if-not-resolved="false"></xref>.
 
     This method finalizes the batch operations by flushing all pending draw calls.
   example: []
@@ -312,7 +338,78 @@ items:
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
-    description: Thrown if the SpriteBatch is in a state where <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList%2cVeldrid.OutputDescription)" data-throw-if-not-resolved="false"></xref> was not called beforehand.
+    description: Thrown if the SpriteBatch is in a state where <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList%2cVeldrid.OutputDescription%2cVeldrid.Sampler%2cBliss.CSharp.Effects.Effect%2cSystem.Nullable%7bVeldrid.BlendStateDescription%7d%2cSystem.Nullable%7bVeldrid.DepthStencilStateDescription%7d%2cSystem.Nullable%7bVeldrid.RasterizerStateDescription%7d%2cSystem.Nullable%7bSystem.Numerics.Matrix4x4%7d%2cSystem.Nullable%7bSystem.Numerics.Matrix4x4%7d)" data-throw-if-not-resolved="false"></xref> was not called beforehand.
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentOutput
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentOutput
+  id: GetCurrentOutput
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
+  langs:
+  - csharp
+  - vb
+  name: GetCurrentOutput()
+  nameWithType: SpriteBatch.GetCurrentOutput()
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentOutput()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetCurrentOutput
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
+    startLine: 304
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  summary: Retrieves the current <xref href="Veldrid.OutputDescription" data-throw-if-not-resolved="false"></xref> being used by the sprite batch.
+  example: []
+  syntax:
+    content: public OutputDescription GetCurrentOutput()
+    return:
+      type: Veldrid.OutputDescription
+      description: The <xref href="Veldrid.OutputDescription" data-throw-if-not-resolved="false"></xref> currently associated with the sprite batch.
+    content.vb: Public Function GetCurrentOutput() As OutputDescription
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentOutput*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown if the sprite batch operation has not been started.
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetOutput(System.Nullable{Veldrid.OutputDescription})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetOutput(System.Nullable{Veldrid.OutputDescription})
+  id: SetOutput(System.Nullable{Veldrid.OutputDescription})
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
+  langs:
+  - csharp
+  - vb
+  name: SetOutput(OutputDescription?)
+  nameWithType: SpriteBatch.SetOutput(OutputDescription?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetOutput(Veldrid.OutputDescription?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetOutput
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
+    startLine: 317
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  summary: Sets the output description for the <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch" data-throw-if-not-resolved="false"></xref>. If the specified output is null, the default main output is used instead.
+  example: []
+  syntax:
+    content: public void SetOutput(OutputDescription? output)
+    parameters:
+    - id: output
+      type: System.Nullable{Veldrid.OutputDescription}
+      description: The optional <xref href="Veldrid.OutputDescription" data-throw-if-not-resolved="false"></xref> to set. Defaults to the main output if null.
+    content.vb: Public Sub SetOutput(output As OutputDescription?)
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetOutput*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown if the sprite batch operation has not been started.
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentEffect
   commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentEffect
   id: GetCurrentEffect
@@ -331,7 +428,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentEffect
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 282
+    startLine: 330
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -344,6 +441,10 @@ items:
       description: The active <xref href="Bliss.CSharp.Effects.Effect" data-throw-if-not-resolved="false"></xref> instance used for rendering, or null if no effect is set.
     content.vb: Public Function GetCurrentEffect() As Effect
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentEffect*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown if the sprite batch operation has not been started.
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetEffect(Bliss.CSharp.Effects.Effect)
   commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetEffect(Bliss.CSharp.Effects.Effect)
   id: SetEffect(Bliss.CSharp.Effects.Effect)
@@ -362,7 +463,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetEffect
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 290
+    startLine: 343
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -376,6 +477,10 @@ items:
       description: The <xref href="Bliss.CSharp.Effects.Effect" data-throw-if-not-resolved="false"></xref> to set for rendering. If null, the default effect is used.
     content.vb: Public Sub SetEffect(effect As Effect)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetEffect*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown if the sprite batch operation has not been started.
   nameWithType.vb: SpriteBatch.SetEffect(Effect)
   fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetEffect(Bliss.CSharp.Effects.Effect)
   name.vb: SetEffect(Effect)
@@ -397,7 +502,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentBlendState
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 298
+    startLine: 356
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -410,6 +515,10 @@ items:
       description: The <xref href="Veldrid.BlendStateDescription" data-throw-if-not-resolved="false"></xref> representing the current blending configuration.
     content.vb: Public Function GetCurrentBlendState() As BlendStateDescription
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentBlendState*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown if the sprite batch operation has not been started.
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetBlendState(System.Nullable{Veldrid.BlendStateDescription})
   commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetBlendState(System.Nullable{Veldrid.BlendStateDescription})
   id: SetBlendState(System.Nullable{Veldrid.BlendStateDescription})
@@ -428,7 +537,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetBlendState
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 306
+    startLine: 369
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -442,6 +551,10 @@ items:
       description: The <xref href="Veldrid.BlendStateDescription" data-throw-if-not-resolved="false"></xref> to set. If null, defaults to <xref href="Veldrid.BlendStateDescription.SINGLE_ALPHA_BLEND" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Sub SetBlendState(blendState As BlendStateDescription?)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetBlendState*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown if the sprite batch operation has not been started.
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentDepthStencilState
   commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentDepthStencilState
   id: GetCurrentDepthStencilState
@@ -460,7 +573,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentDepthStencilState
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 314
+    startLine: 382
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -473,6 +586,10 @@ items:
       description: The current <xref href="Veldrid.DepthStencilStateDescription" data-throw-if-not-resolved="false"></xref> used by the <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch" data-throw-if-not-resolved="false"></xref> for rendering.
     content.vb: Public Function GetCurrentDepthStencilState() As DepthStencilStateDescription
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentDepthStencilState*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown if the sprite batch operation has not been started.
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetDepthStencilState(System.Nullable{Veldrid.DepthStencilStateDescription})
   commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetDepthStencilState(System.Nullable{Veldrid.DepthStencilStateDescription})
   id: SetDepthStencilState(System.Nullable{Veldrid.DepthStencilStateDescription})
@@ -491,7 +608,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetDepthStencilState
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 322
+    startLine: 395
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -505,6 +622,10 @@ items:
       description: The <xref href="Veldrid.DepthStencilStateDescription" data-throw-if-not-resolved="false"></xref> to use. If null, defaults to a disabled depth-stencil state.
     content.vb: Public Sub SetDepthStencilState(depthStencilState As DepthStencilStateDescription?)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetDepthStencilState*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown if the sprite batch operation has not been started.
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentRasterizerState
   commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentRasterizerState
   id: GetCurrentRasterizerState
@@ -523,7 +644,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentRasterizerState
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 330
+    startLine: 408
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -536,6 +657,10 @@ items:
       description: A <xref href="Veldrid.RasterizerStateDescription" data-throw-if-not-resolved="false"></xref> representing the current rasterizer state.
     content.vb: Public Function GetCurrentRasterizerState() As RasterizerStateDescription
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentRasterizerState*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown if the sprite batch operation has not been started.
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetRasterizerState(System.Nullable{Veldrid.RasterizerStateDescription})
   commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetRasterizerState(System.Nullable{Veldrid.RasterizerStateDescription})
   id: SetRasterizerState(System.Nullable{Veldrid.RasterizerStateDescription})
@@ -554,7 +679,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetRasterizerState
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 338
+    startLine: 421
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -568,6 +693,10 @@ items:
       description: The new <xref href="Veldrid.RasterizerStateDescription" data-throw-if-not-resolved="false"></xref> to be applied. If null, the default rasterizer state <xref href="Veldrid.RasterizerStateDescription.CULL_NONE" data-throw-if-not-resolved="false"></xref> will be used.
     content.vb: Public Sub SetRasterizerState(rasterizerState As RasterizerStateDescription?)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetRasterizerState*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown if the sprite batch operation has not been started.
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentProjection
   commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentProjection
   id: GetCurrentProjection
@@ -586,7 +715,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentProjection
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 346
+    startLine: 434
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -599,6 +728,10 @@ items:
       description: The current <xref href="System.Numerics.Matrix4x4" data-throw-if-not-resolved="false"></xref> projection matrix.
     content.vb: Public Function GetCurrentProjection() As Matrix4x4
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentProjection*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown if the sprite batch operation has not been started.
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetProjection(System.Nullable{System.Numerics.Matrix4x4})
   commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetProjection(System.Nullable{System.Numerics.Matrix4x4})
   id: SetProjection(System.Nullable{System.Numerics.Matrix4x4})
@@ -617,7 +750,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetProjection
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 354
+    startLine: 447
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -631,6 +764,10 @@ items:
       description: The <xref href="System.Numerics.Matrix4x4" data-throw-if-not-resolved="false"></xref> to use as the projection matrix. If null, an orthographic projection will be created based on the window dimensions.
     content.vb: Public Sub SetProjection(projection As Matrix4x4?)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetProjection*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown if the sprite batch operation has not been started.
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentView
   commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentView
   id: GetCurrentView
@@ -649,7 +786,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentView
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 362
+    startLine: 460
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -662,6 +799,10 @@ items:
       description: The current <xref href="System.Numerics.Matrix4x4" data-throw-if-not-resolved="false"></xref> view matrix.
     content.vb: Public Function GetCurrentView() As Matrix4x4
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentView*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown if the sprite batch operation has not been started.
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetView(System.Nullable{System.Numerics.Matrix4x4})
   commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetView(System.Nullable{System.Numerics.Matrix4x4})
   id: SetView(System.Nullable{System.Numerics.Matrix4x4})
@@ -680,7 +821,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetView
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 370
+    startLine: 473
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -694,6 +835,10 @@ items:
       description: The <xref href="System.Numerics.Matrix4x4" data-throw-if-not-resolved="false"></xref> view matrix to apply. If null, the identity matrix will be used.
     content.vb: Public Sub SetView(view As Matrix4x4?)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetView*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown if the sprite batch operation has not been started.
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentSampler
   commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentSampler
   id: GetCurrentSampler
@@ -712,7 +857,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentSampler
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 378
+    startLine: 486
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -725,6 +870,10 @@ items:
       description: The current <xref href="Veldrid.Sampler" data-throw-if-not-resolved="false"></xref> instance being used.
     content.vb: Public Function GetCurrentSampler() As Sampler
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentSampler*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown if the sprite batch operation has not been started.
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetSampler(Veldrid.Sampler)
   commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetSampler(Veldrid.Sampler)
   id: SetSampler(Veldrid.Sampler)
@@ -743,7 +892,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetSampler
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 386
+    startLine: 499
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -757,6 +906,10 @@ items:
       description: The new <xref href="Veldrid.Sampler" data-throw-if-not-resolved="false"></xref> to use, or null to reset to the default sampler.
     content.vb: Public Sub SetSampler(sampler As Sampler)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetSampler*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown if the sprite batch operation has not been started.
   nameWithType.vb: SpriteBatch.SetSampler(Sampler)
   fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetSampler(Veldrid.Sampler)
   name.vb: SetSampler(Sampler)
@@ -778,7 +931,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ResetSettings
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 393
+    startLine: 511
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -788,6 +941,10 @@ items:
     content: public void ResetSettings()
     content.vb: Public Sub ResetSettings()
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.ResetSettings*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown if the sprite batch operation has not been started.
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
   commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
   id: DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
@@ -806,7 +963,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawText
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 419
+    startLine: 542
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -877,7 +1034,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawTexture
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 434
+    startLine: 557
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -933,7 +1090,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: AddQuad
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 496
+    startLine: 619
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -981,7 +1138,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 585
+    startLine: 711
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -1466,17 +1623,17 @@ references:
   nameWithType.vb: UInteger
   fullName.vb: UInteger
   name.vb: UInteger
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription)
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Veldrid.Sampler,Bliss.CSharp.Effects.Effect,System.Nullable{Veldrid.BlendStateDescription},System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Veldrid.Sampler,Bliss.CSharp.Effects.Effect,System.Nullable{Veldrid.BlendStateDescription},System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
   isExternal: true
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_
-  name: Begin(CommandList, OutputDescription)
-  nameWithType: SpriteBatch.Begin(CommandList, OutputDescription)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList, Veldrid.OutputDescription)
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_Veldrid_Sampler_Bliss_CSharp_Effects_Effect_System_Nullable_Veldrid_BlendStateDescription__System_Nullable_Veldrid_DepthStencilStateDescription__System_Nullable_Veldrid_RasterizerStateDescription__System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__
+  name: Begin(CommandList, OutputDescription, Sampler, Effect, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?, Matrix4x4?, Matrix4x4?)
+  nameWithType: SpriteBatch.Begin(CommandList, OutputDescription, Sampler, Effect, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?, Matrix4x4?, Matrix4x4?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList, Veldrid.OutputDescription, Veldrid.Sampler, Bliss.CSharp.Effects.Effect, Veldrid.BlendStateDescription?, Veldrid.DepthStencilStateDescription?, Veldrid.RasterizerStateDescription?, System.Numerics.Matrix4x4?, System.Numerics.Matrix4x4?)
   spec.csharp:
-  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription)
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Veldrid.Sampler,Bliss.CSharp.Effects.Effect,System.Nullable{Veldrid.BlendStateDescription},System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
     name: Begin
-    href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_
+    href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_Veldrid_Sampler_Bliss_CSharp_Effects_Effect_System_Nullable_Veldrid_BlendStateDescription__System_Nullable_Veldrid_DepthStencilStateDescription__System_Nullable_Veldrid_RasterizerStateDescription__System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__
   - name: (
   - uid: Veldrid.CommandList
     name: CommandList
@@ -1488,11 +1645,57 @@ references:
     name: OutputDescription
     isExternal: true
     href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs
+  - name: ','
+  - name: " "
+  - uid: Veldrid.Sampler
+    name: Sampler
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs
+  - name: ','
+  - name: " "
+  - uid: Bliss.CSharp.Effects.Effect
+    name: Effect
+    href: Bliss.CSharp.Effects.Effect.html
+  - name: ','
+  - name: " "
+  - uid: Veldrid.BlendStateDescription
+    name: BlendStateDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: Veldrid.DepthStencilStateDescription
+    name: DepthStencilStateDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: Veldrid.RasterizerStateDescription
+    name: RasterizerStateDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Numerics.Matrix4x4
+    name: Matrix4x4
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Numerics.Matrix4x4
+    name: Matrix4x4
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
+  - name: '?'
   - name: )
   spec.vb:
-  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription)
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Veldrid.Sampler,Bliss.CSharp.Effects.Effect,System.Nullable{Veldrid.BlendStateDescription},System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
     name: Begin
-    href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_
+    href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_Veldrid_Sampler_Bliss_CSharp_Effects_Effect_System_Nullable_Veldrid_BlendStateDescription__System_Nullable_Veldrid_DepthStencilStateDescription__System_Nullable_Veldrid_RasterizerStateDescription__System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__
   - name: (
   - uid: Veldrid.CommandList
     name: CommandList
@@ -1504,6 +1707,52 @@ references:
     name: OutputDescription
     isExternal: true
     href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs
+  - name: ','
+  - name: " "
+  - uid: Veldrid.Sampler
+    name: Sampler
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs
+  - name: ','
+  - name: " "
+  - uid: Bliss.CSharp.Effects.Effect
+    name: Effect
+    href: Bliss.CSharp.Effects.Effect.html
+  - name: ','
+  - name: " "
+  - uid: Veldrid.BlendStateDescription
+    name: BlendStateDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: Veldrid.DepthStencilStateDescription
+    name: DepthStencilStateDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: Veldrid.RasterizerStateDescription
+    name: RasterizerStateDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Numerics.Matrix4x4
+    name: Matrix4x4
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.Numerics.Matrix4x4
+    name: Matrix4x4
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
+  - name: '?'
   - name: )
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Flush
   commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Flush
@@ -1562,6 +1811,71 @@ references:
   name: OutputDescription
   nameWithType: OutputDescription
   fullName: Veldrid.OutputDescription
+- uid: Veldrid.Sampler
+  commentId: T:Veldrid.Sampler
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs
+  name: Sampler
+  nameWithType: Sampler
+  fullName: Veldrid.Sampler
+- uid: Bliss.CSharp.Effects.Effect
+  commentId: T:Bliss.CSharp.Effects.Effect
+  parent: Bliss.CSharp.Effects
+  href: Bliss.CSharp.Effects.Effect.html
+  name: Effect
+  nameWithType: Effect
+  fullName: Bliss.CSharp.Effects.Effect
+- uid: Veldrid.BlendStateDescription
+  commentId: T:Veldrid.BlendStateDescription
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+  name: BlendStateDescription
+  nameWithType: BlendStateDescription
+  fullName: Veldrid.BlendStateDescription
+- uid: Veldrid.DepthStencilStateDescription
+  commentId: T:Veldrid.DepthStencilStateDescription
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+  name: DepthStencilStateDescription
+  nameWithType: DepthStencilStateDescription
+  fullName: Veldrid.DepthStencilStateDescription
+- uid: Veldrid.RasterizerStateDescription
+  commentId: T:Veldrid.RasterizerStateDescription
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+  name: RasterizerStateDescription
+  nameWithType: RasterizerStateDescription
+  fullName: Veldrid.RasterizerStateDescription
+- uid: System.Numerics.Matrix4x4
+  commentId: T:System.Numerics.Matrix4x4
+  parent: System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
+  name: Matrix4x4
+  nameWithType: Matrix4x4
+  fullName: System.Numerics.Matrix4x4
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.End
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.End
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_End
+  name: End()
+  nameWithType: SpriteBatch.End()
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.End()
+  spec.csharp:
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.End
+    name: End
+    href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_End
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.End
+    name: End
+    href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_End
+  - name: (
+  - name: )
 - uid: System.Exception
   commentId: T:System.Exception
   parent: System
@@ -1572,29 +1886,90 @@ references:
   fullName: System.Exception
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_Veldrid_Sampler_Bliss_CSharp_Effects_Effect_System_Nullable_Veldrid_BlendStateDescription__System_Nullable_Veldrid_DepthStencilStateDescription__System_Nullable_Veldrid_RasterizerStateDescription__System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__
   name: Begin
   nameWithType: SpriteBatch.Begin
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.End*
-  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.End
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_End
-  name: End
-  nameWithType: SpriteBatch.End
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.End
-- uid: Bliss.CSharp.Effects.Effect
-  commentId: T:Bliss.CSharp.Effects.Effect
-  parent: Bliss.CSharp.Effects
-  href: Bliss.CSharp.Effects.Effect.html
-  name: Effect
-  nameWithType: Effect
-  fullName: Bliss.CSharp.Effects.Effect
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentEffect*
-  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentEffect
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_GetCurrentEffect
-  name: GetCurrentEffect
-  nameWithType: SpriteBatch.GetCurrentEffect
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentEffect
+- uid: System.Nullable{Veldrid.BlendStateDescription}
+  commentId: T:System.Nullable{Veldrid.BlendStateDescription}
+  parent: System
+  definition: System.Nullable`1
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+  name: BlendStateDescription?
+  nameWithType: BlendStateDescription?
+  fullName: Veldrid.BlendStateDescription?
+  spec.csharp:
+  - uid: Veldrid.BlendStateDescription
+    name: BlendStateDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+  - name: '?'
+  spec.vb:
+  - uid: Veldrid.BlendStateDescription
+    name: BlendStateDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+  - name: '?'
+- uid: System.Nullable{Veldrid.DepthStencilStateDescription}
+  commentId: T:System.Nullable{Veldrid.DepthStencilStateDescription}
+  parent: System
+  definition: System.Nullable`1
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+  name: DepthStencilStateDescription?
+  nameWithType: DepthStencilStateDescription?
+  fullName: Veldrid.DepthStencilStateDescription?
+  spec.csharp:
+  - uid: Veldrid.DepthStencilStateDescription
+    name: DepthStencilStateDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+  - name: '?'
+  spec.vb:
+  - uid: Veldrid.DepthStencilStateDescription
+    name: DepthStencilStateDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+  - name: '?'
+- uid: System.Nullable{Veldrid.RasterizerStateDescription}
+  commentId: T:System.Nullable{Veldrid.RasterizerStateDescription}
+  parent: System
+  definition: System.Nullable`1
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+  name: RasterizerStateDescription?
+  nameWithType: RasterizerStateDescription?
+  fullName: Veldrid.RasterizerStateDescription?
+  spec.csharp:
+  - uid: Veldrid.RasterizerStateDescription
+    name: RasterizerStateDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+  - name: '?'
+  spec.vb:
+  - uid: Veldrid.RasterizerStateDescription
+    name: RasterizerStateDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+  - name: '?'
+- uid: System.Nullable{System.Numerics.Matrix4x4}
+  commentId: T:System.Nullable{System.Numerics.Matrix4x4}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
+  name: Matrix4x4?
+  nameWithType: Matrix4x4?
+  fullName: System.Numerics.Matrix4x4?
+  spec.csharp:
+  - uid: System.Numerics.Matrix4x4
+    name: Matrix4x4
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
+  - name: '?'
+  spec.vb:
+  - uid: System.Numerics.Matrix4x4
+    name: Matrix4x4
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
+  - name: '?'
 - uid: Bliss.CSharp.Effects
   commentId: N:Bliss.CSharp.Effects
   href: Bliss.html
@@ -1625,59 +2000,33 @@ references:
   - uid: Bliss.CSharp.Effects
     name: Effects
     href: Bliss.CSharp.Effects.html
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetEffect*
-  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetEffect
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_SetEffect_Bliss_CSharp_Effects_Effect_
-  name: SetEffect
-  nameWithType: SpriteBatch.SetEffect
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetEffect
-- uid: Veldrid.BlendStateDescription
-  commentId: T:Veldrid.BlendStateDescription
-  parent: Veldrid
+- uid: System.Numerics
+  commentId: N:System.Numerics
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
-  name: BlendStateDescription
-  nameWithType: BlendStateDescription
-  fullName: Veldrid.BlendStateDescription
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentBlendState*
-  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentBlendState
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_GetCurrentBlendState
-  name: GetCurrentBlendState
-  nameWithType: SpriteBatch.GetCurrentBlendState
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentBlendState
-- uid: Veldrid.BlendStateDescription.SINGLE_ALPHA_BLEND
-  commentId: F:Veldrid.BlendStateDescription.SINGLE_ALPHA_BLEND
-  isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
-  name: SINGLE_ALPHA_BLEND
-  nameWithType: BlendStateDescription.SINGLE_ALPHA_BLEND
-  fullName: Veldrid.BlendStateDescription.SINGLE_ALPHA_BLEND
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetBlendState*
-  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetBlendState
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_SetBlendState_System_Nullable_Veldrid_BlendStateDescription__
-  name: SetBlendState
-  nameWithType: SpriteBatch.SetBlendState
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetBlendState
-- uid: System.Nullable{Veldrid.BlendStateDescription}
-  commentId: T:System.Nullable{Veldrid.BlendStateDescription}
-  parent: System
-  definition: System.Nullable`1
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
-  name: BlendStateDescription?
-  nameWithType: BlendStateDescription?
-  fullName: Veldrid.BlendStateDescription?
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Numerics
+  nameWithType: System.Numerics
+  fullName: System.Numerics
   spec.csharp:
-  - uid: Veldrid.BlendStateDescription
-    name: BlendStateDescription
+  - uid: System
+    name: System
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
-  - name: '?'
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
   spec.vb:
-  - uid: Veldrid.BlendStateDescription
-    name: BlendStateDescription
+  - uid: System
+    name: System
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
-  - name: '?'
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
 - uid: System.Nullable`1
   commentId: T:System.Nullable`1
   isExternal: true
@@ -1706,14 +2055,75 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: Veldrid.DepthStencilStateDescription
-  commentId: T:Veldrid.DepthStencilStateDescription
-  parent: Veldrid
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.End*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.End
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_End
+  name: End
+  nameWithType: SpriteBatch.End
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.End
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentOutput*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentOutput
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_GetCurrentOutput
+  name: GetCurrentOutput
+  nameWithType: SpriteBatch.GetCurrentOutput
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentOutput
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetOutput*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetOutput
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_SetOutput_System_Nullable_Veldrid_OutputDescription__
+  name: SetOutput
+  nameWithType: SpriteBatch.SetOutput
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetOutput
+- uid: System.Nullable{Veldrid.OutputDescription}
+  commentId: T:System.Nullable{Veldrid.OutputDescription}
+  parent: System
+  definition: System.Nullable`1
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs
+  name: OutputDescription?
+  nameWithType: OutputDescription?
+  fullName: Veldrid.OutputDescription?
+  spec.csharp:
+  - uid: Veldrid.OutputDescription
+    name: OutputDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs
+  - name: '?'
+  spec.vb:
+  - uid: Veldrid.OutputDescription
+    name: OutputDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs
+  - name: '?'
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentEffect*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentEffect
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_GetCurrentEffect
+  name: GetCurrentEffect
+  nameWithType: SpriteBatch.GetCurrentEffect
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentEffect
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetEffect*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetEffect
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_SetEffect_Bliss_CSharp_Effects_Effect_
+  name: SetEffect
+  nameWithType: SpriteBatch.SetEffect
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetEffect
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentBlendState*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentBlendState
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_GetCurrentBlendState
+  name: GetCurrentBlendState
+  nameWithType: SpriteBatch.GetCurrentBlendState
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentBlendState
+- uid: Veldrid.BlendStateDescription.SINGLE_ALPHA_BLEND
+  commentId: F:Veldrid.BlendStateDescription.SINGLE_ALPHA_BLEND
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
-  name: DepthStencilStateDescription
-  nameWithType: DepthStencilStateDescription
-  fullName: Veldrid.DepthStencilStateDescription
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+  name: SINGLE_ALPHA_BLEND
+  nameWithType: BlendStateDescription.SINGLE_ALPHA_BLEND
+  fullName: Veldrid.BlendStateDescription.SINGLE_ALPHA_BLEND
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetBlendState*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetBlendState
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_SetBlendState_System_Nullable_Veldrid_BlendStateDescription__
+  name: SetBlendState
+  nameWithType: SpriteBatch.SetBlendState
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetBlendState
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentDepthStencilState*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentDepthStencilState
   href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_GetCurrentDepthStencilState
@@ -1726,34 +2136,6 @@ references:
   name: SetDepthStencilState
   nameWithType: SpriteBatch.SetDepthStencilState
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetDepthStencilState
-- uid: System.Nullable{Veldrid.DepthStencilStateDescription}
-  commentId: T:System.Nullable{Veldrid.DepthStencilStateDescription}
-  parent: System
-  definition: System.Nullable`1
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
-  name: DepthStencilStateDescription?
-  nameWithType: DepthStencilStateDescription?
-  fullName: Veldrid.DepthStencilStateDescription?
-  spec.csharp:
-  - uid: Veldrid.DepthStencilStateDescription
-    name: DepthStencilStateDescription
-    isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
-  - name: '?'
-  spec.vb:
-  - uid: Veldrid.DepthStencilStateDescription
-    name: DepthStencilStateDescription
-    isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
-  - name: '?'
-- uid: Veldrid.RasterizerStateDescription
-  commentId: T:Veldrid.RasterizerStateDescription
-  parent: Veldrid
-  isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
-  name: RasterizerStateDescription
-  nameWithType: RasterizerStateDescription
-  fullName: Veldrid.RasterizerStateDescription
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentRasterizerState*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentRasterizerState
   href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_GetCurrentRasterizerState
@@ -1773,93 +2155,18 @@ references:
   name: SetRasterizerState
   nameWithType: SpriteBatch.SetRasterizerState
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetRasterizerState
-- uid: System.Nullable{Veldrid.RasterizerStateDescription}
-  commentId: T:System.Nullable{Veldrid.RasterizerStateDescription}
-  parent: System
-  definition: System.Nullable`1
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
-  name: RasterizerStateDescription?
-  nameWithType: RasterizerStateDescription?
-  fullName: Veldrid.RasterizerStateDescription?
-  spec.csharp:
-  - uid: Veldrid.RasterizerStateDescription
-    name: RasterizerStateDescription
-    isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
-  - name: '?'
-  spec.vb:
-  - uid: Veldrid.RasterizerStateDescription
-    name: RasterizerStateDescription
-    isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
-  - name: '?'
-- uid: System.Numerics.Matrix4x4
-  commentId: T:System.Numerics.Matrix4x4
-  parent: System.Numerics
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
-  name: Matrix4x4
-  nameWithType: Matrix4x4
-  fullName: System.Numerics.Matrix4x4
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentProjection*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentProjection
   href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_GetCurrentProjection
   name: GetCurrentProjection
   nameWithType: SpriteBatch.GetCurrentProjection
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentProjection
-- uid: System.Numerics
-  commentId: N:System.Numerics
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System.Numerics
-  nameWithType: System.Numerics
-  fullName: System.Numerics
-  spec.csharp:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Numerics
-    name: Numerics
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.numerics
-  spec.vb:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Numerics
-    name: Numerics
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.numerics
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetProjection*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetProjection
   href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_SetProjection_System_Nullable_System_Numerics_Matrix4x4__
   name: SetProjection
   nameWithType: SpriteBatch.SetProjection
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetProjection
-- uid: System.Nullable{System.Numerics.Matrix4x4}
-  commentId: T:System.Nullable{System.Numerics.Matrix4x4}
-  parent: System
-  definition: System.Nullable`1
-  href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
-  name: Matrix4x4?
-  nameWithType: Matrix4x4?
-  fullName: System.Numerics.Matrix4x4?
-  spec.csharp:
-  - uid: System.Numerics.Matrix4x4
-    name: Matrix4x4
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
-  - name: '?'
-  spec.vb:
-  - uid: System.Numerics.Matrix4x4
-    name: Matrix4x4
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
-  - name: '?'
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentView*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentView
   href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_GetCurrentView
@@ -1872,14 +2179,6 @@ references:
   name: SetView
   nameWithType: SpriteBatch.SetView
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.SetView
-- uid: Veldrid.Sampler
-  commentId: T:Veldrid.Sampler
-  parent: Veldrid
-  isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs
-  name: Sampler
-  nameWithType: Sampler
-  fullName: Veldrid.Sampler
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentSampler*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentSampler
   href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_GetCurrentSampler
