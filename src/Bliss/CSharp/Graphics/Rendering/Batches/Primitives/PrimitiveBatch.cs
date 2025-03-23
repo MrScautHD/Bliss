@@ -182,7 +182,13 @@ public class PrimitiveBatch : Disposable {
 
         this._begun = true;
         this._currentCommandList = commandList;
+        
+        // Reset settings.
+        this.ResetSettings();
+        
+        // Update pipeline description.
         this._pipelineDescription.Outputs = output;
+        
         this.DrawCallCount = 0;
     }
     
