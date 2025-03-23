@@ -328,7 +328,7 @@ public class Game : Disposable {
         // SpriteBatch Drawing.
         this._spriteBatch.Begin(commandList, this.FullScreenTexture.Framebuffer.OutputDescription);
         this._spriteBatch.DrawText(this._font, $"FPS: {(int) (1.0F / Time.Delta)}", new Vector2(5, 5), 18);
-        
+
         int frame = 4;
         this._animatedImage.GetFrameInfo(frame, out int width, out int height, out float duration);
         this._spriteBatch.DrawTexture(this._gif, new Vector2(30, 30), new Rectangle(width * frame, 0, width, height), new Vector2(0.2F, 0.2F));

@@ -69,11 +69,21 @@ public class PrimitiveBatch : Disposable {
     /// Represents the current graphics command list used by the PrimitiveBatch during rendering.
     /// </summary>
     private CommandList _currentCommandList;
+
+    /// <summary>
+    /// The main <see cref="OutputDescription"/>.
+    /// </summary>
+    private OutputDescription _mainOutput;
     
     /// <summary>
-    /// Tracks the number of vertices in the current batch.
+    /// The current <see cref="OutputDescription"/>.
     /// </summary>
-    private uint _currentBatchCount;
+    private OutputDescription _currentOutput;
+
+    /// <summary>
+    /// The requested <see cref="OutputDescription"/>.
+    /// </summary>
+    private OutputDescription _requestedOutput;
     
     /// <summary>
     /// The current <see cref="Effect"/>.
@@ -136,6 +146,11 @@ public class PrimitiveBatch : Disposable {
     private Matrix4x4 _requestedView;
     
     /// <summary>
+    /// Tracks the number of vertices in the current batch.
+    /// </summary>
+    private uint _currentBatchCount;
+    
+    /// <summary>
     /// Initializes a new instance of the PrimitiveBatch class for rendering 2D primitives.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used for rendering.</param>
@@ -156,17 +171,6 @@ public class PrimitiveBatch : Disposable {
         
         // Create pipeline description.
         this._pipelineDescription = new SimplePipelineDescription();
-        
-        // Set (current) default settings.
-        this._currentEffect = GlobalResource.DefaultPrimitiveEffect;
-        this._currentBlendState = BlendStateDescription.SINGLE_ALPHA_BLEND;
-        this._currentDepthStencilState = DepthStencilStateDescription.DISABLED;
-        this._currentRasterizerState = RasterizerStateDescription.CULL_NONE;
-        this._currentProjection = Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
-        this._currentView = Matrix4x4.Identity;
-        
-        // Set (requested) default settings.
-        this.ResetSettings();
     }
 
     /// <summary>
@@ -174,21 +178,31 @@ public class PrimitiveBatch : Disposable {
     /// </summary>
     /// <param name="commandList">The command list to record drawing commands.</param>
     /// <param name="output">The output description defining the render target configuration.</param>
-    /// <exception cref="Exception">Thrown when the method is called before the previous batch is ended.</exception>
-    public void Begin(CommandList commandList, OutputDescription output) {
+    /// <param name="effect">Optional. The effect to use for rendering operations. Defaults to the global default primitive effect if not specified.</param>
+    /// <param name="blendState">Optional. The blend state description used for rendering. Defaults to a single alpha blend if not specified.</param>
+    /// <param name="depthStencilState">Optional. The depth stencil state description used for rendering. Defaults to disabled depth-stencil testing if not specified.</param>
+    /// <param name="rasterizerState">Optional. The rasterizer state description used for rendering. Defaults to cull none if not specified.</param>
+    /// <param name="projection">Optional. The projection matrix for the rendering. Defaults to an orthographic projection matrix if not specified.</param>
+    /// <param name="view">Optional. The view matrix for the rendering. Defaults to the identity matrix if not specified.</param>
+    /// <exception cref="Exception">Thrown when the method is called before the previous batch has been properly ended.</exception>
+    public void Begin(CommandList commandList, OutputDescription output, Effect? effect = null, BlendStateDescription? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Matrix4x4? projection = null, Matrix4x4? view = null) {
         if (this._begun) {
             throw new Exception("The PrimitiveBatch has already begun!");
         }
 
         this._begun = true;
         this._currentCommandList = commandList;
+        this._mainOutput = output;
+        this._currentOutput = output;
+        this._currentEffect = effect ?? GlobalResource.DefaultPrimitiveEffect;
+        this._currentBlendState = blendState ?? BlendStateDescription.SINGLE_ALPHA_BLEND;
+        this._currentDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DISABLED;
+        this._currentRasterizerState = rasterizerState ?? RasterizerStateDescription.CULL_NONE;
+        this._currentProjection = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
+        this._currentView = view ?? Matrix4x4.Identity;
         
-        // Reset settings.
+        // Reset requested default settings.
         this.ResetSettings();
-        
-        // Update pipeline description.
-        this._pipelineDescription.Outputs = output;
-        
         this.DrawCallCount = 0;
     }
     
@@ -206,10 +220,41 @@ public class PrimitiveBatch : Disposable {
     }
 
     /// <summary>
+    /// Retrieves the current output description for the primitive batch.
+    /// </summary>
+    /// <returns>The current <see cref="OutputDescription"/> associated with the batch.</returns>
+    /// <exception cref="Exception">Thrown if the primitive batch operation has not been started.</exception>    
+    public OutputDescription GetCurrentOutput() {
+        if (!this._begun) {
+            throw new Exception("The PrimitiveBatch has not begun yet!");
+        }
+
+        return this._currentOutput;
+    }
+
+    /// <summary>
+    /// Sets the rendering output for the PrimitiveBatch.
+    /// </summary>
+    /// <param name="output">The output description to be used for rendering. If null, the main output will be used.</param>
+    /// <exception cref="Exception">Thrown if the primitive batch operation has not been started.</exception>
+    public void SetOutput(OutputDescription? output) {
+        if (!this._begun) {
+            throw new Exception("The PrimitiveBatch has not begun yet!");
+        }
+        
+        this._requestedOutput = output ?? this._mainOutput;
+    }
+
+    /// <summary>
     /// Retrieves the currently active effect for the PrimitiveBatch.
     /// </summary>
     /// <returns>The <see cref="Effect"/> that is currently being used by the PrimitiveBatch.</returns>
+    /// <exception cref="Exception">Thrown if the primitive batch operation has not been started.</exception>
     public Effect GetCurrentEffect() {
+        if (!this._begun) {
+            throw new Exception("The PrimitiveBatch has not begun yet!");
+        }
+        
         return this._currentEffect;
     }
 
@@ -217,7 +262,12 @@ public class PrimitiveBatch : Disposable {
     /// Sets the effect to be used when rendering primitives.
     /// </summary>
     /// <param name="effect">The effect to be used. If null, the default primitive effect is used.</param>
+    /// <exception cref="Exception">Thrown if the primitive batch operation has not been started.</exception>
     public void SetEffect(Effect? effect) {
+        if (!this._begun) {
+            throw new Exception("The PrimitiveBatch has not begun yet!");
+        }
+        
         this._requestedEffect = effect ?? GlobalResource.DefaultPrimitiveEffect;
     }
 
@@ -225,7 +275,12 @@ public class PrimitiveBatch : Disposable {
     /// Retrieves the current blend state configuration used for rendering operations.
     /// </summary>
     /// <returns>The current blend state configuration as a <see cref="BlendStateDescription"/>.</returns>
+    /// <exception cref="Exception">Thrown if the primitive batch operation has not been started.</exception>
     public BlendStateDescription GetCurrentBlendState() {
+        if (!this._begun) {
+            throw new Exception("The PrimitiveBatch has not begun yet!");
+        }
+        
         return this._currentBlendState;
     }
 
@@ -233,7 +288,12 @@ public class PrimitiveBatch : Disposable {
     /// Sets the blend state description to be used for subsequent rendering operations.
     /// </summary>
     /// <param name="blendState">The blend state description to apply, or null to reset to the default single alpha blend state.</param>
+    /// <exception cref="Exception">Thrown if the primitive batch operation has not been started.</exception>
     public void SetBlendState(BlendStateDescription? blendState) {
+        if (!this._begun) {
+            throw new Exception("The PrimitiveBatch has not begun yet!");
+        }
+        
         this._requestedBlendState = blendState ?? BlendStateDescription.SINGLE_ALPHA_BLEND;
     }
 
@@ -241,7 +301,12 @@ public class PrimitiveBatch : Disposable {
     /// Retrieves the current depth-stencil state configuration used for rendering.
     /// </summary>
     /// <returns>The current <see cref="DepthStencilStateDescription"/> being used in the rendering pipeline.</returns>
+    /// <exception cref="Exception">Thrown if the primitive batch operation has not been started.</exception>
     public DepthStencilStateDescription GetCurrentDepthStencilState() {
+        if (!this._begun) {
+            throw new Exception("The PrimitiveBatch has not begun yet!");
+        }
+        
         return this._currentDepthStencilState;
     }
 
@@ -249,7 +314,12 @@ public class PrimitiveBatch : Disposable {
     /// Sets the depth-stencil state for rendering operations.
     /// </summary>
     /// <param name="depthStencilState">The depth-stencil state to be applied. If null, the default disabled state is used.</param>
+    /// <exception cref="Exception">Thrown if the primitive batch operation has not been started.</exception>
     public void SetDepthStencilState(DepthStencilStateDescription? depthStencilState) {
+        if (!this._begun) {
+            throw new Exception("The PrimitiveBatch has not begun yet!");
+        }
+        
         this._requestedDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DISABLED;
     }
 
@@ -257,7 +327,12 @@ public class PrimitiveBatch : Disposable {
     /// Retrieves the current rasterizer state description used for rendering operations.
     /// </summary>
     /// <returns>The current <see cref="RasterizerStateDescription"/> instance.</returns>
+    /// <exception cref="Exception">Thrown if the primitive batch operation has not been started.</exception>
     public RasterizerStateDescription GetCurrentRasterizerState() {
+        if (!this._begun) {
+            throw new Exception("The PrimitiveBatch has not begun yet!");
+        }
+        
         return this._currentRasterizerState;
     }
 
@@ -265,7 +340,12 @@ public class PrimitiveBatch : Disposable {
     /// Sets the current rasterizer state for rendering operations.
     /// </summary>
     /// <param name="rasterizerState">The rasterizer state description to apply. If null, a default state with no culling will be used.</param>
+    /// <exception cref="Exception">Thrown if the primitive batch operation has not been started.</exception>
     public void SetRasterizerState(RasterizerStateDescription? rasterizerState) {
+        if (!this._begun) {
+            throw new Exception("The PrimitiveBatch has not begun yet!");
+        }
+        
         this._requestedRasterizerState = rasterizerState ?? RasterizerStateDescription.CULL_NONE;
     }
 
@@ -273,7 +353,12 @@ public class PrimitiveBatch : Disposable {
     /// Retrieves the current projection matrix being used for rendering operations.
     /// </summary>
     /// <returns>The current projection as a <see cref="Matrix4x4"/>.</returns>
+    /// <exception cref="Exception">Thrown if the primitive batch operation has not been started.</exception>
     public Matrix4x4 GetCurrentProjection() {
+        if (!this._begun) {
+            throw new Exception("The PrimitiveBatch has not begun yet!");
+        }
+        
         return this._currentProjection;
     }
 
@@ -281,7 +366,12 @@ public class PrimitiveBatch : Disposable {
     /// Sets the projection matrix to be used for rendering.
     /// </summary>
     /// <param name="projection">The new projection matrix. If null, a default orthographic projection is applied.</param>
+    /// <exception cref="Exception">Thrown if the primitive batch operation has not been started.</exception>
     public void SetProjection(Matrix4x4? projection) {
+        if (!this._begun) {
+            throw new Exception("The PrimitiveBatch has not begun yet!");
+        }
+        
         this._requestedProjection = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
     }
 
@@ -289,7 +379,12 @@ public class PrimitiveBatch : Disposable {
     /// Retrieves the current view matrix being used for rendering operations.
     /// </summary>
     /// <returns>The current <see cref="Matrix4x4"/> view matrix.</returns>
+    /// <exception cref="Exception">Thrown if the primitive batch operation has not been started.</exception>
     public Matrix4x4 GetCurrentView() {
+        if (!this._begun) {
+            throw new Exception("The PrimitiveBatch has not begun yet!");
+        }
+        
         return this._currentView;
     }
 
@@ -297,14 +392,25 @@ public class PrimitiveBatch : Disposable {
     /// Sets the view matrix for the current rendering context.
     /// </summary>
     /// <param name="view">The view matrix to be applied. If null, the identity matrix is used.</param>
+    /// <exception cref="Exception">Thrown if the primitive batch operation has not been started.</exception>
     public void SetView(Matrix4x4? view) {
+        if (!this._begun) {
+            throw new Exception("The PrimitiveBatch has not begun yet!");
+        }
+        
         this._requestedView = view ?? Matrix4x4.Identity;
     }
 
     /// <summary>
     /// Resets the <see cref="PrimitiveBatch"/> to default settings.
     /// </summary>
+    /// <exception cref="Exception">Thrown if the primitive batch operation has not been started.</exception>
     public void ResetSettings() {
+        if (!this._begun) {
+            throw new Exception("The PrimitiveBatch has not begun yet!");
+        }
+        
+        this.SetOutput(null);
         this.SetEffect(null);
         this.SetBlendState(null);
         this.SetDepthStencilState(null);
@@ -876,7 +982,8 @@ public class PrimitiveBatch : Disposable {
             throw new Exception("You must begin the PrimitiveBatch before calling draw methods!");
         }
         
-        if (this._currentEffect != this._requestedEffect ||
+        if (!this._currentOutput.Equals(this._requestedOutput) ||
+            this._currentEffect != this._requestedEffect ||
             !this._currentBlendState.Equals(this._requestedBlendState) ||
             !this._currentDepthStencilState.Equals(this._requestedDepthStencilState) ||
             !this._currentRasterizerState.Equals(this._requestedRasterizerState) ||
@@ -884,7 +991,8 @@ public class PrimitiveBatch : Disposable {
             this._currentView != this._requestedView) {
             this.Flush();
         }
-        
+
+        this._currentOutput = this._requestedOutput;
         this._currentEffect = this._requestedEffect;
         this._currentBlendState = this._requestedBlendState;
         this._currentDepthStencilState = this._requestedDepthStencilState;
@@ -899,6 +1007,7 @@ public class PrimitiveBatch : Disposable {
         this._pipelineDescription.BufferLayouts = this._currentEffect.GetBufferLayouts();
         this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
         this._pipelineDescription.ShaderSet = this._currentEffect.ShaderSet;
+        this._pipelineDescription.Outputs = this._currentOutput;
         
         if (this._currentBatchCount + vertices.Count >= this._vertices.Length) {
             this.Flush();

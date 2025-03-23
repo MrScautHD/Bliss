@@ -108,11 +108,21 @@ public class SpriteBatch : Disposable {
     /// Represents the current graphics command list used by the SpriteBatch during rendering.
     /// </summary>
     private CommandList _currentCommandList;
-
+    
     /// <summary>
-    /// Tracks the number of quads that have been batched in the current draw call cycle.
+    /// The main <see cref="OutputDescription"/>.
     /// </summary>
-    private uint _currentBatchCount;
+    private OutputDescription _mainOutput;
+    
+    /// <summary>
+    /// The current <see cref="OutputDescription"/>.
+    /// </summary>
+    private OutputDescription _currentOutput;
+    
+    /// <summary>
+    /// The requested <see cref="OutputDescription"/>.
+    /// </summary>
+    private OutputDescription _requestedOutput;
     
     /// <summary>
     /// The current <see cref="Effect"/>.
@@ -190,6 +200,11 @@ public class SpriteBatch : Disposable {
     private Texture2D _currentTexture;
     
     /// <summary>
+    /// Tracks the number of quads that have been batched in the current draw call cycle.
+    /// </summary>
+    private uint _currentBatchCount;
+    
+    /// <summary>
     /// Initializes a new instance of the <see cref="SpriteBatch"/> class for batching and rendering 2D sprites.
     /// </summary>
     /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used for rendering.</param>
@@ -231,40 +246,40 @@ public class SpriteBatch : Disposable {
         this._pipelineDescription = new SimplePipelineDescription() {
             PrimitiveTopology = PrimitiveTopology.TriangleList
         };
-        
-        // Set (current) default settings.
-        this._currentEffect = GlobalResource.DefaultSpriteEffect;
-        this._currentBlendState = BlendStateDescription.SINGLE_ALPHA_BLEND;
-        this._currentDepthStencilState = DepthStencilStateDescription.DISABLED;
-        this._currentRasterizerState = RasterizerStateDescription.CULL_NONE;
-        this._currentProjection = Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
-        this._currentView = Matrix4x4.Identity;
-        this._currentSampler = GraphicsHelper.GetSampler(graphicsDevice, SamplerType.Point);
-        
-        // Set (requested) default settings.
-        this.ResetSettings();
     }
 
     /// <summary>
     /// Begins a new sprite batch rendering session with the specified parameters.
     /// </summary>
     /// <param name="commandList">The <see cref="CommandList"/> used to issue rendering commands.</param>
-    /// <param name="output">The <see cref="OutputDescription"/> defining the target render output configuration.</param>
-    /// <exception cref="Exception">Thrown when the method is called before the previous batch is ended.</exception>
-    public void Begin(CommandList commandList, OutputDescription output) {
+    /// <param name="output">The <see cref="OutputDescription"/> specifying the target render output configuration.</param>
+    /// <param name="sampler">The <see cref="Sampler"/> defining sampler state for texture sampling. Defaults to a point sampler if not provided.</param>
+    /// <param name="effect">The <see cref="Effect"/> used for rendering sprites. Defaults to the global default sprite effect if not specified.</param>
+    /// <param name="blendState">The <see cref="BlendStateDescription"/> describing the blending mode. Defaults to single alpha blend if not specified.</param>
+    /// <param name="depthStencilState">The <see cref="DepthStencilStateDescription"/> specifying depth and stencil testing configuration. Defaults to disabled if not provided.</param>
+    /// <param name="rasterizerState">The <see cref="RasterizerStateDescription"/> defining rasterization settings. Defaults to no culling if not specified.</param>
+    /// <param name="projection">The <see cref="Matrix4x4"/> representing the projection matrix. Defaults to an orthographic projection based on the window dimensions if not specified.</param>
+    /// <param name="view">The <see cref="Matrix4x4"/> representing the view matrix. Defaults to the identity matrix if not specified.</param>
+    /// <exception cref="Exception">Thrown when the method is called before the previous batch has been ended with a call to <see cref="End"/>.</exception>
+    public void Begin(CommandList commandList, OutputDescription output, Sampler? sampler = null, Effect? effect = null, BlendStateDescription? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Matrix4x4? projection = null, Matrix4x4? view = null) {
         if (this._begun) {
             throw new Exception("The SpriteBatch has already begun!");
         }
 
         this._begun = true;
         this._currentCommandList = commandList;
+        this._mainOutput = output;
+        this._currentOutput = output;
+        this._currentEffect = effect ?? GlobalResource.DefaultSpriteEffect;
+        this._currentBlendState = blendState ?? BlendStateDescription.SINGLE_ALPHA_BLEND;
+        this._currentDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DISABLED;
+        this._currentRasterizerState = rasterizerState ?? RasterizerStateDescription.CULL_NONE;
+        this._currentProjection = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
+        this._currentView = view ?? Matrix4x4.Identity;
+        this._currentSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
         
-        // Reset settings.
+        // Reset requested default settings.
         this.ResetSettings();
-        
-        // Update pipeline description.
-        this._pipelineDescription.Outputs = output;
-        
         this.DrawCallCount = 0;
     }
 
@@ -283,10 +298,41 @@ public class SpriteBatch : Disposable {
     }
 
     /// <summary>
+    /// Retrieves the current <see cref="OutputDescription"/> being used by the sprite batch.
+    /// </summary>
+    /// <returns>The <see cref="OutputDescription"/> currently associated with the sprite batch.</returns>
+    /// <exception cref="Exception">Thrown if the sprite batch operation has not been started.</exception>
+    public OutputDescription GetCurrentOutput() {
+        if (!this._begun) {
+            throw new Exception("The SpriteBatch has not begun yet!");
+        }
+
+        return this._currentOutput;
+    }
+
+    /// <summary>
+    /// Sets the output description for the <see cref="SpriteBatch"/>. If the specified output is null, the default main output is used instead.
+    /// </summary>
+    /// <param name="output">The optional <see cref="OutputDescription"/> to set. Defaults to the main output if null.</param>
+    /// <exception cref="Exception">Thrown if the sprite batch operation has not been started.</exception>
+    public void SetOutput(OutputDescription? output) {
+        if (!this._begun) {
+            throw new Exception("The SpriteBatch has not begun yet!");
+        }
+
+        this._requestedOutput = output ?? this._mainOutput;
+    }
+
+    /// <summary>
     /// Retrieves the current <see cref="Effect"/> being used by the <see cref="SpriteBatch"/>.
     /// </summary>
     /// <returns>The active <see cref="Effect"/> instance used for rendering, or null if no effect is set.</returns>
+    /// <exception cref="Exception">Thrown if the sprite batch operation has not been started.</exception>
     public Effect GetCurrentEffect() {
+        if (!this._begun) {
+            throw new Exception("The SpriteBatch has not begun yet!");
+        }
+        
         return this._currentEffect;
     }
 
@@ -294,7 +340,12 @@ public class SpriteBatch : Disposable {
     /// Sets the rendering effect to be used by the <see cref="SpriteBatch"/> during draw operations.
     /// </summary>
     /// <param name="effect">The <see cref="Effect"/> to set for rendering. If null, the default effect is used.</param>
+    /// <exception cref="Exception">Thrown if the sprite batch operation has not been started.</exception>
     public void SetEffect(Effect? effect) {
+        if (!this._begun) {
+            throw new Exception("The SpriteBatch has not begun yet!");
+        }
+        
         this._requestedEffect = effect ?? GlobalResource.DefaultSpriteEffect;
     }
 
@@ -302,7 +353,12 @@ public class SpriteBatch : Disposable {
     /// Retrieves the current blend state used by the <see cref="SpriteBatch"/> for rendering operations.
     /// </summary>
     /// <returns>The <see cref="BlendStateDescription"/> representing the current blending configuration.</returns>
+    /// <exception cref="Exception">Thrown if the sprite batch operation has not been started.</exception>
     public BlendStateDescription GetCurrentBlendState() {
+        if (!this._begun) {
+            throw new Exception("The SpriteBatch has not begun yet!");
+        }
+        
         return this._currentBlendState;
     }
 
@@ -310,7 +366,12 @@ public class SpriteBatch : Disposable {
     /// Updates the current blend state of the <see cref="SpriteBatch"/> for rendering sprites.
     /// </summary>
     /// <param name="blendState">The <see cref="BlendStateDescription"/> to set. If null, defaults to <see cref="BlendStateDescription.SINGLE_ALPHA_BLEND"/>.</param>
+    /// <exception cref="Exception">Thrown if the sprite batch operation has not been started.</exception>
     public void SetBlendState(BlendStateDescription? blendState) {
+        if (!this._begun) {
+            throw new Exception("The SpriteBatch has not begun yet!");
+        }
+        
         this._requestedBlendState = blendState ?? BlendStateDescription.SINGLE_ALPHA_BLEND;
     }
 
@@ -318,7 +379,12 @@ public class SpriteBatch : Disposable {
     /// Gets the current depth and stencil state configuration used for rendering in the <see cref="SpriteBatch"/>.
     /// </summary>
     /// <returns>The current <see cref="DepthStencilStateDescription"/> used by the <see cref="SpriteBatch"/> for rendering.</returns>
+    /// <exception cref="Exception">Thrown if the sprite batch operation has not been started.</exception>
     public DepthStencilStateDescription GetCurrentDepthStencilState() {
+        if (!this._begun) {
+            throw new Exception("The SpriteBatch has not begun yet!");
+        }
+        
         return this._currentDepthStencilState;
     }
 
@@ -326,7 +392,12 @@ public class SpriteBatch : Disposable {
     /// Sets the depth-stencil state to be used by the <see cref="SpriteBatch"/> during rendering operations.
     /// </summary>
     /// <param name="depthStencilState">The <see cref="DepthStencilStateDescription"/> to use. If null, defaults to a disabled depth-stencil state.</param>
+    /// <exception cref="Exception">Thrown if the sprite batch operation has not been started.</exception>
     public void SetDepthStencilState(DepthStencilStateDescription? depthStencilState) {
+        if (!this._begun) {
+            throw new Exception("The SpriteBatch has not begun yet!");
+        }
+        
         this._requestedDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DISABLED;
     }
 
@@ -334,7 +405,12 @@ public class SpriteBatch : Disposable {
     /// Gets the current rasterizer state used for configuring rasterization settings in the rendering pipeline.
     /// </summary>
     /// <returns>A <see cref="RasterizerStateDescription"/> representing the current rasterizer state.</returns>
+    /// <exception cref="Exception">Thrown if the sprite batch operation has not been started.</exception>
     public RasterizerStateDescription GetCurrentRasterizerState() {
+        if (!this._begun) {
+            throw new Exception("The SpriteBatch has not begun yet!");
+        }
+        
         return this._currentRasterizerState;
     }
 
@@ -342,7 +418,12 @@ public class SpriteBatch : Disposable {
     /// Updates the current rasterizer state of the <see cref="SpriteBatch"/> to the specified value.
     /// </summary>
     /// <param name="rasterizerState">The new <see cref="RasterizerStateDescription"/> to be applied. If null, the default rasterizer state <see cref="RasterizerStateDescription.CULL_NONE"/> will be used.</param>
+    /// <exception cref="Exception">Thrown if the sprite batch operation has not been started.</exception>
     public void SetRasterizerState(RasterizerStateDescription? rasterizerState) {
+        if (!this._begun) {
+            throw new Exception("The SpriteBatch has not begun yet!");
+        }
+        
         this._requestedRasterizerState = rasterizerState ?? RasterizerStateDescription.CULL_NONE;
     }
 
@@ -350,7 +431,12 @@ public class SpriteBatch : Disposable {
     /// Retrieves the current projection matrix used by the <see cref="SpriteBatch"/>.
     /// </summary>
     /// <returns>The current <see cref="Matrix4x4"/> projection matrix.</returns>
+    /// <exception cref="Exception">Thrown if the sprite batch operation has not been started.</exception>
     public Matrix4x4 GetCurrentProjection() {
+        if (!this._begun) {
+            throw new Exception("The SpriteBatch has not begun yet!");
+        }
+        
         return this._currentProjection;
     }
 
@@ -358,7 +444,12 @@ public class SpriteBatch : Disposable {
     /// Sets the projection matrix for rendering sprites.
     /// </summary>
     /// <param name="projection">The <see cref="Matrix4x4"/> to use as the projection matrix. If null, an orthographic projection will be created based on the window dimensions.</param>
+    /// <exception cref="Exception">Thrown if the sprite batch operation has not been started.</exception>
     public void SetProjection(Matrix4x4? projection) {
+        if (!this._begun) {
+            throw new Exception("The SpriteBatch has not begun yet!");
+        }
+        
         this._requestedProjection = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
     }
 
@@ -366,7 +457,12 @@ public class SpriteBatch : Disposable {
     /// Retrieves the current view matrix used for rendering.
     /// </summary>
     /// <returns>The current <see cref="Matrix4x4"/> view matrix.</returns>
+    /// <exception cref="Exception">Thrown if the sprite batch operation has not been started.</exception>
     public Matrix4x4 GetCurrentView() {
+        if (!this._begun) {
+            throw new Exception("The SpriteBatch has not begun yet!");
+        }
+        
         return this._currentView;
     }
 
@@ -374,7 +470,12 @@ public class SpriteBatch : Disposable {
     /// Sets the current view matrix for rendering.
     /// </summary>
     /// <param name="view">The <see cref="Matrix4x4"/> view matrix to apply. If null, the identity matrix will be used.</param>
+    /// <exception cref="Exception">Thrown if the sprite batch operation has not been started.</exception>
     public void SetView(Matrix4x4? view) {
+        if (!this._begun) {
+            throw new Exception("The SpriteBatch has not begun yet!");
+        }
+        
         this._requestedView = view ?? Matrix4x4.Identity;
     }
 
@@ -382,7 +483,12 @@ public class SpriteBatch : Disposable {
     /// Retrieves the current <see cref="Sampler"/> used for texture sampling operations in the <see cref="SpriteBatch"/>.
     /// </summary>
     /// <returns>The current <see cref="Sampler"/> instance being used.</returns>
+    /// <exception cref="Exception">Thrown if the sprite batch operation has not been started.</exception>
     public Sampler GetCurrentSampler() {
+        if (!this._begun) {
+            throw new Exception("The SpriteBatch has not begun yet!");
+        }
+        
         return this._currentSampler;
     }
 
@@ -390,14 +496,25 @@ public class SpriteBatch : Disposable {
     /// Updates the current sampler state for the <see cref="SpriteBatch"/> to the specified value.
     /// </summary>
     /// <param name="sampler">The new <see cref="Sampler"/> to use, or null to reset to the default sampler.</param>
+    /// <exception cref="Exception">Thrown if the sprite batch operation has not been started.</exception>
     public void SetSampler(Sampler? sampler) {
+        if (!this._begun) {
+            throw new Exception("The SpriteBatch has not begun yet!");
+        }
+        
         this._requestedSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
     }
 
     /// <summary>
     /// Resets the <see cref="SpriteBatch"/> to default settings.
     /// </summary>
+    /// <exception cref="Exception">Thrown if the sprite batch operation has not been started.</exception>
     public void ResetSettings() {
+        if (!this._begun) {
+            throw new Exception("The SpriteBatch has not begun yet!");
+        }
+        
+        this.SetOutput(null);
         this.SetEffect(null);
         this.SetBlendState(null);
         this.SetDepthStencilState(null);
@@ -505,7 +622,8 @@ public class SpriteBatch : Disposable {
             throw new Exception("You must begin the SpriteBatch before calling draw methods!");
         }
         
-        if (this._currentEffect != this._requestedEffect ||
+        if (!this._currentOutput.Equals(this._requestedOutput) ||
+            this._currentEffect != this._requestedEffect ||
             !this._currentBlendState.Equals(this._requestedBlendState) ||
             !this._currentDepthStencilState.Equals(this._requestedDepthStencilState) ||
             !this._currentRasterizerState.Equals(this._requestedRasterizerState) ||
@@ -516,6 +634,7 @@ public class SpriteBatch : Disposable {
             this.Flush();
         }
 
+        this._currentOutput = this._requestedOutput;
         this._currentEffect = this._requestedEffect;
         this._currentBlendState = this._requestedBlendState;
         this._currentDepthStencilState = this._requestedDepthStencilState;
@@ -532,6 +651,7 @@ public class SpriteBatch : Disposable {
         this._pipelineDescription.BufferLayouts = this._currentEffect.GetBufferLayouts();
         this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
         this._pipelineDescription.ShaderSet = this._currentEffect.ShaderSet;
+        this._pipelineDescription.Outputs = this._currentOutput;
         
         if (this._currentBatchCount >= (this.Capacity - 1)) {
             this.Flush();

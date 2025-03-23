@@ -3,9 +3,7 @@ using Bliss.CSharp.Graphics.Rendering;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Gamepads;
 using Bliss.CSharp.Interact.Keyboards;
-using Bliss.CSharp.Logging;
 using Bliss.CSharp.Mathematics;
-using Bliss.CSharp.Transformations;
 using Veldrid;
 using Vortice.Mathematics;
 
