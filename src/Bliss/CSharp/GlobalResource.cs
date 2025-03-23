@@ -141,8 +141,12 @@ public static class GlobalResource {
             bufferLayout.Dispose();
         }
         
+        BufferLayouts.Clear();
+        
         foreach (SimpleTextureLayout textureLayout in TextureLayouts) {
             textureLayout.Dispose();
         }
+        
+        TextureLayouts.Clear();
     }
 }
