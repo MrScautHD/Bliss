@@ -71,7 +71,7 @@ public class FullScreenRenderPass : Disposable {
         this._pipelineDescription.ShaderSet = finalEffect.ShaderSet;
         this._pipelineDescription.Outputs = output;
         
-        // Set vertex and index buffer.
+        // Set vertex buffer.
         commandList.SetVertexBuffer(0, this._vertexBuffer);
         
         // Set pipeline.

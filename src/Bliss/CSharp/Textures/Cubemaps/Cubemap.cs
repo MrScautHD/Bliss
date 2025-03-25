@@ -1,4 +1,3 @@
-using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Transformations;
@@ -56,7 +55,7 @@ public class Cubemap : Disposable {
     /// <summary>
     /// Caches resource sets for combinations of sampler objects and texture layouts.
     /// </summary>
-    private Dictionary<(Sampler, SimpleTextureLayout), ResourceSet> _cachedResourceSets;
+    private Dictionary<(Sampler, ResourceLayout), ResourceSet> _cachedResourceSets;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Cubemap"/> class by loading cubemap faces from a file path.
@@ -102,7 +101,7 @@ public class Cubemap : Disposable {
     
         this.Format = srgb ? PixelFormat.R8G8B8A8UNormSRgb : PixelFormat.R8G8B8A8UNorm;
         this.CreateDeviceTexture();
-        this._cachedResourceSets = new Dictionary<(Sampler, SimpleTextureLayout), ResourceSet>();
+        this._cachedResourceSets = new Dictionary<(Sampler, ResourceLayout), ResourceSet>();
     }
 
     /// <summary>
@@ -111,9 +110,9 @@ public class Cubemap : Disposable {
     /// <param name="sampler">The sampler object to be used for the resource set.</param>
     /// <param name="layout">The texture layout to be used for the resource set.</param>
     /// <returns>A <see cref="ResourceSet"/> object associated with the provided sampler and layout.</returns>
-    public ResourceSet GetResourceSet(Sampler sampler, SimpleTextureLayout layout) {
+    public ResourceSet GetResourceSet(Sampler sampler, ResourceLayout layout) {
         if (!this._cachedResourceSets.TryGetValue((sampler, layout), out ResourceSet? resourceSet)) {
-            ResourceSet newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(layout.Layout, this.TextureView, sampler));
+            ResourceSet newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(layout, this.TextureView, sampler));
 
             this._cachedResourceSets.Add((sampler, layout), newResourceSet);
             return newResourceSet;
