@@ -15,6 +15,7 @@ using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
 using Bliss.CSharp.Textures;
+using Bliss.CSharp.Textures.Cubemaps;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
 using MiniAudioEx;
@@ -203,8 +204,10 @@ public class Game : Disposable {
         
         this._customHeighmap = Mesh.GenHeightmap(this.GraphicsDevice, new Image("content/heightmap.png"), new Vector3(1, 1, 1));
         this._customHeighmap.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), new Texture2D(this.GraphicsDevice, "content/heightmap.png"));
-    }
 
+        Cubemap cubemap = new Cubemap(this.GraphicsDevice, "content/cubemap.png");
+    }
+    
     protected virtual void Update() {
         this._cam3D.Update((float) Time.Delta);
     }

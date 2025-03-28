@@ -144,12 +144,12 @@ public static class CubemapHelper {
         
         // PositiveZ
         Image positiveZ = (Image) image.Clone();
-        positiveZ.Crop(new Rectangle(crossWidth, crossHeight, crossWidth, crossHeight));
+        positiveZ.Crop(new Rectangle(crossWidth, crossHeight * 1, crossWidth, crossHeight));
         cubemapFaces[4] = positiveZ;
-        
+
         // NegativeZ
         Image negativeZ = (Image) image.Clone();
-        negativeZ.Crop(new Rectangle(crossWidth, crossHeight * 3, crossWidth, crossHeight));
+        negativeZ.Crop(new Rectangle(crossWidth * 2, crossHeight * 1, crossWidth, crossHeight));
         cubemapFaces[5] = negativeZ;
     }
 
@@ -186,12 +186,12 @@ public static class CubemapHelper {
         
         // PositiveZ
         Image positiveZ = (Image) image.Clone();
-        positiveZ.Crop(new Rectangle(crossWidth * 2, crossHeight, crossWidth, crossHeight));
+        positiveZ.Crop(new Rectangle(crossWidth * 1, crossHeight * 1, crossWidth, crossHeight));
         cubemapFaces[4] = positiveZ;
 
         // NegativeZ
         Image negativeZ = (Image) image.Clone();
-        negativeZ.Crop(new Rectangle(crossWidth, crossHeight, crossWidth, crossHeight));
+        negativeZ.Crop(new Rectangle(crossWidth * 3, crossHeight * 1, crossWidth, crossHeight));
         cubemapFaces[5] = negativeZ;
     }
 
