@@ -572,6 +572,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D.yml",
       "output": {
         ".html": {

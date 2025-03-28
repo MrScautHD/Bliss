@@ -5802,6 +5802,49 @@ references:
   commentId: N:Bliss.CSharp.Graphics.VertexTypes
   fullName: Bliss.CSharp.Graphics.VertexTypes
   nameWithType: Bliss.CSharp.Graphics.VertexTypes
+- uid: Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D
+  name: CubemapVertex3D
+  href: api/Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.html
+  commentId: T:Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D
+  fullName: Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D
+  nameWithType: CubemapVertex3D
+- uid: Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.#ctor(System.Numerics.Vector3,System.Numerics.Vector4)
+  name: CubemapVertex3D(Vector3, Vector4)
+  href: api/Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.html#Bliss_CSharp_Graphics_VertexTypes_CubemapVertex3D__ctor_System_Numerics_Vector3_System_Numerics_Vector4_
+  commentId: M:Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.#ctor(System.Numerics.Vector3,System.Numerics.Vector4)
+  name.vb: New(Vector3, Vector4)
+  fullName: Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.CubemapVertex3D(System.Numerics.Vector3, System.Numerics.Vector4)
+  fullName.vb: Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.New(System.Numerics.Vector3, System.Numerics.Vector4)
+  nameWithType: CubemapVertex3D.CubemapVertex3D(Vector3, Vector4)
+  nameWithType.vb: CubemapVertex3D.New(Vector3, Vector4)
+- uid: Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.#ctor*
+  name: CubemapVertex3D
+  href: api/Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.html#Bliss_CSharp_Graphics_VertexTypes_CubemapVertex3D__ctor_
+  commentId: Overload:Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.CubemapVertex3D
+  fullName.vb: Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.New
+  nameWithType: CubemapVertex3D.CubemapVertex3D
+  nameWithType.vb: CubemapVertex3D.New
+- uid: Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.Color
+  name: Color
+  href: api/Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.html#Bliss_CSharp_Graphics_VertexTypes_CubemapVertex3D_Color
+  commentId: F:Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.Color
+  fullName: Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.Color
+  nameWithType: CubemapVertex3D.Color
+- uid: Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.Position
+  name: Position
+  href: api/Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.html#Bliss_CSharp_Graphics_VertexTypes_CubemapVertex3D_Position
+  commentId: F:Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.Position
+  fullName: Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.Position
+  nameWithType: CubemapVertex3D.Position
+- uid: Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.VertexLayout
+  name: VertexLayout
+  href: api/Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.html#Bliss_CSharp_Graphics_VertexTypes_CubemapVertex3D_VertexLayout
+  commentId: F:Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.VertexLayout
+  fullName: Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.VertexLayout
+  nameWithType: CubemapVertex3D.VertexLayout
 - uid: Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D
   name: ImmediateVertex3D
   href: api/Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D.html
@@ -10508,12 +10551,12 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetDataFromImage
   nameWithType: Cubemap.GetDataFromImage
-- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
-  name: GetResourceSet(Sampler, SimpleTextureLayout)
-  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_GetResourceSet_Veldrid_Sampler_Bliss_CSharp_Graphics_Pipelines_Textures_SimpleTextureLayout_
-  commentId: M:Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
-  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler, Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
-  nameWithType: Cubemap.GetResourceSet(Sampler, SimpleTextureLayout)
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler,Veldrid.ResourceLayout)
+  name: GetResourceSet(Sampler, ResourceLayout)
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_GetResourceSet_Veldrid_Sampler_Veldrid_ResourceLayout_
+  commentId: M:Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler,Veldrid.ResourceLayout)
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler, Veldrid.ResourceLayout)
+  nameWithType: Cubemap.GetResourceSet(Sampler, ResourceLayout)
 - uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet*
   name: GetResourceSet
   href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_GetResourceSet_

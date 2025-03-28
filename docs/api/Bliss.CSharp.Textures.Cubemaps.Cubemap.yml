@@ -13,7 +13,7 @@ items:
   - Bliss.CSharp.Textures.Cubemaps.Cubemap.Format
   - Bliss.CSharp.Textures.Cubemaps.Cubemap.GetDataFromBytes(Bliss.CSharp.Textures.Cubemaps.CubemapLayer)
   - Bliss.CSharp.Textures.Cubemaps.Cubemap.GetDataFromImage(Bliss.CSharp.Textures.Cubemaps.CubemapLayer)
-  - Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+  - Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler,Veldrid.ResourceLayout)
   - Bliss.CSharp.Textures.Cubemaps.Cubemap.GraphicsDevice
   - Bliss.CSharp.Textures.Cubemaps.Cubemap.Height
   - Bliss.CSharp.Textures.Cubemaps.Cubemap.Images
@@ -37,7 +37,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Cubemap
     path: ../src/Bliss/CSharp/Textures/Cubemaps/Cubemap.cs
-    startLine: 8
+    startLine: 7
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures.Cubemaps
@@ -78,7 +78,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GraphicsDevice
     path: ../src/Bliss/CSharp/Textures/Cubemaps/Cubemap.cs
-    startLine: 13
+    startLine: 12
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures.Cubemaps
@@ -109,7 +109,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Images
     path: ../src/Bliss/CSharp/Textures/Cubemaps/Cubemap.cs
-    startLine: 18
+    startLine: 17
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures.Cubemaps
@@ -140,7 +140,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Width
     path: ../src/Bliss/CSharp/Textures/Cubemaps/Cubemap.cs
-    startLine: 23
+    startLine: 22
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures.Cubemaps
@@ -171,7 +171,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Height
     path: ../src/Bliss/CSharp/Textures/Cubemaps/Cubemap.cs
-    startLine: 28
+    startLine: 27
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures.Cubemaps
@@ -202,7 +202,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Format
     path: ../src/Bliss/CSharp/Textures/Cubemaps/Cubemap.cs
-    startLine: 33
+    startLine: 32
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures.Cubemaps
@@ -233,7 +233,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: PixelSizeInBytes
     path: ../src/Bliss/CSharp/Textures/Cubemaps/Cubemap.cs
-    startLine: 38
+    startLine: 37
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures.Cubemaps
@@ -264,7 +264,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MipLevels
     path: ../src/Bliss/CSharp/Textures/Cubemaps/Cubemap.cs
-    startLine: 43
+    startLine: 42
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures.Cubemaps
@@ -295,7 +295,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DeviceTexture
     path: ../src/Bliss/CSharp/Textures/Cubemaps/Cubemap.cs
-    startLine: 48
+    startLine: 47
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures.Cubemaps
@@ -326,7 +326,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: TextureView
     path: ../src/Bliss/CSharp/Textures/Cubemaps/Cubemap.cs
-    startLine: 53
+    startLine: 52
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures.Cubemaps
@@ -357,7 +357,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Textures/Cubemaps/Cubemap.cs
-    startLine: 68
+    startLine: 67
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures.Cubemaps
@@ -404,7 +404,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Textures/Cubemaps/Cubemap.cs
-    startLine: 80
+    startLine: 79
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures.Cubemaps
@@ -451,7 +451,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Textures/Cubemaps/Cubemap.cs
-    startLine: 92
+    startLine: 91
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures.Cubemaps
@@ -480,16 +480,16 @@ items:
   nameWithType.vb: Cubemap.New(GraphicsDevice, Image, CubemapLayout, Boolean, Boolean)
   fullName.vb: Bliss.CSharp.Textures.Cubemaps.Cubemap.New(Veldrid.GraphicsDevice, Bliss.CSharp.Images.Image, Bliss.CSharp.Textures.Cubemaps.CubemapLayout, Boolean, Boolean)
   name.vb: New(GraphicsDevice, Image, CubemapLayout, Boolean, Boolean)
-- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
-  commentId: M:Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
-  id: GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler,Veldrid.ResourceLayout)
+  commentId: M:Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler,Veldrid.ResourceLayout)
+  id: GetResourceSet(Veldrid.Sampler,Veldrid.ResourceLayout)
   parent: Bliss.CSharp.Textures.Cubemaps.Cubemap
   langs:
   - csharp
   - vb
-  name: GetResourceSet(Sampler, SimpleTextureLayout)
-  nameWithType: Cubemap.GetResourceSet(Sampler, SimpleTextureLayout)
-  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler, Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+  name: GetResourceSet(Sampler, ResourceLayout)
+  nameWithType: Cubemap.GetResourceSet(Sampler, ResourceLayout)
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler, Veldrid.ResourceLayout)
   type: Method
   source:
     remote:
@@ -498,25 +498,25 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetResourceSet
     path: ../src/Bliss/CSharp/Textures/Cubemaps/Cubemap.cs
-    startLine: 113
+    startLine: 112
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures.Cubemaps
   summary: Retrieves a resource set from the cache or creates a new one using a specified sampler and texture layout.
   example: []
   syntax:
-    content: public ResourceSet GetResourceSet(Sampler sampler, SimpleTextureLayout layout)
+    content: public ResourceSet GetResourceSet(Sampler sampler, ResourceLayout layout)
     parameters:
     - id: sampler
       type: Veldrid.Sampler
       description: The sampler object to be used for the resource set.
     - id: layout
-      type: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+      type: Veldrid.ResourceLayout
       description: The texture layout to be used for the resource set.
     return:
       type: Veldrid.ResourceSet
       description: A <xref href="Veldrid.ResourceSet" data-throw-if-not-resolved="false"></xref> object associated with the provided sampler and layout.
-    content.vb: Public Function GetResourceSet(sampler As Sampler, layout As SimpleTextureLayout) As ResourceSet
+    content.vb: Public Function GetResourceSet(sampler As Sampler, layout As ResourceLayout) As ResourceSet
   overload: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet*
 - uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetDataFromBytes(Bliss.CSharp.Textures.Cubemaps.CubemapLayer)
   commentId: M:Bliss.CSharp.Textures.Cubemaps.Cubemap.GetDataFromBytes(Bliss.CSharp.Textures.Cubemaps.CubemapLayer)
@@ -536,7 +536,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetDataFromBytes
     path: ../src/Bliss/CSharp/Textures/Cubemaps/Cubemap.cs
-    startLine: 129
+    startLine: 128
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures.Cubemaps
@@ -571,7 +571,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetDataFromImage
     path: ../src/Bliss/CSharp/Textures/Cubemaps/Cubemap.cs
-    startLine: 138
+    startLine: 137
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures.Cubemaps
@@ -606,7 +606,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetData
     path: ../src/Bliss/CSharp/Textures/Cubemaps/Cubemap.cs
-    startLine: 148
+    startLine: 147
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures.Cubemaps
@@ -647,7 +647,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetData
     path: ../src/Bliss/CSharp/Textures/Cubemaps/Cubemap.cs
-    startLine: 171
+    startLine: 170
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures.Cubemaps
@@ -686,7 +686,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Textures/Cubemaps/Cubemap.cs
-    startLine: 205
+    startLine: 204
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures.Cubemaps
@@ -1316,7 +1316,7 @@ references:
   fullName: Veldrid.ResourceSet
 - uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet*
   commentId: Overload:Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet
-  href: Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_GetResourceSet_Veldrid_Sampler_Bliss_CSharp_Graphics_Pipelines_Textures_SimpleTextureLayout_
+  href: Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_GetResourceSet_Veldrid_Sampler_Veldrid_ResourceLayout_
   name: GetResourceSet
   nameWithType: Cubemap.GetResourceSet
   fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet
@@ -1328,59 +1328,14 @@ references:
   name: Sampler
   nameWithType: Sampler
   fullName: Veldrid.Sampler
-- uid: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
-  commentId: T:Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
-  parent: Bliss.CSharp.Graphics.Pipelines.Textures
-  href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
-  name: SimpleTextureLayout
-  nameWithType: SimpleTextureLayout
-  fullName: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
-- uid: Bliss.CSharp.Graphics.Pipelines.Textures
-  commentId: N:Bliss.CSharp.Graphics.Pipelines.Textures
-  href: Bliss.html
-  name: Bliss.CSharp.Graphics.Pipelines.Textures
-  nameWithType: Bliss.CSharp.Graphics.Pipelines.Textures
-  fullName: Bliss.CSharp.Graphics.Pipelines.Textures
-  spec.csharp:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Graphics
-    name: Graphics
-    href: Bliss.CSharp.Graphics.html
-  - name: .
-  - uid: Bliss.CSharp.Graphics.Pipelines
-    name: Pipelines
-    href: Bliss.CSharp.Graphics.Pipelines.html
-  - name: .
-  - uid: Bliss.CSharp.Graphics.Pipelines.Textures
-    name: Textures
-    href: Bliss.CSharp.Graphics.Pipelines.Textures.html
-  spec.vb:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Graphics
-    name: Graphics
-    href: Bliss.CSharp.Graphics.html
-  - name: .
-  - uid: Bliss.CSharp.Graphics.Pipelines
-    name: Pipelines
-    href: Bliss.CSharp.Graphics.Pipelines.html
-  - name: .
-  - uid: Bliss.CSharp.Graphics.Pipelines.Textures
-    name: Textures
-    href: Bliss.CSharp.Graphics.Pipelines.Textures.html
+- uid: Veldrid.ResourceLayout
+  commentId: T:Veldrid.ResourceLayout
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/ResourceLayout.cs
+  name: ResourceLayout
+  nameWithType: ResourceLayout
+  fullName: Veldrid.ResourceLayout
 - uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetDataFromBytes*
   commentId: Overload:Bliss.CSharp.Textures.Cubemaps.Cubemap.GetDataFromBytes
   href: Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_GetDataFromBytes_Bliss_CSharp_Textures_Cubemaps_CubemapLayer_

@@ -4,6 +4,7 @@ items:
   commentId: N:Bliss.CSharp.Graphics.VertexTypes
   id: Bliss.CSharp.Graphics.VertexTypes
   children:
+  - Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D
   - Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D
   - Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D
   - Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D
@@ -18,6 +19,12 @@ items:
   assemblies:
   - Bliss
 references:
+- uid: Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D
+  commentId: T:Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D
+  href: Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.html
+  name: CubemapVertex3D
+  nameWithType: CubemapVertex3D
+  fullName: Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D
 - uid: Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D
   commentId: T:Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D
   href: Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D.html

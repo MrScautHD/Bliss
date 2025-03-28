@@ -192,6 +192,9 @@ items:
   name: Bliss.CSharp.Graphics.VertexTypes
   type: Namespace
   items:
+  - uid: Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D
+    name: CubemapVertex3D
+    type: Struct
   - uid: Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D
     name: ImmediateVertex3D
     type: Struct
