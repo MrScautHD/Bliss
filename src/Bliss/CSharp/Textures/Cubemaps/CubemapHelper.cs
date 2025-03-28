@@ -121,11 +121,11 @@ public static class CubemapHelper {
     private static void ProcessCrossThreeByFour(Image image, Image[] cubemapFaces, int width, int height) {
         int crossWidth = width / 3;
         int crossHeight = height / 4;
-        
-        // NegativeZ
-        Image negativeZ = (Image) image.Clone();
-        negativeZ.Crop(new Rectangle(crossWidth * 2, crossHeight * 1, crossWidth, crossHeight));
-        cubemapFaces[5] = negativeZ;
+
+        // PositiveX
+        Image positiveX = (Image) image.Clone();
+        positiveX.Crop(new Rectangle(crossWidth * 2, crossHeight, crossWidth, crossHeight));
+        cubemapFaces[0] = positiveX;
         
         // NegativeX
         Image negativeX = (Image) image.Clone();
@@ -146,11 +146,11 @@ public static class CubemapHelper {
         Image positiveZ = (Image) image.Clone();
         positiveZ.Crop(new Rectangle(crossWidth, crossHeight * 1, crossWidth, crossHeight));
         cubemapFaces[4] = positiveZ;
-        
-        // PositiveX
-        Image positiveX = (Image) image.Clone();
-        positiveX.Crop(new Rectangle(crossWidth * 2, crossHeight, crossWidth, crossHeight));
-        cubemapFaces[0] = positiveX;
+
+        // NegativeZ
+        Image negativeZ = (Image) image.Clone();
+        negativeZ.Crop(new Rectangle(crossWidth * 2, crossHeight * 1, crossWidth, crossHeight));
+        cubemapFaces[5] = negativeZ;
     }
 
     /// <summary>
@@ -163,11 +163,11 @@ public static class CubemapHelper {
     private static void ProcessCrossFourByThree(Image image, Image[] cubemapFaces, int width, int height) {
         int crossWidth = width / 4;
         int crossHeight = height / 3;
-        
-        // NegativeZ
-        Image negativeZ = (Image) image.Clone();
-        negativeZ.Crop(new Rectangle(crossWidth * 3, crossHeight * 1, crossWidth, crossHeight));
-        cubemapFaces[5] = negativeZ;
+
+        // PositiveX
+        Image positiveX = (Image) image.Clone();
+        positiveX.Crop(new Rectangle(crossWidth * 2, crossHeight, crossWidth, crossHeight));
+        cubemapFaces[0] = positiveX;
         
         // NegativeX
         Image negativeX = (Image) image.Clone();
@@ -188,11 +188,11 @@ public static class CubemapHelper {
         Image positiveZ = (Image) image.Clone();
         positiveZ.Crop(new Rectangle(crossWidth * 1, crossHeight * 1, crossWidth, crossHeight));
         cubemapFaces[4] = positiveZ;
-        
-        // PositiveX
-        Image positiveX = (Image) image.Clone();
-        positiveX.Crop(new Rectangle(crossWidth * 3, crossHeight, crossWidth, crossHeight));
-        cubemapFaces[0] = positiveX;
+
+        // NegativeZ
+        Image negativeZ = (Image) image.Clone();
+        negativeZ.Crop(new Rectangle(crossWidth * 3, crossHeight * 1, crossWidth, crossHeight));
+        cubemapFaces[5] = negativeZ;
     }
 
     /// <summary>
