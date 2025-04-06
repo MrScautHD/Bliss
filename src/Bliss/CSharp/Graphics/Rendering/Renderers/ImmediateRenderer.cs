@@ -1792,7 +1792,10 @@ public class ImmediateRenderer : Disposable {
         Color finalColor = color ?? Color.White;
 
         // Add start vertex.
-        this._tempVertices.Add(new ImmediateVertex3D { Position = startPos, Color = finalColor.ToRgbaFloatVec4() });
+        this._tempVertices.Add(new ImmediateVertex3D {
+            Position = startPos,
+            Color = finalColor.ToRgbaFloatVec4()
+        });
 
         // Add end vertex.
         this._tempVertices.Add(new ImmediateVertex3D {
@@ -1908,12 +1911,11 @@ public class ImmediateRenderer : Disposable {
         }
 
         if (vertices.Count > this.Capacity) {
-            Logger.Fatal(new InvalidOperationException(
-                $"The number of provided vertices exceeds the maximum batch size! [{vertices.Count} > {this.Capacity}]"));
+            Logger.Fatal(new InvalidOperationException($"The number of provided vertices exceeds the capacity! [{vertices.Count} > {this.Capacity}]"));
         }
 
         if (indices.Count > this.Capacity * 3) {
-            Logger.Fatal(new InvalidOperationException($"The number of provided indices exceeds the maximum batch size! [{indices.Count} > {this.Capacity * 3}]"));
+            Logger.Fatal(new InvalidOperationException($"The number of provided indices exceeds the capacity! [{indices.Count} > {this.Capacity * 3}]"));
         }
         
         // Add vertices.

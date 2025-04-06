@@ -1106,6 +1106,96 @@ public class Mesh : Disposable {
             this.Vertices[i].Tangent = tangent;
         }
     }
+
+    /// <summary>
+    /// Sets the value of a vertex at a specified index.
+    /// </summary>
+    /// <param name="index">The index of the vertex to set.</param>
+    /// <param name="value">The new value to assign to the vertex.</param>
+    public void SetVertexValue(int index, Vertex3D value) {
+        this.Vertices[index] = value;
+    }
+
+    /// <summary>
+    /// Sets the vertex value at the specified index and updates the vertex buffer immediately.
+    /// </summary>
+    /// <param name="index">The index at which the vertex value will be set.</param>
+    /// <param name="value">The new vertex value to set at the specified index.</param>
+    public void SetVertexValueImmediate(int index, Vertex3D value) {
+        this.Vertices[index] = value;
+        this.GraphicsDevice.UpdateBuffer(this._vertexBuffer, (uint) (index * Marshal.SizeOf<Vertex3D>()), this.Vertices[index]);
+    }
+
+    /// <summary>
+    /// Updates the vertex buffer with a new vertex value at the specified index in a deferred manner, using the provided command list.
+    /// </summary>
+    /// <param name="commandList">The <see cref="CommandList"/> used to issue the update commands.</param>
+    /// <param name="index">The index of the vertex to update.</param>
+    /// <param name="value">The new <see cref="Vertex3D"/> value to set at the specified index.</param
+    public void SetVertexValueDeferred(CommandList commandList, int index, Vertex3D value) {
+        this.Vertices[index] = value;
+        commandList.UpdateBuffer(this._vertexBuffer, (uint) (index * Marshal.SizeOf<Vertex3D>()), this.Vertices[index]);
+    }
+
+    /// <summary>
+    /// Updates the vertex buffer with the current vertex data immediately on the GPU.
+    /// </summary>
+    public void UpdateVertexBufferImmediate() {
+        this.GraphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this.Vertices);
+    }
+
+    /// <summary>
+    /// Updates the vertex buffer with the current vertex data using the specified command list.
+    /// </summary>
+    /// <param name="commandList">The command list used to update the vertex buffer.</param>
+    public void UpdateVertexBuffer(CommandList commandList) {
+        commandList.UpdateBuffer(this._vertexBuffer, 0, this.Vertices);
+    }
+
+    /// <summary>
+    /// Sets the index value in the mesh's index buffer at the specified position.
+    /// </summary>
+    /// <param name="index">The position in the index buffer to set the value.</param>
+    /// <param name="value">The value to assign to the specified index position.</param>
+    public void SetIndexValue(int index, uint value) {
+        this.Indices[index] = value;
+    }
+
+    /// <summary>
+    /// Sets the value of an index in the index buffer and updates the buffer immediately.
+    /// </summary>
+    /// <param name="index">The position in the index buffer to be updated.</param>
+    /// <param name="value">The new index value to be set at the specified position.</param>
+    public void SetIndexValueImmediate(int index, uint value) {
+        this.Indices[index] = value;
+        this.GraphicsDevice.UpdateBuffer(this._indexBuffer, (uint) index * sizeof(uint), this.Indices[index]);
+    }
+
+    /// <summary>
+    /// Updates the value of an index in the deferred rendering pipeline and applies the changes to the index buffer.
+    /// </summary>
+    /// <param name="commandList">The command list used for recording GPU commands.</param>
+    /// <param name="index">The index of the element to be updated.</param>
+    /// <param name="value">The new value to assign to the specified index.</param>
+    public void SetIndexValueDeferred(CommandList commandList, int index, uint value) {
+        this.Indices[index] = value;
+        commandList.UpdateBuffer(this._indexBuffer, (uint) index * sizeof(uint), this.Indices[index]);
+    }
+
+    /// <summary>
+    /// Updates the index buffer of the mesh immediately with the current index data.
+    /// </summary>
+    public void UpdateIndexBufferImmediate() {
+        this.GraphicsDevice.UpdateBuffer(this._indexBuffer, 0, this.Indices);
+    }
+
+    /// <summary>
+    /// Updates the index buffer with the current index data on the specified command list.
+    /// </summary>
+    /// <param name="commandList">The command list used to update the index buffer.</param>
+    public void UpdateIndexBuffer(CommandList commandList) {
+        commandList.UpdateBuffer(this._indexBuffer, 0, this.Indices);
+    }
     
     /// <summary>
     /// Updates the transformation matrices of the animation bones for a specific frame using the provided command list and animation data.
