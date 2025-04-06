@@ -46,6 +46,7 @@ references:
   fullName: Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D
 - uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
   commentId: T:Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+  parent: Bliss.CSharp.Graphics.VertexTypes
   href: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.html
   name: Vertex3D
   nameWithType: Vertex3D

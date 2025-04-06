@@ -1131,7 +1131,7 @@ public class Mesh : Disposable {
     /// </summary>
     /// <param name="commandList">The <see cref="CommandList"/> used to issue the update commands.</param>
     /// <param name="index">The index of the vertex to update.</param>
-    /// <param name="value">The new <see cref="Vertex3D"/> value to set at the specified index.</param
+    /// <param name="value">The new <see cref="Vertex3D"/> value to set at the specified index.</param>
     public void SetVertexValueDeferred(CommandList commandList, int index, Vertex3D value) {
         this.Vertices[index] = value;
         commandList.UpdateBuffer(this._vertexBuffer, (uint) (index * Marshal.SizeOf<Vertex3D>()), this.Vertices[index]);

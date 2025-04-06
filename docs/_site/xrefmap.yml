@@ -2767,6 +2767,102 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Geometry.Mesh.ResetAnimationBones
   nameWithType: Mesh.ResetAnimationBones
+- uid: Bliss.CSharp.Geometry.Mesh.SetIndexValue(System.Int32,System.UInt32)
+  name: SetIndexValue(int, uint)
+  href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_SetIndexValue_System_Int32_System_UInt32_
+  commentId: M:Bliss.CSharp.Geometry.Mesh.SetIndexValue(System.Int32,System.UInt32)
+  name.vb: SetIndexValue(Integer, UInteger)
+  fullName: Bliss.CSharp.Geometry.Mesh.SetIndexValue(int, uint)
+  fullName.vb: Bliss.CSharp.Geometry.Mesh.SetIndexValue(Integer, UInteger)
+  nameWithType: Mesh.SetIndexValue(int, uint)
+  nameWithType.vb: Mesh.SetIndexValue(Integer, UInteger)
+- uid: Bliss.CSharp.Geometry.Mesh.SetIndexValue*
+  name: SetIndexValue
+  href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_SetIndexValue_
+  commentId: Overload:Bliss.CSharp.Geometry.Mesh.SetIndexValue
+  isSpec: "True"
+  fullName: Bliss.CSharp.Geometry.Mesh.SetIndexValue
+  nameWithType: Mesh.SetIndexValue
+- uid: Bliss.CSharp.Geometry.Mesh.SetIndexValueDeferred(Veldrid.CommandList,System.Int32,System.UInt32)
+  name: SetIndexValueDeferred(CommandList, int, uint)
+  href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_SetIndexValueDeferred_Veldrid_CommandList_System_Int32_System_UInt32_
+  commentId: M:Bliss.CSharp.Geometry.Mesh.SetIndexValueDeferred(Veldrid.CommandList,System.Int32,System.UInt32)
+  name.vb: SetIndexValueDeferred(CommandList, Integer, UInteger)
+  fullName: Bliss.CSharp.Geometry.Mesh.SetIndexValueDeferred(Veldrid.CommandList, int, uint)
+  fullName.vb: Bliss.CSharp.Geometry.Mesh.SetIndexValueDeferred(Veldrid.CommandList, Integer, UInteger)
+  nameWithType: Mesh.SetIndexValueDeferred(CommandList, int, uint)
+  nameWithType.vb: Mesh.SetIndexValueDeferred(CommandList, Integer, UInteger)
+- uid: Bliss.CSharp.Geometry.Mesh.SetIndexValueDeferred*
+  name: SetIndexValueDeferred
+  href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_SetIndexValueDeferred_
+  commentId: Overload:Bliss.CSharp.Geometry.Mesh.SetIndexValueDeferred
+  isSpec: "True"
+  fullName: Bliss.CSharp.Geometry.Mesh.SetIndexValueDeferred
+  nameWithType: Mesh.SetIndexValueDeferred
+- uid: Bliss.CSharp.Geometry.Mesh.SetIndexValueImmediate(System.Int32,System.UInt32)
+  name: SetIndexValueImmediate(int, uint)
+  href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_SetIndexValueImmediate_System_Int32_System_UInt32_
+  commentId: M:Bliss.CSharp.Geometry.Mesh.SetIndexValueImmediate(System.Int32,System.UInt32)
+  name.vb: SetIndexValueImmediate(Integer, UInteger)
+  fullName: Bliss.CSharp.Geometry.Mesh.SetIndexValueImmediate(int, uint)
+  fullName.vb: Bliss.CSharp.Geometry.Mesh.SetIndexValueImmediate(Integer, UInteger)
+  nameWithType: Mesh.SetIndexValueImmediate(int, uint)
+  nameWithType.vb: Mesh.SetIndexValueImmediate(Integer, UInteger)
+- uid: Bliss.CSharp.Geometry.Mesh.SetIndexValueImmediate*
+  name: SetIndexValueImmediate
+  href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_SetIndexValueImmediate_
+  commentId: Overload:Bliss.CSharp.Geometry.Mesh.SetIndexValueImmediate
+  isSpec: "True"
+  fullName: Bliss.CSharp.Geometry.Mesh.SetIndexValueImmediate
+  nameWithType: Mesh.SetIndexValueImmediate
+- uid: Bliss.CSharp.Geometry.Mesh.SetVertexValue(System.Int32,Bliss.CSharp.Graphics.VertexTypes.Vertex3D)
+  name: SetVertexValue(int, Vertex3D)
+  href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_SetVertexValue_System_Int32_Bliss_CSharp_Graphics_VertexTypes_Vertex3D_
+  commentId: M:Bliss.CSharp.Geometry.Mesh.SetVertexValue(System.Int32,Bliss.CSharp.Graphics.VertexTypes.Vertex3D)
+  name.vb: SetVertexValue(Integer, Vertex3D)
+  fullName: Bliss.CSharp.Geometry.Mesh.SetVertexValue(int, Bliss.CSharp.Graphics.VertexTypes.Vertex3D)
+  fullName.vb: Bliss.CSharp.Geometry.Mesh.SetVertexValue(Integer, Bliss.CSharp.Graphics.VertexTypes.Vertex3D)
+  nameWithType: Mesh.SetVertexValue(int, Vertex3D)
+  nameWithType.vb: Mesh.SetVertexValue(Integer, Vertex3D)
+- uid: Bliss.CSharp.Geometry.Mesh.SetVertexValue*
+  name: SetVertexValue
+  href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_SetVertexValue_
+  commentId: Overload:Bliss.CSharp.Geometry.Mesh.SetVertexValue
+  isSpec: "True"
+  fullName: Bliss.CSharp.Geometry.Mesh.SetVertexValue
+  nameWithType: Mesh.SetVertexValue
+- uid: Bliss.CSharp.Geometry.Mesh.SetVertexValueDeferred(Veldrid.CommandList,System.Int32,Bliss.CSharp.Graphics.VertexTypes.Vertex3D)
+  name: SetVertexValueDeferred(CommandList, int, Vertex3D)
+  href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_SetVertexValueDeferred_Veldrid_CommandList_System_Int32_Bliss_CSharp_Graphics_VertexTypes_Vertex3D_
+  commentId: M:Bliss.CSharp.Geometry.Mesh.SetVertexValueDeferred(Veldrid.CommandList,System.Int32,Bliss.CSharp.Graphics.VertexTypes.Vertex3D)
+  name.vb: SetVertexValueDeferred(CommandList, Integer, Vertex3D)
+  fullName: Bliss.CSharp.Geometry.Mesh.SetVertexValueDeferred(Veldrid.CommandList, int, Bliss.CSharp.Graphics.VertexTypes.Vertex3D)
+  fullName.vb: Bliss.CSharp.Geometry.Mesh.SetVertexValueDeferred(Veldrid.CommandList, Integer, Bliss.CSharp.Graphics.VertexTypes.Vertex3D)
+  nameWithType: Mesh.SetVertexValueDeferred(CommandList, int, Vertex3D)
+  nameWithType.vb: Mesh.SetVertexValueDeferred(CommandList, Integer, Vertex3D)
+- uid: Bliss.CSharp.Geometry.Mesh.SetVertexValueDeferred*
+  name: SetVertexValueDeferred
+  href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_SetVertexValueDeferred_
+  commentId: Overload:Bliss.CSharp.Geometry.Mesh.SetVertexValueDeferred
+  isSpec: "True"
+  fullName: Bliss.CSharp.Geometry.Mesh.SetVertexValueDeferred
+  nameWithType: Mesh.SetVertexValueDeferred
+- uid: Bliss.CSharp.Geometry.Mesh.SetVertexValueImmediate(System.Int32,Bliss.CSharp.Graphics.VertexTypes.Vertex3D)
+  name: SetVertexValueImmediate(int, Vertex3D)
+  href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_SetVertexValueImmediate_System_Int32_Bliss_CSharp_Graphics_VertexTypes_Vertex3D_
+  commentId: M:Bliss.CSharp.Geometry.Mesh.SetVertexValueImmediate(System.Int32,Bliss.CSharp.Graphics.VertexTypes.Vertex3D)
+  name.vb: SetVertexValueImmediate(Integer, Vertex3D)
+  fullName: Bliss.CSharp.Geometry.Mesh.SetVertexValueImmediate(int, Bliss.CSharp.Graphics.VertexTypes.Vertex3D)
+  fullName.vb: Bliss.CSharp.Geometry.Mesh.SetVertexValueImmediate(Integer, Bliss.CSharp.Graphics.VertexTypes.Vertex3D)
+  nameWithType: Mesh.SetVertexValueImmediate(int, Vertex3D)
+  nameWithType.vb: Mesh.SetVertexValueImmediate(Integer, Vertex3D)
+- uid: Bliss.CSharp.Geometry.Mesh.SetVertexValueImmediate*
+  name: SetVertexValueImmediate
+  href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_SetVertexValueImmediate_
+  commentId: Overload:Bliss.CSharp.Geometry.Mesh.SetVertexValueImmediate
+  isSpec: "True"
+  fullName: Bliss.CSharp.Geometry.Mesh.SetVertexValueImmediate
+  nameWithType: Mesh.SetVertexValueImmediate
 - uid: Bliss.CSharp.Geometry.Mesh.UpdateAnimationBones(Veldrid.CommandList,Bliss.CSharp.Geometry.Animations.ModelAnimation,System.Int32)
   name: UpdateAnimationBones(CommandList, ModelAnimation, int)
   href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_UpdateAnimationBones_Veldrid_CommandList_Bliss_CSharp_Geometry_Animations_ModelAnimation_System_Int32_
@@ -2783,6 +2879,58 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Geometry.Mesh.UpdateAnimationBones
   nameWithType: Mesh.UpdateAnimationBones
+- uid: Bliss.CSharp.Geometry.Mesh.UpdateIndexBuffer(Veldrid.CommandList)
+  name: UpdateIndexBuffer(CommandList)
+  href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_UpdateIndexBuffer_Veldrid_CommandList_
+  commentId: M:Bliss.CSharp.Geometry.Mesh.UpdateIndexBuffer(Veldrid.CommandList)
+  fullName: Bliss.CSharp.Geometry.Mesh.UpdateIndexBuffer(Veldrid.CommandList)
+  nameWithType: Mesh.UpdateIndexBuffer(CommandList)
+- uid: Bliss.CSharp.Geometry.Mesh.UpdateIndexBuffer*
+  name: UpdateIndexBuffer
+  href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_UpdateIndexBuffer_
+  commentId: Overload:Bliss.CSharp.Geometry.Mesh.UpdateIndexBuffer
+  isSpec: "True"
+  fullName: Bliss.CSharp.Geometry.Mesh.UpdateIndexBuffer
+  nameWithType: Mesh.UpdateIndexBuffer
+- uid: Bliss.CSharp.Geometry.Mesh.UpdateIndexBufferImmediate
+  name: UpdateIndexBufferImmediate()
+  href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_UpdateIndexBufferImmediate
+  commentId: M:Bliss.CSharp.Geometry.Mesh.UpdateIndexBufferImmediate
+  fullName: Bliss.CSharp.Geometry.Mesh.UpdateIndexBufferImmediate()
+  nameWithType: Mesh.UpdateIndexBufferImmediate()
+- uid: Bliss.CSharp.Geometry.Mesh.UpdateIndexBufferImmediate*
+  name: UpdateIndexBufferImmediate
+  href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_UpdateIndexBufferImmediate_
+  commentId: Overload:Bliss.CSharp.Geometry.Mesh.UpdateIndexBufferImmediate
+  isSpec: "True"
+  fullName: Bliss.CSharp.Geometry.Mesh.UpdateIndexBufferImmediate
+  nameWithType: Mesh.UpdateIndexBufferImmediate
+- uid: Bliss.CSharp.Geometry.Mesh.UpdateVertexBuffer(Veldrid.CommandList)
+  name: UpdateVertexBuffer(CommandList)
+  href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_UpdateVertexBuffer_Veldrid_CommandList_
+  commentId: M:Bliss.CSharp.Geometry.Mesh.UpdateVertexBuffer(Veldrid.CommandList)
+  fullName: Bliss.CSharp.Geometry.Mesh.UpdateVertexBuffer(Veldrid.CommandList)
+  nameWithType: Mesh.UpdateVertexBuffer(CommandList)
+- uid: Bliss.CSharp.Geometry.Mesh.UpdateVertexBuffer*
+  name: UpdateVertexBuffer
+  href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_UpdateVertexBuffer_
+  commentId: Overload:Bliss.CSharp.Geometry.Mesh.UpdateVertexBuffer
+  isSpec: "True"
+  fullName: Bliss.CSharp.Geometry.Mesh.UpdateVertexBuffer
+  nameWithType: Mesh.UpdateVertexBuffer
+- uid: Bliss.CSharp.Geometry.Mesh.UpdateVertexBufferImmediate
+  name: UpdateVertexBufferImmediate()
+  href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_UpdateVertexBufferImmediate
+  commentId: M:Bliss.CSharp.Geometry.Mesh.UpdateVertexBufferImmediate
+  fullName: Bliss.CSharp.Geometry.Mesh.UpdateVertexBufferImmediate()
+  nameWithType: Mesh.UpdateVertexBufferImmediate()
+- uid: Bliss.CSharp.Geometry.Mesh.UpdateVertexBufferImmediate*
+  name: UpdateVertexBufferImmediate
+  href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_UpdateVertexBufferImmediate_
+  commentId: Overload:Bliss.CSharp.Geometry.Mesh.UpdateVertexBufferImmediate
+  isSpec: "True"
+  fullName: Bliss.CSharp.Geometry.Mesh.UpdateVertexBufferImmediate
+  nameWithType: Mesh.UpdateVertexBufferImmediate
 - uid: Bliss.CSharp.Geometry.Mesh.VertexCount
   name: VertexCount
   href: api/Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_VertexCount

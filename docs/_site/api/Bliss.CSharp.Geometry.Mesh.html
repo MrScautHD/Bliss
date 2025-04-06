@@ -492,7 +492,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_Dispose_System_Boolean_" data-uid="Bliss.CSharp.Geometry.Mesh.Dispose(System.Boolean)">
   Dispose(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1286"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1376"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Disposes of the object and releases associated resources.</p>
@@ -525,7 +525,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_Draw_Veldrid_CommandList_Bliss_CSharp_Transformations_Transform_Veldrid_OutputDescription_Veldrid_Sampler_System_Nullable_Veldrid_DepthStencilStateDescription__System_Nullable_Veldrid_RasterizerStateDescription__System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Geometry.Mesh.Draw(Veldrid.CommandList,Bliss.CSharp.Transformations.Transform,Veldrid.OutputDescription,Veldrid.Sampler,System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{Bliss.CSharp.Colors.Color})">
   Draw(CommandList, Transform, OutputDescription, Sampler?, DepthStencilStateDescription?, RasterizerStateDescription?, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1148"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1238"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Renders the mesh with the specified properties and configurations.</p>
@@ -1083,7 +1083,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_ResetAnimationBones_Veldrid_CommandList_" data-uid="Bliss.CSharp.Geometry.Mesh.ResetAnimationBones(Veldrid.CommandList)">
   ResetAnimationBones(CommandList)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1130"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1220"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Resets the bone transformation matrices to their identity state and updates the buffer on the GPU using the provided command list.</p>
@@ -1112,11 +1112,233 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
 
 
+  <a id="Bliss_CSharp_Geometry_Mesh_SetIndexValue_" data-uid="Bliss.CSharp.Geometry.Mesh.SetIndexValue*"></a>
+
+  <h3 id="Bliss_CSharp_Geometry_Mesh_SetIndexValue_System_Int32_System_UInt32_" data-uid="Bliss.CSharp.Geometry.Mesh.SetIndexValue(System.Int32,System.UInt32)">
+  SetIndexValue(int, uint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1160"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the index value in the mesh's index buffer at the specified position.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetIndexValue(int index, uint value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The position in the index buffer to set the value.</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The value to assign to the specified index position.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Geometry_Mesh_SetIndexValueDeferred_" data-uid="Bliss.CSharp.Geometry.Mesh.SetIndexValueDeferred*"></a>
+
+  <h3 id="Bliss_CSharp_Geometry_Mesh_SetIndexValueDeferred_Veldrid_CommandList_System_Int32_System_UInt32_" data-uid="Bliss.CSharp.Geometry.Mesh.SetIndexValueDeferred(Veldrid.CommandList,System.Int32,System.UInt32)">
+  SetIndexValueDeferred(CommandList, int, uint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1180"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the value of an index in the deferred rendering pipeline and applies the changes to the index buffer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetIndexValueDeferred(CommandList commandList, int index, uint value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs">CommandList</a></dt>
+    <dd><p>The command list used for recording GPU commands.</p>
+</dd>
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index of the element to be updated.</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The new value to assign to the specified index.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Geometry_Mesh_SetIndexValueImmediate_" data-uid="Bliss.CSharp.Geometry.Mesh.SetIndexValueImmediate*"></a>
+
+  <h3 id="Bliss_CSharp_Geometry_Mesh_SetIndexValueImmediate_System_Int32_System_UInt32_" data-uid="Bliss.CSharp.Geometry.Mesh.SetIndexValueImmediate(System.Int32,System.UInt32)">
+  SetIndexValueImmediate(int, uint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1169"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value of an index in the index buffer and updates the buffer immediately.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetIndexValueImmediate(int index, uint value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The position in the index buffer to be updated.</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The new index value to be set at the specified position.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Geometry_Mesh_SetVertexValue_" data-uid="Bliss.CSharp.Geometry.Mesh.SetVertexValue*"></a>
+
+  <h3 id="Bliss_CSharp_Geometry_Mesh_SetVertexValue_System_Int32_Bliss_CSharp_Graphics_VertexTypes_Vertex3D_" data-uid="Bliss.CSharp.Geometry.Mesh.SetVertexValue(System.Int32,Bliss.CSharp.Graphics.VertexTypes.Vertex3D)">
+  SetVertexValue(int, Vertex3D)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1115"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value of a vertex at a specified index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetVertexValue(int index, Vertex3D value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index of the vertex to set.</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="Bliss.CSharp.Graphics.VertexTypes.Vertex3D.html">Vertex3D</a></dt>
+    <dd><p>The new value to assign to the vertex.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Geometry_Mesh_SetVertexValueDeferred_" data-uid="Bliss.CSharp.Geometry.Mesh.SetVertexValueDeferred*"></a>
+
+  <h3 id="Bliss_CSharp_Geometry_Mesh_SetVertexValueDeferred_Veldrid_CommandList_System_Int32_Bliss_CSharp_Graphics_VertexTypes_Vertex3D_" data-uid="Bliss.CSharp.Geometry.Mesh.SetVertexValueDeferred(Veldrid.CommandList,System.Int32,Bliss.CSharp.Graphics.VertexTypes.Vertex3D)">
+  SetVertexValueDeferred(CommandList, int, Vertex3D)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1135"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the vertex buffer with a new vertex value at the specified index in a deferred manner, using the provided command list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetVertexValueDeferred(CommandList commandList, int index, Vertex3D value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs">CommandList</a></dt>
+    <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs">CommandList</a> used to issue the update commands.</p>
+</dd>
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index of the vertex to update.</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="Bliss.CSharp.Graphics.VertexTypes.Vertex3D.html">Vertex3D</a></dt>
+    <dd><p>The new <a class="xref" href="Bliss.CSharp.Graphics.VertexTypes.Vertex3D.html">Vertex3D</a> value to set at the specified index.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Geometry_Mesh_SetVertexValueImmediate_" data-uid="Bliss.CSharp.Geometry.Mesh.SetVertexValueImmediate*"></a>
+
+  <h3 id="Bliss_CSharp_Geometry_Mesh_SetVertexValueImmediate_System_Int32_Bliss_CSharp_Graphics_VertexTypes_Vertex3D_" data-uid="Bliss.CSharp.Geometry.Mesh.SetVertexValueImmediate(System.Int32,Bliss.CSharp.Graphics.VertexTypes.Vertex3D)">
+  SetVertexValueImmediate(int, Vertex3D)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1124"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the vertex value at the specified index and updates the vertex buffer immediately.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetVertexValueImmediate(int index, Vertex3D value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index at which the vertex value will be set.</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="Bliss.CSharp.Graphics.VertexTypes.Vertex3D.html">Vertex3D</a></dt>
+    <dd><p>The new vertex value to set at the specified index.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Bliss_CSharp_Geometry_Mesh_UpdateAnimationBones_" data-uid="Bliss.CSharp.Geometry.Mesh.UpdateAnimationBones*"></a>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_UpdateAnimationBones_Veldrid_CommandList_Bliss_CSharp_Geometry_Animations_ModelAnimation_System_Int32_" data-uid="Bliss.CSharp.Geometry.Mesh.UpdateAnimationBones(Veldrid.CommandList,Bliss.CSharp.Geometry.Animations.ModelAnimation,System.Int32)">
   UpdateAnimationBones(CommandList, ModelAnimation, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1116"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1206"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Updates the transformation matrices of the animation bones for a specific frame using the provided command list and animation data.</p>
@@ -1139,6 +1361,126 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
     <dd><p>The specific frame of the animation to update the bone transformations.</p>
 </dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Geometry_Mesh_UpdateIndexBuffer_" data-uid="Bliss.CSharp.Geometry.Mesh.UpdateIndexBuffer*"></a>
+
+  <h3 id="Bliss_CSharp_Geometry_Mesh_UpdateIndexBuffer_Veldrid_CommandList_" data-uid="Bliss.CSharp.Geometry.Mesh.UpdateIndexBuffer(Veldrid.CommandList)">
+  UpdateIndexBuffer(CommandList)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1196"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the index buffer with the current index data on the specified command list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateIndexBuffer(CommandList commandList)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs">CommandList</a></dt>
+    <dd><p>The command list used to update the index buffer.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Geometry_Mesh_UpdateIndexBufferImmediate_" data-uid="Bliss.CSharp.Geometry.Mesh.UpdateIndexBufferImmediate*"></a>
+
+  <h3 id="Bliss_CSharp_Geometry_Mesh_UpdateIndexBufferImmediate" data-uid="Bliss.CSharp.Geometry.Mesh.UpdateIndexBufferImmediate">
+  UpdateIndexBufferImmediate()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1188"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the index buffer of the mesh immediately with the current index data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateIndexBufferImmediate()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Geometry_Mesh_UpdateVertexBuffer_" data-uid="Bliss.CSharp.Geometry.Mesh.UpdateVertexBuffer*"></a>
+
+  <h3 id="Bliss_CSharp_Geometry_Mesh_UpdateVertexBuffer_Veldrid_CommandList_" data-uid="Bliss.CSharp.Geometry.Mesh.UpdateVertexBuffer(Veldrid.CommandList)">
+  UpdateVertexBuffer(CommandList)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1151"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the vertex buffer with the current vertex data using the specified command list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateVertexBuffer(CommandList commandList)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs">CommandList</a></dt>
+    <dd><p>The command list used to update the vertex buffer.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Geometry_Mesh_UpdateVertexBufferImmediate_" data-uid="Bliss.CSharp.Geometry.Mesh.UpdateVertexBufferImmediate*"></a>
+
+  <h3 id="Bliss_CSharp_Geometry_Mesh_UpdateVertexBufferImmediate" data-uid="Bliss.CSharp.Geometry.Mesh.UpdateVertexBufferImmediate">
+  UpdateVertexBufferImmediate()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1143"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the vertex buffer with the current vertex data immediately on the GPU.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateVertexBufferImmediate()</code></pre>
+  </div>
+
 
 
 
