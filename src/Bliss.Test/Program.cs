@@ -1,5 +1,4 @@
 ﻿using Bliss.Test;
-using Veldrid;
 
 GameSettings settings = new GameSettings() {
     Title = "Bliss - [Test]"

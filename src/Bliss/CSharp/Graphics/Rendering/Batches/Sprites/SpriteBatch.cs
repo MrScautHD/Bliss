@@ -269,17 +269,15 @@ public class SpriteBatch : Disposable {
         this._begun = true;
         this._currentCommandList = commandList;
         this._mainOutput = output;
-        this._currentOutput = output;
-        this._currentEffect = effect ?? GlobalResource.DefaultSpriteEffect;
-        this._currentBlendState = blendState ?? BlendStateDescription.SINGLE_ALPHA_BLEND;
-        this._currentDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DISABLED;
-        this._currentRasterizerState = rasterizerState ?? RasterizerStateDescription.CULL_NONE;
-        this._currentProjection = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
-        this._currentView = view ?? Matrix4x4.Identity;
-        this._currentSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
+        this._currentOutput = this._requestedOutput = output;
+        this._currentEffect = this._requestedEffect = effect ?? GlobalResource.DefaultSpriteEffect;
+        this._currentBlendState = this._requestedBlendState = blendState ?? BlendStateDescription.SINGLE_ALPHA_BLEND;
+        this._currentDepthStencilState = this._requestedDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DISABLED;
+        this._currentRasterizerState = this._requestedRasterizerState = rasterizerState ?? RasterizerStateDescription.CULL_NONE;
+        this._currentProjection = this._requestedProjection = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
+        this._currentView = this._requestedView = view ?? Matrix4x4.Identity;
+        this._currentSampler = this._requestedSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
         
-        // Reset requested default settings.
-        this.ResetSettings();
         this.DrawCallCount = 0;
     }
 
