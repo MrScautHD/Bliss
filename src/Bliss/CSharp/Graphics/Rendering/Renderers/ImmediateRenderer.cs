@@ -115,7 +115,7 @@ public class ImmediateRenderer : Disposable {
     /// Initializes a new instance of the <see cref="ImmediateRenderer"/> class with the specified graphics device, output, effect, and capacity.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used for rendering.</param>
-    /// <param name="capacity">The maximum number of vertices that can be batched. Defaults to 30720.</param>
+    /// <param name="capacity">The maximum number of vertices. Defaults to 30720.</param>
     public ImmediateRenderer(GraphicsDevice graphicsDevice, uint capacity = 30720) {
         this.GraphicsDevice = graphicsDevice;
         this.Capacity = capacity;
