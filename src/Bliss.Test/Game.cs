@@ -338,7 +338,7 @@ public class Game : Disposable {
         this._animatedImage.GetFrameInfo(frame, out int width, out int height, out float duration);
         this._spriteBatch.DrawTexture(this._gif, new Vector2(30, 30), new Rectangle(width * frame, 0, width, height), new Vector2(0.2F, 0.2F));
         
-        this._spriteBatch.DrawTexture(this._cubemapTexture, new Vector2(150, 150));
+        //this._spriteBatch.DrawTexture(this._cubemapTexture, new Vector2(150, 150));
         
         this._spriteBatch.End();
         

@@ -17,9 +17,13 @@ public static class Window {
     /// <param name="graphicsDevice">An output parameter that will hold the created graphics device.</param>
     /// <returns>An implementation of <see cref="IWindow"/> corresponding to the specified parameters.</returns>
     public static IWindow CreateWindow(WindowType type, int width, int height, string title, WindowState state, GraphicsDeviceOptions options, GraphicsBackend preferredBackend, out GraphicsDevice graphicsDevice) {
+        if (!GraphicsDevice.IsBackendSupported(preferredBackend)) {
+            throw new PlatformNotSupportedException($"The graphics backend [{preferredBackend}] is not supported on this platform.");
+        }
+        
         switch (type) {
             case WindowType.Sdl3:
-                Sdl3Window window = new Sdl3Window(width, height, title, state);
+                Sdl3Window window = new Sdl3Window(width, height, title, state, preferredBackend);
                 graphicsDevice = CreateGraphicsDevice(window, options, preferredBackend);
                 return window;
             default:

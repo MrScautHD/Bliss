@@ -204,8 +204,9 @@ public class Sdl3Window : Disposable, IWindow {
     /// <param name="height">The height of the window in pixels.</param>
     /// <param name="title">The title of the window.</param>
     /// <param name="state">The initial state of the window, specified as a <see cref="WindowState"/> value.</param>
+    /// <param name="backend">The graphics backend to use for rendering (e.g., Vulkan, OpenGL).</param>
     /// <exception cref="Exception">Thrown if SDL fails to initialize the subsystem required for creating the window.</exception>
-    public unsafe Sdl3Window(int width, int height, string title, WindowState state) {
+    public unsafe Sdl3Window(int width, int height, string title, WindowState state, GraphicsBackend backend) {
         this.Exists = true;
         
         SDL3.SDL_SetHint(SDL3.SDL_HINT_WINDOWS_CLOSE_ON_ALT_F4, "1");
@@ -214,13 +215,26 @@ public class Sdl3Window : Disposable, IWindow {
         if (!SDL3.SDL_InitSubSystem(InitFlags)) {
             throw new Exception($"Failed to initialise SDL! Error: {SDL3.SDL_GetError()}");
         }
+
+        // Setup window flags.
+        SDL_WindowFlags flags = this.MapWindowState(state);
+
+        switch (backend) {
+            case GraphicsBackend.Vulkan:
+                flags |= SDL_WindowFlags.SDL_WINDOW_VULKAN;
+                break;
+            case GraphicsBackend.OpenGL:
+            case GraphicsBackend.OpenGLES:
+                flags |= SDL_WindowFlags.SDL_WINDOW_OPENGL;
+                break;
+        }
         
         // Enable events.
         SDL3.SDL_SetGamepadEventsEnabled(true);
         SDL3.SDL_SetJoystickEventsEnabled(true);
 
         // Create window.
-        this.Handle = (nint) SDL3.SDL_CreateWindow(title, width, height, this.MapWindowState(state) | SDL_WindowFlags.SDL_WINDOW_OPENGL);
+        this.Handle = (nint) SDL3.SDL_CreateWindow(title, width, height, flags);
         
         if (this.Handle == nint.Zero) {
             throw new InvalidOperationException($"Failed to create window! Error: {SDL3.SDL_GetError()}");
