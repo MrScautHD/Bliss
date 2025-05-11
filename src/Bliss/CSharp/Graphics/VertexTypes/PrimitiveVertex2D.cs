@@ -11,14 +11,14 @@ public struct PrimitiveVertex2D {
     /// Represents the layout description for the <see cref="PrimitiveVertex2D"/> structure.
     /// </summary>
     public static VertexLayoutDescription VertexLayout = new VertexLayoutDescription(
-        new VertexElementDescription("vPosition", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float2),
+        new VertexElementDescription("vPosition", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float3),
         new VertexElementDescription("vColor", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float4)
     );
     
     /// <summary>
-    /// The position of the vertex in 2D space.
+    /// The position of the vertex in 2D space (Z is used for layout depth).
     /// </summary>
-    public Vector2 Position;
+    public Vector3 Position;
 
     /// <summary>
     /// The color of the vertex.
@@ -28,9 +28,9 @@ public struct PrimitiveVertex2D {
     /// <summary>
     /// Initializes a new instance of the <see cref="PrimitiveVertex2D"/> struct with the specified position and color values.
     /// </summary>
-    /// <param name="position">The 2D position of the vertex.</param>
+    /// <param name="position">The 2D position of the vertex (Z is used for layout depth).</param>
     /// <param name="color">The color of the vertex, represented as a Vector4 (RGBA).</param>
-    public PrimitiveVertex2D(Vector2 position, Vector4 color) {
+    public PrimitiveVertex2D(Vector3 position, Vector4 color) {
         this.Position = position;
         this.Color = color;
     }

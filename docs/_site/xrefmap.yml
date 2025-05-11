@@ -1723,15 +1723,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Fonts.Font.Dispose
   nameWithType: Font.Dispose
-- uid: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
-  name: Draw(SpriteBatch, string, Vector2, int, float, float, Vector2?, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
-  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_Draw_Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_System_String_System_Numerics_Vector2_System_Int32_System_Single_System_Single_System_Nullable_System_Numerics_Vector2__System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__FontStashSharp_TextStyle_FontStashSharp_FontSystemEffect_System_Int32_
-  commentId: M:Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
-  name.vb: Draw(SpriteBatch, String, Vector2, Integer, Single, Single, Vector2?, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
-  fullName: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch, string, System.Numerics.Vector2, int, float, float, System.Numerics.Vector2?, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, int)
-  fullName.vb: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch, String, System.Numerics.Vector2, Integer, Single, Single, System.Numerics.Vector2?, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, Integer)
-  nameWithType: Font.Draw(SpriteBatch, string, Vector2, int, float, float, Vector2?, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
-  nameWithType.vb: Font.Draw(SpriteBatch, String, Vector2, Integer, Single, Single, Vector2?, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
+- uid: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  name: Draw(SpriteBatch, string, Vector2, int, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
+  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_Draw_Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_System_String_System_Numerics_Vector2_System_Int32_System_Single_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__FontStashSharp_TextStyle_FontStashSharp_FontSystemEffect_System_Int32_
+  commentId: M:Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  name.vb: Draw(SpriteBatch, String, Vector2, Integer, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
+  fullName: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch, string, System.Numerics.Vector2, int, float, float, System.Numerics.Vector2?, float, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, int)
+  fullName.vb: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch, String, System.Numerics.Vector2, Integer, Single, Single, System.Numerics.Vector2?, Single, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, Integer)
+  nameWithType: Font.Draw(SpriteBatch, string, Vector2, int, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
+  nameWithType.vb: Font.Draw(SpriteBatch, String, Vector2, Integer, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
 - uid: Bliss.CSharp.Fonts.Font.Draw*
   name: Draw
   href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_Draw_
@@ -4310,15 +4310,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawCallCount
   nameWithType: PrimitiveBatch.DrawCallCount
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  name: DrawEmptyCircle(Vector2, float, int, int, Color?)
-  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyCircle_System_Numerics_Vector2_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  name.vb: DrawEmptyCircle(Vector2, Single, Integer, Integer, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2, float, int, int, Bliss.CSharp.Colors.Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2, Single, Integer, Integer, Bliss.CSharp.Colors.Color?)
-  nameWithType: PrimitiveBatch.DrawEmptyCircle(Vector2, float, int, int, Color?)
-  nameWithType.vb: PrimitiveBatch.DrawEmptyCircle(Vector2, Single, Integer, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawEmptyCircle(Vector2, float, int, int, float, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyCircle_System_Numerics_Vector2_System_Single_System_Int32_System_Int32_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawEmptyCircle(Vector2, Single, Integer, Integer, Single, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2, float, int, int, float, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2, Single, Integer, Integer, Single, Bliss.CSharp.Colors.Color?)
+  nameWithType: PrimitiveBatch.DrawEmptyCircle(Vector2, float, int, int, float, Color?)
+  nameWithType.vb: PrimitiveBatch.DrawEmptyCircle(Vector2, Single, Integer, Integer, Single, Color?)
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle*
   name: DrawEmptyCircle
   href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyCircle_
@@ -4326,15 +4326,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle
   nameWithType: PrimitiveBatch.DrawEmptyCircle
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  name: DrawEmptyCircleSector(Vector2, float, float, float, int, int, Color?)
-  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyCircleSector_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  name.vb: DrawEmptyCircleSector(Vector2, Single, Single, Single, Integer, Integer, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2, float, float, float, int, int, Bliss.CSharp.Colors.Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2, Single, Single, Single, Integer, Integer, Bliss.CSharp.Colors.Color?)
-  nameWithType: PrimitiveBatch.DrawEmptyCircleSector(Vector2, float, float, float, int, int, Color?)
-  nameWithType.vb: PrimitiveBatch.DrawEmptyCircleSector(Vector2, Single, Single, Single, Integer, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawEmptyCircleSector(Vector2, float, float, float, int, int, float, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyCircleSector_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Int32_System_Int32_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawEmptyCircleSector(Vector2, Single, Single, Single, Integer, Integer, Single, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2, float, float, float, int, int, float, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2, Single, Single, Single, Integer, Integer, Single, Bliss.CSharp.Colors.Color?)
+  nameWithType: PrimitiveBatch.DrawEmptyCircleSector(Vector2, float, float, float, int, int, float, Color?)
+  nameWithType.vb: PrimitiveBatch.DrawEmptyCircleSector(Vector2, Single, Single, Single, Integer, Integer, Single, Color?)
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector*
   name: DrawEmptyCircleSector
   href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyCircleSector_
@@ -4342,15 +4342,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector
   nameWithType: PrimitiveBatch.DrawEmptyCircleSector
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  name: DrawEmptyEllipse(Vector2, Vector2, int, int, Color?)
-  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyEllipse_System_Numerics_Vector2_System_Numerics_Vector2_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  name.vb: DrawEmptyEllipse(Vector2, Vector2, Integer, Integer, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2, System.Numerics.Vector2, int, int, Bliss.CSharp.Colors.Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2, System.Numerics.Vector2, Integer, Integer, Bliss.CSharp.Colors.Color?)
-  nameWithType: PrimitiveBatch.DrawEmptyEllipse(Vector2, Vector2, int, int, Color?)
-  nameWithType.vb: PrimitiveBatch.DrawEmptyEllipse(Vector2, Vector2, Integer, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawEmptyEllipse(Vector2, Vector2, int, int, float, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyEllipse_System_Numerics_Vector2_System_Numerics_Vector2_System_Int32_System_Int32_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawEmptyEllipse(Vector2, Vector2, Integer, Integer, Single, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2, System.Numerics.Vector2, int, int, float, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2, System.Numerics.Vector2, Integer, Integer, Single, Bliss.CSharp.Colors.Color?)
+  nameWithType: PrimitiveBatch.DrawEmptyEllipse(Vector2, Vector2, int, int, float, Color?)
+  nameWithType.vb: PrimitiveBatch.DrawEmptyEllipse(Vector2, Vector2, Integer, Integer, Single, Color?)
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse*
   name: DrawEmptyEllipse
   href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyEllipse_
@@ -4358,15 +4358,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse
   nameWithType: PrimitiveBatch.DrawEmptyEllipse
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
-  name: DrawEmptyRectangle(RectangleF, float, Vector2?, float, Color?)
-  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyRectangle_Bliss_CSharp_Transformations_RectangleF_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
-  name.vb: DrawEmptyRectangle(RectangleF, Single, Vector2?, Single, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF, float, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF, Single, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?)
-  nameWithType: PrimitiveBatch.DrawEmptyRectangle(RectangleF, float, Vector2?, float, Color?)
-  nameWithType.vb: PrimitiveBatch.DrawEmptyRectangle(RectangleF, Single, Vector2?, Single, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawEmptyRectangle(RectangleF, float, Vector2?, float, float, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyRectangle_Bliss_CSharp_Transformations_RectangleF_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawEmptyRectangle(RectangleF, Single, Vector2?, Single, Single, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF, float, System.Numerics.Vector2?, float, float, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF, Single, System.Numerics.Vector2?, Single, Single, Bliss.CSharp.Colors.Color?)
+  nameWithType: PrimitiveBatch.DrawEmptyRectangle(RectangleF, float, Vector2?, float, float, Color?)
+  nameWithType.vb: PrimitiveBatch.DrawEmptyRectangle(RectangleF, Single, Vector2?, Single, Single, Color?)
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle*
   name: DrawEmptyRectangle
   href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyRectangle_
@@ -4374,15 +4374,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle
   nameWithType: PrimitiveBatch.DrawEmptyRectangle
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  name: DrawEmptyRing(Vector2, float, float, int, int, Color?)
-  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyRing_System_Numerics_Vector2_System_Single_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  name.vb: DrawEmptyRing(Vector2, Single, Single, Integer, Integer, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2, float, float, int, int, Bliss.CSharp.Colors.Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2, Single, Single, Integer, Integer, Bliss.CSharp.Colors.Color?)
-  nameWithType: PrimitiveBatch.DrawEmptyRing(Vector2, float, float, int, int, Color?)
-  nameWithType.vb: PrimitiveBatch.DrawEmptyRing(Vector2, Single, Single, Integer, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawEmptyRing(Vector2, float, float, int, int, float, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyRing_System_Numerics_Vector2_System_Single_System_Single_System_Int32_System_Int32_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawEmptyRing(Vector2, Single, Single, Integer, Integer, Single, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2, float, float, int, int, float, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2, Single, Single, Integer, Integer, Single, Bliss.CSharp.Colors.Color?)
+  nameWithType: PrimitiveBatch.DrawEmptyRing(Vector2, float, float, int, int, float, Color?)
+  nameWithType.vb: PrimitiveBatch.DrawEmptyRing(Vector2, Single, Single, Integer, Integer, Single, Color?)
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing*
   name: DrawEmptyRing
   href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyRing_
@@ -4390,15 +4390,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing
   nameWithType: PrimitiveBatch.DrawEmptyRing
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  name: DrawEmptyTriangle(Vector2, Vector2, Vector2, int, Color?)
-  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyTriangle_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  name.vb: DrawEmptyTriangle(Vector2, Vector2, Vector2, Integer, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector2, int, Bliss.CSharp.Colors.Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector2, Integer, Bliss.CSharp.Colors.Color?)
-  nameWithType: PrimitiveBatch.DrawEmptyTriangle(Vector2, Vector2, Vector2, int, Color?)
-  nameWithType.vb: PrimitiveBatch.DrawEmptyTriangle(Vector2, Vector2, Vector2, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawEmptyTriangle(Vector2, Vector2, Vector2, int, float, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyTriangle_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Int32_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawEmptyTriangle(Vector2, Vector2, Vector2, Integer, Single, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector2, int, float, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector2, Integer, Single, Bliss.CSharp.Colors.Color?)
+  nameWithType: PrimitiveBatch.DrawEmptyTriangle(Vector2, Vector2, Vector2, int, float, Color?)
+  nameWithType.vb: PrimitiveBatch.DrawEmptyTriangle(Vector2, Vector2, Vector2, Integer, Single, Color?)
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle*
   name: DrawEmptyTriangle
   href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyTriangle_
@@ -4406,15 +4406,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle
   nameWithType: PrimitiveBatch.DrawEmptyTriangle
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  name: DrawFilledCircle(Vector2, float, int, Color?)
-  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledCircle_System_Numerics_Vector2_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  name.vb: DrawFilledCircle(Vector2, Single, Integer, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2, float, int, Bliss.CSharp.Colors.Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2, Single, Integer, Bliss.CSharp.Colors.Color?)
-  nameWithType: PrimitiveBatch.DrawFilledCircle(Vector2, float, int, Color?)
-  nameWithType.vb: PrimitiveBatch.DrawFilledCircle(Vector2, Single, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawFilledCircle(Vector2, float, int, float, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledCircle_System_Numerics_Vector2_System_Single_System_Int32_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawFilledCircle(Vector2, Single, Integer, Single, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2, float, int, float, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2, Single, Integer, Single, Bliss.CSharp.Colors.Color?)
+  nameWithType: PrimitiveBatch.DrawFilledCircle(Vector2, float, int, float, Color?)
+  nameWithType.vb: PrimitiveBatch.DrawFilledCircle(Vector2, Single, Integer, Single, Color?)
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle*
   name: DrawFilledCircle
   href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledCircle_
@@ -4422,15 +4422,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle
   nameWithType: PrimitiveBatch.DrawFilledCircle
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  name: DrawFilledCircleSector(Vector2, float, float, float, int, Color?)
-  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledCircleSector_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  name.vb: DrawFilledCircleSector(Vector2, Single, Single, Single, Integer, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2, float, float, float, int, Bliss.CSharp.Colors.Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2, Single, Single, Single, Integer, Bliss.CSharp.Colors.Color?)
-  nameWithType: PrimitiveBatch.DrawFilledCircleSector(Vector2, float, float, float, int, Color?)
-  nameWithType.vb: PrimitiveBatch.DrawFilledCircleSector(Vector2, Single, Single, Single, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawFilledCircleSector(Vector2, float, float, float, int, float, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledCircleSector_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Int32_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawFilledCircleSector(Vector2, Single, Single, Single, Integer, Single, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2, float, float, float, int, float, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2, Single, Single, Single, Integer, Single, Bliss.CSharp.Colors.Color?)
+  nameWithType: PrimitiveBatch.DrawFilledCircleSector(Vector2, float, float, float, int, float, Color?)
+  nameWithType.vb: PrimitiveBatch.DrawFilledCircleSector(Vector2, Single, Single, Single, Integer, Single, Color?)
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector*
   name: DrawFilledCircleSector
   href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledCircleSector_
@@ -4438,15 +4438,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector
   nameWithType: PrimitiveBatch.DrawFilledCircleSector
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  name: DrawFilledEllipse(Vector2, Vector2, int, Color?)
-  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledEllipse_System_Numerics_Vector2_System_Numerics_Vector2_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  name.vb: DrawFilledEllipse(Vector2, Vector2, Integer, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2, System.Numerics.Vector2, int, Bliss.CSharp.Colors.Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2, System.Numerics.Vector2, Integer, Bliss.CSharp.Colors.Color?)
-  nameWithType: PrimitiveBatch.DrawFilledEllipse(Vector2, Vector2, int, Color?)
-  nameWithType.vb: PrimitiveBatch.DrawFilledEllipse(Vector2, Vector2, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawFilledEllipse(Vector2, Vector2, int, float, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledEllipse_System_Numerics_Vector2_System_Numerics_Vector2_System_Int32_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawFilledEllipse(Vector2, Vector2, Integer, Single, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2, System.Numerics.Vector2, int, float, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2, System.Numerics.Vector2, Integer, Single, Bliss.CSharp.Colors.Color?)
+  nameWithType: PrimitiveBatch.DrawFilledEllipse(Vector2, Vector2, int, float, Color?)
+  nameWithType.vb: PrimitiveBatch.DrawFilledEllipse(Vector2, Vector2, Integer, Single, Color?)
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse*
   name: DrawFilledEllipse
   href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledEllipse_
@@ -4454,15 +4454,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse
   nameWithType: PrimitiveBatch.DrawFilledEllipse
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
-  name: DrawFilledRectangle(RectangleF, Vector2?, float, Color?)
-  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledRectangle_Bliss_CSharp_Transformations_RectangleF_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
-  name.vb: DrawFilledRectangle(RectangleF, Vector2?, Single, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?)
-  nameWithType: PrimitiveBatch.DrawFilledRectangle(RectangleF, Vector2?, float, Color?)
-  nameWithType.vb: PrimitiveBatch.DrawFilledRectangle(RectangleF, Vector2?, Single, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawFilledRectangle(RectangleF, Vector2?, float, float, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledRectangle_Bliss_CSharp_Transformations_RectangleF_System_Nullable_System_Numerics_Vector2__System_Single_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawFilledRectangle(RectangleF, Vector2?, Single, Single, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF, System.Numerics.Vector2?, float, float, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF, System.Numerics.Vector2?, Single, Single, Bliss.CSharp.Colors.Color?)
+  nameWithType: PrimitiveBatch.DrawFilledRectangle(RectangleF, Vector2?, float, float, Color?)
+  nameWithType.vb: PrimitiveBatch.DrawFilledRectangle(RectangleF, Vector2?, Single, Single, Color?)
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle*
   name: DrawFilledRectangle
   href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledRectangle_
@@ -4470,15 +4470,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle
   nameWithType: PrimitiveBatch.DrawFilledRectangle
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  name: DrawFilledRing(Vector2, float, float, int, Color?)
-  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledRing_System_Numerics_Vector2_System_Single_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  name.vb: DrawFilledRing(Vector2, Single, Single, Integer, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2, float, float, int, Bliss.CSharp.Colors.Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2, Single, Single, Integer, Bliss.CSharp.Colors.Color?)
-  nameWithType: PrimitiveBatch.DrawFilledRing(Vector2, float, float, int, Color?)
-  nameWithType.vb: PrimitiveBatch.DrawFilledRing(Vector2, Single, Single, Integer, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawFilledRing(Vector2, float, float, int, float, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledRing_System_Numerics_Vector2_System_Single_System_Single_System_Int32_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawFilledRing(Vector2, Single, Single, Integer, Single, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2, float, float, int, float, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2, Single, Single, Integer, Single, Bliss.CSharp.Colors.Color?)
+  nameWithType: PrimitiveBatch.DrawFilledRing(Vector2, float, float, int, float, Color?)
+  nameWithType.vb: PrimitiveBatch.DrawFilledRing(Vector2, Single, Single, Integer, Single, Color?)
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing*
   name: DrawFilledRing
   href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledRing_
@@ -4486,12 +4486,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing
   nameWithType: PrimitiveBatch.DrawFilledRing
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Nullable{Bliss.CSharp.Colors.Color})
-  name: DrawFilledTriangle(Vector2, Vector2, Vector2, Color?)
-  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledTriangle_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Nullable_Bliss_CSharp_Colors_Color__
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Nullable{Bliss.CSharp.Colors.Color})
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle(System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector2, Bliss.CSharp.Colors.Color?)
-  nameWithType: PrimitiveBatch.DrawFilledTriangle(Vector2, Vector2, Vector2, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawFilledTriangle(Vector2, Vector2, Vector2, float, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledTriangle_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawFilledTriangle(Vector2, Vector2, Vector2, Single, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle(System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector2, float, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle(System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector2, Single, Bliss.CSharp.Colors.Color?)
+  nameWithType: PrimitiveBatch.DrawFilledTriangle(Vector2, Vector2, Vector2, float, Color?)
+  nameWithType.vb: PrimitiveBatch.DrawFilledTriangle(Vector2, Vector2, Vector2, Single, Color?)
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle*
   name: DrawFilledTriangle
   href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledTriangle_
@@ -4499,15 +4502,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle
   nameWithType: PrimitiveBatch.DrawFilledTriangle
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
-  name: DrawLine(Vector2, Vector2, float, Color?)
-  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawLine_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
-  name.vb: DrawLine(Vector2, Vector2, Single, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2, System.Numerics.Vector2, float, Bliss.CSharp.Colors.Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2, System.Numerics.Vector2, Single, Bliss.CSharp.Colors.Color?)
-  nameWithType: PrimitiveBatch.DrawLine(Vector2, Vector2, float, Color?)
-  nameWithType.vb: PrimitiveBatch.DrawLine(Vector2, Vector2, Single, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawLine(Vector2, Vector2, float, float, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawLine_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawLine(Vector2, Vector2, Single, Single, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2, System.Numerics.Vector2, float, float, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2, System.Numerics.Vector2, Single, Single, Bliss.CSharp.Colors.Color?)
+  nameWithType: PrimitiveBatch.DrawLine(Vector2, Vector2, float, float, Color?)
+  nameWithType.vb: PrimitiveBatch.DrawLine(Vector2, Vector2, Single, Single, Color?)
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine*
   name: DrawLine
   href: api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawLine_
@@ -4854,15 +4857,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawCallCount
   nameWithType: SpriteBatch.DrawCallCount
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
-  name: DrawText(Font, string, Vector2, int, float, float, Vector2?, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
-  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_DrawText_Bliss_CSharp_Fonts_Font_System_String_System_Numerics_Vector2_System_Int32_System_Single_System_Single_System_Nullable_System_Numerics_Vector2__System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__FontStashSharp_TextStyle_FontStashSharp_FontSystemEffect_System_Int32_
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
-  name.vb: DrawText(Font, String, Vector2, Integer, Single, Single, Vector2?, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font, string, System.Numerics.Vector2, int, float, float, System.Numerics.Vector2?, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, int)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font, String, System.Numerics.Vector2, Integer, Single, Single, System.Numerics.Vector2?, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, Integer)
-  nameWithType: SpriteBatch.DrawText(Font, string, Vector2, int, float, float, Vector2?, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
-  nameWithType.vb: SpriteBatch.DrawText(Font, String, Vector2, Integer, Single, Single, Vector2?, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  name: DrawText(Font, string, Vector2, int, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
+  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_DrawText_Bliss_CSharp_Fonts_Font_System_String_System_Numerics_Vector2_System_Int32_System_Single_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__FontStashSharp_TextStyle_FontStashSharp_FontSystemEffect_System_Int32_
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  name.vb: DrawText(Font, String, Vector2, Integer, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font, string, System.Numerics.Vector2, int, float, float, System.Numerics.Vector2?, float, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, int)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font, String, System.Numerics.Vector2, Integer, Single, Single, System.Numerics.Vector2?, Single, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, Integer)
+  nameWithType: SpriteBatch.DrawText(Font, string, Vector2, int, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
+  nameWithType.vb: SpriteBatch.DrawText(Font, String, Vector2, Integer, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText*
   name: DrawText
   href: api/Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_DrawText_
@@ -4870,15 +4873,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText
   nameWithType: SpriteBatch.DrawText
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawTexture(Bliss.CSharp.Textures.Texture2D,System.Numerics.Vector2,System.Nullable{Bliss.CSharp.Transformations.Rectangle},System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip)
-  name: DrawTexture(Texture2D, Vector2, Rectangle?, Vector2?, Vector2?, float, Color?, SpriteFlip)
-  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_DrawTexture_Bliss_CSharp_Textures_Texture2D_System_Numerics_Vector2_System_Nullable_Bliss_CSharp_Transformations_Rectangle__System_Nullable_System_Numerics_Vector2__System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteFlip_
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawTexture(Bliss.CSharp.Textures.Texture2D,System.Numerics.Vector2,System.Nullable{Bliss.CSharp.Transformations.Rectangle},System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip)
-  name.vb: DrawTexture(Texture2D, Vector2, Rectangle?, Vector2?, Vector2?, Single, Color?, SpriteFlip)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawTexture(Bliss.CSharp.Textures.Texture2D, System.Numerics.Vector2, Bliss.CSharp.Transformations.Rectangle?, System.Numerics.Vector2?, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?, Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawTexture(Bliss.CSharp.Textures.Texture2D, System.Numerics.Vector2, Bliss.CSharp.Transformations.Rectangle?, System.Numerics.Vector2?, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?, Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip)
-  nameWithType: SpriteBatch.DrawTexture(Texture2D, Vector2, Rectangle?, Vector2?, Vector2?, float, Color?, SpriteFlip)
-  nameWithType.vb: SpriteBatch.DrawTexture(Texture2D, Vector2, Rectangle?, Vector2?, Vector2?, Single, Color?, SpriteFlip)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawTexture(Bliss.CSharp.Textures.Texture2D,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Transformations.Rectangle},System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip)
+  name: DrawTexture(Texture2D, Vector2, float, Rectangle?, Vector2?, Vector2?, float, Color?, SpriteFlip)
+  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_DrawTexture_Bliss_CSharp_Textures_Texture2D_System_Numerics_Vector2_System_Single_System_Nullable_Bliss_CSharp_Transformations_Rectangle__System_Nullable_System_Numerics_Vector2__System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteFlip_
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawTexture(Bliss.CSharp.Textures.Texture2D,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Transformations.Rectangle},System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip)
+  name.vb: DrawTexture(Texture2D, Vector2, Single, Rectangle?, Vector2?, Vector2?, Single, Color?, SpriteFlip)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawTexture(Bliss.CSharp.Textures.Texture2D, System.Numerics.Vector2, float, Bliss.CSharp.Transformations.Rectangle?, System.Numerics.Vector2?, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?, Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawTexture(Bliss.CSharp.Textures.Texture2D, System.Numerics.Vector2, Single, Bliss.CSharp.Transformations.Rectangle?, System.Numerics.Vector2?, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?, Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip)
+  nameWithType: SpriteBatch.DrawTexture(Texture2D, Vector2, float, Rectangle?, Vector2?, Vector2?, float, Color?, SpriteFlip)
+  nameWithType.vb: SpriteBatch.DrawTexture(Texture2D, Vector2, Single, Rectangle?, Vector2?, Vector2?, Single, Color?, SpriteFlip)
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawTexture*
   name: DrawTexture
   href: api/Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_DrawTexture_
@@ -6048,15 +6051,15 @@ references:
   commentId: T:Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D
   fullName: Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D
   nameWithType: PrimitiveVertex2D
-- uid: Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D.#ctor(System.Numerics.Vector2,System.Numerics.Vector4)
-  name: PrimitiveVertex2D(Vector2, Vector4)
-  href: api/Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D.html#Bliss_CSharp_Graphics_VertexTypes_PrimitiveVertex2D__ctor_System_Numerics_Vector2_System_Numerics_Vector4_
-  commentId: M:Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D.#ctor(System.Numerics.Vector2,System.Numerics.Vector4)
-  name.vb: New(Vector2, Vector4)
-  fullName: Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D.PrimitiveVertex2D(System.Numerics.Vector2, System.Numerics.Vector4)
-  fullName.vb: Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D.New(System.Numerics.Vector2, System.Numerics.Vector4)
-  nameWithType: PrimitiveVertex2D.PrimitiveVertex2D(Vector2, Vector4)
-  nameWithType.vb: PrimitiveVertex2D.New(Vector2, Vector4)
+- uid: Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D.#ctor(System.Numerics.Vector3,System.Numerics.Vector4)
+  name: PrimitiveVertex2D(Vector3, Vector4)
+  href: api/Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D.html#Bliss_CSharp_Graphics_VertexTypes_PrimitiveVertex2D__ctor_System_Numerics_Vector3_System_Numerics_Vector4_
+  commentId: M:Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D.#ctor(System.Numerics.Vector3,System.Numerics.Vector4)
+  name.vb: New(Vector3, Vector4)
+  fullName: Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D.PrimitiveVertex2D(System.Numerics.Vector3, System.Numerics.Vector4)
+  fullName.vb: Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D.New(System.Numerics.Vector3, System.Numerics.Vector4)
+  nameWithType: PrimitiveVertex2D.PrimitiveVertex2D(Vector3, Vector4)
+  nameWithType.vb: PrimitiveVertex2D.New(Vector3, Vector4)
 - uid: Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D.#ctor*
   name: PrimitiveVertex2D
   href: api/Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D.html#Bliss_CSharp_Graphics_VertexTypes_PrimitiveVertex2D__ctor_
@@ -6091,15 +6094,15 @@ references:
   commentId: T:Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D
   fullName: Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D
   nameWithType: SpriteVertex2D
-- uid: Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.#ctor(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector4)
-  name: SpriteVertex2D(Vector2, Vector2, Vector4)
-  href: api/Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.html#Bliss_CSharp_Graphics_VertexTypes_SpriteVertex2D__ctor_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector4_
-  commentId: M:Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.#ctor(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector4)
-  name.vb: New(Vector2, Vector2, Vector4)
-  fullName: Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.SpriteVertex2D(System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector4)
-  fullName.vb: Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.New(System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector4)
-  nameWithType: SpriteVertex2D.SpriteVertex2D(Vector2, Vector2, Vector4)
-  nameWithType.vb: SpriteVertex2D.New(Vector2, Vector2, Vector4)
+- uid: Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.#ctor(System.Numerics.Vector3,System.Numerics.Vector2,System.Numerics.Vector4)
+  name: SpriteVertex2D(Vector3, Vector2, Vector4)
+  href: api/Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.html#Bliss_CSharp_Graphics_VertexTypes_SpriteVertex2D__ctor_System_Numerics_Vector3_System_Numerics_Vector2_System_Numerics_Vector4_
+  commentId: M:Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.#ctor(System.Numerics.Vector3,System.Numerics.Vector2,System.Numerics.Vector4)
+  name.vb: New(Vector3, Vector2, Vector4)
+  fullName: Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.SpriteVertex2D(System.Numerics.Vector3, System.Numerics.Vector2, System.Numerics.Vector4)
+  fullName.vb: Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.New(System.Numerics.Vector3, System.Numerics.Vector2, System.Numerics.Vector4)
+  nameWithType: SpriteVertex2D.SpriteVertex2D(Vector3, Vector2, Vector4)
+  nameWithType.vb: SpriteVertex2D.New(Vector3, Vector2, Vector4)
 - uid: Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.#ctor*
   name: SpriteVertex2D
   href: api/Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.html#Bliss_CSharp_Graphics_VertexTypes_SpriteVertex2D__ctor_
@@ -11926,16 +11929,36 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Transformations.Transform.GetTransform
   nameWithType: Transform.GetTransform
+- uid: Bliss.CSharp.Transformations.Transform.OnUpdate
+  name: OnUpdate
+  href: api/Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform_OnUpdate
+  commentId: E:Bliss.CSharp.Transformations.Transform.OnUpdate
+  fullName: Bliss.CSharp.Transformations.Transform.OnUpdate
+  nameWithType: Transform.OnUpdate
 - uid: Bliss.CSharp.Transformations.Transform.Rotation
   name: Rotation
   href: api/Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform_Rotation
-  commentId: F:Bliss.CSharp.Transformations.Transform.Rotation
+  commentId: P:Bliss.CSharp.Transformations.Transform.Rotation
+  fullName: Bliss.CSharp.Transformations.Transform.Rotation
+  nameWithType: Transform.Rotation
+- uid: Bliss.CSharp.Transformations.Transform.Rotation*
+  name: Rotation
+  href: api/Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform_Rotation_
+  commentId: Overload:Bliss.CSharp.Transformations.Transform.Rotation
+  isSpec: "True"
   fullName: Bliss.CSharp.Transformations.Transform.Rotation
   nameWithType: Transform.Rotation
 - uid: Bliss.CSharp.Transformations.Transform.Scale
   name: Scale
   href: api/Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform_Scale
-  commentId: F:Bliss.CSharp.Transformations.Transform.Scale
+  commentId: P:Bliss.CSharp.Transformations.Transform.Scale
+  fullName: Bliss.CSharp.Transformations.Transform.Scale
+  nameWithType: Transform.Scale
+- uid: Bliss.CSharp.Transformations.Transform.Scale*
+  name: Scale
+  href: api/Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform_Scale_
+  commentId: Overload:Bliss.CSharp.Transformations.Transform.Scale
+  isSpec: "True"
   fullName: Bliss.CSharp.Transformations.Transform.Scale
   nameWithType: Transform.Scale
 - uid: Bliss.CSharp.Transformations.Transform.ToString
@@ -11954,7 +11977,14 @@ references:
 - uid: Bliss.CSharp.Transformations.Transform.Translation
   name: Translation
   href: api/Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform_Translation
-  commentId: F:Bliss.CSharp.Transformations.Transform.Translation
+  commentId: P:Bliss.CSharp.Transformations.Transform.Translation
+  fullName: Bliss.CSharp.Transformations.Transform.Translation
+  nameWithType: Transform.Translation
+- uid: Bliss.CSharp.Transformations.Transform.Translation*
+  name: Translation
+  href: api/Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform_Translation_
+  commentId: Overload:Bliss.CSharp.Transformations.Transform.Translation
+  isSpec: "True"
   fullName: Bliss.CSharp.Transformations.Transform.Translation
   nameWithType: Transform.Translation
 - uid: Bliss.CSharp.Transformations.Transform.op_Equality(Bliss.CSharp.Transformations.Transform,Bliss.CSharp.Transformations.Transform)
@@ -12622,15 +12652,15 @@ references:
   commentId: T:Bliss.CSharp.Windowing.Sdl3Window
   fullName: Bliss.CSharp.Windowing.Sdl3Window
   nameWithType: Sdl3Window
-- uid: Bliss.CSharp.Windowing.Sdl3Window.#ctor(System.Int32,System.Int32,System.String,Bliss.CSharp.Windowing.WindowState)
-  name: Sdl3Window(int, int, string, WindowState)
-  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window__ctor_System_Int32_System_Int32_System_String_Bliss_CSharp_Windowing_WindowState_
-  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.#ctor(System.Int32,System.Int32,System.String,Bliss.CSharp.Windowing.WindowState)
-  name.vb: New(Integer, Integer, String, WindowState)
-  fullName: Bliss.CSharp.Windowing.Sdl3Window.Sdl3Window(int, int, string, Bliss.CSharp.Windowing.WindowState)
-  fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.New(Integer, Integer, String, Bliss.CSharp.Windowing.WindowState)
-  nameWithType: Sdl3Window.Sdl3Window(int, int, string, WindowState)
-  nameWithType.vb: Sdl3Window.New(Integer, Integer, String, WindowState)
+- uid: Bliss.CSharp.Windowing.Sdl3Window.#ctor(System.Int32,System.Int32,System.String,Bliss.CSharp.Windowing.WindowState,Veldrid.GraphicsBackend)
+  name: Sdl3Window(int, int, string, WindowState, GraphicsBackend)
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window__ctor_System_Int32_System_Int32_System_String_Bliss_CSharp_Windowing_WindowState_Veldrid_GraphicsBackend_
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.#ctor(System.Int32,System.Int32,System.String,Bliss.CSharp.Windowing.WindowState,Veldrid.GraphicsBackend)
+  name.vb: New(Integer, Integer, String, WindowState, GraphicsBackend)
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.Sdl3Window(int, int, string, Bliss.CSharp.Windowing.WindowState, Veldrid.GraphicsBackend)
+  fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.New(Integer, Integer, String, Bliss.CSharp.Windowing.WindowState, Veldrid.GraphicsBackend)
+  nameWithType: Sdl3Window.Sdl3Window(int, int, string, WindowState, GraphicsBackend)
+  nameWithType.vb: Sdl3Window.New(Integer, Integer, String, WindowState, GraphicsBackend)
 - uid: Bliss.CSharp.Windowing.Sdl3Window.#ctor*
   name: Sdl3Window
   href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window__ctor_

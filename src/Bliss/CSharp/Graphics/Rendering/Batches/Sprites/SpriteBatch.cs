@@ -265,16 +265,16 @@ public class SpriteBatch : Disposable {
         if (this._begun) {
             throw new Exception("The SpriteBatch has already begun!");
         }
-
+        
         this._begun = true;
         this._currentCommandList = commandList;
         this._mainOutput = output;
         this._currentOutput = this._requestedOutput = output;
         this._currentEffect = this._requestedEffect = effect ?? GlobalResource.DefaultSpriteEffect;
         this._currentBlendState = this._requestedBlendState = blendState ?? BlendStateDescription.SINGLE_ALPHA_BLEND;
-        this._currentDepthStencilState = this._requestedDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DISABLED;
+        this._currentDepthStencilState = this._requestedDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DEPTH_ONLY_LESS_EQUAL;
         this._currentRasterizerState = this._requestedRasterizerState = rasterizerState ?? RasterizerStateDescription.CULL_NONE;
-        this._currentProjection = this._requestedProjection = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
+        this._currentProjection = this._requestedProjection = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, -1.0F, 1.0F);
         this._currentView = this._requestedView = view ?? Matrix4x4.Identity;
         this._currentSampler = this._requestedSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
         
@@ -290,7 +290,7 @@ public class SpriteBatch : Disposable {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
         }
-
+        
         this._begun = false;
         this.Flush();
     }
@@ -396,7 +396,7 @@ public class SpriteBatch : Disposable {
             throw new Exception("The SpriteBatch has not begun yet!");
         }
         
-        this._requestedDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DISABLED;
+        this._requestedDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DEPTH_ONLY_LESS_EQUAL;
     }
 
     /// <summary>
@@ -448,7 +448,7 @@ public class SpriteBatch : Disposable {
             throw new Exception("The SpriteBatch has not begun yet!");
         }
         
-        this._requestedProjection = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
+        this._requestedProjection = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, -1.0F, 1.0F);
     }
 
     /// <summary>
@@ -532,47 +532,49 @@ public class SpriteBatch : Disposable {
     /// <param name="characterSpacing">Optional spacing between characters. Default is 0.0F.</param>
     /// <param name="lineSpacing">Optional spacing between lines of text. Default is 0.0F.</param>
     /// <param name="scale">Optional scale applied to the text. Default is null.</param>
+    /// <param name="layerDepth">Optional depth value for sorting layers. Default is 0.5F.</param>
     /// <param name="origin">Optional origin point for rotation and scaling. Default is null.</param>
     /// <param name="rotation">Optional rotation angle in radians. Default is 0.0F.</param>
     /// <param name="color">Optional color of the text. Default is null.</param>
     /// <param name="style">Optional text style. Default is TextStyle.None.</param>
     /// <param name="effect">Optional effect applied to the text. Default is FontSystemEffect.None.</param>
     /// <param name="effectAmount">Optional amount for the effect applied. Default is 0.</param>
-    public void DrawText(Font font, string text, Vector2 position, int size, float characterSpacing = 0.0F, float lineSpacing = 0.0F, Vector2? scale = null, Vector2? origin = null, float rotation = 0.0F, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0) {
-        font.Draw(this, text, position, size, characterSpacing, lineSpacing, scale, origin, rotation, color, style, effect, effectAmount);
+    public void DrawText(Font font, string text, Vector2 position, int size, float characterSpacing = 0.0F, float lineSpacing = 0.0F, Vector2? scale = null, float layerDepth = 0.5F, Vector2? origin = null, float rotation = 0.0F, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0) {
+        font.Draw(this, text, position, size, characterSpacing, lineSpacing, scale, layerDepth, origin, rotation, color, style, effect, effectAmount);
     }
-    
+
     /// <summary>
-    /// Draws a texture using the specified parameters, including position, source rectangle, scale, origin, rotation, color, and flipping.
+    /// Draws a texture onto the screen with configurable position, scaling, rotation, depth, and color.
     /// </summary>
-    /// <param name="texture">The texture to be drawn.</param>
-    /// <param name="position">The position where the texture will be drawn.</param>
-    /// <param name="sourceRect">The source rectangle within the texture. If null, the entire texture is used.</param>
-    /// <param name="scale">The scale factor for resizing the texture. If null, the texture is drawn at its original size.</param>
-    /// <param name="origin">The origin point for rotation and scaling. If null, the origin is set to the top-left corner.</param>
-    /// <param name="rotation">The rotation angle in radians.</param>
-    /// <param name="color">The color to tint the texture. If null, the texture is drawn with its original colors.</param>
-    /// <param name="flip">Specifies how the texture should be flipped horizontally or vertically.</param>
-    public void DrawTexture(Texture2D texture, Vector2 position, Rectangle? sourceRect = null, Vector2? scale = null, Vector2? origin = null, float rotation = 0.0F, Color? color = null, SpriteFlip flip = SpriteFlip.None) {
-        Rectangle finalSource = sourceRect ?? new Rectangle(0, 0, (int) texture.Width, (int) texture.Height);
+    /// <param name="texture">The <see cref="Texture2D"/> to render.</param>
+    /// <param name="position">The position on the screen where the texture will be drawn, specified in world coordinates.</param>
+    /// <param name="layerDepth">Optional depth value for sorting layers. Defaults to 0.5F.</param>
+    /// <param name="sourceRect">An optional <see cref="Rectangle"/> specifying the region of the texture to be used. If null, the entire texture is used.</param>
+    /// <param name="scale">The scaling factor applied to the texture. Defaults to no scaling (1.0F, 1.0F).</param>
+    /// <param name="origin">The origin point for rotation and scaling, relative to the source rectangle. Defaults to the top-left corner.</param>
+    /// <param name="rotation">The angle, in degrees, to rotate the texture about the origin point. Defaults to 0.0F.</param>
+    /// <param name="color">The <see cref="Color"/> to apply to the texture for tinting. Defaults to White (no tint).</param>
+    /// <param name="flip">The flip mode to apply to the texture, such as horizontal or vertical flipping. Defaults to <see cref="SpriteFlip.None"/>.</param>
+    public void DrawTexture(Texture2D texture, Vector2 position, float layerDepth = 0.5F, Rectangle? sourceRect = null, Vector2? scale = null, Vector2? origin = null, float rotation = 0.0F, Color? color = null, SpriteFlip flip = SpriteFlip.None) {
+        Rectangle finalSource = sourceRect ?? new Rectangle(0, 0, (int)texture.Width, (int)texture.Height);
         Vector2 finalScale = scale ?? new Vector2(1.0F, 1.0F);
         Vector2 finalOrigin = origin ?? new Vector2(0.0F, 0.0F);
         float finalRotation = float.DegreesToRadians(rotation);
         Color finalColor = color ?? Color.White;
-        
+
         Vector2 spriteScale = new Vector2(finalSource.Width, finalSource.Height) * finalScale;
         Vector2 spriteOrigin = finalOrigin * finalScale;
-        
+
         float texelWidth = 1.0F / texture.Width;
         float texelHeight = 1.0F / texture.Height;
-        
+
         bool flipX = flip == SpriteFlip.Horizontal || flip == SpriteFlip.Both;
         bool flipY = flip == SpriteFlip.Vertical || flip == SpriteFlip.Both;
         
         Matrix3x2 transform = Matrix3x2.CreateRotation(finalRotation, position);
 
         SpriteVertex2D topLeft = new SpriteVertex2D() {
-            Position = Vector2.Transform(new Vector2(position.X, position.Y) - spriteOrigin, transform),
+            Position = new Vector3(Vector2.Transform(new Vector2(position.X, position.Y) - spriteOrigin, transform), layerDepth),
             TexCoords = new Vector2(
                 flipX ? (finalSource.X + finalSource.Width) * texelWidth : finalSource.X * texelWidth,
                 flipY ? (finalSource.Y + finalSource.Height) * texelHeight : finalSource.Y * texelHeight),
@@ -580,7 +582,7 @@ public class SpriteBatch : Disposable {
         };
         
         SpriteVertex2D topRight = new SpriteVertex2D() {
-            Position = Vector2.Transform(new Vector2(position.X + spriteScale.X, position.Y) - spriteOrigin, transform),
+            Position = new Vector3(Vector2.Transform(new Vector2(position.X + spriteScale.X, position.Y) - spriteOrigin, transform), layerDepth),
             TexCoords = new Vector2(
                 flipX ? finalSource.X * texelWidth : (finalSource.X + finalSource.Width) * texelWidth,
                 flipY ? (finalSource.Y + finalSource.Height) * texelHeight : finalSource.Y * texelHeight),
@@ -588,7 +590,7 @@ public class SpriteBatch : Disposable {
         };
         
         SpriteVertex2D bottomLeft = new SpriteVertex2D() {
-            Position = Vector2.Transform(new Vector2(position.X, position.Y + spriteScale.Y) - spriteOrigin, transform),
+            Position = new Vector3(Vector2.Transform(new Vector2(position.X, position.Y + spriteScale.Y) - spriteOrigin, transform), layerDepth),
             TexCoords = new Vector2(
                 flipX ? (finalSource.X + finalSource.Width) * texelWidth : finalSource.X * texelWidth,
                 flipY ? finalSource.Y * texelHeight : (finalSource.Y + finalSource.Height) * texelHeight),
@@ -596,7 +598,7 @@ public class SpriteBatch : Disposable {
         };
         
         SpriteVertex2D bottomRight = new SpriteVertex2D() {
-            Position = Vector2.Transform(new Vector2(position.X + spriteScale.X, position.Y + spriteScale.Y) - spriteOrigin, transform),
+            Position = new Vector3(Vector2.Transform(new Vector2(position.X + spriteScale.X, position.Y + spriteScale.Y) - spriteOrigin, transform), layerDepth),
             TexCoords = new Vector2(
                 flipX ? finalSource.X * texelWidth : (finalSource.X + finalSource.Width) * texelWidth,
                 flipY ? finalSource.Y * texelHeight : (finalSource.Y + finalSource.Height) * texelHeight),

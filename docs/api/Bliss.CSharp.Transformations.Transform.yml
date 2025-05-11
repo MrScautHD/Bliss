@@ -10,6 +10,7 @@ items:
   - Bliss.CSharp.Transformations.Transform.Equals(System.Object)
   - Bliss.CSharp.Transformations.Transform.GetHashCode
   - Bliss.CSharp.Transformations.Transform.GetTransform
+  - Bliss.CSharp.Transformations.Transform.OnUpdate
   - Bliss.CSharp.Transformations.Transform.Rotation
   - Bliss.CSharp.Transformations.Transform.Scale
   - Bliss.CSharp.Transformations.Transform.ToString
@@ -43,93 +44,35 @@ items:
   - System.Object.Equals(System.Object,System.Object)
   - System.Object.GetType
   - System.Object.ReferenceEquals(System.Object,System.Object)
-- uid: Bliss.CSharp.Transformations.Transform.Translation
-  commentId: F:Bliss.CSharp.Transformations.Transform.Translation
-  id: Translation
+- uid: Bliss.CSharp.Transformations.Transform.OnUpdate
+  commentId: E:Bliss.CSharp.Transformations.Transform.OnUpdate
+  id: OnUpdate
   parent: Bliss.CSharp.Transformations.Transform
   langs:
   - csharp
   - vb
-  name: Translation
-  nameWithType: Transform.Translation
-  fullName: Bliss.CSharp.Transformations.Transform.Translation
-  type: Field
+  name: OnUpdate
+  nameWithType: Transform.OnUpdate
+  fullName: Bliss.CSharp.Transformations.Transform.OnUpdate
+  type: Event
   source:
     remote:
       path: src/Bliss/CSharp/Transformations/Transform.cs
       branch: main
       repo: https://github.com/MrScautHD/Bliss.git
-    id: Translation
+    id: OnUpdate
     path: ../src/Bliss/CSharp/Transformations/Transform.cs
     startLine: 9
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Transformations
-  summary: Represents the position of an object in 3D space.
+  summary: Event triggered whenever the transformation is updated (translation, rotation, or scale changes).
   example: []
   syntax:
-    content: public Vector3 Translation
+    content: public event Action<Transform>? OnUpdate
     return:
-      type: System.Numerics.Vector3
-    content.vb: Public Translation As Vector3
-- uid: Bliss.CSharp.Transformations.Transform.Rotation
-  commentId: F:Bliss.CSharp.Transformations.Transform.Rotation
-  id: Rotation
-  parent: Bliss.CSharp.Transformations.Transform
-  langs:
-  - csharp
-  - vb
-  name: Rotation
-  nameWithType: Transform.Rotation
-  fullName: Bliss.CSharp.Transformations.Transform.Rotation
-  type: Field
-  source:
-    remote:
-      path: src/Bliss/CSharp/Transformations/Transform.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: Rotation
-    path: ../src/Bliss/CSharp/Transformations/Transform.cs
-    startLine: 14
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Transformations
-  summary: Represents the rotation of an object in 3D space.
-  example: []
-  syntax:
-    content: public Quaternion Rotation
-    return:
-      type: System.Numerics.Quaternion
-    content.vb: Public Rotation As Quaternion
-- uid: Bliss.CSharp.Transformations.Transform.Scale
-  commentId: F:Bliss.CSharp.Transformations.Transform.Scale
-  id: Scale
-  parent: Bliss.CSharp.Transformations.Transform
-  langs:
-  - csharp
-  - vb
-  name: Scale
-  nameWithType: Transform.Scale
-  fullName: Bliss.CSharp.Transformations.Transform.Scale
-  type: Field
-  source:
-    remote:
-      path: src/Bliss/CSharp/Transformations/Transform.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: Scale
-    path: ../src/Bliss/CSharp/Transformations/Transform.cs
-    startLine: 19
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Transformations
-  summary: Represents the scale of an object in 3D space.
-  example: []
-  syntax:
-    content: public Vector3 Scale
-    return:
-      type: System.Numerics.Vector3
-    content.vb: Public Scale As Vector3
+      type: System.Action{Bliss.CSharp.Transformations.Transform}
+    content.vb: Public Event OnUpdate As Action(Of Transform)
 - uid: Bliss.CSharp.Transformations.Transform.#ctor
   commentId: M:Bliss.CSharp.Transformations.Transform.#ctor
   id: '#ctor'
@@ -148,7 +91,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Transformations/Transform.cs
-    startLine: 24
+    startLine: 29
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Transformations
@@ -161,6 +104,108 @@ items:
   nameWithType.vb: Transform.New()
   fullName.vb: Bliss.CSharp.Transformations.Transform.New()
   name.vb: New()
+- uid: Bliss.CSharp.Transformations.Transform.Translation
+  commentId: P:Bliss.CSharp.Transformations.Transform.Translation
+  id: Translation
+  parent: Bliss.CSharp.Transformations.Transform
+  langs:
+  - csharp
+  - vb
+  name: Translation
+  nameWithType: Transform.Translation
+  fullName: Bliss.CSharp.Transformations.Transform.Translation
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Transformations/Transform.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Translation
+    path: ../src/Bliss/CSharp/Transformations/Transform.cs
+    startLine: 39
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Transformations
+  summary: >-
+    Gets or sets the translation (position) component of the transform.
+
+    Triggers the <xref href="Bliss.CSharp.Transformations.Transform.OnUpdate" data-throw-if-not-resolved="false"></xref> event when changed.
+  example: []
+  syntax:
+    content: public Vector3 Translation { get; set; }
+    parameters: []
+    return:
+      type: System.Numerics.Vector3
+    content.vb: Public Property Translation As Vector3
+  overload: Bliss.CSharp.Transformations.Transform.Translation*
+- uid: Bliss.CSharp.Transformations.Transform.Rotation
+  commentId: P:Bliss.CSharp.Transformations.Transform.Rotation
+  id: Rotation
+  parent: Bliss.CSharp.Transformations.Transform
+  langs:
+  - csharp
+  - vb
+  name: Rotation
+  nameWithType: Transform.Rotation
+  fullName: Bliss.CSharp.Transformations.Transform.Rotation
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Transformations/Transform.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Rotation
+    path: ../src/Bliss/CSharp/Transformations/Transform.cs
+    startLine: 51
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Transformations
+  summary: >-
+    Gets or sets the rotation component of the transform as a quaternion.
+
+    Triggers the <xref href="Bliss.CSharp.Transformations.Transform.OnUpdate" data-throw-if-not-resolved="false"></xref> event when changed.
+  example: []
+  syntax:
+    content: public Quaternion Rotation { get; set; }
+    parameters: []
+    return:
+      type: System.Numerics.Quaternion
+    content.vb: Public Property Rotation As Quaternion
+  overload: Bliss.CSharp.Transformations.Transform.Rotation*
+- uid: Bliss.CSharp.Transformations.Transform.Scale
+  commentId: P:Bliss.CSharp.Transformations.Transform.Scale
+  id: Scale
+  parent: Bliss.CSharp.Transformations.Transform
+  langs:
+  - csharp
+  - vb
+  name: Scale
+  nameWithType: Transform.Scale
+  fullName: Bliss.CSharp.Transformations.Transform.Scale
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Transformations/Transform.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Scale
+    path: ../src/Bliss/CSharp/Transformations/Transform.cs
+    startLine: 63
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Transformations
+  summary: >-
+    Gets or sets the scale component of the transform.
+
+    Triggers the <xref href="Bliss.CSharp.Transformations.Transform.OnUpdate" data-throw-if-not-resolved="false"></xref> event when changed.
+  example: []
+  syntax:
+    content: public Vector3 Scale { get; set; }
+    parameters: []
+    return:
+      type: System.Numerics.Vector3
+    content.vb: Public Property Scale As Vector3
+  overload: Bliss.CSharp.Transformations.Transform.Scale*
 - uid: Bliss.CSharp.Transformations.Transform.op_Equality(Bliss.CSharp.Transformations.Transform,Bliss.CSharp.Transformations.Transform)
   commentId: M:Bliss.CSharp.Transformations.Transform.op_Equality(Bliss.CSharp.Transformations.Transform,Bliss.CSharp.Transformations.Transform)
   id: op_Equality(Bliss.CSharp.Transformations.Transform,Bliss.CSharp.Transformations.Transform)
@@ -179,7 +224,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: op_Equality
     path: ../src/Bliss/CSharp/Transformations/Transform.cs
-    startLine: 36
+    startLine: 77
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Transformations
@@ -220,7 +265,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: op_Inequality
     path: ../src/Bliss/CSharp/Transformations/Transform.cs
-    startLine: 44
+    startLine: 85
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Transformations
@@ -261,7 +306,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetTransform
     path: ../src/Bliss/CSharp/Transformations/Transform.cs
-    startLine: 50
+    startLine: 91
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Transformations
@@ -292,7 +337,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Equals
     path: ../src/Bliss/CSharp/Transformations/Transform.cs
-    startLine: 63
+    startLine: 104
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Transformations
@@ -329,7 +374,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Equals
     path: ../src/Bliss/CSharp/Transformations/Transform.cs
-    startLine: 74
+    startLine: 115
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Transformations
@@ -368,7 +413,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetHashCode
     path: ../src/Bliss/CSharp/Transformations/Transform.cs
-    startLine: 82
+    startLine: 123
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Transformations
@@ -400,7 +445,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ToString
     path: ../src/Bliss/CSharp/Transformations/Transform.cs
-    startLine: 90
+    startLine: 131
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Transformations
@@ -638,6 +683,95 @@ references:
   nameWithType.vb: Object
   fullName.vb: Object
   name.vb: Object
+- uid: System.Action{Bliss.CSharp.Transformations.Transform}
+  commentId: T:System.Action{Bliss.CSharp.Transformations.Transform}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<Transform>
+  nameWithType: Action<Transform>
+  fullName: System.Action<Bliss.CSharp.Transformations.Transform>
+  nameWithType.vb: Action(Of Transform)
+  fullName.vb: System.Action(Of Bliss.CSharp.Transformations.Transform)
+  name.vb: Action(Of Transform)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Bliss.CSharp.Transformations.Transform
+    name: Transform
+    href: Bliss.CSharp.Transformations.Transform.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bliss.CSharp.Transformations.Transform
+    name: Transform
+    href: Bliss.CSharp.Transformations.Transform.html
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bliss.CSharp.Transformations.Transform
+  commentId: T:Bliss.CSharp.Transformations.Transform
+  parent: Bliss.CSharp.Transformations
+  href: Bliss.CSharp.Transformations.Transform.html
+  name: Transform
+  nameWithType: Transform
+  fullName: Bliss.CSharp.Transformations.Transform
+- uid: Bliss.CSharp.Transformations.Transform.#ctor*
+  commentId: Overload:Bliss.CSharp.Transformations.Transform.#ctor
+  href: Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform__ctor
+  name: Transform
+  nameWithType: Transform.Transform
+  fullName: Bliss.CSharp.Transformations.Transform.Transform
+  nameWithType.vb: Transform.New
+  fullName.vb: Bliss.CSharp.Transformations.Transform.New
+  name.vb: New
+- uid: Bliss.CSharp.Transformations.Transform.OnUpdate
+  commentId: E:Bliss.CSharp.Transformations.Transform.OnUpdate
+  href: Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform_OnUpdate
+  name: OnUpdate
+  nameWithType: Transform.OnUpdate
+  fullName: Bliss.CSharp.Transformations.Transform.OnUpdate
+- uid: Bliss.CSharp.Transformations.Transform.Translation*
+  commentId: Overload:Bliss.CSharp.Transformations.Transform.Translation
+  href: Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform_Translation
+  name: Translation
+  nameWithType: Transform.Translation
+  fullName: Bliss.CSharp.Transformations.Transform.Translation
 - uid: System.Numerics.Vector3
   commentId: T:System.Numerics.Vector3
   parent: System.Numerics
@@ -673,6 +807,12 @@ references:
     name: Numerics
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.numerics
+- uid: Bliss.CSharp.Transformations.Transform.Rotation*
+  commentId: Overload:Bliss.CSharp.Transformations.Transform.Rotation
+  href: Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform_Rotation
+  name: Rotation
+  nameWithType: Transform.Rotation
+  fullName: Bliss.CSharp.Transformations.Transform.Rotation
 - uid: System.Numerics.Quaternion
   commentId: T:System.Numerics.Quaternion
   parent: System.Numerics
@@ -681,22 +821,12 @@ references:
   name: Quaternion
   nameWithType: Quaternion
   fullName: System.Numerics.Quaternion
-- uid: Bliss.CSharp.Transformations.Transform
-  commentId: T:Bliss.CSharp.Transformations.Transform
-  parent: Bliss.CSharp.Transformations
-  href: Bliss.CSharp.Transformations.Transform.html
-  name: Transform
-  nameWithType: Transform
-  fullName: Bliss.CSharp.Transformations.Transform
-- uid: Bliss.CSharp.Transformations.Transform.#ctor*
-  commentId: Overload:Bliss.CSharp.Transformations.Transform.#ctor
-  href: Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform__ctor
-  name: Transform
-  nameWithType: Transform.Transform
-  fullName: Bliss.CSharp.Transformations.Transform.Transform
-  nameWithType.vb: Transform.New
-  fullName.vb: Bliss.CSharp.Transformations.Transform.New
-  name.vb: New
+- uid: Bliss.CSharp.Transformations.Transform.Scale*
+  commentId: Overload:Bliss.CSharp.Transformations.Transform.Scale
+  href: Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform_Scale
+  name: Scale
+  nameWithType: Transform.Scale
+  fullName: Bliss.CSharp.Transformations.Transform.Scale
 - uid: Bliss.CSharp.Transformations.Transform.op_Equality*
   commentId: Overload:Bliss.CSharp.Transformations.Transform.op_Equality
   href: Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform_op_Equality_Bliss_CSharp_Transformations_Transform_Bliss_CSharp_Transformations_Transform_

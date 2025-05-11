@@ -113,13 +113,6 @@ public class Cam3D : ICam {
     /// It is used in rendering to position and orient the camera in the scene.
     /// </summary>
     private Matrix4x4 _view;
-
-    /// <summary>
-    /// Stores the current CommandList being used by the Cam3D instance.
-    /// Allows for the execution of rendering commands within the scope of
-    /// the camera's render operations.
-    /// </summary>
-    private CommandList _currentCommandList;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="Cam3D"/> class.
@@ -249,16 +242,12 @@ public class Cam3D : ICam {
     }
 
     /// <summary>
-    /// Sets the specified command list as the current command list for rendering operations and updates
-    /// the camera's projection and view matrices. Also clears the depth stencil and sets this camera as the active camera.
+    /// Activates the current camera instance as the active camera and updates its projection and view matrices.
     /// </summary>
-    /// <param name="commandList">The command list to set as the current command list for rendering operations.</param>
-    public void Begin(CommandList commandList) {
-        this._currentCommandList = commandList;
+    public void Begin() {
         this.UpdateProjection();
         this.UpdateView();
         
-        commandList.ClearDepthStencil(1.0F);
         ActiveCamera = this;
     }
 
@@ -266,7 +255,6 @@ public class Cam3D : ICam {
     /// Ends the current 3D rendering session and deactivates the camera.
     /// </summary>
     public void End() {
-        this._currentCommandList.ClearDepthStencil(0.0F);
         ActiveCamera = null;
     }
     

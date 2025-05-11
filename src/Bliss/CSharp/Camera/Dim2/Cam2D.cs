@@ -117,9 +117,9 @@ public class Cam2D : ICam {
     /// <summary>
     /// Initializes the camera's usage in the current frame and sets it as the active camera.
     /// </summary>
-    /// <param name="commandList">The command list to begin the camera's drawing operations.</param>
-    public void Begin(CommandList commandList) {
+    public void Begin() {
         this.UpdateView();
+        
         ActiveCamera = this;
     }
 

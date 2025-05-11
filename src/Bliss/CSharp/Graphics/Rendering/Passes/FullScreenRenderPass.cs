@@ -99,37 +99,37 @@ public class FullScreenRenderPass : Disposable {
         
         return [
             new SpriteVertex2D() {
-                Position = new Vector2(-1.0F, -1.0F),
+                Position = new Vector3(-1.0F, -1.0F, 0.0F),
                 TexCoords = new Vector2(0.0F, top),
                 Color = color.ToRgbaFloatVec4()
             },
         
             new SpriteVertex2D() {
-                Position = new Vector2(1.0F, -1.0F),
+                Position = new Vector3(1.0F, -1.0F, 0.0F),
                 TexCoords = new Vector2(1.0F, top),
                 Color = color.ToRgbaFloatVec4()
             },
         
             new SpriteVertex2D() {
-                Position = new Vector2(1.0F, 1.0F),
+                Position = new Vector3(1.0F, 1.0F, 0.0F),
                 TexCoords = new Vector2(1.0F, bottom),
                 Color = color.ToRgbaFloatVec4()
             },
         
             new SpriteVertex2D() {
-                Position = new Vector2(-1.0F, -1.0F),
+                Position = new Vector3(-1.0F, -1.0F, 0.0F),
                 TexCoords = new Vector2(0.0F, top),
                 Color = color.ToRgbaFloatVec4()
             },
             
             new SpriteVertex2D() {
-                Position = new Vector2(1.0F, 1.0F),
+                Position = new Vector3(1.0F, 1.0F, 0.0F),
                 TexCoords = new Vector2(1.0F, bottom),
                 Color = color.ToRgbaFloatVec4()
             },
             
             new SpriteVertex2D() {
-                Position = new Vector2(-1.0F, 1.0F),
+                Position = new Vector3(-1.0F, 1.0F, 0.0F),
                 TexCoords = new Vector2(0.0F, bottom),
                 Color = color.ToRgbaFloatVec4()
             }

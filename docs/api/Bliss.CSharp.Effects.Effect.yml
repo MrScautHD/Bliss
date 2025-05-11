@@ -36,7 +36,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Effect
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 10
+    startLine: 12
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -77,7 +77,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GraphicsDevice
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 15
+    startLine: 17
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -108,7 +108,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Shader
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 20
+    startLine: 22
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -137,7 +137,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: VertexLayout
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 25
+    startLine: 27
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -166,7 +166,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ShaderSet
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 30
+    startLine: 32
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -195,7 +195,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 56
+    startLine: 58
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -242,7 +242,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 66
+    startLine: 68
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -289,7 +289,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetBufferLayoutKeys
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 116
+    startLine: 118
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -320,7 +320,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetBufferLayouts
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 124
+    startLine: 126
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -351,7 +351,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetBufferLayout
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 133
+    startLine: 135
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -389,7 +389,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: AddBufferLayout
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 141
+    startLine: 143
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -421,7 +421,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetTextureLayoutKeys
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 151
+    startLine: 153
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -452,7 +452,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetTextureLayouts
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 159
+    startLine: 161
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -483,7 +483,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetTextureLayout
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 168
+    startLine: 170
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -521,7 +521,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: AddTextureLayout
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 176
+    startLine: 178
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -553,7 +553,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetPipeline
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 187
+    startLine: 189
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -588,7 +588,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Apply
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 201
+    startLine: 203
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -622,7 +622,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 203
+    startLine: 205
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects

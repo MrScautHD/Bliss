@@ -63,17 +63,18 @@ public class Font : Disposable {
     /// <param name="characterSpacing">The spacing between characters. Default is 0.0F.</param>
     /// <param name="lineSpacing">The spacing between lines. Default is 0.0F.</param>
     /// <param name="scale">The scaling factor for the text. Default is null.</param>
+    /// <param name="depth">The depth at which the text will be rendered. Default is 0.5F.</param>
     /// <param name="origin">The origin for rotation and scaling. Default is null.</param>
     /// <param name="rotation">The rotation angle for the text. Default is 0.0F.</param>
     /// <param name="color">The color of the text. Default is white.</param>
     /// <param name="style">The style of the text. Default is none.</param>
     /// <param name="effect">The effect to apply to the text. Default is none.</param>
     /// <param name="effectAmount">The intensity of the applied effect. Default is 0.</param>
-    public void Draw(SpriteBatch batch, string text, Vector2 position, int size, float characterSpacing = 0.0F, float lineSpacing = 0.0F, Vector2? scale = null, Vector2? origin = null, float rotation = 0.0F, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0) {
+    public void Draw(SpriteBatch batch, string text, Vector2 position, int size, float characterSpacing = 0.0F, float lineSpacing = 0.0F, Vector2? scale = null, float depth = 0.5F, Vector2? origin = null, float rotation = 0.0F, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0) {
         Color finalColor = color ?? Color.White;
         Vector2 finalOrigin = origin ?? new Vector2(0.0F, 0.0F);
-        
-        this._fontSystem.GetFont(size).DrawText(batch.FontStashAdapter, text, position, new FSColor(finalColor.R, finalColor.G, finalColor.B, finalColor.A), float.DegreesToRadians(rotation), finalOrigin, scale, 0, characterSpacing, lineSpacing, style, effect, effectAmount);
+
+        this._fontSystem.GetFont(size).DrawText(batch.FontStashAdapter, text, position, new FSColor(finalColor.R, finalColor.G, finalColor.B, finalColor.A), float.DegreesToRadians(rotation), finalOrigin, scale, depth, characterSpacing, lineSpacing, style, effect, effectAmount);
     }
 
     /// <summary>

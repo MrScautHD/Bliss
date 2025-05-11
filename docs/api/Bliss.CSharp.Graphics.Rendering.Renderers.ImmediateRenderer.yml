@@ -174,7 +174,7 @@ items:
       description: The graphics device used for rendering.
     - id: capacity
       type: System.UInt32
-      description: The maximum number of vertices that can be batched. Defaults to 30720.
+      description: The maximum number of vertices. Defaults to 30720.
     content.vb: Public Sub New(graphicsDevice As GraphicsDevice, capacity As UInteger = 30720)
   overload: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.#ctor*
   nameWithType.vb: ImmediateRenderer.New(GraphicsDevice, UInteger)

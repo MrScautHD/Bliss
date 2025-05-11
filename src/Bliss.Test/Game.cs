@@ -88,7 +88,7 @@ public class Game : Disposable {
         GraphicsDeviceOptions options = new GraphicsDeviceOptions() {
             Debug = false,
             HasMainSwapchain = true,
-            SwapchainDepthFormat = null,
+            SwapchainDepthFormat = PixelFormat.D32FloatS8UInt,
             SyncToVerticalBlank = this.Settings.VSync,
             ResourceBindingModel = ResourceBindingModel.Improved,
             PreferDepthRangeZeroToOne = true,
@@ -231,12 +231,13 @@ public class Game : Disposable {
         commandList.Begin();
         commandList.SetFramebuffer(this.FullScreenTexture.Framebuffer);
         commandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
+        commandList.ClearDepthStencil(1.0F);
         
         // Enables relative mouse mod.
         Input.EnableRelativeMouseMode();
 
         // Drawing 3D.
-        this._cam3D.Begin(commandList);
+        this._cam3D.Begin();
         
         // ImmediateRenderer START
         this._immediateRenderer.SetTexture(this._customMeshTexture);
@@ -336,14 +337,14 @@ public class Game : Disposable {
 
         int frame = 4;
         this._animatedImage.GetFrameInfo(frame, out int width, out int height, out float duration);
-        this._spriteBatch.DrawTexture(this._gif, new Vector2(30, 30), new Rectangle(width * frame, 0, width, height), new Vector2(0.2F, 0.2F));
+        this._spriteBatch.DrawTexture(this._gif, new Vector2(30, 30), sourceRect: new Rectangle(width * frame, 0, width, height), scale: new Vector2(0.2F, 0.2F), color: new Color(255, 255, 255, 155));
         
-        //this._spriteBatch.DrawTexture(this._cubemapTexture, new Vector2(150, 150));
+        //this._spriteBatch.DrawTexture(this._cubemapTexture, new Vector2(30, 30), 0.4F);
         
         this._spriteBatch.End();
         
         this._primitiveBatch.Begin(commandList, this.FullScreenTexture.Framebuffer.OutputDescription);
-        this._primitiveBatch.DrawFilledCircle(new Vector2(130, 130), 40, 40, new Color(130, 130, 255, 120));
+        this._primitiveBatch.DrawFilledCircle(new Vector2(130, 130), 40, 40, 0.3F, new Color(130, 130, 255, 120));
         this._primitiveBatch.End();
         
         commandList.End();

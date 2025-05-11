@@ -144,8 +144,8 @@ Struct SpriteVertex2D  <a class="header-action link-secondary" title="View sourc
 
   <a id="Bliss_CSharp_Graphics_VertexTypes_SpriteVertex2D__ctor_" data-uid="Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.#ctor*"></a>
 
-  <h3 id="Bliss_CSharp_Graphics_VertexTypes_SpriteVertex2D__ctor_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector4_" data-uid="Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.#ctor(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector4)">
-  SpriteVertex2D(Vector2, Vector2, Vector4)
+  <h3 id="Bliss_CSharp_Graphics_VertexTypes_SpriteVertex2D__ctor_System_Numerics_Vector3_System_Numerics_Vector2_System_Numerics_Vector4_" data-uid="Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.#ctor(System.Numerics.Vector3,System.Numerics.Vector2,System.Numerics.Vector4)">
+  SpriteVertex2D(Vector3, Vector2, Vector4)
   <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/VertexTypes/SpriteVertex2D.cs/#L40"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -154,13 +154,13 @@ Struct SpriteVertex2D  <a class="header-action link-secondary" title="View sourc
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SpriteVertex2D(Vector2 position, Vector2 texCoords, Vector4 color)</code></pre>
+    <pre><code class="lang-csharp hljs">public SpriteVertex2D(Vector3 position, Vector2 texCoords, Vector4 color)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>position</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a></dt>
-    <dd><p>The 2D position of the vertex.</p>
+    <dt><code>position</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector3">Vector3</a></dt>
+    <dd><p>The 2D position of the vertex (Z is used for layout depth).</p>
 </dd>
     <dt><code>texCoords</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a></dt>
     <dd><p>The texture coordinates of the vertex.</p>
@@ -222,12 +222,12 @@ Struct SpriteVertex2D  <a class="header-action link-secondary" title="View sourc
   <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/VertexTypes/SpriteVertex2D.cs/#L22"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The position of the vertex in 2D space.</p>
+  <div class="markdown level1 summary"><p>The position of the vertex in 2D space (Z is used for layout depth).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vector2 Position</code></pre>
+    <pre><code class="lang-csharp hljs">public Vector3 Position</code></pre>
   </div>
 
 
@@ -235,7 +235,7 @@ Struct SpriteVertex2D  <a class="header-action link-secondary" title="View sourc
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector3">Vector3</a></dt>
     <dd></dd>
   </dl>
 

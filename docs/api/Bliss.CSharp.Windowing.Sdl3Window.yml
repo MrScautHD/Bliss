@@ -5,7 +5,7 @@ items:
   id: Sdl3Window
   parent: Bliss.CSharp.Windowing
   children:
-  - Bliss.CSharp.Windowing.Sdl3Window.#ctor(System.Int32,System.Int32,System.String,Bliss.CSharp.Windowing.WindowState)
+  - Bliss.CSharp.Windowing.Sdl3Window.#ctor(System.Int32,System.Int32,System.String,Bliss.CSharp.Windowing.WindowState,Veldrid.GraphicsBackend)
   - Bliss.CSharp.Windowing.Sdl3Window.ClearState
   - Bliss.CSharp.Windowing.Sdl3Window.ClientToScreen(Bliss.CSharp.Transformations.Point)
   - Bliss.CSharp.Windowing.Sdl3Window.Closed
@@ -1007,16 +1007,16 @@ items:
     content.vb: Public Event DragDrop As Action(Of String)
   implements:
   - Bliss.CSharp.Windowing.IWindow.DragDrop
-- uid: Bliss.CSharp.Windowing.Sdl3Window.#ctor(System.Int32,System.Int32,System.String,Bliss.CSharp.Windowing.WindowState)
-  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.#ctor(System.Int32,System.Int32,System.String,Bliss.CSharp.Windowing.WindowState)
-  id: '#ctor(System.Int32,System.Int32,System.String,Bliss.CSharp.Windowing.WindowState)'
+- uid: Bliss.CSharp.Windowing.Sdl3Window.#ctor(System.Int32,System.Int32,System.String,Bliss.CSharp.Windowing.WindowState,Veldrid.GraphicsBackend)
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.#ctor(System.Int32,System.Int32,System.String,Bliss.CSharp.Windowing.WindowState,Veldrid.GraphicsBackend)
+  id: '#ctor(System.Int32,System.Int32,System.String,Bliss.CSharp.Windowing.WindowState,Veldrid.GraphicsBackend)'
   parent: Bliss.CSharp.Windowing.Sdl3Window
   langs:
   - csharp
   - vb
-  name: Sdl3Window(int, int, string, WindowState)
-  nameWithType: Sdl3Window.Sdl3Window(int, int, string, WindowState)
-  fullName: Bliss.CSharp.Windowing.Sdl3Window.Sdl3Window(int, int, string, Bliss.CSharp.Windowing.WindowState)
+  name: Sdl3Window(int, int, string, WindowState, GraphicsBackend)
+  nameWithType: Sdl3Window.Sdl3Window(int, int, string, WindowState, GraphicsBackend)
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.Sdl3Window(int, int, string, Bliss.CSharp.Windowing.WindowState, Veldrid.GraphicsBackend)
   type: Constructor
   source:
     remote:
@@ -1025,14 +1025,14 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 207
+    startLine: 208
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
   summary: Initializes a new instance of the <xref href="Bliss.CSharp.Windowing.Sdl3Window" data-throw-if-not-resolved="false"></xref> class with the specified width, height, title, and window state.
   example: []
   syntax:
-    content: public Sdl3Window(int width, int height, string title, WindowState state)
+    content: public Sdl3Window(int width, int height, string title, WindowState state, GraphicsBackend backend)
     parameters:
     - id: width
       type: System.Int32
@@ -1046,15 +1046,18 @@ items:
     - id: state
       type: Bliss.CSharp.Windowing.WindowState
       description: The initial state of the window, specified as a <xref href="Bliss.CSharp.Windowing.WindowState" data-throw-if-not-resolved="false"></xref> value.
-    content.vb: Public Sub New(width As Integer, height As Integer, title As String, state As WindowState)
+    - id: backend
+      type: Veldrid.GraphicsBackend
+      description: The graphics backend to use for rendering (e.g., Vulkan, OpenGL).
+    content.vb: Public Sub New(width As Integer, height As Integer, title As String, state As WindowState, backend As GraphicsBackend)
   overload: Bliss.CSharp.Windowing.Sdl3Window.#ctor*
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
     description: Thrown if SDL fails to initialize the subsystem required for creating the window.
-  nameWithType.vb: Sdl3Window.New(Integer, Integer, String, WindowState)
-  fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.New(Integer, Integer, String, Bliss.CSharp.Windowing.WindowState)
-  name.vb: New(Integer, Integer, String, WindowState)
+  nameWithType.vb: Sdl3Window.New(Integer, Integer, String, WindowState, GraphicsBackend)
+  fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.New(Integer, Integer, String, Bliss.CSharp.Windowing.WindowState, Veldrid.GraphicsBackend)
+  name.vb: New(Integer, Integer, String, WindowState, GraphicsBackend)
 - uid: Bliss.CSharp.Windowing.Sdl3Window.GetState
   commentId: M:Bliss.CSharp.Windowing.Sdl3Window.GetState
   id: GetState
@@ -1073,7 +1076,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetState
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 246
+    startLine: 260
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1106,7 +1109,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: HasState
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 255
+    startLine: 269
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1143,7 +1146,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetState
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 263
+    startLine: 277
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1177,7 +1180,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ClearState
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 299
+    startLine: 313
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1211,7 +1214,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetTitle
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 314
+    startLine: 328
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1244,7 +1247,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetTitle
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 323
+    startLine: 337
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1285,7 +1288,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetSize
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 333
+    startLine: 347
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1318,7 +1321,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetSize
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 349
+    startLine: 363
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1358,7 +1361,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetWidth
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 359
+    startLine: 373
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1391,7 +1394,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetWidth
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 367
+    startLine: 381
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1428,7 +1431,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetHeight
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 375
+    startLine: 389
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1461,7 +1464,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetHeight
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 383
+    startLine: 397
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1498,7 +1501,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetPosition
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 392
+    startLine: 406
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1535,7 +1538,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetPosition
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 408
+    startLine: 422
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1575,7 +1578,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetX
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 416
+    startLine: 430
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1608,7 +1611,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetX
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 424
+    startLine: 438
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1645,7 +1648,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetY
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 432
+    startLine: 446
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1678,7 +1681,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetY
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 440
+    startLine: 454
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1715,7 +1718,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetIcon
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 449
+    startLine: 463
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1753,7 +1756,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: PumpEvents
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 466
+    startLine: 480
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1787,7 +1790,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ClientToScreen
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 483
+    startLine: 497
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1824,7 +1827,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ScreenToClient
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 492
+    startLine: 506
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1861,7 +1864,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetOrCreateOpenGlPlatformInfo
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 503
+    startLine: 517
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1905,7 +1908,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 1053
+    startLine: 1067
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -3064,7 +3067,7 @@ references:
   fullName: System.Exception
 - uid: Bliss.CSharp.Windowing.Sdl3Window.#ctor*
   commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.#ctor
-  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window__ctor_System_Int32_System_Int32_System_String_Bliss_CSharp_Windowing_WindowState_
+  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window__ctor_System_Int32_System_Int32_System_String_Bliss_CSharp_Windowing_WindowState_Veldrid_GraphicsBackend_
   name: Sdl3Window
   nameWithType: Sdl3Window.Sdl3Window
   fullName: Bliss.CSharp.Windowing.Sdl3Window.Sdl3Window
@@ -3093,6 +3096,14 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
+- uid: Veldrid.GraphicsBackend
+  commentId: T:Veldrid.GraphicsBackend
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsBackend.cs
+  name: GraphicsBackend
+  nameWithType: GraphicsBackend
+  fullName: Veldrid.GraphicsBackend
 - uid: Bliss.CSharp.Windowing.Sdl3Window.GetState*
   commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.GetState
   href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_GetState
@@ -3986,14 +3997,6 @@ references:
   name: GraphicsDeviceOptions
   nameWithType: GraphicsDeviceOptions
   fullName: Veldrid.GraphicsDeviceOptions
-- uid: Veldrid.GraphicsBackend
-  commentId: T:Veldrid.GraphicsBackend
-  parent: Veldrid
-  isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsBackend.cs
-  name: GraphicsBackend
-  nameWithType: GraphicsBackend
-  fullName: Veldrid.GraphicsBackend
 - uid: Veldrid.OpenGL.OpenGLPlatformInfo
   commentId: T:Veldrid.OpenGL.OpenGLPlatformInfo
   parent: Veldrid.OpenGL

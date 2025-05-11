@@ -11,19 +11,19 @@ items:
   - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Capacity
   - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.Dispose(System.Boolean)
   - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawCallCount
-  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
-  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
-  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Nullable{Bliss.CSharp.Colors.Color})
-  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
   - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.End
   - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GetCurrentBlendState
   - Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.GetCurrentDepthStencilState
@@ -328,7 +328,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: End
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 212
+    startLine: 210
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -360,7 +360,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentOutput
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 226
+    startLine: 224
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -395,7 +395,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetOutput
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 239
+    startLine: 237
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -431,7 +431,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentEffect
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 252
+    startLine: 250
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -466,7 +466,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetEffect
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 265
+    startLine: 263
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -505,7 +505,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentBlendState
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 278
+    startLine: 276
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -540,7 +540,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetBlendState
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 291
+    startLine: 289
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -576,7 +576,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentDepthStencilState
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 304
+    startLine: 302
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -611,7 +611,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetDepthStencilState
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 317
+    startLine: 315
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -647,7 +647,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentRasterizerState
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 330
+    startLine: 328
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -682,7 +682,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetRasterizerState
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 343
+    startLine: 341
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -718,7 +718,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentProjection
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 356
+    startLine: 354
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -753,7 +753,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetProjection
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 369
+    startLine: 367
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -789,7 +789,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentView
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 382
+    startLine: 380
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -824,7 +824,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetView
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 395
+    startLine: 393
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -860,7 +860,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ResetSettings
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 407
+    startLine: 405
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -874,16 +874,16 @@ items:
   - type: System.Exception
     commentId: T:System.Exception
     description: Thrown if the primitive batch operation has not been started.
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
-  id: DrawLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawLine(System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
   parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
   langs:
   - csharp
   - vb
-  name: DrawLine(Vector2, Vector2, float, Color?)
-  nameWithType: PrimitiveBatch.DrawLine(Vector2, Vector2, float, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2, System.Numerics.Vector2, float, Bliss.CSharp.Colors.Color?)
+  name: DrawLine(Vector2, Vector2, float, float, Color?)
+  nameWithType: PrimitiveBatch.DrawLine(Vector2, Vector2, float, float, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2, System.Numerics.Vector2, float, float, Bliss.CSharp.Colors.Color?)
   type: Method
   source:
     remote:
@@ -892,42 +892,45 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawLine
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 428
+    startLine: 427
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
-  summary: Draws a line between two points with the specified thickness and color.
+  summary: Draws a line between two points with the specified thickness, layer depth, and color.
   example: []
   syntax:
-    content: public void DrawLine(Vector2 start, Vector2 end, float thickness, Color? color = null)
+    content: public void DrawLine(Vector2 start, Vector2 end, float thickness, float layerDepth = 0.5, Color? color = null)
     parameters:
     - id: start
       type: System.Numerics.Vector2
-      description: The start point of the line.
+      description: The starting point of the line.
     - id: end
       type: System.Numerics.Vector2
-      description: The end point of the line.
+      description: The ending point of the line.
     - id: thickness
       type: System.Single
       description: The thickness of the line. Default is 1.0.
+    - id: layerDepth
+      type: System.Single
+      description: The depth at which the line is drawn in the layer. Default is 0.5.
     - id: color
       type: System.Nullable{Bliss.CSharp.Colors.Color}
       description: The color of the line. If null, defaults to white.
-    content.vb: Public Sub DrawLine(start As Vector2, [end] As Vector2, thickness As Single, color As Color? = Nothing)
+    content.vb: Public Sub DrawLine(start As Vector2, [end] As Vector2, thickness As Single, layerDepth As Single = 0.5, color As Color? = Nothing)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine*
-  nameWithType.vb: PrimitiveBatch.DrawLine(Vector2, Vector2, Single, Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2, System.Numerics.Vector2, Single, Bliss.CSharp.Colors.Color?)
-  name.vb: DrawLine(Vector2, Vector2, Single, Color?)
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
-  id: DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  nameWithType.vb: PrimitiveBatch.DrawLine(Vector2, Vector2, Single, Single, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine(System.Numerics.Vector2, System.Numerics.Vector2, Single, Single, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawLine(Vector2, Vector2, Single, Single, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
   parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
   langs:
   - csharp
   - vb
-  name: DrawEmptyRectangle(RectangleF, float, Vector2?, float, Color?)
-  nameWithType: PrimitiveBatch.DrawEmptyRectangle(RectangleF, float, Vector2?, float, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF, float, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?)
+  name: DrawEmptyRectangle(RectangleF, float, Vector2?, float, float, Color?)
+  nameWithType: PrimitiveBatch.DrawEmptyRectangle(RectangleF, float, Vector2?, float, float, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF, float, System.Numerics.Vector2?, float, float, Bliss.CSharp.Colors.Color?)
   type: Method
   source:
     remote:
@@ -940,41 +943,44 @@ items:
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
-  summary: Draws an empty rectangle with the specified dimensions, outline size, origin point, rotation, and color.
+  summary: Draws an empty rectangle with specified dimensions, thickness, rotation, and color.
   example: []
   syntax:
-    content: public void DrawEmptyRectangle(RectangleF rectangle, float thickness, Vector2? origin = null, float rotation = 0, Color? color = null)
+    content: public void DrawEmptyRectangle(RectangleF rectangle, float thickness, Vector2? origin = null, float rotation = 0, float layerDepth = 0.5, Color? color = null)
     parameters:
     - id: rectangle
       type: Bliss.CSharp.Transformations.RectangleF
-      description: Specifies the position and size of the rectangle.
+      description: The rectangle defining the dimensions and position of the empty rectangle.
     - id: thickness
       type: System.Single
-      description: Width of the rectangle's outline.
+      description: The thickness of the rectangle's outline.
     - id: origin
       type: System.Nullable{System.Numerics.Vector2}
       description: Optional origin point for rotation and positioning. Defaults to (0,0).
     - id: rotation
       type: System.Single
       description: Optional rotation angle in degrees. Defaults to 0.0F.
+    - id: layerDepth
+      type: System.Single
+      description: Optional depth layer for rendering. Defaults to 0.5F.
     - id: color
       type: System.Nullable{Bliss.CSharp.Colors.Color}
       description: Optional color for the rectangle's outline. Defaults to white.
-    content.vb: Public Sub DrawEmptyRectangle(rectangle As RectangleF, thickness As Single, origin As Vector2? = Nothing, rotation As Single = 0, color As Color? = Nothing)
+    content.vb: Public Sub DrawEmptyRectangle(rectangle As RectangleF, thickness As Single, origin As Vector2? = Nothing, rotation As Single = 0, layerDepth As Single = 0.5, color As Color? = Nothing)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle*
-  nameWithType.vb: PrimitiveBatch.DrawEmptyRectangle(RectangleF, Single, Vector2?, Single, Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF, Single, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?)
-  name.vb: DrawEmptyRectangle(RectangleF, Single, Vector2?, Single, Color?)
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
-  id: DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  nameWithType.vb: PrimitiveBatch.DrawEmptyRectangle(RectangleF, Single, Vector2?, Single, Single, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle(Bliss.CSharp.Transformations.RectangleF, Single, System.Numerics.Vector2?, Single, Single, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawEmptyRectangle(RectangleF, Single, Vector2?, Single, Single, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
   parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
   langs:
   - csharp
   - vb
-  name: DrawFilledRectangle(RectangleF, Vector2?, float, Color?)
-  nameWithType: PrimitiveBatch.DrawFilledRectangle(RectangleF, Vector2?, float, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?)
+  name: DrawFilledRectangle(RectangleF, Vector2?, float, float, Color?)
+  nameWithType: PrimitiveBatch.DrawFilledRectangle(RectangleF, Vector2?, float, float, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF, System.Numerics.Vector2?, float, float, Bliss.CSharp.Colors.Color?)
   type: Method
   source:
     remote:
@@ -983,42 +989,45 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawFilledRectangle
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 481
+    startLine: 482
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
-  summary: Draws a rectangle with optional origin point, rotation, and color.
+  summary: Draws a filled rectangle with optional origin, rotation, layer depth, and color.
   example: []
   syntax:
-    content: public void DrawFilledRectangle(RectangleF rectangle, Vector2? origin = null, float rotation = 0, Color? color = null)
+    content: public void DrawFilledRectangle(RectangleF rectangle, Vector2? origin = null, float rotation = 0, float layerDepth = 0.5, Color? color = null)
     parameters:
     - id: rectangle
       type: Bliss.CSharp.Transformations.RectangleF
-      description: The rectangle specifying the position and size.
+      description: The rectangular region to render.
     - id: origin
       type: System.Nullable{System.Numerics.Vector2}
-      description: Optional origin point for the rectangle, defaults to the top-left corner.
+      description: Optional. The origin point of the rectangle for transformations, defaults to the top-left corner.
     - id: rotation
       type: System.Single
-      description: Optional rotation angle in radians, defaults to 0.0F.
+      description: Optional. The rotation angle of the rectangle in radians, defaults to 0.0F.
+    - id: layerDepth
+      type: System.Single
+      description: Optional. The z-depth for rendering order, defaults to 0.5F.
     - id: color
       type: System.Nullable{Bliss.CSharp.Colors.Color}
-      description: Optional color for the rectangle, defaults to White.
-    content.vb: Public Sub DrawFilledRectangle(rectangle As RectangleF, origin As Vector2? = Nothing, rotation As Single = 0, color As Color? = Nothing)
+      description: Optional. The fill color of the rectangle, defaults to White.
+    content.vb: Public Sub DrawFilledRectangle(rectangle As RectangleF, origin As Vector2? = Nothing, rotation As Single = 0, layerDepth As Single = 0.5, color As Color? = Nothing)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle*
-  nameWithType.vb: PrimitiveBatch.DrawFilledRectangle(RectangleF, Vector2?, Single, Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?)
-  name.vb: DrawFilledRectangle(RectangleF, Vector2?, Single, Color?)
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  id: DrawEmptyCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  nameWithType.vb: PrimitiveBatch.DrawFilledRectangle(RectangleF, Vector2?, Single, Single, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle(Bliss.CSharp.Transformations.RectangleF, System.Numerics.Vector2?, Single, Single, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawFilledRectangle(RectangleF, Vector2?, Single, Single, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawEmptyCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
   parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
   langs:
   - csharp
   - vb
-  name: DrawEmptyCircleSector(Vector2, float, float, float, int, int, Color?)
-  nameWithType: PrimitiveBatch.DrawEmptyCircleSector(Vector2, float, float, float, int, int, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2, float, float, float, int, int, Bliss.CSharp.Colors.Color?)
+  name: DrawEmptyCircleSector(Vector2, float, float, float, int, int, float, Color?)
+  nameWithType: PrimitiveBatch.DrawEmptyCircleSector(Vector2, float, float, float, int, int, float, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2, float, float, float, int, int, float, Bliss.CSharp.Colors.Color?)
   type: Method
   source:
     remote:
@@ -1027,14 +1036,14 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawEmptyCircleSector
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 528
+    startLine: 530
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
   summary: Draws an empty circle sector using the specified parameters.
   example: []
   syntax:
-    content: public void DrawEmptyCircleSector(Vector2 position, float radius, float startAngle, float endAngle, int thickness, int segments, Color? color = null)
+    content: public void DrawEmptyCircleSector(Vector2 position, float radius, float startAngle, float endAngle, int thickness, int segments, float layerDepth = 0.5, Color? color = null)
     parameters:
     - id: position
       type: System.Numerics.Vector2
@@ -1054,24 +1063,27 @@ items:
     - id: segments
       type: System.Int32
       description: The number of segments used to draw the sector. Minimum value is 4.
+    - id: layerDepth
+      type: System.Single
+      description: The depth of the layer for rendering. Defaults to 0.5.
     - id: color
       type: System.Nullable{Bliss.CSharp.Colors.Color}
       description: The color of the circle sector line. Defaults to white if null.
-    content.vb: Public Sub DrawEmptyCircleSector(position As Vector2, radius As Single, startAngle As Single, endAngle As Single, thickness As Integer, segments As Integer, color As Color? = Nothing)
+    content.vb: Public Sub DrawEmptyCircleSector(position As Vector2, radius As Single, startAngle As Single, endAngle As Single, thickness As Integer, segments As Integer, layerDepth As Single = 0.5, color As Color? = Nothing)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector*
-  nameWithType.vb: PrimitiveBatch.DrawEmptyCircleSector(Vector2, Single, Single, Single, Integer, Integer, Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2, Single, Single, Single, Integer, Integer, Bliss.CSharp.Colors.Color?)
-  name.vb: DrawEmptyCircleSector(Vector2, Single, Single, Single, Integer, Integer, Color?)
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  id: DrawFilledCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  nameWithType.vb: PrimitiveBatch.DrawEmptyCircleSector(Vector2, Single, Single, Single, Integer, Integer, Single, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector(System.Numerics.Vector2, Single, Single, Single, Integer, Integer, Single, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawEmptyCircleSector(Vector2, Single, Single, Single, Integer, Integer, Single, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawFilledCircleSector(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
   parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
   langs:
   - csharp
   - vb
-  name: DrawFilledCircleSector(Vector2, float, float, float, int, Color?)
-  nameWithType: PrimitiveBatch.DrawFilledCircleSector(Vector2, float, float, float, int, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2, float, float, float, int, Bliss.CSharp.Colors.Color?)
+  name: DrawFilledCircleSector(Vector2, float, float, float, int, float, Color?)
+  nameWithType: PrimitiveBatch.DrawFilledCircleSector(Vector2, float, float, float, int, float, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2, float, float, float, int, float, Bliss.CSharp.Colors.Color?)
   type: Method
   source:
     remote:
@@ -1080,14 +1092,14 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawFilledCircleSector
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 570
+    startLine: 572
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
   summary: Draws a filled sector of a circle on the screen at the specified position with the given parameters.
   example: []
   syntax:
-    content: public void DrawFilledCircleSector(Vector2 position, float radius, float startAngle, float endAngle, int segments, Color? color = null)
+    content: public void DrawFilledCircleSector(Vector2 position, float radius, float startAngle, float endAngle, int segments, float layerDepth = 0.5, Color? color = null)
     parameters:
     - id: position
       type: System.Numerics.Vector2
@@ -1104,24 +1116,26 @@ items:
     - id: segments
       type: System.Int32
       description: Number of segments to use for drawing the sector.
+    - id: layerDepth
+      type: System.Single
     - id: color
       type: System.Nullable{Bliss.CSharp.Colors.Color}
       description: Optional color to use for the sector. Defaults to white if null.
-    content.vb: Public Sub DrawFilledCircleSector(position As Vector2, radius As Single, startAngle As Single, endAngle As Single, segments As Integer, color As Color? = Nothing)
+    content.vb: Public Sub DrawFilledCircleSector(position As Vector2, radius As Single, startAngle As Single, endAngle As Single, segments As Integer, layerDepth As Single = 0.5, color As Color? = Nothing)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector*
-  nameWithType.vb: PrimitiveBatch.DrawFilledCircleSector(Vector2, Single, Single, Single, Integer, Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2, Single, Single, Single, Integer, Bliss.CSharp.Colors.Color?)
-  name.vb: DrawFilledCircleSector(Vector2, Single, Single, Single, Integer, Color?)
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  id: DrawEmptyCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  nameWithType.vb: PrimitiveBatch.DrawFilledCircleSector(Vector2, Single, Single, Single, Integer, Single, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector(System.Numerics.Vector2, Single, Single, Single, Integer, Single, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawFilledCircleSector(Vector2, Single, Single, Single, Integer, Single, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawEmptyCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
   parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
   langs:
   - csharp
   - vb
-  name: DrawEmptyCircle(Vector2, float, int, int, Color?)
-  nameWithType: PrimitiveBatch.DrawEmptyCircle(Vector2, float, int, int, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2, float, int, int, Bliss.CSharp.Colors.Color?)
+  name: DrawEmptyCircle(Vector2, float, int, int, float, Color?)
+  nameWithType: PrimitiveBatch.DrawEmptyCircle(Vector2, float, int, int, float, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2, float, int, int, float, Bliss.CSharp.Colors.Color?)
   type: Method
   source:
     remote:
@@ -1130,14 +1144,14 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawEmptyCircle
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 617
+    startLine: 620
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
   summary: Draws an empty circle at the specified position with the given radius, thickness, and number of segments.
   example: []
   syntax:
-    content: public void DrawEmptyCircle(Vector2 position, float radius, int thickness, int segments, Color? color = null)
+    content: public void DrawEmptyCircle(Vector2 position, float radius, int thickness, int segments, float layerDepth = 0.5, Color? color = null)
     parameters:
     - id: position
       type: System.Numerics.Vector2
@@ -1151,24 +1165,27 @@ items:
     - id: segments
       type: System.Int32
       description: The number of segments to divide the circle into. Must be at least 4.
+    - id: layerDepth
+      type: System.Single
+      description: The depth of the circle in the rendering pass. Defaults to 0.5.
     - id: color
       type: System.Nullable{Bliss.CSharp.Colors.Color}
       description: The color of the circle's outline. Defaults to white if not specified.
-    content.vb: Public Sub DrawEmptyCircle(position As Vector2, radius As Single, thickness As Integer, segments As Integer, color As Color? = Nothing)
+    content.vb: Public Sub DrawEmptyCircle(position As Vector2, radius As Single, thickness As Integer, segments As Integer, layerDepth As Single = 0.5, color As Color? = Nothing)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle*
-  nameWithType.vb: PrimitiveBatch.DrawEmptyCircle(Vector2, Single, Integer, Integer, Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2, Single, Integer, Integer, Bliss.CSharp.Colors.Color?)
-  name.vb: DrawEmptyCircle(Vector2, Single, Integer, Integer, Color?)
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  id: DrawFilledCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  nameWithType.vb: PrimitiveBatch.DrawEmptyCircle(Vector2, Single, Integer, Integer, Single, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle(System.Numerics.Vector2, Single, Integer, Integer, Single, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawEmptyCircle(Vector2, Single, Integer, Integer, Single, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawFilledCircle(System.Numerics.Vector2,System.Single,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
   parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
   langs:
   - csharp
   - vb
-  name: DrawFilledCircle(Vector2, float, int, Color?)
-  nameWithType: PrimitiveBatch.DrawFilledCircle(Vector2, float, int, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2, float, int, Bliss.CSharp.Colors.Color?)
+  name: DrawFilledCircle(Vector2, float, int, float, Color?)
+  nameWithType: PrimitiveBatch.DrawFilledCircle(Vector2, float, int, float, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2, float, int, float, Bliss.CSharp.Colors.Color?)
   type: Method
   source:
     remote:
@@ -1177,14 +1194,14 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawFilledCircle
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 663
+    startLine: 667
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
   summary: Draws a filled circle at the specified position with the given radius, number of segments, and optional color.
   example: []
   syntax:
-    content: public void DrawFilledCircle(Vector2 position, float radius, int segments, Color? color = null)
+    content: public void DrawFilledCircle(Vector2 position, float radius, int segments, float layerDepth = 0.5, Color? color = null)
     parameters:
     - id: position
       type: System.Numerics.Vector2
@@ -1195,24 +1212,27 @@ items:
     - id: segments
       type: System.Int32
       description: The number of segments to use for drawing the circle.
+    - id: layerDepth
+      type: System.Single
+      description: The drawing layer depth. Defaults to 0.5.
     - id: color
       type: System.Nullable{Bliss.CSharp.Colors.Color}
       description: The optional color of the circle. If null, defaults to white.
-    content.vb: Public Sub DrawFilledCircle(position As Vector2, radius As Single, segments As Integer, color As Color? = Nothing)
+    content.vb: Public Sub DrawFilledCircle(position As Vector2, radius As Single, segments As Integer, layerDepth As Single = 0.5, color As Color? = Nothing)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle*
-  nameWithType.vb: PrimitiveBatch.DrawFilledCircle(Vector2, Single, Integer, Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2, Single, Integer, Bliss.CSharp.Colors.Color?)
-  name.vb: DrawFilledCircle(Vector2, Single, Integer, Color?)
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  id: DrawEmptyRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  nameWithType.vb: PrimitiveBatch.DrawFilledCircle(Vector2, Single, Integer, Single, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle(System.Numerics.Vector2, Single, Integer, Single, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawFilledCircle(Vector2, Single, Integer, Single, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawEmptyRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
   parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
   langs:
   - csharp
   - vb
-  name: DrawEmptyRing(Vector2, float, float, int, int, Color?)
-  nameWithType: PrimitiveBatch.DrawEmptyRing(Vector2, float, float, int, int, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2, float, float, int, int, Bliss.CSharp.Colors.Color?)
+  name: DrawEmptyRing(Vector2, float, float, int, int, float, Color?)
+  nameWithType: PrimitiveBatch.DrawEmptyRing(Vector2, float, float, int, int, float, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2, float, float, int, int, float, Bliss.CSharp.Colors.Color?)
   type: Method
   source:
     remote:
@@ -1221,14 +1241,14 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawEmptyRing
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 705
+    startLine: 710
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
-  summary: Draws an empty ring at the specified position with given inner and outer radii, thickness, segments, and optional color.
+  summary: Draws an empty ring at the specified position with the given inner radius, outer radius, thickness, segments, and optional color.
   example: []
   syntax:
-    content: public void DrawEmptyRing(Vector2 position, float innerRadius, float outerRadius, int thickness, int segments, Color? color = null)
+    content: public void DrawEmptyRing(Vector2 position, float innerRadius, float outerRadius, int thickness, int segments, float layerDepth = 0.5, Color? color = null)
     parameters:
     - id: position
       type: System.Numerics.Vector2
@@ -1244,25 +1264,28 @@ items:
       description: The thickness of the ring.
     - id: segments
       type: System.Int32
-      description: The number of segments to use for drawing the ring. Minimum is 4.
+      description: The number of segments used to construct the ring. Must be at least 4.
+    - id: layerDepth
+      type: System.Single
+      description: The depth layer for rendering the ring.
     - id: color
       type: System.Nullable{Bliss.CSharp.Colors.Color}
-      description: Optional color to use for drawing the ring. Defaults to white if not provided.
-    content.vb: Public Sub DrawEmptyRing(position As Vector2, innerRadius As Single, outerRadius As Single, thickness As Integer, segments As Integer, color As Color? = Nothing)
+      description: Optional. The color of the ring. Defaults to white if not provided.
+    content.vb: Public Sub DrawEmptyRing(position As Vector2, innerRadius As Single, outerRadius As Single, thickness As Integer, segments As Integer, layerDepth As Single = 0.5, color As Color? = Nothing)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing*
-  nameWithType.vb: PrimitiveBatch.DrawEmptyRing(Vector2, Single, Single, Integer, Integer, Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2, Single, Single, Integer, Integer, Bliss.CSharp.Colors.Color?)
-  name.vb: DrawEmptyRing(Vector2, Single, Single, Integer, Integer, Color?)
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  id: DrawFilledRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  nameWithType.vb: PrimitiveBatch.DrawEmptyRing(Vector2, Single, Single, Integer, Integer, Single, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing(System.Numerics.Vector2, Single, Single, Integer, Integer, Single, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawEmptyRing(Vector2, Single, Single, Integer, Integer, Single, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawFilledRing(System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
   parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
   langs:
   - csharp
   - vb
-  name: DrawFilledRing(Vector2, float, float, int, Color?)
-  nameWithType: PrimitiveBatch.DrawFilledRing(Vector2, float, float, int, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2, float, float, int, Bliss.CSharp.Colors.Color?)
+  name: DrawFilledRing(Vector2, float, float, int, float, Color?)
+  nameWithType: PrimitiveBatch.DrawFilledRing(Vector2, float, float, int, float, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2, float, float, int, float, Bliss.CSharp.Colors.Color?)
   type: Method
   source:
     remote:
@@ -1271,14 +1294,14 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawFilledRing
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 776
+    startLine: 782
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
-  summary: Draws a filled ring at the specified position with the given inner and outer radii, segment count, and optional color.
+  summary: Draws a filled ring at a specified position with given inner and outer radii, segment count, layer depth, and optional color.
   example: []
   syntax:
-    content: public void DrawFilledRing(Vector2 position, float innerRadius, float outerRadius, int segments, Color? color = null)
+    content: public void DrawFilledRing(Vector2 position, float innerRadius, float outerRadius, int segments, float layerDepth = 0.5, Color? color = null)
     parameters:
     - id: position
       type: System.Numerics.Vector2
@@ -1291,25 +1314,28 @@ items:
       description: The outer radius of the ring.
     - id: segments
       type: System.Int32
-      description: The number of segments to use for drawing the ring.
+      description: The number of segments to use for constructing the ring. Must be at least 4.
+    - id: layerDepth
+      type: System.Single
+      description: The layer depth for rendering the ring, where 0 is frontmost and 1 is backmost. Defaults to 0.5.
     - id: color
       type: System.Nullable{Bliss.CSharp.Colors.Color}
       description: The color of the ring. If not provided, defaults to white.
-    content.vb: Public Sub DrawFilledRing(position As Vector2, innerRadius As Single, outerRadius As Single, segments As Integer, color As Color? = Nothing)
+    content.vb: Public Sub DrawFilledRing(position As Vector2, innerRadius As Single, outerRadius As Single, segments As Integer, layerDepth As Single = 0.5, color As Color? = Nothing)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing*
-  nameWithType.vb: PrimitiveBatch.DrawFilledRing(Vector2, Single, Single, Integer, Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2, Single, Single, Integer, Bliss.CSharp.Colors.Color?)
-  name.vb: DrawFilledRing(Vector2, Single, Single, Integer, Color?)
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  id: DrawEmptyEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  nameWithType.vb: PrimitiveBatch.DrawFilledRing(Vector2, Single, Single, Integer, Single, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing(System.Numerics.Vector2, Single, Single, Integer, Single, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawFilledRing(Vector2, Single, Single, Integer, Single, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawEmptyEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
   parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
   langs:
   - csharp
   - vb
-  name: DrawEmptyEllipse(Vector2, Vector2, int, int, Color?)
-  nameWithType: PrimitiveBatch.DrawEmptyEllipse(Vector2, Vector2, int, int, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2, System.Numerics.Vector2, int, int, Bliss.CSharp.Colors.Color?)
+  name: DrawEmptyEllipse(Vector2, Vector2, int, int, float, Color?)
+  nameWithType: PrimitiveBatch.DrawEmptyEllipse(Vector2, Vector2, int, int, float, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2, System.Numerics.Vector2, int, int, float, Bliss.CSharp.Colors.Color?)
   type: Method
   source:
     remote:
@@ -1318,14 +1344,14 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawEmptyEllipse
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 845
+    startLine: 852
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
   summary: Draws an empty ellipse at the specified position with the given radius, thickness, and number of segments.
   example: []
   syntax:
-    content: public void DrawEmptyEllipse(Vector2 position, Vector2 radius, int thickness, int segments, Color? color = null)
+    content: public void DrawEmptyEllipse(Vector2 position, Vector2 radius, int thickness, int segments, float layerDepth = 0.5, Color? color = null)
     parameters:
     - id: position
       type: System.Numerics.Vector2
@@ -1339,24 +1365,27 @@ items:
     - id: segments
       type: System.Int32
       description: The number of segments to use for drawing the ellipse. Minimum value is 4.
+    - id: layerDepth
+      type: System.Single
+      description: The depth layer for rendering the ellipse. Defaults to 0.5.
     - id: color
       type: System.Nullable{Bliss.CSharp.Colors.Color}
       description: The color to use for the ellipse outline. If not specified, defaults to white.
-    content.vb: Public Sub DrawEmptyEllipse(position As Vector2, radius As Vector2, thickness As Integer, segments As Integer, color As Color? = Nothing)
+    content.vb: Public Sub DrawEmptyEllipse(position As Vector2, radius As Vector2, thickness As Integer, segments As Integer, layerDepth As Single = 0.5, color As Color? = Nothing)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse*
-  nameWithType.vb: PrimitiveBatch.DrawEmptyEllipse(Vector2, Vector2, Integer, Integer, Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2, System.Numerics.Vector2, Integer, Integer, Bliss.CSharp.Colors.Color?)
-  name.vb: DrawEmptyEllipse(Vector2, Vector2, Integer, Integer, Color?)
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  id: DrawFilledEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  nameWithType.vb: PrimitiveBatch.DrawEmptyEllipse(Vector2, Vector2, Integer, Integer, Single, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse(System.Numerics.Vector2, System.Numerics.Vector2, Integer, Integer, Single, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawEmptyEllipse(Vector2, Vector2, Integer, Integer, Single, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawFilledEllipse(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
   parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
   langs:
   - csharp
   - vb
-  name: DrawFilledEllipse(Vector2, Vector2, int, Color?)
-  nameWithType: PrimitiveBatch.DrawFilledEllipse(Vector2, Vector2, int, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2, System.Numerics.Vector2, int, Bliss.CSharp.Colors.Color?)
+  name: DrawFilledEllipse(Vector2, Vector2, int, float, Color?)
+  nameWithType: PrimitiveBatch.DrawFilledEllipse(Vector2, Vector2, int, float, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2, System.Numerics.Vector2, int, float, Bliss.CSharp.Colors.Color?)
   type: Method
   source:
     remote:
@@ -1365,14 +1394,14 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawFilledEllipse
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 892
+    startLine: 900
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
-  summary: Draws a filled ellipse at the specified position with the given radius, number of segments, and optional color.
+  summary: Draws a filled ellipse at the specified position with the given radius, number of segments, and an optional color.
   example: []
   syntax:
-    content: public void DrawFilledEllipse(Vector2 position, Vector2 radius, int segments, Color? color = null)
+    content: public void DrawFilledEllipse(Vector2 position, Vector2 radius, int segments, float layerDepth = 0.5, Color? color = null)
     parameters:
     - id: position
       type: System.Numerics.Vector2
@@ -1382,25 +1411,28 @@ items:
       description: The horizontal and vertical radii of the ellipse.
     - id: segments
       type: System.Int32
-      description: The number of segments to divide the ellipse into.
+      description: The number of segments to approximate the ellipse. Minimum is 4.
+    - id: layerDepth
+      type: System.Single
+      description: The depth of the layer at which to draw the ellipse.
     - id: color
       type: System.Nullable{Bliss.CSharp.Colors.Color}
-      description: The color used to fill the ellipse. Defaults to white if not specified.
-    content.vb: Public Sub DrawFilledEllipse(position As Vector2, radius As Vector2, segments As Integer, color As Color? = Nothing)
+      description: The color to fill the ellipse. Defaults to white if not specified.
+    content.vb: Public Sub DrawFilledEllipse(position As Vector2, radius As Vector2, segments As Integer, layerDepth As Single = 0.5, color As Color? = Nothing)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse*
-  nameWithType.vb: PrimitiveBatch.DrawFilledEllipse(Vector2, Vector2, Integer, Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2, System.Numerics.Vector2, Integer, Bliss.CSharp.Colors.Color?)
-  name.vb: DrawFilledEllipse(Vector2, Vector2, Integer, Color?)
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  id: DrawEmptyTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
+  nameWithType.vb: PrimitiveBatch.DrawFilledEllipse(Vector2, Vector2, Integer, Single, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse(System.Numerics.Vector2, System.Numerics.Vector2, Integer, Single, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawFilledEllipse(Vector2, Vector2, Integer, Single, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawEmptyTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Int32,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
   parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
   langs:
   - csharp
   - vb
-  name: DrawEmptyTriangle(Vector2, Vector2, Vector2, int, Color?)
-  nameWithType: PrimitiveBatch.DrawEmptyTriangle(Vector2, Vector2, Vector2, int, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector2, int, Bliss.CSharp.Colors.Color?)
+  name: DrawEmptyTriangle(Vector2, Vector2, Vector2, int, float, Color?)
+  nameWithType: PrimitiveBatch.DrawEmptyTriangle(Vector2, Vector2, Vector2, int, float, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector2, int, float, Bliss.CSharp.Colors.Color?)
   type: Method
   source:
     remote:
@@ -1409,14 +1441,14 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawEmptyTriangle
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 939
+    startLine: 948
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
   summary: Draws an empty triangle between the specified points with a given thickness and color.
   example: []
   syntax:
-    content: public void DrawEmptyTriangle(Vector2 point1, Vector2 point2, Vector2 point3, int thickness, Color? color = null)
+    content: public void DrawEmptyTriangle(Vector2 point1, Vector2 point2, Vector2 point3, int thickness, float layerDepth = 0.5, Color? color = null)
     parameters:
     - id: point1
       type: System.Numerics.Vector2
@@ -1430,24 +1462,27 @@ items:
     - id: thickness
       type: System.Int32
       description: The thickness of the triangle edges.
+    - id: layerDepth
+      type: System.Single
+      description: The depth of the triangle layer in the rendering order. Defaults to 0.5.
     - id: color
       type: System.Nullable{Bliss.CSharp.Colors.Color}
       description: The color of the triangle edges. Defaults to white if not specified.
-    content.vb: Public Sub DrawEmptyTriangle(point1 As Vector2, point2 As Vector2, point3 As Vector2, thickness As Integer, color As Color? = Nothing)
+    content.vb: Public Sub DrawEmptyTriangle(point1 As Vector2, point2 As Vector2, point3 As Vector2, thickness As Integer, layerDepth As Single = 0.5, color As Color? = Nothing)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle*
-  nameWithType.vb: PrimitiveBatch.DrawEmptyTriangle(Vector2, Vector2, Vector2, Integer, Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector2, Integer, Bliss.CSharp.Colors.Color?)
-  name.vb: DrawEmptyTriangle(Vector2, Vector2, Vector2, Integer, Color?)
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Nullable{Bliss.CSharp.Colors.Color})
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Nullable{Bliss.CSharp.Colors.Color})
-  id: DrawFilledTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Nullable{Bliss.CSharp.Colors.Color})
+  nameWithType.vb: PrimitiveBatch.DrawEmptyTriangle(Vector2, Vector2, Vector2, Integer, Single, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle(System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector2, Integer, Single, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawEmptyTriangle(Vector2, Vector2, Vector2, Integer, Single, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
+  id: DrawFilledTriangle(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Colors.Color})
   parent: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
   langs:
   - csharp
   - vb
-  name: DrawFilledTriangle(Vector2, Vector2, Vector2, Color?)
-  nameWithType: PrimitiveBatch.DrawFilledTriangle(Vector2, Vector2, Vector2, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle(System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector2, Bliss.CSharp.Colors.Color?)
+  name: DrawFilledTriangle(Vector2, Vector2, Vector2, float, Color?)
+  nameWithType: PrimitiveBatch.DrawFilledTriangle(Vector2, Vector2, Vector2, float, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle(System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector2, float, Bliss.CSharp.Colors.Color?)
   type: Method
   source:
     remote:
@@ -1456,29 +1491,35 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawFilledTriangle
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 954
+    startLine: 964
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
-  summary: Draws a filled triangle using the specified vertices and an optional color.
+  summary: Draws a filled triangle using the specified vertices, color, and layer depth.
   example: []
   syntax:
-    content: public void DrawFilledTriangle(Vector2 point1, Vector2 point2, Vector2 point3, Color? color = null)
+    content: public void DrawFilledTriangle(Vector2 point1, Vector2 point2, Vector2 point3, float layerDepth = 0.5, Color? color = null)
     parameters:
     - id: point1
       type: System.Numerics.Vector2
-      description: The first vertex of the triangle.
+      description: The first vertex position of the triangle.
     - id: point2
       type: System.Numerics.Vector2
-      description: The second vertex of the triangle.
+      description: The second vertex position of the triangle.
     - id: point3
       type: System.Numerics.Vector2
-      description: The third vertex of the triangle.
+      description: The third vertex position of the triangle.
+    - id: layerDepth
+      type: System.Single
+      description: The layer depth of the triangle, determining its rendering order. Default is 0.5.
     - id: color
       type: System.Nullable{Bliss.CSharp.Colors.Color}
       description: The color of the triangle. If null, the default color is white.
-    content.vb: Public Sub DrawFilledTriangle(point1 As Vector2, point2 As Vector2, point3 As Vector2, color As Color? = Nothing)
+    content.vb: Public Sub DrawFilledTriangle(point1 As Vector2, point2 As Vector2, point3 As Vector2, layerDepth As Single = 0.5, color As Color? = Nothing)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle*
+  nameWithType.vb: PrimitiveBatch.DrawFilledTriangle(Vector2, Vector2, Vector2, Single, Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle(System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector2, Single, Bliss.CSharp.Colors.Color?)
+  name.vb: DrawFilledTriangle(Vector2, Vector2, Vector2, Single, Color?)
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.AddVertices(System.Collections.Generic.List{Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D})
   commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.AddVertices(System.Collections.Generic.List{Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D})
   id: AddVertices(System.Collections.Generic.List{Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D})
@@ -1497,7 +1538,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: AddVertices
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 979
+    startLine: 988
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -1532,7 +1573,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 1062
+    startLine: 1071
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -2528,7 +2569,7 @@ references:
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.ResetSettings
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawLine_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawLine_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
   name: DrawLine
   nameWithType: PrimitiveBatch.DrawLine
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawLine
@@ -2571,7 +2612,7 @@ references:
   - name: '?'
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyRectangle_Bliss_CSharp_Transformations_RectangleF_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyRectangle_Bliss_CSharp_Transformations_RectangleF_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
   name: DrawEmptyRectangle
   nameWithType: PrimitiveBatch.DrawEmptyRectangle
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRectangle
@@ -2634,67 +2675,67 @@ references:
     href: Bliss.CSharp.Transformations.html
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledRectangle_Bliss_CSharp_Transformations_RectangleF_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledRectangle_Bliss_CSharp_Transformations_RectangleF_System_Nullable_System_Numerics_Vector2__System_Single_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
   name: DrawFilledRectangle
   nameWithType: PrimitiveBatch.DrawFilledRectangle
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRectangle
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyCircleSector_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyCircleSector_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Int32_System_Int32_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
   name: DrawEmptyCircleSector
   nameWithType: PrimitiveBatch.DrawEmptyCircleSector
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircleSector
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledCircleSector_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledCircleSector_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Int32_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
   name: DrawFilledCircleSector
   nameWithType: PrimitiveBatch.DrawFilledCircleSector
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircleSector
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyCircle_System_Numerics_Vector2_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyCircle_System_Numerics_Vector2_System_Single_System_Int32_System_Int32_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
   name: DrawEmptyCircle
   nameWithType: PrimitiveBatch.DrawEmptyCircle
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyCircle
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledCircle_System_Numerics_Vector2_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledCircle_System_Numerics_Vector2_System_Single_System_Int32_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
   name: DrawFilledCircle
   nameWithType: PrimitiveBatch.DrawFilledCircle
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledCircle
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyRing_System_Numerics_Vector2_System_Single_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyRing_System_Numerics_Vector2_System_Single_System_Single_System_Int32_System_Int32_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
   name: DrawEmptyRing
   nameWithType: PrimitiveBatch.DrawEmptyRing
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyRing
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledRing_System_Numerics_Vector2_System_Single_System_Single_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledRing_System_Numerics_Vector2_System_Single_System_Single_System_Int32_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
   name: DrawFilledRing
   nameWithType: PrimitiveBatch.DrawFilledRing
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledRing
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyEllipse_System_Numerics_Vector2_System_Numerics_Vector2_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyEllipse_System_Numerics_Vector2_System_Numerics_Vector2_System_Int32_System_Int32_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
   name: DrawEmptyEllipse
   nameWithType: PrimitiveBatch.DrawEmptyEllipse
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyEllipse
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledEllipse_System_Numerics_Vector2_System_Numerics_Vector2_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledEllipse_System_Numerics_Vector2_System_Numerics_Vector2_System_Int32_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
   name: DrawFilledEllipse
   nameWithType: PrimitiveBatch.DrawFilledEllipse
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledEllipse
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyTriangle_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawEmptyTriangle_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Int32_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
   name: DrawEmptyTriangle
   nameWithType: PrimitiveBatch.DrawEmptyTriangle
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawEmptyTriangle
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledTriangle_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Nullable_Bliss_CSharp_Colors_Color__
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Primitives_PrimitiveBatch_DrawFilledTriangle_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_System_Nullable_Bliss_CSharp_Colors_Color__
   name: DrawFilledTriangle
   nameWithType: PrimitiveBatch.DrawFilledTriangle
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.DrawFilledTriangle

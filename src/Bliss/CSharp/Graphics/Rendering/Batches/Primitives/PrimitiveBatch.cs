@@ -196,9 +196,9 @@ public class PrimitiveBatch : Disposable {
         this._currentOutput = this._requestedOutput = output;
         this._currentEffect = this._requestedEffect = effect ?? GlobalResource.DefaultPrimitiveEffect;
         this._currentBlendState = this._requestedBlendState = blendState ?? BlendStateDescription.SINGLE_ALPHA_BLEND;
-        this._currentDepthStencilState = this._requestedDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DISABLED;
+        this._currentDepthStencilState = this._requestedDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DEPTH_ONLY_LESS_EQUAL;
         this._currentRasterizerState = this._requestedRasterizerState = rasterizerState ?? RasterizerStateDescription.CULL_NONE;
-        this._currentProjection = this._requestedProjection = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
+        this._currentProjection = this._requestedProjection = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, -1.0F, 1.0F);
         this._currentView = this._requestedView = view ?? Matrix4x4.Identity;
         
         this.DrawCallCount = 0;
@@ -318,7 +318,7 @@ public class PrimitiveBatch : Disposable {
             throw new Exception("The PrimitiveBatch has not begun yet!");
         }
         
-        this._requestedDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DISABLED;
+        this._requestedDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DEPTH_ONLY_LESS_EQUAL;
     }
 
     /// <summary>
@@ -370,7 +370,7 @@ public class PrimitiveBatch : Disposable {
             throw new Exception("The PrimitiveBatch has not begun yet!");
         }
         
-        this._requestedProjection = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, 0.0F, 1.0F);
+        this._requestedProjection = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, -1.0F, 1.0F);
     }
 
     /// <summary>
@@ -418,35 +418,37 @@ public class PrimitiveBatch : Disposable {
     }
 
     /// <summary>
-    /// Draws a line between two points with the specified thickness and color.
+    /// Draws a line between two points with the specified thickness, layer depth, and color.
     /// </summary>
-    /// <param name="start">The start point of the line.</param>
-    /// <param name="end">The end point of the line.</param>
+    /// <param name="start">The starting point of the line.</param>
+    /// <param name="end">The ending point of the line.</param>
     /// <param name="thickness">The thickness of the line. Default is 1.0.</param>
+    /// <param name="layerDepth">The depth at which the line is drawn in the layer. Default is 0.5.</param>
     /// <param name="color">The color of the line. If null, defaults to white.</param>
-    public void DrawLine(Vector2 start, Vector2 end, float thickness, Color? color = null) {
+    public void DrawLine(Vector2 start, Vector2 end, float thickness, float layerDepth = 0.5F, Color? color = null) {
         float distance = Vector2.Distance(start, end);
         float angle = float.RadiansToDegrees(MathF.Atan2(end.Y - start.Y, end.X - start.X));
         
         RectangleF rectangle = new RectangleF(start.X, start.Y, distance, thickness);
-        this.DrawFilledRectangle(rectangle, new Vector2(0, thickness / 2.0F), angle, color ?? Color.White);
+        this.DrawFilledRectangle(rectangle, new Vector2(0, thickness / 2.0F), angle, layerDepth, color ?? Color.White);
     }
 
     /// <summary>
-    /// Draws an empty rectangle with the specified dimensions, outline size, origin point, rotation, and color.
+    /// Draws an empty rectangle with specified dimensions, thickness, rotation, and color.
     /// </summary>
-    /// <param name="rectangle">Specifies the position and size of the rectangle.</param>
-    /// <param name="thickness">Width of the rectangle's outline.</param>
+    /// <param name="rectangle">The rectangle defining the dimensions and position of the empty rectangle.</param>
+    /// <param name="thickness">The thickness of the rectangle's outline.</param>
     /// <param name="origin">Optional origin point for rotation and positioning. Defaults to (0,0).</param>
     /// <param name="rotation">Optional rotation angle in degrees. Defaults to 0.0F.</param>
+    /// <param name="layerDepth">Optional depth layer for rendering. Defaults to 0.5F.</param>
     /// <param name="color">Optional color for the rectangle's outline. Defaults to white.</param>
-    public void DrawEmptyRectangle(RectangleF rectangle, float thickness, Vector2? origin = null, float rotation = 0.0F, Color? color = null) {
+    public void DrawEmptyRectangle(RectangleF rectangle, float thickness, Vector2? origin = null, float rotation = 0.0F, float layerDepth = 0.5F, Color? color = null) {
         Vector2 finalOrigin = origin ?? Vector2.Zero;
         float finalRotation = float.DegreesToRadians(rotation);
         Color finalColor = color ?? Color.White;
 
         Matrix3x2 transform = Matrix3x2.CreateRotation(finalRotation, rectangle.Position);
-        
+
         // Calculate the four corners of the rectangle
         Vector2 topLeft = Vector2.Transform(new Vector2(rectangle.X, rectangle.Y) - finalOrigin, transform);
         Vector2 topRight = Vector2.Transform(new Vector2(rectangle.X + rectangle.Width, rectangle.Y) - finalOrigin, transform);
@@ -458,49 +460,50 @@ public class PrimitiveBatch : Disposable {
         Vector2 lineOffsetY = new Vector2(0, thickness / 2.0F);
         
         // Top side
-        this.DrawLine(topLeft - lineOffsetX, topRight + lineOffsetX, thickness, finalColor);
+        this.DrawLine(topLeft - lineOffsetX, topRight + lineOffsetX, thickness, layerDepth, finalColor);
 
         // Bottom side
-        this.DrawLine(bottomLeft - lineOffsetX, bottomRight + lineOffsetX, thickness, finalColor);
+        this.DrawLine(bottomLeft - lineOffsetX, bottomRight + lineOffsetX, thickness, layerDepth, finalColor);
 
         // Left side
-        this.DrawLine(topLeft + lineOffsetY, bottomLeft - lineOffsetY, thickness, finalColor);
+        this.DrawLine(topLeft + lineOffsetY, bottomLeft - lineOffsetY, thickness, layerDepth, finalColor);
 
         // Right side
-        this.DrawLine(topRight + lineOffsetY, bottomRight - lineOffsetY, thickness, finalColor);
+        this.DrawLine(topRight + lineOffsetY, bottomRight - lineOffsetY, thickness, layerDepth, finalColor);
     }
 
     /// <summary>
-    /// Draws a rectangle with optional origin point, rotation, and color.
+    /// Draws a filled rectangle with optional origin, rotation, layer depth, and color.
     /// </summary>
-    /// <param name="rectangle">The rectangle specifying the position and size.</param>
-    /// <param name="origin">Optional origin point for the rectangle, defaults to the top-left corner.</param>
-    /// <param name="rotation">Optional rotation angle in radians, defaults to 0.0F.</param>
-    /// <param name="color">Optional color for the rectangle, defaults to White.</param>
-    public void DrawFilledRectangle(RectangleF rectangle, Vector2? origin = null, float rotation = 0.0F, Color? color = null) {
+    /// <param name="rectangle">The rectangular region to render.</param>
+    /// <param name="origin">Optional. The origin point of the rectangle for transformations, defaults to the top-left corner.</param>
+    /// <param name="rotation">Optional. The rotation angle of the rectangle in radians, defaults to 0.0F.</param>
+    /// <param name="layerDepth">Optional. The z-depth for rendering order, defaults to 0.5F.</param>
+    /// <param name="color">Optional. The fill color of the rectangle, defaults to White.</param>
+    public void DrawFilledRectangle(RectangleF rectangle, Vector2? origin = null, float rotation = 0.0F, float layerDepth = 0.5F, Color? color = null) {
         Vector2 finalOrigin = origin ?? Vector2.Zero;
         Color finalColor = color ?? Color.White;
         float finalRotation = float.DegreesToRadians(rotation);
-        
+
         Matrix3x2 transform = Matrix3x2.CreateRotation(finalRotation, rectangle.Position);
 
         PrimitiveVertex2D topLeft = new PrimitiveVertex2D() {
-            Position = Vector2.Transform(new Vector2(rectangle.X, rectangle.Y) - finalOrigin, transform),
+            Position = new Vector3(Vector2.Transform(new Vector2(rectangle.X, rectangle.Y) - finalOrigin, transform), layerDepth),
             Color = finalColor.ToRgbaFloatVec4()
         };
         
         PrimitiveVertex2D topRight = new PrimitiveVertex2D() {
-            Position = Vector2.Transform(new Vector2(rectangle.X + rectangle.Width, rectangle.Y) - finalOrigin, transform),
+            Position = new Vector3(Vector2.Transform(new Vector2(rectangle.X + rectangle.Width, rectangle.Y) - finalOrigin, transform), layerDepth),
             Color = finalColor.ToRgbaFloatVec4()
         };
         
         PrimitiveVertex2D bottomLeft = new PrimitiveVertex2D() {
-            Position = Vector2.Transform(new Vector2(rectangle.X, rectangle.Y + rectangle.Height) - finalOrigin, transform),
+            Position = new Vector3(Vector2.Transform(new Vector2(rectangle.X, rectangle.Y + rectangle.Height) - finalOrigin, transform), layerDepth),
             Color = finalColor.ToRgbaFloatVec4()
         };
         
         PrimitiveVertex2D bottomRight = new PrimitiveVertex2D() {
-            Position = Vector2.Transform(new Vector2(rectangle.X + rectangle.Width, rectangle.Y + rectangle.Height) - finalOrigin, transform),
+            Position = new Vector3(Vector2.Transform(new Vector2(rectangle.X + rectangle.Width, rectangle.Y + rectangle.Height) - finalOrigin, transform), layerDepth),
             Color = finalColor.ToRgbaFloatVec4()
         };
         
@@ -523,8 +526,9 @@ public class PrimitiveBatch : Disposable {
     /// <param name="endAngle">The ending angle of the sector in degrees.</param>
     /// <param name="thickness">The thickness of the circle sector line.</param>
     /// <param name="segments">The number of segments used to draw the sector. Minimum value is 4.</param>
+    /// <param name="layerDepth">The depth of the layer for rendering. Defaults to 0.5.</param>
     /// <param name="color">The color of the circle sector line. Defaults to white if null.</param>
-    public void DrawEmptyCircleSector(Vector2 position, float radius, float startAngle, float endAngle, int thickness, int segments, Color? color = null) {
+    public void DrawEmptyCircleSector(Vector2 position, float radius, float startAngle, float endAngle, int thickness, int segments, float layerDepth = 0.5F, Color? color = null) {
         float finalStartAngle = float.DegreesToRadians(startAngle);
         float finalEndAngle = float.DegreesToRadians(endAngle);
         Color finalColor = color ?? Color.White;
@@ -545,7 +549,7 @@ public class PrimitiveBatch : Disposable {
                 position.Y + radius * MathF.Sin(angle)
             );
             
-            this.DrawLine(lastPoint, currentPoint, thickness, finalColor);
+            this.DrawLine(lastPoint, currentPoint, thickness, layerDepth, finalColor);
             lastPoint = currentPoint;
         }
 
@@ -553,8 +557,8 @@ public class PrimitiveBatch : Disposable {
         Vector2 lineOffsetX = new Vector2(thickness / 2.0F, 0);
         Vector2 lineOffsetY = new Vector2(0, thickness / 2.0F);
 
-        this.DrawLine(position - lineOffsetX, firstPoint + lineOffsetX, thickness, finalColor);
-        this.DrawLine(position + lineOffsetY, lastPoint - lineOffsetY, thickness, finalColor);
+        this.DrawLine(position - lineOffsetX, firstPoint + lineOffsetX, thickness, layerDepth, finalColor);
+        this.DrawLine(position + lineOffsetY, lastPoint - lineOffsetY, thickness, layerDepth, finalColor);
     }
 
     /// <summary>
@@ -566,7 +570,7 @@ public class PrimitiveBatch : Disposable {
     /// <param name="endAngle">The ending angle of the sector in degrees.</param>
     /// <param name="segments">Number of segments to use for drawing the sector.</param>
     /// <param name="color">Optional color to use for the sector. Defaults to white if null.</param>
-    public void DrawFilledCircleSector(Vector2 position, float radius, float startAngle, float endAngle, int segments, Color? color = null) {
+    public void DrawFilledCircleSector(Vector2 position, float radius, float startAngle, float endAngle, int segments, float layerDepth = 0.5F, Color? color = null) {
         float finalStartAngle = float.DegreesToRadians(startAngle);
         float finalEndAngle = float.DegreesToRadians(endAngle);
         Color finalColor = color ?? Color.White;
@@ -588,15 +592,15 @@ public class PrimitiveBatch : Disposable {
             );
 
             this._tempVertices.Add(new PrimitiveVertex2D() {
-                Position = position,
+                Position = new Vector3(position, layerDepth),
                 Color = finalColor.ToRgbaFloatVec4()
             });
             this._tempVertices.Add(new PrimitiveVertex2D() {
-                Position = lastPoint,
+                Position = new Vector3(lastPoint, layerDepth),
                 Color = finalColor.ToRgbaFloatVec4()
             });
             this._tempVertices.Add(new PrimitiveVertex2D() {
-                Position = currentPoint,
+                Position = new Vector3(currentPoint, layerDepth),
                 Color = finalColor.ToRgbaFloatVec4()
             });
         
@@ -612,18 +616,19 @@ public class PrimitiveBatch : Disposable {
     /// <param name="radius">The radius of the circle.</param>
     /// <param name="thickness">The thickness of the circle's outline.</param>
     /// <param name="segments">The number of segments to divide the circle into. Must be at least 4.</param>
+    /// <param name="layerDepth">The depth of the circle in the rendering pass. Defaults to 0.5.</param>
     /// <param name="color">The color of the circle's outline. Defaults to white if not specified.</param>
-    public void DrawEmptyCircle(Vector2 position, float radius, int thickness, int segments, Color? color = null) {
+    public void DrawEmptyCircle(Vector2 position, float radius, int thickness, int segments, float layerDepth = 0.5F, Color? color = null) {
         int finalSegments = Math.Max(4, segments);
         Color finalColor = color ?? Color.White;
-        
+
         float angleIncrement = 2 * MathF.PI / finalSegments;
         float lineOffset = thickness / 2.0F;
-        
+
         for (int i = 0; i < finalSegments; i++) {
             float startAngle = i * angleIncrement;
             float endAngle = (i + 1) * angleIncrement;
-            
+
             Vector2 startPoint = new Vector2(
                 position.X + radius * MathF.Cos(startAngle),
                 position.Y + radius * MathF.Sin(startAngle)
@@ -648,7 +653,7 @@ public class PrimitiveBatch : Disposable {
             Vector2 adjustedStartPoint = startPoint + startOffset;
             Vector2 adjustedEndPoint = endPoint + endOffset;
             
-            this.DrawLine(adjustedStartPoint, adjustedEndPoint, thickness, finalColor);
+            this.DrawLine(adjustedStartPoint, adjustedEndPoint, thickness, layerDepth, finalColor);
         }
     }
 
@@ -658,11 +663,12 @@ public class PrimitiveBatch : Disposable {
     /// <param name="position">The position of the center of the circle.</param>
     /// <param name="radius">The radius of the circle.</param>
     /// <param name="segments">The number of segments to use for drawing the circle.</param>
+    /// <param name="layerDepth">The drawing layer depth. Defaults to 0.5.</param>
     /// <param name="color">The optional color of the circle. If null, defaults to white.</param>
-    public void DrawFilledCircle(Vector2 position, float radius, int segments, Color? color = null) {
+    public void DrawFilledCircle(Vector2 position, float radius, int segments, float layerDepth = 0.5F, Color? color = null) {
         int finalSegments = Math.Max(4, segments);
         Color finalColor = color ?? Color.White;
-        
+
         float angleIncrement = MathF.PI * 2.0f / finalSegments;
         Vector2 firstPoint = position + new Vector2(radius, 0);
         Vector2 lastPoint = firstPoint;
@@ -675,15 +681,15 @@ public class PrimitiveBatch : Disposable {
             );
 
             this._tempVertices.Add(new PrimitiveVertex2D() {
-                Position = position,
+                Position = new Vector3(position, layerDepth),
                 Color = finalColor.ToRgbaFloatVec4()
             });
             this._tempVertices.Add(new PrimitiveVertex2D() {
-                Position = lastPoint,
+                Position = new Vector3(lastPoint, layerDepth),
                 Color = finalColor.ToRgbaFloatVec4()
             });
             this._tempVertices.Add(new PrimitiveVertex2D() {
-                Position = currentPoint,
+                Position = new Vector3(currentPoint, layerDepth),
                 Color = finalColor.ToRgbaFloatVec4()
             });
             
@@ -693,15 +699,16 @@ public class PrimitiveBatch : Disposable {
     }
 
     /// <summary>
-    /// Draws an empty ring at the specified position with given inner and outer radii, thickness, segments, and optional color.
+    /// Draws an empty ring at the specified position with the given inner radius, outer radius, thickness, segments, and optional color.
     /// </summary>
     /// <param name="position">The position where the ring will be drawn.</param>
     /// <param name="innerRadius">The inner radius of the ring.</param>
     /// <param name="outerRadius">The outer radius of the ring.</param>
     /// <param name="thickness">The thickness of the ring.</param>
-    /// <param name="segments">The number of segments to use for drawing the ring. Minimum is 4.</param>
-    /// <param name="color">Optional color to use for drawing the ring. Defaults to white if not provided.</param>
-    public void DrawEmptyRing(Vector2 position, float innerRadius, float outerRadius, int thickness, int segments, Color? color = null) {
+    /// <param name="segments">The number of segments used to construct the ring. Must be at least 4.</param>
+    /// <param name="layerDepth">The depth layer for rendering the ring.</param>
+    /// <param name="color">Optional. The color of the ring. Defaults to white if not provided.</param>
+    public void DrawEmptyRing(Vector2 position, float innerRadius, float outerRadius, int thickness, int segments, float layerDepth = 0.5F, Color? color = null) {
         int finalSegments = Math.Max(4, segments);
         Color finalColor = color ?? Color.White;
 
@@ -745,7 +752,7 @@ public class PrimitiveBatch : Disposable {
             Vector2 adjustedInnerEndPoint = innerEnd + innerEndOffset;
 
             // Draw the inner ring.
-            this.DrawLine(adjustedInnerStartPoint, adjustedInnerEndPoint, thickness, finalColor);
+            this.DrawLine(adjustedInnerStartPoint, adjustedInnerEndPoint, thickness, layerDepth, finalColor);
             
             // Calculate the direction of the segment.
             Vector2 outerDirection = Vector2.Normalize(outerEnd - outerStart);
@@ -760,19 +767,20 @@ public class PrimitiveBatch : Disposable {
             Vector2 adjustedOuterEndPoint = outerEnd + outerEndOffset;
             
             // Draw the outer ring.
-            this.DrawLine(adjustedOuterStartPoint, adjustedOuterEndPoint, thickness, finalColor);
+            this.DrawLine(adjustedOuterStartPoint, adjustedOuterEndPoint, thickness, layerDepth, finalColor);
         }
     }
 
     /// <summary>
-    /// Draws a filled ring at the specified position with the given inner and outer radii, segment count, and optional color.
+    /// Draws a filled ring at a specified position with given inner and outer radii, segment count, layer depth, and optional color.
     /// </summary>
     /// <param name="position">The center position of the ring.</param>
     /// <param name="innerRadius">The inner radius of the ring.</param>
     /// <param name="outerRadius">The outer radius of the ring.</param>
-    /// <param name="segments">The number of segments to use for drawing the ring.</param>
+    /// <param name="segments">The number of segments to use for constructing the ring. Must be at least 4.</param>
+    /// <param name="layerDepth">The layer depth for rendering the ring, where 0 is frontmost and 1 is backmost. Defaults to 0.5.</param>
     /// <param name="color">The color of the ring. If not provided, defaults to white.</param>
-    public void DrawFilledRing(Vector2 position, float innerRadius, float outerRadius, int segments, Color? color = null) {
+    public void DrawFilledRing(Vector2 position, float innerRadius, float outerRadius, int segments, float layerDepth = 0.5F, Color? color = null) {
         int finalSegments = Math.Max(4, segments);
         Color finalColor = color ?? Color.White;
 
@@ -781,7 +789,7 @@ public class PrimitiveBatch : Disposable {
         for (int i = 0; i < finalSegments; i++) {
             float startAngle = i * angleIncrement;
             float endAngle = (i + 1) * angleIncrement;
-    
+
             Vector2 innerStart = new Vector2(
                 position.X + innerRadius * MathF.Cos(startAngle),
                 position.Y + innerRadius * MathF.Sin(startAngle)
@@ -804,28 +812,28 @@ public class PrimitiveBatch : Disposable {
     
             // Define the vertices for the triangle as part of the ring segment.
             this._tempVertices.Add(new PrimitiveVertex2D() {
-                Position = innerStart,
+                Position = new Vector3(innerStart, layerDepth),
                 Color = finalColor.ToRgbaFloatVec4()
             });
             this._tempVertices.Add(new PrimitiveVertex2D() {
-                Position = outerStart,
+                Position = new Vector3(outerStart, layerDepth),
                 Color = finalColor.ToRgbaFloatVec4()
             });
             this._tempVertices.Add(new PrimitiveVertex2D() {
-                Position = outerEnd,
+                Position = new Vector3(outerEnd, layerDepth),
                 Color = finalColor.ToRgbaFloatVec4()
             });
     
             this._tempVertices.Add(new PrimitiveVertex2D() {
-                Position = innerStart,
+                Position = new Vector3(innerStart, layerDepth),
                 Color = finalColor.ToRgbaFloatVec4()
             });
             this._tempVertices.Add(new PrimitiveVertex2D() {
-                Position = outerEnd,
+                Position = new Vector3(outerEnd, layerDepth),
                 Color = finalColor.ToRgbaFloatVec4()
             });
             this._tempVertices.Add(new PrimitiveVertex2D() {
-                Position = innerEnd,
+                Position = new Vector3(innerEnd, layerDepth),
                 Color = finalColor.ToRgbaFloatVec4()
             });
     
@@ -840,8 +848,9 @@ public class PrimitiveBatch : Disposable {
     /// <param name="radius">The radius of the ellipse along the X and Y axes.</param>
     /// <param name="thickness">The thickness of the ellipse outline.</param>
     /// <param name="segments">The number of segments to use for drawing the ellipse. Minimum value is 4.</param>
+    /// <param name="layerDepth">The depth layer for rendering the ellipse. Defaults to 0.5.</param>
     /// <param name="color">The color to use for the ellipse outline. If not specified, defaults to white.</param>
-    public void DrawEmptyEllipse(Vector2 position, Vector2 radius, int thickness, int segments, Color? color = null) {
+    public void DrawEmptyEllipse(Vector2 position, Vector2 radius, int thickness, int segments, float layerDepth = 0.5F, Color? color = null) {
         int finalSegments = Math.Max(4, segments);
         Color finalColor = color ?? Color.White;
 
@@ -877,18 +886,19 @@ public class PrimitiveBatch : Disposable {
             Vector2 adjustedEndPoint = endPoint + endOffset;
 
             // Draw the line between the start and end points.
-            this.DrawLine(adjustedStartPoint, adjustedEndPoint, thickness, finalColor);
+            this.DrawLine(adjustedStartPoint, adjustedEndPoint, thickness, layerDepth, finalColor);
         }
     }
 
     /// <summary>
-    /// Draws a filled ellipse at the specified position with the given radius, number of segments, and optional color.
+    /// Draws a filled ellipse at the specified position with the given radius, number of segments, and an optional color.
     /// </summary>
     /// <param name="position">The center position of the ellipse.</param>
     /// <param name="radius">The horizontal and vertical radii of the ellipse.</param>
-    /// <param name="segments">The number of segments to divide the ellipse into.</param>
-    /// <param name="color">The color used to fill the ellipse. Defaults to white if not specified.</param>
-    public void DrawFilledEllipse(Vector2 position, Vector2 radius, int segments, Color? color = null) {
+    /// <param name="segments">The number of segments to approximate the ellipse. Minimum is 4.</param>
+    /// <param name="layerDepth">The depth of the layer at which to draw the ellipse.</param>
+    /// <param name="color">The color to fill the ellipse. Defaults to white if not specified.</param>
+    public void DrawFilledEllipse(Vector2 position, Vector2 radius, int segments, float layerDepth = 0.5F, Color? color = null) {
         int finalSegments = Math.Max(4, segments);
         Color finalColor = color ?? Color.White;
 
@@ -909,17 +919,17 @@ public class PrimitiveBatch : Disposable {
             );
 
             this._tempVertices.Add(new PrimitiveVertex2D {
-                Position = position,
+                Position = new Vector3(position, layerDepth),
                 Color = finalColor.ToRgbaFloatVec4()
             });
             
             this._tempVertices.Add(new PrimitiveVertex2D {
-                Position = startPoint,
+                Position = new Vector3(startPoint, layerDepth),
                 Color = finalColor.ToRgbaFloatVec4()
             });
             
             this._tempVertices.Add(new PrimitiveVertex2D {
-                Position = endPoint,
+                Position = new Vector3(endPoint, layerDepth),
                 Color = finalColor.ToRgbaFloatVec4()
             });
 
@@ -934,37 +944,38 @@ public class PrimitiveBatch : Disposable {
     /// <param name="point2">The second vertex of the triangle.</param>
     /// <param name="point3">The third vertex of the triangle.</param>
     /// <param name="thickness">The thickness of the triangle edges.</param>
+    /// <param name="layerDepth">The depth of the triangle layer in the rendering order. Defaults to 0.5.</param>
     /// <param name="color">The color of the triangle edges. Defaults to white if not specified.</param>
-    public void DrawEmptyTriangle(Vector2 point1, Vector2 point2, Vector2 point3, int thickness, Color? color = null) {
+    public void DrawEmptyTriangle(Vector2 point1, Vector2 point2, Vector2 point3, int thickness, float layerDepth = 0.5F, Color? color = null) {
         Color finalColor = color ?? Color.White;
-        
-        this.DrawLine(point1, point2, thickness, finalColor);
-        this.DrawLine(point2, point3, thickness, finalColor);
-        this.DrawLine(point3, point1, thickness, finalColor);
+
+        this.DrawLine(point1, point2, thickness, layerDepth, finalColor);
+        this.DrawLine(point2, point3, thickness, layerDepth, finalColor);
+        this.DrawLine(point3, point1, thickness, layerDepth, finalColor);
     }
 
     /// <summary>
-    /// Draws a filled triangle using the specified vertices and an optional color.
+    /// Draws a filled triangle using the specified vertices, color, and layer depth.
     /// </summary>
-    /// <param name="point1">The first vertex of the triangle.</param>
-    /// <param name="point2">The second vertex of the triangle.</param>
-    /// <param name="point3">The third vertex of the triangle.</param>
+    /// <param name="point1">The first vertex position of the triangle.</param>
+    /// <param name="point2">The second vertex position of the triangle.</param>
+    /// <param name="point3">The third vertex position of the triangle.</param>
+    /// <param name="layerDepth">The layer depth of the triangle, determining its rendering order. Default is 0.5.</param>
     /// <param name="color">The color of the triangle. If null, the default color is white.</param>
-    public void DrawFilledTriangle(Vector2 point1, Vector2 point2, Vector2 point3, Color? color = null) {
+    public void DrawFilledTriangle(Vector2 point1, Vector2 point2, Vector2 point3, float layerDepth = 0.5F, Color? color = null) {
         Color finalColor = color ?? Color.White;
 
         this._tempVertices.Add(new PrimitiveVertex2D {
-            Position = point1,
+            Position = new Vector3(point1, layerDepth), Color = finalColor.ToRgbaFloatVec4()
+        });
+
+        this._tempVertices.Add(new PrimitiveVertex2D {
+            Position = new Vector3(point2, layerDepth),
             Color = finalColor.ToRgbaFloatVec4()
         });
 
         this._tempVertices.Add(new PrimitiveVertex2D {
-            Position = point2,
-            Color = finalColor.ToRgbaFloatVec4()
-        });
-
-        this._tempVertices.Add(new PrimitiveVertex2D {
-            Position = point3,
+            Position = new Vector3(point3, layerDepth),
             Color = finalColor.ToRgbaFloatVec4()
         });
 
