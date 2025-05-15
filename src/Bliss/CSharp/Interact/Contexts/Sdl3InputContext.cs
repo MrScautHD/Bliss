@@ -3,6 +3,7 @@ using Bliss.CSharp.Interact.Gamepads;
 using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Interact.Mice;
 using Bliss.CSharp.Interact.Mice.Cursors;
+using Bliss.CSharp.Logging;
 using Bliss.CSharp.Windowing;
 using Bliss.CSharp.Windowing.Events;
 using SDL;
@@ -137,7 +138,7 @@ public class Sdl3InputContext : Disposable, IInputContext {
         this._keyboardKeysReleased.Clear();
         this._keyboardCharsPressed.Clear();
         
-        if (SDL3.SDL_GetWindowFlags((SDL_Window*) this._window.Handle) == SDL_WindowFlags.SDL_WINDOW_INPUT_FOCUS) {
+        if (SDL3.SDL_GetWindowFlags((SDL_Window*) this._window.Handle).HasFlag(SDL_WindowFlags.SDL_WINDOW_INPUT_FOCUS)) {
             SDL3.SDL_StartTextInput((SDL_Window*) this._window.Handle);
         }
         
