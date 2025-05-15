@@ -344,7 +344,7 @@ public class Game : Disposable {
         this._spriteBatch.End();
         
         this._primitiveBatch.Begin(commandList, this.FullScreenTexture.Framebuffer.OutputDescription);
-        this._primitiveBatch.DrawFilledCircle(new Vector2(130, 130), 40, 40, 0.3F, new Color(130, 130, 255, 120));
+        this._primitiveBatch.DrawFilledCircle(new Vector2(130, 130), 40, 40, 0.5F, new Color(130, 130, 255, 120));
         this._primitiveBatch.End();
         
         commandList.End();
