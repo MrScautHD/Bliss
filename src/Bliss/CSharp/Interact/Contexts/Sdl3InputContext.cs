@@ -137,12 +137,14 @@ public class Sdl3InputContext : Disposable, IInputContext {
         this._keyboardKeysReleased.Clear();
         this._keyboardCharsPressed.Clear();
         
-        SDL3.SDL_StartTextInput((SDL_Window*) this._window.Handle);
-
+        if (SDL3.SDL_GetWindowFlags((SDL_Window*) this._window.Handle) == SDL_WindowFlags.SDL_WINDOW_INPUT_FOCUS) {
+            SDL3.SDL_StartTextInput((SDL_Window*) this._window.Handle);
+        }
+        
         foreach (IGamepad gamepad in this._gamepads.Values) {
             gamepad.CleanStates();
         }
-
+        
         this._dragDroppedFile = string.Empty;
     }
     
