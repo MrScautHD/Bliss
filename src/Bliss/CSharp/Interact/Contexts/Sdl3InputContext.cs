@@ -263,31 +263,31 @@ public class Sdl3InputContext : Disposable, IInputContext {
     }
 
     public string GetGamepadName(uint gamepad) {
-        return this._gamepads.ToArray()[gamepad].Value.GetName();
+        return this._gamepads[gamepad].GetName();
     }
 
     public unsafe void RumbleGamepad(uint gamepad, ushort lowFrequencyRumble, ushort highFrequencyRumble, uint durationMs) {
-        SDL3.SDL_RumbleGamepad((SDL_Gamepad*) this._gamepads.ToArray()[gamepad].Value.GetHandle(), lowFrequencyRumble, highFrequencyRumble, durationMs);
+        SDL3.SDL_RumbleGamepad((SDL_Gamepad*) this._gamepads[gamepad].GetHandle(), lowFrequencyRumble, highFrequencyRumble, durationMs);
     }
 
     public float GetGamepadAxisMovement(uint gamepad, GamepadAxis axis) {
-        return this._gamepads.ToArray()[gamepad].Value.GetAxisMovement(axis);
+        return this._gamepads[gamepad].GetAxisMovement(axis);
     }
     
     public bool IsGamepadButtonPressed(uint gamepad, GamepadButton button) {
-        return this._gamepads.ToArray()[gamepad].Value.IsButtonPressed(button);
+        return this._gamepads[gamepad].IsButtonPressed(button);
     }
     
     public bool IsGamepadButtonDown(uint gamepad, GamepadButton button) {
-        return this._gamepads.ToArray()[gamepad].Value.IsButtonDown(button);
+        return this._gamepads[gamepad].IsButtonDown(button);
     }
     
     public bool IsGamepadButtonReleased(uint gamepad, GamepadButton button) {
-        return this._gamepads.ToArray()[gamepad].Value.IsButtonReleased(button);
+        return this._gamepads[gamepad].IsButtonReleased(button);
     }
     
     public bool IsGamepadButtonUp(uint gamepad, GamepadButton button) {
-        return this._gamepads.ToArray()[gamepad].Value.IsButtonUp(button);
+        return this._gamepads[gamepad].IsButtonUp(button);
     }
 
     /* ------------------------------------ Other ------------------------------------ */

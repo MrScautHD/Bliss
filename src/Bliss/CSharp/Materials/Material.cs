@@ -63,21 +63,19 @@ public class Material {
     }
     
     /// <summary>
-    /// Retrieves an array of all the material map names associated with the material.
+    /// Retrieves the names of all material maps.
     /// </summary>
-    /// <returns>An array of strings representing the names of the material maps.</returns>
-    public string[] GetMaterialMapNames() {
-        return this._maps.Keys.ToArray();
+    /// <returns>A collection of strings representing the names of the material maps.</returns>
+    public IEnumerable<string> GetMaterialMapNames() {
+        return this._maps.Keys;
     }
 
     /// <summary>
-    /// Retrieves an array of all material maps associated with the current material.
+    /// Retrieves all material maps associated with this material.
     /// </summary>
-    /// <returns>
-    /// An array of <see cref="MaterialMap"/> objects representing the material maps.
-    /// </returns>
-    public MaterialMap[] GetMaterialMaps() {
-        return this._maps.Values.ToArray();
+    /// <returns>A collection of <see cref="MaterialMap"/> objects.</returns>
+    public IEnumerable<MaterialMap> GetMaterialMaps() {
+        return this._maps.Values;
     }
 
     /// <summary>

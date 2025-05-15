@@ -1,6 +1,5 @@
 using System.Numerics;
 using Bliss.CSharp.Transformations;
-using Veldrid;
 
 namespace Bliss.CSharp.Camera.Dim2;
 

@@ -111,19 +111,21 @@ public class Effect : Disposable {
     }
 
     /// <summary>
-    /// Retrieves all the keys from the buffer layout dictionary.
+    /// Retrieves the collection of keys representing buffer layouts associated with the Effect instance.
     /// </summary>
-    /// <returns>An array of strings representing the keys of the buffer layouts.</returns>
-    public string[] GetBufferLayoutKeys() {
-        return this._bufferLayouts.Keys.ToArray();
+    /// <returns>
+    /// An enumerable collection of string keys corresponding to the buffer layouts.
+    /// </returns>
+    public IEnumerable<string> GetBufferLayoutKeys() {
+        return this._bufferLayouts.Keys;
     }
-
+    
     /// <summary>
-    /// Retrieves an array of buffer layouts associated with the current effect.
+    /// Retrieves the collection of buffer layouts defined for this effect.
     /// </summary>
-    /// <returns>An array of <see cref="SimpleBufferLayout"/> objects, representing the buffer layouts used by the effect.</returns>
-    public SimpleBufferLayout[] GetBufferLayouts() {
-        return this._bufferLayouts.Values.ToArray();
+    /// <returns>An enumerable collection of <see cref="SimpleBufferLayout"/> representing the buffer layouts in this effect.</returns>
+    public IEnumerable<SimpleBufferLayout> GetBufferLayouts() {
+        return this._bufferLayouts.Values;
     }
 
     /// <summary>
@@ -146,19 +148,19 @@ public class Effect : Disposable {
     }
 
     /// <summary>
-    /// Retrieves an array of keys representing the names of texture layouts stored within the effect.
+    /// Retrieves the collection of keys that correspond to the texture layouts defined in this effect.
     /// </summary>
-    /// <returns>An array of strings containing the keys for the texture layouts.</returns>
-    public string[] GetTextureLayoutKeys() {
-        return this._textureLayouts.Keys.ToArray();
+    /// <returns>A collection of strings representing the keys for the texture layouts.</returns>
+    public IEnumerable<string> GetTextureLayoutKeys() {
+        return this._textureLayouts.Keys;
     }
 
     /// <summary>
-    /// Retrieves all texture layouts associated with the effect.
+    /// Retrieves the collection of texture layouts associated with the current effect.
     /// </summary>
-    /// <returns>An array of <see cref="SimpleTextureLayout"/> representing the texture layouts.</returns>
-    public SimpleTextureLayout[] GetTextureLayouts() {
-        return this._textureLayouts.Values.ToArray();
+    /// <returns>An enumerable collection of <see cref="SimpleTextureLayout"/> instances representing the texture layouts.</returns>
+    public IEnumerable<SimpleTextureLayout> GetTextureLayouts() {
+        return this._textureLayouts.Values;
     }
 
     /// <summary>

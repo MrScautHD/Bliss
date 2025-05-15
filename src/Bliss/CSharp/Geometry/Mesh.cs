@@ -1253,18 +1253,18 @@ public class Mesh : Disposable {
         this._modelMatrixBuffer.UpdateBuffer(commandList);
 
         // Update color buffer.
-        for (int i = 0; i < this.Material.GetMaterialMaps().Length; i++) {
+        for (int i = 0; i < this.Material.GetMaterialMaps().Count(); i++) {
             Color? mapColor = this.Material.GetMapColor(((MaterialMapType) i).GetName());
 
             if (mapColor.HasValue) {
                 this._colorBuffer.SetValue(i, mapColor.Value.ToRgbaFloatVec4());
             }
         }
-
+        
         this._colorBuffer.UpdateBuffer(commandList);
         
         // Update value buffer.
-        for (int i = 0; i < this.Material.GetMaterialMaps().Length; i++) {
+        for (int i = 0; i < this.Material.GetMaterialMaps().Count(); i++) {
             this._valueBuffer.SetValue(i, this.Material.GetMapValue(((MaterialMapType) i).GetName()));
         }
         
@@ -1301,8 +1301,8 @@ public class Mesh : Disposable {
             commandList.SetGraphicsResourceSet(3, this._valueBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ValueBuffer")));
             
             // Set material texture.
-            for (int i = 0; i < this.Material.Effect.GetTextureLayoutKeys().Length; i++) {
-                string key = this.Material.Effect.GetTextureLayoutKeys()[i];
+            for (int i = 0; i < this.Material.Effect.GetTextureLayoutKeys().Count(); i++) {
+                string key = this.Material.Effect.GetTextureLayoutKeys().ElementAt(i);
                 ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point), this.Material.Effect.GetTextureLayout(key), key);
 
                 if (resourceSet != null) {
@@ -1337,8 +1337,8 @@ public class Mesh : Disposable {
             commandList.SetGraphicsResourceSet(3, this._valueBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ValueBuffer")));
             
             // Set material texture.
-            for (int i = 0; i < this.Material.Effect.GetTextureLayoutKeys().Length; i++) {
-                string key = this.Material.Effect.GetTextureLayoutKeys()[i];
+            for (int i = 0; i < this.Material.Effect.GetTextureLayoutKeys().Count(); i++) {
+                string key = this.Material.Effect.GetTextureLayoutKeys().ElementAt(i);
                 ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point), this.Material.Effect.GetTextureLayout(key), key);
 
                 if (resourceSet != null) {
