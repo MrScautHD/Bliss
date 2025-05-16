@@ -162,31 +162,7 @@ public interface IWindow : IDisposable {
     /// Occurs when a drag-and-drop operation is performed.
     /// </summary>
     public event Action<string>? DragDrop;
-
-    /// <summary>
-    /// Retrieves the current state of the window.
-    /// </summary>
-    /// <returns>The current state of the window as a WindowState enum value.</returns>
-    WindowState GetState();
-
-    /// <summary>
-    /// Checks if the current state of the window matches the specified state.
-    /// </summary>
-    /// <param name="state">The state to be checked against the current window state.</param>
-    /// <returns>True if the current state of the window matches the specified state, otherwise false.</returns>
-    bool HasState(WindowState state);
-
-    /// <summary>
-    /// Sets the state of the window to the specified WindowState.
-    /// </summary>
-    /// <param name="state">The desired state to set the window to, represented by the WindowState enum.</param>
-    void SetState(WindowState state);
-
-    /// <summary>
-    /// Clears the current state of the window, resetting it to its default state.
-    /// </summary>
-    void ClearState();
-
+    
     /// <summary>
     /// Retrieves the current title of the window.
     /// </summary>
@@ -272,6 +248,69 @@ public interface IWindow : IDisposable {
     /// </summary>
     /// <param name="height">The new height for the window.</param>
     void SetHeight(int height);
+    
+    /// <summary>
+    /// Retrieves the current state of the window.
+    /// </summary>
+    /// <returns>The current state of the window as a WindowState enum value.</returns>
+    WindowState GetState();
+    
+    /// <summary>
+    /// Checks if the current state of the window matches the specified state.
+    /// </summary>
+    /// <param name="state">The state to be checked against the current window state.</param>
+    /// <returns>True if the current state of the window matches the specified state, otherwise false.</returns>
+    bool HasState(WindowState state);
+    
+    /// <summary>
+    /// Sets whether the window can be resized by the user.
+    /// </summary>
+    /// <param name="resizable">A boolean value indicating whether the window should be resizable.</param>
+    void SetResizable(bool resizable);
+    
+    /// <summary>
+    /// Sets the window into or out of fullscreen mode.
+    /// </summary>
+    /// <param name="fullscreen">True to enable fullscreen mode, false to disable it.</param>
+    void SetFullscreen(bool fullscreen);
+    
+    /// <summary>
+    /// Configures whether the window should have a visible border.
+    /// </summary>
+    /// <param name="bordered">A boolean indicating if the window should be bordered (true) or not (false).</param>
+    void SetBordered(bool bordered);
+    
+    /// <summary>
+    /// Maximizes the window, filling the entire available screen space based on the current display settings.
+    /// </summary>
+    void Maximize();
+    
+    /// <summary>
+    /// Minimizes the current window, reducing it to its icon on the taskbar or dock.
+    /// </summary>
+    void Minimize();
+    
+    /// <summary>
+    /// Hides the window, making it no longer visible on the screen.
+    /// </summary>
+    void Hide();
+    
+    /// <summary>
+    /// Makes the window visible to the user if it is currently hidden.
+    /// </summary>
+    void Show();
+    
+    /// <summary>
+    /// Enables or disables capturing of the mouse cursor for the window.
+    /// </summary>
+    /// <param name="enabled">A boolean value indicating whether to enable mouse capture. Pass true to enable mouse capture or false to disable it.</param>
+    void CaptureMouse(bool enabled);
+
+    /// <summary>
+    /// Configures the window to always remain on top of other windows.
+    /// </summary>
+    /// <param name="alwaysOnTop">A boolean value indicating whether the window should always be on top of other windows. Set to true to enable this behavior, or false to disable it.</param>
+    void SetWindowAlwaysOnTop(bool alwaysOnTop);
 
     /// <summary>
     /// Sets the icon of the window.

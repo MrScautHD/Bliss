@@ -172,11 +172,6 @@ public class Sdl3Window : Disposable, IWindow {
     public event Action<string>? DragDrop;
 
     /// <summary>
-    /// Represents the current state of the SDL window, such as whether it is resizable, full screen, maximized, minimized, hidden, etc.
-    /// </summary>
-    private WindowState _state;
-
-    /// <summary>
     /// Contains a collection of SDL_Event objects used for polling and handling SDL events.
     /// </summary>
     private readonly SDL_Event[] _events;
@@ -253,74 +248,6 @@ public class Sdl3Window : Disposable, IWindow {
     /// <exception cref="System.ComponentModel.Win32Exception">Thrown if an error occurs when retrieving the module handle.</exception>
     [DllImport("kernel32", ExactSpelling = true)]
     private static extern unsafe nint GetModuleHandleW(ushort* lpModuleName);
-    
-    /// <summary>
-    /// Retrieves the current state of the window.
-    /// </summary>
-    /// <returns>The current state of the window represented by the <see cref="WindowState"/> enumeration.</returns>
-    public WindowState GetState() {
-        return this._state;
-    }
-
-    /// <summary>
-    /// Determines if the current window state matches the specified state.
-    /// </summary>
-    /// <param name="state">The window state to compare with the current state.</param>
-    /// <returns>True if the current window state matches the specified state; otherwise, false.</returns>
-    public bool HasState(WindowState state) {
-        return this._state.HasFlag(state);
-    }
-
-    /// <summary>
-    /// Sets the state of the window to the specified state.
-    /// </summary>
-    /// <param name="state">The desired state for the window, specified as a <see cref="WindowState"/>.</param>
-    public unsafe void SetState(WindowState state) {
-        this._state = state;
-
-        if (state.HasFlag(WindowState.Resizable)) {
-            SDL3.SDL_SetWindowResizable((SDL_Window*) this.Handle, true);
-        }
-        if (state.HasFlag(WindowState.FullScreen)) {
-            SDL3.SDL_SetWindowFullscreen((SDL_Window*) this.Handle, true);
-        }
-        if (state.HasFlag(WindowState.BorderlessFullScreen)) {
-            SDL3.SDL_SetWindowBordered((SDL_Window*) this.Handle, true);
-        }
-        if (state.HasFlag(WindowState.Maximized)) {
-            SDL3.SDL_MaximizeWindow((SDL_Window*) this.Handle);
-        }
-        if (state.HasFlag(WindowState.Minimized)) {
-            SDL3.SDL_MinimizeWindow((SDL_Window*) this.Handle);
-        }
-        if (state.HasFlag(WindowState.Hidden)) {
-            SDL3.SDL_HideWindow((SDL_Window*) this.Handle);
-        }
-        if (state.HasFlag(WindowState.CaptureMouse)) {
-            SDL3.SDL_CaptureMouse(true);
-        }
-        if (state.HasFlag(WindowState.AlwaysOnTop)) {
-            SDL3.SDL_SetWindowAlwaysOnTop((SDL_Window*) this.Handle, true);
-        }
-        if (state.HasFlag(WindowState.Transparent)) {
-            Logger.Warn("The Transparent flag must be set when creating the window!");
-        }
-    }
-
-    /// <summary>
-    /// Resets the window to its default state by clearing various settings such as resizability, fullscreen mode, border visibility, and always-on-top status.
-    /// </summary>
-    /// <exception cref="InvalidOperationException">Thrown if the window handle is invalid.</exception>
-    public unsafe void ClearState() {
-        this._state = WindowState.None;
-        
-        SDL3.SDL_SetWindowResizable((SDL_Window*) this.Handle, false);
-        SDL3.SDL_SetWindowFullscreen((SDL_Window*) this.Handle, false);
-        SDL3.SDL_SetWindowBordered((SDL_Window*) this.Handle, true);
-        SDL3.SDL_ShowWindow((SDL_Window*) this.Handle);
-        SDL3.SDL_CaptureMouse(false);
-        SDL3.SDL_SetWindowAlwaysOnTop((SDL_Window*) this.Handle, false);
-    }
 
     /// <summary>
     /// Retrieves the title of the window.
@@ -398,7 +325,7 @@ public class Sdl3Window : Disposable, IWindow {
     public void SetHeight(int height) {
         this.SetSize(this.GetWidth(), height);
     }
-
+    
     /// <summary>
     /// Retrieves the current position of the window.
     /// </summary>
@@ -455,7 +382,131 @@ public class Sdl3Window : Disposable, IWindow {
     public void SetY(int y) {
         this.SetPosition(this.GetX(), y);
     }
+    
+    /// <summary>
+    /// Retrieves the current state of the window.
+    /// </summary>
+    /// <returns>The current state of the window represented by the <see cref="WindowState"/> enumeration.</returns>
+    public unsafe WindowState GetState() {
+        SDL_WindowFlags flags = SDL3.SDL_GetWindowFlags((SDL_Window*) this.Handle);
+        WindowState state = WindowState.None;
+        
+        if (flags.HasFlag(SDL_WindowFlags.SDL_WINDOW_RESIZABLE)) {
+            state |= WindowState.Resizable;
+        }
+        if (flags.HasFlag(SDL_WindowFlags.SDL_WINDOW_FULLSCREEN)) {
+            state |= WindowState.FullScreen;
+        }
+        if (flags.HasFlag(SDL_WindowFlags.SDL_WINDOW_BORDERLESS)) {
+            state |= WindowState.Borderless;
+        }
+        if (flags.HasFlag(SDL_WindowFlags.SDL_WINDOW_MAXIMIZED)) {
+            state |= WindowState.Maximized;
+        }
+        if (flags.HasFlag(SDL_WindowFlags.SDL_WINDOW_MINIMIZED)) {
+            state |= WindowState.Minimized;
+        }
+        if (flags.HasFlag(SDL_WindowFlags.SDL_WINDOW_HIDDEN)) {
+            state |= WindowState.Hidden;
+        }
+        if (flags.HasFlag(SDL_WindowFlags.SDL_WINDOW_MOUSE_CAPTURE)) {
+            state |= WindowState.CaptureMouse;
+        }
+        if (flags.HasFlag(SDL_WindowFlags.SDL_WINDOW_ALWAYS_ON_TOP)) {
+            state |= WindowState.AlwaysOnTop;
+        }
+        if (flags.HasFlag(SDL_WindowFlags.SDL_WINDOW_TRANSPARENT)) {
+            state |= WindowState.Transparent;
+        }
+        if (flags.HasFlag(SDL_WindowFlags.SDL_WINDOW_HIGH_PIXEL_DENSITY)) {
+            state |= WindowState.HighPixelDensity;
+        }
+        
+        // Remove "None" state if there is something.
+        if (state != WindowState.None && state.HasFlag(WindowState.None)) {
+            state &= ~WindowState.None;
+        }
+        
+        return state;
+    }
+    
+    /// <summary>
+    /// Determines if the current window state matches the specified state.
+    /// </summary>
+    /// <param name="state">The window state to compare with the current state.</param>
+    /// <returns>True if the current window state matches the specified state; otherwise, false.</returns>
+    public bool HasState(WindowState state) {
+        return this.GetState().HasFlag(state);
+    }
 
+    /// <summary>
+    /// Specifies whether the window should be resizable and updates its resizable state accordingly.
+    /// </summary>
+    /// <param name="resizable">A boolean value indicating if the window should be resizable (true) or not resizable (false).</param>
+    public unsafe void SetResizable(bool resizable) {
+        SDL3.SDL_SetWindowResizable((SDL_Window*) this.Handle, resizable);
+    }
+
+    /// <summary>
+    /// Sets the fullscreen state of the window.
+    /// </summary>
+    /// <param name="fullscreen">A boolean value indicating whether the window should be fullscreen. Pass <c>true</c> to enable fullscreen mode, or <c>false</c> to disable it.</param>
+    public unsafe void SetFullscreen(bool fullscreen) {
+        SDL3.SDL_SetWindowFullscreen((SDL_Window*) this.Handle, fullscreen);
+    }
+
+    /// <summary>
+    /// Sets whether the window should have a border.
+    /// </summary>
+    /// <param name="bordered">A boolean indicating whether the window should be bordered. Pass true to enable the border, or false to remove it.</param>
+    public unsafe void SetBordered(bool bordered) {
+        SDL3.SDL_SetWindowBordered((SDL_Window*) this.Handle, bordered);
+    }
+
+    /// <summary>
+    /// Maximizes the window to occupy the entire screen space available within the current display's working area.
+    /// </summary>
+    public unsafe void Maximize() {
+        SDL3.SDL_MaximizeWindow((SDL_Window*) this.Handle);
+    }
+
+    /// <summary>
+    /// Minimizes the current window.
+    /// </summary>
+    public unsafe void Minimize() {
+        SDL3.SDL_MinimizeWindow((SDL_Window*) this.Handle);
+    }
+
+    /// <summary>
+    /// Hides the window, making it invisible to the user.
+    /// </summary>
+    public unsafe void Hide() {
+        SDL3.SDL_HideWindow((SDL_Window*) this.Handle);
+    }
+
+    /// <summary>
+    /// Makes the window visible if it is currently hidden.
+    /// </summary>
+    public unsafe void Show() {
+        SDL3.SDL_ShowWindow((SDL_Window*) this.Handle);
+    }
+
+    /// <summary>
+    /// Captures or releases the mouse input for the window.
+    /// </summary>
+    /// <param name="enabled">A boolean indicating whether to capture the mouse (true) or release it (false).</param>
+    public void CaptureMouse(bool enabled) {
+        SDL3.SDL_CaptureMouse(enabled);
+    }
+
+    /// <summary>
+    /// Sets whether the window should always be displayed on top of other windows.
+    /// </summary>
+    /// <param name="alwaysOnTop">A boolean indicating whether the window should be always on top. True to enable, false to disable.</param>
+    public unsafe void SetWindowAlwaysOnTop(bool alwaysOnTop) {
+        SDL3.SDL_SetWindowAlwaysOnTop((SDL_Window*) this.Handle, alwaysOnTop);
+    }
+    
     /// <summary>
     /// Sets the icon for the SDL3 window using the provided image.
     /// </summary>
@@ -751,7 +802,7 @@ public class Sdl3Window : Disposable, IWindow {
                 return SDL_WindowFlags.SDL_WINDOW_RESIZABLE;
             case WindowState.FullScreen:
                 return SDL_WindowFlags.SDL_WINDOW_FULLSCREEN;
-            case WindowState.BorderlessFullScreen:
+            case WindowState.Borderless:
                 return SDL_WindowFlags.SDL_WINDOW_BORDERLESS;
             case WindowState.Maximized:
                 return SDL_WindowFlags.SDL_WINDOW_MAXIMIZED;

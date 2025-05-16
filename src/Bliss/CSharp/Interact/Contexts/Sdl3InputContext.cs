@@ -242,7 +242,7 @@ public class Sdl3InputContext : Disposable, IInputContext {
     public bool IsKeyUp(KeyboardKey key) {
         return !this._keyboardKeysDown.Contains(key);
     }
-
+    
     public char[] GetPressedChars() {
         return this._keyboardCharsPressed.ToArray();
     }

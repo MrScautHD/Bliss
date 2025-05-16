@@ -21,7 +21,7 @@ public enum WindowState {
     /// <summary>
     /// The window is borderless, removing the title bar and window borders.
     /// </summary>
-    BorderlessFullScreen,
+    Borderless,
 
     /// <summary>
     /// The window is maximized, taking up the largest possible area on the screen.
@@ -51,5 +51,10 @@ public enum WindowState {
     /// <summary>
     /// The window is transparent, allowing content behind it to be partially visible.
     /// </summary>
-    Transparent
+    Transparent,
+    
+    /// <summary>
+    /// Enables rendering optimized for high-DPI (high pixel density) displays.
+    /// </summary>
+    HighPixelDensity
 }
