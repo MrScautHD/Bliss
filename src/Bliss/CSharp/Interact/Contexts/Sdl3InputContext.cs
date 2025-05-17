@@ -364,7 +364,6 @@ public class Sdl3InputContext : Disposable, IInputContext {
         this._keyboardKeysReleased.Add(keyEvent.KeyboardKey);
     }
 
-
     /// <summary>
     /// Handles text input events by appending new input text to the existing buffer.
     /// </summary>
