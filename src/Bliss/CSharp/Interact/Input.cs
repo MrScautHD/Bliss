@@ -215,13 +215,36 @@ public static class Input {
     public static bool IsKeyUp(KeyboardKey key) {
         return InputContext.IsKeyUp(key);
     }
+    
+    /// <summary>
+    /// Retrieves any text that was typed since the last frame, but only while text input is active via <see cref="StartTextInput"/>.
+    /// </summary>
+    /// <param name="text">The typed text collected since the previous frame. Will be empty if no text was entered.</param>
+    /// <returns><c>true</c> if any text was entered; otherwise, <c>false</c>.</returns>
+    public static bool GetTypedText(out string text) {
+        return InputContext.GetTypedText(out text);
+    }
 
     /// <summary>
-    /// Retrieves characters that were pressed in the current frame.
+    /// Determines whether text input mode is currently active.
     /// </summary>
-    /// <returns>An array of characters pressed in the current frame.</returns>
-    public static char[] GetPressedChars() {
-        return InputContext.GetPressedChars();
+    /// <returns>True if text input is active; otherwise, false.</returns>
+    public static bool IsTextInputActive() {
+        return InputContext.IsTextInputActive();
+    }
+
+    /// <summary>
+    /// Activates text input mode, allowing the application to receive typed text events.
+    /// </summary>
+    public static void StartTextInput() {
+        InputContext.StartTextInput();
+    }
+
+    /// <summary>
+    /// Stops the text input process, ending any active text input session.
+    /// </summary>
+    public static void StopTextInput() {
+        InputContext.StopTextInput();
     }
 
     /// <summary>

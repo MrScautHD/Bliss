@@ -153,12 +153,29 @@ public interface IInputContext : IDisposable {
     /// <param name="key">The keyboard key to check.</param>
     /// <returns>Returns true if the specified key is up; otherwise, false.</returns>
     bool IsKeyUp(KeyboardKey key);
+    
+    /// <summary>
+    /// Retrieves any text that was typed since the last frame, but only while text input is active via <see cref="StartTextInput"/>.
+    /// </summary>
+    /// <param name="text">The typed text collected since the previous frame. Will be empty if no text was entered.</param>
+    /// <returns><c>true</c> if any text was entered; otherwise, <c>false</c>.</returns>
+    bool GetTypedText(out string text);
 
     /// <summary>
-    /// Retrieves characters that were pressed in the current frame.
+    /// Determines whether text input mode is currently active.
     /// </summary>
-    /// <returns>An array of characters pressed in the current frame.</returns>
-    char[] GetPressedChars();
+    /// <returns>True if text input is active; otherwise, false.</returns>
+    bool IsTextInputActive();
+    
+    /// <summary>
+    /// Activates text input mode, allowing the application to receive typed text events.
+    /// </summary>
+    void StartTextInput();
+    
+    /// <summary>
+    /// Stops the text input process, ending any active text input session.
+    /// </summary>
+    void StopTextInput();
 
     /// <summary>
     /// Retrieves the current text from the system clipboard.

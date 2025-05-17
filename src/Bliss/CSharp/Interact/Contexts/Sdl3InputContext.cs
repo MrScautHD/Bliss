@@ -3,7 +3,6 @@ using Bliss.CSharp.Interact.Gamepads;
 using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Interact.Mice;
 using Bliss.CSharp.Interact.Mice.Cursors;
-using Bliss.CSharp.Logging;
 using Bliss.CSharp.Windowing;
 using Bliss.CSharp.Windowing.Events;
 using SDL;
@@ -63,14 +62,14 @@ public class Sdl3InputContext : Disposable, IInputContext {
     private List<KeyboardKey> _keyboardKeysReleased;
 
     /// <summary>
-    /// Stores a list of characters that have been pressed on the keyboard.
-    /// </summary>
-    private List<char> _keyboardCharsPressed;
-
-    /// <summary>
     /// A collection of gamepad devices currently connected and managed by the input context.
     /// </summary>
     private Dictionary<uint, IGamepad> _gamepads;
+    
+    /// <summary>
+    /// Stores the text input received from the user during text input operations.
+    /// </summary>
+    private string _textFromTextInput;
 
     /// <summary>
     /// Stores information about the file that was dragged and dropped onto the window.
@@ -97,10 +96,10 @@ public class Sdl3InputContext : Disposable, IInputContext {
         this._keyboardKeysPressed = new List<KeyboardKey>();
         this._keyboardKeysDown = new List<KeyboardKey>();
         this._keyboardKeysReleased = new List<KeyboardKey>();
-        this._keyboardCharsPressed = new List<char>();
 
         this._gamepads = new Dictionary<uint, IGamepad>();
         
+        this._textFromTextInput = string.Empty;
         this._dragDroppedFile = string.Empty;
         
         this._window.MouseMove += this.OnMouseMove;
@@ -118,14 +117,12 @@ public class Sdl3InputContext : Disposable, IInputContext {
         this._window.DragDrop += this.OnFileDragDropped;
     }
 
-    public unsafe void Begin() {
-        SDL3.SDL_StopTextInput((SDL_Window*) this._window.Handle);
-    }
+    public void Begin() { } // TODO: REMOVE that! and replace it with ProccesInput or something...
     
     public unsafe void End() {
         float mouseDeltaX;
         float mouseDeltaY;
-
+        
         SDL3.SDL_GetRelativeMouseState(&mouseDeltaX, &mouseDeltaY);
         this._mouseDelta = new Vector2(mouseDeltaX, mouseDeltaY);
         
@@ -136,16 +133,12 @@ public class Sdl3InputContext : Disposable, IInputContext {
         
         this._keyboardKeysPressed.Clear();
         this._keyboardKeysReleased.Clear();
-        this._keyboardCharsPressed.Clear();
-        
-        if (SDL3.SDL_GetWindowFlags((SDL_Window*) this._window.Handle).HasFlag(SDL_WindowFlags.SDL_WINDOW_INPUT_FOCUS)) {
-            SDL3.SDL_StartTextInput((SDL_Window*) this._window.Handle);
-        }
         
         foreach (IGamepad gamepad in this._gamepads.Values) {
             gamepad.CleanStates();
         }
         
+        this._textFromTextInput = string.Empty;
         this._dragDroppedFile = string.Empty;
     }
     
@@ -243,14 +236,27 @@ public class Sdl3InputContext : Disposable, IInputContext {
         return !this._keyboardKeysDown.Contains(key);
     }
     
-    public char[] GetPressedChars() {
-        return this._keyboardCharsPressed.ToArray();
+    public bool GetTypedText(out string text) {
+        text = this._textFromTextInput;
+        return text != string.Empty;
     }
 
+    public unsafe bool IsTextInputActive() {
+        return SDL3.SDL_TextInputActive((SDL_Window*) this._window.Handle);
+    }
+    
+    public unsafe void StartTextInput() {
+        SDL3.SDL_StartTextInput((SDL_Window*) this._window.Handle);
+    }
+    
+    public unsafe void StopTextInput() {
+        SDL3.SDL_StopTextInput((SDL_Window*) this._window.Handle);
+    }
+    
     public string GetClipboardText() {
         return SDL3.SDL_GetClipboardText() ?? string.Empty;
     }
-
+    
     public void SetClipboardText(string text) {
         SDL3.SDL_SetClipboardText(text);
     }
@@ -358,14 +364,13 @@ public class Sdl3InputContext : Disposable, IInputContext {
         this._keyboardKeysReleased.Add(keyEvent.KeyboardKey);
     }
 
+
     /// <summary>
-    /// Handles text input events by adding the input characters to the list of characters pressed.
+    /// Handles text input events by appending new input text to the existing buffer.
     /// </summary>
-    /// <param name="chars">An array of characters generated from the text input event.</param>
-    private void OnTextInput(char[] chars) {
-        foreach (char charText in chars) {
-            this._keyboardCharsPressed.Add(charText);
-        }
+    /// <param name="text">The text input received from the user.</param>
+    private void OnTextInput(string text) {
+        this._textFromTextInput += text;
     }
     
     /* ------------------------------------ Gamepad Events ------------------------------------ */

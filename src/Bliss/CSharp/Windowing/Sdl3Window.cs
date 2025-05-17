@@ -139,7 +139,7 @@ public class Sdl3Window : Disposable, IWindow {
     /// <summary>
     /// Represents an event that triggers when text input is received.
     /// </summary>
-    public event Action<char[]>? TextInput;
+    public event Action<string>? TextInput;
 
     /// <summary>
     /// Event triggered when a new gamepad is connected to the system.
@@ -886,10 +886,10 @@ public class Sdl3Window : Disposable, IWindow {
                 this.KeyUp?.Invoke(new KeyEvent(this.MapKey(sdlEvent.key.scancode), sdlEvent.key.down, sdlEvent.key.repeat));
                 break;
             case SDL_EventType.SDL_EVENT_TEXT_INPUT:
-                char[]? chars = sdlEvent.text.GetText()?.ToCharArray();
+                string? text = sdlEvent.text.GetText();
                 
-                if (chars != null) {
-                    this.TextInput?.Invoke(chars);
+                if (text != null) {
+                    this.TextInput?.Invoke(text);
                 }
                 break;
             case SDL_EventType.SDL_EVENT_GAMEPAD_ADDED:

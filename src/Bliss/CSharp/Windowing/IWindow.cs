@@ -124,10 +124,9 @@ public interface IWindow : IDisposable {
     public event Action<KeyEvent>? KeyUp;
 
     /// <summary>
-    /// Occurs when text input is received from the user. The event handler receives an array of characters
-    /// representing the text that was entered.
+    /// Occurs when text input is received from the user.
     /// </summary>
-    public event Action<char[]>? TextInput;
+    public event Action<string>? TextInput;
 
     /// <summary>
     /// Occurs when a new gamepad is detected and added to the system.

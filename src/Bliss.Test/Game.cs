@@ -70,6 +70,8 @@ public class Game : Disposable {
 
     private int _frameCount;
     private bool _playingAnim;
+
+    private string _textInput;
     
     public Game(GameSettings settings) {
         Instance = this;
@@ -333,6 +335,29 @@ public class Game : Disposable {
         
         // SpriteBatch Drawing.
         this._spriteBatch.Begin(commandList, this.FullScreenTexture.Framebuffer.OutputDescription);
+        
+        if (Input.IsKeyPressed(KeyboardKey.O)) {
+            Input.StartTextInput();
+        }
+
+        if (Input.IsKeyPressed(KeyboardKey.Enter)) {
+            Input.StopTextInput();
+        }
+
+        if (Input.IsTextInputActive()) {
+            if (Input.GetTypedText(out string text)) {
+                this._textInput += text;
+            }
+            
+            if (Input.IsKeyPressed(KeyboardKey.BackSpace)) {
+                if (this._textInput.Length > 0) {
+                    this._textInput = this._textInput.Remove(this._textInput.Length - 1, 1);
+                }
+            }
+        }
+        
+        this._spriteBatch.DrawText(this._font, $"Text Input: {this._textInput}", new Vector2(80, 80), 18);
+        
         this._spriteBatch.DrawText(this._font, $"FPS: {(int) (1.0F / Time.Delta)}", new Vector2(5, 5), 18);
 
         int frame = 4;
