@@ -138,6 +138,16 @@ public class Cam2D : ICam {
     }
 
     /// <summary>
+    /// Calculates and returns the visible area of the camera based on its current position and viewport size.
+    /// </summary>
+    /// <returns>A <see cref="RectangleF"/> representing the visible area in world coordinates.</returns>
+    public RectangleF GetVisibleArea() {
+        Vector2 worldPosition = this.GetScreenToWorld(Vector2.Zero);
+        Vector2 worldSize = this.GetScreenToWorld(new Vector2(this.Size.Width, this.Size.Height));
+        return new RectangleF(worldPosition.X, worldPosition.Y, worldSize.X - worldPosition.X, worldSize.Y - worldPosition.Y);
+    }
+
+    /// <summary>
     /// Converts a screen position to a world position based on the camera's current view matrix.
     /// </summary>
     /// <param name="position">The screen position to be converted.</param>
