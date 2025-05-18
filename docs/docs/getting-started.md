@@ -102,5 +102,5 @@ protected virtual void Draw(GraphicsDevice graphicsDevice, CommandList commandLi
 ## Launch Your Program 🚀
 Your application is now ready to run! For a visual overview, check out the image below:
 <p align="center" style="margin-bottom: 0px !important;">
-  <img width="1280" src="https://github.com/MrScautHD/Bliss/tree/main/docs/assets/getting-started-window.png" alt="Getting Started Window" align="center">
+  <img width="1280" src="https://github.com/MrScautHD/Bliss/blob/main/docs/assets/getting-started-window.png?raw=true" alt="Getting Started Window" align="center">
 </p>
