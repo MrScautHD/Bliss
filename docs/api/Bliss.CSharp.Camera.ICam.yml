@@ -5,7 +5,7 @@ items:
   id: ICam
   parent: Bliss.CSharp.Camera
   children:
-  - Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
+  - Bliss.CSharp.Camera.ICam.Begin
   - Bliss.CSharp.Camera.ICam.End
   - Bliss.CSharp.Camera.ICam.Resize(System.UInt32,System.UInt32)
   - Bliss.CSharp.Camera.ICam.Update(System.Double)
@@ -102,16 +102,16 @@ items:
   nameWithType.vb: ICam.Resize(UInteger, UInteger)
   fullName.vb: Bliss.CSharp.Camera.ICam.Resize(UInteger, UInteger)
   name.vb: Resize(UInteger, UInteger)
-- uid: Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
-  commentId: M:Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
-  id: Begin(Veldrid.CommandList)
+- uid: Bliss.CSharp.Camera.ICam.Begin
+  commentId: M:Bliss.CSharp.Camera.ICam.Begin
+  id: Begin
   parent: Bliss.CSharp.Camera.ICam
   langs:
   - csharp
   - vb
-  name: Begin(CommandList)
-  nameWithType: ICam.Begin(CommandList)
-  fullName: Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
+  name: Begin()
+  nameWithType: ICam.Begin()
+  fullName: Bliss.CSharp.Camera.ICam.Begin()
   type: Method
   source:
     remote:
@@ -120,19 +120,15 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Begin
     path: ../src/Bliss/CSharp/Camera/ICam.cs
-    startLine: 22
+    startLine: 21
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera
   summary: Initializes the camera's usage in the current frame and sets it as the active camera.
   example: []
   syntax:
-    content: void Begin(CommandList commandList)
-    parameters:
-    - id: commandList
-      type: Veldrid.CommandList
-      description: The command list to begin the camera's drawing operations.
-    content.vb: Sub Begin(commandList As CommandList)
+    content: void Begin()
+    content.vb: Sub Begin()
   overload: Bliss.CSharp.Camera.ICam.Begin*
 - uid: Bliss.CSharp.Camera.ICam.End
   commentId: M:Bliss.CSharp.Camera.ICam.End
@@ -152,7 +148,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: End
     path: ../src/Bliss/CSharp/Camera/ICam.cs
-    startLine: 27
+    startLine: 26
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera
@@ -236,24 +232,10 @@ references:
   name.vb: UInteger
 - uid: Bliss.CSharp.Camera.ICam.Begin*
   commentId: Overload:Bliss.CSharp.Camera.ICam.Begin
-  href: Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_Begin_Veldrid_CommandList_
+  href: Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_Begin
   name: Begin
   nameWithType: ICam.Begin
   fullName: Bliss.CSharp.Camera.ICam.Begin
-- uid: Veldrid.CommandList
-  commentId: T:Veldrid.CommandList
-  parent: Veldrid
-  isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
-  name: CommandList
-  nameWithType: CommandList
-  fullName: Veldrid.CommandList
-- uid: Veldrid
-  commentId: N:Veldrid
-  isExternal: true
-  name: Veldrid
-  nameWithType: Veldrid
-  fullName: Veldrid
 - uid: Bliss.CSharp.Camera.ICam.End*
   commentId: Overload:Bliss.CSharp.Camera.ICam.End
   href: Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_End

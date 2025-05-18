@@ -6,7 +6,7 @@ items:
   parent: Bliss.CSharp.Graphics.Pipelines
   children:
   - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor
-  - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor(Veldrid.BlendStateDescription,Veldrid.DepthStencilStateDescription,Veldrid.RasterizerStateDescription,Veldrid.PrimitiveTopology,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[],Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[],Veldrid.ShaderSetDescription,Veldrid.OutputDescription)
+  - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor(Veldrid.BlendStateDescription,Veldrid.DepthStencilStateDescription,Veldrid.RasterizerStateDescription,Veldrid.PrimitiveTopology,System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout},System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout},Veldrid.ShaderSetDescription,Veldrid.OutputDescription)
   - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.BlendState
   - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.BufferLayouts
   - Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.DepthStencilState
@@ -71,7 +71,7 @@ items:
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Pipelines
-  summary: Defines the blend state configuration, controlling how colors are blended in the pipeline.
+  summary: Configuration for how colors are blended during rendering.
   example: []
   syntax:
     content: public BlendStateDescription BlendState
@@ -100,7 +100,7 @@ items:
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Pipelines
-  summary: Defines the depth and stencil state configuration, controlling depth testing and stencil operations in the pipeline.
+  summary: Configuration for depth testing and stencil operations.
   example: []
   syntax:
     content: public DepthStencilStateDescription DepthStencilState
@@ -129,7 +129,7 @@ items:
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Pipelines
-  summary: Defines the rasterizer state configuration, which determines how primitives are rasterized (e.g., culling mode, fill mode).
+  summary: Configuration for rasterization, including culling and fill modes.
   example: []
   syntax:
     content: public RasterizerStateDescription RasterizerState
@@ -158,7 +158,7 @@ items:
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Pipelines
-  summary: Specifies the primitive topology, which defines how the input vertices are interpreted (e.g., triangles, lines).
+  summary: Specifies how the input vertices are assembled into primitives (e.g., triangles, lines).
   example: []
   syntax:
     content: public PrimitiveTopology PrimitiveTopology
@@ -187,13 +187,13 @@ items:
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Pipelines
-  summary: An array of buffers that are bound to the pipeline, containing vertex data and possibly other information.
+  summary: Describes how vertex buffers are structured and laid out.
   example: []
   syntax:
-    content: public SimpleBufferLayout[] BufferLayouts
+    content: public IEnumerable<SimpleBufferLayout> BufferLayouts
     return:
-      type: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[]
-    content.vb: Public BufferLayouts As SimpleBufferLayout()
+      type: System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout}
+    content.vb: Public BufferLayouts As IEnumerable(Of SimpleBufferLayout)
 - uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.TextureLayouts
   commentId: F:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.TextureLayouts
   id: TextureLayouts
@@ -216,13 +216,13 @@ items:
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Pipelines
-  summary: An array of texture layouts, describing how textures are arranged and accessed in the pipeline.
+  summary: Describes how textures are bound and accessed in the pipeline.
   example: []
   syntax:
-    content: public SimpleTextureLayout[] TextureLayouts
+    content: public IEnumerable<SimpleTextureLayout> TextureLayouts
     return:
-      type: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[]
-    content.vb: Public TextureLayouts As SimpleTextureLayout()
+      type: System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout}
+    content.vb: Public TextureLayouts As IEnumerable(Of SimpleTextureLayout)
 - uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.ShaderSet
   commentId: F:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.ShaderSet
   id: ShaderSet
@@ -245,7 +245,7 @@ items:
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Pipelines
-  summary: Describes the shader set, including the vertex and fragment shaders used by the pipeline.
+  summary: Contains the vertex and fragment shaders used by the pipeline.
   example: []
   syntax:
     content: public ShaderSetDescription ShaderSet
@@ -274,7 +274,7 @@ items:
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Pipelines
-  summary: Defines the output configuration, specifying render targets and the depth-stencil buffer for the pipeline.
+  summary: Specifies the render targets and optional depth-stencil buffer.
   example: []
   syntax:
     content: public OutputDescription Outputs
@@ -303,23 +303,23 @@ items:
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Pipelines
-  summary: An optional resource binding model that maps resources such as textures and buffers to the pipeline.
+  summary: Optional model describing how resources (textures, buffers) are mapped to the pipeline.
   example: []
   syntax:
     content: public ResourceBindingModel? ResourceBindingModel
     return:
       type: System.Nullable{Veldrid.ResourceBindingModel}
     content.vb: Public ResourceBindingModel As ResourceBindingModel?
-- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor(Veldrid.BlendStateDescription,Veldrid.DepthStencilStateDescription,Veldrid.RasterizerStateDescription,Veldrid.PrimitiveTopology,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[],Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[],Veldrid.ShaderSetDescription,Veldrid.OutputDescription)
-  commentId: M:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor(Veldrid.BlendStateDescription,Veldrid.DepthStencilStateDescription,Veldrid.RasterizerStateDescription,Veldrid.PrimitiveTopology,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[],Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[],Veldrid.ShaderSetDescription,Veldrid.OutputDescription)
-  id: '#ctor(Veldrid.BlendStateDescription,Veldrid.DepthStencilStateDescription,Veldrid.RasterizerStateDescription,Veldrid.PrimitiveTopology,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[],Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[],Veldrid.ShaderSetDescription,Veldrid.OutputDescription)'
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor(Veldrid.BlendStateDescription,Veldrid.DepthStencilStateDescription,Veldrid.RasterizerStateDescription,Veldrid.PrimitiveTopology,System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout},System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout},Veldrid.ShaderSetDescription,Veldrid.OutputDescription)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor(Veldrid.BlendStateDescription,Veldrid.DepthStencilStateDescription,Veldrid.RasterizerStateDescription,Veldrid.PrimitiveTopology,System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout},System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout},Veldrid.ShaderSetDescription,Veldrid.OutputDescription)
+  id: '#ctor(Veldrid.BlendStateDescription,Veldrid.DepthStencilStateDescription,Veldrid.RasterizerStateDescription,Veldrid.PrimitiveTopology,System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout},System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout},Veldrid.ShaderSetDescription,Veldrid.OutputDescription)'
   parent: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
   langs:
   - csharp
   - vb
-  name: SimplePipelineDescription(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, SimpleBufferLayout[], SimpleTextureLayout[], ShaderSetDescription, OutputDescription)
-  nameWithType: SimplePipelineDescription.SimplePipelineDescription(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, SimpleBufferLayout[], SimpleTextureLayout[], ShaderSetDescription, OutputDescription)
-  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.SimplePipelineDescription(Veldrid.BlendStateDescription, Veldrid.DepthStencilStateDescription, Veldrid.RasterizerStateDescription, Veldrid.PrimitiveTopology, Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[], Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[], Veldrid.ShaderSetDescription, Veldrid.OutputDescription)
+  name: SimplePipelineDescription(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, IEnumerable<SimpleBufferLayout>, IEnumerable<SimpleTextureLayout>, ShaderSetDescription, OutputDescription)
+  nameWithType: SimplePipelineDescription.SimplePipelineDescription(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, IEnumerable<SimpleBufferLayout>, IEnumerable<SimpleTextureLayout>, ShaderSetDescription, OutputDescription)
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.SimplePipelineDescription(Veldrid.BlendStateDescription, Veldrid.DepthStencilStateDescription, Veldrid.RasterizerStateDescription, Veldrid.PrimitiveTopology, System.Collections.Generic.IEnumerable<Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout>, System.Collections.Generic.IEnumerable<Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout>, Veldrid.ShaderSetDescription, Veldrid.OutputDescription)
   type: Constructor
   source:
     remote:
@@ -335,7 +335,7 @@ items:
   summary: Initializes a new instance of the <xref href="Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription" data-throw-if-not-resolved="false"></xref> struct with the provided pipeline configuration details.
   example: []
   syntax:
-    content: public SimplePipelineDescription(BlendStateDescription blendState, DepthStencilStateDescription depthStencilState, RasterizerStateDescription rasterizerState, PrimitiveTopology primitiveTopology, SimpleBufferLayout[] bufferLayouts, SimpleTextureLayout[] textureLayouts, ShaderSetDescription shaderSet, OutputDescription outputs)
+    content: public SimplePipelineDescription(BlendStateDescription blendState, DepthStencilStateDescription depthStencilState, RasterizerStateDescription rasterizerState, PrimitiveTopology primitiveTopology, IEnumerable<SimpleBufferLayout> bufferLayouts, IEnumerable<SimpleTextureLayout> textureLayouts, ShaderSetDescription shaderSet, OutputDescription outputs)
     parameters:
     - id: blendState
       type: Veldrid.BlendStateDescription
@@ -350,22 +350,22 @@ items:
       type: Veldrid.PrimitiveTopology
       description: The primitive topology that defines how vertex data is interpreted.
     - id: bufferLayouts
-      type: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[]
-      description: An array of buffer layouts to be used by the pipeline.
+      type: System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout}
+      description: A list of buffer layouts to be used by the pipeline.
     - id: textureLayouts
-      type: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[]
-      description: An array of texture layouts to be used in the pipeline.
+      type: System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout}
+      description: A list of texture layouts to be used in the pipeline.
     - id: shaderSet
       type: Veldrid.ShaderSetDescription
       description: The shader set description that defines the vertex and fragment shaders.
     - id: outputs
       type: Veldrid.OutputDescription
       description: The output configuration of the pipeline, specifying the render targets and depth-stencil buffer.
-    content.vb: Public Sub New(blendState As BlendStateDescription, depthStencilState As DepthStencilStateDescription, rasterizerState As RasterizerStateDescription, primitiveTopology As PrimitiveTopology, bufferLayouts As SimpleBufferLayout(), textureLayouts As SimpleTextureLayout(), shaderSet As ShaderSetDescription, outputs As OutputDescription)
+    content.vb: Public Sub New(blendState As BlendStateDescription, depthStencilState As DepthStencilStateDescription, rasterizerState As RasterizerStateDescription, primitiveTopology As PrimitiveTopology, bufferLayouts As IEnumerable(Of SimpleBufferLayout), textureLayouts As IEnumerable(Of SimpleTextureLayout), shaderSet As ShaderSetDescription, outputs As OutputDescription)
   overload: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor*
-  nameWithType.vb: SimplePipelineDescription.New(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, SimpleBufferLayout(), SimpleTextureLayout(), ShaderSetDescription, OutputDescription)
-  fullName.vb: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.New(Veldrid.BlendStateDescription, Veldrid.DepthStencilStateDescription, Veldrid.RasterizerStateDescription, Veldrid.PrimitiveTopology, Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout(), Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout(), Veldrid.ShaderSetDescription, Veldrid.OutputDescription)
-  name.vb: New(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, SimpleBufferLayout(), SimpleTextureLayout(), ShaderSetDescription, OutputDescription)
+  nameWithType.vb: SimplePipelineDescription.New(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, IEnumerable(Of SimpleBufferLayout), IEnumerable(Of SimpleTextureLayout), ShaderSetDescription, OutputDescription)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.New(Veldrid.BlendStateDescription, Veldrid.DepthStencilStateDescription, Veldrid.RasterizerStateDescription, Veldrid.PrimitiveTopology, System.Collections.Generic.IEnumerable(Of Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout), System.Collections.Generic.IEnumerable(Of Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout), Veldrid.ShaderSetDescription, Veldrid.OutputDescription)
+  name.vb: New(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, IEnumerable(Of SimpleBufferLayout), IEnumerable(Of SimpleTextureLayout), ShaderSetDescription, OutputDescription)
 - uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor
   commentId: M:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor
   id: '#ctor'
@@ -889,47 +889,136 @@ references:
   name: PrimitiveTopology
   nameWithType: PrimitiveTopology
   fullName: Veldrid.PrimitiveTopology
-- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[]
-  isExternal: true
-  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
-  name: SimpleBufferLayout[]
-  nameWithType: SimpleBufferLayout[]
-  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[]
-  nameWithType.vb: SimpleBufferLayout()
-  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout()
-  name.vb: SimpleBufferLayout()
+- uid: System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout}
+  commentId: T:System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<SimpleBufferLayout>
+  nameWithType: IEnumerable<SimpleBufferLayout>
+  fullName: System.Collections.Generic.IEnumerable<Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout>
+  nameWithType.vb: IEnumerable(Of SimpleBufferLayout)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  name.vb: IEnumerable(Of SimpleBufferLayout)
   spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
   - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
     name: SimpleBufferLayout
     href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
-  - name: '['
-  - name: ']'
+  - name: '>'
   spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
   - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
     name: SimpleBufferLayout
     href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
-  - name: (
   - name: )
-- uid: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[]
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
   isExternal: true
-  href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
-  name: SimpleTextureLayout[]
-  nameWithType: SimpleTextureLayout[]
-  fullName: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[]
-  nameWithType.vb: SimpleTextureLayout()
-  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout()
-  name.vb: SimpleTextureLayout()
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
   spec.csharp:
-  - uid: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
-    name: SimpleTextureLayout
-    href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
-  - name: '['
-  - name: ']'
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
   spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout}
+  commentId: T:System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<SimpleTextureLayout>
+  nameWithType: IEnumerable<SimpleTextureLayout>
+  fullName: System.Collections.Generic.IEnumerable<Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout>
+  nameWithType.vb: IEnumerable(Of SimpleTextureLayout)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+  name.vb: IEnumerable(Of SimpleTextureLayout)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
   - uid: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
     name: SimpleTextureLayout
     href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
   - name: (
+  - name: Of
+  - name: " "
+  - uid: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+    name: SimpleTextureLayout
+    href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
   - name: )
 - uid: Veldrid.ShaderSetDescription
   commentId: T:Veldrid.ShaderSetDescription
@@ -1004,7 +1093,7 @@ references:
   fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription
 - uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor*
   commentId: Overload:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor
-  href: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.html#Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription__ctor_Veldrid_BlendStateDescription_Veldrid_DepthStencilStateDescription_Veldrid_RasterizerStateDescription_Veldrid_PrimitiveTopology_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferLayout___Bliss_CSharp_Graphics_Pipelines_Textures_SimpleTextureLayout___Veldrid_ShaderSetDescription_Veldrid_OutputDescription_
+  href: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.html#Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription__ctor_Veldrid_BlendStateDescription_Veldrid_DepthStencilStateDescription_Veldrid_RasterizerStateDescription_Veldrid_PrimitiveTopology_System_Collections_Generic_IEnumerable_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferLayout__System_Collections_Generic_IEnumerable_Bliss_CSharp_Graphics_Pipelines_Textures_SimpleTextureLayout__Veldrid_ShaderSetDescription_Veldrid_OutputDescription_
   name: SimplePipelineDescription
   nameWithType: SimplePipelineDescription.SimplePipelineDescription
   fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.SimplePipelineDescription

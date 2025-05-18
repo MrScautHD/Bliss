@@ -7,11 +7,12 @@ items:
   children:
   - Bliss.CSharp.Camera.Dim2.Cam2D.#ctor(System.Numerics.Vector2,System.Numerics.Vector2,Bliss.CSharp.Transformations.Rectangle,Bliss.CSharp.Camera.Dim2.CameraFollowMode,System.Nullable{System.Numerics.Vector2},System.Single,System.Single)
   - Bliss.CSharp.Camera.Dim2.Cam2D.ActiveCamera
-  - Bliss.CSharp.Camera.Dim2.Cam2D.Begin(Veldrid.CommandList)
+  - Bliss.CSharp.Camera.Dim2.Cam2D.Begin
   - Bliss.CSharp.Camera.Dim2.Cam2D.End
   - Bliss.CSharp.Camera.Dim2.Cam2D.FractionFollowSpeed
   - Bliss.CSharp.Camera.Dim2.Cam2D.GetScreenToWorld(System.Numerics.Vector2)
   - Bliss.CSharp.Camera.Dim2.Cam2D.GetView
+  - Bliss.CSharp.Camera.Dim2.Cam2D.GetVisibleArea
   - Bliss.CSharp.Camera.Dim2.Cam2D.GetWorldToScreen(System.Numerics.Vector2)
   - Bliss.CSharp.Camera.Dim2.Cam2D.MinFollowEffectLength
   - Bliss.CSharp.Camera.Dim2.Cam2D.MinFollowSpeed
@@ -38,7 +39,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Cam2D
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 6
+    startLine: 5
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -75,7 +76,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ActiveCamera
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 11
+    startLine: 10
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -106,7 +107,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Position
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 16
+    startLine: 15
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -135,7 +136,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Target
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 21
+    startLine: 20
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -164,7 +165,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Size
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 26
+    startLine: 25
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -195,7 +196,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Mode
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 31
+    startLine: 30
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -224,7 +225,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Offset
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 36
+    startLine: 35
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -253,7 +254,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Rotation
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 41
+    startLine: 40
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -282,7 +283,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Zoom
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 46
+    startLine: 45
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -311,7 +312,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MinFollowSpeed
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 51
+    startLine: 50
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -340,7 +341,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MinFollowEffectLength
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 56
+    startLine: 55
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -369,7 +370,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: FractionFollowSpeed
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 61
+    startLine: 60
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -398,7 +399,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 78
+    startLine: 77
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -451,7 +452,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Update
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 95
+    startLine: 94
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -488,7 +489,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Resize
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 112
+    startLine: 111
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -510,16 +511,16 @@ items:
   nameWithType.vb: Cam2D.Resize(UInteger, UInteger)
   fullName.vb: Bliss.CSharp.Camera.Dim2.Cam2D.Resize(UInteger, UInteger)
   name.vb: Resize(UInteger, UInteger)
-- uid: Bliss.CSharp.Camera.Dim2.Cam2D.Begin(Veldrid.CommandList)
-  commentId: M:Bliss.CSharp.Camera.Dim2.Cam2D.Begin(Veldrid.CommandList)
-  id: Begin(Veldrid.CommandList)
+- uid: Bliss.CSharp.Camera.Dim2.Cam2D.Begin
+  commentId: M:Bliss.CSharp.Camera.Dim2.Cam2D.Begin
+  id: Begin
   parent: Bliss.CSharp.Camera.Dim2.Cam2D
   langs:
   - csharp
   - vb
-  name: Begin(CommandList)
-  nameWithType: Cam2D.Begin(CommandList)
-  fullName: Bliss.CSharp.Camera.Dim2.Cam2D.Begin(Veldrid.CommandList)
+  name: Begin()
+  nameWithType: Cam2D.Begin()
+  fullName: Bliss.CSharp.Camera.Dim2.Cam2D.Begin()
   type: Method
   source:
     remote:
@@ -528,22 +529,18 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Begin
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 120
+    startLine: 118
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
   summary: Initializes the camera's usage in the current frame and sets it as the active camera.
   example: []
   syntax:
-    content: public void Begin(CommandList commandList)
-    parameters:
-    - id: commandList
-      type: Veldrid.CommandList
-      description: The command list to begin the camera's drawing operations.
-    content.vb: Public Sub Begin(commandList As CommandList)
+    content: public void Begin()
+    content.vb: Public Sub Begin()
   overload: Bliss.CSharp.Camera.Dim2.Cam2D.Begin*
   implements:
-  - Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
+  - Bliss.CSharp.Camera.ICam.Begin
 - uid: Bliss.CSharp.Camera.Dim2.Cam2D.End
   commentId: M:Bliss.CSharp.Camera.Dim2.Cam2D.End
   id: End
@@ -562,7 +559,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: End
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 128
+    startLine: 127
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -592,7 +589,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetView
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 136
+    startLine: 135
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -605,6 +602,37 @@ items:
       description: The <xref href="System.Numerics.Matrix4x4" data-throw-if-not-resolved="false"></xref> representing the camera's view matrix.
     content.vb: Public Function GetView() As Matrix4x4
   overload: Bliss.CSharp.Camera.Dim2.Cam2D.GetView*
+- uid: Bliss.CSharp.Camera.Dim2.Cam2D.GetVisibleArea
+  commentId: M:Bliss.CSharp.Camera.Dim2.Cam2D.GetVisibleArea
+  id: GetVisibleArea
+  parent: Bliss.CSharp.Camera.Dim2.Cam2D
+  langs:
+  - csharp
+  - vb
+  name: GetVisibleArea()
+  nameWithType: Cam2D.GetVisibleArea()
+  fullName: Bliss.CSharp.Camera.Dim2.Cam2D.GetVisibleArea()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetVisibleArea
+    path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
+    startLine: 143
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Camera.Dim2
+  summary: Calculates and returns the visible area of the camera based on its current position and viewport size.
+  example: []
+  syntax:
+    content: public RectangleF GetVisibleArea()
+    return:
+      type: Bliss.CSharp.Transformations.RectangleF
+      description: A <xref href="Bliss.CSharp.Transformations.RectangleF" data-throw-if-not-resolved="false"></xref> representing the visible area in world coordinates.
+    content.vb: Public Function GetVisibleArea() As RectangleF
+  overload: Bliss.CSharp.Camera.Dim2.Cam2D.GetVisibleArea*
 - uid: Bliss.CSharp.Camera.Dim2.Cam2D.GetScreenToWorld(System.Numerics.Vector2)
   commentId: M:Bliss.CSharp.Camera.Dim2.Cam2D.GetScreenToWorld(System.Numerics.Vector2)
   id: GetScreenToWorld(System.Numerics.Vector2)
@@ -623,7 +651,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetScreenToWorld
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 145
+    startLine: 154
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -658,7 +686,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetWorldToScreen
     path: ../src/Bliss/CSharp/Camera/Dim2/Cam2D.cs
-    startLine: 155
+    startLine: 164
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim2
@@ -1264,52 +1292,29 @@ references:
   name.vb: UInteger
 - uid: Bliss.CSharp.Camera.Dim2.Cam2D.Begin*
   commentId: Overload:Bliss.CSharp.Camera.Dim2.Cam2D.Begin
-  href: Bliss.CSharp.Camera.Dim2.Cam2D.html#Bliss_CSharp_Camera_Dim2_Cam2D_Begin_Veldrid_CommandList_
+  href: Bliss.CSharp.Camera.Dim2.Cam2D.html#Bliss_CSharp_Camera_Dim2_Cam2D_Begin
   name: Begin
   nameWithType: Cam2D.Begin
   fullName: Bliss.CSharp.Camera.Dim2.Cam2D.Begin
-- uid: Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
-  commentId: M:Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
+- uid: Bliss.CSharp.Camera.ICam.Begin
+  commentId: M:Bliss.CSharp.Camera.ICam.Begin
   parent: Bliss.CSharp.Camera.ICam
-  isExternal: true
-  href: Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_Begin_Veldrid_CommandList_
-  name: Begin(CommandList)
-  nameWithType: ICam.Begin(CommandList)
-  fullName: Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
+  href: Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_Begin
+  name: Begin()
+  nameWithType: ICam.Begin()
+  fullName: Bliss.CSharp.Camera.ICam.Begin()
   spec.csharp:
-  - uid: Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
+  - uid: Bliss.CSharp.Camera.ICam.Begin
     name: Begin
-    href: Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_Begin_Veldrid_CommandList_
+    href: Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_Begin
   - name: (
-  - uid: Veldrid.CommandList
-    name: CommandList
-    isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
   - name: )
   spec.vb:
-  - uid: Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
+  - uid: Bliss.CSharp.Camera.ICam.Begin
     name: Begin
-    href: Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_Begin_Veldrid_CommandList_
+    href: Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_Begin
   - name: (
-  - uid: Veldrid.CommandList
-    name: CommandList
-    isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
   - name: )
-- uid: Veldrid.CommandList
-  commentId: T:Veldrid.CommandList
-  parent: Veldrid
-  isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
-  name: CommandList
-  nameWithType: CommandList
-  fullName: Veldrid.CommandList
-- uid: Veldrid
-  commentId: N:Veldrid
-  isExternal: true
-  name: Veldrid
-  nameWithType: Veldrid
-  fullName: Veldrid
 - uid: Bliss.CSharp.Camera.Dim2.Cam2D.End*
   commentId: Overload:Bliss.CSharp.Camera.Dim2.Cam2D.End
   href: Bliss.CSharp.Camera.Dim2.Cam2D.html#Bliss_CSharp_Camera_Dim2_Cam2D_End
@@ -1349,6 +1354,19 @@ references:
   name: GetView
   nameWithType: Cam2D.GetView
   fullName: Bliss.CSharp.Camera.Dim2.Cam2D.GetView
+- uid: Bliss.CSharp.Transformations.RectangleF
+  commentId: T:Bliss.CSharp.Transformations.RectangleF
+  parent: Bliss.CSharp.Transformations
+  href: Bliss.CSharp.Transformations.RectangleF.html
+  name: RectangleF
+  nameWithType: RectangleF
+  fullName: Bliss.CSharp.Transformations.RectangleF
+- uid: Bliss.CSharp.Camera.Dim2.Cam2D.GetVisibleArea*
+  commentId: Overload:Bliss.CSharp.Camera.Dim2.Cam2D.GetVisibleArea
+  href: Bliss.CSharp.Camera.Dim2.Cam2D.html#Bliss_CSharp_Camera_Dim2_Cam2D_GetVisibleArea
+  name: GetVisibleArea
+  nameWithType: Cam2D.GetVisibleArea
+  fullName: Bliss.CSharp.Camera.Dim2.Cam2D.GetVisibleArea
 - uid: Bliss.CSharp.Camera.Dim2.Cam2D.GetScreenToWorld*
   commentId: Overload:Bliss.CSharp.Camera.Dim2.Cam2D.GetScreenToWorld
   href: Bliss.CSharp.Camera.Dim2.Cam2D.html#Bliss_CSharp_Camera_Dim2_Cam2D_GetScreenToWorld_System_Numerics_Vector2_

@@ -120,7 +120,7 @@ public enum WindowState</code></pre>
     <dt id="Bliss_CSharp_Windowing_WindowState_AlwaysOnTop"><code>AlwaysOnTop = 8</code></dt>
     <dd><p>The window is always on top of other windows, maintaining its topmost position.</p>
 </dd>
-    <dt id="Bliss_CSharp_Windowing_WindowState_BorderlessFullScreen"><code>BorderlessFullScreen = Resizable | FullScreen</code></dt>
+    <dt id="Bliss_CSharp_Windowing_WindowState_Borderless"><code>Borderless = Resizable | FullScreen</code></dt>
     <dd><p>The window is borderless, removing the title bar and window borders.</p>
 </dd>
     <dt id="Bliss_CSharp_Windowing_WindowState_CaptureMouse"><code>CaptureMouse = Resizable | Hidden</code></dt>
@@ -131,6 +131,9 @@ public enum WindowState</code></pre>
 </dd>
     <dt id="Bliss_CSharp_Windowing_WindowState_Hidden"><code>Hidden = FullScreen | Maximized</code></dt>
     <dd><p>The window is hidden and not visible to the user.</p>
+</dd>
+    <dt id="Bliss_CSharp_Windowing_WindowState_HighPixelDensity"><code>HighPixelDensity = FullScreen | AlwaysOnTop</code></dt>
+    <dd><p>Enables rendering optimized for high-DPI (high pixel density) displays.</p>
 </dd>
     <dt id="Bliss_CSharp_Windowing_WindowState_Maximized"><code>Maximized = 4</code></dt>
     <dd><p>The window is maximized, taking up the largest possible area on the screen.</p>

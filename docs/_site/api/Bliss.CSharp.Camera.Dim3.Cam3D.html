@@ -652,26 +652,19 @@ Used to adjust the projection matrix for rendering the 3D scene correctly on the
 
   <a id="Bliss_CSharp_Camera_Dim3_Cam3D_Begin_" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.Begin*"></a>
 
-  <h3 id="Bliss_CSharp_Camera_Dim3_Cam3D_Begin_Veldrid_CommandList_" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.Begin(Veldrid.CommandList)">
-  Begin(CommandList)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L249"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Camera_Dim3_Cam3D_Begin" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.Begin">
+  Begin()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L247"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Sets the specified command list as the current command list for rendering operations and updates
-the camera's projection and view matrices. Also clears the depth stencil and sets this camera as the active camera.</p>
+  <div class="markdown level1 summary"><p>Activates the current camera instance as the active camera and updates its projection and view matrices.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Begin(CommandList commandList)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Begin()</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs">CommandList</a></dt>
-    <dd><p>The command list to set as the current command list for rendering operations.</p>
-</dd>
-  </dl>
 
 
 
@@ -688,7 +681,7 @@ the camera's projection and view matrices. Also clears the depth stencil and set
 
   <h3 id="Bliss_CSharp_Camera_Dim3_Cam3D_End" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.End">
   End()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L259"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L257"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Ends the current 3D rendering session and deactivates the camera.</p>
@@ -715,7 +708,7 @@ the camera's projection and view matrices. Also clears the depth stencil and set
 
   <h3 id="Bliss_CSharp_Camera_Dim3_Cam3D_GetForward" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.GetForward">
   GetForward()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L283"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L281"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Computes and returns the forward direction vector based on the camera's position and target.</p>
@@ -748,7 +741,7 @@ the camera's projection and view matrices. Also clears the depth stencil and set
 
   <h3 id="Bliss_CSharp_Camera_Dim3_Cam3D_GetFrustum" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.GetFrustum">
   GetFrustum()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L455"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L453"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the camera frustum by extracting the frustum planes based on the current view and projection matrices.</p>
@@ -781,7 +774,7 @@ the camera's projection and view matrices. Also clears the depth stencil and set
 
   <h3 id="Bliss_CSharp_Camera_Dim3_Cam3D_GetPitch" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.GetPitch">
   GetPitch()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L401"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L399"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the current pitch angle of the camera.</p>
@@ -814,7 +807,7 @@ the camera's projection and view matrices. Also clears the depth stencil and set
 
   <h3 id="Bliss_CSharp_Camera_Dim3_Cam3D_GetProjection" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.GetProjection">
   GetProjection()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L267"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L265"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Generates the projection matrix based on the current camera settings, such as projection type, field of view (FOV), aspect ratio, near plane, and far plane distances.</p>
@@ -847,7 +840,7 @@ the camera's projection and view matrices. Also clears the depth stencil and set
 
   <h3 id="Bliss_CSharp_Camera_Dim3_Cam3D_GetRight" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.GetRight">
   GetRight()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L310"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L308"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Computes and returns the right direction vector based on the camera's forward direction and up vector.</p>
@@ -880,7 +873,7 @@ the camera's projection and view matrices. Also clears the depth stencil and set
 
   <h3 id="Bliss_CSharp_Camera_Dim3_Cam3D_GetRoll" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.GetRoll">
   GetRoll()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L438"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L436"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the roll component of the camera's rotation.</p>
@@ -913,7 +906,7 @@ the camera's projection and view matrices. Also clears the depth stencil and set
 
   <h3 id="Bliss_CSharp_Camera_Dim3_Cam3D_GetRotation" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.GetRotation">
   GetRotation()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L362"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L360"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the current rotation vector of the camera.</p>
@@ -946,7 +939,7 @@ the camera's projection and view matrices. Also clears the depth stencil and set
 
   <h3 id="Bliss_CSharp_Camera_Dim3_Cam3D_GetScreenToWorld_System_Numerics_Vector2_" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.GetScreenToWorld(System.Numerics.Vector2)">
   GetScreenToWorld(Vector2)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L465"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L463"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts a given screen position to world coordinates using the camera projection and view matrices.</p>
@@ -985,7 +978,7 @@ the camera's projection and view matrices. Also clears the depth stencil and set
 
   <h3 id="Bliss_CSharp_Camera_Dim3_Cam3D_GetView" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.GetView">
   GetView()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L275"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L273"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Constructs and returns the view matrix for the camera based on its position, target, and up vector.</p>
@@ -1018,7 +1011,7 @@ the camera's projection and view matrices. Also clears the depth stencil and set
 
   <h3 id="Bliss_CSharp_Camera_Dim3_Cam3D_GetWorldToScreen_System_Numerics_Vector3_" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.GetWorldToScreen(System.Numerics.Vector3)">
   GetWorldToScreen(Vector3)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L482"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L480"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts a given world position to screen coordinates based on the camera's current view and projection matrices.</p>
@@ -1057,7 +1050,7 @@ the camera's projection and view matrices. Also clears the depth stencil and set
 
   <h3 id="Bliss_CSharp_Camera_Dim3_Cam3D_GetYaw" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.GetYaw">
   GetYaw()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L371"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L369"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the current yaw (rotation around the Y-axis) of the camera.</p>
@@ -1090,7 +1083,7 @@ the camera's projection and view matrices. Also clears the depth stencil and set
 
   <h3 id="Bliss_CSharp_Camera_Dim3_Cam3D_MoveForward_System_Single_System_Boolean_" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.MoveForward(System.Single,System.Boolean)">
   MoveForward(float, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L292"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L290"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Moves the camera forward by a specified distance.</p>
@@ -1126,7 +1119,7 @@ the camera's projection and view matrices. Also clears the depth stencil and set
 
   <h3 id="Bliss_CSharp_Camera_Dim3_Cam3D_MoveRight_System_Single_System_Boolean_" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.MoveRight(System.Single,System.Boolean)">
   MoveRight(float, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L319"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L317"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Moves the camera to the right by a specified distance, with an option to constrain the movement to the world plane.</p>
@@ -1162,7 +1155,7 @@ the camera's projection and view matrices. Also clears the depth stencil and set
 
   <h3 id="Bliss_CSharp_Camera_Dim3_Cam3D_MoveToTarget_System_Single_" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.MoveToTarget(System.Single)">
   MoveToTarget(float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L348"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L346"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Moves the camera towards or away from its target by modifying the distance between the camera's position and its target point.</p>
@@ -1195,7 +1188,7 @@ the camera's projection and view matrices. Also clears the depth stencil and set
 
   <h3 id="Bliss_CSharp_Camera_Dim3_Cam3D_MoveUp_System_Single_" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.MoveUp(System.Single)">
   MoveUp(float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L337"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L335"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Moves the camera upward by a specified distance.</p>
@@ -1264,7 +1257,7 @@ the camera's projection and view matrices. Also clears the depth stencil and set
 
   <h3 id="Bliss_CSharp_Camera_Dim3_Cam3D_SetPitch_System_Single_System_Boolean_" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.SetPitch(System.Single,System.Boolean)">
   SetPitch(float, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L410"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L408"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the pitch angle of the camera, rotating around the specified target if indicated.</p>
@@ -1300,7 +1293,7 @@ the camera's projection and view matrices. Also clears the depth stencil and set
 
   <h3 id="Bliss_CSharp_Camera_Dim3_Cam3D_SetRoll_System_Single_" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.SetRoll(System.Single)">
   SetRoll(float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L446"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L444"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the roll angle of the camera by rotating around the forward axis.</p>
@@ -1333,7 +1326,7 @@ the camera's projection and view matrices. Also clears the depth stencil and set
 
   <h3 id="Bliss_CSharp_Camera_Dim3_Cam3D_SetYaw_System_Single_System_Boolean_" data-uid="Bliss.CSharp.Camera.Dim3.Cam3D.SetYaw(System.Single,System.Boolean)">
   SetYaw(float, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L380"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Camera/Dim3/Cam3D.cs/#L378"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the yaw of the camera by rotating it around the target or adjusting the target position, based on the specified angle.</p>

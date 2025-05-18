@@ -17,7 +17,7 @@ items:
   - Bliss.CSharp.Interact.Input.GetMouseCursor
   - Bliss.CSharp.Interact.Input.GetMouseDelta
   - Bliss.CSharp.Interact.Input.GetMousePosition
-  - Bliss.CSharp.Interact.Input.GetPressedChars
+  - Bliss.CSharp.Interact.Input.GetTypedText(System.String@)
   - Bliss.CSharp.Interact.Input.HideCursor
   - Bliss.CSharp.Interact.Input.Init(Bliss.CSharp.Interact.Contexts.IInputContext)
   - Bliss.CSharp.Interact.Input.InputContext
@@ -39,11 +39,14 @@ items:
   - Bliss.CSharp.Interact.Input.IsMouseMoving(System.Numerics.Vector2@)
   - Bliss.CSharp.Interact.Input.IsMouseScrolling(System.Numerics.Vector2@)
   - Bliss.CSharp.Interact.Input.IsRelativeMouseModeEnabled
+  - Bliss.CSharp.Interact.Input.IsTextInputActive
   - Bliss.CSharp.Interact.Input.RumbleGamepad(System.UInt32,System.UInt16,System.UInt16,System.UInt32)
   - Bliss.CSharp.Interact.Input.SetClipboardText(System.String)
   - Bliss.CSharp.Interact.Input.SetMouseCursor(Bliss.CSharp.Interact.Mice.Cursors.ICursor)
   - Bliss.CSharp.Interact.Input.SetMousePosition(System.Numerics.Vector2)
   - Bliss.CSharp.Interact.Input.ShowCursor
+  - Bliss.CSharp.Interact.Input.StartTextInput
+  - Bliss.CSharp.Interact.Input.StopTextInput
   langs:
   - csharp
   - vb
@@ -885,37 +888,131 @@ items:
       description: True if the key is up; otherwise, false.
     content.vb: Public Shared Function IsKeyUp(key As KeyboardKey) As Boolean
   overload: Bliss.CSharp.Interact.Input.IsKeyUp*
-- uid: Bliss.CSharp.Interact.Input.GetPressedChars
-  commentId: M:Bliss.CSharp.Interact.Input.GetPressedChars
-  id: GetPressedChars
+- uid: Bliss.CSharp.Interact.Input.GetTypedText(System.String@)
+  commentId: M:Bliss.CSharp.Interact.Input.GetTypedText(System.String@)
+  id: GetTypedText(System.String@)
   parent: Bliss.CSharp.Interact.Input
   langs:
   - csharp
   - vb
-  name: GetPressedChars()
-  nameWithType: Input.GetPressedChars()
-  fullName: Bliss.CSharp.Interact.Input.GetPressedChars()
+  name: GetTypedText(out string)
+  nameWithType: Input.GetTypedText(out string)
+  fullName: Bliss.CSharp.Interact.Input.GetTypedText(out string)
   type: Method
   source:
     remote:
       path: src/Bliss/CSharp/Interact/Input.cs
       branch: main
       repo: https://github.com/MrScautHD/Bliss.git
-    id: GetPressedChars
+    id: GetTypedText
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 222
+    startLine: 223
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
-  summary: Retrieves characters that were pressed in the current frame.
+  summary: Retrieves any text that was typed since the last frame, but only while text input is active via <xref href="Bliss.CSharp.Interact.Input.StartTextInput" data-throw-if-not-resolved="false"></xref>.
   example: []
   syntax:
-    content: public static char[] GetPressedChars()
+    content: public static bool GetTypedText(out string text)
+    parameters:
+    - id: text
+      type: System.String
+      description: The typed text collected since the previous frame. Will be empty if no text was entered.
     return:
-      type: System.Char[]
-      description: An array of characters pressed in the current frame.
-    content.vb: Public Shared Function GetPressedChars() As Char()
-  overload: Bliss.CSharp.Interact.Input.GetPressedChars*
+      type: System.Boolean
+      description: <code>true</code> if any text was entered; otherwise, <code>false</code>.
+    content.vb: Public Shared Function GetTypedText(text As String) As Boolean
+  overload: Bliss.CSharp.Interact.Input.GetTypedText*
+  nameWithType.vb: Input.GetTypedText(String)
+  fullName.vb: Bliss.CSharp.Interact.Input.GetTypedText(String)
+  name.vb: GetTypedText(String)
+- uid: Bliss.CSharp.Interact.Input.IsTextInputActive
+  commentId: M:Bliss.CSharp.Interact.Input.IsTextInputActive
+  id: IsTextInputActive
+  parent: Bliss.CSharp.Interact.Input
+  langs:
+  - csharp
+  - vb
+  name: IsTextInputActive()
+  nameWithType: Input.IsTextInputActive()
+  fullName: Bliss.CSharp.Interact.Input.IsTextInputActive()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Input.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsTextInputActive
+    path: ../src/Bliss/CSharp/Interact/Input.cs
+    startLine: 231
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact
+  summary: Determines whether text input mode is currently active.
+  example: []
+  syntax:
+    content: public static bool IsTextInputActive()
+    return:
+      type: System.Boolean
+      description: True if text input is active; otherwise, false.
+    content.vb: Public Shared Function IsTextInputActive() As Boolean
+  overload: Bliss.CSharp.Interact.Input.IsTextInputActive*
+- uid: Bliss.CSharp.Interact.Input.StartTextInput
+  commentId: M:Bliss.CSharp.Interact.Input.StartTextInput
+  id: StartTextInput
+  parent: Bliss.CSharp.Interact.Input
+  langs:
+  - csharp
+  - vb
+  name: StartTextInput()
+  nameWithType: Input.StartTextInput()
+  fullName: Bliss.CSharp.Interact.Input.StartTextInput()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Input.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: StartTextInput
+    path: ../src/Bliss/CSharp/Interact/Input.cs
+    startLine: 238
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact
+  summary: Activates text input mode, allowing the application to receive typed text events.
+  example: []
+  syntax:
+    content: public static void StartTextInput()
+    content.vb: Public Shared Sub StartTextInput()
+  overload: Bliss.CSharp.Interact.Input.StartTextInput*
+- uid: Bliss.CSharp.Interact.Input.StopTextInput
+  commentId: M:Bliss.CSharp.Interact.Input.StopTextInput
+  id: StopTextInput
+  parent: Bliss.CSharp.Interact.Input
+  langs:
+  - csharp
+  - vb
+  name: StopTextInput()
+  nameWithType: Input.StopTextInput()
+  fullName: Bliss.CSharp.Interact.Input.StopTextInput()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Input.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: StopTextInput
+    path: ../src/Bliss/CSharp/Interact/Input.cs
+    startLine: 245
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact
+  summary: Stops the text input process, ending any active text input session.
+  example: []
+  syntax:
+    content: public static void StopTextInput()
+    content.vb: Public Shared Sub StopTextInput()
+  overload: Bliss.CSharp.Interact.Input.StopTextInput*
 - uid: Bliss.CSharp.Interact.Input.GetClipboardText
   commentId: M:Bliss.CSharp.Interact.Input.GetClipboardText
   id: GetClipboardText
@@ -934,7 +1031,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetClipboardText
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 230
+    startLine: 253
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -965,7 +1062,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetClipboardText
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 238
+    startLine: 261
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1000,7 +1097,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetAvailableGamepadCount
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 248
+    startLine: 271
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1031,7 +1128,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsGamepadAvailable
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 257
+    startLine: 280
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1069,7 +1166,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetGamepadName
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 266
+    startLine: 289
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1107,7 +1204,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: RumbleGamepad
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 277
+    startLine: 300
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1151,7 +1248,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetGamepadAxisMovement
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 287
+    startLine: 310
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1192,7 +1289,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsGamepadButtonPressed
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 297
+    startLine: 320
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1233,7 +1330,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsGamepadButtonDown
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 307
+    startLine: 330
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1274,7 +1371,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsGamepadButtonReleased
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 317
+    startLine: 340
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1315,7 +1412,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsGamepadButtonUp
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 327
+    startLine: 350
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1356,7 +1453,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsFileDragDropped
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 338
+    startLine: 361
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1394,7 +1491,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Destroy
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 345
+    startLine: 368
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -2056,41 +2153,30 @@ references:
   name: IsKeyUp
   nameWithType: Input.IsKeyUp
   fullName: Bliss.CSharp.Interact.Input.IsKeyUp
-- uid: Bliss.CSharp.Interact.Input.GetPressedChars*
-  commentId: Overload:Bliss.CSharp.Interact.Input.GetPressedChars
-  href: Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_GetPressedChars
-  name: GetPressedChars
-  nameWithType: Input.GetPressedChars
-  fullName: Bliss.CSharp.Interact.Input.GetPressedChars
-- uid: System.Char[]
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.char
-  name: char[]
-  nameWithType: char[]
-  fullName: char[]
-  nameWithType.vb: Char()
-  fullName.vb: Char()
-  name.vb: Char()
+- uid: Bliss.CSharp.Interact.Input.StartTextInput
+  commentId: M:Bliss.CSharp.Interact.Input.StartTextInput
+  href: Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_StartTextInput
+  name: StartTextInput()
+  nameWithType: Input.StartTextInput()
+  fullName: Bliss.CSharp.Interact.Input.StartTextInput()
   spec.csharp:
-  - uid: System.Char
-    name: char
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.char
-  - name: '['
-  - name: ']'
-  spec.vb:
-  - uid: System.Char
-    name: Char
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.char
+  - uid: Bliss.CSharp.Interact.Input.StartTextInput
+    name: StartTextInput
+    href: Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_StartTextInput
   - name: (
   - name: )
-- uid: Bliss.CSharp.Interact.Input.GetClipboardText*
-  commentId: Overload:Bliss.CSharp.Interact.Input.GetClipboardText
-  href: Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_GetClipboardText
-  name: GetClipboardText
-  nameWithType: Input.GetClipboardText
-  fullName: Bliss.CSharp.Interact.Input.GetClipboardText
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Input.StartTextInput
+    name: StartTextInput
+    href: Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_StartTextInput
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Interact.Input.GetTypedText*
+  commentId: Overload:Bliss.CSharp.Interact.Input.GetTypedText
+  href: Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_GetTypedText_System_String__
+  name: GetTypedText
+  nameWithType: Input.GetTypedText
+  fullName: Bliss.CSharp.Interact.Input.GetTypedText
 - uid: System.String
   commentId: T:System.String
   parent: System
@@ -2102,6 +2188,30 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
+- uid: Bliss.CSharp.Interact.Input.IsTextInputActive*
+  commentId: Overload:Bliss.CSharp.Interact.Input.IsTextInputActive
+  href: Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_IsTextInputActive
+  name: IsTextInputActive
+  nameWithType: Input.IsTextInputActive
+  fullName: Bliss.CSharp.Interact.Input.IsTextInputActive
+- uid: Bliss.CSharp.Interact.Input.StartTextInput*
+  commentId: Overload:Bliss.CSharp.Interact.Input.StartTextInput
+  href: Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_StartTextInput
+  name: StartTextInput
+  nameWithType: Input.StartTextInput
+  fullName: Bliss.CSharp.Interact.Input.StartTextInput
+- uid: Bliss.CSharp.Interact.Input.StopTextInput*
+  commentId: Overload:Bliss.CSharp.Interact.Input.StopTextInput
+  href: Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_StopTextInput
+  name: StopTextInput
+  nameWithType: Input.StopTextInput
+  fullName: Bliss.CSharp.Interact.Input.StopTextInput
+- uid: Bliss.CSharp.Interact.Input.GetClipboardText*
+  commentId: Overload:Bliss.CSharp.Interact.Input.GetClipboardText
+  href: Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_GetClipboardText
+  name: GetClipboardText
+  nameWithType: Input.GetClipboardText
+  fullName: Bliss.CSharp.Interact.Input.GetClipboardText
 - uid: Bliss.CSharp.Interact.Input.SetClipboardText*
   commentId: Overload:Bliss.CSharp.Interact.Input.SetClipboardText
   href: Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_SetClipboardText_System_String_

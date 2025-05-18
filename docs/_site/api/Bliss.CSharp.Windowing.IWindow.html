@@ -299,21 +299,27 @@ graphics content within the window.</p>
 </h2>
 
 
-  <a id="Bliss_CSharp_Windowing_IWindow_ClearState_" data-uid="Bliss.CSharp.Windowing.IWindow.ClearState*"></a>
+  <a id="Bliss_CSharp_Windowing_IWindow_CaptureMouse_" data-uid="Bliss.CSharp.Windowing.IWindow.CaptureMouse*"></a>
 
-  <h3 id="Bliss_CSharp_Windowing_IWindow_ClearState" data-uid="Bliss.CSharp.Windowing.IWindow.ClearState">
-  ClearState()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L188"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Windowing_IWindow_CaptureMouse_System_Boolean_" data-uid="Bliss.CSharp.Windowing.IWindow.CaptureMouse(System.Boolean)">
+  CaptureMouse(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L306"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Clears the current state of the window, resetting it to its default state.</p>
+  <div class="markdown level1 summary"><p>Enables or disables capturing of the mouse cursor for the window.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void ClearState()</code></pre>
+    <pre><code class="lang-csharp hljs">void CaptureMouse(bool enabled)</code></pre>
   </div>
 
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>enabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>A boolean value indicating whether to enable mouse capture. Pass true to enable mouse capture or false to disable it.</p>
+</dd>
+  </dl>
 
 
 
@@ -330,7 +336,7 @@ graphics content within the window.</p>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_ClientToScreen_Bliss_CSharp_Transformations_Point_" data-uid="Bliss.CSharp.Windowing.IWindow.ClientToScreen(Bliss.CSharp.Transformations.Point)">
   ClientToScreen(Point)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L292"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L330"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts the specified client-area point to screen coordinates.</p>
@@ -369,7 +375,7 @@ graphics content within the window.</p>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_GetHeight" data-uid="Bliss.CSharp.Windowing.IWindow.GetHeight">
   GetHeight()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L231"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L206"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the current height of the window.</p>
@@ -402,7 +408,7 @@ graphics content within the window.</p>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_GetOrCreateOpenGlPlatformInfo_Veldrid_GraphicsDeviceOptions_Veldrid_GraphicsBackend_" data-uid="Bliss.CSharp.Windowing.IWindow.GetOrCreateOpenGlPlatformInfo(Veldrid.GraphicsDeviceOptions,Veldrid.GraphicsBackend)">
   GetOrCreateOpenGlPlatformInfo(GraphicsDeviceOptions, GraphicsBackend)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L307"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L345"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves or creates the OpenGL platform information required for the specified graphics device options and backend.</p>
@@ -444,7 +450,7 @@ graphics content within the window.</p>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_GetPosition" data-uid="Bliss.CSharp.Windowing.IWindow.GetPosition">
   GetPosition()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L237"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L212"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the current position of the window.</p>
@@ -477,7 +483,7 @@ graphics content within the window.</p>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_GetSize" data-uid="Bliss.CSharp.Windowing.IWindow.GetSize">
   GetSize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L206"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L181"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the current size of the window.</p>
@@ -510,7 +516,7 @@ graphics content within the window.</p>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_GetState" data-uid="Bliss.CSharp.Windowing.IWindow.GetState">
   GetState()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L170"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L255"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the current state of the window.</p>
@@ -543,7 +549,7 @@ graphics content within the window.</p>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_GetTitle" data-uid="Bliss.CSharp.Windowing.IWindow.GetTitle">
   GetTitle()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L194"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L169"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the current title of the window.</p>
@@ -576,7 +582,7 @@ graphics content within the window.</p>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_GetWidth" data-uid="Bliss.CSharp.Windowing.IWindow.GetWidth">
   GetWidth()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L219"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L194"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the current width of the window.</p>
@@ -609,7 +615,7 @@ graphics content within the window.</p>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_GetX" data-uid="Bliss.CSharp.Windowing.IWindow.GetX">
   GetX()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L250"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L225"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the current X coordinate of the window.</p>
@@ -642,7 +648,7 @@ graphics content within the window.</p>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_GetY" data-uid="Bliss.CSharp.Windowing.IWindow.GetY">
   GetY()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L262"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L237"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the current y-coordinate of the window's position.</p>
@@ -675,7 +681,7 @@ graphics content within the window.</p>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_HasState_Bliss_CSharp_Windowing_WindowState_" data-uid="Bliss.CSharp.Windowing.IWindow.HasState(Bliss.CSharp.Windowing.WindowState)">
   HasState(WindowState)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L177"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L262"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if the current state of the window matches the specified state.</p>
@@ -710,11 +716,92 @@ graphics content within the window.</p>
 
 
 
+  <a id="Bliss_CSharp_Windowing_IWindow_Hide_" data-uid="Bliss.CSharp.Windowing.IWindow.Hide*"></a>
+
+  <h3 id="Bliss_CSharp_Windowing_IWindow_Hide" data-uid="Bliss.CSharp.Windowing.IWindow.Hide">
+  Hide()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L295"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hides the window, making it no longer visible on the screen.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Hide()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Windowing_IWindow_Maximize_" data-uid="Bliss.CSharp.Windowing.IWindow.Maximize*"></a>
+
+  <h3 id="Bliss_CSharp_Windowing_IWindow_Maximize" data-uid="Bliss.CSharp.Windowing.IWindow.Maximize">
+  Maximize()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L285"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Maximizes the window, filling the entire available screen space based on the current display settings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Maximize()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Windowing_IWindow_Minimize_" data-uid="Bliss.CSharp.Windowing.IWindow.Minimize*"></a>
+
+  <h3 id="Bliss_CSharp_Windowing_IWindow_Minimize" data-uid="Bliss.CSharp.Windowing.IWindow.Minimize">
+  Minimize()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L290"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Minimizes the current window, reducing it to its icon on the taskbar or dock.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Minimize()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Bliss_CSharp_Windowing_IWindow_PumpEvents_" data-uid="Bliss.CSharp.Windowing.IWindow.PumpEvents*"></a>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_PumpEvents" data-uid="Bliss.CSharp.Windowing.IWindow.PumpEvents">
   PumpEvents()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L285"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L323"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Processes all pending window events.</p>
@@ -741,7 +828,7 @@ graphics content within the window.</p>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_ScreenToClient_Bliss_CSharp_Transformations_Point_" data-uid="Bliss.CSharp.Windowing.IWindow.ScreenToClient(Bliss.CSharp.Transformations.Point)">
   ScreenToClient(Point)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L299"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L337"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts the specified screen coordinates to client-area coordinates.</p>
@@ -776,11 +863,77 @@ graphics content within the window.</p>
 
 
 
+  <a id="Bliss_CSharp_Windowing_IWindow_SetBordered_" data-uid="Bliss.CSharp.Windowing.IWindow.SetBordered*"></a>
+
+  <h3 id="Bliss_CSharp_Windowing_IWindow_SetBordered_System_Boolean_" data-uid="Bliss.CSharp.Windowing.IWindow.SetBordered(System.Boolean)">
+  SetBordered(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L280"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Configures whether the window should have a visible border.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetBordered(bool bordered)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bordered</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>A boolean indicating if the window should be bordered (true) or not (false).</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Windowing_IWindow_SetFullscreen_" data-uid="Bliss.CSharp.Windowing.IWindow.SetFullscreen*"></a>
+
+  <h3 id="Bliss_CSharp_Windowing_IWindow_SetFullscreen_System_Boolean_" data-uid="Bliss.CSharp.Windowing.IWindow.SetFullscreen(System.Boolean)">
+  SetFullscreen(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L274"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the window into or out of fullscreen mode.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetFullscreen(bool fullscreen)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fullscreen</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True to enable fullscreen mode, false to disable it.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Bliss_CSharp_Windowing_IWindow_SetHeight_" data-uid="Bliss.CSharp.Windowing.IWindow.SetHeight*"></a>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_SetHeight_System_Int32_" data-uid="Bliss.CSharp.Windowing.IWindow.SetHeight(System.Int32)">
   SetHeight(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L274"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L249"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the height of the window to the specified value.</p>
@@ -813,7 +966,7 @@ graphics content within the window.</p>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_SetIcon_Bliss_CSharp_Images_Image_" data-uid="Bliss.CSharp.Windowing.IWindow.SetIcon(Bliss.CSharp.Images.Image)">
   SetIcon(Image)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L280"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L318"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the icon of the window.</p>
@@ -846,7 +999,7 @@ graphics content within the window.</p>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_SetPosition_System_Int32_System_Int32_" data-uid="Bliss.CSharp.Windowing.IWindow.SetPosition(System.Int32,System.Int32)">
   SetPosition(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L244"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L219"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the position of the window to the specified coordinates.</p>
@@ -878,11 +1031,44 @@ graphics content within the window.</p>
 
 
 
+  <a id="Bliss_CSharp_Windowing_IWindow_SetResizable_" data-uid="Bliss.CSharp.Windowing.IWindow.SetResizable*"></a>
+
+  <h3 id="Bliss_CSharp_Windowing_IWindow_SetResizable_System_Boolean_" data-uid="Bliss.CSharp.Windowing.IWindow.SetResizable(System.Boolean)">
+  SetResizable(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L268"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets whether the window can be resized by the user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetResizable(bool resizable)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>resizable</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>A boolean value indicating whether the window should be resizable.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Bliss_CSharp_Windowing_IWindow_SetSize_" data-uid="Bliss.CSharp.Windowing.IWindow.SetSize*"></a>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_SetSize_System_Int32_System_Int32_" data-uid="Bliss.CSharp.Windowing.IWindow.SetSize(System.Int32,System.Int32)">
   SetSize(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L213"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L188"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the size of the window to the specified width and height.</p>
@@ -914,44 +1100,11 @@ graphics content within the window.</p>
 
 
 
-  <a id="Bliss_CSharp_Windowing_IWindow_SetState_" data-uid="Bliss.CSharp.Windowing.IWindow.SetState*"></a>
-
-  <h3 id="Bliss_CSharp_Windowing_IWindow_SetState_Bliss_CSharp_Windowing_WindowState_" data-uid="Bliss.CSharp.Windowing.IWindow.SetState(Bliss.CSharp.Windowing.WindowState)">
-  SetState(WindowState)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L183"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Sets the state of the window to the specified WindowState.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void SetState(WindowState state)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>state</code> <a class="xref" href="Bliss.CSharp.Windowing.WindowState.html">WindowState</a></dt>
-    <dd><p>The desired state to set the window to, represented by the WindowState enum.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
   <a id="Bliss_CSharp_Windowing_IWindow_SetTitle_" data-uid="Bliss.CSharp.Windowing.IWindow.SetTitle*"></a>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_SetTitle_System_String_" data-uid="Bliss.CSharp.Windowing.IWindow.SetTitle(System.String)">
   SetTitle(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L200"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L175"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the title of the window.</p>
@@ -984,7 +1137,7 @@ graphics content within the window.</p>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_SetWidth_System_Int32_" data-uid="Bliss.CSharp.Windowing.IWindow.SetWidth(System.Int32)">
   SetWidth(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L225"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L200"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the width of the window to the specified value.</p>
@@ -1013,11 +1166,44 @@ graphics content within the window.</p>
 
 
 
+  <a id="Bliss_CSharp_Windowing_IWindow_SetWindowAlwaysOnTop_" data-uid="Bliss.CSharp.Windowing.IWindow.SetWindowAlwaysOnTop*"></a>
+
+  <h3 id="Bliss_CSharp_Windowing_IWindow_SetWindowAlwaysOnTop_System_Boolean_" data-uid="Bliss.CSharp.Windowing.IWindow.SetWindowAlwaysOnTop(System.Boolean)">
+  SetWindowAlwaysOnTop(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L312"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Configures the window to always remain on top of other windows.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetWindowAlwaysOnTop(bool alwaysOnTop)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>alwaysOnTop</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>A boolean value indicating whether the window should always be on top of other windows. Set to true to enable this behavior, or false to disable it.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Bliss_CSharp_Windowing_IWindow_SetX_" data-uid="Bliss.CSharp.Windowing.IWindow.SetX*"></a>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_SetX_System_Int32_" data-uid="Bliss.CSharp.Windowing.IWindow.SetX(System.Int32)">
   SetX(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L256"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L231"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the X coordinate of the window to the specified value.</p>
@@ -1050,7 +1236,7 @@ graphics content within the window.</p>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_SetY_System_Int32_" data-uid="Bliss.CSharp.Windowing.IWindow.SetY(System.Int32)">
   SetY(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L268"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L243"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the y-coordinate of the window's position.</p>
@@ -1067,6 +1253,33 @@ graphics content within the window.</p>
     <dd><p>The new y-coordinate to set for the window.</p>
 </dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Windowing_IWindow_Show_" data-uid="Bliss.CSharp.Windowing.IWindow.Show*"></a>
+
+  <h3 id="Bliss_CSharp_Windowing_IWindow_Show" data-uid="Bliss.CSharp.Windowing.IWindow.Show">
+  Show()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L300"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Makes the window visible to the user if it is currently hidden.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Show()</code></pre>
+  </div>
+
 
 
 
@@ -1117,7 +1330,7 @@ graphics content within the window.</p>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_DragDrop" data-uid="Bliss.CSharp.Windowing.IWindow.DragDrop">
   DragDrop
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L163"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Occurs when a drag-and-drop operation is performed.</p>
@@ -1241,7 +1454,7 @@ graphics content within the window.</p>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_GamepadAdded" data-uid="Bliss.CSharp.Windowing.IWindow.GamepadAdded">
   GamepadAdded
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L136"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L135"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Occurs when a new gamepad is detected and added to the system.
@@ -1273,7 +1486,7 @@ The event provides the ID of the newly connected gamepad.</p>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_GamepadAxisMoved" data-uid="Bliss.CSharp.Windowing.IWindow.GamepadAxisMoved">
   GamepadAxisMoved
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L147"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L146"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Invoked when a gamepad's axis is moved. This event provides details such as
@@ -1305,7 +1518,7 @@ the gamepad ID, the specific axis, and the position value of the axis movement.<
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_GamepadButtonDown" data-uid="Bliss.CSharp.Windowing.IWindow.GamepadButtonDown">
   GamepadButtonDown
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L153"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L152"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Occurs when a gamepad button is pressed down. The event provides the gamepad ID
@@ -1337,7 +1550,7 @@ and the button that was pressed.</p>
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_GamepadButtonUp" data-uid="Bliss.CSharp.Windowing.IWindow.GamepadButtonUp">
   GamepadButtonUp
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L159"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L158"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Event triggered when a gamepad button is released.
@@ -1369,7 +1582,7 @@ The event handler receives two parameters: the ID of the gamepad and the button 
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_GamepadRemoved" data-uid="Bliss.CSharp.Windowing.IWindow.GamepadRemoved">
   GamepadRemoved
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L141"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L140"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Occurs when a gamepad is removed from the system. The event provides the ID of the removed gamepad as an argument.</p>
@@ -1772,16 +1985,15 @@ The event handler receives two parameters: the ID of the gamepad and the button 
 
   <h3 id="Bliss_CSharp_Windowing_IWindow_TextInput" data-uid="Bliss.CSharp.Windowing.IWindow.TextInput">
   TextInput
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/IWindow.cs/#L129"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Occurs when text input is received from the user. The event handler receives an array of characters
-representing the text that was entered.</p>
+  <div class="markdown level1 summary"><p>Occurs when text input is received from the user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">event Action&lt;char[]&gt;? TextInput</code></pre>
+    <pre><code class="lang-csharp hljs">event Action&lt;string&gt;? TextInput</code></pre>
   </div>
 
 
@@ -1791,7 +2003,7 @@ representing the text that was entered.</p>
 
   <h4 class="section">Event Type</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a>[]&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
     <dd></dd>
   </dl>
 

@@ -230,12 +230,12 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Camera.Dim2.Cam2D.ActiveCamera
   nameWithType: Cam2D.ActiveCamera
-- uid: Bliss.CSharp.Camera.Dim2.Cam2D.Begin(Veldrid.CommandList)
-  name: Begin(CommandList)
-  href: api/Bliss.CSharp.Camera.Dim2.Cam2D.html#Bliss_CSharp_Camera_Dim2_Cam2D_Begin_Veldrid_CommandList_
-  commentId: M:Bliss.CSharp.Camera.Dim2.Cam2D.Begin(Veldrid.CommandList)
-  fullName: Bliss.CSharp.Camera.Dim2.Cam2D.Begin(Veldrid.CommandList)
-  nameWithType: Cam2D.Begin(CommandList)
+- uid: Bliss.CSharp.Camera.Dim2.Cam2D.Begin
+  name: Begin()
+  href: api/Bliss.CSharp.Camera.Dim2.Cam2D.html#Bliss_CSharp_Camera_Dim2_Cam2D_Begin
+  commentId: M:Bliss.CSharp.Camera.Dim2.Cam2D.Begin
+  fullName: Bliss.CSharp.Camera.Dim2.Cam2D.Begin()
+  nameWithType: Cam2D.Begin()
 - uid: Bliss.CSharp.Camera.Dim2.Cam2D.Begin*
   name: Begin
   href: api/Bliss.CSharp.Camera.Dim2.Cam2D.html#Bliss_CSharp_Camera_Dim2_Cam2D_Begin_
@@ -288,6 +288,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Camera.Dim2.Cam2D.GetView
   nameWithType: Cam2D.GetView
+- uid: Bliss.CSharp.Camera.Dim2.Cam2D.GetVisibleArea
+  name: GetVisibleArea()
+  href: api/Bliss.CSharp.Camera.Dim2.Cam2D.html#Bliss_CSharp_Camera_Dim2_Cam2D_GetVisibleArea
+  commentId: M:Bliss.CSharp.Camera.Dim2.Cam2D.GetVisibleArea
+  fullName: Bliss.CSharp.Camera.Dim2.Cam2D.GetVisibleArea()
+  nameWithType: Cam2D.GetVisibleArea()
+- uid: Bliss.CSharp.Camera.Dim2.Cam2D.GetVisibleArea*
+  name: GetVisibleArea
+  href: api/Bliss.CSharp.Camera.Dim2.Cam2D.html#Bliss_CSharp_Camera_Dim2_Cam2D_GetVisibleArea_
+  commentId: Overload:Bliss.CSharp.Camera.Dim2.Cam2D.GetVisibleArea
+  isSpec: "True"
+  fullName: Bliss.CSharp.Camera.Dim2.Cam2D.GetVisibleArea
+  nameWithType: Cam2D.GetVisibleArea
 - uid: Bliss.CSharp.Camera.Dim2.Cam2D.GetWorldToScreen(System.Numerics.Vector2)
   name: GetWorldToScreen(Vector2)
   href: api/Bliss.CSharp.Camera.Dim2.Cam2D.html#Bliss_CSharp_Camera_Dim2_Cam2D_GetWorldToScreen_System_Numerics_Vector2_
@@ -475,12 +488,12 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Camera.Dim3.Cam3D.AspectRatio
   nameWithType: Cam3D.AspectRatio
-- uid: Bliss.CSharp.Camera.Dim3.Cam3D.Begin(Veldrid.CommandList)
-  name: Begin(CommandList)
-  href: api/Bliss.CSharp.Camera.Dim3.Cam3D.html#Bliss_CSharp_Camera_Dim3_Cam3D_Begin_Veldrid_CommandList_
-  commentId: M:Bliss.CSharp.Camera.Dim3.Cam3D.Begin(Veldrid.CommandList)
-  fullName: Bliss.CSharp.Camera.Dim3.Cam3D.Begin(Veldrid.CommandList)
-  nameWithType: Cam3D.Begin(CommandList)
+- uid: Bliss.CSharp.Camera.Dim3.Cam3D.Begin
+  name: Begin()
+  href: api/Bliss.CSharp.Camera.Dim3.Cam3D.html#Bliss_CSharp_Camera_Dim3_Cam3D_Begin
+  commentId: M:Bliss.CSharp.Camera.Dim3.Cam3D.Begin
+  fullName: Bliss.CSharp.Camera.Dim3.Cam3D.Begin()
+  nameWithType: Cam3D.Begin()
 - uid: Bliss.CSharp.Camera.Dim3.Cam3D.Begin*
   name: Begin
   href: api/Bliss.CSharp.Camera.Dim3.Cam3D.html#Bliss_CSharp_Camera_Dim3_Cam3D_Begin_
@@ -914,12 +927,12 @@ references:
   commentId: T:Bliss.CSharp.Camera.ICam
   fullName: Bliss.CSharp.Camera.ICam
   nameWithType: ICam
-- uid: Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
-  name: Begin(CommandList)
-  href: api/Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_Begin_Veldrid_CommandList_
-  commentId: M:Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
-  fullName: Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
-  nameWithType: ICam.Begin(CommandList)
+- uid: Bliss.CSharp.Camera.ICam.Begin
+  name: Begin()
+  href: api/Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_Begin
+  commentId: M:Bliss.CSharp.Camera.ICam.Begin
+  fullName: Bliss.CSharp.Camera.ICam.Begin()
+  nameWithType: ICam.Begin()
 - uid: Bliss.CSharp.Camera.ICam.Begin*
   name: Begin
   href: api/Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_Begin_
@@ -3954,15 +3967,15 @@ references:
   fullName.vb: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.New()
   nameWithType: SimplePipelineDescription.SimplePipelineDescription()
   nameWithType.vb: SimplePipelineDescription.New()
-- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor(Veldrid.BlendStateDescription,Veldrid.DepthStencilStateDescription,Veldrid.RasterizerStateDescription,Veldrid.PrimitiveTopology,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[],Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[],Veldrid.ShaderSetDescription,Veldrid.OutputDescription)
-  name: SimplePipelineDescription(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, SimpleBufferLayout[], SimpleTextureLayout[], ShaderSetDescription, OutputDescription)
-  href: api/Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.html#Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription__ctor_Veldrid_BlendStateDescription_Veldrid_DepthStencilStateDescription_Veldrid_RasterizerStateDescription_Veldrid_PrimitiveTopology_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferLayout___Bliss_CSharp_Graphics_Pipelines_Textures_SimpleTextureLayout___Veldrid_ShaderSetDescription_Veldrid_OutputDescription_
-  commentId: M:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor(Veldrid.BlendStateDescription,Veldrid.DepthStencilStateDescription,Veldrid.RasterizerStateDescription,Veldrid.PrimitiveTopology,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[],Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[],Veldrid.ShaderSetDescription,Veldrid.OutputDescription)
-  name.vb: New(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, SimpleBufferLayout(), SimpleTextureLayout(), ShaderSetDescription, OutputDescription)
-  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.SimplePipelineDescription(Veldrid.BlendStateDescription, Veldrid.DepthStencilStateDescription, Veldrid.RasterizerStateDescription, Veldrid.PrimitiveTopology, Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[], Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[], Veldrid.ShaderSetDescription, Veldrid.OutputDescription)
-  fullName.vb: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.New(Veldrid.BlendStateDescription, Veldrid.DepthStencilStateDescription, Veldrid.RasterizerStateDescription, Veldrid.PrimitiveTopology, Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout(), Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout(), Veldrid.ShaderSetDescription, Veldrid.OutputDescription)
-  nameWithType: SimplePipelineDescription.SimplePipelineDescription(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, SimpleBufferLayout[], SimpleTextureLayout[], ShaderSetDescription, OutputDescription)
-  nameWithType.vb: SimplePipelineDescription.New(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, SimpleBufferLayout(), SimpleTextureLayout(), ShaderSetDescription, OutputDescription)
+- uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor(Veldrid.BlendStateDescription,Veldrid.DepthStencilStateDescription,Veldrid.RasterizerStateDescription,Veldrid.PrimitiveTopology,System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout},System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout},Veldrid.ShaderSetDescription,Veldrid.OutputDescription)
+  name: SimplePipelineDescription(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, IEnumerable<SimpleBufferLayout>, IEnumerable<SimpleTextureLayout>, ShaderSetDescription, OutputDescription)
+  href: api/Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.html#Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription__ctor_Veldrid_BlendStateDescription_Veldrid_DepthStencilStateDescription_Veldrid_RasterizerStateDescription_Veldrid_PrimitiveTopology_System_Collections_Generic_IEnumerable_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferLayout__System_Collections_Generic_IEnumerable_Bliss_CSharp_Graphics_Pipelines_Textures_SimpleTextureLayout__Veldrid_ShaderSetDescription_Veldrid_OutputDescription_
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor(Veldrid.BlendStateDescription,Veldrid.DepthStencilStateDescription,Veldrid.RasterizerStateDescription,Veldrid.PrimitiveTopology,System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout},System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout},Veldrid.ShaderSetDescription,Veldrid.OutputDescription)
+  name.vb: New(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, IEnumerable(Of SimpleBufferLayout), IEnumerable(Of SimpleTextureLayout), ShaderSetDescription, OutputDescription)
+  fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.SimplePipelineDescription(Veldrid.BlendStateDescription, Veldrid.DepthStencilStateDescription, Veldrid.RasterizerStateDescription, Veldrid.PrimitiveTopology, System.Collections.Generic.IEnumerable<Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout>, System.Collections.Generic.IEnumerable<Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout>, Veldrid.ShaderSetDescription, Veldrid.OutputDescription)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.New(Veldrid.BlendStateDescription, Veldrid.DepthStencilStateDescription, Veldrid.RasterizerStateDescription, Veldrid.PrimitiveTopology, System.Collections.Generic.IEnumerable(Of Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout), System.Collections.Generic.IEnumerable(Of Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout), Veldrid.ShaderSetDescription, Veldrid.OutputDescription)
+  nameWithType: SimplePipelineDescription.SimplePipelineDescription(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, IEnumerable<SimpleBufferLayout>, IEnumerable<SimpleTextureLayout>, ShaderSetDescription, OutputDescription)
+  nameWithType.vb: SimplePipelineDescription.New(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, IEnumerable(Of SimpleBufferLayout), IEnumerable(Of SimpleTextureLayout), ShaderSetDescription, OutputDescription)
 - uid: Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor*
   name: SimplePipelineDescription
   href: api/Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.html#Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription__ctor_
@@ -6845,19 +6858,22 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Contexts.IInputContext.GetMousePosition
   nameWithType: IInputContext.GetMousePosition
-- uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars
-  name: GetPressedChars()
-  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetPressedChars
-  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars
-  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars()
-  nameWithType: IInputContext.GetPressedChars()
-- uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars*
-  name: GetPressedChars
-  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetPressedChars_
-  commentId: Overload:Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetTypedText(System.String@)
+  name: GetTypedText(out string)
+  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetTypedText_System_String__
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.GetTypedText(System.String@)
+  name.vb: GetTypedText(String)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.GetTypedText(out string)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.IInputContext.GetTypedText(String)
+  nameWithType: IInputContext.GetTypedText(out string)
+  nameWithType.vb: IInputContext.GetTypedText(String)
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetTypedText*
+  name: GetTypedText
+  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetTypedText_
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.IInputContext.GetTypedText
   isSpec: "True"
-  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars
-  nameWithType: IInputContext.GetPressedChars
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.GetTypedText
+  nameWithType: IInputContext.GetTypedText
 - uid: Bliss.CSharp.Interact.Contexts.IInputContext.HideCursor
   name: HideCursor()
   href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_HideCursor
@@ -7129,6 +7145,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsRelativeMouseModeEnabled
   nameWithType: IInputContext.IsRelativeMouseModeEnabled
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsTextInputActive
+  name: IsTextInputActive()
+  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsTextInputActive
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsTextInputActive
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsTextInputActive()
+  nameWithType: IInputContext.IsTextInputActive()
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsTextInputActive*
+  name: IsTextInputActive
+  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsTextInputActive_
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.IInputContext.IsTextInputActive
+  isSpec: "True"
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsTextInputActive
+  nameWithType: IInputContext.IsTextInputActive
 - uid: Bliss.CSharp.Interact.Contexts.IInputContext.RumbleGamepad(System.UInt32,System.UInt16,System.UInt16,System.UInt32)
   name: RumbleGamepad(uint, ushort, ushort, uint)
   href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_RumbleGamepad_System_UInt32_System_UInt16_System_UInt16_System_UInt32_
@@ -7200,6 +7229,32 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Contexts.IInputContext.ShowCursor
   nameWithType: IInputContext.ShowCursor
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput
+  name: StartTextInput()
+  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_StartTextInput
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput()
+  nameWithType: IInputContext.StartTextInput()
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput*
+  name: StartTextInput
+  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_StartTextInput_
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput
+  isSpec: "True"
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput
+  nameWithType: IInputContext.StartTextInput
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.StopTextInput
+  name: StopTextInput()
+  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_StopTextInput
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.StopTextInput
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.StopTextInput()
+  nameWithType: IInputContext.StopTextInput()
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.StopTextInput*
+  name: StopTextInput
+  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_StopTextInput_
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.IInputContext.StopTextInput
+  isSpec: "True"
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.StopTextInput
+  nameWithType: IInputContext.StopTextInput
 - uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
   name: Sdl3InputContext
   href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html
@@ -7390,19 +7445,22 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetMousePosition
   nameWithType: Sdl3InputContext.GetMousePosition
-- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetPressedChars
-  name: GetPressedChars()
-  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_GetPressedChars
-  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetPressedChars
-  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetPressedChars()
-  nameWithType: Sdl3InputContext.GetPressedChars()
-- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetPressedChars*
-  name: GetPressedChars
-  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_GetPressedChars_
-  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetPressedChars
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetTypedText(System.String@)
+  name: GetTypedText(out string)
+  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_GetTypedText_System_String__
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetTypedText(System.String@)
+  name.vb: GetTypedText(String)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetTypedText(out string)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetTypedText(String)
+  nameWithType: Sdl3InputContext.GetTypedText(out string)
+  nameWithType.vb: Sdl3InputContext.GetTypedText(String)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetTypedText*
+  name: GetTypedText
+  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_GetTypedText_
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetTypedText
   isSpec: "True"
-  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetPressedChars
-  nameWithType: Sdl3InputContext.GetPressedChars
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.GetTypedText
+  nameWithType: Sdl3InputContext.GetTypedText
 - uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.HideCursor
   name: HideCursor()
   href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_HideCursor
@@ -7674,6 +7732,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsRelativeMouseModeEnabled
   nameWithType: Sdl3InputContext.IsRelativeMouseModeEnabled
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsTextInputActive
+  name: IsTextInputActive()
+  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsTextInputActive
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsTextInputActive
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsTextInputActive()
+  nameWithType: Sdl3InputContext.IsTextInputActive()
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsTextInputActive*
+  name: IsTextInputActive
+  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsTextInputActive_
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsTextInputActive
+  isSpec: "True"
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsTextInputActive
+  nameWithType: Sdl3InputContext.IsTextInputActive
 - uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.RumbleGamepad(System.UInt32,System.UInt16,System.UInt16,System.UInt32)
   name: RumbleGamepad(uint, ushort, ushort, uint)
   href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_RumbleGamepad_System_UInt32_System_UInt16_System_UInt16_System_UInt32_
@@ -7745,6 +7816,32 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.ShowCursor
   nameWithType: Sdl3InputContext.ShowCursor
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StartTextInput
+  name: StartTextInput()
+  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_StartTextInput
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StartTextInput
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StartTextInput()
+  nameWithType: Sdl3InputContext.StartTextInput()
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StartTextInput*
+  name: StartTextInput
+  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_StartTextInput_
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StartTextInput
+  isSpec: "True"
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StartTextInput
+  nameWithType: Sdl3InputContext.StartTextInput
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StopTextInput
+  name: StopTextInput()
+  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_StopTextInput
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StopTextInput
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StopTextInput()
+  nameWithType: Sdl3InputContext.StopTextInput()
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StopTextInput*
+  name: StopTextInput
+  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_StopTextInput_
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StopTextInput
+  isSpec: "True"
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StopTextInput
+  nameWithType: Sdl3InputContext.StopTextInput
 - uid: Bliss.CSharp.Interact.Gamepads
   name: Bliss.CSharp.Interact.Gamepads
   href: api/Bliss.CSharp.Interact.Gamepads.html
@@ -8441,19 +8538,22 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Input.GetMousePosition
   nameWithType: Input.GetMousePosition
-- uid: Bliss.CSharp.Interact.Input.GetPressedChars
-  name: GetPressedChars()
-  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_GetPressedChars
-  commentId: M:Bliss.CSharp.Interact.Input.GetPressedChars
-  fullName: Bliss.CSharp.Interact.Input.GetPressedChars()
-  nameWithType: Input.GetPressedChars()
-- uid: Bliss.CSharp.Interact.Input.GetPressedChars*
-  name: GetPressedChars
-  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_GetPressedChars_
-  commentId: Overload:Bliss.CSharp.Interact.Input.GetPressedChars
+- uid: Bliss.CSharp.Interact.Input.GetTypedText(System.String@)
+  name: GetTypedText(out string)
+  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_GetTypedText_System_String__
+  commentId: M:Bliss.CSharp.Interact.Input.GetTypedText(System.String@)
+  name.vb: GetTypedText(String)
+  fullName: Bliss.CSharp.Interact.Input.GetTypedText(out string)
+  fullName.vb: Bliss.CSharp.Interact.Input.GetTypedText(String)
+  nameWithType: Input.GetTypedText(out string)
+  nameWithType.vb: Input.GetTypedText(String)
+- uid: Bliss.CSharp.Interact.Input.GetTypedText*
+  name: GetTypedText
+  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_GetTypedText_
+  commentId: Overload:Bliss.CSharp.Interact.Input.GetTypedText
   isSpec: "True"
-  fullName: Bliss.CSharp.Interact.Input.GetPressedChars
-  nameWithType: Input.GetPressedChars
+  fullName: Bliss.CSharp.Interact.Input.GetTypedText
+  nameWithType: Input.GetTypedText
 - uid: Bliss.CSharp.Interact.Input.HideCursor
   name: HideCursor()
   href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_HideCursor
@@ -8751,6 +8851,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Input.IsRelativeMouseModeEnabled
   nameWithType: Input.IsRelativeMouseModeEnabled
+- uid: Bliss.CSharp.Interact.Input.IsTextInputActive
+  name: IsTextInputActive()
+  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_IsTextInputActive
+  commentId: M:Bliss.CSharp.Interact.Input.IsTextInputActive
+  fullName: Bliss.CSharp.Interact.Input.IsTextInputActive()
+  nameWithType: Input.IsTextInputActive()
+- uid: Bliss.CSharp.Interact.Input.IsTextInputActive*
+  name: IsTextInputActive
+  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_IsTextInputActive_
+  commentId: Overload:Bliss.CSharp.Interact.Input.IsTextInputActive
+  isSpec: "True"
+  fullName: Bliss.CSharp.Interact.Input.IsTextInputActive
+  nameWithType: Input.IsTextInputActive
 - uid: Bliss.CSharp.Interact.Input.RumbleGamepad(System.UInt32,System.UInt16,System.UInt16,System.UInt32)
   name: RumbleGamepad(uint, ushort, ushort, uint)
   href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_RumbleGamepad_System_UInt32_System_UInt16_System_UInt16_System_UInt32_
@@ -8822,6 +8935,32 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Input.ShowCursor
   nameWithType: Input.ShowCursor
+- uid: Bliss.CSharp.Interact.Input.StartTextInput
+  name: StartTextInput()
+  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_StartTextInput
+  commentId: M:Bliss.CSharp.Interact.Input.StartTextInput
+  fullName: Bliss.CSharp.Interact.Input.StartTextInput()
+  nameWithType: Input.StartTextInput()
+- uid: Bliss.CSharp.Interact.Input.StartTextInput*
+  name: StartTextInput
+  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_StartTextInput_
+  commentId: Overload:Bliss.CSharp.Interact.Input.StartTextInput
+  isSpec: "True"
+  fullName: Bliss.CSharp.Interact.Input.StartTextInput
+  nameWithType: Input.StartTextInput
+- uid: Bliss.CSharp.Interact.Input.StopTextInput
+  name: StopTextInput()
+  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_StopTextInput
+  commentId: M:Bliss.CSharp.Interact.Input.StopTextInput
+  fullName: Bliss.CSharp.Interact.Input.StopTextInput()
+  nameWithType: Input.StopTextInput()
+- uid: Bliss.CSharp.Interact.Input.StopTextInput*
+  name: StopTextInput
+  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_StopTextInput_
+  commentId: Overload:Bliss.CSharp.Interact.Input.StopTextInput
+  isSpec: "True"
+  fullName: Bliss.CSharp.Interact.Input.StopTextInput
+  nameWithType: Input.StopTextInput
 - uid: Bliss.CSharp.Interact.Keyboards
   name: Bliss.CSharp.Interact.Keyboards
   href: api/Bliss.CSharp.Interact.Keyboards.html
@@ -9945,15 +10084,15 @@ references:
   commentId: T:Bliss.CSharp.Logging.Logger
   fullName: Bliss.CSharp.Logging.Logger
   nameWithType: Logger
-- uid: Bliss.CSharp.Logging.Logger.Debug(System.String,System.Int32)
-  name: Debug(string, int)
-  href: api/Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Debug_System_String_System_Int32_
-  commentId: M:Bliss.CSharp.Logging.Logger.Debug(System.String,System.Int32)
-  name.vb: Debug(String, Integer)
-  fullName: Bliss.CSharp.Logging.Logger.Debug(string, int)
-  fullName.vb: Bliss.CSharp.Logging.Logger.Debug(String, Integer)
-  nameWithType: Logger.Debug(string, int)
-  nameWithType.vb: Logger.Debug(String, Integer)
+- uid: Bliss.CSharp.Logging.Logger.Debug(System.String,System.String,System.String,System.Int32)
+  name: Debug(string, string, string, int)
+  href: api/Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Debug_System_String_System_String_System_String_System_Int32_
+  commentId: M:Bliss.CSharp.Logging.Logger.Debug(System.String,System.String,System.String,System.Int32)
+  name.vb: Debug(String, String, String, Integer)
+  fullName: Bliss.CSharp.Logging.Logger.Debug(string, string, string, int)
+  fullName.vb: Bliss.CSharp.Logging.Logger.Debug(String, String, String, Integer)
+  nameWithType: Logger.Debug(string, string, string, int)
+  nameWithType.vb: Logger.Debug(String, String, String, Integer)
 - uid: Bliss.CSharp.Logging.Logger.Debug*
   name: Debug
   href: api/Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Debug_
@@ -9961,15 +10100,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Logging.Logger.Debug
   nameWithType: Logger.Debug
-- uid: Bliss.CSharp.Logging.Logger.Error(System.String,System.Int32)
-  name: Error(string, int)
-  href: api/Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Error_System_String_System_Int32_
-  commentId: M:Bliss.CSharp.Logging.Logger.Error(System.String,System.Int32)
-  name.vb: Error(String, Integer)
-  fullName: Bliss.CSharp.Logging.Logger.Error(string, int)
-  fullName.vb: Bliss.CSharp.Logging.Logger.Error(String, Integer)
-  nameWithType: Logger.Error(string, int)
-  nameWithType.vb: Logger.Error(String, Integer)
+- uid: Bliss.CSharp.Logging.Logger.Error(System.String,System.String,System.String,System.Int32)
+  name: Error(string, string, string, int)
+  href: api/Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Error_System_String_System_String_System_String_System_Int32_
+  commentId: M:Bliss.CSharp.Logging.Logger.Error(System.String,System.String,System.String,System.Int32)
+  name.vb: Error(String, String, String, Integer)
+  fullName: Bliss.CSharp.Logging.Logger.Error(string, string, string, int)
+  fullName.vb: Bliss.CSharp.Logging.Logger.Error(String, String, String, Integer)
+  nameWithType: Logger.Error(string, string, string, int)
+  nameWithType.vb: Logger.Error(String, String, String, Integer)
 - uid: Bliss.CSharp.Logging.Logger.Error*
   name: Error
   href: api/Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Error_
@@ -9977,24 +10116,24 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Logging.Logger.Error
   nameWithType: Logger.Error
-- uid: Bliss.CSharp.Logging.Logger.Fatal(System.Exception,System.Int32)
-  name: Fatal(Exception, int)
-  href: api/Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Fatal_System_Exception_System_Int32_
-  commentId: M:Bliss.CSharp.Logging.Logger.Fatal(System.Exception,System.Int32)
-  name.vb: Fatal(Exception, Integer)
-  fullName: Bliss.CSharp.Logging.Logger.Fatal(System.Exception, int)
-  fullName.vb: Bliss.CSharp.Logging.Logger.Fatal(System.Exception, Integer)
-  nameWithType: Logger.Fatal(Exception, int)
-  nameWithType.vb: Logger.Fatal(Exception, Integer)
-- uid: Bliss.CSharp.Logging.Logger.Fatal(System.String,System.Int32)
-  name: Fatal(string, int)
-  href: api/Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Fatal_System_String_System_Int32_
-  commentId: M:Bliss.CSharp.Logging.Logger.Fatal(System.String,System.Int32)
-  name.vb: Fatal(String, Integer)
-  fullName: Bliss.CSharp.Logging.Logger.Fatal(string, int)
-  fullName.vb: Bliss.CSharp.Logging.Logger.Fatal(String, Integer)
-  nameWithType: Logger.Fatal(string, int)
-  nameWithType.vb: Logger.Fatal(String, Integer)
+- uid: Bliss.CSharp.Logging.Logger.Fatal(System.Exception,System.String,System.String,System.Int32)
+  name: Fatal(Exception, string, string, int)
+  href: api/Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Fatal_System_Exception_System_String_System_String_System_Int32_
+  commentId: M:Bliss.CSharp.Logging.Logger.Fatal(System.Exception,System.String,System.String,System.Int32)
+  name.vb: Fatal(Exception, String, String, Integer)
+  fullName: Bliss.CSharp.Logging.Logger.Fatal(System.Exception, string, string, int)
+  fullName.vb: Bliss.CSharp.Logging.Logger.Fatal(System.Exception, String, String, Integer)
+  nameWithType: Logger.Fatal(Exception, string, string, int)
+  nameWithType.vb: Logger.Fatal(Exception, String, String, Integer)
+- uid: Bliss.CSharp.Logging.Logger.Fatal(System.String,System.String,System.String,System.Int32)
+  name: Fatal(string, string, string, int)
+  href: api/Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Fatal_System_String_System_String_System_String_System_Int32_
+  commentId: M:Bliss.CSharp.Logging.Logger.Fatal(System.String,System.String,System.String,System.Int32)
+  name.vb: Fatal(String, String, String, Integer)
+  fullName: Bliss.CSharp.Logging.Logger.Fatal(string, string, string, int)
+  fullName.vb: Bliss.CSharp.Logging.Logger.Fatal(String, String, String, Integer)
+  nameWithType: Logger.Fatal(string, string, string, int)
+  nameWithType.vb: Logger.Fatal(String, String, String, Integer)
 - uid: Bliss.CSharp.Logging.Logger.Fatal*
   name: Fatal
   href: api/Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Fatal_
@@ -10002,15 +10141,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Logging.Logger.Fatal
   nameWithType: Logger.Fatal
-- uid: Bliss.CSharp.Logging.Logger.Info(System.String,System.Int32)
-  name: Info(string, int)
-  href: api/Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Info_System_String_System_Int32_
-  commentId: M:Bliss.CSharp.Logging.Logger.Info(System.String,System.Int32)
-  name.vb: Info(String, Integer)
-  fullName: Bliss.CSharp.Logging.Logger.Info(string, int)
-  fullName.vb: Bliss.CSharp.Logging.Logger.Info(String, Integer)
-  nameWithType: Logger.Info(string, int)
-  nameWithType.vb: Logger.Info(String, Integer)
+- uid: Bliss.CSharp.Logging.Logger.Info(System.String,System.String,System.String,System.Int32)
+  name: Info(string, string, string, int)
+  href: api/Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Info_System_String_System_String_System_String_System_Int32_
+  commentId: M:Bliss.CSharp.Logging.Logger.Info(System.String,System.String,System.String,System.Int32)
+  name.vb: Info(String, String, String, Integer)
+  fullName: Bliss.CSharp.Logging.Logger.Info(string, string, string, int)
+  fullName.vb: Bliss.CSharp.Logging.Logger.Info(String, String, String, Integer)
+  nameWithType: Logger.Info(string, string, string, int)
+  nameWithType.vb: Logger.Info(String, String, String, Integer)
 - uid: Bliss.CSharp.Logging.Logger.Info*
   name: Info
   href: api/Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Info_
@@ -10030,15 +10169,15 @@ references:
   commentId: T:Bliss.CSharp.Logging.Logger.OnMessage
   fullName: Bliss.CSharp.Logging.Logger.OnMessage
   nameWithType: Logger.OnMessage
-- uid: Bliss.CSharp.Logging.Logger.Warn(System.String,System.Int32)
-  name: Warn(string, int)
-  href: api/Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Warn_System_String_System_Int32_
-  commentId: M:Bliss.CSharp.Logging.Logger.Warn(System.String,System.Int32)
-  name.vb: Warn(String, Integer)
-  fullName: Bliss.CSharp.Logging.Logger.Warn(string, int)
-  fullName.vb: Bliss.CSharp.Logging.Logger.Warn(String, Integer)
-  nameWithType: Logger.Warn(string, int)
-  nameWithType.vb: Logger.Warn(String, Integer)
+- uid: Bliss.CSharp.Logging.Logger.Warn(System.String,System.String,System.String,System.Int32)
+  name: Warn(string, string, string, int)
+  href: api/Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Warn_System_String_System_String_System_String_System_Int32_
+  commentId: M:Bliss.CSharp.Logging.Logger.Warn(System.String,System.String,System.String,System.Int32)
+  name.vb: Warn(String, String, String, Integer)
+  fullName: Bliss.CSharp.Logging.Logger.Warn(string, string, string, int)
+  fullName.vb: Bliss.CSharp.Logging.Logger.Warn(String, String, String, Integer)
+  nameWithType: Logger.Warn(string, string, string, int)
+  nameWithType.vb: Logger.Warn(String, String, String, Integer)
 - uid: Bliss.CSharp.Logging.Logger.Warn*
   name: Warn
   href: api/Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Warn_
@@ -12123,19 +12262,22 @@ references:
   commentId: T:Bliss.CSharp.Windowing.IWindow
   fullName: Bliss.CSharp.Windowing.IWindow
   nameWithType: IWindow
-- uid: Bliss.CSharp.Windowing.IWindow.ClearState
-  name: ClearState()
-  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_ClearState
-  commentId: M:Bliss.CSharp.Windowing.IWindow.ClearState
-  fullName: Bliss.CSharp.Windowing.IWindow.ClearState()
-  nameWithType: IWindow.ClearState()
-- uid: Bliss.CSharp.Windowing.IWindow.ClearState*
-  name: ClearState
-  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_ClearState_
-  commentId: Overload:Bliss.CSharp.Windowing.IWindow.ClearState
+- uid: Bliss.CSharp.Windowing.IWindow.CaptureMouse(System.Boolean)
+  name: CaptureMouse(bool)
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_CaptureMouse_System_Boolean_
+  commentId: M:Bliss.CSharp.Windowing.IWindow.CaptureMouse(System.Boolean)
+  name.vb: CaptureMouse(Boolean)
+  fullName: Bliss.CSharp.Windowing.IWindow.CaptureMouse(bool)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.CaptureMouse(Boolean)
+  nameWithType: IWindow.CaptureMouse(bool)
+  nameWithType.vb: IWindow.CaptureMouse(Boolean)
+- uid: Bliss.CSharp.Windowing.IWindow.CaptureMouse*
+  name: CaptureMouse
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_CaptureMouse_
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.CaptureMouse
   isSpec: "True"
-  fullName: Bliss.CSharp.Windowing.IWindow.ClearState
-  nameWithType: IWindow.ClearState
+  fullName: Bliss.CSharp.Windowing.IWindow.CaptureMouse
+  nameWithType: IWindow.CaptureMouse
 - uid: Bliss.CSharp.Windowing.IWindow.ClientToScreen(Bliss.CSharp.Transformations.Point)
   name: ClientToScreen(Point)
   href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_ClientToScreen_Bliss_CSharp_Transformations_Point_
@@ -12371,6 +12513,19 @@ references:
   commentId: E:Bliss.CSharp.Windowing.IWindow.Hidden
   fullName: Bliss.CSharp.Windowing.IWindow.Hidden
   nameWithType: IWindow.Hidden
+- uid: Bliss.CSharp.Windowing.IWindow.Hide
+  name: Hide()
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Hide
+  commentId: M:Bliss.CSharp.Windowing.IWindow.Hide
+  fullName: Bliss.CSharp.Windowing.IWindow.Hide()
+  nameWithType: IWindow.Hide()
+- uid: Bliss.CSharp.Windowing.IWindow.Hide*
+  name: Hide
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Hide_
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.Hide
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.IWindow.Hide
+  nameWithType: IWindow.Hide
 - uid: Bliss.CSharp.Windowing.IWindow.Id
   name: Id
   href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Id
@@ -12409,6 +12564,32 @@ references:
   commentId: E:Bliss.CSharp.Windowing.IWindow.KeyUp
   fullName: Bliss.CSharp.Windowing.IWindow.KeyUp
   nameWithType: IWindow.KeyUp
+- uid: Bliss.CSharp.Windowing.IWindow.Maximize
+  name: Maximize()
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Maximize
+  commentId: M:Bliss.CSharp.Windowing.IWindow.Maximize
+  fullName: Bliss.CSharp.Windowing.IWindow.Maximize()
+  nameWithType: IWindow.Maximize()
+- uid: Bliss.CSharp.Windowing.IWindow.Maximize*
+  name: Maximize
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Maximize_
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.Maximize
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.IWindow.Maximize
+  nameWithType: IWindow.Maximize
+- uid: Bliss.CSharp.Windowing.IWindow.Minimize
+  name: Minimize()
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Minimize
+  commentId: M:Bliss.CSharp.Windowing.IWindow.Minimize
+  fullName: Bliss.CSharp.Windowing.IWindow.Minimize()
+  nameWithType: IWindow.Minimize()
+- uid: Bliss.CSharp.Windowing.IWindow.Minimize*
+  name: Minimize
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Minimize_
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.Minimize
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.IWindow.Minimize
+  nameWithType: IWindow.Minimize
 - uid: Bliss.CSharp.Windowing.IWindow.MouseButtonDown
   name: MouseButtonDown
   href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_MouseButtonDown
@@ -12483,6 +12664,38 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Windowing.IWindow.ScreenToClient
   nameWithType: IWindow.ScreenToClient
+- uid: Bliss.CSharp.Windowing.IWindow.SetBordered(System.Boolean)
+  name: SetBordered(bool)
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetBordered_System_Boolean_
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetBordered(System.Boolean)
+  name.vb: SetBordered(Boolean)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetBordered(bool)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.SetBordered(Boolean)
+  nameWithType: IWindow.SetBordered(bool)
+  nameWithType.vb: IWindow.SetBordered(Boolean)
+- uid: Bliss.CSharp.Windowing.IWindow.SetBordered*
+  name: SetBordered
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetBordered_
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.SetBordered
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.IWindow.SetBordered
+  nameWithType: IWindow.SetBordered
+- uid: Bliss.CSharp.Windowing.IWindow.SetFullscreen(System.Boolean)
+  name: SetFullscreen(bool)
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetFullscreen_System_Boolean_
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetFullscreen(System.Boolean)
+  name.vb: SetFullscreen(Boolean)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetFullscreen(bool)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.SetFullscreen(Boolean)
+  nameWithType: IWindow.SetFullscreen(bool)
+  nameWithType.vb: IWindow.SetFullscreen(Boolean)
+- uid: Bliss.CSharp.Windowing.IWindow.SetFullscreen*
+  name: SetFullscreen
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetFullscreen_
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.SetFullscreen
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.IWindow.SetFullscreen
+  nameWithType: IWindow.SetFullscreen
 - uid: Bliss.CSharp.Windowing.IWindow.SetHeight(System.Int32)
   name: SetHeight(int)
   href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetHeight_System_Int32_
@@ -12528,6 +12741,22 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Windowing.IWindow.SetPosition
   nameWithType: IWindow.SetPosition
+- uid: Bliss.CSharp.Windowing.IWindow.SetResizable(System.Boolean)
+  name: SetResizable(bool)
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetResizable_System_Boolean_
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetResizable(System.Boolean)
+  name.vb: SetResizable(Boolean)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetResizable(bool)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.SetResizable(Boolean)
+  nameWithType: IWindow.SetResizable(bool)
+  nameWithType.vb: IWindow.SetResizable(Boolean)
+- uid: Bliss.CSharp.Windowing.IWindow.SetResizable*
+  name: SetResizable
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetResizable_
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.SetResizable
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.IWindow.SetResizable
+  nameWithType: IWindow.SetResizable
 - uid: Bliss.CSharp.Windowing.IWindow.SetSize(System.Int32,System.Int32)
   name: SetSize(int, int)
   href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetSize_System_Int32_System_Int32_
@@ -12544,19 +12773,6 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Windowing.IWindow.SetSize
   nameWithType: IWindow.SetSize
-- uid: Bliss.CSharp.Windowing.IWindow.SetState(Bliss.CSharp.Windowing.WindowState)
-  name: SetState(WindowState)
-  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetState_Bliss_CSharp_Windowing_WindowState_
-  commentId: M:Bliss.CSharp.Windowing.IWindow.SetState(Bliss.CSharp.Windowing.WindowState)
-  fullName: Bliss.CSharp.Windowing.IWindow.SetState(Bliss.CSharp.Windowing.WindowState)
-  nameWithType: IWindow.SetState(WindowState)
-- uid: Bliss.CSharp.Windowing.IWindow.SetState*
-  name: SetState
-  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetState_
-  commentId: Overload:Bliss.CSharp.Windowing.IWindow.SetState
-  isSpec: "True"
-  fullName: Bliss.CSharp.Windowing.IWindow.SetState
-  nameWithType: IWindow.SetState
 - uid: Bliss.CSharp.Windowing.IWindow.SetTitle(System.String)
   name: SetTitle(string)
   href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetTitle_System_String_
@@ -12589,6 +12805,22 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Windowing.IWindow.SetWidth
   nameWithType: IWindow.SetWidth
+- uid: Bliss.CSharp.Windowing.IWindow.SetWindowAlwaysOnTop(System.Boolean)
+  name: SetWindowAlwaysOnTop(bool)
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetWindowAlwaysOnTop_System_Boolean_
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetWindowAlwaysOnTop(System.Boolean)
+  name.vb: SetWindowAlwaysOnTop(Boolean)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetWindowAlwaysOnTop(bool)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.SetWindowAlwaysOnTop(Boolean)
+  nameWithType: IWindow.SetWindowAlwaysOnTop(bool)
+  nameWithType.vb: IWindow.SetWindowAlwaysOnTop(Boolean)
+- uid: Bliss.CSharp.Windowing.IWindow.SetWindowAlwaysOnTop*
+  name: SetWindowAlwaysOnTop
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetWindowAlwaysOnTop_
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.SetWindowAlwaysOnTop
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.IWindow.SetWindowAlwaysOnTop
+  nameWithType: IWindow.SetWindowAlwaysOnTop
 - uid: Bliss.CSharp.Windowing.IWindow.SetX(System.Int32)
   name: SetX(int)
   href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetX_System_Int32_
@@ -12621,6 +12853,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Windowing.IWindow.SetY
   nameWithType: IWindow.SetY
+- uid: Bliss.CSharp.Windowing.IWindow.Show
+  name: Show()
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Show
+  commentId: M:Bliss.CSharp.Windowing.IWindow.Show
+  fullName: Bliss.CSharp.Windowing.IWindow.Show()
+  nameWithType: IWindow.Show()
+- uid: Bliss.CSharp.Windowing.IWindow.Show*
+  name: Show
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Show_
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.Show
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.IWindow.Show
+  nameWithType: IWindow.Show
 - uid: Bliss.CSharp.Windowing.IWindow.Shown
   name: Shown
   href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Shown
@@ -12671,19 +12916,22 @@ references:
   fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.New
   nameWithType: Sdl3Window.Sdl3Window
   nameWithType.vb: Sdl3Window.New
-- uid: Bliss.CSharp.Windowing.Sdl3Window.ClearState
-  name: ClearState()
-  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_ClearState
-  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.ClearState
-  fullName: Bliss.CSharp.Windowing.Sdl3Window.ClearState()
-  nameWithType: Sdl3Window.ClearState()
-- uid: Bliss.CSharp.Windowing.Sdl3Window.ClearState*
-  name: ClearState
-  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_ClearState_
-  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.ClearState
+- uid: Bliss.CSharp.Windowing.Sdl3Window.CaptureMouse(System.Boolean)
+  name: CaptureMouse(bool)
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_CaptureMouse_System_Boolean_
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.CaptureMouse(System.Boolean)
+  name.vb: CaptureMouse(Boolean)
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.CaptureMouse(bool)
+  fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.CaptureMouse(Boolean)
+  nameWithType: Sdl3Window.CaptureMouse(bool)
+  nameWithType.vb: Sdl3Window.CaptureMouse(Boolean)
+- uid: Bliss.CSharp.Windowing.Sdl3Window.CaptureMouse*
+  name: CaptureMouse
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_CaptureMouse_
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.CaptureMouse
   isSpec: "True"
-  fullName: Bliss.CSharp.Windowing.Sdl3Window.ClearState
-  nameWithType: Sdl3Window.ClearState
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.CaptureMouse
+  nameWithType: Sdl3Window.CaptureMouse
 - uid: Bliss.CSharp.Windowing.Sdl3Window.ClientToScreen(Bliss.CSharp.Transformations.Point)
   name: ClientToScreen(Point)
   href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_ClientToScreen_Bliss_CSharp_Transformations_Point_
@@ -12935,6 +13183,19 @@ references:
   commentId: E:Bliss.CSharp.Windowing.Sdl3Window.Hidden
   fullName: Bliss.CSharp.Windowing.Sdl3Window.Hidden
   nameWithType: Sdl3Window.Hidden
+- uid: Bliss.CSharp.Windowing.Sdl3Window.Hide
+  name: Hide()
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_Hide
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.Hide
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.Hide()
+  nameWithType: Sdl3Window.Hide()
+- uid: Bliss.CSharp.Windowing.Sdl3Window.Hide*
+  name: Hide
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_Hide_
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.Hide
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.Hide
+  nameWithType: Sdl3Window.Hide
 - uid: Bliss.CSharp.Windowing.Sdl3Window.Id
   name: Id
   href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_Id
@@ -12973,6 +13234,32 @@ references:
   commentId: E:Bliss.CSharp.Windowing.Sdl3Window.KeyUp
   fullName: Bliss.CSharp.Windowing.Sdl3Window.KeyUp
   nameWithType: Sdl3Window.KeyUp
+- uid: Bliss.CSharp.Windowing.Sdl3Window.Maximize
+  name: Maximize()
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_Maximize
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.Maximize
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.Maximize()
+  nameWithType: Sdl3Window.Maximize()
+- uid: Bliss.CSharp.Windowing.Sdl3Window.Maximize*
+  name: Maximize
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_Maximize_
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.Maximize
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.Maximize
+  nameWithType: Sdl3Window.Maximize
+- uid: Bliss.CSharp.Windowing.Sdl3Window.Minimize
+  name: Minimize()
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_Minimize
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.Minimize
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.Minimize()
+  nameWithType: Sdl3Window.Minimize()
+- uid: Bliss.CSharp.Windowing.Sdl3Window.Minimize*
+  name: Minimize
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_Minimize_
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.Minimize
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.Minimize
+  nameWithType: Sdl3Window.Minimize
 - uid: Bliss.CSharp.Windowing.Sdl3Window.MouseButtonDown
   name: MouseButtonDown
   href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_MouseButtonDown
@@ -13053,6 +13340,38 @@ references:
   commentId: E:Bliss.CSharp.Windowing.Sdl3Window.SdlEvent
   fullName: Bliss.CSharp.Windowing.Sdl3Window.SdlEvent
   nameWithType: Sdl3Window.SdlEvent
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetBordered(System.Boolean)
+  name: SetBordered(bool)
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetBordered_System_Boolean_
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.SetBordered(System.Boolean)
+  name.vb: SetBordered(Boolean)
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetBordered(bool)
+  fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.SetBordered(Boolean)
+  nameWithType: Sdl3Window.SetBordered(bool)
+  nameWithType.vb: Sdl3Window.SetBordered(Boolean)
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetBordered*
+  name: SetBordered
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetBordered_
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.SetBordered
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetBordered
+  nameWithType: Sdl3Window.SetBordered
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetFullscreen(System.Boolean)
+  name: SetFullscreen(bool)
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetFullscreen_System_Boolean_
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.SetFullscreen(System.Boolean)
+  name.vb: SetFullscreen(Boolean)
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetFullscreen(bool)
+  fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.SetFullscreen(Boolean)
+  nameWithType: Sdl3Window.SetFullscreen(bool)
+  nameWithType.vb: Sdl3Window.SetFullscreen(Boolean)
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetFullscreen*
+  name: SetFullscreen
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetFullscreen_
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.SetFullscreen
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetFullscreen
+  nameWithType: Sdl3Window.SetFullscreen
 - uid: Bliss.CSharp.Windowing.Sdl3Window.SetHeight(System.Int32)
   name: SetHeight(int)
   href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetHeight_System_Int32_
@@ -13098,6 +13417,22 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Windowing.Sdl3Window.SetPosition
   nameWithType: Sdl3Window.SetPosition
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetResizable(System.Boolean)
+  name: SetResizable(bool)
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetResizable_System_Boolean_
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.SetResizable(System.Boolean)
+  name.vb: SetResizable(Boolean)
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetResizable(bool)
+  fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.SetResizable(Boolean)
+  nameWithType: Sdl3Window.SetResizable(bool)
+  nameWithType.vb: Sdl3Window.SetResizable(Boolean)
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetResizable*
+  name: SetResizable
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetResizable_
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.SetResizable
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetResizable
+  nameWithType: Sdl3Window.SetResizable
 - uid: Bliss.CSharp.Windowing.Sdl3Window.SetSize(System.Int32,System.Int32)
   name: SetSize(int, int)
   href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetSize_System_Int32_System_Int32_
@@ -13114,19 +13449,6 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Windowing.Sdl3Window.SetSize
   nameWithType: Sdl3Window.SetSize
-- uid: Bliss.CSharp.Windowing.Sdl3Window.SetState(Bliss.CSharp.Windowing.WindowState)
-  name: SetState(WindowState)
-  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetState_Bliss_CSharp_Windowing_WindowState_
-  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.SetState(Bliss.CSharp.Windowing.WindowState)
-  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetState(Bliss.CSharp.Windowing.WindowState)
-  nameWithType: Sdl3Window.SetState(WindowState)
-- uid: Bliss.CSharp.Windowing.Sdl3Window.SetState*
-  name: SetState
-  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetState_
-  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.SetState
-  isSpec: "True"
-  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetState
-  nameWithType: Sdl3Window.SetState
 - uid: Bliss.CSharp.Windowing.Sdl3Window.SetTitle(System.String)
   name: SetTitle(string)
   href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetTitle_System_String_
@@ -13159,6 +13481,22 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Windowing.Sdl3Window.SetWidth
   nameWithType: Sdl3Window.SetWidth
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetWindowAlwaysOnTop(System.Boolean)
+  name: SetWindowAlwaysOnTop(bool)
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetWindowAlwaysOnTop_System_Boolean_
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.SetWindowAlwaysOnTop(System.Boolean)
+  name.vb: SetWindowAlwaysOnTop(Boolean)
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetWindowAlwaysOnTop(bool)
+  fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.SetWindowAlwaysOnTop(Boolean)
+  nameWithType: Sdl3Window.SetWindowAlwaysOnTop(bool)
+  nameWithType.vb: Sdl3Window.SetWindowAlwaysOnTop(Boolean)
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetWindowAlwaysOnTop*
+  name: SetWindowAlwaysOnTop
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetWindowAlwaysOnTop_
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.SetWindowAlwaysOnTop
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetWindowAlwaysOnTop
+  nameWithType: Sdl3Window.SetWindowAlwaysOnTop
 - uid: Bliss.CSharp.Windowing.Sdl3Window.SetX(System.Int32)
   name: SetX(int)
   href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetX_System_Int32_
@@ -13191,6 +13529,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Windowing.Sdl3Window.SetY
   nameWithType: Sdl3Window.SetY
+- uid: Bliss.CSharp.Windowing.Sdl3Window.Show
+  name: Show()
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_Show
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.Show
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.Show()
+  nameWithType: Sdl3Window.Show()
+- uid: Bliss.CSharp.Windowing.Sdl3Window.Show*
+  name: Show
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_Show_
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.Show
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.Show
+  nameWithType: Sdl3Window.Show
 - uid: Bliss.CSharp.Windowing.Sdl3Window.Shown
   name: Shown
   href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_Shown
@@ -13276,12 +13627,12 @@ references:
   commentId: F:Bliss.CSharp.Windowing.WindowState.AlwaysOnTop
   fullName: Bliss.CSharp.Windowing.WindowState.AlwaysOnTop
   nameWithType: WindowState.AlwaysOnTop
-- uid: Bliss.CSharp.Windowing.WindowState.BorderlessFullScreen
-  name: BorderlessFullScreen
-  href: api/Bliss.CSharp.Windowing.WindowState.html#Bliss_CSharp_Windowing_WindowState_BorderlessFullScreen
-  commentId: F:Bliss.CSharp.Windowing.WindowState.BorderlessFullScreen
-  fullName: Bliss.CSharp.Windowing.WindowState.BorderlessFullScreen
-  nameWithType: WindowState.BorderlessFullScreen
+- uid: Bliss.CSharp.Windowing.WindowState.Borderless
+  name: Borderless
+  href: api/Bliss.CSharp.Windowing.WindowState.html#Bliss_CSharp_Windowing_WindowState_Borderless
+  commentId: F:Bliss.CSharp.Windowing.WindowState.Borderless
+  fullName: Bliss.CSharp.Windowing.WindowState.Borderless
+  nameWithType: WindowState.Borderless
 - uid: Bliss.CSharp.Windowing.WindowState.CaptureMouse
   name: CaptureMouse
   href: api/Bliss.CSharp.Windowing.WindowState.html#Bliss_CSharp_Windowing_WindowState_CaptureMouse
@@ -13300,6 +13651,12 @@ references:
   commentId: F:Bliss.CSharp.Windowing.WindowState.Hidden
   fullName: Bliss.CSharp.Windowing.WindowState.Hidden
   nameWithType: WindowState.Hidden
+- uid: Bliss.CSharp.Windowing.WindowState.HighPixelDensity
+  name: HighPixelDensity
+  href: api/Bliss.CSharp.Windowing.WindowState.html#Bliss_CSharp_Windowing_WindowState_HighPixelDensity
+  commentId: F:Bliss.CSharp.Windowing.WindowState.HighPixelDensity
+  fullName: Bliss.CSharp.Windowing.WindowState.HighPixelDensity
+  nameWithType: WindowState.HighPixelDensity
 - uid: Bliss.CSharp.Windowing.WindowState.Maximized
   name: Maximized
   href: api/Bliss.CSharp.Windowing.WindowState.html#Bliss_CSharp_Windowing_WindowState_Maximized

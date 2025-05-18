@@ -5,13 +5,13 @@ items:
   id: Logger
   parent: Bliss.CSharp.Logging
   children:
-  - Bliss.CSharp.Logging.Logger.Debug(System.String,System.Int32)
-  - Bliss.CSharp.Logging.Logger.Error(System.String,System.Int32)
-  - Bliss.CSharp.Logging.Logger.Fatal(System.Exception,System.Int32)
-  - Bliss.CSharp.Logging.Logger.Fatal(System.String,System.Int32)
-  - Bliss.CSharp.Logging.Logger.Info(System.String,System.Int32)
+  - Bliss.CSharp.Logging.Logger.Debug(System.String,System.String,System.String,System.Int32)
+  - Bliss.CSharp.Logging.Logger.Error(System.String,System.String,System.String,System.Int32)
+  - Bliss.CSharp.Logging.Logger.Fatal(System.Exception,System.String,System.String,System.Int32)
+  - Bliss.CSharp.Logging.Logger.Fatal(System.String,System.String,System.String,System.Int32)
+  - Bliss.CSharp.Logging.Logger.Info(System.String,System.String,System.String,System.Int32)
   - Bliss.CSharp.Logging.Logger.Message
-  - Bliss.CSharp.Logging.Logger.Warn(System.String,System.Int32)
+  - Bliss.CSharp.Logging.Logger.Warn(System.String,System.String,System.String,System.Int32)
   langs:
   - csharp
   - vb
@@ -26,7 +26,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Logger
     path: ../src/Bliss/CSharp/Logging/Logger.cs
-    startLine: 5
+    startLine: 4
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Logging
@@ -61,25 +61,27 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Message
     path: ../src/Bliss/CSharp/Logging/Logger.cs
-    startLine: 8
+    startLine: 21
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Logging
+  summary: An event that is triggered when a log message is generated.
+  example: []
   syntax:
     content: public static event Logger.OnMessage? Message
     return:
       type: Bliss.CSharp.Logging.Logger.OnMessage
     content.vb: Public Shared Event Message As Logger.OnMessage
-- uid: Bliss.CSharp.Logging.Logger.Debug(System.String,System.Int32)
-  commentId: M:Bliss.CSharp.Logging.Logger.Debug(System.String,System.Int32)
-  id: Debug(System.String,System.Int32)
+- uid: Bliss.CSharp.Logging.Logger.Debug(System.String,System.String,System.String,System.Int32)
+  commentId: M:Bliss.CSharp.Logging.Logger.Debug(System.String,System.String,System.String,System.Int32)
+  id: Debug(System.String,System.String,System.String,System.Int32)
   parent: Bliss.CSharp.Logging.Logger
   langs:
   - csharp
   - vb
-  name: Debug(string, int)
-  nameWithType: Logger.Debug(string, int)
-  fullName: Bliss.CSharp.Logging.Logger.Debug(string, int)
+  name: Debug(string, string, string, int)
+  nameWithType: Logger.Debug(string, string, string, int)
+  fullName: Bliss.CSharp.Logging.Logger.Debug(string, string, string, int)
   type: Method
   source:
     remote:
@@ -88,36 +90,42 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Debug
     path: ../src/Bliss/CSharp/Logging/Logger.cs
-    startLine: 15
+    startLine: 30
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Logging
-  summary: Logs a debug message with optional stack frame information.
+  summary: Logs a debug message if the build configuration is set to DEBUG.
   example: []
   syntax:
-    content: public static void Debug(string msg, int skipFrames = 2)
+    content: public static void Debug(string msg, string sourceFilePath = "", string memberName = "", int sourceLineNumber = 0)
     parameters:
     - id: msg
       type: System.String
-      description: The debug message to be logged.
-    - id: skipFrames
+      description: The debug message to log.
+    - id: sourceFilePath
+      type: System.String
+      description: The file path of the caller. Automatically set by the compiler.
+    - id: memberName
+      type: System.String
+      description: The name of the calling member. Automatically set by the compiler.
+    - id: sourceLineNumber
       type: System.Int32
-      description: The number of stack frames to skip (optional, default is 2).
-    content.vb: Public Shared Sub Debug(msg As String, skipFrames As Integer = 2)
+      description: The line number of the call within the source file. Automatically set by the compiler.
+    content.vb: Public Shared Sub Debug(msg As String, sourceFilePath As String = "", memberName As String = "", sourceLineNumber As Integer = 0)
   overload: Bliss.CSharp.Logging.Logger.Debug*
-  nameWithType.vb: Logger.Debug(String, Integer)
-  fullName.vb: Bliss.CSharp.Logging.Logger.Debug(String, Integer)
-  name.vb: Debug(String, Integer)
-- uid: Bliss.CSharp.Logging.Logger.Info(System.String,System.Int32)
-  commentId: M:Bliss.CSharp.Logging.Logger.Info(System.String,System.Int32)
-  id: Info(System.String,System.Int32)
+  nameWithType.vb: Logger.Debug(String, String, String, Integer)
+  fullName.vb: Bliss.CSharp.Logging.Logger.Debug(String, String, String, Integer)
+  name.vb: Debug(String, String, String, Integer)
+- uid: Bliss.CSharp.Logging.Logger.Info(System.String,System.String,System.String,System.Int32)
+  commentId: M:Bliss.CSharp.Logging.Logger.Info(System.String,System.String,System.String,System.Int32)
+  id: Info(System.String,System.String,System.String,System.Int32)
   parent: Bliss.CSharp.Logging.Logger
   langs:
   - csharp
   - vb
-  name: Info(string, int)
-  nameWithType: Logger.Info(string, int)
-  fullName: Bliss.CSharp.Logging.Logger.Info(string, int)
+  name: Info(string, string, string, int)
+  nameWithType: Logger.Info(string, string, string, int)
+  fullName: Bliss.CSharp.Logging.Logger.Info(string, string, string, int)
   type: Method
   source:
     remote:
@@ -126,36 +134,42 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Info
     path: ../src/Bliss/CSharp/Logging/Logger.cs
-    startLine: 26
+    startLine: 43
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Logging
-  summary: Logs an informational message with optional stack frame information.
+  summary: Logs an informational message.
   example: []
   syntax:
-    content: public static void Info(string msg, int skipFrames = 2)
+    content: public static void Info(string msg, string sourceFilePath = "", string memberName = "", int sourceLineNumber = 0)
     parameters:
     - id: msg
       type: System.String
-      description: The informational message to be logged.
-    - id: skipFrames
+      description: The informational message to log.
+    - id: sourceFilePath
+      type: System.String
+      description: The file path of the caller. Automatically set by the compiler.
+    - id: memberName
+      type: System.String
+      description: The name of the calling member. Automatically set by the compiler.
+    - id: sourceLineNumber
       type: System.Int32
-      description: The number of stack frames to skip (optional, default is 2).
-    content.vb: Public Shared Sub Info(msg As String, skipFrames As Integer = 2)
+      description: The line number of the call within the source file. Automatically set by the compiler.
+    content.vb: Public Shared Sub Info(msg As String, sourceFilePath As String = "", memberName As String = "", sourceLineNumber As Integer = 0)
   overload: Bliss.CSharp.Logging.Logger.Info*
-  nameWithType.vb: Logger.Info(String, Integer)
-  fullName.vb: Bliss.CSharp.Logging.Logger.Info(String, Integer)
-  name.vb: Info(String, Integer)
-- uid: Bliss.CSharp.Logging.Logger.Warn(System.String,System.Int32)
-  commentId: M:Bliss.CSharp.Logging.Logger.Warn(System.String,System.Int32)
-  id: Warn(System.String,System.Int32)
+  nameWithType.vb: Logger.Info(String, String, String, Integer)
+  fullName.vb: Bliss.CSharp.Logging.Logger.Info(String, String, String, Integer)
+  name.vb: Info(String, String, String, Integer)
+- uid: Bliss.CSharp.Logging.Logger.Warn(System.String,System.String,System.String,System.Int32)
+  commentId: M:Bliss.CSharp.Logging.Logger.Warn(System.String,System.String,System.String,System.Int32)
+  id: Warn(System.String,System.String,System.String,System.Int32)
   parent: Bliss.CSharp.Logging.Logger
   langs:
   - csharp
   - vb
-  name: Warn(string, int)
-  nameWithType: Logger.Warn(string, int)
-  fullName: Bliss.CSharp.Logging.Logger.Warn(string, int)
+  name: Warn(string, string, string, int)
+  nameWithType: Logger.Warn(string, string, string, int)
+  fullName: Bliss.CSharp.Logging.Logger.Warn(string, string, string, int)
   type: Method
   source:
     remote:
@@ -164,36 +178,42 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Warn
     path: ../src/Bliss/CSharp/Logging/Logger.cs
-    startLine: 35
+    startLine: 54
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Logging
-  summary: Logs a warning message with optional stack frame information.
+  summary: Logs a warning message.
   example: []
   syntax:
-    content: public static void Warn(string msg, int skipFrames = 2)
+    content: public static void Warn(string msg, string sourceFilePath = "", string memberName = "", int sourceLineNumber = 0)
     parameters:
     - id: msg
       type: System.String
-      description: The warning message to be logged.
-    - id: skipFrames
+      description: The warning message to log.
+    - id: sourceFilePath
+      type: System.String
+      description: The file path of the caller. Automatically set by the compiler.
+    - id: memberName
+      type: System.String
+      description: The name of the calling member. Automatically set by the compiler.
+    - id: sourceLineNumber
       type: System.Int32
-      description: The number of stack frames to skip (optional, default is 2).
-    content.vb: Public Shared Sub Warn(msg As String, skipFrames As Integer = 2)
+      description: The line number of the call within the source file. Automatically set by the compiler.
+    content.vb: Public Shared Sub Warn(msg As String, sourceFilePath As String = "", memberName As String = "", sourceLineNumber As Integer = 0)
   overload: Bliss.CSharp.Logging.Logger.Warn*
-  nameWithType.vb: Logger.Warn(String, Integer)
-  fullName.vb: Bliss.CSharp.Logging.Logger.Warn(String, Integer)
-  name.vb: Warn(String, Integer)
-- uid: Bliss.CSharp.Logging.Logger.Error(System.String,System.Int32)
-  commentId: M:Bliss.CSharp.Logging.Logger.Error(System.String,System.Int32)
-  id: Error(System.String,System.Int32)
+  nameWithType.vb: Logger.Warn(String, String, String, Integer)
+  fullName.vb: Bliss.CSharp.Logging.Logger.Warn(String, String, String, Integer)
+  name.vb: Warn(String, String, String, Integer)
+- uid: Bliss.CSharp.Logging.Logger.Error(System.String,System.String,System.String,System.Int32)
+  commentId: M:Bliss.CSharp.Logging.Logger.Error(System.String,System.String,System.String,System.Int32)
+  id: Error(System.String,System.String,System.String,System.Int32)
   parent: Bliss.CSharp.Logging.Logger
   langs:
   - csharp
   - vb
-  name: Error(string, int)
-  nameWithType: Logger.Error(string, int)
-  fullName: Bliss.CSharp.Logging.Logger.Error(string, int)
+  name: Error(string, string, string, int)
+  nameWithType: Logger.Error(string, string, string, int)
+  fullName: Bliss.CSharp.Logging.Logger.Error(string, string, string, int)
   type: Method
   source:
     remote:
@@ -202,36 +222,42 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Error
     path: ../src/Bliss/CSharp/Logging/Logger.cs
-    startLine: 44
+    startLine: 65
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Logging
-  summary: Logs an error message with optional stack frame information.
+  summary: Logs an error message.
   example: []
   syntax:
-    content: public static void Error(string msg, int skipFrames = 2)
+    content: public static void Error(string msg, string sourceFilePath = "", string memberName = "", int sourceLineNumber = 0)
     parameters:
     - id: msg
       type: System.String
-      description: The error message to be logged.
-    - id: skipFrames
+      description: The error message to log.
+    - id: sourceFilePath
+      type: System.String
+      description: The file path of the caller. Automatically set by the compiler.
+    - id: memberName
+      type: System.String
+      description: The name of the calling member. Automatically set by the compiler.
+    - id: sourceLineNumber
       type: System.Int32
-      description: The number of stack frames to skip (optional, default is 2).
-    content.vb: Public Shared Sub [Error](msg As String, skipFrames As Integer = 2)
+      description: The line number of the call within the source file. Automatically set by the compiler.
+    content.vb: Public Shared Sub [Error](msg As String, sourceFilePath As String = "", memberName As String = "", sourceLineNumber As Integer = 0)
   overload: Bliss.CSharp.Logging.Logger.Error*
-  nameWithType.vb: Logger.Error(String, Integer)
-  fullName.vb: Bliss.CSharp.Logging.Logger.Error(String, Integer)
-  name.vb: Error(String, Integer)
-- uid: Bliss.CSharp.Logging.Logger.Fatal(System.String,System.Int32)
-  commentId: M:Bliss.CSharp.Logging.Logger.Fatal(System.String,System.Int32)
-  id: Fatal(System.String,System.Int32)
+  nameWithType.vb: Logger.Error(String, String, String, Integer)
+  fullName.vb: Bliss.CSharp.Logging.Logger.Error(String, String, String, Integer)
+  name.vb: Error(String, String, String, Integer)
+- uid: Bliss.CSharp.Logging.Logger.Fatal(System.String,System.String,System.String,System.Int32)
+  commentId: M:Bliss.CSharp.Logging.Logger.Fatal(System.String,System.String,System.String,System.Int32)
+  id: Fatal(System.String,System.String,System.String,System.Int32)
   parent: Bliss.CSharp.Logging.Logger
   langs:
   - csharp
   - vb
-  name: Fatal(string, int)
-  nameWithType: Logger.Fatal(string, int)
-  fullName: Bliss.CSharp.Logging.Logger.Fatal(string, int)
+  name: Fatal(string, string, string, int)
+  nameWithType: Logger.Fatal(string, string, string, int)
+  fullName: Bliss.CSharp.Logging.Logger.Fatal(string, string, string, int)
   type: Method
   source:
     remote:
@@ -240,36 +266,42 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Fatal
     path: ../src/Bliss/CSharp/Logging/Logger.cs
-    startLine: 53
+    startLine: 76
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Logging
-  summary: Logs an error message and throws an exception with optional stack frame information.
+  summary: Logs a fatal error message.
   example: []
   syntax:
-    content: public static void Fatal(string msg, int skipFrames = 2)
+    content: public static void Fatal(string msg, string sourceFilePath = "", string memberName = "", int sourceLineNumber = 0)
     parameters:
     - id: msg
       type: System.String
-      description: The fatal message to be logged.
-    - id: skipFrames
+      description: The fatal error message to log.
+    - id: sourceFilePath
+      type: System.String
+      description: The file path of the caller. Automatically set by the compiler.
+    - id: memberName
+      type: System.String
+      description: The name of the calling member. Automatically set by the compiler.
+    - id: sourceLineNumber
       type: System.Int32
-      description: The number of stack frames to skip (optional, default is 2).
-    content.vb: Public Shared Sub Fatal(msg As String, skipFrames As Integer = 2)
+      description: The line number of the call within the source file. Automatically set by the compiler.
+    content.vb: Public Shared Sub Fatal(msg As String, sourceFilePath As String = "", memberName As String = "", sourceLineNumber As Integer = 0)
   overload: Bliss.CSharp.Logging.Logger.Fatal*
-  nameWithType.vb: Logger.Fatal(String, Integer)
-  fullName.vb: Bliss.CSharp.Logging.Logger.Fatal(String, Integer)
-  name.vb: Fatal(String, Integer)
-- uid: Bliss.CSharp.Logging.Logger.Fatal(System.Exception,System.Int32)
-  commentId: M:Bliss.CSharp.Logging.Logger.Fatal(System.Exception,System.Int32)
-  id: Fatal(System.Exception,System.Int32)
+  nameWithType.vb: Logger.Fatal(String, String, String, Integer)
+  fullName.vb: Bliss.CSharp.Logging.Logger.Fatal(String, String, String, Integer)
+  name.vb: Fatal(String, String, String, Integer)
+- uid: Bliss.CSharp.Logging.Logger.Fatal(System.Exception,System.String,System.String,System.Int32)
+  commentId: M:Bliss.CSharp.Logging.Logger.Fatal(System.Exception,System.String,System.String,System.Int32)
+  id: Fatal(System.Exception,System.String,System.String,System.Int32)
   parent: Bliss.CSharp.Logging.Logger
   langs:
   - csharp
   - vb
-  name: Fatal(Exception, int)
-  nameWithType: Logger.Fatal(Exception, int)
-  fullName: Bliss.CSharp.Logging.Logger.Fatal(System.Exception, int)
+  name: Fatal(Exception, string, string, int)
+  nameWithType: Logger.Fatal(Exception, string, string, int)
+  fullName: Bliss.CSharp.Logging.Logger.Fatal(System.Exception, string, string, int)
   type: Method
   source:
     remote:
@@ -278,26 +310,32 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Fatal
     path: ../src/Bliss/CSharp/Logging/Logger.cs
-    startLine: 63
+    startLine: 88
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Logging
-  summary: Logs an exception message with the color red and throws the exception.
+  summary: Logs a fatal error message.
   example: []
   syntax:
-    content: public static void Fatal(Exception exception, int skipFrames = 2)
+    content: public static void Fatal(Exception exception, string sourceFilePath = "", string memberName = "", int sourceLineNumber = 0)
     parameters:
     - id: exception
       type: System.Exception
-      description: The exception to log and throw.
-    - id: skipFrames
+      description: The exception to log and rethrow.
+    - id: sourceFilePath
+      type: System.String
+      description: The file path of the caller. Automatically set by the compiler.
+    - id: memberName
+      type: System.String
+      description: The name of the calling member. Automatically set by the compiler.
+    - id: sourceLineNumber
       type: System.Int32
-      description: The number of frames to skip when determining the source of the log message.
-    content.vb: Public Shared Sub Fatal(exception As Exception, skipFrames As Integer = 2)
+      description: The line number of the call within the source file. Automatically set by the compiler.
+    content.vb: Public Shared Sub Fatal(exception As Exception, sourceFilePath As String = "", memberName As String = "", sourceLineNumber As Integer = 0)
   overload: Bliss.CSharp.Logging.Logger.Fatal*
-  nameWithType.vb: Logger.Fatal(Exception, Integer)
-  fullName.vb: Bliss.CSharp.Logging.Logger.Fatal(System.Exception, Integer)
-  name.vb: Fatal(Exception, Integer)
+  nameWithType.vb: Logger.Fatal(Exception, String, String, Integer)
+  fullName.vb: Bliss.CSharp.Logging.Logger.Fatal(System.Exception, String, String, Integer)
+  name.vb: Fatal(Exception, String, String, Integer)
 references:
 - uid: Bliss.CSharp.Logging
   commentId: N:Bliss.CSharp.Logging
@@ -591,7 +629,7 @@ references:
     href: Bliss.CSharp.Logging.Logger.OnMessage.html
 - uid: Bliss.CSharp.Logging.Logger.Debug*
   commentId: Overload:Bliss.CSharp.Logging.Logger.Debug
-  href: Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Debug_System_String_System_Int32_
+  href: Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Debug_System_String_System_String_System_String_System_Int32_
   name: Debug
   nameWithType: Logger.Debug
   fullName: Bliss.CSharp.Logging.Logger.Debug
@@ -619,25 +657,25 @@ references:
   name.vb: Integer
 - uid: Bliss.CSharp.Logging.Logger.Info*
   commentId: Overload:Bliss.CSharp.Logging.Logger.Info
-  href: Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Info_System_String_System_Int32_
+  href: Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Info_System_String_System_String_System_String_System_Int32_
   name: Info
   nameWithType: Logger.Info
   fullName: Bliss.CSharp.Logging.Logger.Info
 - uid: Bliss.CSharp.Logging.Logger.Warn*
   commentId: Overload:Bliss.CSharp.Logging.Logger.Warn
-  href: Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Warn_System_String_System_Int32_
+  href: Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Warn_System_String_System_String_System_String_System_Int32_
   name: Warn
   nameWithType: Logger.Warn
   fullName: Bliss.CSharp.Logging.Logger.Warn
 - uid: Bliss.CSharp.Logging.Logger.Error*
   commentId: Overload:Bliss.CSharp.Logging.Logger.Error
-  href: Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Error_System_String_System_Int32_
+  href: Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Error_System_String_System_String_System_String_System_Int32_
   name: Error
   nameWithType: Logger.Error
   fullName: Bliss.CSharp.Logging.Logger.Error
 - uid: Bliss.CSharp.Logging.Logger.Fatal*
   commentId: Overload:Bliss.CSharp.Logging.Logger.Fatal
-  href: Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Fatal_System_String_System_Int32_
+  href: Bliss.CSharp.Logging.Logger.html#Bliss_CSharp_Logging_Logger_Fatal_System_String_System_String_System_String_System_Int32_
   name: Fatal
   nameWithType: Logger.Fatal
   fullName: Bliss.CSharp.Logging.Logger.Fatal

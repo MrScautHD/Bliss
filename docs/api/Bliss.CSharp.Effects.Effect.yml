@@ -36,7 +36,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Effect
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 12
+    startLine: 10
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -77,7 +77,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GraphicsDevice
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 17
+    startLine: 15
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -108,7 +108,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Shader
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 22
+    startLine: 20
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -137,7 +137,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: VertexLayout
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 27
+    startLine: 25
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -166,7 +166,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ShaderSet
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 32
+    startLine: 30
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -195,7 +195,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 58
+    startLine: 56
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -242,7 +242,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 68
+    startLine: 66
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -293,14 +293,14 @@ items:
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
-  summary: Retrieves all the keys from the buffer layout dictionary.
+  summary: Retrieves the collection of keys representing buffer layouts associated with the Effect instance.
   example: []
   syntax:
-    content: public string[] GetBufferLayoutKeys()
+    content: public IEnumerable<string> GetBufferLayoutKeys()
     return:
-      type: System.String[]
-      description: An array of strings representing the keys of the buffer layouts.
-    content.vb: Public Function GetBufferLayoutKeys() As String()
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: An enumerable collection of string keys corresponding to the buffer layouts.
+    content.vb: Public Function GetBufferLayoutKeys() As IEnumerable(Of String)
   overload: Bliss.CSharp.Effects.Effect.GetBufferLayoutKeys*
 - uid: Bliss.CSharp.Effects.Effect.GetBufferLayouts
   commentId: M:Bliss.CSharp.Effects.Effect.GetBufferLayouts
@@ -324,14 +324,14 @@ items:
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
-  summary: Retrieves an array of buffer layouts associated with the current effect.
+  summary: Retrieves the collection of buffer layouts defined for this effect.
   example: []
   syntax:
-    content: public SimpleBufferLayout[] GetBufferLayouts()
+    content: public IEnumerable<SimpleBufferLayout> GetBufferLayouts()
     return:
-      type: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[]
-      description: An array of <xref href="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout" data-throw-if-not-resolved="false"></xref> objects, representing the buffer layouts used by the effect.
-    content.vb: Public Function GetBufferLayouts() As SimpleBufferLayout()
+      type: System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout}
+      description: An enumerable collection of <xref href="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout" data-throw-if-not-resolved="false"></xref> representing the buffer layouts in this effect.
+    content.vb: Public Function GetBufferLayouts() As IEnumerable(Of SimpleBufferLayout)
   overload: Bliss.CSharp.Effects.Effect.GetBufferLayouts*
 - uid: Bliss.CSharp.Effects.Effect.GetBufferLayout(System.String)
   commentId: M:Bliss.CSharp.Effects.Effect.GetBufferLayout(System.String)
@@ -425,14 +425,14 @@ items:
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
-  summary: Retrieves an array of keys representing the names of texture layouts stored within the effect.
+  summary: Retrieves the collection of keys that correspond to the texture layouts defined in this effect.
   example: []
   syntax:
-    content: public string[] GetTextureLayoutKeys()
+    content: public IEnumerable<string> GetTextureLayoutKeys()
     return:
-      type: System.String[]
-      description: An array of strings containing the keys for the texture layouts.
-    content.vb: Public Function GetTextureLayoutKeys() As String()
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: A collection of strings representing the keys for the texture layouts.
+    content.vb: Public Function GetTextureLayoutKeys() As IEnumerable(Of String)
   overload: Bliss.CSharp.Effects.Effect.GetTextureLayoutKeys*
 - uid: Bliss.CSharp.Effects.Effect.GetTextureLayouts
   commentId: M:Bliss.CSharp.Effects.Effect.GetTextureLayouts
@@ -456,14 +456,14 @@ items:
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
-  summary: Retrieves all texture layouts associated with the effect.
+  summary: Retrieves the collection of texture layouts associated with the current effect.
   example: []
   syntax:
-    content: public SimpleTextureLayout[] GetTextureLayouts()
+    content: public IEnumerable<SimpleTextureLayout> GetTextureLayouts()
     return:
-      type: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[]
-      description: An array of <xref href="Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout" data-throw-if-not-resolved="false"></xref> representing the texture layouts.
-    content.vb: Public Function GetTextureLayouts() As SimpleTextureLayout()
+      type: System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout}
+      description: An enumerable collection of <xref href="Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout" data-throw-if-not-resolved="false"></xref> instances representing the texture layouts.
+    content.vb: Public Function GetTextureLayouts() As IEnumerable(Of SimpleTextureLayout)
   overload: Bliss.CSharp.Effects.Effect.GetTextureLayouts*
 - uid: Bliss.CSharp.Effects.Effect.GetTextureLayout(System.String)
   commentId: M:Bliss.CSharp.Effects.Effect.GetTextureLayout(System.String)
@@ -1187,29 +1187,106 @@ references:
   name: GetBufferLayoutKeys
   nameWithType: Effect.GetBufferLayoutKeys
   fullName: Bliss.CSharp.Effects.Effect.GetBufferLayoutKeys
-- uid: System.String[]
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.string
-  name: string[]
-  nameWithType: string[]
-  fullName: string[]
-  nameWithType.vb: String()
-  fullName.vb: String()
-  name.vb: String()
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<string>
+  nameWithType: IEnumerable<string>
+  fullName: System.Collections.Generic.IEnumerable<string>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of String)
+  name.vb: IEnumerable(Of String)
   spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
   - uid: System.String
     name: string
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: '['
-  - name: ']'
+  - name: '>'
   spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
   - uid: System.String
     name: String
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: (
   - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
 - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
   commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
   parent: Bliss.CSharp.Graphics.Pipelines.Buffers
@@ -1223,26 +1300,38 @@ references:
   name: GetBufferLayouts
   nameWithType: Effect.GetBufferLayouts
   fullName: Bliss.CSharp.Effects.Effect.GetBufferLayouts
-- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[]
-  isExternal: true
-  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
-  name: SimpleBufferLayout[]
-  nameWithType: SimpleBufferLayout[]
-  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout[]
-  nameWithType.vb: SimpleBufferLayout()
-  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout()
-  name.vb: SimpleBufferLayout()
+- uid: System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout}
+  commentId: T:System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<SimpleBufferLayout>
+  nameWithType: IEnumerable<SimpleBufferLayout>
+  fullName: System.Collections.Generic.IEnumerable<Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout>
+  nameWithType.vb: IEnumerable(Of SimpleBufferLayout)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  name.vb: IEnumerable(Of SimpleBufferLayout)
   spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
   - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
     name: SimpleBufferLayout
     href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
-  - name: '['
-  - name: ']'
+  - name: '>'
   spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
   - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
     name: SimpleBufferLayout
     href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
-  - name: (
   - name: )
 - uid: Bliss.CSharp.Graphics.Pipelines.Buffers
   commentId: N:Bliss.CSharp.Graphics.Pipelines.Buffers
@@ -1321,26 +1410,38 @@ references:
   name: GetTextureLayouts
   nameWithType: Effect.GetTextureLayouts
   fullName: Bliss.CSharp.Effects.Effect.GetTextureLayouts
-- uid: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[]
-  isExternal: true
-  href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
-  name: SimpleTextureLayout[]
-  nameWithType: SimpleTextureLayout[]
-  fullName: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout[]
-  nameWithType.vb: SimpleTextureLayout()
-  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout()
-  name.vb: SimpleTextureLayout()
+- uid: System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout}
+  commentId: T:System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<SimpleTextureLayout>
+  nameWithType: IEnumerable<SimpleTextureLayout>
+  fullName: System.Collections.Generic.IEnumerable<Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout>
+  nameWithType.vb: IEnumerable(Of SimpleTextureLayout)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+  name.vb: IEnumerable(Of SimpleTextureLayout)
   spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
   - uid: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
     name: SimpleTextureLayout
     href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
-  - name: '['
-  - name: ']'
+  - name: '>'
   spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
   - uid: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
     name: SimpleTextureLayout
     href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
-  - name: (
   - name: )
 - uid: Bliss.CSharp.Graphics.Pipelines.Textures
   commentId: N:Bliss.CSharp.Graphics.Pipelines.Textures

@@ -6,10 +6,11 @@ items:
   parent: Bliss.CSharp.Windowing
   children:
   - Bliss.CSharp.Windowing.WindowState.AlwaysOnTop
-  - Bliss.CSharp.Windowing.WindowState.BorderlessFullScreen
+  - Bliss.CSharp.Windowing.WindowState.Borderless
   - Bliss.CSharp.Windowing.WindowState.CaptureMouse
   - Bliss.CSharp.Windowing.WindowState.FullScreen
   - Bliss.CSharp.Windowing.WindowState.Hidden
+  - Bliss.CSharp.Windowing.WindowState.HighPixelDensity
   - Bliss.CSharp.Windowing.WindowState.Maximized
   - Bliss.CSharp.Windowing.WindowState.Minimized
   - Bliss.CSharp.Windowing.WindowState.None
@@ -130,23 +131,23 @@ items:
     content: FullScreen = 2
     return:
       type: Bliss.CSharp.Windowing.WindowState
-- uid: Bliss.CSharp.Windowing.WindowState.BorderlessFullScreen
-  commentId: F:Bliss.CSharp.Windowing.WindowState.BorderlessFullScreen
-  id: BorderlessFullScreen
+- uid: Bliss.CSharp.Windowing.WindowState.Borderless
+  commentId: F:Bliss.CSharp.Windowing.WindowState.Borderless
+  id: Borderless
   parent: Bliss.CSharp.Windowing.WindowState
   langs:
   - csharp
   - vb
-  name: BorderlessFullScreen
-  nameWithType: WindowState.BorderlessFullScreen
-  fullName: Bliss.CSharp.Windowing.WindowState.BorderlessFullScreen
+  name: Borderless
+  nameWithType: WindowState.Borderless
+  fullName: Bliss.CSharp.Windowing.WindowState.Borderless
   type: Field
   source:
     remote:
       path: src/Bliss/CSharp/Windowing/WindowState.cs
       branch: main
       repo: https://github.com/MrScautHD/Bliss.git
-    id: BorderlessFullScreen
+    id: Borderless
     path: ../src/Bliss/CSharp/Windowing/WindowState.cs
     startLine: 23
   assemblies:
@@ -155,10 +156,10 @@ items:
   summary: The window is borderless, removing the title bar and window borders.
   example: []
   syntax:
-    content: BorderlessFullScreen = Resizable | FullScreen
+    content: Borderless = Resizable | FullScreen
     return:
       type: Bliss.CSharp.Windowing.WindowState
-    content.vb: BorderlessFullScreen = Resizable Or FullScreen
+    content.vb: Borderless = Resizable Or FullScreen
 - uid: Bliss.CSharp.Windowing.WindowState.Maximized
   commentId: F:Bliss.CSharp.Windowing.WindowState.Maximized
   id: Maximized
@@ -331,6 +332,35 @@ items:
     return:
       type: Bliss.CSharp.Windowing.WindowState
     content.vb: Transparent = Resizable Or AlwaysOnTop
+- uid: Bliss.CSharp.Windowing.WindowState.HighPixelDensity
+  commentId: F:Bliss.CSharp.Windowing.WindowState.HighPixelDensity
+  id: HighPixelDensity
+  parent: Bliss.CSharp.Windowing.WindowState
+  langs:
+  - csharp
+  - vb
+  name: HighPixelDensity
+  nameWithType: WindowState.HighPixelDensity
+  fullName: Bliss.CSharp.Windowing.WindowState.HighPixelDensity
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/WindowState.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: HighPixelDensity
+    path: ../src/Bliss/CSharp/Windowing/WindowState.cs
+    startLine: 58
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Enables rendering optimized for high-DPI (high pixel density) displays.
+  example: []
+  syntax:
+    content: HighPixelDensity = FullScreen | AlwaysOnTop
+    return:
+      type: Bliss.CSharp.Windowing.WindowState
+    content.vb: HighPixelDensity = FullScreen Or AlwaysOnTop
 references:
 - uid: Bliss.CSharp.Windowing
   commentId: N:Bliss.CSharp.Windowing

@@ -283,14 +283,14 @@ items:
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
-  summary: Retrieves an array of all the material map names associated with the material.
+  summary: Retrieves the names of all material maps.
   example: []
   syntax:
-    content: public string[] GetMaterialMapNames()
+    content: public IEnumerable<string> GetMaterialMapNames()
     return:
-      type: System.String[]
-      description: An array of strings representing the names of the material maps.
-    content.vb: Public Function GetMaterialMapNames() As String()
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: A collection of strings representing the names of the material maps.
+    content.vb: Public Function GetMaterialMapNames() As IEnumerable(Of String)
   overload: Bliss.CSharp.Materials.Material.GetMaterialMapNames*
 - uid: Bliss.CSharp.Materials.Material.GetMaterialMaps
   commentId: M:Bliss.CSharp.Materials.Material.GetMaterialMaps
@@ -310,18 +310,18 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetMaterialMaps
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 78
+    startLine: 76
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
-  summary: Retrieves an array of all material maps associated with the current material.
+  summary: Retrieves all material maps associated with this material.
   example: []
   syntax:
-    content: public MaterialMap[] GetMaterialMaps()
+    content: public IEnumerable<MaterialMap> GetMaterialMaps()
     return:
-      type: Bliss.CSharp.Materials.MaterialMap[]
-      description: An array of <xref href="Bliss.CSharp.Materials.MaterialMap" data-throw-if-not-resolved="false"></xref> objects representing the material maps.
-    content.vb: Public Function GetMaterialMaps() As MaterialMap()
+      type: System.Collections.Generic.IEnumerable{Bliss.CSharp.Materials.MaterialMap}
+      description: A collection of <xref href="Bliss.CSharp.Materials.MaterialMap" data-throw-if-not-resolved="false"></xref> objects.
+    content.vb: Public Function GetMaterialMaps() As IEnumerable(Of MaterialMap)
   overload: Bliss.CSharp.Materials.Material.GetMaterialMaps*
 - uid: Bliss.CSharp.Materials.Material.GetMaterialMap(System.String)
   commentId: M:Bliss.CSharp.Materials.Material.GetMaterialMap(System.String)
@@ -341,7 +341,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetMaterialMap
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 87
+    startLine: 85
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -379,7 +379,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: AddMaterialMap
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 100
+    startLine: 98
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -417,7 +417,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetMapTexture
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 111
+    startLine: 109
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -455,7 +455,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetMapTexture
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 124
+    startLine: 122
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -493,7 +493,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetMapColor
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 138
+    startLine: 136
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -531,7 +531,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetMapColor
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 151
+    startLine: 149
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -569,7 +569,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetMapValue
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 165
+    startLine: 163
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -607,7 +607,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetMapValue
     path: ../src/Bliss/CSharp/Materials/Material.cs
-    startLine: 178
+    startLine: 176
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -1216,28 +1216,68 @@ references:
   name: GetMaterialMapNames
   nameWithType: Material.GetMaterialMapNames
   fullName: Bliss.CSharp.Materials.Material.GetMaterialMapNames
-- uid: System.String[]
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.string
-  name: string[]
-  nameWithType: string[]
-  fullName: string[]
-  nameWithType.vb: String()
-  fullName.vb: String()
-  name.vb: String()
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<string>
+  nameWithType: IEnumerable<string>
+  fullName: System.Collections.Generic.IEnumerable<string>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of String)
+  name.vb: IEnumerable(Of String)
   spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
   - uid: System.String
     name: string
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: '['
-  - name: ']'
+  - name: '>'
   spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
   - uid: System.String
     name: String
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
   - name: (
+  - name: Of
+  - name: " "
+  - name: T
   - name: )
 - uid: Bliss.CSharp.Materials.MaterialMap
   commentId: T:Bliss.CSharp.Materials.MaterialMap
@@ -1252,26 +1292,38 @@ references:
   name: GetMaterialMaps
   nameWithType: Material.GetMaterialMaps
   fullName: Bliss.CSharp.Materials.Material.GetMaterialMaps
-- uid: Bliss.CSharp.Materials.MaterialMap[]
-  isExternal: true
-  href: Bliss.CSharp.Materials.MaterialMap.html
-  name: MaterialMap[]
-  nameWithType: MaterialMap[]
-  fullName: Bliss.CSharp.Materials.MaterialMap[]
-  nameWithType.vb: MaterialMap()
-  fullName.vb: Bliss.CSharp.Materials.MaterialMap()
-  name.vb: MaterialMap()
+- uid: System.Collections.Generic.IEnumerable{Bliss.CSharp.Materials.MaterialMap}
+  commentId: T:System.Collections.Generic.IEnumerable{Bliss.CSharp.Materials.MaterialMap}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<MaterialMap>
+  nameWithType: IEnumerable<MaterialMap>
+  fullName: System.Collections.Generic.IEnumerable<Bliss.CSharp.Materials.MaterialMap>
+  nameWithType.vb: IEnumerable(Of MaterialMap)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Bliss.CSharp.Materials.MaterialMap)
+  name.vb: IEnumerable(Of MaterialMap)
   spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
   - uid: Bliss.CSharp.Materials.MaterialMap
     name: MaterialMap
     href: Bliss.CSharp.Materials.MaterialMap.html
-  - name: '['
-  - name: ']'
+  - name: '>'
   spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
   - uid: Bliss.CSharp.Materials.MaterialMap
     name: MaterialMap
     href: Bliss.CSharp.Materials.MaterialMap.html
-  - name: (
   - name: )
 - uid: Bliss.CSharp.Materials.Material.GetMaterialMap*
   commentId: Overload:Bliss.CSharp.Materials.Material.GetMaterialMap

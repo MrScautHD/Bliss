@@ -16,7 +16,7 @@ items:
   - Bliss.CSharp.Interact.Contexts.IInputContext.GetMouseCursor
   - Bliss.CSharp.Interact.Contexts.IInputContext.GetMouseDelta
   - Bliss.CSharp.Interact.Contexts.IInputContext.GetMousePosition
-  - Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars
+  - Bliss.CSharp.Interact.Contexts.IInputContext.GetTypedText(System.String@)
   - Bliss.CSharp.Interact.Contexts.IInputContext.HideCursor
   - Bliss.CSharp.Interact.Contexts.IInputContext.IsCursorShown
   - Bliss.CSharp.Interact.Contexts.IInputContext.IsFileDragDropped(System.String@)
@@ -36,11 +36,14 @@ items:
   - Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseMoving(System.Numerics.Vector2@)
   - Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseScrolling(System.Numerics.Vector2@)
   - Bliss.CSharp.Interact.Contexts.IInputContext.IsRelativeMouseModeEnabled
+  - Bliss.CSharp.Interact.Contexts.IInputContext.IsTextInputActive
   - Bliss.CSharp.Interact.Contexts.IInputContext.RumbleGamepad(System.UInt32,System.UInt16,System.UInt16,System.UInt32)
   - Bliss.CSharp.Interact.Contexts.IInputContext.SetClipboardText(System.String)
   - Bliss.CSharp.Interact.Contexts.IInputContext.SetMouseCursor(Bliss.CSharp.Interact.Mice.Cursors.ICursor)
   - Bliss.CSharp.Interact.Contexts.IInputContext.SetMousePosition(System.Numerics.Vector2)
   - Bliss.CSharp.Interact.Contexts.IInputContext.ShowCursor
+  - Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput
+  - Bliss.CSharp.Interact.Contexts.IInputContext.StopTextInput
   langs:
   - csharp
   - vb
@@ -807,37 +810,131 @@ items:
       description: Returns true if the specified key is up; otherwise, false.
     content.vb: Function IsKeyUp(key As KeyboardKey) As Boolean
   overload: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyUp*
-- uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars
-  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars
-  id: GetPressedChars
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetTypedText(System.String@)
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.GetTypedText(System.String@)
+  id: GetTypedText(System.String@)
   parent: Bliss.CSharp.Interact.Contexts.IInputContext
   langs:
   - csharp
   - vb
-  name: GetPressedChars()
-  nameWithType: IInputContext.GetPressedChars()
-  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars()
+  name: GetTypedText(out string)
+  nameWithType: IInputContext.GetTypedText(out string)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.GetTypedText(out string)
   type: Method
   source:
     remote:
       path: src/Bliss/CSharp/Interact/Contexts/IInputContext.cs
       branch: main
       repo: https://github.com/MrScautHD/Bliss.git
-    id: GetPressedChars
+    id: GetTypedText
     path: ../src/Bliss/CSharp/Interact/Contexts/IInputContext.cs
-    startLine: 160
+    startLine: 161
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact.Contexts
-  summary: Retrieves characters that were pressed in the current frame.
+  summary: Retrieves any text that was typed since the last frame, but only while text input is active via <xref href="Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput" data-throw-if-not-resolved="false"></xref>.
   example: []
   syntax:
-    content: char[] GetPressedChars()
+    content: bool GetTypedText(out string text)
+    parameters:
+    - id: text
+      type: System.String
+      description: The typed text collected since the previous frame. Will be empty if no text was entered.
     return:
-      type: System.Char[]
-      description: An array of characters pressed in the current frame.
-    content.vb: Function GetPressedChars() As Char()
-  overload: Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars*
+      type: System.Boolean
+      description: <code>true</code> if any text was entered; otherwise, <code>false</code>.
+    content.vb: Function GetTypedText(text As String) As Boolean
+  overload: Bliss.CSharp.Interact.Contexts.IInputContext.GetTypedText*
+  nameWithType.vb: IInputContext.GetTypedText(String)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.IInputContext.GetTypedText(String)
+  name.vb: GetTypedText(String)
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsTextInputActive
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsTextInputActive
+  id: IsTextInputActive
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  langs:
+  - csharp
+  - vb
+  name: IsTextInputActive()
+  nameWithType: IInputContext.IsTextInputActive()
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsTextInputActive()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/IInputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsTextInputActive
+    path: ../src/Bliss/CSharp/Interact/Contexts/IInputContext.cs
+    startLine: 167
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Determines whether text input mode is currently active.
+  example: []
+  syntax:
+    content: bool IsTextInputActive()
+    return:
+      type: System.Boolean
+      description: True if text input is active; otherwise, false.
+    content.vb: Function IsTextInputActive() As Boolean
+  overload: Bliss.CSharp.Interact.Contexts.IInputContext.IsTextInputActive*
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput
+  id: StartTextInput
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  langs:
+  - csharp
+  - vb
+  name: StartTextInput()
+  nameWithType: IInputContext.StartTextInput()
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/IInputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: StartTextInput
+    path: ../src/Bliss/CSharp/Interact/Contexts/IInputContext.cs
+    startLine: 172
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Activates text input mode, allowing the application to receive typed text events.
+  example: []
+  syntax:
+    content: void StartTextInput()
+    content.vb: Sub StartTextInput()
+  overload: Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput*
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.StopTextInput
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.StopTextInput
+  id: StopTextInput
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  langs:
+  - csharp
+  - vb
+  name: StopTextInput()
+  nameWithType: IInputContext.StopTextInput()
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.StopTextInput()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Contexts/IInputContext.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: StopTextInput
+    path: ../src/Bliss/CSharp/Interact/Contexts/IInputContext.cs
+    startLine: 177
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact.Contexts
+  summary: Stops the text input process, ending any active text input session.
+  example: []
+  syntax:
+    content: void StopTextInput()
+    content.vb: Sub StopTextInput()
+  overload: Bliss.CSharp.Interact.Contexts.IInputContext.StopTextInput*
 - uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetClipboardText
   commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.GetClipboardText
   id: GetClipboardText
@@ -856,7 +953,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetClipboardText
     path: ../src/Bliss/CSharp/Interact/Contexts/IInputContext.cs
-    startLine: 166
+    startLine: 183
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact.Contexts
@@ -887,7 +984,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetClipboardText
     path: ../src/Bliss/CSharp/Interact/Contexts/IInputContext.cs
-    startLine: 172
+    startLine: 189
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact.Contexts
@@ -922,7 +1019,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetAvailableGamepadCount
     path: ../src/Bliss/CSharp/Interact/Contexts/IInputContext.cs
-    startLine: 180
+    startLine: 197
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact.Contexts
@@ -953,7 +1050,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsGamepadAvailable
     path: ../src/Bliss/CSharp/Interact/Contexts/IInputContext.cs
-    startLine: 187
+    startLine: 204
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact.Contexts
@@ -991,7 +1088,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetGamepadName
     path: ../src/Bliss/CSharp/Interact/Contexts/IInputContext.cs
-    startLine: 194
+    startLine: 211
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact.Contexts
@@ -1029,7 +1126,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: RumbleGamepad
     path: ../src/Bliss/CSharp/Interact/Contexts/IInputContext.cs
-    startLine: 203
+    startLine: 220
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact.Contexts
@@ -1073,7 +1170,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetGamepadAxisMovement
     path: ../src/Bliss/CSharp/Interact/Contexts/IInputContext.cs
-    startLine: 211
+    startLine: 228
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact.Contexts
@@ -1114,7 +1211,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsGamepadButtonPressed
     path: ../src/Bliss/CSharp/Interact/Contexts/IInputContext.cs
-    startLine: 219
+    startLine: 236
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact.Contexts
@@ -1155,7 +1252,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsGamepadButtonDown
     path: ../src/Bliss/CSharp/Interact/Contexts/IInputContext.cs
-    startLine: 227
+    startLine: 244
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact.Contexts
@@ -1196,7 +1293,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsGamepadButtonReleased
     path: ../src/Bliss/CSharp/Interact/Contexts/IInputContext.cs
-    startLine: 235
+    startLine: 252
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact.Contexts
@@ -1237,7 +1334,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsGamepadButtonUp
     path: ../src/Bliss/CSharp/Interact/Contexts/IInputContext.cs
-    startLine: 243
+    startLine: 260
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact.Contexts
@@ -1278,7 +1375,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsFileDragDropped
     path: ../src/Bliss/CSharp/Interact/Contexts/IInputContext.cs
-    startLine: 252
+    startLine: 269
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact.Contexts
@@ -1701,41 +1798,31 @@ references:
   name: IsKeyUp
   nameWithType: IInputContext.IsKeyUp
   fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyUp
-- uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars*
-  commentId: Overload:Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars
-  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetPressedChars
-  name: GetPressedChars
-  nameWithType: IInputContext.GetPressedChars
-  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.GetPressedChars
-- uid: System.Char[]
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.char
-  name: char[]
-  nameWithType: char[]
-  fullName: char[]
-  nameWithType.vb: Char()
-  fullName.vb: Char()
-  name.vb: Char()
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput
+  parent: Bliss.CSharp.Interact.Contexts.IInputContext
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_StartTextInput
+  name: StartTextInput()
+  nameWithType: IInputContext.StartTextInput()
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput()
   spec.csharp:
-  - uid: System.Char
-    name: char
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.char
-  - name: '['
-  - name: ']'
-  spec.vb:
-  - uid: System.Char
-    name: Char
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.char
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput
+    name: StartTextInput
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_StartTextInput
   - name: (
   - name: )
-- uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetClipboardText*
-  commentId: Overload:Bliss.CSharp.Interact.Contexts.IInputContext.GetClipboardText
-  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetClipboardText
-  name: GetClipboardText
-  nameWithType: IInputContext.GetClipboardText
-  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.GetClipboardText
+  spec.vb:
+  - uid: Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput
+    name: StartTextInput
+    href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_StartTextInput
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetTypedText*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.IInputContext.GetTypedText
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetTypedText_System_String__
+  name: GetTypedText
+  nameWithType: IInputContext.GetTypedText
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.GetTypedText
 - uid: System.String
   commentId: T:System.String
   parent: System
@@ -1747,6 +1834,37 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext
+  commentId: T:Bliss.CSharp.Interact.Contexts.IInputContext
+  parent: Bliss.CSharp.Interact.Contexts
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html
+  name: IInputContext
+  nameWithType: IInputContext
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsTextInputActive*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.IInputContext.IsTextInputActive
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsTextInputActive
+  name: IsTextInputActive
+  nameWithType: IInputContext.IsTextInputActive
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsTextInputActive
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_StartTextInput
+  name: StartTextInput
+  nameWithType: IInputContext.StartTextInput
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.StopTextInput*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.IInputContext.StopTextInput
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_StopTextInput
+  name: StopTextInput
+  nameWithType: IInputContext.StopTextInput
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.StopTextInput
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.GetClipboardText*
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.IInputContext.GetClipboardText
+  href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_GetClipboardText
+  name: GetClipboardText
+  nameWithType: IInputContext.GetClipboardText
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.GetClipboardText
 - uid: Bliss.CSharp.Interact.Contexts.IInputContext.SetClipboardText*
   commentId: Overload:Bliss.CSharp.Interact.Contexts.IInputContext.SetClipboardText
   href: Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_SetClipboardText_System_String_

@@ -19,25 +19,45 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: OnMessage
     path: ../src/Bliss/CSharp/Logging/Logger.cs
-    startLine: 7
+    startLine: 16
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Logging
+  summary: A delegate used to handle logging messages.
+  example: []
   syntax:
-    content: public delegate bool Logger.OnMessage(LogType type, string msg, int skipFrames, ConsoleColor color)
+    content: public delegate bool Logger.OnMessage(LogType type, string msg, ConsoleColor color, string sourceFilePath, string memberName, int sourceLineNumber)
     parameters:
     - id: type
       type: Bliss.CSharp.Logging.LogType
+      description: The type of the log message, represented by the <xref href="Bliss.CSharp.Logging.LogType" data-throw-if-not-resolved="false"></xref> enum.
     - id: msg
       type: System.String
-    - id: skipFrames
-      type: System.Int32
+      description: The log message content.
     - id: color
       type: System.ConsoleColor
+      description: The console color to display the message in.
+    - id: sourceFilePath
+      type: System.String
+      description: The file path of the caller. Automatically set by the compiler.
+    - id: memberName
+      type: System.String
+      description: The name of the calling member. Automatically set by the compiler.
+    - id: sourceLineNumber
+      type: System.Int32
+      description: The line number of the call within the source file. Automatically set by the compiler.
     return:
       type: System.Boolean
-    content.vb: Public Delegate Function Logger.OnMessage(type As LogType, msg As String, skipFrames As Integer, color As ConsoleColor) As Boolean
+      description: Returns a boolean value indicating whether the message has been handled.
+    content.vb: Public Delegate Function Logger.OnMessage(type As LogType, msg As String, color As ConsoleColor, sourceFilePath As String, memberName As String, sourceLineNumber As Integer) As Boolean
 references:
+- uid: Bliss.CSharp.Logging.LogType
+  commentId: T:Bliss.CSharp.Logging.LogType
+  parent: Bliss.CSharp.Logging
+  href: Bliss.CSharp.Logging.LogType.html
+  name: LogType
+  nameWithType: LogType
+  fullName: Bliss.CSharp.Logging.LogType
 - uid: Bliss.CSharp.Logging
   commentId: N:Bliss.CSharp.Logging
   href: Bliss.html
@@ -68,13 +88,6 @@ references:
   - uid: Bliss.CSharp.Logging
     name: Logging
     href: Bliss.CSharp.Logging.html
-- uid: Bliss.CSharp.Logging.LogType
-  commentId: T:Bliss.CSharp.Logging.LogType
-  parent: Bliss.CSharp.Logging
-  href: Bliss.CSharp.Logging.LogType.html
-  name: LogType
-  nameWithType: LogType
-  fullName: Bliss.CSharp.Logging.LogType
 - uid: System.String
   commentId: T:System.String
   parent: System
@@ -86,6 +99,14 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
+- uid: System.ConsoleColor
+  commentId: T:System.ConsoleColor
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.consolecolor
+  name: ConsoleColor
+  nameWithType: ConsoleColor
+  fullName: System.ConsoleColor
 - uid: System.Int32
   commentId: T:System.Int32
   parent: System
@@ -97,14 +118,6 @@ references:
   nameWithType.vb: Integer
   fullName.vb: Integer
   name.vb: Integer
-- uid: System.ConsoleColor
-  commentId: T:System.ConsoleColor
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.consolecolor
-  name: ConsoleColor
-  nameWithType: ConsoleColor
-  fullName: System.ConsoleColor
 - uid: System.Boolean
   commentId: T:System.Boolean
   parent: System

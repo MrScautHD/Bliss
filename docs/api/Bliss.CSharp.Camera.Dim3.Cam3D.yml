@@ -8,7 +8,7 @@ items:
   - Bliss.CSharp.Camera.Dim3.Cam3D.#ctor(System.Numerics.Vector3,System.Numerics.Vector3,System.Single,System.Nullable{System.Numerics.Vector3},Bliss.CSharp.Camera.Dim3.ProjectionType,Bliss.CSharp.Camera.Dim3.CameraMode,System.Single,System.Single,System.Single)
   - Bliss.CSharp.Camera.Dim3.Cam3D.ActiveCamera
   - Bliss.CSharp.Camera.Dim3.Cam3D.AspectRatio
-  - Bliss.CSharp.Camera.Dim3.Cam3D.Begin(Veldrid.CommandList)
+  - Bliss.CSharp.Camera.Dim3.Cam3D.Begin
   - Bliss.CSharp.Camera.Dim3.Cam3D.End
   - Bliss.CSharp.Camera.Dim3.Cam3D.FarPlane
   - Bliss.CSharp.Camera.Dim3.Cam3D.Fov
@@ -639,16 +639,16 @@ items:
   nameWithType.vb: Cam3D.Resize(UInteger, UInteger)
   fullName.vb: Bliss.CSharp.Camera.Dim3.Cam3D.Resize(UInteger, UInteger)
   name.vb: Resize(UInteger, UInteger)
-- uid: Bliss.CSharp.Camera.Dim3.Cam3D.Begin(Veldrid.CommandList)
-  commentId: M:Bliss.CSharp.Camera.Dim3.Cam3D.Begin(Veldrid.CommandList)
-  id: Begin(Veldrid.CommandList)
+- uid: Bliss.CSharp.Camera.Dim3.Cam3D.Begin
+  commentId: M:Bliss.CSharp.Camera.Dim3.Cam3D.Begin
+  id: Begin
   parent: Bliss.CSharp.Camera.Dim3.Cam3D
   langs:
   - csharp
   - vb
-  name: Begin(CommandList)
-  nameWithType: Cam3D.Begin(CommandList)
-  fullName: Bliss.CSharp.Camera.Dim3.Cam3D.Begin(Veldrid.CommandList)
+  name: Begin()
+  nameWithType: Cam3D.Begin()
+  fullName: Bliss.CSharp.Camera.Dim3.Cam3D.Begin()
   type: Method
   source:
     remote:
@@ -657,25 +657,18 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Begin
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 248
+    startLine: 246
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
-  summary: >-
-    Sets the specified command list as the current command list for rendering operations and updates
-
-    the camera's projection and view matrices. Also clears the depth stencil and sets this camera as the active camera.
+  summary: Activates the current camera instance as the active camera and updates its projection and view matrices.
   example: []
   syntax:
-    content: public void Begin(CommandList commandList)
-    parameters:
-    - id: commandList
-      type: Veldrid.CommandList
-      description: The command list to set as the current command list for rendering operations.
-    content.vb: Public Sub Begin(commandList As CommandList)
+    content: public void Begin()
+    content.vb: Public Sub Begin()
   overload: Bliss.CSharp.Camera.Dim3.Cam3D.Begin*
   implements:
-  - Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
+  - Bliss.CSharp.Camera.ICam.Begin
 - uid: Bliss.CSharp.Camera.Dim3.Cam3D.End
   commentId: M:Bliss.CSharp.Camera.Dim3.Cam3D.End
   id: End
@@ -694,7 +687,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: End
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 258
+    startLine: 256
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -724,7 +717,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetProjection
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 266
+    startLine: 264
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -755,7 +748,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetView
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 274
+    startLine: 272
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -786,7 +779,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetForward
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 282
+    startLine: 280
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -817,7 +810,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MoveForward
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 291
+    startLine: 289
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -855,7 +848,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetRight
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 309
+    startLine: 307
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -886,7 +879,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MoveRight
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 318
+    startLine: 316
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -924,7 +917,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MoveUp
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 336
+    startLine: 334
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -959,7 +952,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MoveToTarget
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 347
+    startLine: 345
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -994,7 +987,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetRotation
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 361
+    startLine: 359
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1025,7 +1018,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetYaw
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 370
+    startLine: 368
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1056,7 +1049,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetYaw
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 379
+    startLine: 377
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1094,7 +1087,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetPitch
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 400
+    startLine: 398
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1125,7 +1118,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetPitch
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 409
+    startLine: 407
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1163,7 +1156,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetRoll
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 437
+    startLine: 435
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1194,7 +1187,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetRoll
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 445
+    startLine: 443
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1229,7 +1222,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetFrustum
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 454
+    startLine: 452
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1260,7 +1253,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetScreenToWorld
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 464
+    startLine: 462
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1295,7 +1288,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetWorldToScreen
     path: ../src/Bliss/CSharp/Camera/Dim3/Cam3D.cs
-    startLine: 481
+    startLine: 479
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera.Dim3
@@ -1871,52 +1864,29 @@ references:
   name.vb: UInteger
 - uid: Bliss.CSharp.Camera.Dim3.Cam3D.Begin*
   commentId: Overload:Bliss.CSharp.Camera.Dim3.Cam3D.Begin
-  href: Bliss.CSharp.Camera.Dim3.Cam3D.html#Bliss_CSharp_Camera_Dim3_Cam3D_Begin_Veldrid_CommandList_
+  href: Bliss.CSharp.Camera.Dim3.Cam3D.html#Bliss_CSharp_Camera_Dim3_Cam3D_Begin
   name: Begin
   nameWithType: Cam3D.Begin
   fullName: Bliss.CSharp.Camera.Dim3.Cam3D.Begin
-- uid: Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
-  commentId: M:Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
+- uid: Bliss.CSharp.Camera.ICam.Begin
+  commentId: M:Bliss.CSharp.Camera.ICam.Begin
   parent: Bliss.CSharp.Camera.ICam
-  isExternal: true
-  href: Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_Begin_Veldrid_CommandList_
-  name: Begin(CommandList)
-  nameWithType: ICam.Begin(CommandList)
-  fullName: Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
+  href: Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_Begin
+  name: Begin()
+  nameWithType: ICam.Begin()
+  fullName: Bliss.CSharp.Camera.ICam.Begin()
   spec.csharp:
-  - uid: Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
+  - uid: Bliss.CSharp.Camera.ICam.Begin
     name: Begin
-    href: Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_Begin_Veldrid_CommandList_
+    href: Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_Begin
   - name: (
-  - uid: Veldrid.CommandList
-    name: CommandList
-    isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
   - name: )
   spec.vb:
-  - uid: Bliss.CSharp.Camera.ICam.Begin(Veldrid.CommandList)
+  - uid: Bliss.CSharp.Camera.ICam.Begin
     name: Begin
-    href: Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_Begin_Veldrid_CommandList_
+    href: Bliss.CSharp.Camera.ICam.html#Bliss_CSharp_Camera_ICam_Begin
   - name: (
-  - uid: Veldrid.CommandList
-    name: CommandList
-    isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
   - name: )
-- uid: Veldrid.CommandList
-  commentId: T:Veldrid.CommandList
-  parent: Veldrid
-  isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
-  name: CommandList
-  nameWithType: CommandList
-  fullName: Veldrid.CommandList
-- uid: Veldrid
-  commentId: N:Veldrid
-  isExternal: true
-  name: Veldrid
-  nameWithType: Veldrid
-  fullName: Veldrid
 - uid: Bliss.CSharp.Camera.Dim3.Cam3D.End*
   commentId: Overload:Bliss.CSharp.Camera.Dim3.Cam3D.End
   href: Bliss.CSharp.Camera.Dim3.Cam3D.html#Bliss_CSharp_Camera_Dim3_Cam3D_End

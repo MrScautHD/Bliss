@@ -220,7 +220,7 @@ This method should be called at the start of an input processing phase.</p>
 
   <h3 id="Bliss_CSharp_Interact_Input_Destroy" data-uid="Bliss.CSharp.Interact.Input.Destroy">
   Destroy()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L346"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L369"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Destroys the Input context and releases any associated resources.</p>
@@ -329,7 +329,7 @@ and provides relative motion data instead of absolute position.</p>
 
   <h3 id="Bliss_CSharp_Interact_Input_GetAvailableGamepadCount" data-uid="Bliss.CSharp.Interact.Input.GetAvailableGamepadCount">
   GetAvailableGamepadCount()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L249"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L272"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the count of available gamepads.</p>
@@ -362,7 +362,7 @@ and provides relative motion data instead of absolute position.</p>
 
   <h3 id="Bliss_CSharp_Interact_Input_GetClipboardText" data-uid="Bliss.CSharp.Interact.Input.GetClipboardText">
   GetClipboardText()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L231"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L254"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the current text from the system clipboard via the InputContext.</p>
@@ -395,7 +395,7 @@ and provides relative motion data instead of absolute position.</p>
 
   <h3 id="Bliss_CSharp_Interact_Input_GetGamepadAxisMovement_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadAxis_" data-uid="Bliss.CSharp.Interact.Input.GetGamepadAxisMovement(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadAxis)">
   GetGamepadAxisMovement(uint, GamepadAxis)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L288"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L311"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the movement value of the specified axis on the given gamepad.</p>
@@ -437,7 +437,7 @@ and provides relative motion data instead of absolute position.</p>
 
   <h3 id="Bliss_CSharp_Interact_Input_GetGamepadName_System_UInt32_" data-uid="Bliss.CSharp.Interact.Input.GetGamepadName(System.UInt32)">
   GetGamepadName(uint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L267"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L290"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the name of the specified gamepad.</p>
@@ -570,26 +570,32 @@ and provides relative motion data instead of absolute position.</p>
 
 
 
-  <a id="Bliss_CSharp_Interact_Input_GetPressedChars_" data-uid="Bliss.CSharp.Interact.Input.GetPressedChars*"></a>
+  <a id="Bliss_CSharp_Interact_Input_GetTypedText_" data-uid="Bliss.CSharp.Interact.Input.GetTypedText*"></a>
 
-  <h3 id="Bliss_CSharp_Interact_Input_GetPressedChars" data-uid="Bliss.CSharp.Interact.Input.GetPressedChars">
-  GetPressedChars()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L223"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Interact_Input_GetTypedText_System_String__" data-uid="Bliss.CSharp.Interact.Input.GetTypedText(System.String@)">
+  GetTypedText(out string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L224"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Retrieves characters that were pressed in the current frame.</p>
+  <div class="markdown level1 summary"><p>Retrieves any text that was typed since the last frame, but only while text input is active via <a class="xref" href="Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_StartTextInput">StartTextInput()</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static char[] GetPressedChars()</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool GetTypedText(out string text)</code></pre>
   </div>
 
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>text</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The typed text collected since the previous frame. Will be empty if no text was entered.</p>
+</dd>
+  </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a>[]</dt>
-    <dd><p>An array of characters pressed in the current frame.</p>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><code>true</code> if any text was entered; otherwise, <code>false</code>.</p>
 </dd>
   </dl>
 
@@ -700,7 +706,7 @@ and provides relative motion data instead of absolute position.</p>
 
   <h3 id="Bliss_CSharp_Interact_Input_IsFileDragDropped_System_String__" data-uid="Bliss.CSharp.Interact.Input.IsFileDragDropped(System.String@)">
   IsFileDragDropped(out string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L339"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L362"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Determines whether a file has been drag-dropped onto the application.</p>
@@ -739,7 +745,7 @@ and provides relative motion data instead of absolute position.</p>
 
   <h3 id="Bliss_CSharp_Interact_Input_IsGamepadAvailable_System_UInt32_" data-uid="Bliss.CSharp.Interact.Input.IsGamepadAvailable(System.UInt32)">
   IsGamepadAvailable(uint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L258"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L281"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if the specified gamepad is available.</p>
@@ -778,7 +784,7 @@ and provides relative motion data instead of absolute position.</p>
 
   <h3 id="Bliss_CSharp_Interact_Input_IsGamepadButtonDown_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_" data-uid="Bliss.CSharp.Interact.Input.IsGamepadButtonDown(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)">
   IsGamepadButtonDown(uint, GamepadButton)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L308"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L331"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if a specific gamepad button is currently pressed.</p>
@@ -820,7 +826,7 @@ and provides relative motion data instead of absolute position.</p>
 
   <h3 id="Bliss_CSharp_Interact_Input_IsGamepadButtonPressed_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_" data-uid="Bliss.CSharp.Interact.Input.IsGamepadButtonPressed(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)">
   IsGamepadButtonPressed(uint, GamepadButton)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L298"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L321"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if the specified button on the given gamepad is pressed.</p>
@@ -862,7 +868,7 @@ and provides relative motion data instead of absolute position.</p>
 
   <h3 id="Bliss_CSharp_Interact_Input_IsGamepadButtonReleased_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_" data-uid="Bliss.CSharp.Interact.Input.IsGamepadButtonReleased(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)">
   IsGamepadButtonReleased(uint, GamepadButton)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L318"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L341"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if the specified gamepad button is released.</p>
@@ -904,7 +910,7 @@ and provides relative motion data instead of absolute position.</p>
 
   <h3 id="Bliss_CSharp_Interact_Input_IsGamepadButtonUp_System_UInt32_Bliss_CSharp_Interact_Gamepads_GamepadButton_" data-uid="Bliss.CSharp.Interact.Input.IsGamepadButtonUp(System.UInt32,Bliss.CSharp.Interact.Gamepads.GamepadButton)">
   IsGamepadButtonUp(uint, GamepadButton)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L328"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L351"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Checks if the specified gamepad button is not pressed.</p>
@@ -1364,11 +1370,44 @@ and provides relative motion data instead of absolute position.</p>
 
 
 
+  <a id="Bliss_CSharp_Interact_Input_IsTextInputActive_" data-uid="Bliss.CSharp.Interact.Input.IsTextInputActive*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Input_IsTextInputActive" data-uid="Bliss.CSharp.Interact.Input.IsTextInputActive">
+  IsTextInputActive()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L232"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether text input mode is currently active.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsTextInputActive()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if text input is active; otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Bliss_CSharp_Interact_Input_RumbleGamepad_" data-uid="Bliss.CSharp.Interact.Input.RumbleGamepad*"></a>
 
   <h3 id="Bliss_CSharp_Interact_Input_RumbleGamepad_System_UInt32_System_UInt16_System_UInt16_System_UInt32_" data-uid="Bliss.CSharp.Interact.Input.RumbleGamepad(System.UInt32,System.UInt16,System.UInt16,System.UInt32)">
   RumbleGamepad(uint, ushort, ushort, uint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L278"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L301"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Generates a rumble effect on the specified gamepad.</p>
@@ -1410,7 +1449,7 @@ and provides relative motion data instead of absolute position.</p>
 
   <h3 id="Bliss_CSharp_Interact_Input_SetClipboardText_System_String_" data-uid="Bliss.CSharp.Interact.Input.SetClipboardText(System.String)">
   SetClipboardText(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L239"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L262"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the clipboard content to the specified text.</p>
@@ -1518,6 +1557,60 @@ and provides relative motion data instead of absolute position.</p>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static void ShowCursor()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Input_StartTextInput_" data-uid="Bliss.CSharp.Interact.Input.StartTextInput*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Input_StartTextInput" data-uid="Bliss.CSharp.Interact.Input.StartTextInput">
+  StartTextInput()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L239"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Activates text input mode, allowing the application to receive typed text events.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void StartTextInput()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Interact_Input_StopTextInput_" data-uid="Bliss.CSharp.Interact.Input.StopTextInput*"></a>
+
+  <h3 id="Bliss_CSharp_Interact_Input_StopTextInput" data-uid="Bliss.CSharp.Interact.Input.StopTextInput">
+  StopTextInput()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Interact/Input.cs/#L246"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Stops the text input process, ending any active text input session.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void StopTextInput()</code></pre>
   </div>
 
 

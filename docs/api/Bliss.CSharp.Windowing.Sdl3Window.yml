@@ -6,7 +6,7 @@ items:
   parent: Bliss.CSharp.Windowing
   children:
   - Bliss.CSharp.Windowing.Sdl3Window.#ctor(System.Int32,System.Int32,System.String,Bliss.CSharp.Windowing.WindowState,Veldrid.GraphicsBackend)
-  - Bliss.CSharp.Windowing.Sdl3Window.ClearState
+  - Bliss.CSharp.Windowing.Sdl3Window.CaptureMouse(System.Boolean)
   - Bliss.CSharp.Windowing.Sdl3Window.ClientToScreen(Bliss.CSharp.Transformations.Point)
   - Bliss.CSharp.Windowing.Sdl3Window.Closed
   - Bliss.CSharp.Windowing.Sdl3Window.Dispose(System.Boolean)
@@ -32,10 +32,13 @@ items:
   - Bliss.CSharp.Windowing.Sdl3Window.Handle
   - Bliss.CSharp.Windowing.Sdl3Window.HasState(Bliss.CSharp.Windowing.WindowState)
   - Bliss.CSharp.Windowing.Sdl3Window.Hidden
+  - Bliss.CSharp.Windowing.Sdl3Window.Hide
   - Bliss.CSharp.Windowing.Sdl3Window.Id
   - Bliss.CSharp.Windowing.Sdl3Window.IsFocused
   - Bliss.CSharp.Windowing.Sdl3Window.KeyDown
   - Bliss.CSharp.Windowing.Sdl3Window.KeyUp
+  - Bliss.CSharp.Windowing.Sdl3Window.Maximize
+  - Bliss.CSharp.Windowing.Sdl3Window.Minimize
   - Bliss.CSharp.Windowing.Sdl3Window.MouseButtonDown
   - Bliss.CSharp.Windowing.Sdl3Window.MouseButtonUp
   - Bliss.CSharp.Windowing.Sdl3Window.MouseEntered
@@ -47,15 +50,19 @@ items:
   - Bliss.CSharp.Windowing.Sdl3Window.Resized
   - Bliss.CSharp.Windowing.Sdl3Window.ScreenToClient(Bliss.CSharp.Transformations.Point)
   - Bliss.CSharp.Windowing.Sdl3Window.SdlEvent
+  - Bliss.CSharp.Windowing.Sdl3Window.SetBordered(System.Boolean)
+  - Bliss.CSharp.Windowing.Sdl3Window.SetFullscreen(System.Boolean)
   - Bliss.CSharp.Windowing.Sdl3Window.SetHeight(System.Int32)
   - Bliss.CSharp.Windowing.Sdl3Window.SetIcon(Bliss.CSharp.Images.Image)
   - Bliss.CSharp.Windowing.Sdl3Window.SetPosition(System.Int32,System.Int32)
+  - Bliss.CSharp.Windowing.Sdl3Window.SetResizable(System.Boolean)
   - Bliss.CSharp.Windowing.Sdl3Window.SetSize(System.Int32,System.Int32)
-  - Bliss.CSharp.Windowing.Sdl3Window.SetState(Bliss.CSharp.Windowing.WindowState)
   - Bliss.CSharp.Windowing.Sdl3Window.SetTitle(System.String)
   - Bliss.CSharp.Windowing.Sdl3Window.SetWidth(System.Int32)
+  - Bliss.CSharp.Windowing.Sdl3Window.SetWindowAlwaysOnTop(System.Boolean)
   - Bliss.CSharp.Windowing.Sdl3Window.SetX(System.Int32)
   - Bliss.CSharp.Windowing.Sdl3Window.SetY(System.Int32)
+  - Bliss.CSharp.Windowing.Sdl3Window.Show
   - Bliss.CSharp.Windowing.Sdl3Window.Shown
   - Bliss.CSharp.Windowing.Sdl3Window.SwapchainSource
   - Bliss.CSharp.Windowing.Sdl3Window.TextInput
@@ -815,10 +822,10 @@ items:
   summary: Represents an event that triggers when text input is received.
   example: []
   syntax:
-    content: public event Action<char[]>? TextInput
+    content: public event Action<string>? TextInput
     return:
-      type: System.Action{System.Char[]}
-    content.vb: Public Event TextInput As Action(Of Char())
+      type: System.Action{System.String}
+    content.vb: Public Event TextInput As Action(Of String)
   implements:
   - Bliss.CSharp.Windowing.IWindow.TextInput
 - uid: Bliss.CSharp.Windowing.Sdl3Window.GamepadAdded
@@ -1025,7 +1032,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 208
+    startLine: 203
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1058,144 +1065,6 @@ items:
   nameWithType.vb: Sdl3Window.New(Integer, Integer, String, WindowState, GraphicsBackend)
   fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.New(Integer, Integer, String, Bliss.CSharp.Windowing.WindowState, Veldrid.GraphicsBackend)
   name.vb: New(Integer, Integer, String, WindowState, GraphicsBackend)
-- uid: Bliss.CSharp.Windowing.Sdl3Window.GetState
-  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.GetState
-  id: GetState
-  parent: Bliss.CSharp.Windowing.Sdl3Window
-  langs:
-  - csharp
-  - vb
-  name: GetState()
-  nameWithType: Sdl3Window.GetState()
-  fullName: Bliss.CSharp.Windowing.Sdl3Window.GetState()
-  type: Method
-  source:
-    remote:
-      path: src/Bliss/CSharp/Windowing/Sdl3Window.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: GetState
-    path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 260
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Windowing
-  summary: Retrieves the current state of the window.
-  example: []
-  syntax:
-    content: public WindowState GetState()
-    return:
-      type: Bliss.CSharp.Windowing.WindowState
-      description: The current state of the window represented by the <xref href="Bliss.CSharp.Windowing.WindowState" data-throw-if-not-resolved="false"></xref> enumeration.
-    content.vb: Public Function GetState() As WindowState
-  overload: Bliss.CSharp.Windowing.Sdl3Window.GetState*
-  implements:
-  - Bliss.CSharp.Windowing.IWindow.GetState
-- uid: Bliss.CSharp.Windowing.Sdl3Window.HasState(Bliss.CSharp.Windowing.WindowState)
-  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.HasState(Bliss.CSharp.Windowing.WindowState)
-  id: HasState(Bliss.CSharp.Windowing.WindowState)
-  parent: Bliss.CSharp.Windowing.Sdl3Window
-  langs:
-  - csharp
-  - vb
-  name: HasState(WindowState)
-  nameWithType: Sdl3Window.HasState(WindowState)
-  fullName: Bliss.CSharp.Windowing.Sdl3Window.HasState(Bliss.CSharp.Windowing.WindowState)
-  type: Method
-  source:
-    remote:
-      path: src/Bliss/CSharp/Windowing/Sdl3Window.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: HasState
-    path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 269
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Windowing
-  summary: Determines if the current window state matches the specified state.
-  example: []
-  syntax:
-    content: public bool HasState(WindowState state)
-    parameters:
-    - id: state
-      type: Bliss.CSharp.Windowing.WindowState
-      description: The window state to compare with the current state.
-    return:
-      type: System.Boolean
-      description: True if the current window state matches the specified state; otherwise, false.
-    content.vb: Public Function HasState(state As WindowState) As Boolean
-  overload: Bliss.CSharp.Windowing.Sdl3Window.HasState*
-  implements:
-  - Bliss.CSharp.Windowing.IWindow.HasState(Bliss.CSharp.Windowing.WindowState)
-- uid: Bliss.CSharp.Windowing.Sdl3Window.SetState(Bliss.CSharp.Windowing.WindowState)
-  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.SetState(Bliss.CSharp.Windowing.WindowState)
-  id: SetState(Bliss.CSharp.Windowing.WindowState)
-  parent: Bliss.CSharp.Windowing.Sdl3Window
-  langs:
-  - csharp
-  - vb
-  name: SetState(WindowState)
-  nameWithType: Sdl3Window.SetState(WindowState)
-  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetState(Bliss.CSharp.Windowing.WindowState)
-  type: Method
-  source:
-    remote:
-      path: src/Bliss/CSharp/Windowing/Sdl3Window.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: SetState
-    path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 277
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Windowing
-  summary: Sets the state of the window to the specified state.
-  example: []
-  syntax:
-    content: public void SetState(WindowState state)
-    parameters:
-    - id: state
-      type: Bliss.CSharp.Windowing.WindowState
-      description: The desired state for the window, specified as a <xref href="Bliss.CSharp.Windowing.WindowState" data-throw-if-not-resolved="false"></xref>.
-    content.vb: Public Sub SetState(state As WindowState)
-  overload: Bliss.CSharp.Windowing.Sdl3Window.SetState*
-  implements:
-  - Bliss.CSharp.Windowing.IWindow.SetState(Bliss.CSharp.Windowing.WindowState)
-- uid: Bliss.CSharp.Windowing.Sdl3Window.ClearState
-  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.ClearState
-  id: ClearState
-  parent: Bliss.CSharp.Windowing.Sdl3Window
-  langs:
-  - csharp
-  - vb
-  name: ClearState()
-  nameWithType: Sdl3Window.ClearState()
-  fullName: Bliss.CSharp.Windowing.Sdl3Window.ClearState()
-  type: Method
-  source:
-    remote:
-      path: src/Bliss/CSharp/Windowing/Sdl3Window.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: ClearState
-    path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 313
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Windowing
-  summary: Resets the window to its default state by clearing various settings such as resizability, fullscreen mode, border visibility, and always-on-top status.
-  example: []
-  syntax:
-    content: public void ClearState()
-    content.vb: Public Sub ClearState()
-  overload: Bliss.CSharp.Windowing.Sdl3Window.ClearState*
-  exceptions:
-  - type: System.InvalidOperationException
-    commentId: T:System.InvalidOperationException
-    description: Thrown if the window handle is invalid.
-  implements:
-  - Bliss.CSharp.Windowing.IWindow.ClearState
 - uid: Bliss.CSharp.Windowing.Sdl3Window.GetTitle
   commentId: M:Bliss.CSharp.Windowing.Sdl3Window.GetTitle
   id: GetTitle
@@ -1214,7 +1083,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetTitle
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 328
+    startLine: 255
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1247,7 +1116,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetTitle
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 337
+    startLine: 264
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1288,7 +1157,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetSize
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 347
+    startLine: 274
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1321,7 +1190,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetSize
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 363
+    startLine: 290
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1361,7 +1230,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetWidth
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 373
+    startLine: 300
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1394,7 +1263,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetWidth
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 381
+    startLine: 308
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1431,7 +1300,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetHeight
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 389
+    startLine: 316
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1464,7 +1333,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetHeight
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 397
+    startLine: 324
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1501,7 +1370,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetPosition
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 406
+    startLine: 333
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1538,7 +1407,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetPosition
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 422
+    startLine: 349
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1578,7 +1447,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetX
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 430
+    startLine: 357
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1611,7 +1480,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetX
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 438
+    startLine: 365
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1648,7 +1517,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetY
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 446
+    startLine: 373
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1681,7 +1550,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetY
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 454
+    startLine: 381
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1700,6 +1569,381 @@ items:
   nameWithType.vb: Sdl3Window.SetY(Integer)
   fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.SetY(Integer)
   name.vb: SetY(Integer)
+- uid: Bliss.CSharp.Windowing.Sdl3Window.GetState
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.GetState
+  id: GetState
+  parent: Bliss.CSharp.Windowing.Sdl3Window
+  langs:
+  - csharp
+  - vb
+  name: GetState()
+  nameWithType: Sdl3Window.GetState()
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.GetState()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Sdl3Window.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetState
+    path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
+    startLine: 389
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Retrieves the current state of the window.
+  example: []
+  syntax:
+    content: public WindowState GetState()
+    return:
+      type: Bliss.CSharp.Windowing.WindowState
+      description: The current state of the window represented by the <xref href="Bliss.CSharp.Windowing.WindowState" data-throw-if-not-resolved="false"></xref> enumeration.
+    content.vb: Public Function GetState() As WindowState
+  overload: Bliss.CSharp.Windowing.Sdl3Window.GetState*
+  implements:
+  - Bliss.CSharp.Windowing.IWindow.GetState
+- uid: Bliss.CSharp.Windowing.Sdl3Window.HasState(Bliss.CSharp.Windowing.WindowState)
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.HasState(Bliss.CSharp.Windowing.WindowState)
+  id: HasState(Bliss.CSharp.Windowing.WindowState)
+  parent: Bliss.CSharp.Windowing.Sdl3Window
+  langs:
+  - csharp
+  - vb
+  name: HasState(WindowState)
+  nameWithType: Sdl3Window.HasState(WindowState)
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.HasState(Bliss.CSharp.Windowing.WindowState)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Sdl3Window.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: HasState
+    path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
+    startLine: 437
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Determines if the current window state matches the specified state.
+  example: []
+  syntax:
+    content: public bool HasState(WindowState state)
+    parameters:
+    - id: state
+      type: Bliss.CSharp.Windowing.WindowState
+      description: The window state to compare with the current state.
+    return:
+      type: System.Boolean
+      description: True if the current window state matches the specified state; otherwise, false.
+    content.vb: Public Function HasState(state As WindowState) As Boolean
+  overload: Bliss.CSharp.Windowing.Sdl3Window.HasState*
+  implements:
+  - Bliss.CSharp.Windowing.IWindow.HasState(Bliss.CSharp.Windowing.WindowState)
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetResizable(System.Boolean)
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.SetResizable(System.Boolean)
+  id: SetResizable(System.Boolean)
+  parent: Bliss.CSharp.Windowing.Sdl3Window
+  langs:
+  - csharp
+  - vb
+  name: SetResizable(bool)
+  nameWithType: Sdl3Window.SetResizable(bool)
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetResizable(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Sdl3Window.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetResizable
+    path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
+    startLine: 445
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Specifies whether the window should be resizable and updates its resizable state accordingly.
+  example: []
+  syntax:
+    content: public void SetResizable(bool resizable)
+    parameters:
+    - id: resizable
+      type: System.Boolean
+      description: A boolean value indicating if the window should be resizable (true) or not resizable (false).
+    content.vb: Public Sub SetResizable(resizable As Boolean)
+  overload: Bliss.CSharp.Windowing.Sdl3Window.SetResizable*
+  implements:
+  - Bliss.CSharp.Windowing.IWindow.SetResizable(System.Boolean)
+  nameWithType.vb: Sdl3Window.SetResizable(Boolean)
+  fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.SetResizable(Boolean)
+  name.vb: SetResizable(Boolean)
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetFullscreen(System.Boolean)
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.SetFullscreen(System.Boolean)
+  id: SetFullscreen(System.Boolean)
+  parent: Bliss.CSharp.Windowing.Sdl3Window
+  langs:
+  - csharp
+  - vb
+  name: SetFullscreen(bool)
+  nameWithType: Sdl3Window.SetFullscreen(bool)
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetFullscreen(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Sdl3Window.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetFullscreen
+    path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
+    startLine: 453
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Sets the fullscreen state of the window.
+  example: []
+  syntax:
+    content: public void SetFullscreen(bool fullscreen)
+    parameters:
+    - id: fullscreen
+      type: System.Boolean
+      description: A boolean value indicating whether the window should be fullscreen. Pass <code>true</code> to enable fullscreen mode, or <code>false</code> to disable it.
+    content.vb: Public Sub SetFullscreen(fullscreen As Boolean)
+  overload: Bliss.CSharp.Windowing.Sdl3Window.SetFullscreen*
+  implements:
+  - Bliss.CSharp.Windowing.IWindow.SetFullscreen(System.Boolean)
+  nameWithType.vb: Sdl3Window.SetFullscreen(Boolean)
+  fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.SetFullscreen(Boolean)
+  name.vb: SetFullscreen(Boolean)
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetBordered(System.Boolean)
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.SetBordered(System.Boolean)
+  id: SetBordered(System.Boolean)
+  parent: Bliss.CSharp.Windowing.Sdl3Window
+  langs:
+  - csharp
+  - vb
+  name: SetBordered(bool)
+  nameWithType: Sdl3Window.SetBordered(bool)
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetBordered(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Sdl3Window.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetBordered
+    path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
+    startLine: 461
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Sets whether the window should have a border.
+  example: []
+  syntax:
+    content: public void SetBordered(bool bordered)
+    parameters:
+    - id: bordered
+      type: System.Boolean
+      description: A boolean indicating whether the window should be bordered. Pass true to enable the border, or false to remove it.
+    content.vb: Public Sub SetBordered(bordered As Boolean)
+  overload: Bliss.CSharp.Windowing.Sdl3Window.SetBordered*
+  implements:
+  - Bliss.CSharp.Windowing.IWindow.SetBordered(System.Boolean)
+  nameWithType.vb: Sdl3Window.SetBordered(Boolean)
+  fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.SetBordered(Boolean)
+  name.vb: SetBordered(Boolean)
+- uid: Bliss.CSharp.Windowing.Sdl3Window.Maximize
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.Maximize
+  id: Maximize
+  parent: Bliss.CSharp.Windowing.Sdl3Window
+  langs:
+  - csharp
+  - vb
+  name: Maximize()
+  nameWithType: Sdl3Window.Maximize()
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.Maximize()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Sdl3Window.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Maximize
+    path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
+    startLine: 468
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Maximizes the window to occupy the entire screen space available within the current display's working area.
+  example: []
+  syntax:
+    content: public void Maximize()
+    content.vb: Public Sub Maximize()
+  overload: Bliss.CSharp.Windowing.Sdl3Window.Maximize*
+  implements:
+  - Bliss.CSharp.Windowing.IWindow.Maximize
+- uid: Bliss.CSharp.Windowing.Sdl3Window.Minimize
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.Minimize
+  id: Minimize
+  parent: Bliss.CSharp.Windowing.Sdl3Window
+  langs:
+  - csharp
+  - vb
+  name: Minimize()
+  nameWithType: Sdl3Window.Minimize()
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.Minimize()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Sdl3Window.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Minimize
+    path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
+    startLine: 475
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Minimizes the current window.
+  example: []
+  syntax:
+    content: public void Minimize()
+    content.vb: Public Sub Minimize()
+  overload: Bliss.CSharp.Windowing.Sdl3Window.Minimize*
+  implements:
+  - Bliss.CSharp.Windowing.IWindow.Minimize
+- uid: Bliss.CSharp.Windowing.Sdl3Window.Hide
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.Hide
+  id: Hide
+  parent: Bliss.CSharp.Windowing.Sdl3Window
+  langs:
+  - csharp
+  - vb
+  name: Hide()
+  nameWithType: Sdl3Window.Hide()
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.Hide()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Sdl3Window.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Hide
+    path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
+    startLine: 482
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Hides the window, making it invisible to the user.
+  example: []
+  syntax:
+    content: public void Hide()
+    content.vb: Public Sub Hide()
+  overload: Bliss.CSharp.Windowing.Sdl3Window.Hide*
+  implements:
+  - Bliss.CSharp.Windowing.IWindow.Hide
+- uid: Bliss.CSharp.Windowing.Sdl3Window.Show
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.Show
+  id: Show
+  parent: Bliss.CSharp.Windowing.Sdl3Window
+  langs:
+  - csharp
+  - vb
+  name: Show()
+  nameWithType: Sdl3Window.Show()
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.Show()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Sdl3Window.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Show
+    path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
+    startLine: 489
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Makes the window visible if it is currently hidden.
+  example: []
+  syntax:
+    content: public void Show()
+    content.vb: Public Sub Show()
+  overload: Bliss.CSharp.Windowing.Sdl3Window.Show*
+  implements:
+  - Bliss.CSharp.Windowing.IWindow.Show
+- uid: Bliss.CSharp.Windowing.Sdl3Window.CaptureMouse(System.Boolean)
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.CaptureMouse(System.Boolean)
+  id: CaptureMouse(System.Boolean)
+  parent: Bliss.CSharp.Windowing.Sdl3Window
+  langs:
+  - csharp
+  - vb
+  name: CaptureMouse(bool)
+  nameWithType: Sdl3Window.CaptureMouse(bool)
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.CaptureMouse(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Sdl3Window.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: CaptureMouse
+    path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
+    startLine: 497
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Captures or releases the mouse input for the window.
+  example: []
+  syntax:
+    content: public void CaptureMouse(bool enabled)
+    parameters:
+    - id: enabled
+      type: System.Boolean
+      description: A boolean indicating whether to capture the mouse (true) or release it (false).
+    content.vb: Public Sub CaptureMouse(enabled As Boolean)
+  overload: Bliss.CSharp.Windowing.Sdl3Window.CaptureMouse*
+  implements:
+  - Bliss.CSharp.Windowing.IWindow.CaptureMouse(System.Boolean)
+  nameWithType.vb: Sdl3Window.CaptureMouse(Boolean)
+  fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.CaptureMouse(Boolean)
+  name.vb: CaptureMouse(Boolean)
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetWindowAlwaysOnTop(System.Boolean)
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.SetWindowAlwaysOnTop(System.Boolean)
+  id: SetWindowAlwaysOnTop(System.Boolean)
+  parent: Bliss.CSharp.Windowing.Sdl3Window
+  langs:
+  - csharp
+  - vb
+  name: SetWindowAlwaysOnTop(bool)
+  nameWithType: Sdl3Window.SetWindowAlwaysOnTop(bool)
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetWindowAlwaysOnTop(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Sdl3Window.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetWindowAlwaysOnTop
+    path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
+    startLine: 505
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Sets whether the window should always be displayed on top of other windows.
+  example: []
+  syntax:
+    content: public void SetWindowAlwaysOnTop(bool alwaysOnTop)
+    parameters:
+    - id: alwaysOnTop
+      type: System.Boolean
+      description: A boolean indicating whether the window should be always on top. True to enable, false to disable.
+    content.vb: Public Sub SetWindowAlwaysOnTop(alwaysOnTop As Boolean)
+  overload: Bliss.CSharp.Windowing.Sdl3Window.SetWindowAlwaysOnTop*
+  implements:
+  - Bliss.CSharp.Windowing.IWindow.SetWindowAlwaysOnTop(System.Boolean)
+  nameWithType.vb: Sdl3Window.SetWindowAlwaysOnTop(Boolean)
+  fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.SetWindowAlwaysOnTop(Boolean)
+  name.vb: SetWindowAlwaysOnTop(Boolean)
 - uid: Bliss.CSharp.Windowing.Sdl3Window.SetIcon(Bliss.CSharp.Images.Image)
   commentId: M:Bliss.CSharp.Windowing.Sdl3Window.SetIcon(Bliss.CSharp.Images.Image)
   id: SetIcon(Bliss.CSharp.Images.Image)
@@ -1718,7 +1962,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetIcon
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 463
+    startLine: 514
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1756,7 +2000,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: PumpEvents
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 480
+    startLine: 531
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1790,7 +2034,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ClientToScreen
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 497
+    startLine: 548
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1827,7 +2071,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ScreenToClient
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 506
+    startLine: 557
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1864,7 +2108,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetOrCreateOpenGlPlatformInfo
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 517
+    startLine: 568
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1908,7 +2152,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 1067
+    startLine: 1118
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -2717,29 +2961,27 @@ references:
   name: TextInput
   nameWithType: IWindow.TextInput
   fullName: Bliss.CSharp.Windowing.IWindow.TextInput
-- uid: System.Action{System.Char[]}
-  commentId: T:System.Action{System.Char[]}
+- uid: System.Action{System.String}
+  commentId: T:System.Action{System.String}
   parent: System
   definition: System.Action`1
   href: https://learn.microsoft.com/dotnet/api/system.action-1
-  name: Action<char[]>
-  nameWithType: Action<char[]>
-  fullName: System.Action<char[]>
-  nameWithType.vb: Action(Of Char())
-  fullName.vb: System.Action(Of Char())
-  name.vb: Action(Of Char())
+  name: Action<string>
+  nameWithType: Action<string>
+  fullName: System.Action<string>
+  nameWithType.vb: Action(Of String)
+  fullName.vb: System.Action(Of String)
+  name.vb: Action(Of String)
   spec.csharp:
   - uid: System.Action`1
     name: Action
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.action-1
   - name: <
-  - uid: System.Char
-    name: char
+  - uid: System.String
+    name: string
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.char
-  - name: '['
-  - name: ']'
+    href: https://learn.microsoft.com/dotnet/api/system.string
   - name: '>'
   spec.vb:
   - uid: System.Action`1
@@ -2749,12 +2991,10 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: System.Char
-    name: Char
+  - uid: System.String
+    name: String
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.char
-  - name: (
-  - name: )
+    href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
 - uid: Bliss.CSharp.Windowing.IWindow.GamepadAdded
   commentId: E:Bliss.CSharp.Windowing.IWindow.GamepadAdded
@@ -3009,41 +3249,6 @@ references:
   name: DragDrop
   nameWithType: IWindow.DragDrop
   fullName: Bliss.CSharp.Windowing.IWindow.DragDrop
-- uid: System.Action{System.String}
-  commentId: T:System.Action{System.String}
-  parent: System
-  definition: System.Action`1
-  href: https://learn.microsoft.com/dotnet/api/system.action-1
-  name: Action<string>
-  nameWithType: Action<string>
-  fullName: System.Action<string>
-  nameWithType.vb: Action(Of String)
-  fullName.vb: System.Action(Of String)
-  name.vb: Action(Of String)
-  spec.csharp:
-  - uid: System.Action`1
-    name: Action
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.action-1
-  - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: '>'
-  spec.vb:
-  - uid: System.Action`1
-    name: Action
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.action-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: )
 - uid: Bliss.CSharp.Windowing.Sdl3Window
   commentId: T:Bliss.CSharp.Windowing.Sdl3Window
   href: Bliss.CSharp.Windowing.Sdl3Window.html
@@ -3104,125 +3309,6 @@ references:
   name: GraphicsBackend
   nameWithType: GraphicsBackend
   fullName: Veldrid.GraphicsBackend
-- uid: Bliss.CSharp.Windowing.Sdl3Window.GetState*
-  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.GetState
-  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_GetState
-  name: GetState
-  nameWithType: Sdl3Window.GetState
-  fullName: Bliss.CSharp.Windowing.Sdl3Window.GetState
-- uid: Bliss.CSharp.Windowing.IWindow.GetState
-  commentId: M:Bliss.CSharp.Windowing.IWindow.GetState
-  parent: Bliss.CSharp.Windowing.IWindow
-  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetState
-  name: GetState()
-  nameWithType: IWindow.GetState()
-  fullName: Bliss.CSharp.Windowing.IWindow.GetState()
-  spec.csharp:
-  - uid: Bliss.CSharp.Windowing.IWindow.GetState
-    name: GetState
-    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetState
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: Bliss.CSharp.Windowing.IWindow.GetState
-    name: GetState
-    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetState
-  - name: (
-  - name: )
-- uid: Bliss.CSharp.Windowing.Sdl3Window.HasState*
-  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.HasState
-  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_HasState_Bliss_CSharp_Windowing_WindowState_
-  name: HasState
-  nameWithType: Sdl3Window.HasState
-  fullName: Bliss.CSharp.Windowing.Sdl3Window.HasState
-- uid: Bliss.CSharp.Windowing.IWindow.HasState(Bliss.CSharp.Windowing.WindowState)
-  commentId: M:Bliss.CSharp.Windowing.IWindow.HasState(Bliss.CSharp.Windowing.WindowState)
-  parent: Bliss.CSharp.Windowing.IWindow
-  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_HasState_Bliss_CSharp_Windowing_WindowState_
-  name: HasState(WindowState)
-  nameWithType: IWindow.HasState(WindowState)
-  fullName: Bliss.CSharp.Windowing.IWindow.HasState(Bliss.CSharp.Windowing.WindowState)
-  spec.csharp:
-  - uid: Bliss.CSharp.Windowing.IWindow.HasState(Bliss.CSharp.Windowing.WindowState)
-    name: HasState
-    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_HasState_Bliss_CSharp_Windowing_WindowState_
-  - name: (
-  - uid: Bliss.CSharp.Windowing.WindowState
-    name: WindowState
-    href: Bliss.CSharp.Windowing.WindowState.html
-  - name: )
-  spec.vb:
-  - uid: Bliss.CSharp.Windowing.IWindow.HasState(Bliss.CSharp.Windowing.WindowState)
-    name: HasState
-    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_HasState_Bliss_CSharp_Windowing_WindowState_
-  - name: (
-  - uid: Bliss.CSharp.Windowing.WindowState
-    name: WindowState
-    href: Bliss.CSharp.Windowing.WindowState.html
-  - name: )
-- uid: Bliss.CSharp.Windowing.Sdl3Window.SetState*
-  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.SetState
-  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetState_Bliss_CSharp_Windowing_WindowState_
-  name: SetState
-  nameWithType: Sdl3Window.SetState
-  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetState
-- uid: Bliss.CSharp.Windowing.IWindow.SetState(Bliss.CSharp.Windowing.WindowState)
-  commentId: M:Bliss.CSharp.Windowing.IWindow.SetState(Bliss.CSharp.Windowing.WindowState)
-  parent: Bliss.CSharp.Windowing.IWindow
-  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetState_Bliss_CSharp_Windowing_WindowState_
-  name: SetState(WindowState)
-  nameWithType: IWindow.SetState(WindowState)
-  fullName: Bliss.CSharp.Windowing.IWindow.SetState(Bliss.CSharp.Windowing.WindowState)
-  spec.csharp:
-  - uid: Bliss.CSharp.Windowing.IWindow.SetState(Bliss.CSharp.Windowing.WindowState)
-    name: SetState
-    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetState_Bliss_CSharp_Windowing_WindowState_
-  - name: (
-  - uid: Bliss.CSharp.Windowing.WindowState
-    name: WindowState
-    href: Bliss.CSharp.Windowing.WindowState.html
-  - name: )
-  spec.vb:
-  - uid: Bliss.CSharp.Windowing.IWindow.SetState(Bliss.CSharp.Windowing.WindowState)
-    name: SetState
-    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetState_Bliss_CSharp_Windowing_WindowState_
-  - name: (
-  - uid: Bliss.CSharp.Windowing.WindowState
-    name: WindowState
-    href: Bliss.CSharp.Windowing.WindowState.html
-  - name: )
-- uid: System.InvalidOperationException
-  commentId: T:System.InvalidOperationException
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
-  name: InvalidOperationException
-  nameWithType: InvalidOperationException
-  fullName: System.InvalidOperationException
-- uid: Bliss.CSharp.Windowing.Sdl3Window.ClearState*
-  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.ClearState
-  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_ClearState
-  name: ClearState
-  nameWithType: Sdl3Window.ClearState
-  fullName: Bliss.CSharp.Windowing.Sdl3Window.ClearState
-- uid: Bliss.CSharp.Windowing.IWindow.ClearState
-  commentId: M:Bliss.CSharp.Windowing.IWindow.ClearState
-  parent: Bliss.CSharp.Windowing.IWindow
-  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_ClearState
-  name: ClearState()
-  nameWithType: IWindow.ClearState()
-  fullName: Bliss.CSharp.Windowing.IWindow.ClearState()
-  spec.csharp:
-  - uid: Bliss.CSharp.Windowing.IWindow.ClearState
-    name: ClearState
-    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_ClearState
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: Bliss.CSharp.Windowing.IWindow.ClearState
-    name: ClearState
-    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_ClearState
-  - name: (
-  - name: )
 - uid: Bliss.CSharp.Windowing.Sdl3Window.GetTitle*
   commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.GetTitle
   href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_GetTitle
@@ -3248,6 +3334,13 @@ references:
     href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetTitle
   - name: (
   - name: )
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
 - uid: Bliss.CSharp.Windowing.Sdl3Window.SetTitle*
   commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.SetTitle
   href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetTitle_System_String_
@@ -3736,6 +3829,347 @@ references:
     name: Integer
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Bliss.CSharp.Windowing.Sdl3Window.GetState*
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.GetState
+  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_GetState
+  name: GetState
+  nameWithType: Sdl3Window.GetState
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.GetState
+- uid: Bliss.CSharp.Windowing.IWindow.GetState
+  commentId: M:Bliss.CSharp.Windowing.IWindow.GetState
+  parent: Bliss.CSharp.Windowing.IWindow
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetState
+  name: GetState()
+  nameWithType: IWindow.GetState()
+  fullName: Bliss.CSharp.Windowing.IWindow.GetState()
+  spec.csharp:
+  - uid: Bliss.CSharp.Windowing.IWindow.GetState
+    name: GetState
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetState
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Windowing.IWindow.GetState
+    name: GetState
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetState
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Windowing.Sdl3Window.HasState*
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.HasState
+  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_HasState_Bliss_CSharp_Windowing_WindowState_
+  name: HasState
+  nameWithType: Sdl3Window.HasState
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.HasState
+- uid: Bliss.CSharp.Windowing.IWindow.HasState(Bliss.CSharp.Windowing.WindowState)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.HasState(Bliss.CSharp.Windowing.WindowState)
+  parent: Bliss.CSharp.Windowing.IWindow
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_HasState_Bliss_CSharp_Windowing_WindowState_
+  name: HasState(WindowState)
+  nameWithType: IWindow.HasState(WindowState)
+  fullName: Bliss.CSharp.Windowing.IWindow.HasState(Bliss.CSharp.Windowing.WindowState)
+  spec.csharp:
+  - uid: Bliss.CSharp.Windowing.IWindow.HasState(Bliss.CSharp.Windowing.WindowState)
+    name: HasState
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_HasState_Bliss_CSharp_Windowing_WindowState_
+  - name: (
+  - uid: Bliss.CSharp.Windowing.WindowState
+    name: WindowState
+    href: Bliss.CSharp.Windowing.WindowState.html
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Windowing.IWindow.HasState(Bliss.CSharp.Windowing.WindowState)
+    name: HasState
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_HasState_Bliss_CSharp_Windowing_WindowState_
+  - name: (
+  - uid: Bliss.CSharp.Windowing.WindowState
+    name: WindowState
+    href: Bliss.CSharp.Windowing.WindowState.html
+  - name: )
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetResizable*
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.SetResizable
+  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetResizable_System_Boolean_
+  name: SetResizable
+  nameWithType: Sdl3Window.SetResizable
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetResizable
+- uid: Bliss.CSharp.Windowing.IWindow.SetResizable(System.Boolean)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetResizable(System.Boolean)
+  parent: Bliss.CSharp.Windowing.IWindow
+  isExternal: true
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetResizable_System_Boolean_
+  name: SetResizable(bool)
+  nameWithType: IWindow.SetResizable(bool)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetResizable(bool)
+  nameWithType.vb: IWindow.SetResizable(Boolean)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.SetResizable(Boolean)
+  name.vb: SetResizable(Boolean)
+  spec.csharp:
+  - uid: Bliss.CSharp.Windowing.IWindow.SetResizable(System.Boolean)
+    name: SetResizable
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetResizable_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Windowing.IWindow.SetResizable(System.Boolean)
+    name: SetResizable
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetResizable_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetFullscreen*
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.SetFullscreen
+  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetFullscreen_System_Boolean_
+  name: SetFullscreen
+  nameWithType: Sdl3Window.SetFullscreen
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetFullscreen
+- uid: Bliss.CSharp.Windowing.IWindow.SetFullscreen(System.Boolean)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetFullscreen(System.Boolean)
+  parent: Bliss.CSharp.Windowing.IWindow
+  isExternal: true
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetFullscreen_System_Boolean_
+  name: SetFullscreen(bool)
+  nameWithType: IWindow.SetFullscreen(bool)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetFullscreen(bool)
+  nameWithType.vb: IWindow.SetFullscreen(Boolean)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.SetFullscreen(Boolean)
+  name.vb: SetFullscreen(Boolean)
+  spec.csharp:
+  - uid: Bliss.CSharp.Windowing.IWindow.SetFullscreen(System.Boolean)
+    name: SetFullscreen
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetFullscreen_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Windowing.IWindow.SetFullscreen(System.Boolean)
+    name: SetFullscreen
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetFullscreen_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetBordered*
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.SetBordered
+  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetBordered_System_Boolean_
+  name: SetBordered
+  nameWithType: Sdl3Window.SetBordered
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetBordered
+- uid: Bliss.CSharp.Windowing.IWindow.SetBordered(System.Boolean)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetBordered(System.Boolean)
+  parent: Bliss.CSharp.Windowing.IWindow
+  isExternal: true
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetBordered_System_Boolean_
+  name: SetBordered(bool)
+  nameWithType: IWindow.SetBordered(bool)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetBordered(bool)
+  nameWithType.vb: IWindow.SetBordered(Boolean)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.SetBordered(Boolean)
+  name.vb: SetBordered(Boolean)
+  spec.csharp:
+  - uid: Bliss.CSharp.Windowing.IWindow.SetBordered(System.Boolean)
+    name: SetBordered
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetBordered_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Windowing.IWindow.SetBordered(System.Boolean)
+    name: SetBordered
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetBordered_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Bliss.CSharp.Windowing.Sdl3Window.Maximize*
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.Maximize
+  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_Maximize
+  name: Maximize
+  nameWithType: Sdl3Window.Maximize
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.Maximize
+- uid: Bliss.CSharp.Windowing.IWindow.Maximize
+  commentId: M:Bliss.CSharp.Windowing.IWindow.Maximize
+  parent: Bliss.CSharp.Windowing.IWindow
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Maximize
+  name: Maximize()
+  nameWithType: IWindow.Maximize()
+  fullName: Bliss.CSharp.Windowing.IWindow.Maximize()
+  spec.csharp:
+  - uid: Bliss.CSharp.Windowing.IWindow.Maximize
+    name: Maximize
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Maximize
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Windowing.IWindow.Maximize
+    name: Maximize
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Maximize
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Windowing.Sdl3Window.Minimize*
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.Minimize
+  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_Minimize
+  name: Minimize
+  nameWithType: Sdl3Window.Minimize
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.Minimize
+- uid: Bliss.CSharp.Windowing.IWindow.Minimize
+  commentId: M:Bliss.CSharp.Windowing.IWindow.Minimize
+  parent: Bliss.CSharp.Windowing.IWindow
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Minimize
+  name: Minimize()
+  nameWithType: IWindow.Minimize()
+  fullName: Bliss.CSharp.Windowing.IWindow.Minimize()
+  spec.csharp:
+  - uid: Bliss.CSharp.Windowing.IWindow.Minimize
+    name: Minimize
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Minimize
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Windowing.IWindow.Minimize
+    name: Minimize
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Minimize
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Windowing.Sdl3Window.Hide*
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.Hide
+  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_Hide
+  name: Hide
+  nameWithType: Sdl3Window.Hide
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.Hide
+- uid: Bliss.CSharp.Windowing.IWindow.Hide
+  commentId: M:Bliss.CSharp.Windowing.IWindow.Hide
+  parent: Bliss.CSharp.Windowing.IWindow
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Hide
+  name: Hide()
+  nameWithType: IWindow.Hide()
+  fullName: Bliss.CSharp.Windowing.IWindow.Hide()
+  spec.csharp:
+  - uid: Bliss.CSharp.Windowing.IWindow.Hide
+    name: Hide
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Hide
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Windowing.IWindow.Hide
+    name: Hide
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Hide
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Windowing.Sdl3Window.Show*
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.Show
+  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_Show
+  name: Show
+  nameWithType: Sdl3Window.Show
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.Show
+- uid: Bliss.CSharp.Windowing.IWindow.Show
+  commentId: M:Bliss.CSharp.Windowing.IWindow.Show
+  parent: Bliss.CSharp.Windowing.IWindow
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Show
+  name: Show()
+  nameWithType: IWindow.Show()
+  fullName: Bliss.CSharp.Windowing.IWindow.Show()
+  spec.csharp:
+  - uid: Bliss.CSharp.Windowing.IWindow.Show
+    name: Show
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Show
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Windowing.IWindow.Show
+    name: Show
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_Show
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Windowing.Sdl3Window.CaptureMouse*
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.CaptureMouse
+  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_CaptureMouse_System_Boolean_
+  name: CaptureMouse
+  nameWithType: Sdl3Window.CaptureMouse
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.CaptureMouse
+- uid: Bliss.CSharp.Windowing.IWindow.CaptureMouse(System.Boolean)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.CaptureMouse(System.Boolean)
+  parent: Bliss.CSharp.Windowing.IWindow
+  isExternal: true
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_CaptureMouse_System_Boolean_
+  name: CaptureMouse(bool)
+  nameWithType: IWindow.CaptureMouse(bool)
+  fullName: Bliss.CSharp.Windowing.IWindow.CaptureMouse(bool)
+  nameWithType.vb: IWindow.CaptureMouse(Boolean)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.CaptureMouse(Boolean)
+  name.vb: CaptureMouse(Boolean)
+  spec.csharp:
+  - uid: Bliss.CSharp.Windowing.IWindow.CaptureMouse(System.Boolean)
+    name: CaptureMouse
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_CaptureMouse_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Windowing.IWindow.CaptureMouse(System.Boolean)
+    name: CaptureMouse
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_CaptureMouse_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetWindowAlwaysOnTop*
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.SetWindowAlwaysOnTop
+  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetWindowAlwaysOnTop_System_Boolean_
+  name: SetWindowAlwaysOnTop
+  nameWithType: Sdl3Window.SetWindowAlwaysOnTop
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetWindowAlwaysOnTop
+- uid: Bliss.CSharp.Windowing.IWindow.SetWindowAlwaysOnTop(System.Boolean)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetWindowAlwaysOnTop(System.Boolean)
+  parent: Bliss.CSharp.Windowing.IWindow
+  isExternal: true
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetWindowAlwaysOnTop_System_Boolean_
+  name: SetWindowAlwaysOnTop(bool)
+  nameWithType: IWindow.SetWindowAlwaysOnTop(bool)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetWindowAlwaysOnTop(bool)
+  nameWithType.vb: IWindow.SetWindowAlwaysOnTop(Boolean)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.SetWindowAlwaysOnTop(Boolean)
+  name.vb: SetWindowAlwaysOnTop(Boolean)
+  spec.csharp:
+  - uid: Bliss.CSharp.Windowing.IWindow.SetWindowAlwaysOnTop(System.Boolean)
+    name: SetWindowAlwaysOnTop
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetWindowAlwaysOnTop_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Windowing.IWindow.SetWindowAlwaysOnTop(System.Boolean)
+    name: SetWindowAlwaysOnTop
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetWindowAlwaysOnTop_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
   - name: )
 - uid: Bliss.CSharp.Images.Image
   commentId: T:Bliss.CSharp.Images.Image
