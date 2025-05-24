@@ -427,7 +427,7 @@ Struct RectangleF  <a class="header-action link-secondary" title="View source" h
   <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/RectangleF.cs/#L103"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Determines whether the specified point, transformed by an origin and rotation, is contained within the rectangle.</p>
+  <div class="markdown level1 summary"><p>Determines whether a specified point is contained within a rotated rectangle relative to a given origin.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -438,20 +438,20 @@ Struct RectangleF  <a class="header-action link-secondary" title="View source" h
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>p</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a></dt>
-    <dd><p>The point to check.</p>
+    <dd><p>The point that is being checked for containment within the rectangle.</p>
 </dd>
     <dt><code>origin</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a></dt>
-    <dd><p>The origin point for the transformation.</p>
+    <dd><p>The origin point relative to which the rotation is applied.</p>
 </dd>
     <dt><code>rotation</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The rotation angle, in degrees, applied around the specified origin.</p>
+    <dd><p>The rotation angle, in degrees, applied counterclockwise to the rectangle.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>True if the transformed point is inside the rectangle; otherwise, false.</p>
+    <dd><p>True if the point is contained within the rotated rectangle; otherwise, false.</p>
 </dd>
   </dl>
 
@@ -511,7 +511,7 @@ Struct RectangleF  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="Bliss_CSharp_Transformations_RectangleF_Equals_Bliss_CSharp_Transformations_RectangleF_" data-uid="Bliss.CSharp.Transformations.RectangleF.Equals(Bliss.CSharp.Transformations.RectangleF)">
   Equals(RectangleF)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/RectangleF.cs/#L114"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/RectangleF.cs/#L115"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Determines whether the current rectangle is equal to another <a class="xref" href="Bliss.CSharp.Transformations.RectangleF.html">RectangleF</a>.</p>
@@ -550,7 +550,7 @@ Struct RectangleF  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="Bliss_CSharp_Transformations_RectangleF_Equals_System_Object_" data-uid="Bliss.CSharp.Transformations.RectangleF.Equals(System.Object)">
   Equals(object?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/RectangleF.cs/#L123"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/RectangleF.cs/#L124"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Determines whether the specified object is equal to the current rectangle.</p>
@@ -589,7 +589,7 @@ Struct RectangleF  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="Bliss_CSharp_Transformations_RectangleF_GetHashCode" data-uid="Bliss.CSharp.Transformations.RectangleF.GetHashCode">
   GetHashCode()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/RectangleF.cs/#L131"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/RectangleF.cs/#L132"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns a hash code for the current rectangle.</p>
@@ -622,7 +622,7 @@ Struct RectangleF  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="Bliss_CSharp_Transformations_RectangleF_ToString" data-uid="Bliss.CSharp.Transformations.RectangleF.ToString">
   ToString()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/RectangleF.cs/#L139"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/RectangleF.cs/#L140"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns a string that represents the current rectangle.</p>
