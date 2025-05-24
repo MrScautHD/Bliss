@@ -94,16 +94,17 @@ public struct Rectangle : IEquatable<Rectangle> {
     }
 
     /// <summary>
-    /// Determines whether the specified point, transformed by an origin and rotation, is contained within the rectangle.
+    /// Determines whether a specified point is contained within a rotated rectangle relative to a given origin.
     /// </summary>
-    /// <param name="p">The point to check.</param>
-    /// <param name="origin">The origin point for the transformation.</param>
-    /// <param name="rotation">The rotation angle, in degrees, applied around the specified origin.</param>
-    /// <returns>True if the transformed point is inside the rectangle; otherwise, false.</returns>
+    /// <param name="p">The point that is being checked for containment within the rectangle.</param>
+    /// <param name="origin">The origin point relative to which the rotation is applied.</param>
+    /// <param name="rotation">The rotation angle, in degrees, applied counterclockwise to the rectangle.</param>
+    /// <returns>True if the point is contained within the rotated rectangle; otherwise, false.</returns>
     public bool Contains(Vector2 p, Vector2 origin, float rotation) {
-        Matrix3x2 rotationMatrix = Matrix3x2.CreateRotation(float.DegreesToRadians(rotation), p);
-        Vector2 transform = Vector2.Transform(p - origin, rotationMatrix);
-        return this.Contains(transform);
+        Matrix4x4 rotationMatrix = Matrix4x4.CreateRotationZ(float.DegreesToRadians(-rotation));
+        Vector2 localPoint = Vector2.Transform(p - this.Position, rotationMatrix) + origin;
+
+        return localPoint.X >= 0 && localPoint.X <= this.Width && localPoint.Y >= 0 && localPoint.Y <= this.Height;
     }
     
     /// <summary>
