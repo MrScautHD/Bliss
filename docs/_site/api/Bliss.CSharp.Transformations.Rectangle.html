@@ -422,6 +422,51 @@ Struct Rectangle  <a class="header-action link-secondary" title="View source" hr
 
   <a id="Bliss_CSharp_Transformations_Rectangle_Contains_" data-uid="Bliss.CSharp.Transformations.Rectangle.Contains*"></a>
 
+  <h3 id="Bliss_CSharp_Transformations_Rectangle_Contains_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_" data-uid="Bliss.CSharp.Transformations.Rectangle.Contains(System.Numerics.Vector2,System.Numerics.Vector2,System.Single)">
+  Contains(Vector2, Vector2, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Rectangle.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether the specified point, transformed by an origin and rotation, is contained within the rectangle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Contains(Vector2 p, Vector2 origin, float rotation)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>p</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a></dt>
+    <dd><p>The point to check.</p>
+</dd>
+    <dt><code>origin</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a></dt>
+    <dd><p>The origin point for the transformation.</p>
+</dd>
+    <dt><code>rotation</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The rotation angle, in degrees, applied around the specified origin.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the transformed point is inside the rectangle; otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Transformations_Rectangle_Contains_" data-uid="Bliss.CSharp.Transformations.Rectangle.Contains*"></a>
+
   <h3 id="Bliss_CSharp_Transformations_Rectangle_Contains_System_Single_System_Single_" data-uid="Bliss.CSharp.Transformations.Rectangle.Contains(System.Single,System.Single)">
   Contains(float, float)
   <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Rectangle.cs/#L92"><i class="bi bi-code-slash"></i></a>
@@ -466,7 +511,7 @@ Struct Rectangle  <a class="header-action link-secondary" title="View source" hr
 
   <h3 id="Bliss_CSharp_Transformations_Rectangle_Equals_Bliss_CSharp_Transformations_Rectangle_" data-uid="Bliss.CSharp.Transformations.Rectangle.Equals(Bliss.CSharp.Transformations.Rectangle)">
   Equals(Rectangle)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Rectangle.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Rectangle.cs/#L114"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Determines whether the current rectangle is equal to another <a class="xref" href="Bliss.CSharp.Transformations.Rectangle.html">Rectangle</a>.</p>
@@ -505,7 +550,7 @@ Struct Rectangle  <a class="header-action link-secondary" title="View source" hr
 
   <h3 id="Bliss_CSharp_Transformations_Rectangle_Equals_System_Object_" data-uid="Bliss.CSharp.Transformations.Rectangle.Equals(System.Object)">
   Equals(object?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Rectangle.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Rectangle.cs/#L123"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Determines whether the specified object is equal to the current rectangle.</p>
@@ -544,7 +589,7 @@ Struct Rectangle  <a class="header-action link-secondary" title="View source" hr
 
   <h3 id="Bliss_CSharp_Transformations_Rectangle_GetHashCode" data-uid="Bliss.CSharp.Transformations.Rectangle.GetHashCode">
   GetHashCode()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Rectangle.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Rectangle.cs/#L131"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns a hash code for the current rectangle.</p>
@@ -577,7 +622,7 @@ Struct Rectangle  <a class="header-action link-secondary" title="View source" hr
 
   <h3 id="Bliss_CSharp_Transformations_Rectangle_ToString" data-uid="Bliss.CSharp.Transformations.Rectangle.ToString">
   ToString()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Rectangle.cs/#L126"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Rectangle.cs/#L139"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns a string that represents the current rectangle.</p>

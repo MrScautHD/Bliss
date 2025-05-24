@@ -94,6 +94,19 @@ public struct RectangleF : IEquatable<RectangleF> {
     }
     
     /// <summary>
+    /// Determines whether the specified point, transformed by an origin and rotation, is contained within the rectangle.
+    /// </summary>
+    /// <param name="p">The point to check.</param>
+    /// <param name="origin">The origin point for the transformation.</param>
+    /// <param name="rotation">The rotation angle, in degrees, applied around the specified origin.</param>
+    /// <returns>True if the transformed point is inside the rectangle; otherwise, false.</returns>
+    public bool Contains(Vector2 p, Vector2 origin, float rotation) {
+        Matrix3x2 rotationMatrix = Matrix3x2.CreateRotation(float.DegreesToRadians(rotation), p);
+        Vector2 transform = Vector2.Transform(p - origin, rotationMatrix);
+        return this.Contains(transform);
+    }
+    
+    /// <summary>
     /// Determines whether the current rectangle is equal to another <see cref="RectangleF"/>.
     /// </summary>
     /// <param name="other">The rectangle to compare with the current rectangle.</param>

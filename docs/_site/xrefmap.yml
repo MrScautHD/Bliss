@@ -11884,6 +11884,15 @@ references:
   commentId: M:Bliss.CSharp.Transformations.Rectangle.Contains(System.Numerics.Vector2)
   fullName: Bliss.CSharp.Transformations.Rectangle.Contains(System.Numerics.Vector2)
   nameWithType: Rectangle.Contains(Vector2)
+- uid: Bliss.CSharp.Transformations.Rectangle.Contains(System.Numerics.Vector2,System.Numerics.Vector2,System.Single)
+  name: Contains(Vector2, Vector2, float)
+  href: api/Bliss.CSharp.Transformations.Rectangle.html#Bliss_CSharp_Transformations_Rectangle_Contains_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_
+  commentId: M:Bliss.CSharp.Transformations.Rectangle.Contains(System.Numerics.Vector2,System.Numerics.Vector2,System.Single)
+  name.vb: Contains(Vector2, Vector2, Single)
+  fullName: Bliss.CSharp.Transformations.Rectangle.Contains(System.Numerics.Vector2, System.Numerics.Vector2, float)
+  fullName.vb: Bliss.CSharp.Transformations.Rectangle.Contains(System.Numerics.Vector2, System.Numerics.Vector2, Single)
+  nameWithType: Rectangle.Contains(Vector2, Vector2, float)
+  nameWithType.vb: Rectangle.Contains(Vector2, Vector2, Single)
 - uid: Bliss.CSharp.Transformations.Rectangle.Contains(System.Single,System.Single)
   name: Contains(float, float)
   href: api/Bliss.CSharp.Transformations.Rectangle.html#Bliss_CSharp_Transformations_Rectangle_Contains_System_Single_System_Single_
@@ -12067,6 +12076,15 @@ references:
   commentId: M:Bliss.CSharp.Transformations.RectangleF.Contains(System.Numerics.Vector2)
   fullName: Bliss.CSharp.Transformations.RectangleF.Contains(System.Numerics.Vector2)
   nameWithType: RectangleF.Contains(Vector2)
+- uid: Bliss.CSharp.Transformations.RectangleF.Contains(System.Numerics.Vector2,System.Numerics.Vector2,System.Single)
+  name: Contains(Vector2, Vector2, float)
+  href: api/Bliss.CSharp.Transformations.RectangleF.html#Bliss_CSharp_Transformations_RectangleF_Contains_System_Numerics_Vector2_System_Numerics_Vector2_System_Single_
+  commentId: M:Bliss.CSharp.Transformations.RectangleF.Contains(System.Numerics.Vector2,System.Numerics.Vector2,System.Single)
+  name.vb: Contains(Vector2, Vector2, Single)
+  fullName: Bliss.CSharp.Transformations.RectangleF.Contains(System.Numerics.Vector2, System.Numerics.Vector2, float)
+  fullName.vb: Bliss.CSharp.Transformations.RectangleF.Contains(System.Numerics.Vector2, System.Numerics.Vector2, Single)
+  nameWithType: RectangleF.Contains(Vector2, Vector2, float)
+  nameWithType.vb: RectangleF.Contains(Vector2, Vector2, Single)
 - uid: Bliss.CSharp.Transformations.RectangleF.Contains(System.Single,System.Single)
   name: Contains(float, float)
   href: api/Bliss.CSharp.Transformations.RectangleF.html#Bliss_CSharp_Transformations_RectangleF_Contains_System_Single_System_Single_

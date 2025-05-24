@@ -7,6 +7,7 @@ items:
   children:
   - Bliss.CSharp.Transformations.RectangleF.#ctor(System.Single,System.Single,System.Single,System.Single)
   - Bliss.CSharp.Transformations.RectangleF.Contains(System.Numerics.Vector2)
+  - Bliss.CSharp.Transformations.RectangleF.Contains(System.Numerics.Vector2,System.Numerics.Vector2,System.Single)
   - Bliss.CSharp.Transformations.RectangleF.Contains(System.Single,System.Single)
   - Bliss.CSharp.Transformations.RectangleF.Equals(Bliss.CSharp.Transformations.RectangleF)
   - Bliss.CSharp.Transformations.RectangleF.Equals(System.Object)
@@ -427,6 +428,50 @@ items:
   nameWithType.vb: RectangleF.Contains(Single, Single)
   fullName.vb: Bliss.CSharp.Transformations.RectangleF.Contains(Single, Single)
   name.vb: Contains(Single, Single)
+- uid: Bliss.CSharp.Transformations.RectangleF.Contains(System.Numerics.Vector2,System.Numerics.Vector2,System.Single)
+  commentId: M:Bliss.CSharp.Transformations.RectangleF.Contains(System.Numerics.Vector2,System.Numerics.Vector2,System.Single)
+  id: Contains(System.Numerics.Vector2,System.Numerics.Vector2,System.Single)
+  parent: Bliss.CSharp.Transformations.RectangleF
+  langs:
+  - csharp
+  - vb
+  name: Contains(Vector2, Vector2, float)
+  nameWithType: RectangleF.Contains(Vector2, Vector2, float)
+  fullName: Bliss.CSharp.Transformations.RectangleF.Contains(System.Numerics.Vector2, System.Numerics.Vector2, float)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Transformations/RectangleF.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Contains
+    path: ../src/Bliss/CSharp/Transformations/RectangleF.cs
+    startLine: 102
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Transformations
+  summary: Determines whether the specified point, transformed by an origin and rotation, is contained within the rectangle.
+  example: []
+  syntax:
+    content: public bool Contains(Vector2 p, Vector2 origin, float rotation)
+    parameters:
+    - id: p
+      type: System.Numerics.Vector2
+      description: The point to check.
+    - id: origin
+      type: System.Numerics.Vector2
+      description: The origin point for the transformation.
+    - id: rotation
+      type: System.Single
+      description: The rotation angle, in degrees, applied around the specified origin.
+    return:
+      type: System.Boolean
+      description: True if the transformed point is inside the rectangle; otherwise, false.
+    content.vb: Public Function Contains(p As Vector2, origin As Vector2, rotation As Single) As Boolean
+  overload: Bliss.CSharp.Transformations.RectangleF.Contains*
+  nameWithType.vb: RectangleF.Contains(Vector2, Vector2, Single)
+  fullName.vb: Bliss.CSharp.Transformations.RectangleF.Contains(System.Numerics.Vector2, System.Numerics.Vector2, Single)
+  name.vb: Contains(Vector2, Vector2, Single)
 - uid: Bliss.CSharp.Transformations.RectangleF.Equals(Bliss.CSharp.Transformations.RectangleF)
   commentId: M:Bliss.CSharp.Transformations.RectangleF.Equals(Bliss.CSharp.Transformations.RectangleF)
   id: Equals(Bliss.CSharp.Transformations.RectangleF)
@@ -445,7 +490,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Equals
     path: ../src/Bliss/CSharp/Transformations/RectangleF.cs
-    startLine: 100
+    startLine: 113
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Transformations
@@ -482,7 +527,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Equals
     path: ../src/Bliss/CSharp/Transformations/RectangleF.cs
-    startLine: 109
+    startLine: 122
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Transformations
@@ -521,7 +566,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetHashCode
     path: ../src/Bliss/CSharp/Transformations/RectangleF.cs
-    startLine: 117
+    startLine: 130
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Transformations
@@ -553,7 +598,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ToString
     path: ../src/Bliss/CSharp/Transformations/RectangleF.cs
-    startLine: 125
+    startLine: 138
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Transformations
