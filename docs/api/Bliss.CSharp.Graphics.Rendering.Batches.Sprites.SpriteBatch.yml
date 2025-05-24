@@ -14,6 +14,7 @@ items:
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawTexture(Bliss.CSharp.Textures.Texture2D,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Transformations.Rectangle},System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip)
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.End
+  - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.FontStashRenderer
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentBlendState
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentDepthStencilState
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentEffect
@@ -166,6 +167,40 @@ items:
       type: System.UInt32
     content.vb: Public Property Capacity As UInteger
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Capacity*
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.FontStashRenderer
+  commentId: P:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.FontStashRenderer
+  id: FontStashRenderer
+  parent: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
+  langs:
+  - csharp
+  - vb
+  name: FontStashRenderer
+  nameWithType: SpriteBatch.FontStashRenderer
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.FontStashRenderer
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: FontStashRenderer
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
+    startLine: 60
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  summary: >-
+    Provides access to a font rendering system within the <xref href="Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch" data-throw-if-not-resolved="false"></xref>.
+
+    Utilizes <xref href="Bliss.CSharp.Fonts.FontStashRenderer2D" data-throw-if-not-resolved="false"></xref> for efficient rendering of text with support for various styles and effects.
+  example: []
+  syntax:
+    content: public FontStashRenderer2D FontStashRenderer { get; }
+    parameters: []
+    return:
+      type: Bliss.CSharp.Fonts.FontStashRenderer2D
+    content.vb: Public Property FontStashRenderer As FontStashRenderer2D
+  overload: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.FontStashRenderer*
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawCallCount
   commentId: P:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawCallCount
   id: DrawCallCount
@@ -184,7 +219,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawCallCount
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 60
+    startLine: 66
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -1629,6 +1664,49 @@ references:
   nameWithType.vb: UInteger
   fullName.vb: UInteger
   name.vb: UInteger
+- uid: Bliss.CSharp.Fonts.FontStashRenderer2D
+  commentId: T:Bliss.CSharp.Fonts.FontStashRenderer2D
+  parent: Bliss.CSharp.Fonts
+  href: Bliss.CSharp.Fonts.FontStashRenderer2D.html
+  name: FontStashRenderer2D
+  nameWithType: FontStashRenderer2D
+  fullName: Bliss.CSharp.Fonts.FontStashRenderer2D
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.FontStashRenderer*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.FontStashRenderer
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_FontStashRenderer
+  name: FontStashRenderer
+  nameWithType: SpriteBatch.FontStashRenderer
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.FontStashRenderer
+- uid: Bliss.CSharp.Fonts
+  commentId: N:Bliss.CSharp.Fonts
+  href: Bliss.html
+  name: Bliss.CSharp.Fonts
+  nameWithType: Bliss.CSharp.Fonts
+  fullName: Bliss.CSharp.Fonts
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Fonts
+    name: Fonts
+    href: Bliss.CSharp.Fonts.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Fonts
+    name: Fonts
+    href: Bliss.CSharp.Fonts.html
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Veldrid.Sampler,Bliss.CSharp.Effects.Effect,System.Nullable{Veldrid.BlendStateDescription},System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
   commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Veldrid.Sampler,Bliss.CSharp.Effects.Effect,System.Nullable{Veldrid.BlendStateDescription},System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4})
   isExternal: true
@@ -2298,36 +2376,6 @@ references:
   name: FontSystemEffect
   nameWithType: FontSystemEffect
   fullName: FontStashSharp.FontSystemEffect
-- uid: Bliss.CSharp.Fonts
-  commentId: N:Bliss.CSharp.Fonts
-  href: Bliss.html
-  name: Bliss.CSharp.Fonts
-  nameWithType: Bliss.CSharp.Fonts
-  fullName: Bliss.CSharp.Fonts
-  spec.csharp:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Fonts
-    name: Fonts
-    href: Bliss.CSharp.Fonts.html
-  spec.vb:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Fonts
-    name: Fonts
-    href: Bliss.CSharp.Fonts.html
 - uid: FontStashSharp
   commentId: N:FontStashSharp
   isExternal: true

@@ -5,6 +5,8 @@ items:
   id: Bliss.CSharp.Fonts
   children:
   - Bliss.CSharp.Fonts.Font
+  - Bliss.CSharp.Fonts.FontStashRenderer2D
+  - Bliss.CSharp.Fonts.FontStashTextureManager
   langs:
   - csharp
   - vb
@@ -22,6 +24,19 @@ references:
   name: Font
   nameWithType: Font
   fullName: Bliss.CSharp.Fonts.Font
+- uid: Bliss.CSharp.Fonts.FontStashRenderer2D
+  commentId: T:Bliss.CSharp.Fonts.FontStashRenderer2D
+  parent: Bliss.CSharp.Fonts
+  href: Bliss.CSharp.Fonts.FontStashRenderer2D.html
+  name: FontStashRenderer2D
+  nameWithType: FontStashRenderer2D
+  fullName: Bliss.CSharp.Fonts.FontStashRenderer2D
+- uid: Bliss.CSharp.Fonts.FontStashTextureManager
+  commentId: T:Bliss.CSharp.Fonts.FontStashTextureManager
+  href: Bliss.CSharp.Fonts.FontStashTextureManager.html
+  name: FontStashTextureManager
+  nameWithType: FontStashTextureManager
+  fullName: Bliss.CSharp.Fonts.FontStashTextureManager
 - uid: Bliss.CSharp.Fonts
   commentId: N:Bliss.CSharp.Fonts
   href: Bliss.html

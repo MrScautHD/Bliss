@@ -1765,6 +1765,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Fonts.Font.FontData
   nameWithType: Font.FontData
+- uid: Bliss.CSharp.Fonts.Font.FontSystem
+  name: FontSystem
+  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_FontSystem
+  commentId: P:Bliss.CSharp.Fonts.Font.FontSystem
+  fullName: Bliss.CSharp.Fonts.Font.FontSystem
+  nameWithType: Font.FontSystem
+- uid: Bliss.CSharp.Fonts.Font.FontSystem*
+  name: FontSystem
+  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_FontSystem_
+  commentId: Overload:Bliss.CSharp.Fonts.Font.FontSystem
+  isSpec: "True"
+  fullName: Bliss.CSharp.Fonts.Font.FontSystem
+  nameWithType: Font.FontSystem
 - uid: Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Int32)
   name: MeasureText(string, int)
   href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureText_System_String_System_Int32_
@@ -1813,6 +1826,204 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed
   nameWithType: Font.MeasureTextTrimmed
+- uid: Bliss.CSharp.Fonts.FontStashRenderer2D
+  name: FontStashRenderer2D
+  href: api/Bliss.CSharp.Fonts.FontStashRenderer2D.html
+  commentId: T:Bliss.CSharp.Fonts.FontStashRenderer2D
+  fullName: Bliss.CSharp.Fonts.FontStashRenderer2D
+  nameWithType: FontStashRenderer2D
+- uid: Bliss.CSharp.Fonts.FontStashRenderer2D.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch)
+  name: FontStashRenderer2D(GraphicsDevice, SpriteBatch)
+  href: api/Bliss.CSharp.Fonts.FontStashRenderer2D.html#Bliss_CSharp_Fonts_FontStashRenderer2D__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_
+  commentId: M:Bliss.CSharp.Fonts.FontStashRenderer2D.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch)
+  name.vb: New(GraphicsDevice, SpriteBatch)
+  fullName: Bliss.CSharp.Fonts.FontStashRenderer2D.FontStashRenderer2D(Veldrid.GraphicsDevice, Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch)
+  fullName.vb: Bliss.CSharp.Fonts.FontStashRenderer2D.New(Veldrid.GraphicsDevice, Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch)
+  nameWithType: FontStashRenderer2D.FontStashRenderer2D(GraphicsDevice, SpriteBatch)
+  nameWithType.vb: FontStashRenderer2D.New(GraphicsDevice, SpriteBatch)
+- uid: Bliss.CSharp.Fonts.FontStashRenderer2D.#ctor*
+  name: FontStashRenderer2D
+  href: api/Bliss.CSharp.Fonts.FontStashRenderer2D.html#Bliss_CSharp_Fonts_FontStashRenderer2D__ctor_
+  commentId: Overload:Bliss.CSharp.Fonts.FontStashRenderer2D.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Bliss.CSharp.Fonts.FontStashRenderer2D.FontStashRenderer2D
+  fullName.vb: Bliss.CSharp.Fonts.FontStashRenderer2D.New
+  nameWithType: FontStashRenderer2D.FontStashRenderer2D
+  nameWithType.vb: FontStashRenderer2D.New
+- uid: Bliss.CSharp.Fonts.FontStashRenderer2D.Dispose(System.Boolean)
+  name: Dispose(bool)
+  href: api/Bliss.CSharp.Fonts.FontStashRenderer2D.html#Bliss_CSharp_Fonts_FontStashRenderer2D_Dispose_System_Boolean_
+  commentId: M:Bliss.CSharp.Fonts.FontStashRenderer2D.Dispose(System.Boolean)
+  name.vb: Dispose(Boolean)
+  fullName: Bliss.CSharp.Fonts.FontStashRenderer2D.Dispose(bool)
+  fullName.vb: Bliss.CSharp.Fonts.FontStashRenderer2D.Dispose(Boolean)
+  nameWithType: FontStashRenderer2D.Dispose(bool)
+  nameWithType.vb: FontStashRenderer2D.Dispose(Boolean)
+- uid: Bliss.CSharp.Fonts.FontStashRenderer2D.Dispose*
+  name: Dispose
+  href: api/Bliss.CSharp.Fonts.FontStashRenderer2D.html#Bliss_CSharp_Fonts_FontStashRenderer2D_Dispose_
+  commentId: Overload:Bliss.CSharp.Fonts.FontStashRenderer2D.Dispose
+  isSpec: "True"
+  fullName: Bliss.CSharp.Fonts.FontStashRenderer2D.Dispose
+  nameWithType: FontStashRenderer2D.Dispose
+- uid: Bliss.CSharp.Fonts.FontStashRenderer2D.Draw(System.Object,System.Numerics.Vector2,System.Nullable{System.Drawing.Rectangle},FontStashSharp.FSColor,System.Single,System.Numerics.Vector2,System.Single)
+  name: Draw(object, Vector2, Rectangle?, FSColor, float, Vector2, float)
+  href: api/Bliss.CSharp.Fonts.FontStashRenderer2D.html#Bliss_CSharp_Fonts_FontStashRenderer2D_Draw_System_Object_System_Numerics_Vector2_System_Nullable_System_Drawing_Rectangle__FontStashSharp_FSColor_System_Single_System_Numerics_Vector2_System_Single_
+  commentId: M:Bliss.CSharp.Fonts.FontStashRenderer2D.Draw(System.Object,System.Numerics.Vector2,System.Nullable{System.Drawing.Rectangle},FontStashSharp.FSColor,System.Single,System.Numerics.Vector2,System.Single)
+  name.vb: Draw(Object, Vector2, Rectangle?, FSColor, Single, Vector2, Single)
+  fullName: Bliss.CSharp.Fonts.FontStashRenderer2D.Draw(object, System.Numerics.Vector2, System.Drawing.Rectangle?, FontStashSharp.FSColor, float, System.Numerics.Vector2, float)
+  fullName.vb: Bliss.CSharp.Fonts.FontStashRenderer2D.Draw(Object, System.Numerics.Vector2, System.Drawing.Rectangle?, FontStashSharp.FSColor, Single, System.Numerics.Vector2, Single)
+  nameWithType: FontStashRenderer2D.Draw(object, Vector2, Rectangle?, FSColor, float, Vector2, float)
+  nameWithType.vb: FontStashRenderer2D.Draw(Object, Vector2, Rectangle?, FSColor, Single, Vector2, Single)
+- uid: Bliss.CSharp.Fonts.FontStashRenderer2D.Draw*
+  name: Draw
+  href: api/Bliss.CSharp.Fonts.FontStashRenderer2D.html#Bliss_CSharp_Fonts_FontStashRenderer2D_Draw_
+  commentId: Overload:Bliss.CSharp.Fonts.FontStashRenderer2D.Draw
+  isSpec: "True"
+  fullName: Bliss.CSharp.Fonts.FontStashRenderer2D.Draw
+  nameWithType: FontStashRenderer2D.Draw
+- uid: Bliss.CSharp.Fonts.FontStashRenderer2D.GraphicsDevice
+  name: GraphicsDevice
+  href: api/Bliss.CSharp.Fonts.FontStashRenderer2D.html#Bliss_CSharp_Fonts_FontStashRenderer2D_GraphicsDevice
+  commentId: P:Bliss.CSharp.Fonts.FontStashRenderer2D.GraphicsDevice
+  fullName: Bliss.CSharp.Fonts.FontStashRenderer2D.GraphicsDevice
+  nameWithType: FontStashRenderer2D.GraphicsDevice
+- uid: Bliss.CSharp.Fonts.FontStashRenderer2D.GraphicsDevice*
+  name: GraphicsDevice
+  href: api/Bliss.CSharp.Fonts.FontStashRenderer2D.html#Bliss_CSharp_Fonts_FontStashRenderer2D_GraphicsDevice_
+  commentId: Overload:Bliss.CSharp.Fonts.FontStashRenderer2D.GraphicsDevice
+  isSpec: "True"
+  fullName: Bliss.CSharp.Fonts.FontStashRenderer2D.GraphicsDevice
+  nameWithType: FontStashRenderer2D.GraphicsDevice
+- uid: Bliss.CSharp.Fonts.FontStashRenderer2D.SpriteBatch
+  name: SpriteBatch
+  href: api/Bliss.CSharp.Fonts.FontStashRenderer2D.html#Bliss_CSharp_Fonts_FontStashRenderer2D_SpriteBatch
+  commentId: P:Bliss.CSharp.Fonts.FontStashRenderer2D.SpriteBatch
+  fullName: Bliss.CSharp.Fonts.FontStashRenderer2D.SpriteBatch
+  nameWithType: FontStashRenderer2D.SpriteBatch
+- uid: Bliss.CSharp.Fonts.FontStashRenderer2D.SpriteBatch*
+  name: SpriteBatch
+  href: api/Bliss.CSharp.Fonts.FontStashRenderer2D.html#Bliss_CSharp_Fonts_FontStashRenderer2D_SpriteBatch_
+  commentId: Overload:Bliss.CSharp.Fonts.FontStashRenderer2D.SpriteBatch
+  isSpec: "True"
+  fullName: Bliss.CSharp.Fonts.FontStashRenderer2D.SpriteBatch
+  nameWithType: FontStashRenderer2D.SpriteBatch
+- uid: Bliss.CSharp.Fonts.FontStashRenderer2D.TextureManager
+  name: TextureManager
+  href: api/Bliss.CSharp.Fonts.FontStashRenderer2D.html#Bliss_CSharp_Fonts_FontStashRenderer2D_TextureManager
+  commentId: P:Bliss.CSharp.Fonts.FontStashRenderer2D.TextureManager
+  fullName: Bliss.CSharp.Fonts.FontStashRenderer2D.TextureManager
+  nameWithType: FontStashRenderer2D.TextureManager
+- uid: Bliss.CSharp.Fonts.FontStashRenderer2D.TextureManager*
+  name: TextureManager
+  href: api/Bliss.CSharp.Fonts.FontStashRenderer2D.html#Bliss_CSharp_Fonts_FontStashRenderer2D_TextureManager_
+  commentId: Overload:Bliss.CSharp.Fonts.FontStashRenderer2D.TextureManager
+  isSpec: "True"
+  fullName: Bliss.CSharp.Fonts.FontStashRenderer2D.TextureManager
+  nameWithType: FontStashRenderer2D.TextureManager
+- uid: Bliss.CSharp.Fonts.FontStashTextureManager
+  name: FontStashTextureManager
+  href: api/Bliss.CSharp.Fonts.FontStashTextureManager.html
+  commentId: T:Bliss.CSharp.Fonts.FontStashTextureManager
+  fullName: Bliss.CSharp.Fonts.FontStashTextureManager
+  nameWithType: FontStashTextureManager
+- uid: Bliss.CSharp.Fonts.FontStashTextureManager.#ctor(Veldrid.GraphicsDevice)
+  name: FontStashTextureManager(GraphicsDevice)
+  href: api/Bliss.CSharp.Fonts.FontStashTextureManager.html#Bliss_CSharp_Fonts_FontStashTextureManager__ctor_Veldrid_GraphicsDevice_
+  commentId: M:Bliss.CSharp.Fonts.FontStashTextureManager.#ctor(Veldrid.GraphicsDevice)
+  name.vb: New(GraphicsDevice)
+  fullName: Bliss.CSharp.Fonts.FontStashTextureManager.FontStashTextureManager(Veldrid.GraphicsDevice)
+  fullName.vb: Bliss.CSharp.Fonts.FontStashTextureManager.New(Veldrid.GraphicsDevice)
+  nameWithType: FontStashTextureManager.FontStashTextureManager(GraphicsDevice)
+  nameWithType.vb: FontStashTextureManager.New(GraphicsDevice)
+- uid: Bliss.CSharp.Fonts.FontStashTextureManager.#ctor*
+  name: FontStashTextureManager
+  href: api/Bliss.CSharp.Fonts.FontStashTextureManager.html#Bliss_CSharp_Fonts_FontStashTextureManager__ctor_
+  commentId: Overload:Bliss.CSharp.Fonts.FontStashTextureManager.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Bliss.CSharp.Fonts.FontStashTextureManager.FontStashTextureManager
+  fullName.vb: Bliss.CSharp.Fonts.FontStashTextureManager.New
+  nameWithType: FontStashTextureManager.FontStashTextureManager
+  nameWithType.vb: FontStashTextureManager.New
+- uid: Bliss.CSharp.Fonts.FontStashTextureManager.CreateTexture(System.Int32,System.Int32)
+  name: CreateTexture(int, int)
+  href: api/Bliss.CSharp.Fonts.FontStashTextureManager.html#Bliss_CSharp_Fonts_FontStashTextureManager_CreateTexture_System_Int32_System_Int32_
+  commentId: M:Bliss.CSharp.Fonts.FontStashTextureManager.CreateTexture(System.Int32,System.Int32)
+  name.vb: CreateTexture(Integer, Integer)
+  fullName: Bliss.CSharp.Fonts.FontStashTextureManager.CreateTexture(int, int)
+  fullName.vb: Bliss.CSharp.Fonts.FontStashTextureManager.CreateTexture(Integer, Integer)
+  nameWithType: FontStashTextureManager.CreateTexture(int, int)
+  nameWithType.vb: FontStashTextureManager.CreateTexture(Integer, Integer)
+- uid: Bliss.CSharp.Fonts.FontStashTextureManager.CreateTexture*
+  name: CreateTexture
+  href: api/Bliss.CSharp.Fonts.FontStashTextureManager.html#Bliss_CSharp_Fonts_FontStashTextureManager_CreateTexture_
+  commentId: Overload:Bliss.CSharp.Fonts.FontStashTextureManager.CreateTexture
+  isSpec: "True"
+  fullName: Bliss.CSharp.Fonts.FontStashTextureManager.CreateTexture
+  nameWithType: FontStashTextureManager.CreateTexture
+- uid: Bliss.CSharp.Fonts.FontStashTextureManager.Dispose(System.Boolean)
+  name: Dispose(bool)
+  href: api/Bliss.CSharp.Fonts.FontStashTextureManager.html#Bliss_CSharp_Fonts_FontStashTextureManager_Dispose_System_Boolean_
+  commentId: M:Bliss.CSharp.Fonts.FontStashTextureManager.Dispose(System.Boolean)
+  name.vb: Dispose(Boolean)
+  fullName: Bliss.CSharp.Fonts.FontStashTextureManager.Dispose(bool)
+  fullName.vb: Bliss.CSharp.Fonts.FontStashTextureManager.Dispose(Boolean)
+  nameWithType: FontStashTextureManager.Dispose(bool)
+  nameWithType.vb: FontStashTextureManager.Dispose(Boolean)
+- uid: Bliss.CSharp.Fonts.FontStashTextureManager.Dispose*
+  name: Dispose
+  href: api/Bliss.CSharp.Fonts.FontStashTextureManager.html#Bliss_CSharp_Fonts_FontStashTextureManager_Dispose_
+  commentId: Overload:Bliss.CSharp.Fonts.FontStashTextureManager.Dispose
+  isSpec: "True"
+  fullName: Bliss.CSharp.Fonts.FontStashTextureManager.Dispose
+  nameWithType: FontStashTextureManager.Dispose
+- uid: Bliss.CSharp.Fonts.FontStashTextureManager.GetTextureSize(System.Object)
+  name: GetTextureSize(object)
+  href: api/Bliss.CSharp.Fonts.FontStashTextureManager.html#Bliss_CSharp_Fonts_FontStashTextureManager_GetTextureSize_System_Object_
+  commentId: M:Bliss.CSharp.Fonts.FontStashTextureManager.GetTextureSize(System.Object)
+  name.vb: GetTextureSize(Object)
+  fullName: Bliss.CSharp.Fonts.FontStashTextureManager.GetTextureSize(object)
+  fullName.vb: Bliss.CSharp.Fonts.FontStashTextureManager.GetTextureSize(Object)
+  nameWithType: FontStashTextureManager.GetTextureSize(object)
+  nameWithType.vb: FontStashTextureManager.GetTextureSize(Object)
+- uid: Bliss.CSharp.Fonts.FontStashTextureManager.GetTextureSize*
+  name: GetTextureSize
+  href: api/Bliss.CSharp.Fonts.FontStashTextureManager.html#Bliss_CSharp_Fonts_FontStashTextureManager_GetTextureSize_
+  commentId: Overload:Bliss.CSharp.Fonts.FontStashTextureManager.GetTextureSize
+  isSpec: "True"
+  fullName: Bliss.CSharp.Fonts.FontStashTextureManager.GetTextureSize
+  nameWithType: FontStashTextureManager.GetTextureSize
+- uid: Bliss.CSharp.Fonts.FontStashTextureManager.GraphicsDevice
+  name: GraphicsDevice
+  href: api/Bliss.CSharp.Fonts.FontStashTextureManager.html#Bliss_CSharp_Fonts_FontStashTextureManager_GraphicsDevice
+  commentId: P:Bliss.CSharp.Fonts.FontStashTextureManager.GraphicsDevice
+  fullName: Bliss.CSharp.Fonts.FontStashTextureManager.GraphicsDevice
+  nameWithType: FontStashTextureManager.GraphicsDevice
+- uid: Bliss.CSharp.Fonts.FontStashTextureManager.GraphicsDevice*
+  name: GraphicsDevice
+  href: api/Bliss.CSharp.Fonts.FontStashTextureManager.html#Bliss_CSharp_Fonts_FontStashTextureManager_GraphicsDevice_
+  commentId: Overload:Bliss.CSharp.Fonts.FontStashTextureManager.GraphicsDevice
+  isSpec: "True"
+  fullName: Bliss.CSharp.Fonts.FontStashTextureManager.GraphicsDevice
+  nameWithType: FontStashTextureManager.GraphicsDevice
+- uid: Bliss.CSharp.Fonts.FontStashTextureManager.SetTextureData(System.Object,System.Drawing.Rectangle,System.Byte[])
+  name: SetTextureData(object, Rectangle, byte[])
+  href: api/Bliss.CSharp.Fonts.FontStashTextureManager.html#Bliss_CSharp_Fonts_FontStashTextureManager_SetTextureData_System_Object_System_Drawing_Rectangle_System_Byte___
+  commentId: M:Bliss.CSharp.Fonts.FontStashTextureManager.SetTextureData(System.Object,System.Drawing.Rectangle,System.Byte[])
+  name.vb: SetTextureData(Object, Rectangle, Byte())
+  fullName: Bliss.CSharp.Fonts.FontStashTextureManager.SetTextureData(object, System.Drawing.Rectangle, byte[])
+  fullName.vb: Bliss.CSharp.Fonts.FontStashTextureManager.SetTextureData(Object, System.Drawing.Rectangle, Byte())
+  nameWithType: FontStashTextureManager.SetTextureData(object, Rectangle, byte[])
+  nameWithType.vb: FontStashTextureManager.SetTextureData(Object, Rectangle, Byte())
+- uid: Bliss.CSharp.Fonts.FontStashTextureManager.SetTextureData*
+  name: SetTextureData
+  href: api/Bliss.CSharp.Fonts.FontStashTextureManager.html#Bliss_CSharp_Fonts_FontStashTextureManager_SetTextureData_
+  commentId: Overload:Bliss.CSharp.Fonts.FontStashTextureManager.SetTextureData
+  isSpec: "True"
+  fullName: Bliss.CSharp.Fonts.FontStashTextureManager.SetTextureData
+  nameWithType: FontStashTextureManager.SetTextureData
 - uid: Bliss.CSharp.Geometry
   name: Bliss.CSharp.Geometry
   href: api/Bliss.CSharp.Geometry.html
@@ -4915,6 +5126,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.End
   nameWithType: SpriteBatch.End
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.FontStashRenderer
+  name: FontStashRenderer
+  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_FontStashRenderer
+  commentId: P:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.FontStashRenderer
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.FontStashRenderer
+  nameWithType: SpriteBatch.FontStashRenderer
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.FontStashRenderer*
+  name: FontStashRenderer
+  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_FontStashRenderer_
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.FontStashRenderer
+  isSpec: "True"
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.FontStashRenderer
+  nameWithType: SpriteBatch.FontStashRenderer
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.GetCurrentBlendState
   name: GetCurrentBlendState()
   href: api/Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_GetCurrentBlendState
@@ -5733,13 +5957,13 @@ references:
   fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawTorusWires
   nameWithType: ImmediateRenderer.DrawTorusWires
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawVertices(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Transformations.Transform,System.Collections.Generic.List{Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D},System.Collections.Generic.List{System.UInt32},Veldrid.PrimitiveTopology)
-  name: DrawVertices(CommandList, OutputDescription, Transform, List<ImmediateVertex3D>, List<uint>, PrimitiveTopology)
+  name: DrawVertices(CommandList, OutputDescription, Transform, List<ImmediateVertex3D>, List<uint>?, PrimitiveTopology)
   href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawVertices_Veldrid_CommandList_Veldrid_OutputDescription_Bliss_CSharp_Transformations_Transform_System_Collections_Generic_List_Bliss_CSharp_Graphics_VertexTypes_ImmediateVertex3D__System_Collections_Generic_List_System_UInt32__Veldrid_PrimitiveTopology_
   commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawVertices(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Transformations.Transform,System.Collections.Generic.List{Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D},System.Collections.Generic.List{System.UInt32},Veldrid.PrimitiveTopology)
   name.vb: DrawVertices(CommandList, OutputDescription, Transform, List(Of ImmediateVertex3D), List(Of UInteger), PrimitiveTopology)
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawVertices(Veldrid.CommandList, Veldrid.OutputDescription, Bliss.CSharp.Transformations.Transform, System.Collections.Generic.List<Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D>, System.Collections.Generic.List<uint>, Veldrid.PrimitiveTopology)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawVertices(Veldrid.CommandList, Veldrid.OutputDescription, Bliss.CSharp.Transformations.Transform, System.Collections.Generic.List<Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D>, System.Collections.Generic.List<uint>?, Veldrid.PrimitiveTopology)
   fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawVertices(Veldrid.CommandList, Veldrid.OutputDescription, Bliss.CSharp.Transformations.Transform, System.Collections.Generic.List(Of Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D), System.Collections.Generic.List(Of UInteger), Veldrid.PrimitiveTopology)
-  nameWithType: ImmediateRenderer.DrawVertices(CommandList, OutputDescription, Transform, List<ImmediateVertex3D>, List<uint>, PrimitiveTopology)
+  nameWithType: ImmediateRenderer.DrawVertices(CommandList, OutputDescription, Transform, List<ImmediateVertex3D>, List<uint>?, PrimitiveTopology)
   nameWithType.vb: ImmediateRenderer.DrawVertices(CommandList, OutputDescription, Transform, List(Of ImmediateVertex3D), List(Of UInteger), PrimitiveTopology)
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawVertices*
   name: DrawVertices

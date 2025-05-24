@@ -10,6 +10,7 @@ items:
   - Bliss.CSharp.Fonts.Font.Dispose(System.Boolean)
   - Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
   - Bliss.CSharp.Fonts.Font.FontData
+  - Bliss.CSharp.Fonts.Font.FontSystem
   - Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Int32)
   - Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Int32)
   - Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Int32)
@@ -81,6 +82,37 @@ items:
       type: System.Byte[]
     content.vb: Public Property FontData As Byte()
   overload: Bliss.CSharp.Fonts.Font.FontData*
+- uid: Bliss.CSharp.Fonts.Font.FontSystem
+  commentId: P:Bliss.CSharp.Fonts.Font.FontSystem
+  id: FontSystem
+  parent: Bliss.CSharp.Fonts.Font
+  langs:
+  - csharp
+  - vb
+  name: FontSystem
+  nameWithType: Font.FontSystem
+  fullName: Bliss.CSharp.Fonts.Font.FontSystem
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Fonts/Font.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: FontSystem
+    path: ../src/Bliss/CSharp/Fonts/Font.cs
+    startLine: 19
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Fonts
+  summary: The font system used to manage and render fonts for the <xref href="Bliss.CSharp.Fonts.Font" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public FontSystem FontSystem { get; }
+    parameters: []
+    return:
+      type: FontStashSharp.FontSystem
+    content.vb: Public Property FontSystem As FontSystem
+  overload: Bliss.CSharp.Fonts.Font.FontSystem*
 - uid: Bliss.CSharp.Fonts.Font.#ctor(System.String)
   commentId: M:Bliss.CSharp.Fonts.Font.#ctor(System.String)
   id: '#ctor(System.String)'
@@ -243,7 +275,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MeasureText
     path: ../src/Bliss/CSharp/Fonts/Font.cs
-    startLine: 85
+    startLine: 86
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Fonts
@@ -284,7 +316,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MeasureTextTrimmed
     path: ../src/Bliss/CSharp/Fonts/Font.cs
-    startLine: 98
+    startLine: 99
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Fonts
@@ -325,7 +357,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MeasureTextRect
     path: ../src/Bliss/CSharp/Fonts/Font.cs
-    startLine: 111
+    startLine: 112
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Fonts
@@ -365,7 +397,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Fonts/Font.cs
-    startLine: 129
+    startLine: 130
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Fonts
@@ -769,6 +801,25 @@ references:
   name: Font
   nameWithType: Font
   fullName: Bliss.CSharp.Fonts.Font
+- uid: Bliss.CSharp.Fonts.Font.FontSystem*
+  commentId: Overload:Bliss.CSharp.Fonts.Font.FontSystem
+  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_FontSystem
+  name: FontSystem
+  nameWithType: Font.FontSystem
+  fullName: Bliss.CSharp.Fonts.Font.FontSystem
+- uid: FontStashSharp.FontSystem
+  commentId: T:FontStashSharp.FontSystem
+  parent: FontStashSharp
+  isExternal: true
+  name: FontSystem
+  nameWithType: FontSystem
+  fullName: FontStashSharp.FontSystem
+- uid: FontStashSharp
+  commentId: N:FontStashSharp
+  isExternal: true
+  name: FontStashSharp
+  nameWithType: FontStashSharp
+  fullName: FontStashSharp
 - uid: Bliss.CSharp.Fonts.Font.#ctor*
   commentId: Overload:Bliss.CSharp.Fonts.Font.#ctor
   href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font__ctor_System_String_
@@ -993,12 +1044,6 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: FontStashSharp
-  commentId: N:FontStashSharp
-  isExternal: true
-  name: FontStashSharp
-  nameWithType: FontStashSharp
-  fullName: FontStashSharp
 - uid: Bliss.CSharp.Fonts.Font.MeasureText*
   commentId: Overload:Bliss.CSharp.Fonts.Font.MeasureText
   href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureText_System_String_System_Int32_

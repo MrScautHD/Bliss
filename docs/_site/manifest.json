@@ -192,6 +192,26 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Fonts.FontStashRenderer2D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Fonts.FontStashRenderer2D.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Fonts.FontStashTextureManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Fonts.FontStashTextureManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Bliss.CSharp.Fonts.yml",
       "output": {
         ".html": {

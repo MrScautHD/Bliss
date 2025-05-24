@@ -68,6 +68,12 @@ items:
   - uid: Bliss.CSharp.Fonts.Font
     name: Font
     type: Class
+  - uid: Bliss.CSharp.Fonts.FontStashRenderer2D
+    name: FontStashRenderer2D
+    type: Class
+  - uid: Bliss.CSharp.Fonts.FontStashTextureManager
+    name: FontStashTextureManager
+    type: Class
 - uid: Bliss.CSharp.Geometry
   name: Bliss.CSharp.Geometry
   type: Namespace

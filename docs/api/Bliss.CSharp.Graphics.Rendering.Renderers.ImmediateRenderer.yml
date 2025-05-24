@@ -57,7 +57,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ImmediateRenderer
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 16
+    startLine: 17
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -98,7 +98,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GraphicsDevice
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 21
+    startLine: 22
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -129,11 +129,11 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Capacity
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 26
+    startLine: 27
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
-  summary: Gets the maximum number of vertices that can be batched.
+  summary: Gets the maximum number of vertices that can be drawn.
   example: []
   syntax:
     content: public uint Capacity { get; }
@@ -160,7 +160,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 118
+    startLine: 119
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -198,7 +198,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentEffect
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 148
+    startLine: 149
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -229,7 +229,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetEffect
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 157
+    startLine: 158
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -267,7 +267,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetBlendState
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 170
+    startLine: 171
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -298,7 +298,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetBlendState
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 178
+    startLine: 179
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -330,7 +330,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentDepthStencilState
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 189
+    startLine: 190
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -361,7 +361,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetDepthStencilState
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 197
+    startLine: 198
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -393,7 +393,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentRasterizerState
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 208
+    startLine: 209
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -424,7 +424,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetRasterizerState
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 216
+    startLine: 217
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -456,7 +456,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentTexture
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 227
+    startLine: 228
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -487,7 +487,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentSampler
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 235
+    startLine: 236
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -518,7 +518,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetCurrentSourceRec
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 243
+    startLine: 244
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -549,7 +549,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetTexture
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 253
+    startLine: 254
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -590,7 +590,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ResetSettings
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 262
+    startLine: 263
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -618,7 +618,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawCube
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 278
+    startLine: 279
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -662,7 +662,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawCubeWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 374
+    startLine: 375
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -706,7 +706,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawSphere
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 412
+    startLine: 413
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -759,7 +759,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawSphereWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 483
+    startLine: 484
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -812,7 +812,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawHemisphere
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 542
+    startLine: 543
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -865,7 +865,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawHemisphereWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 657
+    startLine: 658
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -918,7 +918,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawCylinder
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 741
+    startLine: 742
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -971,7 +971,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawCylinderWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 847
+    startLine: 848
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1024,7 +1024,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawCapsule
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 938
+    startLine: 939
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1077,7 +1077,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawCapsuleWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1100
+    startLine: 1101
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1130,7 +1130,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawCone
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1246
+    startLine: 1247
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1183,7 +1183,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawConeWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1325
+    startLine: 1326
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1236,7 +1236,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawTorus
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1397
+    startLine: 1398
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1292,7 +1292,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawTorusWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1474
+    startLine: 1475
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1348,7 +1348,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawKnot
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1535
+    startLine: 1536
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1404,7 +1404,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawKnotWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1626
+    startLine: 1627
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1460,7 +1460,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawGird
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1698
+    startLine: 1699
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1510,7 +1510,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawBoundingBox
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1754
+    startLine: 1755
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1554,7 +1554,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawLine
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1790
+    startLine: 1791
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1598,7 +1598,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawBillboard
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1820
+    startLine: 1821
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1631,9 +1631,9 @@ items:
   langs:
   - csharp
   - vb
-  name: DrawVertices(CommandList, OutputDescription, Transform, List<ImmediateVertex3D>, List<uint>, PrimitiveTopology)
-  nameWithType: ImmediateRenderer.DrawVertices(CommandList, OutputDescription, Transform, List<ImmediateVertex3D>, List<uint>, PrimitiveTopology)
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawVertices(Veldrid.CommandList, Veldrid.OutputDescription, Bliss.CSharp.Transformations.Transform, System.Collections.Generic.List<Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D>, System.Collections.Generic.List<uint>, Veldrid.PrimitiveTopology)
+  name: DrawVertices(CommandList, OutputDescription, Transform, List<ImmediateVertex3D>, List<uint>?, PrimitiveTopology)
+  nameWithType: ImmediateRenderer.DrawVertices(CommandList, OutputDescription, Transform, List<ImmediateVertex3D>, List<uint>?, PrimitiveTopology)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawVertices(Veldrid.CommandList, Veldrid.OutputDescription, Bliss.CSharp.Transformations.Transform, System.Collections.Generic.List<Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D>, System.Collections.Generic.List<uint>?, Veldrid.PrimitiveTopology)
   type: Method
   source:
     remote:
@@ -1642,14 +1642,14 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawVertices
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1902
+    startLine: 1903
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
   summary: Draws a set of vertices using the specified command list, output description, transformation, vertex data, indices, and primitive topology.
   example: []
   syntax:
-    content: public void DrawVertices(CommandList commandList, OutputDescription output, Transform transform, List<ImmediateVertex3D> vertices, List<uint> indices, PrimitiveTopology topology)
+    content: public void DrawVertices(CommandList commandList, OutputDescription output, Transform transform, List<ImmediateVertex3D> vertices, List<uint>? indices = null, PrimitiveTopology topology = PrimitiveTopology.TriangleList)
     parameters:
     - id: commandList
       type: Veldrid.CommandList
@@ -1665,11 +1665,11 @@ items:
       description: The collection of vertices to render.
     - id: indices
       type: System.Collections.Generic.List{System.UInt32}
-      description: The collection of indices defining the order in which vertices are connected.
+      description: The collection of indices defining the order in which vertices are connected. Defaults to null.
     - id: topology
       type: Veldrid.PrimitiveTopology
-      description: The primitive topology that specifies how the vertex data should be interpreted (e.g., triangle list, line strip).
-    content.vb: Public Sub DrawVertices(commandList As CommandList, output As OutputDescription, transform As Transform, vertices As List(Of ImmediateVertex3D), indices As List(Of UInteger), topology As PrimitiveTopology)
+      description: The primitive topology that specifies how the vertex data should be interpreted (e.g., triangle list, line strip). Defaults to TriangleList.
+    content.vb: Public Sub DrawVertices(commandList As CommandList, output As OutputDescription, transform As Transform, vertices As List(Of ImmediateVertex3D), indices As List(Of UInteger) = Nothing, topology As PrimitiveTopology = PrimitiveTopology.TriangleList)
   overload: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawVertices*
   nameWithType.vb: ImmediateRenderer.DrawVertices(CommandList, OutputDescription, Transform, List(Of ImmediateVertex3D), List(Of UInteger), PrimitiveTopology)
   fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawVertices(Veldrid.CommandList, Veldrid.OutputDescription, Bliss.CSharp.Transformations.Transform, System.Collections.Generic.List(Of Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D), System.Collections.Generic.List(Of UInteger), Veldrid.PrimitiveTopology)
@@ -1692,7 +1692,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 2006
+    startLine: 2010
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
