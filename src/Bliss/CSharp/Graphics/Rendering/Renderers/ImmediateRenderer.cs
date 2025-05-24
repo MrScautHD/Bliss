@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Effects;
+using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
@@ -22,10 +23,10 @@ public class ImmediateRenderer : Disposable {
     public GraphicsDevice GraphicsDevice { get; private set; }
     
     /// <summary>
-    /// Gets the maximum number of vertices that can be batched.
+    /// Gets the maximum number of vertices that can be drawn.
     /// </summary>
     public uint Capacity { get; private set; }
-
+    
     /// <summary>
     /// The array of vertices used for batching immediate mode geometry.
     /// </summary>
@@ -361,7 +362,7 @@ public class ImmediateRenderer : Disposable {
             this._tempIndices.Add((uint) (vertexOffset + 0));
         }
 
-        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices);
     }
 
     /// <summary>
@@ -468,7 +469,7 @@ public class ImmediateRenderer : Disposable {
             }
         }
         
-        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices);
     }
 
     /// <summary>
@@ -642,7 +643,7 @@ public class ImmediateRenderer : Disposable {
             this._tempIndices.Add((uint) (baseCenterIndex + slice + 1));
         }
 
-        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices);
     }
 
     /// <summary>
@@ -832,7 +833,7 @@ public class ImmediateRenderer : Disposable {
             this._tempIndices.Add((uint) (baseIndex + 2));
         }
     
-        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices);
     }
 
     /// <summary>
@@ -1085,7 +1086,7 @@ public class ImmediateRenderer : Disposable {
             }
         }
     
-        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices);
     }
 
     /// <summary>
@@ -1310,7 +1311,7 @@ public class ImmediateRenderer : Disposable {
             this._tempIndices.Add((uint) baseIndex);
         }
         
-        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices);
     }
 
     /// <summary>
@@ -1458,7 +1459,7 @@ public class ImmediateRenderer : Disposable {
             }
         }
         
-        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices);
     }
 
     /// <summary>
@@ -1610,7 +1611,7 @@ public class ImmediateRenderer : Disposable {
             }
         }
         
-        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices);
     }
 
     /// <summary>
@@ -1888,7 +1889,7 @@ public class ImmediateRenderer : Disposable {
         this._tempIndices.Add(3);
         this._tempIndices.Add(0);
     
-        this.DrawVertices(commandList, output, billboardTransform, this._tempVertices, this._tempIndices, PrimitiveTopology.TriangleList);
+        this.DrawVertices(commandList, output, billboardTransform, this._tempVertices, this._tempIndices);
     }
 
     /// <summary>
@@ -1898,23 +1899,24 @@ public class ImmediateRenderer : Disposable {
     /// <param name="output">The output description that defines how the rendered content is processed and displayed.</param>
     /// <param name="transform">The transformation matrix to apply to the vertex data.</param>
     /// <param name="vertices">The collection of vertices to render.</param>
-    /// <param name="indices">The collection of indices defining the order in which vertices are connected.</param>
-    /// <param name="topology">The primitive topology that specifies how the vertex data should be interpreted (e.g., triangle list, line strip).</param>
-    public void DrawVertices(CommandList commandList, OutputDescription output, Transform transform, List<ImmediateVertex3D> vertices, List<uint> indices, PrimitiveTopology topology) {
+    /// <param name="indices">The collection of indices defining the order in which vertices are connected. Defaults to null.</param>
+    /// <param name="topology">The primitive topology that specifies how the vertex data should be interpreted (e.g., triangle list, line strip). Defaults to TriangleList.</param>
+    public void DrawVertices(CommandList commandList, OutputDescription output, Transform transform, List<ImmediateVertex3D> vertices, List<uint>? indices = null, PrimitiveTopology topology = PrimitiveTopology.TriangleList) {
         Cam3D? cam3D = Cam3D.ActiveCamera;
-
+        
         if (cam3D == null) {
             // Clear temp data.
             this._tempVertices.Clear();
             this._tempIndices.Clear();
             return;
         }
-
+        
         if (vertices.Count > this.Capacity) {
-            Logger.Fatal(new InvalidOperationException($"The number of provided vertices exceeds the capacity! [{vertices.Count} > {this.Capacity}]"));
+            Logger.Fatal(new InvalidOperationException(
+                $"The number of provided vertices exceeds the capacity! [{vertices.Count} > {this.Capacity}]"));
         }
-
-        if (indices.Count > this.Capacity * 3) {
+        
+        if (indices != null && indices.Count > this.Capacity * 3) {
             Logger.Fatal(new InvalidOperationException($"The number of provided indices exceeds the capacity! [{indices.Count} > {this.Capacity * 3}]"));
         }
         
@@ -1924,13 +1926,15 @@ public class ImmediateRenderer : Disposable {
         }
         
         // Add indices.
-        for (int i = 0; i < indices.Count; i++) {
-            this._indices[i] = indices[i];
+        if (indices != null) {
+            for (int i = 0; i < indices.Count; i++) {
+                this._indices[i] = indices[i];
+            }
         }
-
+        
         // Set vertices and indices count.
         this._vertexCount = vertices.Count;
-        this._indexCount = indices.Count;
+        this._indexCount = indices?.Count ?? 0;
         
         // Update matrix buffer.
         this._matrixBuffer.SetValue(0, cam3D.GetProjection());

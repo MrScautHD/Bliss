@@ -15,9 +15,9 @@ public class Font : Disposable {
     public byte[] FontData { get; private set; }
 
     /// <summary>
-    /// Represents the font system used to manage and render fonts for the <see cref="Font"/> class.
+    /// The font system used to manage and render fonts for the <see cref="Font"/> class.
     /// </summary>
-    private FontSystem _fontSystem;
+    public FontSystem FontSystem { get; private set; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Font"/> class, loading font data from the specified file path.
@@ -31,7 +31,7 @@ public class Font : Disposable {
     /// <param name="data">A byte array containing the font data.</param>
     public Font(byte[] data) {
         this.FontData = data;
-        this._fontSystem = this.CreateFontSystem();
+        this.FontSystem = this.CreateFontSystem();
     }
     
     /// <summary>
@@ -73,10 +73,11 @@ public class Font : Disposable {
     public void Draw(SpriteBatch batch, string text, Vector2 position, int size, float characterSpacing = 0.0F, float lineSpacing = 0.0F, Vector2? scale = null, float depth = 0.5F, Vector2? origin = null, float rotation = 0.0F, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0) {
         Color finalColor = color ?? Color.White;
         Vector2 finalOrigin = origin ?? new Vector2(0.0F, 0.0F);
-
-        this._fontSystem.GetFont(size).DrawText(batch.FontStashAdapter, text, position, new FSColor(finalColor.R, finalColor.G, finalColor.B, finalColor.A), float.DegreesToRadians(rotation), finalOrigin, scale, depth, characterSpacing, lineSpacing, style, effect, effectAmount);
+        
+        // Draw font.
+        this.FontSystem.GetFont(size).DrawText(batch.FontStashRenderer, text, position, new FSColor(finalColor.R, finalColor.G, finalColor.B, finalColor.A), float.DegreesToRadians(rotation), finalOrigin, scale, depth, characterSpacing, lineSpacing, style, effect, effectAmount);
     }
-
+    
     /// <summary>
     /// Measures the dimensions of the specified text using the given font size.
     /// </summary>
@@ -84,7 +85,7 @@ public class Font : Disposable {
     /// <param name="size">The font size to use for measurement.</param>
     /// <returns>A Vector2 representing the width and height of the text.</returns>
     public Vector2 MeasureText(string text, int size) {
-        DynamicSpriteFont font = this._fontSystem.GetFont(size);
+        DynamicSpriteFont font = this.FontSystem.GetFont(size);
 
         Bounds bounds = font.TextBounds(text, Vector2.Zero);
         return new Vector2(bounds.X2, bounds.Y2);
@@ -97,7 +98,7 @@ public class Font : Disposable {
     /// <param name="size">The size of the font.</param>
     /// <returns>A <see cref="Vector2"/> representing the width and height of the trimmed text.</returns>
     public Vector2 MeasureTextTrimmed(string text, int size) {
-        DynamicSpriteFont font = this._fontSystem.GetFont(size);
+        DynamicSpriteFont font = this.FontSystem.GetFont(size);
 
         Bounds bounds = font.TextBounds(text, Vector2.Zero);
         return new Vector2(bounds.X2 - bounds.X, bounds.Y2 - bounds.Y);
@@ -110,16 +111,16 @@ public class Font : Disposable {
     /// <param name="size">The size of the font.</param>
     /// <return>The bounds of the text as a Rectangle.</return>
     public RectangleF MeasureTextRect(string text, int size) {
-        DynamicSpriteFont font = this._fontSystem.GetFont(size);
+        DynamicSpriteFont font = this.FontSystem.GetFont(size);
 
         Bounds bounds = font.TextBounds(text, Vector2.Zero);
         return new RectangleF(bounds.X, bounds.Y, bounds.X2, bounds.Y2);
     }
 
     /// <summary>
-    /// Creates and initializes a new instance of the <see cref="FontSystem"/> class using the current font data.
+    /// Creates and initializes a new instance of the <see cref="FontStashSharp.FontSystem"/> class using the current font data.
     /// </summary>
-    /// <returns>A newly created <see cref="FontSystem"/> instance.</returns>
+    /// <returns>A newly created <see cref="FontStashSharp.FontSystem"/> instance.</returns>
     private FontSystem CreateFontSystem() {
         FontSystem system = new FontSystem(new FontSystemSettings());
         system.AddFont(this.FontData);
@@ -129,7 +130,7 @@ public class Font : Disposable {
     
     protected override void Dispose(bool disposing) {
         if (disposing) {
-            this._fontSystem.Dispose();
+            this.FontSystem.Dispose();
         }
     }
 }

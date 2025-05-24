@@ -53,18 +53,18 @@ public class SpriteBatch : Disposable {
     /// Specifies the maximum number of sprites that the SpriteBatch can process in a single draw call.
     /// </summary>
     public uint Capacity { get; private set; }
+    
+    /// <summary>
+    /// Provides access to a font rendering system within the <see cref="SpriteBatch"/>.
+    /// Utilizes <see cref="FontStashRenderer2D"/> for efficient rendering of text with support for various styles and effects.
+    /// </summary>
+    public FontStashRenderer2D FontStashRenderer { get; private set; }
 
     /// <summary>
     /// Gets the number of draw calls made during the current batch rendering session.
     /// This count is reset to zero each time <see cref="Begin"/> is called and increments with each call to <see cref="Flush"/>.
     /// </summary>
     public int DrawCallCount { get; private set; }
-
-    /// <summary>
-    /// Adapter class for integrating the FontStash font rendering library with the SpriteBatch rendering system.
-    /// It implements <see cref="ITexture2DManager"/> and <see cref="IFontStashRenderer"/> interfaces to manage textures and render fonts respectively.
-    /// </summary>
-    internal readonly FontStashAdapter FontStashAdapter;
 
     /// <summary>
     /// An array of <see cref="SpriteVertex2D"/> structures representing the vertices used for rendering.
@@ -214,7 +214,7 @@ public class SpriteBatch : Disposable {
         this.GraphicsDevice = graphicsDevice;
         this.Window = window;
         this.Capacity = capacity;
-        this.FontStashAdapter = new FontStashAdapter(graphicsDevice, this);
+        this.FontStashRenderer = new FontStashRenderer2D(graphicsDevice, this);
         
         // Create vertex buffer.
         this._vertices = new SpriteVertex2D[capacity * VerticesPerQuad];
@@ -711,6 +711,7 @@ public class SpriteBatch : Disposable {
     
     protected override void Dispose(bool disposing) {
         if (disposing) {
+            this.FontStashRenderer.Dispose();
             this._vertexBuffer.Dispose();
             this._indexBuffer.Dispose();
             this._projViewBuffer.Dispose();
