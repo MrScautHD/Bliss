@@ -70,7 +70,7 @@ public class Font : Disposable {
     /// <param name="style">The style of the text. Default is none.</param>
     /// <param name="effect">The effect to apply to the text. Default is none.</param>
     /// <param name="effectAmount">The intensity of the applied effect. Default is 0.</param>
-    public void Draw(SpriteBatch batch, string text, Vector2 position, int size, float characterSpacing = 0.0F, float lineSpacing = 0.0F, Vector2? scale = null, float depth = 0.5F, Vector2? origin = null, float rotation = 0.0F, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0) {
+    public void Draw(SpriteBatch batch, string text, Vector2 position, float size, float characterSpacing = 0.0F, float lineSpacing = 0.0F, Vector2? scale = null, float depth = 0.5F, Vector2? origin = null, float rotation = 0.0F, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0) {
         Color finalColor = color ?? Color.White;
         Vector2 finalOrigin = origin ?? new Vector2(0.0F, 0.0F);
         

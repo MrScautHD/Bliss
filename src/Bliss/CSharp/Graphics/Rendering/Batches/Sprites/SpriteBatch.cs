@@ -539,7 +539,7 @@ public class SpriteBatch : Disposable {
     /// <param name="style">Optional text style. Default is TextStyle.None.</param>
     /// <param name="effect">Optional effect applied to the text. Default is FontSystemEffect.None.</param>
     /// <param name="effectAmount">Optional amount for the effect applied. Default is 0.</param>
-    public void DrawText(Font font, string text, Vector2 position, int size, float characterSpacing = 0.0F, float lineSpacing = 0.0F, Vector2? scale = null, float layerDepth = 0.5F, Vector2? origin = null, float rotation = 0.0F, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0) {
+    public void DrawText(Font font, string text, Vector2 position, float size, float characterSpacing = 0.0F, float lineSpacing = 0.0F, Vector2? scale = null, float layerDepth = 0.5F, Vector2? origin = null, float rotation = 0.0F, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0) {
         font.Draw(this, text, position, size, characterSpacing, lineSpacing, scale, layerDepth, origin, rotation, color, style, effect, effectAmount);
     }
 
