@@ -20,18 +20,21 @@ public class Font : Disposable {
     public FontSystem FontSystem { get; private set; }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Font"/> class, loading font data from the specified file path.
+    /// Creates a new <see cref="Font"/> instance by loading font data from the specified file path.
     /// </summary>
-    /// <param name="path">The file path to the font data.</param>
-    public Font(string path) : this(LoadFontData(path)) { }
+    /// <param name="path">The file path to the font file to load.</param>
+    /// <param name="settings">Settings used to configure the internal font system.</param>
+    public Font(string path, FontSystemSettings? settings = null) : this(LoadFontData(path), settings) { }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Font"/> class with the specified font data.
+    /// Creates a new <see cref="Font"/> instance using the provided font data in memory.
     /// </summary>
-    /// <param name="data">A byte array containing the font data.</param>
-    public Font(byte[] data) {
+    /// <param name="data">A byte array containing the raw font data.</param>
+    /// <param name="settings">Settings used to configure the internal font system.</param>
+    public Font(byte[] data, FontSystemSettings? settings = null) {
         this.FontData = data;
-        this.FontSystem = this.CreateFontSystem();
+        this.FontSystem = new FontSystem(settings ?? new FontSystemSettings());
+        this.FontSystem.AddFont(this.FontData);
     }
     
     /// <summary>
