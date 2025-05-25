@@ -562,14 +562,15 @@ public class PrimitiveBatch : Disposable {
     }
 
     /// <summary>
-    /// Draws a filled sector of a circle on the screen at the specified position with the given parameters.
+    /// Draws a filled sector of a circle at a specified position with defined parameters.
     /// </summary>
     /// <param name="position">The center position of the circle sector.</param>
     /// <param name="radius">The radius of the circle sector.</param>
     /// <param name="startAngle">The starting angle of the sector in degrees.</param>
     /// <param name="endAngle">The ending angle of the sector in degrees.</param>
-    /// <param name="segments">Number of segments to use for drawing the sector.</param>
-    /// <param name="color">Optional color to use for the sector. Defaults to white if null.</param>
+    /// <param name="segments">The number of segments to use for drawing the sector.</param>
+    /// <param name="layerDepth">The depth layer for rendering the sector. Defaults to 0.5 if not provided.</param>
+    /// <param name="color">The color to use for the sector. Defaults to white if not provided.</param>
     public void DrawFilledCircleSector(Vector2 position, float radius, float startAngle, float endAngle, int segments, float layerDepth = 0.5F, Color? color = null) {
         float finalStartAngle = float.DegreesToRadians(startAngle);
         float finalEndAngle = float.DegreesToRadians(endAngle);
@@ -577,7 +578,7 @@ public class PrimitiveBatch : Disposable {
 
         // Calculate the angular range and the number of segments
         float angularRange = finalEndAngle - finalStartAngle;
-        int segmentCount = (int) (Math.Max(4, segments) * (angularRange / (2 * MathF.PI)));
+        int segmentCount = (int)(Math.Max(4, segments) * (angularRange / (2 * MathF.PI)));
         int finalSegments = Math.Max(4, segmentCount);
 
         float angleIncrement = angularRange / finalSegments;

@@ -84,9 +84,9 @@ public class Font : Disposable {
     /// <param name="text">The text to measure.</param>
     /// <param name="size">The font size to use for measurement.</param>
     /// <returns>A Vector2 representing the width and height of the text.</returns>
-    public Vector2 MeasureText(string text, int size) {
+    public Vector2 MeasureText(string text, float size) {
         DynamicSpriteFont font = this.FontSystem.GetFont(size);
-
+        
         Bounds bounds = font.TextBounds(text, Vector2.Zero);
         return new Vector2(bounds.X2, bounds.Y2);
     }
@@ -97,9 +97,9 @@ public class Font : Disposable {
     /// <param name="text">The text to measure.</param>
     /// <param name="size">The size of the font.</param>
     /// <returns>A <see cref="Vector2"/> representing the width and height of the trimmed text.</returns>
-    public Vector2 MeasureTextTrimmed(string text, int size) {
+    public Vector2 MeasureTextTrimmed(string text, float size) {
         DynamicSpriteFont font = this.FontSystem.GetFont(size);
-
+        
         Bounds bounds = font.TextBounds(text, Vector2.Zero);
         return new Vector2(bounds.X2 - bounds.X, bounds.Y2 - bounds.Y);
     }
@@ -110,9 +110,9 @@ public class Font : Disposable {
     /// <param name="text">The text to measure.</param>
     /// <param name="size">The size of the font.</param>
     /// <return>The bounds of the text as a Rectangle.</return>
-    public RectangleF MeasureTextRect(string text, int size) {
+    public RectangleF MeasureTextRect(string text, float size) {
         DynamicSpriteFont font = this.FontSystem.GetFont(size);
-
+        
         Bounds bounds = font.TextBounds(text, Vector2.Zero);
         return new RectangleF(bounds.X, bounds.Y, bounds.X2, bounds.Y2);
     }
