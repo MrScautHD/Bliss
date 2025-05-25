@@ -1778,15 +1778,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Fonts.Font.FontSystem
   nameWithType: Font.FontSystem
-- uid: Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Int32)
-  name: MeasureText(string, int)
-  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureText_System_String_System_Int32_
-  commentId: M:Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Int32)
-  name.vb: MeasureText(String, Integer)
-  fullName: Bliss.CSharp.Fonts.Font.MeasureText(string, int)
-  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureText(String, Integer)
-  nameWithType: Font.MeasureText(string, int)
-  nameWithType.vb: Font.MeasureText(String, Integer)
+- uid: Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Single)
+  name: MeasureText(string, float)
+  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureText_System_String_System_Single_
+  commentId: M:Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Single)
+  name.vb: MeasureText(String, Single)
+  fullName: Bliss.CSharp.Fonts.Font.MeasureText(string, float)
+  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureText(String, Single)
+  nameWithType: Font.MeasureText(string, float)
+  nameWithType.vb: Font.MeasureText(String, Single)
 - uid: Bliss.CSharp.Fonts.Font.MeasureText*
   name: MeasureText
   href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureText_
@@ -1794,15 +1794,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Fonts.Font.MeasureText
   nameWithType: Font.MeasureText
-- uid: Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Int32)
-  name: MeasureTextRect(string, int)
-  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextRect_System_String_System_Int32_
-  commentId: M:Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Int32)
-  name.vb: MeasureTextRect(String, Integer)
-  fullName: Bliss.CSharp.Fonts.Font.MeasureTextRect(string, int)
-  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureTextRect(String, Integer)
-  nameWithType: Font.MeasureTextRect(string, int)
-  nameWithType.vb: Font.MeasureTextRect(String, Integer)
+- uid: Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Single)
+  name: MeasureTextRect(string, float)
+  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextRect_System_String_System_Single_
+  commentId: M:Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Single)
+  name.vb: MeasureTextRect(String, Single)
+  fullName: Bliss.CSharp.Fonts.Font.MeasureTextRect(string, float)
+  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureTextRect(String, Single)
+  nameWithType: Font.MeasureTextRect(string, float)
+  nameWithType.vb: Font.MeasureTextRect(String, Single)
 - uid: Bliss.CSharp.Fonts.Font.MeasureTextRect*
   name: MeasureTextRect
   href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextRect_
@@ -1810,15 +1810,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Fonts.Font.MeasureTextRect
   nameWithType: Font.MeasureTextRect
-- uid: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Int32)
-  name: MeasureTextTrimmed(string, int)
-  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextTrimmed_System_String_System_Int32_
-  commentId: M:Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Int32)
-  name.vb: MeasureTextTrimmed(String, Integer)
-  fullName: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(string, int)
-  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(String, Integer)
-  nameWithType: Font.MeasureTextTrimmed(string, int)
-  nameWithType.vb: Font.MeasureTextTrimmed(String, Integer)
+- uid: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Single)
+  name: MeasureTextTrimmed(string, float)
+  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextTrimmed_System_String_System_Single_
+  commentId: M:Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Single)
+  name.vb: MeasureTextTrimmed(String, Single)
+  fullName: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(string, float)
+  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(String, Single)
+  nameWithType: Font.MeasureTextTrimmed(string, float)
+  nameWithType.vb: Font.MeasureTextTrimmed(String, Single)
 - uid: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed*
   name: MeasureTextTrimmed
   href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextTrimmed_

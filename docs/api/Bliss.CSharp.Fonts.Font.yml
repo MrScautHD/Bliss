@@ -11,9 +11,9 @@ items:
   - Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
   - Bliss.CSharp.Fonts.Font.FontData
   - Bliss.CSharp.Fonts.Font.FontSystem
-  - Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Int32)
-  - Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Int32)
-  - Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Int32)
+  - Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Single)
+  - Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Single)
+  - Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Single)
   langs:
   - csharp
   - vb
@@ -257,16 +257,16 @@ items:
   nameWithType.vb: Font.Draw(SpriteBatch, String, Vector2, Integer, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
   fullName.vb: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch, String, System.Numerics.Vector2, Integer, Single, Single, System.Numerics.Vector2?, Single, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, Integer)
   name.vb: Draw(SpriteBatch, String, Vector2, Integer, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
-- uid: Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Int32)
-  commentId: M:Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Int32)
-  id: MeasureText(System.String,System.Int32)
+- uid: Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Single)
+  commentId: M:Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Single)
+  id: MeasureText(System.String,System.Single)
   parent: Bliss.CSharp.Fonts.Font
   langs:
   - csharp
   - vb
-  name: MeasureText(string, int)
-  nameWithType: Font.MeasureText(string, int)
-  fullName: Bliss.CSharp.Fonts.Font.MeasureText(string, int)
+  name: MeasureText(string, float)
+  nameWithType: Font.MeasureText(string, float)
+  fullName: Bliss.CSharp.Fonts.Font.MeasureText(string, float)
   type: Method
   source:
     remote:
@@ -282,32 +282,32 @@ items:
   summary: Measures the dimensions of the specified text using the given font size.
   example: []
   syntax:
-    content: public Vector2 MeasureText(string text, int size)
+    content: public Vector2 MeasureText(string text, float size)
     parameters:
     - id: text
       type: System.String
       description: The text to measure.
     - id: size
-      type: System.Int32
+      type: System.Single
       description: The font size to use for measurement.
     return:
       type: System.Numerics.Vector2
       description: A Vector2 representing the width and height of the text.
-    content.vb: Public Function MeasureText(text As String, size As Integer) As Vector2
+    content.vb: Public Function MeasureText(text As String, size As Single) As Vector2
   overload: Bliss.CSharp.Fonts.Font.MeasureText*
-  nameWithType.vb: Font.MeasureText(String, Integer)
-  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureText(String, Integer)
-  name.vb: MeasureText(String, Integer)
-- uid: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Int32)
-  commentId: M:Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Int32)
-  id: MeasureTextTrimmed(System.String,System.Int32)
+  nameWithType.vb: Font.MeasureText(String, Single)
+  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureText(String, Single)
+  name.vb: MeasureText(String, Single)
+- uid: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Single)
+  commentId: M:Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Single)
+  id: MeasureTextTrimmed(System.String,System.Single)
   parent: Bliss.CSharp.Fonts.Font
   langs:
   - csharp
   - vb
-  name: MeasureTextTrimmed(string, int)
-  nameWithType: Font.MeasureTextTrimmed(string, int)
-  fullName: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(string, int)
+  name: MeasureTextTrimmed(string, float)
+  nameWithType: Font.MeasureTextTrimmed(string, float)
+  fullName: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(string, float)
   type: Method
   source:
     remote:
@@ -323,32 +323,32 @@ items:
   summary: Measures the dimensions of the specified trimmed text using the given font size.
   example: []
   syntax:
-    content: public Vector2 MeasureTextTrimmed(string text, int size)
+    content: public Vector2 MeasureTextTrimmed(string text, float size)
     parameters:
     - id: text
       type: System.String
       description: The text to measure.
     - id: size
-      type: System.Int32
+      type: System.Single
       description: The size of the font.
     return:
       type: System.Numerics.Vector2
       description: A <xref href="System.Numerics.Vector2" data-throw-if-not-resolved="false"></xref> representing the width and height of the trimmed text.
-    content.vb: Public Function MeasureTextTrimmed(text As String, size As Integer) As Vector2
+    content.vb: Public Function MeasureTextTrimmed(text As String, size As Single) As Vector2
   overload: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed*
-  nameWithType.vb: Font.MeasureTextTrimmed(String, Integer)
-  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(String, Integer)
-  name.vb: MeasureTextTrimmed(String, Integer)
-- uid: Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Int32)
-  commentId: M:Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Int32)
-  id: MeasureTextRect(System.String,System.Int32)
+  nameWithType.vb: Font.MeasureTextTrimmed(String, Single)
+  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(String, Single)
+  name.vb: MeasureTextTrimmed(String, Single)
+- uid: Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Single)
+  commentId: M:Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Single)
+  id: MeasureTextRect(System.String,System.Single)
   parent: Bliss.CSharp.Fonts.Font
   langs:
   - csharp
   - vb
-  name: MeasureTextRect(string, int)
-  nameWithType: Font.MeasureTextRect(string, int)
-  fullName: Bliss.CSharp.Fonts.Font.MeasureTextRect(string, int)
+  name: MeasureTextRect(string, float)
+  nameWithType: Font.MeasureTextRect(string, float)
+  fullName: Bliss.CSharp.Fonts.Font.MeasureTextRect(string, float)
   type: Method
   source:
     remote:
@@ -364,21 +364,21 @@ items:
   summary: Measures the rectangular bounds of the given text with specified font size.
   example: []
   syntax:
-    content: public RectangleF MeasureTextRect(string text, int size)
+    content: public RectangleF MeasureTextRect(string text, float size)
     parameters:
     - id: text
       type: System.String
       description: The text to measure.
     - id: size
-      type: System.Int32
+      type: System.Single
       description: The size of the font.
     return:
       type: Bliss.CSharp.Transformations.RectangleF
-    content.vb: Public Function MeasureTextRect(text As String, size As Integer) As RectangleF
+    content.vb: Public Function MeasureTextRect(text As String, size As Single) As RectangleF
   overload: Bliss.CSharp.Fonts.Font.MeasureTextRect*
-  nameWithType.vb: Font.MeasureTextRect(String, Integer)
-  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureTextRect(String, Integer)
-  name.vb: MeasureTextRect(String, Integer)
+  nameWithType.vb: Font.MeasureTextRect(String, Single)
+  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureTextRect(String, Single)
+  name.vb: MeasureTextRect(String, Single)
 - uid: Bliss.CSharp.Fonts.Font.Dispose(System.Boolean)
   commentId: M:Bliss.CSharp.Fonts.Font.Dispose(System.Boolean)
   id: Dispose(System.Boolean)
@@ -1046,19 +1046,19 @@ references:
   - name: )
 - uid: Bliss.CSharp.Fonts.Font.MeasureText*
   commentId: Overload:Bliss.CSharp.Fonts.Font.MeasureText
-  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureText_System_String_System_Int32_
+  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureText_System_String_System_Single_
   name: MeasureText
   nameWithType: Font.MeasureText
   fullName: Bliss.CSharp.Fonts.Font.MeasureText
 - uid: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed*
   commentId: Overload:Bliss.CSharp.Fonts.Font.MeasureTextTrimmed
-  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextTrimmed_System_String_System_Int32_
+  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextTrimmed_System_String_System_Single_
   name: MeasureTextTrimmed
   nameWithType: Font.MeasureTextTrimmed
   fullName: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed
 - uid: Bliss.CSharp.Fonts.Font.MeasureTextRect*
   commentId: Overload:Bliss.CSharp.Fonts.Font.MeasureTextRect
-  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextRect_System_String_System_Int32_
+  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextRect_System_String_System_Single_
   name: MeasureTextRect
   nameWithType: Font.MeasureTextRect
   fullName: Bliss.CSharp.Fonts.Font.MeasureTextRect
