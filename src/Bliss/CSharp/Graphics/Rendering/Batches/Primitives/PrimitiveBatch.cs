@@ -446,30 +446,34 @@ public class PrimitiveBatch : Disposable {
         Vector2 finalOrigin = origin ?? Vector2.Zero;
         float finalRotation = float.DegreesToRadians(rotation);
         Color finalColor = color ?? Color.White;
-
+        
         Matrix3x2 transform = Matrix3x2.CreateRotation(finalRotation, rectangle.Position);
-
-        // Calculate the four corners of the rectangle
+        
+        // Calculate the four corners of the rectangle.
         Vector2 topLeft = Vector2.Transform(new Vector2(rectangle.X, rectangle.Y) - finalOrigin, transform);
         Vector2 topRight = Vector2.Transform(new Vector2(rectangle.X + rectangle.Width, rectangle.Y) - finalOrigin, transform);
         Vector2 bottomLeft = Vector2.Transform(new Vector2(rectangle.X, rectangle.Y + rectangle.Height) - finalOrigin, transform);
         Vector2 bottomRight = Vector2.Transform(new Vector2(rectangle.X + rectangle.Width, rectangle.Y + rectangle.Height) - finalOrigin, transform);
         
-        // Line offset
-        Vector2 lineOffsetX = new Vector2(thickness / 2.0F, 0);
-        Vector2 lineOffsetY = new Vector2(0, thickness / 2.0F);
+        // Top side.
+        Vector2 topDirection = topRight - topLeft;
+        Vector2 topPerpendicular = Vector2.Normalize(new Vector2(-topDirection.Y, topDirection.X)) * (thickness / 2.0F);
+        this.DrawLine(topLeft + topPerpendicular, topRight + topPerpendicular, thickness, layerDepth, finalColor);
         
-        // Top side
-        this.DrawLine(topLeft - lineOffsetX, topRight + lineOffsetX, thickness, layerDepth, finalColor);
-
-        // Bottom side
-        this.DrawLine(bottomLeft - lineOffsetX, bottomRight + lineOffsetX, thickness, layerDepth, finalColor);
-
-        // Left side
-        this.DrawLine(topLeft + lineOffsetY, bottomLeft - lineOffsetY, thickness, layerDepth, finalColor);
-
-        // Right side
-        this.DrawLine(topRight + lineOffsetY, bottomRight - lineOffsetY, thickness, layerDepth, finalColor);
+        // Bottom side.
+        Vector2 bottomDirection = bottomRight - bottomLeft;
+        Vector2 bottomPerpendicular = Vector2.Normalize(new Vector2(-bottomDirection.Y, bottomDirection.X)) * (thickness / 2.0F);
+        this.DrawLine(bottomLeft - bottomPerpendicular, bottomRight - bottomPerpendicular, thickness, layerDepth, finalColor);
+        
+        // Left side.
+        Vector2 leftDirection = bottomLeft - topLeft;
+        Vector2 leftPerpendicular = Vector2.Normalize(new Vector2(-leftDirection.Y, leftDirection.X)) * (thickness / 2.0F);
+        this.DrawLine(topLeft - leftPerpendicular, bottomLeft - leftPerpendicular, thickness, layerDepth, finalColor);
+        
+        // Right side.
+        Vector2 rightDirection = bottomRight - topRight;
+        Vector2 rightPerpendicular = Vector2.Normalize(new Vector2(-rightDirection.Y, rightDirection.X)) * (thickness / 2.0F);
+        this.DrawLine(topRight + rightPerpendicular, bottomRight + rightPerpendicular, thickness, layerDepth, finalColor);
     }
 
     /// <summary>

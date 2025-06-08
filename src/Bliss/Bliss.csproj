@@ -37,7 +37,7 @@
     <!-- Libraries -->
     <ItemGroup>
         <PackageReference Include="AssimpNetter" Version="5.4.3.3" />
-        <PackageReference Include="JAJ.Packages.MiniAudioEx" Version="2.0.0" />
+        <PackageReference Include="JAJ.Packages.MiniAudioEx" Version="2.0.1" />
         <PackageReference Include="ppy.SDL3-CS" Version="2025.220.0" />
         <PackageReference Include="ppy.Veldrid" Version="4.9.62-gca0239da6b" />
         <PackageReference Include="ppy.Veldrid.SPIRV" Version="1.0.15-gfbb03d21c2" />
