@@ -170,23 +170,26 @@ Class Font  <a class="header-action link-secondary" title="View source" href="ht
 
   <a id="Bliss_CSharp_Fonts_Font__ctor_" data-uid="Bliss.CSharp.Fonts.Font.#ctor*"></a>
 
-  <h3 id="Bliss_CSharp_Fonts_Font__ctor_System_Byte___" data-uid="Bliss.CSharp.Fonts.Font.#ctor(System.Byte[])">
-  Font(byte[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Fonts/Font.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Fonts_Font__ctor_System_Byte___FontStashSharp_FontSystemSettings_" data-uid="Bliss.CSharp.Fonts.Font.#ctor(System.Byte[],FontStashSharp.FontSystemSettings)">
+  Font(byte[], FontSystemSettings?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Fonts/Font.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Bliss.CSharp.Fonts.Font.html">Font</a> class with the specified font data.</p>
+  <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Bliss.CSharp.Fonts.Font.html">Font</a> instance using the provided font data in memory.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Font(byte[] data)</code></pre>
+    <pre><code class="lang-csharp hljs">public Font(byte[] data, FontSystemSettings? settings = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
-    <dd><p>A byte array containing the font data.</p>
+    <dd><p>A byte array containing the raw font data.</p>
+</dd>
+    <dt><code>settings</code> <span class="xref">FontSystemSettings</span></dt>
+    <dd><p>Settings used to configure the internal font system.</p>
 </dd>
   </dl>
 
@@ -203,23 +206,26 @@ Class Font  <a class="header-action link-secondary" title="View source" href="ht
 
   <a id="Bliss_CSharp_Fonts_Font__ctor_" data-uid="Bliss.CSharp.Fonts.Font.#ctor*"></a>
 
-  <h3 id="Bliss_CSharp_Fonts_Font__ctor_System_String_" data-uid="Bliss.CSharp.Fonts.Font.#ctor(System.String)">
-  Font(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Fonts/Font.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Fonts_Font__ctor_System_String_FontStashSharp_FontSystemSettings_" data-uid="Bliss.CSharp.Fonts.Font.#ctor(System.String,FontStashSharp.FontSystemSettings)">
+  Font(string, FontSystemSettings?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Fonts/Font.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Bliss.CSharp.Fonts.Font.html">Font</a> class, loading font data from the specified file path.</p>
+  <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Bliss.CSharp.Fonts.Font.html">Font</a> instance by loading font data from the specified file path.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Font(string path)</code></pre>
+    <pre><code class="lang-csharp hljs">public Font(string path, FontSystemSettings? settings = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>path</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The file path to the font data.</p>
+    <dd><p>The file path to the font file to load.</p>
+</dd>
+    <dt><code>settings</code> <span class="xref">FontSystemSettings</span></dt>
+    <dd><p>Settings used to configure the internal font system.</p>
 </dd>
   </dl>
 
@@ -310,7 +316,7 @@ Class Font  <a class="header-action link-secondary" title="View source" href="ht
 
   <h3 id="Bliss_CSharp_Fonts_Font_Dispose_System_Boolean_" data-uid="Bliss.CSharp.Fonts.Font.Dispose(System.Boolean)">
   Dispose(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Fonts/Font.cs/#L131"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Fonts/Font.cs/#L141"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Disposes of the object and releases associated resources.</p>
@@ -341,9 +347,9 @@ Class Font  <a class="header-action link-secondary" title="View source" href="ht
 
   <a id="Bliss_CSharp_Fonts_Font_Draw_" data-uid="Bliss.CSharp.Fonts.Font.Draw*"></a>
 
-  <h3 id="Bliss_CSharp_Fonts_Font_Draw_Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_System_String_System_Numerics_Vector2_System_Int32_System_Single_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__FontStashSharp_TextStyle_FontStashSharp_FontSystemEffect_System_Int32_" data-uid="Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)">
-  Draw(SpriteBatch, string, Vector2, int, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Fonts/Font.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Fonts_Font_Draw_Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_System_String_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__FontStashSharp_TextStyle_FontStashSharp_FontSystemEffect_System_Int32_" data-uid="Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)">
+  Draw(SpriteBatch, string, Vector2, float, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Fonts/Font.cs/#L85"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws text using the specified parameters.</p>
@@ -351,7 +357,7 @@ Class Font  <a class="header-action link-secondary" title="View source" href="ht
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Draw(SpriteBatch batch, string text, Vector2 position, int size, float characterSpacing = 0, float lineSpacing = 0, Vector2? scale = null, float depth = 0.5, Vector2? origin = null, float rotation = 0, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Draw(SpriteBatch batch, string text, Vector2 position, float size, float characterSpacing = 0, float lineSpacing = 0, Vector2? scale = null, float depth = 0.5, Vector2? origin = null, float rotation = 0, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -365,7 +371,7 @@ Class Font  <a class="header-action link-secondary" title="View source" href="ht
     <dt><code>position</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a></dt>
     <dd><p>The position where the text should be drawn.</p>
 </dd>
-    <dt><code>size</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>size</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd><p>The size of the font.</p>
 </dd>
     <dt><code>characterSpacing</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
@@ -411,19 +417,58 @@ Class Font  <a class="header-action link-secondary" title="View source" href="ht
 
 
 
-  <a id="Bliss_CSharp_Fonts_Font_MeasureText_" data-uid="Bliss.CSharp.Fonts.Font.MeasureText*"></a>
+  <a id="Bliss_CSharp_Fonts_Font_GetSpriteFont_" data-uid="Bliss.CSharp.Fonts.Font.GetSpriteFont*"></a>
 
-  <h3 id="Bliss_CSharp_Fonts_Font_MeasureText_System_String_System_Single_" data-uid="Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Single)">
-  MeasureText(string, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Fonts/Font.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Fonts_Font_GetSpriteFont_System_Single_" data-uid="Bliss.CSharp.Fonts.Font.GetSpriteFont(System.Single)">
+  GetSpriteFont(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Fonts/Font.cs/#L64"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Measures the dimensions of the specified text using the given font size.</p>
+  <div class="markdown level1 summary"><p>Retrieves a <span class="xref">FontStashSharp.DynamicSpriteFont</span> object for the specified font size.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vector2 MeasureText(string text, float size)</code></pre>
+    <pre><code class="lang-csharp hljs">public DynamicSpriteFont GetSpriteFont(float fontSize)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fontSize</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The desired font size for the retrieved sprite font.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">DynamicSpriteFont</span></dt>
+    <dd><p>A <span class="xref">FontStashSharp.DynamicSpriteFont</span> instance corresponding to the specified font size.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Fonts_Font_MeasureText_" data-uid="Bliss.CSharp.Fonts.Font.MeasureText*"></a>
+
+  <h3 id="Bliss_CSharp_Fonts_Font_MeasureText_System_String_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Single_FontStashSharp_FontSystemEffect_System_Int32_" data-uid="Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)">
+  MeasureText(string, float, Vector2?, float, float, FontSystemEffect, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Fonts/Font.cs/#L104"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Measures the dimensions of the specified text using the given font size and other parameters.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2 MeasureText(string text, float size, Vector2? scale = null, float characterSpacing = 0, float lineSpacing = 0, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -433,6 +478,21 @@ Class Font  <a class="header-action link-secondary" title="View source" href="ht
 </dd>
     <dt><code>size</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd><p>The font size to use for measurement.</p>
+</dd>
+    <dt><code>scale</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a>?</dt>
+    <dd><p>The scale to apply to the text, if any.</p>
+</dd>
+    <dt><code>characterSpacing</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Spacing between characters, in pixels.</p>
+</dd>
+    <dt><code>lineSpacing</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Spacing between lines, in pixels.</p>
+</dd>
+    <dt><code>effect</code> <span class="xref">FontSystemEffect</span></dt>
+    <dd><p>Special visual effect to apply when measuring text.</p>
+</dd>
+    <dt><code>effectAmount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The intensity of the specified visual effect.</p>
 </dd>
   </dl>
 
@@ -455,33 +515,49 @@ Class Font  <a class="header-action link-secondary" title="View source" href="ht
 
   <a id="Bliss_CSharp_Fonts_Font_MeasureTextRect_" data-uid="Bliss.CSharp.Fonts.Font.MeasureTextRect*"></a>
 
-  <h3 id="Bliss_CSharp_Fonts_Font_MeasureTextRect_System_String_System_Single_" data-uid="Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Single)">
-  MeasureTextRect(string, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Fonts/Font.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Fonts_Font_MeasureTextRect_System_String_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Single_FontStashSharp_FontSystemEffect_System_Int32_" data-uid="Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)">
+  MeasureTextRect(string, float, Vector2?, float, float, FontSystemEffect, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Fonts/Font.cs/#L136"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Measures the rectangular bounds of the given text with specified font size.</p>
+  <div class="markdown level1 summary"><p>Measures the rectangular bounds of the specified text with the given font size and additional text settings.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RectangleF MeasureTextRect(string text, float size)</code></pre>
+    <pre><code class="lang-csharp hljs">public RectangleF MeasureTextRect(string text, float size, Vector2? scale = null, float characterSpacing = 0, float lineSpacing = 0, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>text</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The text to measure.</p>
+    <dd><p>The text to be measured.</p>
 </dd>
     <dt><code>size</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The size of the font.</p>
+    <dd><p>The size of the font used for measurement.</p>
+</dd>
+    <dt><code>scale</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a>?</dt>
+    <dd><p>Optional scale to be applied to the text. Defaults to null for no scaling.</p>
+</dd>
+    <dt><code>characterSpacing</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Optional additional spacing between characters. Defaults to 0.0.</p>
+</dd>
+    <dt><code>lineSpacing</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Optional additional spacing between lines. Defaults to 0.0.</p>
+</dd>
+    <dt><code>effect</code> <span class="xref">FontSystemEffect</span></dt>
+    <dd><p>Optional font effect to apply. Defaults to <span class="xref">FontStashSharp.FontSystemEffect.None</span>.</p>
+</dd>
+    <dt><code>effectAmount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Optional intensity of the font effect. Defaults to 0.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Bliss.CSharp.Transformations.RectangleF.html">RectangleF</a></dt>
-    <dd></dd>
+    <dd><p>A <a class="xref" href="Bliss.CSharp.Transformations.RectangleF.html">RectangleF</a> representing the bounds of the measured text.</p>
+</dd>
   </dl>
 
 
@@ -496,17 +572,17 @@ Class Font  <a class="header-action link-secondary" title="View source" href="ht
 
   <a id="Bliss_CSharp_Fonts_Font_MeasureTextTrimmed_" data-uid="Bliss.CSharp.Fonts.Font.MeasureTextTrimmed*"></a>
 
-  <h3 id="Bliss_CSharp_Fonts_Font_MeasureTextTrimmed_System_String_System_Single_" data-uid="Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Single)">
-  MeasureTextTrimmed(string, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Fonts/Font.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Fonts_Font_MeasureTextTrimmed_System_String_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Single_FontStashSharp_FontSystemEffect_System_Int32_" data-uid="Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)">
+  MeasureTextTrimmed(string, float, Vector2?, float, float, FontSystemEffect, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Fonts/Font.cs/#L120"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Measures the dimensions of the specified trimmed text using the given font size.</p>
+  <div class="markdown level1 summary"><p>Measures the dimensions of the specified trimmed text using the provided font size.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vector2 MeasureTextTrimmed(string text, float size)</code></pre>
+    <pre><code class="lang-csharp hljs">public Vector2 MeasureTextTrimmed(string text, float size, Vector2? scale = null, float characterSpacing = 0, float lineSpacing = 0, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -516,6 +592,21 @@ Class Font  <a class="header-action link-secondary" title="View source" href="ht
 </dd>
     <dt><code>size</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd><p>The size of the font.</p>
+</dd>
+    <dt><code>scale</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a>?</dt>
+    <dd><p>An optional scaling factor for the text. Defaults to null.</p>
+</dd>
+    <dt><code>characterSpacing</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The spacing between characters. Defaults to 0.0.</p>
+</dd>
+    <dt><code>lineSpacing</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The spacing between lines. Defaults to 0.0.</p>
+</dd>
+    <dt><code>effect</code> <span class="xref">FontSystemEffect</span></dt>
+    <dd><p>The text rendering effect to apply. Defaults to <span class="xref">FontStashSharp.FontSystemEffect.None</span>.</p>
+</dd>
+    <dt><code>effectAmount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The magnitude of the effect to apply. Defaults to 0.</p>
 </dd>
   </dl>
 

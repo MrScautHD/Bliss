@@ -989,7 +989,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawFilledRectangle
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 482
+    startLine: 486
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -1036,7 +1036,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawEmptyCircleSector
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 530
+    startLine: 534
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -1092,7 +1092,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawFilledCircleSector
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 573
+    startLine: 577
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -1145,7 +1145,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawEmptyCircle
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 621
+    startLine: 625
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -1195,7 +1195,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawFilledCircle
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 668
+    startLine: 672
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -1242,7 +1242,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawEmptyRing
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 711
+    startLine: 715
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -1295,7 +1295,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawFilledRing
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 783
+    startLine: 787
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -1345,7 +1345,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawEmptyEllipse
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 853
+    startLine: 857
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -1395,7 +1395,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawFilledEllipse
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 901
+    startLine: 905
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -1442,7 +1442,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawEmptyTriangle
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 949
+    startLine: 953
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -1492,7 +1492,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawFilledTriangle
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 965
+    startLine: 969
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -1539,7 +1539,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: AddVertices
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 989
+    startLine: 993
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
@@ -1574,7 +1574,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Primitives/PrimitiveBatch.cs
-    startLine: 1072
+    startLine: 1076
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Primitives

@@ -11,7 +11,7 @@ items:
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Capacity
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.Dispose(System.Boolean)
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawCallCount
-  - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawTexture(Bliss.CSharp.Textures.Texture2D,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Transformations.Rectangle},System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip)
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.End
   - Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.FontStashRenderer
@@ -980,16 +980,16 @@ items:
   - type: System.Exception
     commentId: T:System.Exception
     description: Thrown if the sprite batch operation has not been started.
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
-  id: DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  id: DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
   parent: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
   langs:
   - csharp
   - vb
-  name: DrawText(Font, string, Vector2, int, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
-  nameWithType: SpriteBatch.DrawText(Font, string, Vector2, int, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font, string, System.Numerics.Vector2, int, float, float, System.Numerics.Vector2?, float, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, int)
+  name: DrawText(Font, string, Vector2, float, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
+  nameWithType: SpriteBatch.DrawText(Font, string, Vector2, float, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font, string, System.Numerics.Vector2, float, float, float, System.Numerics.Vector2?, float, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, int)
   type: Method
   source:
     remote:
@@ -1005,7 +1005,7 @@ items:
   summary: Draws the specified text at the given position with the provided font and styling options.
   example: []
   syntax:
-    content: public void DrawText(Font font, string text, Vector2 position, int size, float characterSpacing = 0, float lineSpacing = 0, Vector2? scale = null, float layerDepth = 0.5, Vector2? origin = null, float rotation = 0, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0)
+    content: public void DrawText(Font font, string text, Vector2 position, float size, float characterSpacing = 0, float lineSpacing = 0, Vector2? scale = null, float layerDepth = 0.5, Vector2? origin = null, float rotation = 0, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0)
     parameters:
     - id: font
       type: Bliss.CSharp.Fonts.Font
@@ -1017,7 +1017,7 @@ items:
       type: System.Numerics.Vector2
       description: The position on the screen where the text will be drawn.
     - id: size
-      type: System.Int32
+      type: System.Single
       description: The size of the text.
     - id: characterSpacing
       type: System.Single
@@ -1049,11 +1049,11 @@ items:
     - id: effectAmount
       type: System.Int32
       description: Optional amount for the effect applied. Default is 0.
-    content.vb: Public Sub DrawText(font As Font, text As String, position As Vector2, size As Integer, characterSpacing As Single = 0, lineSpacing As Single = 0, scale As Vector2? = Nothing, layerDepth As Single = 0.5, origin As Vector2? = Nothing, rotation As Single = 0, color As Color? = Nothing, style As TextStyle = TextStyle.None, effect As FontSystemEffect = FontSystemEffect.None, effectAmount As Integer = 0)
+    content.vb: Public Sub DrawText(font As Font, text As String, position As Vector2, size As Single, characterSpacing As Single = 0, lineSpacing As Single = 0, scale As Vector2? = Nothing, layerDepth As Single = 0.5, origin As Vector2? = Nothing, rotation As Single = 0, color As Color? = Nothing, style As TextStyle = TextStyle.None, effect As FontSystemEffect = FontSystemEffect.None, effectAmount As Integer = 0)
   overload: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText*
-  nameWithType.vb: SpriteBatch.DrawText(Font, String, Vector2, Integer, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font, String, System.Numerics.Vector2, Integer, Single, Single, System.Numerics.Vector2?, Single, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, Integer)
-  name.vb: DrawText(Font, String, Vector2, Integer, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
+  nameWithType.vb: SpriteBatch.DrawText(Font, String, Vector2, Single, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font, String, System.Numerics.Vector2, Single, Single, Single, System.Numerics.Vector2?, Single, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, Integer)
+  name.vb: DrawText(Font, String, Vector2, Single, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawTexture(Bliss.CSharp.Textures.Texture2D,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Transformations.Rectangle},System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip)
   commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawTexture(Bliss.CSharp.Textures.Texture2D,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Transformations.Rectangle},System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip)
   id: DrawTexture(Bliss.CSharp.Textures.Texture2D,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Transformations.Rectangle},System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip)
@@ -1131,7 +1131,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: AddQuad
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 619
+    startLine: 626
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -1179,7 +1179,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 711
+    startLine: 718
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -2283,7 +2283,7 @@ references:
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.ResetSettings
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_DrawText_Bliss_CSharp_Fonts_Font_System_String_System_Numerics_Vector2_System_Int32_System_Single_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__FontStashSharp_TextStyle_FontStashSharp_FontSystemEffect_System_Int32_
+  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_DrawText_Bliss_CSharp_Fonts_Font_System_String_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__FontStashSharp_TextStyle_FontStashSharp_FontSystemEffect_System_Int32_
   name: DrawText
   nameWithType: SpriteBatch.DrawText
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText

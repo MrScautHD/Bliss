@@ -5,15 +5,16 @@ items:
   id: Font
   parent: Bliss.CSharp.Fonts
   children:
-  - Bliss.CSharp.Fonts.Font.#ctor(System.Byte[])
-  - Bliss.CSharp.Fonts.Font.#ctor(System.String)
+  - Bliss.CSharp.Fonts.Font.#ctor(System.Byte[],FontStashSharp.FontSystemSettings)
+  - Bliss.CSharp.Fonts.Font.#ctor(System.String,FontStashSharp.FontSystemSettings)
   - Bliss.CSharp.Fonts.Font.Dispose(System.Boolean)
-  - Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  - Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
   - Bliss.CSharp.Fonts.Font.FontData
   - Bliss.CSharp.Fonts.Font.FontSystem
-  - Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Single)
-  - Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Single)
-  - Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Single)
+  - Bliss.CSharp.Fonts.Font.GetSpriteFont(System.Single)
+  - Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)
+  - Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)
+  - Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)
   langs:
   - csharp
   - vb
@@ -113,16 +114,16 @@ items:
       type: FontStashSharp.FontSystem
     content.vb: Public Property FontSystem As FontSystem
   overload: Bliss.CSharp.Fonts.Font.FontSystem*
-- uid: Bliss.CSharp.Fonts.Font.#ctor(System.String)
-  commentId: M:Bliss.CSharp.Fonts.Font.#ctor(System.String)
-  id: '#ctor(System.String)'
+- uid: Bliss.CSharp.Fonts.Font.#ctor(System.String,FontStashSharp.FontSystemSettings)
+  commentId: M:Bliss.CSharp.Fonts.Font.#ctor(System.String,FontStashSharp.FontSystemSettings)
+  id: '#ctor(System.String,FontStashSharp.FontSystemSettings)'
   parent: Bliss.CSharp.Fonts.Font
   langs:
   - csharp
   - vb
-  name: Font(string)
-  nameWithType: Font.Font(string)
-  fullName: Bliss.CSharp.Fonts.Font.Font(string)
+  name: Font(string, FontSystemSettings?)
+  nameWithType: Font.Font(string, FontSystemSettings?)
+  fullName: Bliss.CSharp.Fonts.Font.Font(string, FontStashSharp.FontSystemSettings?)
   type: Constructor
   source:
     remote:
@@ -131,33 +132,36 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Fonts/Font.cs
-    startLine: 25
+    startLine: 26
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Fonts
-  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Fonts.Font" data-throw-if-not-resolved="false"></xref> class, loading font data from the specified file path.
+  summary: Creates a new <xref href="Bliss.CSharp.Fonts.Font" data-throw-if-not-resolved="false"></xref> instance by loading font data from the specified file path.
   example: []
   syntax:
-    content: public Font(string path)
+    content: public Font(string path, FontSystemSettings? settings = null)
     parameters:
     - id: path
       type: System.String
-      description: The file path to the font data.
-    content.vb: Public Sub New(path As String)
+      description: The file path to the font file to load.
+    - id: settings
+      type: FontStashSharp.FontSystemSettings
+      description: Settings used to configure the internal font system.
+    content.vb: Public Sub New(path As String, settings As FontSystemSettings = Nothing)
   overload: Bliss.CSharp.Fonts.Font.#ctor*
-  nameWithType.vb: Font.New(String)
-  fullName.vb: Bliss.CSharp.Fonts.Font.New(String)
-  name.vb: New(String)
-- uid: Bliss.CSharp.Fonts.Font.#ctor(System.Byte[])
-  commentId: M:Bliss.CSharp.Fonts.Font.#ctor(System.Byte[])
-  id: '#ctor(System.Byte[])'
+  nameWithType.vb: Font.New(String, FontSystemSettings)
+  fullName.vb: Bliss.CSharp.Fonts.Font.New(String, FontStashSharp.FontSystemSettings)
+  name.vb: New(String, FontSystemSettings)
+- uid: Bliss.CSharp.Fonts.Font.#ctor(System.Byte[],FontStashSharp.FontSystemSettings)
+  commentId: M:Bliss.CSharp.Fonts.Font.#ctor(System.Byte[],FontStashSharp.FontSystemSettings)
+  id: '#ctor(System.Byte[],FontStashSharp.FontSystemSettings)'
   parent: Bliss.CSharp.Fonts.Font
   langs:
   - csharp
   - vb
-  name: Font(byte[])
-  nameWithType: Font.Font(byte[])
-  fullName: Bliss.CSharp.Fonts.Font.Font(byte[])
+  name: Font(byte[], FontSystemSettings?)
+  nameWithType: Font.Font(byte[], FontSystemSettings?)
+  fullName: Bliss.CSharp.Fonts.Font.Font(byte[], FontStashSharp.FontSystemSettings?)
   type: Constructor
   source:
     remote:
@@ -166,33 +170,74 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Fonts/Font.cs
-    startLine: 31
+    startLine: 33
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Fonts
-  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Fonts.Font" data-throw-if-not-resolved="false"></xref> class with the specified font data.
+  summary: Creates a new <xref href="Bliss.CSharp.Fonts.Font" data-throw-if-not-resolved="false"></xref> instance using the provided font data in memory.
   example: []
   syntax:
-    content: public Font(byte[] data)
+    content: public Font(byte[] data, FontSystemSettings? settings = null)
     parameters:
     - id: data
       type: System.Byte[]
-      description: A byte array containing the font data.
-    content.vb: Public Sub New(data As Byte())
+      description: A byte array containing the raw font data.
+    - id: settings
+      type: FontStashSharp.FontSystemSettings
+      description: Settings used to configure the internal font system.
+    content.vb: Public Sub New(data As Byte(), settings As FontSystemSettings = Nothing)
   overload: Bliss.CSharp.Fonts.Font.#ctor*
-  nameWithType.vb: Font.New(Byte())
-  fullName.vb: Bliss.CSharp.Fonts.Font.New(Byte())
-  name.vb: New(Byte())
-- uid: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
-  commentId: M:Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
-  id: Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  nameWithType.vb: Font.New(Byte(), FontSystemSettings)
+  fullName.vb: Bliss.CSharp.Fonts.Font.New(Byte(), FontStashSharp.FontSystemSettings)
+  name.vb: New(Byte(), FontSystemSettings)
+- uid: Bliss.CSharp.Fonts.Font.GetSpriteFont(System.Single)
+  commentId: M:Bliss.CSharp.Fonts.Font.GetSpriteFont(System.Single)
+  id: GetSpriteFont(System.Single)
   parent: Bliss.CSharp.Fonts.Font
   langs:
   - csharp
   - vb
-  name: Draw(SpriteBatch, string, Vector2, int, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
-  nameWithType: Font.Draw(SpriteBatch, string, Vector2, int, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
-  fullName: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch, string, System.Numerics.Vector2, int, float, float, System.Numerics.Vector2?, float, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, int)
+  name: GetSpriteFont(float)
+  nameWithType: Font.GetSpriteFont(float)
+  fullName: Bliss.CSharp.Fonts.Font.GetSpriteFont(float)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Fonts/Font.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetSpriteFont
+    path: ../src/Bliss/CSharp/Fonts/Font.cs
+    startLine: 63
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Fonts
+  summary: Retrieves a <xref href="FontStashSharp.DynamicSpriteFont" data-throw-if-not-resolved="false"></xref> object for the specified font size.
+  example: []
+  syntax:
+    content: public DynamicSpriteFont GetSpriteFont(float fontSize)
+    parameters:
+    - id: fontSize
+      type: System.Single
+      description: The desired font size for the retrieved sprite font.
+    return:
+      type: FontStashSharp.DynamicSpriteFont
+      description: A <xref href="FontStashSharp.DynamicSpriteFont" data-throw-if-not-resolved="false"></xref> instance corresponding to the specified font size.
+    content.vb: Public Function GetSpriteFont(fontSize As Single) As DynamicSpriteFont
+  overload: Bliss.CSharp.Fonts.Font.GetSpriteFont*
+  nameWithType.vb: Font.GetSpriteFont(Single)
+  fullName.vb: Bliss.CSharp.Fonts.Font.GetSpriteFont(Single)
+  name.vb: GetSpriteFont(Single)
+- uid: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  commentId: M:Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  id: Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  parent: Bliss.CSharp.Fonts.Font
+  langs:
+  - csharp
+  - vb
+  name: Draw(SpriteBatch, string, Vector2, float, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
+  nameWithType: Font.Draw(SpriteBatch, string, Vector2, float, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
+  fullName: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch, string, System.Numerics.Vector2, float, float, float, System.Numerics.Vector2?, float, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, int)
   type: Method
   source:
     remote:
@@ -201,14 +246,14 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Draw
     path: ../src/Bliss/CSharp/Fonts/Font.cs
-    startLine: 72
+    startLine: 84
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Fonts
   summary: Draws text using the specified parameters.
   example: []
   syntax:
-    content: public void Draw(SpriteBatch batch, string text, Vector2 position, int size, float characterSpacing = 0, float lineSpacing = 0, Vector2? scale = null, float depth = 0.5, Vector2? origin = null, float rotation = 0, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0)
+    content: public void Draw(SpriteBatch batch, string text, Vector2 position, float size, float characterSpacing = 0, float lineSpacing = 0, Vector2? scale = null, float depth = 0.5, Vector2? origin = null, float rotation = 0, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0)
     parameters:
     - id: batch
       type: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
@@ -220,7 +265,7 @@ items:
       type: System.Numerics.Vector2
       description: The position where the text should be drawn.
     - id: size
-      type: System.Int32
+      type: System.Single
       description: The size of the font.
     - id: characterSpacing
       type: System.Single
@@ -252,21 +297,21 @@ items:
     - id: effectAmount
       type: System.Int32
       description: The intensity of the applied effect. Default is 0.
-    content.vb: Public Sub Draw(batch As SpriteBatch, text As String, position As Vector2, size As Integer, characterSpacing As Single = 0, lineSpacing As Single = 0, scale As Vector2? = Nothing, depth As Single = 0.5, origin As Vector2? = Nothing, rotation As Single = 0, color As Color? = Nothing, style As TextStyle = TextStyle.None, effect As FontSystemEffect = FontSystemEffect.None, effectAmount As Integer = 0)
+    content.vb: Public Sub Draw(batch As SpriteBatch, text As String, position As Vector2, size As Single, characterSpacing As Single = 0, lineSpacing As Single = 0, scale As Vector2? = Nothing, depth As Single = 0.5, origin As Vector2? = Nothing, rotation As Single = 0, color As Color? = Nothing, style As TextStyle = TextStyle.None, effect As FontSystemEffect = FontSystemEffect.None, effectAmount As Integer = 0)
   overload: Bliss.CSharp.Fonts.Font.Draw*
-  nameWithType.vb: Font.Draw(SpriteBatch, String, Vector2, Integer, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
-  fullName.vb: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch, String, System.Numerics.Vector2, Integer, Single, Single, System.Numerics.Vector2?, Single, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, Integer)
-  name.vb: Draw(SpriteBatch, String, Vector2, Integer, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
-- uid: Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Single)
-  commentId: M:Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Single)
-  id: MeasureText(System.String,System.Single)
+  nameWithType.vb: Font.Draw(SpriteBatch, String, Vector2, Single, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
+  fullName.vb: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch, String, System.Numerics.Vector2, Single, Single, Single, System.Numerics.Vector2?, Single, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, Integer)
+  name.vb: Draw(SpriteBatch, String, Vector2, Single, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
+- uid: Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)
+  commentId: M:Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)
+  id: MeasureText(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)
   parent: Bliss.CSharp.Fonts.Font
   langs:
   - csharp
   - vb
-  name: MeasureText(string, float)
-  nameWithType: Font.MeasureText(string, float)
-  fullName: Bliss.CSharp.Fonts.Font.MeasureText(string, float)
+  name: MeasureText(string, float, Vector2?, float, float, FontSystemEffect, int)
+  nameWithType: Font.MeasureText(string, float, Vector2?, float, float, FontSystemEffect, int)
+  fullName: Bliss.CSharp.Fonts.Font.MeasureText(string, float, System.Numerics.Vector2?, float, float, FontStashSharp.FontSystemEffect, int)
   type: Method
   source:
     remote:
@@ -275,14 +320,14 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MeasureText
     path: ../src/Bliss/CSharp/Fonts/Font.cs
-    startLine: 86
+    startLine: 103
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Fonts
-  summary: Measures the dimensions of the specified text using the given font size.
+  summary: Measures the dimensions of the specified text using the given font size and other parameters.
   example: []
   syntax:
-    content: public Vector2 MeasureText(string text, float size)
+    content: public Vector2 MeasureText(string text, float size, Vector2? scale = null, float characterSpacing = 0, float lineSpacing = 0, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0)
     parameters:
     - id: text
       type: System.String
@@ -290,24 +335,39 @@ items:
     - id: size
       type: System.Single
       description: The font size to use for measurement.
+    - id: scale
+      type: System.Nullable{System.Numerics.Vector2}
+      description: The scale to apply to the text, if any.
+    - id: characterSpacing
+      type: System.Single
+      description: Spacing between characters, in pixels.
+    - id: lineSpacing
+      type: System.Single
+      description: Spacing between lines, in pixels.
+    - id: effect
+      type: FontStashSharp.FontSystemEffect
+      description: Special visual effect to apply when measuring text.
+    - id: effectAmount
+      type: System.Int32
+      description: The intensity of the specified visual effect.
     return:
       type: System.Numerics.Vector2
       description: A Vector2 representing the width and height of the text.
-    content.vb: Public Function MeasureText(text As String, size As Single) As Vector2
+    content.vb: Public Function MeasureText(text As String, size As Single, scale As Vector2? = Nothing, characterSpacing As Single = 0, lineSpacing As Single = 0, effect As FontSystemEffect = FontSystemEffect.None, effectAmount As Integer = 0) As Vector2
   overload: Bliss.CSharp.Fonts.Font.MeasureText*
-  nameWithType.vb: Font.MeasureText(String, Single)
-  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureText(String, Single)
-  name.vb: MeasureText(String, Single)
-- uid: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Single)
-  commentId: M:Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Single)
-  id: MeasureTextTrimmed(System.String,System.Single)
+  nameWithType.vb: Font.MeasureText(String, Single, Vector2?, Single, Single, FontSystemEffect, Integer)
+  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureText(String, Single, System.Numerics.Vector2?, Single, Single, FontStashSharp.FontSystemEffect, Integer)
+  name.vb: MeasureText(String, Single, Vector2?, Single, Single, FontSystemEffect, Integer)
+- uid: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)
+  commentId: M:Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)
+  id: MeasureTextTrimmed(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)
   parent: Bliss.CSharp.Fonts.Font
   langs:
   - csharp
   - vb
-  name: MeasureTextTrimmed(string, float)
-  nameWithType: Font.MeasureTextTrimmed(string, float)
-  fullName: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(string, float)
+  name: MeasureTextTrimmed(string, float, Vector2?, float, float, FontSystemEffect, int)
+  nameWithType: Font.MeasureTextTrimmed(string, float, Vector2?, float, float, FontSystemEffect, int)
+  fullName: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(string, float, System.Numerics.Vector2?, float, float, FontStashSharp.FontSystemEffect, int)
   type: Method
   source:
     remote:
@@ -316,14 +376,14 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MeasureTextTrimmed
     path: ../src/Bliss/CSharp/Fonts/Font.cs
-    startLine: 99
+    startLine: 119
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Fonts
-  summary: Measures the dimensions of the specified trimmed text using the given font size.
+  summary: Measures the dimensions of the specified trimmed text using the provided font size.
   example: []
   syntax:
-    content: public Vector2 MeasureTextTrimmed(string text, float size)
+    content: public Vector2 MeasureTextTrimmed(string text, float size, Vector2? scale = null, float characterSpacing = 0, float lineSpacing = 0, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0)
     parameters:
     - id: text
       type: System.String
@@ -331,24 +391,39 @@ items:
     - id: size
       type: System.Single
       description: The size of the font.
+    - id: scale
+      type: System.Nullable{System.Numerics.Vector2}
+      description: An optional scaling factor for the text. Defaults to null.
+    - id: characterSpacing
+      type: System.Single
+      description: The spacing between characters. Defaults to 0.0.
+    - id: lineSpacing
+      type: System.Single
+      description: The spacing between lines. Defaults to 0.0.
+    - id: effect
+      type: FontStashSharp.FontSystemEffect
+      description: The text rendering effect to apply. Defaults to <xref href="FontStashSharp.FontSystemEffect.None" data-throw-if-not-resolved="false"></xref>.
+    - id: effectAmount
+      type: System.Int32
+      description: The magnitude of the effect to apply. Defaults to 0.
     return:
       type: System.Numerics.Vector2
       description: A <xref href="System.Numerics.Vector2" data-throw-if-not-resolved="false"></xref> representing the width and height of the trimmed text.
-    content.vb: Public Function MeasureTextTrimmed(text As String, size As Single) As Vector2
+    content.vb: Public Function MeasureTextTrimmed(text As String, size As Single, scale As Vector2? = Nothing, characterSpacing As Single = 0, lineSpacing As Single = 0, effect As FontSystemEffect = FontSystemEffect.None, effectAmount As Integer = 0) As Vector2
   overload: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed*
-  nameWithType.vb: Font.MeasureTextTrimmed(String, Single)
-  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(String, Single)
-  name.vb: MeasureTextTrimmed(String, Single)
-- uid: Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Single)
-  commentId: M:Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Single)
-  id: MeasureTextRect(System.String,System.Single)
+  nameWithType.vb: Font.MeasureTextTrimmed(String, Single, Vector2?, Single, Single, FontSystemEffect, Integer)
+  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(String, Single, System.Numerics.Vector2?, Single, Single, FontStashSharp.FontSystemEffect, Integer)
+  name.vb: MeasureTextTrimmed(String, Single, Vector2?, Single, Single, FontSystemEffect, Integer)
+- uid: Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)
+  commentId: M:Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)
+  id: MeasureTextRect(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)
   parent: Bliss.CSharp.Fonts.Font
   langs:
   - csharp
   - vb
-  name: MeasureTextRect(string, float)
-  nameWithType: Font.MeasureTextRect(string, float)
-  fullName: Bliss.CSharp.Fonts.Font.MeasureTextRect(string, float)
+  name: MeasureTextRect(string, float, Vector2?, float, float, FontSystemEffect, int)
+  nameWithType: Font.MeasureTextRect(string, float, Vector2?, float, float, FontSystemEffect, int)
+  fullName: Bliss.CSharp.Fonts.Font.MeasureTextRect(string, float, System.Numerics.Vector2?, float, float, FontStashSharp.FontSystemEffect, int)
   type: Method
   source:
     remote:
@@ -357,28 +432,44 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MeasureTextRect
     path: ../src/Bliss/CSharp/Fonts/Font.cs
-    startLine: 112
+    startLine: 135
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Fonts
-  summary: Measures the rectangular bounds of the given text with specified font size.
+  summary: Measures the rectangular bounds of the specified text with the given font size and additional text settings.
   example: []
   syntax:
-    content: public RectangleF MeasureTextRect(string text, float size)
+    content: public RectangleF MeasureTextRect(string text, float size, Vector2? scale = null, float characterSpacing = 0, float lineSpacing = 0, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0)
     parameters:
     - id: text
       type: System.String
-      description: The text to measure.
+      description: The text to be measured.
     - id: size
       type: System.Single
-      description: The size of the font.
+      description: The size of the font used for measurement.
+    - id: scale
+      type: System.Nullable{System.Numerics.Vector2}
+      description: Optional scale to be applied to the text. Defaults to null for no scaling.
+    - id: characterSpacing
+      type: System.Single
+      description: Optional additional spacing between characters. Defaults to 0.0.
+    - id: lineSpacing
+      type: System.Single
+      description: Optional additional spacing between lines. Defaults to 0.0.
+    - id: effect
+      type: FontStashSharp.FontSystemEffect
+      description: Optional font effect to apply. Defaults to <xref href="FontStashSharp.FontSystemEffect.None" data-throw-if-not-resolved="false"></xref>.
+    - id: effectAmount
+      type: System.Int32
+      description: Optional intensity of the font effect. Defaults to 0.
     return:
       type: Bliss.CSharp.Transformations.RectangleF
-    content.vb: Public Function MeasureTextRect(text As String, size As Single) As RectangleF
+      description: A <xref href="Bliss.CSharp.Transformations.RectangleF" data-throw-if-not-resolved="false"></xref> representing the bounds of the measured text.
+    content.vb: Public Function MeasureTextRect(text As String, size As Single, scale As Vector2? = Nothing, characterSpacing As Single = 0, lineSpacing As Single = 0, effect As FontSystemEffect = FontSystemEffect.None, effectAmount As Integer = 0) As RectangleF
   overload: Bliss.CSharp.Fonts.Font.MeasureTextRect*
-  nameWithType.vb: Font.MeasureTextRect(String, Single)
-  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureTextRect(String, Single)
-  name.vb: MeasureTextRect(String, Single)
+  nameWithType.vb: Font.MeasureTextRect(String, Single, Vector2?, Single, Single, FontSystemEffect, Integer)
+  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureTextRect(String, Single, System.Numerics.Vector2?, Single, Single, FontStashSharp.FontSystemEffect, Integer)
+  name.vb: MeasureTextRect(String, Single, Vector2?, Single, Single, FontSystemEffect, Integer)
 - uid: Bliss.CSharp.Fonts.Font.Dispose(System.Boolean)
   commentId: M:Bliss.CSharp.Fonts.Font.Dispose(System.Boolean)
   id: Dispose(System.Boolean)
@@ -397,7 +488,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Fonts/Font.cs
-    startLine: 130
+    startLine: 140
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Fonts
@@ -822,7 +913,7 @@ references:
   fullName: FontStashSharp
 - uid: Bliss.CSharp.Fonts.Font.#ctor*
   commentId: Overload:Bliss.CSharp.Fonts.Font.#ctor
-  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font__ctor_System_String_
+  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font__ctor_System_String_FontStashSharp_FontSystemSettings_
   name: Font
   nameWithType: Font.Font
   fullName: Bliss.CSharp.Fonts.Font.Font
@@ -840,9 +931,40 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
+- uid: FontStashSharp.FontSystemSettings
+  commentId: T:FontStashSharp.FontSystemSettings
+  parent: FontStashSharp
+  isExternal: true
+  name: FontSystemSettings
+  nameWithType: FontSystemSettings
+  fullName: FontStashSharp.FontSystemSettings
+- uid: FontStashSharp.DynamicSpriteFont
+  commentId: T:FontStashSharp.DynamicSpriteFont
+  parent: FontStashSharp
+  isExternal: true
+  name: DynamicSpriteFont
+  nameWithType: DynamicSpriteFont
+  fullName: FontStashSharp.DynamicSpriteFont
+- uid: Bliss.CSharp.Fonts.Font.GetSpriteFont*
+  commentId: Overload:Bliss.CSharp.Fonts.Font.GetSpriteFont
+  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_GetSpriteFont_System_Single_
+  name: GetSpriteFont
+  nameWithType: Font.GetSpriteFont
+  fullName: Bliss.CSharp.Fonts.Font.GetSpriteFont
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
 - uid: Bliss.CSharp.Fonts.Font.Draw*
   commentId: Overload:Bliss.CSharp.Fonts.Font.Draw
-  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_Draw_Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_System_String_System_Numerics_Vector2_System_Int32_System_Single_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__FontStashSharp_TextStyle_FontStashSharp_FontSystemEffect_System_Int32_
+  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_Draw_Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_System_String_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__FontStashSharp_TextStyle_FontStashSharp_FontSystemEffect_System_Int32_
   name: Draw
   nameWithType: Font.Draw
   fullName: Bliss.CSharp.Fonts.Font.Draw
@@ -861,28 +983,6 @@ references:
   name: Vector2
   nameWithType: Vector2
   fullName: System.Numerics.Vector2
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.int32
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
-- uid: System.Single
-  commentId: T:System.Single
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.single
-  name: float
-  nameWithType: float
-  fullName: float
-  nameWithType.vb: Single
-  fullName.vb: Single
-  name.vb: Single
 - uid: System.Nullable{System.Numerics.Vector2}
   commentId: T:System.Nullable{System.Numerics.Vector2}
   parent: System
@@ -935,6 +1035,17 @@ references:
   name: FontSystemEffect
   nameWithType: FontSystemEffect
   fullName: FontStashSharp.FontSystemEffect
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
   commentId: N:Bliss.CSharp.Graphics.Rendering.Batches.Sprites
   href: Bliss.html
@@ -1046,22 +1157,22 @@ references:
   - name: )
 - uid: Bliss.CSharp.Fonts.Font.MeasureText*
   commentId: Overload:Bliss.CSharp.Fonts.Font.MeasureText
-  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureText_System_String_System_Single_
+  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureText_System_String_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Single_FontStashSharp_FontSystemEffect_System_Int32_
   name: MeasureText
   nameWithType: Font.MeasureText
   fullName: Bliss.CSharp.Fonts.Font.MeasureText
+- uid: FontStashSharp.FontSystemEffect.None
+  commentId: F:FontStashSharp.FontSystemEffect.None
+  isExternal: true
+  name: None
+  nameWithType: FontSystemEffect.None
+  fullName: FontStashSharp.FontSystemEffect.None
 - uid: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed*
   commentId: Overload:Bliss.CSharp.Fonts.Font.MeasureTextTrimmed
-  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextTrimmed_System_String_System_Single_
+  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextTrimmed_System_String_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Single_FontStashSharp_FontSystemEffect_System_Int32_
   name: MeasureTextTrimmed
   nameWithType: Font.MeasureTextTrimmed
   fullName: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed
-- uid: Bliss.CSharp.Fonts.Font.MeasureTextRect*
-  commentId: Overload:Bliss.CSharp.Fonts.Font.MeasureTextRect
-  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextRect_System_String_System_Single_
-  name: MeasureTextRect
-  nameWithType: Font.MeasureTextRect
-  fullName: Bliss.CSharp.Fonts.Font.MeasureTextRect
 - uid: Bliss.CSharp.Transformations.RectangleF
   commentId: T:Bliss.CSharp.Transformations.RectangleF
   parent: Bliss.CSharp.Transformations
@@ -1069,6 +1180,12 @@ references:
   name: RectangleF
   nameWithType: RectangleF
   fullName: Bliss.CSharp.Transformations.RectangleF
+- uid: Bliss.CSharp.Fonts.Font.MeasureTextRect*
+  commentId: Overload:Bliss.CSharp.Fonts.Font.MeasureTextRect
+  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextRect_System_String_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Single_FontStashSharp_FontSystemEffect_System_Int32_
+  name: MeasureTextRect
+  nameWithType: Font.MeasureTextRect
+  fullName: Bliss.CSharp.Fonts.Font.MeasureTextRect
 - uid: Bliss.CSharp.Transformations
   commentId: N:Bliss.CSharp.Transformations
   href: Bliss.html
