@@ -556,52 +556,59 @@ public class SpriteBatch : Disposable {
     /// <param name="color">The <see cref="Color"/> to apply to the texture for tinting. Defaults to White (no tint).</param>
     /// <param name="flip">The flip mode to apply to the texture, such as horizontal or vertical flipping. Defaults to <see cref="SpriteFlip.None"/>.</param>
     public void DrawTexture(Texture2D texture, Vector2 position, float layerDepth = 0.5F, Rectangle? sourceRect = null, Vector2? scale = null, Vector2? origin = null, float rotation = 0.0F, Color? color = null, SpriteFlip flip = SpriteFlip.None) {
-        Rectangle finalSource = sourceRect ?? new Rectangle(0, 0, (int)texture.Width, (int)texture.Height);
+        Rectangle finalSource = sourceRect ?? new Rectangle(0, 0, (int) texture.Width, (int) texture.Height);
         Vector2 finalScale = scale ?? new Vector2(1.0F, 1.0F);
         Vector2 finalOrigin = origin ?? new Vector2(0.0F, 0.0F);
         float finalRotation = float.DegreesToRadians(rotation);
         Color finalColor = color ?? Color.White;
-
+        
         Vector2 spriteScale = new Vector2(finalSource.Width, finalSource.Height) * finalScale;
         Vector2 spriteOrigin = finalOrigin * finalScale;
-
+        
         float texelWidth = 1.0F / texture.Width;
         float texelHeight = 1.0F / texture.Height;
-
+        float halfTexelX = 0.5F * texelWidth;
+        float halfTexelY = 0.5F * texelHeight;
+        
         bool flipX = flip == SpriteFlip.Horizontal || flip == SpriteFlip.Both;
         bool flipY = flip == SpriteFlip.Vertical || flip == SpriteFlip.Both;
+        
+        float u0 = finalSource.X * texelWidth + halfTexelX;
+        float v0 = finalSource.Y * texelHeight + halfTexelY;
+        float u1 = (finalSource.X + finalSource.Width) * texelWidth - halfTexelX;
+        float v1 = (finalSource.Y + finalSource.Height) * texelHeight - halfTexelY;
+        
+        if (flipX) {
+            (u0, u1) = (u1, u0);
+        }
+        
+        if (flipY) {
+            (v0, v1) = (v1, v0);
+        }
         
         Matrix3x2 transform = Matrix3x2.CreateRotation(finalRotation, position);
 
         SpriteVertex2D topLeft = new SpriteVertex2D() {
             Position = new Vector3(Vector2.Transform(new Vector2(position.X, position.Y) - spriteOrigin, transform), layerDepth),
-            TexCoords = new Vector2(
-                flipX ? (finalSource.X + finalSource.Width) * texelWidth : finalSource.X * texelWidth,
-                flipY ? (finalSource.Y + finalSource.Height) * texelHeight : finalSource.Y * texelHeight),
+            TexCoords = new Vector2(u0, v0),
             Color = finalColor.ToRgbaFloatVec4()
         };
         
         SpriteVertex2D topRight = new SpriteVertex2D() {
             Position = new Vector3(Vector2.Transform(new Vector2(position.X + spriteScale.X, position.Y) - spriteOrigin, transform), layerDepth),
-            TexCoords = new Vector2(
-                flipX ? finalSource.X * texelWidth : (finalSource.X + finalSource.Width) * texelWidth,
-                flipY ? (finalSource.Y + finalSource.Height) * texelHeight : finalSource.Y * texelHeight),
+            TexCoords = new Vector2(u1, v0),
             Color = finalColor.ToRgbaFloatVec4()
         };
         
         SpriteVertex2D bottomLeft = new SpriteVertex2D() {
             Position = new Vector3(Vector2.Transform(new Vector2(position.X, position.Y + spriteScale.Y) - spriteOrigin, transform), layerDepth),
-            TexCoords = new Vector2(
-                flipX ? (finalSource.X + finalSource.Width) * texelWidth : finalSource.X * texelWidth,
-                flipY ? finalSource.Y * texelHeight : (finalSource.Y + finalSource.Height) * texelHeight),
+            TexCoords = new Vector2(u0, v1),
             Color = finalColor.ToRgbaFloatVec4()
         };
         
         SpriteVertex2D bottomRight = new SpriteVertex2D() {
             Position = new Vector3(Vector2.Transform(new Vector2(position.X + spriteScale.X, position.Y + spriteScale.Y) - spriteOrigin, transform), layerDepth),
-            TexCoords = new Vector2(
-                flipX ? finalSource.X * texelWidth : (finalSource.X + finalSource.Width) * texelWidth,
-                flipY ? finalSource.Y * texelHeight : (finalSource.Y + finalSource.Height) * texelHeight),
+            TexCoords = new Vector2(u1, v1),
             Color = finalColor.ToRgbaFloatVec4()
         };
         

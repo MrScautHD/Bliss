@@ -50,6 +50,7 @@ public class Game : Disposable {
     private Texture2D _logoTexture;
     private Cubemap _cubemap;
     private Texture2D _cubemapTexture;
+    private Texture2D _button;
     
     private Cam3D _cam3D;
     private Model _playerModel;
@@ -210,6 +211,8 @@ public class Game : Disposable {
 
         this._cubemap = new Cubemap(this.GraphicsDevice, "content/cubemap.png");
         this._cubemapTexture = new Texture2D(this.GraphicsDevice, this._cubemap.Images[5][0]);
+
+        this._button = new Texture2D(this.GraphicsDevice, "content/button.png");
     }
     
     protected virtual void Update() {
@@ -364,7 +367,7 @@ public class Game : Disposable {
         this._animatedImage.GetFrameInfo(frame, out int width, out int height, out float duration);
         this._spriteBatch.DrawTexture(this._gif, new Vector2(30, 30), sourceRect: new Rectangle(width * frame, 0, width, height), scale: new Vector2(0.2F, 0.2F), color: new Color(255, 255, 255, 155));
         
-        //this._spriteBatch.DrawTexture(this._cubemapTexture, new Vector2(30, 30), 0.4F);
+        //this._spriteBatch.DrawTexture(this._button, new Vector2(300.54F, 300.54F), 0.5F, scale: new Vector2(3, 3));
         
         this._spriteBatch.End();
         
