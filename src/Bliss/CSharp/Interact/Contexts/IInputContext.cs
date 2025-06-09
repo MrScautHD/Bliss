@@ -130,8 +130,9 @@ public interface IInputContext : IDisposable {
     /// Checks if the specified keyboard key is currently pressed.
     /// </summary>
     /// <param name="key">The keyboard key to check.</param>
+    /// <param name="enableRepeat">A flag indicating whether the key press should be considered a repeated action.</param>
     /// <returns>True if the specified key is pressed; otherwise, false.</returns>
-    bool IsKeyPressed(KeyboardKey key);
+    bool IsKeyPressed(KeyboardKey key, bool enableRepeat = false);
 
     /// <summary>
     /// Checks if a specified key is currently pressed down.

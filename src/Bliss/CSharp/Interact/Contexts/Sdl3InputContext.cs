@@ -49,7 +49,7 @@ public class Sdl3InputContext : Disposable, IInputContext {
     /// <summary>
     /// Holds the current state of keys that are pressed on the keyboard.
     /// </summary>
-    private List<KeyboardKey> _keyboardKeysPressed;
+    private Dictionary<KeyboardKey, bool> _keyboardKeysPressed;
     
     /// <summary>
     /// Tracks the keys that are currently pressed down on the keyboard.
@@ -93,7 +93,7 @@ public class Sdl3InputContext : Disposable, IInputContext {
         this._mouseButtonsDown = new List<MouseButton>();
         this._mouseButtonsReleased = new List<MouseButton>();
 
-        this._keyboardKeysPressed = new List<KeyboardKey>();
+        this._keyboardKeysPressed = new Dictionary<KeyboardKey, bool>();
         this._keyboardKeysDown = new List<KeyboardKey>();
         this._keyboardKeysReleased = new List<KeyboardKey>();
 
@@ -219,9 +219,10 @@ public class Sdl3InputContext : Disposable, IInputContext {
     }
 
     /* ------------------------------------ Keyboard ------------------------------------ */
-    
-    public bool IsKeyPressed(KeyboardKey key) {
-        return this._keyboardKeysPressed.Contains(key);
+
+    public bool IsKeyPressed(KeyboardKey key, bool enableRepeat = false) {
+        bool hasKey = this._keyboardKeysPressed.TryGetValue(key, out bool isRepeated);
+        return hasKey && (enableRepeat || !isRepeated);
     }
 
     public bool IsKeyDown(KeyboardKey key) {
@@ -349,8 +350,9 @@ public class Sdl3InputContext : Disposable, IInputContext {
     /// </summary>
     /// <param name="keyEvent">The key event containing information about the pressed key.</param>
     private void OnKeyDown(KeyEvent keyEvent) {
+        this._keyboardKeysPressed.Add(keyEvent.KeyboardKey, keyEvent.Repeat);
+        
         if (!keyEvent.Repeat) {
-            this._keyboardKeysPressed.Add(keyEvent.KeyboardKey);
             this._keyboardKeysDown.Add(keyEvent.KeyboardKey);
         }
     }

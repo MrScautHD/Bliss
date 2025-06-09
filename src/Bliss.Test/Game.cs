@@ -352,7 +352,7 @@ public class Game : Disposable {
                 this._textInput += text;
             }
             
-            if (Input.IsKeyPressed(KeyboardKey.BackSpace)) {
+            if (Input.IsKeyPressed(KeyboardKey.BackSpace, true)) {
                 if (this._textInput.Length > 0) {
                     this._textInput = this._textInput.Remove(this._textInput.Length - 1, 1);
                 }

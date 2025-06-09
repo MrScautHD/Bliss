@@ -181,12 +181,13 @@ public static class Input {
     /* ------------------------------------ Keyboard ------------------------------------ */
 
     /// <summary>
-    /// Checks if a specific key on the keyboard is currently pressed.
+    /// Checks if the specified keyboard key is currently pressed.
     /// </summary>
     /// <param name="key">The keyboard key to check.</param>
-    /// <return>True if the key is pressed; otherwise, false.</return>
-    public static bool IsKeyPressed(KeyboardKey key) {
-        return InputContext.IsKeyPressed(key);
+    /// <param name="enableRepeat">A flag indicating whether the key press should be considered a repeated action.</param>
+    /// <returns>True if the specified key is pressed; otherwise, false.</returns>
+    public static bool IsKeyPressed(KeyboardKey key, bool enableRepeat = false) {
+        return InputContext.IsKeyPressed(key, enableRepeat);
     }
 
     /// <summary>
