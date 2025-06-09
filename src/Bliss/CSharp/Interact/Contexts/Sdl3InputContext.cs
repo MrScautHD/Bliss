@@ -245,11 +245,11 @@ public class Sdl3InputContext : Disposable, IInputContext {
         return SDL3.SDL_TextInputActive((SDL_Window*) this._window.Handle);
     }
     
-    public unsafe void StartTextInput() {
+    public unsafe void EnableTextInput() {
         SDL3.SDL_StartTextInput((SDL_Window*) this._window.Handle);
     }
     
-    public unsafe void StopTextInput() {
+    public unsafe void DisableTextInput() {
         SDL3.SDL_StopTextInput((SDL_Window*) this._window.Handle);
     }
     

@@ -155,7 +155,7 @@ public interface IInputContext : IDisposable {
     bool IsKeyUp(KeyboardKey key);
     
     /// <summary>
-    /// Retrieves any text that was typed since the last frame, but only while text input is active via <see cref="StartTextInput"/>.
+    /// Retrieves any text that was typed since the last frame, but only while text input is active via <see cref="EnableTextInput"/>.
     /// </summary>
     /// <param name="text">The typed text collected since the previous frame. Will be empty if no text was entered.</param>
     /// <returns><c>true</c> if any text was entered; otherwise, <c>false</c>.</returns>
@@ -170,12 +170,12 @@ public interface IInputContext : IDisposable {
     /// <summary>
     /// Activates text input mode, allowing the application to receive typed text events.
     /// </summary>
-    void StartTextInput();
+    void EnableTextInput();
     
     /// <summary>
-    /// Stops the text input process, ending any active text input session.
+    /// Disable the text input process, ending any active text input session.
     /// </summary>
-    void StopTextInput();
+    void DisableTextInput();
 
     /// <summary>
     /// Retrieves the current text from the system clipboard.

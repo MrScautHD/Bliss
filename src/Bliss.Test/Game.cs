@@ -340,11 +340,11 @@ public class Game : Disposable {
         this._spriteBatch.Begin(commandList, this.FullScreenTexture.Framebuffer.OutputDescription);
         
         if (Input.IsKeyPressed(KeyboardKey.O)) {
-            Input.StartTextInput();
+            Input.EnableTextInput();
         }
 
         if (Input.IsKeyPressed(KeyboardKey.Enter)) {
-            Input.StopTextInput();
+            Input.DisableTextInput();
         }
 
         if (Input.IsTextInputActive()) {

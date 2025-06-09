@@ -217,7 +217,7 @@ public static class Input {
     }
     
     /// <summary>
-    /// Retrieves any text that was typed since the last frame, but only while text input is active via <see cref="StartTextInput"/>.
+    /// Retrieves any text that was typed since the last frame, but only while text input is active via <see cref="EnableTextInput"/>.
     /// </summary>
     /// <param name="text">The typed text collected since the previous frame. Will be empty if no text was entered.</param>
     /// <returns><c>true</c> if any text was entered; otherwise, <c>false</c>.</returns>
@@ -236,15 +236,15 @@ public static class Input {
     /// <summary>
     /// Activates text input mode, allowing the application to receive typed text events.
     /// </summary>
-    public static void StartTextInput() {
-        InputContext.StartTextInput();
+    public static void EnableTextInput() {
+        InputContext.EnableTextInput();
     }
 
     /// <summary>
-    /// Stops the text input process, ending any active text input session.
+    /// Disable the text input process, ending any active text input session.
     /// </summary>
-    public static void StopTextInput() {
-        InputContext.StopTextInput();
+    public static void DisableTextInput() {
+        InputContext.DisableTextInput();
     }
 
     /// <summary>
