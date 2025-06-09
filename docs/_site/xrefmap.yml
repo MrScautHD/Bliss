@@ -1692,24 +1692,24 @@ references:
   commentId: T:Bliss.CSharp.Fonts.Font
   fullName: Bliss.CSharp.Fonts.Font
   nameWithType: Font
-- uid: Bliss.CSharp.Fonts.Font.#ctor(System.Byte[])
-  name: Font(byte[])
-  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font__ctor_System_Byte___
-  commentId: M:Bliss.CSharp.Fonts.Font.#ctor(System.Byte[])
-  name.vb: New(Byte())
-  fullName: Bliss.CSharp.Fonts.Font.Font(byte[])
-  fullName.vb: Bliss.CSharp.Fonts.Font.New(Byte())
-  nameWithType: Font.Font(byte[])
-  nameWithType.vb: Font.New(Byte())
-- uid: Bliss.CSharp.Fonts.Font.#ctor(System.String)
-  name: Font(string)
-  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font__ctor_System_String_
-  commentId: M:Bliss.CSharp.Fonts.Font.#ctor(System.String)
-  name.vb: New(String)
-  fullName: Bliss.CSharp.Fonts.Font.Font(string)
-  fullName.vb: Bliss.CSharp.Fonts.Font.New(String)
-  nameWithType: Font.Font(string)
-  nameWithType.vb: Font.New(String)
+- uid: Bliss.CSharp.Fonts.Font.#ctor(System.Byte[],FontStashSharp.FontSystemSettings)
+  name: Font(byte[], FontSystemSettings?)
+  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font__ctor_System_Byte___FontStashSharp_FontSystemSettings_
+  commentId: M:Bliss.CSharp.Fonts.Font.#ctor(System.Byte[],FontStashSharp.FontSystemSettings)
+  name.vb: New(Byte(), FontSystemSettings)
+  fullName: Bliss.CSharp.Fonts.Font.Font(byte[], FontStashSharp.FontSystemSettings?)
+  fullName.vb: Bliss.CSharp.Fonts.Font.New(Byte(), FontStashSharp.FontSystemSettings)
+  nameWithType: Font.Font(byte[], FontSystemSettings?)
+  nameWithType.vb: Font.New(Byte(), FontSystemSettings)
+- uid: Bliss.CSharp.Fonts.Font.#ctor(System.String,FontStashSharp.FontSystemSettings)
+  name: Font(string, FontSystemSettings?)
+  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font__ctor_System_String_FontStashSharp_FontSystemSettings_
+  commentId: M:Bliss.CSharp.Fonts.Font.#ctor(System.String,FontStashSharp.FontSystemSettings)
+  name.vb: New(String, FontSystemSettings)
+  fullName: Bliss.CSharp.Fonts.Font.Font(string, FontStashSharp.FontSystemSettings?)
+  fullName.vb: Bliss.CSharp.Fonts.Font.New(String, FontStashSharp.FontSystemSettings)
+  nameWithType: Font.Font(string, FontSystemSettings?)
+  nameWithType.vb: Font.New(String, FontSystemSettings)
 - uid: Bliss.CSharp.Fonts.Font.#ctor*
   name: Font
   href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font__ctor_
@@ -1736,15 +1736,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Fonts.Font.Dispose
   nameWithType: Font.Dispose
-- uid: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
-  name: Draw(SpriteBatch, string, Vector2, int, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
-  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_Draw_Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_System_String_System_Numerics_Vector2_System_Int32_System_Single_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__FontStashSharp_TextStyle_FontStashSharp_FontSystemEffect_System_Int32_
-  commentId: M:Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
-  name.vb: Draw(SpriteBatch, String, Vector2, Integer, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
-  fullName: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch, string, System.Numerics.Vector2, int, float, float, System.Numerics.Vector2?, float, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, int)
-  fullName.vb: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch, String, System.Numerics.Vector2, Integer, Single, Single, System.Numerics.Vector2?, Single, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, Integer)
-  nameWithType: Font.Draw(SpriteBatch, string, Vector2, int, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
-  nameWithType.vb: Font.Draw(SpriteBatch, String, Vector2, Integer, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
+- uid: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  name: Draw(SpriteBatch, string, Vector2, float, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
+  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_Draw_Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_System_String_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__FontStashSharp_TextStyle_FontStashSharp_FontSystemEffect_System_Int32_
+  commentId: M:Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  name.vb: Draw(SpriteBatch, String, Vector2, Single, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
+  fullName: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch, string, System.Numerics.Vector2, float, float, float, System.Numerics.Vector2?, float, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, int)
+  fullName.vb: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch, String, System.Numerics.Vector2, Single, Single, Single, System.Numerics.Vector2?, Single, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, Integer)
+  nameWithType: Font.Draw(SpriteBatch, string, Vector2, float, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
+  nameWithType.vb: Font.Draw(SpriteBatch, String, Vector2, Single, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
 - uid: Bliss.CSharp.Fonts.Font.Draw*
   name: Draw
   href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_Draw_
@@ -1778,15 +1778,31 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Fonts.Font.FontSystem
   nameWithType: Font.FontSystem
-- uid: Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Single)
-  name: MeasureText(string, float)
-  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureText_System_String_System_Single_
-  commentId: M:Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Single)
-  name.vb: MeasureText(String, Single)
-  fullName: Bliss.CSharp.Fonts.Font.MeasureText(string, float)
-  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureText(String, Single)
-  nameWithType: Font.MeasureText(string, float)
-  nameWithType.vb: Font.MeasureText(String, Single)
+- uid: Bliss.CSharp.Fonts.Font.GetSpriteFont(System.Single)
+  name: GetSpriteFont(float)
+  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_GetSpriteFont_System_Single_
+  commentId: M:Bliss.CSharp.Fonts.Font.GetSpriteFont(System.Single)
+  name.vb: GetSpriteFont(Single)
+  fullName: Bliss.CSharp.Fonts.Font.GetSpriteFont(float)
+  fullName.vb: Bliss.CSharp.Fonts.Font.GetSpriteFont(Single)
+  nameWithType: Font.GetSpriteFont(float)
+  nameWithType.vb: Font.GetSpriteFont(Single)
+- uid: Bliss.CSharp.Fonts.Font.GetSpriteFont*
+  name: GetSpriteFont
+  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_GetSpriteFont_
+  commentId: Overload:Bliss.CSharp.Fonts.Font.GetSpriteFont
+  isSpec: "True"
+  fullName: Bliss.CSharp.Fonts.Font.GetSpriteFont
+  nameWithType: Font.GetSpriteFont
+- uid: Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)
+  name: MeasureText(string, float, Vector2?, float, float, FontSystemEffect, int)
+  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureText_System_String_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Single_FontStashSharp_FontSystemEffect_System_Int32_
+  commentId: M:Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)
+  name.vb: MeasureText(String, Single, Vector2?, Single, Single, FontSystemEffect, Integer)
+  fullName: Bliss.CSharp.Fonts.Font.MeasureText(string, float, System.Numerics.Vector2?, float, float, FontStashSharp.FontSystemEffect, int)
+  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureText(String, Single, System.Numerics.Vector2?, Single, Single, FontStashSharp.FontSystemEffect, Integer)
+  nameWithType: Font.MeasureText(string, float, Vector2?, float, float, FontSystemEffect, int)
+  nameWithType.vb: Font.MeasureText(String, Single, Vector2?, Single, Single, FontSystemEffect, Integer)
 - uid: Bliss.CSharp.Fonts.Font.MeasureText*
   name: MeasureText
   href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureText_
@@ -1794,15 +1810,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Fonts.Font.MeasureText
   nameWithType: Font.MeasureText
-- uid: Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Single)
-  name: MeasureTextRect(string, float)
-  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextRect_System_String_System_Single_
-  commentId: M:Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Single)
-  name.vb: MeasureTextRect(String, Single)
-  fullName: Bliss.CSharp.Fonts.Font.MeasureTextRect(string, float)
-  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureTextRect(String, Single)
-  nameWithType: Font.MeasureTextRect(string, float)
-  nameWithType.vb: Font.MeasureTextRect(String, Single)
+- uid: Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)
+  name: MeasureTextRect(string, float, Vector2?, float, float, FontSystemEffect, int)
+  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextRect_System_String_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Single_FontStashSharp_FontSystemEffect_System_Int32_
+  commentId: M:Bliss.CSharp.Fonts.Font.MeasureTextRect(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)
+  name.vb: MeasureTextRect(String, Single, Vector2?, Single, Single, FontSystemEffect, Integer)
+  fullName: Bliss.CSharp.Fonts.Font.MeasureTextRect(string, float, System.Numerics.Vector2?, float, float, FontStashSharp.FontSystemEffect, int)
+  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureTextRect(String, Single, System.Numerics.Vector2?, Single, Single, FontStashSharp.FontSystemEffect, Integer)
+  nameWithType: Font.MeasureTextRect(string, float, Vector2?, float, float, FontSystemEffect, int)
+  nameWithType.vb: Font.MeasureTextRect(String, Single, Vector2?, Single, Single, FontSystemEffect, Integer)
 - uid: Bliss.CSharp.Fonts.Font.MeasureTextRect*
   name: MeasureTextRect
   href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextRect_
@@ -1810,15 +1826,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Fonts.Font.MeasureTextRect
   nameWithType: Font.MeasureTextRect
-- uid: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Single)
-  name: MeasureTextTrimmed(string, float)
-  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextTrimmed_System_String_System_Single_
-  commentId: M:Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Single)
-  name.vb: MeasureTextTrimmed(String, Single)
-  fullName: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(string, float)
-  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(String, Single)
-  nameWithType: Font.MeasureTextTrimmed(string, float)
-  nameWithType.vb: Font.MeasureTextTrimmed(String, Single)
+- uid: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)
+  name: MeasureTextTrimmed(string, float, Vector2?, float, float, FontSystemEffect, int)
+  href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextTrimmed_System_String_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Single_FontStashSharp_FontSystemEffect_System_Int32_
+  commentId: M:Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)
+  name.vb: MeasureTextTrimmed(String, Single, Vector2?, Single, Single, FontSystemEffect, Integer)
+  fullName: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(string, float, System.Numerics.Vector2?, float, float, FontStashSharp.FontSystemEffect, int)
+  fullName.vb: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed(String, Single, System.Numerics.Vector2?, Single, Single, FontStashSharp.FontSystemEffect, Integer)
+  nameWithType: Font.MeasureTextTrimmed(string, float, Vector2?, float, float, FontSystemEffect, int)
+  nameWithType.vb: Font.MeasureTextTrimmed(String, Single, Vector2?, Single, Single, FontSystemEffect, Integer)
 - uid: Bliss.CSharp.Fonts.Font.MeasureTextTrimmed*
   name: MeasureTextTrimmed
   href: api/Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_MeasureTextTrimmed_
@@ -5081,15 +5097,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawCallCount
   nameWithType: SpriteBatch.DrawCallCount
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
-  name: DrawText(Font, string, Vector2, int, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
-  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_DrawText_Bliss_CSharp_Fonts_Font_System_String_System_Numerics_Vector2_System_Int32_System_Single_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__FontStashSharp_TextStyle_FontStashSharp_FontSystemEffect_System_Int32_
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Int32,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
-  name.vb: DrawText(Font, String, Vector2, Integer, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font, string, System.Numerics.Vector2, int, float, float, System.Numerics.Vector2?, float, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, int)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font, String, System.Numerics.Vector2, Integer, Single, Single, System.Numerics.Vector2?, Single, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, Integer)
-  nameWithType: SpriteBatch.DrawText(Font, string, Vector2, int, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
-  nameWithType.vb: SpriteBatch.DrawText(Font, String, Vector2, Integer, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
+- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  name: DrawText(Font, string, Vector2, float, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
+  href: api/Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_DrawText_Bliss_CSharp_Fonts_Font_System_String_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__FontStashSharp_TextStyle_FontStashSharp_FontSystemEffect_System_Int32_
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  name.vb: DrawText(Font, String, Vector2, Single, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
+  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font, string, System.Numerics.Vector2, float, float, float, System.Numerics.Vector2?, float, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, int)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font, String, System.Numerics.Vector2, Single, Single, Single, System.Numerics.Vector2?, Single, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, Integer)
+  nameWithType: SpriteBatch.DrawText(Font, string, Vector2, float, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
+  nameWithType.vb: SpriteBatch.DrawText(Font, String, Vector2, Single, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
 - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.DrawText*
   name: DrawText
   href: api/Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_DrawText_
@@ -6959,6 +6975,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Contexts.IInputContext.DisableRelativeMouseMode
   nameWithType: IInputContext.DisableRelativeMouseMode
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.DisableTextInput
+  name: DisableTextInput()
+  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_DisableTextInput
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.DisableTextInput
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.DisableTextInput()
+  nameWithType: IInputContext.DisableTextInput()
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.DisableTextInput*
+  name: DisableTextInput
+  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_DisableTextInput_
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.IInputContext.DisableTextInput
+  isSpec: "True"
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.DisableTextInput
+  nameWithType: IInputContext.DisableTextInput
 - uid: Bliss.CSharp.Interact.Contexts.IInputContext.EnableRelativeMouseMode
   name: EnableRelativeMouseMode()
   href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_EnableRelativeMouseMode
@@ -6972,6 +7001,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Contexts.IInputContext.EnableRelativeMouseMode
   nameWithType: IInputContext.EnableRelativeMouseMode
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.EnableTextInput
+  name: EnableTextInput()
+  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_EnableTextInput
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.EnableTextInput
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.EnableTextInput()
+  nameWithType: IInputContext.EnableTextInput()
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.EnableTextInput*
+  name: EnableTextInput
+  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_EnableTextInput_
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.IInputContext.EnableTextInput
+  isSpec: "True"
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.EnableTextInput
+  nameWithType: IInputContext.EnableTextInput
 - uid: Bliss.CSharp.Interact.Contexts.IInputContext.End
   name: End()
   href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_End
@@ -7233,12 +7275,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyDown
   nameWithType: IInputContext.IsKeyDown
-- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
-  name: IsKeyPressed(KeyboardKey)
-  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyPressed_Bliss_CSharp_Interact_Keyboards_KeyboardKey_
-  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
-  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
-  nameWithType: IInputContext.IsKeyPressed(KeyboardKey)
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey,System.Boolean)
+  name: IsKeyPressed(KeyboardKey, bool)
+  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyPressed_Bliss_CSharp_Interact_Keyboards_KeyboardKey_System_Boolean_
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey,System.Boolean)
+  name.vb: IsKeyPressed(KeyboardKey, Boolean)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey, bool)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey, Boolean)
+  nameWithType: IInputContext.IsKeyPressed(KeyboardKey, bool)
+  nameWithType.vb: IInputContext.IsKeyPressed(KeyboardKey, Boolean)
 - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyPressed*
   name: IsKeyPressed
   href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsKeyPressed_
@@ -7453,32 +7498,6 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Contexts.IInputContext.ShowCursor
   nameWithType: IInputContext.ShowCursor
-- uid: Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput
-  name: StartTextInput()
-  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_StartTextInput
-  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput
-  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput()
-  nameWithType: IInputContext.StartTextInput()
-- uid: Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput*
-  name: StartTextInput
-  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_StartTextInput_
-  commentId: Overload:Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput
-  isSpec: "True"
-  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.StartTextInput
-  nameWithType: IInputContext.StartTextInput
-- uid: Bliss.CSharp.Interact.Contexts.IInputContext.StopTextInput
-  name: StopTextInput()
-  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_StopTextInput
-  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.StopTextInput
-  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.StopTextInput()
-  nameWithType: IInputContext.StopTextInput()
-- uid: Bliss.CSharp.Interact.Contexts.IInputContext.StopTextInput*
-  name: StopTextInput
-  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_StopTextInput_
-  commentId: Overload:Bliss.CSharp.Interact.Contexts.IInputContext.StopTextInput
-  isSpec: "True"
-  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.StopTextInput
-  nameWithType: IInputContext.StopTextInput
 - uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext
   name: Sdl3InputContext
   href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html
@@ -7530,6 +7549,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.DisableRelativeMouseMode
   nameWithType: Sdl3InputContext.DisableRelativeMouseMode
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.DisableTextInput
+  name: DisableTextInput()
+  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_DisableTextInput
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.DisableTextInput
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.DisableTextInput()
+  nameWithType: Sdl3InputContext.DisableTextInput()
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.DisableTextInput*
+  name: DisableTextInput
+  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_DisableTextInput_
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.DisableTextInput
+  isSpec: "True"
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.DisableTextInput
+  nameWithType: Sdl3InputContext.DisableTextInput
 - uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.Dispose(System.Boolean)
   name: Dispose(bool)
   href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_Dispose_System_Boolean_
@@ -7559,6 +7591,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.EnableRelativeMouseMode
   nameWithType: Sdl3InputContext.EnableRelativeMouseMode
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.EnableTextInput
+  name: EnableTextInput()
+  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_EnableTextInput
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.EnableTextInput
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.EnableTextInput()
+  nameWithType: Sdl3InputContext.EnableTextInput()
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.EnableTextInput*
+  name: EnableTextInput
+  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_EnableTextInput_
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.EnableTextInput
+  isSpec: "True"
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.EnableTextInput
+  nameWithType: Sdl3InputContext.EnableTextInput
 - uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.End
   name: End()
   href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_End
@@ -7820,12 +7865,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyDown
   nameWithType: Sdl3InputContext.IsKeyDown
-- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
-  name: IsKeyPressed(KeyboardKey)
-  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsKeyPressed_Bliss_CSharp_Interact_Keyboards_KeyboardKey_
-  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
-  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
-  nameWithType: Sdl3InputContext.IsKeyPressed(KeyboardKey)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey,System.Boolean)
+  name: IsKeyPressed(KeyboardKey, bool)
+  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsKeyPressed_Bliss_CSharp_Interact_Keyboards_KeyboardKey_System_Boolean_
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey,System.Boolean)
+  name.vb: IsKeyPressed(KeyboardKey, Boolean)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey, bool)
+  fullName.vb: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey, Boolean)
+  nameWithType: Sdl3InputContext.IsKeyPressed(KeyboardKey, bool)
+  nameWithType.vb: Sdl3InputContext.IsKeyPressed(KeyboardKey, Boolean)
 - uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyPressed*
   name: IsKeyPressed
   href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsKeyPressed_
@@ -8040,32 +8088,6 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.ShowCursor
   nameWithType: Sdl3InputContext.ShowCursor
-- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StartTextInput
-  name: StartTextInput()
-  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_StartTextInput
-  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StartTextInput
-  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StartTextInput()
-  nameWithType: Sdl3InputContext.StartTextInput()
-- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StartTextInput*
-  name: StartTextInput
-  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_StartTextInput_
-  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StartTextInput
-  isSpec: "True"
-  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StartTextInput
-  nameWithType: Sdl3InputContext.StartTextInput
-- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StopTextInput
-  name: StopTextInput()
-  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_StopTextInput
-  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StopTextInput
-  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StopTextInput()
-  nameWithType: Sdl3InputContext.StopTextInput()
-- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StopTextInput*
-  name: StopTextInput
-  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_StopTextInput_
-  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StopTextInput
-  isSpec: "True"
-  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.StopTextInput
-  nameWithType: Sdl3InputContext.StopTextInput
 - uid: Bliss.CSharp.Interact.Gamepads
   name: Bliss.CSharp.Interact.Gamepads
   href: api/Bliss.CSharp.Interact.Gamepads.html
@@ -8639,6 +8661,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Input.DisableRelativeMouseMode
   nameWithType: Input.DisableRelativeMouseMode
+- uid: Bliss.CSharp.Interact.Input.DisableTextInput
+  name: DisableTextInput()
+  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_DisableTextInput
+  commentId: M:Bliss.CSharp.Interact.Input.DisableTextInput
+  fullName: Bliss.CSharp.Interact.Input.DisableTextInput()
+  nameWithType: Input.DisableTextInput()
+- uid: Bliss.CSharp.Interact.Input.DisableTextInput*
+  name: DisableTextInput
+  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_DisableTextInput_
+  commentId: Overload:Bliss.CSharp.Interact.Input.DisableTextInput
+  isSpec: "True"
+  fullName: Bliss.CSharp.Interact.Input.DisableTextInput
+  nameWithType: Input.DisableTextInput
 - uid: Bliss.CSharp.Interact.Input.EnableRelativeMouseMode
   name: EnableRelativeMouseMode()
   href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_EnableRelativeMouseMode
@@ -8652,6 +8687,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Input.EnableRelativeMouseMode
   nameWithType: Input.EnableRelativeMouseMode
+- uid: Bliss.CSharp.Interact.Input.EnableTextInput
+  name: EnableTextInput()
+  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_EnableTextInput
+  commentId: M:Bliss.CSharp.Interact.Input.EnableTextInput
+  fullName: Bliss.CSharp.Interact.Input.EnableTextInput()
+  nameWithType: Input.EnableTextInput()
+- uid: Bliss.CSharp.Interact.Input.EnableTextInput*
+  name: EnableTextInput
+  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_EnableTextInput_
+  commentId: Overload:Bliss.CSharp.Interact.Input.EnableTextInput
+  isSpec: "True"
+  fullName: Bliss.CSharp.Interact.Input.EnableTextInput
+  nameWithType: Input.EnableTextInput
 - uid: Bliss.CSharp.Interact.Input.End
   name: End()
   href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_End
@@ -8939,12 +8987,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Input.IsKeyDown
   nameWithType: Input.IsKeyDown
-- uid: Bliss.CSharp.Interact.Input.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
-  name: IsKeyPressed(KeyboardKey)
-  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_IsKeyPressed_Bliss_CSharp_Interact_Keyboards_KeyboardKey_
-  commentId: M:Bliss.CSharp.Interact.Input.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
-  fullName: Bliss.CSharp.Interact.Input.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
-  nameWithType: Input.IsKeyPressed(KeyboardKey)
+- uid: Bliss.CSharp.Interact.Input.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey,System.Boolean)
+  name: IsKeyPressed(KeyboardKey, bool)
+  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_IsKeyPressed_Bliss_CSharp_Interact_Keyboards_KeyboardKey_System_Boolean_
+  commentId: M:Bliss.CSharp.Interact.Input.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey,System.Boolean)
+  name.vb: IsKeyPressed(KeyboardKey, Boolean)
+  fullName: Bliss.CSharp.Interact.Input.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey, bool)
+  fullName.vb: Bliss.CSharp.Interact.Input.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey, Boolean)
+  nameWithType: Input.IsKeyPressed(KeyboardKey, bool)
+  nameWithType.vb: Input.IsKeyPressed(KeyboardKey, Boolean)
 - uid: Bliss.CSharp.Interact.Input.IsKeyPressed*
   name: IsKeyPressed
   href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_IsKeyPressed_
@@ -9159,32 +9210,6 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Input.ShowCursor
   nameWithType: Input.ShowCursor
-- uid: Bliss.CSharp.Interact.Input.StartTextInput
-  name: StartTextInput()
-  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_StartTextInput
-  commentId: M:Bliss.CSharp.Interact.Input.StartTextInput
-  fullName: Bliss.CSharp.Interact.Input.StartTextInput()
-  nameWithType: Input.StartTextInput()
-- uid: Bliss.CSharp.Interact.Input.StartTextInput*
-  name: StartTextInput
-  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_StartTextInput_
-  commentId: Overload:Bliss.CSharp.Interact.Input.StartTextInput
-  isSpec: "True"
-  fullName: Bliss.CSharp.Interact.Input.StartTextInput
-  nameWithType: Input.StartTextInput
-- uid: Bliss.CSharp.Interact.Input.StopTextInput
-  name: StopTextInput()
-  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_StopTextInput
-  commentId: M:Bliss.CSharp.Interact.Input.StopTextInput
-  fullName: Bliss.CSharp.Interact.Input.StopTextInput()
-  nameWithType: Input.StopTextInput()
-- uid: Bliss.CSharp.Interact.Input.StopTextInput*
-  name: StopTextInput
-  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_StopTextInput_
-  commentId: Overload:Bliss.CSharp.Interact.Input.StopTextInput
-  isSpec: "True"
-  fullName: Bliss.CSharp.Interact.Input.StopTextInput
-  nameWithType: Input.StopTextInput
 - uid: Bliss.CSharp.Interact.Keyboards
   name: Bliss.CSharp.Interact.Keyboards
   href: api/Bliss.CSharp.Interact.Keyboards.html
