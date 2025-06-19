@@ -365,7 +365,12 @@ public class Game : Disposable {
 
         int frame = 4;
         this._animatedImage.GetFrameInfo(frame, out int width, out int height, out float duration);
+        
+        this._spriteBatch.PushRasterizerState(this._spriteBatch.GetCurrentRasterizerState() with { ScissorTestEnabled = true });
+        this._spriteBatch.PushScissorRect(new Rectangle(30, 30, (int) (width / 2.0F * 0.2F), (int) (height / 2.0F * 0.2F)));
         this._spriteBatch.DrawTexture(this._gif, new Vector2(30, 30), sourceRect: new Rectangle(width * frame, 0, width, height), scale: new Vector2(0.2F, 0.2F), color: new Color(255, 255, 255, 155));
+        this._spriteBatch.PopScissorRect();
+        this._spriteBatch.PopRasterizerState();
         
         //this._spriteBatch.DrawTexture(this._button, new Vector2(300.54F, 300.54F), 0.5F, scale: new Vector2(3, 3));
         
