@@ -13,9 +13,12 @@ public static class GraphicsHelper {
     /// <exception cref="ArgumentException">Thrown when an unsupported sampler type is provided.</exception>
     public static Sampler GetSampler(GraphicsDevice graphicsDevice, SamplerType samplerType) {
         return samplerType switch {
-            SamplerType.Point => graphicsDevice.PointSampler,
-            SamplerType.Linear => graphicsDevice.LinearSampler,
-            SamplerType.Aniso4X => graphicsDevice.Aniso4XSampler,
+            SamplerType.PointClamp => GlobalResource.PointClampSampler,
+            SamplerType.PointWrap => graphicsDevice.PointSampler,
+            SamplerType.LinearClamp => GlobalResource.LinearClampSampler,
+            SamplerType.LinearWrap => graphicsDevice.LinearSampler,
+            SamplerType.Aniso4XClamp => GlobalResource.Aniso4XClampSampler,
+            SamplerType.Aniso4XWrap => graphicsDevice.Aniso4XSampler,
             _ => throw new ArgumentException($"Unsupported sampler type: {samplerType}", nameof(samplerType))
         };
     }

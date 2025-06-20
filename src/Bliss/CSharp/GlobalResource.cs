@@ -28,6 +28,21 @@ public static class GlobalResource {
     public static List<SimpleTextureLayout> TextureLayouts { get; private set; }
     
     /// <summary>
+    /// A global point sampler using clamp addressing mode.
+    /// </summary>
+    public static Sampler PointClampSampler { get; private set; }
+    
+    /// <summary>
+    /// A global linear sampler using clamp addressing mode.
+    /// </summary>
+    public static Sampler LinearClampSampler { get; private set; }
+    
+    /// <summary>
+    /// A global 4x anisotropic sampler using clamp addressing mode.
+    /// </summary>
+    public static Sampler Aniso4XClampSampler { get; private set; }
+    
+    /// <summary>
     /// Gets the default <see cref="Effect"/> used for rendering sprites.
     /// </summary>
     public static Effect DefaultSpriteEffect { get; private set; }
@@ -70,6 +85,40 @@ public static class GlobalResource {
         GraphicsDevice = graphicsDevice;
         BufferLayouts = new List<SimpleBufferLayout>();
         TextureLayouts = new List<SimpleTextureLayout>();
+        
+        // Default Samplers.
+        PointClampSampler = graphicsDevice.ResourceFactory.CreateSampler(new SamplerDescription {
+            AddressModeU = SamplerAddressMode.Wrap,
+            AddressModeV = SamplerAddressMode.Wrap,
+            AddressModeW = SamplerAddressMode.Wrap,
+            Filter = SamplerFilter.MinPointMagPointMipPoint,
+            LodBias = 0,
+            MinimumLod = 0,
+            MaximumLod = uint.MaxValue,
+            MaximumAnisotropy = 0
+        });
+        
+        LinearClampSampler = graphicsDevice.ResourceFactory.CreateSampler(new SamplerDescription {
+            AddressModeU = SamplerAddressMode.Wrap,
+            AddressModeV = SamplerAddressMode.Wrap,
+            AddressModeW = SamplerAddressMode.Wrap,
+            Filter = SamplerFilter.MinLinearMagLinearMipLinear,
+            LodBias = 0,
+            MinimumLod = 0,
+            MaximumLod = uint.MaxValue,
+            MaximumAnisotropy = 0
+        });
+        
+        Aniso4XClampSampler = graphicsDevice.ResourceFactory.CreateSampler(new SamplerDescription {
+            AddressModeU = SamplerAddressMode.Wrap,
+            AddressModeV = SamplerAddressMode.Wrap,
+            AddressModeW = SamplerAddressMode.Wrap,
+            Filter = SamplerFilter.Anisotropic,
+            LodBias = 0,
+            MinimumLod = 0,
+            MaximumLod = uint.MaxValue,
+            MaximumAnisotropy = 4
+        });
         
         // Default sprite effect.
         DefaultSpriteEffect = new Effect(graphicsDevice, SpriteVertex2D.VertexLayout, "content/shaders/sprite.vert", "content/shaders/sprite.frag");
@@ -132,6 +181,9 @@ public static class GlobalResource {
     /// Releases and disposes of all global resources.
     /// </summary>
     public static void Destroy() {
+        PointClampSampler.Dispose();
+        LinearClampSampler.Dispose();
+        Aniso4XClampSampler.Dispose();
         DefaultSpriteEffect.Dispose();
         DefaultPrimitiveEffect.Dispose();
         DefaultModelEffect.Dispose();

@@ -3,17 +3,32 @@ namespace Bliss.CSharp.Graphics;
 public enum SamplerType {
     
     /// <summary>
-    /// Point sampling, which selects the nearest texel without filtering.
+    /// Uses point (nearest neighbor) filtering with clamped texture coordinates.
     /// </summary>
-    Point,
+    PointClamp,
     
     /// <summary>
-    /// Linear sampling, which performs linear interpolation between texels.
+    /// Uses point (nearest neighbor) filtering with wrapping texture coordinates.
     /// </summary>
-    Linear,
+    PointWrap,
     
     /// <summary>
-    /// Anisotropic sampling with a maximum of 4x sampling, providing better quality at glancing angles.
+    /// Uses linear (bilinear) filtering with clamped texture coordinates.
     /// </summary>
-    Aniso4X
+    LinearClamp,
+    
+    /// <summary>
+    /// Uses linear (bilinear) filtering with wrapping texture coordinates.
+    /// </summary>
+    LinearWrap,
+    
+    /// <summary>
+    /// Uses 4x anisotropic filtering with clamped texture coordinates for improved texture quality at oblique viewing angles.
+    /// </summary>
+    Aniso4XClamp,
+    
+    /// <summary>
+    /// Uses 4x anisotropic filtering with wrapping texture coordinates for improved texture quality at oblique viewing angles.
+    /// </summary>
+    Aniso4XWrap
 }

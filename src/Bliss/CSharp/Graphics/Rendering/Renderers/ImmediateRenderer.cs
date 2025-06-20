@@ -254,7 +254,7 @@ public class ImmediateRenderer : Disposable {
     /// <param name="sourceRect">The source rectangle specifying a portion of the texture to be used. If null, the entire texture is used.</param>
     public void SetTexture(Texture2D? texture, Sampler? sampler = null, Rectangle? sourceRect = null) {
         this._currentTexture = texture ?? GlobalResource.DefaultImmediateRendererTexture;
-        this._currentSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
+        this._currentSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointClamp);
         this._currentSourceRec = sourceRect ?? new Rectangle(0, 0, (int) this._currentTexture.Width, (int) this._currentTexture.Height);
     }
 

@@ -57,7 +57,7 @@ public class FullScreenRenderPass : Disposable {
     /// <param name="rasterizerState">An optional rasterizer state description to configure rasterization settings. Defaults to a standard rasterizer configuration if not specified.</param>
     public void Draw(CommandList commandList, RenderTexture2D renderTexture, OutputDescription output, Effect? effect = null, Sampler? sampler = null, BlendStateDescription? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null) {
         Effect finalEffect = effect ?? GlobalResource.DefaultFullScreenRenderPassEffect;
-        Sampler finalSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
+        Sampler finalSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointClamp);
         BlendStateDescription finalBlendState = blendState ?? BlendStateDescription.SINGLE_ALPHA_BLEND;
         DepthStencilStateDescription finalDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DISABLED;
         RasterizerStateDescription finalRasterizerState = rasterizerState ?? RasterizerStateDescription.CULL_NONE;

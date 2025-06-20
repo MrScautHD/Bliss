@@ -325,7 +325,7 @@ public class SpriteBatch : Disposable {
         this._mainRasterizerState = this._currentRasterizerState = this._requestedRasterizerState = rasterizerState ?? RasterizerStateDescription.CULL_NONE;
         this._mainProjection = this._currentProjection = this._requestedProjection = projection ?? Matrix4x4.CreateOrthographicOffCenter(0.0F, this.Window.GetWidth(), this.Window.GetHeight(), 0.0F, -1.0F, 1.0F);
         this._mainView = this._currentView = this._requestedView = view ?? Matrix4x4.Identity;
-        this._mainSampler = this._currentSampler = this._requestedSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.Point);
+        this._mainSampler = this._currentSampler = this._requestedSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointClamp);
         this._mainScissorRect = this._currentScissorRect = this._requestedScissorRect = scissorRect;
         
         this.DrawCallCount = 0;
