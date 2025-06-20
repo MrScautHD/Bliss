@@ -5,9 +5,12 @@ items:
   id: SamplerType
   parent: Bliss.CSharp.Graphics
   children:
-  - Bliss.CSharp.Graphics.SamplerType.Aniso4X
-  - Bliss.CSharp.Graphics.SamplerType.Linear
-  - Bliss.CSharp.Graphics.SamplerType.Point
+  - Bliss.CSharp.Graphics.SamplerType.Aniso4XClamp
+  - Bliss.CSharp.Graphics.SamplerType.Aniso4XWrap
+  - Bliss.CSharp.Graphics.SamplerType.LinearClamp
+  - Bliss.CSharp.Graphics.SamplerType.LinearWrap
+  - Bliss.CSharp.Graphics.SamplerType.PointClamp
+  - Bliss.CSharp.Graphics.SamplerType.PointWrap
   langs:
   - csharp
   - vb
@@ -29,88 +32,172 @@ items:
   syntax:
     content: public enum SamplerType
     content.vb: Public Enum SamplerType
-- uid: Bliss.CSharp.Graphics.SamplerType.Point
-  commentId: F:Bliss.CSharp.Graphics.SamplerType.Point
-  id: Point
+- uid: Bliss.CSharp.Graphics.SamplerType.PointClamp
+  commentId: F:Bliss.CSharp.Graphics.SamplerType.PointClamp
+  id: PointClamp
   parent: Bliss.CSharp.Graphics.SamplerType
   langs:
   - csharp
   - vb
-  name: Point
-  nameWithType: SamplerType.Point
-  fullName: Bliss.CSharp.Graphics.SamplerType.Point
+  name: PointClamp
+  nameWithType: SamplerType.PointClamp
+  fullName: Bliss.CSharp.Graphics.SamplerType.PointClamp
   type: Field
   source:
     remote:
       path: src/Bliss/CSharp/Graphics/SamplerType.cs
       branch: main
       repo: https://github.com/MrScautHD/Bliss.git
-    id: Point
+    id: PointClamp
     path: ../src/Bliss/CSharp/Graphics/SamplerType.cs
     startLine: 7
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics
-  summary: Point sampling, which selects the nearest texel without filtering.
+  summary: Uses point (nearest neighbor) filtering with clamped texture coordinates.
   example: []
   syntax:
-    content: Point = 0
+    content: PointClamp = 0
     return:
       type: Bliss.CSharp.Graphics.SamplerType
-- uid: Bliss.CSharp.Graphics.SamplerType.Linear
-  commentId: F:Bliss.CSharp.Graphics.SamplerType.Linear
-  id: Linear
+- uid: Bliss.CSharp.Graphics.SamplerType.PointWrap
+  commentId: F:Bliss.CSharp.Graphics.SamplerType.PointWrap
+  id: PointWrap
   parent: Bliss.CSharp.Graphics.SamplerType
   langs:
   - csharp
   - vb
-  name: Linear
-  nameWithType: SamplerType.Linear
-  fullName: Bliss.CSharp.Graphics.SamplerType.Linear
+  name: PointWrap
+  nameWithType: SamplerType.PointWrap
+  fullName: Bliss.CSharp.Graphics.SamplerType.PointWrap
   type: Field
   source:
     remote:
       path: src/Bliss/CSharp/Graphics/SamplerType.cs
       branch: main
       repo: https://github.com/MrScautHD/Bliss.git
-    id: Linear
+    id: PointWrap
     path: ../src/Bliss/CSharp/Graphics/SamplerType.cs
     startLine: 12
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics
-  summary: Linear sampling, which performs linear interpolation between texels.
+  summary: Uses point (nearest neighbor) filtering with wrapping texture coordinates.
   example: []
   syntax:
-    content: Linear = 1
+    content: PointWrap = 1
     return:
       type: Bliss.CSharp.Graphics.SamplerType
-- uid: Bliss.CSharp.Graphics.SamplerType.Aniso4X
-  commentId: F:Bliss.CSharp.Graphics.SamplerType.Aniso4X
-  id: Aniso4X
+- uid: Bliss.CSharp.Graphics.SamplerType.LinearClamp
+  commentId: F:Bliss.CSharp.Graphics.SamplerType.LinearClamp
+  id: LinearClamp
   parent: Bliss.CSharp.Graphics.SamplerType
   langs:
   - csharp
   - vb
-  name: Aniso4X
-  nameWithType: SamplerType.Aniso4X
-  fullName: Bliss.CSharp.Graphics.SamplerType.Aniso4X
+  name: LinearClamp
+  nameWithType: SamplerType.LinearClamp
+  fullName: Bliss.CSharp.Graphics.SamplerType.LinearClamp
   type: Field
   source:
     remote:
       path: src/Bliss/CSharp/Graphics/SamplerType.cs
       branch: main
       repo: https://github.com/MrScautHD/Bliss.git
-    id: Aniso4X
+    id: LinearClamp
     path: ../src/Bliss/CSharp/Graphics/SamplerType.cs
     startLine: 17
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics
-  summary: Anisotropic sampling with a maximum of 4x sampling, providing better quality at glancing angles.
+  summary: Uses linear (bilinear) filtering with clamped texture coordinates.
   example: []
   syntax:
-    content: Aniso4X = 2
+    content: LinearClamp = 2
+    return:
+      type: Bliss.CSharp.Graphics.SamplerType
+- uid: Bliss.CSharp.Graphics.SamplerType.LinearWrap
+  commentId: F:Bliss.CSharp.Graphics.SamplerType.LinearWrap
+  id: LinearWrap
+  parent: Bliss.CSharp.Graphics.SamplerType
+  langs:
+  - csharp
+  - vb
+  name: LinearWrap
+  nameWithType: SamplerType.LinearWrap
+  fullName: Bliss.CSharp.Graphics.SamplerType.LinearWrap
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/SamplerType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LinearWrap
+    path: ../src/Bliss/CSharp/Graphics/SamplerType.cs
+    startLine: 22
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics
+  summary: Uses linear (bilinear) filtering with wrapping texture coordinates.
+  example: []
+  syntax:
+    content: LinearWrap = 3
+    return:
+      type: Bliss.CSharp.Graphics.SamplerType
+- uid: Bliss.CSharp.Graphics.SamplerType.Aniso4XClamp
+  commentId: F:Bliss.CSharp.Graphics.SamplerType.Aniso4XClamp
+  id: Aniso4XClamp
+  parent: Bliss.CSharp.Graphics.SamplerType
+  langs:
+  - csharp
+  - vb
+  name: Aniso4XClamp
+  nameWithType: SamplerType.Aniso4XClamp
+  fullName: Bliss.CSharp.Graphics.SamplerType.Aniso4XClamp
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/SamplerType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Aniso4XClamp
+    path: ../src/Bliss/CSharp/Graphics/SamplerType.cs
+    startLine: 27
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics
+  summary: Uses 4x anisotropic filtering with clamped texture coordinates for improved texture quality at oblique viewing angles.
+  example: []
+  syntax:
+    content: Aniso4XClamp = 4
+    return:
+      type: Bliss.CSharp.Graphics.SamplerType
+- uid: Bliss.CSharp.Graphics.SamplerType.Aniso4XWrap
+  commentId: F:Bliss.CSharp.Graphics.SamplerType.Aniso4XWrap
+  id: Aniso4XWrap
+  parent: Bliss.CSharp.Graphics.SamplerType
+  langs:
+  - csharp
+  - vb
+  name: Aniso4XWrap
+  nameWithType: SamplerType.Aniso4XWrap
+  fullName: Bliss.CSharp.Graphics.SamplerType.Aniso4XWrap
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/SamplerType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Aniso4XWrap
+    path: ../src/Bliss/CSharp/Graphics/SamplerType.cs
+    startLine: 32
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics
+  summary: Uses 4x anisotropic filtering with wrapping texture coordinates for improved texture quality at oblique viewing angles.
+  example: []
+  syntax:
+    content: Aniso4XWrap = 5
     return:
       type: Bliss.CSharp.Graphics.SamplerType
 references:

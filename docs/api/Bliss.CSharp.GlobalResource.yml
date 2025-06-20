@@ -5,6 +5,7 @@ items:
   id: GlobalResource
   parent: Bliss.CSharp
   children:
+  - Bliss.CSharp.GlobalResource.Aniso4XClampSampler
   - Bliss.CSharp.GlobalResource.BufferLayouts
   - Bliss.CSharp.GlobalResource.CreateBufferLayout(System.String,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType,Veldrid.ShaderStages)
   - Bliss.CSharp.GlobalResource.CreateTextureLayout(System.String)
@@ -18,6 +19,8 @@ items:
   - Bliss.CSharp.GlobalResource.Destroy
   - Bliss.CSharp.GlobalResource.GraphicsDevice
   - Bliss.CSharp.GlobalResource.Init(Veldrid.GraphicsDevice)
+  - Bliss.CSharp.GlobalResource.LinearClampSampler
+  - Bliss.CSharp.GlobalResource.PointClampSampler
   - Bliss.CSharp.GlobalResource.TextureLayouts
   langs:
   - csharp
@@ -143,6 +146,99 @@ items:
       type: System.Collections.Generic.List{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout}
     content.vb: Public Shared Property TextureLayouts As List(Of SimpleTextureLayout)
   overload: Bliss.CSharp.GlobalResource.TextureLayouts*
+- uid: Bliss.CSharp.GlobalResource.PointClampSampler
+  commentId: P:Bliss.CSharp.GlobalResource.PointClampSampler
+  id: PointClampSampler
+  parent: Bliss.CSharp.GlobalResource
+  langs:
+  - csharp
+  - vb
+  name: PointClampSampler
+  nameWithType: GlobalResource.PointClampSampler
+  fullName: Bliss.CSharp.GlobalResource.PointClampSampler
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/GlobalResource.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: PointClampSampler
+    path: ../src/Bliss/CSharp/GlobalResource.cs
+    startLine: 32
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: A global point sampler using clamp addressing mode.
+  example: []
+  syntax:
+    content: public static Sampler PointClampSampler { get; }
+    parameters: []
+    return:
+      type: Veldrid.Sampler
+    content.vb: Public Shared Property PointClampSampler As Sampler
+  overload: Bliss.CSharp.GlobalResource.PointClampSampler*
+- uid: Bliss.CSharp.GlobalResource.LinearClampSampler
+  commentId: P:Bliss.CSharp.GlobalResource.LinearClampSampler
+  id: LinearClampSampler
+  parent: Bliss.CSharp.GlobalResource
+  langs:
+  - csharp
+  - vb
+  name: LinearClampSampler
+  nameWithType: GlobalResource.LinearClampSampler
+  fullName: Bliss.CSharp.GlobalResource.LinearClampSampler
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/GlobalResource.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LinearClampSampler
+    path: ../src/Bliss/CSharp/GlobalResource.cs
+    startLine: 37
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: A global linear sampler using clamp addressing mode.
+  example: []
+  syntax:
+    content: public static Sampler LinearClampSampler { get; }
+    parameters: []
+    return:
+      type: Veldrid.Sampler
+    content.vb: Public Shared Property LinearClampSampler As Sampler
+  overload: Bliss.CSharp.GlobalResource.LinearClampSampler*
+- uid: Bliss.CSharp.GlobalResource.Aniso4XClampSampler
+  commentId: P:Bliss.CSharp.GlobalResource.Aniso4XClampSampler
+  id: Aniso4XClampSampler
+  parent: Bliss.CSharp.GlobalResource
+  langs:
+  - csharp
+  - vb
+  name: Aniso4XClampSampler
+  nameWithType: GlobalResource.Aniso4XClampSampler
+  fullName: Bliss.CSharp.GlobalResource.Aniso4XClampSampler
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/GlobalResource.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Aniso4XClampSampler
+    path: ../src/Bliss/CSharp/GlobalResource.cs
+    startLine: 42
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: A global 4x anisotropic sampler using clamp addressing mode.
+  example: []
+  syntax:
+    content: public static Sampler Aniso4XClampSampler { get; }
+    parameters: []
+    return:
+      type: Veldrid.Sampler
+    content.vb: Public Shared Property Aniso4XClampSampler As Sampler
+  overload: Bliss.CSharp.GlobalResource.Aniso4XClampSampler*
 - uid: Bliss.CSharp.GlobalResource.DefaultSpriteEffect
   commentId: P:Bliss.CSharp.GlobalResource.DefaultSpriteEffect
   id: DefaultSpriteEffect
@@ -161,7 +257,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DefaultSpriteEffect
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 32
+    startLine: 47
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -192,7 +288,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DefaultPrimitiveEffect
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 37
+    startLine: 52
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -223,7 +319,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DefaultFullScreenRenderPassEffect
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 42
+    startLine: 57
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -254,7 +350,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DefaultImmediateRendererEffect
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 47
+    startLine: 62
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -285,7 +381,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DefaultModelEffect
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 52
+    startLine: 67
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -316,7 +412,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DefaultImmediateRendererTexture
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 57
+    startLine: 72
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -347,7 +443,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DefaultModelTexture
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 62
+    startLine: 77
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -378,7 +474,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Init
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 68
+    startLine: 83
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -410,7 +506,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: CreateBufferLayout
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 113
+    startLine: 162
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -454,7 +550,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: CreateTextureLayout
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 124
+    startLine: 173
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -492,7 +588,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Destroy
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 133
+    startLine: 182
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -925,6 +1021,32 @@ references:
     name: SimpleTextureLayout
     href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
   - name: )
+- uid: Bliss.CSharp.GlobalResource.PointClampSampler*
+  commentId: Overload:Bliss.CSharp.GlobalResource.PointClampSampler
+  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_PointClampSampler
+  name: PointClampSampler
+  nameWithType: GlobalResource.PointClampSampler
+  fullName: Bliss.CSharp.GlobalResource.PointClampSampler
+- uid: Veldrid.Sampler
+  commentId: T:Veldrid.Sampler
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs
+  name: Sampler
+  nameWithType: Sampler
+  fullName: Veldrid.Sampler
+- uid: Bliss.CSharp.GlobalResource.LinearClampSampler*
+  commentId: Overload:Bliss.CSharp.GlobalResource.LinearClampSampler
+  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_LinearClampSampler
+  name: LinearClampSampler
+  nameWithType: GlobalResource.LinearClampSampler
+  fullName: Bliss.CSharp.GlobalResource.LinearClampSampler
+- uid: Bliss.CSharp.GlobalResource.Aniso4XClampSampler*
+  commentId: Overload:Bliss.CSharp.GlobalResource.Aniso4XClampSampler
+  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_Aniso4XClampSampler
+  name: Aniso4XClampSampler
+  nameWithType: GlobalResource.Aniso4XClampSampler
+  fullName: Bliss.CSharp.GlobalResource.Aniso4XClampSampler
 - uid: Bliss.CSharp.Effects.Effect
   commentId: T:Bliss.CSharp.Effects.Effect
   parent: Bliss.CSharp.Effects

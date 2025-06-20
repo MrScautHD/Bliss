@@ -116,14 +116,23 @@ Enum SamplerType  <a class="header-action link-secondary" title="View source" hr
   <h2 id="fields">Fields
 </h2>
   <dl class="parameters">
-    <dt id="Bliss_CSharp_Graphics_SamplerType_Aniso4X"><code>Aniso4X = 2</code></dt>
-    <dd><p>Anisotropic sampling with a maximum of 4x sampling, providing better quality at glancing angles.</p>
+    <dt id="Bliss_CSharp_Graphics_SamplerType_Aniso4XClamp"><code>Aniso4XClamp = 4</code></dt>
+    <dd><p>Uses 4x anisotropic filtering with clamped texture coordinates for improved texture quality at oblique viewing angles.</p>
 </dd>
-    <dt id="Bliss_CSharp_Graphics_SamplerType_Linear"><code>Linear = 1</code></dt>
-    <dd><p>Linear sampling, which performs linear interpolation between texels.</p>
+    <dt id="Bliss_CSharp_Graphics_SamplerType_Aniso4XWrap"><code>Aniso4XWrap = 5</code></dt>
+    <dd><p>Uses 4x anisotropic filtering with wrapping texture coordinates for improved texture quality at oblique viewing angles.</p>
 </dd>
-    <dt id="Bliss_CSharp_Graphics_SamplerType_Point"><code>Point = 0</code></dt>
-    <dd><p>Point sampling, which selects the nearest texel without filtering.</p>
+    <dt id="Bliss_CSharp_Graphics_SamplerType_LinearClamp"><code>LinearClamp = 2</code></dt>
+    <dd><p>Uses linear (bilinear) filtering with clamped texture coordinates.</p>
+</dd>
+    <dt id="Bliss_CSharp_Graphics_SamplerType_LinearWrap"><code>LinearWrap = 3</code></dt>
+    <dd><p>Uses linear (bilinear) filtering with wrapping texture coordinates.</p>
+</dd>
+    <dt id="Bliss_CSharp_Graphics_SamplerType_PointClamp"><code>PointClamp = 0</code></dt>
+    <dd><p>Uses point (nearest neighbor) filtering with clamped texture coordinates.</p>
+</dd>
+    <dt id="Bliss_CSharp_Graphics_SamplerType_PointWrap"><code>PointWrap = 1</code></dt>
+    <dd><p>Uses point (nearest neighbor) filtering with wrapping texture coordinates.</p>
 </dd>
   </dl>
 

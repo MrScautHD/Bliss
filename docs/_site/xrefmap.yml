@@ -3357,6 +3357,19 @@ references:
   commentId: T:Bliss.CSharp.GlobalResource
   fullName: Bliss.CSharp.GlobalResource
   nameWithType: GlobalResource
+- uid: Bliss.CSharp.GlobalResource.Aniso4XClampSampler
+  name: Aniso4XClampSampler
+  href: api/Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_Aniso4XClampSampler
+  commentId: P:Bliss.CSharp.GlobalResource.Aniso4XClampSampler
+  fullName: Bliss.CSharp.GlobalResource.Aniso4XClampSampler
+  nameWithType: GlobalResource.Aniso4XClampSampler
+- uid: Bliss.CSharp.GlobalResource.Aniso4XClampSampler*
+  name: Aniso4XClampSampler
+  href: api/Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_Aniso4XClampSampler_
+  commentId: Overload:Bliss.CSharp.GlobalResource.Aniso4XClampSampler
+  isSpec: "True"
+  fullName: Bliss.CSharp.GlobalResource.Aniso4XClampSampler
+  nameWithType: GlobalResource.Aniso4XClampSampler
 - uid: Bliss.CSharp.GlobalResource.BufferLayouts
   name: BufferLayouts
   href: api/Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_BufferLayouts
@@ -3532,6 +3545,32 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.GlobalResource.Init
   nameWithType: GlobalResource.Init
+- uid: Bliss.CSharp.GlobalResource.LinearClampSampler
+  name: LinearClampSampler
+  href: api/Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_LinearClampSampler
+  commentId: P:Bliss.CSharp.GlobalResource.LinearClampSampler
+  fullName: Bliss.CSharp.GlobalResource.LinearClampSampler
+  nameWithType: GlobalResource.LinearClampSampler
+- uid: Bliss.CSharp.GlobalResource.LinearClampSampler*
+  name: LinearClampSampler
+  href: api/Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_LinearClampSampler_
+  commentId: Overload:Bliss.CSharp.GlobalResource.LinearClampSampler
+  isSpec: "True"
+  fullName: Bliss.CSharp.GlobalResource.LinearClampSampler
+  nameWithType: GlobalResource.LinearClampSampler
+- uid: Bliss.CSharp.GlobalResource.PointClampSampler
+  name: PointClampSampler
+  href: api/Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_PointClampSampler
+  commentId: P:Bliss.CSharp.GlobalResource.PointClampSampler
+  fullName: Bliss.CSharp.GlobalResource.PointClampSampler
+  nameWithType: GlobalResource.PointClampSampler
+- uid: Bliss.CSharp.GlobalResource.PointClampSampler*
+  name: PointClampSampler
+  href: api/Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_PointClampSampler_
+  commentId: Overload:Bliss.CSharp.GlobalResource.PointClampSampler
+  isSpec: "True"
+  fullName: Bliss.CSharp.GlobalResource.PointClampSampler
+  nameWithType: GlobalResource.PointClampSampler
 - uid: Bliss.CSharp.GlobalResource.TextureLayouts
   name: TextureLayouts
   href: api/Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_TextureLayouts
@@ -6420,24 +6459,42 @@ references:
   commentId: T:Bliss.CSharp.Graphics.SamplerType
   fullName: Bliss.CSharp.Graphics.SamplerType
   nameWithType: SamplerType
-- uid: Bliss.CSharp.Graphics.SamplerType.Aniso4X
-  name: Aniso4X
-  href: api/Bliss.CSharp.Graphics.SamplerType.html#Bliss_CSharp_Graphics_SamplerType_Aniso4X
-  commentId: F:Bliss.CSharp.Graphics.SamplerType.Aniso4X
-  fullName: Bliss.CSharp.Graphics.SamplerType.Aniso4X
-  nameWithType: SamplerType.Aniso4X
-- uid: Bliss.CSharp.Graphics.SamplerType.Linear
-  name: Linear
-  href: api/Bliss.CSharp.Graphics.SamplerType.html#Bliss_CSharp_Graphics_SamplerType_Linear
-  commentId: F:Bliss.CSharp.Graphics.SamplerType.Linear
-  fullName: Bliss.CSharp.Graphics.SamplerType.Linear
-  nameWithType: SamplerType.Linear
-- uid: Bliss.CSharp.Graphics.SamplerType.Point
-  name: Point
-  href: api/Bliss.CSharp.Graphics.SamplerType.html#Bliss_CSharp_Graphics_SamplerType_Point
-  commentId: F:Bliss.CSharp.Graphics.SamplerType.Point
-  fullName: Bliss.CSharp.Graphics.SamplerType.Point
-  nameWithType: SamplerType.Point
+- uid: Bliss.CSharp.Graphics.SamplerType.Aniso4XClamp
+  name: Aniso4XClamp
+  href: api/Bliss.CSharp.Graphics.SamplerType.html#Bliss_CSharp_Graphics_SamplerType_Aniso4XClamp
+  commentId: F:Bliss.CSharp.Graphics.SamplerType.Aniso4XClamp
+  fullName: Bliss.CSharp.Graphics.SamplerType.Aniso4XClamp
+  nameWithType: SamplerType.Aniso4XClamp
+- uid: Bliss.CSharp.Graphics.SamplerType.Aniso4XWrap
+  name: Aniso4XWrap
+  href: api/Bliss.CSharp.Graphics.SamplerType.html#Bliss_CSharp_Graphics_SamplerType_Aniso4XWrap
+  commentId: F:Bliss.CSharp.Graphics.SamplerType.Aniso4XWrap
+  fullName: Bliss.CSharp.Graphics.SamplerType.Aniso4XWrap
+  nameWithType: SamplerType.Aniso4XWrap
+- uid: Bliss.CSharp.Graphics.SamplerType.LinearClamp
+  name: LinearClamp
+  href: api/Bliss.CSharp.Graphics.SamplerType.html#Bliss_CSharp_Graphics_SamplerType_LinearClamp
+  commentId: F:Bliss.CSharp.Graphics.SamplerType.LinearClamp
+  fullName: Bliss.CSharp.Graphics.SamplerType.LinearClamp
+  nameWithType: SamplerType.LinearClamp
+- uid: Bliss.CSharp.Graphics.SamplerType.LinearWrap
+  name: LinearWrap
+  href: api/Bliss.CSharp.Graphics.SamplerType.html#Bliss_CSharp_Graphics_SamplerType_LinearWrap
+  commentId: F:Bliss.CSharp.Graphics.SamplerType.LinearWrap
+  fullName: Bliss.CSharp.Graphics.SamplerType.LinearWrap
+  nameWithType: SamplerType.LinearWrap
+- uid: Bliss.CSharp.Graphics.SamplerType.PointClamp
+  name: PointClamp
+  href: api/Bliss.CSharp.Graphics.SamplerType.html#Bliss_CSharp_Graphics_SamplerType_PointClamp
+  commentId: F:Bliss.CSharp.Graphics.SamplerType.PointClamp
+  fullName: Bliss.CSharp.Graphics.SamplerType.PointClamp
+  nameWithType: SamplerType.PointClamp
+- uid: Bliss.CSharp.Graphics.SamplerType.PointWrap
+  name: PointWrap
+  href: api/Bliss.CSharp.Graphics.SamplerType.html#Bliss_CSharp_Graphics_SamplerType_PointWrap
+  commentId: F:Bliss.CSharp.Graphics.SamplerType.PointWrap
+  fullName: Bliss.CSharp.Graphics.SamplerType.PointWrap
+  nameWithType: SamplerType.PointWrap
 - uid: Bliss.CSharp.Graphics.VertexTypes
   name: Bliss.CSharp.Graphics.VertexTypes
   href: api/Bliss.CSharp.Graphics.VertexTypes.html

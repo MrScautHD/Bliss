@@ -1465,7 +1465,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: AddQuad
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 791
+    startLine: 789
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
@@ -1513,7 +1513,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Graphics/Rendering/Batches/Sprites/SpriteBatch.cs
-    startLine: 896
+    startLine: 894
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
