@@ -377,7 +377,12 @@ public class Game : Disposable {
         this._spriteBatch.End();
         
         this._primitiveBatch.Begin(commandList, this.FullScreenTexture.Framebuffer.OutputDescription);
+        
+        this._primitiveBatch.PushRasterizerState(this._primitiveBatch.GetCurrentRasterizerState() with { ScissorTestEnabled = true });
+        this._primitiveBatch.PushScissorRect(new Rectangle(90, 90, 40, 80));
         this._primitiveBatch.DrawFilledCircle(new Vector2(130, 130), 40, 40, 0.5F, new Color(130, 130, 255, 120));
+        this._primitiveBatch.PopScissorRect();
+        this._primitiveBatch.PopRasterizerState();
         
         this._primitiveBatch.DrawFilledRectangle(new RectangleF(200, 200, 100, 100), origin: new Vector2(0, 0), rotation: _frameCount, color: Color.Green);
         this._primitiveBatch.DrawEmptyRectangle(new RectangleF(200, 200, 100, 100), 4, origin: new Vector2(0, 0), rotation: _frameCount, color: Color.Red);

@@ -10,7 +10,6 @@ using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
 using FontStashSharp;
-using FontStashSharp.Interfaces;
 using Veldrid;
 
 namespace Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
@@ -311,6 +310,7 @@ public class SpriteBatch : Disposable {
     /// <param name="projection">An optional <see cref="Matrix4x4"/> for the projection matrix. Defaults to an orthographic projection based on the associated window dimensions if not specified.</param>
     /// <param name="view">An optional <see cref="Matrix4x4"/> for the view matrix. Defaults to the identity matrix if not specified.</param>
     /// <param name="scissorRect">An optional <see cref="Rectangle"/> that defines the scissor rectangle for rendering. No scissor rect is applied if not specified.</param>
+    /// <exception cref="Exception">Thrown when the method is called before the previous batch has been properly ended.</exception>
     public void Begin(CommandList commandList, OutputDescription output, Sampler? sampler = null, Effect? effect = null, BlendStateDescription? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Matrix4x4? projection = null, Matrix4x4? view = null, Rectangle? scissorRect = null) {
         if (this._begun) {
             throw new Exception("The SpriteBatch has already begun!");
