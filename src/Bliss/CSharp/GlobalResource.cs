@@ -88,9 +88,9 @@ public static class GlobalResource {
         
         // Default Samplers.
         PointClampSampler = graphicsDevice.ResourceFactory.CreateSampler(new SamplerDescription {
-            AddressModeU = SamplerAddressMode.Wrap,
-            AddressModeV = SamplerAddressMode.Wrap,
-            AddressModeW = SamplerAddressMode.Wrap,
+            AddressModeU = SamplerAddressMode.Clamp,
+            AddressModeV = SamplerAddressMode.Clamp,
+            AddressModeW = SamplerAddressMode.Clamp,
             Filter = SamplerFilter.MinPointMagPointMipPoint,
             LodBias = 0,
             MinimumLod = 0,
@@ -99,9 +99,9 @@ public static class GlobalResource {
         });
         
         LinearClampSampler = graphicsDevice.ResourceFactory.CreateSampler(new SamplerDescription {
-            AddressModeU = SamplerAddressMode.Wrap,
-            AddressModeV = SamplerAddressMode.Wrap,
-            AddressModeW = SamplerAddressMode.Wrap,
+            AddressModeU = SamplerAddressMode.Clamp,
+            AddressModeV = SamplerAddressMode.Clamp,
+            AddressModeW = SamplerAddressMode.Clamp,
             Filter = SamplerFilter.MinLinearMagLinearMipLinear,
             LodBias = 0,
             MinimumLod = 0,
@@ -110,9 +110,9 @@ public static class GlobalResource {
         });
         
         Aniso4XClampSampler = graphicsDevice.ResourceFactory.CreateSampler(new SamplerDescription {
-            AddressModeU = SamplerAddressMode.Wrap,
-            AddressModeV = SamplerAddressMode.Wrap,
-            AddressModeW = SamplerAddressMode.Wrap,
+            AddressModeU = SamplerAddressMode.Clamp,
+            AddressModeV = SamplerAddressMode.Clamp,
+            AddressModeW = SamplerAddressMode.Clamp,
             Filter = SamplerFilter.Anisotropic,
             LodBias = 0,
             MinimumLod = 0,
