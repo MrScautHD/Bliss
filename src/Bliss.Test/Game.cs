@@ -372,7 +372,8 @@ public class Game : Disposable {
         this._spriteBatch.PopScissorRect();
         this._spriteBatch.PopRasterizerState();
         
-        //this._spriteBatch.DrawTexture(this._button, new Vector2(300.54F, 300.54F), 0.5F, scale: new Vector2(3, 3));
+        this._spriteBatch.DrawTexture(this._customMeshTexture, new Vector2(500, 500), scale: new Vector2(13, 13));
+        this._spriteBatch.DrawTexture(this._button, new Vector2(300, 300), scale: new Vector2(3, 3));
         
         this._spriteBatch.End();
         

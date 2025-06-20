@@ -732,16 +732,14 @@ public class SpriteBatch : Disposable {
         
         float texelWidth = 1.0F / texture.Width;
         float texelHeight = 1.0F / texture.Height;
-        float halfTexelX = 0.5F * texelWidth;
-        float halfTexelY = 0.5F * texelHeight;
-        
+
         bool flipX = flip == SpriteFlip.Horizontal || flip == SpriteFlip.Both;
         bool flipY = flip == SpriteFlip.Vertical || flip == SpriteFlip.Both;
         
-        float u0 = finalSource.X * texelWidth + halfTexelX;
-        float v0 = finalSource.Y * texelHeight + halfTexelY;
-        float u1 = (finalSource.X + finalSource.Width) * texelWidth - halfTexelX;
-        float v1 = (finalSource.Y + finalSource.Height) * texelHeight - halfTexelY;
+        float u0 = finalSource.X * texelWidth;
+        float v0 = finalSource.Y * texelHeight;
+        float u1 = (finalSource.X + finalSource.Width) * texelWidth;
+        float v1 = (finalSource.Y + finalSource.Height) * texelHeight;
         
         if (flipX) {
             (u0, u1) = (u1, u0);
