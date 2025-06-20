@@ -335,7 +335,7 @@ public class SpriteBatch : Disposable {
     /// Ends the current drawing session that was initiated by a call to <see cref="Begin"/>.
     /// This method finalizes the batch operations by flushing all pending draw calls.
     /// </summary>
-    /// <exception cref="Exception">Thrown if the SpriteBatch is in a state where <see cref="Begin"/> was not called beforehand.</exception>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
     public void End() {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -359,7 +359,7 @@ public class SpriteBatch : Disposable {
     }
 
     /// <summary>
-    /// Push the currently requested <see cref="OutputDescription"/> for the <see cref="SpriteBatch"/>.
+    /// Push the requested <see cref="OutputDescription"/> for the <see cref="SpriteBatch"/>.
     /// </summary>
     /// <param name="output">The <see cref="OutputDescription"/> to apply for rendering.</param>
     /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
@@ -372,10 +372,10 @@ public class SpriteBatch : Disposable {
     }
 
     /// <summary>
-    /// Pop the main output of the <see cref="OutputDescription"/> for the <see cref="SpriteBatch"/>.
+    /// Pop the output of the <see cref="OutputDescription"/> for the <see cref="SpriteBatch"/>.
     /// </summary>
     /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
-    public void PopOutput() { // TODO: FINISH COMMENTS
+    public void PopOutput() {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
         }
@@ -387,7 +387,7 @@ public class SpriteBatch : Disposable {
     /// Retrieves the current <see cref="Effect"/> being used by the <see cref="SpriteBatch"/>.
     /// </summary>
     /// <returns>The active <see cref="Effect"/> instance used for rendering, or null if no effect is set.</returns>
-    /// <exception cref="Exception">Thrown if the sprite batch operation has not been started.</exception>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
     public Effect GetCurrentEffect() {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -395,7 +395,12 @@ public class SpriteBatch : Disposable {
         
         return this._currentEffect;
     }
-    
+
+    /// <summary>
+    /// Push the requested <see cref="Effect"/> for the <see cref="SpriteBatch"/>.
+    /// </summary>
+    /// <param name="effect">The <see cref="Effect"/> to apply for rendering.</param>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
     public void PushEffect(Effect effect) {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -403,7 +408,11 @@ public class SpriteBatch : Disposable {
         
         this._requestedEffect = effect;
     }
-    
+
+    /// <summary>
+    /// Pop the current <see cref="Effect"/> to the main effect used by the <see cref="SpriteBatch"/>.
+    /// </summary>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
     public void PopEffect() {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -411,11 +420,12 @@ public class SpriteBatch : Disposable {
         
         this._requestedEffect = this._mainEffect;
     }
+    
     /// <summary>
-    /// Retrieves the current blend state used by the <see cref="SpriteBatch"/> for rendering operations.
+    /// Retrieves the current <see cref="BlendStateDescription"/> used by the <see cref="SpriteBatch"/> for rendering operations.
     /// </summary>
     /// <returns>The <see cref="BlendStateDescription"/> representing the current blending configuration.</returns>
-    /// <exception cref="Exception">Thrown if the sprite batch operation has not been started.</exception>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
     public BlendStateDescription GetCurrentBlendState() {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -423,7 +433,12 @@ public class SpriteBatch : Disposable {
         
         return this._currentBlendState;
     }
-    
+
+    /// <summary>
+    /// Push the requested <see cref="BlendStateDescription"/> for the <see cref="SpriteBatch"/>.
+    /// </summary>
+    /// <param name="blendState">The <see cref="BlendStateDescription"/> to apply for rendering.</param>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
     public void PushBlendState(BlendStateDescription blendState) {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -431,7 +446,11 @@ public class SpriteBatch : Disposable {
         
         this._requestedBlendState = blendState;
     }
-    
+
+    /// <summary>
+    /// Pop the current <see cref="BlendStateDescription"/> to the main blend state used by the <see cref="SpriteBatch"/>.
+    /// </summary>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
     public void PopBlendState() {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -444,7 +463,7 @@ public class SpriteBatch : Disposable {
     /// Gets the current depth and stencil state configuration used for rendering in the <see cref="SpriteBatch"/>.
     /// </summary>
     /// <returns>The current <see cref="DepthStencilStateDescription"/> used by the <see cref="SpriteBatch"/> for rendering.</returns>
-    /// <exception cref="Exception">Thrown if the sprite batch operation has not been started.</exception>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
     public DepthStencilStateDescription GetCurrentDepthStencilState() {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -453,6 +472,11 @@ public class SpriteBatch : Disposable {
         return this._currentDepthStencilState;
     }
     
+    /// <summary>
+    /// Push the requested <see cref="DepthStencilStateDescription"/> for the <see cref="SpriteBatch"/>.
+    /// </summary>
+    /// <param name="depthStencilState">The <see cref="DepthStencilStateDescription"/> to apply for rendering.</param>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
     public void PushDepthStencilState(DepthStencilStateDescription depthStencilState) {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -461,6 +485,10 @@ public class SpriteBatch : Disposable {
         this._requestedDepthStencilState = depthStencilState;
     }
     
+    /// <summary>
+    /// Pop the current <see cref="DepthStencilStateDescription"/> to the main depth stencil state used by the <see cref="SpriteBatch"/>.
+    /// </summary>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
     public void PopDepthStencilState() {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -482,6 +510,11 @@ public class SpriteBatch : Disposable {
         return this._currentRasterizerState;
     }
     
+    /// <summary>
+    /// Push the requested <see cref="RasterizerStateDescription"/> for the <see cref="SpriteBatch"/>.
+    /// </summary>
+    /// <param name="rasterizerState">The <see cref="RasterizerStateDescription"/> to apply for rendering.</param>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
     public void PushRasterizerState(RasterizerStateDescription rasterizerState) {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -490,6 +523,10 @@ public class SpriteBatch : Disposable {
         this._requestedRasterizerState = rasterizerState;
     }
     
+    /// <summary>
+    /// Pop the current <see cref="RasterizerStateDescription"/> to the main rasterizer state used by the <see cref="SpriteBatch"/>.
+    /// </summary>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
     public void PopRasterizerState() {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -511,6 +548,11 @@ public class SpriteBatch : Disposable {
         return this._currentProjection;
     }
     
+    /// <summary>
+    /// Push the requested <see cref="Matrix4x4"/> projection for the <see cref="SpriteBatch"/>.
+    /// </summary>
+    /// <param name="projection">The <see cref="Matrix4x4"/> projection to apply for rendering.</param>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
     public void PushProjection(Matrix4x4 projection) {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -519,6 +561,10 @@ public class SpriteBatch : Disposable {
         this._requestedProjection = projection;
     }
     
+    /// <summary>
+    /// Pop the current <see cref="Matrix4x4"/> to the main projection used by the <see cref="SpriteBatch"/>.
+    /// </summary>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
     public void PopProjection() {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -540,6 +586,11 @@ public class SpriteBatch : Disposable {
         return this._currentView;
     }
     
+    /// <summary>
+    /// Push the requested <see cref="Matrix4x4"/> view for the <see cref="SpriteBatch"/>.
+    /// </summary>
+    /// <param name="view">The <see cref="Matrix4x4"/> view to apply for rendering.</param>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
     public void PushView(Matrix4x4 view) {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -548,6 +599,10 @@ public class SpriteBatch : Disposable {
         this._requestedView = view;
     }
     
+    /// <summary>
+    /// Pop the current <see cref="Matrix4x4"/> to the main view used by the <see cref="SpriteBatch"/>.
+    /// </summary>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
     public void PopView() {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -568,7 +623,12 @@ public class SpriteBatch : Disposable {
         
         return this._currentSampler;
     }
-
+    
+    /// <summary>
+    /// Push the requested <see cref="Sampler"/> for the <see cref="SpriteBatch"/>.
+    /// </summary>
+    /// <param name="sampler">The <see cref="Sampler"/> to apply for rendering.</param>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
     public void PushSampler(Sampler sampler) {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -576,7 +636,11 @@ public class SpriteBatch : Disposable {
 
         this._requestedSampler = sampler;
     }
-
+    
+    /// <summary>
+    /// Pop the current <see cref="Sampler"/> to the main sampler used by the <see cref="SpriteBatch"/>.
+    /// </summary>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
     public void PopSampler() {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -585,6 +649,11 @@ public class SpriteBatch : Disposable {
         this._requestedSampler = this._mainSampler;
     }
 
+    /// <summary>
+    /// Retrieves the current scissor rectangle being used by the <see cref="SpriteBatch"/>.
+    /// </summary>
+    /// <returns>The current scissor rectangle, or null if no scissor rectangle is set.</returns>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
     public Rectangle? GetCurrentScissorRect() {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -593,6 +662,11 @@ public class SpriteBatch : Disposable {
         return this._currentScissorRect;
     }
     
+    /// <summary>
+    /// Push the requested <see cref="Rectangle"/> scissor for the <see cref="SpriteBatch"/>.
+    /// </summary>
+    /// <param name="rectangle">The <see cref="Rectangle"/> scissor to apply for rendering.</param>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
     public void PushScissorRect(Rectangle? rectangle) {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
@@ -602,9 +676,9 @@ public class SpriteBatch : Disposable {
     }
 
     /// <summary>
-    /// Reverts the current scissor rectangle to the main scissor rectangle.
+    /// Pop the current <see cref="Rectangle"/> scissor to the main scissor used by the <see cref="SpriteBatch"/>.
     /// </summary>
-    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not been started with a call to Begin.</exception>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
     public void PopScissorRect() {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
