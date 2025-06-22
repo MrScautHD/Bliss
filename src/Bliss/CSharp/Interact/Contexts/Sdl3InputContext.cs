@@ -35,11 +35,16 @@ public class Sdl3InputContext : Disposable, IInputContext {
     /// List of mouse buttons that were pressed during the current input context cycle.
     /// </summary>
     private List<MouseButton> _mouseButtonsPressed;
-
+    
     /// <summary>
     /// Holds the current state of mouse buttons that are currently being pressed down.
     /// </summary>
     private List<MouseButton> _mouseButtonsDown;
+
+    /// <summary>
+    /// Holds the list of mouse buttons that were detected as double-clicked.
+    /// </summary>
+    private List<MouseButton> _mouseButtonsDoubleClicked;
 
     /// <summary>
     /// Holds the list of mouse buttons that have been released during the current frame.
@@ -91,6 +96,7 @@ public class Sdl3InputContext : Disposable, IInputContext {
 
         this._mouseButtonsPressed = new List<MouseButton>();
         this._mouseButtonsDown = new List<MouseButton>();
+        this._mouseButtonsDoubleClicked = new List<MouseButton>();
         this._mouseButtonsReleased = new List<MouseButton>();
 
         this._keyboardKeysPressed = new Dictionary<KeyboardKey, bool>();
@@ -129,6 +135,7 @@ public class Sdl3InputContext : Disposable, IInputContext {
         this._mouseMoving = Vector2.Zero;
         this._mouseScrolling = Vector2.Zero;
         this._mouseButtonsPressed.Clear();
+        this._mouseButtonsDoubleClicked.Clear();
         this._mouseButtonsReleased.Clear();
         
         this._keyboardKeysPressed.Clear();
@@ -198,6 +205,10 @@ public class Sdl3InputContext : Disposable, IInputContext {
 
     public bool IsMouseButtonDown(MouseButton button) {
         return this._mouseButtonsDown.Contains(button);
+    }
+
+    public bool IsMouseButtonDoubleClicked(MouseButton button) {
+        return this._mouseButtonsDoubleClicked.Contains(button);
     }
 
     public bool IsMouseButtonReleased(MouseButton button) {
@@ -332,6 +343,10 @@ public class Sdl3InputContext : Disposable, IInputContext {
     private void OnMouseDown(MouseEvent mouseEvent) {
         this._mouseButtonsPressed.Add(mouseEvent.Button);
         this._mouseButtonsDown.Add(mouseEvent.Button);
+
+        if (mouseEvent.DoubleClicked) {
+            this._mouseButtonsDoubleClicked.Add(mouseEvent.Button);
+        }
     }
 
     /// <summary>

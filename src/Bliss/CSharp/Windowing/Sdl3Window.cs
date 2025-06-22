@@ -874,10 +874,10 @@ public class Sdl3Window : Disposable, IWindow {
                 this.MouseMove?.Invoke(new Vector2(sdlEvent.motion.x, sdlEvent.motion.y));
                 break;
             case SDL_EventType.SDL_EVENT_MOUSE_BUTTON_DOWN:
-                this.MouseButtonDown?.Invoke(new MouseEvent(this.MapMouseButton(sdlEvent.button.Button), sdlEvent.button.down));
+                this.MouseButtonDown?.Invoke(new MouseEvent(this.MapMouseButton(sdlEvent.button.Button), sdlEvent.button.down, sdlEvent.button.clicks == 2));
                 break;
             case SDL_EventType.SDL_EVENT_MOUSE_BUTTON_UP:
-                this.MouseButtonUp?.Invoke(new MouseEvent(this.MapMouseButton(sdlEvent.button.Button), sdlEvent.button.down));
+                this.MouseButtonUp?.Invoke(new MouseEvent(this.MapMouseButton(sdlEvent.button.Button), sdlEvent.button.down, sdlEvent.button.clicks == 2));
                 break;
             case SDL_EventType.SDL_EVENT_KEY_DOWN:
                 this.KeyDown?.Invoke(new KeyEvent(this.MapKey(sdlEvent.key.scancode), sdlEvent.key.down, sdlEvent.key.repeat));

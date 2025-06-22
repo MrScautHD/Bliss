@@ -95,6 +95,13 @@ public interface IInputContext : IDisposable {
     /// <param name="button">The mouse button to check.</param>
     /// <returns>True if the button is down; otherwise, false.</returns>
     bool IsMouseButtonDown(MouseButton button);
+
+    /// <summary>
+    /// Checks if the specified mouse button was double-clicked during the current frame.
+    /// </summary>
+    /// <param name="button">The mouse button to check for a double-click event.</param>
+    /// <returns>True if the specified mouse button was double-clicked; otherwise, false.</returns>
+    bool IsMouseButtonDoubleClicked(MouseButton button);
     
     /// <summary>
     /// Checks if the specified mouse button was released in the current frame.

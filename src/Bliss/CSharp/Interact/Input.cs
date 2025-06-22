@@ -141,6 +141,15 @@ public static class Input {
     public static bool IsMouseButtonDown(MouseButton button) {
         return InputContext.IsMouseButtonDown(button);
     }
+    
+    /// <summary>
+    /// Checks if the specified mouse button was double-clicked during the current frame.
+    /// </summary>
+    /// <param name="button">The mouse button to check for a double-click event.</param>
+    /// <returns>True if the specified mouse button was double-clicked; otherwise, false.</returns>
+    public static bool IsMouseButtonDoubleClicked(MouseButton button) {
+        return InputContext.IsMouseButtonDoubleClicked(button);
+    }
 
     /// <summary>
     /// Checks if the specified mouse button was released in the current frame.

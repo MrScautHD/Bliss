@@ -1303,7 +1303,7 @@ public class Mesh : Disposable {
             // Set material texture.
             for (int i = 0; i < this.Material.Effect.GetTextureLayoutKeys().Count(); i++) {
                 string key = this.Material.Effect.GetTextureLayoutKeys().ElementAt(i);
-                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointClamp), this.Material.Effect.GetTextureLayout(key), key);
+                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), this.Material.Effect.GetTextureLayout(key), key);
 
                 if (resourceSet != null) {
                     commandList.SetGraphicsResourceSet((uint) i + 4, resourceSet);
@@ -1339,7 +1339,7 @@ public class Mesh : Disposable {
             // Set material texture.
             for (int i = 0; i < this.Material.Effect.GetTextureLayoutKeys().Count(); i++) {
                 string key = this.Material.Effect.GetTextureLayoutKeys().ElementAt(i);
-                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointClamp), this.Material.Effect.GetTextureLayout(key), key);
+                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), this.Material.Effect.GetTextureLayout(key), key);
 
                 if (resourceSet != null) {
                     commandList.SetGraphicsResourceSet((uint) i + 4, resourceSet);

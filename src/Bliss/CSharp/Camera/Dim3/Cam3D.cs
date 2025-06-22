@@ -4,7 +4,6 @@ using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Gamepads;
 using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Mathematics;
-using Veldrid;
 using Vortice.Mathematics;
 
 namespace Bliss.CSharp.Camera.Dim3;
