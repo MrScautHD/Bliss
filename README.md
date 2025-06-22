@@ -56,7 +56,7 @@ dotnet add package Bliss --version [VERSION]
 
 [<img src="https://github.com/user-attachments/assets/99605868-0590-42ce-a72a-f6feb1cabf6e" alt="macOS" width="70" height="70" align="left">](https://www.apple.com/at/macos/sonoma/)
 ### MacOS
-- Graphics APIs: `Metal`, `OpenGL`, `OpenGL-ES`
+- Graphics APIs: `Metal`, `OpenGL`
 
 [<img src="https://github.com/user-attachments/assets/8ec16850-3a1e-42e1-b35e-cf3d3ea32d46" alt="macOS" width="70" height="70" align="left">](https://www.apple.com/at/macos/sonoma/)
 ### Android
