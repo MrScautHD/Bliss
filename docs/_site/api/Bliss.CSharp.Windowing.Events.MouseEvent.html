@@ -144,9 +144,9 @@ Struct MouseEvent  <a class="header-action link-secondary" title="View source" h
 
   <a id="Bliss_CSharp_Windowing_Events_MouseEvent__ctor_" data-uid="Bliss.CSharp.Windowing.Events.MouseEvent.#ctor*"></a>
 
-  <h3 id="Bliss_CSharp_Windowing_Events_MouseEvent__ctor_Bliss_CSharp_Interact_Mice_MouseButton_System_Boolean_" data-uid="Bliss.CSharp.Windowing.Events.MouseEvent.#ctor(Bliss.CSharp.Interact.Mice.MouseButton,System.Boolean)">
-  MouseEvent(MouseButton, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Events/MouseEvent.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Windowing_Events_MouseEvent__ctor_Bliss_CSharp_Interact_Mice_MouseButton_System_Boolean_System_Boolean_" data-uid="Bliss.CSharp.Windowing.Events.MouseEvent.#ctor(Bliss.CSharp.Interact.Mice.MouseButton,System.Boolean,System.Boolean)">
+  MouseEvent(MouseButton, bool, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Events/MouseEvent.cs/#L28"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the MouseEvent class with the specified button and state.</p>
@@ -154,7 +154,7 @@ Struct MouseEvent  <a class="header-action link-secondary" title="View source" h
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public MouseEvent(MouseButton button, bool isDown)</code></pre>
+    <pre><code class="lang-csharp hljs">public MouseEvent(MouseButton button, bool isDown, bool doubleClicked)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -164,6 +164,9 @@ Struct MouseEvent  <a class="header-action link-secondary" title="View source" h
 </dd>
     <dt><code>isDown</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd><p>A value indicating whether the button is pressed (true) or released (false).</p>
+</dd>
+    <dt><code>doubleClicked</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>A value indicating whether the event was triggered by a double-click.</p>
 </dd>
   </dl>
 
@@ -202,6 +205,37 @@ Struct MouseEvent  <a class="header-action link-secondary" title="View source" h
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Bliss.CSharp.Interact.Mice.MouseButton.html">MouseButton</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bliss_CSharp_Windowing_Events_MouseEvent_DoubleClicked" data-uid="Bliss.CSharp.Windowing.Events.MouseEvent.DoubleClicked">
+  DoubleClicked
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Events/MouseEvent.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Indicates whether the mouse button was double-clicked during the event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DoubleClicked</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 

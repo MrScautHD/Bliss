@@ -34,6 +34,7 @@ items:
   - Bliss.CSharp.Interact.Input.IsKeyPressed(Bliss.CSharp.Interact.Keyboards.KeyboardKey,System.Boolean)
   - Bliss.CSharp.Interact.Input.IsKeyReleased(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
   - Bliss.CSharp.Interact.Input.IsKeyUp(Bliss.CSharp.Interact.Keyboards.KeyboardKey)
+  - Bliss.CSharp.Interact.Input.IsMouseButtonDoubleClicked(Bliss.CSharp.Interact.Mice.MouseButton)
   - Bliss.CSharp.Interact.Input.IsMouseButtonDown(Bliss.CSharp.Interact.Mice.MouseButton)
   - Bliss.CSharp.Interact.Input.IsMouseButtonPressed(Bliss.CSharp.Interact.Mice.MouseButton)
   - Bliss.CSharp.Interact.Input.IsMouseButtonReleased(Bliss.CSharp.Interact.Mice.MouseButton)
@@ -603,6 +604,41 @@ items:
       description: True if the button is down; otherwise, false.
     content.vb: Public Shared Function IsMouseButtonDown(button As MouseButton) As Boolean
   overload: Bliss.CSharp.Interact.Input.IsMouseButtonDown*
+- uid: Bliss.CSharp.Interact.Input.IsMouseButtonDoubleClicked(Bliss.CSharp.Interact.Mice.MouseButton)
+  commentId: M:Bliss.CSharp.Interact.Input.IsMouseButtonDoubleClicked(Bliss.CSharp.Interact.Mice.MouseButton)
+  id: IsMouseButtonDoubleClicked(Bliss.CSharp.Interact.Mice.MouseButton)
+  parent: Bliss.CSharp.Interact.Input
+  langs:
+  - csharp
+  - vb
+  name: IsMouseButtonDoubleClicked(MouseButton)
+  nameWithType: Input.IsMouseButtonDoubleClicked(MouseButton)
+  fullName: Bliss.CSharp.Interact.Input.IsMouseButtonDoubleClicked(Bliss.CSharp.Interact.Mice.MouseButton)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Interact/Input.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IsMouseButtonDoubleClicked
+    path: ../src/Bliss/CSharp/Interact/Input.cs
+    startLine: 149
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Interact
+  summary: Checks if the specified mouse button was double-clicked during the current frame.
+  example: []
+  syntax:
+    content: public static bool IsMouseButtonDoubleClicked(MouseButton button)
+    parameters:
+    - id: button
+      type: Bliss.CSharp.Interact.Mice.MouseButton
+      description: The mouse button to check for a double-click event.
+    return:
+      type: System.Boolean
+      description: True if the specified mouse button was double-clicked; otherwise, false.
+    content.vb: Public Shared Function IsMouseButtonDoubleClicked(button As MouseButton) As Boolean
+  overload: Bliss.CSharp.Interact.Input.IsMouseButtonDoubleClicked*
 - uid: Bliss.CSharp.Interact.Input.IsMouseButtonReleased(Bliss.CSharp.Interact.Mice.MouseButton)
   commentId: M:Bliss.CSharp.Interact.Input.IsMouseButtonReleased(Bliss.CSharp.Interact.Mice.MouseButton)
   id: IsMouseButtonReleased(Bliss.CSharp.Interact.Mice.MouseButton)
@@ -621,7 +657,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsMouseButtonReleased
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 149
+    startLine: 158
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -656,7 +692,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsMouseButtonUp
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 158
+    startLine: 167
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -691,7 +727,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsMouseMoving
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 167
+    startLine: 176
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -729,7 +765,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsMouseScrolling
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 176
+    startLine: 185
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -767,7 +803,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsKeyPressed
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 188
+    startLine: 197
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -808,7 +844,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsKeyDown
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 197
+    startLine: 206
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -843,7 +879,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsKeyReleased
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 206
+    startLine: 215
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -878,7 +914,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsKeyUp
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 215
+    startLine: 224
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -913,7 +949,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetTypedText
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 224
+    startLine: 233
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -951,7 +987,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsTextInputActive
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 232
+    startLine: 241
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -982,7 +1018,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: EnableTextInput
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 239
+    startLine: 248
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1010,7 +1046,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DisableTextInput
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 246
+    startLine: 255
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1038,7 +1074,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetClipboardText
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 254
+    startLine: 263
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1069,7 +1105,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetClipboardText
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 262
+    startLine: 271
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1104,7 +1140,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetAvailableGamepadCount
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 272
+    startLine: 281
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1135,7 +1171,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsGamepadAvailable
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 281
+    startLine: 290
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1173,7 +1209,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetGamepadName
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 290
+    startLine: 299
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1211,7 +1247,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: RumbleGamepad
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 301
+    startLine: 310
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1255,7 +1291,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetGamepadAxisMovement
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 311
+    startLine: 320
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1296,7 +1332,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsGamepadButtonPressed
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 321
+    startLine: 330
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1337,7 +1373,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsGamepadButtonDown
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 331
+    startLine: 340
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1378,7 +1414,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsGamepadButtonReleased
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 341
+    startLine: 350
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1419,7 +1455,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsGamepadButtonUp
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 351
+    startLine: 360
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1460,7 +1496,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IsFileDragDropped
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 362
+    startLine: 371
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -1498,7 +1534,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Destroy
     path: ../src/Bliss/CSharp/Interact/Input.cs
-    startLine: 369
+    startLine: 378
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Interact
@@ -2067,6 +2103,12 @@ references:
   name: IsMouseButtonDown
   nameWithType: Input.IsMouseButtonDown
   fullName: Bliss.CSharp.Interact.Input.IsMouseButtonDown
+- uid: Bliss.CSharp.Interact.Input.IsMouseButtonDoubleClicked*
+  commentId: Overload:Bliss.CSharp.Interact.Input.IsMouseButtonDoubleClicked
+  href: Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_IsMouseButtonDoubleClicked_Bliss_CSharp_Interact_Mice_MouseButton_
+  name: IsMouseButtonDoubleClicked
+  nameWithType: Input.IsMouseButtonDoubleClicked
+  fullName: Bliss.CSharp.Interact.Input.IsMouseButtonDoubleClicked
 - uid: Bliss.CSharp.Interact.Input.IsMouseButtonReleased*
   commentId: Overload:Bliss.CSharp.Interact.Input.IsMouseButtonReleased
   href: Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_IsMouseButtonReleased_Bliss_CSharp_Interact_Mice_MouseButton_

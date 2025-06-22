@@ -7612,6 +7612,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsKeyUp
   nameWithType: IInputContext.IsKeyUp
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonDoubleClicked(Bliss.CSharp.Interact.Mice.MouseButton)
+  name: IsMouseButtonDoubleClicked(MouseButton)
+  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonDoubleClicked_Bliss_CSharp_Interact_Mice_MouseButton_
+  commentId: M:Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonDoubleClicked(Bliss.CSharp.Interact.Mice.MouseButton)
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonDoubleClicked(Bliss.CSharp.Interact.Mice.MouseButton)
+  nameWithType: IInputContext.IsMouseButtonDoubleClicked(MouseButton)
+- uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonDoubleClicked*
+  name: IsMouseButtonDoubleClicked
+  href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonDoubleClicked_
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonDoubleClicked
+  isSpec: "True"
+  fullName: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonDoubleClicked
+  nameWithType: IInputContext.IsMouseButtonDoubleClicked
 - uid: Bliss.CSharp.Interact.Contexts.IInputContext.IsMouseButtonDown(Bliss.CSharp.Interact.Mice.MouseButton)
   name: IsMouseButtonDown(MouseButton)
   href: api/Bliss.CSharp.Interact.Contexts.IInputContext.html#Bliss_CSharp_Interact_Contexts_IInputContext_IsMouseButtonDown_Bliss_CSharp_Interact_Mice_MouseButton_
@@ -8202,6 +8215,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsKeyUp
   nameWithType: Sdl3InputContext.IsKeyUp
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonDoubleClicked(Bliss.CSharp.Interact.Mice.MouseButton)
+  name: IsMouseButtonDoubleClicked(MouseButton)
+  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsMouseButtonDoubleClicked_Bliss_CSharp_Interact_Mice_MouseButton_
+  commentId: M:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonDoubleClicked(Bliss.CSharp.Interact.Mice.MouseButton)
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonDoubleClicked(Bliss.CSharp.Interact.Mice.MouseButton)
+  nameWithType: Sdl3InputContext.IsMouseButtonDoubleClicked(MouseButton)
+- uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonDoubleClicked*
+  name: IsMouseButtonDoubleClicked
+  href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsMouseButtonDoubleClicked_
+  commentId: Overload:Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonDoubleClicked
+  isSpec: "True"
+  fullName: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonDoubleClicked
+  nameWithType: Sdl3InputContext.IsMouseButtonDoubleClicked
 - uid: Bliss.CSharp.Interact.Contexts.Sdl3InputContext.IsMouseButtonDown(Bliss.CSharp.Interact.Mice.MouseButton)
   name: IsMouseButtonDown(MouseButton)
   href: api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html#Bliss_CSharp_Interact_Contexts_Sdl3InputContext_IsMouseButtonDown_Bliss_CSharp_Interact_Mice_MouseButton_
@@ -9324,6 +9350,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Interact.Input.IsKeyUp
   nameWithType: Input.IsKeyUp
+- uid: Bliss.CSharp.Interact.Input.IsMouseButtonDoubleClicked(Bliss.CSharp.Interact.Mice.MouseButton)
+  name: IsMouseButtonDoubleClicked(MouseButton)
+  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_IsMouseButtonDoubleClicked_Bliss_CSharp_Interact_Mice_MouseButton_
+  commentId: M:Bliss.CSharp.Interact.Input.IsMouseButtonDoubleClicked(Bliss.CSharp.Interact.Mice.MouseButton)
+  fullName: Bliss.CSharp.Interact.Input.IsMouseButtonDoubleClicked(Bliss.CSharp.Interact.Mice.MouseButton)
+  nameWithType: Input.IsMouseButtonDoubleClicked(MouseButton)
+- uid: Bliss.CSharp.Interact.Input.IsMouseButtonDoubleClicked*
+  name: IsMouseButtonDoubleClicked
+  href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_IsMouseButtonDoubleClicked_
+  commentId: Overload:Bliss.CSharp.Interact.Input.IsMouseButtonDoubleClicked
+  isSpec: "True"
+  fullName: Bliss.CSharp.Interact.Input.IsMouseButtonDoubleClicked
+  nameWithType: Input.IsMouseButtonDoubleClicked
 - uid: Bliss.CSharp.Interact.Input.IsMouseButtonDown(Bliss.CSharp.Interact.Mice.MouseButton)
   name: IsMouseButtonDown(MouseButton)
   href: api/Bliss.CSharp.Interact.Input.html#Bliss_CSharp_Interact_Input_IsMouseButtonDown_Bliss_CSharp_Interact_Mice_MouseButton_
@@ -12787,15 +12826,15 @@ references:
   commentId: T:Bliss.CSharp.Windowing.Events.MouseEvent
   fullName: Bliss.CSharp.Windowing.Events.MouseEvent
   nameWithType: MouseEvent
-- uid: Bliss.CSharp.Windowing.Events.MouseEvent.#ctor(Bliss.CSharp.Interact.Mice.MouseButton,System.Boolean)
-  name: MouseEvent(MouseButton, bool)
-  href: api/Bliss.CSharp.Windowing.Events.MouseEvent.html#Bliss_CSharp_Windowing_Events_MouseEvent__ctor_Bliss_CSharp_Interact_Mice_MouseButton_System_Boolean_
-  commentId: M:Bliss.CSharp.Windowing.Events.MouseEvent.#ctor(Bliss.CSharp.Interact.Mice.MouseButton,System.Boolean)
-  name.vb: New(MouseButton, Boolean)
-  fullName: Bliss.CSharp.Windowing.Events.MouseEvent.MouseEvent(Bliss.CSharp.Interact.Mice.MouseButton, bool)
-  fullName.vb: Bliss.CSharp.Windowing.Events.MouseEvent.New(Bliss.CSharp.Interact.Mice.MouseButton, Boolean)
-  nameWithType: MouseEvent.MouseEvent(MouseButton, bool)
-  nameWithType.vb: MouseEvent.New(MouseButton, Boolean)
+- uid: Bliss.CSharp.Windowing.Events.MouseEvent.#ctor(Bliss.CSharp.Interact.Mice.MouseButton,System.Boolean,System.Boolean)
+  name: MouseEvent(MouseButton, bool, bool)
+  href: api/Bliss.CSharp.Windowing.Events.MouseEvent.html#Bliss_CSharp_Windowing_Events_MouseEvent__ctor_Bliss_CSharp_Interact_Mice_MouseButton_System_Boolean_System_Boolean_
+  commentId: M:Bliss.CSharp.Windowing.Events.MouseEvent.#ctor(Bliss.CSharp.Interact.Mice.MouseButton,System.Boolean,System.Boolean)
+  name.vb: New(MouseButton, Boolean, Boolean)
+  fullName: Bliss.CSharp.Windowing.Events.MouseEvent.MouseEvent(Bliss.CSharp.Interact.Mice.MouseButton, bool, bool)
+  fullName.vb: Bliss.CSharp.Windowing.Events.MouseEvent.New(Bliss.CSharp.Interact.Mice.MouseButton, Boolean, Boolean)
+  nameWithType: MouseEvent.MouseEvent(MouseButton, bool, bool)
+  nameWithType.vb: MouseEvent.New(MouseButton, Boolean, Boolean)
 - uid: Bliss.CSharp.Windowing.Events.MouseEvent.#ctor*
   name: MouseEvent
   href: api/Bliss.CSharp.Windowing.Events.MouseEvent.html#Bliss_CSharp_Windowing_Events_MouseEvent__ctor_
@@ -12812,6 +12851,12 @@ references:
   commentId: F:Bliss.CSharp.Windowing.Events.MouseEvent.Button
   fullName: Bliss.CSharp.Windowing.Events.MouseEvent.Button
   nameWithType: MouseEvent.Button
+- uid: Bliss.CSharp.Windowing.Events.MouseEvent.DoubleClicked
+  name: DoubleClicked
+  href: api/Bliss.CSharp.Windowing.Events.MouseEvent.html#Bliss_CSharp_Windowing_Events_MouseEvent_DoubleClicked
+  commentId: F:Bliss.CSharp.Windowing.Events.MouseEvent.DoubleClicked
+  fullName: Bliss.CSharp.Windowing.Events.MouseEvent.DoubleClicked
+  nameWithType: MouseEvent.DoubleClicked
 - uid: Bliss.CSharp.Windowing.Events.MouseEvent.IsDown
   name: IsDown
   href: api/Bliss.CSharp.Windowing.Events.MouseEvent.html#Bliss_CSharp_Windowing_Events_MouseEvent_IsDown

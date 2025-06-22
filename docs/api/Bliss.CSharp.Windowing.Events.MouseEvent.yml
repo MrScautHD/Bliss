@@ -5,8 +5,9 @@ items:
   id: MouseEvent
   parent: Bliss.CSharp.Windowing.Events
   children:
-  - Bliss.CSharp.Windowing.Events.MouseEvent.#ctor(Bliss.CSharp.Interact.Mice.MouseButton,System.Boolean)
+  - Bliss.CSharp.Windowing.Events.MouseEvent.#ctor(Bliss.CSharp.Interact.Mice.MouseButton,System.Boolean,System.Boolean)
   - Bliss.CSharp.Windowing.Events.MouseEvent.Button
+  - Bliss.CSharp.Windowing.Events.MouseEvent.DoubleClicked
   - Bliss.CSharp.Windowing.Events.MouseEvent.IsDown
   langs:
   - csharp
@@ -94,16 +95,45 @@ items:
     return:
       type: System.Boolean
     content.vb: Public IsDown As Boolean
-- uid: Bliss.CSharp.Windowing.Events.MouseEvent.#ctor(Bliss.CSharp.Interact.Mice.MouseButton,System.Boolean)
-  commentId: M:Bliss.CSharp.Windowing.Events.MouseEvent.#ctor(Bliss.CSharp.Interact.Mice.MouseButton,System.Boolean)
-  id: '#ctor(Bliss.CSharp.Interact.Mice.MouseButton,System.Boolean)'
+- uid: Bliss.CSharp.Windowing.Events.MouseEvent.DoubleClicked
+  commentId: F:Bliss.CSharp.Windowing.Events.MouseEvent.DoubleClicked
+  id: DoubleClicked
   parent: Bliss.CSharp.Windowing.Events.MouseEvent
   langs:
   - csharp
   - vb
-  name: MouseEvent(MouseButton, bool)
-  nameWithType: MouseEvent.MouseEvent(MouseButton, bool)
-  fullName: Bliss.CSharp.Windowing.Events.MouseEvent.MouseEvent(Bliss.CSharp.Interact.Mice.MouseButton, bool)
+  name: DoubleClicked
+  nameWithType: MouseEvent.DoubleClicked
+  fullName: Bliss.CSharp.Windowing.Events.MouseEvent.DoubleClicked
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Events/MouseEvent.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DoubleClicked
+    path: ../src/Bliss/CSharp/Windowing/Events/MouseEvent.cs
+    startLine: 19
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing.Events
+  summary: Indicates whether the mouse button was double-clicked during the event.
+  example: []
+  syntax:
+    content: public bool DoubleClicked
+    return:
+      type: System.Boolean
+    content.vb: Public DoubleClicked As Boolean
+- uid: Bliss.CSharp.Windowing.Events.MouseEvent.#ctor(Bliss.CSharp.Interact.Mice.MouseButton,System.Boolean,System.Boolean)
+  commentId: M:Bliss.CSharp.Windowing.Events.MouseEvent.#ctor(Bliss.CSharp.Interact.Mice.MouseButton,System.Boolean,System.Boolean)
+  id: '#ctor(Bliss.CSharp.Interact.Mice.MouseButton,System.Boolean,System.Boolean)'
+  parent: Bliss.CSharp.Windowing.Events.MouseEvent
+  langs:
+  - csharp
+  - vb
+  name: MouseEvent(MouseButton, bool, bool)
+  nameWithType: MouseEvent.MouseEvent(MouseButton, bool, bool)
+  fullName: Bliss.CSharp.Windowing.Events.MouseEvent.MouseEvent(Bliss.CSharp.Interact.Mice.MouseButton, bool, bool)
   type: Constructor
   source:
     remote:
@@ -112,14 +142,14 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Windowing/Events/MouseEvent.cs
-    startLine: 21
+    startLine: 27
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing.Events
   summary: Initializes a new instance of the MouseEvent class with the specified button and state.
   example: []
   syntax:
-    content: public MouseEvent(MouseButton button, bool isDown)
+    content: public MouseEvent(MouseButton button, bool isDown, bool doubleClicked)
     parameters:
     - id: button
       type: Bliss.CSharp.Interact.Mice.MouseButton
@@ -127,11 +157,14 @@ items:
     - id: isDown
       type: System.Boolean
       description: A value indicating whether the button is pressed (true) or released (false).
-    content.vb: Public Sub New(button As MouseButton, isDown As Boolean)
+    - id: doubleClicked
+      type: System.Boolean
+      description: A value indicating whether the event was triggered by a double-click.
+    content.vb: Public Sub New(button As MouseButton, isDown As Boolean, doubleClicked As Boolean)
   overload: Bliss.CSharp.Windowing.Events.MouseEvent.#ctor*
-  nameWithType.vb: MouseEvent.New(MouseButton, Boolean)
-  fullName.vb: Bliss.CSharp.Windowing.Events.MouseEvent.New(Bliss.CSharp.Interact.Mice.MouseButton, Boolean)
-  name.vb: New(MouseButton, Boolean)
+  nameWithType.vb: MouseEvent.New(MouseButton, Boolean, Boolean)
+  fullName.vb: Bliss.CSharp.Windowing.Events.MouseEvent.New(Bliss.CSharp.Interact.Mice.MouseButton, Boolean, Boolean)
+  name.vb: New(MouseButton, Boolean, Boolean)
 references:
 - uid: Bliss.CSharp.Windowing.Events
   commentId: N:Bliss.CSharp.Windowing.Events
@@ -446,7 +479,7 @@ references:
   name.vb: Boolean
 - uid: Bliss.CSharp.Windowing.Events.MouseEvent.#ctor*
   commentId: Overload:Bliss.CSharp.Windowing.Events.MouseEvent.#ctor
-  href: Bliss.CSharp.Windowing.Events.MouseEvent.html#Bliss_CSharp_Windowing_Events_MouseEvent__ctor_Bliss_CSharp_Interact_Mice_MouseButton_System_Boolean_
+  href: Bliss.CSharp.Windowing.Events.MouseEvent.html#Bliss_CSharp_Windowing_Events_MouseEvent__ctor_Bliss_CSharp_Interact_Mice_MouseButton_System_Boolean_System_Boolean_
   name: MouseEvent
   nameWithType: MouseEvent.MouseEvent
   fullName: Bliss.CSharp.Windowing.Events.MouseEvent.MouseEvent
