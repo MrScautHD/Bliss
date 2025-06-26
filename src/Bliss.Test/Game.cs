@@ -55,7 +55,7 @@ public class Game : Disposable {
     private Cam3D _cam3D;
     private Model _playerModel;
     private Model _planeModel;
-
+    
     private Texture2D _customMeshTexture;
     private Mesh _customPoly;
     private Mesh _customCube;
@@ -174,8 +174,9 @@ public class Game : Disposable {
         
         float aspectRatio = (float) this.MainWindow.GetWidth() / (float) this.MainWindow.GetHeight();
         this._cam3D = new Cam3D(new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0), aspectRatio);
-        this._playerModel = Model.Load(this.GraphicsDevice, "content/player.glb");
-        this._planeModel = Model.Load(this.GraphicsDevice, "content/plane.glb");
+        this._playerModel = Model.Load(this.GraphicsDevice ,"content/player.glb", false);
+        this._planeModel = Model.Load(this.GraphicsDevice,"content/test_flippeduvs.glb", false);
+        
         
         this._customMeshTexture = new Texture2D(this.GraphicsDevice, "content/cube.png");
         
@@ -317,8 +318,12 @@ public class Game : Disposable {
         this._customKnot.Draw(commandList, new Transform() { Translation = new Vector3(25, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
         this._customHeighmap.Draw(commandList, new Transform() { Translation = new Vector3(27, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
 
-        if (this._cam3D.GetFrustum().ContainsBox(this._planeModel.BoundingBox)) {
-            this._planeModel.Draw(commandList, new Transform(), this.FullScreenTexture.Framebuffer.OutputDescription);
+        if (this._cam3D.GetFrustum().ContainsBox(this._planeModel.BoundingBox))
+        {
+            Transform transform = new Transform();
+            transform.Translation = new Vector3(2, 0, 2);
+            transform.Scale = new Vector3(4, 4, 4);
+            this._planeModel.Draw(commandList, transform, this.FullScreenTexture.Framebuffer.OutputDescription);
         }
         
         if (Input.IsKeyPressed(KeyboardKey.G)) {

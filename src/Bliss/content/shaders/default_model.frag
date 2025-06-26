@@ -16,7 +16,7 @@ layout (set = 4, binding = 1) uniform sampler fAlbedoSampler;
 layout (location = 0) in vec2 fTexCoords;
 layout (location = 1) in vec2 fTexCoords2;
 layout (location = 2) in vec3 fNormal;
-layout (location = 3) in vec3 fTangent;
+layout (location = 3) in vec4 fTangent;
 layout (location = 4) in vec4 fColor;
 
 layout (location = 0) out vec4 fFragColor;
@@ -27,6 +27,12 @@ void main() {
     if (texelColor.a <= 0.0F) {
         discard;
     }
+    
+    mat3 TBN = mat3(fTangent.xyz, normalize(cross(fTangent.xyz,fNormal) * fTangent.w), fNormal);
 
-    fFragColor = texelColor * uColors[0];
+    vec3 wNorm = vec3(TBN * normalize(vec3(0,1,1)));
+    
+    float test = dot(wNorm, normalize(vec3(0.5, -1, 0.2f)));
+    
+    fFragColor = vec4(test * vec3(1,0.5,0.5), 1.0f);//texelColor * uColors[0];
 }
