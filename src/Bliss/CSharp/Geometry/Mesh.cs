@@ -1105,8 +1105,6 @@ public class Mesh : Disposable {
 
             float sign = Vector3.Dot(Vector3.Cross(n, t), b) > 0.0f ? 1.0f : -1.0f;
             
-            
-
             Vector4 tangent = new Vector4(Vector3.Normalize(t - n * Vector3.Dot(n, t)), sign);
             this.Vertices[i].Tangent = tangent;
         }
