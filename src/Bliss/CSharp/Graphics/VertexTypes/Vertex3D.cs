@@ -11,7 +11,7 @@ public struct Vertex3D {
     /// <summary>
     /// Represents the layout description for the <see cref="Vertex3D"/> structure.
     /// </summary>
-    public static VertexLayoutDescription VertexLayout = new VertexLayoutDescription((3+4+4+2+2+3+4+4)*sizeof(float),
+    public static VertexLayoutDescription VertexLayout = new VertexLayoutDescription(
         new VertexElementDescription("vPosition", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float3),
         new VertexElementDescription("vBoneWeights", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float4),
         new VertexElementDescription("vBoneIndices", VertexElementSemantic.TextureCoordinate, VertexElementFormat.UInt4),
