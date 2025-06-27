@@ -11,6 +11,7 @@ using Bliss.CSharp.Images;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Contexts;
 using Bliss.CSharp.Interact.Keyboards;
+using Bliss.CSharp.Interact.Mice;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
 using Bliss.CSharp.Textures;
@@ -18,6 +19,7 @@ using Bliss.CSharp.Textures.Cubemaps;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
 using MiniAudioEx;
+using SDL;
 using Veldrid;
 using Color = Bliss.CSharp.Colors.Color;
 using Rectangle = Bliss.CSharp.Transformations.Rectangle;
@@ -216,6 +218,10 @@ public class Game : Disposable {
     }
     
     protected virtual void Update() {
+        if (Input.IsMouseButtonDoubleClicked(MouseButton.Left)) {
+            Logger.Error("DOUBLE CLICKED!");
+        }
+        
         this._cam3D.Update((float) Time.Delta);
     }
     
@@ -240,7 +246,7 @@ public class Game : Disposable {
         
         // Enables relative mouse mod.
         Input.EnableRelativeMouseMode();
-
+        
         // Drawing 3D.
         this._cam3D.Begin();
         
@@ -372,7 +378,7 @@ public class Game : Disposable {
         this._spriteBatch.PopScissorRect();
         this._spriteBatch.PopRasterizerState();
         
-        this._spriteBatch.DrawTexture(this._customMeshTexture, new Vector2(500, 500), scale: new Vector2(13, 13));
+        //this._spriteBatch.DrawTexture(this._customMeshTexture, Input.GetMousePosition(), scale: new Vector2(3, 3));
         this._spriteBatch.DrawTexture(this._button, new Vector2(300, 300), scale: new Vector2(3, 3));
         
         this._spriteBatch.End();

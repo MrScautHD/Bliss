@@ -92,7 +92,7 @@ public class Texture2D : Disposable {
         this.DeviceTexture = this.CreateDeviceTexture();
         this._cachedResourceSets = new Dictionary<(Sampler, SimpleTextureLayout), ResourceSet>();
     }
-
+    
     /// <summary>
     /// Gets a resource set associated with the specified sampler and resource layout.
     /// If the resource set is already cached, it returns the cached resource set; otherwise, it creates and caches a new one.
@@ -118,7 +118,7 @@ public class Texture2D : Disposable {
     public byte[] GetDataFromBytes() {
         return this.Images[0].Data;
     }
-
+    
     /// <summary>
     /// Retrieves the image data from the first image in the texture array.
     /// </summary>
@@ -126,7 +126,7 @@ public class Texture2D : Disposable {
     public Image GetDataFromImage() {
         return this.Images[0];
     }
-
+    
     /// <summary>
     /// Sets the texture data from a byte array, optionally specifying a rectangular area within the texture to update.
     /// </summary>
@@ -135,7 +135,7 @@ public class Texture2D : Disposable {
     public void SetData(byte[] data, Rectangle? area = null) {
         Rectangle rect = area ?? new Rectangle(0, 0, (int) this.Width, (int) this.Height);
         Image originalImage = this.GetDataFromImage();
-
+        
         int rowLengthInBytes = rect.Width * (int) this.PixelSizeInBytes;
         for (int y = 0; y < rect.Height; y++) {
             int sourceOffset = y * rowLengthInBytes;
@@ -143,7 +143,7 @@ public class Texture2D : Disposable {
 
             Array.Copy(data, sourceOffset, originalImage.Data, destinationOffset, rowLengthInBytes);
         }
-
+        
         this.SetData(originalImage);
     }
 
