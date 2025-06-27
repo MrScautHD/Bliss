@@ -18,7 +18,7 @@ public struct Vertex3D {
         new VertexElementDescription("vTexCoords", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float2),
         new VertexElementDescription("vTexCoords2", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float2),
         new VertexElementDescription("vNormal", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float3),
-        new VertexElementDescription("vTangent", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float3),
+        new VertexElementDescription("vTangent", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float4),
         new VertexElementDescription("vColor", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float4)
     );
     
@@ -55,7 +55,7 @@ public struct Vertex3D {
     /// <summary>
     /// The tangent vector of the vertex, used for normal mapping.
     /// </summary>
-    public Vector3 Tangent;
+    public Vector4 Tangent;
 
     /// <summary>
     /// The color of the vertex.
@@ -71,9 +71,9 @@ public struct Vertex3D {
     /// <param name="texCoords">The primary texture coordinates of the vertex.</param>
     /// <param name="texCoords2">The secondary texture coordinates of the vertex.</param>
     /// <param name="normal">The normal vector at the vertex, used for lighting calculations.</param>
-    /// <param name="tangent">The tangent vector at the vertex, used for normal mapping.</param>
+    /// <param name="tangent">The tangent vector at the vertex, used for normal mapping. Also includes the sign for bitangent.</param>
     /// <param name="color">The color of the vertex, stored as an RGBA float vector.</param>
-    public Vertex3D(Vector3 position, Vector4 boneWeights, UInt4 boneIndices, Vector2 texCoords, Vector2 texCoords2, Vector3 normal, Vector3 tangent, Vector4 color) {
+    public Vertex3D(Vector3 position, Vector4 boneWeights, UInt4 boneIndices, Vector2 texCoords, Vector2 texCoords2, Vector3 normal, Vector4 tangent, Vector4 color) {
         this.Position = position;
         this.BoneWeights = boneWeights;
         this.BoneIndices = boneIndices;
