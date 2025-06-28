@@ -3,27 +3,27 @@ using System.Numerics;
 namespace Bliss.CSharp.Transformations;
 
 public struct Transform : IEquatable<Transform> {
-    
+
     /// <summary>
     /// Event triggered whenever the transformation is updated (translation, rotation, or scale changes).
     /// </summary>
     public event Action<Transform>? OnUpdate;
-    
+
     /// <summary>
     /// Stores the translation (position) vector of the transform.
     /// </summary>
     private Vector3 _translation;
-    
+
     /// <summary>
     /// Stores the rotation of the transform as a quaternion.
     /// </summary>
     private Quaternion _rotation;
-    
+
     /// <summary>
     /// Stores the scale of the transform.
     /// </summary>
     private Vector3 _scale;
-    
+
     /// <summary>
     /// Initializes a new instance of the <see cref="Transform"/> class with default values.
     /// </summary>
@@ -69,6 +69,10 @@ public struct Transform : IEquatable<Transform> {
         }
     }
 
+    public Vector3 Forward => Vector3.Transform(new Vector3(0, 0, 1), this._rotation);
+    public Vector3 Up => Vector3.Transform(new Vector3(0, 1, 0), this._rotation);
+    public Vector3 Right => Vector3.Transform(new Vector3(1, 0, 0), this._rotation);
+    
     /// <summary>
     /// Determines whether two instances of the <see cref="Transform"/> struct are equal.
     /// </summary>
