@@ -1709,95 +1709,79 @@ public class ImmediateRenderer : Disposable {
 
         float halfSize = slices * spacing * 0.5f;
 
-        for (int i = 0; i <= slices; i++)
-        {
+        for (int i = 0; i <= slices; i++) {
             float offset = -halfSize + i * spacing;
 
 
-            if (i == slices / 2)
-            {
+            if (i == slices / 2) {
                 // Draw lines along the X axis.
                 Color zColor = new Color(32, 32, 255, 255);
-                this._tempVertices.Add(new ImmediateVertex3D
-                {
+                this._tempVertices.Add(new ImmediateVertex3D {
                     Position = new Vector3(offset, 0, -halfSize),
                     Color = zColor.ToRgbaFloatVec4()
                 });
 
-                this._tempVertices.Add(new ImmediateVertex3D
-                {
+                this._tempVertices.Add(new ImmediateVertex3D {
                     Position = new Vector3(offset, 0, halfSize),
                     Color = zColor.ToRgbaFloatVec4()
                 });
 
                 // Draw lines along the Z axis.
                 Color xColor = new Color(255, 32, 32, 255);
-                this._tempVertices.Add(new ImmediateVertex3D
-                {
+                this._tempVertices.Add(new ImmediateVertex3D {
                     Position = new Vector3(-halfSize, 0, offset),
                     Color = xColor.ToRgbaFloatVec4()
                 });
 
-                this._tempVertices.Add(new ImmediateVertex3D
-                {
+                this._tempVertices.Add(new ImmediateVertex3D {
                     Position = new Vector3(halfSize, 0, offset),
                     Color = xColor.ToRgbaFloatVec4()
                 });
             }
-            else if (i % majorLineSpacing == 0)
-            {
+            else if (i % majorLineSpacing == 0) {
                 // Draw lines along the X axis.
                 Color xColor = new Color(255, 32, 32, 255);
-                this._tempVertices.Add(new ImmediateVertex3D
-                {
+                this._tempVertices.Add(new ImmediateVertex3D {
                     Position = new Vector3(offset, 0, -halfSize),
                     Color = Color.LightGray.ToRgbaFloatVec4()
                 });
 
-                this._tempVertices.Add(new ImmediateVertex3D
-                {
+                this._tempVertices.Add(new ImmediateVertex3D {
                     Position = new Vector3(offset, 0, halfSize),
                     Color = Color.LightGray.ToRgbaFloatVec4()
                 });
 
                 // Draw lines along the Z axis.
                 Color zColor = new Color(32, 32, 255, 255);
-                this._tempVertices.Add(new ImmediateVertex3D
-                {
+                this._tempVertices.Add(new ImmediateVertex3D {
                     Position = new Vector3(-halfSize, 0, offset),
                     Color = Color.LightGray.ToRgbaFloatVec4()
                 });
 
-                this._tempVertices.Add(new ImmediateVertex3D
-                {
+                this._tempVertices.Add(new ImmediateVertex3D {
                     Position = new Vector3(halfSize, 0, offset),
                     Color = Color.LightGray.ToRgbaFloatVec4()
                 });
             }
-            else
-            {
+            else {
                 // Draw lines along the X axis.
-                this._tempVertices.Add(new ImmediateVertex3D
-                {
+                this._tempVertices.Add(new ImmediateVertex3D {
                     Position = new Vector3(offset, 0, -halfSize),
                     Color = finalColor.ToRgbaFloatVec4()
                 });
 
-                this._tempVertices.Add(new ImmediateVertex3D
-                {
+                this._tempVertices.Add(new ImmediateVertex3D {
                     Position = new Vector3(offset, 0, halfSize),
                     Color = finalColor.ToRgbaFloatVec4()
                 });
 
                 // Draw lines along the Z axis.
-                this._tempVertices.Add(new ImmediateVertex3D
-                {
+                this._tempVertices.Add(new ImmediateVertex3D {
                     Position = new Vector3(-halfSize, 0, offset),
                     Color = finalColor.ToRgbaFloatVec4()
                 });
 
-                this._tempVertices.Add(new ImmediateVertex3D
-                {
+                this._tempVertices.Add(new ImmediateVertex3D {
                     Position = new Vector3(halfSize, 0, offset),
                     Color = finalColor.ToRgbaFloatVec4()
                 });
