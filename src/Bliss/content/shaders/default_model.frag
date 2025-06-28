@@ -16,7 +16,7 @@ layout (set = 4, binding = 1) uniform sampler fAlbedoSampler;
 layout (location = 0) in vec2 fTexCoords;
 layout (location = 1) in vec2 fTexCoords2;
 layout (location = 2) in vec3 fNormal;
-layout (location = 3) in vec3 fTangent;
+layout (location = 3) in vec4 fTangent;
 layout (location = 4) in vec4 fColor;
 
 layout (location = 0) out vec4 fFragColor;

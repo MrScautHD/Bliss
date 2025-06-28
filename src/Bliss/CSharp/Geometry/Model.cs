@@ -261,9 +261,10 @@ public class Model : Disposable {
                 
                 // Set Normal.
                 vertices[j].Normal = mesh.HasNormals ? mesh.Normals[j] : Vector3.Zero;
-
+                
                 // Set Tangent.
-                vertices[j].Tangent = mesh.HasTangentBasis ? mesh.Tangents[j] : Vector3.Zero;
+                float tangentSign = Vector3.Dot(Vector3.Cross(mesh.Normals[j], mesh.Tangents[j]), mesh.BiTangents[j]) > 0.0F ? 1.0F : -1.0F;
+                vertices[j].Tangent = mesh.HasTangentBasis ? new Vector4(mesh.Tangents[j], tangentSign) : Vector4.Zero;
                 
                 // Set Color.
                 vertices[j].Color = material.GetMapColor(MaterialMapType.Albedo.GetName())?.ToRgbaFloatVec4() ?? Vector4.Zero;

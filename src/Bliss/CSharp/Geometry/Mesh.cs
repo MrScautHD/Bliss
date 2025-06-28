@@ -1044,7 +1044,6 @@ public class Mesh : Disposable {
         return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
     }
     
-    // TODO: Check if it works correct.
     /// <summary>
     /// Generates tangent vectors for the mesh's vertices based on the provided geometric and UV coordinate data.
     /// </summary>
@@ -1101,8 +1100,11 @@ public class Mesh : Disposable {
             Vertex3D vertex = this.Vertices[i];
             Vector3 n = vertex.Normal;
             Vector3 t = tan1[i];
+            Vector3 b = tan2[i];
 
-            Vector3 tangent = Vector3.Normalize(t - n * Vector3.Dot(n, t));
+            float sign = Vector3.Dot(Vector3.Cross(n, t), b) > 0.0F ? 1.0F : -1.0F;
+            
+            Vector4 tangent = new Vector4(Vector3.Normalize(t - n * Vector3.Dot(n, t)), sign);
             this.Vertices[i].Tangent = tangent;
         }
     }

@@ -16,13 +16,13 @@ layout (location = 2) in uvec4 vBoneIndices;
 layout (location = 3) in vec2 vTexCoords;
 layout (location = 4) in vec2 vTexCoords2;
 layout (location = 5) in vec3 vNormal;
-layout (location = 6) in vec3 vTangent;
+layout (location = 6) in vec4 vTangent;
 layout (location = 7) in vec4 vColor;
 
 layout (location = 0) out vec2 fTexCoords;
 layout (location = 1) out vec2 fTexCoords2;
 layout (location = 2) out vec3 fNormal;
-layout (location = 3) out vec3 fTangent;
+layout (location = 3) out vec4 fTangent;
 layout (location = 4) out vec4 fColor;
 
 mat4x4 getBoneTransformation() {
