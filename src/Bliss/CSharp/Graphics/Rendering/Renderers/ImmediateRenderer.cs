@@ -1717,31 +1717,31 @@ public class ImmediateRenderer : Disposable {
             if (i == slices / 2)
             {
                 // Draw lines along the X axis.
-                Color xColor = new Color(255, 32, 32, 255);
+                Color zColor = new Color(32, 32, 255, 255);
                 this._tempVertices.Add(new ImmediateVertex3D
                 {
                     Position = new Vector3(offset, 0, -halfSize),
-                    Color = xColor.ToRgbaFloatVec4()
+                    Color = zColor.ToRgbaFloatVec4()
                 });
 
                 this._tempVertices.Add(new ImmediateVertex3D
                 {
                     Position = new Vector3(offset, 0, halfSize),
-                    Color = xColor.ToRgbaFloatVec4()
+                    Color = zColor.ToRgbaFloatVec4()
                 });
 
                 // Draw lines along the Z axis.
-                Color zColor = new Color(32, 32, 255, 255);
+                Color xColor = new Color(255, 32, 32, 255);
                 this._tempVertices.Add(new ImmediateVertex3D
                 {
                     Position = new Vector3(-halfSize, 0, offset),
-                    Color = zColor.ToRgbaFloatVec4()
+                    Color = xColor.ToRgbaFloatVec4()
                 });
 
                 this._tempVertices.Add(new ImmediateVertex3D
                 {
                     Position = new Vector3(halfSize, 0, offset),
-                    Color = zColor.ToRgbaFloatVec4()
+                    Color = xColor.ToRgbaFloatVec4()
                 });
             }
             else if (i % majorLineSpacing == 0)
