@@ -123,8 +123,7 @@ public readonly struct Color : IEquatable<Color> {
     /// <param name="color"> The color to modulate.</param>
     /// <param name="mod"> The value to modulate the RGB values by.</param>
     /// <returns>A <see cref="Color"/> that is the result of piece-wise modulo on the color.</returns>
-    public static Color operator %(Color color, int mod)
-    {
+    public static Color operator %(Color color, int mod) {
         if (mod <= 0) {
             throw new ArgumentOutOfRangeException(nameof(mod), "Modulus must be greater than zero.");
         }
@@ -142,8 +141,7 @@ public readonly struct Color : IEquatable<Color> {
     /// <param name="left"> The first color to add.</param>
     /// <param name="right"> The second color to add.</param>
     /// <returns>A <see cref="Color"/> that is the result of adding the two colors together.</returns>
-    public static Color operator +(Color left, Color right)
-    {
+    public static Color operator +(Color left, Color right) {
         byte r = (byte)Math.Min(left.R + right.R, 255);
         byte g = (byte)Math.Min(left.G + right.G, 255);
         byte b = (byte)Math.Min(left.B + right.B, 255);
@@ -157,8 +155,7 @@ public readonly struct Color : IEquatable<Color> {
     /// <param name="left"> The first color to subtract.</param>
     /// <param name="right"> The second color to subtract.</param>
     /// <returns>A <see cref="Color"/> that is the result of subtracting the two colors together.</returns>
-    public static Color operator -(Color left, Color right)
-    {
+    public static Color operator -(Color left, Color right) {
         byte r = (byte)Math.Max(left.R - right.R, 0);
         byte g = (byte)Math.Max(left.G - right.G, 0);
         byte b = (byte)Math.Max(left.B - right.B, 0);
@@ -172,10 +169,8 @@ public readonly struct Color : IEquatable<Color> {
     /// <param name="left"> The first color to multiply.</param>
     /// <param name="multiplier"> The value to multiply the color by.</param>
     /// <returns>A <see cref="Color"/> that is the result of multiplying the color by the float value.</returns>
-    public static Color operator *(Color left, float multiplier)
-    {
-        if (multiplier < 0.001F)
-        {
+    public static Color operator *(Color left, float multiplier) {
+        if (multiplier < 0.001F) {
             return new Color(0, 0, 0, 0);
         }
         byte r = (byte)Math.Min(((byte)(float)left.R * multiplier), 255);
@@ -191,10 +186,8 @@ public readonly struct Color : IEquatable<Color> {
     /// <param name="left"> Color Dividend (The color to divide.)</param>
     /// <param name="divisor"> The Divisor (The value to divide by.)</param>
     /// <returns>A <see cref="Color"/> that is the result of dividing the color by the float value.</returns>
-    public static Color operator /(Color left, float divisor)
-    {
-        if (divisor < 0.001F)
-        {
+    public static Color operator /(Color left, float divisor) {
+        if (divisor < 0.001F) {
             return left;
         }
         byte r = (byte)Math.Max(divisor <= 0.001F ? 0 : left.R / divisor, 0);
@@ -204,8 +197,7 @@ public readonly struct Color : IEquatable<Color> {
         return new Color(r, g, b, a);
     }
 
-    public static Color InterpolateLAB(Color left, Color right, float t)
-    {
+    public static Color InterpolateLAB(Color left, Color right, float t) {
         return LabColor.Interpolate(left, right, t);
     }
     
@@ -237,8 +229,7 @@ public readonly struct Color : IEquatable<Color> {
     /// Inverts the color by subtracting each RGB component from 255.
     /// </summary>
     /// <returns>A <see cref="Color"/> with inverted RGB channels, alpha is unaffected.</returns>
-    public Color Invert(bool keepAlpha = true)
-    {
+    public Color Invert(bool keepAlpha = true) {
         byte r = (byte)(255 - this.R);
         byte g = (byte)(255 - this.G);
         byte b = (byte)(255 - this.B);
@@ -257,7 +248,7 @@ public readonly struct Color : IEquatable<Color> {
         if (Saturation == 0) {
             return new Color((byte)(Value * 255), (byte)(Value * 255), (byte)(Value * 255), (byte)(255));
         }
-
+        
         float h = Hue % 360;
         float c = Value * Saturation;
         float x = c * (1 - Math.Abs((h / 60) % 2 - 1));
