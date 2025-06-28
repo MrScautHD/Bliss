@@ -1,48 +1,41 @@
 namespace Bliss.CSharp.Colors.LAB;
 
-public readonly struct LabColor
-{
+public readonly struct LabColor {
     public readonly float L; // Lightness
     public readonly float A; // Green-Red component
     public readonly float B; // Blue-Yellow component
-
-    private LabColor(float l, float a, float b)
-    {
+    
+    /// <summary>
+    /// LAB representation of color
+    /// </summary>
+    private LabColor(float l, float a, float b) {
         this.L = l;
         this.A = a;
         this.B = b;
     }
     // Fast gamma correction functions
-    private static float GammaToLinear(float value)
-    {
+    private static float GammaToLinear(float value) {
         return value <= 0.04045f ? value / 12.92f : MathF.Pow((value + 0.055f) / 1.055f, 2.4f);
     }
 
-    private static float LinearToGamma(float value)
-    {
+    private static float LinearToGamma(float value) {
         return value <= 0.0031308f ? value * 12.92f : 1.055f * MathF.Pow(value, 1f / 2.4f) - 0.055f;
     }
-    
     // LAB helper functions
-    private static float LabF(float t)
-    {
+    private static float LabF(float t) {
         const float delta = 6f / 29f;
         const float deltaSquared = delta * delta;
         const float deltaCubed = deltaSquared * delta;
         
         return t > deltaCubed ? MathF.Pow(t, 1f / 3f) : t / (3f * deltaSquared) + 4f / 29f;
     }
-
-    private static float LabFInverse(float t)
-    {
+    private static float LabFInverse(float t) {
         const float delta = 6f / 29f;
         const float deltaSquared = delta * delta;
         
         return t > delta ? t * t * t : 3f * deltaSquared * (t - 4f / 29f);
     }
-    
-    private static (float L, float A, float B) RgbToLab(byte r, byte g, byte b)
-    {
+    private static (float L, float A, float B) RgbToLab(byte r, byte g, byte b) {
         // RGB to linear RGB
         float rLinear = GammaToLinear(r / 255f);
         float gLinear = GammaToLinear(g / 255f);
@@ -69,8 +62,7 @@ public readonly struct LabColor
 
         return (L, A, B);
     }
-    private static (byte r, byte g, byte b) LabToRgb(float L, float A, float B)
-    {
+    private static (byte r, byte g, byte b) LabToRgb(float L, float A, float B) {
         // LAB to XYZ
         float fy = (L + 16f) / 116f;
         float fx = A / 500f + fy;
@@ -90,16 +82,11 @@ public readonly struct LabColor
         float g = LinearToGamma(gLinear);
         float b = LinearToGamma(bLinear);
 
-        return (
-            (byte)Math.Clamp(r * 255f + 0.5f, 0, 255),
-            (byte)Math.Clamp(g * 255f + 0.5f, 0, 255),
-            (byte)Math.Clamp(b * 255f + 0.5f, 0, 255)
+        return ((byte)Math.Clamp(r * 255f + 0.5f, 0, 255), (byte)Math.Clamp(g * 255f + 0.5f, 0, 255), (byte)Math.Clamp(b * 255f + 0.5f, 0, 255)
         );
     }
     private static float Lerp(float a, float b, float t) => a + (b - a) * t;
-
-    private static Color InterpolateLab(Color color1, Color color2, float t)
-    {
+    private static Color InterpolateLab(Color color1, Color color2, float t) {
         t = Math.Clamp(t, 0f, 1f);
         
         var lab1 = RgbToLab(color1.R, color1.G, color1.B);
@@ -114,10 +101,7 @@ public readonly struct LabColor
         var (r, g, b) = LabToRgb(labResult.L, labResult.A, labResult.B);
         return new Color(r, g, b, (byte)Lerp(color1.A, color2.A, t));
     }
-    
-    public static Color Interpolate(Color color1, Color color2, float t)
-    {
+    public static Color Interpolate(Color color1, Color color2, float t) {
         return InterpolateLab(color1, color2, t);
     }
-    
 }

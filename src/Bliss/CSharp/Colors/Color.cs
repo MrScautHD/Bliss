@@ -197,7 +197,17 @@ public readonly struct Color : IEquatable<Color> {
         return new Color(r, g, b, a);
     }
 
-    public static Color InterpolateLAB(Color left, Color right, float t) {
+    /// <summary>
+    /// Lab Color based interpolation
+    /// </summary>
+    /// <param name="left">The first color to blend.</param>
+    /// <param name="right">The second color to blend.</param>
+    /// <param name="t">The blend factor.
+    /// 0.0 is 100% of the first color.
+    /// 0.5 is 50% blend between color a and color b.
+    /// 1.0 is 100% of the second color.</param>
+    /// <returns></returns>
+    public static Color Interpolate(Color left, Color right, float t) {
         return LabColor.Interpolate(left, right, t);
     }
     
