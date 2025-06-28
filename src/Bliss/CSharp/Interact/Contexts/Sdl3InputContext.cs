@@ -365,8 +365,8 @@ public class Sdl3InputContext : Disposable, IInputContext {
     /// </summary>
     /// <param name="keyEvent">The key event containing information about the pressed key.</param>
     private void OnKeyDown(KeyEvent keyEvent) {
-        this._keyboardKeysPressed.Add(keyEvent.KeyboardKey, keyEvent.Repeat);
-        
+        this._keyboardKeysPressed[keyEvent.KeyboardKey] = keyEvent.Repeat;
+
         if (!keyEvent.Repeat) {
             this._keyboardKeysDown.Add(keyEvent.KeyboardKey);
         }

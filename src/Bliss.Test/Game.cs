@@ -19,7 +19,6 @@ using Bliss.CSharp.Textures.Cubemaps;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
 using MiniAudioEx;
-using SDL;
 using Veldrid;
 using Color = Bliss.CSharp.Colors.Color;
 using Rectangle = Bliss.CSharp.Transformations.Rectangle;
