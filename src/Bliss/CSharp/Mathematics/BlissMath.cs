@@ -3,7 +3,7 @@ using System.Numerics;
 namespace Bliss.CSharp.Mathematics;
 
 public static class BlissMath {
-    
+
     /// <summary>
     /// Calculates the angle in radians between two vectors.
     /// </summary>
@@ -29,23 +29,26 @@ public static class BlissMath {
         return Vector3.Transform(v, rotation);
     }
 
-    /// <summary> This creates a rotation from Euler angles in degrees.</summary>
-    /// <usage> This should be used when you want to apply an absolute rotation.</usage>
-    /// <param name="pitch">The pitch angle in degrees.</param>
-    /// <param name="yaw">The yaw angle in degrees.</param>
-    /// <param name="roll"> The roll angle in degrees.</param>
-    /// <returns> A <see cref="Quaternion"/> representing the absolute rotation given the angles provided.</returns>
-    public static Quaternion RotationEulerDegrees(float pitch, float yaw, float roll) {
+    /// <summary>
+    /// Creates a <see cref="Quaternion"/> from Euler angles specified in degrees.
+    /// </summary>
+    /// <param name="pitch">The pitch angle in degrees (rotation around the X axis).</param>
+    /// <param name="yaw">The yaw angle in degrees (rotation around the Y axis).</param>
+    /// <param name="roll">The roll angle in degrees (rotation around the Z axis).</param>
+    /// <returns>A <see cref="Quaternion"/> representing the combined rotation.</returns>
+    public static Quaternion EulerDegreesToQuaternion(float pitch, float yaw, float roll) {
         return Quaternion.CreateFromYawPitchRoll(float.DegreesToRadians(yaw), float.DegreesToRadians(pitch), float.DegreesToRadians(roll));
     }
-    
-    /// <summary> This gives a delta rotation given the rotation angles in degrees.</summary>
-    /// <usage> This should be used when you want to apply a rotation based on the change in angles over time, such as in an update loop.</usage>
-    /// <param name="pitch">The pitch angle in degrees.</param>
-    /// <param name="yaw">The yaw angle in degrees.</param>
-    /// <param name="roll"> The roll angle in degrees.</param>
-    /// <returns> A <see cref="Quaternion"/> representing the rotation delta between frames given the angles provided.</returns>
-    public static Quaternion RotationDeltaEulerDegrees(float pitch, float yaw, float roll, float deltaTime) {
+
+    /// <summary>
+    /// Creates a delta <see cref="Quaternion"/> rotation from Euler angles in degrees, scaled by a time step.
+    /// </summary>
+    /// <param name="pitch">The pitch angle in degrees (rotation around the X axis).</param>
+    /// <param name="yaw">The yaw angle in degrees (rotation around the Y axis).</param>
+    /// <param name="roll">The roll angle in degrees (rotation around the Z axis).</param>
+    /// <param name="deltaTime">The elapsed time step to scale the rotation by.</param>
+    /// <returns>A <see cref="Quaternion"/> representing the incremental rotation.</returns>
+    public static Quaternion EulerDegreesToQuaternion(float pitch, float yaw, float roll, float deltaTime) {
         return Quaternion.CreateFromYawPitchRoll(float.DegreesToRadians(yaw * deltaTime), float.DegreesToRadians(pitch * deltaTime), float.DegreesToRadians(roll * deltaTime));
     }
 }
