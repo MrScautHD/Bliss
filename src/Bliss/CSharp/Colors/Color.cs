@@ -1,6 +1,5 @@
 using System.Numerics;
 using Veldrid;
-using Bliss.CSharp.Colors.LAB;
 
 namespace Bliss.CSharp.Colors;
 
@@ -118,97 +117,139 @@ public readonly struct Color : IEquatable<Color> {
     }
 
     /// <summary>
-    /// Returns a color result of piece-wise modulus by an integer value
+    /// Computes the component-wise remainder (modulo) of two colors, treating each channel separately.
     /// </summary>
-    /// <param name="color"> The color to modulate.</param>
-    /// <param name="mod"> The value to modulate the RGB values by.</param>
-    /// <returns>A <see cref="Color"/> that is the result of piece-wise modulo on the color.</returns>
-    public static Color operator %(Color color, int mod) {
-        if (mod <= 0) {
-            throw new ArgumentOutOfRangeException(nameof(mod), "Modulus must be greater than zero.");
-        }
+    /// <param name="left">The left operand representing the dividend color.</param>
+    /// <param name="right">The right operand representing the divisor color.</param>
+    /// <returns>A new <see cref="Color"/> representing the component-wise remainder.</returns>
+    public static Color operator %(Color left, Color right) {
+        byte r = right.R == 0 ? (byte) 255.0F : (byte) (left.R % right.R);
+        byte g = right.G == 0 ? (byte) 255.0F : (byte) (left.G % right.G);
+        byte b = right.B == 0 ? (byte) 255.0F : (byte) (left.B % right.B);
+        byte a = right.A == 0 ? (byte) 255.0F : (byte) (left.A % right.A);
         
-        byte r = (byte)(color.R % mod);
-        byte g = (byte)(color.G % mod);
-        byte b = (byte)(color.B % mod);
-        byte a = color.A;
         return new Color(r, g, b, a);
     }
-    
+
     /// <summary>
-    /// Adds two colours together piece-wise
+    /// Adds two colours together piece-wise.
     /// </summary>
     /// <param name="left"> The first color to add.</param>
     /// <param name="right"> The second color to add.</param>
     /// <returns>A <see cref="Color"/> that is the result of adding the two colors together.</returns>
     public static Color operator +(Color left, Color right) {
-        byte r = (byte)Math.Min(left.R + right.R, 255);
-        byte g = (byte)Math.Min(left.G + right.G, 255);
-        byte b = (byte)Math.Min(left.B + right.B, 255);
-        byte a = (byte)Math.Min(left.A + right.A, 255);
+        byte r = (byte) Math.Min(left.R + right.R, 255.0F);
+        byte g = (byte) Math.Min(left.G + right.G, 255.0F);
+        byte b = (byte) Math.Min(left.B + right.B, 255.0F);
+        byte a = (byte) Math.Min(left.A + right.A, 255.0F);
+        
         return new Color(r, g, b, a);
     }
-    
+
     /// <summary>
-    /// Subtracts two colours together piece-wise
+    /// Subtracts two colours together piece-wise.
     /// </summary>
     /// <param name="left"> The first color to subtract.</param>
     /// <param name="right"> The second color to subtract.</param>
     /// <returns>A <see cref="Color"/> that is the result of subtracting the two colors together.</returns>
     public static Color operator -(Color left, Color right) {
-        byte r = (byte)Math.Max(left.R - right.R, 0);
-        byte g = (byte)Math.Max(left.G - right.G, 0);
-        byte b = (byte)Math.Max(left.B - right.B, 0);
-        byte a = (byte)Math.Max(left.A - right.A, 0);
+        byte r = (byte) Math.Max(left.R - right.R, 0.0F);
+        byte g = (byte) Math.Max(left.G - right.G, 0.0F);
+        byte b = (byte) Math.Max(left.B - right.B, 0.0F);
+        byte a = (byte) Math.Max(left.A - right.A, 0.0F);
+        
         return new Color(r, g, b, a);
     }
 
     /// <summary>
-    /// Multiplies two colours together piece-wise
+    /// Multiplies the color components of two <see cref="Color"/> instances component-wise.
     /// </summary>
-    /// <param name="left"> The first color to multiply.</param>
-    /// <param name="multiplier"> The value to multiply the color by.</param>
-    /// <returns>A <see cref="Color"/> that is the result of multiplying the color by the float value.</returns>
-    public static Color operator *(Color left, float multiplier) {
-        if (multiplier < 0.001F) {
-            return new Color(0, 0, 0, 0);
-        }
-        byte r = (byte)Math.Min(((byte)(float)left.R * multiplier), 255);
-        byte g = (byte)Math.Min(((byte)(float)left.G * multiplier), 255);
-        byte b = (byte)Math.Min(((byte)(float)left.B * multiplier), 255);
-        byte a = (byte)Math.Min(((byte)(float)left.A * multiplier), 255);
+    /// <param name="left">The first <see cref="Color"/> instance.</param>
+    /// <param name="right">The second <see cref="Color"/> instance.</param>
+    /// <returns>A new <see cref="Color"/> resulting from the component-wise multiplication of the two input colors.</returns>
+    public static Color operator *(Color left, Color right) {
+        byte r = (byte) Math.Clamp((left.R / 255.0F) * (right.R / 255.0F) * 255.0F, 0.0F, 255.0F);
+        byte g = (byte) Math.Clamp((left.G / 255.0F) * (right.G / 255.0F) * 255.0F, 0.0F, 255.0F);
+        byte b = (byte) Math.Clamp((left.B / 255.0F) * (right.B / 255.0F) * 255.0F, 0.0F, 255.0F);
+        byte a = (byte) Math.Clamp((left.A / 255.0F) * (right.A / 255.0F) * 255.0F, 0.0F, 255.0F);
+        
+        return new Color(r, g, b, a);
+    }
+
+    /// <summary>
+    /// Implements the division operator for the <see cref="Color"/> structure.
+    /// </summary>
+    /// <param name="left">The <see cref="Color"/> instance acting as the dividend.</param>
+    /// <param name="right">The <see cref="Color"/> instance acting as the divisor.</param>
+    /// <returns>A new <see cref="Color"/> resulting from component-wise division of the two colors. If a component in the divisor is zero, the resulting component is clamped to 255.</returns>
+    public static Color operator /(Color left, Color right) {
+        byte r = right.R == 0 ? (byte) 255.0F : (byte) Math.Clamp((left.R / (float) right.R) * 255.0F, 0.0F, 255.0F);
+        byte g = right.G == 0 ? (byte) 255.0F : (byte) Math.Clamp((left.G / (float) right.G) * 255.0F, 0.0F, 255.0F);
+        byte b = right.B == 0 ? (byte) 255.0F : (byte) Math.Clamp((left.B / (float) right.B) * 255.0F, 0.0F, 255.0F);
+        byte a = right.A == 0 ? (byte) 255.0F : (byte) Math.Clamp((left.A / (float) right.A) * 255.0F, 0.0F, 255.0F);
+        
         return new Color(r, g, b, a);
     }
     
     /// <summary>
-    /// Divides a color by another color piece-wise
+    /// Creates a new <see cref="Color"/> instance from the specified HSV (Hue, Saturation, Value) model values.
     /// </summary>
-    /// <param name="left"> Color Dividend (The color to divide.)</param>
-    /// <param name="divisor"> The Divisor (The value to divide by.)</param>
-    /// <returns>A <see cref="Color"/> that is the result of dividing the color by the float value.</returns>
-    public static Color operator /(Color left, float divisor) {
-        if (divisor < 0.001F) {
-            return left;
+    /// <param name="hue">The hue component of the color, in degrees (0-360).</param>
+    /// <param name="saturation">The saturation component of the color, as a value between 0 and 1.</param>
+    /// <param name="value">The value (brightness) component of the color, as a value between 0 and 1.</param>
+    /// <returns>A new <see cref="Color"/> object representing the specified HSV color.</returns>
+    public static Color FromHsv(float hue, float saturation, float value) {
+        if (saturation == 0.0F) {
+            byte gray = (byte) (value * 255.0F);
+            return new Color(gray, gray, gray, 255);
         }
-        byte r = (byte)Math.Max(divisor <= 0.001F ? 0 : left.R / divisor, 0);
-        byte g = (byte)Math.Max(divisor <= 0.001F ? 0 : left.G / divisor, 0);
-        byte b = (byte)Math.Max(divisor <= 0.001F ? 0 : left.B / divisor, 0);
-        byte a = (byte)Math.Max(divisor <= 0.001F ? 0 : left.A / divisor, 0);
-        return new Color(r, g, b, a);
-    }
-
-    /// <summary>
-    /// Lab Color based interpolation
-    /// </summary>
-    /// <param name="left">The first color to blend.</param>
-    /// <param name="right">The second color to blend.</param>
-    /// <param name="t">The blend factor.
-    /// 0.0 is 100% of the first color.
-    /// 0.5 is 50% blend between color a and color b.
-    /// 1.0 is 100% of the second color.</param>
-    /// <returns></returns>
-    public static Color Interpolate(Color left, Color right, float t) {
-        return LabColor.Interpolate(left, right, t);
+        
+        float h = hue / 60.0F;
+        int i = (int) Math.Floor(h);
+        float f = h - i;
+        
+        float p = value * (1.0F - saturation);
+        float q = value * (1.0F - saturation * f);
+        float t = value * (1.0F - saturation * (1.0F - f));
+        
+        float r;
+        float g;
+        float b;
+        
+        switch (i % 6) {
+            case 0:
+                r = value;
+                g = t;
+                b = p;
+                break;
+            case 1:
+                r = q;
+                g = value;
+                b = p;
+                break;
+            case 2:
+                r = p;
+                g = value;
+                b = t;
+                break;
+            case 3:
+                r = p;
+                g = q;
+                b = value;
+                break;
+            case 4:
+                r = t;
+                g = p;
+                b = value;
+                break;
+            default:
+                r = value;
+                g = p;
+                b = q;
+                break;
+        }
+        
+        return new Color((byte) (r * 255.0F), (byte) (g * 255.0F), (byte) (b * 255.0F), 255);
     }
     
     /// <summary>
@@ -234,106 +275,88 @@ public readonly struct Color : IEquatable<Color> {
     public Vector4 ToVector4() {
         return new Vector4(this.R, this.G, this.B, this.A);
     }
-    
-    /// <summary>
-    /// Inverts the color by subtracting each RGB component from 255.
-    /// </summary>
-    /// <returns>A <see cref="Color"/> with inverted RGB channels, alpha is unaffected.</returns>
-    public Color Invert(bool keepAlpha = true) {
-        byte r = (byte)(255 - this.R);
-        byte g = (byte)(255 - this.G);
-        byte b = (byte)(255 - this.B);
-        byte a = keepAlpha ? this.A : (byte)(255 - this.A); // Keep alpha unchanged
-        return new Color( r, g, b, a );
-    }
-    
-    /// <summary>
-    /// Builds a <see cref="Color"/> from Hue-Saturation-Value (HSV) color model.
-    /// </summary>
-    /// <param name="Hue"> The hue component, in degrees (0-360).</param>
-    /// <param name="Saturation"> The saturation component, in the range of 0 to 1.</param>
-    /// <param name="Value"> The value component, in the range of 0 to 1.</param>
-    /// <returns>A <see cref="Color"/> made from HSV values.</returns>
-    public static Color FromHsv(float Hue, float Saturation, float Value) {
-        if (Saturation == 0) {
-            return new Color((byte)(Value * 255), (byte)(Value * 255), (byte)(Value * 255), (byte)(255));
-        }
-        
-        float h = Hue % 360;
-        float c = Value * Saturation;
-        float x = c * (1 - Math.Abs((h / 60) % 2 - 1));
-        float m = Value - c;
 
-        float r, g, b;
-
-        if (h < 60) {
-            r = c; g = x; b = 0;
-        } else if (h < 120) {
-            r = x; g = c; b = 0;
-        } else if (h < 180) {
-            r = 0; g = c; b = x;
-        } else if (h < 240) {
-            r = 0; g = x; b = c;
-        } else if (h < 300) {
-            r = x; g = 0; b = c;
-        } else {
-            r = c; g = 0; b = x;
-        }
-
-        return new Color(
-            (byte)((r + m) * 255),
-            (byte)((g + m) * 255),
-            (byte)((b + m) * 255),
-            (byte)255
-        );
-    }
-    
     /// <summary>
-    /// Calculates the Hue Saturation Value components of a given <see cref="Color"/>.
+    /// Converts the current color to its HSV (Hue, Saturation, Value) representation.
     /// </summary>
-    /// <returns> A tuple containing the Hue, Saturation, and Value of the <see cref="Color"/>.</returns>
+    /// <returns>A tuple containing the Hue, Saturation, and Value components of the color.</returns>
     public (float Hue, float Saturation, float Value) ToHsv() {
         float r = this.R / 255.0F;
         float g = this.G / 255.0F;
         float b = this.B / 255.0F;
-
-        float max = Math.Max(r, Math.Max(g, b));
+        
         float min = Math.Min(r, Math.Min(g, b));
+        float max = Math.Max(r, Math.Max(g, b));
         float delta = max - min;
-
-        float hue = 0;
-        if (delta > 0) {
-            if (max == r) {
-                hue = (g - b) / delta + (g < b ? 6 : 0);
-            } else if (max == g) {
-                hue = (b - r) / delta + 2;
-            } else {
-                hue = (r - g) / delta + 4;
-            }
-            hue *= 60;
-        }
-
-        float saturation = max == 0 ? 0 : delta / max;
+        
+        float hue;
+        float saturation;
         float value = max;
-
+        
+        const float epsilon = 0.00001F;
+        
+        if (delta < epsilon) {
+            saturation = 0.0F;
+            hue = 0.0F;
+        }
+        else {
+            saturation = (max > 0.0F) ? (delta / max) : 0.0F;
+            
+            if (r >= max) {
+                hue = (g - b) / delta;
+            }
+            else if (g >= max) {
+                hue = 2.0F + (b - r) / delta;
+            }
+            else {
+                hue = 4.0F + (r - g) / delta;
+            }
+            
+            hue *= 60.0F;
+            
+            if (hue < 0.0F) {
+                hue += 360.0F;
+            }
+        }
+        
         return (hue, saturation, value);
     }
-    
-    /// <summary>
-    /// Desaturates the given <see cref="Color"/>.
-    /// </summary>
-    /// <param name="amount"> The amount to desaturate the color by, between 0 and 1.</param>
-    /// <returns> The desaturated <see cref="Color"/>.</returns>
-    public Color Desaturate(float amount) {
-        if (amount < 0 || amount > 1) {
-            throw new ArgumentOutOfRangeException(nameof(amount), "Desaturation amount must be between 0 and 1.");
-        }
 
-        var (hue, saturation, value) = this.ToHsv();
-        saturation *= (1 - amount);
-        return FromHsv(hue, saturation, value);
+    /// <summary>
+    /// Returns the inverted color, with an option to maintain the alpha component.
+    /// </summary>
+    /// <param name="keepAlpha">Specifies whether to retain the original alpha value. If set to false, the alpha value will also be inverted.</param>
+    /// <returns>A new <see cref="Color"/> instance with the RGB components inverted, and the alpha component either retained or inverted based on the <paramref name="keepAlpha"/> value.</returns>
+    public Color Invert(bool keepAlpha = true) {
+        byte r = (byte) (255.0F - this.R);
+        byte g = (byte) (255.0F - this.G);
+        byte b = (byte) (255.0F - this.B);
+        byte a = keepAlpha ? this.A : (byte) (255.0F - this.A);
+        
+        return new Color(r, g, b, a);
     }
-    
+
+    /// <summary>
+    /// Adjusts the saturation of the current <see cref="Color"/>.
+    /// </summary>
+    /// <param name="adjustment">A value between -1 and 1. Negative values decrease saturation, and positive values increase it.</param>
+    /// <returns>The <see cref="Color"/> with adjusted saturation.</returns>
+    public Color AdjustSaturation(float adjustment) {
+        float finalAdjustment = Math.Clamp(adjustment, -1.0F, 1.0F);
+        
+        // Convert the current color to HSV.
+        (float hue, float saturation, float value) = this.ToHsv();
+        
+        if (finalAdjustment < 0.0F) {
+            saturation *= (1.0F + finalAdjustment);
+        } else {
+            saturation += (1.0F - saturation) * finalAdjustment;
+        }
+        
+        // Return the modified color.
+        return FromHsv(hue, Math.Clamp(saturation, 0.0F, 1.0F), value);
+    }
+
     /// <summary>
     /// Determines whether the current color object is equal to another color object.
     /// </summary>
