@@ -3,7 +3,6 @@ using System.Runtime.InteropServices;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Effects;
-using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
@@ -1689,51 +1688,112 @@ public class ImmediateRenderer : Disposable {
     }
 
     /// <summary>
-    /// Renders a grid using the specified command list, output description, transformation matrix, slice count, spacing, and optional color.
+    /// Renders a grid using the specified command list, output description, transformation matrix, and grid parameters.
     /// </summary>
-    /// <param name="commandList">The command list used for rendering the grid.</param>
-    /// <param name="output">The output description that defines the render target's properties.</param>
-    /// <param name="transform">The transformation applied to the grid.</param>
-    /// <param name="slices">The number of divisions (slices) in the grid. Must be greater than or equal to 1.</param>
-    /// <param name="spacing">The distance (spacing) between each grid line. Must be greater than or equal to 1.</param>
-    /// <param name="color">An optional color for the grid lines. Defaults to white if not specified.</param>
-    public void DrawGird(CommandList commandList, OutputDescription output, Transform transform, int slices, int spacing, Color? color = null) {
+    /// <param name="commandList">The command list used to issue rendering commands.</param>
+    /// <param name="output">The output description for the target render resource.</param>
+    /// <param name="transform">The transformation matrix applied to the grid.</param>
+    /// <param name="slices">The number of grid divisions or slices. Must be greater than or equal to 1.</param>
+    /// <param name="spacing">The distance between adjacent grid lines. Must be greater than or equal to 1.</param>
+    /// <param name="majorLineSpacing">The interval of major grid lines, which are visually distinct. Must be greater than or equal to 1.</param>
+    /// <param name="color">The optional color of the grid lines. Defaults to white if not provided.</param>
+    /// <param name="axisColorX">The optional color for the X-axis grid line. Defaults to red if not provided.</param>
+    /// <param name="axisColorZ">The optional color for the Z-axis grid line. Defaults to blue if not provided.</param
+    public void DrawGrid(CommandList commandList, OutputDescription output, Transform transform, int slices, int spacing, int majorLineSpacing, Color? color = null, Color? axisColorX = null, Color? axisColorZ = null) {
         Color finalColor = color ?? Color.White;
-
-        if (spacing < 1) {
-            spacing = 1;
-        }
-
+        Color finalAxisColorX = axisColorX ?? Color.Red;
+        Color finalAxisColorZ = axisColorZ ?? Color.Blue;
+        
         if (slices < 1) {
             slices = 1;
         }
-
-        float halfSize = slices * spacing * 0.5f;
-
+        
+        if (spacing < 1) {
+            spacing = 1;
+        }
+        
+        if (majorLineSpacing < 1) {
+            majorLineSpacing = 1;
+        }
+        
+        float halfSize = slices * spacing * 0.5F;
+        
         for (int i = 0; i <= slices; i++) {
             float offset = -halfSize + i * spacing;
-
-            // Draw lines along the X axis.
-            this._tempVertices.Add(new ImmediateVertex3D {
-                Position = new Vector3(offset, 0, -halfSize),
-                Color = finalColor.ToRgbaFloatVec4()
-            });
             
-            this._tempVertices.Add(new ImmediateVertex3D {
-                Position = new Vector3(offset, 0, halfSize),
-                Color = finalColor.ToRgbaFloatVec4()
-            });
-            
-            // Draw lines along the Z axis.
-            this._tempVertices.Add(new ImmediateVertex3D {
-                Position = new Vector3(-halfSize, 0, offset),
-                Color = finalColor.ToRgbaFloatVec4()
-            });
-            
-            this._tempVertices.Add(new ImmediateVertex3D {
-                Position = new Vector3(halfSize, 0, offset),
-                Color = finalColor.ToRgbaFloatVec4()
-            });
+            if (i == slices / 2) {
+                
+                // Draw lines along the X axis.
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(offset, 0.0F, -halfSize),
+                    Color = finalAxisColorX.ToRgbaFloatVec4()
+                });
+                
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(offset, 0.0F, halfSize),
+                    Color = finalAxisColorX.ToRgbaFloatVec4()
+                });
+                
+                // Draw lines along the Z axis.
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(-halfSize, 0.0F, offset),
+                    Color = finalAxisColorZ.ToRgbaFloatVec4()
+                });
+                
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(halfSize, 0.0F, offset),
+                    Color = finalAxisColorZ.ToRgbaFloatVec4()
+                });
+            }
+            else if (i % majorLineSpacing == 0) {
+                RgbaFloat lightColor = new RgbaFloat(finalColor.R / 255.0F * 1.5F, finalColor.G / 255.0F * 1.5F, finalColor.B / 255.0F * 1.5F, finalColor.A / 255.0F);
+                
+                // Draw lines along the X axis.
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(offset, 0.0F, -halfSize),
+                    Color = lightColor.ToVector4()
+                });
+                
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(offset, 0.0F, halfSize),
+                    Color = lightColor.ToVector4()
+                });
+                
+                // Draw lines along the Z axis.
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(-halfSize, 0.0F, offset),
+                    Color = lightColor.ToVector4()
+                });
+                
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(halfSize, 0.0F, offset),
+                    Color = lightColor.ToVector4()
+                });
+            }
+            else {
+                
+                // Draw lines along the X axis.
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(offset, 0.0F, -halfSize),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+                
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(offset, 0.0F, halfSize),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+                
+                // Draw lines along the Z axis.
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(-halfSize, 0.0F, offset),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+                
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(halfSize, 0.0F, offset),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+            }
             
             // Add indices for line pairs along X and Z.
             this._tempIndices.Add((uint) (i * 4 + 0));
