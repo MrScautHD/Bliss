@@ -69,7 +69,7 @@ public struct Transform : IEquatable<Transform> {
         }
     }
 
-    public Vector3 Forward => Vector3.Transform(new Vector3(0, 0, 1), this._rotation);
+    public Vector3 Forward => Vector3.Transform(new Vector3(0, 0, -1), this._rotation);
     public Vector3 Up => Vector3.Transform(new Vector3(0, 1, 0), this._rotation);
     public Vector3 Right => Vector3.Transform(new Vector3(-1, 0, 0), this._rotation);
     
