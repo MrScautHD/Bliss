@@ -5,6 +5,21 @@ namespace Bliss.CSharp.Transformations;
 public struct Transform : IEquatable<Transform> {
 
     /// <summary>
+    /// The forward Vector.
+    /// </summary>
+    public Vector3 Forward => Vector3.Transform(-Vector3.UnitZ, this._rotation);
+    
+    /// <summary>
+    /// The up vector.
+    /// </summary>
+    public Vector3 Up => Vector3.Transform(Vector3.UnitY, this._rotation);
+  
+    /// <summary>
+    /// The right vector.
+    /// </summary>
+    public Vector3 Right => Vector3.Transform(Vector3.UnitX, this._rotation);
+
+    /// <summary>
     /// Event triggered whenever the transformation is updated (translation, rotation, or scale changes).
     /// </summary>
     public event Action<Transform>? OnUpdate;
@@ -69,21 +84,6 @@ public struct Transform : IEquatable<Transform> {
         }
     }
 
-    /// <summary>
-    /// The Transform Forward Vector
-    /// </summary>
-    public Vector3 Forward => Vector3.Transform(new Vector3(0, 0, -1), this._rotation);
-    
-    /// <summary>
-    /// The Transform Up Vector
-    /// </summary>
-    public Vector3 Up => Vector3.Transform(new Vector3(0, 1, 0), this._rotation);
-  
-    /// <summary>
-    /// The Transform Right Vector
-    /// </summary>
-    public Vector3 Right => Vector3.Transform(new Vector3(1, 0, 0), this._rotation);
-    
     /// <summary>
     /// Determines whether two instances of the <see cref="Transform"/> struct are equal.
     /// </summary>
