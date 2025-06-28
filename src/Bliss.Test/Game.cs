@@ -272,7 +272,7 @@ public class Game : Disposable {
         
         this._immediateRenderer.DrawLine(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Vector3(20.5F, 0, 6), new Vector3(21.5F, 0, 6), Color.Green);
         
-        this._immediateRenderer.DrawGrid(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform(), 100, 1, 10, Color.Gray);
+        this._immediateRenderer.DrawGrid(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform(), 96, 1, 16, Color.Gray);
         
         this._immediateRenderer.SetTexture(this._customMeshTexture);
         this._immediateRenderer.DrawCylinder(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(23, 0, 6) }, 1, 1, 40);
