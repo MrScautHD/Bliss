@@ -152,6 +152,99 @@ Class BlissMath  <a class="header-action link-secondary" title="View source" hre
 </h2>
 
 
+  <a id="Bliss_CSharp_Mathematics_BlissMath_EulerDegreesToQuaternion_" data-uid="Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion*"></a>
+
+  <h3 id="Bliss_CSharp_Mathematics_BlissMath_EulerDegreesToQuaternion_System_Single_System_Single_System_Single_" data-uid="Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion(System.Single,System.Single,System.Single)">
+  EulerDegreesToQuaternion(float, float, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Mathematics/BlissMath.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.quaternion">Quaternion</a> from Euler angles specified in degrees.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Quaternion EulerDegreesToQuaternion(float pitch, float yaw, float roll)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pitch</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The pitch angle in degrees (rotation around the X axis).</p>
+</dd>
+    <dt><code>yaw</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The yaw angle in degrees (rotation around the Y axis).</p>
+</dd>
+    <dt><code>roll</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The roll angle in degrees (rotation around the Z axis).</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.quaternion">Quaternion</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.quaternion">Quaternion</a> representing the combined rotation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Mathematics_BlissMath_EulerDegreesToQuaternion_" data-uid="Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion*"></a>
+
+  <h3 id="Bliss_CSharp_Mathematics_BlissMath_EulerDegreesToQuaternion_System_Single_System_Single_System_Single_System_Single_" data-uid="Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion(System.Single,System.Single,System.Single,System.Single)">
+  EulerDegreesToQuaternion(float, float, float, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Mathematics/BlissMath.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a delta <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.quaternion">Quaternion</a> rotation from Euler angles in degrees, scaled by a time step.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Quaternion EulerDegreesToQuaternion(float pitch, float yaw, float roll, float deltaTime)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pitch</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The pitch angle in degrees (rotation around the X axis).</p>
+</dd>
+    <dt><code>yaw</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The yaw angle in degrees (rotation around the Y axis).</p>
+</dd>
+    <dt><code>roll</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The roll angle in degrees (rotation around the Z axis).</p>
+</dd>
+    <dt><code>deltaTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The elapsed time step to scale the rotation by.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.quaternion">Quaternion</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.quaternion">Quaternion</a> representing the incremental rotation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Bliss_CSharp_Mathematics_BlissMath_Vector3Angle_" data-uid="Bliss.CSharp.Mathematics.BlissMath.Vector3Angle*"></a>
 
   <h3 id="Bliss_CSharp_Mathematics_BlissMath_Vector3Angle_System_Numerics_Vector3_System_Numerics_Vector3_" data-uid="Bliss.CSharp.Mathematics.BlissMath.Vector3Angle(System.Numerics.Vector3,System.Numerics.Vector3)">

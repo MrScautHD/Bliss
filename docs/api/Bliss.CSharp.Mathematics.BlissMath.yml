@@ -5,6 +5,8 @@ items:
   id: BlissMath
   parent: Bliss.CSharp.Mathematics
   children:
+  - Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion(System.Single,System.Single,System.Single)
+  - Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion(System.Single,System.Single,System.Single,System.Single)
   - Bliss.CSharp.Mathematics.BlissMath.Vector3Angle(System.Numerics.Vector3,System.Numerics.Vector3)
   - Bliss.CSharp.Mathematics.BlissMath.Vector3RotateByAxisAngle(System.Numerics.Vector3,System.Numerics.Vector3,System.Single)
   langs:
@@ -120,6 +122,97 @@ items:
   nameWithType.vb: BlissMath.Vector3RotateByAxisAngle(Vector3, Vector3, Single)
   fullName.vb: Bliss.CSharp.Mathematics.BlissMath.Vector3RotateByAxisAngle(System.Numerics.Vector3, System.Numerics.Vector3, Single)
   name.vb: Vector3RotateByAxisAngle(Vector3, Vector3, Single)
+- uid: Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion(System.Single,System.Single,System.Single)
+  commentId: M:Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion(System.Single,System.Single,System.Single)
+  id: EulerDegreesToQuaternion(System.Single,System.Single,System.Single)
+  parent: Bliss.CSharp.Mathematics.BlissMath
+  langs:
+  - csharp
+  - vb
+  name: EulerDegreesToQuaternion(float, float, float)
+  nameWithType: BlissMath.EulerDegreesToQuaternion(float, float, float)
+  fullName: Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion(float, float, float)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Mathematics/BlissMath.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: EulerDegreesToQuaternion
+    path: ../src/Bliss/CSharp/Mathematics/BlissMath.cs
+    startLine: 38
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Mathematics
+  summary: Creates a <xref href="System.Numerics.Quaternion" data-throw-if-not-resolved="false"></xref> from Euler angles specified in degrees.
+  example: []
+  syntax:
+    content: public static Quaternion EulerDegreesToQuaternion(float pitch, float yaw, float roll)
+    parameters:
+    - id: pitch
+      type: System.Single
+      description: The pitch angle in degrees (rotation around the X axis).
+    - id: yaw
+      type: System.Single
+      description: The yaw angle in degrees (rotation around the Y axis).
+    - id: roll
+      type: System.Single
+      description: The roll angle in degrees (rotation around the Z axis).
+    return:
+      type: System.Numerics.Quaternion
+      description: A <xref href="System.Numerics.Quaternion" data-throw-if-not-resolved="false"></xref> representing the combined rotation.
+    content.vb: Public Shared Function EulerDegreesToQuaternion(pitch As Single, yaw As Single, roll As Single) As Quaternion
+  overload: Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion*
+  nameWithType.vb: BlissMath.EulerDegreesToQuaternion(Single, Single, Single)
+  fullName.vb: Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion(Single, Single, Single)
+  name.vb: EulerDegreesToQuaternion(Single, Single, Single)
+- uid: Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion(System.Single,System.Single,System.Single,System.Single)
+  commentId: M:Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion(System.Single,System.Single,System.Single,System.Single)
+  id: EulerDegreesToQuaternion(System.Single,System.Single,System.Single,System.Single)
+  parent: Bliss.CSharp.Mathematics.BlissMath
+  langs:
+  - csharp
+  - vb
+  name: EulerDegreesToQuaternion(float, float, float, float)
+  nameWithType: BlissMath.EulerDegreesToQuaternion(float, float, float, float)
+  fullName: Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion(float, float, float, float)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Mathematics/BlissMath.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: EulerDegreesToQuaternion
+    path: ../src/Bliss/CSharp/Mathematics/BlissMath.cs
+    startLine: 50
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Mathematics
+  summary: Creates a delta <xref href="System.Numerics.Quaternion" data-throw-if-not-resolved="false"></xref> rotation from Euler angles in degrees, scaled by a time step.
+  example: []
+  syntax:
+    content: public static Quaternion EulerDegreesToQuaternion(float pitch, float yaw, float roll, float deltaTime)
+    parameters:
+    - id: pitch
+      type: System.Single
+      description: The pitch angle in degrees (rotation around the X axis).
+    - id: yaw
+      type: System.Single
+      description: The yaw angle in degrees (rotation around the Y axis).
+    - id: roll
+      type: System.Single
+      description: The roll angle in degrees (rotation around the Z axis).
+    - id: deltaTime
+      type: System.Single
+      description: The elapsed time step to scale the rotation by.
+    return:
+      type: System.Numerics.Quaternion
+      description: A <xref href="System.Numerics.Quaternion" data-throw-if-not-resolved="false"></xref> representing the incremental rotation.
+    content.vb: Public Shared Function EulerDegreesToQuaternion(pitch As Single, yaw As Single, roll As Single, deltaTime As Single) As Quaternion
+  overload: Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion*
+  nameWithType.vb: BlissMath.EulerDegreesToQuaternion(Single, Single, Single, Single)
+  fullName.vb: Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion(Single, Single, Single, Single)
+  name.vb: EulerDegreesToQuaternion(Single, Single, Single, Single)
 references:
 - uid: Bliss.CSharp.Mathematics
   commentId: N:Bliss.CSharp.Mathematics
@@ -446,3 +539,17 @@ references:
   name: Vector3RotateByAxisAngle
   nameWithType: BlissMath.Vector3RotateByAxisAngle
   fullName: Bliss.CSharp.Mathematics.BlissMath.Vector3RotateByAxisAngle
+- uid: System.Numerics.Quaternion
+  commentId: T:System.Numerics.Quaternion
+  parent: System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.quaternion
+  name: Quaternion
+  nameWithType: Quaternion
+  fullName: System.Numerics.Quaternion
+- uid: Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion*
+  commentId: Overload:Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion
+  href: Bliss.CSharp.Mathematics.BlissMath.html#Bliss_CSharp_Mathematics_BlissMath_EulerDegreesToQuaternion_System_Single_System_Single_System_Single_
+  name: EulerDegreesToQuaternion
+  nameWithType: BlissMath.EulerDegreesToQuaternion
+  fullName: Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion

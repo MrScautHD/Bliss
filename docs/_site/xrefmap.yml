@@ -1031,6 +1031,22 @@ references:
   commentId: F:Bliss.CSharp.Colors.Color.A
   fullName: Bliss.CSharp.Colors.Color.A
   nameWithType: Color.A
+- uid: Bliss.CSharp.Colors.Color.AdjustSaturation(System.Single)
+  name: AdjustSaturation(float)
+  href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_AdjustSaturation_System_Single_
+  commentId: M:Bliss.CSharp.Colors.Color.AdjustSaturation(System.Single)
+  name.vb: AdjustSaturation(Single)
+  fullName: Bliss.CSharp.Colors.Color.AdjustSaturation(float)
+  fullName.vb: Bliss.CSharp.Colors.Color.AdjustSaturation(Single)
+  nameWithType: Color.AdjustSaturation(float)
+  nameWithType.vb: Color.AdjustSaturation(Single)
+- uid: Bliss.CSharp.Colors.Color.AdjustSaturation*
+  name: AdjustSaturation
+  href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_AdjustSaturation_
+  commentId: Overload:Bliss.CSharp.Colors.Color.AdjustSaturation
+  isSpec: "True"
+  fullName: Bliss.CSharp.Colors.Color.AdjustSaturation
+  nameWithType: Color.AdjustSaturation
 - uid: Bliss.CSharp.Colors.Color.B
   name: B
   href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_B
@@ -1149,6 +1165,22 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Colors.Color.Equals
   nameWithType: Color.Equals
+- uid: Bliss.CSharp.Colors.Color.FromHsv(System.Single,System.Single,System.Single)
+  name: FromHsv(float, float, float)
+  href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_FromHsv_System_Single_System_Single_System_Single_
+  commentId: M:Bliss.CSharp.Colors.Color.FromHsv(System.Single,System.Single,System.Single)
+  name.vb: FromHsv(Single, Single, Single)
+  fullName: Bliss.CSharp.Colors.Color.FromHsv(float, float, float)
+  fullName.vb: Bliss.CSharp.Colors.Color.FromHsv(Single, Single, Single)
+  nameWithType: Color.FromHsv(float, float, float)
+  nameWithType.vb: Color.FromHsv(Single, Single, Single)
+- uid: Bliss.CSharp.Colors.Color.FromHsv*
+  name: FromHsv
+  href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_FromHsv_
+  commentId: Overload:Bliss.CSharp.Colors.Color.FromHsv
+  isSpec: "True"
+  fullName: Bliss.CSharp.Colors.Color.FromHsv
+  nameWithType: Color.FromHsv
 - uid: Bliss.CSharp.Colors.Color.G
   name: G
   href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_G
@@ -1180,6 +1212,22 @@ references:
   commentId: F:Bliss.CSharp.Colors.Color.Green
   fullName: Bliss.CSharp.Colors.Color.Green
   nameWithType: Color.Green
+- uid: Bliss.CSharp.Colors.Color.Invert(System.Boolean)
+  name: Invert(bool)
+  href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_Invert_System_Boolean_
+  commentId: M:Bliss.CSharp.Colors.Color.Invert(System.Boolean)
+  name.vb: Invert(Boolean)
+  fullName: Bliss.CSharp.Colors.Color.Invert(bool)
+  fullName.vb: Bliss.CSharp.Colors.Color.Invert(Boolean)
+  nameWithType: Color.Invert(bool)
+  nameWithType.vb: Color.Invert(Boolean)
+- uid: Bliss.CSharp.Colors.Color.Invert*
+  name: Invert
+  href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_Invert_
+  commentId: Overload:Bliss.CSharp.Colors.Color.Invert
+  isSpec: "True"
+  fullName: Bliss.CSharp.Colors.Color.Invert
+  nameWithType: Color.Invert
 - uid: Bliss.CSharp.Colors.Color.LightBlue
   name: LightBlue
   href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_LightBlue
@@ -1282,6 +1330,19 @@ references:
   commentId: F:Bliss.CSharp.Colors.Color.Red
   fullName: Bliss.CSharp.Colors.Color.Red
   nameWithType: Color.Red
+- uid: Bliss.CSharp.Colors.Color.ToHsv
+  name: ToHsv()
+  href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_ToHsv
+  commentId: M:Bliss.CSharp.Colors.Color.ToHsv
+  fullName: Bliss.CSharp.Colors.Color.ToHsv()
+  nameWithType: Color.ToHsv()
+- uid: Bliss.CSharp.Colors.Color.ToHsv*
+  name: ToHsv
+  href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_ToHsv_
+  commentId: Overload:Bliss.CSharp.Colors.Color.ToHsv
+  isSpec: "True"
+  fullName: Bliss.CSharp.Colors.Color.ToHsv
+  nameWithType: Color.ToHsv
 - uid: Bliss.CSharp.Colors.Color.ToRgbaFloat
   name: ToRgbaFloat()
   href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_ToRgbaFloat
@@ -1346,6 +1407,44 @@ references:
   commentId: F:Bliss.CSharp.Colors.Color.Yellow
   fullName: Bliss.CSharp.Colors.Color.Yellow
   nameWithType: Color.Yellow
+- uid: Bliss.CSharp.Colors.Color.op_Addition(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  name: operator +(Color, Color)
+  href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Addition_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+  commentId: M:Bliss.CSharp.Colors.Color.op_Addition(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  name.vb: +(Color, Color)
+  fullName: Bliss.CSharp.Colors.Color.operator +(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  fullName.vb: Bliss.CSharp.Colors.Color.+(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  nameWithType: Color.operator +(Color, Color)
+  nameWithType.vb: Color.+(Color, Color)
+- uid: Bliss.CSharp.Colors.Color.op_Addition*
+  name: operator +
+  href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Addition_
+  commentId: Overload:Bliss.CSharp.Colors.Color.op_Addition
+  isSpec: "True"
+  name.vb: +
+  fullName: Bliss.CSharp.Colors.Color.operator +
+  fullName.vb: Bliss.CSharp.Colors.Color.+
+  nameWithType: Color.operator +
+  nameWithType.vb: Color.+
+- uid: Bliss.CSharp.Colors.Color.op_Division(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  name: operator /(Color, Color)
+  href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Division_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+  commentId: M:Bliss.CSharp.Colors.Color.op_Division(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  name.vb: /(Color, Color)
+  fullName: Bliss.CSharp.Colors.Color.operator /(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  fullName.vb: Bliss.CSharp.Colors.Color./(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  nameWithType: Color.operator /(Color, Color)
+  nameWithType.vb: Color./(Color, Color)
+- uid: Bliss.CSharp.Colors.Color.op_Division*
+  name: operator /
+  href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Division_
+  commentId: Overload:Bliss.CSharp.Colors.Color.op_Division
+  isSpec: "True"
+  name.vb: /
+  fullName: Bliss.CSharp.Colors.Color.operator /
+  fullName.vb: Bliss.CSharp.Colors.Color./
+  nameWithType: Color.operator /
+  nameWithType.vb: Color./
 - uid: Bliss.CSharp.Colors.Color.op_Equality(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
   name: operator ==(Color, Color)
   href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Equality_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
@@ -1384,6 +1483,63 @@ references:
   fullName.vb: Bliss.CSharp.Colors.Color.<>
   nameWithType: Color.operator !=
   nameWithType.vb: Color.<>
+- uid: Bliss.CSharp.Colors.Color.op_Modulus(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  name: operator %(Color, Color)
+  href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Modulus_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+  commentId: M:Bliss.CSharp.Colors.Color.op_Modulus(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  name.vb: Mod(Color, Color)
+  fullName: Bliss.CSharp.Colors.Color.operator %(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  fullName.vb: Bliss.CSharp.Colors.Color.Mod(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  nameWithType: Color.operator %(Color, Color)
+  nameWithType.vb: Color.Mod(Color, Color)
+- uid: Bliss.CSharp.Colors.Color.op_Modulus*
+  name: operator %
+  href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Modulus_
+  commentId: Overload:Bliss.CSharp.Colors.Color.op_Modulus
+  isSpec: "True"
+  name.vb: Mod
+  fullName: Bliss.CSharp.Colors.Color.operator %
+  fullName.vb: Bliss.CSharp.Colors.Color.Mod
+  nameWithType: Color.operator %
+  nameWithType.vb: Color.Mod
+- uid: Bliss.CSharp.Colors.Color.op_Multiply(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  name: operator *(Color, Color)
+  href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Multiply_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+  commentId: M:Bliss.CSharp.Colors.Color.op_Multiply(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  name.vb: '*(Color, Color)'
+  fullName: Bliss.CSharp.Colors.Color.operator *(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  fullName.vb: Bliss.CSharp.Colors.Color.*(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  nameWithType: Color.operator *(Color, Color)
+  nameWithType.vb: Color.*(Color, Color)
+- uid: Bliss.CSharp.Colors.Color.op_Multiply*
+  name: operator *
+  href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Multiply_
+  commentId: Overload:Bliss.CSharp.Colors.Color.op_Multiply
+  isSpec: "True"
+  name.vb: '*'
+  fullName: Bliss.CSharp.Colors.Color.operator *
+  fullName.vb: Bliss.CSharp.Colors.Color.*
+  nameWithType: Color.operator *
+  nameWithType.vb: Color.*
+- uid: Bliss.CSharp.Colors.Color.op_Subtraction(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  name: operator -(Color, Color)
+  href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Subtraction_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+  commentId: M:Bliss.CSharp.Colors.Color.op_Subtraction(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  name.vb: -(Color, Color)
+  fullName: Bliss.CSharp.Colors.Color.operator -(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  fullName.vb: Bliss.CSharp.Colors.Color.-(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  nameWithType: Color.operator -(Color, Color)
+  nameWithType.vb: Color.-(Color, Color)
+- uid: Bliss.CSharp.Colors.Color.op_Subtraction*
+  name: operator -
+  href: api/Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Subtraction_
+  commentId: Overload:Bliss.CSharp.Colors.Color.op_Subtraction
+  isSpec: "True"
+  name.vb: '-'
+  fullName: Bliss.CSharp.Colors.Color.operator -
+  fullName.vb: Bliss.CSharp.Colors.Color.-
+  nameWithType: Color.operator -
+  nameWithType.vb: Color.-
 - uid: Bliss.CSharp.Disposable
   name: Disposable
   href: api/Bliss.CSharp.Disposable.html
@@ -3293,15 +3449,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Geometry.Model.GraphicsDevice
   nameWithType: Model.GraphicsDevice
-- uid: Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean)
-  name: Load(GraphicsDevice, string, bool, bool)
-  href: api/Bliss.CSharp.Geometry.Model.html#Bliss_CSharp_Geometry_Model_Load_Veldrid_GraphicsDevice_System_String_System_Boolean_System_Boolean_
-  commentId: M:Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean)
-  name.vb: Load(GraphicsDevice, String, Boolean, Boolean)
-  fullName: Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice, string, bool, bool)
-  fullName.vb: Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice, String, Boolean, Boolean)
-  nameWithType: Model.Load(GraphicsDevice, string, bool, bool)
-  nameWithType.vb: Model.Load(GraphicsDevice, String, Boolean, Boolean)
+- uid: Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  name: Load(GraphicsDevice, string, bool, bool, bool, bool)
+  href: api/Bliss.CSharp.Geometry.Model.html#Bliss_CSharp_Geometry_Model_Load_Veldrid_GraphicsDevice_System_String_System_Boolean_System_Boolean_System_Boolean_System_Boolean_
+  commentId: M:Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  name.vb: Load(GraphicsDevice, String, Boolean, Boolean, Boolean, Boolean)
+  fullName: Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice, string, bool, bool, bool, bool)
+  fullName.vb: Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice, String, Boolean, Boolean, Boolean, Boolean)
+  nameWithType: Model.Load(GraphicsDevice, string, bool, bool, bool, bool)
+  nameWithType.vb: Model.Load(GraphicsDevice, String, Boolean, Boolean, Boolean, Boolean)
 - uid: Bliss.CSharp.Geometry.Model.Load*
   name: Load
   href: api/Bliss.CSharp.Geometry.Model.html#Bliss_CSharp_Geometry_Model_Load_
@@ -6092,22 +6248,22 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawCylinderWires
   nameWithType: ImmediateRenderer.DrawCylinderWires
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawGird(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Transformations.Transform,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  name: DrawGird(CommandList, OutputDescription, Transform, int, int, Color?)
-  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawGird_Veldrid_CommandList_Veldrid_OutputDescription_Bliss_CSharp_Transformations_Transform_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawGird(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Transformations.Transform,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
-  name.vb: DrawGird(CommandList, OutputDescription, Transform, Integer, Integer, Color?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawGird(Veldrid.CommandList, Veldrid.OutputDescription, Bliss.CSharp.Transformations.Transform, int, int, Bliss.CSharp.Colors.Color?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawGird(Veldrid.CommandList, Veldrid.OutputDescription, Bliss.CSharp.Transformations.Transform, Integer, Integer, Bliss.CSharp.Colors.Color?)
-  nameWithType: ImmediateRenderer.DrawGird(CommandList, OutputDescription, Transform, int, int, Color?)
-  nameWithType.vb: ImmediateRenderer.DrawGird(CommandList, OutputDescription, Transform, Integer, Integer, Color?)
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawGird*
-  name: DrawGird
-  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawGird_
-  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawGird
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawGrid(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Transformations.Transform,System.Int32,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color},System.Nullable{Bliss.CSharp.Colors.Color},System.Nullable{Bliss.CSharp.Colors.Color})
+  name: DrawGrid(CommandList, OutputDescription, Transform, int, int, int, Color?, Color?, Color?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawGrid_Veldrid_CommandList_Veldrid_OutputDescription_Bliss_CSharp_Transformations_Transform_System_Int32_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__System_Nullable_Bliss_CSharp_Colors_Color__System_Nullable_Bliss_CSharp_Colors_Color__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawGrid(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Transformations.Transform,System.Int32,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color},System.Nullable{Bliss.CSharp.Colors.Color},System.Nullable{Bliss.CSharp.Colors.Color})
+  name.vb: DrawGrid(CommandList, OutputDescription, Transform, Integer, Integer, Integer, Color?, Color?, Color?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawGrid(Veldrid.CommandList, Veldrid.OutputDescription, Bliss.CSharp.Transformations.Transform, int, int, int, Bliss.CSharp.Colors.Color?, Bliss.CSharp.Colors.Color?, Bliss.CSharp.Colors.Color?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawGrid(Veldrid.CommandList, Veldrid.OutputDescription, Bliss.CSharp.Transformations.Transform, Integer, Integer, Integer, Bliss.CSharp.Colors.Color?, Bliss.CSharp.Colors.Color?, Bliss.CSharp.Colors.Color?)
+  nameWithType: ImmediateRenderer.DrawGrid(CommandList, OutputDescription, Transform, int, int, int, Color?, Color?, Color?)
+  nameWithType.vb: ImmediateRenderer.DrawGrid(CommandList, OutputDescription, Transform, Integer, Integer, Integer, Color?, Color?, Color?)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawGrid*
+  name: DrawGrid
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawGrid_
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawGrid
   isSpec: "True"
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawGird
-  nameWithType: ImmediateRenderer.DrawGird
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawGrid
+  nameWithType: ImmediateRenderer.DrawGrid
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawHemisphere(Veldrid.CommandList,Veldrid.OutputDescription,Bliss.CSharp.Transformations.Transform,System.Single,System.Int32,System.Int32,System.Nullable{Bliss.CSharp.Colors.Color})
   name: DrawHemisphere(CommandList, OutputDescription, Transform, float, int, int, Color?)
   href: api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_ImmediateRenderer_DrawHemisphere_Veldrid_CommandList_Veldrid_OutputDescription_Bliss_CSharp_Transformations_Transform_System_Single_System_Int32_System_Int32_System_Nullable_Bliss_CSharp_Colors_Color__
@@ -6691,15 +6847,15 @@ references:
   commentId: T:Bliss.CSharp.Graphics.VertexTypes.Vertex3D
   fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
   nameWithType: Vertex3D
-- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.#ctor(System.Numerics.Vector3,System.Numerics.Vector4,Vortice.Mathematics.UInt4,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector4)
-  name: Vertex3D(Vector3, Vector4, UInt4, Vector2, Vector2, Vector3, Vector3, Vector4)
-  href: api/Bliss.CSharp.Graphics.VertexTypes.Vertex3D.html#Bliss_CSharp_Graphics_VertexTypes_Vertex3D__ctor_System_Numerics_Vector3_System_Numerics_Vector4_Vortice_Mathematics_UInt4_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector3_System_Numerics_Vector3_System_Numerics_Vector4_
-  commentId: M:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.#ctor(System.Numerics.Vector3,System.Numerics.Vector4,Vortice.Mathematics.UInt4,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector4)
-  name.vb: New(Vector3, Vector4, UInt4, Vector2, Vector2, Vector3, Vector3, Vector4)
-  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Vertex3D(System.Numerics.Vector3, System.Numerics.Vector4, Vortice.Mathematics.UInt4, System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector3, System.Numerics.Vector3, System.Numerics.Vector4)
-  fullName.vb: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.New(System.Numerics.Vector3, System.Numerics.Vector4, Vortice.Mathematics.UInt4, System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector3, System.Numerics.Vector3, System.Numerics.Vector4)
-  nameWithType: Vertex3D.Vertex3D(Vector3, Vector4, UInt4, Vector2, Vector2, Vector3, Vector3, Vector4)
-  nameWithType.vb: Vertex3D.New(Vector3, Vector4, UInt4, Vector2, Vector2, Vector3, Vector3, Vector4)
+- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.#ctor(System.Numerics.Vector3,System.Numerics.Vector4,Vortice.Mathematics.UInt4,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector3,System.Numerics.Vector4,System.Numerics.Vector4)
+  name: Vertex3D(Vector3, Vector4, UInt4, Vector2, Vector2, Vector3, Vector4, Vector4)
+  href: api/Bliss.CSharp.Graphics.VertexTypes.Vertex3D.html#Bliss_CSharp_Graphics_VertexTypes_Vertex3D__ctor_System_Numerics_Vector3_System_Numerics_Vector4_Vortice_Mathematics_UInt4_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector3_System_Numerics_Vector4_System_Numerics_Vector4_
+  commentId: M:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.#ctor(System.Numerics.Vector3,System.Numerics.Vector4,Vortice.Mathematics.UInt4,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector3,System.Numerics.Vector4,System.Numerics.Vector4)
+  name.vb: New(Vector3, Vector4, UInt4, Vector2, Vector2, Vector3, Vector4, Vector4)
+  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Vertex3D(System.Numerics.Vector3, System.Numerics.Vector4, Vortice.Mathematics.UInt4, System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector3, System.Numerics.Vector4, System.Numerics.Vector4)
+  fullName.vb: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.New(System.Numerics.Vector3, System.Numerics.Vector4, Vortice.Mathematics.UInt4, System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector3, System.Numerics.Vector4, System.Numerics.Vector4)
+  nameWithType: Vertex3D.Vertex3D(Vector3, Vector4, UInt4, Vector2, Vector2, Vector3, Vector4, Vector4)
+  nameWithType.vb: Vertex3D.New(Vector3, Vector4, UInt4, Vector2, Vector2, Vector3, Vector4, Vector4)
 - uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.#ctor*
   name: Vertex3D
   href: api/Bliss.CSharp.Graphics.VertexTypes.Vertex3D.html#Bliss_CSharp_Graphics_VertexTypes_Vertex3D__ctor_
@@ -11122,6 +11278,31 @@ references:
   commentId: T:Bliss.CSharp.Mathematics.BlissMath
   fullName: Bliss.CSharp.Mathematics.BlissMath
   nameWithType: BlissMath
+- uid: Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion(System.Single,System.Single,System.Single)
+  name: EulerDegreesToQuaternion(float, float, float)
+  href: api/Bliss.CSharp.Mathematics.BlissMath.html#Bliss_CSharp_Mathematics_BlissMath_EulerDegreesToQuaternion_System_Single_System_Single_System_Single_
+  commentId: M:Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion(System.Single,System.Single,System.Single)
+  name.vb: EulerDegreesToQuaternion(Single, Single, Single)
+  fullName: Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion(float, float, float)
+  fullName.vb: Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion(Single, Single, Single)
+  nameWithType: BlissMath.EulerDegreesToQuaternion(float, float, float)
+  nameWithType.vb: BlissMath.EulerDegreesToQuaternion(Single, Single, Single)
+- uid: Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion(System.Single,System.Single,System.Single,System.Single)
+  name: EulerDegreesToQuaternion(float, float, float, float)
+  href: api/Bliss.CSharp.Mathematics.BlissMath.html#Bliss_CSharp_Mathematics_BlissMath_EulerDegreesToQuaternion_System_Single_System_Single_System_Single_System_Single_
+  commentId: M:Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion(System.Single,System.Single,System.Single,System.Single)
+  name.vb: EulerDegreesToQuaternion(Single, Single, Single, Single)
+  fullName: Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion(float, float, float, float)
+  fullName.vb: Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion(Single, Single, Single, Single)
+  nameWithType: BlissMath.EulerDegreesToQuaternion(float, float, float, float)
+  nameWithType.vb: BlissMath.EulerDegreesToQuaternion(Single, Single, Single, Single)
+- uid: Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion*
+  name: EulerDegreesToQuaternion
+  href: api/Bliss.CSharp.Mathematics.BlissMath.html#Bliss_CSharp_Mathematics_BlissMath_EulerDegreesToQuaternion_
+  commentId: Overload:Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion
+  isSpec: "True"
+  fullName: Bliss.CSharp.Mathematics.BlissMath.EulerDegreesToQuaternion
+  nameWithType: BlissMath.EulerDegreesToQuaternion
 - uid: Bliss.CSharp.Mathematics.BlissMath.Vector3Angle(System.Numerics.Vector3,System.Numerics.Vector3)
   name: Vector3Angle(Vector3, Vector3)
   href: api/Bliss.CSharp.Mathematics.BlissMath.html#Bliss_CSharp_Mathematics_BlissMath_Vector3Angle_System_Numerics_Vector3_System_Numerics_Vector3_
@@ -12643,6 +12824,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Transformations.Transform.Equals
   nameWithType: Transform.Equals
+- uid: Bliss.CSharp.Transformations.Transform.Forward
+  name: Forward
+  href: api/Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform_Forward
+  commentId: P:Bliss.CSharp.Transformations.Transform.Forward
+  fullName: Bliss.CSharp.Transformations.Transform.Forward
+  nameWithType: Transform.Forward
+- uid: Bliss.CSharp.Transformations.Transform.Forward*
+  name: Forward
+  href: api/Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform_Forward_
+  commentId: Overload:Bliss.CSharp.Transformations.Transform.Forward
+  isSpec: "True"
+  fullName: Bliss.CSharp.Transformations.Transform.Forward
+  nameWithType: Transform.Forward
 - uid: Bliss.CSharp.Transformations.Transform.GetHashCode
   name: GetHashCode()
   href: api/Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform_GetHashCode
@@ -12675,6 +12869,19 @@ references:
   commentId: E:Bliss.CSharp.Transformations.Transform.OnUpdate
   fullName: Bliss.CSharp.Transformations.Transform.OnUpdate
   nameWithType: Transform.OnUpdate
+- uid: Bliss.CSharp.Transformations.Transform.Right
+  name: Right
+  href: api/Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform_Right
+  commentId: P:Bliss.CSharp.Transformations.Transform.Right
+  fullName: Bliss.CSharp.Transformations.Transform.Right
+  nameWithType: Transform.Right
+- uid: Bliss.CSharp.Transformations.Transform.Right*
+  name: Right
+  href: api/Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform_Right_
+  commentId: Overload:Bliss.CSharp.Transformations.Transform.Right
+  isSpec: "True"
+  fullName: Bliss.CSharp.Transformations.Transform.Right
+  nameWithType: Transform.Right
 - uid: Bliss.CSharp.Transformations.Transform.Rotation
   name: Rotation
   href: api/Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform_Rotation
@@ -12727,6 +12934,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Transformations.Transform.Translation
   nameWithType: Transform.Translation
+- uid: Bliss.CSharp.Transformations.Transform.Up
+  name: Up
+  href: api/Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform_Up
+  commentId: P:Bliss.CSharp.Transformations.Transform.Up
+  fullName: Bliss.CSharp.Transformations.Transform.Up
+  nameWithType: Transform.Up
+- uid: Bliss.CSharp.Transformations.Transform.Up*
+  name: Up
+  href: api/Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform_Up_
+  commentId: Overload:Bliss.CSharp.Transformations.Transform.Up
+  isSpec: "True"
+  fullName: Bliss.CSharp.Transformations.Transform.Up
+  nameWithType: Transform.Up
 - uid: Bliss.CSharp.Transformations.Transform.op_Equality(Bliss.CSharp.Transformations.Transform,Bliss.CSharp.Transformations.Transform)
   name: operator ==(Transform, Transform)
   href: api/Bliss.CSharp.Transformations.Transform.html#Bliss_CSharp_Transformations_Transform_op_Equality_Bliss_CSharp_Transformations_Transform_Bliss_CSharp_Transformations_Transform_

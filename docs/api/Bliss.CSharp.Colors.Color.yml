@@ -8,6 +8,7 @@ items:
   - Bliss.CSharp.Colors.Color.#ctor(System.Byte,System.Byte,System.Byte,System.Byte)
   - Bliss.CSharp.Colors.Color.#ctor(Veldrid.RgbaFloat)
   - Bliss.CSharp.Colors.Color.A
+  - Bliss.CSharp.Colors.Color.AdjustSaturation(System.Single)
   - Bliss.CSharp.Colors.Color.B
   - Bliss.CSharp.Colors.Color.Black
   - Bliss.CSharp.Colors.Color.Blue
@@ -26,10 +27,12 @@ items:
   - Bliss.CSharp.Colors.Color.DarkYellow
   - Bliss.CSharp.Colors.Color.Equals(Bliss.CSharp.Colors.Color)
   - Bliss.CSharp.Colors.Color.Equals(System.Object)
+  - Bliss.CSharp.Colors.Color.FromHsv(System.Single,System.Single,System.Single)
   - Bliss.CSharp.Colors.Color.G
   - Bliss.CSharp.Colors.Color.GetHashCode
   - Bliss.CSharp.Colors.Color.Gray
   - Bliss.CSharp.Colors.Color.Green
+  - Bliss.CSharp.Colors.Color.Invert(System.Boolean)
   - Bliss.CSharp.Colors.Color.LightBlue
   - Bliss.CSharp.Colors.Color.LightBrown
   - Bliss.CSharp.Colors.Color.LightCyan
@@ -47,14 +50,20 @@ items:
   - Bliss.CSharp.Colors.Color.Purple
   - Bliss.CSharp.Colors.Color.R
   - Bliss.CSharp.Colors.Color.Red
+  - Bliss.CSharp.Colors.Color.ToHsv
   - Bliss.CSharp.Colors.Color.ToRgbaFloat
   - Bliss.CSharp.Colors.Color.ToRgbaFloatVec4
   - Bliss.CSharp.Colors.Color.ToString
   - Bliss.CSharp.Colors.Color.ToVector4
   - Bliss.CSharp.Colors.Color.White
   - Bliss.CSharp.Colors.Color.Yellow
+  - Bliss.CSharp.Colors.Color.op_Addition(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  - Bliss.CSharp.Colors.Color.op_Division(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
   - Bliss.CSharp.Colors.Color.op_Equality(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
   - Bliss.CSharp.Colors.Color.op_Inequality(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  - Bliss.CSharp.Colors.Color.op_Modulus(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  - Bliss.CSharp.Colors.Color.op_Multiply(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  - Bliss.CSharp.Colors.Color.op_Subtraction(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
   langs:
   - csharp
   - vb
@@ -1303,6 +1312,255 @@ items:
   nameWithType.vb: Color.<>(Color, Color)
   fullName.vb: Bliss.CSharp.Colors.Color.<>(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
   name.vb: <>(Color, Color)
+- uid: Bliss.CSharp.Colors.Color.op_Modulus(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  commentId: M:Bliss.CSharp.Colors.Color.op_Modulus(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  id: op_Modulus(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: operator %(Color, Color)
+  nameWithType: Color.operator %(Color, Color)
+  fullName: Bliss.CSharp.Colors.Color.operator %(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  type: Operator
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: op_Modulus
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 124
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Computes the component-wise remainder (modulo) of two colors, treating each channel separately.
+  example: []
+  syntax:
+    content: public static Color operator %(Color left, Color right)
+    parameters:
+    - id: left
+      type: Bliss.CSharp.Colors.Color
+      description: The left operand representing the dividend color.
+    - id: right
+      type: Bliss.CSharp.Colors.Color
+      description: The right operand representing the divisor color.
+    return:
+      type: Bliss.CSharp.Colors.Color
+      description: A new <xref href="Bliss.CSharp.Colors.Color" data-throw-if-not-resolved="false"></xref> representing the component-wise remainder.
+    content.vb: Public Shared Operator Mod(left As Color, right As Color) As Color
+  overload: Bliss.CSharp.Colors.Color.op_Modulus*
+  nameWithType.vb: Color.Mod(Color, Color)
+  fullName.vb: Bliss.CSharp.Colors.Color.Mod(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  name.vb: Mod(Color, Color)
+- uid: Bliss.CSharp.Colors.Color.op_Addition(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  commentId: M:Bliss.CSharp.Colors.Color.op_Addition(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  id: op_Addition(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: operator +(Color, Color)
+  nameWithType: Color.operator +(Color, Color)
+  fullName: Bliss.CSharp.Colors.Color.operator +(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  type: Operator
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: op_Addition
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 139
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Adds two colours together piece-wise.
+  example: []
+  syntax:
+    content: public static Color operator +(Color left, Color right)
+    parameters:
+    - id: left
+      type: Bliss.CSharp.Colors.Color
+      description: The first color to add.
+    - id: right
+      type: Bliss.CSharp.Colors.Color
+      description: The second color to add.
+    return:
+      type: Bliss.CSharp.Colors.Color
+      description: A <xref href="Bliss.CSharp.Colors.Color" data-throw-if-not-resolved="false"></xref> that is the result of adding the two colors together.
+    content.vb: Public Shared Operator +(left As Color, right As Color) As Color
+  overload: Bliss.CSharp.Colors.Color.op_Addition*
+  nameWithType.vb: Color.+(Color, Color)
+  fullName.vb: Bliss.CSharp.Colors.Color.+(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  name.vb: +(Color, Color)
+- uid: Bliss.CSharp.Colors.Color.op_Subtraction(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  commentId: M:Bliss.CSharp.Colors.Color.op_Subtraction(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  id: op_Subtraction(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: operator -(Color, Color)
+  nameWithType: Color.operator -(Color, Color)
+  fullName: Bliss.CSharp.Colors.Color.operator -(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  type: Operator
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: op_Subtraction
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 154
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Subtracts two colours together piece-wise.
+  example: []
+  syntax:
+    content: public static Color operator -(Color left, Color right)
+    parameters:
+    - id: left
+      type: Bliss.CSharp.Colors.Color
+      description: The first color to subtract.
+    - id: right
+      type: Bliss.CSharp.Colors.Color
+      description: The second color to subtract.
+    return:
+      type: Bliss.CSharp.Colors.Color
+      description: A <xref href="Bliss.CSharp.Colors.Color" data-throw-if-not-resolved="false"></xref> that is the result of subtracting the two colors together.
+    content.vb: Public Shared Operator -(left As Color, right As Color) As Color
+  overload: Bliss.CSharp.Colors.Color.op_Subtraction*
+  nameWithType.vb: Color.-(Color, Color)
+  fullName.vb: Bliss.CSharp.Colors.Color.-(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  name.vb: -(Color, Color)
+- uid: Bliss.CSharp.Colors.Color.op_Multiply(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  commentId: M:Bliss.CSharp.Colors.Color.op_Multiply(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  id: op_Multiply(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: operator *(Color, Color)
+  nameWithType: Color.operator *(Color, Color)
+  fullName: Bliss.CSharp.Colors.Color.operator *(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  type: Operator
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: op_Multiply
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 169
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Multiplies the color components of two <xref href="Bliss.CSharp.Colors.Color" data-throw-if-not-resolved="false"></xref> instances component-wise.
+  example: []
+  syntax:
+    content: public static Color operator *(Color left, Color right)
+    parameters:
+    - id: left
+      type: Bliss.CSharp.Colors.Color
+      description: The first <xref href="Bliss.CSharp.Colors.Color" data-throw-if-not-resolved="false"></xref> instance.
+    - id: right
+      type: Bliss.CSharp.Colors.Color
+      description: The second <xref href="Bliss.CSharp.Colors.Color" data-throw-if-not-resolved="false"></xref> instance.
+    return:
+      type: Bliss.CSharp.Colors.Color
+      description: A new <xref href="Bliss.CSharp.Colors.Color" data-throw-if-not-resolved="false"></xref> resulting from the component-wise multiplication of the two input colors.
+    content.vb: Public Shared Operator *(left As Color, right As Color) As Color
+  overload: Bliss.CSharp.Colors.Color.op_Multiply*
+  nameWithType.vb: Color.*(Color, Color)
+  fullName.vb: Bliss.CSharp.Colors.Color.*(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  name.vb: '*(Color, Color)'
+- uid: Bliss.CSharp.Colors.Color.op_Division(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  commentId: M:Bliss.CSharp.Colors.Color.op_Division(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  id: op_Division(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: operator /(Color, Color)
+  nameWithType: Color.operator /(Color, Color)
+  fullName: Bliss.CSharp.Colors.Color.operator /(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  type: Operator
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: op_Division
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 184
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Implements the division operator for the <xref href="Bliss.CSharp.Colors.Color" data-throw-if-not-resolved="false"></xref> structure.
+  example: []
+  syntax:
+    content: public static Color operator /(Color left, Color right)
+    parameters:
+    - id: left
+      type: Bliss.CSharp.Colors.Color
+      description: The <xref href="Bliss.CSharp.Colors.Color" data-throw-if-not-resolved="false"></xref> instance acting as the dividend.
+    - id: right
+      type: Bliss.CSharp.Colors.Color
+      description: The <xref href="Bliss.CSharp.Colors.Color" data-throw-if-not-resolved="false"></xref> instance acting as the divisor.
+    return:
+      type: Bliss.CSharp.Colors.Color
+      description: A new <xref href="Bliss.CSharp.Colors.Color" data-throw-if-not-resolved="false"></xref> resulting from component-wise division of the two colors. If a component in the divisor is zero, the resulting component is clamped to 255.
+    content.vb: Public Shared Operator /(left As Color, right As Color) As Color
+  overload: Bliss.CSharp.Colors.Color.op_Division*
+  nameWithType.vb: Color./(Color, Color)
+  fullName.vb: Bliss.CSharp.Colors.Color./(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  name.vb: /(Color, Color)
+- uid: Bliss.CSharp.Colors.Color.FromHsv(System.Single,System.Single,System.Single)
+  commentId: M:Bliss.CSharp.Colors.Color.FromHsv(System.Single,System.Single,System.Single)
+  id: FromHsv(System.Single,System.Single,System.Single)
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: FromHsv(float, float, float)
+  nameWithType: Color.FromHsv(float, float, float)
+  fullName: Bliss.CSharp.Colors.Color.FromHsv(float, float, float)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: FromHsv
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 200
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Creates a new <xref href="Bliss.CSharp.Colors.Color" data-throw-if-not-resolved="false"></xref> instance from the specified HSV (Hue, Saturation, Value) model values.
+  example: []
+  syntax:
+    content: public static Color FromHsv(float hue, float saturation, float value)
+    parameters:
+    - id: hue
+      type: System.Single
+      description: The hue component of the color, in degrees (0-360).
+    - id: saturation
+      type: System.Single
+      description: The saturation component of the color, as a value between 0 and 1.
+    - id: value
+      type: System.Single
+      description: The value (brightness) component of the color, as a value between 0 and 1.
+    return:
+      type: Bliss.CSharp.Colors.Color
+      description: A new <xref href="Bliss.CSharp.Colors.Color" data-throw-if-not-resolved="false"></xref> object representing the specified HSV color.
+    content.vb: Public Shared Function FromHsv(hue As Single, saturation As Single, value As Single) As Color
+  overload: Bliss.CSharp.Colors.Color.FromHsv*
+  nameWithType.vb: Color.FromHsv(Single, Single, Single)
+  fullName.vb: Bliss.CSharp.Colors.Color.FromHsv(Single, Single, Single)
+  name.vb: FromHsv(Single, Single, Single)
 - uid: Bliss.CSharp.Colors.Color.ToRgbaFloat
   commentId: M:Bliss.CSharp.Colors.Color.ToRgbaFloat
   id: ToRgbaFloat
@@ -1321,7 +1579,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ToRgbaFloat
     path: ../src/Bliss/CSharp/Colors/Color.cs
-    startLine: 122
+    startLine: 258
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Colors
@@ -1352,7 +1610,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ToRgbaFloatVec4
     path: ../src/Bliss/CSharp/Colors/Color.cs
-    startLine: 130
+    startLine: 266
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Colors
@@ -1383,7 +1641,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ToVector4
     path: ../src/Bliss/CSharp/Colors/Color.cs
-    startLine: 138
+    startLine: 274
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Colors
@@ -1396,6 +1654,113 @@ items:
       description: A Vector4 representing the color.
     content.vb: Public Function ToVector4() As Vector4
   overload: Bliss.CSharp.Colors.Color.ToVector4*
+- uid: Bliss.CSharp.Colors.Color.ToHsv
+  commentId: M:Bliss.CSharp.Colors.Color.ToHsv
+  id: ToHsv
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: ToHsv()
+  nameWithType: Color.ToHsv()
+  fullName: Bliss.CSharp.Colors.Color.ToHsv()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ToHsv
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 282
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Converts the current color to its HSV (Hue, Saturation, Value) representation.
+  example: []
+  syntax:
+    content: public (float Hue, float Saturation, float Value) ToHsv()
+    return:
+      type: System.ValueTuple{System.Single,System.Single,System.Single}
+      description: A tuple containing the Hue, Saturation, and Value components of the color.
+    content.vb: Public Function ToHsv() As (Hue As Single, Saturation As Single, Value As Single)
+  overload: Bliss.CSharp.Colors.Color.ToHsv*
+- uid: Bliss.CSharp.Colors.Color.Invert(System.Boolean)
+  commentId: M:Bliss.CSharp.Colors.Color.Invert(System.Boolean)
+  id: Invert(System.Boolean)
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: Invert(bool)
+  nameWithType: Color.Invert(bool)
+  fullName: Bliss.CSharp.Colors.Color.Invert(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Invert
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 329
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Returns the inverted color, with an option to maintain the alpha component.
+  example: []
+  syntax:
+    content: public Color Invert(bool keepAlpha = true)
+    parameters:
+    - id: keepAlpha
+      type: System.Boolean
+      description: Specifies whether to retain the original alpha value. If set to false, the alpha value will also be inverted.
+    return:
+      type: Bliss.CSharp.Colors.Color
+      description: A new <xref href="Bliss.CSharp.Colors.Color" data-throw-if-not-resolved="false"></xref> instance with the RGB components inverted, and the alpha component either retained or inverted based on the <code class="paramref">keepAlpha</code> value.
+    content.vb: Public Function Invert(keepAlpha As Boolean = True) As Color
+  overload: Bliss.CSharp.Colors.Color.Invert*
+  nameWithType.vb: Color.Invert(Boolean)
+  fullName.vb: Bliss.CSharp.Colors.Color.Invert(Boolean)
+  name.vb: Invert(Boolean)
+- uid: Bliss.CSharp.Colors.Color.AdjustSaturation(System.Single)
+  commentId: M:Bliss.CSharp.Colors.Color.AdjustSaturation(System.Single)
+  id: AdjustSaturation(System.Single)
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: AdjustSaturation(float)
+  nameWithType: Color.AdjustSaturation(float)
+  fullName: Bliss.CSharp.Colors.Color.AdjustSaturation(float)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: AdjustSaturation
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 343
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Adjusts the saturation of the current <xref href="Bliss.CSharp.Colors.Color" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public Color AdjustSaturation(float adjustment)
+    parameters:
+    - id: adjustment
+      type: System.Single
+      description: A value between -1 and 1. Negative values decrease saturation, and positive values increase it.
+    return:
+      type: Bliss.CSharp.Colors.Color
+      description: The <xref href="Bliss.CSharp.Colors.Color" data-throw-if-not-resolved="false"></xref> with adjusted saturation.
+    content.vb: Public Function AdjustSaturation(adjustment As Single) As Color
+  overload: Bliss.CSharp.Colors.Color.AdjustSaturation*
+  nameWithType.vb: Color.AdjustSaturation(Single)
+  fullName.vb: Bliss.CSharp.Colors.Color.AdjustSaturation(Single)
+  name.vb: AdjustSaturation(Single)
 - uid: Bliss.CSharp.Colors.Color.Equals(Bliss.CSharp.Colors.Color)
   commentId: M:Bliss.CSharp.Colors.Color.Equals(Bliss.CSharp.Colors.Color)
   id: Equals(Bliss.CSharp.Colors.Color)
@@ -1414,7 +1779,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Equals
     path: ../src/Bliss/CSharp/Colors/Color.cs
-    startLine: 149
+    startLine: 366
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Colors
@@ -1451,7 +1816,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Equals
     path: ../src/Bliss/CSharp/Colors/Color.cs
-    startLine: 160
+    startLine: 377
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Colors
@@ -1490,7 +1855,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetHashCode
     path: ../src/Bliss/CSharp/Colors/Color.cs
-    startLine: 168
+    startLine: 385
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Colors
@@ -1522,7 +1887,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ToString
     path: ../src/Bliss/CSharp/Colors/Color.cs
-    startLine: 176
+    startLine: 393
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Colors
@@ -1842,6 +2207,98 @@ references:
   - uid: Bliss.CSharp.Colors.Color.op_Inequality*
     name: '!='
     href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Inequality_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+- uid: Bliss.CSharp.Colors.Color.op_Modulus*
+  commentId: Overload:Bliss.CSharp.Colors.Color.op_Modulus
+  href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Modulus_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+  name: operator %
+  nameWithType: Color.operator %
+  fullName: Bliss.CSharp.Colors.Color.operator %
+  nameWithType.vb: Color.Mod
+  fullName.vb: Bliss.CSharp.Colors.Color.Mod
+  name.vb: Mod
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bliss.CSharp.Colors.Color.op_Modulus*
+    name: '%'
+    href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Modulus_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+- uid: Bliss.CSharp.Colors.Color.op_Addition*
+  commentId: Overload:Bliss.CSharp.Colors.Color.op_Addition
+  href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Addition_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+  name: operator +
+  nameWithType: Color.operator +
+  fullName: Bliss.CSharp.Colors.Color.operator +
+  nameWithType.vb: Color.+
+  fullName.vb: Bliss.CSharp.Colors.Color.+
+  name.vb: +
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bliss.CSharp.Colors.Color.op_Addition*
+    name: +
+    href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Addition_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+- uid: Bliss.CSharp.Colors.Color.op_Subtraction*
+  commentId: Overload:Bliss.CSharp.Colors.Color.op_Subtraction
+  href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Subtraction_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+  name: operator -
+  nameWithType: Color.operator -
+  fullName: Bliss.CSharp.Colors.Color.operator -
+  nameWithType.vb: Color.-
+  fullName.vb: Bliss.CSharp.Colors.Color.-
+  name.vb: '-'
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bliss.CSharp.Colors.Color.op_Subtraction*
+    name: '-'
+    href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Subtraction_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+- uid: Bliss.CSharp.Colors.Color.op_Multiply*
+  commentId: Overload:Bliss.CSharp.Colors.Color.op_Multiply
+  href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Multiply_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+  name: operator *
+  nameWithType: Color.operator *
+  fullName: Bliss.CSharp.Colors.Color.operator *
+  nameWithType.vb: Color.*
+  fullName.vb: Bliss.CSharp.Colors.Color.*
+  name.vb: '*'
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bliss.CSharp.Colors.Color.op_Multiply*
+    name: '*'
+    href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Multiply_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+- uid: Bliss.CSharp.Colors.Color.op_Division*
+  commentId: Overload:Bliss.CSharp.Colors.Color.op_Division
+  href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Division_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+  name: operator /
+  nameWithType: Color.operator /
+  fullName: Bliss.CSharp.Colors.Color.operator /
+  nameWithType.vb: Color./
+  fullName.vb: Bliss.CSharp.Colors.Color./
+  name.vb: /
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bliss.CSharp.Colors.Color.op_Division*
+    name: /
+    href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Division_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+- uid: Bliss.CSharp.Colors.Color.FromHsv*
+  commentId: Overload:Bliss.CSharp.Colors.Color.FromHsv
+  href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_FromHsv_System_Single_System_Single_System_Single_
+  name: FromHsv
+  nameWithType: Color.FromHsv
+  fullName: Bliss.CSharp.Colors.Color.FromHsv
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
 - uid: Bliss.CSharp.Colors.Color.ToRgbaFloat*
   commentId: Overload:Bliss.CSharp.Colors.Color.ToRgbaFloat
   href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_ToRgbaFloat
@@ -1895,6 +2352,128 @@ references:
   name: ToVector4
   nameWithType: Color.ToVector4
   fullName: Bliss.CSharp.Colors.Color.ToVector4
+- uid: Bliss.CSharp.Colors.Color.ToHsv*
+  commentId: Overload:Bliss.CSharp.Colors.Color.ToHsv
+  href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_ToHsv
+  name: ToHsv
+  nameWithType: Color.ToHsv
+  fullName: Bliss.CSharp.Colors.Color.ToHsv
+- uid: System.ValueTuple{System.Single,System.Single,System.Single}
+  commentId: T:System.ValueTuple{System.Single,System.Single,System.Single}
+  parent: System
+  definition: System.ValueTuple`3
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: (float Hue, float Saturation, float Value)
+  nameWithType: (float Hue, float Saturation, float Value)
+  fullName: (float Hue, float Saturation, float Value)
+  nameWithType.vb: (Hue As Single, Saturation As Single, Value As Single)
+  fullName.vb: (Hue As Single, Saturation As Single, Value As Single)
+  name.vb: (Hue As Single, Saturation As Single, Value As Single)
+  spec.csharp:
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: " "
+  - uid: System.ValueTuple{System.Single,System.Single,System.Single}.Hue
+    name: Hue
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.single,system.single-.hue
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: " "
+  - uid: System.ValueTuple{System.Single,System.Single,System.Single}.Saturation
+    name: Saturation
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.single,system.single-.saturation
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: " "
+  - uid: System.ValueTuple{System.Single,System.Single,System.Single}.Value
+    name: Value
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.single,system.single-.value
+  - name: )
+  spec.vb:
+  - name: (
+  - uid: System.ValueTuple{System.Single,System.Single,System.Single}.Hue
+    name: Hue
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.single,system.single-.hue
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.Single,System.Single,System.Single}.Saturation
+    name: Saturation
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.single,system.single-.saturation
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.Single,System.Single,System.Single}.Value
+    name: Value
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.single,system.single-.value
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: System.ValueTuple`3
+  commentId: T:System.ValueTuple`3
+  name: (T1, T2, T3)
+  nameWithType: (T1, T2, T3)
+  fullName: (T1, T2, T3)
+  spec.csharp:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )
+  spec.vb:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )
+- uid: Bliss.CSharp.Colors.Color.Invert*
+  commentId: Overload:Bliss.CSharp.Colors.Color.Invert
+  href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_Invert_System_Boolean_
+  name: Invert
+  nameWithType: Color.Invert
+  fullName: Bliss.CSharp.Colors.Color.Invert
+- uid: Bliss.CSharp.Colors.Color.AdjustSaturation*
+  commentId: Overload:Bliss.CSharp.Colors.Color.AdjustSaturation
+  href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_AdjustSaturation_System_Single_
+  name: AdjustSaturation
+  nameWithType: Color.AdjustSaturation
+  fullName: Bliss.CSharp.Colors.Color.AdjustSaturation
 - uid: Bliss.CSharp.Colors.Color.Equals*
   commentId: Overload:Bliss.CSharp.Colors.Color.Equals
   href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_Equals_Bliss_CSharp_Colors_Color_

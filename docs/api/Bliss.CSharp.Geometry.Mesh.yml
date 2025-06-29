@@ -418,7 +418,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenPoly
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 176
+    startLine: 178
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -462,7 +462,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenCube
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 230
+    startLine: 232
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -509,7 +509,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenSphere
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 314
+    startLine: 316
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -556,7 +556,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenHemisphere
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 396
+    startLine: 398
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -603,7 +603,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenCylinder
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 500
+    startLine: 502
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -650,7 +650,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenCapsule
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 599
+    startLine: 601
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -697,7 +697,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenCone
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 749
+    startLine: 751
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -744,7 +744,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenTorus
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 828
+    startLine: 830
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -794,7 +794,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenKnot
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 903
+    startLine: 905
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -844,7 +844,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenHeightmap
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 991
+    startLine: 993
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -885,7 +885,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenerateTangents
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1050
+    startLine: 1051
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -913,7 +913,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetVertexValue
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1114
+    startLine: 1117
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -951,7 +951,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetVertexValueImmediate
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1123
+    startLine: 1126
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -989,7 +989,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetVertexValueDeferred
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1134
+    startLine: 1137
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1030,7 +1030,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: UpdateVertexBufferImmediate
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1142
+    startLine: 1145
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1058,7 +1058,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: UpdateVertexBuffer
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1150
+    startLine: 1153
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1090,7 +1090,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetIndexValue
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1159
+    startLine: 1162
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1128,7 +1128,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetIndexValueImmediate
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1168
+    startLine: 1171
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1166,7 +1166,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetIndexValueDeferred
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1179
+    startLine: 1182
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1207,7 +1207,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: UpdateIndexBufferImmediate
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1187
+    startLine: 1190
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1235,7 +1235,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: UpdateIndexBuffer
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1195
+    startLine: 1198
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1267,7 +1267,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: UpdateAnimationBones
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1205
+    startLine: 1208
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1308,7 +1308,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ResetAnimationBones
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1219
+    startLine: 1222
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1340,7 +1340,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Draw
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1237
+    startLine: 1240
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1393,7 +1393,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1375
+    startLine: 1378
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry

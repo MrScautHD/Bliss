@@ -143,7 +143,7 @@ Struct Transform  <a class="header-action link-secondary" title="View source" hr
 
   <h3 id="Bliss_CSharp_Transformations_Transform__ctor" data-uid="Bliss.CSharp.Transformations.Transform.#ctor">
   Transform()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L45"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Bliss.CSharp.Transformations.Transform.html">Transform</a> class with default values.</p>
@@ -170,11 +170,75 @@ Struct Transform  <a class="header-action link-secondary" title="View source" hr
 </h2>
 
 
+  <a id="Bliss_CSharp_Transformations_Transform_Forward_" data-uid="Bliss.CSharp.Transformations.Transform.Forward*"></a>
+
+  <h3 id="Bliss_CSharp_Transformations_Transform_Forward" data-uid="Bliss.CSharp.Transformations.Transform.Forward">
+  Forward
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The forward Vector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 Forward { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector3">Vector3</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Transformations_Transform_Right_" data-uid="Bliss.CSharp.Transformations.Transform.Right*"></a>
+
+  <h3 id="Bliss_CSharp_Transformations_Transform_Right" data-uid="Bliss.CSharp.Transformations.Transform.Right">
+  Right
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The right vector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 Right { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector3">Vector3</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Bliss_CSharp_Transformations_Transform_Rotation_" data-uid="Bliss.CSharp.Transformations.Transform.Rotation*"></a>
 
   <h3 id="Bliss_CSharp_Transformations_Transform_Rotation" data-uid="Bliss.CSharp.Transformations.Transform.Rotation">
   Rotation
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L67"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets the rotation component of the transform as a quaternion.
@@ -207,7 +271,7 @@ Triggers the <a class="xref" href="Bliss.CSharp.Transformations.Transform.html#B
 
   <h3 id="Bliss_CSharp_Transformations_Transform_Scale" data-uid="Bliss.CSharp.Transformations.Transform.Scale">
   Scale
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L79"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets the scale component of the transform.
@@ -240,7 +304,7 @@ Triggers the <a class="xref" href="Bliss.CSharp.Transformations.Transform.html#B
 
   <h3 id="Bliss_CSharp_Transformations_Transform_Translation" data-uid="Bliss.CSharp.Transformations.Transform.Translation">
   Translation
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L55"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets the translation (position) component of the transform.
@@ -269,6 +333,38 @@ Triggers the <a class="xref" href="Bliss.CSharp.Transformations.Transform.html#B
 
 
 
+  <a id="Bliss_CSharp_Transformations_Transform_Up_" data-uid="Bliss.CSharp.Transformations.Transform.Up*"></a>
+
+  <h3 id="Bliss_CSharp_Transformations_Transform_Up" data-uid="Bliss.CSharp.Transformations.Transform.Up">
+  Up
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The up vector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 Up { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector3">Vector3</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -277,7 +373,7 @@ Triggers the <a class="xref" href="Bliss.CSharp.Transformations.Transform.html#B
 
   <h3 id="Bliss_CSharp_Transformations_Transform_Equals_Bliss_CSharp_Transformations_Transform_" data-uid="Bliss.CSharp.Transformations.Transform.Equals(Bliss.CSharp.Transformations.Transform)">
   Equals(Transform)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L120"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Determines whether the current instance is equal to another instance of the <a class="xref" href="Bliss.CSharp.Transformations.Transform.html">Transform</a> struct.</p>
@@ -316,7 +412,7 @@ Triggers the <a class="xref" href="Bliss.CSharp.Transformations.Transform.html#B
 
   <h3 id="Bliss_CSharp_Transformations_Transform_Equals_System_Object_" data-uid="Bliss.CSharp.Transformations.Transform.Equals(System.Object)">
   Equals(object?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L116"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L131"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Determines whether the specified object is equal to the current <a class="xref" href="Bliss.CSharp.Transformations.Transform.html">Transform</a> instance.</p>
@@ -355,7 +451,7 @@ Triggers the <a class="xref" href="Bliss.CSharp.Transformations.Transform.html#B
 
   <h3 id="Bliss_CSharp_Transformations_Transform_GetHashCode" data-uid="Bliss.CSharp.Transformations.Transform.GetHashCode">
   GetHashCode()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L124"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L139"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns the hash code for the current instance of the <a class="xref" href="Bliss.CSharp.Transformations.Transform.html">Transform</a> struct.</p>
@@ -388,7 +484,7 @@ Triggers the <a class="xref" href="Bliss.CSharp.Transformations.Transform.html#B
 
   <h3 id="Bliss_CSharp_Transformations_Transform_GetTransform" data-uid="Bliss.CSharp.Transformations.Transform.GetTransform">
   GetTransform()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L107"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns the transformation matrix for the current Transform object.</p>
@@ -421,7 +517,7 @@ Triggers the <a class="xref" href="Bliss.CSharp.Transformations.Transform.html#B
 
   <h3 id="Bliss_CSharp_Transformations_Transform_ToString" data-uid="Bliss.CSharp.Transformations.Transform.ToString">
   ToString()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L147"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns a string representation of the current Transform object.</p>
@@ -457,7 +553,7 @@ Triggers the <a class="xref" href="Bliss.CSharp.Transformations.Transform.html#B
 
   <h3 id="Bliss_CSharp_Transformations_Transform_OnUpdate" data-uid="Bliss.CSharp.Transformations.Transform.OnUpdate">
   OnUpdate
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L25"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Event triggered whenever the transformation is updated (translation, rotation, or scale changes).</p>
@@ -493,7 +589,7 @@ Triggers the <a class="xref" href="Bliss.CSharp.Transformations.Transform.html#B
 
   <h3 id="Bliss_CSharp_Transformations_Transform_op_Equality_Bliss_CSharp_Transformations_Transform_Bliss_CSharp_Transformations_Transform_" data-uid="Bliss.CSharp.Transformations.Transform.op_Equality(Bliss.CSharp.Transformations.Transform,Bliss.CSharp.Transformations.Transform)">
   operator ==(Transform, Transform)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L93"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Determines whether two instances of the <a class="xref" href="Bliss.CSharp.Transformations.Transform.html">Transform</a> struct are equal.</p>
@@ -535,7 +631,7 @@ Triggers the <a class="xref" href="Bliss.CSharp.Transformations.Transform.html#B
 
   <h3 id="Bliss_CSharp_Transformations_Transform_op_Inequality_Bliss_CSharp_Transformations_Transform_Bliss_CSharp_Transformations_Transform_" data-uid="Bliss.CSharp.Transformations.Transform.op_Inequality(Bliss.CSharp.Transformations.Transform,Bliss.CSharp.Transformations.Transform)">
   operator !=(Transform, Transform)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Transformations/Transform.cs/#L101"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Determines whether two instances of the <a class="xref" href="Bliss.CSharp.Transformations.Transform.html">Transform</a> struct are not equal.</p>

@@ -5,7 +5,7 @@ items:
   id: Vertex3D
   parent: Bliss.CSharp.Graphics.VertexTypes
   children:
-  - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.#ctor(System.Numerics.Vector3,System.Numerics.Vector4,Vortice.Mathematics.UInt4,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector4)
+  - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.#ctor(System.Numerics.Vector3,System.Numerics.Vector4,Vortice.Mathematics.UInt4,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector3,System.Numerics.Vector4,System.Numerics.Vector4)
   - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.AddBone(System.UInt32,System.Single)
   - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.BoneIndices
   - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.BoneWeights
@@ -272,10 +272,10 @@ items:
   summary: The tangent vector of the vertex, used for normal mapping.
   example: []
   syntax:
-    content: public Vector3 Tangent
+    content: public Vector4 Tangent
     return:
-      type: System.Numerics.Vector3
-    content.vb: Public Tangent As Vector3
+      type: System.Numerics.Vector4
+    content.vb: Public Tangent As Vector4
 - uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Color
   commentId: F:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Color
   id: Color
@@ -305,16 +305,16 @@ items:
     return:
       type: System.Numerics.Vector4
     content.vb: Public Color As Vector4
-- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.#ctor(System.Numerics.Vector3,System.Numerics.Vector4,Vortice.Mathematics.UInt4,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector4)
-  commentId: M:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.#ctor(System.Numerics.Vector3,System.Numerics.Vector4,Vortice.Mathematics.UInt4,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector4)
-  id: '#ctor(System.Numerics.Vector3,System.Numerics.Vector4,Vortice.Mathematics.UInt4,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector4)'
+- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.#ctor(System.Numerics.Vector3,System.Numerics.Vector4,Vortice.Mathematics.UInt4,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector3,System.Numerics.Vector4,System.Numerics.Vector4)
+  commentId: M:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.#ctor(System.Numerics.Vector3,System.Numerics.Vector4,Vortice.Mathematics.UInt4,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector3,System.Numerics.Vector4,System.Numerics.Vector4)
+  id: '#ctor(System.Numerics.Vector3,System.Numerics.Vector4,Vortice.Mathematics.UInt4,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector3,System.Numerics.Vector4,System.Numerics.Vector4)'
   parent: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
   langs:
   - csharp
   - vb
-  name: Vertex3D(Vector3, Vector4, UInt4, Vector2, Vector2, Vector3, Vector3, Vector4)
-  nameWithType: Vertex3D.Vertex3D(Vector3, Vector4, UInt4, Vector2, Vector2, Vector3, Vector3, Vector4)
-  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Vertex3D(System.Numerics.Vector3, System.Numerics.Vector4, Vortice.Mathematics.UInt4, System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector3, System.Numerics.Vector3, System.Numerics.Vector4)
+  name: Vertex3D(Vector3, Vector4, UInt4, Vector2, Vector2, Vector3, Vector4, Vector4)
+  nameWithType: Vertex3D.Vertex3D(Vector3, Vector4, UInt4, Vector2, Vector2, Vector3, Vector4, Vector4)
+  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Vertex3D(System.Numerics.Vector3, System.Numerics.Vector4, Vortice.Mathematics.UInt4, System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector3, System.Numerics.Vector4, System.Numerics.Vector4)
   type: Constructor
   source:
     remote:
@@ -330,7 +330,7 @@ items:
   summary: Initializes a new instance of the <xref href="Bliss.CSharp.Graphics.VertexTypes.Vertex3D" data-throw-if-not-resolved="false"></xref> struct with the specified position, bone weights, bone indices, texture coordinates, normal, tangent, and color values.
   example: []
   syntax:
-    content: public Vertex3D(Vector3 position, Vector4 boneWeights, UInt4 boneIndices, Vector2 texCoords, Vector2 texCoords2, Vector3 normal, Vector3 tangent, Vector4 color)
+    content: public Vertex3D(Vector3 position, Vector4 boneWeights, UInt4 boneIndices, Vector2 texCoords, Vector2 texCoords2, Vector3 normal, Vector4 tangent, Vector4 color)
     parameters:
     - id: position
       type: System.Numerics.Vector3
@@ -351,16 +351,16 @@ items:
       type: System.Numerics.Vector3
       description: The normal vector at the vertex, used for lighting calculations.
     - id: tangent
-      type: System.Numerics.Vector3
-      description: The tangent vector at the vertex, used for normal mapping.
+      type: System.Numerics.Vector4
+      description: The tangent vector at the vertex, used for normal mapping. Also includes the sign for bitangent.
     - id: color
       type: System.Numerics.Vector4
       description: The color of the vertex, stored as an RGBA float vector.
-    content.vb: Public Sub New(position As Vector3, boneWeights As Vector4, boneIndices As UInt4, texCoords As Vector2, texCoords2 As Vector2, normal As Vector3, tangent As Vector3, color As Vector4)
+    content.vb: Public Sub New(position As Vector3, boneWeights As Vector4, boneIndices As UInt4, texCoords As Vector2, texCoords2 As Vector2, normal As Vector3, tangent As Vector4, color As Vector4)
   overload: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.#ctor*
-  nameWithType.vb: Vertex3D.New(Vector3, Vector4, UInt4, Vector2, Vector2, Vector3, Vector3, Vector4)
-  fullName.vb: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.New(System.Numerics.Vector3, System.Numerics.Vector4, Vortice.Mathematics.UInt4, System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector3, System.Numerics.Vector3, System.Numerics.Vector4)
-  name.vb: New(Vector3, Vector4, UInt4, Vector2, Vector2, Vector3, Vector3, Vector4)
+  nameWithType.vb: Vertex3D.New(Vector3, Vector4, UInt4, Vector2, Vector2, Vector3, Vector4, Vector4)
+  fullName.vb: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.New(System.Numerics.Vector3, System.Numerics.Vector4, Vortice.Mathematics.UInt4, System.Numerics.Vector2, System.Numerics.Vector2, System.Numerics.Vector3, System.Numerics.Vector4, System.Numerics.Vector4)
+  name.vb: New(Vector3, Vector4, UInt4, Vector2, Vector2, Vector3, Vector4, Vector4)
 - uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.AddBone(System.UInt32,System.Single)
   commentId: M:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.AddBone(System.UInt32,System.Single)
   id: AddBone(System.UInt32,System.Single)
@@ -759,7 +759,7 @@ references:
   fullName: System.Numerics.Vector2
 - uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.#ctor*
   commentId: Overload:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.#ctor
-  href: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.html#Bliss_CSharp_Graphics_VertexTypes_Vertex3D__ctor_System_Numerics_Vector3_System_Numerics_Vector4_Vortice_Mathematics_UInt4_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector3_System_Numerics_Vector3_System_Numerics_Vector4_
+  href: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.html#Bliss_CSharp_Graphics_VertexTypes_Vertex3D__ctor_System_Numerics_Vector3_System_Numerics_Vector4_Vortice_Mathematics_UInt4_System_Numerics_Vector2_System_Numerics_Vector2_System_Numerics_Vector3_System_Numerics_Vector4_System_Numerics_Vector4_
   name: Vertex3D
   nameWithType: Vertex3D.Vertex3D
   fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Vertex3D

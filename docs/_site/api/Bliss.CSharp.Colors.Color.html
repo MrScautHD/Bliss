@@ -1395,11 +1395,50 @@ Struct Color  <a class="header-action link-secondary" title="View source" href="
 </h2>
 
 
+  <a id="Bliss_CSharp_Colors_Color_AdjustSaturation_" data-uid="Bliss.CSharp.Colors.Color.AdjustSaturation*"></a>
+
+  <h3 id="Bliss_CSharp_Colors_Color_AdjustSaturation_System_Single_" data-uid="Bliss.CSharp.Colors.Color.AdjustSaturation(System.Single)">
+  AdjustSaturation(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L344"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adjusts the saturation of the current <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Color AdjustSaturation(float adjustment)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>adjustment</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>A value between -1 and 1. Negative values decrease saturation, and positive values increase it.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a></dt>
+    <dd><p>The <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a> with adjusted saturation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Bliss_CSharp_Colors_Color_Equals_" data-uid="Bliss.CSharp.Colors.Color.Equals*"></a>
 
   <h3 id="Bliss_CSharp_Colors_Color_Equals_Bliss_CSharp_Colors_Color_" data-uid="Bliss.CSharp.Colors.Color.Equals(Bliss.CSharp.Colors.Color)">
   Equals(Color)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L150"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L367"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Determines whether the current color object is equal to another color object.</p>
@@ -1438,7 +1477,7 @@ Struct Color  <a class="header-action link-secondary" title="View source" href="
 
   <h3 id="Bliss_CSharp_Colors_Color_Equals_System_Object_" data-uid="Bliss.CSharp.Colors.Color.Equals(System.Object)">
   Equals(object?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L161"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L378"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Determines whether the current color object is equal to another color object.</p>
@@ -1473,11 +1512,56 @@ Struct Color  <a class="header-action link-secondary" title="View source" href="
 
 
 
+  <a id="Bliss_CSharp_Colors_Color_FromHsv_" data-uid="Bliss.CSharp.Colors.Color.FromHsv*"></a>
+
+  <h3 id="Bliss_CSharp_Colors_Color_FromHsv_System_Single_System_Single_System_Single_" data-uid="Bliss.CSharp.Colors.Color.FromHsv(System.Single,System.Single,System.Single)">
+  FromHsv(float, float, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L201"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a> instance from the specified HSV (Hue, Saturation, Value) model values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color FromHsv(float hue, float saturation, float value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>hue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The hue component of the color, in degrees (0-360).</p>
+</dd>
+    <dt><code>saturation</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The saturation component of the color, as a value between 0 and 1.</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The value (brightness) component of the color, as a value between 0 and 1.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a></dt>
+    <dd><p>A new <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a> object representing the specified HSV color.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Bliss_CSharp_Colors_Color_GetHashCode_" data-uid="Bliss.CSharp.Colors.Color.GetHashCode*"></a>
 
   <h3 id="Bliss_CSharp_Colors_Color_GetHashCode" data-uid="Bliss.CSharp.Colors.Color.GetHashCode">
   GetHashCode()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L169"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L386"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns the hash code for this instance.</p>
@@ -1506,11 +1590,83 @@ Struct Color  <a class="header-action link-secondary" title="View source" href="
 
 
 
+  <a id="Bliss_CSharp_Colors_Color_Invert_" data-uid="Bliss.CSharp.Colors.Color.Invert*"></a>
+
+  <h3 id="Bliss_CSharp_Colors_Color_Invert_System_Boolean_" data-uid="Bliss.CSharp.Colors.Color.Invert(System.Boolean)">
+  Invert(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L330"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the inverted color, with an option to maintain the alpha component.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Color Invert(bool keepAlpha = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>keepAlpha</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Specifies whether to retain the original alpha value. If set to false, the alpha value will also be inverted.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a></dt>
+    <dd><p>A new <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a> instance with the RGB components inverted, and the alpha component either retained or inverted based on the <code class="paramref">keepAlpha</code> value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Colors_Color_ToHsv_" data-uid="Bliss.CSharp.Colors.Color.ToHsv*"></a>
+
+  <h3 id="Bliss_CSharp_Colors_Color_ToHsv" data-uid="Bliss.CSharp.Colors.Color.ToHsv">
+  ToHsv()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L283"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Converts the current color to its HSV (Hue, Saturation, Value) representation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public (float Hue, float Saturation, float Value) ToHsv()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.single,system.single-.hue">Hue</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.single,system.single-.saturation">Saturation</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.single,system.single,system.single-.value">Value</a>)</dt>
+    <dd><p>A tuple containing the Hue, Saturation, and Value components of the color.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Bliss_CSharp_Colors_Color_ToRgbaFloat_" data-uid="Bliss.CSharp.Colors.Color.ToRgbaFloat*"></a>
 
   <h3 id="Bliss_CSharp_Colors_Color_ToRgbaFloat" data-uid="Bliss.CSharp.Colors.Color.ToRgbaFloat">
   ToRgbaFloat()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L123"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L259"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts the color to an <a class="xref" href="https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RgbaFloat.cs">RgbaFloat</a> value.</p>
@@ -1543,7 +1699,7 @@ Struct Color  <a class="header-action link-secondary" title="View source" href="
 
   <h3 id="Bliss_CSharp_Colors_Color_ToRgbaFloatVec4" data-uid="Bliss.CSharp.Colors.Color.ToRgbaFloatVec4">
   ToRgbaFloatVec4()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L131"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L267"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts the color to a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector4">Vector4</a> representation with each component normalized to the range of 0 to 1.</p>
@@ -1576,7 +1732,7 @@ Struct Color  <a class="header-action link-secondary" title="View source" href="
 
   <h3 id="Bliss_CSharp_Colors_Color_ToString" data-uid="Bliss.CSharp.Colors.Color.ToString">
   ToString()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L177"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L394"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Returns a string that represents the current color.</p>
@@ -1609,7 +1765,7 @@ Struct Color  <a class="header-action link-secondary" title="View source" href="
 
   <h3 id="Bliss_CSharp_Colors_Color_ToVector4" data-uid="Bliss.CSharp.Colors.Color.ToVector4">
   ToVector4()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L139"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L275"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts the color to a Vector4 representation.</p>
@@ -1640,6 +1796,90 @@ Struct Color  <a class="header-action link-secondary" title="View source" href="
 
   <h2 class="section" id="operators">Operators
 </h2>
+
+
+  <a id="Bliss_CSharp_Colors_Color_op_Addition_" data-uid="Bliss.CSharp.Colors.Color.op_Addition*"></a>
+
+  <h3 id="Bliss_CSharp_Colors_Color_op_Addition_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_" data-uid="Bliss.CSharp.Colors.Color.op_Addition(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)">
+  operator +(Color, Color)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L140"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds two colours together piece-wise.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color operator +(Color left, Color right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a></dt>
+    <dd><p>The first color to add.</p>
+</dd>
+    <dt><code>right</code> <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a></dt>
+    <dd><p>The second color to add.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a></dt>
+    <dd><p>A <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a> that is the result of adding the two colors together.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Colors_Color_op_Division_" data-uid="Bliss.CSharp.Colors.Color.op_Division*"></a>
+
+  <h3 id="Bliss_CSharp_Colors_Color_op_Division_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_" data-uid="Bliss.CSharp.Colors.Color.op_Division(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)">
+  operator /(Color, Color)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L185"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Implements the division operator for the <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a> structure.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color operator /(Color left, Color right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a></dt>
+    <dd><p>The <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a> instance acting as the dividend.</p>
+</dd>
+    <dt><code>right</code> <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a></dt>
+    <dd><p>The <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a> instance acting as the divisor.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a></dt>
+    <dd><p>A new <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a> resulting from component-wise division of the two colors. If a component in the divisor is zero, the resulting component is clamped to 255.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
 
 
   <a id="Bliss_CSharp_Colors_Color_op_Equality_" data-uid="Bliss.CSharp.Colors.Color.op_Equality*"></a>
@@ -1713,6 +1953,132 @@ Struct Color  <a class="header-action link-secondary" title="View source" href="
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd><p>true if the colors are equal; otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Colors_Color_op_Modulus_" data-uid="Bliss.CSharp.Colors.Color.op_Modulus*"></a>
+
+  <h3 id="Bliss_CSharp_Colors_Color_op_Modulus_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_" data-uid="Bliss.CSharp.Colors.Color.op_Modulus(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)">
+  operator %(Color, Color)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Computes the component-wise remainder (modulo) of two colors, treating each channel separately.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color operator %(Color left, Color right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a></dt>
+    <dd><p>The left operand representing the dividend color.</p>
+</dd>
+    <dt><code>right</code> <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a></dt>
+    <dd><p>The right operand representing the divisor color.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a></dt>
+    <dd><p>A new <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a> representing the component-wise remainder.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Colors_Color_op_Multiply_" data-uid="Bliss.CSharp.Colors.Color.op_Multiply*"></a>
+
+  <h3 id="Bliss_CSharp_Colors_Color_op_Multiply_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_" data-uid="Bliss.CSharp.Colors.Color.op_Multiply(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)">
+  operator *(Color, Color)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L170"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Multiplies the color components of two <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a> instances component-wise.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color operator *(Color left, Color right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a></dt>
+    <dd><p>The first <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a> instance.</p>
+</dd>
+    <dt><code>right</code> <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a></dt>
+    <dd><p>The second <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a> instance.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a></dt>
+    <dd><p>A new <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a> resulting from the component-wise multiplication of the two input colors.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Colors_Color_op_Subtraction_" data-uid="Bliss.CSharp.Colors.Color.op_Subtraction*"></a>
+
+  <h3 id="Bliss_CSharp_Colors_Color_op_Subtraction_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_" data-uid="Bliss.CSharp.Colors.Color.op_Subtraction(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)">
+  operator -(Color, Color)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Colors/Color.cs/#L155"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Subtracts two colours together piece-wise.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Color operator -(Color left, Color right)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a></dt>
+    <dd><p>The first color to subtract.</p>
+</dd>
+    <dt><code>right</code> <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a></dt>
+    <dd><p>The second color to subtract.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a></dt>
+    <dd><p>A <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a> that is the result of subtracting the two colors together.</p>
 </dd>
   </dl>
 
