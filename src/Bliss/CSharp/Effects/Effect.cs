@@ -201,7 +201,7 @@ public class Effect : Disposable {
     /// <summary>
     /// Apply the state effect immediately before rendering it.
     /// </summary>
-    public virtual void Apply(Material? material = null) { }
+    public virtual void Apply(CommandList commandList, Material? material = null) { }
     
     protected override void Dispose(bool disposing) {
         if (disposing) {

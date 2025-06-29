@@ -875,7 +875,7 @@ public class SpriteBatch : Disposable {
         }
         
         // Apply effect.
-        this._currentEffect.Apply();
+        this._currentEffect.Apply(this._currentCommandList);
         
         // Draw.
         this._currentCommandList.DrawIndexed(this._currentBatchCount * IndicesPerQuad);

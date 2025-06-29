@@ -1220,7 +1220,7 @@ public class PrimitiveBatch : Disposable {
         }
         
         // Apply effect.
-        this._currentEffect.Apply();
+        this._currentEffect.Apply(this._currentCommandList);
         
         // Draw.
         this._currentCommandList.Draw(this._currentBatchCount);

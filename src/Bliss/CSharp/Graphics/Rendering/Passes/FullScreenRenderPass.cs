@@ -81,7 +81,7 @@ public class FullScreenRenderPass : Disposable {
         commandList.SetGraphicsResourceSet(0, renderTexture.GetResourceSet(finalSampler, finalEffect.GetTextureLayout("fTexture").Layout));
         
         // Apply effect.
-        finalEffect.Apply();
+        finalEffect.Apply(commandList);
         
         // Draw.
         commandList.Draw(6);

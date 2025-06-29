@@ -2026,7 +2026,7 @@ public class ImmediateRenderer : Disposable {
             commandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this._currentEffect.GetTextureLayout("fTexture")));
             
             // Apply effect.
-            this._currentEffect.Apply();
+            this._currentEffect.Apply(commandList);
             
             // Draw.
             commandList.DrawIndexed((uint) this._indexCount);
@@ -2049,7 +2049,7 @@ public class ImmediateRenderer : Disposable {
             commandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this._currentEffect.GetTextureLayout("fTexture")));
             
             // Apply effect.
-            this._currentEffect.Apply();
+            this._currentEffect.Apply(commandList);
             
             // Draw.
             commandList.Draw((uint) this._vertexCount);

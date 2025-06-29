@@ -1314,7 +1314,7 @@ public class Mesh : Disposable {
             }
             
             // Apply effect.
-            this.Material.Effect.Apply(this.Material);
+            this.Material.Effect.Apply(commandList, this.Material);
             
             // Draw.
             commandList.DrawIndexed(this.IndexCount);
@@ -1350,7 +1350,7 @@ public class Mesh : Disposable {
             }
             
             // Apply effect.
-            this.Material.Effect.Apply(this.Material);
+            this.Material.Effect.Apply(commandList, this.Material);
             
             // Draw.
             commandList.Draw(this.VertexCount);
