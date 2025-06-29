@@ -117,21 +117,6 @@ public readonly struct Color : IEquatable<Color> {
     }
 
     /// <summary>
-    /// Computes the component-wise remainder (modulo) of two colors, treating each channel separately.
-    /// </summary>
-    /// <param name="left">The left operand representing the dividend color.</param>
-    /// <param name="right">The right operand representing the divisor color.</param>
-    /// <returns>A new <see cref="Color"/> representing the component-wise remainder.</returns>
-    public static Color operator %(Color left, Color right) {
-        byte r = right.R == 0 ? (byte) 255.0F : (byte) (left.R % right.R);
-        byte g = right.G == 0 ? (byte) 255.0F : (byte) (left.G % right.G);
-        byte b = right.B == 0 ? (byte) 255.0F : (byte) (left.B % right.B);
-        byte a = right.A == 0 ? (byte) 255.0F : (byte) (left.A % right.A);
-        
-        return new Color(r, g, b, a);
-    }
-
-    /// <summary>
     /// Adds two colours together piece-wise.
     /// </summary>
     /// <param name="left"> The first color to add.</param>
@@ -187,6 +172,21 @@ public readonly struct Color : IEquatable<Color> {
         byte g = right.G == 0 ? (byte) 255.0F : (byte) Math.Clamp((left.G / (float) right.G) * 255.0F, 0.0F, 255.0F);
         byte b = right.B == 0 ? (byte) 255.0F : (byte) Math.Clamp((left.B / (float) right.B) * 255.0F, 0.0F, 255.0F);
         byte a = right.A == 0 ? (byte) 255.0F : (byte) Math.Clamp((left.A / (float) right.A) * 255.0F, 0.0F, 255.0F);
+        
+        return new Color(r, g, b, a);
+    }
+    
+    /// <summary>
+    /// Computes the component-wise remainder (modulo) of two colors, treating each channel separately.
+    /// </summary>
+    /// <param name="left">The left operand representing the dividend color.</param>
+    /// <param name="right">The right operand representing the divisor color.</param>
+    /// <returns>A new <see cref="Color"/> representing the component-wise remainder.</returns>
+    public static Color operator %(Color left, Color right) {
+        byte r = right.R == 0 ? (byte) 255.0F : (byte) (left.R % right.R);
+        byte g = right.G == 0 ? (byte) 255.0F : (byte) (left.G % right.G);
+        byte b = right.B == 0 ? (byte) 255.0F : (byte) (left.B % right.B);
+        byte a = right.A == 0 ? (byte) 255.0F : (byte) (left.A % right.A);
         
         return new Color(r, g, b, a);
     }
