@@ -78,7 +78,7 @@ public class Mesh : Disposable {
     /// <summary>
     /// A buffer that stores index data used for indexed drawing in the graphics pipeline.
     /// </summary>
-    private DeviceBuffer _indexBuffer;
+    private DeviceBuffer? _indexBuffer;
 
     /// <summary>
     /// A buffer that stores model matrix data for shader usage in rendering.
@@ -133,9 +133,11 @@ public class Mesh : Disposable {
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
         graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this.Vertices);
 
-        // Create index buffer.
-        this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
-        graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this.Indices);
+        // Create index buffer (if their indices).
+        if (this.IndexCount > 0) {
+            this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
+            graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this.Indices);
+        }
         
         // Create model matrix buffer.
         this._modelMatrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 3, SimpleBufferType.Uniform, ShaderStages.Vertex);
@@ -1070,8 +1072,7 @@ public class Mesh : Disposable {
 
             Vector3 w1 = new Vector3(v1.TexCoords.X, v1.TexCoords.Y, 1.0F);
             Vector3 w2 = new Vector3(v2.TexCoords.X, v2.TexCoords.Y, 1.0F);
-            Vector3 w3 = new Vector3(v3.TexCoords.X, v3.TexCoords.Y, 1.0F);
-
+            
             Vector3 q1 = p2 - p1;
             Vector3 q2 = p3 - p1;
 
@@ -1378,7 +1379,7 @@ public class Mesh : Disposable {
     protected override void Dispose(bool disposing) {
         if (disposing) {
             this._vertexBuffer.Dispose();
-            this._indexBuffer.Dispose();
+            this._indexBuffer?.Dispose();
             this._modelMatrixBuffer.Dispose();
             this._boneBuffer.Dispose();
             this._colorBuffer.Dispose();
