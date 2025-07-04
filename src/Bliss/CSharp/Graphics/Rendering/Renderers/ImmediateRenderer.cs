@@ -424,7 +424,7 @@ public class ImmediateRenderer : Disposable {
         }
 
         // Calculate source rectangle UVs.
-        float uLeft = sourceRec.X / (float)texture.Width;
+        float uLeft = sourceRec.X / (float) texture.Width;
         float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
         float vTop = sourceRec.Y / (float) texture.Height;
         float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
@@ -749,9 +749,9 @@ public class ImmediateRenderer : Disposable {
         }
 
         // Calculate source rectangle UVs.
-        float uLeft = sourceRec.X / (float)texture.Width;
-        float uRight = (sourceRec.X + sourceRec.Width) / (float)texture.Width;
-        float vTop = sourceRec.Y / (float)texture.Height;
+        float uLeft = sourceRec.X / (float) texture.Width;
+        float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
+        float vTop = sourceRec.Y / (float) texture.Height;
         float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
     
         float halfHeight = height / 2.0F;
@@ -1254,8 +1254,8 @@ public class ImmediateRenderer : Disposable {
         }
 
         // Calculate source rectangle UVs.
-        float uLeft = sourceRec.X / (float)texture.Width;
-        float uRight = (sourceRec.X + sourceRec.Width) / (float)texture.Width;
+        float uLeft = sourceRec.X / (float) texture.Width;
+        float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
         float vTop = sourceRec.Y / (float) texture.Height;
         float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
         
@@ -1409,9 +1409,9 @@ public class ImmediateRenderer : Disposable {
         }
 
         // Calculate source rectangle UVs.
-        float uLeft = sourceRec.X / (float)texture.Width;
-        float uRight = (sourceRec.X + sourceRec.Width) / (float)texture.Width;
-        float vTop = sourceRec.Y / (float)texture.Height;
+        float uLeft = sourceRec.X / (float) texture.Width;
+        float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
+        float vTop = sourceRec.Y / (float) texture.Height;
         float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
         
         float circusStep = MathF.Tau / radSeg;
@@ -1698,7 +1698,7 @@ public class ImmediateRenderer : Disposable {
     /// <param name="majorLineSpacing">The interval of major grid lines, which are visually distinct. Must be greater than or equal to 1.</param>
     /// <param name="color">The optional color of the grid lines. Defaults to white if not provided.</param>
     /// <param name="axisColorX">The optional color for the X-axis grid line. Defaults to red if not provided.</param>
-    /// <param name="axisColorZ">The optional color for the Z-axis grid line. Defaults to blue if not provided.</param
+    /// <param name="axisColorZ">The optional color for the Z-axis grid line. Defaults to blue if not provided.</param>
     public void DrawGrid(CommandList commandList, OutputDescription output, Transform transform, int slices, int spacing, int majorLineSpacing, Color? color = null, Color? axisColorX = null, Color? axisColorZ = null) {
         Color finalColor = color ?? Color.White;
         Color finalAxisColorX = axisColorX ?? Color.Red;
