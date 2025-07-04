@@ -2,7 +2,7 @@ using System.Numerics;
 
 namespace Bliss.CSharp.Mathematics;
 
-public static class BlissMath {
+public static partial class BlissMath {
 
     /// <summary>
     /// Calculates the angle in radians between two vectors.
