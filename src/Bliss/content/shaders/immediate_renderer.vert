@@ -9,14 +9,18 @@ layout(set = 0, binding = 0) uniform MatrixBuffer {
 layout (location = 0) in vec3 vPosition;
 layout (location = 1) in vec2 vTexCoords;
 layout (location = 2) in vec4 vColor;
+layout (location = 3) in vec4 vLineData;
 
 layout (location = 0) out vec2 fTexCoords;
 layout (location = 1) out vec4 fColor;
+layout (location = 2) out vec4 fLineData;
 
 void main() {
     fTexCoords = vTexCoords;
     fColor = vColor;
+    fLineData = vLineData;
 
     vec4 v4Pos = vec4(vPosition, 1.0F);
+
     gl_Position = uProjection * uView * uTransformation * v4Pos;
 }
