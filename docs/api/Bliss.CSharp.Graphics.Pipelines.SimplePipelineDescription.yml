@@ -855,7 +855,7 @@ references:
   commentId: T:Veldrid.BlendStateDescription
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/BlendStateDescription.cs
   name: BlendStateDescription
   nameWithType: BlendStateDescription
   fullName: Veldrid.BlendStateDescription
@@ -869,7 +869,7 @@ references:
   commentId: T:Veldrid.DepthStencilStateDescription
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
   name: DepthStencilStateDescription
   nameWithType: DepthStencilStateDescription
   fullName: Veldrid.DepthStencilStateDescription
@@ -877,7 +877,7 @@ references:
   commentId: T:Veldrid.RasterizerStateDescription
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
   name: RasterizerStateDescription
   nameWithType: RasterizerStateDescription
   fullName: Veldrid.RasterizerStateDescription
@@ -885,7 +885,7 @@ references:
   commentId: T:Veldrid.PrimitiveTopology
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/PrimitiveTopology.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/PrimitiveTopology.cs
   name: PrimitiveTopology
   nameWithType: PrimitiveTopology
   fullName: Veldrid.PrimitiveTopology
@@ -1024,7 +1024,7 @@ references:
   commentId: T:Veldrid.ShaderSetDescription
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/ShaderSetDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/ShaderSetDescription.cs
   name: ShaderSetDescription
   nameWithType: ShaderSetDescription
   fullName: Veldrid.ShaderSetDescription
@@ -1032,7 +1032,7 @@ references:
   commentId: T:Veldrid.OutputDescription
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/OutputDescription.cs
   name: OutputDescription
   nameWithType: OutputDescription
   fullName: Veldrid.OutputDescription
@@ -1040,7 +1040,7 @@ references:
   commentId: T:System.Nullable{Veldrid.ResourceBindingModel}
   parent: System
   definition: System.Nullable`1
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/ResourceBindingModel.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/ResourceBindingModel.cs
   name: ResourceBindingModel?
   nameWithType: ResourceBindingModel?
   fullName: Veldrid.ResourceBindingModel?
@@ -1048,13 +1048,13 @@ references:
   - uid: Veldrid.ResourceBindingModel
     name: ResourceBindingModel
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/ResourceBindingModel.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/ResourceBindingModel.cs
   - name: '?'
   spec.vb:
   - uid: Veldrid.ResourceBindingModel
     name: ResourceBindingModel
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/ResourceBindingModel.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/ResourceBindingModel.cs
   - name: '?'
 - uid: System.Nullable`1
   commentId: T:System.Nullable`1

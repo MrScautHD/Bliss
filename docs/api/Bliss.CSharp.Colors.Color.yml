@@ -1312,47 +1312,6 @@ items:
   nameWithType.vb: Color.<>(Color, Color)
   fullName.vb: Bliss.CSharp.Colors.Color.<>(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
   name.vb: <>(Color, Color)
-- uid: Bliss.CSharp.Colors.Color.op_Modulus(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
-  commentId: M:Bliss.CSharp.Colors.Color.op_Modulus(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
-  id: op_Modulus(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
-  parent: Bliss.CSharp.Colors.Color
-  langs:
-  - csharp
-  - vb
-  name: operator %(Color, Color)
-  nameWithType: Color.operator %(Color, Color)
-  fullName: Bliss.CSharp.Colors.Color.operator %(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
-  type: Operator
-  source:
-    remote:
-      path: src/Bliss/CSharp/Colors/Color.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: op_Modulus
-    path: ../src/Bliss/CSharp/Colors/Color.cs
-    startLine: 124
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Colors
-  summary: Computes the component-wise remainder (modulo) of two colors, treating each channel separately.
-  example: []
-  syntax:
-    content: public static Color operator %(Color left, Color right)
-    parameters:
-    - id: left
-      type: Bliss.CSharp.Colors.Color
-      description: The left operand representing the dividend color.
-    - id: right
-      type: Bliss.CSharp.Colors.Color
-      description: The right operand representing the divisor color.
-    return:
-      type: Bliss.CSharp.Colors.Color
-      description: A new <xref href="Bliss.CSharp.Colors.Color" data-throw-if-not-resolved="false"></xref> representing the component-wise remainder.
-    content.vb: Public Shared Operator Mod(left As Color, right As Color) As Color
-  overload: Bliss.CSharp.Colors.Color.op_Modulus*
-  nameWithType.vb: Color.Mod(Color, Color)
-  fullName.vb: Bliss.CSharp.Colors.Color.Mod(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
-  name.vb: Mod(Color, Color)
 - uid: Bliss.CSharp.Colors.Color.op_Addition(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
   commentId: M:Bliss.CSharp.Colors.Color.op_Addition(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
   id: op_Addition(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
@@ -1371,7 +1330,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: op_Addition
     path: ../src/Bliss/CSharp/Colors/Color.cs
-    startLine: 139
+    startLine: 124
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Colors
@@ -1412,7 +1371,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: op_Subtraction
     path: ../src/Bliss/CSharp/Colors/Color.cs
-    startLine: 154
+    startLine: 139
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Colors
@@ -1453,7 +1412,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: op_Multiply
     path: ../src/Bliss/CSharp/Colors/Color.cs
-    startLine: 169
+    startLine: 154
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Colors
@@ -1494,7 +1453,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: op_Division
     path: ../src/Bliss/CSharp/Colors/Color.cs
-    startLine: 184
+    startLine: 169
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Colors
@@ -1517,6 +1476,47 @@ items:
   nameWithType.vb: Color./(Color, Color)
   fullName.vb: Bliss.CSharp.Colors.Color./(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
   name.vb: /(Color, Color)
+- uid: Bliss.CSharp.Colors.Color.op_Modulus(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  commentId: M:Bliss.CSharp.Colors.Color.op_Modulus(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  id: op_Modulus(Bliss.CSharp.Colors.Color,Bliss.CSharp.Colors.Color)
+  parent: Bliss.CSharp.Colors.Color
+  langs:
+  - csharp
+  - vb
+  name: operator %(Color, Color)
+  nameWithType: Color.operator %(Color, Color)
+  fullName: Bliss.CSharp.Colors.Color.operator %(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  type: Operator
+  source:
+    remote:
+      path: src/Bliss/CSharp/Colors/Color.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: op_Modulus
+    path: ../src/Bliss/CSharp/Colors/Color.cs
+    startLine: 184
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Colors
+  summary: Computes the component-wise remainder (modulo) of two colors, treating each channel separately.
+  example: []
+  syntax:
+    content: public static Color operator %(Color left, Color right)
+    parameters:
+    - id: left
+      type: Bliss.CSharp.Colors.Color
+      description: The left operand representing the dividend color.
+    - id: right
+      type: Bliss.CSharp.Colors.Color
+      description: The right operand representing the divisor color.
+    return:
+      type: Bliss.CSharp.Colors.Color
+      description: A new <xref href="Bliss.CSharp.Colors.Color" data-throw-if-not-resolved="false"></xref> representing the component-wise remainder.
+    content.vb: Public Shared Operator Mod(left As Color, right As Color) As Color
+  overload: Bliss.CSharp.Colors.Color.op_Modulus*
+  nameWithType.vb: Color.Mod(Color, Color)
+  fullName.vb: Bliss.CSharp.Colors.Color.Mod(Bliss.CSharp.Colors.Color, Bliss.CSharp.Colors.Color)
+  name.vb: Mod(Color, Color)
 - uid: Bliss.CSharp.Colors.Color.FromHsv(System.Single,System.Single,System.Single)
   commentId: M:Bliss.CSharp.Colors.Color.FromHsv(System.Single,System.Single,System.Single)
   id: FromHsv(System.Single,System.Single,System.Single)
@@ -2156,7 +2156,7 @@ references:
   commentId: T:Veldrid.RgbaFloat
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RgbaFloat.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RgbaFloat.cs
   name: RgbaFloat
   nameWithType: RgbaFloat
   fullName: Veldrid.RgbaFloat
@@ -2207,21 +2207,6 @@ references:
   - uid: Bliss.CSharp.Colors.Color.op_Inequality*
     name: '!='
     href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Inequality_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
-- uid: Bliss.CSharp.Colors.Color.op_Modulus*
-  commentId: Overload:Bliss.CSharp.Colors.Color.op_Modulus
-  href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Modulus_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
-  name: operator %
-  nameWithType: Color.operator %
-  fullName: Bliss.CSharp.Colors.Color.operator %
-  nameWithType.vb: Color.Mod
-  fullName.vb: Bliss.CSharp.Colors.Color.Mod
-  name.vb: Mod
-  spec.csharp:
-  - name: operator
-  - name: " "
-  - uid: Bliss.CSharp.Colors.Color.op_Modulus*
-    name: '%'
-    href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Modulus_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
 - uid: Bliss.CSharp.Colors.Color.op_Addition*
   commentId: Overload:Bliss.CSharp.Colors.Color.op_Addition
   href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Addition_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
@@ -2282,6 +2267,21 @@ references:
   - uid: Bliss.CSharp.Colors.Color.op_Division*
     name: /
     href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Division_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+- uid: Bliss.CSharp.Colors.Color.op_Modulus*
+  commentId: Overload:Bliss.CSharp.Colors.Color.op_Modulus
+  href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Modulus_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
+  name: operator %
+  nameWithType: Color.operator %
+  fullName: Bliss.CSharp.Colors.Color.operator %
+  nameWithType.vb: Color.Mod
+  fullName.vb: Bliss.CSharp.Colors.Color.Mod
+  name.vb: Mod
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bliss.CSharp.Colors.Color.op_Modulus*
+    name: '%'
+    href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_op_Modulus_Bliss_CSharp_Colors_Color_Bliss_CSharp_Colors_Color_
 - uid: Bliss.CSharp.Colors.Color.FromHsv*
   commentId: Overload:Bliss.CSharp.Colors.Color.FromHsv
   href: Bliss.CSharp.Colors.Color.html#Bliss_CSharp_Colors_Color_FromHsv_System_Single_System_Single_System_Single_

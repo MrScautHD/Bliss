@@ -6,9 +6,6 @@ items:
   parent: Bliss.CSharp
   children:
   - Bliss.CSharp.GlobalResource.Aniso4XClampSampler
-  - Bliss.CSharp.GlobalResource.BufferLayouts
-  - Bliss.CSharp.GlobalResource.CreateBufferLayout(System.String,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType,Veldrid.ShaderStages)
-  - Bliss.CSharp.GlobalResource.CreateTextureLayout(System.String)
   - Bliss.CSharp.GlobalResource.DefaultFullScreenRenderPassEffect
   - Bliss.CSharp.GlobalResource.DefaultImmediateRendererEffect
   - Bliss.CSharp.GlobalResource.DefaultImmediateRendererTexture
@@ -21,7 +18,6 @@ items:
   - Bliss.CSharp.GlobalResource.Init(Veldrid.GraphicsDevice)
   - Bliss.CSharp.GlobalResource.LinearClampSampler
   - Bliss.CSharp.GlobalResource.PointClampSampler
-  - Bliss.CSharp.GlobalResource.TextureLayouts
   langs:
   - csharp
   - vb
@@ -84,68 +80,6 @@ items:
       type: Veldrid.GraphicsDevice
     content.vb: Public Shared Property GraphicsDevice As GraphicsDevice
   overload: Bliss.CSharp.GlobalResource.GraphicsDevice*
-- uid: Bliss.CSharp.GlobalResource.BufferLayouts
-  commentId: P:Bliss.CSharp.GlobalResource.BufferLayouts
-  id: BufferLayouts
-  parent: Bliss.CSharp.GlobalResource
-  langs:
-  - csharp
-  - vb
-  name: BufferLayouts
-  nameWithType: GlobalResource.BufferLayouts
-  fullName: Bliss.CSharp.GlobalResource.BufferLayouts
-  type: Property
-  source:
-    remote:
-      path: src/Bliss/CSharp/GlobalResource.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: BufferLayouts
-    path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 22
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp
-  summary: Stores a collection of globally accessible buffer layouts used in rendering pipelines.
-  example: []
-  syntax:
-    content: public static List<SimpleBufferLayout> BufferLayouts { get; }
-    parameters: []
-    return:
-      type: System.Collections.Generic.List{Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout}
-    content.vb: Public Shared Property BufferLayouts As List(Of SimpleBufferLayout)
-  overload: Bliss.CSharp.GlobalResource.BufferLayouts*
-- uid: Bliss.CSharp.GlobalResource.TextureLayouts
-  commentId: P:Bliss.CSharp.GlobalResource.TextureLayouts
-  id: TextureLayouts
-  parent: Bliss.CSharp.GlobalResource
-  langs:
-  - csharp
-  - vb
-  name: TextureLayouts
-  nameWithType: GlobalResource.TextureLayouts
-  fullName: Bliss.CSharp.GlobalResource.TextureLayouts
-  type: Property
-  source:
-    remote:
-      path: src/Bliss/CSharp/GlobalResource.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: TextureLayouts
-    path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 27
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp
-  summary: Maintains a collection of texture layouts used for configuring and managing texture bindings in graphics rendering operations.
-  example: []
-  syntax:
-    content: public static List<SimpleTextureLayout> TextureLayouts { get; }
-    parameters: []
-    return:
-      type: System.Collections.Generic.List{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout}
-    content.vb: Public Shared Property TextureLayouts As List(Of SimpleTextureLayout)
-  overload: Bliss.CSharp.GlobalResource.TextureLayouts*
 - uid: Bliss.CSharp.GlobalResource.PointClampSampler
   commentId: P:Bliss.CSharp.GlobalResource.PointClampSampler
   id: PointClampSampler
@@ -164,7 +98,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: PointClampSampler
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 32
+    startLine: 22
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -195,7 +129,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: LinearClampSampler
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 37
+    startLine: 27
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -226,7 +160,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Aniso4XClampSampler
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 42
+    startLine: 32
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -257,7 +191,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DefaultSpriteEffect
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 47
+    startLine: 37
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -288,7 +222,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DefaultPrimitiveEffect
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 52
+    startLine: 42
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -319,7 +253,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DefaultFullScreenRenderPassEffect
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 57
+    startLine: 47
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -350,7 +284,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DefaultImmediateRendererEffect
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 62
+    startLine: 52
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -381,7 +315,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DefaultModelEffect
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 67
+    startLine: 57
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -412,7 +346,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DefaultImmediateRendererTexture
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 72
+    startLine: 62
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -443,7 +377,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DefaultModelTexture
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 77
+    startLine: 67
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -474,7 +408,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Init
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 83
+    startLine: 73
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -488,88 +422,6 @@ items:
       description: The graphics device to be used for resource creation and rendering.
     content.vb: Public Shared Sub Init(graphicsDevice As GraphicsDevice)
   overload: Bliss.CSharp.GlobalResource.Init*
-- uid: Bliss.CSharp.GlobalResource.CreateBufferLayout(System.String,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType,Veldrid.ShaderStages)
-  commentId: M:Bliss.CSharp.GlobalResource.CreateBufferLayout(System.String,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType,Veldrid.ShaderStages)
-  id: CreateBufferLayout(System.String,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType,Veldrid.ShaderStages)
-  parent: Bliss.CSharp.GlobalResource
-  langs:
-  - csharp
-  - vb
-  name: CreateBufferLayout(string, SimpleBufferType, ShaderStages)
-  nameWithType: GlobalResource.CreateBufferLayout(string, SimpleBufferType, ShaderStages)
-  fullName: Bliss.CSharp.GlobalResource.CreateBufferLayout(string, Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType, Veldrid.ShaderStages)
-  type: Method
-  source:
-    remote:
-      path: src/Bliss/CSharp/GlobalResource.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: CreateBufferLayout
-    path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 162
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp
-  summary: Creates a new buffer layout and adds it to the global list of buffer layouts.
-  example: []
-  syntax:
-    content: public static SimpleBufferLayout CreateBufferLayout(string name, SimpleBufferType bufferType, ShaderStages stages)
-    parameters:
-    - id: name
-      type: System.String
-      description: The name of the buffer layout to create.
-    - id: bufferType
-      type: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
-      description: The type of buffer being created, such as uniform or structured.
-    - id: stages
-      type: Veldrid.ShaderStages
-      description: The shader stages where the buffer will be used.
-    return:
-      type: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
-      description: The created <code>SimpleBufferLayout</code>.
-    content.vb: Public Shared Function CreateBufferLayout(name As String, bufferType As SimpleBufferType, stages As ShaderStages) As SimpleBufferLayout
-  overload: Bliss.CSharp.GlobalResource.CreateBufferLayout*
-  nameWithType.vb: GlobalResource.CreateBufferLayout(String, SimpleBufferType, ShaderStages)
-  fullName.vb: Bliss.CSharp.GlobalResource.CreateBufferLayout(String, Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType, Veldrid.ShaderStages)
-  name.vb: CreateBufferLayout(String, SimpleBufferType, ShaderStages)
-- uid: Bliss.CSharp.GlobalResource.CreateTextureLayout(System.String)
-  commentId: M:Bliss.CSharp.GlobalResource.CreateTextureLayout(System.String)
-  id: CreateTextureLayout(System.String)
-  parent: Bliss.CSharp.GlobalResource
-  langs:
-  - csharp
-  - vb
-  name: CreateTextureLayout(string)
-  nameWithType: GlobalResource.CreateTextureLayout(string)
-  fullName: Bliss.CSharp.GlobalResource.CreateTextureLayout(string)
-  type: Method
-  source:
-    remote:
-      path: src/Bliss/CSharp/GlobalResource.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: CreateTextureLayout
-    path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 173
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp
-  summary: Creates a new texture layout and adds it to the global collection of texture layouts.
-  example: []
-  syntax:
-    content: public static SimpleTextureLayout CreateTextureLayout(string name)
-    parameters:
-    - id: name
-      type: System.String
-      description: The name of the texture layout.
-    return:
-      type: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
-      description: A new <code>SimpleTextureLayout</code> instance initialized with the specified name.
-    content.vb: Public Shared Function CreateTextureLayout(name As String) As SimpleTextureLayout
-  overload: Bliss.CSharp.GlobalResource.CreateTextureLayout*
-  nameWithType.vb: GlobalResource.CreateTextureLayout(String)
-  fullName.vb: Bliss.CSharp.GlobalResource.CreateTextureLayout(String)
-  name.vb: CreateTextureLayout(String)
 - uid: Bliss.CSharp.GlobalResource.Destroy
   commentId: M:Bliss.CSharp.GlobalResource.Destroy
   id: Destroy
@@ -588,7 +440,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Destroy
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 182
+    startLine: 146
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -868,7 +720,7 @@ references:
   commentId: T:Veldrid.GraphicsDevice
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsDevice.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs
   name: GraphicsDevice
   nameWithType: GraphicsDevice
   fullName: Veldrid.GraphicsDevice
@@ -878,149 +730,6 @@ references:
   name: Veldrid
   nameWithType: Veldrid
   fullName: Veldrid
-- uid: Bliss.CSharp.GlobalResource.BufferLayouts*
-  commentId: Overload:Bliss.CSharp.GlobalResource.BufferLayouts
-  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_BufferLayouts
-  name: BufferLayouts
-  nameWithType: GlobalResource.BufferLayouts
-  fullName: Bliss.CSharp.GlobalResource.BufferLayouts
-- uid: System.Collections.Generic.List{Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout}
-  commentId: T:System.Collections.Generic.List{Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout}
-  parent: System.Collections.Generic
-  definition: System.Collections.Generic.List`1
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  name: List<SimpleBufferLayout>
-  nameWithType: List<SimpleBufferLayout>
-  fullName: System.Collections.Generic.List<Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout>
-  nameWithType.vb: List(Of SimpleBufferLayout)
-  fullName.vb: System.Collections.Generic.List(Of Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
-  name.vb: List(Of SimpleBufferLayout)
-  spec.csharp:
-  - uid: System.Collections.Generic.List`1
-    name: List
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  - name: <
-  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
-    name: SimpleBufferLayout
-    href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
-  - name: '>'
-  spec.vb:
-  - uid: System.Collections.Generic.List`1
-    name: List
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
-    name: SimpleBufferLayout
-    href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
-  - name: )
-- uid: System.Collections.Generic.List`1
-  commentId: T:System.Collections.Generic.List`1
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  name: List<T>
-  nameWithType: List<T>
-  fullName: System.Collections.Generic.List<T>
-  nameWithType.vb: List(Of T)
-  fullName.vb: System.Collections.Generic.List(Of T)
-  name.vb: List(Of T)
-  spec.csharp:
-  - uid: System.Collections.Generic.List`1
-    name: List
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: System.Collections.Generic.List`1
-    name: List
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
-- uid: System.Collections.Generic
-  commentId: N:System.Collections.Generic
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System.Collections.Generic
-  nameWithType: System.Collections.Generic
-  fullName: System.Collections.Generic
-  spec.csharp:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Collections
-    name: Collections
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections
-  - name: .
-  - uid: System.Collections.Generic
-    name: Generic
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
-  spec.vb:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Collections
-    name: Collections
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections
-  - name: .
-  - uid: System.Collections.Generic
-    name: Generic
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
-- uid: Bliss.CSharp.GlobalResource.TextureLayouts*
-  commentId: Overload:Bliss.CSharp.GlobalResource.TextureLayouts
-  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_TextureLayouts
-  name: TextureLayouts
-  nameWithType: GlobalResource.TextureLayouts
-  fullName: Bliss.CSharp.GlobalResource.TextureLayouts
-- uid: System.Collections.Generic.List{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout}
-  commentId: T:System.Collections.Generic.List{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout}
-  parent: System.Collections.Generic
-  definition: System.Collections.Generic.List`1
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  name: List<SimpleTextureLayout>
-  nameWithType: List<SimpleTextureLayout>
-  fullName: System.Collections.Generic.List<Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout>
-  nameWithType.vb: List(Of SimpleTextureLayout)
-  fullName.vb: System.Collections.Generic.List(Of Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
-  name.vb: List(Of SimpleTextureLayout)
-  spec.csharp:
-  - uid: System.Collections.Generic.List`1
-    name: List
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  - name: <
-  - uid: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
-    name: SimpleTextureLayout
-    href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
-  - name: '>'
-  spec.vb:
-  - uid: System.Collections.Generic.List`1
-    name: List
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
-    name: SimpleTextureLayout
-    href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
-  - name: )
 - uid: Bliss.CSharp.GlobalResource.PointClampSampler*
   commentId: Overload:Bliss.CSharp.GlobalResource.PointClampSampler
   href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_PointClampSampler
@@ -1031,7 +740,7 @@ references:
   commentId: T:Veldrid.Sampler
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/Sampler.cs
   name: Sampler
   nameWithType: Sampler
   fullName: Veldrid.Sampler
@@ -1169,150 +878,6 @@ references:
   name: Init
   nameWithType: GlobalResource.Init
   fullName: Bliss.CSharp.GlobalResource.Init
-- uid: Bliss.CSharp.GlobalResource.CreateBufferLayout*
-  commentId: Overload:Bliss.CSharp.GlobalResource.CreateBufferLayout
-  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_CreateBufferLayout_System_String_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferType_Veldrid_ShaderStages_
-  name: CreateBufferLayout
-  nameWithType: GlobalResource.CreateBufferLayout
-  fullName: Bliss.CSharp.GlobalResource.CreateBufferLayout
-- uid: System.String
-  commentId: T:System.String
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.string
-  name: string
-  nameWithType: string
-  fullName: string
-  nameWithType.vb: String
-  fullName.vb: String
-  name.vb: String
-- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
-  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
-  parent: Bliss.CSharp.Graphics.Pipelines.Buffers
-  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.html
-  name: SimpleBufferType
-  nameWithType: SimpleBufferType
-  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
-- uid: Veldrid.ShaderStages
-  commentId: T:Veldrid.ShaderStages
-  parent: Veldrid
-  isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/ShaderStages.cs
-  name: ShaderStages
-  nameWithType: ShaderStages
-  fullName: Veldrid.ShaderStages
-- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
-  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
-  parent: Bliss.CSharp.Graphics.Pipelines.Buffers
-  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
-  name: SimpleBufferLayout
-  nameWithType: SimpleBufferLayout
-  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
-- uid: Bliss.CSharp.Graphics.Pipelines.Buffers
-  commentId: N:Bliss.CSharp.Graphics.Pipelines.Buffers
-  href: Bliss.html
-  name: Bliss.CSharp.Graphics.Pipelines.Buffers
-  nameWithType: Bliss.CSharp.Graphics.Pipelines.Buffers
-  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers
-  spec.csharp:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Graphics
-    name: Graphics
-    href: Bliss.CSharp.Graphics.html
-  - name: .
-  - uid: Bliss.CSharp.Graphics.Pipelines
-    name: Pipelines
-    href: Bliss.CSharp.Graphics.Pipelines.html
-  - name: .
-  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers
-    name: Buffers
-    href: Bliss.CSharp.Graphics.Pipelines.Buffers.html
-  spec.vb:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Graphics
-    name: Graphics
-    href: Bliss.CSharp.Graphics.html
-  - name: .
-  - uid: Bliss.CSharp.Graphics.Pipelines
-    name: Pipelines
-    href: Bliss.CSharp.Graphics.Pipelines.html
-  - name: .
-  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers
-    name: Buffers
-    href: Bliss.CSharp.Graphics.Pipelines.Buffers.html
-- uid: Bliss.CSharp.GlobalResource.CreateTextureLayout*
-  commentId: Overload:Bliss.CSharp.GlobalResource.CreateTextureLayout
-  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_CreateTextureLayout_System_String_
-  name: CreateTextureLayout
-  nameWithType: GlobalResource.CreateTextureLayout
-  fullName: Bliss.CSharp.GlobalResource.CreateTextureLayout
-- uid: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
-  commentId: T:Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
-  parent: Bliss.CSharp.Graphics.Pipelines.Textures
-  href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
-  name: SimpleTextureLayout
-  nameWithType: SimpleTextureLayout
-  fullName: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
-- uid: Bliss.CSharp.Graphics.Pipelines.Textures
-  commentId: N:Bliss.CSharp.Graphics.Pipelines.Textures
-  href: Bliss.html
-  name: Bliss.CSharp.Graphics.Pipelines.Textures
-  nameWithType: Bliss.CSharp.Graphics.Pipelines.Textures
-  fullName: Bliss.CSharp.Graphics.Pipelines.Textures
-  spec.csharp:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Graphics
-    name: Graphics
-    href: Bliss.CSharp.Graphics.html
-  - name: .
-  - uid: Bliss.CSharp.Graphics.Pipelines
-    name: Pipelines
-    href: Bliss.CSharp.Graphics.Pipelines.html
-  - name: .
-  - uid: Bliss.CSharp.Graphics.Pipelines.Textures
-    name: Textures
-    href: Bliss.CSharp.Graphics.Pipelines.Textures.html
-  spec.vb:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Graphics
-    name: Graphics
-    href: Bliss.CSharp.Graphics.html
-  - name: .
-  - uid: Bliss.CSharp.Graphics.Pipelines
-    name: Pipelines
-    href: Bliss.CSharp.Graphics.Pipelines.html
-  - name: .
-  - uid: Bliss.CSharp.Graphics.Pipelines.Textures
-    name: Textures
-    href: Bliss.CSharp.Graphics.Pipelines.Textures.html
 - uid: Bliss.CSharp.GlobalResource.Destroy*
   commentId: Overload:Bliss.CSharp.GlobalResource.Destroy
   href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_Destroy

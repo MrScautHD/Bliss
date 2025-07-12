@@ -461,7 +461,7 @@ references:
   commentId: T:Veldrid.VertexLayoutDescription
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/VertexLayoutDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/VertexLayoutDescription.cs
   name: VertexLayoutDescription
   nameWithType: VertexLayoutDescription
   fullName: Veldrid.VertexLayoutDescription

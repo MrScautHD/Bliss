@@ -1928,7 +1928,7 @@ references:
   commentId: T:Veldrid.GraphicsDevice
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsDevice.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs
   name: GraphicsDevice
   nameWithType: GraphicsDevice
   fullName: Veldrid.GraphicsDevice
@@ -2056,19 +2056,19 @@ references:
   - uid: Veldrid.CommandList
     name: CommandList
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/CommandList.cs
   - name: ','
   - name: " "
   - uid: Veldrid.OutputDescription
     name: OutputDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/OutputDescription.cs
   - name: ','
   - name: " "
   - uid: Veldrid.Sampler
     name: Sampler
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/Sampler.cs
   - name: ','
   - name: " "
   - uid: Bliss.CSharp.Effects.Effect
@@ -2079,21 +2079,21 @@ references:
   - uid: Veldrid.BlendStateDescription
     name: BlendStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/BlendStateDescription.cs
   - name: '?'
   - name: ','
   - name: " "
   - uid: Veldrid.DepthStencilStateDescription
     name: DepthStencilStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
   - name: '?'
   - name: ','
   - name: " "
   - uid: Veldrid.RasterizerStateDescription
     name: RasterizerStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
   - name: '?'
   - name: ','
   - name: " "
@@ -2124,19 +2124,19 @@ references:
   - uid: Veldrid.CommandList
     name: CommandList
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/CommandList.cs
   - name: ','
   - name: " "
   - uid: Veldrid.OutputDescription
     name: OutputDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/OutputDescription.cs
   - name: ','
   - name: " "
   - uid: Veldrid.Sampler
     name: Sampler
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/Sampler.cs
   - name: ','
   - name: " "
   - uid: Bliss.CSharp.Effects.Effect
@@ -2147,21 +2147,21 @@ references:
   - uid: Veldrid.BlendStateDescription
     name: BlendStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/BlendStateDescription.cs
   - name: '?'
   - name: ','
   - name: " "
   - uid: Veldrid.DepthStencilStateDescription
     name: DepthStencilStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
   - name: '?'
   - name: ','
   - name: " "
   - uid: Veldrid.RasterizerStateDescription
     name: RasterizerStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
   - name: '?'
   - name: ','
   - name: " "
@@ -2229,7 +2229,7 @@ references:
   commentId: T:Veldrid.CommandList
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/CommandList.cs
   name: CommandList
   nameWithType: CommandList
   fullName: Veldrid.CommandList
@@ -2237,7 +2237,7 @@ references:
   commentId: T:Veldrid.OutputDescription
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/OutputDescription.cs
   name: OutputDescription
   nameWithType: OutputDescription
   fullName: Veldrid.OutputDescription
@@ -2245,7 +2245,7 @@ references:
   commentId: T:Veldrid.Sampler
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/Sampler.cs
   name: Sampler
   nameWithType: Sampler
   fullName: Veldrid.Sampler
@@ -2260,7 +2260,7 @@ references:
   commentId: T:Veldrid.BlendStateDescription
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/BlendStateDescription.cs
   name: BlendStateDescription
   nameWithType: BlendStateDescription
   fullName: Veldrid.BlendStateDescription
@@ -2268,7 +2268,7 @@ references:
   commentId: T:Veldrid.DepthStencilStateDescription
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
   name: DepthStencilStateDescription
   nameWithType: DepthStencilStateDescription
   fullName: Veldrid.DepthStencilStateDescription
@@ -2276,7 +2276,7 @@ references:
   commentId: T:Veldrid.RasterizerStateDescription
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
   name: RasterizerStateDescription
   nameWithType: RasterizerStateDescription
   fullName: Veldrid.RasterizerStateDescription
@@ -2313,7 +2313,7 @@ references:
   commentId: T:System.Nullable{Veldrid.BlendStateDescription}
   parent: System
   definition: System.Nullable`1
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/BlendStateDescription.cs
   name: BlendStateDescription?
   nameWithType: BlendStateDescription?
   fullName: Veldrid.BlendStateDescription?
@@ -2321,19 +2321,19 @@ references:
   - uid: Veldrid.BlendStateDescription
     name: BlendStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/BlendStateDescription.cs
   - name: '?'
   spec.vb:
   - uid: Veldrid.BlendStateDescription
     name: BlendStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/BlendStateDescription.cs
   - name: '?'
 - uid: System.Nullable{Veldrid.DepthStencilStateDescription}
   commentId: T:System.Nullable{Veldrid.DepthStencilStateDescription}
   parent: System
   definition: System.Nullable`1
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
   name: DepthStencilStateDescription?
   nameWithType: DepthStencilStateDescription?
   fullName: Veldrid.DepthStencilStateDescription?
@@ -2341,19 +2341,19 @@ references:
   - uid: Veldrid.DepthStencilStateDescription
     name: DepthStencilStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
   - name: '?'
   spec.vb:
   - uid: Veldrid.DepthStencilStateDescription
     name: DepthStencilStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
   - name: '?'
 - uid: System.Nullable{Veldrid.RasterizerStateDescription}
   commentId: T:System.Nullable{Veldrid.RasterizerStateDescription}
   parent: System
   definition: System.Nullable`1
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
   name: RasterizerStateDescription?
   nameWithType: RasterizerStateDescription?
   fullName: Veldrid.RasterizerStateDescription?
@@ -2361,13 +2361,13 @@ references:
   - uid: Veldrid.RasterizerStateDescription
     name: RasterizerStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
   - name: '?'
   spec.vb:
   - uid: Veldrid.RasterizerStateDescription
     name: RasterizerStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
   - name: '?'
 - uid: System.Nullable{System.Numerics.Matrix4x4}
   commentId: T:System.Nullable{System.Numerics.Matrix4x4}

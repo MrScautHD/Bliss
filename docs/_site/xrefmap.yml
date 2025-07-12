@@ -1676,15 +1676,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Effects.Effect.AddTextureLayout
   nameWithType: Effect.AddTextureLayout
-- uid: Bliss.CSharp.Effects.Effect.Apply(Bliss.CSharp.Materials.Material)
-  name: Apply(Material?)
-  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_Apply_Bliss_CSharp_Materials_Material_
-  commentId: M:Bliss.CSharp.Effects.Effect.Apply(Bliss.CSharp.Materials.Material)
-  name.vb: Apply(Material)
-  fullName: Bliss.CSharp.Effects.Effect.Apply(Bliss.CSharp.Materials.Material?)
-  fullName.vb: Bliss.CSharp.Effects.Effect.Apply(Bliss.CSharp.Materials.Material)
-  nameWithType: Effect.Apply(Material?)
-  nameWithType.vb: Effect.Apply(Material)
+- uid: Bliss.CSharp.Effects.Effect.Apply(Veldrid.CommandList,Bliss.CSharp.Materials.Material)
+  name: Apply(CommandList, Material?)
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_Apply_Veldrid_CommandList_Bliss_CSharp_Materials_Material_
+  commentId: M:Bliss.CSharp.Effects.Effect.Apply(Veldrid.CommandList,Bliss.CSharp.Materials.Material)
+  name.vb: Apply(CommandList, Material)
+  fullName: Bliss.CSharp.Effects.Effect.Apply(Veldrid.CommandList, Bliss.CSharp.Materials.Material?)
+  fullName.vb: Bliss.CSharp.Effects.Effect.Apply(Veldrid.CommandList, Bliss.CSharp.Materials.Material)
+  nameWithType: Effect.Apply(CommandList, Material?)
+  nameWithType.vb: Effect.Apply(CommandList, Material)
 - uid: Bliss.CSharp.Effects.Effect.Apply*
   name: Apply
   href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_Apply_
@@ -1737,6 +1737,22 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Effects.Effect.GetBufferLayoutKeys
   nameWithType: Effect.GetBufferLayoutKeys
+- uid: Bliss.CSharp.Effects.Effect.GetBufferLayoutSlot(System.String)
+  name: GetBufferLayoutSlot(string)
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_GetBufferLayoutSlot_System_String_
+  commentId: M:Bliss.CSharp.Effects.Effect.GetBufferLayoutSlot(System.String)
+  name.vb: GetBufferLayoutSlot(String)
+  fullName: Bliss.CSharp.Effects.Effect.GetBufferLayoutSlot(string)
+  fullName.vb: Bliss.CSharp.Effects.Effect.GetBufferLayoutSlot(String)
+  nameWithType: Effect.GetBufferLayoutSlot(string)
+  nameWithType.vb: Effect.GetBufferLayoutSlot(String)
+- uid: Bliss.CSharp.Effects.Effect.GetBufferLayoutSlot*
+  name: GetBufferLayoutSlot
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_GetBufferLayoutSlot_
+  commentId: Overload:Bliss.CSharp.Effects.Effect.GetBufferLayoutSlot
+  isSpec: "True"
+  fullName: Bliss.CSharp.Effects.Effect.GetBufferLayoutSlot
+  nameWithType: Effect.GetBufferLayoutSlot
 - uid: Bliss.CSharp.Effects.Effect.GetBufferLayouts
   name: GetBufferLayouts()
   href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_GetBufferLayouts
@@ -1792,6 +1808,22 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Effects.Effect.GetTextureLayoutKeys
   nameWithType: Effect.GetTextureLayoutKeys
+- uid: Bliss.CSharp.Effects.Effect.GetTextureLayoutSlot(System.String)
+  name: GetTextureLayoutSlot(string)
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_GetTextureLayoutSlot_System_String_
+  commentId: M:Bliss.CSharp.Effects.Effect.GetTextureLayoutSlot(System.String)
+  name.vb: GetTextureLayoutSlot(String)
+  fullName: Bliss.CSharp.Effects.Effect.GetTextureLayoutSlot(string)
+  fullName.vb: Bliss.CSharp.Effects.Effect.GetTextureLayoutSlot(String)
+  nameWithType: Effect.GetTextureLayoutSlot(string)
+  nameWithType.vb: Effect.GetTextureLayoutSlot(String)
+- uid: Bliss.CSharp.Effects.Effect.GetTextureLayoutSlot*
+  name: GetTextureLayoutSlot
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_GetTextureLayoutSlot_
+  commentId: Overload:Bliss.CSharp.Effects.Effect.GetTextureLayoutSlot
+  isSpec: "True"
+  fullName: Bliss.CSharp.Effects.Effect.GetTextureLayoutSlot
+  nameWithType: Effect.GetTextureLayoutSlot
 - uid: Bliss.CSharp.Effects.Effect.GetTextureLayouts
   name: GetTextureLayouts()
   href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_GetTextureLayouts
@@ -1818,6 +1850,22 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Effects.Effect.GraphicsDevice
   nameWithType: Effect.GraphicsDevice
+- uid: Bliss.CSharp.Effects.Effect.LoadBytecode(System.String)
+  name: LoadBytecode(string)
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_LoadBytecode_System_String_
+  commentId: M:Bliss.CSharp.Effects.Effect.LoadBytecode(System.String)
+  name.vb: LoadBytecode(String)
+  fullName: Bliss.CSharp.Effects.Effect.LoadBytecode(string)
+  fullName.vb: Bliss.CSharp.Effects.Effect.LoadBytecode(String)
+  nameWithType: Effect.LoadBytecode(string)
+  nameWithType.vb: Effect.LoadBytecode(String)
+- uid: Bliss.CSharp.Effects.Effect.LoadBytecode*
+  name: LoadBytecode
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_LoadBytecode_
+  commentId: Overload:Bliss.CSharp.Effects.Effect.LoadBytecode
+  isSpec: "True"
+  fullName: Bliss.CSharp.Effects.Effect.LoadBytecode
+  nameWithType: Effect.LoadBytecode
 - uid: Bliss.CSharp.Effects.Effect.Shader
   name: Shader
   href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_Shader
@@ -3526,51 +3574,6 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.GlobalResource.Aniso4XClampSampler
   nameWithType: GlobalResource.Aniso4XClampSampler
-- uid: Bliss.CSharp.GlobalResource.BufferLayouts
-  name: BufferLayouts
-  href: api/Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_BufferLayouts
-  commentId: P:Bliss.CSharp.GlobalResource.BufferLayouts
-  fullName: Bliss.CSharp.GlobalResource.BufferLayouts
-  nameWithType: GlobalResource.BufferLayouts
-- uid: Bliss.CSharp.GlobalResource.BufferLayouts*
-  name: BufferLayouts
-  href: api/Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_BufferLayouts_
-  commentId: Overload:Bliss.CSharp.GlobalResource.BufferLayouts
-  isSpec: "True"
-  fullName: Bliss.CSharp.GlobalResource.BufferLayouts
-  nameWithType: GlobalResource.BufferLayouts
-- uid: Bliss.CSharp.GlobalResource.CreateBufferLayout(System.String,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType,Veldrid.ShaderStages)
-  name: CreateBufferLayout(string, SimpleBufferType, ShaderStages)
-  href: api/Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_CreateBufferLayout_System_String_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferType_Veldrid_ShaderStages_
-  commentId: M:Bliss.CSharp.GlobalResource.CreateBufferLayout(System.String,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType,Veldrid.ShaderStages)
-  name.vb: CreateBufferLayout(String, SimpleBufferType, ShaderStages)
-  fullName: Bliss.CSharp.GlobalResource.CreateBufferLayout(string, Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType, Veldrid.ShaderStages)
-  fullName.vb: Bliss.CSharp.GlobalResource.CreateBufferLayout(String, Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType, Veldrid.ShaderStages)
-  nameWithType: GlobalResource.CreateBufferLayout(string, SimpleBufferType, ShaderStages)
-  nameWithType.vb: GlobalResource.CreateBufferLayout(String, SimpleBufferType, ShaderStages)
-- uid: Bliss.CSharp.GlobalResource.CreateBufferLayout*
-  name: CreateBufferLayout
-  href: api/Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_CreateBufferLayout_
-  commentId: Overload:Bliss.CSharp.GlobalResource.CreateBufferLayout
-  isSpec: "True"
-  fullName: Bliss.CSharp.GlobalResource.CreateBufferLayout
-  nameWithType: GlobalResource.CreateBufferLayout
-- uid: Bliss.CSharp.GlobalResource.CreateTextureLayout(System.String)
-  name: CreateTextureLayout(string)
-  href: api/Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_CreateTextureLayout_System_String_
-  commentId: M:Bliss.CSharp.GlobalResource.CreateTextureLayout(System.String)
-  name.vb: CreateTextureLayout(String)
-  fullName: Bliss.CSharp.GlobalResource.CreateTextureLayout(string)
-  fullName.vb: Bliss.CSharp.GlobalResource.CreateTextureLayout(String)
-  nameWithType: GlobalResource.CreateTextureLayout(string)
-  nameWithType.vb: GlobalResource.CreateTextureLayout(String)
-- uid: Bliss.CSharp.GlobalResource.CreateTextureLayout*
-  name: CreateTextureLayout
-  href: api/Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_CreateTextureLayout_
-  commentId: Overload:Bliss.CSharp.GlobalResource.CreateTextureLayout
-  isSpec: "True"
-  fullName: Bliss.CSharp.GlobalResource.CreateTextureLayout
-  nameWithType: GlobalResource.CreateTextureLayout
 - uid: Bliss.CSharp.GlobalResource.DefaultFullScreenRenderPassEffect
   name: DefaultFullScreenRenderPassEffect
   href: api/Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_DefaultFullScreenRenderPassEffect
@@ -3727,19 +3730,6 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.GlobalResource.PointClampSampler
   nameWithType: GlobalResource.PointClampSampler
-- uid: Bliss.CSharp.GlobalResource.TextureLayouts
-  name: TextureLayouts
-  href: api/Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_TextureLayouts
-  commentId: P:Bliss.CSharp.GlobalResource.TextureLayouts
-  fullName: Bliss.CSharp.GlobalResource.TextureLayouts
-  nameWithType: GlobalResource.TextureLayouts
-- uid: Bliss.CSharp.GlobalResource.TextureLayouts*
-  name: TextureLayouts
-  href: api/Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_TextureLayouts_
-  commentId: Overload:Bliss.CSharp.GlobalResource.TextureLayouts
-  isSpec: "True"
-  fullName: Bliss.CSharp.GlobalResource.TextureLayouts
-  nameWithType: GlobalResource.TextureLayouts
 - uid: Bliss.CSharp.Graphics
   name: Bliss.CSharp.Graphics
   href: api/Bliss.CSharp.Graphics.html

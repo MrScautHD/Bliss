@@ -2042,7 +2042,7 @@ references:
   commentId: T:Veldrid.SwapchainSource
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/SwapchainSource.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/SwapchainSource.cs
   name: SwapchainSource
   nameWithType: SwapchainSource
   fullName: Veldrid.SwapchainSource
@@ -2834,7 +2834,7 @@ references:
   commentId: T:Veldrid.GraphicsDeviceOptions
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsDeviceOptions.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDeviceOptions.cs
   name: GraphicsDeviceOptions
   nameWithType: GraphicsDeviceOptions
   fullName: Veldrid.GraphicsDeviceOptions
@@ -2842,7 +2842,7 @@ references:
   commentId: T:Veldrid.GraphicsBackend
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsBackend.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsBackend.cs
   name: GraphicsBackend
   nameWithType: GraphicsBackend
   fullName: Veldrid.GraphicsBackend
@@ -2850,7 +2850,7 @@ references:
   commentId: T:Veldrid.OpenGL.OpenGLPlatformInfo
   parent: Veldrid.OpenGL
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OpenGL/OpenGLPlatformInfo.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/OpenGL/OpenGLPlatformInfo.cs
   name: OpenGLPlatformInfo
   nameWithType: OpenGLPlatformInfo
   fullName: Veldrid.OpenGL.OpenGLPlatformInfo

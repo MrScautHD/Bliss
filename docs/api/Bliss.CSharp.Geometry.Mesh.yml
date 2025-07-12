@@ -1393,7 +1393,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1378
+    startLine: 1376
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1771,7 +1771,7 @@ references:
   commentId: T:Veldrid.GraphicsDevice
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsDevice.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs
   name: GraphicsDevice
   nameWithType: GraphicsDevice
   fullName: Veldrid.GraphicsDevice
@@ -2311,7 +2311,7 @@ references:
   commentId: T:Veldrid.CommandList
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/CommandList.cs
   name: CommandList
   nameWithType: CommandList
   fullName: Veldrid.CommandList
@@ -2437,7 +2437,7 @@ references:
   commentId: T:Veldrid.OutputDescription
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/OutputDescription.cs
   name: OutputDescription
   nameWithType: OutputDescription
   fullName: Veldrid.OutputDescription
@@ -2445,7 +2445,7 @@ references:
   commentId: T:Veldrid.Sampler
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/Sampler.cs
   name: Sampler
   nameWithType: Sampler
   fullName: Veldrid.Sampler
@@ -2453,7 +2453,7 @@ references:
   commentId: T:System.Nullable{Veldrid.DepthStencilStateDescription}
   parent: System
   definition: System.Nullable`1
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
   name: DepthStencilStateDescription?
   nameWithType: DepthStencilStateDescription?
   fullName: Veldrid.DepthStencilStateDescription?
@@ -2461,19 +2461,19 @@ references:
   - uid: Veldrid.DepthStencilStateDescription
     name: DepthStencilStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
   - name: '?'
   spec.vb:
   - uid: Veldrid.DepthStencilStateDescription
     name: DepthStencilStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
   - name: '?'
 - uid: System.Nullable{Veldrid.RasterizerStateDescription}
   commentId: T:System.Nullable{Veldrid.RasterizerStateDescription}
   parent: System
   definition: System.Nullable`1
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
   name: RasterizerStateDescription?
   nameWithType: RasterizerStateDescription?
   fullName: Veldrid.RasterizerStateDescription?
@@ -2481,13 +2481,13 @@ references:
   - uid: Veldrid.RasterizerStateDescription
     name: RasterizerStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
   - name: '?'
   spec.vb:
   - uid: Veldrid.RasterizerStateDescription
     name: RasterizerStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
   - name: '?'
 - uid: System.Nullable{Bliss.CSharp.Colors.Color}
   commentId: T:System.Nullable{Bliss.CSharp.Colors.Color}

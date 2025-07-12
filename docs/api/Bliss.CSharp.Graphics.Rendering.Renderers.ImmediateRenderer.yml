@@ -1464,27 +1464,38 @@ items:
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
+  summary: Renders a grid using the specified command list, output description, transformation matrix, and grid parameters.
+  example: []
   syntax:
     content: public void DrawGrid(CommandList commandList, OutputDescription output, Transform transform, int slices, int spacing, int majorLineSpacing, Color? color = null, Color? axisColorX = null, Color? axisColorZ = null)
     parameters:
     - id: commandList
       type: Veldrid.CommandList
+      description: The command list used to issue rendering commands.
     - id: output
       type: Veldrid.OutputDescription
+      description: The output description for the target render resource.
     - id: transform
       type: Bliss.CSharp.Transformations.Transform
+      description: The transformation matrix applied to the grid.
     - id: slices
       type: System.Int32
+      description: The number of grid divisions or slices. Must be greater than or equal to 1.
     - id: spacing
       type: System.Int32
+      description: The distance between adjacent grid lines. Must be greater than or equal to 1.
     - id: majorLineSpacing
       type: System.Int32
+      description: The interval of major grid lines, which are visually distinct. Must be greater than or equal to 1.
     - id: color
       type: System.Nullable{Bliss.CSharp.Colors.Color}
+      description: The optional color of the grid lines. Defaults to white if not provided.
     - id: axisColorX
       type: System.Nullable{Bliss.CSharp.Colors.Color}
+      description: The optional color for the X-axis grid line. Defaults to red if not provided.
     - id: axisColorZ
       type: System.Nullable{Bliss.CSharp.Colors.Color}
+      description: The optional color for the Z-axis grid line. Defaults to blue if not provided.
     content.vb: Public Sub DrawGrid(commandList As CommandList, output As OutputDescription, transform As Transform, slices As Integer, spacing As Integer, majorLineSpacing As Integer, color As Color? = Nothing, axisColorX As Color? = Nothing, axisColorZ As Color? = Nothing)
   overload: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.DrawGrid*
   nameWithType.vb: ImmediateRenderer.DrawGrid(CommandList, OutputDescription, Transform, Integer, Integer, Integer, Color?, Color?, Color?)
@@ -2084,7 +2095,7 @@ references:
   commentId: T:Veldrid.GraphicsDevice
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/GraphicsDevice.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs
   name: GraphicsDevice
   nameWithType: GraphicsDevice
   fullName: Veldrid.GraphicsDevice
@@ -2179,7 +2190,7 @@ references:
   commentId: T:Veldrid.BlendStateDescription
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/BlendStateDescription.cs
   name: BlendStateDescription
   nameWithType: BlendStateDescription
   fullName: Veldrid.BlendStateDescription
@@ -2192,7 +2203,7 @@ references:
 - uid: Veldrid.BlendStateDescription.SINGLE_ALPHA_BLEND
   commentId: F:Veldrid.BlendStateDescription.SINGLE_ALPHA_BLEND
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/BlendStateDescription.cs
   name: SINGLE_ALPHA_BLEND
   nameWithType: BlendStateDescription.SINGLE_ALPHA_BLEND
   fullName: Veldrid.BlendStateDescription.SINGLE_ALPHA_BLEND
@@ -2206,7 +2217,7 @@ references:
   commentId: T:System.Nullable{Veldrid.BlendStateDescription}
   parent: System
   definition: System.Nullable`1
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/BlendStateDescription.cs
   name: BlendStateDescription?
   nameWithType: BlendStateDescription?
   fullName: Veldrid.BlendStateDescription?
@@ -2214,13 +2225,13 @@ references:
   - uid: Veldrid.BlendStateDescription
     name: BlendStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/BlendStateDescription.cs
   - name: '?'
   spec.vb:
   - uid: Veldrid.BlendStateDescription
     name: BlendStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/BlendStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/BlendStateDescription.cs
   - name: '?'
 - uid: System.Nullable`1
   commentId: T:System.Nullable`1
@@ -2254,7 +2265,7 @@ references:
   commentId: T:Veldrid.DepthStencilStateDescription
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
   name: DepthStencilStateDescription
   nameWithType: DepthStencilStateDescription
   fullName: Veldrid.DepthStencilStateDescription
@@ -2274,7 +2285,7 @@ references:
   commentId: T:System.Nullable{Veldrid.DepthStencilStateDescription}
   parent: System
   definition: System.Nullable`1
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
   name: DepthStencilStateDescription?
   nameWithType: DepthStencilStateDescription?
   fullName: Veldrid.DepthStencilStateDescription?
@@ -2282,13 +2293,13 @@ references:
   - uid: Veldrid.DepthStencilStateDescription
     name: DepthStencilStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
   - name: '?'
   spec.vb:
   - uid: Veldrid.DepthStencilStateDescription
     name: DepthStencilStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/DepthStencilStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
   - name: '?'
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentRasterizerState*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentRasterizerState
@@ -2300,7 +2311,7 @@ references:
   commentId: T:Veldrid.RasterizerStateDescription
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
   name: RasterizerStateDescription
   nameWithType: RasterizerStateDescription
   fullName: Veldrid.RasterizerStateDescription
@@ -2314,7 +2325,7 @@ references:
   commentId: T:System.Nullable{Veldrid.RasterizerStateDescription}
   parent: System
   definition: System.Nullable`1
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
   name: RasterizerStateDescription?
   nameWithType: RasterizerStateDescription?
   fullName: Veldrid.RasterizerStateDescription?
@@ -2322,13 +2333,13 @@ references:
   - uid: Veldrid.RasterizerStateDescription
     name: RasterizerStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
   - name: '?'
   spec.vb:
   - uid: Veldrid.RasterizerStateDescription
     name: RasterizerStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/RasterizerStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
   - name: '?'
 - uid: Bliss.CSharp.Textures.Texture2D
   commentId: T:Bliss.CSharp.Textures.Texture2D
@@ -2377,7 +2388,7 @@ references:
   commentId: T:Veldrid.Sampler
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/Sampler.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/Sampler.cs
   name: Sampler
   nameWithType: Sampler
   fullName: Veldrid.Sampler
@@ -2470,7 +2481,7 @@ references:
   commentId: T:Veldrid.CommandList
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/CommandList.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/CommandList.cs
   name: CommandList
   nameWithType: CommandList
   fullName: Veldrid.CommandList
@@ -2478,7 +2489,7 @@ references:
   commentId: T:Veldrid.OutputDescription
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/OutputDescription.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/OutputDescription.cs
   name: OutputDescription
   nameWithType: OutputDescription
   fullName: Veldrid.OutputDescription
@@ -2813,7 +2824,7 @@ references:
   commentId: T:Veldrid.PrimitiveTopology
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/ca0239da6befcf74db2106d98653e15ec593291a/src/Veldrid/PrimitiveTopology.cs
+  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/PrimitiveTopology.cs
   name: PrimitiveTopology
   nameWithType: PrimitiveTopology
   fullName: Veldrid.PrimitiveTopology
