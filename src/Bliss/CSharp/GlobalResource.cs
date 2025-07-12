@@ -16,16 +16,6 @@ public static class GlobalResource {
     /// Provides access to the global graphics device used for rendering operations.
     /// </summary>
     public static GraphicsDevice GraphicsDevice { get; private set; }
-
-    /// <summary>
-    /// Stores a collection of globally accessible buffer layouts used in rendering pipelines.
-    /// </summary>
-    public static List<SimpleBufferLayout> BufferLayouts { get; private set; }
-
-    /// <summary>
-    /// Maintains a collection of texture layouts used for configuring and managing texture bindings in graphics rendering operations.
-    /// </summary>
-    public static List<SimpleTextureLayout> TextureLayouts { get; private set; }
     
     /// <summary>
     /// A global point sampler using clamp addressing mode.
@@ -83,8 +73,6 @@ public static class GlobalResource {
     /// <param name="graphicsDevice">The graphics device to be used for resource creation and rendering.</param>
     public static void Init(GraphicsDevice graphicsDevice) {
         GraphicsDevice = graphicsDevice;
-        BufferLayouts = new List<SimpleBufferLayout>();
-        TextureLayouts = new List<SimpleTextureLayout>();
         
         // Default Samplers.
         PointClampSampler = graphicsDevice.ResourceFactory.CreateSampler(new SamplerDescription {
@@ -122,61 +110,37 @@ public static class GlobalResource {
         
         // Default sprite effect.
         DefaultSpriteEffect = new Effect(graphicsDevice, SpriteVertex2D.VertexLayout, "content/shaders/sprite.vert", "content/shaders/sprite.frag");
-        DefaultSpriteEffect.AddBufferLayout(CreateBufferLayout("ProjectionViewBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
-        DefaultSpriteEffect.AddTextureLayout(CreateTextureLayout("fTexture"));
+        DefaultSpriteEffect.AddBufferLayout(new SimpleBufferLayout(GraphicsDevice, "ProjectionViewBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
+        DefaultSpriteEffect.AddTextureLayout(new SimpleTextureLayout(GraphicsDevice, "fTexture"));
         
         // Primitive effect.
         DefaultPrimitiveEffect = new Effect(graphicsDevice, PrimitiveVertex2D.VertexLayout, "content/shaders/primitive.vert", "content/shaders/primitive.frag");
-        DefaultPrimitiveEffect.AddBufferLayout(CreateBufferLayout("ProjectionViewBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
+        DefaultPrimitiveEffect.AddBufferLayout(new SimpleBufferLayout(GraphicsDevice, "ProjectionViewBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
         
         // FullScreenRenderPass effect.
         DefaultFullScreenRenderPassEffect = new Effect(graphicsDevice, SpriteVertex2D.VertexLayout, "content/shaders/full_screen_render_pass.vert", "content/shaders/full_screen_render_pass.frag");
-        DefaultFullScreenRenderPassEffect.AddTextureLayout(CreateTextureLayout("fTexture"));
+        DefaultFullScreenRenderPassEffect.AddTextureLayout(new SimpleTextureLayout(GraphicsDevice, "fTexture"));
         
         // ImmediateRenderer effect.
         DefaultImmediateRendererEffect = new Effect(graphicsDevice, ImmediateVertex3D.VertexLayout, "content/shaders/immediate_renderer.vert", "content/shaders/immediate_renderer.frag");
-        DefaultImmediateRendererEffect.AddBufferLayout(CreateBufferLayout("MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
-        DefaultImmediateRendererEffect.AddTextureLayout(CreateTextureLayout("fTexture"));
+        DefaultImmediateRendererEffect.AddBufferLayout(new SimpleBufferLayout(GraphicsDevice, "MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
+        DefaultImmediateRendererEffect.AddTextureLayout(new SimpleTextureLayout(GraphicsDevice, "fTexture"));
         
         // Default model effect.
         DefaultModelEffect = new Effect(graphicsDevice, Vertex3D.VertexLayout, "content/shaders/default_model.vert", "content/shaders/default_model.frag");
-        DefaultModelEffect.AddBufferLayout(CreateBufferLayout("MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
-        DefaultModelEffect.AddBufferLayout(CreateBufferLayout("BoneBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
-        DefaultModelEffect.AddBufferLayout(CreateBufferLayout("ColorBuffer", SimpleBufferType.Uniform, ShaderStages.Fragment));
-        DefaultModelEffect.AddBufferLayout(CreateBufferLayout("ValueBuffer", SimpleBufferType.Uniform, ShaderStages.Fragment));
-        DefaultModelEffect.AddTextureLayout(CreateTextureLayout(MaterialMapType.Albedo.GetName()));
-
+        DefaultModelEffect.AddBufferLayout(new SimpleBufferLayout(GraphicsDevice, "MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
+        DefaultModelEffect.AddBufferLayout(new SimpleBufferLayout(GraphicsDevice, "BoneBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
+        DefaultModelEffect.AddBufferLayout(new SimpleBufferLayout(GraphicsDevice, "ColorBuffer", SimpleBufferType.Uniform, ShaderStages.Fragment));
+        DefaultModelEffect.AddBufferLayout(new SimpleBufferLayout(GraphicsDevice, "ValueBuffer", SimpleBufferType.Uniform, ShaderStages.Fragment));
+        DefaultModelEffect.AddTextureLayout(new SimpleTextureLayout(GraphicsDevice, MaterialMapType.Albedo.GetName()));
+        
         // Default immediate renderer texture.
         DefaultImmediateRendererTexture = new Texture2D(graphicsDevice, new Image(1, 1, Color.White));
         
         // Default model texture.
         DefaultModelTexture = new Texture2D(graphicsDevice, new Image(1, 1, Color.Gray));
     }
-
-    /// <summary>
-    /// Creates a new buffer layout and adds it to the global list of buffer layouts.
-    /// </summary>
-    /// <param name="name">The name of the buffer layout to create.</param>
-    /// <param name="bufferType">The type of buffer being created, such as uniform or structured.</param>
-    /// <param name="stages">The shader stages where the buffer will be used.</param>
-    /// <returns>The created <c>SimpleBufferLayout</c>.</returns>
-    public static SimpleBufferLayout CreateBufferLayout(string name, SimpleBufferType bufferType, ShaderStages stages) {
-        SimpleBufferLayout bufferLayout = new SimpleBufferLayout(GraphicsDevice, name, bufferType, stages);
-        BufferLayouts.Add(bufferLayout);
-        return bufferLayout;
-    }
-
-    /// <summary>
-    /// Creates a new texture layout and adds it to the global collection of texture layouts.
-    /// </summary>
-    /// <param name="name">The name of the texture layout.</param>
-    /// <returns>A new <c>SimpleTextureLayout</c> instance initialized with the specified name.</returns>
-    public static SimpleTextureLayout CreateTextureLayout(string name) {
-        SimpleTextureLayout textureLayout = new SimpleTextureLayout(GraphicsDevice, name);
-        TextureLayouts.Add(textureLayout);
-        return textureLayout;
-    }
-
+    
     /// <summary>
     /// Releases and disposes of all global resources.
     /// </summary>
@@ -186,19 +150,10 @@ public static class GlobalResource {
         Aniso4XClampSampler.Dispose();
         DefaultSpriteEffect.Dispose();
         DefaultPrimitiveEffect.Dispose();
+        DefaultFullScreenRenderPassEffect.Dispose();
+        DefaultImmediateRendererEffect.Dispose();
         DefaultModelEffect.Dispose();
+        DefaultImmediateRendererTexture.Dispose();
         DefaultModelTexture.Dispose();
-
-        foreach (SimpleBufferLayout bufferLayout in BufferLayouts) {
-            bufferLayout.Dispose();
-        }
-        
-        BufferLayouts.Clear();
-        
-        foreach (SimpleTextureLayout textureLayout in TextureLayouts) {
-            textureLayout.Dispose();
-        }
-        
-        TextureLayouts.Clear();
     }
 }

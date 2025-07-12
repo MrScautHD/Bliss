@@ -78,7 +78,7 @@ public class FullScreenRenderPass : Disposable {
         commandList.SetPipeline(finalEffect.GetPipeline(this._pipelineDescription).Pipeline);
         
         // Set resourceSet of the texture.
-        commandList.SetGraphicsResourceSet(0, renderTexture.GetResourceSet(finalSampler, finalEffect.GetTextureLayout("fTexture").Layout));
+        commandList.SetGraphicsResourceSet(finalEffect.GetTextureLayoutSlot("fTexture"), renderTexture.GetResourceSet(finalSampler, finalEffect.GetTextureLayout("fTexture").Layout));
         
         // Apply effect.
         finalEffect.Apply(commandList);

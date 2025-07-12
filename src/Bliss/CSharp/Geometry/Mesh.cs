@@ -1292,24 +1292,23 @@ public class Mesh : Disposable {
             commandList.SetPipeline(this.Material.Effect.GetPipeline(this._pipelineDescription).Pipeline);
             
             // Set projection view buffer.
-            commandList.SetGraphicsResourceSet(0, this._modelMatrixBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("MatrixBuffer")));
+            commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("MatrixBuffer"), this._modelMatrixBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("MatrixBuffer")));
             
             // Set bone buffer.
-            commandList.SetGraphicsResourceSet(1, this._boneBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("BoneBuffer")));
+            commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("BoneBuffer"), this._boneBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("BoneBuffer")));
             
             // Set color buffer.
-            commandList.SetGraphicsResourceSet(2, this._colorBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ColorBuffer")));
+            commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("ColorBuffer"), this._colorBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ColorBuffer")));
             
             // Set value buffer.
-            commandList.SetGraphicsResourceSet(3, this._valueBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ValueBuffer")));
+            commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("ValueBuffer"), this._valueBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ValueBuffer")));
             
             // Set material texture.
-            for (int i = 0; i < this.Material.Effect.GetTextureLayoutKeys().Count(); i++) {
-                string key = this.Material.Effect.GetTextureLayoutKeys().ElementAt(i);
-                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), this.Material.Effect.GetTextureLayout(key), key);
-
+            foreach (string textureLayoutKey in this.Material.Effect.GetTextureLayoutKeys()) {
+                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), this.Material.Effect.GetTextureLayout(textureLayoutKey), textureLayoutKey);
+                
                 if (resourceSet != null) {
-                    commandList.SetGraphicsResourceSet((uint) i + 4, resourceSet);
+                    commandList.SetGraphicsResourceSet(this.Material.Effect.GetTextureLayoutSlot(textureLayoutKey), resourceSet);
                 }
             }
             
@@ -1328,24 +1327,23 @@ public class Mesh : Disposable {
             commandList.SetPipeline(this.Material.Effect.GetPipeline(this._pipelineDescription).Pipeline);
             
             // Set projection view buffer.
-            commandList.SetGraphicsResourceSet(0, this._modelMatrixBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("MatrixBuffer")));
+            commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("MatrixBuffer"), this._modelMatrixBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("MatrixBuffer")));
             
             // Set bone buffer.
-            commandList.SetGraphicsResourceSet(1, this._boneBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("BoneBuffer")));
+            commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("BoneBuffer"), this._boneBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("BoneBuffer")));
             
             // Set color buffer.
-            commandList.SetGraphicsResourceSet(2, this._colorBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ColorBuffer")));
+            commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("ColorBuffer"), this._colorBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ColorBuffer")));
             
             // Set value buffer.
-            commandList.SetGraphicsResourceSet(3, this._valueBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ValueBuffer")));
+            commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("ValueBuffer"), this._valueBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ValueBuffer")));
             
             // Set material texture.
-            for (int i = 0; i < this.Material.Effect.GetTextureLayoutKeys().Count(); i++) {
-                string key = this.Material.Effect.GetTextureLayoutKeys().ElementAt(i);
-                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), this.Material.Effect.GetTextureLayout(key), key);
-
+            foreach (string textureLayoutKey in this.Material.Effect.GetTextureLayoutKeys()) {
+                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), this.Material.Effect.GetTextureLayout(textureLayoutKey), textureLayoutKey);
+                
                 if (resourceSet != null) {
-                    commandList.SetGraphicsResourceSet((uint) i + 4, resourceSet);
+                    commandList.SetGraphicsResourceSet(this.Material.Effect.GetTextureLayoutSlot(textureLayoutKey), resourceSet);
                 }
             }
             

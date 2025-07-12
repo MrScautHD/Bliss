@@ -2020,10 +2020,10 @@ public class ImmediateRenderer : Disposable {
             commandList.SetPipeline(this._currentEffect.GetPipeline(this._pipelineDescription).Pipeline);
         
             // Set matrix buffer.
-            commandList.SetGraphicsResourceSet(0, this._matrixBuffer.GetResourceSet(this._currentEffect.GetBufferLayout("MatrixBuffer")));
+            commandList.SetGraphicsResourceSet(this._currentEffect.GetBufferLayoutSlot("MatrixBuffer"), this._matrixBuffer.GetResourceSet(this._currentEffect.GetBufferLayout("MatrixBuffer")));
 
             // Set resourceSet of the texture.
-            commandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this._currentEffect.GetTextureLayout("fTexture")));
+            commandList.SetGraphicsResourceSet(this._currentEffect.GetTextureLayoutSlot("fTexture"), this._currentTexture.GetResourceSet(this._currentSampler, this._currentEffect.GetTextureLayout("fTexture")));
             
             // Apply effect.
             this._currentEffect.Apply(commandList);
@@ -2043,10 +2043,10 @@ public class ImmediateRenderer : Disposable {
             commandList.SetPipeline(this._currentEffect.GetPipeline(this._pipelineDescription).Pipeline);
         
             // Set matrix buffer.
-            commandList.SetGraphicsResourceSet(0, this._matrixBuffer.GetResourceSet(this._currentEffect.GetBufferLayout("MatrixBuffer")));
+            commandList.SetGraphicsResourceSet(this._currentEffect.GetBufferLayoutSlot("MatrixBuffer"), this._matrixBuffer.GetResourceSet(this._currentEffect.GetBufferLayout("MatrixBuffer")));
         
             // Set resourceSet of the texture.
-            commandList.SetGraphicsResourceSet(1, this._currentTexture.GetResourceSet(this._currentSampler, this._currentEffect.GetTextureLayout("fTexture")));
+            commandList.SetGraphicsResourceSet(this._currentEffect.GetTextureLayoutSlot("fTexture"), this._currentTexture.GetResourceSet(this._currentSampler, this._currentEffect.GetTextureLayout("fTexture")));
             
             // Apply effect.
             this._currentEffect.Apply(commandList);
