@@ -379,7 +379,7 @@ public class Game : Disposable {
         this._spriteBatch.PopRasterizerState();
         
         //this._spriteBatch.DrawTexture(this._customMeshTexture, Input.GetMousePosition(), scale: new Vector2(3, 3));
-        this._spriteBatch.DrawTexture(this._button, new Vector2(300, 300), scale: new Vector2(3, 3));
+        //this._spriteBatch.DrawTexture(this._button, new Vector2(300, 300), scale: new Vector2(3, 3));
         
         this._spriteBatch.End();
         
