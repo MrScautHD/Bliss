@@ -236,12 +236,12 @@ public class Mesh : Disposable {
             new Vector3(-1.0F, 0.0F, 0.0F), new Vector3(1.0F, 0.0F, 0.0F),
             new Vector3(0.0F, 1.0F, 0.0F), new Vector3(0.0F, -1.0F, 0.0F)
         ];
-    
+        
         Vector2[] texCoords = [
             new Vector2(0.0F, 1.0F), new Vector2(1.0F, 1.0F),
             new Vector2(1.0F, 0.0F), new Vector2(0.0F, 0.0F)
         ];
-    
+        
         Vector3[] positions = [
             // Front face
             new Vector3(-1.0F, -1.0F, -1.0F), new Vector3(1.0F, -1.0F, -1.0F), new Vector3(1.0F, 1.0F, -1.0F), new Vector3(-1.0F, 1.0F, -1.0F),

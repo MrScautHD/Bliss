@@ -153,6 +153,11 @@ public class RenderTexture2D : Disposable {
         this.ColorTexture.Dispose();
         this.DestinationTexture.Dispose();
         this.Framebuffer.Dispose();
+
+        foreach (ResourceSet resourceSet in this._cachedResourceSets.Values) {
+            resourceSet.Dispose();
+        }
+        
         this._cachedResourceSets.Clear();
     }
     
