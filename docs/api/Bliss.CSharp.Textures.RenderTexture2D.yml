@@ -472,7 +472,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Textures/RenderTexture2D.cs
-    startLine: 158
+    startLine: 163
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures

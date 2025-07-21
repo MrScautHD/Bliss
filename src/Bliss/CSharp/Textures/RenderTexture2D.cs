@@ -143,7 +143,7 @@ public class RenderTexture2D : Disposable {
             return sampleCount;
         }
     }
-
+    
     /// <summary>
     /// Releases the resources allocated for the depth, color, and destination textures, as well as the framebuffer.
     /// Also clears any cached resource sets to ensure no references to disposed resources remain.
@@ -153,7 +153,7 @@ public class RenderTexture2D : Disposable {
         this.ColorTexture.Dispose();
         this.DestinationTexture.Dispose();
         this.Framebuffer.Dispose();
-
+        
         foreach (ResourceSet resourceSet in this._cachedResourceSets.Values) {
             resourceSet.Dispose();
         }
