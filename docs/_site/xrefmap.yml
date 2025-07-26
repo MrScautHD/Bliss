@@ -3497,15 +3497,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Geometry.Model.GraphicsDevice
   nameWithType: Model.GraphicsDevice
-- uid: Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
-  name: Load(GraphicsDevice, string, bool, bool, bool, bool)
-  href: api/Bliss.CSharp.Geometry.Model.html#Bliss_CSharp_Geometry_Model_Load_Veldrid_GraphicsDevice_System_String_System_Boolean_System_Boolean_System_Boolean_System_Boolean_
-  commentId: M:Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
-  name.vb: Load(GraphicsDevice, String, Boolean, Boolean, Boolean, Boolean)
-  fullName: Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice, string, bool, bool, bool, bool)
-  fullName.vb: Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice, String, Boolean, Boolean, Boolean, Boolean)
-  nameWithType: Model.Load(GraphicsDevice, string, bool, bool, bool, bool)
-  nameWithType.vb: Model.Load(GraphicsDevice, String, Boolean, Boolean, Boolean, Boolean)
+- uid: Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean)
+  name: Load(GraphicsDevice, string, bool, bool)
+  href: api/Bliss.CSharp.Geometry.Model.html#Bliss_CSharp_Geometry_Model_Load_Veldrid_GraphicsDevice_System_String_System_Boolean_System_Boolean_
+  commentId: M:Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean)
+  name.vb: Load(GraphicsDevice, String, Boolean, Boolean)
+  fullName: Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice, string, bool, bool)
+  fullName.vb: Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice, String, Boolean, Boolean)
+  nameWithType: Model.Load(GraphicsDevice, string, bool, bool)
+  nameWithType.vb: Model.Load(GraphicsDevice, String, Boolean, Boolean)
 - uid: Bliss.CSharp.Geometry.Model.Load*
   name: Load
   href: api/Bliss.CSharp.Geometry.Model.html#Bliss_CSharp_Geometry_Model_Load_

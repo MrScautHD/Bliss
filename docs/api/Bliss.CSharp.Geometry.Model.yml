@@ -11,7 +11,7 @@ items:
   - Bliss.CSharp.Geometry.Model.Dispose(System.Boolean)
   - Bliss.CSharp.Geometry.Model.Draw(Veldrid.CommandList,Bliss.CSharp.Transformations.Transform,Veldrid.OutputDescription,Veldrid.Sampler,System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{Bliss.CSharp.Colors.Color})
   - Bliss.CSharp.Geometry.Model.GraphicsDevice
-  - Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+  - Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean)
   - Bliss.CSharp.Geometry.Model.Meshes
   - Bliss.CSharp.Geometry.Model.ResetAnimationBones(Veldrid.CommandList)
   - Bliss.CSharp.Geometry.Model.UpdateAnimationBones(Veldrid.CommandList,Bliss.CSharp.Geometry.Animations.ModelAnimation,System.Int32)
@@ -220,16 +220,16 @@ items:
   nameWithType.vb: Model.New(GraphicsDevice, Mesh(), ModelAnimation())
   fullName.vb: Bliss.CSharp.Geometry.Model.New(Veldrid.GraphicsDevice, Bliss.CSharp.Geometry.Mesh(), Bliss.CSharp.Geometry.Animations.ModelAnimation())
   name.vb: New(GraphicsDevice, Mesh(), ModelAnimation())
-- uid: Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
-  commentId: M:Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
-  id: Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
+- uid: Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean)
+  commentId: M:Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean)
+  id: Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean)
   parent: Bliss.CSharp.Geometry.Model
   langs:
   - csharp
   - vb
-  name: Load(GraphicsDevice, string, bool, bool, bool, bool)
-  nameWithType: Model.Load(GraphicsDevice, string, bool, bool, bool, bool)
-  fullName: Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice, string, bool, bool, bool, bool)
+  name: Load(GraphicsDevice, string, bool, bool)
+  nameWithType: Model.Load(GraphicsDevice, string, bool, bool)
+  fullName: Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice, string, bool, bool)
   type: Method
   source:
     remote:
@@ -238,14 +238,14 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Load
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 109
+    startLine: 107
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
   summary: Loads a model from the specified file path using the provided graphics device and configuration options.
   example: []
   syntax:
-    content: public static Model Load(GraphicsDevice graphicsDevice, string path, bool loadMaterial = true, bool uniqueTexturePerMesh = false, bool uniqueEffectPerMesh = false, bool flipUv = false)
+    content: public static Model Load(GraphicsDevice graphicsDevice, string path, bool loadMaterial = true, bool flipUv = false)
     parameters:
     - id: graphicsDevice
       type: Veldrid.GraphicsDevice
@@ -256,23 +256,17 @@ items:
     - id: loadMaterial
       type: System.Boolean
       description: Specifies whether the material should be loaded with the model. Default is true.
-    - id: uniqueTexturePerMesh
-      type: System.Boolean
-      description: Indicates whether each mesh should use a unique texture. Default is false.
-    - id: uniqueEffectPerMesh
-      type: System.Boolean
-      description: Indicates whether each mesh should use a unique effect. Default is false.
     - id: flipUv
       type: System.Boolean
       description: Determines whether the UV coordinates of the model should be flipped. Default is false.
     return:
       type: Bliss.CSharp.Geometry.Model
       description: Returns a new instance of the <xref href="Bliss.CSharp.Geometry.Model" data-throw-if-not-resolved="false"></xref> class containing the loaded meshes and animations.
-    content.vb: Public Shared Function Load(graphicsDevice As GraphicsDevice, path As String, loadMaterial As Boolean = True, uniqueTexturePerMesh As Boolean = False, uniqueEffectPerMesh As Boolean = False, flipUv As Boolean = False) As Model
+    content.vb: Public Shared Function Load(graphicsDevice As GraphicsDevice, path As String, loadMaterial As Boolean = True, flipUv As Boolean = False) As Model
   overload: Bliss.CSharp.Geometry.Model.Load*
-  nameWithType.vb: Model.Load(GraphicsDevice, String, Boolean, Boolean, Boolean, Boolean)
-  fullName.vb: Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice, String, Boolean, Boolean, Boolean, Boolean)
-  name.vb: Load(GraphicsDevice, String, Boolean, Boolean, Boolean, Boolean)
+  nameWithType.vb: Model.Load(GraphicsDevice, String, Boolean, Boolean)
+  fullName.vb: Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice, String, Boolean, Boolean)
+  name.vb: Load(GraphicsDevice, String, Boolean, Boolean)
 - uid: Bliss.CSharp.Geometry.Model.UpdateAnimationBones(Veldrid.CommandList,Bliss.CSharp.Geometry.Animations.ModelAnimation,System.Int32)
   commentId: M:Bliss.CSharp.Geometry.Model.UpdateAnimationBones(Veldrid.CommandList,Bliss.CSharp.Geometry.Animations.ModelAnimation,System.Int32)
   id: UpdateAnimationBones(Veldrid.CommandList,Bliss.CSharp.Geometry.Animations.ModelAnimation,System.Int32)
@@ -291,7 +285,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: UpdateAnimationBones
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 459
+    startLine: 462
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -332,7 +326,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ResetAnimationBones
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 469
+    startLine: 472
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -364,7 +358,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Draw
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 485
+    startLine: 488
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -417,7 +411,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 509
+    startLine: 512
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -948,7 +942,7 @@ references:
     href: Bliss.CSharp.Geometry.Animations.html
 - uid: Bliss.CSharp.Geometry.Model.Load*
   commentId: Overload:Bliss.CSharp.Geometry.Model.Load
-  href: Bliss.CSharp.Geometry.Model.html#Bliss_CSharp_Geometry_Model_Load_Veldrid_GraphicsDevice_System_String_System_Boolean_System_Boolean_System_Boolean_System_Boolean_
+  href: Bliss.CSharp.Geometry.Model.html#Bliss_CSharp_Geometry_Model_Load_Veldrid_GraphicsDevice_System_String_System_Boolean_System_Boolean_
   name: Load
   nameWithType: Model.Load
   fullName: Bliss.CSharp.Geometry.Model.Load
