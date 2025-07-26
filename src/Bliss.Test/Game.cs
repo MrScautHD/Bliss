@@ -57,6 +57,7 @@ public class Game : Disposable {
     private Cam3D _cam3D;
     private Model _playerModel;
     private Model _planeModel;
+    private Model _treeModel;
 
     private Texture2D _customMeshTexture;
     private Mesh _customPoly;
@@ -178,6 +179,7 @@ public class Game : Disposable {
         this._cam3D = new Cam3D(new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0), aspectRatio);
         this._playerModel = Model.Load(this.GraphicsDevice, "content/player.glb");
         this._planeModel = Model.Load(this.GraphicsDevice, "content/plane.glb");
+        this._treeModel = Model.Load(this.GraphicsDevice, "content/tree.glb");
         
         this._customMeshTexture = new Texture2D(this.GraphicsDevice, "content/cube.png");
         
@@ -327,6 +329,8 @@ public class Game : Disposable {
             this._planeModel.Draw(commandList, new Transform(), this.FullScreenTexture.Framebuffer.OutputDescription);
         }
         
+        this._treeModel.Draw(commandList, new Transform() { Translation = new Vector3(0, 0, 20)}, this.FullScreenTexture.Framebuffer.OutputDescription, rasterizerState: RasterizerStateDescription.CULL_NONE);
+        
         if (Input.IsKeyPressed(KeyboardKey.G)) {
             this._playerModel.ResetAnimationBones(commandList);
             this._playingAnim = false;
@@ -339,6 +343,9 @@ public class Game : Disposable {
             }
             this._playerModel.Draw(commandList, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
         }
+        
+        //this._playerModel.ResetAnimationBones(commandList);
+        //this._playerModel.Draw(commandList, new Transform() { Translation = new Vector3(4, 0.05F, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
         
         this._cam3D.End();
         
@@ -437,6 +444,7 @@ public class Game : Disposable {
         if (disposing) {
             this._playerModel.Dispose();
             this._planeModel.Dispose();
+            this._treeModel.Dispose();
             
             AudioContext.Deinitialize();
             GlobalResource.Destroy();
