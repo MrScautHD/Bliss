@@ -1241,25 +1241,25 @@ public class Mesh : Disposable {
     /// <param name="color">An optional color to override the material's albedo map color.</param>
     public void Draw(CommandList commandList, Transform transform, OutputDescription output, Sampler? sampler = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Color? color = null) {
         Cam3D? cam3D = Cam3D.ActiveCamera;
-
+        
         if (cam3D == null) {
             return;
         }
-
+        
         // Set optional color.
         Color cachedColor = this.Material.GetMapColor(MaterialMapType.Albedo.GetName()) ?? Color.White;
         this.Material.SetMapColor(MaterialMapType.Albedo.GetName(), color ?? cachedColor);
-
+        
         // Update matrix buffer.
         this._modelMatrixBuffer.SetValue(0, cam3D.GetProjection());
         this._modelMatrixBuffer.SetValue(1, cam3D.GetView());
         this._modelMatrixBuffer.SetValue(2, transform.GetTransform());
         this._modelMatrixBuffer.UpdateBuffer(commandList);
-
+        
         // Update color buffer.
         for (int i = 0; i < this.Material.GetMaterialMaps().Count(); i++) {
             Color? mapColor = this.Material.GetMapColor(((MaterialMapType) i).GetName());
-
+            
             if (mapColor.HasValue) {
                 this._colorBuffer.SetValue(i, mapColor.Value.ToRgbaFloatVec4());
             }
@@ -1273,7 +1273,7 @@ public class Mesh : Disposable {
         }
         
         this._valueBuffer.UpdateBuffer(commandList);
-
+        
         // Update pipeline description.
         this._pipelineDescription.BlendState = this.Material.BlendState;
         this._pipelineDescription.DepthStencilState = depthStencilState ?? DepthStencilStateDescription.DEPTH_ONLY_LESS_EQUAL;
