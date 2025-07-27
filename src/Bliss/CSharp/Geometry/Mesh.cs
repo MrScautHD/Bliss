@@ -5,6 +5,7 @@ using Bliss.CSharp.Geometry.Animations;
 using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
+using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Logging;
@@ -1304,11 +1305,11 @@ public class Mesh : Disposable {
             commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("ValueBuffer"), this._valueBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ValueBuffer")));
             
             // Set material texture.
-            foreach (string textureLayoutKey in this.Material.Effect.GetTextureLayoutKeys()) {
-                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), this.Material.Effect.GetTextureLayout(textureLayoutKey), textureLayoutKey);
+            foreach (SimpleTextureLayout layout in this.Material.Effect.GetTextureLayouts()) {
+                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), this.Material.Effect.GetTextureLayout(layout.Name));
                 
                 if (resourceSet != null) {
-                    commandList.SetGraphicsResourceSet(this.Material.Effect.GetTextureLayoutSlot(textureLayoutKey), resourceSet);
+                    commandList.SetGraphicsResourceSet(this.Material.Effect.GetTextureLayoutSlot(layout.Name), resourceSet);
                 }
             }
             
@@ -1339,11 +1340,11 @@ public class Mesh : Disposable {
             commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("ValueBuffer"), this._valueBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ValueBuffer")));
             
             // Set material texture.
-            foreach (string textureLayoutKey in this.Material.Effect.GetTextureLayoutKeys()) {
-                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), this.Material.Effect.GetTextureLayout(textureLayoutKey), textureLayoutKey);
+            foreach (SimpleTextureLayout layout in this.Material.Effect.GetTextureLayouts()) {
+                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), this.Material.Effect.GetTextureLayout(layout.Name));
                 
                 if (resourceSet != null) {
-                    commandList.SetGraphicsResourceSet(this.Material.Effect.GetTextureLayoutSlot(textureLayoutKey), resourceSet);
+                    commandList.SetGraphicsResourceSet(this.Material.Effect.GetTextureLayoutSlot(layout.Name), resourceSet);
                 }
             }
             

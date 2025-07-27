@@ -48,17 +48,15 @@ public class Material {
         this.Parameters = new List<float>();
         this._maps = new Dictionary<string, MaterialMap>();
     }
-
+    
     /// <summary>
-    /// Retrieves the resource set associated with a specified texture in the material's map collection,
-    /// based on the provided sampler, texture layout, and map name.
+    /// Retrieves the <see cref="ResourceSet"/>.
     /// </summary>
-    /// <param name="sampler">The sampler to use when accessing the texture.</param>
-    /// <param name="layout">The texture layout that defines the structure of the resource set.</param>
-    /// <param name="mapName">The name of the map whose associated texture's resource set is to be retrieved.</param>
-    /// <returns>The resource set for the specified texture if found, or null if the texture does not exist in the map collection.</returns>
-    public ResourceSet? GetResourceSet(Sampler sampler, SimpleTextureLayout layout, string mapName) {
-        Texture2D? texture = this._maps[mapName].Texture;
+    /// <param name="sampler">The sampler to use for binding the texture. Defines how the texture will be sampled.</param>
+    /// <param name="layout">The layout that provides the name and structure for the texture association.</param>
+    /// <returns>The corresponding <see cref="ResourceSet"/> if the texture is available; otherwise, null.</returns>
+    public ResourceSet? GetResourceSet(Sampler sampler, SimpleTextureLayout layout) {
+        Texture2D? texture = this._maps[layout.Name].Texture;
         return texture?.GetResourceSet(sampler, layout);
     }
     

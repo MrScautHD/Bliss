@@ -31,15 +31,14 @@ public class Effect : Disposable {
     public readonly ShaderSetDescription ShaderSet;
 
     /// <summary>
-    /// A dictionary that maps string keys to <see cref="SimpleTextureLayout"/> instances, used to define and manage buffer configurations for the Effect class.
+    /// A collection of buffer layout descriptions used to define buffer bindings.
     /// </summary>
-    private Dictionary<string, SimpleBufferLayout> _bufferLayouts;
+    private List<SimpleBufferLayout> _bufferLayouts;
 
     /// <summary>
-    /// A dictionary that maps texture layout names to their corresponding <see cref="SimpleTextureLayout"/> instances.
-    /// Used to store and retrieve layouts for managing texture resources within the Effect.
+    /// A collection of texture layout descriptions used to define how textures bindings.
     /// </summary>
-    private Dictionary<string, SimpleTextureLayout> _textureLayouts;
+    private List<SimpleTextureLayout> _textureLayouts;
     
     /// <summary>
     /// A cache of pipelines created for specific pipeline descriptions, enabling reuse.
@@ -87,8 +86,8 @@ public class Effect : Disposable {
             Specializations = constants ?? []
         };
         
-        this._bufferLayouts = new Dictionary<string, SimpleBufferLayout>();
-        this._textureLayouts = new Dictionary<string, SimpleTextureLayout>();
+        this._bufferLayouts = new List<SimpleBufferLayout>();
+        this._textureLayouts = new List<SimpleTextureLayout>();
         this._cachedPipelines = new Dictionary<SimplePipelineDescription, SimplePipeline>();
     }
 
@@ -109,32 +108,29 @@ public class Effect : Disposable {
         Logger.Info($"Shader bytes loaded successfully from path: [{path}]");
         return File.ReadAllBytes(path);
     }
-    
+
     /// <summary>
-    /// Retrieves the collection of keys representing buffer layouts associated with the Effect instance.
+    /// Retrieves the list of simple buffer layouts associated with the effect.
     /// </summary>
-    /// <returns>
-    /// An enumerable collection of string keys corresponding to the buffer layouts.
-    /// </returns>
-    public IEnumerable<string> GetBufferLayoutKeys() {
-        return this._bufferLayouts.Keys;
+    /// <returns>A list of <see cref="SimpleBufferLayout"/> objects representing the buffer layouts.</returns>
+    public List<SimpleBufferLayout> GetBufferLayouts() {
+        return this._bufferLayouts;
     }
-    
+
     /// <summary>
-    /// Retrieves the collection of buffer layouts defined for this effect.
-    /// </summary>
-    /// <returns>An enumerable collection of <see cref="SimpleBufferLayout"/> representing the buffer layouts in this effect.</returns>
-    public IEnumerable<SimpleBufferLayout> GetBufferLayouts() {
-        return this._bufferLayouts.Values;
-    }
-    
-    /// <summary>
-    /// Retrieves a buffer layout associated with the specified name.
+    /// Retrieves the buffer layout identified by the specified name.
     /// </summary>
     /// <param name="name">The name of the buffer layout to retrieve.</param>
-    /// <returns>The <see cref="SimpleBufferLayout"/> associated with the given name.</returns>
+    /// <returns>The <see cref="SimpleBufferLayout"/> matching the specified name.</returns>
+    /// <exception cref="KeyNotFoundException">Thrown if no buffer layout with the specified name is found.</exception>
     public SimpleBufferLayout GetBufferLayout(string name) {
-        return this._bufferLayouts[name];
+        foreach (var layout in _bufferLayouts) {
+            if (layout.Name == name) {
+                return layout;
+            }
+        }
+        
+        throw new KeyNotFoundException($"No buffer layout found with name [{name}]");
     }
     
     /// <summary>
@@ -146,8 +142,8 @@ public class Effect : Disposable {
     public uint GetBufferLayoutSlot(string name) {
         uint index = 0;
         
-        foreach (string key in this._bufferLayouts.Keys) {
-            if (key == name) {
+        foreach (SimpleBufferLayout layout in this._bufferLayouts) {
+            if (layout.Name == name) {
                 return index;
             }
             
@@ -156,42 +152,44 @@ public class Effect : Disposable {
         
         throw new KeyNotFoundException($"Failed to get the slot for [{name}]. A buffer layout with this name do not exist.");
     }
-    
+
     /// <summary>
-    /// Adds a new buffer layout to the effect.
+    /// Adds a buffer layout to the effect.
     /// </summary>
-    /// <param name="bufferLayout">The <see cref="SimpleBufferLayout"/> to be added.</param>
-    public void AddBufferLayout(SimpleBufferLayout bufferLayout) {
-        if (!this._bufferLayouts.TryAdd(bufferLayout.Name, bufferLayout)) {
-            Logger.Warn($"Failed to add BufferLayout with name [{bufferLayout.Name}]. A buffer layout with this name might already exist.");
+    /// <param name="name">The name of the buffer layout to add.</param>
+    /// <param name="bufferType">The <see cref="SimpleBufferType"/> specifying the type of buffer being added.</param>
+    /// <param name="stages">The <see cref="ShaderStages"/> indicating the shader stages where the buffer will be used.</param>
+    public void AddBufferLayout(string name, SimpleBufferType bufferType, ShaderStages stages) {
+        if (this._bufferLayouts.Any(layout => layout.Name == name)) {
+            throw new InvalidOperationException($"Failed to add buffer layout with name [{name}]. A buffer layout with this name might already exist.");
         }
+        
+        SimpleBufferLayout layout = new SimpleBufferLayout(this.GraphicsDevice, name, bufferType, stages);
+        this._bufferLayouts.Add(layout);
     }
-    
+
     /// <summary>
-    /// Retrieves the collection of keys that correspond to the texture layouts defined in this effect.
+    /// Retrieves the list of texture layouts used by the effect.
     /// </summary>
-    /// <returns>A collection of strings representing the keys for the texture layouts.</returns>
-    public IEnumerable<string> GetTextureLayoutKeys() {
-        return this._textureLayouts.Keys;
+    /// <returns>A list of <see cref="SimpleTextureLayout"/> objects representing the texture layouts associated with the effect.</returns>
+    public List<SimpleTextureLayout> GetTextureLayouts() {
+        return this._textureLayouts;
     }
-    
+
     /// <summary>
-    /// Retrieves the collection of texture layouts associated with the current effect.
-    /// </summary>
-    /// <returns>An enumerable collection of <see cref="SimpleTextureLayout"/> instances representing the texture layouts.</returns>
-    public IEnumerable<SimpleTextureLayout> GetTextureLayouts() {
-        foreach (SimpleTextureLayout layout in this._textureLayouts.Values) {
-            yield return layout;
-        }
-    }
-    
-    /// <summary>
-    /// Retrieves a specific texture layout by its name.
+    /// Retrieves a texture layout by its name from the list of available texture layouts.
     /// </summary>
     /// <param name="name">The name of the texture layout to retrieve.</param>
-    /// <returns>The texture layout associated with the specified name.</returns>
+    /// <returns>The <see cref="SimpleTextureLayout"/> matching the specified name.</returns>
+    /// <exception cref="KeyNotFoundException">Thrown if no texture layout with the specified name is found.</exception>
     public SimpleTextureLayout GetTextureLayout(string name) {
-        return this._textureLayouts[name];
+        foreach (var layout in _textureLayouts) {
+            if (layout.Name == name) {
+                return layout;
+            }
+        }
+        
+        throw new KeyNotFoundException($"No buffer layout found with name [{name}]");
     }
     
     /// <summary>
@@ -203,8 +201,8 @@ public class Effect : Disposable {
     public uint GetTextureLayoutSlot(string name) {
         uint index = (uint) this._bufferLayouts.Count;
         
-        foreach (string key in this._textureLayouts.Keys) {
-            if (key == name) {
+        foreach (SimpleTextureLayout layout in this._textureLayouts) {
+            if (layout.Name == name) {
                 return index;
             }
             
@@ -213,15 +211,18 @@ public class Effect : Disposable {
         
         throw new KeyNotFoundException($"Failed to get the slot for [{name}]. A texture layout with this name do not exist.");
     }
-    
+
     /// <summary>
     /// Adds a texture layout to the effect.
     /// </summary>
-    /// <param name="textureLayout">The <see cref="SimpleTextureLayout"/> defining the texture layout to be added.</param>
-    public void AddTextureLayout(SimpleTextureLayout textureLayout) {
-        if (!this._textureLayouts.TryAdd(textureLayout.Name, textureLayout)) {
-            Logger.Warn($"Failed to add TextureLayout with name [{textureLayout.Name}]. A texture layout with this name might already exist.");
+    /// <param name="name">The name of the texture layout to be added.</param>
+    public void AddTextureLayout(string name) {
+        if (this._textureLayouts.Any(layout => layout.Name == name)) {
+            throw new InvalidOperationException($"Failed to add texture layout with name [{name}]. A texture layout with this name might already exist.");
         }
+        
+        SimpleTextureLayout layout = new SimpleTextureLayout(this.GraphicsDevice, name);
+        this._textureLayouts.Add(layout);
     }
     
     /// <summary>
@@ -254,11 +255,11 @@ public class Effect : Disposable {
             this.Shader.VertShader.Dispose();
             this.Shader.FragShader.Dispose();
             
-            foreach (SimpleBufferLayout bufferLayout in this._bufferLayouts.Values) {
+            foreach (SimpleBufferLayout bufferLayout in this._bufferLayouts) {
                 bufferLayout.Dispose();
             }
             
-            foreach (SimpleTextureLayout textureLayout in this._textureLayouts.Values) {
+            foreach (SimpleTextureLayout textureLayout in this._textureLayouts) {
                 textureLayout.Dispose();
             }
         }

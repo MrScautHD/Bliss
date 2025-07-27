@@ -29,12 +29,12 @@ public struct SimplePipelineDescription : IEquatable<SimplePipelineDescription> 
     /// <summary>
     /// Describes how vertex buffers are structured and laid out.
     /// </summary>
-    public IEnumerable<SimpleBufferLayout> BufferLayouts;
+    public List<SimpleBufferLayout> BufferLayouts;
 
     /// <summary>
     /// Describes how textures are bound and accessed in the pipeline.
     /// </summary>
-    public IEnumerable<SimpleTextureLayout> TextureLayouts;
+    public List<SimpleTextureLayout> TextureLayouts;
 
     /// <summary>
     /// Contains the vertex and fragment shaders used by the pipeline.
@@ -62,7 +62,7 @@ public struct SimplePipelineDescription : IEquatable<SimplePipelineDescription> 
     /// <param name="textureLayouts">A list of texture layouts to be used in the pipeline.</param>
     /// <param name="shaderSet">The shader set description that defines the vertex and fragment shaders.</param>
     /// <param name="outputs">The output configuration of the pipeline, specifying the render targets and depth-stencil buffer.</param>
-    public SimplePipelineDescription(BlendStateDescription blendState, DepthStencilStateDescription depthStencilState, RasterizerStateDescription rasterizerState, PrimitiveTopology primitiveTopology, IEnumerable<SimpleBufferLayout> bufferLayouts, IEnumerable<SimpleTextureLayout> textureLayouts, ShaderSetDescription shaderSet, OutputDescription outputs) {
+    public SimplePipelineDescription(BlendStateDescription blendState, DepthStencilStateDescription depthStencilState, RasterizerStateDescription rasterizerState, PrimitiveTopology primitiveTopology, List<SimpleBufferLayout> bufferLayouts, List<SimpleTextureLayout> textureLayouts, ShaderSetDescription shaderSet, OutputDescription outputs) {
         this.BlendState = blendState;
         this.DepthStencilState = depthStencilState;
         this.RasterizerState = rasterizerState;
