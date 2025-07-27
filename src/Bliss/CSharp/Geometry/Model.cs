@@ -499,14 +499,12 @@ public class Model : Disposable {
     private BoundingBox GenerateBoundingBox() {
         Vector3 min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
         Vector3 max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
-
+        
         foreach (Mesh mesh in this.Meshes) {
-            foreach (Vertex3D vertex in mesh.Vertices) {
-                min = Vector3.Min(min, vertex.Position);
-                max = Vector3.Max(max, vertex.Position);
-            }
+            min = Vector3.Min(min, mesh.BoundingBox.Min);
+            max = Vector3.Max(max, mesh.BoundingBox.Max);
         }
-
+        
         return new BoundingBox(min, max);
     }
 

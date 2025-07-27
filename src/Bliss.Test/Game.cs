@@ -58,6 +58,8 @@ public class Game : Disposable {
     private Model _playerModel;
     private Model _planeModel;
     private Model _treeModel;
+    private Model _cyberCarModel;
+    private Texture2D _cynerTexture;
 
     private Texture2D _customMeshTexture;
     private Mesh _customPoly;
@@ -180,6 +182,12 @@ public class Game : Disposable {
         this._playerModel = Model.Load(this.GraphicsDevice, "content/player.glb");
         this._planeModel = Model.Load(this.GraphicsDevice, "content/plane.glb");
         this._treeModel = Model.Load(this.GraphicsDevice, "content/tree.glb");
+        this._cyberCarModel = Model.Load(this.GraphicsDevice, "content/cybercar.glb", false);
+        this._cynerTexture = new Texture2D(this.GraphicsDevice, "content/cybercar.png");
+
+        foreach (Mesh mesh in _cyberCarModel.Meshes) {
+            mesh.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._cynerTexture);
+        }
         
         this._customMeshTexture = new Texture2D(this.GraphicsDevice, "content/cube.png");
         
@@ -330,6 +338,8 @@ public class Game : Disposable {
         }
         
         this._treeModel.Draw(commandList, new Transform() { Translation = new Vector3(0, 0, 20)}, this.FullScreenTexture.Framebuffer.OutputDescription, rasterizerState: RasterizerStateDescription.CULL_NONE);
+        
+        this._cyberCarModel.Draw(commandList, new Transform() { Translation = new Vector3(10, 0, 20)}, this.FullScreenTexture.Framebuffer.OutputDescription);
         
         if (Input.IsKeyPressed(KeyboardKey.G)) {
             this._playerModel.ResetAnimationBones(commandList);

@@ -12,14 +12,14 @@ public static class MipmapHelper {
     public static Image[] GenerateMipmaps(Image baseImage) {
         List<Image> mipLevels = new List<Image>();
         mipLevels.Add(baseImage);
-
+        
         int width = baseImage.Width;
         int height = baseImage.Height;
         
         while (width > 1 && height > 1) {
             width = Math.Max(1, width / 2);
             height = Math.Max(1, height / 2);
-
+            
             byte[] newData = Downscale(mipLevels[^1].Data, mipLevels[^1].Width, mipLevels[^1].Height, width, height, 4);
             mipLevels.Add(new Image(width, height, newData));
         }

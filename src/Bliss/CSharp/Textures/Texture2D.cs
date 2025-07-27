@@ -103,11 +103,11 @@ public class Texture2D : Disposable {
     public ResourceSet GetResourceSet(Sampler sampler, SimpleTextureLayout layout) {
         if (!this._cachedResourceSets.TryGetValue((sampler, layout), out ResourceSet? resourceSet)) {
             ResourceSet newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(layout.Layout, this.DeviceTexture, sampler));
-
+            
             this._cachedResourceSets.Add((sampler, layout), newResourceSet);
             return newResourceSet;
         }
-
+        
         return resourceSet;
     }
     
