@@ -18,7 +18,7 @@ public class FontStashTextureManager : Disposable, ITexture2DManager {
     /// <summary>
     /// A reference to the currently managed 2D texture.
     /// </summary>
-    private Texture2D _texture;
+    private Texture2D? _texture;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="FontStashTextureManager"/> class.
@@ -61,7 +61,7 @@ public class FontStashTextureManager : Disposable, ITexture2DManager {
 
     protected override void Dispose(bool disposing) {
         if (disposing) {
-            this._texture.Dispose();
+            this._texture?.Dispose();
         }
     }
 }
