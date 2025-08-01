@@ -5,6 +5,7 @@ using Bliss.CSharp.Geometry.Animations;
 using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
+using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Logging;
@@ -1240,25 +1241,25 @@ public class Mesh : Disposable {
     /// <param name="color">An optional color to override the material's albedo map color.</param>
     public void Draw(CommandList commandList, Transform transform, OutputDescription output, Sampler? sampler = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Color? color = null) {
         Cam3D? cam3D = Cam3D.ActiveCamera;
-
+        
         if (cam3D == null) {
             return;
         }
-
+        
         // Set optional color.
         Color cachedColor = this.Material.GetMapColor(MaterialMapType.Albedo.GetName()) ?? Color.White;
         this.Material.SetMapColor(MaterialMapType.Albedo.GetName(), color ?? cachedColor);
-
+        
         // Update matrix buffer.
         this._modelMatrixBuffer.SetValue(0, cam3D.GetProjection());
         this._modelMatrixBuffer.SetValue(1, cam3D.GetView());
         this._modelMatrixBuffer.SetValue(2, transform.GetTransform());
         this._modelMatrixBuffer.UpdateBuffer(commandList);
-
+        
         // Update color buffer.
         for (int i = 0; i < this.Material.GetMaterialMaps().Count(); i++) {
             Color? mapColor = this.Material.GetMapColor(((MaterialMapType) i).GetName());
-
+            
             if (mapColor.HasValue) {
                 this._colorBuffer.SetValue(i, mapColor.Value.ToRgbaFloatVec4());
             }
@@ -1272,7 +1273,7 @@ public class Mesh : Disposable {
         }
         
         this._valueBuffer.UpdateBuffer(commandList);
-
+        
         // Update pipeline description.
         this._pipelineDescription.BlendState = this.Material.BlendState;
         this._pipelineDescription.DepthStencilState = depthStencilState ?? DepthStencilStateDescription.DEPTH_ONLY_LESS_EQUAL;
@@ -1304,11 +1305,11 @@ public class Mesh : Disposable {
             commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("ValueBuffer"), this._valueBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ValueBuffer")));
             
             // Set material texture.
-            foreach (string textureLayoutKey in this.Material.Effect.GetTextureLayoutKeys()) {
-                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), this.Material.Effect.GetTextureLayout(textureLayoutKey), textureLayoutKey);
+            foreach (SimpleTextureLayout layout in this.Material.Effect.GetTextureLayouts()) {
+                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), this.Material.Effect.GetTextureLayout(layout.Name));
                 
                 if (resourceSet != null) {
-                    commandList.SetGraphicsResourceSet(this.Material.Effect.GetTextureLayoutSlot(textureLayoutKey), resourceSet);
+                    commandList.SetGraphicsResourceSet(this.Material.Effect.GetTextureLayoutSlot(layout.Name), resourceSet);
                 }
             }
             
@@ -1339,11 +1340,11 @@ public class Mesh : Disposable {
             commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("ValueBuffer"), this._valueBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ValueBuffer")));
             
             // Set material texture.
-            foreach (string textureLayoutKey in this.Material.Effect.GetTextureLayoutKeys()) {
-                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), this.Material.Effect.GetTextureLayout(textureLayoutKey), textureLayoutKey);
+            foreach (SimpleTextureLayout layout in this.Material.Effect.GetTextureLayouts()) {
+                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), this.Material.Effect.GetTextureLayout(layout.Name));
                 
                 if (resourceSet != null) {
-                    commandList.SetGraphicsResourceSet(this.Material.Effect.GetTextureLayoutSlot(textureLayoutKey), resourceSet);
+                    commandList.SetGraphicsResourceSet(this.Material.Effect.GetTextureLayoutSlot(layout.Name), resourceSet);
                 }
             }
             

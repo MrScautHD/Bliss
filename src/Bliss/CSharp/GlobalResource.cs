@@ -110,29 +110,29 @@ public static class GlobalResource {
         
         // Default sprite effect.
         DefaultSpriteEffect = new Effect(graphicsDevice, SpriteVertex2D.VertexLayout, "content/shaders/sprite.vert", "content/shaders/sprite.frag");
-        DefaultSpriteEffect.AddBufferLayout(new SimpleBufferLayout(GraphicsDevice, "ProjectionViewBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
-        DefaultSpriteEffect.AddTextureLayout(new SimpleTextureLayout(GraphicsDevice, "fTexture"));
+        DefaultSpriteEffect.AddBufferLayout("ProjectionViewBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
+        DefaultSpriteEffect.AddTextureLayout("fTexture");
         
         // Primitive effect.
         DefaultPrimitiveEffect = new Effect(graphicsDevice, PrimitiveVertex2D.VertexLayout, "content/shaders/primitive.vert", "content/shaders/primitive.frag");
-        DefaultPrimitiveEffect.AddBufferLayout(new SimpleBufferLayout(GraphicsDevice, "ProjectionViewBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
+        DefaultPrimitiveEffect.AddBufferLayout("ProjectionViewBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
         
         // FullScreenRenderPass effect.
         DefaultFullScreenRenderPassEffect = new Effect(graphicsDevice, SpriteVertex2D.VertexLayout, "content/shaders/full_screen_render_pass.vert", "content/shaders/full_screen_render_pass.frag");
-        DefaultFullScreenRenderPassEffect.AddTextureLayout(new SimpleTextureLayout(GraphicsDevice, "fTexture"));
+        DefaultFullScreenRenderPassEffect.AddTextureLayout("fTexture");
         
         // ImmediateRenderer effect.
         DefaultImmediateRendererEffect = new Effect(graphicsDevice, ImmediateVertex3D.VertexLayout, "content/shaders/immediate_renderer.vert", "content/shaders/immediate_renderer.frag");
-        DefaultImmediateRendererEffect.AddBufferLayout(new SimpleBufferLayout(GraphicsDevice, "MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
-        DefaultImmediateRendererEffect.AddTextureLayout(new SimpleTextureLayout(GraphicsDevice, "fTexture"));
+        DefaultImmediateRendererEffect.AddBufferLayout("MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
+        DefaultImmediateRendererEffect.AddTextureLayout("fTexture");
         
         // Default model effect.
         DefaultModelEffect = new Effect(graphicsDevice, Vertex3D.VertexLayout, "content/shaders/default_model.vert", "content/shaders/default_model.frag");
-        DefaultModelEffect.AddBufferLayout(new SimpleBufferLayout(GraphicsDevice, "MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
-        DefaultModelEffect.AddBufferLayout(new SimpleBufferLayout(GraphicsDevice, "BoneBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex));
-        DefaultModelEffect.AddBufferLayout(new SimpleBufferLayout(GraphicsDevice, "ColorBuffer", SimpleBufferType.Uniform, ShaderStages.Fragment));
-        DefaultModelEffect.AddBufferLayout(new SimpleBufferLayout(GraphicsDevice, "ValueBuffer", SimpleBufferType.Uniform, ShaderStages.Fragment));
-        DefaultModelEffect.AddTextureLayout(new SimpleTextureLayout(GraphicsDevice, MaterialMapType.Albedo.GetName()));
+        DefaultModelEffect.AddBufferLayout("MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
+        DefaultModelEffect.AddBufferLayout("BoneBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
+        DefaultModelEffect.AddBufferLayout("ColorBuffer", SimpleBufferType.Uniform, ShaderStages.Fragment);
+        DefaultModelEffect.AddBufferLayout("ValueBuffer", SimpleBufferType.Uniform, ShaderStages.Fragment);
+        DefaultModelEffect.AddTextureLayout(MaterialMapType.Albedo.GetName());
         
         // Default immediate renderer texture.
         DefaultImmediateRendererTexture = new Texture2D(graphicsDevice, new Image(1, 1, Color.White));

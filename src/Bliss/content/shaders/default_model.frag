@@ -23,10 +23,13 @@ layout (location = 0) out vec4 fFragColor;
 
 void main() {
     vec4 texelColor = texture(sampler2D(fAlbedo, fAlbedoSampler), fTexCoords);
-
-    if (texelColor.a <= 0.0F) {
+    
+    if (texelColor.a <= 0.99F) {
         discard;
     }
-
+    
+    // TODO: If its not transparent use this.
+    //texelColor.a = 1.0F;
+    
     fFragColor = texelColor * uColors[0];
 }

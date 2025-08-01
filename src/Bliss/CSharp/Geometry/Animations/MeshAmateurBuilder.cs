@@ -50,7 +50,7 @@ public class MeshAmateurBuilder {
         foreach (ModelAnimation animation in this._animations) {
             boneInfos.Add(animation.Name, this.SetupBoneInfos(animation));
         }
-
+        
         return boneInfos;
     }
 
@@ -86,29 +86,29 @@ public class MeshAmateurBuilder {
     /// <param name="frame">The current frame index being processed.</param>
     /// <param name="parentTransform">The transformation matrix of the parent node.</param>
     private void UpdateChannel(Node node, ModelAnimation animation, int frame, Matrix4x4 parentTransform) {
-        Matrix4x4 nodeTransformation = Matrix4x4.Transpose(node.Transform);
+        Matrix4x4 nodeTransform = Matrix4x4.Transpose(node.Transform);
         
         if (this.GetChannel(node, animation, out NodeAnimChannel? channel)) {
             Matrix4x4 scale = this.InterpolateScale(channel!, animation, frame);
             Matrix4x4 rotation = this.InterpolateRotation(channel!, animation, frame);
             Matrix4x4 translation = this.InterpolateTranslation(channel!, animation, frame);
             
-            nodeTransformation = scale * rotation * translation;
+            nodeTransform = scale * rotation * translation;
         }
-
+        
         foreach (uint boneId in this._bonesByName.Keys) {
             Bone bone = this._bonesByName[boneId];
             
             if (node.Name == bone.Name) {
                 Matrix4x4.Invert(Matrix4x4.Transpose(this._rootNode.Transform), out Matrix4x4 rootInverseTransform);
                 
-                Matrix4x4 transformation = Matrix4x4.Transpose(bone.OffsetMatrix) * nodeTransformation * parentTransform * rootInverseTransform;
+                Matrix4x4 transformation = Matrix4x4.Transpose(bone.OffsetMatrix) * nodeTransform * parentTransform * rootInverseTransform;
                 this._boneTransformations[boneId] = transformation;
             }
         }
-
+        
         foreach (Node childNode in node.Children) {
-            this.UpdateChannel(childNode, animation, frame, nodeTransformation * parentTransform);
+            this.UpdateChannel(childNode, animation, frame, nodeTransform * parentTransform);
         }
     }
 
@@ -134,12 +134,12 @@ public class MeshAmateurBuilder {
                     break;
                 }
             }
-
+            
             Vector3Key currentFrame = channel.Positions[(int) frameIndex];
             Vector3Key nextFrame = channel.Positions[(int) ((frameIndex + 1) % channel.Positions.Count)];
-
+            
             double delta = (frameTime - currentFrame.Time) / (nextFrame.Time - currentFrame.Time);
-
+            
             Vector3 start = currentFrame.Value;
             Vector3 end = nextFrame.Value;
             position = start + (float) Math.Clamp(delta, 0.0F, 1.0F) * (end - start);
@@ -158,7 +158,7 @@ public class MeshAmateurBuilder {
     private Matrix4x4 InterpolateRotation(NodeAnimChannel channel, ModelAnimation animation, int frame) {
         double frameTime = frame / 60.0F * animation.TicksPerSecond;
         Quaternion rotation;
-
+        
         if (channel.Rotations.Count == 1) {
             rotation = channel.Rotations[0].Value;
         }
@@ -170,12 +170,12 @@ public class MeshAmateurBuilder {
                     break;
                 }
             }
-
+            
             QuatKey currentFrame = channel.Rotations[(int) frameIndex];
             QuatKey nextFrame = channel.Rotations[(int) ((frameIndex + 1) % channel.Rotations.Count)];
-
+            
             double delta = (frameTime - currentFrame.Time) / (nextFrame.Time - currentFrame.Time);
-
+            
             Quaternion start = currentFrame.Value;
             Quaternion end = nextFrame.Value;
             rotation = Quaternion.Normalize(Quaternion.Slerp(start, end, (float) Math.Clamp(delta, 0.0F, 1.0F)));
@@ -194,7 +194,7 @@ public class MeshAmateurBuilder {
     private Matrix4x4 InterpolateScale(NodeAnimChannel channel, ModelAnimation animation, int frame) {
         double frameTime = frame / 60.0F * animation.TicksPerSecond;
         Vector3 scale;
-
+        
         if (channel.Scales.Count == 1) {
             scale = channel.Scales[0].Value;
         }
@@ -206,18 +206,18 @@ public class MeshAmateurBuilder {
                     break;
                 }
             }
-
+            
             Vector3Key currentFrame = channel.Scales[(int) frameIndex];
             Vector3Key nextFrame = channel.Scales[(int) ((frameIndex + 1) % channel.Scales.Count)];
-
+            
             double delta = (frameTime - currentFrame.Time) / (nextFrame.Time - currentFrame.Time);
-
+            
             Vector3 start = currentFrame.Value;
             Vector3 end = nextFrame.Value;
-
+            
             scale = start + (float) Math.Clamp(delta, 0.0F, 1.0F) * (end - start);
         }
-
+        
         return Matrix4x4.CreateScale(scale);
     }
 
@@ -235,7 +235,7 @@ public class MeshAmateurBuilder {
                 return true;
             }
         }
-
+        
         channel = null;
         return false;
     }

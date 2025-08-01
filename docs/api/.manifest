@@ -292,7 +292,7 @@
   "Bliss.CSharp.Geometry.Model.Dispose(System.Boolean)": "Bliss.CSharp.Geometry.Model.yml",
   "Bliss.CSharp.Geometry.Model.Draw(Veldrid.CommandList,Bliss.CSharp.Transformations.Transform,Veldrid.OutputDescription,Veldrid.Sampler,System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{Bliss.CSharp.Colors.Color})": "Bliss.CSharp.Geometry.Model.yml",
   "Bliss.CSharp.Geometry.Model.GraphicsDevice": "Bliss.CSharp.Geometry.Model.yml",
-  "Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean)": "Bliss.CSharp.Geometry.Model.yml",
+  "Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean)": "Bliss.CSharp.Geometry.Model.yml",
   "Bliss.CSharp.Geometry.Model.Meshes": "Bliss.CSharp.Geometry.Model.yml",
   "Bliss.CSharp.Geometry.Model.ResetAnimationBones(Veldrid.CommandList)": "Bliss.CSharp.Geometry.Model.yml",
   "Bliss.CSharp.Geometry.Model.UpdateAnimationBones(Veldrid.CommandList,Bliss.CSharp.Geometry.Animations.ModelAnimation,System.Int32)": "Bliss.CSharp.Geometry.Model.yml",

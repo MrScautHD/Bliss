@@ -40,7 +40,7 @@ public class Model : Disposable {
                                                              PostProcessSteps.ValidateDataStructure |
                                                              PostProcessSteps.FindInstances |
                                                              PostProcessSteps.GlobalScale;
-
+    
     /// <summary>
     /// A collection of default property configurations applied to the 3D model importer.
     /// These configurations include settings to limit vertex bone weights, exclude certain elements,
@@ -56,12 +56,12 @@ public class Model : Disposable {
     /// <summary>
     /// Caches loaded effect of the <see cref="Load"/> method.
     /// </summary>
-    private static Dictionary<(Model, Mesh), Effect> _effectCache = new();
+    private static Dictionary<Model, Effect[]> _effectCache = new();
     
     /// <summary>
     /// Caches loaded textures of the <see cref="Load"/> method.
     /// </summary>
-    private static Dictionary<(Model, Mesh, string), Texture2D> _textureCache = new();
+    private static Dictionary<Model, Texture2D[]> _textureCache = new();
     
     /// <summary>
     /// The graphics device used for rendering the model.
@@ -103,11 +103,9 @@ public class Model : Disposable {
     /// <param name="graphicsDevice">The graphics device used for rendering and managing model resources.</param>
     /// <param name="path">The file path to the model to be loaded.</param>
     /// <param name="loadMaterial">Specifies whether the material should be loaded with the model. Default is true.</param>
-    /// <param name="uniqueTexturePerMesh">Indicates whether each mesh should use a unique texture. Default is false.</param>
-    /// <param name="uniqueEffectPerMesh">Indicates whether each mesh should use a unique effect. Default is false.</param>
     /// <param name="flipUv">Determines whether the UV coordinates of the model should be flipped. Default is false.</param>
     /// <returns>Returns a new instance of the <see cref="Model"/> class containing the loaded meshes and animations.</returns>
-    public static Model Load(GraphicsDevice graphicsDevice, string path, bool loadMaterial = true, bool uniqueTexturePerMesh = false, bool uniqueEffectPerMesh = false, bool flipUv = false) {
+    public static Model Load(GraphicsDevice graphicsDevice, string path, bool loadMaterial = true, bool flipUv = false) {
         using AssimpContext context = new AssimpContext();
         
         foreach (PropertyConfig config in PropertyConfigs) {
@@ -158,7 +156,7 @@ public class Model : Disposable {
         // Setup amateur builder.
         MeshAmateurBuilder amateurBuilder = new MeshAmateurBuilder(scene.RootNode, animations.ToArray());
         
-        // Cache effects and textures to load them just 1 time per mesh.
+        // Cache effects and textures to load them just 1 time per model.
         Dictionary<string, Effect> cachedEffects = new Dictionary<string, Effect>();
         Dictionary<string, Texture2D> cachedTextures = new Dictionary<string, Texture2D>();
         
@@ -170,7 +168,7 @@ public class Model : Disposable {
             
             if (scene.HasMaterials && loadMaterial) {
                 AMaterial aMaterial = scene.Materials[mesh.MaterialIndex];
-                effect = LoadMaterialEffect(graphicsDevice, cachedEffects, aMaterial, uniqueEffectPerMesh) ?? GlobalResource.DefaultModelEffect;
+                effect = LoadMaterialEffect(graphicsDevice, cachedEffects, aMaterial) ?? GlobalResource.DefaultModelEffect;
             }
             else {
                 effect = GlobalResource.DefaultModelEffect;
@@ -185,7 +183,7 @@ public class Model : Disposable {
                 // Albedo map.
                 if (aMaterial.HasTextureDiffuse || aMaterial.HasColorDiffuse ) {
                     material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap() {
-                        Texture = aMaterial.HasTextureDiffuse ? LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Diffuse, uniqueTexturePerMesh) : GlobalResource.DefaultModelTexture,
+                        Texture = aMaterial.HasTextureDiffuse ? LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Diffuse) : GlobalResource.DefaultModelTexture,
                         Color = aMaterial.HasColorDiffuse ? new Color(new RgbaFloat(aMaterial.ColorDiffuse)) : Color.White,
                     });
                 }
@@ -199,7 +197,7 @@ public class Model : Disposable {
                 // Metallic map.
                 if (aMaterial.PBR.HasTextureMetalness || aMaterial.HasColorSpecular ) {
                     material.AddMaterialMap(MaterialMapType.Metallic.GetName(), new MaterialMap() {
-                        Texture = aMaterial.PBR.HasTextureMetalness ? LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Metalness, uniqueTexturePerMesh) : null,
+                        Texture = aMaterial.PBR.HasTextureMetalness ? LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Metalness) : null,
                         Color = aMaterial.HasColorSpecular ? new Color(new RgbaFloat(aMaterial.ColorSpecular)) : Color.White
                     });
                 }
@@ -207,7 +205,7 @@ public class Model : Disposable {
                 // Normal map.
                 if (aMaterial.HasTextureNormal || aMaterial.HasShininess) {
                     material.AddMaterialMap(MaterialMapType.Normal.GetName(), new MaterialMap() {
-                        Texture = aMaterial.HasTextureNormal ? LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Normals, uniqueTexturePerMesh) : null,
+                        Texture = aMaterial.HasTextureNormal ? LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Normals) : null,
                         Color = Color.White,
                         Value = aMaterial.Shininess
                     });
@@ -216,7 +214,7 @@ public class Model : Disposable {
                 // Roughness map.
                 if (aMaterial.PBR.HasTextureRoughness) {
                     material.AddMaterialMap(MaterialMapType.Roughness.GetName(), new MaterialMap() {
-                        Texture = LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Roughness, uniqueTexturePerMesh),
+                        Texture = LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Roughness),
                         Color = Color.White
                     });
                 }
@@ -224,7 +222,7 @@ public class Model : Disposable {
                 // Occlusion map.
                 if (aMaterial.HasTextureAmbientOcclusion) {
                     material.AddMaterialMap(MaterialMapType.Occlusion.GetName(), new MaterialMap() {
-                        Texture = LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.AmbientOcclusion, uniqueTexturePerMesh),
+                        Texture = LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.AmbientOcclusion),
                         Color = Color.White
                     });
                 }
@@ -232,7 +230,7 @@ public class Model : Disposable {
                 // Emissive map.
                 if (aMaterial.HasTextureEmissive || aMaterial.HasColorEmissive) {
                     material.AddMaterialMap(MaterialMapType.Emission.GetName(), new MaterialMap() {
-                        Texture = aMaterial.HasTextureEmissive ? LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Emissive, uniqueTexturePerMesh) : null,
+                        Texture = aMaterial.HasTextureEmissive ? LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Emissive) : null,
                         Color = aMaterial.HasColorEmissive ? new Color(new RgbaFloat(aMaterial.ColorEmissive)) : Color.Black,
                     });
                 }
@@ -240,7 +238,7 @@ public class Model : Disposable {
                 // Height map.
                 if (aMaterial.HasTextureHeight) {
                     material.AddMaterialMap(MaterialMapType.Height.GetName(), new MaterialMap() {
-                        Texture = LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Height, uniqueTexturePerMesh)
+                        Texture = LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Height)
                     });
                 }
             }
@@ -253,12 +251,12 @@ public class Model : Disposable {
             
             // Setup vertices.
             Vertex3D[] vertices = new Vertex3D[scene.Meshes[i].VertexCount];
-
+            
             for (int j = 0; j < mesh.VertexCount; j++) {
                 
                 // Set Position.
                 vertices[j].Position = mesh.Vertices[j];
-
+                
                 // Set TexCoord.
                 if (mesh.HasTextureCoords(0)) {
                     Vector3 texCoord = mesh.TextureCoordinateChannels[0][j];
@@ -300,7 +298,7 @@ public class Model : Disposable {
                 // Set Color.
                 vertices[j].Color = material.GetMapColor(MaterialMapType.Albedo.GetName())?.ToRgbaFloatVec4() ?? Vector4.Zero;
             }
-
+            
             // Setup indices.
             List<uint> indices = new List<uint>();
             
@@ -331,6 +329,9 @@ public class Model : Disposable {
             meshes.Add(new Mesh(graphicsDevice, material, vertices, indices.ToArray(), amateurBuilder.Build(bonesByName)));
         }
         
+        // Apply the final world transform.
+        ProcessNode(scene.RootNode, meshes, Matrix4x4.Identity);
+        
         Logger.Info($"Model loaded successfully from path: [{path}]");
         Logger.Info($"\t> Meshes: {meshes.Count}");
         Logger.Info($"\t> Animations: {scene.AnimationCount}");
@@ -340,53 +341,68 @@ public class Model : Disposable {
         // Create the model.
         Model model = new Model(graphicsDevice, meshes.ToArray(), animations.ToArray());
         
-        // Store cache resources.
-        foreach (Mesh mesh in model.Meshes) {
-            
-            // Store loaded effects.
-            if (mesh.Material.Effect != GlobalResource.DefaultModelEffect) {
-                _effectCache.Add((model, mesh), mesh.Material.Effect);
-            }
-            
-            // Store loaded textures.
-            foreach ((MaterialMap materialMap, string mapName) in mesh.Material.GetMaterialMaps().Zip(mesh.Material.GetMaterialMapNames())) {
-                Texture2D? texture = materialMap.Texture;
-                
-                if (texture != null && texture != GlobalResource.DefaultModelTexture) {
-                    _textureCache.Add((model, mesh, mapName), texture);
-                }
-            }
-        }
+        // Store loaded effects.
+        _effectCache.Add(model, cachedEffects.Values.ToArray());
+        
+        // Store loaded textures.
+        _textureCache.Add(model, cachedTextures.Values.ToArray());
         
         return model;
     }
-
+    
+    /// <summary>
+    /// Processes a node in the scene hierarchy, transforming and updating the associated meshes.
+    /// </summary>
+    /// <param name="node">The <see cref="Node"/> to be processed, representing a part of the scene hierarchy.</param>
+    /// <param name="meshes">A list of <see cref="Mesh"/> objects to be transformed based on the node's transformations.</param>
+    /// <param name="transform">The cumulative transformation matrix applied to the current node and its children.</param>
+    private static void ProcessNode(Node node, List<Mesh> meshes, Matrix4x4 transform) {
+        Matrix4x4 nodeTransform = Matrix4x4.Transpose(node.Transform) * transform;
+        
+        foreach (int meshIndex in node.MeshIndices) {
+            Mesh mesh = meshes[meshIndex];
+            
+            for (int i = 0; i < mesh.Vertices.Length; i++) {
+                
+                // Set Position.
+                mesh.Vertices[i].Position = Vector3.Transform(mesh.Vertices[i].Position, nodeTransform);
+                
+                // Set Normal.
+                Matrix4x4.Invert(Matrix4x4.Transpose(nodeTransform), out Matrix4x4 nodeInverseTransform);
+                mesh.Vertices[i].Normal = Vector3.Normalize(Vector3.TransformNormal(mesh.Vertices[i].Normal, nodeInverseTransform));
+                
+                // Set Tangent.
+                mesh.Vertices[i].Tangent = Vector4.Transform(mesh.Vertices[i].Tangent, nodeTransform);
+            }
+            
+            mesh.UpdateVertexBufferImmediate();
+        }
+        
+        foreach (var childNode in node.Children) {
+            ProcessNode(childNode, meshes, nodeTransform);
+        }
+    }
+    
     /// <summary>
     /// Creates or retrieves an <see cref="Effect"/> instance based on the provided material and shader information.
     /// </summary>
     /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used for creating the effect and managing resources.</param>
     /// <param name="cachedEffects">A dictionary containing pre-cached effects, indexed by their unique identifiers.</param>
     /// <param name="aMaterial">The <see cref="Assimp.Material"/> containing the material and shader properties.</param>
-    /// <param name="uniqueEffectPerMesh">A flag indicating whether each mesh should have a unique effect, even if the same shaders are used.</param>
     /// <returns>A newly created or cached <see cref="Effect"/> if valid shaders exist; otherwise, null.</returns>
-    private static Effect? LoadMaterialEffect(GraphicsDevice graphicsDevice, Dictionary<string, Effect> cachedEffects, AMaterial aMaterial, bool uniqueEffectPerMesh) {
+    private static Effect? LoadMaterialEffect(GraphicsDevice graphicsDevice, Dictionary<string, Effect> cachedEffects, AMaterial aMaterial) {
         ShaderMaterialProperties shaderProperties = aMaterial.Shaders;
         
         if (shaderProperties.HasVertexShader && shaderProperties.HasFragmentShader) {
             string effectKey = $"{shaderProperties.VertexShader}::{shaderProperties.FragmentShader}";
             
-            if (!uniqueEffectPerMesh) {
-                if (cachedEffects.TryGetValue(effectKey, out Effect? cachedEffect)) {
-                    return cachedEffect;
-                }
+            // Check if the effect already exists in the cache.
+            if (cachedEffects.TryGetValue(effectKey, out Effect? cachedEffect)) {
+                return cachedEffect;
             }
             
             Effect effect = new Effect(graphicsDevice, Vertex3D.VertexLayout, Encoding.UTF8.GetBytes(shaderProperties.VertexShader), Encoding.UTF8.GetBytes(shaderProperties.FragmentShader));
-            
-            if (!uniqueEffectPerMesh) {
-                cachedEffects[effectKey] = effect;
-            }
-            
+            cachedEffects[effectKey] = effect;
             return effect;
         }
         
@@ -402,17 +418,14 @@ public class Model : Disposable {
     /// <param name="aMaterial">The <see cref="Assimp.Material"/> from which the texture should be loaded.</param>
     /// <param name="path">The path to the model file, used to resolve texture file paths.</param>
     /// <param name="textureType">The type of texture to load from the material.</param>
-    /// <param name="uniqueTexturePerMesh">A flag indicating whether each mesh uses unique textures or shares textures globally.</param>
     /// <returns>A <see cref="Texture2D"/> object if the texture is successfully loaded, otherwise null.</returns>
-    private static Texture2D? LoadMaterialTexture(GraphicsDevice graphicsDevice, Dictionary<string, Texture2D> cachedTextures, Scene scene, AMaterial aMaterial, string path, TextureType textureType, bool uniqueTexturePerMesh) {
+    private static Texture2D? LoadMaterialTexture(GraphicsDevice graphicsDevice, Dictionary<string, Texture2D> cachedTextures, Scene scene, AMaterial aMaterial, string path, TextureType textureType) {
         if (aMaterial.GetMaterialTexture(textureType, 0, out TextureSlot textureSlot)) {
             string filePath = textureSlot.FilePath;
             
-            // Check if the texture already exists in the cache (if uniqueTexturePerMesh is false).
-            if (!uniqueTexturePerMesh) {
-                if (cachedTextures.TryGetValue(filePath, out Texture2D? cachedTexture)) {
-                    return cachedTexture;
-                }
+            // Check if the texture already exists in the cache.
+            if (cachedTextures.TryGetValue(filePath, out Texture2D? cachedTexture)) {
+                return cachedTexture;
             }
             
             // Handle embedded textures (file path starts with '*').
@@ -425,12 +438,7 @@ public class Model : Disposable {
                     
                     using (MemoryStream memoryStream = new MemoryStream(compressedData)) {
                         Texture2D texture = new Texture2D(graphicsDevice, new Image(memoryStream));
-                        
-                        // Cache the texture if it is not unique per mesh.
-                        if (!uniqueTexturePerMesh) {
-                            cachedTextures[filePath] = texture;
-                        }
-                        
+                        cachedTextures[filePath] = texture;
                         return texture;
                     }
                 }
@@ -438,12 +446,7 @@ public class Model : Disposable {
             else {
                 string finalPath = Path.Combine(Path.GetDirectoryName(path) ?? string.Empty, filePath);
                 Texture2D texture = new Texture2D(graphicsDevice, finalPath);
-                
-                // Cache the texture if it is not unique per mesh.
-                if (!uniqueTexturePerMesh) {
-                    cachedTextures[filePath] = texture;
-                }
-                
+                cachedTextures[filePath] = texture;
                 return texture;
             }
         }
@@ -496,34 +499,35 @@ public class Model : Disposable {
     private BoundingBox GenerateBoundingBox() {
         Vector3 min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
         Vector3 max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
-
+        
         foreach (Mesh mesh in this.Meshes) {
-            foreach (Vertex3D vertex in mesh.Vertices) {
-                min = Vector3.Min(min, vertex.Position);
-                max = Vector3.Max(max, vertex.Position);
-            }
+            min = Vector3.Min(min, mesh.BoundingBox.Min);
+            max = Vector3.Max(max, mesh.BoundingBox.Max);
         }
-
+        
         return new BoundingBox(min, max);
     }
 
     protected override void Dispose(bool disposing) {
         if (disposing) {
+            
+            // Dispose meshes.
             foreach (Mesh mesh in this.Meshes) {
-                // Dispose effects.
-                if (_effectCache.TryGetValue((this, mesh), out Effect? effect)) {
+                mesh.Dispose();
+            }
+            
+            // Dispose effects.
+            if (_effectCache.TryGetValue(this, out Effect[]? effects)) {
+                foreach (Effect effect in effects) {
                     effect.Dispose();
                 }
-
-                // Dispose textures.
-                foreach (string mapName in mesh.Material.GetMaterialMapNames()) {
-                    if (_textureCache.TryGetValue((this, mesh, mapName), out Texture2D? texture)) {
-                        texture.Dispose();
-                    }
+            }
+            
+            // Dispose textures.
+            if (_textureCache.TryGetValue(this, out Texture2D[]? textures)) {
+                foreach (Texture2D texture in textures) {
+                    texture.Dispose();
                 }
-                
-                // Dispose meshes.
-                mesh.Dispose();
             }
         }
     }
