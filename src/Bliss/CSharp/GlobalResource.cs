@@ -109,25 +109,25 @@ public static class GlobalResource {
         });
         
         // Default sprite effect.
-        DefaultSpriteEffect = new Effect(graphicsDevice, SpriteVertex2D.VertexLayout, "content/shaders/sprite.vert", "content/shaders/sprite.frag");
+        DefaultSpriteEffect = new Effect(graphicsDevice, SpriteVertex2D.VertexLayout, "core/shaders/sprite.vert", "core/shaders/sprite.frag");
         DefaultSpriteEffect.AddBufferLayout("ProjectionViewBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
         DefaultSpriteEffect.AddTextureLayout("fTexture");
         
         // Primitive effect.
-        DefaultPrimitiveEffect = new Effect(graphicsDevice, PrimitiveVertex2D.VertexLayout, "content/shaders/primitive.vert", "content/shaders/primitive.frag");
+        DefaultPrimitiveEffect = new Effect(graphicsDevice, PrimitiveVertex2D.VertexLayout, "core/shaders/primitive.vert", "core/shaders/primitive.frag");
         DefaultPrimitiveEffect.AddBufferLayout("ProjectionViewBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
         
         // FullScreenRenderPass effect.
-        DefaultFullScreenRenderPassEffect = new Effect(graphicsDevice, SpriteVertex2D.VertexLayout, "content/shaders/full_screen_render_pass.vert", "content/shaders/full_screen_render_pass.frag");
+        DefaultFullScreenRenderPassEffect = new Effect(graphicsDevice, SpriteVertex2D.VertexLayout, "core/shaders/full_screen_render_pass.vert", "core/shaders/full_screen_render_pass.frag");
         DefaultFullScreenRenderPassEffect.AddTextureLayout("fTexture");
         
         // ImmediateRenderer effect.
-        DefaultImmediateRendererEffect = new Effect(graphicsDevice, ImmediateVertex3D.VertexLayout, "content/shaders/immediate_renderer.vert", "content/shaders/immediate_renderer.frag");
+        DefaultImmediateRendererEffect = new Effect(graphicsDevice, ImmediateVertex3D.VertexLayout, "core/shaders/immediate_renderer.vert", "core/shaders/immediate_renderer.frag");
         DefaultImmediateRendererEffect.AddBufferLayout("MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
         DefaultImmediateRendererEffect.AddTextureLayout("fTexture");
         
         // Default model effect.
-        DefaultModelEffect = new Effect(graphicsDevice, Vertex3D.VertexLayout, "content/shaders/default_model.vert", "content/shaders/default_model.frag");
+        DefaultModelEffect = new Effect(graphicsDevice, Vertex3D.VertexLayout, "core/shaders/default_model.vert", "core/shaders/default_model.frag");
         DefaultModelEffect.AddBufferLayout("MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
         DefaultModelEffect.AddBufferLayout("BoneBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
         DefaultModelEffect.AddBufferLayout("ColorBuffer", SimpleBufferType.Uniform, ShaderStages.Fragment);
@@ -138,7 +138,7 @@ public static class GlobalResource {
         DefaultImmediateRendererTexture = new Texture2D(graphicsDevice, new Image(1, 1, Color.White));
         
         // Default model texture.
-        DefaultModelTexture = new Texture2D(graphicsDevice, new Image(1, 1, Color.Gray));
+        DefaultModelTexture = new Texture2D(graphicsDevice, new Image(1, 1, Color.White));
     }
     
     /// <summary>
