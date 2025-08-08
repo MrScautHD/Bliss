@@ -48,7 +48,7 @@
 
     <!-- Icon -->
     <ItemGroup>
-        <None Include="content\images\icon.png" Pack="true" PackagePath="" />
+        <None Include="core\images\icon.png" Pack="true" PackagePath="" />
     </ItemGroup>
 
     <!-- Content -->
