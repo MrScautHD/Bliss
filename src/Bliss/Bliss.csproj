@@ -51,11 +51,11 @@
         <None Include="core\images\icon.png" Pack="true" PackagePath="" />
     </ItemGroup>
 
-    <!-- Content -->
+<!--    &lt;!&ndash; Content &ndash;&gt;
     <ItemGroup>
         <Content Include="content/**/*" Pack="true">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
             <PackageCopyToOutput>true</PackageCopyToOutput>
         </Content>
-    </ItemGroup>
+    </ItemGroup>-->
 </Project>
