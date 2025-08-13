@@ -169,4 +169,68 @@ public class Frustum {
 
         return true;
     }
+    /* https://en.wikipedia.org/wiki/Separating_axis_theorem 
+       This could probably be optimised */
+    public bool IntersectsFrustum(Frustum other) {
+        var thisCorners = GetCorners();
+        var otherCorners = other.GetCorners();
+
+        // Check this frustum's planes against other frustum's corners
+        foreach (var plane in _planes) {
+            bool allOutside = true;
+            foreach (var corner in otherCorners) {
+                if (Plane.DotCoordinate(plane, corner) >= 0) {
+                    allOutside = false;
+                    break;
+                }
+            }
+
+            if (allOutside) return false;
+        }
+
+        // Check other frustum's planes against this frustum's corners
+        foreach (var plane in other._planes) {
+            bool allOutside = true;
+            foreach (var corner in thisCorners) {
+                if (Plane.DotCoordinate(plane, corner) >= 0) {
+                    allOutside = false;
+                    break;
+                }
+            }
+
+            if (allOutside) return false;
+        }
+
+        return true;
+    }
+    public Vector3[] GetCorners() {
+        // L: 0, R: 1, B: 2, T: 3, N: 4, F: 5
+        return
+        [
+            IntersectPlanes(_planes[0], _planes[2], _planes[4]),
+            IntersectPlanes(_planes[0], _planes[3], _planes[4]),
+            IntersectPlanes(_planes[1], _planes[3], _planes[4]),
+            IntersectPlanes(_planes[1], _planes[2], _planes[4]),
+            IntersectPlanes(_planes[0], _planes[2], _planes[5]),
+            IntersectPlanes(_planes[0], _planes[3], _planes[5]),
+            IntersectPlanes(_planes[1], _planes[3], _planes[5]),
+            IntersectPlanes(_planes[1], _planes[2], _planes[5])
+        ];
+    }
+    public Vector3 IntersectPlanes(Plane p1, Plane p2, Plane p3) {
+        // Solving intersection point of 3 planes using Cramer's Rule
+        var n1 = new Vector3(p1.Normal.X, p1.Normal.Y, p1.Normal.Z);
+        var n2 = new Vector3(p2.Normal.X, p2.Normal.Y, p2.Normal.Z);
+        var n3 = new Vector3(p3.Normal.X, p3.Normal.Y, p3.Normal.Z);
+
+        var denom = Vector3.Dot(n1, Vector3.Cross(n2, n3));
+
+        if (MathF.Abs(denom) < 1e-6f) return Vector3.Zero; // Parallel planes
+
+        var c1 = (-p1.D * Vector3.Cross(n2, n3));
+        var c2 = (-p2.D * Vector3.Cross(n3, n1));
+        var c3 = (-p3.D * Vector3.Cross(n1, n2));
+
+        return (c1 + c2 + c3) / denom;
+    }
 }
