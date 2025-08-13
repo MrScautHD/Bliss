@@ -23,6 +23,11 @@ public class Material {
     /// Specifies the blend state for rendering, determining how colors are blended on the screen.
     /// </summary>
     public BlendStateDescription BlendState;
+
+    /// <summary>
+    /// A boolean flag indicating whether the material has translucent properties.
+    /// </summary>
+    public bool Translucent;
     
     /// <summary>
     /// A list of floating-point parameters for configuring material properties.
@@ -41,10 +46,12 @@ public class Material {
     /// <param name="graphicsDevice">The graphics device to associate with this material.</param>
     /// <param name="effect">The effect (shader) to apply to the material.</param>
     /// <param name="blendState">The optional blend state to define how this material blends with others during rendering. If not specified, blending is disabled by default.</param>
-    public Material(GraphicsDevice graphicsDevice, Effect effect, BlendStateDescription? blendState = null) {
+    /// <param name="translucent">A boolean flag indicating whether the material has translucent properties.</param>
+    public Material(GraphicsDevice graphicsDevice, Effect effect, BlendStateDescription? blendState = null, bool translucent = false) {
         this.GraphicsDevice = graphicsDevice;
         this.Effect = effect;
         this.BlendState = blendState ?? BlendStateDescription.SINGLE_DISABLED;
+        this.Translucent = translucent;
         this.Parameters = new List<float>();
         this._maps = new Dictionary<string, MaterialMap>();
     }

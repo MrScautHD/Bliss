@@ -1,6 +1,6 @@
 #version 450
 
-#define MAX_MAPS_COUNT 7
+#define MAX_MAPS_COUNT 8
 
 layout(set = 2, binding = 0) uniform ColorBuffer {
     vec4[MAX_MAPS_COUNT] uColors;

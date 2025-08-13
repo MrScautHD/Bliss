@@ -9,7 +9,7 @@ using Bliss.CSharp.Windowing;
 using Veldrid;
 using Color = Bliss.CSharp.Colors.Color;
 
-namespace Bliss.CSharp.Graphics.Rendering.Batches.Primitives;
+namespace Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives;
 
 public class PrimitiveBatch : Disposable {
 

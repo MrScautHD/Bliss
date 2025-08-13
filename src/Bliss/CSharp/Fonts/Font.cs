@@ -1,6 +1,6 @@
 using System.Numerics;
 using Bliss.CSharp.Colors;
-using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Transformations;
 using FontStashSharp;

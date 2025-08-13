@@ -7,9 +7,9 @@ using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Textures;
 using Veldrid;
 
-namespace Bliss.CSharp.Graphics.Rendering.Passes;
+namespace Bliss.CSharp.Graphics.Rendering.Renderers;
 
-public class FullScreenRenderPass : Disposable {
+public class FullScreenRenderer : Disposable {
     
     /// <summary>
     /// The graphics device used for rendering.
@@ -27,10 +27,10 @@ public class FullScreenRenderPass : Disposable {
     private SimplePipelineDescription _pipelineDescription;
     
     /// <summary>
-    /// Initializes a new instance of the <see cref="FullScreenRenderPass"/> class, setting up the necessary buffers and pipeline for full-screen rendering.
+    /// Initializes a new instance of the <see cref="FullScreenRenderer"/> class, setting up the necessary buffers and pipeline for full-screen rendering.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used for resource creation and rendering.</param>
-    public FullScreenRenderPass(GraphicsDevice graphicsDevice) {
+    public FullScreenRenderer(GraphicsDevice graphicsDevice) {
         this.GraphicsDevice = graphicsDevice;
         
         // Create vertex buffer.

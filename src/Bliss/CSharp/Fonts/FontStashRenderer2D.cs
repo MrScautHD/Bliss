@@ -1,5 +1,5 @@
 using System.Numerics;
-using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites;
 using Bliss.CSharp.Textures;
 using FontStashSharp;
 using FontStashSharp.Interfaces;

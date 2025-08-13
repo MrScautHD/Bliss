@@ -1,4 +1,4 @@
-namespace Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
+namespace Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites;
 
 public enum SpriteFlip {
     

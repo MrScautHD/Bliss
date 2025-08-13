@@ -3,11 +3,9 @@ using Bliss.CSharp;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Geometry;
-using Bliss.CSharp.Graphics;
-using Bliss.CSharp.Graphics.Rendering.Batches.Primitives;
-using Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
-using Bliss.CSharp.Graphics.Rendering.Passes;
 using Bliss.CSharp.Graphics.Rendering.Renderers;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Contexts;
@@ -40,7 +38,7 @@ public class Game : Disposable {
     private readonly double _fixedUpdateTimeStep;
     private double _fixedUpdateTimer;
     
-    public FullScreenRenderPass FullScreenRenderPass { get; private set; }
+    public FullScreenRenderer FullScreenRenderer { get; private set; }
     public RenderTexture2D FullScreenTexture { get; private set; }
 
     private ImmediateRenderer _immediateRenderer;
@@ -165,7 +163,7 @@ public class Game : Disposable {
     }
     
     protected virtual void Init() {
-        this.FullScreenRenderPass = new FullScreenRenderPass(this.GraphicsDevice);
+        this.FullScreenRenderer = new FullScreenRenderer(this.GraphicsDevice);
         this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), this.Settings.SampleCount);
         
         this._immediateRenderer = new ImmediateRenderer(this.GraphicsDevice);
@@ -426,7 +424,7 @@ public class Game : Disposable {
         commandList.SetFramebuffer(graphicsDevice.SwapchainFramebuffer);
         commandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
         
-        this.FullScreenRenderPass.Draw(commandList, this.FullScreenTexture, this.GraphicsDevice.SwapchainFramebuffer.OutputDescription);
+        this.FullScreenRenderer.Draw(commandList, this.FullScreenTexture, this.GraphicsDevice.SwapchainFramebuffer.OutputDescription);
         
         commandList.End();
         

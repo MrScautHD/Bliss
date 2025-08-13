@@ -39,10 +39,16 @@ public enum MaterialMapType {
     /// </summary>
     [EnumMember(Value = "fEmissive")]
     Emission = 5,
+
+    /// <summary>
+    /// Opacity map, which defines the transparency levels of the material.
+    /// </summary>
+    [EnumMember(Value = "fOpacity")]
+    Opacity = 6,
     
     /// <summary>
     /// Height map, which provides height data for the material to simulate depth effects.
     /// </summary>
     [EnumMember(Value = "fHeight")]
-    Height = 6
+    Height = 7
 }

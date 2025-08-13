@@ -153,7 +153,7 @@ public class Mesh : Disposable {
         this._boneBuffer.UpdateBufferImmediate();
         
         // Create color buffer.
-        this._colorBuffer = new SimpleBuffer<Vector4>(graphicsDevice, 7, SimpleBufferType.Uniform, ShaderStages.Fragment);
+        this._colorBuffer = new SimpleBuffer<Vector4>(graphicsDevice, 8, SimpleBufferType.Uniform, ShaderStages.Fragment);
 
         for (int i = 0; i < 7; i++) {
             this._colorBuffer.SetValue(i, Color.White.ToRgbaFloatVec4());

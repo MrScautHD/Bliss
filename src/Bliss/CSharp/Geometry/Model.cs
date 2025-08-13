@@ -235,6 +235,13 @@ public class Model : Disposable {
                     });
                 }
                 
+                // Opacity map.
+                if (aMaterial.HasTextureOpacity) {
+                    material.AddMaterialMap(MaterialMapType.Opacity.GetName(), new MaterialMap() {
+                        Texture = LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Opacity)
+                    });
+                }
+                
                 // Height map.
                 if (aMaterial.HasTextureHeight) {
                     material.AddMaterialMap(MaterialMapType.Height.GetName(), new MaterialMap() {

@@ -12,7 +12,7 @@ using Bliss.CSharp.Windowing;
 using FontStashSharp;
 using Veldrid;
 
-namespace Bliss.CSharp.Graphics.Rendering.Batches.Sprites;
+namespace Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites;
 
 public class SpriteBatch : Disposable {
     
@@ -864,7 +864,7 @@ public class SpriteBatch : Disposable {
         
         // Set projection view buffer.
         this._currentCommandList.SetGraphicsResourceSet(this._currentEffect.GetBufferLayoutSlot("ProjectionViewBuffer"), this._projViewBuffer.GetResourceSet(this._currentEffect.GetBufferLayout("ProjectionViewBuffer")));
-
+        
         // Set resourceSet of the texture.
         this._currentCommandList.SetGraphicsResourceSet(this._currentEffect.GetTextureLayoutSlot("fTexture"), this._currentTexture.GetResourceSet(this._currentSampler, this._currentEffect.GetTextureLayout("fTexture")));
         
