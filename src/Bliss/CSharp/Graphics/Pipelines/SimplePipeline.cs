@@ -14,7 +14,7 @@ public class SimplePipeline : Disposable {
     /// <summary>
     /// Contains the configuration details for setting up a graphics pipeline, including states and resource layouts.
     /// </summary>
-    public SimplePipelineDescription PipelineDescription;
+    public PipelineDescSimpl PipelineDescription;
 
     /// <summary>
     /// Represents the array of resource layouts used by the pipeline to manage buffer and texture resources.
@@ -31,7 +31,7 @@ public class SimplePipeline : Disposable {
     /// </summary>
     /// <param name="graphicsDevice">The graphics device that will be used to create the pipeline.</param>
     /// <param name="pipelineDescription">The description of the pipeline, containing configurations like blend state, shader set, and resource layouts.</param>
-    public SimplePipeline(GraphicsDevice graphicsDevice, SimplePipelineDescription pipelineDescription) {
+    public SimplePipeline(GraphicsDevice graphicsDevice, PipelineDescSimpl pipelineDescription) {
         this.GraphicsDevice = graphicsDevice;
         this.PipelineDescription = pipelineDescription;
         this.ResourceLayouts = new ResourceLayout[pipelineDescription.BufferLayouts.Count() + pipelineDescription.TextureLayouts.Count()];

@@ -4,7 +4,7 @@ using Veldrid;
 
 namespace Bliss.CSharp.Graphics.Pipelines;
 
-public struct SimplePipelineDescription : IEquatable<SimplePipelineDescription> {
+public struct PipelineDescSimpl : IEquatable<PipelineDescSimpl> {
 
     /// <summary>
     /// Configuration for how colors are blended during rendering.
@@ -52,7 +52,7 @@ public struct SimplePipelineDescription : IEquatable<SimplePipelineDescription> 
     public ResourceBindingModel? ResourceBindingModel;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="SimplePipelineDescription"/> struct with the provided pipeline configuration details.
+    /// Initializes a new instance of the <see cref="PipelineDescSimpl"/> struct with the provided pipeline configuration details.
     /// </summary>
     /// <param name="blendState">The blend state configuration of the pipeline.</param>
     /// <param name="depthStencilState">The depth and stencil state configuration of the pipeline.</param>
@@ -62,7 +62,7 @@ public struct SimplePipelineDescription : IEquatable<SimplePipelineDescription> 
     /// <param name="textureLayouts">A list of texture layouts to be used in the pipeline.</param>
     /// <param name="shaderSet">The shader set description that defines the vertex and fragment shaders.</param>
     /// <param name="outputs">The output configuration of the pipeline, specifying the render targets and depth-stencil buffer.</param>
-    public SimplePipelineDescription(BlendStateDescription blendState, DepthStencilStateDescription depthStencilState, RasterizerStateDescription rasterizerState, PrimitiveTopology primitiveTopology, List<SimpleBufferLayout> bufferLayouts, List<SimpleTextureLayout> textureLayouts, ShaderSetDescription shaderSet, OutputDescription outputs) {
+    public PipelineDescSimpl(BlendStateDescription blendState, DepthStencilStateDescription depthStencilState, RasterizerStateDescription rasterizerState, PrimitiveTopology primitiveTopology, List<SimpleBufferLayout> bufferLayouts, List<SimpleTextureLayout> textureLayouts, ShaderSetDescription shaderSet, OutputDescription outputs) {
         this.BlendState = blendState;
         this.DepthStencilState = depthStencilState;
         this.RasterizerState = rasterizerState;
@@ -75,35 +75,35 @@ public struct SimplePipelineDescription : IEquatable<SimplePipelineDescription> 
     }
     
     /// <summary>
-    /// Initializes a new instance of the <see cref="SimplePipelineDescription"/> struct.
+    /// Initializes a new instance of the <see cref="PipelineDescSimpl"/> struct.
     /// </summary>
-    public SimplePipelineDescription() {
+    public PipelineDescSimpl() {
         this.BufferLayouts = new List<SimpleBufferLayout>();
         this.TextureLayouts = new List<SimpleTextureLayout>();
     }
     
     /// <summary>
-    /// Determines whether two <see cref="SimplePipelineDescription"/> instances are equal based on their properties.
+    /// Determines whether two <see cref="PipelineDescSimpl"/> instances are equal based on their properties.
     /// </summary>
-    /// <param name="left">The first <see cref="SimplePipelineDescription"/> instance to compare.</param>
-    /// <param name="right">The second <see cref="SimplePipelineDescription"/> instance to compare.</param>
+    /// <param name="left">The first <see cref="PipelineDescSimpl"/> instance to compare.</param>
+    /// <param name="right">The second <see cref="PipelineDescSimpl"/> instance to compare.</param>
     /// <returns><c>true</c> if the instances are equal; otherwise, <c>false</c>.</returns>
-    public static bool operator ==(SimplePipelineDescription left, SimplePipelineDescription right) => left.Equals(right);
+    public static bool operator ==(PipelineDescSimpl left, PipelineDescSimpl right) => left.Equals(right);
 
     /// <summary>
-    /// Determines whether two <see cref="SimplePipelineDescription"/> instances are equal.
+    /// Determines whether two <see cref="PipelineDescSimpl"/> instances are equal.
     /// </summary>
-    /// <param name="left">The first <see cref="SimplePipelineDescription"/> to compare.</param>
-    /// <param name="right">The second <see cref="SimplePipelineDescription"/> to compare.</param>
+    /// <param name="left">The first <see cref="PipelineDescSimpl"/> to compare.</param>
+    /// <param name="right">The second <see cref="PipelineDescSimpl"/> to compare.</param>
     /// <returns>True if both instances are equal; otherwise, false.</returns>
-    public static bool operator !=(SimplePipelineDescription left, SimplePipelineDescription right) => !left.Equals(right);
+    public static bool operator !=(PipelineDescSimpl left, PipelineDescSimpl right) => !left.Equals(right);
 
     /// <summary>
-    /// Determines whether the current <see cref="SimplePipelineDescription"/> instance is equal to another specified instance.
+    /// Determines whether the current <see cref="PipelineDescSimpl"/> instance is equal to another specified instance.
     /// </summary>
-    /// <param name="other">The other <see cref="SimplePipelineDescription"/> instance to compare with the current instance.</param>
+    /// <param name="other">The other <see cref="PipelineDescSimpl"/> instance to compare with the current instance.</param>
     /// <returns>A boolean value indicating whether the two instances are equal.</returns>
-    public bool Equals(SimplePipelineDescription other) {
+    public bool Equals(PipelineDescSimpl other) {
         return this.BlendState.Equals(other.BlendState) &&
                this.DepthStencilState.Equals(other.DepthStencilState) &&
                this.RasterizerState.Equals(other.RasterizerState) &&
@@ -116,16 +116,16 @@ public struct SimplePipelineDescription : IEquatable<SimplePipelineDescription> 
     }
 
     /// <summary>
-    /// Determines whether the specified object is equal to the current <see cref="SimplePipelineDescription"/> instance.
+    /// Determines whether the specified object is equal to the current <see cref="PipelineDescSimpl"/> instance.
     /// </summary>
     /// <param name="obj">The object to compare with the current instance.</param>
     /// <returns>A boolean value indicating whether the specified object is equal to the current instance.</returns>
     public override bool Equals(object? obj) {
-        return obj is SimplePipelineDescription other && this.Equals(other);
+        return obj is PipelineDescSimpl other && this.Equals(other);
     }
 
     /// <summary>
-    /// Returns a hash code for this instance of <see cref="SimplePipelineDescription"/>.
+    /// Returns a hash code for this instance of <see cref="PipelineDescSimpl"/>.
     /// </summary>
     /// <returns>A 32-bit signed integer hash code that is representative of the object's current state and its members.</returns>
     public override int GetHashCode() {
@@ -150,7 +150,7 @@ public struct SimplePipelineDescription : IEquatable<SimplePipelineDescription> 
     }
 
     /// <summary>
-    /// Returns a string representation of the <see cref="SimplePipelineDescription"/> instance, detailing its configuration and properties.
+    /// Returns a string representation of the <see cref="PipelineDescSimpl"/> instance, detailing its configuration and properties.
     /// </summary>
     /// <returns>A string that includes the blend state, depth-stencil state, rasterizer state, primitive topology, buffers, texture layouts, shader set, outputs, and resource binding model of the pipeline description.</returns>
     public override string ToString() {

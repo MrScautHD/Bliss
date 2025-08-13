@@ -96,7 +96,7 @@ public class SpriteBatch : Disposable {
     /// <summary>
     /// Stores the description of the graphics pipeline, defining its configuration and behavior.
     /// </summary>
-    private SimplePipelineDescription _pipelineDescription;
+    private PipelineDescSimpl _pipelineDescription;
 
     /// <summary>
     /// Indicates whether a sprite batch operation has begun.
@@ -292,7 +292,7 @@ public class SpriteBatch : Disposable {
         this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
 
         // Create pipeline description.
-        this._pipelineDescription = new SimplePipelineDescription() {
+        this._pipelineDescription = new PipelineDescSimpl() {
             PrimitiveTopology = PrimitiveTopology.TriangleList
         };
     }

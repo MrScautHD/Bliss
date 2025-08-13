@@ -55,7 +55,11 @@ public static class GlobalResource {
     /// <summary>
     /// The default <see cref="Effect"/> used for rendering 3D models.
     /// </summary>
-    public static Effect DefaultModelEffect { get; private set; }
+    public static Effect LitModelEffect { get; private set; }
+    /// <summary>
+    /// The default <see cref="Effect"/> used for rendering 3D models.
+    /// </summary>
+    public static Effect UnlitModelEffect { get; private set; }
 
     /// <summary>
     /// The default <see cref="Texture2D"/> used for immediate mode rendering.
@@ -127,12 +131,19 @@ public static class GlobalResource {
         DefaultImmediateRendererEffect.AddTextureLayout("fTexture");
         
         // Default model effect.
-        DefaultModelEffect = new Effect(graphicsDevice, Vertex3D.VertexLayout, "core/shaders/default_model.vert", "core/shaders/default_model.frag");
-        DefaultModelEffect.AddBufferLayout("MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
-        DefaultModelEffect.AddBufferLayout("BoneBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
-        DefaultModelEffect.AddBufferLayout("ColorBuffer", SimpleBufferType.Uniform, ShaderStages.Fragment);
-        DefaultModelEffect.AddBufferLayout("ValueBuffer", SimpleBufferType.Uniform, ShaderStages.Fragment);
-        DefaultModelEffect.AddTextureLayout(MaterialMapType.Albedo.GetName());
+        LitModelEffect = new Effect(graphicsDevice, Vertex3D.VertexLayout, "core/shaders/msh_generic.vert", "core/shaders/msh_lit.frag");
+        LitModelEffect.AddBufferLayout("MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
+        LitModelEffect.AddBufferLayout("ColorBuffer", SimpleBufferType.Uniform, ShaderStages.Fragment);
+        LitModelEffect.AddTextureLayout("fAlbedo");
+        LitModelEffect.AddTextureLayout("fRough");
+        LitModelEffect.AddTextureLayout("fMetal");
+        LitModelEffect.AddTextureLayout("fNormal");
+        
+        // Default model effect.
+        UnlitModelEffect = new Effect(graphicsDevice, Vertex3D.VertexLayout, "core/shaders/msh_generic.vert", "core/shaders/msh_unlit.frag");
+        UnlitModelEffect.AddBufferLayout("MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
+        UnlitModelEffect.AddBufferLayout("ColorBuffer", SimpleBufferType.Uniform, ShaderStages.Fragment);
+        UnlitModelEffect.AddTextureLayout("fAlbedo");
         
         // Default immediate renderer texture.
         DefaultImmediateRendererTexture = new Texture2D(graphicsDevice, new Image(1, 1, Color.White));
@@ -152,7 +163,8 @@ public static class GlobalResource {
         DefaultPrimitiveEffect.Dispose();
         DefaultFullScreenRenderPassEffect.Dispose();
         DefaultImmediateRendererEffect.Dispose();
-        DefaultModelEffect.Dispose();
+        UnlitModelEffect.Dispose();
+        LitModelEffect.Dispose();
         DefaultImmediateRendererTexture.Dispose();
         DefaultModelTexture.Dispose();
     }

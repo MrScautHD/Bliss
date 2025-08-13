@@ -43,7 +43,7 @@ public class Effect : Disposable {
     /// <summary>
     /// A cache of pipelines created for specific pipeline descriptions, enabling reuse.
     /// </summary>
-    private Dictionary<SimplePipelineDescription, SimplePipeline> _cachedPipelines;
+    private Dictionary<PipelineDescSimpl, SimplePipeline> _cachedPipelines;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="Effect"/> class using shader file paths.
@@ -88,7 +88,7 @@ public class Effect : Disposable {
         
         this._bufferLayouts = new List<SimpleBufferLayout>();
         this._textureLayouts = new List<SimpleTextureLayout>();
-        this._cachedPipelines = new Dictionary<SimplePipelineDescription, SimplePipeline>();
+        this._cachedPipelines = new Dictionary<PipelineDescSimpl, SimplePipeline>();
     }
 
     /// <summary>
@@ -230,7 +230,7 @@ public class Effect : Disposable {
     /// </summary>
     /// <param name="pipelineDescription">The description of the pipeline to retrieve or create.</param>
     /// <returns>A <see cref="SimplePipeline"/> configured with the specified description.</returns>
-    public SimplePipeline GetPipeline(SimplePipelineDescription pipelineDescription) {
+    public SimplePipeline GetPipeline(PipelineDescSimpl pipelineDescription) {
         if (!this._cachedPipelines.TryGetValue(pipelineDescription, out SimplePipeline? pipeline)) {
             SimplePipeline newPipeline = new SimplePipeline(this.GraphicsDevice, pipelineDescription);
             

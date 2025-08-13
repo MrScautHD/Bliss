@@ -24,7 +24,7 @@ public class FullScreenRenderPass : Disposable {
     /// <summary>
     /// Represents the configuration details for creating and managing a simple graphics pipeline.
     /// </summary>
-    private SimplePipelineDescription _pipelineDescription;
+    private PipelineDescSimpl _pipelineDescription;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="FullScreenRenderPass"/> class, setting up the necessary buffers and pipeline for full-screen rendering.
@@ -39,7 +39,7 @@ public class FullScreenRenderPass : Disposable {
         graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this.GetVertices(graphicsDevice.IsUvOriginTopLeft));
         
         // Create pipeline.
-        this._pipelineDescription = new SimplePipelineDescription() {
+        this._pipelineDescription = new PipelineDescSimpl() {
             PrimitiveTopology = PrimitiveTopology.TriangleList
         };
     }

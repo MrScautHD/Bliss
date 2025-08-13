@@ -58,7 +58,7 @@ public class PrimitiveBatch : Disposable {
     /// <summary>
     /// Stores the description of the graphics pipeline, defining its configuration and behavior.
     /// </summary>
-    private SimplePipelineDescription _pipelineDescription;
+    private PipelineDescSimpl _pipelineDescription;
     
     /// <summary>
     /// Indicates whether the batch has begun.
@@ -215,7 +215,7 @@ public class PrimitiveBatch : Disposable {
         this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
         
         // Create pipeline description.
-        this._pipelineDescription = new SimplePipelineDescription();
+        this._pipelineDescription = new PipelineDescSimpl();
     }
 
     /// <summary>

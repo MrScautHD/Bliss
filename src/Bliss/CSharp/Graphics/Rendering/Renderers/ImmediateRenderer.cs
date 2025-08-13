@@ -74,7 +74,7 @@ public class ImmediateRenderer : Disposable {
     /// <summary>
     /// The pipeline description used to configure the graphics pipeline for rendering.
     /// </summary>
-    private SimplePipelineDescription _pipelineDescription;
+    private PipelineDescSimpl _pipelineDescription;
 
     /// <summary>
     /// The currently bound effect.
@@ -136,7 +136,7 @@ public class ImmediateRenderer : Disposable {
         this._matrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 3, SimpleBufferType.Uniform, ShaderStages.Vertex);
 
         // Create pipeline description.
-        this._pipelineDescription = new SimplePipelineDescription();
+        this._pipelineDescription = new PipelineDescSimpl();
         
         // Set default settings.
         this.ResetSettings();
