@@ -90,16 +90,11 @@ public class Mesh : Disposable {
     /// A buffer that stores bone transformation data used for skeletal animation.
     /// </summary>
     private SimpleBuffer<Matrix4x4> _boneBuffer;
-
+    
     /// <summary>
-    /// A buffer that stores color data as a collection of 4D vectors (Vector4) for rendering purposes.
+    /// A buffer containing material mapping data used for rendering.
     /// </summary>
-    private SimpleBuffer<Vector4> _colorBuffer;
-
-    /// <summary>
-    /// Represents a GPU buffer that stores floating-point values for use in rendering or animation systems.
-    /// </summary>
-    private SimpleBuffer<float> _valueBuffer;
+    private SimpleBuffer<MaterialMapData> _materialMapBuffer;
     
     /// <summary>
     /// Defines the characteristics of the rendering pipeline used by the mesh.
@@ -152,18 +147,9 @@ public class Mesh : Disposable {
         
         this._boneBuffer.UpdateBufferImmediate();
         
-        // Create color buffer.
-        this._colorBuffer = new SimpleBuffer<Vector4>(graphicsDevice, 8, SimpleBufferType.Uniform, ShaderStages.Fragment);
-
-        for (int i = 0; i < 7; i++) {
-            this._colorBuffer.SetValue(i, Color.White.ToRgbaFloatVec4());
-        }
+        // Create material map buffer.
+        this._materialMapBuffer = new SimpleBuffer<MaterialMapData>(graphicsDevice, 8, SimpleBufferType.Uniform, ShaderStages.Fragment);
         
-        this._colorBuffer.UpdateBufferImmediate();
-        
-        // Create value buffer.
-        this._valueBuffer = new SimpleBuffer<float>(graphicsDevice, 8, SimpleBufferType.Uniform, ShaderStages.Fragment);
-
         // Create pipeline description.
         this._pipelineDescription = new SimplePipelineDescription() {
             PrimitiveTopology = PrimitiveTopology.TriangleList
@@ -215,7 +201,7 @@ public class Mesh : Disposable {
     
         Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
     
-        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap {
+        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
@@ -299,7 +285,7 @@ public class Mesh : Disposable {
     
         Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
     
-        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap() {
+        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap() {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
@@ -381,7 +367,7 @@ public class Mesh : Disposable {
 
         Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
 
-        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap() {
+        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap() {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
@@ -485,7 +471,7 @@ public class Mesh : Disposable {
     
         Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
     
-        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap() {
+        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap() {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
@@ -584,7 +570,7 @@ public class Mesh : Disposable {
     
         Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
         
-        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap {
+        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
@@ -734,7 +720,7 @@ public class Mesh : Disposable {
         
         Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
         
-        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap {
+        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
@@ -812,7 +798,7 @@ public class Mesh : Disposable {
 
         Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
 
-        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap {
+        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
@@ -887,7 +873,7 @@ public class Mesh : Disposable {
 
         Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
         
-        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap {
+        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
@@ -977,7 +963,7 @@ public class Mesh : Disposable {
         
         Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
         
-        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap {
+        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
@@ -1039,7 +1025,7 @@ public class Mesh : Disposable {
         
         Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
 
-        material.AddMaterialMap(MaterialMapType.Albedo.GetName(), new MaterialMap {
+        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
@@ -1247,8 +1233,8 @@ public class Mesh : Disposable {
         }
         
         // Set optional color.
-        Color cachedColor = this.Material.GetMapColor(MaterialMapType.Albedo.GetName()) ?? Color.White;
-        this.Material.SetMapColor(MaterialMapType.Albedo.GetName(), color ?? cachedColor);
+        Color cachedColor = this.Material.GetMapColor(MaterialMapType.Albedo) ?? Color.White;
+        this.Material.SetMapColor(MaterialMapType.Albedo, color ?? cachedColor);
         
         // Update matrix buffer.
         this._modelMatrixBuffer.SetValue(0, cam3D.GetProjection());
@@ -1256,23 +1242,19 @@ public class Mesh : Disposable {
         this._modelMatrixBuffer.SetValue(2, transform.GetTransform());
         this._modelMatrixBuffer.UpdateBuffer(commandList);
         
-        // Update color buffer.
-        for (int i = 0; i < this.Material.GetMaterialMaps().Count(); i++) {
-            Color? mapColor = this.Material.GetMapColor(((MaterialMapType) i).GetName());
+        // Update material map buffer.
+        foreach (MaterialMapType mapType in this.Material.GetMaterialMapTypes()) {
+            MaterialMap? map = this.Material.GetMaterialMap(mapType);
             
-            if (mapColor.HasValue) {
-                this._colorBuffer.SetValue(i, mapColor.Value.ToRgbaFloatVec4());
+            if (map != null) {
+                this._materialMapBuffer.SetValue((int) mapType, new MaterialMapData() {
+                    Color = map.Color?.ToRgbaFloatVec4() ?? Vector4.Zero,
+                    Value = map.Value
+                });
             }
         }
         
-        this._colorBuffer.UpdateBuffer(commandList);
-        
-        // Update value buffer.
-        for (int i = 0; i < this.Material.GetMaterialMaps().Count(); i++) {
-            this._valueBuffer.SetValue(i, this.Material.GetMapValue(((MaterialMapType) i).GetName()));
-        }
-        
-        this._valueBuffer.UpdateBuffer(commandList);
+        this._materialMapBuffer.UpdateBuffer(commandList);
         
         // Update pipeline description.
         this._pipelineDescription.BlendState = this.Material.BlendState;
@@ -1298,18 +1280,21 @@ public class Mesh : Disposable {
             // Set bone buffer.
             commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("BoneBuffer"), this._boneBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("BoneBuffer")));
             
-            // Set color buffer.
-            commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("ColorBuffer"), this._colorBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ColorBuffer")));
-            
-            // Set value buffer.
-            commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("ValueBuffer"), this._valueBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ValueBuffer")));
+            // Set material map buffer.
+            commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("MaterialMapBuffer"), this._materialMapBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("MaterialMapBuffer")));
             
             // Set material texture.
-            foreach (SimpleTextureLayout layout in this.Material.Effect.GetTextureLayouts()) {
-                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), this.Material.Effect.GetTextureLayout(layout.Name));
-                
-                if (resourceSet != null) {
-                    commandList.SetGraphicsResourceSet(this.Material.Effect.GetTextureLayoutSlot(layout.Name), resourceSet);
+            foreach (SimpleTextureLayout textureLayout in this.Material.Effect.GetTextureLayouts()) {
+                foreach (MaterialMapType mapType in this.Material.GetMaterialMapTypes()) {
+                    if (textureLayout.Name == mapType.GetName()) {
+                        string mapName = textureLayout.Name;
+                        MaterialMap map = this.Material.GetMaterialMap(mapType)!;
+                        ResourceSet? resourceSet = map.GetTextureResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), this.Material.Effect.GetTextureLayout(mapName));
+                        
+                        if (resourceSet != null) {
+                            commandList.SetGraphicsResourceSet(this.Material.Effect.GetTextureLayoutSlot(mapName), resourceSet);
+                        }
+                    }
                 }
             }
             
@@ -1333,18 +1318,21 @@ public class Mesh : Disposable {
             // Set bone buffer.
             commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("BoneBuffer"), this._boneBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("BoneBuffer")));
             
-            // Set color buffer.
-            commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("ColorBuffer"), this._colorBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ColorBuffer")));
-            
-            // Set value buffer.
-            commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("ValueBuffer"), this._valueBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("ValueBuffer")));
+            // Set material map buffer.
+            commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("MaterialMapBuffer"), this._materialMapBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("MaterialMapBuffer")));
             
             // Set material texture.
-            foreach (SimpleTextureLayout layout in this.Material.Effect.GetTextureLayouts()) {
-                ResourceSet? resourceSet = this.Material.GetResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), this.Material.Effect.GetTextureLayout(layout.Name));
-                
-                if (resourceSet != null) {
-                    commandList.SetGraphicsResourceSet(this.Material.Effect.GetTextureLayoutSlot(layout.Name), resourceSet);
+            foreach (SimpleTextureLayout textureLayout in this.Material.Effect.GetTextureLayouts()) {
+                foreach (MaterialMapType mapType in this.Material.GetMaterialMapTypes()) {
+                    if (textureLayout.Name == mapType.GetName()) {
+                        string mapName = textureLayout.Name;
+                        MaterialMap map = this.Material.GetMaterialMap(mapType)!;
+                        ResourceSet? resourceSet = map.GetTextureResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), this.Material.Effect.GetTextureLayout(mapName));
+                        
+                        if (resourceSet != null) {
+                            commandList.SetGraphicsResourceSet(this.Material.Effect.GetTextureLayoutSlot(mapName), resourceSet);
+                        }
+                    }
                 }
             }
             
@@ -1356,7 +1344,7 @@ public class Mesh : Disposable {
         }
         
         // Reset albedo material color.
-        this.Material.SetMapColor(MaterialMapType.Albedo.GetName(), cachedColor);
+        this.Material.SetMapColor(MaterialMapType.Albedo, cachedColor);
     }
     
     /// <summary>
@@ -1374,15 +1362,23 @@ public class Mesh : Disposable {
 
         return new BoundingBox(min, max);
     }
-
+    
+    /// <summary>
+    /// Struct holding configurable material map data.
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    private struct MaterialMapData {
+        public Vector4 Color;
+        public float Value;
+    }
+    
     protected override void Dispose(bool disposing) {
         if (disposing) {
             this._vertexBuffer.Dispose();
             this._indexBuffer?.Dispose();
             this._modelMatrixBuffer.Dispose();
             this._boneBuffer.Dispose();
-            this._colorBuffer.Dispose();
-            this._valueBuffer.Dispose();
+            this._materialMapBuffer.Dispose();
         }
     }
 }

@@ -1,5 +1,7 @@
 using Bliss.CSharp.Colors;
+using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Textures;
+using Veldrid;
 
 namespace Bliss.CSharp.Materials;
 
@@ -33,5 +35,15 @@ public class MaterialMap {
         this.Texture = texture;
         this.Color = color;
         this.Value = value;
+    }
+
+    /// <summary>
+    /// The texture resource set associated with the specified sampler and texture layout.
+    /// </summary>
+    /// <param name="sampler">The sampler used for creating the resource set.</param>
+    /// <param name="layout">The texture layout used for creating the resource set.</param>
+    /// <returns>The resource set associated with the texture, or <c>null</c> if the texture is not available.</returns>
+    public ResourceSet? GetTextureResourceSet(Sampler sampler, SimpleTextureLayout layout) {
+        return this.Texture?.GetResourceSet(sampler, layout);
     }
 }

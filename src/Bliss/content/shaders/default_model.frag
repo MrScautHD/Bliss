@@ -2,16 +2,17 @@
 
 #define MAX_MAPS_COUNT 8
 
-layout(set = 2, binding = 0) uniform ColorBuffer {
-    vec4[MAX_MAPS_COUNT] uColors;
+struct MaterialMap {
+    vec4 color;
+    float value;
 };
 
-layout(set = 3, binding = 0) uniform ValueBuffer {
-    float[MAX_MAPS_COUNT] uValues;
+layout(set = 2, binding = 0) uniform MaterialMapBuffer {
+    MaterialMap[MAX_MAPS_COUNT] materialMaps;
 };
 
-layout (set = 4, binding = 0) uniform texture2D fAlbedo;
-layout (set = 4, binding = 1) uniform sampler fAlbedoSampler;
+layout (set = 3, binding = 0) uniform texture2D fAlbedo;
+layout (set = 3, binding = 1) uniform sampler fAlbedoSampler;
 
 layout (location = 0) in vec2 fTexCoords;
 layout (location = 1) in vec2 fTexCoords2;
@@ -24,12 +25,8 @@ layout (location = 0) out vec4 fFragColor;
 void main() {
     vec4 texelColor = texture(sampler2D(fAlbedo, fAlbedoSampler), fTexCoords);
     
-    if (texelColor.a <= 0.99F) {
-        discard;
-    }
+    // Do transparent parts black.
+    texelColor.a = 1.0F;
     
-    // TODO: If its not transparent use this.
-    //texelColor.a = 1.0F;
-    
-    fFragColor = texelColor * uColors[0];
+    fFragColor = texelColor * materialMaps[0].color;
 }

@@ -1,6 +1,5 @@
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Effects;
-using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
 using Veldrid;
@@ -13,17 +12,17 @@ public class Material {
     /// The graphics device associated with this material, used to manage rendering resources.
     /// </summary>
     public GraphicsDevice GraphicsDevice { get; private set; }
-
+    
     /// <summary>
     /// The effect (shader program) applied to this material.
     /// </summary>
     public Effect Effect;
-
+    
     /// <summary>
     /// Specifies the blend state for rendering, determining how colors are blended on the screen.
     /// </summary>
     public BlendStateDescription BlendState;
-
+    
     /// <summary>
     /// A boolean flag indicating whether the material has translucent properties.
     /// </summary>
@@ -33,15 +32,14 @@ public class Material {
     /// A list of floating-point parameters for configuring material properties.
     /// </summary>
     public List<float> Parameters;
-
+    
     /// <summary>
     /// A dictionary mapping material map types to material map data, used for managing material textures.
     /// </summary>
-    private Dictionary<string, MaterialMap> _maps;
-
+    private Dictionary<MaterialMapType, MaterialMap> _maps;
+    
     /// <summary>
-    /// Initializes a new instance of the <see cref="Material"/> class, configuring it with the specified
-    /// graphics device, shader effect, and optional blend state.
+    /// Initializes a new instance of the <see cref="Material"/> class, configuring it with the specified graphics device, shader effect, and optional blend state.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device to associate with this material.</param>
     /// <param name="effect">The effect (shader) to apply to the material.</param>
@@ -53,43 +51,32 @@ public class Material {
         this.BlendState = blendState ?? BlendStateDescription.SINGLE_DISABLED;
         this.Translucent = translucent;
         this.Parameters = new List<float>();
-        this._maps = new Dictionary<string, MaterialMap>();
+        this._maps = new Dictionary<MaterialMapType, MaterialMap>();
     }
-    
+
     /// <summary>
-    /// Retrieves the <see cref="ResourceSet"/>.
+    /// Retrieves the collection of material map types associated with the material.
     /// </summary>
-    /// <param name="sampler">The sampler to use for binding the texture. Defines how the texture will be sampled.</param>
-    /// <param name="layout">The layout that provides the name and structure for the texture association.</param>
-    /// <returns>The corresponding <see cref="ResourceSet"/> if the texture is available; otherwise, null.</returns>
-    public ResourceSet? GetResourceSet(Sampler sampler, SimpleTextureLayout layout) {
-        Texture2D? texture = this._maps[layout.Name].Texture;
-        return texture?.GetResourceSet(sampler, layout);
-    }
-    
-    /// <summary>
-    /// Retrieves the names of all material maps.
-    /// </summary>
-    /// <returns>A collection of strings representing the names of the material maps.</returns>
-    public IEnumerable<string> GetMaterialMapNames() {
+    /// <returns>A collection of keys representing the material map types defined for this material.</returns>
+    public Dictionary<MaterialMapType, MaterialMap>.KeyCollection GetMaterialMapTypes() {
         return this._maps.Keys;
     }
 
     /// <summary>
-    /// Retrieves all material maps associated with this material.
+    /// Retrieves the collection of material maps associated with the material.
     /// </summary>
-    /// <returns>A collection of <see cref="MaterialMap"/> objects.</returns>
-    public IEnumerable<MaterialMap> GetMaterialMaps() {
+    /// <returns>A collection containing the values of the material maps defined for this material.</returns>
+    public Dictionary<MaterialMapType, MaterialMap>.ValueCollection GetMaterialMaps() {
         return this._maps.Values;
     }
 
     /// <summary>
-    /// Retrieves the material map associated with the specified name.
+    /// Retrieves a specific material map associated with the specified material map type.
     /// </summary>
-    /// <param name="name">The name of the material map to retrieve.</param>
-    /// <returns>The <see cref="MaterialMap"/> associated with the specified name.</returns>
-    public MaterialMap? GetMaterialMap(string name) {
-        if (this._maps.TryGetValue(name, out MaterialMap? map)) {
+    /// <param name="type">The type of the material map to retrieve.</param>
+    /// <returns>The <see cref="MaterialMap"/> associated with the specified type if it exists; otherwise, null.</returns>
+    public MaterialMap? GetMaterialMap(MaterialMapType type) {
+        if (this._maps.TryGetValue(type, out MaterialMap? map)) {
             return map;
         }
         
@@ -97,23 +84,23 @@ public class Material {
     }
 
     /// <summary>
-    /// Adds a MaterialMap to the material's collection, associating it with a specified name.
+    /// Adds a material map to the material, associating it with the specified material map type.
     /// </summary>
-    /// <param name="name">The name to associate with the MaterialMap.</param>
-    /// <param name="map">The MaterialMap to be added to the material's collection.</param>
-    public void AddMaterialMap(string name, MaterialMap map) {
-        if (!this._maps.TryAdd(name, map)) {
-            Logger.Warn($"Failed to add MaterialMap with name [{name}]. A material map with this name might already exist.");
+    /// <param name="type">The type of the material map, represented as a <see cref="MaterialMapType"/> enum value.</param>
+    /// <param name="map">The material map to associate with the specified type.</param>
+    public void AddMaterialMap(MaterialMapType type, MaterialMap map) {
+        if (!this._maps.TryAdd(type, map)) {
+            Logger.Warn($"Failed to add MaterialMap with the type [{type.GetName()}]. A material map with this type might already exist.");
         }
     }
 
     /// <summary>
-    /// Retrieves the texture associated with the specified material map name.
+    /// Retrieves the texture associated with the specified material map type.
     /// </summary>
-    /// <param name="name">The name of the material map whose texture is to be retrieved.</param>
-    /// <returns>The texture associated with the specified material map, or null if no such texture exists.</returns>
-    public Texture2D? GetMapTexture(string name) {
-        if (this._maps.TryGetValue(name, out MaterialMap? map)) {
+    /// <param name="type">The type of material map for which the texture is requested.</param>
+    /// <returns>The texture associated with the specified material map type, or null if no texture is found.</returns>
+    public Texture2D? GetMapTexture(MaterialMapType type) {
+        if (this._maps.TryGetValue(type, out MaterialMap? map)) {
             return map.Texture;
         }
         
@@ -121,26 +108,26 @@ public class Material {
     }
 
     /// <summary>
-    /// Sets the texture for the specified material map.
+    /// Assigns a texture to a material map of the specified type. If the map type exists, its texture is updated; otherwise, a warning is logged.
     /// </summary>
-    /// <param name="name">The name of the material map to set the texture for.</param>
-    /// <param name="texture">The texture to be set. If null, the material map's texture will be removed.</param>
-    public void SetMapTexture(string name, Texture2D? texture) {
-        if (this._maps.TryGetValue(name, out MaterialMap? map)) {
+    /// <param name="type">The type of material map to which the texture will be assigned. This determines the type of visual effect applied (e.g., Albedo, Normal, Metallic, etc.).</param>
+    /// <param name="texture">The texture to assign to the specified material map. If null, the texture will be removed from the map.</param>
+    public void SetMapTexture(MaterialMapType type, Texture2D? texture) {
+        if (this._maps.TryGetValue(type, out MaterialMap? map)) {
             map.Texture = texture;
         }
         else {
-            Logger.Warn($"Failed to set texture for: [{name}]. The map might not exist.");
+            Logger.Warn($"Failed to set texture for: [{type.GetName()}]. The map might not exist.");
         }
     }
 
     /// <summary>
-    /// Retrieves the color associated with the specified material map.
+    /// Retrieves the color associated with a specific material map type, if defined.
     /// </summary>
-    /// <param name="name">The name of the material map from which to retrieve the color.</param>
-    /// <returns>The <see cref="Color"/> associated with the specified material map, or null if the map does not exist or does not have a color defined.</returns>
-    public Color? GetMapColor(string name) {
-        if (this._maps.TryGetValue(name, out MaterialMap? map)) {
+    /// <param name="type">The type of the material map whose color is to be retrieved.</param>
+    /// <returns>The color associated with the specified material map type, or null if the map is not defined.</returns>
+    public Color? GetMapColor(MaterialMapType type) {
+        if (this._maps.TryGetValue(type, out MaterialMap? map)) {
             return map.Color;
         }
         
@@ -148,26 +135,26 @@ public class Material {
     }
 
     /// <summary>
-    /// Sets the color of a specified material map.
+    /// Sets the color for a specific material map type in the current material instance.
     /// </summary>
-    /// <param name="name">The name of the material map whose color is to be set.</param>
-    /// <param name="color">The color to assign to the material map.</param>
-    public void SetMapColor(string name, Color color) {
-        if (this._maps.TryGetValue(name, out MaterialMap? map)) {
+    /// <param name="type">The type of the material map to update, represented by <see cref="MaterialMapType"/>.</param>
+    /// <param name="color">The new color to assign to the specified material map.</param>
+    public void SetMapColor(MaterialMapType type, Color color) {
+        if (this._maps.TryGetValue(type, out MaterialMap? map)) {
             map.Color = color;
         }
         else {
-            Logger.Warn($"Failed to set color for: [{name}]. The map might not exist.");
+            Logger.Warn($"Failed to set color for: [{type.GetName()}]. The map might not exist.");
         }
     }
 
     /// <summary>
-    /// Gets the value associated with the specified material map name.
+    /// Retrieves the value associated with the specified material map type.
     /// </summary>
-    /// <param name="name">The name of the material map for which to retrieve the value.</param>
-    /// <returns>The floating-point value associated with the specified material map name.</returns>
-    public float GetMapValue(string name) {
-        if (this._maps.TryGetValue(name, out MaterialMap? map)) {
+    /// <param name="type">The type of the material map whose value is to be retrieved.</param>
+    /// <returns>The value of the material map if it exists; otherwise, returns 0.0.</returns>
+    public float GetMapValue(MaterialMapType type) {
+        if (this._maps.TryGetValue(type, out MaterialMap? map)) {
             return map.Value;
         }
         
@@ -175,16 +162,16 @@ public class Material {
     }
 
     /// <summary>
-    /// Sets the value of the specified material map.
+    /// Sets the numeric value associated with the specified material map type. If the map does not exist, a warning is logged instead of modifying any values.
     /// </summary>
-    /// <param name="name">The name of the material map to update.</param>
-    /// <param name="value">The floating-point value to set for the specified material map.</param>
-    public void SetMapValue(string name, float value) {
-        if (this._maps.TryGetValue(name, out MaterialMap? map)) {
+    /// <param name="type">The type of material map whose value is being set.</param>
+    /// <param name="value">The numeric value to assign to the material map.</param>
+    public void SetMapValue(MaterialMapType type, float value) {
+        if (this._maps.TryGetValue(type, out MaterialMap? map)) {
             map.Value = value;
         }
         else {
-            Logger.Warn($"Failed to set value for: [{name}]. The map might not exist.");
+            Logger.Warn($"Failed to set value for: [{type.GetName()}]. The map might not exist.");
         }
     }
 }

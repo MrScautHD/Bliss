@@ -180,45 +180,50 @@ public class Game : Disposable {
         this._playerModel = Model.Load(this.GraphicsDevice, "content/player.glb");
         this._planeModel = Model.Load(this.GraphicsDevice, "content/plane.glb");
         this._treeModel = Model.Load(this.GraphicsDevice, "content/tree.glb");
+
+        foreach (Mesh mesh in this._treeModel.Meshes) {
+            mesh.Material.SetMapTexture(MaterialMapType.Albedo, new Texture2D(this.GraphicsDevice, "content/tree_texture.png"));
+        }
+        
         this._cyberCarModel = Model.Load(this.GraphicsDevice, "content/cybercar.glb", false);
         this._cynerTexture = new Texture2D(this.GraphicsDevice, "content/cybercar.png");
 
         foreach (Mesh mesh in _cyberCarModel.Meshes) {
-            mesh.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._cynerTexture);
+            mesh.Material.SetMapTexture(MaterialMapType.Albedo, this._cynerTexture);
         }
         
         this._customMeshTexture = new Texture2D(this.GraphicsDevice, "content/cube.png");
         
         this._customPoly = Mesh.GenPoly(this.GraphicsDevice, 40, 1);
-        this._customPoly.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
+        this._customPoly.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
 
         this._customCube = Mesh.GenCube(this.GraphicsDevice, 1, 1, 1);
-        this._customCube.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
+        this._customCube.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
 
         this._customSphere = Mesh.GenSphere(this.GraphicsDevice, 1F, 40, 40);
-        this._customSphere.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
+        this._customSphere.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
 
         this._customHemishpere = Mesh.GenHemisphere(this.GraphicsDevice, 1F, 40, 40);
-        this._customHemishpere.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
+        this._customHemishpere.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
 
         this._customCylinder = Mesh.GenCylinder(this.GraphicsDevice, 1F, 1F, 40);
-        this._customCylinder.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
+        this._customCylinder.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
         
         this._customCapsule = Mesh.GenCapsule(this.GraphicsDevice, 1, 1, 60);
-        this._customCapsule.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
+        this._customCapsule.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
 
         this._customCone = Mesh.GenCone(this.GraphicsDevice, 1F, 1F, 40);
-        this._customCone.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
+        this._customCone.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
 
         this._customTorus = Mesh.GenTorus(this.GraphicsDevice, 2.0F, 1F, 40, 40);
-        this._customTorus.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
+        this._customTorus.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
 
         this._customKnot = Mesh.GenKnot(this.GraphicsDevice, 1F, 1F, 40, 40);
-        this._customKnot.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), this._customMeshTexture);
+        this._customKnot.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
         
         this._customHeighmap = Mesh.GenHeightmap(this.GraphicsDevice, new Image("content/heightmap.png"), new Vector3(1, 1, 1));
-        this._customHeighmap.Material.SetMapTexture(MaterialMapType.Albedo.GetName(), new Texture2D(this.GraphicsDevice, "content/heightmap.png"));
-
+        this._customHeighmap.Material.SetMapTexture(MaterialMapType.Albedo, new Texture2D(this.GraphicsDevice, "content/heightmap.png"));
+        
         this._cubemap = new Cubemap(this.GraphicsDevice, "content/cubemap.png");
         this._cubemapTexture = new Texture2D(this.GraphicsDevice, this._cubemap.Images[5][0]);
 
