@@ -10,10 +10,6 @@ layout (location = 0) out vec4 fFragColor;
 
 void main() {
     vec4 texelColor = texture(sampler2D(fTexture, fTextureSampler), fTexCoords);
-
-    if (texelColor.a <= 0.0F) {
-        discard;
-    }
-
+    
     fFragColor = texelColor * fColor;
 }

@@ -10,7 +10,6 @@ using Bliss.CSharp.Images;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
 using Bliss.CSharp.Textures;
-using Bliss.CSharp.Transformations;
 using Veldrid;
 using AMesh = Assimp.Mesh;
 using ShaderMaterialProperties = Assimp.Material.ShaderMaterialProperties;
@@ -459,44 +458,6 @@ public class Model : Disposable {
         }
         
         return null;
-    }
-
-    /// <summary>
-    /// Updates the animation bones for all meshes in the model based on the specified animation and frame.
-    /// </summary>
-    /// <param name="commandList">The command list used to issue rendering commands.</param>
-    /// <param name="animation">The animation whose bone transformations should be applied.</param>
-    /// <param name="frame">The specific frame of the animation to update the bones to.</param>
-    public void UpdateAnimationBones(CommandList commandList, ModelAnimation animation, int frame) {
-        foreach (Mesh mesh in this.Meshes) {
-            mesh.UpdateAnimationBones(commandList, animation, frame);
-        }
-    }
-
-    /// <summary>
-    /// Resets the animation bone transformations for all meshes in the model using the given command list.
-    /// </summary>
-    /// <param name="commandList">The command list used to execute the reset operation on the GPU.</param>
-    public void ResetAnimationBones(CommandList commandList) {
-        foreach (Mesh mesh in this.Meshes) {
-            mesh.ResetAnimationBones(commandList);
-        }
-    }
-
-    /// <summary>
-    /// Draws the model using the specified command list, transform, and rendering configurations.
-    /// </summary>
-    /// <param name="commandList">The <see cref="CommandList"/> that issues the rendering commands.</param>
-    /// <param name="transform">The <see cref="Transform"/> describing the position, rotation, and scale of the model in the scene.</param>
-    /// <param name="output">The <see cref="OutputDescription"/> that defines the target rendering output settings, such as resolution and format.</param>
-    /// <param name="sampler">An optional <see cref="Sampler"/> used for texture sampling. If not provided, a default sampler is applied.</param>
-    /// <param name="depthStencilState">An optional <see cref="DepthStencilStateDescription"/> to configure depth and stencil testing for the drawing process.</param>
-    /// <param name="rasterizerState">An optional <see cref="RasterizerStateDescription"/> that manages the rasterizer configuration, such as culling and fill mode.</param>
-    /// <param name="color">An optional <see cref="Color"/> to override or apply a custom tint to the model's rendered output.</param>
-    public void Draw(CommandList commandList, Transform transform, OutputDescription output, Sampler? sampler = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Color? color = null) {
-        foreach (Mesh mesh in this.Meshes) {
-            mesh.Draw(commandList, transform, output, sampler, depthStencilState, rasterizerState, color);
-        }
     }
 
     /// <summary>

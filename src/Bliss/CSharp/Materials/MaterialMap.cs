@@ -14,6 +14,13 @@ public class MaterialMap {
     public Texture2D? Texture;
 
     /// <summary>
+    /// Represents a sampler used in a material map for texture sampling operations.
+    /// A sampler defines how textures are sampled, including settings such as filtering,
+    /// addressing mode, and LOD behavior, which influence rendering outcomes and texture mapping techniques.
+    /// </summary>
+    public Sampler? Sampler;
+
+    /// <summary>
     /// Represents color information with properties for red, green, blue, and alpha components.
     /// This structure is used for defining the color attributes of various graphical elements such as materials and textures.
     /// </summary>
@@ -26,13 +33,15 @@ public class MaterialMap {
     public float Value;
     
     /// <summary>
-    /// Initializes a new instance of the <see cref="MaterialMap"/> class with the specified texture, color, and value.
+    /// Initializes a new instance of the <see cref="MaterialMap"/> class.
     /// </summary>
     /// <param name="texture">The texture associated with the material map. Can be <c>null</c>.</param>
+    /// <param name="sampler">The sampler to use with the texture, or <c>null</c> if not used.</param>
     /// <param name="color">The color associated with the material map. Can be <c>null</c>.</param>
     /// <param name="value">The scalar value associated with the material map, defaulting to <c>0.0F</c>.</param>
-    public MaterialMap(Texture2D? texture = null, Color? color = null, float value = 0.0F) {
+    public MaterialMap(Texture2D? texture = null, Sampler? sampler = null, Color? color = null, float value = 0.0F) {
         this.Texture = texture;
+        this.Sampler = sampler;
         this.Color = color;
         this.Value = value;
     }

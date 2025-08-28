@@ -130,7 +130,7 @@ public static class GlobalResource {
         DefaultModelEffect = new Effect(graphicsDevice, Vertex3D.VertexLayout, "content/shaders/default_model.vert", "content/shaders/default_model.frag");
         DefaultModelEffect.AddBufferLayout("MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
         DefaultModelEffect.AddBufferLayout("BoneBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
-        DefaultModelEffect.AddBufferLayout("MaterialMapBuffer", SimpleBufferType.Uniform, ShaderStages.Fragment);
+        DefaultModelEffect.AddBufferLayout("MaterialBuffer", SimpleBufferType.Uniform, ShaderStages.Fragment);
         DefaultModelEffect.AddTextureLayout(MaterialMapType.Albedo.GetName());
         
         // Default immediate renderer texture.

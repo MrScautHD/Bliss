@@ -3,9 +3,12 @@ using Bliss.CSharp;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Geometry;
+using Bliss.CSharp.Graphics.Rendering;
 using Bliss.CSharp.Graphics.Rendering.Renderers;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Forward;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderables;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Contexts;
@@ -41,6 +44,7 @@ public class Game : Disposable {
     public FullScreenRenderer FullScreenRenderer { get; private set; }
     public RenderTexture2D FullScreenTexture { get; private set; }
 
+    private ForwardRenderer _forwardRenderer;
     private ImmediateRenderer _immediateRenderer;
     private SpriteBatch _spriteBatch;
     private PrimitiveBatch _primitiveBatch;
@@ -165,7 +169,8 @@ public class Game : Disposable {
     protected virtual void Init() {
         this.FullScreenRenderer = new FullScreenRenderer(this.GraphicsDevice);
         this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), this.Settings.SampleCount);
-        
+
+        this._forwardRenderer = new ForwardRenderer(this.GraphicsDevice);
         this._immediateRenderer = new ImmediateRenderer(this.GraphicsDevice);
         this._spriteBatch = new SpriteBatch(this.GraphicsDevice, this.MainWindow);
         this._primitiveBatch = new PrimitiveBatch(this.GraphicsDevice, this.MainWindow);
@@ -179,10 +184,14 @@ public class Game : Disposable {
         this._cam3D = new Cam3D(new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0), aspectRatio);
         this._playerModel = Model.Load(this.GraphicsDevice, "content/player.glb");
         this._planeModel = Model.Load(this.GraphicsDevice, "content/plane.glb");
-        this._treeModel = Model.Load(this.GraphicsDevice, "content/tree.glb");
+        this._treeModel = Model.Load(this.GraphicsDevice, "content/tree.glb", false);
 
+        Texture2D treeTexture = new Texture2D(this.GraphicsDevice, "content/tree_texture.png");
+        
         foreach (Mesh mesh in this._treeModel.Meshes) {
-            mesh.Material.SetMapTexture(MaterialMapType.Albedo, new Texture2D(this.GraphicsDevice, "content/tree_texture.png"));
+            mesh.Material.SetMapTexture(MaterialMapType.Albedo, treeTexture);
+            mesh.Material.RasterizerState = RasterizerStateDescription.CULL_NONE;
+            mesh.Material.RenderMode = RenderMode.Cutout;
         }
         
         this._cyberCarModel = Model.Load(this.GraphicsDevice, "content/cybercar.glb", false);
@@ -191,6 +200,10 @@ public class Game : Disposable {
         foreach (Mesh mesh in _cyberCarModel.Meshes) {
             mesh.Material.SetMapTexture(MaterialMapType.Albedo, this._cynerTexture);
         }
+        
+        // Make the blue window part translucent!
+        this._cyberCarModel.Meshes[12].Material.BlendState = BlendStateDescription.SINGLE_ALPHA_BLEND;
+        this._cyberCarModel.Meshes[12].Material.RenderMode = RenderMode.Translucent;
         
         this._customMeshTexture = new Texture2D(this.GraphicsDevice, "content/cube.png");
         
@@ -325,38 +338,97 @@ public class Game : Disposable {
         this._immediateRenderer.DrawKnotWires(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(48, 0, 6) }, 1, 1, 40, 40, Color.Green);
         // ImmediateRenderer END
         
-        this._customPoly.Draw(commandList, new Transform() { Translation = new Vector3(9, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
-        this._customCube.Draw(commandList, new Transform() { Translation = new Vector3(11, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
-        this._customSphere.Draw(commandList, new Transform() { Translation = new Vector3(13, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
-        this._customHemishpere.Draw(commandList, new Transform() { Translation = new Vector3(15, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
-        this._customCylinder.Draw(commandList, new Transform() { Translation = new Vector3(17, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
-        this._customCapsule.Draw(commandList, new Transform() { Translation = new Vector3(19, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
-        this._customCone.Draw(commandList, new Transform() { Translation = new Vector3(21, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
-        this._customTorus.Draw(commandList, new Transform() { Translation = new Vector3(23, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
-        this._customKnot.Draw(commandList, new Transform() { Translation = new Vector3(25, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
-        this._customHeighmap.Draw(commandList, new Transform() { Translation = new Vector3(27, 0, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._forwardRenderer.AddRenderable(new Renderable() {
+            Mesh = this._customPoly,
+            Transform = new Transform() { Translation = new Vector3(9, 0, 0) }
+        });
+        
+        this._forwardRenderer.AddRenderable(new Renderable() {
+            Mesh = this._customCube,
+            Transform = new Transform() { Translation = new Vector3(11, 0, 0) }
+        });
 
+        this._forwardRenderer.AddRenderable(new Renderable() {
+            Mesh = this._customSphere,
+            Transform = new Transform() { Translation = new Vector3(13, 0, 0) }
+        });
+        
+        this._forwardRenderer.AddRenderable(new Renderable() {
+            Mesh = this._customHemishpere,
+            Transform = new Transform() { Translation = new Vector3(15, 0, 0) }
+        });
+        
+        this._forwardRenderer.AddRenderable(new Renderable() {
+            Mesh = this._customCylinder,
+            Transform = new Transform() { Translation = new Vector3(17, 0, 0) }
+        });
+        
+        this._forwardRenderer.AddRenderable(new Renderable() {
+            Mesh = this._customCapsule,
+            Transform = new Transform() { Translation = new Vector3(19, 0, 0) }
+        });
+        
+        this._forwardRenderer.AddRenderable(new Renderable() {
+            Mesh = this._customCone,
+            Transform = new Transform() { Translation = new Vector3(21, 0, 0) }
+        });
+
+        this._forwardRenderer.AddRenderable(new Renderable() {
+            Mesh = this._customTorus,
+            Transform = new Transform() { Translation = new Vector3(23, 0, 0) }
+        });
+
+        this._forwardRenderer.AddRenderable(new Renderable() {
+            Mesh = this._customKnot,
+            Transform = new Transform() { Translation = new Vector3(25, 0, 0) }
+        });
+        
+        this._forwardRenderer.AddRenderable(new Renderable() {
+            Mesh = this._customHeighmap,
+            Transform = new Transform() { Translation = new Vector3(27, 0, 0) }
+        });
+        
+        // Plane model (Testing frustum).
         if (this._cam3D.GetFrustum().ContainsBox(this._planeModel.BoundingBox)) {
-            this._planeModel.Draw(commandList, new Transform(), this.FullScreenTexture.Framebuffer.OutputDescription);
-        }
-        
-        this._treeModel.Draw(commandList, new Transform() { Translation = new Vector3(0, 0, 20)}, this.FullScreenTexture.Framebuffer.OutputDescription, rasterizerState: RasterizerStateDescription.CULL_NONE);
-        
-        this._cyberCarModel.Draw(commandList, new Transform() { Translation = new Vector3(10, 0, 20)}, this.FullScreenTexture.Framebuffer.OutputDescription);
-        
-        if (Input.IsKeyPressed(KeyboardKey.G)) {
-            this._playerModel.ResetAnimationBones(commandList);
-            this._playingAnim = false;
-            Logger.Error("RESET ANIM");
-        }
-
-        if (this._cam3D.GetFrustum().ContainsBox(this._playerModel.BoundingBox)) {
-            if (this._playingAnim) {
-                this._playerModel.UpdateAnimationBones(commandList, this._playerModel.Animations[1], this._frameCount);
+            foreach (Mesh mesh in this._planeModel.Meshes) {
+                this._forwardRenderer.AddRenderable(new Renderable() {
+                    Mesh = mesh,
+                    Transform = new Transform()
+                });
             }
-            this._playerModel.Draw(commandList, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
         }
         
+        // Tree model.
+        foreach (Mesh mesh in this._treeModel.Meshes) {
+            this._forwardRenderer.AddRenderable(new Renderable() {
+                Mesh = mesh,
+                Transform = new Transform() { Translation = new Vector3(0, 0, 20) }
+            });
+        }
+        
+        // Cyber car model.
+        foreach (Mesh mesh in this._cyberCarModel.Meshes) {
+            this._forwardRenderer.AddRenderable(new Renderable() {
+                Mesh = mesh,
+                Transform = new Transform() { Translation = new Vector3(10, 0, 20) }
+            });
+        }
+        
+        this._forwardRenderer.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription);
+        
+        //if (Input.IsKeyPressed(KeyboardKey.G)) {
+        //    this._playerModel.ResetAnimationBones(commandList);
+        //    this._playingAnim = false;
+        //    Logger.Error("RESET ANIM");
+        //}
+
+        //if (this._cam3D.GetFrustum().ContainsBox(this._playerModel.BoundingBox)) {
+        //    if (this._playingAnim) {
+        //        this._playerModel.UpdateAnimationBones(commandList, this._playerModel.Animations[1], this._frameCount);
+        //    }
+        //    this._playerModel.Draw(commandList, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
+        //}
+        //
         //this._playerModel.ResetAnimationBones(commandList);
         //this._playerModel.Draw(commandList, new Transform() { Translation = new Vector3(4, 0.05F, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
         

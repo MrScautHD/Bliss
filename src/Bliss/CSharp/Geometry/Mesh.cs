@@ -1,20 +1,13 @@
 using System.Numerics;
 using System.Runtime.InteropServices;
-using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Geometry.Animations;
-using Bliss.CSharp.Graphics;
-using Bliss.CSharp.Graphics.Pipelines;
-using Bliss.CSharp.Graphics.Pipelines.Buffers;
-using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
-using Bliss.CSharp.Transformations;
 using Veldrid;
 using Color = Bliss.CSharp.Colors.Color;
 using Material = Bliss.CSharp.Materials.Material;
-using Matrix4x4 = System.Numerics.Matrix4x4;
 
 namespace Bliss.CSharp.Geometry;
 
@@ -74,34 +67,12 @@ public class Mesh : Disposable {
     /// <summary>
     /// A buffer that stores vertex data used for rendering in the graphics pipeline.
     /// </summary>
-    private DeviceBuffer _vertexBuffer;
+    public DeviceBuffer VertexBuffer { get; private set; }
 
     /// <summary>
     /// A buffer that stores index data used for indexed drawing in the graphics pipeline.
     /// </summary>
-    private DeviceBuffer? _indexBuffer;
-
-    /// <summary>
-    /// A buffer that stores model matrix data for shader usage in rendering.
-    /// </summary>
-    private SimpleBuffer<Matrix4x4> _modelMatrixBuffer;
-
-    /// <summary>
-    /// A buffer that stores bone transformation data used for skeletal animation.
-    /// </summary>
-    private SimpleBuffer<Matrix4x4> _boneBuffer;
-    
-    /// <summary>
-    /// A buffer containing material mapping data used for rendering.
-    /// </summary>
-    private SimpleBuffer<MaterialMapData> _materialMapBuffer;
-    
-    /// <summary>
-    /// Defines the characteristics of the rendering pipeline used by the mesh.
-    /// This field specifies the pipeline configurations such as blending, depth stencil, rasterizer state,
-    /// primitive topology, associated buffers, texture layouts, shader set, and output descriptions.
-    /// </summary>
-    private SimplePipelineDescription _pipelineDescription;
+    public DeviceBuffer? IndexBuffer { get; private set; }
     
     /// <summary>
     /// Initializes a new instance of the <see cref="Mesh"/> class with the specified properties.
@@ -126,34 +97,14 @@ public class Mesh : Disposable {
         uint indexBufferSize = this.IndexCount * sizeof(uint);
         
         // Create vertex buffer.
-        this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
-        graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this.Vertices);
+        this.VertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
+        graphicsDevice.UpdateBuffer(this.VertexBuffer, 0, this.Vertices);
 
         // Create index buffer (if their indices).
         if (this.IndexCount > 0) {
-            this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
-            graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this.Indices);
+            this.IndexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
+            graphicsDevice.UpdateBuffer(this.IndexBuffer, 0, this.Indices);
         }
-        
-        // Create model matrix buffer.
-        this._modelMatrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 3, SimpleBufferType.Uniform, ShaderStages.Vertex);
-        
-        // Create bone buffer.
-        this._boneBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 128, SimpleBufferType.Uniform, ShaderStages.Vertex);
-
-        for (int i = 0; i < 128; i++) {
-            this._boneBuffer.SetValue(i, Matrix4x4.Identity);
-        }
-        
-        this._boneBuffer.UpdateBufferImmediate();
-        
-        // Create material map buffer.
-        this._materialMapBuffer = new SimpleBuffer<MaterialMapData>(graphicsDevice, 8, SimpleBufferType.Uniform, ShaderStages.Fragment);
-        
-        // Create pipeline description.
-        this._pipelineDescription = new SimplePipelineDescription() {
-            PrimitiveTopology = PrimitiveTopology.TriangleList
-        };
     }
     
     /// <summary>
@@ -1113,7 +1064,7 @@ public class Mesh : Disposable {
     /// <param name="value">The new vertex value to set at the specified index.</param>
     public void SetVertexValueImmediate(int index, Vertex3D value) {
         this.Vertices[index] = value;
-        this.GraphicsDevice.UpdateBuffer(this._vertexBuffer, (uint) (index * Marshal.SizeOf<Vertex3D>()), this.Vertices[index]);
+        this.GraphicsDevice.UpdateBuffer(this.VertexBuffer, (uint) (index * Marshal.SizeOf<Vertex3D>()), this.Vertices[index]);
     }
 
     /// <summary>
@@ -1124,14 +1075,14 @@ public class Mesh : Disposable {
     /// <param name="value">The new <see cref="Vertex3D"/> value to set at the specified index.</param>
     public void SetVertexValueDeferred(CommandList commandList, int index, Vertex3D value) {
         this.Vertices[index] = value;
-        commandList.UpdateBuffer(this._vertexBuffer, (uint) (index * Marshal.SizeOf<Vertex3D>()), this.Vertices[index]);
+        commandList.UpdateBuffer(this.VertexBuffer, (uint) (index * Marshal.SizeOf<Vertex3D>()), this.Vertices[index]);
     }
 
     /// <summary>
     /// Updates the vertex buffer with the current vertex data immediately on the GPU.
     /// </summary>
     public void UpdateVertexBufferImmediate() {
-        this.GraphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this.Vertices);
+        this.GraphicsDevice.UpdateBuffer(this.VertexBuffer, 0, this.Vertices);
     }
 
     /// <summary>
@@ -1139,7 +1090,7 @@ public class Mesh : Disposable {
     /// </summary>
     /// <param name="commandList">The command list used to update the vertex buffer.</param>
     public void UpdateVertexBuffer(CommandList commandList) {
-        commandList.UpdateBuffer(this._vertexBuffer, 0, this.Vertices);
+        commandList.UpdateBuffer(this.VertexBuffer, 0, this.Vertices);
     }
 
     /// <summary>
@@ -1158,7 +1109,7 @@ public class Mesh : Disposable {
     /// <param name="value">The new index value to be set at the specified position.</param>
     public void SetIndexValueImmediate(int index, uint value) {
         this.Indices[index] = value;
-        this.GraphicsDevice.UpdateBuffer(this._indexBuffer, (uint) index * sizeof(uint), this.Indices[index]);
+        this.GraphicsDevice.UpdateBuffer(this.IndexBuffer, (uint) index * sizeof(uint), this.Indices[index]);
     }
 
     /// <summary>
@@ -1169,14 +1120,14 @@ public class Mesh : Disposable {
     /// <param name="value">The new value to assign to the specified index.</param>
     public void SetIndexValueDeferred(CommandList commandList, int index, uint value) {
         this.Indices[index] = value;
-        commandList.UpdateBuffer(this._indexBuffer, (uint) index * sizeof(uint), this.Indices[index]);
+        commandList.UpdateBuffer(this.IndexBuffer, (uint) index * sizeof(uint), this.Indices[index]);
     }
 
     /// <summary>
     /// Updates the index buffer of the mesh immediately with the current index data.
     /// </summary>
     public void UpdateIndexBufferImmediate() {
-        this.GraphicsDevice.UpdateBuffer(this._indexBuffer, 0, this.Indices);
+        this.GraphicsDevice.UpdateBuffer(this.IndexBuffer, 0, this.Indices);
     }
 
     /// <summary>
@@ -1184,167 +1135,7 @@ public class Mesh : Disposable {
     /// </summary>
     /// <param name="commandList">The command list used to update the index buffer.</param>
     public void UpdateIndexBuffer(CommandList commandList) {
-        commandList.UpdateBuffer(this._indexBuffer, 0, this.Indices);
-    }
-    
-    /// <summary>
-    /// Updates the transformation matrices of the animation bones for a specific frame using the provided command list and animation data.
-    /// </summary>
-    /// <param name="commandList">The command list used to issue rendering commands.</param>
-    /// <param name="animation">The animation data containing the bone transformations.</param>
-    /// <param name="frame">The specific frame of the animation to update the bone transformations.</param>
-    public void UpdateAnimationBones(CommandList commandList, ModelAnimation animation, int frame) {
-        if (this.BoneInfos.Count > 0) {
-            for (int boneId = 0; boneId < this.BoneInfos[animation.Name][frame].Length; boneId++) {
-                this._boneBuffer.SetValue(boneId, this.BoneInfos[animation.Name][frame][boneId].Transformation);
-            }
-            
-            this._boneBuffer.UpdateBuffer(commandList);
-        }
-    }
-
-    /// <summary>
-    /// Resets the bone transformation matrices to their identity state and updates the buffer on the GPU using the provided command list.
-    /// </summary>
-    /// <param name="commandList">The command list used to record the buffer update command, ensuring the changes are applied to the GPU.</param>
-    public void ResetAnimationBones(CommandList commandList) {
-        for (int i = 0; i < 128; i++) {
-            this._boneBuffer.SetValue(i, Matrix4x4.Identity);
-        }
-        
-        this._boneBuffer.UpdateBuffer(commandList);
-    }
-
-    /// <summary>
-    /// Renders the mesh with the specified properties and configurations.
-    /// </summary>
-    /// <param name="commandList">The command list used to issue rendering commands.</param>
-    /// <param name="transform">The transformation applied to the mesh.</param>
-    /// <param name="output">The output description specifying the rendering target and format.</param>
-    /// <param name="sampler">The optional sampler state for texture sampling.</param>
-    /// <param name="depthStencilState">The optional depth-stencil state description for depth testing.</param>
-    /// <param name="rasterizerState">The optional rasterizer state description for culling and rasterization.</param>
-    /// <param name="color">An optional color to override the material's albedo map color.</param>
-    public void Draw(CommandList commandList, Transform transform, OutputDescription output, Sampler? sampler = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Color? color = null) {
-        Cam3D? cam3D = Cam3D.ActiveCamera;
-        
-        if (cam3D == null) {
-            return;
-        }
-        
-        // Set optional color.
-        Color cachedColor = this.Material.GetMapColor(MaterialMapType.Albedo) ?? Color.White;
-        this.Material.SetMapColor(MaterialMapType.Albedo, color ?? cachedColor);
-        
-        // Update matrix buffer.
-        this._modelMatrixBuffer.SetValue(0, cam3D.GetProjection());
-        this._modelMatrixBuffer.SetValue(1, cam3D.GetView());
-        this._modelMatrixBuffer.SetValue(2, transform.GetTransform());
-        this._modelMatrixBuffer.UpdateBuffer(commandList);
-        
-        // Update material map buffer.
-        foreach (MaterialMapType mapType in this.Material.GetMaterialMapTypes()) {
-            MaterialMap? map = this.Material.GetMaterialMap(mapType);
-            
-            if (map != null) {
-                this._materialMapBuffer.SetValue((int) mapType, new MaterialMapData() {
-                    Color = map.Color?.ToRgbaFloatVec4() ?? Vector4.Zero,
-                    Value = map.Value
-                });
-            }
-        }
-        
-        this._materialMapBuffer.UpdateBuffer(commandList);
-        
-        // Update pipeline description.
-        this._pipelineDescription.BlendState = this.Material.BlendState;
-        this._pipelineDescription.DepthStencilState = depthStencilState ?? DepthStencilStateDescription.DEPTH_ONLY_LESS_EQUAL;
-        this._pipelineDescription.RasterizerState = rasterizerState ?? RasterizerStateDescription.DEFAULT;
-        this._pipelineDescription.BufferLayouts = this.Material.Effect.GetBufferLayouts();
-        this._pipelineDescription.TextureLayouts = this.Material.Effect.GetTextureLayouts();
-        this._pipelineDescription.ShaderSet = this.Material.Effect.ShaderSet;
-        this._pipelineDescription.Outputs = output;
-        
-        if (this.IndexCount > 0) {
-            
-            // Set vertex and index buffer.
-            commandList.SetVertexBuffer(0, this._vertexBuffer);
-            commandList.SetIndexBuffer(this._indexBuffer, IndexFormat.UInt32);
-            
-            // Set pipeline.
-            commandList.SetPipeline(this.Material.Effect.GetPipeline(this._pipelineDescription).Pipeline);
-            
-            // Set projection view buffer.
-            commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("MatrixBuffer"), this._modelMatrixBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("MatrixBuffer")));
-            
-            // Set bone buffer.
-            commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("BoneBuffer"), this._boneBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("BoneBuffer")));
-            
-            // Set material map buffer.
-            commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("MaterialMapBuffer"), this._materialMapBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("MaterialMapBuffer")));
-            
-            // Set material texture.
-            foreach (SimpleTextureLayout textureLayout in this.Material.Effect.GetTextureLayouts()) {
-                foreach (MaterialMapType mapType in this.Material.GetMaterialMapTypes()) {
-                    if (textureLayout.Name == mapType.GetName()) {
-                        string mapName = textureLayout.Name;
-                        MaterialMap map = this.Material.GetMaterialMap(mapType)!;
-                        ResourceSet? resourceSet = map.GetTextureResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), this.Material.Effect.GetTextureLayout(mapName));
-                        
-                        if (resourceSet != null) {
-                            commandList.SetGraphicsResourceSet(this.Material.Effect.GetTextureLayoutSlot(mapName), resourceSet);
-                        }
-                    }
-                }
-            }
-            
-            // Apply effect.
-            this.Material.Effect.Apply(commandList, this.Material);
-            
-            // Draw.
-            commandList.DrawIndexed(this.IndexCount);
-        }
-        else {
-            
-            // Set vertex buffer.
-            commandList.SetVertexBuffer(0, this._vertexBuffer);
-            
-            // Set pipeline.
-            commandList.SetPipeline(this.Material.Effect.GetPipeline(this._pipelineDescription).Pipeline);
-            
-            // Set projection view buffer.
-            commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("MatrixBuffer"), this._modelMatrixBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("MatrixBuffer")));
-            
-            // Set bone buffer.
-            commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("BoneBuffer"), this._boneBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("BoneBuffer")));
-            
-            // Set material map buffer.
-            commandList.SetGraphicsResourceSet(this.Material.Effect.GetBufferLayoutSlot("MaterialMapBuffer"), this._materialMapBuffer.GetResourceSet(this.Material.Effect.GetBufferLayout("MaterialMapBuffer")));
-            
-            // Set material texture.
-            foreach (SimpleTextureLayout textureLayout in this.Material.Effect.GetTextureLayouts()) {
-                foreach (MaterialMapType mapType in this.Material.GetMaterialMapTypes()) {
-                    if (textureLayout.Name == mapType.GetName()) {
-                        string mapName = textureLayout.Name;
-                        MaterialMap map = this.Material.GetMaterialMap(mapType)!;
-                        ResourceSet? resourceSet = map.GetTextureResourceSet(sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), this.Material.Effect.GetTextureLayout(mapName));
-                        
-                        if (resourceSet != null) {
-                            commandList.SetGraphicsResourceSet(this.Material.Effect.GetTextureLayoutSlot(mapName), resourceSet);
-                        }
-                    }
-                }
-            }
-            
-            // Apply effect.
-            this.Material.Effect.Apply(commandList, this.Material);
-            
-            // Draw.
-            commandList.Draw(this.VertexCount);
-        }
-        
-        // Reset albedo material color.
-        this.Material.SetMapColor(MaterialMapType.Albedo, cachedColor);
+        commandList.UpdateBuffer(this.IndexBuffer, 0, this.Indices);
     }
     
     /// <summary>
@@ -1363,22 +1154,10 @@ public class Mesh : Disposable {
         return new BoundingBox(min, max);
     }
     
-    /// <summary>
-    /// Struct holding configurable material map data.
-    /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    private struct MaterialMapData {
-        public Vector4 Color;
-        public float Value;
-    }
-    
     protected override void Dispose(bool disposing) {
         if (disposing) {
-            this._vertexBuffer.Dispose();
-            this._indexBuffer?.Dispose();
-            this._modelMatrixBuffer.Dispose();
-            this._boneBuffer.Dispose();
-            this._materialMapBuffer.Dispose();
+            this.VertexBuffer.Dispose();
+            this.IndexBuffer?.Dispose();
         }
     }
 }

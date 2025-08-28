@@ -1,5 +1,6 @@
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Effects;
+using Bliss.CSharp.Graphics.Rendering;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
 using Veldrid;
@@ -17,16 +18,21 @@ public class Material {
     /// The effect (shader program) applied to this material.
     /// </summary>
     public Effect Effect;
+
+    /// <summary>
+    /// Defines the rasterizer state for the material.
+    /// </summary>
+    public RasterizerStateDescription RasterizerState;
     
     /// <summary>
     /// Specifies the blend state for rendering, determining how colors are blended on the screen.
     /// </summary>
     public BlendStateDescription BlendState;
-    
+
     /// <summary>
-    /// A boolean flag indicating whether the material has translucent properties.
+    /// Specifies the rendering mode for the material, determining how the material is drawn (e.g., Solid, Cutout, Transparent).
     /// </summary>
-    public bool Translucent;
+    public RenderMode RenderMode;
     
     /// <summary>
     /// A list of floating-point parameters for configuring material properties.
@@ -37,19 +43,21 @@ public class Material {
     /// A dictionary mapping material map types to material map data, used for managing material textures.
     /// </summary>
     private Dictionary<MaterialMapType, MaterialMap> _maps;
-    
+
     /// <summary>
-    /// Initializes a new instance of the <see cref="Material"/> class, configuring it with the specified graphics device, shader effect, and optional blend state.
+    /// Initializes a new instance of the <see cref="Material"/> class.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device to associate with this material.</param>
     /// <param name="effect">The effect (shader) to apply to the material.</param>
+    /// <param name="rasterizerState">The optional rasterizer state.</param>
     /// <param name="blendState">The optional blend state to define how this material blends with others during rendering. If not specified, blending is disabled by default.</param>
-    /// <param name="translucent">A boolean flag indicating whether the material has translucent properties.</param>
-    public Material(GraphicsDevice graphicsDevice, Effect effect, BlendStateDescription? blendState = null, bool translucent = false) {
+    /// <param name="renderMode">The rendering mode for this material. Defaults to <see cref="RenderMode.Solid"/>.</param>
+    public Material(GraphicsDevice graphicsDevice, Effect effect, RasterizerStateDescription? rasterizerState = null, BlendStateDescription? blendState = null, RenderMode renderMode = RenderMode.Solid) {
         this.GraphicsDevice = graphicsDevice;
         this.Effect = effect;
+        this.RasterizerState = rasterizerState ?? RasterizerStateDescription.DEFAULT;
         this.BlendState = blendState ?? BlendStateDescription.SINGLE_DISABLED;
-        this.Translucent = translucent;
+        this.RenderMode = renderMode;
         this.Parameters = new List<float>();
         this._maps = new Dictionary<MaterialMapType, MaterialMap>();
     }

@@ -1,5 +1,7 @@
 #version 450
 
+#define MAX_BONE_COUNT 72
+
 layout(set = 0, binding = 0) uniform MatrixBuffer {
     mat4x4 uProjection;
     mat4x4 uView;
@@ -7,7 +9,7 @@ layout(set = 0, binding = 0) uniform MatrixBuffer {
 };
 
 layout(set = 1, binding = 0) uniform BoneBuffer {
-    mat4x4 uBonesTransformations[128];
+    mat4x4 uBonesTransformations[MAX_BONE_COUNT];
 };
 
 layout (location = 0) in vec3 vPosition;
