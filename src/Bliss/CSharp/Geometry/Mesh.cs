@@ -13,6 +13,8 @@ namespace Bliss.CSharp.Geometry;
 
 public class Mesh : Disposable {
     
+    public const int MaxBoneCount = 72;
+    
     /// <summary>
     /// Represents the graphics device used for rendering operations.
     /// This property provides access to the underlying GraphicsDevice instance responsible for managing GPU resources and executing rendering commands.
@@ -32,7 +34,7 @@ public class Mesh : Disposable {
     /// Vertices are used to construct the shape and appearance of a 3D model.
     /// </summary>
     public Vertex3D[] Vertices { get; private set; }
-
+    
     /// <summary>
     /// An array of indices that define the order in which vertices are drawn.
     /// Indices are used in conjunction with the vertex array to form geometric shapes
@@ -44,8 +46,13 @@ public class Mesh : Disposable {
     /// An array containing information about each bone in a mesh, used for skeletal animation.
     /// Each element provides details such as the bone's name, its identifier, and its transformation matrix.
     /// </summary>
-    public Dictionary<string, Dictionary<int, BoneInfo[]>> BoneInfos { get; private set; }
+    public Dictionary<string, Dictionary<int, BoneInfo[]>>? BoneInfos { get; private set; }
 
+    /// <summary>
+    /// The array of transformation matrices corresponding to the bones of a skinned mesh.
+    /// </summary>
+    public Matrix4x4[]? BoneMatrices { get; private set; }
+    
     /// <summary>
     /// The axis-aligned bounding box (AABB) for the mesh.
     /// This bounding box is calculated based on the vertices of the mesh and represents
@@ -87,9 +94,10 @@ public class Mesh : Disposable {
         this.Material = material;
         this.Vertices = vertices;
         this.Indices = indices ?? [];
-        this.BoneInfos = boneInfos ?? new Dictionary<string, Dictionary<int, BoneInfo[]>>();
+        this.BoneInfos = boneInfos;
+        this.BoneMatrices = boneInfos != null ? Enumerable.Repeat(Matrix4x4.Identity, MaxBoneCount).ToArray() : null;
         this.BoundingBox = this.GenerateBoundingBox();
-
+        
         this.VertexCount = (uint) this.Vertices.Length;
         this.IndexCount = (uint) this.Indices.Length;
         
@@ -125,7 +133,7 @@ public class Mesh : Disposable {
     
         // Center vertex.
         vertices.Add(new Vertex3D {
-            Position = new Vector3(0, 0, 0),
+            Position = new Vector3(0.0F, 0.0F, 0.0F),
             Normal = Vector3.UnitY,
             TexCoords = new Vector2(0.5F, 0.5F)
         });
@@ -137,7 +145,7 @@ public class Mesh : Disposable {
             float z = MathF.Sin(angle) * radius / 2.0F;
     
             vertices.Add(new Vertex3D {
-                Position = new Vector3(x, 0, z),
+                Position = new Vector3(x, 0.0F, z),
                 Normal = Vector3.UnitY,
                 TexCoords = new Vector2(x / radius + 0.5F, z / radius + 0.5F)
             });

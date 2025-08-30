@@ -35,7 +35,7 @@ public class MeshAmateurBuilder {
         this._rootNode = rootNode;
         this._animations = animations;
     }
-
+    
     /// <summary>
     /// Constructs a dictionary containing bone information mapped by animation name and frame index.
     /// </summary>

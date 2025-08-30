@@ -1,5 +1,6 @@
 using System.Numerics;
 using Bliss.CSharp.Camera.Dim3;
+using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
@@ -16,8 +17,7 @@ public class ForwardRenderer : Disposable {
     // - RenderMode (DONE)
     // - Light support
     // - Shadow map support
-    
-    private const int MaxBoneCount = 72;
+    // - Instancing system (Think about it)
     
     public GraphicsDevice GraphicsDevice { get; private set; }
     
@@ -41,13 +41,7 @@ public class ForwardRenderer : Disposable {
         this._matrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 3, SimpleBufferType.Uniform, ShaderStages.Vertex);
         
         // Create bone buffer.
-        this._boneBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, MaxBoneCount, SimpleBufferType.Uniform, ShaderStages.Vertex);
-        
-        for (int i = 0; i < MaxBoneCount; i++) {
-            this._boneBuffer.SetValue(i, Matrix4x4.Identity);
-        }
-        
-        this._boneBuffer.UpdateBufferImmediate();
+        this._boneBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, Mesh.MaxBoneCount, SimpleBufferType.Uniform, ShaderStages.Vertex);
         
         // Create material map buffer.
         this._materialDataBuffer = new SimpleBuffer<MaterialData>(graphicsDevice, 1, SimpleBufferType.Uniform, ShaderStages.Fragment);
@@ -103,7 +97,14 @@ public class ForwardRenderer : Disposable {
     
     private void DrawRenderable(CommandList commandList, Renderable renderable) {
         
-        // TODO: ADD BONE BUFFER
+        // Update bone buffer.
+        if (renderable.Mesh.BoneMatrices != null) {
+            for (int i = 0; i < Mesh.MaxBoneCount; i++) {
+                this._boneBuffer.SetValue(i, renderable.Mesh.BoneMatrices[i]);
+            }
+            
+            this._boneBuffer.UpdateBuffer(commandList);
+        }
         
         // Update material buffer.
         MaterialData materialData = new MaterialData {
