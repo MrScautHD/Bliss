@@ -12,13 +12,6 @@ namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward;
 
 public class ForwardRenderer : Disposable {
     
-    // TODO:
-    // - Bone support
-    // - RenderMode (DONE)
-    // - Light support
-    // - Shadow map support
-    // - Instancing system (Think about it)
-    
     public GraphicsDevice GraphicsDevice { get; private set; }
     
     private List<Renderable> _opaqueRenderables;

@@ -7,7 +7,7 @@ using Veldrid;
 
 namespace Bliss.CSharp.Materials;
 
-public class Material {
+public class Material : ICloneable {
     
     /// <summary>
     /// The effect (shader program) applied to this material.
@@ -174,5 +174,24 @@ public class Material {
         else {
             Logger.Warn($"Failed to set value for: [{type.GetName()}]. The map might not exist.");
         }
+    }
+
+    /// <summary>
+    /// Creates a new instance of the <see cref="Material"/> class that is a copy of the current instance.
+    /// </summary>
+    /// <returns>A new <see cref="Material"/> object that is a clone of the current instance.</returns>
+    public object Clone() {
+        Material material = new Material(this.Effect) {
+            RasterizerState = this.RasterizerState,
+            BlendState = this.BlendState,
+            RenderMode = this.RenderMode,
+            Parameters = this.Parameters
+        };
+        
+        foreach (var mapPair in this._maps) {
+            material.AddMaterialMap(mapPair.Key, mapPair.Value);
+        }
+        
+        return material;
     }
 }
