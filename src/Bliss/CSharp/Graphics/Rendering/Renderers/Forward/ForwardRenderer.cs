@@ -53,8 +53,8 @@ public class ForwardRenderer : Disposable {
         };
     }
     
-    public void AddRenderable(Renderable renderable) {
-        if (renderable.Mesh.Material.RenderMode == RenderMode.Translucent) {
+    public void DrawRenderable(Renderable renderable) {
+        if (renderable.Material.RenderMode == RenderMode.Translucent) {
             this._translucentRenderables.Add(renderable);
         }
         else {
@@ -82,12 +82,12 @@ public class ForwardRenderer : Disposable {
         
         // Draw opaques renderables.
         foreach (Renderable renderable in opaquesRenderables) {
-            this.DrawRenderable(commandList, renderable);
+            this.DrawPreparedRenderable(commandList, renderable);
         }
         
         // Draw translucent renderables.
         foreach (Renderable renderable in translucentRenderables) {
-            this.DrawRenderable(commandList, renderable);
+            this.DrawPreparedRenderable(commandList, renderable);
         }
         
         // Clean up.
@@ -95,12 +95,12 @@ public class ForwardRenderer : Disposable {
         this._translucentRenderables.Clear();
     }
     
-    private void DrawRenderable(CommandList commandList, Renderable renderable) {
+    private void DrawPreparedRenderable(CommandList commandList, Renderable renderable) {
         
         // Update bone buffer.
-        if (renderable.Mesh.BoneMatrices != null) {
+        if (renderable.BoneMatrices != null) {
             for (int i = 0; i < Mesh.MaxBoneCount; i++) {
-                this._boneBuffer.SetValue(i, renderable.Mesh.BoneMatrices[i]);
+                this._boneBuffer.SetValue(i, renderable.BoneMatrices[i]);
             }
             
             this._boneBuffer.UpdateBuffer(commandList);
@@ -108,11 +108,11 @@ public class ForwardRenderer : Disposable {
         
         // Update material buffer.
         MaterialData materialData = new MaterialData {
-            RenderMode = (int) renderable.Mesh.Material.RenderMode
+            RenderMode = (int) renderable.Material.RenderMode
         };
         
-        foreach (MaterialMapType mapType in renderable.Mesh.Material.GetMaterialMapTypes()) {
-            MaterialMap? map = renderable.Mesh.Material.GetMaterialMap(mapType);
+        foreach (MaterialMapType mapType in renderable.Material.GetMaterialMapTypes()) {
+            MaterialMap? map = renderable.Material.GetMaterialMap(mapType);
             
             if (map != null) {
                 materialData.SetColor((uint) mapType, map.Color?.ToRgbaFloatVec4() ?? Vector4.Zero);
@@ -127,11 +127,11 @@ public class ForwardRenderer : Disposable {
         this._matrixBuffer.UpdateBuffer(commandList);
         
         // Set pipeline parameters.
-        this._pipelineDescription.BlendState = renderable.Mesh.Material.BlendState;
-        this._pipelineDescription.RasterizerState = renderable.Mesh.Material.RasterizerState;
-        this._pipelineDescription.BufferLayouts = renderable.Mesh.Material.Effect.GetBufferLayouts();
-        this._pipelineDescription.TextureLayouts = renderable.Mesh.Material.Effect.GetTextureLayouts();
-        this._pipelineDescription.ShaderSet = renderable.Mesh.Material.Effect.ShaderSet;
+        this._pipelineDescription.BlendState = renderable.Material.BlendState;
+        this._pipelineDescription.RasterizerState = renderable.Material.RasterizerState;
+        this._pipelineDescription.BufferLayouts = renderable.Material.Effect.GetBufferLayouts();
+        this._pipelineDescription.TextureLayouts = renderable.Material.Effect.GetTextureLayouts();
+        this._pipelineDescription.ShaderSet = renderable.Material.Effect.ShaderSet;
         
         if (renderable.Mesh.IndexCount > 0) {
             
@@ -140,34 +140,34 @@ public class ForwardRenderer : Disposable {
             commandList.SetIndexBuffer(renderable.Mesh.IndexBuffer, IndexFormat.UInt32);
             
             // Set pipeline.
-            commandList.SetPipeline(renderable.Mesh.Material.Effect.GetPipeline(this._pipelineDescription).Pipeline);
+            commandList.SetPipeline(renderable.Material.Effect.GetPipeline(this._pipelineDescription).Pipeline);
             
             // Set matrix buffer.
-            commandList.SetGraphicsResourceSet(renderable.Mesh.Material.Effect.GetBufferLayoutSlot("MatrixBuffer"), this._matrixBuffer.GetResourceSet(renderable.Mesh.Material.Effect.GetBufferLayout("MatrixBuffer")));
+            commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("MatrixBuffer"), this._matrixBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("MatrixBuffer")));
             
             // Set bone buffer.
-            commandList.SetGraphicsResourceSet(renderable.Mesh.Material.Effect.GetBufferLayoutSlot("BoneBuffer"), this._boneBuffer.GetResourceSet(renderable.Mesh.Material.Effect.GetBufferLayout("BoneBuffer")));
+            commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("BoneBuffer"), this._boneBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("BoneBuffer")));
             
             // Set material map buffer.
-            commandList.SetGraphicsResourceSet(renderable.Mesh.Material.Effect.GetBufferLayoutSlot("MaterialBuffer"), this._materialDataBuffer.GetResourceSet(renderable.Mesh.Material.Effect.GetBufferLayout("MaterialBuffer")));
+            commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("MaterialBuffer"), this._materialDataBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("MaterialBuffer")));
             
             // Set material texture.
-            foreach (SimpleTextureLayout textureLayout in renderable.Mesh.Material.Effect.GetTextureLayouts()) {
-                foreach (MaterialMapType mapType in renderable.Mesh.Material.GetMaterialMapTypes()) {
+            foreach (SimpleTextureLayout textureLayout in renderable.Material.Effect.GetTextureLayouts()) {
+                foreach (MaterialMapType mapType in renderable.Material.GetMaterialMapTypes()) {
                     if (textureLayout.Name == mapType.GetName()) {
                         string mapName = textureLayout.Name;
-                        MaterialMap map = renderable.Mesh.Material.GetMaterialMap(mapType)!;
-                        ResourceSet? resourceSet = map.GetTextureResourceSet(map.Sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), renderable.Mesh.Material.Effect.GetTextureLayout(mapName));
+                        MaterialMap map = renderable.Material.GetMaterialMap(mapType)!;
+                        ResourceSet? resourceSet = map.GetTextureResourceSet(map.Sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), renderable.Material.Effect.GetTextureLayout(mapName));
                         
                         if (resourceSet != null) {
-                            commandList.SetGraphicsResourceSet(renderable.Mesh.Material.Effect.GetTextureLayoutSlot(mapName), resourceSet);
+                            commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetTextureLayoutSlot(mapName), resourceSet);
                         }
                     }
                 }
             }
             
             // Apply effect.
-            renderable.Mesh.Material.Effect.Apply(commandList, renderable.Mesh.Material);
+            renderable.Material.Effect.Apply(commandList, renderable.Material);
             
             // Draw.
             commandList.DrawIndexed(renderable.Mesh.IndexCount);
@@ -178,34 +178,34 @@ public class ForwardRenderer : Disposable {
             commandList.SetVertexBuffer(0, renderable.Mesh.VertexBuffer);
             
             // Set pipeline.
-            commandList.SetPipeline(renderable.Mesh.Material.Effect.GetPipeline(this._pipelineDescription).Pipeline);
+            commandList.SetPipeline(renderable.Material.Effect.GetPipeline(this._pipelineDescription).Pipeline);
             
             // Set matrix buffer.
-            commandList.SetGraphicsResourceSet(renderable.Mesh.Material.Effect.GetBufferLayoutSlot("MatrixBuffer"), this._matrixBuffer.GetResourceSet(renderable.Mesh.Material.Effect.GetBufferLayout("MatrixBuffer")));
+            commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("MatrixBuffer"), this._matrixBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("MatrixBuffer")));
             
             // Set bone buffer.
-            commandList.SetGraphicsResourceSet(renderable.Mesh.Material.Effect.GetBufferLayoutSlot("BoneBuffer"), this._boneBuffer.GetResourceSet(renderable.Mesh.Material.Effect.GetBufferLayout("BoneBuffer")));
+            commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("BoneBuffer"), this._boneBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("BoneBuffer")));
             
             // Set material map buffer.
-            commandList.SetGraphicsResourceSet(renderable.Mesh.Material.Effect.GetBufferLayoutSlot("MaterialBuffer"), this._materialDataBuffer.GetResourceSet(renderable.Mesh.Material.Effect.GetBufferLayout("MaterialBuffer")));
+            commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("MaterialBuffer"), this._materialDataBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("MaterialBuffer")));
             
             // Set material texture.
-            foreach (SimpleTextureLayout textureLayout in renderable.Mesh.Material.Effect.GetTextureLayouts()) {
-                foreach (MaterialMapType mapType in renderable.Mesh.Material.GetMaterialMapTypes()) {
+            foreach (SimpleTextureLayout textureLayout in renderable.Material.Effect.GetTextureLayouts()) {
+                foreach (MaterialMapType mapType in renderable.Material.GetMaterialMapTypes()) {
                     if (textureLayout.Name == mapType.GetName()) {
                         string mapName = textureLayout.Name;
-                        MaterialMap map = renderable.Mesh.Material.GetMaterialMap(mapType)!;
-                        ResourceSet? resourceSet = map.GetTextureResourceSet(map.Sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), renderable.Mesh.Material.Effect.GetTextureLayout(mapName));
+                        MaterialMap map = renderable.Material.GetMaterialMap(mapType)!;
+                        ResourceSet? resourceSet = map.GetTextureResourceSet(map.Sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), renderable.Material.Effect.GetTextureLayout(mapName));
                         
                         if (resourceSet != null) {
-                            commandList.SetGraphicsResourceSet(renderable.Mesh.Material.Effect.GetTextureLayoutSlot(mapName), resourceSet);
+                            commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetTextureLayoutSlot(mapName), resourceSet);
                         }
                     }
                 }
             }
             
             // Apply effect.
-            renderable.Mesh.Material.Effect.Apply(commandList, renderable.Mesh.Material);
+            renderable.Material.Effect.Apply(commandList, renderable.Material);
             
             // Draw.
             commandList.Draw(renderable.Mesh.VertexCount);

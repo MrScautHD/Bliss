@@ -174,7 +174,7 @@ public class Model : Disposable {
             }
             
             // Load material maps.
-            Material material = new Material(graphicsDevice, effect);
+            Material material = new Material(effect);
             
             if (scene.HasMaterials && loadMaterial) {
                 AMaterial aMaterial = scene.Materials[mesh.MaterialIndex];
@@ -459,7 +459,7 @@ public class Model : Disposable {
         
         return null;
     }
-
+    
     /// <summary>
     /// Generates a bounding box that encapsulates all the vertices in the model's meshes.
     /// </summary>

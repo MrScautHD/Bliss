@@ -13,6 +13,9 @@ namespace Bliss.CSharp.Geometry;
 
 public class Mesh : Disposable {
     
+    /// <summary>
+    /// The maximum number of bones supported for skeletal animations in a mesh.
+    /// </summary>
     public const int MaxBoneCount = 72;
     
     /// <summary>
@@ -26,7 +29,7 @@ public class Mesh : Disposable {
     /// This may include shaders (effects), texture mappings, blending states, and other rendering parameters.
     /// The Material controls how the mesh is rendered within the graphics pipeline.
     /// </summary>
-    public Material Material { get; private set; }
+    public Material Material;
     
     /// <summary>
     /// An array of Vertex3D structures that define the geometric points of a mesh.
@@ -41,17 +44,12 @@ public class Mesh : Disposable {
     /// such as triangles in a mesh. This allows for efficient reuse of vertex data.
     /// </summary>
     public uint[] Indices { get; private set; }
-
+    
     /// <summary>
     /// An array containing information about each bone in a mesh, used for skeletal animation.
     /// Each element provides details such as the bone's name, its identifier, and its transformation matrix.
     /// </summary>
-    public Dictionary<string, Dictionary<int, BoneInfo[]>>? BoneInfos { get; private set; }
-
-    /// <summary>
-    /// The array of transformation matrices corresponding to the bones of a skinned mesh.
-    /// </summary>
-    public Matrix4x4[]? BoneMatrices { get; private set; }
+    public Dictionary<string, Dictionary<int, BoneInfo[]>>? BoneInfos { get; private set; } // TODO: Maybe try to replace this with the Skeleton system (so the skeleton get stored here) || OR BOTH ModelAnimation + Skeleton (but move the animation poses to the individual ModelAnimation)
     
     /// <summary>
     /// The axis-aligned bounding box (AABB) for the mesh.
@@ -95,7 +93,6 @@ public class Mesh : Disposable {
         this.Vertices = vertices;
         this.Indices = indices ?? [];
         this.BoneInfos = boneInfos;
-        this.BoneMatrices = boneInfos != null ? Enumerable.Repeat(Matrix4x4.Identity, MaxBoneCount).ToArray() : null;
         this.BoundingBox = this.GenerateBoundingBox();
         
         this.VertexCount = (uint) this.Vertices.Length;
@@ -158,7 +155,7 @@ public class Mesh : Disposable {
             indices.Add((uint) (i % sides + 1));
         }
     
-        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
+        Material material = new Material(GlobalResource.DefaultModelEffect);
     
         material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
@@ -242,7 +239,7 @@ public class Mesh : Disposable {
             22, 23, 20
         ];
     
-        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
+        Material material = new Material(GlobalResource.DefaultModelEffect);
     
         material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap() {
             Texture = GlobalResource.DefaultModelTexture,
@@ -324,7 +321,7 @@ public class Mesh : Disposable {
             }
         }
 
-        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
+        Material material = new Material(GlobalResource.DefaultModelEffect);
 
         material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap() {
             Texture = GlobalResource.DefaultModelTexture,
@@ -428,7 +425,7 @@ public class Mesh : Disposable {
             indices.Add((uint) (centerIndex + slice + 1));
         }
     
-        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
+        Material material = new Material(GlobalResource.DefaultModelEffect);
     
         material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap() {
             Texture = GlobalResource.DefaultModelTexture,
@@ -527,7 +524,7 @@ public class Mesh : Disposable {
             indices.Add((uint) (baseIndex + 2));
         }
     
-        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
+        Material material = new Material(GlobalResource.DefaultModelEffect);
         
         material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
@@ -677,7 +674,7 @@ public class Mesh : Disposable {
             }
         }
         
-        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
+        Material material = new Material(GlobalResource.DefaultModelEffect);
         
         material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
@@ -755,7 +752,7 @@ public class Mesh : Disposable {
             indices.Add((uint) baseIndex);
         }
 
-        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
+        Material material = new Material(GlobalResource.DefaultModelEffect);
 
         material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
@@ -830,7 +827,7 @@ public class Mesh : Disposable {
             }
         }
 
-        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
+        Material material = new Material(GlobalResource.DefaultModelEffect);
         
         material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
@@ -920,7 +917,7 @@ public class Mesh : Disposable {
             }
         }
         
-        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
+        Material material = new Material(GlobalResource.DefaultModelEffect);
         
         material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
@@ -982,7 +979,7 @@ public class Mesh : Disposable {
             }
         }
         
-        Material material = new Material(graphicsDevice, GlobalResource.DefaultModelEffect);
+        Material material = new Material(GlobalResource.DefaultModelEffect);
 
         material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,

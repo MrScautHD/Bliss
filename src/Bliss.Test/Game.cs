@@ -45,6 +45,8 @@ public class Game : Disposable {
     public RenderTexture2D FullScreenTexture { get; private set; }
 
     private ForwardRenderer _forwardRenderer;
+    private List<Renderable> _renderables;
+    
     private ImmediateRenderer _immediateRenderer;
     private SpriteBatch _spriteBatch;
     private PrimitiveBatch _primitiveBatch;
@@ -61,7 +63,7 @@ public class Game : Disposable {
     private Model _planeModel;
     private Model _treeModel;
     private Model _cyberCarModel;
-    private Texture2D _cynerTexture;
+    private Texture2D _cyberCarTexture;
 
     private Texture2D _customMeshTexture;
     private Mesh _customPoly;
@@ -171,6 +173,8 @@ public class Game : Disposable {
         this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), this.Settings.SampleCount);
 
         this._forwardRenderer = new ForwardRenderer(this.GraphicsDevice);
+        this._renderables = new List<Renderable>();
+        
         this._immediateRenderer = new ImmediateRenderer(this.GraphicsDevice);
         this._spriteBatch = new SpriteBatch(this.GraphicsDevice, this.MainWindow);
         this._primitiveBatch = new PrimitiveBatch(this.GraphicsDevice, this.MainWindow);
@@ -183,6 +187,11 @@ public class Game : Disposable {
         float aspectRatio = (float) this.MainWindow.GetWidth() / (float) this.MainWindow.GetHeight();
         this._cam3D = new Cam3D(new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0), aspectRatio);
         this._playerModel = Model.Load(this.GraphicsDevice, "content/player.glb");
+        
+        foreach (Mesh mesh in this._playerModel.Meshes) {
+            mesh.Material.RenderMode = RenderMode.Cutout;
+        }
+        
         this._planeModel = Model.Load(this.GraphicsDevice, "content/plane.glb");
         this._treeModel = Model.Load(this.GraphicsDevice, "content/tree.glb", false);
 
@@ -195,10 +204,10 @@ public class Game : Disposable {
         }
         
         this._cyberCarModel = Model.Load(this.GraphicsDevice, "content/cybercar.glb", false);
-        this._cynerTexture = new Texture2D(this.GraphicsDevice, "content/cybercar.png");
+        this._cyberCarTexture = new Texture2D(this.GraphicsDevice, "content/cybercar.png");
 
         foreach (Mesh mesh in _cyberCarModel.Meshes) {
-            mesh.Material.SetMapTexture(MaterialMapType.Albedo, this._cynerTexture);
+            mesh.Material.SetMapTexture(MaterialMapType.Albedo, this._cyberCarTexture);
         }
         
         // Make the blue window part translucent!
@@ -241,6 +250,8 @@ public class Game : Disposable {
         this._cubemapTexture = new Texture2D(this.GraphicsDevice, this._cubemap.Images[5][0]);
 
         this._button = new Texture2D(this.GraphicsDevice, "content/button.png");
+        
+        this.SetupForwardRenderables();
     }
     
     protected virtual void Update() {
@@ -338,99 +349,46 @@ public class Game : Disposable {
         this._immediateRenderer.DrawKnotWires(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(48, 0, 6) }, 1, 1, 40, 40, Color.Green);
         // ImmediateRenderer END
         
-        this._forwardRenderer.AddRenderable(new Renderable() {
-            Mesh = this._customPoly,
-            Transform = new Transform() { Translation = new Vector3(9, 0, 0) }
-        });
+        // Animate PLAYER (Begin)
+        // Rest PLAYER animation.
+        if (Input.IsKeyPressed(KeyboardKey.G)) {
+            foreach (Renderable renderable in this._renderables) {
+                foreach (Mesh mesh in this._playerModel.Meshes) {
+                    if (renderable.Mesh == mesh) {
+                        Array.Fill(renderable.BoneMatrices!, Matrix4x4.Identity);
+                    }
+                }
+            }
+            
+            this._playingAnim = false;
+            Logger.Error("RESET ANIM");
+        }
         
-        this._forwardRenderer.AddRenderable(new Renderable() {
-            Mesh = this._customCube,
-            Transform = new Transform() { Translation = new Vector3(11, 0, 0) }
-        });
-
-        this._forwardRenderer.AddRenderable(new Renderable() {
-            Mesh = this._customSphere,
-            Transform = new Transform() { Translation = new Vector3(13, 0, 0) }
-        });
-        
-        this._forwardRenderer.AddRenderable(new Renderable() {
-            Mesh = this._customHemishpere,
-            Transform = new Transform() { Translation = new Vector3(15, 0, 0) }
-        });
-        
-        this._forwardRenderer.AddRenderable(new Renderable() {
-            Mesh = this._customCylinder,
-            Transform = new Transform() { Translation = new Vector3(17, 0, 0) }
-        });
-        
-        this._forwardRenderer.AddRenderable(new Renderable() {
-            Mesh = this._customCapsule,
-            Transform = new Transform() { Translation = new Vector3(19, 0, 0) }
-        });
-        
-        this._forwardRenderer.AddRenderable(new Renderable() {
-            Mesh = this._customCone,
-            Transform = new Transform() { Translation = new Vector3(21, 0, 0) }
-        });
-
-        this._forwardRenderer.AddRenderable(new Renderable() {
-            Mesh = this._customTorus,
-            Transform = new Transform() { Translation = new Vector3(23, 0, 0) }
-        });
-
-        this._forwardRenderer.AddRenderable(new Renderable() {
-            Mesh = this._customKnot,
-            Transform = new Transform() { Translation = new Vector3(25, 0, 0) }
-        });
-        
-        this._forwardRenderer.AddRenderable(new Renderable() {
-            Mesh = this._customHeighmap,
-            Transform = new Transform() { Translation = new Vector3(27, 0, 0) }
-        });
-        
-        // Plane model (Testing frustum).
-        if (this._cam3D.GetFrustum().ContainsBox(this._planeModel.BoundingBox)) {
-            foreach (Mesh mesh in this._planeModel.Meshes) {
-                this._forwardRenderer.AddRenderable(new Renderable() {
-                    Mesh = mesh,
-                    Transform = new Transform()
-                });
+        // Play PLAYER animation.
+        if (this._playingAnim) {
+            foreach (Renderable renderable in this._renderables) {
+                foreach (Mesh mesh in this._playerModel.Meshes) {
+                    if (renderable.Mesh == mesh) {
+                        string animationName = this._playerModel.Animations[1].Name;
+                        
+                        for (int boneId = 0; boneId < mesh.BoneInfos![animationName][this._frameCount].Length; boneId++) {
+                            renderable.BoneMatrices![boneId] = mesh.BoneInfos[animationName][this._frameCount][boneId].Transformation;
+                        }
+                    }
+                }
             }
         }
+        // Animate PLAYER (End)
         
-        // Tree model.
-        foreach (Mesh mesh in this._treeModel.Meshes) {
-            this._forwardRenderer.AddRenderable(new Renderable() {
-                Mesh = mesh,
-                Transform = new Transform() { Translation = new Vector3(0, 0, 20) }
-            });
-        }
-        
-        // Cyber car model.
-        foreach (Mesh mesh in this._cyberCarModel.Meshes) {
-            this._forwardRenderer.AddRenderable(new Renderable() {
-                Mesh = mesh,
-                Transform = new Transform() { Translation = new Vector3(10, 0, 20) }
-            });
+        // DRAW FORWARD RENDERER (BEGIN)!
+        // (Every renderable should be in his own (for example ModelRendererComponent, MeshRenderableComponent... (there are few concepts to handle this, bliss does not provide such a system!).
+        foreach (Renderable renderable in this._renderables) {
+            this._forwardRenderer.DrawRenderable(renderable);
         }
         
         this._forwardRenderer.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription);
         
-        //if (Input.IsKeyPressed(KeyboardKey.G)) {
-        //    this._playerModel.ResetAnimationBones(commandList);
-        //    this._playingAnim = false;
-        //    Logger.Error("RESET ANIM");
-        //}
-
-        //if (this._cam3D.GetFrustum().ContainsBox(this._playerModel.BoundingBox)) {
-        //    if (this._playingAnim) {
-        //        this._playerModel.UpdateAnimationBones(commandList, this._playerModel.Animations[1], this._frameCount);
-        //    }
-        //    this._playerModel.Draw(commandList, new Transform() { Translation = new Vector3(0, 0.05F, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
-        //}
-        //
-        //this._playerModel.ResetAnimationBones(commandList);
-        //this._playerModel.Draw(commandList, new Transform() { Translation = new Vector3(4, 0.05F, 0)}, this.FullScreenTexture.Framebuffer.OutputDescription);
+        // DRAW FORWARD RENDERER (END)!
         
         this._cam3D.End();
         
@@ -523,6 +481,38 @@ public class Game : Disposable {
 
     public void SetTargetFps(int fps) {
         this._fixedFrameRate = 1.0F / fps;
+    }
+
+    private void SetupForwardRenderables() {
+        
+        // Meshes:
+        this._renderables.Add(new Renderable(this._customPoly, new Transform() { Translation = new Vector3(9, 0, 0) }));
+        this._renderables.Add(new Renderable(this._customCube, new Transform() { Translation = new Vector3(11, 0, 0) }));
+        this._renderables.Add(new Renderable(this._customSphere, new Transform() { Translation = new Vector3(13, 0, 0) }));
+        this._renderables.Add(new Renderable(this._customHemishpere, new Transform() { Translation = new Vector3(15, 0, 0) }));
+        this._renderables.Add(new Renderable(this._customCylinder, new Transform() { Translation = new Vector3(17, 0, 0) }));
+        this._renderables.Add(new Renderable(this._customCapsule, new Transform() { Translation = new Vector3(19, 0, 0) }));
+        this._renderables.Add(new Renderable(this._customCone, new Transform() { Translation = new Vector3(21, 0, 0) }));
+        this._renderables.Add(new Renderable(this._customTorus, new Transform() { Translation = new Vector3(23, 0, 0) }));
+        this._renderables.Add(new Renderable(this._customKnot, new Transform() { Translation = new Vector3(25, 0, 0) }));
+        this._renderables.Add(new Renderable(this._customHeighmap, new Transform() { Translation = new Vector3(27, 0, 0) }));
+        
+        // Models:
+        foreach (Mesh mesh in this._planeModel.Meshes) {
+            this._renderables.Add(new Renderable(mesh, new Transform()));
+        }
+        
+        foreach (Mesh mesh in this._treeModel.Meshes) {
+            this._renderables.Add(new Renderable(mesh, new Transform() { Translation = new Vector3(0, 0, 20) }));
+        }
+        
+        foreach (Mesh mesh in this._cyberCarModel.Meshes) {
+            this._renderables.Add(new Renderable(mesh, new Transform() { Translation = new Vector3(10, 0, 20) }));
+        }
+        
+        foreach (Mesh mesh in this._playerModel.Meshes) {
+            this._renderables.Add(new Renderable(mesh, new Transform() { Translation = new Vector3(0, 0.05F, 0) }));
+        }
     }
     
     protected override void Dispose(bool disposing) {

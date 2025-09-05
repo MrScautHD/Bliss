@@ -10,11 +10,6 @@ namespace Bliss.CSharp.Materials;
 public class Material {
     
     /// <summary>
-    /// The graphics device associated with this material, used to manage rendering resources.
-    /// </summary>
-    public GraphicsDevice GraphicsDevice { get; private set; }
-    
-    /// <summary>
     /// The effect (shader program) applied to this material.
     /// </summary>
     public Effect Effect;
@@ -47,13 +42,11 @@ public class Material {
     /// <summary>
     /// Initializes a new instance of the <see cref="Material"/> class.
     /// </summary>
-    /// <param name="graphicsDevice">The graphics device to associate with this material.</param>
     /// <param name="effect">The effect (shader) to apply to the material.</param>
     /// <param name="rasterizerState">The optional rasterizer state.</param>
     /// <param name="blendState">The optional blend state to define how this material blends with others during rendering. If not specified, blending is disabled by default.</param>
     /// <param name="renderMode">The rendering mode for this material. Defaults to <see cref="RenderMode.Solid"/>.</param>
-    public Material(GraphicsDevice graphicsDevice, Effect effect, RasterizerStateDescription? rasterizerState = null, BlendStateDescription? blendState = null, RenderMode renderMode = RenderMode.Solid) {
-        this.GraphicsDevice = graphicsDevice;
+    public Material(Effect effect, RasterizerStateDescription? rasterizerState = null, BlendStateDescription? blendState = null, RenderMode renderMode = RenderMode.Solid) {
         this.Effect = effect;
         this.RasterizerState = rasterizerState ?? RasterizerStateDescription.DEFAULT;
         this.BlendState = blendState ?? BlendStateDescription.SINGLE_DISABLED;
