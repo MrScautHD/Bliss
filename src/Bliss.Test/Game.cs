@@ -114,7 +114,7 @@ public class Game : Disposable {
         this.GraphicsDevice = graphicsDevice;
         
         Logger.Info("Loading window icon...");
-        this.MainWindow.SetIcon(this.Settings.IconPath != string.Empty ? new Image(this.Settings.IconPath) : new Image("content/images/icon.png"));
+        this.MainWindow.SetIcon(this.Settings.IconPath != string.Empty ? new Image(this.Settings.IconPath) : new Image("content/bliss/images/icon.png"));
         
         Logger.Info("Initialize time...");
         Time.Init();
@@ -181,7 +181,7 @@ public class Game : Disposable {
         this._primitiveBatch = new PrimitiveBatch(this.GraphicsDevice, this.MainWindow);
         
         this._font = new Font("content/fonts/fontoe.ttf");
-        this._logoTexture = new Texture2D(this.GraphicsDevice, "content/images/logo.png");
+        this._logoTexture = new Texture2D(this.GraphicsDevice, "content/bliss/images/logo.png");
         this._animatedImage = new AnimatedImage("content/animated.gif");
         this._gif = new Texture2D(this.GraphicsDevice, this._animatedImage.SpriteSheet);
         
@@ -209,6 +209,7 @@ public class Game : Disposable {
 
         foreach (Mesh mesh in _cyberCarModel.Meshes) {
             mesh.Material.SetMapTexture(MaterialMapType.Albedo, this._cyberCarTexture);
+            mesh.Material.RenderMode = RenderMode.Cutout;
         }
         
         // Make the blue window part translucent!
