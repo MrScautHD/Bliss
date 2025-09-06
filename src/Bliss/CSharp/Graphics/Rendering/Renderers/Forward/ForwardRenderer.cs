@@ -12,17 +12,45 @@ namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward;
 
 public class ForwardRenderer : Disposable {
     
+    /// <summary>
+    /// The graphics device used for rendering.
+    /// </summary>
     public GraphicsDevice GraphicsDevice { get; private set; }
     
+    /// <summary>
+    /// List of opaque renderables waiting to be drawn.
+    /// </summary>
     private List<Renderable> _opaqueRenderables;
+    
+    /// <summary>
+    /// List of translucent renderables waiting to be drawn.
+    /// </summary>
     private List<Renderable> _translucentRenderables;
     
+    /// <summary>
+    /// Uniform buffer storing projection, view, and model matrices.
+    /// </summary>
     private SimpleBuffer<Matrix4x4> _matrixBuffer;
+    
+    /// <summary>
+    /// Uniform buffer storing bone matrices for skinned meshes.
+    /// </summary>
     private SimpleBuffer<Matrix4x4> _boneBuffer;
+    
+    /// <summary>
+    /// Uniform buffer storing material data.
+    /// </summary>
     private SimpleBuffer<MaterialData> _materialDataBuffer;
     
+    /// <summary>
+    /// Description of the pipeline used for rendering.
+    /// </summary>
     private SimplePipelineDescription _pipelineDescription;
     
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ForwardRenderer"/> class.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device to use for rendering.</param>
     public ForwardRenderer(GraphicsDevice graphicsDevice) {
         this.GraphicsDevice = graphicsDevice;
         
@@ -46,6 +74,10 @@ public class ForwardRenderer : Disposable {
         };
     }
     
+    /// <summary>
+    /// Queues a renderable for drawing.
+    /// </summary>
+    /// <param name="renderable">The renderable to draw.</param>
     public void DrawRenderable(Renderable renderable) {
         if (renderable.Material.RenderMode == RenderMode.Translucent) {
             this._translucentRenderables.Add(renderable);
@@ -54,7 +86,12 @@ public class ForwardRenderer : Disposable {
             this._opaqueRenderables.Add(renderable);
         }
     }
-    
+
+    /// <summary>
+    /// Executes the rendering process for drawing opaque and translucent renderable objects.
+    /// </summary>
+    /// <param name="commandList">The command list used to execute rendering commands.</param>
+    /// <param name="output">The output description specifying the rendering target configuration.</param>
     public void Draw(CommandList commandList, OutputDescription output) {
         Cam3D? cam3D = Cam3D.ActiveCamera;
         
@@ -87,7 +124,12 @@ public class ForwardRenderer : Disposable {
         this._opaqueRenderables.Clear();
         this._translucentRenderables.Clear();
     }
-    
+
+    /// <summary>
+    /// Draws a prepared renderable object, setting up necessary buffers, pipeline parameters, and managing the drawing process.
+    /// </summary>
+    /// <param name="commandList">The command list used to execute rendering commands.</param>
+    /// <param name="renderable">The renderable object to be drawn.</param>
     private void DrawPreparedRenderable(CommandList commandList, Renderable renderable) {
         
         // Update bone buffer.

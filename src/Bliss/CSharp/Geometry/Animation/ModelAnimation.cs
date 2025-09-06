@@ -1,4 +1,6 @@
-namespace Bliss.CSharp.Geometry.Animations;
+using System.Numerics;
+
+namespace Bliss.CSharp.Geometry.Animation;
 
 public class ModelAnimation {
     
@@ -28,26 +30,25 @@ public class ModelAnimation {
     public IReadOnlyList<NodeAnimChannel> AnimationChannels { get; private set; }
 
     /// <summary>
+    /// A dictionary containing the precomputed transformations for each bone at each animation frame.
+    /// </summary>
+    public IReadOnlyDictionary<int, Matrix4x4[]> BoneFrameTransformations { get; private set; }
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="ModelAnimation"/> class with the specified properties and animation channels.
     /// </summary>
     /// <param name="name">The name of the animation.</param>
     /// <param name="durationInTicks">The total duration of the animation in ticks.</param>
     /// <param name="ticksPerSecond">The number of ticks per second, determining playback speed.</param>
+    /// <param name="frameCount">The total number of frames in the animation.</param>
     /// <param name="channels">The list of animation channels associated with this animation.</param>
-    public ModelAnimation(string name, float durationInTicks, float ticksPerSecond, IReadOnlyList<NodeAnimChannel> channels) {
+    /// <param name="boneFrameTransformations">The dictionary containing the precomputed transformations for each bone at each animation frame.</param>
+    public ModelAnimation(string name, float durationInTicks, float ticksPerSecond, int frameCount, IReadOnlyList<NodeAnimChannel> channels, IReadOnlyDictionary<int, Matrix4x4[]> boneFrameTransformations) {
         this.Name = name;
         this.DurationInTicks = durationInTicks;
         this.TicksPerSecond = ticksPerSecond;
-        this.FrameCount = this.CalculateFrameCount();
+        this.FrameCount = frameCount;
         this.AnimationChannels = channels;
-    }
-
-    /// <summary>
-    /// Calculates the total number of frames for the animation based on its duration and ticks per second.
-    /// </summary>
-    /// <returns>Returns the computed frame count as an integer.</returns>
-    private int CalculateFrameCount() {
-        double frameDuration = this.TicksPerSecond > 0 ? this.TicksPerSecond : 25.0;
-        return (int) (this.DurationInTicks / frameDuration * 60);
+        this.BoneFrameTransformations = boneFrameTransformations;
     }
 }

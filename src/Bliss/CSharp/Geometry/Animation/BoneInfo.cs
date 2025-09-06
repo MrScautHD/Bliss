@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace Bliss.CSharp.Geometry.Animations;
+namespace Bliss.CSharp.Geometry.Animation;
 
 public class BoneInfo {
 
@@ -13,7 +13,7 @@ public class BoneInfo {
     /// The unique identifier of the bone.
     /// </summary>
     public uint Id { get; private set; }
-
+    
     /// <summary>
     /// The transformation matrix representing the bone's transformation in the skeleton hierarchy.
     /// </summary>

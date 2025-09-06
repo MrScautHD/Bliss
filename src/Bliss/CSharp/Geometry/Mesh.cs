@@ -1,6 +1,5 @@
 using System.Numerics;
 using System.Runtime.InteropServices;
-using Bliss.CSharp.Geometry.Animations;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Logging;
@@ -44,12 +43,11 @@ public class Mesh : Disposable {
     /// such as triangles in a mesh. This allows for efficient reuse of vertex data.
     /// </summary>
     public uint[] Indices { get; private set; }
-    
+
     /// <summary>
-    /// An array containing information about each bone in a mesh, used for skeletal animation.
-    /// Each element provides details such as the bone's name, its identifier, and its transformation matrix.
+    /// Indicates whether the mesh contains bone information.
     /// </summary>
-    public Dictionary<string, Dictionary<int, BoneInfo[]>>? BoneInfos { get; private set; } // TODO: Maybe try to replace this with the Skeleton system (so the skeleton get stored here) || OR BOTH ModelAnimation + Skeleton (but move the animation poses to the individual ModelAnimation)
+    public bool HasBones { get; private set; }
     
     /// <summary>
     /// The axis-aligned bounding box (AABB) for the mesh.
@@ -86,13 +84,12 @@ public class Mesh : Disposable {
     /// <param name="material">The material applied to the mesh.</param>
     /// <param name="vertices">The vertex data for the mesh.</param>
     /// <param name="indices">The index data defining triangle order (optional).</param>
-    /// <param name="boneInfos">The skeletal bone mapping information for animations (optional).</param>
-    public Mesh(GraphicsDevice graphicsDevice, Material material, Vertex3D[] vertices, uint[]? indices = null, Dictionary<string, Dictionary<int, BoneInfo[]>>? boneInfos = null) {
+    public Mesh(GraphicsDevice graphicsDevice, Material material, Vertex3D[] vertices, uint[]? indices = null) {
         this.GraphicsDevice = graphicsDevice;
         this.Material = material;
         this.Vertices = vertices;
         this.Indices = indices ?? [];
-        this.BoneInfos = boneInfos;
+        this.HasBones = vertices.Any(v => v.BoneWeights != Vector4.Zero);
         this.BoundingBox = this.GenerateBoundingBox();
         
         this.VertexCount = (uint) this.Vertices.Length;

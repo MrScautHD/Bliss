@@ -3,6 +3,7 @@ using Bliss.CSharp;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Geometry;
+using Bliss.CSharp.Geometry.Animation;
 using Bliss.CSharp.Graphics.Rendering;
 using Bliss.CSharp.Graphics.Rendering.Renderers;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives;
@@ -355,7 +356,9 @@ public class Game : Disposable {
             foreach (Renderable renderable in this._renderables) {
                 foreach (Mesh mesh in this._playerModel.Meshes) {
                     if (renderable.Mesh == mesh) {
-                        Array.Fill(renderable.BoneMatrices!, Matrix4x4.Identity);
+                        if (renderable.BoneMatrices != null) {
+                            Array.Fill(renderable.BoneMatrices, Matrix4x4.Identity);
+                        }
                     }
                 }
             }
@@ -369,10 +372,12 @@ public class Game : Disposable {
             foreach (Renderable renderable in this._renderables) {
                 foreach (Mesh mesh in this._playerModel.Meshes) {
                     if (renderable.Mesh == mesh) {
-                        string animationName = this._playerModel.Animations[1].Name;
-                        
-                        for (int boneId = 0; boneId < mesh.BoneInfos![animationName][this._frameCount].Length; boneId++) {
-                            renderable.BoneMatrices![boneId] = mesh.BoneInfos[animationName][this._frameCount][boneId].Transformation;
+                        ModelAnimation animation = this._playerModel.Animations[1];
+
+                        for (int boneId = 0; boneId < animation.BoneFrameTransformations[this._frameCount].Length; boneId++) {
+                            if (renderable.BoneMatrices != null) {
+                                renderable.BoneMatrices[boneId] = animation.BoneFrameTransformations[this._frameCount][boneId];
+                            }
                         }
                     }
                 }

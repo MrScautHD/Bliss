@@ -44,7 +44,7 @@ public class Renderable {
     public Renderable(Mesh mesh, Transform transform, Material material) {
         this.Mesh = mesh;
         this.Material = material;
-        this.BoneMatrices = mesh.BoneInfos /** TODO: (mesh.BoneInfos) Get replaced with the new Skeletion, ModelAnimation system (Maybe HasBones... or something)*/ != null ? Enumerable.Repeat(Matrix4x4.Identity, Mesh.MaxBoneCount).ToArray() : null;
+        this.BoneMatrices = mesh.HasBones ? Enumerable.Repeat(Matrix4x4.Identity, Mesh.MaxBoneCount).ToArray() : null;
         this.Transform = transform;
     }
 }

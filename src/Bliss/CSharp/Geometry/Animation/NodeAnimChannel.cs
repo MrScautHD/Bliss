@@ -1,6 +1,6 @@
-using Bliss.CSharp.Geometry.Animations.Keyframes;
+using Bliss.CSharp.Geometry.Animation.Keyframes;
 
-namespace Bliss.CSharp.Geometry.Animations;
+namespace Bliss.CSharp.Geometry.Animation;
 
 public class NodeAnimChannel {
     

@@ -3,8 +3,8 @@ using System.Text;
 using Assimp;
 using Assimp.Configs;
 using Bliss.CSharp.Effects;
-using Bliss.CSharp.Geometry.Animations;
-using Bliss.CSharp.Geometry.Animations.Keyframes;
+using Bliss.CSharp.Geometry.Animation;
+using Bliss.CSharp.Geometry.Animation.Builders;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Logging;
@@ -71,10 +71,14 @@ public class Model : Disposable {
     /// An array of meshes that make up the model.
     /// </summary>
     public Mesh[] Meshes { get; private set; }
-
+    
+    /// <summary>
+    /// The hierarchical skeletal structure of the model.
+    /// </summary>
+    public Skeleton? Skeleton { get; private set; }
+    
     /// <summary>
     /// Collection of animations associated with the model.
-    /// Each animation encapsulates skeletal transformations over time, enabling the model to exhibit complex motions.
     /// </summary>
     public ModelAnimation[] Animations { get; private set; }
     
@@ -88,10 +92,12 @@ public class Model : Disposable {
     /// </summary>
     /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used for rendering and resource management.</param>
     /// <param name="meshes">An array of <see cref="Mesh"/> objects representing the geometric components of the model.</param>
+    /// <param name="skeleton">The optional skeleton used for skeletal animation, or <c>null</c> if not present.</param>
     /// <param name="animations">An array of <see cref="ModelAnimation"/> objects defining the animations for the model.</param>
-    public Model(GraphicsDevice graphicsDevice, Mesh[] meshes, ModelAnimation[] animations) {
+    public Model(GraphicsDevice graphicsDevice, Mesh[] meshes, Skeleton? skeleton, ModelAnimation[] animations) {
         this.GraphicsDevice = graphicsDevice;
         this.Meshes = meshes;
+        this.Skeleton = skeleton;
         this.Animations = animations;
         this.BoundingBox = this.GenerateBoundingBox();
     }
@@ -113,47 +119,6 @@ public class Model : Disposable {
         
         Scene scene = context.ImportFile(path, DefaultPostProcessSteps);
         List<Mesh> meshes = new List<Mesh>();
-        List<ModelAnimation> animations = new List<ModelAnimation>();
-        
-        // Load animations.
-        for (int i = 0; i < scene.Animations.Count; i++) {
-            Animation aAnimation = scene.Animations[i];
-            
-            // Setup channels.
-            List<NodeAnimChannel> animChannels = new List<NodeAnimChannel>();
-            
-            foreach (NodeAnimationChannel aChannel in aAnimation.NodeAnimationChannels) {
-                List<Vector3Key> positions = new List<Vector3Key>();
-                List<QuatKey> rotations = new List<QuatKey>();
-                List<Vector3Key> scales = new List<Vector3Key>();
-                
-                // Setup positions.
-                foreach (VectorKey aPosition in aChannel.PositionKeys) {
-                    Vector3Key position = new Vector3Key(aPosition.Time, aPosition.Value);
-                    positions.Add(position);
-                }
-                
-                // Setup rotations.
-                foreach (QuaternionKey aRotation in aChannel.RotationKeys) {
-                    QuatKey rotation = new QuatKey(aRotation.Time, aRotation.Value);
-                    rotations.Add(rotation);
-                }
-                
-                // Setup scales.
-                foreach (VectorKey aScale in aChannel.ScalingKeys) {
-                    Vector3Key scale = new Vector3Key(aScale.Time, aScale.Value);
-                    scales.Add(scale);
-                }
-                
-                NodeAnimChannel channel = new NodeAnimChannel(aChannel.NodeName, positions, rotations, scales);
-                animChannels.Add(channel);
-            }
-            
-            animations.Add(new ModelAnimation(aAnimation.Name, (float) aAnimation.DurationInTicks, (float) aAnimation.TicksPerSecond, animChannels));
-        }
-        
-        // Setup amateur builder.
-        MeshAmateurBuilder amateurBuilder = new MeshAmateurBuilder(scene.RootNode, animations.ToArray());
         
         // Cache effects and textures to load them just 1 time per model.
         Dictionary<string, Effect> cachedEffects = new Dictionary<string, Effect>();
@@ -321,22 +286,29 @@ public class Model : Disposable {
             }
             
             // Setup bones.
-            Dictionary<uint, Bone> bonesByName = new Dictionary<uint, Bone>();
-            
             for (int j = 0; j < mesh.BoneCount; j++) {
                 Bone bone = mesh.Bones[j];
-                bonesByName.Add((uint) j, bone);
                 
                 foreach (VertexWeight vertexWeight in bone.VertexWeights) {
                     vertices[vertexWeight.VertexID].AddBone((uint) j, vertexWeight.Weight);
                 }
             }
-
-            meshes.Add(new Mesh(graphicsDevice, material, vertices, indices.ToArray(), amateurBuilder.Build(bonesByName)));
+            
+            meshes.Add(new Mesh(graphicsDevice, material, vertices, indices.ToArray()));
         }
         
         // Apply the final world transform.
         ProcessNode(scene.RootNode, meshes, Matrix4x4.Identity);
+        
+        // Load skeleton.
+        Skeleton skeleton = new SkeletonBuilder(scene).Build();
+        
+        // Load animations.
+        ModelAnimation[] animations = new ModelAnimation[scene.AnimationCount];
+        
+        for (int i = 0; i < scene.AnimationCount; i++) {
+            animations[i] = new ModelAnimationBuilder(scene.RootNode, skeleton, scene.Animations[i]).Build();
+        }
         
         Logger.Info($"Model loaded successfully from path: [{path}]");
         Logger.Info($"\t> Meshes: {meshes.Count}");
@@ -345,7 +317,7 @@ public class Model : Disposable {
         Logger.Info($"\t> Textures: {cachedTextures.Count}");
         
         // Create the model.
-        Model model = new Model(graphicsDevice, meshes.ToArray(), animations.ToArray());
+        Model model = new Model(graphicsDevice, meshes.ToArray(), skeleton, animations.ToArray());
         
         // Store loaded effects.
         _effectCache.Add(model, cachedEffects.Values.ToArray());

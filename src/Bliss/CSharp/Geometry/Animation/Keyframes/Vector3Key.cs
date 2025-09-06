@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace Bliss.CSharp.Geometry.Animations.Keyframes;
+namespace Bliss.CSharp.Geometry.Animation.Keyframes;
 
 public struct Vector3Key : IEquatable<Vector3Key> {
 
