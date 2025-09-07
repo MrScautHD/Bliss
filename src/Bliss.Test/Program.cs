@@ -2,7 +2,7 @@
 
 GameSettings settings = new GameSettings() {
     Title = "Bliss - [Test]",
-    VSync = true
+    VSync = false
 };
 
 using Game game = new Game(settings);

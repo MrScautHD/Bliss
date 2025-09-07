@@ -177,7 +177,7 @@ public class ImmediateRenderer : Disposable {
     /// </summary>
     /// <param name="blendState">The blend state to apply. Defaults to <see cref="BlendStateDescription.SINGLE_ALPHA_BLEND"/> if null.</param>
     public void SetBlendState(BlendStateDescription? blendState) {
-        this._currentBlendState = blendState ?? BlendStateDescription.SINGLE_ALPHA_BLEND;
+        this._currentBlendState = blendState ?? BlendStateDescription.SINGLE_DISABLED;
 
         // Update pipeline description.
         this._pipelineDescription.BlendState = this._currentBlendState;
@@ -376,6 +376,7 @@ public class ImmediateRenderer : Disposable {
         Color finalColor = color ?? Color.White;
 
         for (int i = 0; i < 8; i++) {
+            
             // Calculate the x, y, z coordinates.
             float x = (i & 1) == 0 ? -1.0F : 1.0F;
             float y = (i & 2) == 0 ? -1.0F : 1.0F;
@@ -414,61 +415,126 @@ public class ImmediateRenderer : Disposable {
         Color finalColor = color ?? Color.White;
         Texture2D texture = this._currentTexture;
         Rectangle sourceRec = this._currentSourceRec;
-
+        
         if (rings < 3) {
             rings = 3;
         }
-
+        
         if (slices < 3) {
             slices = 3;
         }
 
+        float halfRadius = radius / 2.0F;
+        
         // Calculate source rectangle UVs.
         float uLeft = sourceRec.X / (float) texture.Width;
         float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
         float vTop = sourceRec.Y / (float) texture.Height;
         float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
-    
-        // Generate vertices.
+        
+        // Steps between rings and slices.
+        float ringStep = MathF.PI / (rings + 1);
+        float sliceStep = MathF.Tau / slices;
+        
+        // Precomputed sine and cosine values for rings.
+        float cosRingStep = MathF.Cos(ringStep);
+        float sinRingStep = MathF.Sin(ringStep);
+        
+        // Precomputed sine and cosine values for slices.
+        float cosSliceStep = MathF.Cos(sliceStep);
+        float sinSliceStep = MathF.Sin(sliceStep);
+        
+        // Starting sine and cosine values for the first ring.
+        float sinRing = 0.0F;
+        float cosRing = 1.0F;
+        
         for (int ring = 0; ring <= rings; ring++) {
-            float ringAngle = MathF.PI * ring / rings;
-    
+            
+            // Calculate V coordinates for the texture.
+            float vCoord0 = vTop + (vBottom - vTop) * ring / (rings + 1);
+            float vCoord1 = vTop + (vBottom - vTop) * (ring + 1) / (rings + 1);
+            
+            // Calculate sine and cosine for the next ring.
+            float sinNextRing = sinRing * cosRingStep + cosRing * sinRingStep;
+            float cosNextRing = cosRing * cosRingStep - sinRing * sinRingStep;
+            
+            // Initialize starting sine and cosine values for slices.
+            float sinSlice = 0.0F;
+            float cosSlice = 1.0F;
+            
             for (int slice = 0; slice <= slices; slice++) {
-                float sliceAngle = MathF.PI * 2 * slice / slices;
-    
-                float x = MathF.Sin(ringAngle) * MathF.Cos(sliceAngle);
-                float y = MathF.Cos(ringAngle);
-                float z = MathF.Sin(ringAngle) * MathF.Sin(sliceAngle);
-    
-                this._tempVertices.Add(new ImmediateVertex3D() {
-                    Position = new Vector3(x, y, z) * (radius / 2),
-                    TexCoords = new Vector2(
-                        uLeft + (uRight - uLeft) * (slice / (float) slices),
-                        vTop + (vBottom - vTop) * (ring / (float) rings)
-                    ),
+                
+                // Calculate U coordinates for the texture.
+                float uCoord0 = uLeft + (uRight - uLeft) * slice / slices;
+                float uCoord1 = uLeft + (uRight - uLeft) * (slice + 1) / slices;
+                
+                // Calculate the positions of the vertices using the rotation values.
+                float x0 = sinRing * cosSlice * halfRadius;
+                float y0 = cosRing * halfRadius;
+                float z0 = sinRing * sinSlice * halfRadius;
+                
+                float x1 = sinNextRing * cosSlice * halfRadius;
+                float y1 = cosNextRing * halfRadius;
+                float z1 = sinNextRing * sinSlice * halfRadius;
+                
+                float nextSinSlice = sinSlice * cosSliceStep + cosSlice * sinSliceStep;
+                float nextCosSlice = cosSlice * cosSliceStep - sinSlice * sinSliceStep;
+                
+                float x2 = sinRing * nextCosSlice * halfRadius;
+                float z2 = sinRing * nextSinSlice * halfRadius;
+                
+                float x3 = sinNextRing * nextCosSlice * halfRadius;
+                float z3 = sinNextRing * nextSinSlice * halfRadius;
+                
+                // First triangle.
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(x0, y0, z0),
+                    TexCoords = new Vector2(uCoord0, vCoord0),
                     Color = finalColor.ToRgbaFloatVec4()
                 });
+                
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(x1, y1, z1),
+                    TexCoords = new Vector2(uCoord0, vCoord1),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+                
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(x3, y1, z3),
+                    TexCoords = new Vector2(uCoord1, vCoord1),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+                
+                // Second triangle.
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(x0, y0, z0),
+                    TexCoords = new Vector2(uCoord0, vCoord0),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+                
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(x3, y1, z3),
+                    TexCoords = new Vector2(uCoord1, vCoord1),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+                
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(x2, y0, z2),
+                    TexCoords = new Vector2(uCoord1, vCoord0),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+                
+                // Update the rotation for the next slice.
+                sinSlice = nextSinSlice;
+                cosSlice = nextCosSlice;
             }
-        }
-    
-        // Generate indices.
-        for (int ring = 0; ring < rings; ring++) {
-            for (int slice = 0; slice < slices; slice++) {
-                int current = ring * (slices + 1) + slice;
-                int next = current + slices + 1;
-    
-                // Two triangles per quad.
-                this._tempIndices.Add((uint) current);
-                this._tempIndices.Add((uint) (next + 1));
-                this._tempIndices.Add((uint) (current + 1));
-    
-                this._tempIndices.Add((uint) current);
-                this._tempIndices.Add((uint) next);
-                this._tempIndices.Add((uint) (next + 1));
-            }
+            
+            // Update the rotation for the next ring.
+            sinRing = sinNextRing;
+            cosRing = cosNextRing;
         }
         
-        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices);
+        this.DrawVertices(commandList, output, transform, this._tempVertices);
     }
 
     /// <summary>
@@ -1972,8 +2038,7 @@ public class ImmediateRenderer : Disposable {
         }
         
         if (vertices.Count > this.Capacity) {
-            Logger.Fatal(new InvalidOperationException(
-                $"The number of provided vertices exceeds the capacity! [{vertices.Count} > {this.Capacity}]"));
+            Logger.Fatal(new InvalidOperationException($"The number of provided vertices exceeds the capacity! [{vertices.Count} > {this.Capacity}]"));
         }
         
         if (indices != null && indices.Count > this.Capacity * 3) {
