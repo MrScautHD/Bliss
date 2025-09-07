@@ -292,6 +292,7 @@ public class Game : Disposable {
         this._cam3D.Begin();
         
         // ImmediateRenderer START
+        
         this._immediateRenderer.SetTexture(this._customMeshTexture);
         this._immediateRenderer.DrawCube(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(9, 0, 6) }, new Vector3(1, 1, 1));
         this._immediateRenderer.ResetSettings();
@@ -425,7 +426,7 @@ public class Game : Disposable {
         
         this._spriteBatch.DrawText(this._font, $"Text Input: {this._textInput}", new Vector2(80, 80), 18);
         
-        this._spriteBatch.DrawText(this._font, $"FPS: {(int) (1.0F / Time.Delta)}", new Vector2(5, 5), 18);
+        this._spriteBatch.DrawText(this._font, $"FPS: {this.GetFps()}", new Vector2(5, 5), 18);
 
         int frame = 4;
         this._animatedImage.GetFrameInfo(frame, out int width, out int height, out float duration);
@@ -521,6 +522,23 @@ public class Game : Disposable {
         foreach (Mesh mesh in this._playerModel.Meshes) {
             this._renderables.Add(new Renderable(mesh, new Transform() { Translation = new Vector3(0, 0.05F, 0) }));
         }
+    }
+    
+    private float _fpsTimer;
+    private int _fpsFrames;
+    private int _fps;
+
+    private int GetFps() {
+        this._fpsFrames++;
+        this._fpsTimer += (float) Time.Delta;
+        
+        if (this._fpsTimer >= 0.25f) {
+            this._fps = (int) (this._fpsFrames / this._fpsTimer);
+            this._fpsFrames = 0;
+            this._fpsTimer = 0;
+        }
+        
+        return this._fps;
     }
     
     protected override void Dispose(bool disposing) {

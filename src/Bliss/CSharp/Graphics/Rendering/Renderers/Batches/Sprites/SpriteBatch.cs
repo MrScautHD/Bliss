@@ -258,8 +258,8 @@ public class SpriteBatch : Disposable {
     /// </summary>
     /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used for rendering.</param>
     /// <param name="window">The <see cref="IWindow"/> associated with the rendering context.</param>
-    /// <param name="capacity">The maximum number of sprites the batch can hold. Defaults to 15,360.</param>
-    public SpriteBatch(GraphicsDevice graphicsDevice, IWindow window, uint capacity = 15360) {
+    /// <param name="capacity">The maximum number of sprites the batch can hold. Defaults to 4.096.</param>
+    public SpriteBatch(GraphicsDevice graphicsDevice, IWindow window, uint capacity = 4096) {
         this.GraphicsDevice = graphicsDevice;
         this.Window = window;
         this.Capacity = capacity;

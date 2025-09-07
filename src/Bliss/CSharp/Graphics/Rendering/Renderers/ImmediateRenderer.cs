@@ -115,13 +115,14 @@ public class ImmediateRenderer : Disposable {
     /// Initializes a new instance of the <see cref="ImmediateRenderer"/> class with the specified graphics device, output, effect, and capacity.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used for rendering.</param>
-    /// <param name="capacity">The maximum number of vertices. Defaults to 30720.</param>
-    public ImmediateRenderer(GraphicsDevice graphicsDevice, uint capacity = 30720) {
+    /// <param name="capacity">The maximum number of vertices. Defaults to 10.240.</param>
+    public ImmediateRenderer(GraphicsDevice graphicsDevice, uint capacity = 10240) {
         this.GraphicsDevice = graphicsDevice;
         this.Capacity = capacity;
         
         // Create vertex buffer.
         uint vertexBufferSize = capacity * (uint) Marshal.SizeOf<ImmediateVertex3D>();
+        Logger.Error(vertexBufferSize + "");
         this._vertices = new ImmediateVertex3D[capacity];
         this._tempVertices = new List<ImmediateVertex3D>();
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
@@ -134,7 +135,7 @@ public class ImmediateRenderer : Disposable {
         
         // Create matrix buffer.
         this._matrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 3, SimpleBufferType.Uniform, ShaderStages.Vertex);
-
+        
         // Create pipeline description.
         this._pipelineDescription = new SimplePipelineDescription();
         
@@ -423,8 +424,6 @@ public class ImmediateRenderer : Disposable {
         if (slices < 3) {
             slices = 3;
         }
-
-        float halfRadius = radius / 2.0F;
         
         // Calculate source rectangle UVs.
         float uLeft = sourceRec.X / (float) texture.Width;
@@ -432,109 +431,46 @@ public class ImmediateRenderer : Disposable {
         float vTop = sourceRec.Y / (float) texture.Height;
         float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
         
-        // Steps between rings and slices.
-        float ringStep = MathF.PI / (rings + 1);
-        float sliceStep = MathF.Tau / slices;
-        
-        // Precomputed sine and cosine values for rings.
-        float cosRingStep = MathF.Cos(ringStep);
-        float sinRingStep = MathF.Sin(ringStep);
-        
-        // Precomputed sine and cosine values for slices.
-        float cosSliceStep = MathF.Cos(sliceStep);
-        float sinSliceStep = MathF.Sin(sliceStep);
-        
-        // Starting sine and cosine values for the first ring.
-        float sinRing = 0.0F;
-        float cosRing = 1.0F;
-        
+        // Generate vertices.
         for (int ring = 0; ring <= rings; ring++) {
-            
-            // Calculate V coordinates for the texture.
-            float vCoord0 = vTop + (vBottom - vTop) * ring / (rings + 1);
-            float vCoord1 = vTop + (vBottom - vTop) * (ring + 1) / (rings + 1);
-            
-            // Calculate sine and cosine for the next ring.
-            float sinNextRing = sinRing * cosRingStep + cosRing * sinRingStep;
-            float cosNextRing = cosRing * cosRingStep - sinRing * sinRingStep;
-            
-            // Initialize starting sine and cosine values for slices.
-            float sinSlice = 0.0F;
-            float cosSlice = 1.0F;
+            float ringAngle = MathF.PI * ring / rings;
             
             for (int slice = 0; slice <= slices; slice++) {
+                float sliceAngle = MathF.PI * 2 * slice / slices;
                 
-                // Calculate U coordinates for the texture.
-                float uCoord0 = uLeft + (uRight - uLeft) * slice / slices;
-                float uCoord1 = uLeft + (uRight - uLeft) * (slice + 1) / slices;
+                float x = MathF.Sin(ringAngle) * MathF.Cos(sliceAngle);
+                float y = MathF.Cos(ringAngle);
+                float z = MathF.Sin(ringAngle) * MathF.Sin(sliceAngle);
                 
-                // Calculate the positions of the vertices using the rotation values.
-                float x0 = sinRing * cosSlice * halfRadius;
-                float y0 = cosRing * halfRadius;
-                float z0 = sinRing * sinSlice * halfRadius;
-                
-                float x1 = sinNextRing * cosSlice * halfRadius;
-                float y1 = cosNextRing * halfRadius;
-                float z1 = sinNextRing * sinSlice * halfRadius;
-                
-                float nextSinSlice = sinSlice * cosSliceStep + cosSlice * sinSliceStep;
-                float nextCosSlice = cosSlice * cosSliceStep - sinSlice * sinSliceStep;
-                
-                float x2 = sinRing * nextCosSlice * halfRadius;
-                float z2 = sinRing * nextSinSlice * halfRadius;
-                
-                float x3 = sinNextRing * nextCosSlice * halfRadius;
-                float z3 = sinNextRing * nextSinSlice * halfRadius;
-                
-                // First triangle.
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = new Vector3(x0, y0, z0),
-                    TexCoords = new Vector2(uCoord0, vCoord0),
+                this._tempVertices.Add(new ImmediateVertex3D() {
+                    Position = new Vector3(x, y, z) * (radius / 2),
+                    TexCoords = new Vector2(
+                        uLeft + (uRight - uLeft) * (slice / (float) slices),
+                        vTop + (vBottom - vTop) * (ring / (float) rings)
+                    ),
                     Color = finalColor.ToRgbaFloatVec4()
                 });
-                
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = new Vector3(x1, y1, z1),
-                    TexCoords = new Vector2(uCoord0, vCoord1),
-                    Color = finalColor.ToRgbaFloatVec4()
-                });
-                
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = new Vector3(x3, y1, z3),
-                    TexCoords = new Vector2(uCoord1, vCoord1),
-                    Color = finalColor.ToRgbaFloatVec4()
-                });
-                
-                // Second triangle.
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = new Vector3(x0, y0, z0),
-                    TexCoords = new Vector2(uCoord0, vCoord0),
-                    Color = finalColor.ToRgbaFloatVec4()
-                });
-                
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = new Vector3(x3, y1, z3),
-                    TexCoords = new Vector2(uCoord1, vCoord1),
-                    Color = finalColor.ToRgbaFloatVec4()
-                });
-                
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = new Vector3(x2, y0, z2),
-                    TexCoords = new Vector2(uCoord1, vCoord0),
-                    Color = finalColor.ToRgbaFloatVec4()
-                });
-                
-                // Update the rotation for the next slice.
-                sinSlice = nextSinSlice;
-                cosSlice = nextCosSlice;
             }
-            
-            // Update the rotation for the next ring.
-            sinRing = sinNextRing;
-            cosRing = cosNextRing;
         }
         
-        this.DrawVertices(commandList, output, transform, this._tempVertices);
+        // Generate indices.
+        for (int ring = 0; ring < rings; ring++) {
+            for (int slice = 0; slice < slices; slice++) {
+                int current = ring * (slices + 1) + slice;
+                int next = current + slices + 1;
+                
+                // Two triangles per quad.
+                this._tempIndices.Add((uint) current);
+                this._tempIndices.Add((uint) (next + 1));
+                this._tempIndices.Add((uint) (current + 1));
+                
+                this._tempIndices.Add((uint) current);
+                this._tempIndices.Add((uint) next);
+                this._tempIndices.Add((uint) (next + 1));
+            }
+        }
+        
+        this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices);
     }
     
     /// <summary>
@@ -558,87 +494,39 @@ public class ImmediateRenderer : Disposable {
             slices = 3;
         }
         
-        float halfRadius = radius / 2.0F;
-        
-        // Steps between rings and slices.
-        float ringStep = MathF.PI / (rings + 1);
-        float sliceStep = MathF.Tau / slices;
-        
-        // Precomputed sine and cosine values for rings.
-        float cosRingStep = MathF.Cos(ringStep);
-        float sinRingStep = MathF.Sin(ringStep);
-        
-        // Precomputed sine and cosine values for slices.
-        float cosSliceStep = MathF.Cos(sliceStep);
-        float sinSliceStep = MathF.Sin(sliceStep);
-        
-        // Initialize starting sine and cosine values for the first ring.
-        float sinRing = 0.0F;
-        float cosRing = 1.0F;
-
+        // Generate wireframe vertices.
         for (int ring = 0; ring <= rings; ring++) {
-            
-            // Calculate sine and cosine for the next ring.
-            float sinNextRing = sinRing * cosRingStep + cosRing * sinRingStep;
-            float cosNextRing = cosRing * cosRingStep - sinRing * sinRingStep;
-            
-            // Slicing initialization for this ring.
-            float sinSlice = 0.0F;
-            float cosSlice = 1.0F;
+            float ringAngle = MathF.PI * ring / rings;
+            float y = MathF.Cos(ringAngle) * (radius / 2);
+            float ringRadius = MathF.Sin(ringAngle) * (radius / 2);
             
             for (int slice = 0; slice <= slices; slice++) {
+                float sliceAngle = MathF.PI * 2 * slice / slices;
                 
-                // Calculate position for the current and next slice.
-                float x0 = sinRing * cosSlice * halfRadius;
-                float y0 = cosRing * halfRadius;
-                float z0 = sinRing * sinSlice * halfRadius;
-                
-                float x1 = sinNextRing * cosSlice * halfRadius;
-                float y1 = cosNextRing * halfRadius;
-                float z1 = sinNextRing * sinSlice * halfRadius;
-                
-                float nextSinSlice = sinSlice * cosSliceStep + cosSlice * sinSliceStep;
-                float nextCosSlice = cosSlice * cosSliceStep - sinSlice * sinSliceStep;
-                
-                float x2 = sinRing * nextCosSlice * halfRadius;
-                float z2 = sinRing * nextSinSlice * halfRadius;
-                
-                // Add longitude line.
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = new Vector3(x0, y0, z0),
-                    Color = finalColor.ToRgbaFloatVec4()
-                });
+                float x = MathF.Cos(sliceAngle) * ringRadius;
+                float z = MathF.Sin(sliceAngle) * ringRadius;
                 
                 this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = new Vector3(x1, y1, z1),
+                    Position = new Vector3(x, y, z),
                     Color = finalColor.ToRgbaFloatVec4()
                 });
-                
-                this._tempIndices.Add((uint) (this._tempVertices.Count - 2));
-                this._tempIndices.Add((uint) (this._tempVertices.Count - 1));
-                
-                // Add latitude line.
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = new Vector3(x0, y0, z0),
-                    Color = finalColor.ToRgbaFloatVec4()
-                });
-                
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = new Vector3(x2, y0, z2),
-                    Color = finalColor.ToRgbaFloatVec4()
-                });
-                
-                this._tempIndices.Add((uint) (this._tempVertices.Count - 2));
-                this._tempIndices.Add((uint) (this._tempVertices.Count - 1));
-                
-                // Update slice sine/cosine values for the next slice.
-                sinSlice = nextSinSlice;
-                cosSlice = nextCosSlice;
             }
-            
-            // Update ring sine/cosine values for the next ring.
-            sinRing = sinNextRing;
-            cosRing = cosNextRing;
+        }
+        
+        // Generate wireframe indices.
+        for (int ring = 0; ring < rings; ring++) {
+            for (int slice = 0; slice < slices; slice++) {
+                int current = ring * (slices + 1) + slice;
+                int next = current + slices + 1;
+                
+                // Connect horizontal lines.
+                this._tempIndices.Add((uint) current);
+                this._tempIndices.Add((uint) (current + 1));
+                
+                // Connect vertical lines.
+                this._tempIndices.Add((uint) current);
+                this._tempIndices.Add((uint) next);
+            }
         }
         
         this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);

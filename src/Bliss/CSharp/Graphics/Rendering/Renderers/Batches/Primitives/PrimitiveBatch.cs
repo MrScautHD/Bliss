@@ -201,7 +201,7 @@ public class PrimitiveBatch : Disposable {
     /// <param name="graphicsDevice">The graphics device used for rendering.</param>
     /// <param name="window">The window representing the rendering context.</param>
     /// <param name="capacity">Optional. The initial capacity of the vertex buffer.</param>
-    public PrimitiveBatch(GraphicsDevice graphicsDevice, IWindow window, uint capacity = 30720) {
+    public PrimitiveBatch(GraphicsDevice graphicsDevice, IWindow window, uint capacity = 4096) {
         this.GraphicsDevice = graphicsDevice;
         this.Window = window;
         this.Capacity = capacity;
