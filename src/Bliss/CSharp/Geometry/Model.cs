@@ -83,11 +83,6 @@ public class Model : Disposable {
     public ModelAnimation[] Animations { get; private set; }
     
     /// <summary>
-    /// Represents the axis-aligned bounding box of the model.
-    /// </summary>
-    public BoundingBox BoundingBox { get; private set; }
-    
-    /// <summary>
     /// Initializes a new instance of the <see cref="Model"/> class with the specified graphics device, meshes, and animations.
     /// </summary>
     /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used for rendering and resource management.</param>
@@ -99,7 +94,6 @@ public class Model : Disposable {
         this.Meshes = meshes;
         this.Skeleton = skeleton;
         this.Animations = animations;
-        this.BoundingBox = this.GenerateBoundingBox();
     }
 
     /// <summary>
@@ -436,18 +430,20 @@ public class Model : Disposable {
     /// Generates a bounding box that encapsulates all the vertices in the model's meshes.
     /// </summary>
     /// <returns>A <see cref="BoundingBox"/> that represents the minimum and maximum bounds of the model.</returns>
-    private BoundingBox GenerateBoundingBox() {
+    public BoundingBox GenBoundingBox() {
         Vector3 min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
         Vector3 max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
         
         foreach (Mesh mesh in this.Meshes) {
-            min = Vector3.Min(min, mesh.BoundingBox.Min);
-            max = Vector3.Max(max, mesh.BoundingBox.Max);
+            BoundingBox meshBox = mesh.GenBoundingBox();
+            
+            min = Vector3.Min(min, meshBox.Min);
+            max = Vector3.Max(max, meshBox.Max);
         }
         
         return new BoundingBox(min, max);
     }
-
+    
     protected override void Dispose(bool disposing) {
         if (disposing) {
             

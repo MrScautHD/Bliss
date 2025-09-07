@@ -24,9 +24,7 @@ public class Mesh : Disposable {
     public GraphicsDevice GraphicsDevice { get; private set; }
 
     /// <summary>
-    /// Represents the material properties used for rendering the mesh.
-    /// This may include shaders (effects), texture mappings, blending states, and other rendering parameters.
-    /// The Material controls how the mesh is rendered within the graphics pipeline.
+    /// The material used for rendering the mesh.
     /// </summary>
     public Material Material;
     
@@ -49,13 +47,6 @@ public class Mesh : Disposable {
     /// </summary>
     public bool HasBones { get; private set; }
     
-    /// <summary>
-    /// The axis-aligned bounding box (AABB) for the mesh.
-    /// This bounding box is calculated based on the vertices of the mesh and represents
-    /// the minimum and maximum coordinates that encompass the entire mesh.
-    /// </summary>
-    public BoundingBox BoundingBox { get; private set; }
-
     /// <summary>
     /// The total count of vertices present in the mesh.
     /// This value determines the number of vertices available for rendering within the mesh.
@@ -90,7 +81,6 @@ public class Mesh : Disposable {
         this.Vertices = vertices;
         this.Indices = indices ?? [];
         this.HasBones = vertices.Any(v => v.BoneWeights != Vector4.Zero);
-        this.BoundingBox = this.GenerateBoundingBox();
         
         this.VertexCount = (uint) this.Vertices.Length;
         this.IndexCount = (uint) this.Indices.Length;
@@ -987,9 +977,25 @@ public class Mesh : Disposable {
     }
     
     /// <summary>
+    /// Calculates the bounding box for the current mesh based on its vertices.
+    /// </summary>
+    /// <returns>A BoundingBox object that encompasses all vertices of the mesh.</returns>
+    public BoundingBox GenBoundingBox() {
+        Vector3 min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
+        Vector3 max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
+        
+        foreach (Vertex3D vertex in this.Vertices) {
+            min = Vector3.Min(min, vertex.Position);
+            max = Vector3.Max(max, vertex.Position);
+        }
+        
+        return new BoundingBox(min, max);
+    }
+    
+    /// <summary>
     /// Generates tangent vectors for the mesh's vertices based on the provided geometric and UV coordinate data.
     /// </summary>
-    public void GenerateTangents() {
+    public void GenTangents() {
         if (this.Vertices.Length < 3 || this.Indices.Length < 3) {
             return;
         }
@@ -1138,22 +1144,6 @@ public class Mesh : Disposable {
     /// <param name="commandList">The command list used to update the index buffer.</param>
     public void UpdateIndexBuffer(CommandList commandList) {
         commandList.UpdateBuffer(this.IndexBuffer, 0, this.Indices);
-    }
-    
-    /// <summary>
-    /// Calculates the bounding box for the current mesh based on its vertices.
-    /// </summary>
-    /// <returns>A BoundingBox object that encompasses all vertices of the mesh.</returns>
-    private BoundingBox GenerateBoundingBox() {
-        Vector3 min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
-        Vector3 max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
-
-        foreach (Vertex3D vertex in this.Vertices) {
-            min = Vector3.Min(min, vertex.Position);
-            max = Vector3.Max(max, vertex.Position);
-        }
-
-        return new BoundingBox(min, max);
     }
     
     protected override void Dispose(bool disposing) {

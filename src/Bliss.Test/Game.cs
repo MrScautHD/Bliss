@@ -61,6 +61,7 @@ public class Game : Disposable {
     
     private Cam3D _cam3D;
     private Model _playerModel;
+    public BoundingBox _playerBox;
     private Model _planeModel;
     private Model _treeModel;
     private Model _cyberCarModel;
@@ -188,6 +189,7 @@ public class Game : Disposable {
         float aspectRatio = (float) this.MainWindow.GetWidth() / (float) this.MainWindow.GetHeight();
         this._cam3D = new Cam3D(new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0), aspectRatio);
         this._playerModel = Model.Load(this.GraphicsDevice, "content/player.glb");
+        this._playerBox = this._playerModel.GenBoundingBox();
         
         foreach (Mesh mesh in this._playerModel.Meshes) {
             mesh.Material.RenderMode = RenderMode.Cutout;
@@ -320,7 +322,7 @@ public class Game : Disposable {
         this._immediateRenderer.DrawCylinderWires(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(25, 0, 6) }, 1, 1, 40, Color.Green);
         this._immediateRenderer.ResetSettings();
         
-        this._immediateRenderer.DrawBoundingBox(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(28, 0, 6) }, this._playerModel.BoundingBox, Color.Green);
+        this._immediateRenderer.DrawBoundingBox(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(28, 0, 6) }, this._playerBox, Color.Green);
         
         this._immediateRenderer.SetTexture(this._customMeshTexture);
         this._immediateRenderer.DrawCapsule(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(31, 0, 6) }, 1, 1, 40);

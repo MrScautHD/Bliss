@@ -25,7 +25,7 @@ public class Renderable {
     /// <summary>
     /// Optional array of bone matrices for skinned meshes.
     /// </summary>
-    public Matrix4x4[]? BoneMatrices;
+    public Matrix4x4[]? BoneMatrices { get; private set; }
     
     /// <summary>
     /// Initializes a new <see cref="Renderable"/> using the mesh's material or a cloned material.
