@@ -536,7 +536,7 @@ public class ImmediateRenderer : Disposable {
         
         this.DrawVertices(commandList, output, transform, this._tempVertices);
     }
-
+    
     /// <summary>
     /// Draws the wireframe of a sphere with the specified transform, radius, number of rings, slices, and optional color.
     /// </summary>
@@ -549,53 +549,101 @@ public class ImmediateRenderer : Disposable {
     /// <param name="color">The optional color for the sphere's wireframe. Defaults to white if not specified.</param>
     public void DrawSphereWires(CommandList commandList, OutputDescription output, Transform transform, float radius, int rings, int slices, Color? color = null) {
         Color finalColor = color ?? Color.White;
-
+        
         if (rings < 3) {
             rings = 3;
         }
-
+        
         if (slices < 3) {
             slices = 3;
         }
+        
+        float halfRadius = radius / 2.0F;
+        
+        // Steps between rings and slices.
+        float ringStep = MathF.PI / (rings + 1);
+        float sliceStep = MathF.Tau / slices;
+        
+        // Precomputed sine and cosine values for rings.
+        float cosRingStep = MathF.Cos(ringStep);
+        float sinRingStep = MathF.Sin(ringStep);
+        
+        // Precomputed sine and cosine values for slices.
+        float cosSliceStep = MathF.Cos(sliceStep);
+        float sinSliceStep = MathF.Sin(sliceStep);
+        
+        // Initialize starting sine and cosine values for the first ring.
+        float sinRing = 0.0F;
+        float cosRing = 1.0F;
 
-        // Generate wireframe vertices.
         for (int ring = 0; ring <= rings; ring++) {
-            float ringAngle = MathF.PI * ring / rings;
-            float y = MathF.Cos(ringAngle) * (radius / 2);
-            float ringRadius = MathF.Sin(ringAngle) * (radius / 2);
-    
+            
+            // Calculate sine and cosine for the next ring.
+            float sinNextRing = sinRing * cosRingStep + cosRing * sinRingStep;
+            float cosNextRing = cosRing * cosRingStep - sinRing * sinRingStep;
+            
+            // Slicing initialization for this ring.
+            float sinSlice = 0.0F;
+            float cosSlice = 1.0F;
+            
             for (int slice = 0; slice <= slices; slice++) {
-                float sliceAngle = MathF.PI * 2 * slice / slices;
-    
-                float x = MathF.Cos(sliceAngle) * ringRadius;
-                float z = MathF.Sin(sliceAngle) * ringRadius;
-    
+                
+                // Calculate position for the current and next slice.
+                float x0 = sinRing * cosSlice * halfRadius;
+                float y0 = cosRing * halfRadius;
+                float z0 = sinRing * sinSlice * halfRadius;
+                
+                float x1 = sinNextRing * cosSlice * halfRadius;
+                float y1 = cosNextRing * halfRadius;
+                float z1 = sinNextRing * sinSlice * halfRadius;
+                
+                float nextSinSlice = sinSlice * cosSliceStep + cosSlice * sinSliceStep;
+                float nextCosSlice = cosSlice * cosSliceStep - sinSlice * sinSliceStep;
+                
+                float x2 = sinRing * nextCosSlice * halfRadius;
+                float z2 = sinRing * nextSinSlice * halfRadius;
+                
+                // Add longitude line.
                 this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = new Vector3(x, y, z),
+                    Position = new Vector3(x0, y0, z0),
                     Color = finalColor.ToRgbaFloatVec4()
                 });
+                
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(x1, y1, z1),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+                
+                this._tempIndices.Add((uint) (this._tempVertices.Count - 2));
+                this._tempIndices.Add((uint) (this._tempVertices.Count - 1));
+                
+                // Add latitude line.
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(x0, y0, z0),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+                
+                this._tempVertices.Add(new ImmediateVertex3D {
+                    Position = new Vector3(x2, y0, z2),
+                    Color = finalColor.ToRgbaFloatVec4()
+                });
+                
+                this._tempIndices.Add((uint) (this._tempVertices.Count - 2));
+                this._tempIndices.Add((uint) (this._tempVertices.Count - 1));
+                
+                // Update slice sine/cosine values for the next slice.
+                sinSlice = nextSinSlice;
+                cosSlice = nextCosSlice;
             }
+            
+            // Update ring sine/cosine values for the next ring.
+            sinRing = sinNextRing;
+            cosRing = cosNextRing;
         }
-    
-        // Generate wireframe indices.
-        for (int ring = 0; ring < rings; ring++) {
-            for (int slice = 0; slice < slices; slice++) {
-                int current = ring * (slices + 1) + slice;
-                int next = current + slices + 1;
-    
-                // Connect horizontal lines.
-                this._tempIndices.Add((uint) current);
-                this._tempIndices.Add((uint) (current + 1));
-    
-                // Connect vertical lines.
-                this._tempIndices.Add((uint) current);
-                this._tempIndices.Add((uint) next);
-            }
-        }
-    
+        
         this.DrawVertices(commandList, output, transform, this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
-
+    
     /// <summary>
     /// Renders a 3D hemisphere with the specified transformation, radius, rings, slices, and optional color.
     /// </summary>
