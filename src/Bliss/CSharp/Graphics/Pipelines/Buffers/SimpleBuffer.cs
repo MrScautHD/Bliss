@@ -88,14 +88,24 @@ public class SimpleBuffer<T> : Disposable, ISimpleBuffer where T : unmanaged {
         this.Data[index] = value;
     }
 
+    /// <inheritdoc cref="SetValueImmediate(int, ref T)" />
+    public void SetValueImmediate(int index, T value) {
+        this.SetValueImmediate(index, ref value);
+    }
+
     /// <summary>
     /// Sets the value of the buffer at the specified index and updates the buffer on the graphics device immediately.
     /// </summary>
     /// <param name="index">The index at which the value should be set.</param>
     /// <param name="value">The value to set at the specified index.</param>
-    public void SetValueImmediate(int index, T value) {
+    public void SetValueImmediate(int index, ref T value) {
         this.Data[index] = value;
-        this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, (uint) (index * Marshal.SizeOf<T>()), this.Data[index]);
+        this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, (uint) (index * Marshal.SizeOf<T>()), ref this.Data[index]);
+    }
+
+    /// <inheritdoc cref="SetValueDeferred(CommandList, int, ref T)" />
+    public void SetValueDeferred(CommandList commandList, int index, T value) {
+        this.SetValueDeferred(commandList, index, ref value);
     }
 
     /// <summary>
@@ -104,9 +114,9 @@ public class SimpleBuffer<T> : Disposable, ISimpleBuffer where T : unmanaged {
     /// <param name="commandList">The command list to which the buffer update command will be added.</param>
     /// <param name="index">The index of the buffer element to set.</param>
     /// <param name="value">The value to set at the specified index.</param>
-    public void SetValueDeferred(CommandList commandList, int index, T value) {
+    public void SetValueDeferred(CommandList commandList, int index, ref T value) {
         this.Data[index] = value;
-        commandList.UpdateBuffer(this.DeviceBuffer, (uint) (index * Marshal.SizeOf<T>()), this.Data[index]);
+        commandList.UpdateBuffer(this.DeviceBuffer, (uint) (index * Marshal.SizeOf<T>()), ref this.Data[index]);
     }
 
     /// <summary>

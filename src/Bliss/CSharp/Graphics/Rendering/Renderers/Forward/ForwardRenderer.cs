@@ -155,7 +155,7 @@ public class ForwardRenderer : Disposable {
             }
         }
         
-        this._materialDataBuffer.SetValueDeferred(commandList, 0, materialData);
+        this._materialDataBuffer.SetValueDeferred(commandList, 0, ref materialData);
         
         // Set renderable transform (And updating matrix buffer).
         this._matrixBuffer.SetValue(2, renderable.Transform.GetTransform());
