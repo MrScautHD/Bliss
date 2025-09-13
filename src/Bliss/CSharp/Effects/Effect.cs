@@ -113,7 +113,7 @@ public class Effect : Disposable {
     /// Retrieves the list of simple buffer layouts associated with the effect.
     /// </summary>
     /// <returns>A list of <see cref="SimpleBufferLayout"/> objects representing the buffer layouts.</returns>
-    public List<SimpleBufferLayout> GetBufferLayouts() {
+    public IReadOnlyList<SimpleBufferLayout> GetBufferLayouts() {
         return this._bufferLayouts;
     }
 
@@ -172,7 +172,7 @@ public class Effect : Disposable {
     /// Retrieves the list of texture layouts used by the effect.
     /// </summary>
     /// <returns>A list of <see cref="SimpleTextureLayout"/> objects representing the texture layouts associated with the effect.</returns>
-    public List<SimpleTextureLayout> GetTextureLayouts() {
+    public IReadOnlyList<SimpleTextureLayout> GetTextureLayouts() {
         return this._textureLayouts;
     }
 
