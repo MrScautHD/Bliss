@@ -2,13 +2,13 @@
 
 #define MAX_BONE_COUNT 72
 
-layout(set = 0, binding = 0) uniform MatrixBuffer {
+layout(std140, set = 0, binding = 0) uniform MatrixBuffer {
     mat4x4 uProjection;
     mat4x4 uView;
     mat4x4 uTransformation;
 };
 
-layout(set = 1, binding = 0) uniform BoneBuffer {
+layout(std140, set = 1, binding = 0) uniform BoneBuffer {
     mat4x4 uBonesTransformations[MAX_BONE_COUNT];
 };
 

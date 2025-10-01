@@ -38,7 +38,7 @@ public class PrimitiveBatch : Disposable {
     /// <summary>
     /// Buffer storing the combined projection and view matrix for rendering.
     /// </summary>
-    private SimpleBuffer<Matrix4x4> _projViewBuffer;
+    private SimpleUniformBuffer<Matrix4x4> _projViewBuffer;
     
     /// <summary>
     /// Array of vertices used for rendering 2D primitives.
@@ -210,9 +210,9 @@ public class PrimitiveBatch : Disposable {
         this._vertices = new PrimitiveVertex2D[capacity];
         this._tempVertices = new List<PrimitiveVertex2D>();
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (capacity * Marshal.SizeOf<PrimitiveVertex2D>()), BufferUsage.VertexBuffer | BufferUsage.Dynamic));
-
+        
         // Create projection view buffer.
-        this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        this._projViewBuffer = new SimpleUniformBuffer<Matrix4x4>(graphicsDevice, 2, ShaderStages.Vertex);
         
         // Create pipeline description.
         this._pipelineDescription = new SimplePipelineDescription();
@@ -1199,7 +1199,7 @@ public class PrimitiveBatch : Disposable {
         // Update projection/view buffer.
         this._projViewBuffer.SetValue(0, this._currentProjection);
         this._projViewBuffer.SetValue(1, this._currentView);
-        this._projViewBuffer.UpdateBuffer(this._currentCommandList);
+        this._projViewBuffer.UpdateBufferDeferred(this._currentCommandList);
         
         // Update vertex buffer.
         this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, new ReadOnlySpan<PrimitiveVertex2D>(this._vertices, 0, (int) this._currentBatchCount));

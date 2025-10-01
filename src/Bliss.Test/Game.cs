@@ -1,4 +1,5 @@
 using System.Numerics;
+using System.Runtime.InteropServices;
 using Bliss.CSharp;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Fonts;
@@ -9,7 +10,9 @@ using Bliss.CSharp.Graphics.Rendering.Renderers;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Forward;
-using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderables;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lights;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lights.Data;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lights.Handlers;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Contexts;
@@ -21,7 +24,7 @@ using Bliss.CSharp.Textures;
 using Bliss.CSharp.Textures.Cubemaps;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
-using MiniAudioEx;
+using MiniAudioEx.Core.StandardAPI;
 using Veldrid;
 using Color = Bliss.CSharp.Colors.Color;
 using Rectangle = Bliss.CSharp.Transformations.Rectangle;
@@ -45,7 +48,8 @@ public class Game : Disposable {
     public FullScreenRenderer FullScreenRenderer { get; private set; }
     public RenderTexture2D FullScreenTexture { get; private set; }
 
-    private ForwardRenderer _forwardRenderer;
+    private ForwardRenderer<DynamicLightData> _forwardRenderer;
+    private DynamicLightHandler _lightHandler;
     private List<Renderable> _renderables;
     
     private ImmediateRenderer _immediateRenderer;
@@ -174,7 +178,30 @@ public class Game : Disposable {
         this.FullScreenRenderer = new FullScreenRenderer(this.GraphicsDevice);
         this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), this.Settings.SampleCount);
 
-        this._forwardRenderer = new ForwardRenderer(this.GraphicsDevice);
+        this._lightHandler = new DynamicLightHandler(10, Color.Blue.ToRgbaFloatVec4().AsVector3(), 4);
+        
+        this._lightHandler.AddLight(new LightDefinition() {
+            LightType = LightType.Point,
+            Position = new Vector3(10, 10, 10),
+            Direction = Vector3.UnitZ,
+            Color = Color.Red.ToRgbaFloatVec4().AsVector3(),
+            Intensity = 1,
+            Range = 10,
+            SpotAngle = 30
+        }, out uint id);
+        
+        this._lightHandler.AddLight(new LightDefinition() {
+            LightType = LightType.Point,
+            Position = new Vector3(20, 20, 20),
+            Direction = Vector3.UnitZ,
+            Color = Color.Red.ToRgbaFloatVec4().AsVector3(),
+            Intensity = 1,
+            Range = 10,
+            SpotAngle = 30
+        }, out uint _);
+
+        
+        this._forwardRenderer = new ForwardRenderer<DynamicLightData>(this.GraphicsDevice, this._lightHandler);
         this._renderables = new List<Renderable>();
         
         this._immediateRenderer = new ImmediateRenderer(this.GraphicsDevice);
@@ -193,6 +220,7 @@ public class Game : Disposable {
         
         foreach (Mesh mesh in this._playerModel.Meshes) {
             mesh.Material.RenderMode = RenderMode.Cutout;
+            mesh.GenTangents();
         }
         
         this._planeModel = Model.Load(this.GraphicsDevice, "content/plane.glb");

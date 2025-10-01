@@ -69,7 +69,7 @@ public class ImmediateRenderer : Disposable {
     /// <summary>
     /// The uniform buffer that holds transformation matrices (projection, view, and transform).
     /// </summary>
-    private SimpleBuffer<Matrix4x4> _matrixBuffer;
+    private SimpleUniformBuffer<Matrix4x4> _matrixBuffer;
 
     /// <summary>
     /// The pipeline description used to configure the graphics pipeline for rendering.
@@ -134,7 +134,7 @@ public class ImmediateRenderer : Disposable {
         this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
         
         // Create matrix buffer.
-        this._matrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 3, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        this._matrixBuffer = new SimpleUniformBuffer<Matrix4x4>(graphicsDevice, 3, ShaderStages.Vertex);
         
         // Create pipeline description.
         this._pipelineDescription = new SimplePipelineDescription();
@@ -2001,7 +2001,7 @@ public class ImmediateRenderer : Disposable {
         this._matrixBuffer.SetValue(0, cam3D.GetProjection());
         this._matrixBuffer.SetValue(1, cam3D.GetView());
         this._matrixBuffer.SetValue(2, transform.GetTransform());
-        this._matrixBuffer.UpdateBuffer(commandList);
+        this._matrixBuffer.UpdateBufferDeferred(commandList);
         
         // Update pipeline description.
         this._pipelineDescription.PrimitiveTopology = topology;

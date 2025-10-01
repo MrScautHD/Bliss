@@ -110,28 +110,29 @@ public static class GlobalResource {
         
         // Default sprite effect.
         DefaultSpriteEffect = new Effect(graphicsDevice, SpriteVertex2D.VertexLayout, "content/bliss/shaders/sprite.vert", "content/bliss/shaders/sprite.frag");
-        DefaultSpriteEffect.AddBufferLayout("ProjectionViewBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
-        DefaultSpriteEffect.AddTextureLayout("fTexture");
+        DefaultSpriteEffect.AddBufferLayout("ProjectionViewBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        DefaultSpriteEffect.AddTextureLayout("fTexture", 1);
         
         // Primitive effect.
         DefaultPrimitiveEffect = new Effect(graphicsDevice, PrimitiveVertex2D.VertexLayout, "content/bliss/shaders/primitive.vert", "content/bliss/shaders/primitive.frag");
-        DefaultPrimitiveEffect.AddBufferLayout("ProjectionViewBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
+        DefaultPrimitiveEffect.AddBufferLayout("ProjectionViewBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
         
         // FullScreenRenderPass effect.
         DefaultFullScreenRenderPassEffect = new Effect(graphicsDevice, SpriteVertex2D.VertexLayout, "content/bliss/shaders/full_screen_render_pass.vert", "content/bliss/shaders/full_screen_render_pass.frag");
-        DefaultFullScreenRenderPassEffect.AddTextureLayout("fTexture");
+        DefaultFullScreenRenderPassEffect.AddTextureLayout("fTexture", 0);
         
         // ImmediateRenderer effect.
         DefaultImmediateRendererEffect = new Effect(graphicsDevice, ImmediateVertex3D.VertexLayout, "content/bliss/shaders/immediate_renderer.vert", "content/bliss/shaders/immediate_renderer.frag");
-        DefaultImmediateRendererEffect.AddBufferLayout("MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
-        DefaultImmediateRendererEffect.AddTextureLayout("fTexture");
+        DefaultImmediateRendererEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        DefaultImmediateRendererEffect.AddTextureLayout("fTexture", 1);
         
         // Default model effect.
         DefaultModelEffect = new Effect(graphicsDevice, Vertex3D.VertexLayout, "content/bliss/shaders/default_model.vert", "content/bliss/shaders/default_model.frag");
-        DefaultModelEffect.AddBufferLayout("MatrixBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
-        DefaultModelEffect.AddBufferLayout("BoneBuffer", SimpleBufferType.Uniform, ShaderStages.Vertex);
-        DefaultModelEffect.AddBufferLayout("MaterialBuffer", SimpleBufferType.Uniform, ShaderStages.Fragment);
-        DefaultModelEffect.AddTextureLayout(MaterialMapType.Albedo.GetName());
+        DefaultModelEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        DefaultModelEffect.AddBufferLayout("BoneBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        DefaultModelEffect.AddBufferLayout("MaterialBuffer", 2, SimpleBufferType.Uniform, ShaderStages.Fragment);
+        DefaultModelEffect.AddBufferLayout("LightBuffer", 3, SimpleBufferType.StructuredReadOnly, ShaderStages.Fragment);
+        DefaultModelEffect.AddTextureLayout(MaterialMapType.Albedo.GetName(), 4);
         
         // Default immediate renderer texture.
         DefaultImmediateRendererTexture = new Texture2D(graphicsDevice, new Image(1, 1, Color.White));

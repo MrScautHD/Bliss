@@ -29,12 +29,12 @@ public struct SimplePipelineDescription : IEquatable<SimplePipelineDescription> 
     /// <summary>
     /// Describes how vertex buffers are structured and laid out.
     /// </summary>
-    public List<SimpleBufferLayout> BufferLayouts;
+    public IReadOnlyCollection<SimpleBufferLayout> BufferLayouts;
 
     /// <summary>
     /// Describes how textures are bound and accessed in the pipeline.
     /// </summary>
-    public List<SimpleTextureLayout> TextureLayouts;
+    public IReadOnlyCollection<SimpleTextureLayout> TextureLayouts;
 
     /// <summary>
     /// Contains the vertex and fragment shaders used by the pipeline.

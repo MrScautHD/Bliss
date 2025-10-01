@@ -33,12 +33,12 @@ public class Effect : Disposable {
     /// <summary>
     /// A collection of buffer layout descriptions used to define buffer bindings.
     /// </summary>
-    private List<SimpleBufferLayout> _bufferLayouts;
-
+    private Dictionary<uint, SimpleBufferLayout> _bufferLayouts;
+    
     /// <summary>
     /// A collection of texture layout descriptions used to define how textures bindings.
     /// </summary>
-    private List<SimpleTextureLayout> _textureLayouts;
+    private Dictionary<uint, SimpleTextureLayout> _textureLayouts;
     
     /// <summary>
     /// A cache of pipelines created for specific pipeline descriptions, enabling reuse.
@@ -63,7 +63,7 @@ public class Effect : Disposable {
     /// <param name="vertBytes">The compiled bytecode for the vertex shader.</param>
     /// <param name="fragBytes">The compiled bytecode for the fragment shader.</param>
     /// <param name="constants">Optional specialization constants for shader customization.</param>
-    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, byte[] vertBytes, byte[] fragBytes, SpecializationConstant[]? constants = null) {
+    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, byte[] vertBytes, byte[] fragBytes, SpecializationConstant[]? constants = null) { // TODO: Make better support for constants.
         this.GraphicsDevice = graphicsDevice;
         
         ShaderDescription vertDescription = new ShaderDescription(ShaderStages.Vertex, vertBytes, "main");
@@ -86,8 +86,8 @@ public class Effect : Disposable {
             Specializations = constants ?? []
         };
         
-        this._bufferLayouts = new List<SimpleBufferLayout>();
-        this._textureLayouts = new List<SimpleTextureLayout>();
+        this._bufferLayouts = new Dictionary<uint, SimpleBufferLayout>();
+        this._textureLayouts = new Dictionary<uint, SimpleTextureLayout>();
         this._cachedPipelines = new Dictionary<SimplePipelineDescription, SimplePipeline>();
     }
 
@@ -108,15 +108,15 @@ public class Effect : Disposable {
         Logger.Info($"Shader bytes loaded successfully from path: [{path}]");
         return File.ReadAllBytes(path);
     }
-
+    
     /// <summary>
-    /// Retrieves the list of simple buffer layouts associated with the effect.
+    /// Retrieves a collection of buffer layouts associated with the effect.
     /// </summary>
-    /// <returns>A list of <see cref="SimpleBufferLayout"/> objects representing the buffer layouts.</returns>
-    public IReadOnlyList<SimpleBufferLayout> GetBufferLayouts() {
-        return this._bufferLayouts;
+    /// <returns>A read-only collection of <see cref="SimpleBufferLayout"/> objects representing the buffer layouts.</returns>
+    public IReadOnlyCollection<SimpleBufferLayout> GetBufferLayouts() {
+        return this._bufferLayouts.Values;
     }
-
+    
     /// <summary>
     /// Retrieves the buffer layout identified by the specified name.
     /// </summary>
@@ -124,7 +124,7 @@ public class Effect : Disposable {
     /// <returns>The <see cref="SimpleBufferLayout"/> matching the specified name.</returns>
     /// <exception cref="KeyNotFoundException">Thrown if no buffer layout with the specified name is found.</exception>
     public SimpleBufferLayout GetBufferLayout(string name) {
-        foreach (var layout in _bufferLayouts) {
+        foreach (var layout in _bufferLayouts.Values) {
             if (layout.Name == name) {
                 return layout;
             }
@@ -140,42 +140,40 @@ public class Effect : Disposable {
     /// <returns>The slot index of the specified buffer layout.</returns>
     /// <exception cref="KeyNotFoundException">Thrown when the buffer layout with the specified name does not exist.</exception>
     public uint GetBufferLayoutSlot(string name) {
-        uint index = 0;
-        
-        foreach (SimpleBufferLayout layout in this._bufferLayouts) {
-            if (layout.Name == name) {
-                return index;
+        foreach (var layoutPair in this._bufferLayouts) {
+            if (layoutPair.Value.Name == name) {
+                return layoutPair.Key;
             }
-            
-            index++;
         }
         
         throw new KeyNotFoundException($"Failed to get the slot for [{name}]. A buffer layout with this name do not exist.");
     }
 
     /// <summary>
-    /// Adds a buffer layout to the effect.
+    /// Adds a new buffer layout to the effect with the specified parameters.
     /// </summary>
-    /// <param name="name">The name of the buffer layout to add.</param>
-    /// <param name="bufferType">The <see cref="SimpleBufferType"/> specifying the type of buffer being added.</param>
-    /// <param name="stages">The <see cref="ShaderStages"/> indicating the shader stages where the buffer will be used.</param>
-    public void AddBufferLayout(string name, SimpleBufferType bufferType, ShaderStages stages) {
-        if (this._bufferLayouts.Any(layout => layout.Name == name)) {
+    /// <param name="name">The name of the buffer layout to add. Must be unique within the effect.</param>
+    /// <param name="slot">The slot index at which the buffer layout will be bound.</param>
+    /// <param name="bufferType">The type of buffer being added, defined by the <see cref="SimpleBufferType"/> enum.</param>
+    /// <param name="stages">The shader stages where the buffer will be accessible, specified by <see cref="ShaderStages"/>.</param>
+    /// <exception cref="InvalidOperationException"> Thrown if a buffer layout with the specified name already exists. </exception>
+    public void AddBufferLayout(string name, uint slot, SimpleBufferType bufferType, ShaderStages stages) {
+        if (this._bufferLayouts.Any(layoutPair => layoutPair.Value.Name == name)) {
             throw new InvalidOperationException($"Failed to add buffer layout with name [{name}]. A buffer layout with this name might already exist.");
         }
         
         SimpleBufferLayout layout = new SimpleBufferLayout(this.GraphicsDevice, name, bufferType, stages);
-        this._bufferLayouts.Add(layout);
+        this._bufferLayouts.Add(slot, layout);
     }
-
+    
     /// <summary>
-    /// Retrieves the list of texture layouts used by the effect.
+    /// Retrieves a collection of texture layouts associated with the effect.
     /// </summary>
-    /// <returns>A list of <see cref="SimpleTextureLayout"/> objects representing the texture layouts associated with the effect.</returns>
-    public IReadOnlyList<SimpleTextureLayout> GetTextureLayouts() {
-        return this._textureLayouts;
+    /// <returns>A read-only collection of <see cref="SimpleTextureLayout"/> objects representing the texture layouts.</returns>
+    public IReadOnlyCollection<SimpleTextureLayout> GetTextureLayouts() {
+        return this._textureLayouts.Values;
     }
-
+    
     /// <summary>
     /// Retrieves a texture layout by its name from the list of available texture layouts.
     /// </summary>
@@ -183,7 +181,7 @@ public class Effect : Disposable {
     /// <returns>The <see cref="SimpleTextureLayout"/> matching the specified name.</returns>
     /// <exception cref="KeyNotFoundException">Thrown if no texture layout with the specified name is found.</exception>
     public SimpleTextureLayout GetTextureLayout(string name) {
-        foreach (var layout in _textureLayouts) {
+        foreach (var layout in _textureLayouts.Values) {
             if (layout.Name == name) {
                 return layout;
             }
@@ -199,30 +197,29 @@ public class Effect : Disposable {
     /// <returns>The zero-based index of the texture slot corresponding to the specified texture name.</returns>
     /// <exception cref="KeyNotFoundException">Thrown when the specified texture name does not exist in the texture layouts.</exception>
     public uint GetTextureLayoutSlot(string name) {
-        uint index = (uint) this._bufferLayouts.Count;
-        
-        foreach (SimpleTextureLayout layout in this._textureLayouts) {
-            if (layout.Name == name) {
-                return index;
+        foreach (var layoutPair in this._textureLayouts) {
+            if (layoutPair.Value.Name == name) {
+                return layoutPair.Key;
             }
-            
-            index++;
         }
         
         throw new KeyNotFoundException($"Failed to get the slot for [{name}]. A texture layout with this name do not exist.");
     }
 
+
     /// <summary>
-    /// Adds a texture layout to the effect.
+    /// Adds a new texture layout to the effect with the specified parameters.
     /// </summary>
-    /// <param name="name">The name of the texture layout to be added.</param>
-    public void AddTextureLayout(string name) {
-        if (this._textureLayouts.Any(layout => layout.Name == name)) {
+    /// <param name="name">The unique name of the texture layout to add.</param>
+    /// <param name="slot">The slot index where the texture layout will be bound.</param>
+    /// <exception cref="InvalidOperationException">Thrown if a texture layout with the same name already exists.</exception>
+    public void AddTextureLayout(string name, uint slot) {
+        if (this._textureLayouts.Any(layoutPair => layoutPair.Value.Name == name)) {
             throw new InvalidOperationException($"Failed to add texture layout with name [{name}]. A texture layout with this name might already exist.");
         }
         
         SimpleTextureLayout layout = new SimpleTextureLayout(this.GraphicsDevice, name);
-        this._textureLayouts.Add(layout);
+        this._textureLayouts.Add(slot, layout);
     }
     
     /// <summary>
@@ -255,11 +252,11 @@ public class Effect : Disposable {
             this.Shader.VertShader.Dispose();
             this.Shader.FragShader.Dispose();
             
-            foreach (SimpleBufferLayout bufferLayout in this._bufferLayouts) {
+            foreach (SimpleBufferLayout bufferLayout in this._bufferLayouts.Values) {
                 bufferLayout.Dispose();
             }
             
-            foreach (SimpleTextureLayout textureLayout in this._textureLayouts) {
+            foreach (SimpleTextureLayout textureLayout in this._textureLayouts.Values) {
                 textureLayout.Dispose();
             }
         }

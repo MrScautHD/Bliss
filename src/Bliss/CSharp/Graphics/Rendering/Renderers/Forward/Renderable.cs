@@ -3,7 +3,7 @@ using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Materials;
 using Bliss.CSharp.Transformations;
 
-namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderables;
+namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward;
 
 public class Renderable {
     

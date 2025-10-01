@@ -91,7 +91,7 @@ public class SpriteBatch : Disposable {
     /// A buffer used to store and update the projection-view matrix for the shader.
     /// It is an instance of <see cref="SimpleBuffer{Matrix4x4}"/> and is used in the rendering process to transform sprite coordinates for rendering on the screen.
     /// </summary>
-    private SimpleBuffer<Matrix4x4> _projViewBuffer;
+    private SimpleUniformBuffer<Matrix4x4> _projViewBuffer;
 
     /// <summary>
     /// Stores the description of the graphics pipeline, defining its configuration and behavior.
@@ -289,7 +289,7 @@ public class SpriteBatch : Disposable {
         graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this._indices);
         
         // Create projection view buffer.
-        this._projViewBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        this._projViewBuffer = new SimpleUniformBuffer<Matrix4x4>(graphicsDevice, 2, ShaderStages.Vertex);
 
         // Create pipeline description.
         this._pipelineDescription = new SimplePipelineDescription() {
@@ -850,7 +850,7 @@ public class SpriteBatch : Disposable {
         // Update projection/view buffer.
         this._projViewBuffer.SetValue(0, this._currentProjection);
         this._projViewBuffer.SetValue(1, this._currentView);
-        this._projViewBuffer.UpdateBuffer(this._currentCommandList);
+        this._projViewBuffer.UpdateBufferDeferred(this._currentCommandList);
         
         // Update vertex buffer.
         this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, new ReadOnlySpan<SpriteVertex2D>(this._vertices, 0, (int) (this._currentBatchCount * VerticesPerQuad)));

@@ -1,5 +1,5 @@
 using System.Numerics;
-using MiniAudioEx;
+using MiniAudioEx.Core.StandardAPI;
 
 namespace Bliss.CSharp.Audio;
 

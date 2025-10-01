@@ -1,21 +1,26 @@
 using System.Numerics;
 using Bliss.CSharp.Camera.Dim3;
-using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
-using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderables;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lights.Data;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lights.Handlers;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data;
 using Bliss.CSharp.Materials;
 using Veldrid;
+using Mesh = Bliss.CSharp.Geometry.Mesh;
 
 namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward;
 
-public class ForwardRenderer : Disposable {
+public class ForwardRenderer<T> : Disposable where T : unmanaged {
     
     /// <summary>
     /// The graphics device used for rendering.
     /// </summary>
     public GraphicsDevice GraphicsDevice { get; private set; }
+    
+    
+    public ILightHandler<T>? LightHandler;
     
     /// <summary>
     /// List of opaque renderables waiting to be drawn.
@@ -30,42 +35,59 @@ public class ForwardRenderer : Disposable {
     /// <summary>
     /// Uniform buffer storing projection, view, and model matrices.
     /// </summary>
-    private SimpleBuffer<Matrix4x4> _matrixBuffer;
+    private SimpleUniformBuffer<Matrix4x4> _matrixBuffer;
     
     /// <summary>
     /// Uniform buffer storing bone matrices for skinned meshes.
     /// </summary>
-    private SimpleBuffer<Matrix4x4> _boneBuffer;
+    private SimpleUniformBuffer<Matrix4x4> _boneBuffer;
     
     /// <summary>
     /// Uniform buffer storing material data.
     /// </summary>
-    private SimpleBuffer<MaterialData> _materialDataBuffer;
+    private SimpleUniformBuffer<MaterialData> _materialDataBuffer;
+
+    /// <summary>
+    /// Uniform buffer storing light data.
+    /// </summary>
+    private ISimpleBuffer _lightDataBuffer;
     
     /// <summary>
     /// Description of the pipeline used for rendering.
     /// </summary>
     private SimplePipelineDescription _pipelineDescription;
     
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ForwardRenderer"/> class.
-    /// </summary>
-    /// <param name="graphicsDevice">The graphics device to use for rendering.</param>
-    public ForwardRenderer(GraphicsDevice graphicsDevice) {
+    // TODO: Think about ambient light.. (DONE)
+    // TODO: Done it when its lightCap = 0 (no light buffer will get created!).
+    // TODO: Add Shadows.
+    // TODO: Add MultiThread system.
+    
+    public ForwardRenderer(GraphicsDevice graphicsDevice, ILightHandler<T>? lightHandler = null) {
         this.GraphicsDevice = graphicsDevice;
+        this.LightHandler = lightHandler;
         
         // Create list for renderables.
         this._opaqueRenderables = new List<Renderable>();
         this._translucentRenderables = new List<Renderable>();
         
         // Create matrix buffer.
-        this._matrixBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, 3, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        this._matrixBuffer = new SimpleUniformBuffer<Matrix4x4>(graphicsDevice, 3, ShaderStages.Vertex);
         
         // Create bone buffer.
-        this._boneBuffer = new SimpleBuffer<Matrix4x4>(graphicsDevice, Mesh.MaxBoneCount, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        this._boneBuffer = new SimpleUniformBuffer<Matrix4x4>(graphicsDevice, Mesh.MaxBoneCount, ShaderStages.Vertex);
         
         // Create material map buffer.
-        this._materialDataBuffer = new SimpleBuffer<MaterialData>(graphicsDevice, 1, SimpleBufferType.Uniform, ShaderStages.Fragment);
+        this._materialDataBuffer = new SimpleUniformBuffer<MaterialData>(graphicsDevice, 1, ShaderStages.Fragment);
+        
+        // Create light buffer.
+        if (lightHandler != null) {
+            if (!lightHandler.UseStorageBuffer) {
+                this._lightDataBuffer = new SimpleUniformBuffer<T>(graphicsDevice, 1, ShaderStages.Fragment);
+            }
+            else {
+                this._lightDataBuffer = new SimpleStructuredBuffer<T, Light>(graphicsDevice, 1, (uint) lightHandler.LightCapacity, ShaderStages.Fragment);
+            }
+        }
         
         // Create pipeline description.
         this._pipelineDescription = new SimplePipelineDescription() {
@@ -86,7 +108,7 @@ public class ForwardRenderer : Disposable {
             this._opaqueRenderables.Add(renderable);
         }
     }
-
+    
     /// <summary>
     /// Executes the rendering process for drawing opaque and translucent renderable objects.
     /// </summary>
@@ -106,6 +128,23 @@ public class ForwardRenderer : Disposable {
         // Set projection and view matrix to the buffer.
         this._matrixBuffer.SetValue(0, cam3D.GetProjection());
         this._matrixBuffer.SetValue(1, cam3D.GetView());
+        
+        // Update light buffer.
+        if (this.LightHandler != null) {
+            if (!this.LightHandler.UseStorageBuffer) {
+                ((SimpleUniformBuffer<T>) this._lightDataBuffer).SetValueImmediate(0, this.LightHandler.LightData);
+            }
+            else {
+                SimpleStructuredBuffer<T, Light> buffer = (SimpleStructuredBuffer<T, Light>) this._lightDataBuffer;
+                buffer.SetHeaderValue(0, this.LightHandler.LightData);
+                
+                for (int i = 0; i < this.LightHandler.GetNumOfLights(); i++) {
+                    buffer.SetElementValue(i, this.LightHandler.GetLights()[i]);
+                }
+                
+                buffer.UpdateBufferImmediate();
+            }
+        }
         
         // Set pipeline output.
         this._pipelineDescription.Outputs = output;
@@ -138,20 +177,22 @@ public class ForwardRenderer : Disposable {
                 this._boneBuffer.SetValue(i, renderable.BoneMatrices[i]);
             }
             
-            this._boneBuffer.UpdateBuffer(commandList);
+            this._boneBuffer.UpdateBufferDeferred(commandList);
         }
         
         // Update material buffer.
         MaterialData materialData = new MaterialData {
-            RenderMode = (int) renderable.Material.RenderMode
+            RenderMode = renderable.Material.RenderMode
         };
         
         foreach (MaterialMapType mapType in renderable.Material.GetMaterialMapTypes()) {
             MaterialMap? map = renderable.Material.GetMaterialMap(mapType);
             
             if (map != null) {
-                materialData.SetColor((uint) mapType, map.Color?.ToRgbaFloatVec4() ?? Vector4.Zero);
-                materialData.SetValue((uint) mapType, map.Value);
+                materialData[(int) mapType] = new MaterialMapData() {
+                    Color = map.Color?.ToRgbaFloatVec4() ?? Vector4.Zero,
+                    Value = map.Value
+                };
             }
         }
         
@@ -159,7 +200,7 @@ public class ForwardRenderer : Disposable {
         
         // Set renderable transform (And updating matrix buffer).
         this._matrixBuffer.SetValue(2, renderable.Transform.GetTransform());
-        this._matrixBuffer.UpdateBuffer(commandList);
+        this._matrixBuffer.UpdateBufferDeferred(commandList);
         
         // Set pipeline parameters.
         this._pipelineDescription.BlendState = renderable.Material.BlendState;
@@ -185,6 +226,11 @@ public class ForwardRenderer : Disposable {
             
             // Set material map buffer.
             commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("MaterialBuffer"), this._materialDataBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("MaterialBuffer")));
+            
+            // Set light buffer.
+            if (this.LightHandler != null) {
+                commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("LightBuffer"), this._lightDataBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("LightBuffer")));
+            }
             
             // Set material texture.
             foreach (SimpleTextureLayout textureLayout in renderable.Material.Effect.GetTextureLayouts()) {
@@ -224,6 +270,11 @@ public class ForwardRenderer : Disposable {
             // Set material map buffer.
             commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("MaterialBuffer"), this._materialDataBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("MaterialBuffer")));
             
+            // Set light buffer.
+            if (this.LightHandler != null) {
+                commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("LightBuffer"), this._lightDataBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("LightBuffer")));
+            }
+            
             // Set material texture.
             foreach (SimpleTextureLayout textureLayout in renderable.Material.Effect.GetTextureLayouts()) {
                 foreach (MaterialMapType mapType in renderable.Material.GetMaterialMapTypes()) {
@@ -252,6 +303,7 @@ public class ForwardRenderer : Disposable {
             this._matrixBuffer.Dispose();
             this._boneBuffer.Dispose();
             this._materialDataBuffer.Dispose();
+            this._lightDataBuffer.Dispose();
         }
     }
 }

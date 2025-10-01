@@ -1,6 +1,6 @@
 #version 450
 
-layout (set = 0, binding = 0) uniform ProjectionViewBuffer {
+layout (std140, set = 0, binding = 0) uniform ProjectionViewBuffer {
     mat4x4 uProj;
     mat4x4 uView;
 };
