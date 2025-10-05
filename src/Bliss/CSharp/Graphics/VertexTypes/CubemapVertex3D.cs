@@ -1,8 +1,10 @@
 using System.Numerics;
+using System.Runtime.InteropServices;
 using Veldrid;
 
 namespace Bliss.CSharp.Graphics.VertexTypes;
 
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
 public struct CubemapVertex3D {
 
     /// <summary>
@@ -10,7 +12,8 @@ public struct CubemapVertex3D {
     /// </summary>
     public static VertexLayoutDescription VertexLayout = new VertexLayoutDescription(
         new VertexElementDescription("vPosition", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float3),
-        new VertexElementDescription("vColor", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float4));
+        new VertexElementDescription("vColor", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float4)
+    );
     
     /// <summary>
     /// The position of the vertex in 3D space.

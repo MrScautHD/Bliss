@@ -122,7 +122,6 @@ public class ImmediateRenderer : Disposable {
         
         // Create vertex buffer.
         uint vertexBufferSize = capacity * (uint) Marshal.SizeOf<ImmediateVertex3D>();
-        Logger.Error(vertexBufferSize + "");
         this._vertices = new ImmediateVertex3D[capacity];
         this._tempVertices = new List<ImmediateVertex3D>();
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
