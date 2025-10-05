@@ -129,7 +129,7 @@ public class SimpleUniformBuffer<T> : Disposable, ISimpleBuffer where T : unmana
         }
 
         this.Data[index] = value;
-        commandList.UpdateBuffer(this.DeviceBuffer, (uint)(index * Marshal.SizeOf<T>()), ref this.Data[index]);
+        commandList.UpdateBuffer(this.DeviceBuffer, (uint) (index * Marshal.SizeOf<T>()), ref this.Data[index]);
     }
     
     /// <summary>

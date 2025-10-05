@@ -5,7 +5,6 @@
 struct MaterialMap {
     vec4 color;
     float value;
-    vec3 _padding;
 };
 
 layout(std140, set = 2, binding = 0) uniform MaterialBuffer {
