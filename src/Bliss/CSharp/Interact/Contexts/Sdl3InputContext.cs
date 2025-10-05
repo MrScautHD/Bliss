@@ -123,7 +123,7 @@ public class Sdl3InputContext : Disposable, IInputContext {
         this._window.DragDrop += this.OnFileDragDropped;
     }
 
-    public void Begin() { } // TODO: REMOVE that! and replace it with ProccesInput or something...
+    public void Begin() { }
     
     public unsafe void End() {
         float mouseDeltaX;

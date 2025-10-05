@@ -48,8 +48,7 @@ public class Game : Disposable {
     public FullScreenRenderer FullScreenRenderer { get; private set; }
     public RenderTexture2D FullScreenTexture { get; private set; }
 
-    private ForwardRenderer<DynamicLightData> _forwardRenderer;
-    private DynamicLightHandler _lightHandler;
+    private ForwardRenderer<NoLightData> _forwardRenderer;
     private List<Renderable> _renderables;
     
     private ImmediateRenderer _immediateRenderer;
@@ -177,31 +176,7 @@ public class Game : Disposable {
     protected virtual void Init() {
         this.FullScreenRenderer = new FullScreenRenderer(this.GraphicsDevice);
         this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), this.Settings.SampleCount);
-
-        this._lightHandler = new DynamicLightHandler(10, Color.Blue.ToRgbaFloatVec4().AsVector3(), 4);
-        
-        this._lightHandler.AddLight(new LightDefinition() {
-            LightType = LightType.Point,
-            Position = new Vector3(10, 10, 10),
-            Direction = Vector3.UnitZ,
-            Color = Color.Red.ToRgbaFloatVec4().AsVector3(),
-            Intensity = 1,
-            Range = 10,
-            SpotAngle = 30
-        }, out uint id);
-        
-        this._lightHandler.AddLight(new LightDefinition() {
-            LightType = LightType.Point,
-            Position = new Vector3(20, 20, 20),
-            Direction = Vector3.UnitZ,
-            Color = Color.Red.ToRgbaFloatVec4().AsVector3(),
-            Intensity = 1,
-            Range = 10,
-            SpotAngle = 30
-        }, out uint _);
-
-        
-        this._forwardRenderer = new ForwardRenderer<DynamicLightData>(this.GraphicsDevice, this._lightHandler);
+        this._forwardRenderer = new ForwardRenderer<NoLightData>(this.GraphicsDevice);
         this._renderables = new List<Renderable>();
         
         this._immediateRenderer = new ImmediateRenderer(this.GraphicsDevice);

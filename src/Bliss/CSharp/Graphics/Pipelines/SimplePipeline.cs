@@ -34,7 +34,7 @@ public class SimplePipeline : Disposable {
     public SimplePipeline(GraphicsDevice graphicsDevice, SimplePipelineDescription pipelineDescription) {
         this.GraphicsDevice = graphicsDevice;
         this.PipelineDescription = pipelineDescription;
-        this.ResourceLayouts = new ResourceLayout[pipelineDescription.BufferLayouts.Count() + pipelineDescription.TextureLayouts.Count()];
+        this.ResourceLayouts = new ResourceLayout[pipelineDescription.BufferLayouts.Count + pipelineDescription.TextureLayouts.Count];
         
         int layoutIndex = 0;
 

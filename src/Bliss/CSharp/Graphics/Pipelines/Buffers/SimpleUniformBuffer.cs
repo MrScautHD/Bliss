@@ -117,21 +117,19 @@ public class SimpleUniformBuffer<T> : Disposable, ISimpleBuffer where T : unmana
         this.SetValueDeferred(commandList, index, ref value);
     }
     
-    // TODO: REWORK SUMMARIES! (Add the exp.)
-    
     /// <summary>
-    /// Sets the value at the specified index by reference and defers the GPU update using a command list.
+    /// Sets the value at the specified index in the buffer and defers the GPU update using the given command list.
     /// </summary>
-    /// <param name="commandList">The command list used to defer the update.</param>
-    /// <param name="index">The zero-based index of the element to set.</param>
-    /// <param name="value">The new value to assign by reference.</param>
+    /// <param name="commandList">The command list used to schedule the deferred buffer update operation.</param>
+    /// <param name="index">The zero-based index of the element to update within the buffer.</param>
+    /// <param name="value">The value to set at the specified index within the buffer.</param>
     public void SetValueDeferred(CommandList commandList, int index, ref T value) {
         if (index < 0 || index >= this.Size) {
             throw new IndexOutOfRangeException($"Index {index} is outside the valid range of 0 to {this.Size - 1}.");
         }
-        
+
         this.Data[index] = value;
-        commandList.UpdateBuffer(this.DeviceBuffer, (uint) (index * Marshal.SizeOf<T>()), ref this.Data[index]);
+        commandList.UpdateBuffer(this.DeviceBuffer, (uint)(index * Marshal.SizeOf<T>()), ref this.Data[index]);
     }
     
     /// <summary>

@@ -131,8 +131,7 @@ public static class GlobalResource {
         DefaultModelEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
         DefaultModelEffect.AddBufferLayout("BoneBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex);
         DefaultModelEffect.AddBufferLayout("MaterialBuffer", 2, SimpleBufferType.Uniform, ShaderStages.Fragment);
-        DefaultModelEffect.AddBufferLayout("LightBuffer", 3, SimpleBufferType.StructuredReadOnly, ShaderStages.Fragment);
-        DefaultModelEffect.AddTextureLayout(MaterialMapType.Albedo.GetName(), 4);
+        DefaultModelEffect.AddTextureLayout(MaterialMapType.Albedo.GetName(), 3);
         
         // Default immediate renderer texture.
         DefaultImmediateRendererTexture = new Texture2D(graphicsDevice, new Image(1, 1, Color.White));

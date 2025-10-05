@@ -12,15 +12,17 @@ using Mesh = Bliss.CSharp.Geometry.Mesh;
 
 namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward;
 
-public class ForwardRenderer<T> : Disposable where T : unmanaged {
+public class ForwardRenderer<T> : Disposable, IRenderer where T : unmanaged {
     
     /// <summary>
     /// The graphics device used for rendering.
     /// </summary>
     public GraphicsDevice GraphicsDevice { get; private set; }
     
-    
-    public ILightHandler<T>? LightHandler;
+    /// <summary>
+    /// The light handler responsible for managing and updating light data for rendering operations.
+    /// </summary>
+    public ILightHandler<T>? LightHandler { get; private set; }
     
     /// <summary>
     /// List of opaque renderables waiting to be drawn.
@@ -57,8 +59,6 @@ public class ForwardRenderer<T> : Disposable where T : unmanaged {
     /// </summary>
     private SimplePipelineDescription _pipelineDescription;
     
-    // TODO: Think about ambient light.. (DONE)
-    // TODO: Done it when its lightCap = 0 (no light buffer will get created!).
     // TODO: Add Shadows.
     // TODO: Add MultiThread system.
     
@@ -163,7 +163,7 @@ public class ForwardRenderer<T> : Disposable where T : unmanaged {
         this._opaqueRenderables.Clear();
         this._translucentRenderables.Clear();
     }
-
+    
     /// <summary>
     /// Draws a prepared renderable object, setting up necessary buffers, pipeline parameters, and managing the drawing process.
     /// </summary>
