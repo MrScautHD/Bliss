@@ -3,8 +3,8 @@ using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
-using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lights.Data;
-using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lights.Handlers;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data;
 using Bliss.CSharp.Materials;
 using Veldrid;
@@ -164,6 +164,75 @@ public class ForwardRenderer<T> : Disposable, IRenderer where T : unmanaged {
         this._translucentRenderables.Clear();
     }
     
+    private void DrawPreparedShadowedRenderable(CommandList commandList, Renderable renderable) {
+        
+        // Update bone buffer.
+        if (renderable.BoneMatrices != null) {
+            for (int i = 0; i < Mesh.MaxBoneCount; i++) {
+                this._boneBuffer.SetValue(i, renderable.BoneMatrices[i]);
+            }
+            
+            this._boneBuffer.UpdateBufferDeferred(commandList);
+        }
+        
+        // Update material buffer.
+        MaterialData materialData = new MaterialData {
+            RenderMode = renderable.Material.RenderMode
+        };
+        
+        foreach (MaterialMapType mapType in renderable.Material.GetMaterialMapTypes()) {
+            MaterialMap? map = renderable.Material.GetMaterialMap(mapType);
+            
+            if (map != null) {
+                materialData[(int) mapType] = new MaterialMapData() {
+                    Color = map.Color?.ToRgbaFloatVec4() ?? Vector4.Zero,
+                    Value = map.Value
+                };
+            }
+        }
+        
+        this._materialDataBuffer.SetValueDeferred(commandList, 0, ref materialData);
+        
+        // Set renderable transform (And updating matrix buffer).
+        this._matrixBuffer.SetValue(2, renderable.Transform.GetTransform());
+        this._matrixBuffer.UpdateBufferDeferred(commandList);
+        
+        // Set pipeline parameters.
+        this._pipelineDescription.BlendState = renderable.Material.BlendState;
+        this._pipelineDescription.RasterizerState = renderable.Material.RasterizerState;
+        this._pipelineDescription.BufferLayouts = renderable.Material.Effect.GetBufferLayouts();
+        this._pipelineDescription.TextureLayouts = renderable.Material.Effect.GetTextureLayouts();
+        this._pipelineDescription.ShaderSet = renderable.Material.Effect.ShaderSet;
+        
+        if (renderable.Mesh.IndexCount > 0) {
+            
+            // Set vertex and index buffer.
+            commandList.SetVertexBuffer(0, renderable.Mesh.VertexBuffer);
+            commandList.SetIndexBuffer(renderable.Mesh.IndexBuffer, IndexFormat.UInt32);
+            
+            // Set pipeline.
+            // TODO: Apply Shadow pipeline
+            //commandList.SetPipeline(renderable.Material.Effect.GetPipeline(this._pipelineDescription).Pipeline);
+            
+            // Set matrix buffer.
+            // TODO: Set SHADOW effect.
+            commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("MatrixBuffer"), this._matrixBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("MatrixBuffer")));
+            
+            // Set bone buffer.
+            // TODO: Set SHADOW effect.
+            commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("BoneBuffer"), this._boneBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("BoneBuffer")));
+            
+            // Apply effect.
+            // TODO: Apply shadow map.
+            
+            // Draw.
+            commandList.DrawIndexed(renderable.Mesh.IndexCount);
+        }
+        else {
+            
+        }
+    }
+    
     /// <summary>
     /// Draws a prepared renderable object, setting up necessary buffers, pipeline parameters, and managing the drawing process.
     /// </summary>
@@ -228,7 +297,7 @@ public class ForwardRenderer<T> : Disposable, IRenderer where T : unmanaged {
             commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("MaterialBuffer"), this._materialDataBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("MaterialBuffer")));
             
             // Set light buffer.
-            if (this.LightHandler != null) {
+            if (this.LightHandler != null && renderable.Material.Effect.GetBufferLayouts().Any(b => b.Name == "LightBuffer")) {
                 commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("LightBuffer"), this._lightDataBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("LightBuffer")));
             }
             
@@ -271,7 +340,7 @@ public class ForwardRenderer<T> : Disposable, IRenderer where T : unmanaged {
             commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("MaterialBuffer"), this._materialDataBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("MaterialBuffer")));
             
             // Set light buffer.
-            if (this.LightHandler != null) {
+            if (this.LightHandler != null && renderable.Material.Effect.GetBufferLayouts().Any(b => b.Name == "LightBuffer")) {
                 commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("LightBuffer"), this._lightDataBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("LightBuffer")));
             }
             

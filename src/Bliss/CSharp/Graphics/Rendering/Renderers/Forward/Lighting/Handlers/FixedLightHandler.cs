@@ -1,8 +1,7 @@
 using System.Numerics;
-using System.Runtime.CompilerServices;
-using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lights.Data;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data;
 
-namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lights.Handlers;
+namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers;
 
 public class FixedLightHandler : Disposable, ILightHandler<FixedLightData> {
     
@@ -70,10 +69,8 @@ public class FixedLightHandler : Disposable, ILightHandler<FixedLightData> {
     /// Retrieves all lights managed by this handler as a read-only span.
     /// </summary>
     /// <returns>A <see cref="ReadOnlySpan{Light}"/> containing all lights.</returns>
-    public unsafe ReadOnlySpan<Light> GetLights() {
-        fixed (byte* lightsPtr = this._lightData.Lights) {
-            return new ReadOnlySpan<Light>(lightsPtr, this._lightData.NumOfLights);
-        }
+    public ReadOnlySpan<Light> GetLights() {
+        return this._lightData.Lights.AsReadOnlySpan()[..this._lightData.NumOfLights];
     }
     
     /// <summary>
@@ -81,15 +78,13 @@ public class FixedLightHandler : Disposable, ILightHandler<FixedLightData> {
     /// </summary>
     /// <param name="index">The zero-based index of the light.</param>
     /// <returns>A reference to the light at the specified index.</returns>
-    public unsafe ref Light this[int index] {
+    public ref Light this[int index] {
         get {
             if (index < 0 || index >= this._lightData.NumOfLights) {
                 throw new IndexOutOfRangeException($"Index {index} is outside the valid range of 0 to {this._lightData.NumOfLights - 1}.");
             }
-            
-            fixed (byte* lightsPtr = this._lightData.Lights) {
-                return ref ((Light*) lightsPtr)[index];
-            }
+
+            return ref this._lightData.Lights[index];
         }
     }
     
@@ -99,16 +94,12 @@ public class FixedLightHandler : Disposable, ILightHandler<FixedLightData> {
     /// <param name="id">The unique identifier of the light.</param>
     /// <returns>A reference to the light with the given ID.</returns>
     /// <exception cref="KeyNotFoundException">Thrown if no light with the given ID exists.</exception>
-    public unsafe ref Light GetLightById(uint id) {
-        fixed (byte* lightsPtr = this._lightData.Lights) {
-            Light* lights = (Light*) lightsPtr;
+    public ref Light GetLightById(uint id) {
+        for (int i = 0; i < this._lightData.NumOfLights; i++) {
+            ref Light light = ref this._lightData.Lights[i];
             
-            for (int i = 0; i < this._lightData.NumOfLights; i++) {
-                ref Light light = ref lights[i];
-                
-                if (light.Id == id) {
-                    return ref light;
-                }
+            if (light.Id == id) {
+                return ref light;
             }
         }
         
@@ -133,22 +124,18 @@ public class FixedLightHandler : Disposable, ILightHandler<FixedLightData> {
     /// <param name="lightDef">The light definition used to create the light.</param>
     /// <param name="id">The unique identifier assigned to the new light.</param>
     /// <returns><c>true</c> if the light was added successfully; otherwise, <c>false</c>.</returns>
-    public unsafe bool TryAddLight(LightDefinition lightDef, out uint id) {
+    public bool TryAddLight(LightDefinition lightDef, out uint id) {
         if (this._lightData.NumOfLights >= this.LightCapacity) {
             id = 0;
             return false;
         }
         
-        fixed (byte* lightsPtr = this._lightData.Lights) {
-            Light* lights = (Light*) lightsPtr;
+        id = ++this._lightIds;
+        Light light = new Light(lightDef.LightType, (int) id, lightDef.Position, lightDef.Direction, lightDef.Color, lightDef.Intensity, lightDef.Range, lightDef.SpotAngle);
             
-            id = ++this._lightIds;
-            Light light = new Light(lightDef.LightType, (int) id, lightDef.Position, lightDef.Direction, lightDef.Color, lightDef.Intensity, lightDef.Range, lightDef.SpotAngle);
-            
-            lights[this._lightData.NumOfLights] = light;
-            this._lightData.NumOfLights++;
-            return true;
-        }
+        this._lightData.Lights[this._lightData.NumOfLights] = light;
+        this._lightData.NumOfLights++;
+        return true;
     }
     
     /// <summary>
@@ -167,23 +154,19 @@ public class FixedLightHandler : Disposable, ILightHandler<FixedLightData> {
     /// </summary>
     /// <param name="id">The unique identifier of the light to remove.</param>
     /// <returns><c>true</c> if the light was removed successfully; otherwise, <c>false</c>.</returns>
-    public unsafe bool TryRemoveLight(uint id) {
-        fixed (byte* lightsPtr = this._lightData.Lights) {
-            Light* lights = (Light*) lightsPtr;
-            
-            for (int i = 0; i < this._lightData.NumOfLights; i++) {
-                if (lights[i].Id == id) {
-                    
-                    // Shift all lights after the removed one.
-                    for (int j = i; j < this._lightData.NumOfLights - 1; j++) {
-                        lights[j] = lights[j + 1];
-                    }
-                    
-                    // Decrease the light count and clear the last light entry.
-                    this._lightData.NumOfLights--;
-                    Unsafe.InitBlock(&lights[this._lightData.NumOfLights], 0, Light.SizeInBytes);
-                    return true;
+    public bool TryRemoveLight(uint id) {
+        for (int i = 0; i < this._lightData.NumOfLights; i++) {
+            if (this._lightData.Lights[i].Id == id) {
+                
+                // Shift all lights after the removed one.
+                for (int j = i; j < this._lightData.NumOfLights - 1; j++) {
+                    this._lightData.Lights[j] = this._lightData.Lights[j + 1];
                 }
+                
+                // Decrease the light count and clear the last light entry.
+                this._lightData.NumOfLights--;
+                this._lightData.Lights[this._lightData.NumOfLights] = default;
+                return true;
             }
         }
         
@@ -193,12 +176,9 @@ public class FixedLightHandler : Disposable, ILightHandler<FixedLightData> {
     /// <summary>
     /// Removes all lights from this handler.
     /// </summary>
-    public unsafe void ClearLights() {
+    public void ClearLights() {
         this._lightData.NumOfLights = 0;
-        
-        fixed (byte* lightsPtr = this._lightData.Lights) {
-            Unsafe.InitBlock(lightsPtr, 0, FixedLightData.MaxLightCount * Light.SizeInBytes);
-        }
+        this._lightData.Lights.AsSpan().Fill(default);
     }
     
     protected override void Dispose(bool disposing) {

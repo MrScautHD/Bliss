@@ -1,7 +1,7 @@
 using System.Numerics;
 using System.Runtime.InteropServices;
 
-namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lights.Data;
+namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data;
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
 public struct DynamicLightData {

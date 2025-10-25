@@ -1,7 +1,7 @@
 using System.Numerics;
-using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lights.Data;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data;
 
-namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lights.Handlers;
+namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers;
 
 public class DynamicLightHandler : Disposable, ILightHandler<DynamicLightData> {
     

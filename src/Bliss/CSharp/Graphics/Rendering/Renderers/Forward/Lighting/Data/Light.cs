@@ -1,15 +1,10 @@
 using System.Numerics;
 using System.Runtime.InteropServices;
 
-namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lights.Data;
+namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data;
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
 public struct Light {
-    
-    /// <summary>
-    /// The total size of the <see cref="Light"/> struct in bytes. 
-    /// </summary>
-    public const int SizeInBytes = 64;
     
     /// <summary>
     /// Internal integer representation of the <see cref="LightType"/>.

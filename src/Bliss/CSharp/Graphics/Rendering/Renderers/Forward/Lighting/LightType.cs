@@ -1,4 +1,4 @@
-namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lights;
+namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting;
 
 public enum LightType : int {
     

@@ -8,6 +8,7 @@
         <OutputType>Exe</OutputType>
         <LangVersion>13</LangVersion>
         <ApplicationIcon>..\Bliss\content\bliss\images\icon.ico</ApplicationIcon>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
     
     <!-- References -->

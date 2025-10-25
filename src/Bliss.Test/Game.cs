@@ -2,17 +2,20 @@ using System.Numerics;
 using System.Runtime.InteropServices;
 using Bliss.CSharp;
 using Bliss.CSharp.Camera.Dim3;
+using Bliss.CSharp.Effects;
 using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Geometry.Animation;
+using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Rendering;
 using Bliss.CSharp.Graphics.Rendering.Renderers;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Forward;
-using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lights;
-using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lights.Data;
-using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lights.Handlers;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers;
+using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Contexts;
@@ -47,8 +50,10 @@ public class Game : Disposable {
     
     public FullScreenRenderer FullScreenRenderer { get; private set; }
     public RenderTexture2D FullScreenTexture { get; private set; }
-
-    private ForwardRenderer<NoLightData> _forwardRenderer;
+    
+    private FixedLightHandler _fixedLightHandler;
+    private Effect _lightingModelEffect;
+    private ForwardRenderer<FixedLightData> _forwardRenderer;
     private List<Renderable> _renderables;
     
     private ImmediateRenderer _immediateRenderer;
@@ -176,7 +181,19 @@ public class Game : Disposable {
     protected virtual void Init() {
         this.FullScreenRenderer = new FullScreenRenderer(this.GraphicsDevice);
         this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), this.Settings.SampleCount);
-        this._forwardRenderer = new ForwardRenderer<NoLightData>(this.GraphicsDevice);
+        
+        this._fixedLightHandler = new FixedLightHandler();
+        this._fixedLightHandler.AddLight(new LightDefinition(LightType.Point, new Vector3(3, 3, 0)), out uint id);
+        
+        // Default model effect.
+        this._lightingModelEffect = new Effect(this.GraphicsDevice, Vertex3D.VertexLayout, "content/shaders/lighting_model.vert", "content/shaders/lighting_model.frag");
+        this._lightingModelEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        this._lightingModelEffect.AddBufferLayout("BoneBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        this._lightingModelEffect.AddBufferLayout("MaterialBuffer", 2, SimpleBufferType.Uniform, ShaderStages.Fragment);
+        this._lightingModelEffect.AddBufferLayout("LightBuffer", 3, SimpleBufferType.Uniform, ShaderStages.Fragment);
+        this._lightingModelEffect.AddTextureLayout(MaterialMapType.Albedo.GetName(), 4);
+            
+        this._forwardRenderer = new ForwardRenderer<FixedLightData>(this.GraphicsDevice, this._fixedLightHandler);
         this._renderables = new List<Renderable>();
         
         this._immediateRenderer = new ImmediateRenderer(this.GraphicsDevice);
@@ -194,6 +211,7 @@ public class Game : Disposable {
         this._playerBox = this._playerModel.GenBoundingBox();
         
         foreach (Mesh mesh in this._playerModel.Meshes) {
+            mesh.Material.Effect = this._lightingModelEffect;
             mesh.Material.RenderMode = RenderMode.Cutout;
             mesh.GenTangents();
         }
