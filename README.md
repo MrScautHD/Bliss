@@ -41,7 +41,7 @@ dotnet add package Bliss --version [VERSION]
 - [`StbImageSharp`](https://www.nuget.org/packages/StbImageSharp/)
 - [`StbImageWriteSharp`](https://www.nuget.org/packages/StbImageWriteSharp/)
 - [`AssimpNetter`](https://www.nuget.org/packages/AssimpNetter)
-- [`FontStashSharp`](https://www.nuget.org/packages/FontStashSharp.Base)
+- [`FontStashSharp.PlatformAgnostic`](https://www.nuget.org/packages/FontStashSharp.PlatformAgnostic)
 - [`MiniAudioEx`](https://www.nuget.org/packages/JAJ.Packages.MiniAudioEx)
 
 # 💻 Platforms
