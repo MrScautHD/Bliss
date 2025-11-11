@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Geometry.Animation.Builders
+  commentId: N:Bliss.CSharp.Geometry.Animation.Builders
+  id: Bliss.CSharp.Geometry.Animation.Builders
+  children:
+  - Bliss.CSharp.Geometry.Animation.Builders.ModelAnimationBuilder
+  - Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Geometry.Animation.Builders
+  nameWithType: Bliss.CSharp.Geometry.Animation.Builders
+  fullName: Bliss.CSharp.Geometry.Animation.Builders
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Geometry.Animation.Builders.ModelAnimationBuilder
+  commentId: T:Bliss.CSharp.Geometry.Animation.Builders.ModelAnimationBuilder
+  href: Bliss.CSharp.Geometry.Animation.Builders.ModelAnimationBuilder.html
+  name: ModelAnimationBuilder
+  nameWithType: ModelAnimationBuilder
+  fullName: Bliss.CSharp.Geometry.Animation.Builders.ModelAnimationBuilder
+- uid: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder
+  commentId: T:Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder
+  href: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.html
+  name: SkeletonBuilder
+  nameWithType: SkeletonBuilder
+  fullName: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder

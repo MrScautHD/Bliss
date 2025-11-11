@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Media
+  commentId: N:Bliss.CSharp.Media
+  id: Bliss.CSharp.Media
+  children:
+  - Bliss.CSharp.Media.VideoClip
+  - Bliss.CSharp.Media.VideoPlayer
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Media
+  nameWithType: Bliss.CSharp.Media
+  fullName: Bliss.CSharp.Media
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Media.VideoClip
+  commentId: T:Bliss.CSharp.Media.VideoClip
+  href: Bliss.CSharp.Media.VideoClip.html
+  name: VideoClip
+  nameWithType: VideoClip
+  fullName: Bliss.CSharp.Media.VideoClip
+- uid: Bliss.CSharp.Media.VideoPlayer
+  commentId: T:Bliss.CSharp.Media.VideoPlayer
+  href: Bliss.CSharp.Media.VideoPlayer.html
+  name: VideoPlayer
+  nameWithType: VideoPlayer
+  fullName: Bliss.CSharp.Media.VideoPlayer

@@ -1,0 +1,56 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers
+  id: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers
+  children:
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.DynamicLightHandler
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.FixedLightHandler
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler`1
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.DynamicLightHandler
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.DynamicLightHandler
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.DynamicLightHandler.html
+  name: DynamicLightHandler
+  nameWithType: DynamicLightHandler
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.DynamicLightHandler
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.FixedLightHandler
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.FixedLightHandler
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.FixedLightHandler.html
+  name: FixedLightHandler
+  nameWithType: FixedLightHandler
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.FixedLightHandler
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler`1
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler`1
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler-1.html
+  name: ILightHandler<T>
+  nameWithType: ILightHandler<T>
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler<T>
+  nameWithType.vb: ILightHandler(Of T)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler(Of T)
+  name.vb: ILightHandler(Of T)
+  spec.csharp:
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler`1
+    name: ILightHandler
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler`1
+    name: ILightHandler
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

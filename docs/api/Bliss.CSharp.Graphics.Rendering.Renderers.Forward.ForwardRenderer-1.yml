@@ -1,0 +1,963 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
+  id: ForwardRenderer`1
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  children:
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler{`0})
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.Dispose(System.Boolean)
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.Draw(Veldrid.CommandList,Veldrid.OutputDescription)
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.DrawRenderable(Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable)
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.GraphicsDevice
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.LightHandler
+  langs:
+  - csharp
+  - vb
+  name: ForwardRenderer<T>
+  nameWithType: ForwardRenderer<T>
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer<T>
+  type: Class
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/ForwardRenderer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ForwardRenderer
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/ForwardRenderer.cs
+    startLine: 14
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  syntax:
+    content: 'public class ForwardRenderer<T> : Disposable, IRenderer, IDisposable where T : unmanaged'
+    typeParameters:
+    - id: T
+    content.vb: Public Class ForwardRenderer(Of T As Structure) Inherits Disposable Implements IRenderer, IDisposable
+  inheritance:
+  - System.Object
+  - Bliss.CSharp.Disposable
+  implements:
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer
+  - System.IDisposable
+  inheritedMembers:
+  - Bliss.CSharp.Disposable.HasDisposed
+  - Bliss.CSharp.Disposable.Dispose
+  - Bliss.CSharp.Disposable.ThrowIfDisposed
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: ForwardRenderer(Of T)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer(Of T)
+  name.vb: ForwardRenderer(Of T)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.GraphicsDevice
+  commentId: P:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.GraphicsDevice
+  id: GraphicsDevice
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
+  langs:
+  - csharp
+  - vb
+  name: GraphicsDevice
+  nameWithType: ForwardRenderer<T>.GraphicsDevice
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer<T>.GraphicsDevice
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/ForwardRenderer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GraphicsDevice
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/ForwardRenderer.cs
+    startLine: 19
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  summary: The graphics device used for rendering.
+  example: []
+  syntax:
+    content: public GraphicsDevice GraphicsDevice { get; }
+    parameters: []
+    return:
+      type: Veldrid.GraphicsDevice
+    content.vb: Public Property GraphicsDevice As GraphicsDevice
+  overload: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.GraphicsDevice*
+  nameWithType.vb: ForwardRenderer(Of T).GraphicsDevice
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer(Of T).GraphicsDevice
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.LightHandler
+  commentId: P:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.LightHandler
+  id: LightHandler
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
+  langs:
+  - csharp
+  - vb
+  name: LightHandler
+  nameWithType: ForwardRenderer<T>.LightHandler
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer<T>.LightHandler
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/ForwardRenderer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LightHandler
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/ForwardRenderer.cs
+    startLine: 24
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  summary: The light handler responsible for managing and updating light data for rendering operations.
+  example: []
+  syntax:
+    content: public ILightHandler<T>? LightHandler { get; }
+    parameters: []
+    return:
+      type: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler{{T}}
+    content.vb: Public Property LightHandler As ILightHandler(Of T)
+  overload: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.LightHandler*
+  nameWithType.vb: ForwardRenderer(Of T).LightHandler
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer(Of T).LightHandler
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler{`0})
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler{`0})
+  id: '#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler{`0})'
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
+  langs:
+  - csharp
+  - vb
+  name: ForwardRenderer(GraphicsDevice, ILightHandler<T>?)
+  nameWithType: ForwardRenderer<T>.ForwardRenderer(GraphicsDevice, ILightHandler<T>?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer<T>.ForwardRenderer(Veldrid.GraphicsDevice, Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler<T>?)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/ForwardRenderer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/ForwardRenderer.cs
+    startLine: 64
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  syntax:
+    content: public ForwardRenderer(GraphicsDevice graphicsDevice, ILightHandler<T>? lightHandler = null)
+    parameters:
+    - id: graphicsDevice
+      type: Veldrid.GraphicsDevice
+    - id: lightHandler
+      type: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler{{T}}
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, lightHandler As ILightHandler(Of T) = Nothing)
+  overload: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.#ctor*
+  nameWithType.vb: ForwardRenderer(Of T).New(GraphicsDevice, ILightHandler(Of T))
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer(Of T).New(Veldrid.GraphicsDevice, Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler(Of T))
+  name.vb: New(GraphicsDevice, ILightHandler(Of T))
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.DrawRenderable(Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable)
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.DrawRenderable(Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable)
+  id: DrawRenderable(Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable)
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
+  langs:
+  - csharp
+  - vb
+  name: DrawRenderable(Renderable)
+  nameWithType: ForwardRenderer<T>.DrawRenderable(Renderable)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer<T>.DrawRenderable(Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/ForwardRenderer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DrawRenderable
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/ForwardRenderer.cs
+    startLine: 102
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  summary: Queues a renderable for drawing.
+  example: []
+  syntax:
+    content: public void DrawRenderable(Renderable renderable)
+    parameters:
+    - id: renderable
+      type: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+      description: The renderable to draw.
+    content.vb: Public Sub DrawRenderable(renderable As Renderable)
+  overload: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.DrawRenderable*
+  implements:
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.DrawRenderable(Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable)
+  nameWithType.vb: ForwardRenderer(Of T).DrawRenderable(Renderable)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer(Of T).DrawRenderable(Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.Draw(Veldrid.CommandList,Veldrid.OutputDescription)
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.Draw(Veldrid.CommandList,Veldrid.OutputDescription)
+  id: Draw(Veldrid.CommandList,Veldrid.OutputDescription)
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
+  langs:
+  - csharp
+  - vb
+  name: Draw(CommandList, OutputDescription)
+  nameWithType: ForwardRenderer<T>.Draw(CommandList, OutputDescription)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer<T>.Draw(Veldrid.CommandList, Veldrid.OutputDescription)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/ForwardRenderer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Draw
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/ForwardRenderer.cs
+    startLine: 116
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  summary: Executes the rendering process for drawing opaque and translucent renderable objects.
+  example: []
+  syntax:
+    content: public void Draw(CommandList commandList, OutputDescription output)
+    parameters:
+    - id: commandList
+      type: Veldrid.CommandList
+      description: The command list used to execute rendering commands.
+    - id: output
+      type: Veldrid.OutputDescription
+      description: The output description specifying the rendering target configuration.
+    content.vb: Public Sub Draw(commandList As CommandList, output As OutputDescription)
+  overload: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.Draw*
+  implements:
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.Draw(Veldrid.CommandList,Veldrid.OutputDescription)
+  nameWithType.vb: ForwardRenderer(Of T).Draw(CommandList, OutputDescription)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer(Of T).Draw(Veldrid.CommandList, Veldrid.OutputDescription)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.Dispose(System.Boolean)
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
+  langs:
+  - csharp
+  - vb
+  name: Dispose(bool)
+  nameWithType: ForwardRenderer<T>.Dispose(bool)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer<T>.Dispose(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/ForwardRenderer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Dispose
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/ForwardRenderer.cs
+    startLine: 369
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  summary: Disposes of the object and releases associated resources.
+  example: []
+  syntax:
+    content: protected override void Dispose(bool disposing)
+    parameters:
+    - id: disposing
+      type: System.Boolean
+      description: True if called from user code; false if called from a finalizer.
+    content.vb: Protected Overrides Sub Dispose(disposing As Boolean)
+  overridden: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  overload: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.Dispose*
+  nameWithType.vb: ForwardRenderer(Of T).Dispose(Boolean)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer(Of T).Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+references:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+    name: Forward
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+    name: Forward
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bliss.CSharp.Disposable
+  commentId: T:Bliss.CSharp.Disposable
+  parent: Bliss.CSharp
+  href: Bliss.CSharp.Disposable.html
+  name: Disposable
+  nameWithType: Disposable
+  fullName: Bliss.CSharp.Disposable
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.html
+  name: IRenderer
+  nameWithType: IRenderer
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Bliss.CSharp.Disposable.HasDisposed
+  commentId: P:Bliss.CSharp.Disposable.HasDisposed
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_HasDisposed
+  name: HasDisposed
+  nameWithType: Disposable.HasDisposed
+  fullName: Bliss.CSharp.Disposable.HasDisposed
+- uid: Bliss.CSharp.Disposable.Dispose
+  commentId: M:Bliss.CSharp.Disposable.Dispose
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  name: Dispose()
+  nameWithType: Disposable.Dispose()
+  fullName: Bliss.CSharp.Disposable.Dispose()
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.Dispose
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.Dispose
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+  commentId: M:Bliss.CSharp.Disposable.ThrowIfDisposed
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  name: ThrowIfDisposed()
+  nameWithType: Disposable.ThrowIfDisposed()
+  fullName: Bliss.CSharp.Disposable.ThrowIfDisposed()
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+    name: ThrowIfDisposed
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+    name: ThrowIfDisposed
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp
+  commentId: N:Bliss.CSharp
+  href: Bliss.html
+  name: Bliss.CSharp
+  nameWithType: Bliss.CSharp
+  fullName: Bliss.CSharp
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.GraphicsDevice*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.GraphicsDevice
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer-1.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_ForwardRenderer_1_GraphicsDevice
+  name: GraphicsDevice
+  nameWithType: ForwardRenderer<T>.GraphicsDevice
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer<T>.GraphicsDevice
+  nameWithType.vb: ForwardRenderer(Of T).GraphicsDevice
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer(Of T).GraphicsDevice
+- uid: Veldrid.GraphicsDevice
+  commentId: T:Veldrid.GraphicsDevice
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs
+  name: GraphicsDevice
+  nameWithType: GraphicsDevice
+  fullName: Veldrid.GraphicsDevice
+- uid: Veldrid
+  commentId: N:Veldrid
+  isExternal: true
+  name: Veldrid
+  nameWithType: Veldrid
+  fullName: Veldrid
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.LightHandler*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.LightHandler
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer-1.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_ForwardRenderer_1_LightHandler
+  name: LightHandler
+  nameWithType: ForwardRenderer<T>.LightHandler
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer<T>.LightHandler
+  nameWithType.vb: ForwardRenderer(Of T).LightHandler
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer(Of T).LightHandler
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler{{T}}
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler{`0}
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers
+  definition: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler`1
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler-1.html
+  name: ILightHandler<T>
+  nameWithType: ILightHandler<T>
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler<T>
+  nameWithType.vb: ILightHandler(Of T)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler(Of T)
+  name.vb: ILightHandler(Of T)
+  spec.csharp:
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler`1
+    name: ILightHandler
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler`1
+    name: ILightHandler
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler`1
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler`1
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler-1.html
+  name: ILightHandler<T>
+  nameWithType: ILightHandler<T>
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler<T>
+  nameWithType.vb: ILightHandler(Of T)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler(Of T)
+  name.vb: ILightHandler(Of T)
+  spec.csharp:
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler`1
+    name: ILightHandler
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler`1
+    name: ILightHandler
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+    name: Forward
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+    name: Lighting
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers
+    name: Handlers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+    name: Forward
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+    name: Lighting
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers
+    name: Handlers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.html
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.#ctor*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.#ctor
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer-1.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_ForwardRenderer_1__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Lighting_Handlers_ILightHandler__0__
+  name: ForwardRenderer
+  nameWithType: ForwardRenderer<T>.ForwardRenderer
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer<T>.ForwardRenderer
+  nameWithType.vb: ForwardRenderer(Of T).New
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer(Of T).New
+  name.vb: New
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.DrawRenderable*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.DrawRenderable
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer-1.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_ForwardRenderer_1_DrawRenderable_Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_
+  name: DrawRenderable
+  nameWithType: ForwardRenderer<T>.DrawRenderable
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer<T>.DrawRenderable
+  nameWithType.vb: ForwardRenderer(Of T).DrawRenderable
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer(Of T).DrawRenderable
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.DrawRenderable(Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable)
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.DrawRenderable(Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable)
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_IRenderer_DrawRenderable_Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_
+  name: DrawRenderable(Renderable)
+  nameWithType: IRenderer.DrawRenderable(Renderable)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.DrawRenderable(Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable)
+  spec.csharp:
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.DrawRenderable(Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable)
+    name: DrawRenderable
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_IRenderer_DrawRenderable_Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_
+  - name: (
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+    name: Renderable
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.DrawRenderable(Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable)
+    name: DrawRenderable
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_IRenderer_DrawRenderable_Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_
+  - name: (
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+    name: Renderable
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html
+  - name: )
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html
+  name: Renderable
+  nameWithType: Renderable
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.Draw*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.Draw
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer-1.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_ForwardRenderer_1_Draw_Veldrid_CommandList_Veldrid_OutputDescription_
+  name: Draw
+  nameWithType: ForwardRenderer<T>.Draw
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer<T>.Draw
+  nameWithType.vb: ForwardRenderer(Of T).Draw
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer(Of T).Draw
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.Draw(Veldrid.CommandList,Veldrid.OutputDescription)
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.Draw(Veldrid.CommandList,Veldrid.OutputDescription)
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer
+  isExternal: true
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_IRenderer_Draw_Veldrid_CommandList_Veldrid_OutputDescription_
+  name: Draw(CommandList, OutputDescription)
+  nameWithType: IRenderer.Draw(CommandList, OutputDescription)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.Draw(Veldrid.CommandList, Veldrid.OutputDescription)
+  spec.csharp:
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.Draw(Veldrid.CommandList,Veldrid.OutputDescription)
+    name: Draw
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_IRenderer_Draw_Veldrid_CommandList_Veldrid_OutputDescription_
+  - name: (
+  - uid: Veldrid.CommandList
+    name: CommandList
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/CommandList.cs
+  - name: ','
+  - name: " "
+  - uid: Veldrid.OutputDescription
+    name: OutputDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/OutputDescription.cs
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.Draw(Veldrid.CommandList,Veldrid.OutputDescription)
+    name: Draw
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_IRenderer_Draw_Veldrid_CommandList_Veldrid_OutputDescription_
+  - name: (
+  - uid: Veldrid.CommandList
+    name: CommandList
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/CommandList.cs
+  - name: ','
+  - name: " "
+  - uid: Veldrid.OutputDescription
+    name: OutputDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/OutputDescription.cs
+  - name: )
+- uid: Veldrid.CommandList
+  commentId: T:Veldrid.CommandList
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/CommandList.cs
+  name: CommandList
+  nameWithType: CommandList
+  fullName: Veldrid.CommandList
+- uid: Veldrid.OutputDescription
+  commentId: T:Veldrid.OutputDescription
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/OutputDescription.cs
+  name: OutputDescription
+  nameWithType: OutputDescription
+  fullName: Veldrid.OutputDescription
+- uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  commentId: M:Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  parent: Bliss.CSharp.Disposable
+  isExternal: true
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  name: Dispose(bool)
+  nameWithType: Disposable.Dispose(bool)
+  fullName: Bliss.CSharp.Disposable.Dispose(bool)
+  nameWithType.vb: Disposable.Dispose(Boolean)
+  fullName.vb: Bliss.CSharp.Disposable.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.Dispose*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1.Dispose
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer-1.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_ForwardRenderer_1_Dispose_System_Boolean_
+  name: Dispose
+  nameWithType: ForwardRenderer<T>.Dispose
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer<T>.Dispose
+  nameWithType.vb: ForwardRenderer(Of T).Dispose
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer(Of T).Dispose
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

@@ -364,7 +364,7 @@ references:
   commentId: T:Veldrid.GraphicsDevice
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs
   name: GraphicsDevice
   nameWithType: GraphicsDevice
   fullName: Veldrid.GraphicsDevice
@@ -379,7 +379,7 @@ references:
   commentId: T:Veldrid.Sampler
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/Sampler.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Sampler.cs
   name: Sampler
   nameWithType: Sampler
   fullName: Veldrid.Sampler

@@ -1,0 +1,161 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Rendering.RenderMode
+  commentId: T:Bliss.CSharp.Graphics.Rendering.RenderMode
+  id: RenderMode
+  parent: Bliss.CSharp.Graphics.Rendering
+  children:
+  - Bliss.CSharp.Graphics.Rendering.RenderMode.Cutout
+  - Bliss.CSharp.Graphics.Rendering.RenderMode.Solid
+  - Bliss.CSharp.Graphics.Rendering.RenderMode.Translucent
+  langs:
+  - csharp
+  - vb
+  name: RenderMode
+  nameWithType: RenderMode
+  fullName: Bliss.CSharp.Graphics.Rendering.RenderMode
+  type: Enum
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/RenderMode.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: RenderMode
+    path: ../src/Bliss/CSharp/Graphics/Rendering/RenderMode.cs
+    startLine: 2
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering
+  syntax:
+    content: public enum RenderMode
+    content.vb: Public Enum RenderMode
+- uid: Bliss.CSharp.Graphics.Rendering.RenderMode.Solid
+  commentId: F:Bliss.CSharp.Graphics.Rendering.RenderMode.Solid
+  id: Solid
+  parent: Bliss.CSharp.Graphics.Rendering.RenderMode
+  langs:
+  - csharp
+  - vb
+  name: Solid
+  nameWithType: RenderMode.Solid
+  fullName: Bliss.CSharp.Graphics.Rendering.RenderMode.Solid
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/RenderMode.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Solid
+    path: ../src/Bliss/CSharp/Graphics/Rendering/RenderMode.cs
+    startLine: 7
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering
+  summary: Opaque rendering (no transparency).
+  example: []
+  syntax:
+    content: Solid = 0
+    return:
+      type: Bliss.CSharp.Graphics.Rendering.RenderMode
+- uid: Bliss.CSharp.Graphics.Rendering.RenderMode.Cutout
+  commentId: F:Bliss.CSharp.Graphics.Rendering.RenderMode.Cutout
+  id: Cutout
+  parent: Bliss.CSharp.Graphics.Rendering.RenderMode
+  langs:
+  - csharp
+  - vb
+  name: Cutout
+  nameWithType: RenderMode.Cutout
+  fullName: Bliss.CSharp.Graphics.Rendering.RenderMode.Cutout
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/RenderMode.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Cutout
+    path: ../src/Bliss/CSharp/Graphics/Rendering/RenderMode.cs
+    startLine: 12
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering
+  summary: Alpha cutout rendering (pixels fully transparent are discarded).
+  example: []
+  syntax:
+    content: Cutout = 1
+    return:
+      type: Bliss.CSharp.Graphics.Rendering.RenderMode
+- uid: Bliss.CSharp.Graphics.Rendering.RenderMode.Translucent
+  commentId: F:Bliss.CSharp.Graphics.Rendering.RenderMode.Translucent
+  id: Translucent
+  parent: Bliss.CSharp.Graphics.Rendering.RenderMode
+  langs:
+  - csharp
+  - vb
+  name: Translucent
+  nameWithType: RenderMode.Translucent
+  fullName: Bliss.CSharp.Graphics.Rendering.RenderMode.Translucent
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/RenderMode.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Translucent
+    path: ../src/Bliss/CSharp/Graphics/Rendering/RenderMode.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering
+  summary: Transparent rendering (blends with background).
+  example: []
+  syntax:
+    content: Translucent = 2
+    return:
+      type: Bliss.CSharp.Graphics.Rendering.RenderMode
+references:
+- uid: Bliss.CSharp.Graphics.Rendering
+  commentId: N:Bliss.CSharp.Graphics.Rendering
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Rendering
+  nameWithType: Bliss.CSharp.Graphics.Rendering
+  fullName: Bliss.CSharp.Graphics.Rendering
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+- uid: Bliss.CSharp.Graphics.Rendering.RenderMode
+  commentId: T:Bliss.CSharp.Graphics.Rendering.RenderMode
+  parent: Bliss.CSharp.Graphics.Rendering
+  href: Bliss.CSharp.Graphics.Rendering.RenderMode.html
+  name: RenderMode
+  nameWithType: RenderMode
+  fullName: Bliss.CSharp.Graphics.Rendering.RenderMode

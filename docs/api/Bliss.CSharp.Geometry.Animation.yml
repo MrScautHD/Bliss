@@ -1,0 +1,84 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Geometry.Animation
+  commentId: N:Bliss.CSharp.Geometry.Animation
+  id: Bliss.CSharp.Geometry.Animation
+  children:
+  - Bliss.CSharp.Geometry.Animation.BoneInfo
+  - Bliss.CSharp.Geometry.Animation.ModelAnimation
+  - Bliss.CSharp.Geometry.Animation.NodeAnimChannel
+  - Bliss.CSharp.Geometry.Animation.Skeleton
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Geometry.Animation
+  nameWithType: Bliss.CSharp.Geometry.Animation
+  fullName: Bliss.CSharp.Geometry.Animation
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Geometry.Animation.BoneInfo
+  commentId: T:Bliss.CSharp.Geometry.Animation.BoneInfo
+  href: Bliss.CSharp.Geometry.Animation.BoneInfo.html
+  name: BoneInfo
+  nameWithType: BoneInfo
+  fullName: Bliss.CSharp.Geometry.Animation.BoneInfo
+- uid: Bliss.CSharp.Geometry.Animation.ModelAnimation
+  commentId: T:Bliss.CSharp.Geometry.Animation.ModelAnimation
+  parent: Bliss.CSharp.Geometry.Animation
+  href: Bliss.CSharp.Geometry.Animation.ModelAnimation.html
+  name: ModelAnimation
+  nameWithType: ModelAnimation
+  fullName: Bliss.CSharp.Geometry.Animation.ModelAnimation
+- uid: Bliss.CSharp.Geometry.Animation.NodeAnimChannel
+  commentId: T:Bliss.CSharp.Geometry.Animation.NodeAnimChannel
+  href: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.html
+  name: NodeAnimChannel
+  nameWithType: NodeAnimChannel
+  fullName: Bliss.CSharp.Geometry.Animation.NodeAnimChannel
+- uid: Bliss.CSharp.Geometry.Animation.Skeleton
+  commentId: T:Bliss.CSharp.Geometry.Animation.Skeleton
+  parent: Bliss.CSharp.Geometry.Animation
+  href: Bliss.CSharp.Geometry.Animation.Skeleton.html
+  name: Skeleton
+  nameWithType: Skeleton
+  fullName: Bliss.CSharp.Geometry.Animation.Skeleton
+- uid: Bliss.CSharp.Geometry.Animation
+  commentId: N:Bliss.CSharp.Geometry.Animation
+  href: Bliss.html
+  name: Bliss.CSharp.Geometry.Animation
+  nameWithType: Bliss.CSharp.Geometry.Animation
+  fullName: Bliss.CSharp.Geometry.Animation
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation
+    name: Animation
+    href: Bliss.CSharp.Geometry.Animation.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation
+    name: Animation
+    href: Bliss.CSharp.Geometry.Animation.html

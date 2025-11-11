@@ -4,6 +4,7 @@ items:
   commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers
   id: Bliss.CSharp.Graphics.Rendering.Renderers
   children:
+  - Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer
   - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer
   langs:
   - csharp
@@ -15,6 +16,12 @@ items:
   assemblies:
   - Bliss
 references:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer.html
+  name: FullScreenRenderer
+  nameWithType: FullScreenRenderer
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer
   commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer
   href: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html

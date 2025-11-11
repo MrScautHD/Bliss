@@ -1,0 +1,711 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+  id: Renderable
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  children:
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.#ctor(Bliss.CSharp.Geometry.Mesh,Bliss.CSharp.Transformations.Transform,Bliss.CSharp.Materials.Material)
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.#ctor(Bliss.CSharp.Geometry.Mesh,Bliss.CSharp.Transformations.Transform,System.Boolean)
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.BoneMatrices
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Material
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Mesh
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Transform
+  langs:
+  - csharp
+  - vb
+  name: Renderable
+  nameWithType: Renderable
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+  type: Class
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Renderable
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs
+    startLine: 7
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  syntax:
+    content: public class Renderable
+    content.vb: Public Class Renderable
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Mesh
+  commentId: P:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Mesh
+  id: Mesh
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+  langs:
+  - csharp
+  - vb
+  name: Mesh
+  nameWithType: Renderable.Mesh
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Mesh
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Mesh
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs
+    startLine: 12
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  summary: The mesh associated with this renderable object.
+  example: []
+  syntax:
+    content: public Mesh Mesh { get; }
+    parameters: []
+    return:
+      type: Bliss.CSharp.Geometry.Mesh
+    content.vb: Public Property Mesh As Mesh
+  overload: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Mesh*
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Transform
+  commentId: F:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Transform
+  id: Transform
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+  langs:
+  - csharp
+  - vb
+  name: Transform
+  nameWithType: Renderable.Transform
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Transform
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Transform
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  summary: The transformation (position, rotation, scale) applied to this renderable.
+  example: []
+  syntax:
+    content: public Transform Transform
+    return:
+      type: Bliss.CSharp.Transformations.Transform
+    content.vb: Public Transform As Transform
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Material
+  commentId: F:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Material
+  id: Material
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+  langs:
+  - csharp
+  - vb
+  name: Material
+  nameWithType: Renderable.Material
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Material
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Material
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs
+    startLine: 22
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  summary: The material used for rendering.
+  example: []
+  syntax:
+    content: public Material Material
+    return:
+      type: Bliss.CSharp.Materials.Material
+    content.vb: Public Material As Material
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.BoneMatrices
+  commentId: P:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.BoneMatrices
+  id: BoneMatrices
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+  langs:
+  - csharp
+  - vb
+  name: BoneMatrices
+  nameWithType: Renderable.BoneMatrices
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.BoneMatrices
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: BoneMatrices
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs
+    startLine: 27
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  summary: Optional array of bone matrices for skinned meshes.
+  example: []
+  syntax:
+    content: public Matrix4x4[]? BoneMatrices { get; }
+    parameters: []
+    return:
+      type: System.Numerics.Matrix4x4[]
+    content.vb: Public Property BoneMatrices As Matrix4x4()
+  overload: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.BoneMatrices*
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.#ctor(Bliss.CSharp.Geometry.Mesh,Bliss.CSharp.Transformations.Transform,System.Boolean)
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.#ctor(Bliss.CSharp.Geometry.Mesh,Bliss.CSharp.Transformations.Transform,System.Boolean)
+  id: '#ctor(Bliss.CSharp.Geometry.Mesh,Bliss.CSharp.Transformations.Transform,System.Boolean)'
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+  langs:
+  - csharp
+  - vb
+  name: Renderable(Mesh, Transform, bool)
+  nameWithType: Renderable.Renderable(Mesh, Transform, bool)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Renderable(Bliss.CSharp.Geometry.Mesh, Bliss.CSharp.Transformations.Transform, bool)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs
+    startLine: 35
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  summary: Initializes a new <xref href="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable" data-throw-if-not-resolved="false"></xref> using the mesh's material or a cloned material.
+  example: []
+  syntax:
+    content: public Renderable(Mesh mesh, Transform transform, bool copyMeshMaterial = false)
+    parameters:
+    - id: mesh
+      type: Bliss.CSharp.Geometry.Mesh
+      description: The mesh to render.
+    - id: transform
+      type: Bliss.CSharp.Transformations.Transform
+      description: The transform to apply.
+    - id: copyMeshMaterial
+      type: System.Boolean
+      description: If true, creates a cloned copy of the mesh's material to allow independent modification. If false, uses the mesh's existing material.
+    content.vb: Public Sub New(mesh As Mesh, transform As Transform, copyMeshMaterial As Boolean = False)
+  overload: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.#ctor*
+  nameWithType.vb: Renderable.New(Mesh, Transform, Boolean)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.New(Bliss.CSharp.Geometry.Mesh, Bliss.CSharp.Transformations.Transform, Boolean)
+  name.vb: New(Mesh, Transform, Boolean)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.#ctor(Bliss.CSharp.Geometry.Mesh,Bliss.CSharp.Transformations.Transform,Bliss.CSharp.Materials.Material)
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.#ctor(Bliss.CSharp.Geometry.Mesh,Bliss.CSharp.Transformations.Transform,Bliss.CSharp.Materials.Material)
+  id: '#ctor(Bliss.CSharp.Geometry.Mesh,Bliss.CSharp.Transformations.Transform,Bliss.CSharp.Materials.Material)'
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+  langs:
+  - csharp
+  - vb
+  name: Renderable(Mesh, Transform, Material)
+  nameWithType: Renderable.Renderable(Mesh, Transform, Material)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Renderable(Bliss.CSharp.Geometry.Mesh, Bliss.CSharp.Transformations.Transform, Bliss.CSharp.Materials.Material)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs
+    startLine: 43
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  summary: Initializes a new <xref href="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable" data-throw-if-not-resolved="false"></xref> with a specific material.
+  example: []
+  syntax:
+    content: public Renderable(Mesh mesh, Transform transform, Material material)
+    parameters:
+    - id: mesh
+      type: Bliss.CSharp.Geometry.Mesh
+      description: The mesh to render.
+    - id: transform
+      type: Bliss.CSharp.Transformations.Transform
+      description: The transform to apply.
+    - id: material
+      type: Bliss.CSharp.Materials.Material
+      description: The material to use for this renderable.
+    content.vb: Public Sub New(mesh As Mesh, transform As Transform, material As Material)
+  overload: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.#ctor*
+  nameWithType.vb: Renderable.New(Mesh, Transform, Material)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.New(Bliss.CSharp.Geometry.Mesh, Bliss.CSharp.Transformations.Transform, Bliss.CSharp.Materials.Material)
+  name.vb: New(Mesh, Transform, Material)
+references:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+    name: Forward
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+    name: Forward
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Mesh*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Mesh
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_Mesh
+  name: Mesh
+  nameWithType: Renderable.Mesh
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Mesh
+- uid: Bliss.CSharp.Geometry.Mesh
+  commentId: T:Bliss.CSharp.Geometry.Mesh
+  parent: Bliss.CSharp.Geometry
+  href: Bliss.CSharp.Geometry.Mesh.html
+  name: Mesh
+  nameWithType: Mesh
+  fullName: Bliss.CSharp.Geometry.Mesh
+- uid: Bliss.CSharp.Geometry
+  commentId: N:Bliss.CSharp.Geometry
+  href: Bliss.html
+  name: Bliss.CSharp.Geometry
+  nameWithType: Bliss.CSharp.Geometry
+  fullName: Bliss.CSharp.Geometry
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+- uid: Bliss.CSharp.Transformations.Transform
+  commentId: T:Bliss.CSharp.Transformations.Transform
+  parent: Bliss.CSharp.Transformations
+  href: Bliss.CSharp.Transformations.Transform.html
+  name: Transform
+  nameWithType: Transform
+  fullName: Bliss.CSharp.Transformations.Transform
+- uid: Bliss.CSharp.Transformations
+  commentId: N:Bliss.CSharp.Transformations
+  href: Bliss.html
+  name: Bliss.CSharp.Transformations
+  nameWithType: Bliss.CSharp.Transformations
+  fullName: Bliss.CSharp.Transformations
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Transformations
+    name: Transformations
+    href: Bliss.CSharp.Transformations.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Transformations
+    name: Transformations
+    href: Bliss.CSharp.Transformations.html
+- uid: Bliss.CSharp.Materials.Material
+  commentId: T:Bliss.CSharp.Materials.Material
+  parent: Bliss.CSharp.Materials
+  href: Bliss.CSharp.Materials.Material.html
+  name: Material
+  nameWithType: Material
+  fullName: Bliss.CSharp.Materials.Material
+- uid: Bliss.CSharp.Materials
+  commentId: N:Bliss.CSharp.Materials
+  href: Bliss.html
+  name: Bliss.CSharp.Materials
+  nameWithType: Bliss.CSharp.Materials
+  fullName: Bliss.CSharp.Materials
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Materials
+    name: Materials
+    href: Bliss.CSharp.Materials.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Materials
+    name: Materials
+    href: Bliss.CSharp.Materials.html
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.BoneMatrices*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.BoneMatrices
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_BoneMatrices
+  name: BoneMatrices
+  nameWithType: Renderable.BoneMatrices
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.BoneMatrices
+- uid: System.Numerics.Matrix4x4[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
+  name: Matrix4x4[]
+  nameWithType: Matrix4x4[]
+  fullName: System.Numerics.Matrix4x4[]
+  nameWithType.vb: Matrix4x4()
+  fullName.vb: System.Numerics.Matrix4x4()
+  name.vb: Matrix4x4()
+  spec.csharp:
+  - uid: System.Numerics.Matrix4x4
+    name: Matrix4x4
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Numerics.Matrix4x4
+    name: Matrix4x4
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html
+  name: Renderable
+  nameWithType: Renderable
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.#ctor*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.#ctor
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable__ctor_Bliss_CSharp_Geometry_Mesh_Bliss_CSharp_Transformations_Transform_System_Boolean_
+  name: Renderable
+  nameWithType: Renderable.Renderable
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Renderable
+  nameWithType.vb: Renderable.New
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.New
+  name.vb: New
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

@@ -168,8 +168,8 @@ Struct SimplePipelineDescription  <a class="header-action link-secondary" title=
 
   <a id="Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription__ctor_" data-uid="Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor*"></a>
 
-  <h3 id="Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription__ctor_Veldrid_BlendStateDescription_Veldrid_DepthStencilStateDescription_Veldrid_RasterizerStateDescription_Veldrid_PrimitiveTopology_System_Collections_Generic_IEnumerable_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferLayout__System_Collections_Generic_IEnumerable_Bliss_CSharp_Graphics_Pipelines_Textures_SimpleTextureLayout__Veldrid_ShaderSetDescription_Veldrid_OutputDescription_" data-uid="Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor(Veldrid.BlendStateDescription,Veldrid.DepthStencilStateDescription,Veldrid.RasterizerStateDescription,Veldrid.PrimitiveTopology,System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout},System.Collections.Generic.IEnumerable{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout},Veldrid.ShaderSetDescription,Veldrid.OutputDescription)">
-  SimplePipelineDescription(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, IEnumerable&lt;SimpleBufferLayout&gt;, IEnumerable&lt;SimpleTextureLayout&gt;, ShaderSetDescription, OutputDescription)
+  <h3 id="Bliss_CSharp_Graphics_Pipelines_SimplePipelineDescription__ctor_Veldrid_BlendStateDescription_Veldrid_DepthStencilStateDescription_Veldrid_RasterizerStateDescription_Veldrid_PrimitiveTopology_System_Collections_Generic_List_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferLayout__System_Collections_Generic_List_Bliss_CSharp_Graphics_Pipelines_Textures_SimpleTextureLayout__Veldrid_ShaderSetDescription_Veldrid_OutputDescription_" data-uid="Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.#ctor(Veldrid.BlendStateDescription,Veldrid.DepthStencilStateDescription,Veldrid.RasterizerStateDescription,Veldrid.PrimitiveTopology,System.Collections.Generic.List{Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout},System.Collections.Generic.List{Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout},Veldrid.ShaderSetDescription,Veldrid.OutputDescription)">
+  SimplePipelineDescription(BlendStateDescription, DepthStencilStateDescription, RasterizerStateDescription, PrimitiveTopology, List&lt;SimpleBufferLayout&gt;, List&lt;SimpleTextureLayout&gt;, ShaderSetDescription, OutputDescription)
   <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/SimplePipelineDescription.cs/#L65"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -178,33 +178,33 @@ Struct SimplePipelineDescription  <a class="header-action link-secondary" title=
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SimplePipelineDescription(BlendStateDescription blendState, DepthStencilStateDescription depthStencilState, RasterizerStateDescription rasterizerState, PrimitiveTopology primitiveTopology, IEnumerable&lt;SimpleBufferLayout&gt; bufferLayouts, IEnumerable&lt;SimpleTextureLayout&gt; textureLayouts, ShaderSetDescription shaderSet, OutputDescription outputs)</code></pre>
+    <pre><code class="lang-csharp hljs">public SimplePipelineDescription(BlendStateDescription blendState, DepthStencilStateDescription depthStencilState, RasterizerStateDescription rasterizerState, PrimitiveTopology primitiveTopology, List&lt;SimpleBufferLayout&gt; bufferLayouts, List&lt;SimpleTextureLayout&gt; textureLayouts, ShaderSetDescription shaderSet, OutputDescription outputs)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>blendState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a></dt>
+    <dt><code>blendState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a></dt>
     <dd><p>The blend state configuration of the pipeline.</p>
 </dd>
-    <dt><code>depthStencilState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a></dt>
+    <dt><code>depthStencilState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a></dt>
     <dd><p>The depth and stencil state configuration of the pipeline.</p>
 </dd>
-    <dt><code>rasterizerState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a></dt>
+    <dt><code>rasterizerState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a></dt>
     <dd><p>The rasterizer state configuration of the pipeline.</p>
 </dd>
-    <dt><code>primitiveTopology</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/PrimitiveTopology.cs">PrimitiveTopology</a></dt>
+    <dt><code>primitiveTopology</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/PrimitiveTopology.cs">PrimitiveTopology</a></dt>
     <dd><p>The primitive topology that defines how vertex data is interpreted.</p>
 </dd>
-    <dt><code>bufferLayouts</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html">SimpleBufferLayout</a>&gt;</dt>
+    <dt><code>bufferLayouts</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html">SimpleBufferLayout</a>&gt;</dt>
     <dd><p>A list of buffer layouts to be used by the pipeline.</p>
 </dd>
-    <dt><code>textureLayouts</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html">SimpleTextureLayout</a>&gt;</dt>
+    <dt><code>textureLayouts</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html">SimpleTextureLayout</a>&gt;</dt>
     <dd><p>A list of texture layouts to be used in the pipeline.</p>
 </dd>
-    <dt><code>shaderSet</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/ShaderSetDescription.cs">ShaderSetDescription</a></dt>
+    <dt><code>shaderSet</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/ShaderSetDescription.cs">ShaderSetDescription</a></dt>
     <dd><p>The shader set description that defines the vertex and fragment shaders.</p>
 </dd>
-    <dt><code>outputs</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/OutputDescription.cs">OutputDescription</a></dt>
+    <dt><code>outputs</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/OutputDescription.cs">OutputDescription</a></dt>
     <dd><p>The output configuration of the pipeline, specifying the render targets and depth-stencil buffer.</p>
 </dd>
   </dl>
@@ -243,7 +243,7 @@ Struct SimplePipelineDescription  <a class="header-action link-secondary" title=
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a></dt>
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a></dt>
     <dd></dd>
   </dl>
 
@@ -266,7 +266,7 @@ Struct SimplePipelineDescription  <a class="header-action link-secondary" title=
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;SimpleBufferLayout&gt; BufferLayouts</code></pre>
+    <pre><code class="lang-csharp hljs">public IReadOnlyCollection&lt;SimpleBufferLayout&gt; BufferLayouts</code></pre>
   </div>
 
 
@@ -274,7 +274,7 @@ Struct SimplePipelineDescription  <a class="header-action link-secondary" title=
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html">SimpleBufferLayout</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html">SimpleBufferLayout</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -305,7 +305,7 @@ Struct SimplePipelineDescription  <a class="header-action link-secondary" title=
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a></dt>
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a></dt>
     <dd></dd>
   </dl>
 
@@ -336,7 +336,7 @@ Struct SimplePipelineDescription  <a class="header-action link-secondary" title=
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/OutputDescription.cs">OutputDescription</a></dt>
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/OutputDescription.cs">OutputDescription</a></dt>
     <dd></dd>
   </dl>
 
@@ -367,7 +367,7 @@ Struct SimplePipelineDescription  <a class="header-action link-secondary" title=
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/PrimitiveTopology.cs">PrimitiveTopology</a></dt>
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/PrimitiveTopology.cs">PrimitiveTopology</a></dt>
     <dd></dd>
   </dl>
 
@@ -398,7 +398,7 @@ Struct SimplePipelineDescription  <a class="header-action link-secondary" title=
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a></dt>
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a></dt>
     <dd></dd>
   </dl>
 
@@ -429,7 +429,7 @@ Struct SimplePipelineDescription  <a class="header-action link-secondary" title=
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/ResourceBindingModel.cs">ResourceBindingModel</a>?</dt>
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/ResourceBindingModel.cs">ResourceBindingModel</a>?</dt>
     <dd></dd>
   </dl>
 
@@ -460,7 +460,7 @@ Struct SimplePipelineDescription  <a class="header-action link-secondary" title=
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/ShaderSetDescription.cs">ShaderSetDescription</a></dt>
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/ShaderSetDescription.cs">ShaderSetDescription</a></dt>
     <dd></dd>
   </dl>
 
@@ -483,7 +483,7 @@ Struct SimplePipelineDescription  <a class="header-action link-secondary" title=
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;SimpleTextureLayout&gt; TextureLayouts</code></pre>
+    <pre><code class="lang-csharp hljs">public IReadOnlyCollection&lt;SimpleTextureLayout&gt; TextureLayouts</code></pre>
   </div>
 
 
@@ -491,7 +491,7 @@ Struct SimplePipelineDescription  <a class="header-action link-secondary" title=
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html">SimpleTextureLayout</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html">SimpleTextureLayout</a>&gt;</dt>
     <dd></dd>
   </dl>
 

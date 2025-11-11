@@ -89,7 +89,7 @@
 
 
   <h1 id="Bliss_CSharp_Geometry_Model" data-uid="Bliss.CSharp.Geometry.Model" class="text-break">
-Class Model  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L24"><i class="bi bi-code-slash"></i></a>
+Class Model  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L23"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -170,9 +170,9 @@ Class Model  <a class="header-action link-secondary" title="View source" href="h
 
   <a id="Bliss_CSharp_Geometry_Model__ctor_" data-uid="Bliss.CSharp.Geometry.Model.#ctor*"></a>
 
-  <h3 id="Bliss_CSharp_Geometry_Model__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Geometry_Mesh___Bliss_CSharp_Geometry_Animations_ModelAnimation___" data-uid="Bliss.CSharp.Geometry.Model.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Geometry.Mesh[],Bliss.CSharp.Geometry.Animations.ModelAnimation[])">
-  Model(GraphicsDevice, Mesh[], ModelAnimation[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Geometry_Model__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Geometry_Mesh___Bliss_CSharp_Geometry_Animation_Skeleton_Bliss_CSharp_Geometry_Animation_ModelAnimation___" data-uid="Bliss.CSharp.Geometry.Model.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Geometry.Mesh[],Bliss.CSharp.Geometry.Animation.Skeleton,Bliss.CSharp.Geometry.Animation.ModelAnimation[])">
+  Model(GraphicsDevice, Mesh[], Skeleton?, ModelAnimation[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L92"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Bliss.CSharp.Geometry.Model.html">Model</a> class with the specified graphics device, meshes, and animations.</p>
@@ -180,19 +180,22 @@ Class Model  <a class="header-action link-secondary" title="View source" href="h
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Model(GraphicsDevice graphicsDevice, Mesh[] meshes, ModelAnimation[] animations)</code></pre>
+    <pre><code class="lang-csharp hljs">public Model(GraphicsDevice graphicsDevice, Mesh[] meshes, Skeleton? skeleton, ModelAnimation[] animations)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
     <dd><p>The <a class="xref" href="Bliss.CSharp.Geometry.Model.html#Bliss_CSharp_Geometry_Model_GraphicsDevice">GraphicsDevice</a> used for rendering and resource management.</p>
 </dd>
     <dt><code>meshes</code> <a class="xref" href="Bliss.CSharp.Geometry.Mesh.html">Mesh</a>[]</dt>
     <dd><p>An array of <a class="xref" href="Bliss.CSharp.Geometry.Mesh.html">Mesh</a> objects representing the geometric components of the model.</p>
 </dd>
-    <dt><code>animations</code> <a class="xref" href="Bliss.CSharp.Geometry.Animations.ModelAnimation.html">ModelAnimation</a>[]</dt>
-    <dd><p>An array of <a class="xref" href="Bliss.CSharp.Geometry.Animations.ModelAnimation.html">ModelAnimation</a> objects defining the animations for the model.</p>
+    <dt><code>skeleton</code> <a class="xref" href="Bliss.CSharp.Geometry.Animation.Skeleton.html">Skeleton</a></dt>
+    <dd><p>The optional skeleton used for skeletal animation, or <code>null</code> if not present.</p>
+</dd>
+    <dt><code>animations</code> <a class="xref" href="Bliss.CSharp.Geometry.Animation.ModelAnimation.html">ModelAnimation</a>[]</dt>
+    <dd><p>An array of <a class="xref" href="Bliss.CSharp.Geometry.Animation.ModelAnimation.html">ModelAnimation</a> objects defining the animations for the model.</p>
 </dd>
   </dl>
 
@@ -215,11 +218,10 @@ Class Model  <a class="header-action link-secondary" title="View source" href="h
 
   <h3 id="Bliss_CSharp_Geometry_Model_Animations" data-uid="Bliss.CSharp.Geometry.Model.Animations">
   Animations
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L83"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Collection of animations associated with the model.
-Each animation encapsulates skeletal transformations over time, enabling the model to exhibit complex motions.</p>
+  <div class="markdown level1 summary"><p>Collection of animations associated with the model.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -233,39 +235,7 @@ Each animation encapsulates skeletal transformations over time, enabling the mod
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Bliss.CSharp.Geometry.Animations.ModelAnimation.html">ModelAnimation</a>[]</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Bliss_CSharp_Geometry_Model_BoundingBox_" data-uid="Bliss.CSharp.Geometry.Model.BoundingBox*"></a>
-
-  <h3 id="Bliss_CSharp_Geometry_Model_BoundingBox" data-uid="Bliss.CSharp.Geometry.Model.BoundingBox">
-  BoundingBox
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L85"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Represents the axis-aligned bounding box of the model.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BoundingBox BoundingBox { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Bliss.CSharp.Geometry.BoundingBox.html">BoundingBox</a></dt>
+    <dt><a class="xref" href="Bliss.CSharp.Geometry.Animation.ModelAnimation.html">ModelAnimation</a>[]</dt>
     <dd></dd>
   </dl>
 
@@ -280,7 +250,7 @@ Each animation encapsulates skeletal transformations over time, enabling the mod
 
   <h3 id="Bliss_CSharp_Geometry_Model_GraphicsDevice" data-uid="Bliss.CSharp.Geometry.Model.GraphicsDevice">
   GraphicsDevice
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L68"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The graphics device used for rendering the model.</p>
@@ -297,7 +267,7 @@ Each animation encapsulates skeletal transformations over time, enabling the mod
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
     <dd></dd>
   </dl>
 
@@ -312,7 +282,7 @@ Each animation encapsulates skeletal transformations over time, enabling the mod
 
   <h3 id="Bliss_CSharp_Geometry_Model_Meshes" data-uid="Bliss.CSharp.Geometry.Model.Meshes">
   Meshes
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L73"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>An array of meshes that make up the model.</p>
@@ -340,6 +310,38 @@ Each animation encapsulates skeletal transformations over time, enabling the mod
 
 
 
+  <a id="Bliss_CSharp_Geometry_Model_Skeleton_" data-uid="Bliss.CSharp.Geometry.Model.Skeleton*"></a>
+
+  <h3 id="Bliss_CSharp_Geometry_Model_Skeleton" data-uid="Bliss.CSharp.Geometry.Model.Skeleton">
+  Skeleton
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The hierarchical skeletal structure of the model.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Skeleton? Skeleton { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Geometry.Animation.Skeleton.html">Skeleton</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -348,7 +350,7 @@ Each animation encapsulates skeletal transformations over time, enabling the mod
 
   <h3 id="Bliss_CSharp_Geometry_Model_Dispose_System_Boolean_" data-uid="Bliss.CSharp.Geometry.Model.Dispose(System.Boolean)">
   Dispose(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L513"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L447"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Disposes of the object and releases associated resources.</p>
@@ -377,46 +379,28 @@ Each animation encapsulates skeletal transformations over time, enabling the mod
 
 
 
-  <a id="Bliss_CSharp_Geometry_Model_Draw_" data-uid="Bliss.CSharp.Geometry.Model.Draw*"></a>
+  <a id="Bliss_CSharp_Geometry_Model_GenBoundingBox_" data-uid="Bliss.CSharp.Geometry.Model.GenBoundingBox*"></a>
 
-  <h3 id="Bliss_CSharp_Geometry_Model_Draw_Veldrid_CommandList_Bliss_CSharp_Transformations_Transform_Veldrid_OutputDescription_Veldrid_Sampler_System_Nullable_Veldrid_DepthStencilStateDescription__System_Nullable_Veldrid_RasterizerStateDescription__System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Geometry.Model.Draw(Veldrid.CommandList,Bliss.CSharp.Transformations.Transform,Veldrid.OutputDescription,Veldrid.Sampler,System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{Bliss.CSharp.Colors.Color})">
-  Draw(CommandList, Transform, OutputDescription, Sampler?, DepthStencilStateDescription?, RasterizerStateDescription?, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L489"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Geometry_Model_GenBoundingBox" data-uid="Bliss.CSharp.Geometry.Model.GenBoundingBox">
+  GenBoundingBox()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L433"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Draws the model using the specified command list, transform, and rendering configurations.</p>
+  <div class="markdown level1 summary"><p>Generates a bounding box that encapsulates all the vertices in the model's meshes.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Draw(CommandList commandList, Transform transform, OutputDescription output, Sampler? sampler = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Color? color = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public BoundingBox GenBoundingBox()</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
+
+  <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/CommandList.cs">CommandList</a></dt>
-    <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/CommandList.cs">CommandList</a> that issues the rendering commands.</p>
-</dd>
-    <dt><code>transform</code> <a class="xref" href="Bliss.CSharp.Transformations.Transform.html">Transform</a></dt>
-    <dd><p>The <a class="xref" href="Bliss.CSharp.Transformations.Transform.html">Transform</a> describing the position, rotation, and scale of the model in the scene.</p>
-</dd>
-    <dt><code>output</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/OutputDescription.cs">OutputDescription</a></dt>
-    <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/OutputDescription.cs">OutputDescription</a> that defines the target rendering output settings, such as resolution and format.</p>
-</dd>
-    <dt><code>sampler</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/Sampler.cs">Sampler</a></dt>
-    <dd><p>An optional <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/Sampler.cs">Sampler</a> used for texture sampling. If not provided, a default sampler is applied.</p>
-</dd>
-    <dt><code>depthStencilState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a>?</dt>
-    <dd><p>An optional <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a> to configure depth and stencil testing for the drawing process.</p>
-</dd>
-    <dt><code>rasterizerState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a>?</dt>
-    <dd><p>An optional <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a> that manages the rasterizer configuration, such as culling and fill mode.</p>
-</dd>
-    <dt><code>color</code> <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a>?</dt>
-    <dd><p>An optional <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a> to override or apply a custom tint to the model's rendered output.</p>
+    <dt><a class="xref" href="Bliss.CSharp.Geometry.BoundingBox.html">BoundingBox</a></dt>
+    <dd><p>A <a class="xref" href="Bliss.CSharp.Geometry.BoundingBox.html">BoundingBox</a> that represents the minimum and maximum bounds of the model.</p>
 </dd>
   </dl>
-
 
 
 
@@ -432,7 +416,7 @@ Each animation encapsulates skeletal transformations over time, enabling the mod
 
   <h3 id="Bliss_CSharp_Geometry_Model_Load_Veldrid_GraphicsDevice_System_String_System_Boolean_System_Boolean_" data-uid="Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean)">
   Load(GraphicsDevice, string, bool, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L108"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L107"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Loads a model from the specified file path using the provided graphics device and configuration options.</p>
@@ -445,7 +429,7 @@ Each animation encapsulates skeletal transformations over time, enabling the mod
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
     <dd><p>The graphics device used for rendering and managing model resources.</p>
 </dd>
     <dt><code>path</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
@@ -476,83 +460,11 @@ Each animation encapsulates skeletal transformations over time, enabling the mod
 
 
 
-  <a id="Bliss_CSharp_Geometry_Model_ResetAnimationBones_" data-uid="Bliss.CSharp.Geometry.Model.ResetAnimationBones*"></a>
-
-  <h3 id="Bliss_CSharp_Geometry_Model_ResetAnimationBones_Veldrid_CommandList_" data-uid="Bliss.CSharp.Geometry.Model.ResetAnimationBones(Veldrid.CommandList)">
-  ResetAnimationBones(CommandList)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L473"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Resets the animation bone transformations for all meshes in the model using the given command list.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ResetAnimationBones(CommandList commandList)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/CommandList.cs">CommandList</a></dt>
-    <dd><p>The command list used to execute the reset operation on the GPU.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Bliss_CSharp_Geometry_Model_UpdateAnimationBones_" data-uid="Bliss.CSharp.Geometry.Model.UpdateAnimationBones*"></a>
-
-  <h3 id="Bliss_CSharp_Geometry_Model_UpdateAnimationBones_Veldrid_CommandList_Bliss_CSharp_Geometry_Animations_ModelAnimation_System_Int32_" data-uid="Bliss.CSharp.Geometry.Model.UpdateAnimationBones(Veldrid.CommandList,Bliss.CSharp.Geometry.Animations.ModelAnimation,System.Int32)">
-  UpdateAnimationBones(CommandList, ModelAnimation, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L463"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Updates the animation bones for all meshes in the model based on the specified animation and frame.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void UpdateAnimationBones(CommandList commandList, ModelAnimation animation, int frame)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/CommandList.cs">CommandList</a></dt>
-    <dd><p>The command list used to issue rendering commands.</p>
-</dd>
-    <dt><code>animation</code> <a class="xref" href="Bliss.CSharp.Geometry.Animations.ModelAnimation.html">ModelAnimation</a></dt>
-    <dd><p>The animation whose bone transformations should be applied.</p>
-</dd>
-    <dt><code>frame</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The specific frame of the animation to update the bones to.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L24" class="edit-link">Edit this page</a>
+          <a href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Model.cs/#L23" class="edit-link">Edit this page</a>
         </div>
 
 

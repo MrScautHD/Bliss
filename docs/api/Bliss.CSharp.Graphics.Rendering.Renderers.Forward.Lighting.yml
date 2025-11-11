@@ -1,0 +1,94 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  id: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  children:
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightDefinition
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightDefinition
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightDefinition
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightDefinition.html
+  name: LightDefinition
+  nameWithType: LightDefinition
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightDefinition
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType.html
+  name: LightType
+  nameWithType: LightType
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+    name: Forward
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+    name: Lighting
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+    name: Forward
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+    name: Lighting
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.html

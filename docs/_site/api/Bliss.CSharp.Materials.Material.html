@@ -101,7 +101,7 @@ Class Material  <a class="header-action link-secondary" title="View source" href
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Material</code></pre>
+    <pre><code class="lang-csharp hljs">public class Material : ICloneable</code></pre>
   </div>
 
 
@@ -115,6 +115,12 @@ Class Material  <a class="header-action link-secondary" title="View source" href
     </dd>
   </dl>
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icloneable">ICloneable</a></div>
+    </dd>
+  </dl>
 
 
   <dl class="typelist inheritedMembers">
@@ -154,30 +160,32 @@ Class Material  <a class="header-action link-secondary" title="View source" href
 
   <a id="Bliss_CSharp_Materials_Material__ctor_" data-uid="Bliss.CSharp.Materials.Material.#ctor*"></a>
 
-  <h3 id="Bliss_CSharp_Materials_Material__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Effects_Effect_System_Nullable_Veldrid_BlendStateDescription__" data-uid="Bliss.CSharp.Materials.Material.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Effects.Effect,System.Nullable{Veldrid.BlendStateDescription})">
-  Material(GraphicsDevice, Effect, BlendStateDescription?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Materials_Material__ctor_Bliss_CSharp_Effects_Effect_System_Nullable_Veldrid_RasterizerStateDescription__System_Nullable_Veldrid_BlendStateDescription__Bliss_CSharp_Graphics_Rendering_RenderMode_" data-uid="Bliss.CSharp.Materials.Material.#ctor(Bliss.CSharp.Effects.Effect,System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{Veldrid.BlendStateDescription},Bliss.CSharp.Graphics.Rendering.RenderMode)">
+  Material(Effect, RasterizerStateDescription?, BlendStateDescription?, RenderMode)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L49"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Bliss.CSharp.Materials.Material.html">Material</a> class, configuring it with the specified
-graphics device, shader effect, and optional blend state.</p>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Bliss.CSharp.Materials.Material.html">Material</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Material(GraphicsDevice graphicsDevice, Effect effect, BlendStateDescription? blendState = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public Material(Effect effect, RasterizerStateDescription? rasterizerState = null, BlendStateDescription? blendState = null, RenderMode renderMode = RenderMode.Solid)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
-    <dd><p>The graphics device to associate with this material.</p>
-</dd>
     <dt><code>effect</code> <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a></dt>
     <dd><p>The effect (shader) to apply to the material.</p>
 </dd>
-    <dt><code>blendState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a>?</dt>
+    <dt><code>rasterizerState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a>?</dt>
+    <dd><p>The optional rasterizer state.</p>
+</dd>
+    <dt><code>blendState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a>?</dt>
     <dd><p>The optional blend state to define how this material blends with others during rendering. If not specified, blending is disabled by default.</p>
+</dd>
+    <dt><code>renderMode</code> <a class="xref" href="Bliss.CSharp.Graphics.Rendering.RenderMode.html">RenderMode</a></dt>
+    <dd><p>The rendering mode for this material. Defaults to <a class="xref" href="Bliss.CSharp.Graphics.Rendering.RenderMode.html#Bliss_CSharp_Graphics_Rendering_RenderMode_Solid">Solid</a>.</p>
 </dd>
   </dl>
 
@@ -215,7 +223,7 @@ graphics device, shader effect, and optional blend state.</p>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a></dt>
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a></dt>
     <dd></dd>
   </dl>
 
@@ -230,7 +238,7 @@ graphics device, shader effect, and optional blend state.</p>
 
   <h3 id="Bliss_CSharp_Materials_Material_Effect" data-uid="Bliss.CSharp.Materials.Material.Effect">
   Effect
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The effect (shader program) applied to this material.</p>
@@ -261,7 +269,7 @@ graphics device, shader effect, and optional blend state.</p>
 
   <h3 id="Bliss_CSharp_Materials_Material_Parameters" data-uid="Bliss.CSharp.Materials.Material.Parameters">
   Parameters
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L35"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>A list of floating-point parameters for configuring material properties.</p>
@@ -289,34 +297,60 @@ graphics device, shader effect, and optional blend state.</p>
 
 
 
-  <h2 class="section" id="properties">Properties
-</h2>
 
-
-  <a id="Bliss_CSharp_Materials_Material_GraphicsDevice_" data-uid="Bliss.CSharp.Materials.Material.GraphicsDevice*"></a>
-
-  <h3 id="Bliss_CSharp_Materials_Material_GraphicsDevice" data-uid="Bliss.CSharp.Materials.Material.GraphicsDevice">
-  GraphicsDevice
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Materials_Material_RasterizerState" data-uid="Bliss.CSharp.Materials.Material.RasterizerState">
+  RasterizerState
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L20"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The graphics device associated with this material, used to manage rendering resources.</p>
+  <div class="markdown level1 summary"><p>Defines the rasterizer state for the material.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GraphicsDevice GraphicsDevice { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public RasterizerStateDescription RasterizerState</code></pre>
   </div>
 
 
 
 
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bliss_CSharp_Materials_Material_RenderMode" data-uid="Bliss.CSharp.Materials.Material.RenderMode">
+  RenderMode
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Specifies the rendering mode for the material, determining how the material is drawn (e.g., Solid, Cutout, Transparent).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RenderMode RenderMode</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Graphics.Rendering.RenderMode.html">RenderMode</a></dt>
+    <dd></dd>
+  </dl>
+
 
 
 
@@ -331,29 +365,62 @@ graphics device, shader effect, and optional blend state.</p>
 
   <a id="Bliss_CSharp_Materials_Material_AddMaterialMap_" data-uid="Bliss.CSharp.Materials.Material.AddMaterialMap*"></a>
 
-  <h3 id="Bliss_CSharp_Materials_Material_AddMaterialMap_System_String_Bliss_CSharp_Materials_MaterialMap_" data-uid="Bliss.CSharp.Materials.Material.AddMaterialMap(System.String,Bliss.CSharp.Materials.MaterialMap)">
-  AddMaterialMap(string, MaterialMap)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Materials_Material_AddMaterialMap_Bliss_CSharp_Materials_MaterialMapType_Bliss_CSharp_Materials_MaterialMap_" data-uid="Bliss.CSharp.Materials.Material.AddMaterialMap(Bliss.CSharp.Materials.MaterialMapType,Bliss.CSharp.Materials.MaterialMap)">
+  AddMaterialMap(MaterialMapType, MaterialMap)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L88"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Adds a MaterialMap to the material's collection, associating it with a specified name.</p>
+  <div class="markdown level1 summary"><p>Adds a material map to the material, associating it with the specified material map type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AddMaterialMap(string name, MaterialMap map)</code></pre>
+    <pre><code class="lang-csharp hljs">public void AddMaterialMap(MaterialMapType type, MaterialMap map)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name to associate with the MaterialMap.</p>
+    <dt><code>type</code> <a class="xref" href="Bliss.CSharp.Materials.MaterialMapType.html">MaterialMapType</a></dt>
+    <dd><p>The type of the material map, represented as a <a class="xref" href="Bliss.CSharp.Materials.MaterialMapType.html">MaterialMapType</a> enum value.</p>
 </dd>
     <dt><code>map</code> <a class="xref" href="Bliss.CSharp.Materials.MaterialMap.html">MaterialMap</a></dt>
-    <dd><p>The MaterialMap to be added to the material's collection.</p>
+    <dd><p>The material map to associate with the specified type.</p>
 </dd>
   </dl>
 
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Materials_Material_Clone_" data-uid="Bliss.CSharp.Materials.Material.Clone*"></a>
+
+  <h3 id="Bliss_CSharp_Materials_Material_Clone" data-uid="Bliss.CSharp.Materials.Material.Clone">
+  Clone()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L179"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new instance of the <a class="xref" href="Bliss.CSharp.Materials.Material.html">Material</a> class that is a copy of the current instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object Clone()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>A new <a class="xref" href="Bliss.CSharp.Materials.Material.html">Material</a> object that is a clone of the current instance.</p>
+</dd>
+  </dl>
 
 
 
@@ -367,30 +434,30 @@ graphics device, shader effect, and optional blend state.</p>
 
   <a id="Bliss_CSharp_Materials_Material_GetMapColor_" data-uid="Bliss.CSharp.Materials.Material.GetMapColor*"></a>
 
-  <h3 id="Bliss_CSharp_Materials_Material_GetMapColor_System_String_" data-uid="Bliss.CSharp.Materials.Material.GetMapColor(System.String)">
-  GetMapColor(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L137"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Materials_Material_GetMapColor_Bliss_CSharp_Materials_MaterialMapType_" data-uid="Bliss.CSharp.Materials.Material.GetMapColor(Bliss.CSharp.Materials.MaterialMapType)">
+  GetMapColor(MaterialMapType)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L126"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Retrieves the color associated with the specified material map.</p>
+  <div class="markdown level1 summary"><p>Retrieves the color associated with a specific material map type, if defined.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Color? GetMapColor(string name)</code></pre>
+    <pre><code class="lang-csharp hljs">public Color? GetMapColor(MaterialMapType type)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the material map from which to retrieve the color.</p>
+    <dt><code>type</code> <a class="xref" href="Bliss.CSharp.Materials.MaterialMapType.html">MaterialMapType</a></dt>
+    <dd><p>The type of the material map whose color is to be retrieved.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a>?</dt>
-    <dd><p>The <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a> associated with the specified material map, or null if the map does not exist or does not have a color defined.</p>
+    <dd><p>The color associated with the specified material map type, or null if the map is not defined.</p>
 </dd>
   </dl>
 
@@ -406,30 +473,30 @@ graphics device, shader effect, and optional blend state.</p>
 
   <a id="Bliss_CSharp_Materials_Material_GetMapTexture_" data-uid="Bliss.CSharp.Materials.Material.GetMapTexture*"></a>
 
-  <h3 id="Bliss_CSharp_Materials_Material_GetMapTexture_System_String_" data-uid="Bliss.CSharp.Materials.Material.GetMapTexture(System.String)">
-  GetMapTexture(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Materials_Material_GetMapTexture_Bliss_CSharp_Materials_MaterialMapType_" data-uid="Bliss.CSharp.Materials.Material.GetMapTexture(Bliss.CSharp.Materials.MaterialMapType)">
+  GetMapTexture(MaterialMapType)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L99"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Retrieves the texture associated with the specified material map name.</p>
+  <div class="markdown level1 summary"><p>Retrieves the texture associated with the specified material map type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Texture2D? GetMapTexture(string name)</code></pre>
+    <pre><code class="lang-csharp hljs">public Texture2D? GetMapTexture(MaterialMapType type)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the material map whose texture is to be retrieved.</p>
+    <dt><code>type</code> <a class="xref" href="Bliss.CSharp.Materials.MaterialMapType.html">MaterialMapType</a></dt>
+    <dd><p>The type of material map for which the texture is requested.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Bliss.CSharp.Textures.Texture2D.html">Texture2D</a></dt>
-    <dd><p>The texture associated with the specified material map, or null if no such texture exists.</p>
+    <dd><p>The texture associated with the specified material map type, or null if no texture is found.</p>
 </dd>
   </dl>
 
@@ -445,30 +512,30 @@ graphics device, shader effect, and optional blend state.</p>
 
   <a id="Bliss_CSharp_Materials_Material_GetMapValue_" data-uid="Bliss.CSharp.Materials.Material.GetMapValue*"></a>
 
-  <h3 id="Bliss_CSharp_Materials_Material_GetMapValue_System_String_" data-uid="Bliss.CSharp.Materials.Material.GetMapValue(System.String)">
-  GetMapValue(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Materials_Material_GetMapValue_Bliss_CSharp_Materials_MaterialMapType_" data-uid="Bliss.CSharp.Materials.Material.GetMapValue(Bliss.CSharp.Materials.MaterialMapType)">
+  GetMapValue(MaterialMapType)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L153"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets the value associated with the specified material map name.</p>
+  <div class="markdown level1 summary"><p>Retrieves the value associated with the specified material map type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float GetMapValue(string name)</code></pre>
+    <pre><code class="lang-csharp hljs">public float GetMapValue(MaterialMapType type)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the material map for which to retrieve the value.</p>
+    <dt><code>type</code> <a class="xref" href="Bliss.CSharp.Materials.MaterialMapType.html">MaterialMapType</a></dt>
+    <dd><p>The type of the material map whose value is to be retrieved.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The floating-point value associated with the specified material map name.</p>
+    <dd><p>The value of the material map if it exists; otherwise, returns 0.0.</p>
 </dd>
   </dl>
 
@@ -484,30 +551,30 @@ graphics device, shader effect, and optional blend state.</p>
 
   <a id="Bliss_CSharp_Materials_Material_GetMaterialMap_" data-uid="Bliss.CSharp.Materials.Material.GetMaterialMap*"></a>
 
-  <h3 id="Bliss_CSharp_Materials_Material_GetMaterialMap_System_String_" data-uid="Bliss.CSharp.Materials.Material.GetMaterialMap(System.String)">
-  GetMaterialMap(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Materials_Material_GetMaterialMap_Bliss_CSharp_Materials_MaterialMapType_" data-uid="Bliss.CSharp.Materials.Material.GetMaterialMap(Bliss.CSharp.Materials.MaterialMapType)">
+  GetMaterialMap(MaterialMapType)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L79"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Retrieves the material map associated with the specified name.</p>
+  <div class="markdown level1 summary"><p>Retrieves a specific material map associated with the specified material map type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public MaterialMap? GetMaterialMap(string name)</code></pre>
+    <pre><code class="lang-csharp hljs">public MaterialMap? GetMaterialMap(MaterialMapType type)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the material map to retrieve.</p>
+    <dt><code>type</code> <a class="xref" href="Bliss.CSharp.Materials.MaterialMapType.html">MaterialMapType</a></dt>
+    <dd><p>The type of the material map to retrieve.</p>
 </dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Bliss.CSharp.Materials.MaterialMap.html">MaterialMap</a></dt>
-    <dd><p>The <a class="xref" href="Bliss.CSharp.Materials.MaterialMap.html">MaterialMap</a> associated with the specified name.</p>
+    <dd><p>The <a class="xref" href="Bliss.CSharp.Materials.MaterialMap.html">MaterialMap</a> associated with the specified type if it exists; otherwise, null.</p>
 </dd>
   </dl>
 
@@ -521,26 +588,26 @@ graphics device, shader effect, and optional blend state.</p>
 
 
 
-  <a id="Bliss_CSharp_Materials_Material_GetMaterialMapNames_" data-uid="Bliss.CSharp.Materials.Material.GetMaterialMapNames*"></a>
+  <a id="Bliss_CSharp_Materials_Material_GetMaterialMapTypes_" data-uid="Bliss.CSharp.Materials.Material.GetMaterialMapTypes*"></a>
 
-  <h3 id="Bliss_CSharp_Materials_Material_GetMaterialMapNames" data-uid="Bliss.CSharp.Materials.Material.GetMaterialMapNames">
-  GetMaterialMapNames()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Materials_Material_GetMaterialMapTypes" data-uid="Bliss.CSharp.Materials.Material.GetMaterialMapTypes">
+  GetMaterialMapTypes()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L62"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Retrieves the names of all material maps.</p>
+  <div class="markdown level1 summary"><p>Retrieves the collection of material map types associated with the material.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; GetMaterialMapNames()</code></pre>
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;MaterialMapType, MaterialMap&gt;.KeyCollection GetMaterialMapTypes()</code></pre>
   </div>
 
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-    <dd><p>A collection of strings representing the names of the material maps.</p>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="Bliss.CSharp.Materials.MaterialMapType.html">MaterialMapType</a>, <a class="xref" href="Bliss.CSharp.Materials.MaterialMap.html">MaterialMap</a>&gt;.<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2.keycollection">KeyCollection</a></dt>
+    <dd><p>A collection of keys representing the material map types defined for this material.</p>
 </dd>
   </dl>
 
@@ -558,68 +625,22 @@ graphics device, shader effect, and optional blend state.</p>
 
   <h3 id="Bliss_CSharp_Materials_Material_GetMaterialMaps" data-uid="Bliss.CSharp.Materials.Material.GetMaterialMaps">
   GetMaterialMaps()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L70"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Retrieves all material maps associated with this material.</p>
+  <div class="markdown level1 summary"><p>Retrieves the collection of material maps associated with the material.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;MaterialMap&gt; GetMaterialMaps()</code></pre>
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;MaterialMapType, MaterialMap&gt;.ValueCollection GetMaterialMaps()</code></pre>
   </div>
 
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Bliss.CSharp.Materials.MaterialMap.html">MaterialMap</a>&gt;</dt>
-    <dd><p>A collection of <a class="xref" href="Bliss.CSharp.Materials.MaterialMap.html">MaterialMap</a> objects.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Bliss_CSharp_Materials_Material_GetResourceSet_" data-uid="Bliss.CSharp.Materials.Material.GetResourceSet*"></a>
-
-  <h3 id="Bliss_CSharp_Materials_Material_GetResourceSet_Veldrid_Sampler_Bliss_CSharp_Graphics_Pipelines_Textures_SimpleTextureLayout_System_String_" data-uid="Bliss.CSharp.Materials.Material.GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout,System.String)">
-  GetResourceSet(Sampler, SimpleTextureLayout, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L60"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Retrieves the resource set associated with a specified texture in the material's map collection,
-based on the provided sampler, texture layout, and map name.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ResourceSet? GetResourceSet(Sampler sampler, SimpleTextureLayout layout, string mapName)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>sampler</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/Sampler.cs">Sampler</a></dt>
-    <dd><p>The sampler to use when accessing the texture.</p>
-</dd>
-    <dt><code>layout</code> <a class="xref" href="Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html">SimpleTextureLayout</a></dt>
-    <dd><p>The texture layout that defines the structure of the resource set.</p>
-</dd>
-    <dt><code>mapName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the map whose associated texture's resource set is to be retrieved.</p>
-</dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/ResourceSet.cs">ResourceSet</a></dt>
-    <dd><p>The resource set for the specified texture if found, or null if the texture does not exist in the map collection.</p>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="Bliss.CSharp.Materials.MaterialMapType.html">MaterialMapType</a>, <a class="xref" href="Bliss.CSharp.Materials.MaterialMap.html">MaterialMap</a>&gt;.<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2.valuecollection">ValueCollection</a></dt>
+    <dd><p>A collection containing the values of the material maps defined for this material.</p>
 </dd>
   </dl>
 
@@ -635,26 +656,26 @@ based on the provided sampler, texture layout, and map name.</p>
 
   <a id="Bliss_CSharp_Materials_Material_SetMapColor_" data-uid="Bliss.CSharp.Materials.Material.SetMapColor*"></a>
 
-  <h3 id="Bliss_CSharp_Materials_Material_SetMapColor_System_String_Bliss_CSharp_Colors_Color_" data-uid="Bliss.CSharp.Materials.Material.SetMapColor(System.String,Bliss.CSharp.Colors.Color)">
-  SetMapColor(string, Color)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L150"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Materials_Material_SetMapColor_Bliss_CSharp_Materials_MaterialMapType_Bliss_CSharp_Colors_Color_" data-uid="Bliss.CSharp.Materials.Material.SetMapColor(Bliss.CSharp.Materials.MaterialMapType,Bliss.CSharp.Colors.Color)">
+  SetMapColor(MaterialMapType, Color)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L139"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Sets the color of a specified material map.</p>
+  <div class="markdown level1 summary"><p>Sets the color for a specific material map type in the current material instance.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetMapColor(string name, Color color)</code></pre>
+    <pre><code class="lang-csharp hljs">public void SetMapColor(MaterialMapType type, Color color)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the material map whose color is to be set.</p>
+    <dt><code>type</code> <a class="xref" href="Bliss.CSharp.Materials.MaterialMapType.html">MaterialMapType</a></dt>
+    <dd><p>The type of the material map to update, represented by <a class="xref" href="Bliss.CSharp.Materials.MaterialMapType.html">MaterialMapType</a>.</p>
 </dd>
     <dt><code>color</code> <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a></dt>
-    <dd><p>The color to assign to the material map.</p>
+    <dd><p>The new color to assign to the specified material map.</p>
 </dd>
   </dl>
 
@@ -671,26 +692,26 @@ based on the provided sampler, texture layout, and map name.</p>
 
   <a id="Bliss_CSharp_Materials_Material_SetMapTexture_" data-uid="Bliss.CSharp.Materials.Material.SetMapTexture*"></a>
 
-  <h3 id="Bliss_CSharp_Materials_Material_SetMapTexture_System_String_Bliss_CSharp_Textures_Texture2D_" data-uid="Bliss.CSharp.Materials.Material.SetMapTexture(System.String,Bliss.CSharp.Textures.Texture2D)">
-  SetMapTexture(string, Texture2D?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L123"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Materials_Material_SetMapTexture_Bliss_CSharp_Materials_MaterialMapType_Bliss_CSharp_Textures_Texture2D_" data-uid="Bliss.CSharp.Materials.Material.SetMapTexture(Bliss.CSharp.Materials.MaterialMapType,Bliss.CSharp.Textures.Texture2D)">
+  SetMapTexture(MaterialMapType, Texture2D?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L112"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Sets the texture for the specified material map.</p>
+  <div class="markdown level1 summary"><p>Assigns a texture to a material map of the specified type. If the map type exists, its texture is updated; otherwise, a warning is logged.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetMapTexture(string name, Texture2D? texture)</code></pre>
+    <pre><code class="lang-csharp hljs">public void SetMapTexture(MaterialMapType type, Texture2D? texture)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the material map to set the texture for.</p>
+    <dt><code>type</code> <a class="xref" href="Bliss.CSharp.Materials.MaterialMapType.html">MaterialMapType</a></dt>
+    <dd><p>The type of material map to which the texture will be assigned. This determines the type of visual effect applied (e.g., Albedo, Normal, Metallic, etc.).</p>
 </dd>
     <dt><code>texture</code> <a class="xref" href="Bliss.CSharp.Textures.Texture2D.html">Texture2D</a></dt>
-    <dd><p>The texture to be set. If null, the material map's texture will be removed.</p>
+    <dd><p>The texture to assign to the specified material map. If null, the texture will be removed from the map.</p>
 </dd>
   </dl>
 
@@ -707,26 +728,26 @@ based on the provided sampler, texture layout, and map name.</p>
 
   <a id="Bliss_CSharp_Materials_Material_SetMapValue_" data-uid="Bliss.CSharp.Materials.Material.SetMapValue*"></a>
 
-  <h3 id="Bliss_CSharp_Materials_Material_SetMapValue_System_String_System_Single_" data-uid="Bliss.CSharp.Materials.Material.SetMapValue(System.String,System.Single)">
-  SetMapValue(string, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L177"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Materials_Material_SetMapValue_Bliss_CSharp_Materials_MaterialMapType_System_Single_" data-uid="Bliss.CSharp.Materials.Material.SetMapValue(Bliss.CSharp.Materials.MaterialMapType,System.Single)">
+  SetMapValue(MaterialMapType, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/Material.cs/#L166"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Sets the value of the specified material map.</p>
+  <div class="markdown level1 summary"><p>Sets the numeric value associated with the specified material map type. If the map does not exist, a warning is logged instead of modifying any values.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetMapValue(string name, float value)</code></pre>
+    <pre><code class="lang-csharp hljs">public void SetMapValue(MaterialMapType type, float value)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The name of the material map to update.</p>
+    <dt><code>type</code> <a class="xref" href="Bliss.CSharp.Materials.MaterialMapType.html">MaterialMapType</a></dt>
+    <dd><p>The type of material map whose value is being set.</p>
 </dd>
     <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd><p>The floating-point value to set for the specified material map.</p>
+    <dd><p>The numeric value to assign to the material map.</p>
 </dd>
   </dl>
 

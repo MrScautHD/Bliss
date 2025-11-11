@@ -8,7 +8,7 @@ items:
   - Bliss.CSharp.Fonts.Font.#ctor(System.Byte[],FontStashSharp.FontSystemSettings)
   - Bliss.CSharp.Fonts.Font.#ctor(System.String,FontStashSharp.FontSystemSettings)
   - Bliss.CSharp.Fonts.Font.Dispose(System.Boolean)
-  - Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  - Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
   - Bliss.CSharp.Fonts.Font.FontData
   - Bliss.CSharp.Fonts.Font.FontSystem
   - Bliss.CSharp.Fonts.Font.GetSpriteFont(System.Single)
@@ -228,16 +228,16 @@ items:
   nameWithType.vb: Font.GetSpriteFont(Single)
   fullName.vb: Bliss.CSharp.Fonts.Font.GetSpriteFont(Single)
   name.vb: GetSpriteFont(Single)
-- uid: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
-  commentId: M:Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
-  id: Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+- uid: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  commentId: M:Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
+  id: Draw(Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)
   parent: Bliss.CSharp.Fonts.Font
   langs:
   - csharp
   - vb
   name: Draw(SpriteBatch, string, Vector2, float, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
   nameWithType: Font.Draw(SpriteBatch, string, Vector2, float, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
-  fullName: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch, string, System.Numerics.Vector2, float, float, float, System.Numerics.Vector2?, float, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, int)
+  fullName: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch, string, System.Numerics.Vector2, float, float, float, System.Numerics.Vector2?, float, System.Numerics.Vector2?, float, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, int)
   type: Method
   source:
     remote:
@@ -256,7 +256,7 @@ items:
     content: public void Draw(SpriteBatch batch, string text, Vector2 position, float size, float characterSpacing = 0, float lineSpacing = 0, Vector2? scale = null, float depth = 0.5, Vector2? origin = null, float rotation = 0, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0)
     parameters:
     - id: batch
-      type: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
+      type: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch
       description: The sprite batch used for rendering.
     - id: text
       type: System.String
@@ -300,7 +300,7 @@ items:
     content.vb: Public Sub Draw(batch As SpriteBatch, text As String, position As Vector2, size As Single, characterSpacing As Single = 0, lineSpacing As Single = 0, scale As Vector2? = Nothing, depth As Single = 0.5, origin As Vector2? = Nothing, rotation As Single = 0, color As Color? = Nothing, style As TextStyle = TextStyle.None, effect As FontSystemEffect = FontSystemEffect.None, effectAmount As Integer = 0)
   overload: Bliss.CSharp.Fonts.Font.Draw*
   nameWithType.vb: Font.Draw(SpriteBatch, String, Vector2, Single, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
-  fullName.vb: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch, String, System.Numerics.Vector2, Single, Single, Single, System.Numerics.Vector2?, Single, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, Integer)
+  fullName.vb: Bliss.CSharp.Fonts.Font.Draw(Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch, String, System.Numerics.Vector2, Single, Single, Single, System.Numerics.Vector2?, Single, System.Numerics.Vector2?, Single, Bliss.CSharp.Colors.Color?, FontStashSharp.TextStyle, FontStashSharp.FontSystemEffect, Integer)
   name.vb: Draw(SpriteBatch, String, Vector2, Single, Single, Single, Vector2?, Single, Vector2?, Single, Color?, TextStyle, FontSystemEffect, Integer)
 - uid: Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)
   commentId: M:Bliss.CSharp.Fonts.Font.MeasureText(System.String,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Single,FontStashSharp.FontSystemEffect,System.Int32)
@@ -964,17 +964,17 @@ references:
   name.vb: Single
 - uid: Bliss.CSharp.Fonts.Font.Draw*
   commentId: Overload:Bliss.CSharp.Fonts.Font.Draw
-  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_Draw_Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_System_String_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__FontStashSharp_TextStyle_FontStashSharp_FontSystemEffect_System_Int32_
+  href: Bliss.CSharp.Fonts.Font.html#Bliss_CSharp_Fonts_Font_Draw_Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_System_String_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__FontStashSharp_TextStyle_FontStashSharp_FontSystemEffect_System_Int32_
   name: Draw
   nameWithType: Font.Draw
   fullName: Bliss.CSharp.Fonts.Font.Draw
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
-  commentId: T:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
-  parent: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html
   name: SpriteBatch
   nameWithType: SpriteBatch
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch
 - uid: System.Numerics.Vector2
   commentId: T:System.Numerics.Vector2
   parent: System.Numerics
@@ -1046,12 +1046,12 @@ references:
   nameWithType.vb: Integer
   fullName.vb: Integer
   name.vb: Integer
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
-  commentId: N:Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites
   href: Bliss.html
-  name: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
-  nameWithType: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites
   spec.csharp:
   - uid: Bliss
     name: Bliss
@@ -1069,13 +1069,17 @@ references:
     name: Rendering
     href: Bliss.CSharp.Graphics.Rendering.html
   - name: .
-  - uid: Bliss.CSharp.Graphics.Rendering.Batches
-    name: Batches
-    href: Bliss.CSharp.Graphics.Rendering.Batches.html
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
   - name: .
-  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Batches
+    name: Batches
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites
     name: Sprites
-    href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.html
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.html
   spec.vb:
   - uid: Bliss
     name: Bliss
@@ -1093,13 +1097,17 @@ references:
     name: Rendering
     href: Bliss.CSharp.Graphics.Rendering.html
   - name: .
-  - uid: Bliss.CSharp.Graphics.Rendering.Batches
-    name: Batches
-    href: Bliss.CSharp.Graphics.Rendering.Batches.html
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
   - name: .
-  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Batches
+    name: Batches
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites
     name: Sprites
-    href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.html
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.html
 - uid: System.Numerics
   commentId: N:System.Numerics
   isExternal: true

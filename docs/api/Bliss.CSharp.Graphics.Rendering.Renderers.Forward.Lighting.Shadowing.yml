@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing
+  id: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing
+  children:
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing.ShadowMap
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing.ShadowMap
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing.ShadowMap
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing.ShadowMap.html
+  name: ShadowMap
+  nameWithType: ShadowMap
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing.ShadowMap

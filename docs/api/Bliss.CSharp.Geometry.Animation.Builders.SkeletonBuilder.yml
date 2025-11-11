@@ -1,0 +1,469 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder
+  commentId: T:Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder
+  id: SkeletonBuilder
+  parent: Bliss.CSharp.Geometry.Animation.Builders
+  children:
+  - Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.#ctor(Assimp.Scene)
+  - Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.Build
+  langs:
+  - csharp
+  - vb
+  name: SkeletonBuilder
+  nameWithType: SkeletonBuilder
+  fullName: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder
+  type: Class
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/Builders/SkeletonBuilder.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SkeletonBuilder
+    path: ../src/Bliss/CSharp/Geometry/Animation/Builders/SkeletonBuilder.cs
+    startLine: 6
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation.Builders
+  syntax:
+    content: public class SkeletonBuilder
+    content.vb: Public Class SkeletonBuilder
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.#ctor(Assimp.Scene)
+  commentId: M:Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.#ctor(Assimp.Scene)
+  id: '#ctor(Assimp.Scene)'
+  parent: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder
+  langs:
+  - csharp
+  - vb
+  name: SkeletonBuilder(Scene)
+  nameWithType: SkeletonBuilder.SkeletonBuilder(Scene)
+  fullName: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.SkeletonBuilder(Assimp.Scene)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/Builders/SkeletonBuilder.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Geometry/Animation/Builders/SkeletonBuilder.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation.Builders
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public SkeletonBuilder(Scene scene)
+    parameters:
+    - id: scene
+      type: Assimp.Scene
+      description: The Assimp scene that contains the bone and mesh data.
+    content.vb: Public Sub New(scene As Scene)
+  overload: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.#ctor*
+  nameWithType.vb: SkeletonBuilder.New(Scene)
+  fullName.vb: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.New(Assimp.Scene)
+  name.vb: New(Scene)
+- uid: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.Build
+  commentId: M:Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.Build
+  id: Build
+  parent: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder
+  langs:
+  - csharp
+  - vb
+  name: Build()
+  nameWithType: SkeletonBuilder.Build()
+  fullName: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.Build()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/Builders/SkeletonBuilder.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Build
+    path: ../src/Bliss/CSharp/Geometry/Animation/Builders/SkeletonBuilder.cs
+    startLine: 25
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation.Builders
+  summary: Builds a <xref href="Bliss.CSharp.Geometry.Animation.Skeleton" data-throw-if-not-resolved="false"></xref> by collecting unique bones from the scene’s meshes.
+  example: []
+  syntax:
+    content: public Skeleton Build()
+    return:
+      type: Bliss.CSharp.Geometry.Animation.Skeleton
+      description: A <xref href="Bliss.CSharp.Geometry.Animation.Skeleton" data-throw-if-not-resolved="false"></xref> containing the collected bones and their offset matrices.
+    content.vb: Public Function Build() As Skeleton
+  overload: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.Build*
+references:
+- uid: Bliss.CSharp.Geometry.Animation.Builders
+  commentId: N:Bliss.CSharp.Geometry.Animation.Builders
+  href: Bliss.html
+  name: Bliss.CSharp.Geometry.Animation.Builders
+  nameWithType: Bliss.CSharp.Geometry.Animation.Builders
+  fullName: Bliss.CSharp.Geometry.Animation.Builders
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation
+    name: Animation
+    href: Bliss.CSharp.Geometry.Animation.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation.Builders
+    name: Builders
+    href: Bliss.CSharp.Geometry.Animation.Builders.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation
+    name: Animation
+    href: Bliss.CSharp.Geometry.Animation.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation.Builders
+    name: Builders
+    href: Bliss.CSharp.Geometry.Animation.Builders.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder
+  commentId: T:Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder
+  href: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.html
+  name: SkeletonBuilder
+  nameWithType: SkeletonBuilder
+  fullName: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder
+- uid: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.#ctor*
+  commentId: Overload:Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.#ctor
+  href: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.html#Bliss_CSharp_Geometry_Animation_Builders_SkeletonBuilder__ctor_Assimp_Scene_
+  name: SkeletonBuilder
+  nameWithType: SkeletonBuilder.SkeletonBuilder
+  fullName: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.SkeletonBuilder
+  nameWithType.vb: SkeletonBuilder.New
+  fullName.vb: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.New
+  name.vb: New
+- uid: Assimp.Scene
+  commentId: T:Assimp.Scene
+  parent: Assimp
+  isExternal: true
+  name: Scene
+  nameWithType: Scene
+  fullName: Assimp.Scene
+- uid: Assimp
+  commentId: N:Assimp
+  isExternal: true
+  name: Assimp
+  nameWithType: Assimp
+  fullName: Assimp
+- uid: Bliss.CSharp.Geometry.Animation.Skeleton
+  commentId: T:Bliss.CSharp.Geometry.Animation.Skeleton
+  parent: Bliss.CSharp.Geometry.Animation
+  href: Bliss.CSharp.Geometry.Animation.Skeleton.html
+  name: Skeleton
+  nameWithType: Skeleton
+  fullName: Bliss.CSharp.Geometry.Animation.Skeleton
+- uid: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.Build*
+  commentId: Overload:Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.Build
+  href: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.html#Bliss_CSharp_Geometry_Animation_Builders_SkeletonBuilder_Build
+  name: Build
+  nameWithType: SkeletonBuilder.Build
+  fullName: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.Build
+- uid: Bliss.CSharp.Geometry.Animation
+  commentId: N:Bliss.CSharp.Geometry.Animation
+  href: Bliss.html
+  name: Bliss.CSharp.Geometry.Animation
+  nameWithType: Bliss.CSharp.Geometry.Animation
+  fullName: Bliss.CSharp.Geometry.Animation
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation
+    name: Animation
+    href: Bliss.CSharp.Geometry.Animation.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation
+    name: Animation
+    href: Bliss.CSharp.Geometry.Animation.html

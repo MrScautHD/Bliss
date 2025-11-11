@@ -1,0 +1,728 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Geometry.Animation.NodeAnimChannel
+  commentId: T:Bliss.CSharp.Geometry.Animation.NodeAnimChannel
+  id: NodeAnimChannel
+  parent: Bliss.CSharp.Geometry.Animation
+  children:
+  - Bliss.CSharp.Geometry.Animation.NodeAnimChannel.#ctor(System.String,System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key},System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey},System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key})
+  - Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Name
+  - Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Positions
+  - Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Rotations
+  - Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Scales
+  langs:
+  - csharp
+  - vb
+  name: NodeAnimChannel
+  nameWithType: NodeAnimChannel
+  fullName: Bliss.CSharp.Geometry.Animation.NodeAnimChannel
+  type: Class
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/NodeAnimChannel.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: NodeAnimChannel
+    path: ../src/Bliss/CSharp/Geometry/Animation/NodeAnimChannel.cs
+    startLine: 4
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation
+  syntax:
+    content: public class NodeAnimChannel
+    content.vb: Public Class NodeAnimChannel
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Name
+  commentId: P:Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Name
+  id: Name
+  parent: Bliss.CSharp.Geometry.Animation.NodeAnimChannel
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: NodeAnimChannel.Name
+  fullName: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Name
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/NodeAnimChannel.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Name
+    path: ../src/Bliss/CSharp/Geometry/Animation/NodeAnimChannel.cs
+    startLine: 9
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation
+  summary: The name of the node being animated.
+  example: []
+  syntax:
+    content: public string Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Name*
+- uid: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Positions
+  commentId: P:Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Positions
+  id: Positions
+  parent: Bliss.CSharp.Geometry.Animation.NodeAnimChannel
+  langs:
+  - csharp
+  - vb
+  name: Positions
+  nameWithType: NodeAnimChannel.Positions
+  fullName: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Positions
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/NodeAnimChannel.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Positions
+    path: ../src/Bliss/CSharp/Geometry/Animation/NodeAnimChannel.cs
+    startLine: 14
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation
+  summary: A list of <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key" data-throw-if-not-resolved="false"></xref> representing the position keyframes for the node.
+  example: []
+  syntax:
+    content: public IReadOnlyList<Vector3Key> Positions { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key}
+    content.vb: Public Property Positions As IReadOnlyList(Of Vector3Key)
+  overload: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Positions*
+- uid: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Rotations
+  commentId: P:Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Rotations
+  id: Rotations
+  parent: Bliss.CSharp.Geometry.Animation.NodeAnimChannel
+  langs:
+  - csharp
+  - vb
+  name: Rotations
+  nameWithType: NodeAnimChannel.Rotations
+  fullName: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Rotations
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/NodeAnimChannel.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Rotations
+    path: ../src/Bliss/CSharp/Geometry/Animation/NodeAnimChannel.cs
+    startLine: 19
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation
+  summary: A list of <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref> representing the rotation keyframes (quaternions) for the node.
+  example: []
+  syntax:
+    content: public IReadOnlyList<QuatKey> Rotations { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey}
+    content.vb: Public Property Rotations As IReadOnlyList(Of QuatKey)
+  overload: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Rotations*
+- uid: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Scales
+  commentId: P:Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Scales
+  id: Scales
+  parent: Bliss.CSharp.Geometry.Animation.NodeAnimChannel
+  langs:
+  - csharp
+  - vb
+  name: Scales
+  nameWithType: NodeAnimChannel.Scales
+  fullName: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Scales
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/NodeAnimChannel.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Scales
+    path: ../src/Bliss/CSharp/Geometry/Animation/NodeAnimChannel.cs
+    startLine: 24
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation
+  summary: A list of <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key" data-throw-if-not-resolved="false"></xref> representing the scale keyframes for the node.
+  example: []
+  syntax:
+    content: public IReadOnlyList<Vector3Key> Scales { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key}
+    content.vb: Public Property Scales As IReadOnlyList(Of Vector3Key)
+  overload: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Scales*
+- uid: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.#ctor(System.String,System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key},System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey},System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key})
+  commentId: M:Bliss.CSharp.Geometry.Animation.NodeAnimChannel.#ctor(System.String,System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key},System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey},System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key})
+  id: '#ctor(System.String,System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key},System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey},System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key})'
+  parent: Bliss.CSharp.Geometry.Animation.NodeAnimChannel
+  langs:
+  - csharp
+  - vb
+  name: NodeAnimChannel(string, IReadOnlyList<Vector3Key>, IReadOnlyList<QuatKey>, IReadOnlyList<Vector3Key>)
+  nameWithType: NodeAnimChannel.NodeAnimChannel(string, IReadOnlyList<Vector3Key>, IReadOnlyList<QuatKey>, IReadOnlyList<Vector3Key>)
+  fullName: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.NodeAnimChannel(string, System.Collections.Generic.IReadOnlyList<Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key>, System.Collections.Generic.IReadOnlyList<Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey>, System.Collections.Generic.IReadOnlyList<Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key>)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/NodeAnimChannel.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Geometry/Animation/NodeAnimChannel.cs
+    startLine: 33
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Geometry.Animation.NodeAnimChannel" data-throw-if-not-resolved="false"></xref> class with the specified name, positions, rotations, and scales.
+  example: []
+  syntax:
+    content: public NodeAnimChannel(string name, IReadOnlyList<Vector3Key> positions, IReadOnlyList<QuatKey> rotations, IReadOnlyList<Vector3Key> scales)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the node being animated.
+    - id: positions
+      type: System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key}
+      description: A list of <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key" data-throw-if-not-resolved="false"></xref> representing position keyframes.
+    - id: rotations
+      type: System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey}
+      description: A list of <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref> representing rotation keyframes.
+    - id: scales
+      type: System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key}
+      description: A list of <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key" data-throw-if-not-resolved="false"></xref> representing scale keyframes.
+    content.vb: Public Sub New(name As String, positions As IReadOnlyList(Of Vector3Key), rotations As IReadOnlyList(Of QuatKey), scales As IReadOnlyList(Of Vector3Key))
+  overload: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.#ctor*
+  nameWithType.vb: NodeAnimChannel.New(String, IReadOnlyList(Of Vector3Key), IReadOnlyList(Of QuatKey), IReadOnlyList(Of Vector3Key))
+  fullName.vb: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.New(String, System.Collections.Generic.IReadOnlyList(Of Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key), System.Collections.Generic.IReadOnlyList(Of Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey), System.Collections.Generic.IReadOnlyList(Of Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key))
+  name.vb: New(String, IReadOnlyList(Of Vector3Key), IReadOnlyList(Of QuatKey), IReadOnlyList(Of Vector3Key))
+references:
+- uid: Bliss.CSharp.Geometry.Animation
+  commentId: N:Bliss.CSharp.Geometry.Animation
+  href: Bliss.html
+  name: Bliss.CSharp.Geometry.Animation
+  nameWithType: Bliss.CSharp.Geometry.Animation
+  fullName: Bliss.CSharp.Geometry.Animation
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation
+    name: Animation
+    href: Bliss.CSharp.Geometry.Animation.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation
+    name: Animation
+    href: Bliss.CSharp.Geometry.Animation.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Name*
+  commentId: Overload:Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Name
+  href: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.html#Bliss_CSharp_Geometry_Animation_NodeAnimChannel_Name
+  name: Name
+  nameWithType: NodeAnimChannel.Name
+  fullName: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key
+  commentId: T:Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key
+  parent: Bliss.CSharp.Geometry.Animation.Keyframes
+  href: Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key.html
+  name: Vector3Key
+  nameWithType: Vector3Key
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key
+- uid: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Positions*
+  commentId: Overload:Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Positions
+  href: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.html#Bliss_CSharp_Geometry_Animation_NodeAnimChannel_Positions
+  name: Positions
+  nameWithType: NodeAnimChannel.Positions
+  fullName: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Positions
+- uid: System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key}
+  commentId: T:System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<Vector3Key>
+  nameWithType: IReadOnlyList<Vector3Key>
+  fullName: System.Collections.Generic.IReadOnlyList<Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key>
+  nameWithType.vb: IReadOnlyList(Of Vector3Key)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key)
+  name.vb: IReadOnlyList(Of Vector3Key)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key
+    name: Vector3Key
+    href: Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key
+    name: Vector3Key
+    href: Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key.html
+  - name: )
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes
+  commentId: N:Bliss.CSharp.Geometry.Animation.Keyframes
+  href: Bliss.html
+  name: Bliss.CSharp.Geometry.Animation.Keyframes
+  nameWithType: Bliss.CSharp.Geometry.Animation.Keyframes
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation
+    name: Animation
+    href: Bliss.CSharp.Geometry.Animation.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation.Keyframes
+    name: Keyframes
+    href: Bliss.CSharp.Geometry.Animation.Keyframes.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation
+    name: Animation
+    href: Bliss.CSharp.Geometry.Animation.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation.Keyframes
+    name: Keyframes
+    href: Bliss.CSharp.Geometry.Animation.Keyframes.html
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+  commentId: T:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+  parent: Bliss.CSharp.Geometry.Animation.Keyframes
+  href: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.html
+  name: QuatKey
+  nameWithType: QuatKey
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+- uid: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Rotations*
+  commentId: Overload:Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Rotations
+  href: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.html#Bliss_CSharp_Geometry_Animation_NodeAnimChannel_Rotations
+  name: Rotations
+  nameWithType: NodeAnimChannel.Rotations
+  fullName: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Rotations
+- uid: System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey}
+  commentId: T:System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<QuatKey>
+  nameWithType: IReadOnlyList<QuatKey>
+  fullName: System.Collections.Generic.IReadOnlyList<Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey>
+  nameWithType.vb: IReadOnlyList(Of QuatKey)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  name.vb: IReadOnlyList(Of QuatKey)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+    name: QuatKey
+    href: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+    name: QuatKey
+    href: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.html
+  - name: )
+- uid: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Scales*
+  commentId: Overload:Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Scales
+  href: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.html#Bliss_CSharp_Geometry_Animation_NodeAnimChannel_Scales
+  name: Scales
+  nameWithType: NodeAnimChannel.Scales
+  fullName: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.Scales
+- uid: Bliss.CSharp.Geometry.Animation.NodeAnimChannel
+  commentId: T:Bliss.CSharp.Geometry.Animation.NodeAnimChannel
+  href: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.html
+  name: NodeAnimChannel
+  nameWithType: NodeAnimChannel
+  fullName: Bliss.CSharp.Geometry.Animation.NodeAnimChannel
+- uid: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.#ctor*
+  commentId: Overload:Bliss.CSharp.Geometry.Animation.NodeAnimChannel.#ctor
+  href: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.html#Bliss_CSharp_Geometry_Animation_NodeAnimChannel__ctor_System_String_System_Collections_Generic_IReadOnlyList_Bliss_CSharp_Geometry_Animation_Keyframes_Vector3Key__System_Collections_Generic_IReadOnlyList_Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey__System_Collections_Generic_IReadOnlyList_Bliss_CSharp_Geometry_Animation_Keyframes_Vector3Key__
+  name: NodeAnimChannel
+  nameWithType: NodeAnimChannel.NodeAnimChannel
+  fullName: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.NodeAnimChannel
+  nameWithType.vb: NodeAnimChannel.New
+  fullName.vb: Bliss.CSharp.Geometry.Animation.NodeAnimChannel.New
+  name.vb: New

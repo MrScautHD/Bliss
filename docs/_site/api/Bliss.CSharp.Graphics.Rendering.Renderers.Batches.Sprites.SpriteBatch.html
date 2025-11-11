@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class SpriteBatch | Bliss </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class SpriteBatch | Bliss ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MrScautHD/Bliss/new/main/apiSpec/new?filename=Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch.md&amp;value=---%0Auid%3A%20Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Bliss">
+            Bliss
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch">
+
+
+
+  <h1 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch" class="text-break">
+Class SpriteBatch  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Bliss.html">Bliss</a>.<a class="xref" href="Bliss.CSharp.html">CSharp</a>.<a class="xref" href="Bliss.CSharp.Graphics.html">Graphics</a>.<a class="xref" href="Bliss.CSharp.Graphics.Rendering.html">Rendering</a>.<a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.html">Renderers</a>.<a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.html">Batches</a>.<a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.html">Sprites</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Bliss.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class SpriteBatch : Disposable, IDisposable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Bliss.CSharp.Disposable.html">Disposable</a></div>
+      <div><span class="xref">SpriteBatch</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_HasDisposed">Disposable.HasDisposed</a>
+    </div>
+    <div>
+      <a class="xref" href="Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose">Disposable.Dispose()</a>
+    </div>
+    <div>
+      <a class="xref" href="Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed">Disposable.ThrowIfDisposed()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch__ctor_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.#ctor*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Windowing_IWindow_System_UInt32_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Windowing.IWindow,System.UInt32)">
+  SpriteBatch(GraphicsDevice, IWindow, uint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L262"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> class for batching and rendering 2D sprites.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SpriteBatch(GraphicsDevice graphicsDevice, IWindow window, uint capacity = 4096)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dd><p>The <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GraphicsDevice">GraphicsDevice</a> used for rendering.</p>
+</dd>
+    <dt><code>window</code> <a class="xref" href="Bliss.CSharp.Windowing.IWindow.html">IWindow</a></dt>
+    <dd><p>The <a class="xref" href="Bliss.CSharp.Windowing.IWindow.html">IWindow</a> associated with the rendering context.</p>
+</dd>
+    <dt><code>capacity</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The maximum number of sprites the batch can hold. Defaults to 4.096.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_Capacity_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.Capacity*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_Capacity" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.Capacity">
+  Capacity
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Specifies the maximum number of sprites that the SpriteBatch can process in a single draw call.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint Capacity { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_DrawCallCount_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.DrawCallCount*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_DrawCallCount" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.DrawCallCount">
+  DrawCallCount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the number of draw calls made during the current batch rendering session.
+This count is reset to zero each time <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_Veldrid_Sampler_Bliss_CSharp_Effects_Effect_System_Nullable_Veldrid_BlendStateDescription__System_Nullable_Veldrid_DepthStencilStateDescription__System_Nullable_Veldrid_RasterizerStateDescription__System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__System_Nullable_Bliss_CSharp_Transformations_Rectangle__">Begin(CommandList, OutputDescription, Sampler?, Effect?, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?, Matrix4x4?, Matrix4x4?, Rectangle?)</a> is called and increments with each call to <span class="xref">Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.Flush()</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int DrawCallCount { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_FontStashRenderer_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.FontStashRenderer*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_FontStashRenderer" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.FontStashRenderer">
+  FontStashRenderer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Provides access to a font rendering system within the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.
+Utilizes <a class="xref" href="Bliss.CSharp.Fonts.FontStashRenderer2D.html">FontStashRenderer2D</a> for efficient rendering of text with support for various styles and effects.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FontStashRenderer2D FontStashRenderer { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Fonts.FontStashRenderer2D.html">FontStashRenderer2D</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GraphicsDevice_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.GraphicsDevice*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GraphicsDevice" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.GraphicsDevice">
+  GraphicsDevice
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GraphicsDevice">GraphicsDevice</a> associated with the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.
+This device is responsible for managing and rendering graphics resources such as buffers, shaders, and textures.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GraphicsDevice GraphicsDevice { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_Window_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.Window*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_Window" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.Window">
+  Window
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Represents the window used for rendering graphics.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IWindow Window { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Windowing.IWindow.html">IWindow</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_AddQuad_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.AddQuad*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_AddQuad_Bliss_CSharp_Textures_Texture2D_Bliss_CSharp_Graphics_VertexTypes_SpriteVertex2D_Bliss_CSharp_Graphics_VertexTypes_SpriteVertex2D_Bliss_CSharp_Graphics_VertexTypes_SpriteVertex2D_Bliss_CSharp_Graphics_VertexTypes_SpriteVertex2D_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.AddQuad(Bliss.CSharp.Textures.Texture2D,Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D,Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D,Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D,Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D)">
+  AddQuad(Texture2D, SpriteVertex2D, SpriteVertex2D, SpriteVertex2D, SpriteVertex2D)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L790"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds a quad to the sprite batch for rendering.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddQuad(Texture2D texture, SpriteVertex2D topLeft, SpriteVertex2D topRight, SpriteVertex2D bottomLeft, SpriteVertex2D bottomRight)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>texture</code> <a class="xref" href="Bliss.CSharp.Textures.Texture2D.html">Texture2D</a></dt>
+    <dd><p>The <a class="xref" href="Bliss.CSharp.Textures.Texture2D.html">Texture2D</a> to be used for the quad's rendering.</p>
+</dd>
+    <dt><code>topLeft</code> <a class="xref" href="Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.html">SpriteVertex2D</a></dt>
+    <dd><p>The <a class="xref" href="Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.html">SpriteVertex2D</a> defining the top-left vertex of the quad.</p>
+</dd>
+    <dt><code>topRight</code> <a class="xref" href="Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.html">SpriteVertex2D</a></dt>
+    <dd><p>The <a class="xref" href="Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.html">SpriteVertex2D</a> defining the top-right vertex of the quad.</p>
+</dd>
+    <dt><code>bottomLeft</code> <a class="xref" href="Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.html">SpriteVertex2D</a></dt>
+    <dd><p>The <a class="xref" href="Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.html">SpriteVertex2D</a> defining the bottom-left vertex of the quad.</p>
+</dd>
+    <dt><code>bottomRight</code> <a class="xref" href="Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.html">SpriteVertex2D</a></dt>
+    <dd><p>The <a class="xref" href="Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.html">SpriteVertex2D</a> defining the bottom-right vertex of the quad.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the SpriteBatch has not been started by calling <code>Begin</code>.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_Begin_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.Begin*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_Veldrid_Sampler_Bliss_CSharp_Effects_Effect_System_Nullable_Veldrid_BlendStateDescription__System_Nullable_Veldrid_DepthStencilStateDescription__System_Nullable_Veldrid_RasterizerStateDescription__System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__System_Nullable_Bliss_CSharp_Transformations_Rectangle__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.Begin(Veldrid.CommandList,Veldrid.OutputDescription,Veldrid.Sampler,Bliss.CSharp.Effects.Effect,System.Nullable{Veldrid.BlendStateDescription},System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{System.Numerics.Matrix4x4},System.Nullable{System.Numerics.Matrix4x4},System.Nullable{Bliss.CSharp.Transformations.Rectangle})">
+  Begin(CommandList, OutputDescription, Sampler?, Effect?, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?, Matrix4x4?, Matrix4x4?, Rectangle?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L314"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Begins a sprite batch operation, initializing the specified settings for rendering.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Begin(CommandList commandList, OutputDescription output, Sampler? sampler = null, Effect? effect = null, BlendStateDescription? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Matrix4x4? projection = null, Matrix4x4? view = null, Rectangle? scissorRect = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/CommandList.cs">CommandList</a></dt>
+    <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/CommandList.cs">CommandList</a> to which rendering commands will be submitted.</p>
+</dd>
+    <dt><code>output</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/OutputDescription.cs">OutputDescription</a></dt>
+    <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/OutputDescription.cs">OutputDescription</a> that defines the render target and its properties.</p>
+</dd>
+    <dt><code>sampler</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Sampler.cs">Sampler</a></dt>
+    <dd><p>An optional <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Sampler.cs">Sampler</a> object used for texture sampling. Defaults to a point sampler if not specified.</p>
+</dd>
+    <dt><code>effect</code> <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a></dt>
+    <dd><p>An optional <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a> to apply during rendering. Defaults to the global default sprite effect if not specified.</p>
+</dd>
+    <dt><code>blendState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a>?</dt>
+    <dd><p>An optional <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a> for configuring blend state. Defaults to single alpha blending if not specified.</p>
+</dd>
+    <dt><code>depthStencilState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a>?</dt>
+    <dd><p>An optional <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a> for configuring depth and stencil behavior. Defaults to a depth-only, less-equal test configuration if not specified.</p>
+</dd>
+    <dt><code>rasterizerState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a>?</dt>
+    <dd><p>An optional <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a> for defining rasterizer behavior. Defaults to no culling if not specified.</p>
+</dd>
+    <dt><code>projection</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a>?</dt>
+    <dd><p>An optional <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a> for the projection matrix. Defaults to an orthographic projection based on the associated window dimensions if not specified.</p>
+</dd>
+    <dt><code>view</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a>?</dt>
+    <dd><p>An optional <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a> for the view matrix. Defaults to the identity matrix if not specified.</p>
+</dd>
+    <dt><code>scissorRect</code> <a class="xref" href="Bliss.CSharp.Transformations.Rectangle.html">Rectangle</a>?</dt>
+    <dd><p>An optional <a class="xref" href="Bliss.CSharp.Transformations.Rectangle.html">Rectangle</a> that defines the scissor rectangle for rendering. No scissor rect is applied if not specified.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown when the method is called before the previous batch has been properly ended.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_Dispose_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.Dispose*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_Dispose_System_Boolean_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.Dispose(System.Boolean)">
+  Dispose(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L895"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Disposes of the object and releases associated resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Dispose(bool disposing)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>disposing</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if called from user code; false if called from a finalizer.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_DrawText_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.DrawText*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_DrawText_Bliss_CSharp_Fonts_Font_System_String_System_Numerics_Vector2_System_Single_System_Single_System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__FontStashSharp_TextStyle_FontStashSharp_FontSystemEffect_System_Int32_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.DrawText(Bliss.CSharp.Fonts.Font,System.String,System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},FontStashSharp.TextStyle,FontStashSharp.FontSystemEffect,System.Int32)">
+  DrawText(Font, string, Vector2, float, float, float, Vector2?, float, Vector2?, float, Color?, TextStyle, FontSystemEffect, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L707"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Draws the specified text at the given position with the provided font and styling options.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DrawText(Font font, string text, Vector2 position, float size, float characterSpacing = 0, float lineSpacing = 0, Vector2? scale = null, float layerDepth = 0.5, Vector2? origin = null, float rotation = 0, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>font</code> <a class="xref" href="Bliss.CSharp.Fonts.Font.html">Font</a></dt>
+    <dd><p>The font to be used for drawing the text.</p>
+</dd>
+    <dt><code>text</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The text to be drawn.</p>
+</dd>
+    <dt><code>position</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a></dt>
+    <dd><p>The position on the screen where the text will be drawn.</p>
+</dd>
+    <dt><code>size</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The size of the text.</p>
+</dd>
+    <dt><code>characterSpacing</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Optional spacing between characters. Default is 0.0F.</p>
+</dd>
+    <dt><code>lineSpacing</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Optional spacing between lines of text. Default is 0.0F.</p>
+</dd>
+    <dt><code>scale</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a>?</dt>
+    <dd><p>Optional scale applied to the text. Default is null.</p>
+</dd>
+    <dt><code>layerDepth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Optional depth value for sorting layers. Default is 0.5F.</p>
+</dd>
+    <dt><code>origin</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a>?</dt>
+    <dd><p>Optional origin point for rotation and scaling. Default is null.</p>
+</dd>
+    <dt><code>rotation</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Optional rotation angle in radians. Default is 0.0F.</p>
+</dd>
+    <dt><code>color</code> <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a>?</dt>
+    <dd><p>Optional color of the text. Default is null.</p>
+</dd>
+    <dt><code>style</code> <span class="xref">TextStyle</span></dt>
+    <dd><p>Optional text style. Default is TextStyle.None.</p>
+</dd>
+    <dt><code>effect</code> <span class="xref">FontSystemEffect</span></dt>
+    <dd><p>Optional effect applied to the text. Default is FontSystemEffect.None.</p>
+</dd>
+    <dt><code>effectAmount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Optional amount for the effect applied. Default is 0.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_DrawTexture_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.DrawTexture*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_DrawTexture_Bliss_CSharp_Textures_Texture2D_System_Numerics_Vector2_System_Single_System_Nullable_Bliss_CSharp_Transformations_Rectangle__System_Nullable_System_Numerics_Vector2__System_Nullable_System_Numerics_Vector2__System_Single_System_Nullable_Bliss_CSharp_Colors_Color__Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteFlip_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.DrawTexture(Bliss.CSharp.Textures.Texture2D,System.Numerics.Vector2,System.Single,System.Nullable{Bliss.CSharp.Transformations.Rectangle},System.Nullable{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector2},System.Single,System.Nullable{Bliss.CSharp.Colors.Color},Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteFlip)">
+  DrawTexture(Texture2D, Vector2, float, Rectangle?, Vector2?, Vector2?, float, Color?, SpriteFlip)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L723"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Draws a texture onto the screen with configurable position, scaling, rotation, depth, and color.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DrawTexture(Texture2D texture, Vector2 position, float layerDepth = 0.5, Rectangle? sourceRect = null, Vector2? scale = null, Vector2? origin = null, float rotation = 0, Color? color = null, SpriteFlip flip = SpriteFlip.None)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>texture</code> <a class="xref" href="Bliss.CSharp.Textures.Texture2D.html">Texture2D</a></dt>
+    <dd><p>The <a class="xref" href="Bliss.CSharp.Textures.Texture2D.html">Texture2D</a> to render.</p>
+</dd>
+    <dt><code>position</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a></dt>
+    <dd><p>The position on the screen where the texture will be drawn, specified in world coordinates.</p>
+</dd>
+    <dt><code>layerDepth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Optional depth value for sorting layers. Defaults to 0.5F.</p>
+</dd>
+    <dt><code>sourceRect</code> <a class="xref" href="Bliss.CSharp.Transformations.Rectangle.html">Rectangle</a>?</dt>
+    <dd><p>An optional <a class="xref" href="Bliss.CSharp.Transformations.Rectangle.html">Rectangle</a> specifying the region of the texture to be used. If null, the entire texture is used.</p>
+</dd>
+    <dt><code>scale</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a>?</dt>
+    <dd><p>The scaling factor applied to the texture. Defaults to no scaling (1.0F, 1.0F).</p>
+</dd>
+    <dt><code>origin</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.vector2">Vector2</a>?</dt>
+    <dd><p>The origin point for rotation and scaling, relative to the source rectangle. Defaults to the top-left corner.</p>
+</dd>
+    <dt><code>rotation</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The angle, in degrees, to rotate the texture about the origin point. Defaults to 0.0F.</p>
+</dd>
+    <dt><code>color</code> <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a>?</dt>
+    <dd><p>The <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a> to apply to the texture for tinting. Defaults to White (no tint).</p>
+</dd>
+    <dt><code>flip</code> <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteFlip.html">SpriteFlip</a></dt>
+    <dd><p>The flip mode to apply to the texture, such as horizontal or vertical flipping. Defaults to <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteFlip.html#Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteFlip_None">None</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_End_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.End*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_End" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.End">
+  End()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L339"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Ends the current drawing session that was initiated by a call to <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html#Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_Begin_Veldrid_CommandList_Veldrid_OutputDescription_Veldrid_Sampler_Bliss_CSharp_Effects_Effect_System_Nullable_Veldrid_BlendStateDescription__System_Nullable_Veldrid_DepthStencilStateDescription__System_Nullable_Veldrid_RasterizerStateDescription__System_Nullable_System_Numerics_Matrix4x4__System_Nullable_System_Numerics_Matrix4x4__System_Nullable_Bliss_CSharp_Transformations_Rectangle__">Begin(CommandList, OutputDescription, Sampler?, Effect?, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?, Matrix4x4?, Matrix4x4?, Rectangle?)</a>.
+This method finalizes the batch operations by flushing all pending draw calls.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void End()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GetCurrentBlendState_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.GetCurrentBlendState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GetCurrentBlendState" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.GetCurrentBlendState">
+  GetCurrentBlendState()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L429"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the current <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a> used by the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> for rendering operations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlendStateDescription GetCurrentBlendState()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a></dt>
+    <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a> representing the current blending configuration.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GetCurrentDepthStencilState_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.GetCurrentDepthStencilState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GetCurrentDepthStencilState" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.GetCurrentDepthStencilState">
+  GetCurrentDepthStencilState()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L467"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the current depth and stencil state configuration used for rendering in the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DepthStencilStateDescription GetCurrentDepthStencilState()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a></dt>
+    <dd><p>The current <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a> used by the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> for rendering.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GetCurrentEffect_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.GetCurrentEffect*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GetCurrentEffect" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.GetCurrentEffect">
+  GetCurrentEffect()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L391"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the current <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a> being used by the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Effect GetCurrentEffect()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a></dt>
+    <dd><p>The active <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a> instance used for rendering, or null if no effect is set.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GetCurrentOutput_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.GetCurrentOutput*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GetCurrentOutput" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.GetCurrentOutput">
+  GetCurrentOutput()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L353"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the current <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/OutputDescription.cs">OutputDescription</a> being used by the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OutputDescription GetCurrentOutput()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/OutputDescription.cs">OutputDescription</a></dt>
+    <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/OutputDescription.cs">OutputDescription</a> currently associated with the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GetCurrentProjection_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.GetCurrentProjection*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GetCurrentProjection" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.GetCurrentProjection">
+  GetCurrentProjection()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L543"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the current projection matrix used by the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Matrix4x4 GetCurrentProjection()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a></dt>
+    <dd><p>The current <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a> projection matrix.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the sprite batch operation has not been started.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GetCurrentRasterizerState_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.GetCurrentRasterizerState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GetCurrentRasterizerState" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.GetCurrentRasterizerState">
+  GetCurrentRasterizerState()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L505"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the current rasterizer state used for configuring rasterization settings in the rendering pipeline.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RasterizerStateDescription GetCurrentRasterizerState()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a></dt>
+    <dd><p>A <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a> representing the current rasterizer state.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the sprite batch operation has not been started.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GetCurrentSampler_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.GetCurrentSampler*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GetCurrentSampler" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.GetCurrentSampler">
+  GetCurrentSampler()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L619"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the current <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Sampler.cs">Sampler</a> used for texture sampling operations in the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Sampler GetCurrentSampler()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Sampler.cs">Sampler</a></dt>
+    <dd><p>The current <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Sampler.cs">Sampler</a> instance being used.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the sprite batch operation has not been started.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GetCurrentScissorRect_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.GetCurrentScissorRect*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GetCurrentScissorRect" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.GetCurrentScissorRect">
+  GetCurrentScissorRect()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L657"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the current scissor rectangle being used by the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Rectangle? GetCurrentScissorRect()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Transformations.Rectangle.html">Rectangle</a>?</dt>
+    <dd><p>The current scissor rectangle, or null if no scissor rectangle is set.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GetCurrentView_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.GetCurrentView*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_GetCurrentView" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.GetCurrentView">
+  GetCurrentView()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L581"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the current view matrix used for rendering.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Matrix4x4 GetCurrentView()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a></dt>
+    <dd><p>The current <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a> view matrix.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the sprite batch operation has not been started.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PopBlendState_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PopBlendState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PopBlendState" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PopBlendState">
+  PopBlendState()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L454"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pop the current <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a> to the main blend state used by the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PopBlendState()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PopDepthStencilState_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PopDepthStencilState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PopDepthStencilState" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PopDepthStencilState">
+  PopDepthStencilState()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L492"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pop the current <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a> to the main depth stencil state used by the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PopDepthStencilState()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PopEffect_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PopEffect*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PopEffect" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PopEffect">
+  PopEffect()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L416"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pop the current <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a> to the main effect used by the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PopEffect()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PopOutput_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PopOutput*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PopOutput" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PopOutput">
+  PopOutput()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L378"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pop the output of the <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/OutputDescription.cs">OutputDescription</a> for the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PopOutput()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PopProjection_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PopProjection*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PopProjection" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PopProjection">
+  PopProjection()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L568"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pop the current <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a> to the main projection used by the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PopProjection()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PopRasterizerState_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PopRasterizerState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PopRasterizerState" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PopRasterizerState">
+  PopRasterizerState()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L530"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pop the current <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a> to the main rasterizer state used by the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PopRasterizerState()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PopSampler_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PopSampler*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PopSampler" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PopSampler">
+  PopSampler()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L644"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pop the current <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Sampler.cs">Sampler</a> to the main sampler used by the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PopSampler()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PopScissorRect_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PopScissorRect*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PopScissorRect" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PopScissorRect">
+  PopScissorRect()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L682"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pop the current <a class="xref" href="Bliss.CSharp.Transformations.Rectangle.html">Rectangle</a> scissor to the main scissor used by the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PopScissorRect()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PopView_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PopView*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PopView" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PopView">
+  PopView()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L606"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pop the current <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a> to the main view used by the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PopView()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PushBlendState_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PushBlendState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PushBlendState_Veldrid_BlendStateDescription_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PushBlendState(Veldrid.BlendStateDescription)">
+  PushBlendState(BlendStateDescription)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L442"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Push the requested <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a> for the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PushBlendState(BlendStateDescription blendState)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blendState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a></dt>
+    <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/BlendStateDescription.cs">BlendStateDescription</a> to apply for rendering.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PushDepthStencilState_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PushDepthStencilState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PushDepthStencilState_Veldrid_DepthStencilStateDescription_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PushDepthStencilState(Veldrid.DepthStencilStateDescription)">
+  PushDepthStencilState(DepthStencilStateDescription)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L480"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Push the requested <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a> for the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PushDepthStencilState(DepthStencilStateDescription depthStencilState)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>depthStencilState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a></dt>
+    <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a> to apply for rendering.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PushEffect_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PushEffect*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PushEffect_Bliss_CSharp_Effects_Effect_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PushEffect(Bliss.CSharp.Effects.Effect)">
+  PushEffect(Effect)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L404"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Push the requested <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a> for the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PushEffect(Effect effect)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>effect</code> <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a></dt>
+    <dd><p>The <a class="xref" href="Bliss.CSharp.Effects.Effect.html">Effect</a> to apply for rendering.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PushOutput_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PushOutput*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PushOutput_Veldrid_OutputDescription_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PushOutput(Veldrid.OutputDescription)">
+  PushOutput(OutputDescription)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L366"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Push the requested <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/OutputDescription.cs">OutputDescription</a> for the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PushOutput(OutputDescription output)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/OutputDescription.cs">OutputDescription</a></dt>
+    <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/OutputDescription.cs">OutputDescription</a> to apply for rendering.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PushProjection_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PushProjection*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PushProjection_System_Numerics_Matrix4x4_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PushProjection(System.Numerics.Matrix4x4)">
+  PushProjection(Matrix4x4)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L556"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Push the requested <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a> projection for the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PushProjection(Matrix4x4 projection)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>projection</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a></dt>
+    <dd><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a> projection to apply for rendering.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PushRasterizerState_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PushRasterizerState*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PushRasterizerState_Veldrid_RasterizerStateDescription_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PushRasterizerState(Veldrid.RasterizerStateDescription)">
+  PushRasterizerState(RasterizerStateDescription)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L518"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Push the requested <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a> for the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PushRasterizerState(RasterizerStateDescription rasterizerState)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rasterizerState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a></dt>
+    <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a> to apply for rendering.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PushSampler_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PushSampler*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PushSampler_Veldrid_Sampler_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PushSampler(Veldrid.Sampler)">
+  PushSampler(Sampler)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L632"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Push the requested <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Sampler.cs">Sampler</a> for the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PushSampler(Sampler sampler)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sampler</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Sampler.cs">Sampler</a></dt>
+    <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Sampler.cs">Sampler</a> to apply for rendering.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PushScissorRect_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PushScissorRect*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PushScissorRect_System_Nullable_Bliss_CSharp_Transformations_Rectangle__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PushScissorRect(System.Nullable{Bliss.CSharp.Transformations.Rectangle})">
+  PushScissorRect(Rectangle?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L670"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Push the requested <a class="xref" href="Bliss.CSharp.Transformations.Rectangle.html">Rectangle</a> scissor for the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PushScissorRect(Rectangle? rectangle)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rectangle</code> <a class="xref" href="Bliss.CSharp.Transformations.Rectangle.html">Rectangle</a>?</dt>
+    <dd><p>The <a class="xref" href="Bliss.CSharp.Transformations.Rectangle.html">Rectangle</a> scissor to apply for rendering.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PushView_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PushView*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_PushView_System_Numerics_Matrix4x4_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.PushView(System.Numerics.Matrix4x4)">
+  PushView(Matrix4x4)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L594"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Push the requested <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a> view for the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PushView(Matrix4x4 view)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>view</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a></dt>
+    <dd><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a> view to apply for rendering.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Thrown if the <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html">SpriteBatch</a> has not begun.</p>
+</dd>
+  </dl>
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Batches/Sprites/SpriteBatch.cs/#L17" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

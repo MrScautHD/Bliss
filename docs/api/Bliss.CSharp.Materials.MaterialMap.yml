@@ -5,8 +5,10 @@ items:
   id: MaterialMap
   parent: Bliss.CSharp.Materials
   children:
-  - Bliss.CSharp.Materials.MaterialMap.#ctor(Bliss.CSharp.Textures.Texture2D,System.Nullable{Bliss.CSharp.Colors.Color},System.Single)
+  - Bliss.CSharp.Materials.MaterialMap.#ctor(Bliss.CSharp.Textures.Texture2D,Veldrid.Sampler,System.Nullable{Bliss.CSharp.Colors.Color},System.Single)
   - Bliss.CSharp.Materials.MaterialMap.Color
+  - Bliss.CSharp.Materials.MaterialMap.GetTextureResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+  - Bliss.CSharp.Materials.MaterialMap.Sampler
   - Bliss.CSharp.Materials.MaterialMap.Texture
   - Bliss.CSharp.Materials.MaterialMap.Value
   langs:
@@ -23,7 +25,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MaterialMap
     path: ../src/Bliss/CSharp/Materials/MaterialMap.cs
-    startLine: 5
+    startLine: 7
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -58,7 +60,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Texture
     path: ../src/Bliss/CSharp/Materials/MaterialMap.cs
-    startLine: 11
+    startLine: 13
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -72,6 +74,40 @@ items:
     return:
       type: Bliss.CSharp.Textures.Texture2D
     content.vb: Public Texture As Texture2D
+- uid: Bliss.CSharp.Materials.MaterialMap.Sampler
+  commentId: F:Bliss.CSharp.Materials.MaterialMap.Sampler
+  id: Sampler
+  parent: Bliss.CSharp.Materials.MaterialMap
+  langs:
+  - csharp
+  - vb
+  name: Sampler
+  nameWithType: MaterialMap.Sampler
+  fullName: Bliss.CSharp.Materials.MaterialMap.Sampler
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/MaterialMap.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Sampler
+    path: ../src/Bliss/CSharp/Materials/MaterialMap.cs
+    startLine: 20
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: >-
+    Represents a sampler used in a material map for texture sampling operations.
+
+    A sampler defines how textures are sampled, including settings such as filtering,
+
+    addressing mode, and LOD behavior, which influence rendering outcomes and texture mapping techniques.
+  example: []
+  syntax:
+    content: public Sampler? Sampler
+    return:
+      type: Veldrid.Sampler
+    content.vb: Public Sampler As Sampler
 - uid: Bliss.CSharp.Materials.MaterialMap.Color
   commentId: F:Bliss.CSharp.Materials.MaterialMap.Color
   id: Color
@@ -90,7 +126,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Color
     path: ../src/Bliss/CSharp/Materials/MaterialMap.cs
-    startLine: 17
+    startLine: 26
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -122,7 +158,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Value
     path: ../src/Bliss/CSharp/Materials/MaterialMap.cs
-    startLine: 23
+    startLine: 32
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -136,16 +172,16 @@ items:
     return:
       type: System.Single
     content.vb: Public Value As Single
-- uid: Bliss.CSharp.Materials.MaterialMap.#ctor(Bliss.CSharp.Textures.Texture2D,System.Nullable{Bliss.CSharp.Colors.Color},System.Single)
-  commentId: M:Bliss.CSharp.Materials.MaterialMap.#ctor(Bliss.CSharp.Textures.Texture2D,System.Nullable{Bliss.CSharp.Colors.Color},System.Single)
-  id: '#ctor(Bliss.CSharp.Textures.Texture2D,System.Nullable{Bliss.CSharp.Colors.Color},System.Single)'
+- uid: Bliss.CSharp.Materials.MaterialMap.#ctor(Bliss.CSharp.Textures.Texture2D,Veldrid.Sampler,System.Nullable{Bliss.CSharp.Colors.Color},System.Single)
+  commentId: M:Bliss.CSharp.Materials.MaterialMap.#ctor(Bliss.CSharp.Textures.Texture2D,Veldrid.Sampler,System.Nullable{Bliss.CSharp.Colors.Color},System.Single)
+  id: '#ctor(Bliss.CSharp.Textures.Texture2D,Veldrid.Sampler,System.Nullable{Bliss.CSharp.Colors.Color},System.Single)'
   parent: Bliss.CSharp.Materials.MaterialMap
   langs:
   - csharp
   - vb
-  name: MaterialMap(Texture2D?, Color?, float)
-  nameWithType: MaterialMap.MaterialMap(Texture2D?, Color?, float)
-  fullName: Bliss.CSharp.Materials.MaterialMap.MaterialMap(Bliss.CSharp.Textures.Texture2D?, Bliss.CSharp.Colors.Color?, float)
+  name: MaterialMap(Texture2D?, Sampler?, Color?, float)
+  nameWithType: MaterialMap.MaterialMap(Texture2D?, Sampler?, Color?, float)
+  fullName: Bliss.CSharp.Materials.MaterialMap.MaterialMap(Bliss.CSharp.Textures.Texture2D?, Veldrid.Sampler?, Bliss.CSharp.Colors.Color?, float)
   type: Constructor
   source:
     remote:
@@ -154,29 +190,70 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Materials/MaterialMap.cs
-    startLine: 31
+    startLine: 41
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
-  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Materials.MaterialMap" data-throw-if-not-resolved="false"></xref> class with the specified texture, color, and value.
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Materials.MaterialMap" data-throw-if-not-resolved="false"></xref> class.
   example: []
   syntax:
-    content: public MaterialMap(Texture2D? texture = null, Color? color = null, float value = 0)
+    content: public MaterialMap(Texture2D? texture = null, Sampler? sampler = null, Color? color = null, float value = 0)
     parameters:
     - id: texture
       type: Bliss.CSharp.Textures.Texture2D
       description: The texture associated with the material map. Can be <code>null</code>.
+    - id: sampler
+      type: Veldrid.Sampler
+      description: The sampler to use with the texture, or <code>null</code> if not used.
     - id: color
       type: System.Nullable{Bliss.CSharp.Colors.Color}
       description: The color associated with the material map. Can be <code>null</code>.
     - id: value
       type: System.Single
       description: The scalar value associated with the material map, defaulting to <code>0.0F</code>.
-    content.vb: Public Sub New(texture As Texture2D = Nothing, color As Color? = Nothing, value As Single = 0)
+    content.vb: Public Sub New(texture As Texture2D = Nothing, sampler As Sampler = Nothing, color As Color? = Nothing, value As Single = 0)
   overload: Bliss.CSharp.Materials.MaterialMap.#ctor*
-  nameWithType.vb: MaterialMap.New(Texture2D, Color?, Single)
-  fullName.vb: Bliss.CSharp.Materials.MaterialMap.New(Bliss.CSharp.Textures.Texture2D, Bliss.CSharp.Colors.Color?, Single)
-  name.vb: New(Texture2D, Color?, Single)
+  nameWithType.vb: MaterialMap.New(Texture2D, Sampler, Color?, Single)
+  fullName.vb: Bliss.CSharp.Materials.MaterialMap.New(Bliss.CSharp.Textures.Texture2D, Veldrid.Sampler, Bliss.CSharp.Colors.Color?, Single)
+  name.vb: New(Texture2D, Sampler, Color?, Single)
+- uid: Bliss.CSharp.Materials.MaterialMap.GetTextureResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+  commentId: M:Bliss.CSharp.Materials.MaterialMap.GetTextureResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+  id: GetTextureResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+  parent: Bliss.CSharp.Materials.MaterialMap
+  langs:
+  - csharp
+  - vb
+  name: GetTextureResourceSet(Sampler, SimpleTextureLayout)
+  nameWithType: MaterialMap.GetTextureResourceSet(Sampler, SimpleTextureLayout)
+  fullName: Bliss.CSharp.Materials.MaterialMap.GetTextureResourceSet(Veldrid.Sampler, Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/MaterialMap.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetTextureResourceSet
+    path: ../src/Bliss/CSharp/Materials/MaterialMap.cs
+    startLine: 54
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: The texture resource set associated with the specified sampler and texture layout.
+  example: []
+  syntax:
+    content: public ResourceSet? GetTextureResourceSet(Sampler sampler, SimpleTextureLayout layout)
+    parameters:
+    - id: sampler
+      type: Veldrid.Sampler
+      description: The sampler used for creating the resource set.
+    - id: layout
+      type: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+      description: The texture layout used for creating the resource set.
+    return:
+      type: Veldrid.ResourceSet
+      description: The resource set associated with the texture, or <code>null</code> if the texture is not available.
+    content.vb: Public Function GetTextureResourceSet(sampler As Sampler, layout As SimpleTextureLayout) As ResourceSet
+  overload: Bliss.CSharp.Materials.MaterialMap.GetTextureResourceSet*
 references:
 - uid: Bliss.CSharp.Materials
   commentId: N:Bliss.CSharp.Materials
@@ -482,6 +559,20 @@ references:
   - uid: Bliss.CSharp.Textures
     name: Textures
     href: Bliss.CSharp.Textures.html
+- uid: Veldrid.Sampler
+  commentId: T:Veldrid.Sampler
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Sampler.cs
+  name: Sampler
+  nameWithType: Sampler
+  fullName: Veldrid.Sampler
+- uid: Veldrid
+  commentId: N:Veldrid
+  isExternal: true
+  name: Veldrid
+  nameWithType: Veldrid
+  fullName: Veldrid
 - uid: System.Nullable{Bliss.CSharp.Colors.Color}
   commentId: T:System.Nullable{Bliss.CSharp.Colors.Color}
   parent: System
@@ -548,10 +639,77 @@ references:
   fullName: Bliss.CSharp.Materials.MaterialMap
 - uid: Bliss.CSharp.Materials.MaterialMap.#ctor*
   commentId: Overload:Bliss.CSharp.Materials.MaterialMap.#ctor
-  href: Bliss.CSharp.Materials.MaterialMap.html#Bliss_CSharp_Materials_MaterialMap__ctor_Bliss_CSharp_Textures_Texture2D_System_Nullable_Bliss_CSharp_Colors_Color__System_Single_
+  href: Bliss.CSharp.Materials.MaterialMap.html#Bliss_CSharp_Materials_MaterialMap__ctor_Bliss_CSharp_Textures_Texture2D_Veldrid_Sampler_System_Nullable_Bliss_CSharp_Colors_Color__System_Single_
   name: MaterialMap
   nameWithType: MaterialMap.MaterialMap
   fullName: Bliss.CSharp.Materials.MaterialMap.MaterialMap
   nameWithType.vb: MaterialMap.New
   fullName.vb: Bliss.CSharp.Materials.MaterialMap.New
   name.vb: New
+- uid: Bliss.CSharp.Materials.MaterialMap.GetTextureResourceSet*
+  commentId: Overload:Bliss.CSharp.Materials.MaterialMap.GetTextureResourceSet
+  href: Bliss.CSharp.Materials.MaterialMap.html#Bliss_CSharp_Materials_MaterialMap_GetTextureResourceSet_Veldrid_Sampler_Bliss_CSharp_Graphics_Pipelines_Textures_SimpleTextureLayout_
+  name: GetTextureResourceSet
+  nameWithType: MaterialMap.GetTextureResourceSet
+  fullName: Bliss.CSharp.Materials.MaterialMap.GetTextureResourceSet
+- uid: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+  parent: Bliss.CSharp.Graphics.Pipelines.Textures
+  href: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html
+  name: SimpleTextureLayout
+  nameWithType: SimpleTextureLayout
+  fullName: Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
+- uid: Veldrid.ResourceSet
+  commentId: T:Veldrid.ResourceSet
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/ResourceSet.cs
+  name: ResourceSet
+  nameWithType: ResourceSet
+  fullName: Veldrid.ResourceSet
+- uid: Bliss.CSharp.Graphics.Pipelines.Textures
+  commentId: N:Bliss.CSharp.Graphics.Pipelines.Textures
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Pipelines.Textures
+  nameWithType: Bliss.CSharp.Graphics.Pipelines.Textures
+  fullName: Bliss.CSharp.Graphics.Pipelines.Textures
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Textures
+    name: Textures
+    href: Bliss.CSharp.Graphics.Pipelines.Textures.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Textures
+    name: Textures
+    href: Bliss.CSharp.Graphics.Pipelines.Textures.html

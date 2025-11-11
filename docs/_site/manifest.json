@@ -18,7 +18,11 @@
           "relative_path": "api/Bliss.CSharp.Audio.AudioDevice.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Audio.AudioDevice",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -28,7 +32,11 @@
           "relative_path": "api/Bliss.CSharp.Audio.Vector3FExtensions.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Audio.Vector3FExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -38,7 +46,11 @@
           "relative_path": "api/Bliss.CSharp.Audio.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Audio",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -48,7 +60,11 @@
           "relative_path": "api/Bliss.CSharp.Camera.Dim2.Cam2D.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Camera.Dim2.Cam2D",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -58,7 +74,11 @@
           "relative_path": "api/Bliss.CSharp.Camera.Dim2.CameraFollowMode.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Camera.Dim2.CameraFollowMode",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -68,7 +88,11 @@
           "relative_path": "api/Bliss.CSharp.Camera.Dim2.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Camera.Dim2",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -78,7 +102,11 @@
           "relative_path": "api/Bliss.CSharp.Camera.Dim3.Cam3D.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Camera.Dim3.Cam3D",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -88,7 +116,11 @@
           "relative_path": "api/Bliss.CSharp.Camera.Dim3.CameraMode.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Camera.Dim3.CameraMode",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -98,7 +130,11 @@
           "relative_path": "api/Bliss.CSharp.Camera.Dim3.ProjectionType.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Camera.Dim3.ProjectionType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -108,7 +144,11 @@
           "relative_path": "api/Bliss.CSharp.Camera.Dim3.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Camera.Dim3",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -118,7 +158,11 @@
           "relative_path": "api/Bliss.CSharp.Camera.ICam.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Camera.ICam",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -128,7 +172,11 @@
           "relative_path": "api/Bliss.CSharp.Camera.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Camera",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -138,7 +186,11 @@
           "relative_path": "api/Bliss.CSharp.Colors.Color.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Colors.Color",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -148,7 +200,11 @@
           "relative_path": "api/Bliss.CSharp.Colors.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Colors",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -158,7 +214,11 @@
           "relative_path": "api/Bliss.CSharp.Disposable.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Disposable",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -168,7 +228,11 @@
           "relative_path": "api/Bliss.CSharp.Effects.Effect.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Effects.Effect",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -178,7 +242,11 @@
           "relative_path": "api/Bliss.CSharp.Effects.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Effects",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -188,7 +256,11 @@
           "relative_path": "api/Bliss.CSharp.Fonts.Font.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Fonts.Font",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -198,7 +270,11 @@
           "relative_path": "api/Bliss.CSharp.Fonts.FontStashRenderer2D.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Fonts.FontStashRenderer2D",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -208,7 +284,11 @@
           "relative_path": "api/Bliss.CSharp.Fonts.FontStashTextureManager.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Fonts.FontStashTextureManager",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -218,7 +298,165 @@
           "relative_path": "api/Bliss.CSharp.Fonts.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Fonts",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.Animation.BoneInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.Animation.BoneInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.Animation.BoneInfo",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.Animation.Builders.ModelAnimationBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.Animation.Builders.ModelAnimationBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.Animation.Builders.ModelAnimationBuilder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.Animation.Builders.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.Animation.Builders.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.Animation.Builders",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.Animation.Keyframes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.Animation.Keyframes.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.Animation.Keyframes",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.Animation.ModelAnimation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.Animation.ModelAnimation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.Animation.ModelAnimation",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.Animation.NodeAnimChannel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.Animation.NodeAnimChannel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.Animation.NodeAnimChannel",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.Animation.Skeleton.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.Animation.Skeleton.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.Animation.Skeleton",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Geometry.Animation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Geometry.Animation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.Animation",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -228,7 +466,11 @@
           "relative_path": "api/Bliss.CSharp.Geometry.Animations.BoneInfo.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.Animations.BoneInfo",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -238,7 +480,11 @@
           "relative_path": "api/Bliss.CSharp.Geometry.Animations.Keyframes.QuatKey.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.Animations.Keyframes.QuatKey",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -248,7 +494,11 @@
           "relative_path": "api/Bliss.CSharp.Geometry.Animations.Keyframes.Vector3Key.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.Animations.Keyframes.Vector3Key",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -258,7 +508,11 @@
           "relative_path": "api/Bliss.CSharp.Geometry.Animations.Keyframes.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.Animations.Keyframes",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -268,7 +522,11 @@
           "relative_path": "api/Bliss.CSharp.Geometry.Animations.MeshAmateurBuilder.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.Animations.MeshAmateurBuilder",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -278,7 +536,11 @@
           "relative_path": "api/Bliss.CSharp.Geometry.Animations.ModelAnimation.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.Animations.ModelAnimation",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -288,7 +550,11 @@
           "relative_path": "api/Bliss.CSharp.Geometry.Animations.NodeAnimChannel.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.Animations.NodeAnimChannel",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -298,7 +564,11 @@
           "relative_path": "api/Bliss.CSharp.Geometry.Animations.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.Animations",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -308,7 +578,11 @@
           "relative_path": "api/Bliss.CSharp.Geometry.BoundingBox.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.BoundingBox",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -318,7 +592,11 @@
           "relative_path": "api/Bliss.CSharp.Geometry.Mesh.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.Mesh",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -328,7 +606,11 @@
           "relative_path": "api/Bliss.CSharp.Geometry.Model.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry.Model",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -338,7 +620,11 @@
           "relative_path": "api/Bliss.CSharp.Geometry.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Geometry",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -348,7 +634,11 @@
           "relative_path": "api/Bliss.CSharp.GlobalResource.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.GlobalResource",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -358,7 +648,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.BlendState.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.BlendState",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -368,7 +662,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.GraphicsHelper.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.GraphicsHelper",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -378,7 +676,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -388,7 +690,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -398,7 +704,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -408,7 +718,39 @@
           "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer<T>",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -418,7 +760,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Buffers.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Pipelines.Buffers",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -428,7 +774,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.SimplePipeline.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Pipelines.SimplePipeline",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -438,7 +788,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Pipelines.SimplePipelineDescription",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -448,7 +802,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -458,7 +816,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.Textures.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Pipelines.Textures",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -468,7 +830,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.Pipelines.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Pipelines",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -478,7 +844,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -488,7 +858,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Batches.Primitives.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Batches.Primitives",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -498,7 +872,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -508,7 +886,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -518,7 +900,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Batches.Sprites.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Batches.Sprites",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -528,7 +914,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Frustum.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Frustum",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -538,7 +928,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -548,7 +942,417 @@
           "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Passes.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Passes",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.RenderMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.RenderMode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.RenderMode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives.PrimitiveBatch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives.PrimitiveBatch.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives.PrimitiveBatch",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteFlip.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteFlip.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteFlip",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer<T>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.DynamicLightData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.DynamicLightData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.DynamicLightData",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray",
+      "Summary": "<p sourcefile=\"api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray.yml\" sourcestartlinenumber=\"1\">Represents a fixed-size, inline array for storing light information.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.NoLightData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.NoLightData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.NoLightData",
+      "Summary": "<p sourcefile=\"api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.NoLightData.yml\" sourcestartlinenumber=\"1\">Represents an empty or placeholder structure for scenarios where no light data is required.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.DynamicLightHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.DynamicLightHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.DynamicLightHandler",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.FixedLightHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.FixedLightHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.FixedLightHandler",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler<T>",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightDefinition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightDefinition.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightDefinition",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing.ShadowMap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing.ShadowMap.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing.ShadowMap",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialMapData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialMapData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialMapData",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -558,7 +1362,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -568,7 +1376,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -578,7 +1390,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.Rendering.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -588,7 +1404,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.SamplerType.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.SamplerType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -598,7 +1418,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.VertexTypes.CubemapVertex3D",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -608,7 +1432,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.VertexTypes.ImmediateVertex3D",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -618,7 +1446,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.VertexTypes.PrimitiveVertex2D",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -628,7 +1460,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.VertexTypes.SpriteVertex2D",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -638,7 +1474,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.VertexTypes.Vertex3D.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.VertexTypes.Vertex3D",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -648,7 +1488,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.VertexTypes.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.VertexTypes",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -658,7 +1502,11 @@
           "relative_path": "api/Bliss.CSharp.Graphics.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -668,7 +1516,11 @@
           "relative_path": "api/Bliss.CSharp.Images.AnimatedImage.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Images.AnimatedImage",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -678,7 +1530,11 @@
           "relative_path": "api/Bliss.CSharp.Images.Image.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Images.Image",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -688,7 +1544,11 @@
           "relative_path": "api/Bliss.CSharp.Images.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Images",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -698,7 +1558,11 @@
           "relative_path": "api/Bliss.CSharp.Interact.Contexts.IInputContext.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Interact.Contexts.IInputContext",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -708,7 +1572,11 @@
           "relative_path": "api/Bliss.CSharp.Interact.Contexts.Sdl3InputContext.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Interact.Contexts.Sdl3InputContext",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -718,7 +1586,11 @@
           "relative_path": "api/Bliss.CSharp.Interact.Contexts.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Interact.Contexts",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -728,7 +1600,11 @@
           "relative_path": "api/Bliss.CSharp.Interact.Gamepads.GamepadAxis.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Interact.Gamepads.GamepadAxis",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -738,7 +1614,11 @@
           "relative_path": "api/Bliss.CSharp.Interact.Gamepads.GamepadButton.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Interact.Gamepads.GamepadButton",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -748,7 +1628,11 @@
           "relative_path": "api/Bliss.CSharp.Interact.Gamepads.IGamepad.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Interact.Gamepads.IGamepad",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -758,7 +1642,11 @@
           "relative_path": "api/Bliss.CSharp.Interact.Gamepads.Sdl3Gamepad.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Interact.Gamepads.Sdl3Gamepad",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -768,7 +1656,11 @@
           "relative_path": "api/Bliss.CSharp.Interact.Gamepads.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Interact.Gamepads",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -778,7 +1670,11 @@
           "relative_path": "api/Bliss.CSharp.Interact.Input.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Interact.Input",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -788,7 +1684,11 @@
           "relative_path": "api/Bliss.CSharp.Interact.Keyboards.KeyboardKey.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Interact.Keyboards.KeyboardKey",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -798,7 +1698,11 @@
           "relative_path": "api/Bliss.CSharp.Interact.Keyboards.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Interact.Keyboards",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -808,7 +1712,11 @@
           "relative_path": "api/Bliss.CSharp.Interact.Mice.Cursors.ICursor.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Interact.Mice.Cursors.ICursor",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -818,7 +1726,11 @@
           "relative_path": "api/Bliss.CSharp.Interact.Mice.Cursors.Sdl3Cursor.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Interact.Mice.Cursors.Sdl3Cursor",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -828,7 +1740,11 @@
           "relative_path": "api/Bliss.CSharp.Interact.Mice.Cursors.SystemCursor.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Interact.Mice.Cursors.SystemCursor",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -838,7 +1754,11 @@
           "relative_path": "api/Bliss.CSharp.Interact.Mice.Cursors.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Interact.Mice.Cursors",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -848,7 +1768,11 @@
           "relative_path": "api/Bliss.CSharp.Interact.Mice.MouseButton.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Interact.Mice.MouseButton",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -858,7 +1782,11 @@
           "relative_path": "api/Bliss.CSharp.Interact.Mice.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Interact.Mice",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -868,7 +1796,11 @@
           "relative_path": "api/Bliss.CSharp.Interact.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Interact",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -878,7 +1810,11 @@
           "relative_path": "api/Bliss.CSharp.Logging.LogType.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Logging.LogType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -888,7 +1824,11 @@
           "relative_path": "api/Bliss.CSharp.Logging.Logger.OnMessage.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Logging.Logger.OnMessage",
+      "Summary": "<p sourcefile=\"api/Bliss.CSharp.Logging.Logger.OnMessage.yml\" sourcestartlinenumber=\"1\">A delegate used to handle logging messages.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -898,7 +1838,11 @@
           "relative_path": "api/Bliss.CSharp.Logging.Logger.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Logging.Logger",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -908,7 +1852,11 @@
           "relative_path": "api/Bliss.CSharp.Logging.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Logging",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -918,7 +1866,11 @@
           "relative_path": "api/Bliss.CSharp.Materials.Material.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Materials.Material",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -928,7 +1880,11 @@
           "relative_path": "api/Bliss.CSharp.Materials.MaterialMap.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Materials.MaterialMap",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -938,7 +1894,11 @@
           "relative_path": "api/Bliss.CSharp.Materials.MaterialMapType.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Materials.MaterialMapType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -948,7 +1908,11 @@
           "relative_path": "api/Bliss.CSharp.Materials.MaterialMapTypeExtensions.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Materials.MaterialMapTypeExtensions",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -958,7 +1922,11 @@
           "relative_path": "api/Bliss.CSharp.Materials.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Materials",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -968,7 +1936,11 @@
           "relative_path": "api/Bliss.CSharp.Mathematics.BlissMath.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Mathematics.BlissMath",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -978,7 +1950,53 @@
           "relative_path": "api/Bliss.CSharp.Mathematics.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Mathematics",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Media.VideoClip.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Media.VideoClip.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Media.VideoClip",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Media.VideoPlayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Media.VideoPlayer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Media.VideoPlayer",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Media.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Media.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Media",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -988,7 +2006,11 @@
           "relative_path": "api/Bliss.CSharp.Textures.Cubemap.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Textures.Cubemap",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -998,7 +2020,11 @@
           "relative_path": "api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Textures.Cubemaps.Cubemap",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1008,7 +2034,11 @@
           "relative_path": "api/Bliss.CSharp.Textures.Cubemaps.CubemapHelper.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Textures.Cubemaps.CubemapHelper",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1018,7 +2048,11 @@
           "relative_path": "api/Bliss.CSharp.Textures.Cubemaps.CubemapLayer.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Textures.Cubemaps.CubemapLayer",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1028,7 +2062,11 @@
           "relative_path": "api/Bliss.CSharp.Textures.Cubemaps.CubemapLayout.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Textures.Cubemaps.CubemapLayout",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1038,7 +2076,11 @@
           "relative_path": "api/Bliss.CSharp.Textures.Cubemaps.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Textures.Cubemaps",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1048,7 +2090,11 @@
           "relative_path": "api/Bliss.CSharp.Textures.MipmapHelper.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Textures.MipmapHelper",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1058,7 +2104,11 @@
           "relative_path": "api/Bliss.CSharp.Textures.RenderTexture2D.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Textures.RenderTexture2D",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1068,7 +2118,11 @@
           "relative_path": "api/Bliss.CSharp.Textures.Texture2D.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Textures.Texture2D",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1078,7 +2132,11 @@
           "relative_path": "api/Bliss.CSharp.Textures.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Textures",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1088,7 +2146,11 @@
           "relative_path": "api/Bliss.CSharp.Transformations.Point.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Transformations.Point",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1098,7 +2160,11 @@
           "relative_path": "api/Bliss.CSharp.Transformations.Rectangle.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Transformations.Rectangle",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1108,7 +2174,11 @@
           "relative_path": "api/Bliss.CSharp.Transformations.RectangleF.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Transformations.RectangleF",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1118,7 +2188,11 @@
           "relative_path": "api/Bliss.CSharp.Transformations.Transform.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Transformations.Transform",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1128,7 +2202,11 @@
           "relative_path": "api/Bliss.CSharp.Transformations.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Transformations",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1138,7 +2216,11 @@
           "relative_path": "api/Bliss.CSharp.Windowing.Events.KeyEvent.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Windowing.Events.KeyEvent",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1148,7 +2230,11 @@
           "relative_path": "api/Bliss.CSharp.Windowing.Events.MouseEvent.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Windowing.Events.MouseEvent",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1158,7 +2244,11 @@
           "relative_path": "api/Bliss.CSharp.Windowing.Events.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Windowing.Events",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1168,7 +2258,11 @@
           "relative_path": "api/Bliss.CSharp.Windowing.IWindow.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Windowing.IWindow",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1178,7 +2272,11 @@
           "relative_path": "api/Bliss.CSharp.Windowing.Sdl3Window.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Windowing.Sdl3Window",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1188,7 +2286,11 @@
           "relative_path": "api/Bliss.CSharp.Windowing.Window.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Windowing.Window",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1198,7 +2300,11 @@
           "relative_path": "api/Bliss.CSharp.Windowing.WindowState.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Windowing.WindowState",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1208,7 +2314,11 @@
           "relative_path": "api/Bliss.CSharp.Windowing.WindowType.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Windowing.WindowType",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1218,7 +2328,11 @@
           "relative_path": "api/Bliss.CSharp.Windowing.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Windowing",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1228,7 +2342,11 @@
           "relative_path": "api/Bliss.CSharp.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp",
+      "Summary": null
     },
     {
       "type": "Toc",

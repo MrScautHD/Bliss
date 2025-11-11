@@ -690,7 +690,7 @@ references:
   commentId: T:Veldrid.GraphicsDevice
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs
   name: GraphicsDevice
   nameWithType: GraphicsDevice
   fullName: Veldrid.GraphicsDevice
@@ -715,7 +715,7 @@ references:
   fullName: Bliss.CSharp.Graphics.Pipelines.SimplePipeline.ResourceLayouts
 - uid: Veldrid.ResourceLayout[]
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/ResourceLayout.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/ResourceLayout.cs
   name: ResourceLayout[]
   nameWithType: ResourceLayout[]
   fullName: Veldrid.ResourceLayout[]
@@ -726,14 +726,14 @@ references:
   - uid: Veldrid.ResourceLayout
     name: ResourceLayout
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/ResourceLayout.cs
+    href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/ResourceLayout.cs
   - name: '['
   - name: ']'
   spec.vb:
   - uid: Veldrid.ResourceLayout
     name: ResourceLayout
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/ResourceLayout.cs
+    href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/ResourceLayout.cs
   - name: (
   - name: )
 - uid: Bliss.CSharp.Graphics.Pipelines.SimplePipeline.Pipeline*
@@ -746,7 +746,7 @@ references:
   commentId: T:Veldrid.Pipeline
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/Pipeline.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Pipeline.cs
   name: Pipeline
   nameWithType: Pipeline
   fullName: Veldrid.Pipeline

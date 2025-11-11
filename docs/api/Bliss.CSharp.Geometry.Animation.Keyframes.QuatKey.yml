@@ -1,0 +1,998 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+  commentId: T:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+  id: QuatKey
+  parent: Bliss.CSharp.Geometry.Animation.Keyframes
+  children:
+  - Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.#ctor(System.Double,System.Numerics.Quaternion)
+  - Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Equals(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  - Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Equals(System.Object)
+  - Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.GetHashCode
+  - Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Time
+  - Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.ToString
+  - Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Value
+  - Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_Equality(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey,Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  - Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_GreaterThan(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey,Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  - Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_Inequality(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey,Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  - Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_LessThan(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey,Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  langs:
+  - csharp
+  - vb
+  name: QuatKey
+  nameWithType: QuatKey
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+  type: Struct
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: QuatKey
+    path: ../src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+    startLine: 4
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation.Keyframes
+  syntax:
+    content: 'public struct QuatKey : IEquatable<QuatKey>'
+    content.vb: Public Structure QuatKey Implements IEquatable(Of QuatKey)
+  implements:
+  - System.IEquatable{Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey}
+  inheritedMembers:
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Time
+  commentId: F:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Time
+  id: Time
+  parent: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+  langs:
+  - csharp
+  - vb
+  name: Time
+  nameWithType: QuatKey.Time
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Time
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Time
+    path: ../src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+    startLine: 9
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation.Keyframes
+  summary: The time at which this keyframe occurs.
+  example: []
+  syntax:
+    content: public double Time
+    return:
+      type: System.Double
+    content.vb: Public Time As Double
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Value
+  commentId: F:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Value
+  id: Value
+  parent: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+  langs:
+  - csharp
+  - vb
+  name: Value
+  nameWithType: QuatKey.Value
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Value
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Value
+    path: ../src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+    startLine: 14
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation.Keyframes
+  summary: The quaternion value (e.g., rotation) at the specified time.
+  example: []
+  syntax:
+    content: public Quaternion Value
+    return:
+      type: System.Numerics.Quaternion
+    content.vb: Public Value As Quaternion
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.#ctor(System.Double,System.Numerics.Quaternion)
+  commentId: M:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.#ctor(System.Double,System.Numerics.Quaternion)
+  id: '#ctor(System.Double,System.Numerics.Quaternion)'
+  parent: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+  langs:
+  - csharp
+  - vb
+  name: QuatKey(double, Quaternion)
+  nameWithType: QuatKey.QuatKey(double, Quaternion)
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.QuatKey(double, System.Numerics.Quaternion)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+    startLine: 21
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation.Keyframes
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref> struct with the specified time and value.
+  example: []
+  syntax:
+    content: public QuatKey(double time, Quaternion value)
+    parameters:
+    - id: time
+      type: System.Double
+      description: The time of the keyframe.
+    - id: value
+      type: System.Numerics.Quaternion
+      description: The quaternion value (e.g., rotation) at the specified time.
+    content.vb: Public Sub New(time As Double, value As Quaternion)
+  overload: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.#ctor*
+  nameWithType.vb: QuatKey.New(Double, Quaternion)
+  fullName.vb: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.New(Double, System.Numerics.Quaternion)
+  name.vb: New(Double, Quaternion)
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_Equality(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey,Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  commentId: M:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_Equality(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey,Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  id: op_Equality(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey,Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  parent: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+  langs:
+  - csharp
+  - vb
+  name: operator ==(QuatKey, QuatKey)
+  nameWithType: QuatKey.operator ==(QuatKey, QuatKey)
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.operator ==(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey, Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  type: Operator
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: op_Equality
+    path: ../src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+    startLine: 32
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation.Keyframes
+  summary: Compares two <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref> instances for equality based on their quaternion value.
+  example: []
+  syntax:
+    content: public static bool operator ==(QuatKey left, QuatKey right)
+    parameters:
+    - id: left
+      type: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+      description: The first <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref> to compare.
+    - id: right
+      type: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+      description: The second <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref> to compare.
+    return:
+      type: System.Boolean
+      description: Returns true if the quaternion values of both keys are equal, otherwise false.
+    content.vb: Public Shared Operator =(left As QuatKey, right As QuatKey) As Boolean
+  overload: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_Equality*
+  nameWithType.vb: QuatKey.=(QuatKey, QuatKey)
+  fullName.vb: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.=(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey, Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  name.vb: =(QuatKey, QuatKey)
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_Inequality(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey,Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  commentId: M:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_Inequality(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey,Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  id: op_Inequality(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey,Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  parent: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+  langs:
+  - csharp
+  - vb
+  name: operator !=(QuatKey, QuatKey)
+  nameWithType: QuatKey.operator !=(QuatKey, QuatKey)
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.operator !=(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey, Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  type: Operator
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: op_Inequality
+    path: ../src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+    startLine: 40
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation.Keyframes
+  summary: Compares two <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref> instances for inequality based on their quaternion value.
+  example: []
+  syntax:
+    content: public static bool operator !=(QuatKey left, QuatKey right)
+    parameters:
+    - id: left
+      type: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+      description: The first <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref> to compare.
+    - id: right
+      type: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+      description: The second <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref> to compare.
+    return:
+      type: System.Boolean
+      description: Returns true if the quaternion values of both keys are not equal, otherwise false.
+    content.vb: Public Shared Operator <>(left As QuatKey, right As QuatKey) As Boolean
+  overload: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_Inequality*
+  nameWithType.vb: QuatKey.<>(QuatKey, QuatKey)
+  fullName.vb: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.<>(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey, Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  name.vb: <>(QuatKey, QuatKey)
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_LessThan(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey,Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  commentId: M:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_LessThan(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey,Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  id: op_LessThan(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey,Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  parent: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+  langs:
+  - csharp
+  - vb
+  name: operator <(QuatKey, QuatKey)
+  nameWithType: QuatKey.operator <(QuatKey, QuatKey)
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.operator <(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey, Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  type: Operator
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: op_LessThan
+    path: ../src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+    startLine: 48
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation.Keyframes
+  summary: Compares two <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref> instances to see if the first occurs before the second based on their time.
+  example: []
+  syntax:
+    content: public static bool operator <(QuatKey left, QuatKey right)
+    parameters:
+    - id: left
+      type: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+      description: The first <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref> to compare.
+    - id: right
+      type: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+      description: The second <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref> to compare.
+    return:
+      type: System.Boolean
+      description: Returns true if the first key occurs before the second key in time.
+    content.vb: Public Shared Operator <(left As QuatKey, right As QuatKey) As Boolean
+  overload: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_LessThan*
+  nameWithType.vb: QuatKey.<(QuatKey, QuatKey)
+  fullName.vb: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.<(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey, Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  name.vb: <(QuatKey, QuatKey)
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_GreaterThan(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey,Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  commentId: M:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_GreaterThan(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey,Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  id: op_GreaterThan(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey,Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  parent: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+  langs:
+  - csharp
+  - vb
+  name: operator >(QuatKey, QuatKey)
+  nameWithType: QuatKey.operator >(QuatKey, QuatKey)
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.operator >(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey, Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  type: Operator
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: op_GreaterThan
+    path: ../src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+    startLine: 56
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation.Keyframes
+  summary: Compares two <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref> instances to see if the first occurs after the second based on their time.
+  example: []
+  syntax:
+    content: public static bool operator >(QuatKey left, QuatKey right)
+    parameters:
+    - id: left
+      type: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+      description: The first <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref> to compare.
+    - id: right
+      type: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+      description: The second <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref> to compare.
+    return:
+      type: System.Boolean
+      description: Returns true if the first key occurs after the second key in time.
+    content.vb: Public Shared Operator >(left As QuatKey, right As QuatKey) As Boolean
+  overload: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_GreaterThan*
+  nameWithType.vb: QuatKey.>(QuatKey, QuatKey)
+  fullName.vb: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.>(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey, Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  name.vb: '>(QuatKey, QuatKey)'
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Equals(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  commentId: M:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Equals(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  id: Equals(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  parent: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+  langs:
+  - csharp
+  - vb
+  name: Equals(QuatKey)
+  nameWithType: QuatKey.Equals(QuatKey)
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Equals(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Equals
+    path: ../src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+    startLine: 63
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation.Keyframes
+  summary: Compares this <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref> to another for equality based on their quaternion value.
+  example: []
+  syntax:
+    content: public bool Equals(QuatKey other)
+    parameters:
+    - id: other
+      type: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+      description: The other <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref> to compare.
+    return:
+      type: System.Boolean
+      description: Returns true if the quaternion values of both keys are equal, otherwise false.
+    content.vb: Public Function Equals(other As QuatKey) As Boolean
+  overload: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Equals*
+  implements:
+  - System.IEquatable{Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey}.Equals(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Equals(System.Object)
+  commentId: M:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+  langs:
+  - csharp
+  - vb
+  name: Equals(object?)
+  nameWithType: QuatKey.Equals(object?)
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Equals(object?)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Equals
+    path: ../src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+    startLine: 72
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation.Keyframes
+  summary: Compares this <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref> to another object for equality.
+  example: []
+  syntax:
+    content: public override bool Equals(object? obj)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The object to compare to.
+    return:
+      type: System.Boolean
+      description: Returns true if the object is a <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref> and has the same quaternion value.
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.ValueType.Equals(System.Object)
+  overload: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Equals*
+  nameWithType.vb: QuatKey.Equals(Object)
+  fullName.vb: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Equals(Object)
+  name.vb: Equals(Object)
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.GetHashCode
+  commentId: M:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.GetHashCode
+  id: GetHashCode
+  parent: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: QuatKey.GetHashCode()
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.GetHashCode()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetHashCode
+    path: ../src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+    startLine: 80
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation.Keyframes
+  summary: Generates a hash code based on the quaternion value of the <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+      description: The hash code for this key.
+    content.vb: Public Overrides Function GetHashCode() As Integer
+  overridden: System.ValueType.GetHashCode
+  overload: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.GetHashCode*
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.ToString
+  commentId: M:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.ToString
+  id: ToString
+  parent: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: QuatKey.ToString()
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.ToString()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ToString
+    path: ../src/Bliss/CSharp/Geometry/Animation/Keyframes/QuatKey.cs
+    startLine: 88
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation.Keyframes
+  summary: Returns a string representation of the <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref> including its time and quaternion value.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: A string representing the <xref href="Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.ValueType.ToString
+  overload: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.ToString*
+references:
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes
+  commentId: N:Bliss.CSharp.Geometry.Animation.Keyframes
+  href: Bliss.html
+  name: Bliss.CSharp.Geometry.Animation.Keyframes
+  nameWithType: Bliss.CSharp.Geometry.Animation.Keyframes
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation
+    name: Animation
+    href: Bliss.CSharp.Geometry.Animation.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation.Keyframes
+    name: Keyframes
+    href: Bliss.CSharp.Geometry.Animation.Keyframes.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation
+    name: Animation
+    href: Bliss.CSharp.Geometry.Animation.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation.Keyframes
+    name: Keyframes
+    href: Bliss.CSharp.Geometry.Animation.Keyframes.html
+- uid: System.IEquatable{Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey}
+  commentId: T:System.IEquatable{Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<QuatKey>
+  nameWithType: IEquatable<QuatKey>
+  fullName: System.IEquatable<Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey>
+  nameWithType.vb: IEquatable(Of QuatKey)
+  fullName.vb: System.IEquatable(Of Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  name.vb: IEquatable(Of QuatKey)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+    name: QuatKey
+    href: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+    name: QuatKey
+    href: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.html
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.Numerics.Quaternion
+  commentId: T:System.Numerics.Quaternion
+  parent: System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.quaternion
+  name: Quaternion
+  nameWithType: Quaternion
+  fullName: System.Numerics.Quaternion
+- uid: System.Numerics
+  commentId: N:System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Numerics
+  nameWithType: System.Numerics
+  fullName: System.Numerics
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+  commentId: T:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+  parent: Bliss.CSharp.Geometry.Animation.Keyframes
+  href: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.html
+  name: QuatKey
+  nameWithType: QuatKey
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.#ctor*
+  commentId: Overload:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.#ctor
+  href: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.html#Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey__ctor_System_Double_System_Numerics_Quaternion_
+  name: QuatKey
+  nameWithType: QuatKey.QuatKey
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.QuatKey
+  nameWithType.vb: QuatKey.New
+  fullName.vb: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.New
+  name.vb: New
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_Equality*
+  commentId: Overload:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_Equality
+  href: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.html#Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_op_Equality_Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_
+  name: operator ==
+  nameWithType: QuatKey.operator ==
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.operator ==
+  nameWithType.vb: QuatKey.=
+  fullName.vb: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.=
+  name.vb: =
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_Equality*
+    name: ==
+    href: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.html#Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_op_Equality_Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_Inequality*
+  commentId: Overload:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_Inequality
+  href: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.html#Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_op_Inequality_Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_
+  name: operator !=
+  nameWithType: QuatKey.operator !=
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.operator !=
+  nameWithType.vb: QuatKey.<>
+  fullName.vb: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.<>
+  name.vb: <>
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_Inequality*
+    name: '!='
+    href: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.html#Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_op_Inequality_Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_LessThan*
+  commentId: Overload:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_LessThan
+  href: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.html#Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_op_LessThan_Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_
+  name: operator <
+  nameWithType: QuatKey.operator <
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.operator <
+  nameWithType.vb: QuatKey.<
+  fullName.vb: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.<
+  name.vb: <
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_LessThan*
+    name: <
+    href: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.html#Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_op_LessThan_Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_GreaterThan*
+  commentId: Overload:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_GreaterThan
+  href: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.html#Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_op_GreaterThan_Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_
+  name: operator >
+  nameWithType: QuatKey.operator >
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.operator >
+  nameWithType.vb: QuatKey.>
+  fullName.vb: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.>
+  name.vb: '>'
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.op_GreaterThan*
+    name: '>'
+    href: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.html#Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_op_GreaterThan_Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Equals*
+  commentId: Overload:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Equals
+  href: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.html#Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_Equals_Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_
+  name: Equals
+  nameWithType: QuatKey.Equals
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.Equals
+- uid: System.IEquatable{Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey}.Equals(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  commentId: M:System.IEquatable{Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey}.Equals(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  parent: System.IEquatable{Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey}
+  definition: System.IEquatable`1.Equals(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(QuatKey)
+  nameWithType: IEquatable<QuatKey>.Equals(QuatKey)
+  fullName: System.IEquatable<Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey>.Equals(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  nameWithType.vb: IEquatable(Of QuatKey).Equals(QuatKey)
+  fullName.vb: System.IEquatable(Of Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey).Equals(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+  spec.csharp:
+  - uid: System.IEquatable{Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey}.Equals(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+    name: QuatKey
+    href: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.html
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable{Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey}.Equals(Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
+    name: QuatKey
+    href: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.html
+  - name: )
+- uid: System.IEquatable`1.Equals(`0)
+  commentId: M:System.IEquatable`1.Equals(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  name: Equals(T)
+  nameWithType: IEquatable<T>.Equals(T)
+  fullName: System.IEquatable<T>.Equals(T)
+  nameWithType.vb: IEquatable(Of T).Equals(T)
+  fullName.vb: System.IEquatable(Of T).Equals(T)
+  spec.csharp:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.IEquatable`1.Equals(`0)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1.equals
+  - name: (
+  - name: T
+  - name: )
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.GetHashCode*
+  commentId: Overload:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.GetHashCode
+  href: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.html#Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_GetHashCode
+  name: GetHashCode
+  nameWithType: QuatKey.GetHashCode
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.GetHashCode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.ToString*
+  commentId: Overload:Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.ToString
+  href: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.html#Bliss_CSharp_Geometry_Animation_Keyframes_QuatKey_ToString
+  name: ToString
+  nameWithType: QuatKey.ToString
+  fullName: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey.ToString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

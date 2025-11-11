@@ -87,30 +87,40 @@ items:
   - uid: Bliss.CSharp.Geometry.Model
     name: Model
     type: Class
-- uid: Bliss.CSharp.Geometry.Animations
-  name: Bliss.CSharp.Geometry.Animations
+- uid: Bliss.CSharp.Geometry.Animation
+  name: Bliss.CSharp.Geometry.Animation
   type: Namespace
   items:
-  - uid: Bliss.CSharp.Geometry.Animations.BoneInfo
+  - uid: Bliss.CSharp.Geometry.Animation.BoneInfo
     name: BoneInfo
     type: Class
-  - uid: Bliss.CSharp.Geometry.Animations.MeshAmateurBuilder
-    name: MeshAmateurBuilder
-    type: Class
-  - uid: Bliss.CSharp.Geometry.Animations.ModelAnimation
+  - uid: Bliss.CSharp.Geometry.Animation.ModelAnimation
     name: ModelAnimation
     type: Class
-  - uid: Bliss.CSharp.Geometry.Animations.NodeAnimChannel
+  - uid: Bliss.CSharp.Geometry.Animation.NodeAnimChannel
     name: NodeAnimChannel
     type: Class
-- uid: Bliss.CSharp.Geometry.Animations.Keyframes
-  name: Bliss.CSharp.Geometry.Animations.Keyframes
+  - uid: Bliss.CSharp.Geometry.Animation.Skeleton
+    name: Skeleton
+    type: Class
+- uid: Bliss.CSharp.Geometry.Animation.Builders
+  name: Bliss.CSharp.Geometry.Animation.Builders
   type: Namespace
   items:
-  - uid: Bliss.CSharp.Geometry.Animations.Keyframes.QuatKey
+  - uid: Bliss.CSharp.Geometry.Animation.Builders.ModelAnimationBuilder
+    name: ModelAnimationBuilder
+    type: Class
+  - uid: Bliss.CSharp.Geometry.Animation.Builders.SkeletonBuilder
+    name: SkeletonBuilder
+    type: Class
+- uid: Bliss.CSharp.Geometry.Animation.Keyframes
+  name: Bliss.CSharp.Geometry.Animation.Keyframes
+  type: Namespace
+  items:
+  - uid: Bliss.CSharp.Geometry.Animation.Keyframes.QuatKey
     name: QuatKey
     type: Struct
-  - uid: Bliss.CSharp.Geometry.Animations.Keyframes.Vector3Key
+  - uid: Bliss.CSharp.Geometry.Animation.Keyframes.Vector3Key
     name: Vector3Key
     type: Struct
 - uid: Bliss.CSharp.Graphics
@@ -146,8 +156,11 @@ items:
   - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
     name: SimpleBufferType
     type: Enum
-  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
-    name: SimpleBuffer<T>
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+    name: SimpleStructuredBuffer<THeader, TElement>
+    type: Class
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1
+    name: SimpleUniformBuffer<T>
     type: Class
 - uid: Bliss.CSharp.Graphics.Pipelines.Textures
   name: Bliss.CSharp.Graphics.Pipelines.Textures
@@ -163,37 +176,108 @@ items:
   - uid: Bliss.CSharp.Graphics.Rendering.Frustum
     name: Frustum
     type: Class
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
-  name: Bliss.CSharp.Graphics.Rendering.Batches.Primitives
-  type: Namespace
-  items:
-  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Primitives.PrimitiveBatch
-    name: PrimitiveBatch
-    type: Class
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
-  name: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
-  type: Namespace
-  items:
-  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
-    name: SpriteBatch
-    type: Class
-  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteFlip
-    name: SpriteFlip
+  - uid: Bliss.CSharp.Graphics.Rendering.RenderMode
+    name: RenderMode
     type: Enum
-- uid: Bliss.CSharp.Graphics.Rendering.Passes
-  name: Bliss.CSharp.Graphics.Rendering.Passes
-  type: Namespace
-  items:
-  - uid: Bliss.CSharp.Graphics.Rendering.Passes.FullScreenRenderPass
-    name: FullScreenRenderPass
-    type: Class
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers
   name: Bliss.CSharp.Graphics.Rendering.Renderers
   type: Namespace
   items:
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer
+    name: FullScreenRenderer
+    type: Class
   - uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer
     name: ImmediateRenderer
     type: Class
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives
+  type: Namespace
+  items:
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives.PrimitiveBatch
+    name: PrimitiveBatch
+    type: Class
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites
+  type: Namespace
+  items:
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch
+    name: SpriteBatch
+    type: Class
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteFlip
+    name: SpriteFlip
+    type: Enum
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  type: Namespace
+  items:
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
+    name: ForwardRenderer<T>
+    type: Class
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer
+    name: IRenderer
+    type: Interface
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+    name: Renderable
+    type: Class
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  type: Namespace
+  items:
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightDefinition
+    name: LightDefinition
+    type: Struct
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType
+    name: LightType
+    type: Enum
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data
+  type: Namespace
+  items:
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.DynamicLightData
+    name: DynamicLightData
+    type: Struct
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData
+    name: FixedLightData
+    type: Struct
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray
+    name: FixedLightData.LightArray
+    type: Struct
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light
+    name: Light
+    type: Struct
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.NoLightData
+    name: NoLightData
+    type: Struct
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers
+  type: Namespace
+  items:
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.DynamicLightHandler
+    name: DynamicLightHandler
+    type: Class
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.FixedLightHandler
+    name: FixedLightHandler
+    type: Class
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler`1
+    name: ILightHandler<T>
+    type: Interface
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing
+  type: Namespace
+  items:
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing.ShadowMap
+    name: ShadowMap
+    type: Class
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  type: Namespace
+  items:
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData
+    name: MaterialData
+    type: Struct
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialMapData
+    name: MaterialMapData
+    type: Struct
 - uid: Bliss.CSharp.Graphics.VertexTypes
   name: Bliss.CSharp.Graphics.VertexTypes
   type: Namespace
@@ -318,6 +402,16 @@ items:
   items:
   - uid: Bliss.CSharp.Mathematics.BlissMath
     name: BlissMath
+    type: Class
+- uid: Bliss.CSharp.Media
+  name: Bliss.CSharp.Media
+  type: Namespace
+  items:
+  - uid: Bliss.CSharp.Media.VideoClip
+    name: VideoClip
+    type: Class
+  - uid: Bliss.CSharp.Media.VideoPlayer
+    name: VideoPlayer
     type: Class
 - uid: Bliss.CSharp.Textures
   name: Bliss.CSharp.Textures

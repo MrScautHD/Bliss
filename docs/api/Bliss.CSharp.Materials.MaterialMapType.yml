@@ -11,6 +11,7 @@ items:
   - Bliss.CSharp.Materials.MaterialMapType.Metallic
   - Bliss.CSharp.Materials.MaterialMapType.Normal
   - Bliss.CSharp.Materials.MaterialMapType.Occlusion
+  - Bliss.CSharp.Materials.MaterialMapType.Opacity
   - Bliss.CSharp.Materials.MaterialMapType.Roughness
   langs:
   - csharp
@@ -293,6 +294,49 @@ items:
     - name: Value
       type: System.String
       value: fEmissive
+- uid: Bliss.CSharp.Materials.MaterialMapType.Opacity
+  commentId: F:Bliss.CSharp.Materials.MaterialMapType.Opacity
+  id: Opacity
+  parent: Bliss.CSharp.Materials.MaterialMapType
+  langs:
+  - csharp
+  - vb
+  name: Opacity
+  nameWithType: MaterialMapType.Opacity
+  fullName: Bliss.CSharp.Materials.MaterialMapType.Opacity
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Materials/MaterialMapType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Opacity
+    path: ../src/Bliss/CSharp/Materials/MaterialMapType.cs
+    startLine: 45
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Materials
+  summary: Opacity map, which defines the transparency levels of the material.
+  example: []
+  syntax:
+    content: >-
+      [EnumMember(Value = "fOpacity")]
+
+      Opacity = 6
+    return:
+      type: Bliss.CSharp.Materials.MaterialMapType
+    content.vb: >-
+      <EnumMember(Value:="fOpacity")>
+
+      Opacity = 6
+  attributes:
+  - type: System.Runtime.Serialization.EnumMemberAttribute
+    ctor: System.Runtime.Serialization.EnumMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Value
+      type: System.String
+      value: fOpacity
 - uid: Bliss.CSharp.Materials.MaterialMapType.Height
   commentId: F:Bliss.CSharp.Materials.MaterialMapType.Height
   id: Height
@@ -311,7 +355,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Height
     path: ../src/Bliss/CSharp/Materials/MaterialMapType.cs
-    startLine: 45
+    startLine: 51
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -321,13 +365,13 @@ items:
     content: >-
       [EnumMember(Value = "fHeight")]
 
-      Height = 6
+      Height = 7
     return:
       type: Bliss.CSharp.Materials.MaterialMapType
     content.vb: >-
       <EnumMember(Value:="fHeight")>
 
-      Height = 6
+      Height = 7
   attributes:
   - type: System.Runtime.Serialization.EnumMemberAttribute
     ctor: System.Runtime.Serialization.EnumMemberAttribute.#ctor

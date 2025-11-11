@@ -5,6 +5,7 @@ items:
   id: Bliss.CSharp.Graphics.Rendering
   children:
   - Bliss.CSharp.Graphics.Rendering.Frustum
+  - Bliss.CSharp.Graphics.Rendering.RenderMode
   langs:
   - csharp
   - vb
@@ -22,6 +23,13 @@ references:
   name: Frustum
   nameWithType: Frustum
   fullName: Bliss.CSharp.Graphics.Rendering.Frustum
+- uid: Bliss.CSharp.Graphics.Rendering.RenderMode
+  commentId: T:Bliss.CSharp.Graphics.Rendering.RenderMode
+  parent: Bliss.CSharp.Graphics.Rendering
+  href: Bliss.CSharp.Graphics.Rendering.RenderMode.html
+  name: RenderMode
+  nameWithType: RenderMode
+  fullName: Bliss.CSharp.Graphics.Rendering.RenderMode
 - uid: Bliss.CSharp.Graphics.Rendering
   commentId: N:Bliss.CSharp.Graphics.Rendering
   href: Bliss.html

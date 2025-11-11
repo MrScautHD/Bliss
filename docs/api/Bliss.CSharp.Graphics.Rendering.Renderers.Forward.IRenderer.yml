@@ -1,0 +1,232 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer
+  id: IRenderer
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  children:
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.Draw(Veldrid.CommandList,Veldrid.OutputDescription)
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.DrawRenderable(Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable)
+  langs:
+  - csharp
+  - vb
+  name: IRenderer
+  nameWithType: IRenderer
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer
+  type: Interface
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/IRenderer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IRenderer
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/IRenderer.cs
+    startLine: 4
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  syntax:
+    content: 'public interface IRenderer : IDisposable'
+    content.vb: Public Interface IRenderer Inherits IDisposable
+  inheritedMembers:
+  - System.IDisposable.Dispose
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.DrawRenderable(Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable)
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.DrawRenderable(Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable)
+  id: DrawRenderable(Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable)
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer
+  langs:
+  - csharp
+  - vb
+  name: DrawRenderable(Renderable)
+  nameWithType: IRenderer.DrawRenderable(Renderable)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.DrawRenderable(Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/IRenderer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DrawRenderable
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/IRenderer.cs
+    startLine: 10
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  summary: Draws the specified <xref href="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable" data-throw-if-not-resolved="false"></xref> object using the renderer’s internal pipeline and state.
+  example: []
+  syntax:
+    content: void DrawRenderable(Renderable renderable)
+    parameters:
+    - id: renderable
+      type: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+      description: The renderable object to be drawn.
+    content.vb: Sub DrawRenderable(renderable As Renderable)
+  overload: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.DrawRenderable*
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.Draw(Veldrid.CommandList,Veldrid.OutputDescription)
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.Draw(Veldrid.CommandList,Veldrid.OutputDescription)
+  id: Draw(Veldrid.CommandList,Veldrid.OutputDescription)
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer
+  langs:
+  - csharp
+  - vb
+  name: Draw(CommandList, OutputDescription)
+  nameWithType: IRenderer.Draw(CommandList, OutputDescription)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.Draw(Veldrid.CommandList, Veldrid.OutputDescription)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/IRenderer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Draw
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/IRenderer.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  summary: Performs a rendering operation using the specified <xref href="Veldrid.CommandList" data-throw-if-not-resolved="false"></xref> and <xref href="Veldrid.OutputDescription" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: void Draw(CommandList commandList, OutputDescription output)
+    parameters:
+    - id: commandList
+      type: Veldrid.CommandList
+      description: The command list that records GPU draw commands.
+    - id: output
+      type: Veldrid.OutputDescription
+      description: The output description that defines the render target format and depth configuration.
+    content.vb: Sub Draw(commandList As CommandList, output As OutputDescription)
+  overload: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.Draw*
+references:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+    name: Forward
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+    name: Forward
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.html
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html
+  name: Renderable
+  nameWithType: Renderable
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.DrawRenderable*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.DrawRenderable
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_IRenderer_DrawRenderable_Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_
+  name: DrawRenderable
+  nameWithType: IRenderer.DrawRenderable
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.DrawRenderable
+- uid: Veldrid.CommandList
+  commentId: T:Veldrid.CommandList
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/CommandList.cs
+  name: CommandList
+  nameWithType: CommandList
+  fullName: Veldrid.CommandList
+- uid: Veldrid.OutputDescription
+  commentId: T:Veldrid.OutputDescription
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/OutputDescription.cs
+  name: OutputDescription
+  nameWithType: OutputDescription
+  fullName: Veldrid.OutputDescription
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.Draw*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.Draw
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_IRenderer_Draw_Veldrid_CommandList_Veldrid_OutputDescription_
+  name: Draw
+  nameWithType: IRenderer.Draw
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.Draw
+- uid: Veldrid
+  commentId: N:Veldrid
+  isExternal: true
+  name: Veldrid
+  nameWithType: Veldrid
+  fullName: Veldrid

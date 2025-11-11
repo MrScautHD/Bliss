@@ -5,7 +5,7 @@ items:
   id: FontStashRenderer2D
   parent: Bliss.CSharp.Fonts
   children:
-  - Bliss.CSharp.Fonts.FontStashRenderer2D.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch)
+  - Bliss.CSharp.Fonts.FontStashRenderer2D.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch)
   - Bliss.CSharp.Fonts.FontStashRenderer2D.Dispose(System.Boolean)
   - Bliss.CSharp.Fonts.FontStashRenderer2D.Draw(System.Object,System.Numerics.Vector2,System.Nullable{System.Drawing.Rectangle},FontStashSharp.FSColor,System.Single,System.Numerics.Vector2,System.Single)
   - Bliss.CSharp.Fonts.FontStashRenderer2D.GraphicsDevice
@@ -108,7 +108,7 @@ items:
     content: public SpriteBatch SpriteBatch { get; }
     parameters: []
     return:
-      type: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
+      type: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch
     content.vb: Public Property SpriteBatch As SpriteBatch
   overload: Bliss.CSharp.Fonts.FontStashRenderer2D.SpriteBatch*
 - uid: Bliss.CSharp.Fonts.FontStashRenderer2D.TextureManager
@@ -144,16 +144,16 @@ items:
   overload: Bliss.CSharp.Fonts.FontStashRenderer2D.TextureManager*
   implements:
   - FontStashSharp.Interfaces.IFontStashRenderer.TextureManager
-- uid: Bliss.CSharp.Fonts.FontStashRenderer2D.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch)
-  commentId: M:Bliss.CSharp.Fonts.FontStashRenderer2D.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch)
-  id: '#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch)'
+- uid: Bliss.CSharp.Fonts.FontStashRenderer2D.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch)
+  commentId: M:Bliss.CSharp.Fonts.FontStashRenderer2D.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch)
+  id: '#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch)'
   parent: Bliss.CSharp.Fonts.FontStashRenderer2D
   langs:
   - csharp
   - vb
   name: FontStashRenderer2D(GraphicsDevice, SpriteBatch)
   nameWithType: FontStashRenderer2D.FontStashRenderer2D(GraphicsDevice, SpriteBatch)
-  fullName: Bliss.CSharp.Fonts.FontStashRenderer2D.FontStashRenderer2D(Veldrid.GraphicsDevice, Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch)
+  fullName: Bliss.CSharp.Fonts.FontStashRenderer2D.FontStashRenderer2D(Veldrid.GraphicsDevice, Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch)
   type: Constructor
   source:
     remote:
@@ -175,12 +175,12 @@ items:
       type: Veldrid.GraphicsDevice
       description: The graphics device used for rendering.
     - id: spriteBatch
-      type: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
+      type: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch
       description: The sprite batch used to draw textures.
     content.vb: Public Sub New(graphicsDevice As GraphicsDevice, spriteBatch As SpriteBatch)
   overload: Bliss.CSharp.Fonts.FontStashRenderer2D.#ctor*
   nameWithType.vb: FontStashRenderer2D.New(GraphicsDevice, SpriteBatch)
-  fullName.vb: Bliss.CSharp.Fonts.FontStashRenderer2D.New(Veldrid.GraphicsDevice, Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch)
+  fullName.vb: Bliss.CSharp.Fonts.FontStashRenderer2D.New(Veldrid.GraphicsDevice, Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch)
   name.vb: New(GraphicsDevice, SpriteBatch)
 - uid: Bliss.CSharp.Fonts.FontStashRenderer2D.Draw(System.Object,System.Numerics.Vector2,System.Nullable{System.Drawing.Rectangle},FontStashSharp.FSColor,System.Single,System.Numerics.Vector2,System.Single)
   commentId: M:Bliss.CSharp.Fonts.FontStashRenderer2D.Draw(System.Object,System.Numerics.Vector2,System.Nullable{System.Drawing.Rectangle},FontStashSharp.FSColor,System.Single,System.Numerics.Vector2,System.Single)
@@ -662,7 +662,7 @@ references:
   commentId: T:Veldrid.GraphicsDevice
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs
   name: GraphicsDevice
   nameWithType: GraphicsDevice
   fullName: Veldrid.GraphicsDevice
@@ -678,19 +678,19 @@ references:
   name: SpriteBatch
   nameWithType: FontStashRenderer2D.SpriteBatch
   fullName: Bliss.CSharp.Fonts.FontStashRenderer2D.SpriteBatch
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
-  commentId: T:Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
-  parent: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
-  href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch.html
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch.html
   name: SpriteBatch
   nameWithType: SpriteBatch
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.SpriteBatch
-- uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
-  commentId: N:Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites
   href: Bliss.html
-  name: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
-  nameWithType: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
-  fullName: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites
   spec.csharp:
   - uid: Bliss
     name: Bliss
@@ -708,13 +708,17 @@ references:
     name: Rendering
     href: Bliss.CSharp.Graphics.Rendering.html
   - name: .
-  - uid: Bliss.CSharp.Graphics.Rendering.Batches
-    name: Batches
-    href: Bliss.CSharp.Graphics.Rendering.Batches.html
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
   - name: .
-  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Batches
+    name: Batches
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites
     name: Sprites
-    href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.html
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.html
   spec.vb:
   - uid: Bliss
     name: Bliss
@@ -732,13 +736,17 @@ references:
     name: Rendering
     href: Bliss.CSharp.Graphics.Rendering.html
   - name: .
-  - uid: Bliss.CSharp.Graphics.Rendering.Batches
-    name: Batches
-    href: Bliss.CSharp.Graphics.Rendering.Batches.html
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
   - name: .
-  - uid: Bliss.CSharp.Graphics.Rendering.Batches.Sprites
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Batches
+    name: Batches
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites
     name: Sprites
-    href: Bliss.CSharp.Graphics.Rendering.Batches.Sprites.html
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.html
 - uid: Bliss.CSharp.Fonts.FontStashRenderer2D.TextureManager*
   commentId: Overload:Bliss.CSharp.Fonts.FontStashRenderer2D.TextureManager
   href: Bliss.CSharp.Fonts.FontStashRenderer2D.html#Bliss_CSharp_Fonts_FontStashRenderer2D_TextureManager
@@ -768,7 +776,7 @@ references:
   fullName: Bliss.CSharp.Fonts.FontStashRenderer2D
 - uid: Bliss.CSharp.Fonts.FontStashRenderer2D.#ctor*
   commentId: Overload:Bliss.CSharp.Fonts.FontStashRenderer2D.#ctor
-  href: Bliss.CSharp.Fonts.FontStashRenderer2D.html#Bliss_CSharp_Fonts_FontStashRenderer2D__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Graphics_Rendering_Batches_Sprites_SpriteBatch_
+  href: Bliss.CSharp.Fonts.FontStashRenderer2D.html#Bliss_CSharp_Fonts_FontStashRenderer2D__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Graphics_Rendering_Renderers_Batches_Sprites_SpriteBatch_
   name: FontStashRenderer2D
   nameWithType: FontStashRenderer2D.FontStashRenderer2D
   fullName: Bliss.CSharp.Fonts.FontStashRenderer2D.FontStashRenderer2D

@@ -89,7 +89,7 @@
 
 
   <h1 id="Bliss_CSharp_Geometry_Mesh" data-uid="Bliss.CSharp.Geometry.Mesh" class="text-break">
-Class Mesh  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L20"><i class="bi bi-code-slash"></i></a>
+Class Mesh  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -170,9 +170,9 @@ Class Mesh  <a class="header-action link-secondary" title="View source" href="ht
 
   <a id="Bliss_CSharp_Geometry_Mesh__ctor_" data-uid="Bliss.CSharp.Geometry.Mesh.#ctor*"></a>
 
-  <h3 id="Bliss_CSharp_Geometry_Mesh__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Materials_Material_Bliss_CSharp_Graphics_VertexTypes_Vertex3D___System_UInt32___System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_Dictionary_System_Int32_Bliss_CSharp_Geometry_Animations_BoneInfo_____" data-uid="Bliss.CSharp.Geometry.Mesh.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Materials.Material,Bliss.CSharp.Graphics.VertexTypes.Vertex3D[],System.UInt32[],System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.Int32,Bliss.CSharp.Geometry.Animations.BoneInfo[]}})">
-  Mesh(GraphicsDevice, Material, Vertex3D[], uint[]?, Dictionary&lt;string, Dictionary&lt;int, BoneInfo[]&gt;&gt;?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Geometry_Mesh__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Materials_Material_Bliss_CSharp_Graphics_VertexTypes_Vertex3D___System_UInt32___" data-uid="Bliss.CSharp.Geometry.Mesh.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Materials.Material,Bliss.CSharp.Graphics.VertexTypes.Vertex3D[],System.UInt32[])">
+  Mesh(GraphicsDevice, Material, Vertex3D[], uint[]?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L78"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Bliss.CSharp.Geometry.Mesh.html">Mesh</a> class with the specified properties.</p>
@@ -180,12 +180,12 @@ Class Mesh  <a class="header-action link-secondary" title="View source" href="ht
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Mesh(GraphicsDevice graphicsDevice, Material material, Vertex3D[] vertices, uint[]? indices = null, Dictionary&lt;string, Dictionary&lt;int, BoneInfo[]&gt;&gt;? boneInfos = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public Mesh(GraphicsDevice graphicsDevice, Material material, Vertex3D[] vertices, uint[]? indices = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
     <dd><p>The graphics device used to create buffers.</p>
 </dd>
     <dt><code>material</code> <a class="xref" href="Bliss.CSharp.Materials.Material.html">Material</a></dt>
@@ -197,13 +197,76 @@ Class Mesh  <a class="header-action link-secondary" title="View source" href="ht
     <dt><code>indices</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>[]</dt>
     <dd><p>The index data defining triangle order (optional).</p>
 </dd>
-    <dt><code>boneInfos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Bliss.CSharp.Geometry.Animations.BoneInfo.html">BoneInfo</a>[]&gt;&gt;</dt>
-    <dd><p>The skeletal bone mapping information for animations (optional).</p>
-</dd>
   </dl>
 
 
 
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Bliss_CSharp_Geometry_Mesh_Material" data-uid="Bliss.CSharp.Geometry.Mesh.Material">
+  Material
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The material used for rendering the mesh.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Material Material</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Bliss.CSharp.Materials.Material.html">Material</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Bliss_CSharp_Geometry_Mesh_MaxBoneCount" data-uid="Bliss.CSharp.Geometry.Mesh.MaxBoneCount">
+  MaxBoneCount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The maximum number of bones supported for skeletal animations in a mesh.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int MaxBoneCount = 72</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -217,78 +280,11 @@ Class Mesh  <a class="header-action link-secondary" title="View source" href="ht
 </h2>
 
 
-  <a id="Bliss_CSharp_Geometry_Mesh_BoneInfos_" data-uid="Bliss.CSharp.Geometry.Mesh.BoneInfos*"></a>
-
-  <h3 id="Bliss_CSharp_Geometry_Mesh_BoneInfos" data-uid="Bliss.CSharp.Geometry.Mesh.BoneInfos">
-  BoneInfos
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L53"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>An array containing information about each bone in a mesh, used for skeletal animation.
-Each element provides details such as the bone's name, its identifier, and its transformation matrix.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, Dictionary&lt;int, BoneInfo[]&gt;&gt; BoneInfos { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Bliss.CSharp.Geometry.Animations.BoneInfo.html">BoneInfo</a>[]&gt;&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Bliss_CSharp_Geometry_Mesh_BoundingBox_" data-uid="Bliss.CSharp.Geometry.Mesh.BoundingBox*"></a>
-
-  <h3 id="Bliss_CSharp_Geometry_Mesh_BoundingBox" data-uid="Bliss.CSharp.Geometry.Mesh.BoundingBox">
-  BoundingBox
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L60"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>The axis-aligned bounding box (AABB) for the mesh.
-This bounding box is calculated based on the vertices of the mesh and represents
-the minimum and maximum coordinates that encompass the entire mesh.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BoundingBox BoundingBox { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Bliss.CSharp.Geometry.BoundingBox.html">BoundingBox</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
   <a id="Bliss_CSharp_Geometry_Mesh_GraphicsDevice_" data-uid="Bliss.CSharp.Geometry.Mesh.GraphicsDevice*"></a>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_GraphicsDevice" data-uid="Bliss.CSharp.Geometry.Mesh.GraphicsDevice">
   GraphicsDevice
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Represents the graphics device used for rendering operations.
@@ -306,7 +302,71 @@ This property provides access to the underlying GraphicsDevice instance responsi
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Geometry_Mesh_HasBones_" data-uid="Bliss.CSharp.Geometry.Mesh.HasBones*"></a>
+
+  <h3 id="Bliss_CSharp_Geometry_Mesh_HasBones" data-uid="Bliss.CSharp.Geometry.Mesh.HasBones">
+  HasBones
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Indicates whether the mesh contains bone information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasBones { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Geometry_Mesh_IndexBuffer_" data-uid="Bliss.CSharp.Geometry.Mesh.IndexBuffer*"></a>
+
+  <h3 id="Bliss_CSharp_Geometry_Mesh_IndexBuffer" data-uid="Bliss.CSharp.Geometry.Mesh.IndexBuffer">
+  IndexBuffer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A buffer that stores index data used for indexed drawing in the graphics pipeline.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DeviceBuffer? IndexBuffer { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Buffer.cs">DeviceBuffer</a></dt>
     <dd></dd>
   </dl>
 
@@ -321,7 +381,7 @@ This property provides access to the underlying GraphicsDevice instance responsi
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_IndexCount" data-uid="Bliss.CSharp.Geometry.Mesh.IndexCount">
   IndexCount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The number of indices in the mesh used for rendering.</p>
@@ -353,7 +413,7 @@ This property provides access to the underlying GraphicsDevice instance responsi
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_Indices" data-uid="Bliss.CSharp.Geometry.Mesh.Indices">
   Indices
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L43"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>An array of indices that define the order in which vertices are drawn.
@@ -383,21 +443,19 @@ such as triangles in a mesh. This allows for efficient reuse of vertex data.</p>
 
 
 
-  <a id="Bliss_CSharp_Geometry_Mesh_Material_" data-uid="Bliss.CSharp.Geometry.Mesh.Material*"></a>
+  <a id="Bliss_CSharp_Geometry_Mesh_VertexBuffer_" data-uid="Bliss.CSharp.Geometry.Mesh.VertexBuffer*"></a>
 
-  <h3 id="Bliss_CSharp_Geometry_Mesh_Material" data-uid="Bliss.CSharp.Geometry.Mesh.Material">
-  Material
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Geometry_Mesh_VertexBuffer" data-uid="Bliss.CSharp.Geometry.Mesh.VertexBuffer">
+  VertexBuffer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L64"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Represents the material properties used for rendering the mesh.
-This may include shaders (effects), texture mappings, blending states, and other rendering parameters.
-The Material controls how the mesh is rendered within the graphics pipeline.</p>
+  <div class="markdown level1 summary"><p>A buffer that stores vertex data used for rendering in the graphics pipeline.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Material Material { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public DeviceBuffer VertexBuffer { get; }</code></pre>
   </div>
 
 
@@ -406,7 +464,7 @@ The Material controls how the mesh is rendered within the graphics pipeline.</p>
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Bliss.CSharp.Materials.Material.html">Material</a></dt>
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Buffer.cs">DeviceBuffer</a></dt>
     <dd></dd>
   </dl>
 
@@ -421,7 +479,7 @@ The Material controls how the mesh is rendered within the graphics pipeline.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_VertexCount" data-uid="Bliss.CSharp.Geometry.Mesh.VertexCount">
   VertexCount
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L54"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The total count of vertices present in the mesh.
@@ -454,7 +512,7 @@ This value determines the number of vertices available for rendering within the 
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_Vertices" data-uid="Bliss.CSharp.Geometry.Mesh.Vertices">
   Vertices
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L36"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>An array of Vertex3D structures that define the geometric points of a mesh.
@@ -492,7 +550,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_Dispose_System_Boolean_" data-uid="Bliss.CSharp.Geometry.Mesh.Dispose(System.Boolean)">
   Dispose(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1377"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1149"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Disposes of the object and releases associated resources.</p>
@@ -521,46 +579,28 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
 
 
-  <a id="Bliss_CSharp_Geometry_Mesh_Draw_" data-uid="Bliss.CSharp.Geometry.Mesh.Draw*"></a>
+  <a id="Bliss_CSharp_Geometry_Mesh_GenBoundingBox_" data-uid="Bliss.CSharp.Geometry.Mesh.GenBoundingBox*"></a>
 
-  <h3 id="Bliss_CSharp_Geometry_Mesh_Draw_Veldrid_CommandList_Bliss_CSharp_Transformations_Transform_Veldrid_OutputDescription_Veldrid_Sampler_System_Nullable_Veldrid_DepthStencilStateDescription__System_Nullable_Veldrid_RasterizerStateDescription__System_Nullable_Bliss_CSharp_Colors_Color__" data-uid="Bliss.CSharp.Geometry.Mesh.Draw(Veldrid.CommandList,Bliss.CSharp.Transformations.Transform,Veldrid.OutputDescription,Veldrid.Sampler,System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{Bliss.CSharp.Colors.Color})">
-  Draw(CommandList, Transform, OutputDescription, Sampler?, DepthStencilStateDescription?, RasterizerStateDescription?, Color?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1241"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Geometry_Mesh_GenBoundingBox" data-uid="Bliss.CSharp.Geometry.Mesh.GenBoundingBox">
+  GenBoundingBox()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L983"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Renders the mesh with the specified properties and configurations.</p>
+  <div class="markdown level1 summary"><p>Calculates the bounding box for the current mesh based on its vertices.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Draw(CommandList commandList, Transform transform, OutputDescription output, Sampler? sampler = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Color? color = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public BoundingBox GenBoundingBox()</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
+
+  <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/CommandList.cs">CommandList</a></dt>
-    <dd><p>The command list used to issue rendering commands.</p>
-</dd>
-    <dt><code>transform</code> <a class="xref" href="Bliss.CSharp.Transformations.Transform.html">Transform</a></dt>
-    <dd><p>The transformation applied to the mesh.</p>
-</dd>
-    <dt><code>output</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/OutputDescription.cs">OutputDescription</a></dt>
-    <dd><p>The output description specifying the rendering target and format.</p>
-</dd>
-    <dt><code>sampler</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/Sampler.cs">Sampler</a></dt>
-    <dd><p>The optional sampler state for texture sampling.</p>
-</dd>
-    <dt><code>depthStencilState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs">DepthStencilStateDescription</a>?</dt>
-    <dd><p>The optional depth-stencil state description for depth testing.</p>
-</dd>
-    <dt><code>rasterizerState</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs">RasterizerStateDescription</a>?</dt>
-    <dd><p>The optional rasterizer state description for culling and rasterization.</p>
-</dd>
-    <dt><code>color</code> <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a>?</dt>
-    <dd><p>An optional color to override the material's albedo map color.</p>
+    <dt><a class="xref" href="Bliss.CSharp.Geometry.BoundingBox.html">BoundingBox</a></dt>
+    <dd><p>A BoundingBox object that encompasses all vertices of the mesh.</p>
 </dd>
   </dl>
-
 
 
 
@@ -576,7 +616,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_GenCapsule_Veldrid_GraphicsDevice_System_Single_System_Single_System_Int32_" data-uid="Bliss.CSharp.Geometry.Mesh.GenCapsule(Veldrid.GraphicsDevice,System.Single,System.Single,System.Int32)">
   GenCapsule(GraphicsDevice, float, float, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L602"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L532"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Generates a capsule mesh with the specified radius, height, and number of slices.</p>
@@ -589,7 +629,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
     <dd><p>The graphics device used to create and manage the mesh's GPU resources.</p>
 </dd>
     <dt><code>radius</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
@@ -624,7 +664,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_GenCone_Veldrid_GraphicsDevice_System_Single_System_Single_System_Int32_" data-uid="Bliss.CSharp.Geometry.Mesh.GenCone(Veldrid.GraphicsDevice,System.Single,System.Single,System.Int32)">
   GenCone(GraphicsDevice, float, float, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L752"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L682"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Generates a 3D cone mesh with a specified radius, height, and number of slices.</p>
@@ -637,7 +677,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
     <dd><p>The <a class="xref" href="Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_GraphicsDevice">GraphicsDevice</a> used to manage GPU resources for the mesh.</p>
 </dd>
     <dt><code>radius</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
@@ -672,7 +712,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_GenCube_Veldrid_GraphicsDevice_System_Single_System_Single_System_Single_" data-uid="Bliss.CSharp.Geometry.Mesh.GenCube(Veldrid.GraphicsDevice,System.Single,System.Single,System.Single)">
   GenCube(GraphicsDevice, float, float, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L233"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L163"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Generates a cuboid mesh with the specified dimensions and initializes it with default material and texture settings.</p>
@@ -685,7 +725,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
     <dd><p>The graphics device that manages GPU resources for the mesh.</p>
 </dd>
     <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
@@ -720,7 +760,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_GenCylinder_Veldrid_GraphicsDevice_System_Single_System_Single_System_Int32_" data-uid="Bliss.CSharp.Geometry.Mesh.GenCylinder(Veldrid.GraphicsDevice,System.Single,System.Single,System.Int32)">
   GenCylinder(GraphicsDevice, float, float, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L503"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L433"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Generates a cylindrical mesh with specified dimensions and resolution.</p>
@@ -733,7 +773,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
     <dd><p>The <a class="xref" href="Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_GraphicsDevice">GraphicsDevice</a> responsible for managing GPU resources.</p>
 </dd>
     <dt><code>radius</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
@@ -768,7 +808,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_GenHeightmap_Veldrid_GraphicsDevice_Bliss_CSharp_Images_Image_System_Numerics_Vector3_" data-uid="Bliss.CSharp.Geometry.Mesh.GenHeightmap(Veldrid.GraphicsDevice,Bliss.CSharp.Images.Image,System.Numerics.Vector3)">
   GenHeightmap(GraphicsDevice, Image, Vector3)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L994"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L924"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Generates a heightmap-based 3D mesh from the given heightmap image and dimensions.</p>
@@ -781,7 +821,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
     <dd><p>The <a class="xref" href="Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_GraphicsDevice">GraphicsDevice</a> used for managing GPU resources and rendering the generated mesh.</p>
 </dd>
     <dt><code>heightmap</code> <a class="xref" href="Bliss.CSharp.Images.Image.html">Image</a></dt>
@@ -813,7 +853,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_GenHemisphere_Veldrid_GraphicsDevice_System_Single_System_Int32_System_Int32_" data-uid="Bliss.CSharp.Geometry.Mesh.GenHemisphere(Veldrid.GraphicsDevice,System.Single,System.Int32,System.Int32)">
   GenHemisphere(GraphicsDevice, float, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L399"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L329"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Generates a 3D hemisphere mesh with a specified radius, number of rings, and slices.</p>
@@ -826,7 +866,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
     <dd><p>The <a class="xref" href="Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_GraphicsDevice">GraphicsDevice</a> instance used to allocate GPU resources for the mesh.</p>
 </dd>
     <dt><code>radius</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
@@ -861,7 +901,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_GenKnot_Veldrid_GraphicsDevice_System_Single_System_Single_System_Int32_System_Int32_" data-uid="Bliss.CSharp.Geometry.Mesh.GenKnot(Veldrid.GraphicsDevice,System.Single,System.Single,System.Int32,System.Int32)">
   GenKnot(GraphicsDevice, float, float, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L906"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L836"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Generates a torus knot mesh with the specified parameters.</p>
@@ -874,7 +914,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
     <dd><p>The <a class="xref" href="Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_GraphicsDevice">GraphicsDevice</a> used to manage GPU resources for the mesh.</p>
 </dd>
     <dt><code>radius</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
@@ -912,7 +952,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_GenPoly_Veldrid_GraphicsDevice_System_Int32_System_Single_" data-uid="Bliss.CSharp.Geometry.Mesh.GenPoly(Veldrid.GraphicsDevice,System.Int32,System.Single)">
   GenPoly(GraphicsDevice, int, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L179"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L109"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Generates a 3D polygon mesh with the specified number of sides and radius.</p>
@@ -925,7 +965,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
     <dd><p>The graphics device used to manage GPU resources for the generated mesh.</p>
 </dd>
     <dt><code>sides</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
@@ -957,7 +997,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_GenSphere_Veldrid_GraphicsDevice_System_Single_System_Int32_System_Int32_" data-uid="Bliss.CSharp.Geometry.Mesh.GenSphere(Veldrid.GraphicsDevice,System.Single,System.Int32,System.Int32)">
   GenSphere(GraphicsDevice, float, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L317"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L247"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Generates a sphere mesh with the specified radius, rings, and slices.</p>
@@ -970,7 +1010,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
     <dd><p>The graphics device used to create and manage the GPU resources needed for the mesh.</p>
 </dd>
     <dt><code>radius</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
@@ -1001,11 +1041,38 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
 
 
+  <a id="Bliss_CSharp_Geometry_Mesh_GenTangents_" data-uid="Bliss.CSharp.Geometry.Mesh.GenTangents*"></a>
+
+  <h3 id="Bliss_CSharp_Geometry_Mesh_GenTangents" data-uid="Bliss.CSharp.Geometry.Mesh.GenTangents">
+  GenTangents()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L998"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Generates tangent vectors for the mesh's vertices based on the provided geometric and UV coordinate data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void GenTangents()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Bliss_CSharp_Geometry_Mesh_GenTorus_" data-uid="Bliss.CSharp.Geometry.Mesh.GenTorus*"></a>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_GenTorus_Veldrid_GraphicsDevice_System_Single_System_Single_System_Int32_System_Int32_" data-uid="Bliss.CSharp.Geometry.Mesh.GenTorus(Veldrid.GraphicsDevice,System.Single,System.Single,System.Int32,System.Int32)">
   GenTorus(GraphicsDevice, float, float, int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L831"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L761"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Generates a torus-shaped mesh with specified dimensions and detail.</p>
@@ -1018,7 +1085,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
+    <dt><code>graphicsDevice</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs">GraphicsDevice</a></dt>
     <dd><p>The <a class="xref" href="Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_GraphicsDevice">GraphicsDevice</a> used for managing GPU resources.</p>
 </dd>
     <dt><code>radius</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
@@ -1052,71 +1119,11 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
 
 
-  <a id="Bliss_CSharp_Geometry_Mesh_GenerateTangents_" data-uid="Bliss.CSharp.Geometry.Mesh.GenerateTangents*"></a>
-
-  <h3 id="Bliss_CSharp_Geometry_Mesh_GenerateTangents" data-uid="Bliss.CSharp.Geometry.Mesh.GenerateTangents">
-  GenerateTangents()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1052"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Generates tangent vectors for the mesh's vertices based on the provided geometric and UV coordinate data.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void GenerateTangents()</code></pre>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Bliss_CSharp_Geometry_Mesh_ResetAnimationBones_" data-uid="Bliss.CSharp.Geometry.Mesh.ResetAnimationBones*"></a>
-
-  <h3 id="Bliss_CSharp_Geometry_Mesh_ResetAnimationBones_Veldrid_CommandList_" data-uid="Bliss.CSharp.Geometry.Mesh.ResetAnimationBones(Veldrid.CommandList)">
-  ResetAnimationBones(CommandList)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1223"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Resets the bone transformation matrices to their identity state and updates the buffer on the GPU using the provided command list.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ResetAnimationBones(CommandList commandList)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/CommandList.cs">CommandList</a></dt>
-    <dd><p>The command list used to record the buffer update command, ensuring the changes are applied to the GPU.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
   <a id="Bliss_CSharp_Geometry_Mesh_SetIndexValue_" data-uid="Bliss.CSharp.Geometry.Mesh.SetIndexValue*"></a>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_SetIndexValue_System_Int32_System_UInt32_" data-uid="Bliss.CSharp.Geometry.Mesh.SetIndexValue(System.Int32,System.UInt32)">
   SetIndexValue(int, uint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1163"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1109"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the index value in the mesh's index buffer at the specified position.</p>
@@ -1152,7 +1159,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_SetIndexValueDeferred_Veldrid_CommandList_System_Int32_System_UInt32_" data-uid="Bliss.CSharp.Geometry.Mesh.SetIndexValueDeferred(Veldrid.CommandList,System.Int32,System.UInt32)">
   SetIndexValueDeferred(CommandList, int, uint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1183"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1129"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Updates the value of an index in the deferred rendering pipeline and applies the changes to the index buffer.</p>
@@ -1165,7 +1172,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/CommandList.cs">CommandList</a></dt>
+    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/CommandList.cs">CommandList</a></dt>
     <dd><p>The command list used for recording GPU commands.</p>
 </dd>
     <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
@@ -1191,7 +1198,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_SetIndexValueImmediate_System_Int32_System_UInt32_" data-uid="Bliss.CSharp.Geometry.Mesh.SetIndexValueImmediate(System.Int32,System.UInt32)">
   SetIndexValueImmediate(int, uint)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1172"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1118"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the value of an index in the index buffer and updates the buffer immediately.</p>
@@ -1227,7 +1234,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_SetVertexValue_System_Int32_Bliss_CSharp_Graphics_VertexTypes_Vertex3D_" data-uid="Bliss.CSharp.Geometry.Mesh.SetVertexValue(System.Int32,Bliss.CSharp.Graphics.VertexTypes.Vertex3D)">
   SetVertexValue(int, Vertex3D)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1118"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1064"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the value of a vertex at a specified index.</p>
@@ -1263,7 +1270,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_SetVertexValueDeferred_Veldrid_CommandList_System_Int32_Bliss_CSharp_Graphics_VertexTypes_Vertex3D_" data-uid="Bliss.CSharp.Geometry.Mesh.SetVertexValueDeferred(Veldrid.CommandList,System.Int32,Bliss.CSharp.Graphics.VertexTypes.Vertex3D)">
   SetVertexValueDeferred(CommandList, int, Vertex3D)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1138"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1084"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Updates the vertex buffer with a new vertex value at the specified index in a deferred manner, using the provided command list.</p>
@@ -1276,8 +1283,8 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/CommandList.cs">CommandList</a></dt>
-    <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/CommandList.cs">CommandList</a> used to issue the update commands.</p>
+    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/CommandList.cs">CommandList</a></dt>
+    <dd><p>The <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/CommandList.cs">CommandList</a> used to issue the update commands.</p>
 </dd>
     <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd><p>The index of the vertex to update.</p>
@@ -1302,7 +1309,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_SetVertexValueImmediate_System_Int32_Bliss_CSharp_Graphics_VertexTypes_Vertex3D_" data-uid="Bliss.CSharp.Geometry.Mesh.SetVertexValueImmediate(System.Int32,Bliss.CSharp.Graphics.VertexTypes.Vertex3D)">
   SetVertexValueImmediate(int, Vertex3D)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1127"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1073"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the vertex value at the specified index and updates the vertex buffer immediately.</p>
@@ -1334,50 +1341,11 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
 
 
-  <a id="Bliss_CSharp_Geometry_Mesh_UpdateAnimationBones_" data-uid="Bliss.CSharp.Geometry.Mesh.UpdateAnimationBones*"></a>
-
-  <h3 id="Bliss_CSharp_Geometry_Mesh_UpdateAnimationBones_Veldrid_CommandList_Bliss_CSharp_Geometry_Animations_ModelAnimation_System_Int32_" data-uid="Bliss.CSharp.Geometry.Mesh.UpdateAnimationBones(Veldrid.CommandList,Bliss.CSharp.Geometry.Animations.ModelAnimation,System.Int32)">
-  UpdateAnimationBones(CommandList, ModelAnimation, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1209"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Updates the transformation matrices of the animation bones for a specific frame using the provided command list and animation data.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void UpdateAnimationBones(CommandList commandList, ModelAnimation animation, int frame)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/CommandList.cs">CommandList</a></dt>
-    <dd><p>The command list used to issue rendering commands.</p>
-</dd>
-    <dt><code>animation</code> <a class="xref" href="Bliss.CSharp.Geometry.Animations.ModelAnimation.html">ModelAnimation</a></dt>
-    <dd><p>The animation data containing the bone transformations.</p>
-</dd>
-    <dt><code>frame</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>The specific frame of the animation to update the bone transformations.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
   <a id="Bliss_CSharp_Geometry_Mesh_UpdateIndexBuffer_" data-uid="Bliss.CSharp.Geometry.Mesh.UpdateIndexBuffer*"></a>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_UpdateIndexBuffer_Veldrid_CommandList_" data-uid="Bliss.CSharp.Geometry.Mesh.UpdateIndexBuffer(Veldrid.CommandList)">
   UpdateIndexBuffer(CommandList)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1199"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1145"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Updates the index buffer with the current index data on the specified command list.</p>
@@ -1390,7 +1358,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/CommandList.cs">CommandList</a></dt>
+    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/CommandList.cs">CommandList</a></dt>
     <dd><p>The command list used to update the index buffer.</p>
 </dd>
   </dl>
@@ -1410,7 +1378,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_UpdateIndexBufferImmediate" data-uid="Bliss.CSharp.Geometry.Mesh.UpdateIndexBufferImmediate">
   UpdateIndexBufferImmediate()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1191"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1137"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Updates the index buffer of the mesh immediately with the current index data.</p>
@@ -1437,7 +1405,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_UpdateVertexBuffer_Veldrid_CommandList_" data-uid="Bliss.CSharp.Geometry.Mesh.UpdateVertexBuffer(Veldrid.CommandList)">
   UpdateVertexBuffer(CommandList)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1154"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1100"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Updates the vertex buffer with the current vertex data using the specified command list.</p>
@@ -1450,7 +1418,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/CommandList.cs">CommandList</a></dt>
+    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/CommandList.cs">CommandList</a></dt>
     <dd><p>The command list used to update the vertex buffer.</p>
 </dd>
   </dl>
@@ -1470,7 +1438,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 
   <h3 id="Bliss_CSharp_Geometry_Mesh_UpdateVertexBufferImmediate" data-uid="Bliss.CSharp.Geometry.Mesh.UpdateVertexBufferImmediate">
   UpdateVertexBufferImmediate()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1146"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L1092"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Updates the vertex buffer with the current vertex data immediately on the GPU.</p>
@@ -1497,7 +1465,7 @@ Vertices are used to construct the shape and appearance of a 3D model.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L20" class="edit-link">Edit this page</a>
+          <a href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Geometry/Mesh.cs/#L13" class="edit-link">Edit this page</a>
         </div>
 
 

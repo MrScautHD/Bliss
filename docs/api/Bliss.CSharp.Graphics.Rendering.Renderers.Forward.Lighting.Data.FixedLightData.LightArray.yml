@@ -1,0 +1,537 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray
+  id: FixedLightData.LightArray
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data
+  children:
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray.AsReadOnlySpan
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray.AsSpan
+  langs:
+  - csharp
+  - vb
+  name: FixedLightData.LightArray
+  nameWithType: FixedLightData.LightArray
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray
+  type: Struct
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Lighting/Data/FixedLightData.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LightArray
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Lighting/Data/FixedLightData.cs
+    startLine: 38
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data
+  summary: Represents a fixed-size, inline array for storing light information.
+  example: []
+  syntax:
+    content: public struct FixedLightData.LightArray
+    content.vb: Public Structure FixedLightData.LightArray
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray.AsSpan
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray.AsSpan
+  id: AsSpan
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray
+  langs:
+  - csharp
+  - vb
+  name: AsSpan()
+  nameWithType: FixedLightData.LightArray.AsSpan()
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray.AsSpan()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Lighting/Data/FixedLightData.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: AsSpan
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Lighting/Data/FixedLightData.cs
+    startLine: 42
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data
+  syntax:
+    content: >-
+      [UnscopedRef]
+
+      public Span<Light> AsSpan()
+    return:
+      type: System.Span{Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light}
+    content.vb: >-
+      <UnscopedRef>
+
+      Public Function AsSpan() As Span(Of Light)
+  overload: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray.AsSpan*
+  attributes:
+  - type: System.Diagnostics.CodeAnalysis.UnscopedRefAttribute
+    ctor: System.Diagnostics.CodeAnalysis.UnscopedRefAttribute.#ctor
+    arguments: []
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray.AsReadOnlySpan
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray.AsReadOnlySpan
+  id: AsReadOnlySpan
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray
+  langs:
+  - csharp
+  - vb
+  name: AsReadOnlySpan()
+  nameWithType: FixedLightData.LightArray.AsReadOnlySpan()
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray.AsReadOnlySpan()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Lighting/Data/FixedLightData.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: AsReadOnlySpan
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Lighting/Data/FixedLightData.cs
+    startLine: 47
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data
+  syntax:
+    content: >-
+      [UnscopedRef]
+
+      public readonly ReadOnlySpan<Light> AsReadOnlySpan()
+    return:
+      type: System.ReadOnlySpan{Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light}
+    content.vb: >-
+      <UnscopedRef>
+
+      Public Function AsReadOnlySpan() As ReadOnlySpan(Of Light)
+  overload: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray.AsReadOnlySpan*
+  attributes:
+  - type: System.Diagnostics.CodeAnalysis.UnscopedRefAttribute
+    ctor: System.Diagnostics.CodeAnalysis.UnscopedRefAttribute.#ctor
+    arguments: []
+references:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+    name: Forward
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+    name: Lighting
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data
+    name: Data
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+    name: Forward
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+    name: Lighting
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data
+    name: Data
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray.AsSpan*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray.AsSpan
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Lighting_Data_FixedLightData_LightArray_AsSpan
+  name: AsSpan
+  nameWithType: FixedLightData.LightArray.AsSpan
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray.AsSpan
+- uid: System.Span{Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light}
+  commentId: T:System.Span{Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light}
+  parent: System
+  definition: System.Span`1
+  href: https://learn.microsoft.com/dotnet/api/system.span-1
+  name: Span<Light>
+  nameWithType: Span<Light>
+  fullName: System.Span<Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light>
+  nameWithType.vb: Span(Of Light)
+  fullName.vb: System.Span(Of Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light)
+  name.vb: Span(Of Light)
+  spec.csharp:
+  - uid: System.Span`1
+    name: Span
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.span-1
+  - name: <
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light
+    name: Light
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Span`1
+    name: Span
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.span-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light
+    name: Light
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light.html
+  - name: )
+- uid: System.Span`1
+  commentId: T:System.Span`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.span-1
+  name: Span<T>
+  nameWithType: Span<T>
+  fullName: System.Span<T>
+  nameWithType.vb: Span(Of T)
+  fullName.vb: System.Span(Of T)
+  name.vb: Span(Of T)
+  spec.csharp:
+  - uid: System.Span`1
+    name: Span
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.span-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Span`1
+    name: Span
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.span-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray.AsReadOnlySpan*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray.AsReadOnlySpan
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Lighting_Data_FixedLightData_LightArray_AsReadOnlySpan
+  name: AsReadOnlySpan
+  nameWithType: FixedLightData.LightArray.AsReadOnlySpan
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray.AsReadOnlySpan
+- uid: System.ReadOnlySpan{Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light}
+  commentId: T:System.ReadOnlySpan{Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light}
+  parent: System
+  definition: System.ReadOnlySpan`1
+  href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  name: ReadOnlySpan<Light>
+  nameWithType: ReadOnlySpan<Light>
+  fullName: System.ReadOnlySpan<Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light>
+  nameWithType.vb: ReadOnlySpan(Of Light)
+  fullName.vb: System.ReadOnlySpan(Of Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light)
+  name.vb: ReadOnlySpan(Of Light)
+  spec.csharp:
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  - name: <
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light
+    name: Light
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light.html
+  - name: '>'
+  spec.vb:
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light
+    name: Light
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light.html
+  - name: )
+- uid: System.ReadOnlySpan`1
+  commentId: T:System.ReadOnlySpan`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  name: ReadOnlySpan<T>
+  nameWithType: ReadOnlySpan<T>
+  fullName: System.ReadOnlySpan<T>
+  nameWithType.vb: ReadOnlySpan(Of T)
+  fullName.vb: System.ReadOnlySpan(Of T)
+  name.vb: ReadOnlySpan(Of T)
+  spec.csharp:
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

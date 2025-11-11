@@ -5,11 +5,9 @@ items:
   id: Mesh
   parent: Bliss.CSharp.Geometry
   children:
-  - Bliss.CSharp.Geometry.Mesh.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Materials.Material,Bliss.CSharp.Graphics.VertexTypes.Vertex3D[],System.UInt32[],System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.Int32,Bliss.CSharp.Geometry.Animations.BoneInfo[]}})
-  - Bliss.CSharp.Geometry.Mesh.BoneInfos
-  - Bliss.CSharp.Geometry.Mesh.BoundingBox
+  - Bliss.CSharp.Geometry.Mesh.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Materials.Material,Bliss.CSharp.Graphics.VertexTypes.Vertex3D[],System.UInt32[])
   - Bliss.CSharp.Geometry.Mesh.Dispose(System.Boolean)
-  - Bliss.CSharp.Geometry.Mesh.Draw(Veldrid.CommandList,Bliss.CSharp.Transformations.Transform,Veldrid.OutputDescription,Veldrid.Sampler,System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Geometry.Mesh.GenBoundingBox
   - Bliss.CSharp.Geometry.Mesh.GenCapsule(Veldrid.GraphicsDevice,System.Single,System.Single,System.Int32)
   - Bliss.CSharp.Geometry.Mesh.GenCone(Veldrid.GraphicsDevice,System.Single,System.Single,System.Int32)
   - Bliss.CSharp.Geometry.Mesh.GenCube(Veldrid.GraphicsDevice,System.Single,System.Single,System.Single)
@@ -19,24 +17,26 @@ items:
   - Bliss.CSharp.Geometry.Mesh.GenKnot(Veldrid.GraphicsDevice,System.Single,System.Single,System.Int32,System.Int32)
   - Bliss.CSharp.Geometry.Mesh.GenPoly(Veldrid.GraphicsDevice,System.Int32,System.Single)
   - Bliss.CSharp.Geometry.Mesh.GenSphere(Veldrid.GraphicsDevice,System.Single,System.Int32,System.Int32)
+  - Bliss.CSharp.Geometry.Mesh.GenTangents
   - Bliss.CSharp.Geometry.Mesh.GenTorus(Veldrid.GraphicsDevice,System.Single,System.Single,System.Int32,System.Int32)
-  - Bliss.CSharp.Geometry.Mesh.GenerateTangents
   - Bliss.CSharp.Geometry.Mesh.GraphicsDevice
+  - Bliss.CSharp.Geometry.Mesh.HasBones
+  - Bliss.CSharp.Geometry.Mesh.IndexBuffer
   - Bliss.CSharp.Geometry.Mesh.IndexCount
   - Bliss.CSharp.Geometry.Mesh.Indices
   - Bliss.CSharp.Geometry.Mesh.Material
-  - Bliss.CSharp.Geometry.Mesh.ResetAnimationBones(Veldrid.CommandList)
+  - Bliss.CSharp.Geometry.Mesh.MaxBoneCount
   - Bliss.CSharp.Geometry.Mesh.SetIndexValue(System.Int32,System.UInt32)
   - Bliss.CSharp.Geometry.Mesh.SetIndexValueDeferred(Veldrid.CommandList,System.Int32,System.UInt32)
   - Bliss.CSharp.Geometry.Mesh.SetIndexValueImmediate(System.Int32,System.UInt32)
   - Bliss.CSharp.Geometry.Mesh.SetVertexValue(System.Int32,Bliss.CSharp.Graphics.VertexTypes.Vertex3D)
   - Bliss.CSharp.Geometry.Mesh.SetVertexValueDeferred(Veldrid.CommandList,System.Int32,Bliss.CSharp.Graphics.VertexTypes.Vertex3D)
   - Bliss.CSharp.Geometry.Mesh.SetVertexValueImmediate(System.Int32,Bliss.CSharp.Graphics.VertexTypes.Vertex3D)
-  - Bliss.CSharp.Geometry.Mesh.UpdateAnimationBones(Veldrid.CommandList,Bliss.CSharp.Geometry.Animations.ModelAnimation,System.Int32)
   - Bliss.CSharp.Geometry.Mesh.UpdateIndexBuffer(Veldrid.CommandList)
   - Bliss.CSharp.Geometry.Mesh.UpdateIndexBufferImmediate
   - Bliss.CSharp.Geometry.Mesh.UpdateVertexBuffer(Veldrid.CommandList)
   - Bliss.CSharp.Geometry.Mesh.UpdateVertexBufferImmediate
+  - Bliss.CSharp.Geometry.Mesh.VertexBuffer
   - Bliss.CSharp.Geometry.Mesh.VertexCount
   - Bliss.CSharp.Geometry.Mesh.Vertices
   langs:
@@ -53,7 +53,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Mesh
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 19
+    startLine: 12
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -76,6 +76,35 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+- uid: Bliss.CSharp.Geometry.Mesh.MaxBoneCount
+  commentId: F:Bliss.CSharp.Geometry.Mesh.MaxBoneCount
+  id: MaxBoneCount
+  parent: Bliss.CSharp.Geometry.Mesh
+  langs:
+  - csharp
+  - vb
+  name: MaxBoneCount
+  nameWithType: Mesh.MaxBoneCount
+  fullName: Bliss.CSharp.Geometry.Mesh.MaxBoneCount
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Mesh.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: MaxBoneCount
+    path: ../src/Bliss/CSharp/Geometry/Mesh.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry
+  summary: The maximum number of bones supported for skeletal animations in a mesh.
+  example: []
+  syntax:
+    content: public const int MaxBoneCount = 72
+    return:
+      type: System.Int32
+    content.vb: Public Const MaxBoneCount As Integer = 72
 - uid: Bliss.CSharp.Geometry.Mesh.GraphicsDevice
   commentId: P:Bliss.CSharp.Geometry.Mesh.GraphicsDevice
   id: GraphicsDevice
@@ -94,7 +123,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GraphicsDevice
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 25
+    startLine: 23
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -111,7 +140,7 @@ items:
     content.vb: Public Property GraphicsDevice As GraphicsDevice
   overload: Bliss.CSharp.Geometry.Mesh.GraphicsDevice*
 - uid: Bliss.CSharp.Geometry.Mesh.Material
-  commentId: P:Bliss.CSharp.Geometry.Mesh.Material
+  commentId: F:Bliss.CSharp.Geometry.Mesh.Material
   id: Material
   parent: Bliss.CSharp.Geometry.Mesh
   langs:
@@ -120,7 +149,7 @@ items:
   name: Material
   nameWithType: Mesh.Material
   fullName: Bliss.CSharp.Geometry.Mesh.Material
-  type: Property
+  type: Field
   source:
     remote:
       path: src/Bliss/CSharp/Geometry/Mesh.cs
@@ -128,24 +157,17 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Material
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 32
+    startLine: 28
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
-  summary: >-
-    Represents the material properties used for rendering the mesh.
-
-    This may include shaders (effects), texture mappings, blending states, and other rendering parameters.
-
-    The Material controls how the mesh is rendered within the graphics pipeline.
+  summary: The material used for rendering the mesh.
   example: []
   syntax:
-    content: public Material Material { get; }
-    parameters: []
+    content: public Material Material
     return:
       type: Bliss.CSharp.Materials.Material
-    content.vb: Public Property Material As Material
-  overload: Bliss.CSharp.Geometry.Mesh.Material*
+    content.vb: Public Material As Material
 - uid: Bliss.CSharp.Geometry.Mesh.Vertices
   commentId: P:Bliss.CSharp.Geometry.Mesh.Vertices
   id: Vertices
@@ -164,7 +186,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Vertices
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 39
+    startLine: 35
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -200,7 +222,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Indices
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 46
+    startLine: 42
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -218,76 +240,37 @@ items:
       type: System.UInt32[]
     content.vb: Public Property Indices As UInteger()
   overload: Bliss.CSharp.Geometry.Mesh.Indices*
-- uid: Bliss.CSharp.Geometry.Mesh.BoneInfos
-  commentId: P:Bliss.CSharp.Geometry.Mesh.BoneInfos
-  id: BoneInfos
+- uid: Bliss.CSharp.Geometry.Mesh.HasBones
+  commentId: P:Bliss.CSharp.Geometry.Mesh.HasBones
+  id: HasBones
   parent: Bliss.CSharp.Geometry.Mesh
   langs:
   - csharp
   - vb
-  name: BoneInfos
-  nameWithType: Mesh.BoneInfos
-  fullName: Bliss.CSharp.Geometry.Mesh.BoneInfos
+  name: HasBones
+  nameWithType: Mesh.HasBones
+  fullName: Bliss.CSharp.Geometry.Mesh.HasBones
   type: Property
   source:
     remote:
       path: src/Bliss/CSharp/Geometry/Mesh.cs
       branch: main
       repo: https://github.com/MrScautHD/Bliss.git
-    id: BoneInfos
+    id: HasBones
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 52
+    startLine: 47
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
-  summary: >-
-    An array containing information about each bone in a mesh, used for skeletal animation.
-
-    Each element provides details such as the bone's name, its identifier, and its transformation matrix.
+  summary: Indicates whether the mesh contains bone information.
   example: []
   syntax:
-    content: public Dictionary<string, Dictionary<int, BoneInfo[]>> BoneInfos { get; }
+    content: public bool HasBones { get; }
     parameters: []
     return:
-      type: System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.Int32,Bliss.CSharp.Geometry.Animations.BoneInfo[]}}
-    content.vb: Public Property BoneInfos As Dictionary(Of String, Dictionary(Of Integer, BoneInfo()))
-  overload: Bliss.CSharp.Geometry.Mesh.BoneInfos*
-- uid: Bliss.CSharp.Geometry.Mesh.BoundingBox
-  commentId: P:Bliss.CSharp.Geometry.Mesh.BoundingBox
-  id: BoundingBox
-  parent: Bliss.CSharp.Geometry.Mesh
-  langs:
-  - csharp
-  - vb
-  name: BoundingBox
-  nameWithType: Mesh.BoundingBox
-  fullName: Bliss.CSharp.Geometry.Mesh.BoundingBox
-  type: Property
-  source:
-    remote:
-      path: src/Bliss/CSharp/Geometry/Mesh.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: BoundingBox
-    path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 59
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Geometry
-  summary: >-
-    The axis-aligned bounding box (AABB) for the mesh.
-
-    This bounding box is calculated based on the vertices of the mesh and represents
-
-    the minimum and maximum coordinates that encompass the entire mesh.
-  example: []
-  syntax:
-    content: public BoundingBox BoundingBox { get; }
-    parameters: []
-    return:
-      type: Bliss.CSharp.Geometry.BoundingBox
-    content.vb: Public Property BoundingBox As BoundingBox
-  overload: Bliss.CSharp.Geometry.Mesh.BoundingBox*
+      type: System.Boolean
+    content.vb: Public Property HasBones As Boolean
+  overload: Bliss.CSharp.Geometry.Mesh.HasBones*
 - uid: Bliss.CSharp.Geometry.Mesh.VertexCount
   commentId: P:Bliss.CSharp.Geometry.Mesh.VertexCount
   id: VertexCount
@@ -306,7 +289,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: VertexCount
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 65
+    startLine: 53
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -340,7 +323,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: IndexCount
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 70
+    startLine: 58
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -353,16 +336,78 @@ items:
       type: System.UInt32
     content.vb: Public Property IndexCount As UInteger
   overload: Bliss.CSharp.Geometry.Mesh.IndexCount*
-- uid: Bliss.CSharp.Geometry.Mesh.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Materials.Material,Bliss.CSharp.Graphics.VertexTypes.Vertex3D[],System.UInt32[],System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.Int32,Bliss.CSharp.Geometry.Animations.BoneInfo[]}})
-  commentId: M:Bliss.CSharp.Geometry.Mesh.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Materials.Material,Bliss.CSharp.Graphics.VertexTypes.Vertex3D[],System.UInt32[],System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.Int32,Bliss.CSharp.Geometry.Animations.BoneInfo[]}})
-  id: '#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Materials.Material,Bliss.CSharp.Graphics.VertexTypes.Vertex3D[],System.UInt32[],System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.Int32,Bliss.CSharp.Geometry.Animations.BoneInfo[]}})'
+- uid: Bliss.CSharp.Geometry.Mesh.VertexBuffer
+  commentId: P:Bliss.CSharp.Geometry.Mesh.VertexBuffer
+  id: VertexBuffer
   parent: Bliss.CSharp.Geometry.Mesh
   langs:
   - csharp
   - vb
-  name: Mesh(GraphicsDevice, Material, Vertex3D[], uint[]?, Dictionary<string, Dictionary<int, BoneInfo[]>>?)
-  nameWithType: Mesh.Mesh(GraphicsDevice, Material, Vertex3D[], uint[]?, Dictionary<string, Dictionary<int, BoneInfo[]>>?)
-  fullName: Bliss.CSharp.Geometry.Mesh.Mesh(Veldrid.GraphicsDevice, Bliss.CSharp.Materials.Material, Bliss.CSharp.Graphics.VertexTypes.Vertex3D[], uint[]?, System.Collections.Generic.Dictionary<string, System.Collections.Generic.Dictionary<int, Bliss.CSharp.Geometry.Animations.BoneInfo[]>>?)
+  name: VertexBuffer
+  nameWithType: Mesh.VertexBuffer
+  fullName: Bliss.CSharp.Geometry.Mesh.VertexBuffer
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Mesh.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: VertexBuffer
+    path: ../src/Bliss/CSharp/Geometry/Mesh.cs
+    startLine: 63
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry
+  summary: A buffer that stores vertex data used for rendering in the graphics pipeline.
+  example: []
+  syntax:
+    content: public DeviceBuffer VertexBuffer { get; }
+    parameters: []
+    return:
+      type: Veldrid.DeviceBuffer
+    content.vb: Public Property VertexBuffer As DeviceBuffer
+  overload: Bliss.CSharp.Geometry.Mesh.VertexBuffer*
+- uid: Bliss.CSharp.Geometry.Mesh.IndexBuffer
+  commentId: P:Bliss.CSharp.Geometry.Mesh.IndexBuffer
+  id: IndexBuffer
+  parent: Bliss.CSharp.Geometry.Mesh
+  langs:
+  - csharp
+  - vb
+  name: IndexBuffer
+  nameWithType: Mesh.IndexBuffer
+  fullName: Bliss.CSharp.Geometry.Mesh.IndexBuffer
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Mesh.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: IndexBuffer
+    path: ../src/Bliss/CSharp/Geometry/Mesh.cs
+    startLine: 68
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry
+  summary: A buffer that stores index data used for indexed drawing in the graphics pipeline.
+  example: []
+  syntax:
+    content: public DeviceBuffer? IndexBuffer { get; }
+    parameters: []
+    return:
+      type: Veldrid.DeviceBuffer
+    content.vb: Public Property IndexBuffer As DeviceBuffer
+  overload: Bliss.CSharp.Geometry.Mesh.IndexBuffer*
+- uid: Bliss.CSharp.Geometry.Mesh.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Materials.Material,Bliss.CSharp.Graphics.VertexTypes.Vertex3D[],System.UInt32[])
+  commentId: M:Bliss.CSharp.Geometry.Mesh.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Materials.Material,Bliss.CSharp.Graphics.VertexTypes.Vertex3D[],System.UInt32[])
+  id: '#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Materials.Material,Bliss.CSharp.Graphics.VertexTypes.Vertex3D[],System.UInt32[])'
+  parent: Bliss.CSharp.Geometry.Mesh
+  langs:
+  - csharp
+  - vb
+  name: Mesh(GraphicsDevice, Material, Vertex3D[], uint[]?)
+  nameWithType: Mesh.Mesh(GraphicsDevice, Material, Vertex3D[], uint[]?)
+  fullName: Bliss.CSharp.Geometry.Mesh.Mesh(Veldrid.GraphicsDevice, Bliss.CSharp.Materials.Material, Bliss.CSharp.Graphics.VertexTypes.Vertex3D[], uint[]?)
   type: Constructor
   source:
     remote:
@@ -371,14 +416,14 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 117
+    startLine: 77
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
   summary: Initializes a new instance of the <xref href="Bliss.CSharp.Geometry.Mesh" data-throw-if-not-resolved="false"></xref> class with the specified properties.
   example: []
   syntax:
-    content: public Mesh(GraphicsDevice graphicsDevice, Material material, Vertex3D[] vertices, uint[]? indices = null, Dictionary<string, Dictionary<int, BoneInfo[]>>? boneInfos = null)
+    content: public Mesh(GraphicsDevice graphicsDevice, Material material, Vertex3D[] vertices, uint[]? indices = null)
     parameters:
     - id: graphicsDevice
       type: Veldrid.GraphicsDevice
@@ -392,14 +437,11 @@ items:
     - id: indices
       type: System.UInt32[]
       description: The index data defining triangle order (optional).
-    - id: boneInfos
-      type: System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.Int32,Bliss.CSharp.Geometry.Animations.BoneInfo[]}}
-      description: The skeletal bone mapping information for animations (optional).
-    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, material As Material, vertices As Vertex3D(), indices As UInteger() = Nothing, boneInfos As Dictionary(Of String, Dictionary(Of Integer, BoneInfo())) = Nothing)
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, material As Material, vertices As Vertex3D(), indices As UInteger() = Nothing)
   overload: Bliss.CSharp.Geometry.Mesh.#ctor*
-  nameWithType.vb: Mesh.New(GraphicsDevice, Material, Vertex3D(), UInteger(), Dictionary(Of String, Dictionary(Of Integer, BoneInfo())))
-  fullName.vb: Bliss.CSharp.Geometry.Mesh.New(Veldrid.GraphicsDevice, Bliss.CSharp.Materials.Material, Bliss.CSharp.Graphics.VertexTypes.Vertex3D(), UInteger(), System.Collections.Generic.Dictionary(Of String, System.Collections.Generic.Dictionary(Of Integer, Bliss.CSharp.Geometry.Animations.BoneInfo())))
-  name.vb: New(GraphicsDevice, Material, Vertex3D(), UInteger(), Dictionary(Of String, Dictionary(Of Integer, BoneInfo())))
+  nameWithType.vb: Mesh.New(GraphicsDevice, Material, Vertex3D(), UInteger())
+  fullName.vb: Bliss.CSharp.Geometry.Mesh.New(Veldrid.GraphicsDevice, Bliss.CSharp.Materials.Material, Bliss.CSharp.Graphics.VertexTypes.Vertex3D(), UInteger())
+  name.vb: New(GraphicsDevice, Material, Vertex3D(), UInteger())
 - uid: Bliss.CSharp.Geometry.Mesh.GenPoly(Veldrid.GraphicsDevice,System.Int32,System.Single)
   commentId: M:Bliss.CSharp.Geometry.Mesh.GenPoly(Veldrid.GraphicsDevice,System.Int32,System.Single)
   id: GenPoly(Veldrid.GraphicsDevice,System.Int32,System.Single)
@@ -418,7 +460,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenPoly
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 178
+    startLine: 108
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -462,7 +504,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenCube
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 232
+    startLine: 162
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -509,7 +551,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenSphere
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 316
+    startLine: 246
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -556,7 +598,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenHemisphere
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 398
+    startLine: 328
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -603,7 +645,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenCylinder
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 502
+    startLine: 432
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -650,7 +692,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenCapsule
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 601
+    startLine: 531
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -697,7 +739,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenCone
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 751
+    startLine: 681
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -744,7 +786,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenTorus
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 830
+    startLine: 760
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -794,7 +836,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenKnot
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 905
+    startLine: 835
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -844,7 +886,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GenHeightmap
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 993
+    startLine: 923
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -867,34 +909,65 @@ items:
       description: A new <xref href="Bliss.CSharp.Geometry.Mesh" data-throw-if-not-resolved="false"></xref> instance representing the generated heightmap mesh based on the input parameters.
     content.vb: Public Shared Function GenHeightmap(graphicsDevice As GraphicsDevice, heightmap As Image, size As Vector3) As Mesh
   overload: Bliss.CSharp.Geometry.Mesh.GenHeightmap*
-- uid: Bliss.CSharp.Geometry.Mesh.GenerateTangents
-  commentId: M:Bliss.CSharp.Geometry.Mesh.GenerateTangents
-  id: GenerateTangents
+- uid: Bliss.CSharp.Geometry.Mesh.GenBoundingBox
+  commentId: M:Bliss.CSharp.Geometry.Mesh.GenBoundingBox
+  id: GenBoundingBox
   parent: Bliss.CSharp.Geometry.Mesh
   langs:
   - csharp
   - vb
-  name: GenerateTangents()
-  nameWithType: Mesh.GenerateTangents()
-  fullName: Bliss.CSharp.Geometry.Mesh.GenerateTangents()
+  name: GenBoundingBox()
+  nameWithType: Mesh.GenBoundingBox()
+  fullName: Bliss.CSharp.Geometry.Mesh.GenBoundingBox()
   type: Method
   source:
     remote:
       path: src/Bliss/CSharp/Geometry/Mesh.cs
       branch: main
       repo: https://github.com/MrScautHD/Bliss.git
-    id: GenerateTangents
+    id: GenBoundingBox
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1051
+    startLine: 982
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry
+  summary: Calculates the bounding box for the current mesh based on its vertices.
+  example: []
+  syntax:
+    content: public BoundingBox GenBoundingBox()
+    return:
+      type: Bliss.CSharp.Geometry.BoundingBox
+      description: A BoundingBox object that encompasses all vertices of the mesh.
+    content.vb: Public Function GenBoundingBox() As BoundingBox
+  overload: Bliss.CSharp.Geometry.Mesh.GenBoundingBox*
+- uid: Bliss.CSharp.Geometry.Mesh.GenTangents
+  commentId: M:Bliss.CSharp.Geometry.Mesh.GenTangents
+  id: GenTangents
+  parent: Bliss.CSharp.Geometry.Mesh
+  langs:
+  - csharp
+  - vb
+  name: GenTangents()
+  nameWithType: Mesh.GenTangents()
+  fullName: Bliss.CSharp.Geometry.Mesh.GenTangents()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Mesh.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GenTangents
+    path: ../src/Bliss/CSharp/Geometry/Mesh.cs
+    startLine: 997
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
   summary: Generates tangent vectors for the mesh's vertices based on the provided geometric and UV coordinate data.
   example: []
   syntax:
-    content: public void GenerateTangents()
-    content.vb: Public Sub GenerateTangents()
-  overload: Bliss.CSharp.Geometry.Mesh.GenerateTangents*
+    content: public void GenTangents()
+    content.vb: Public Sub GenTangents()
+  overload: Bliss.CSharp.Geometry.Mesh.GenTangents*
 - uid: Bliss.CSharp.Geometry.Mesh.SetVertexValue(System.Int32,Bliss.CSharp.Graphics.VertexTypes.Vertex3D)
   commentId: M:Bliss.CSharp.Geometry.Mesh.SetVertexValue(System.Int32,Bliss.CSharp.Graphics.VertexTypes.Vertex3D)
   id: SetVertexValue(System.Int32,Bliss.CSharp.Graphics.VertexTypes.Vertex3D)
@@ -913,7 +986,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetVertexValue
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1117
+    startLine: 1063
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -951,7 +1024,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetVertexValueImmediate
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1126
+    startLine: 1072
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -989,7 +1062,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetVertexValueDeferred
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1137
+    startLine: 1083
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1030,7 +1103,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: UpdateVertexBufferImmediate
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1145
+    startLine: 1091
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1058,7 +1131,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: UpdateVertexBuffer
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1153
+    startLine: 1099
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1090,7 +1163,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetIndexValue
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1162
+    startLine: 1108
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1128,7 +1201,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetIndexValueImmediate
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1171
+    startLine: 1117
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1166,7 +1239,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetIndexValueDeferred
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1182
+    startLine: 1128
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1207,7 +1280,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: UpdateIndexBufferImmediate
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1190
+    startLine: 1136
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1235,7 +1308,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: UpdateIndexBuffer
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1198
+    startLine: 1144
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1249,132 +1322,6 @@ items:
       description: The command list used to update the index buffer.
     content.vb: Public Sub UpdateIndexBuffer(commandList As CommandList)
   overload: Bliss.CSharp.Geometry.Mesh.UpdateIndexBuffer*
-- uid: Bliss.CSharp.Geometry.Mesh.UpdateAnimationBones(Veldrid.CommandList,Bliss.CSharp.Geometry.Animations.ModelAnimation,System.Int32)
-  commentId: M:Bliss.CSharp.Geometry.Mesh.UpdateAnimationBones(Veldrid.CommandList,Bliss.CSharp.Geometry.Animations.ModelAnimation,System.Int32)
-  id: UpdateAnimationBones(Veldrid.CommandList,Bliss.CSharp.Geometry.Animations.ModelAnimation,System.Int32)
-  parent: Bliss.CSharp.Geometry.Mesh
-  langs:
-  - csharp
-  - vb
-  name: UpdateAnimationBones(CommandList, ModelAnimation, int)
-  nameWithType: Mesh.UpdateAnimationBones(CommandList, ModelAnimation, int)
-  fullName: Bliss.CSharp.Geometry.Mesh.UpdateAnimationBones(Veldrid.CommandList, Bliss.CSharp.Geometry.Animations.ModelAnimation, int)
-  type: Method
-  source:
-    remote:
-      path: src/Bliss/CSharp/Geometry/Mesh.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: UpdateAnimationBones
-    path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1208
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Geometry
-  summary: Updates the transformation matrices of the animation bones for a specific frame using the provided command list and animation data.
-  example: []
-  syntax:
-    content: public void UpdateAnimationBones(CommandList commandList, ModelAnimation animation, int frame)
-    parameters:
-    - id: commandList
-      type: Veldrid.CommandList
-      description: The command list used to issue rendering commands.
-    - id: animation
-      type: Bliss.CSharp.Geometry.Animations.ModelAnimation
-      description: The animation data containing the bone transformations.
-    - id: frame
-      type: System.Int32
-      description: The specific frame of the animation to update the bone transformations.
-    content.vb: Public Sub UpdateAnimationBones(commandList As CommandList, animation As ModelAnimation, frame As Integer)
-  overload: Bliss.CSharp.Geometry.Mesh.UpdateAnimationBones*
-  nameWithType.vb: Mesh.UpdateAnimationBones(CommandList, ModelAnimation, Integer)
-  fullName.vb: Bliss.CSharp.Geometry.Mesh.UpdateAnimationBones(Veldrid.CommandList, Bliss.CSharp.Geometry.Animations.ModelAnimation, Integer)
-  name.vb: UpdateAnimationBones(CommandList, ModelAnimation, Integer)
-- uid: Bliss.CSharp.Geometry.Mesh.ResetAnimationBones(Veldrid.CommandList)
-  commentId: M:Bliss.CSharp.Geometry.Mesh.ResetAnimationBones(Veldrid.CommandList)
-  id: ResetAnimationBones(Veldrid.CommandList)
-  parent: Bliss.CSharp.Geometry.Mesh
-  langs:
-  - csharp
-  - vb
-  name: ResetAnimationBones(CommandList)
-  nameWithType: Mesh.ResetAnimationBones(CommandList)
-  fullName: Bliss.CSharp.Geometry.Mesh.ResetAnimationBones(Veldrid.CommandList)
-  type: Method
-  source:
-    remote:
-      path: src/Bliss/CSharp/Geometry/Mesh.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: ResetAnimationBones
-    path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1222
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Geometry
-  summary: Resets the bone transformation matrices to their identity state and updates the buffer on the GPU using the provided command list.
-  example: []
-  syntax:
-    content: public void ResetAnimationBones(CommandList commandList)
-    parameters:
-    - id: commandList
-      type: Veldrid.CommandList
-      description: The command list used to record the buffer update command, ensuring the changes are applied to the GPU.
-    content.vb: Public Sub ResetAnimationBones(commandList As CommandList)
-  overload: Bliss.CSharp.Geometry.Mesh.ResetAnimationBones*
-- uid: Bliss.CSharp.Geometry.Mesh.Draw(Veldrid.CommandList,Bliss.CSharp.Transformations.Transform,Veldrid.OutputDescription,Veldrid.Sampler,System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{Bliss.CSharp.Colors.Color})
-  commentId: M:Bliss.CSharp.Geometry.Mesh.Draw(Veldrid.CommandList,Bliss.CSharp.Transformations.Transform,Veldrid.OutputDescription,Veldrid.Sampler,System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{Bliss.CSharp.Colors.Color})
-  id: Draw(Veldrid.CommandList,Bliss.CSharp.Transformations.Transform,Veldrid.OutputDescription,Veldrid.Sampler,System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{Bliss.CSharp.Colors.Color})
-  parent: Bliss.CSharp.Geometry.Mesh
-  langs:
-  - csharp
-  - vb
-  name: Draw(CommandList, Transform, OutputDescription, Sampler?, DepthStencilStateDescription?, RasterizerStateDescription?, Color?)
-  nameWithType: Mesh.Draw(CommandList, Transform, OutputDescription, Sampler?, DepthStencilStateDescription?, RasterizerStateDescription?, Color?)
-  fullName: Bliss.CSharp.Geometry.Mesh.Draw(Veldrid.CommandList, Bliss.CSharp.Transformations.Transform, Veldrid.OutputDescription, Veldrid.Sampler?, Veldrid.DepthStencilStateDescription?, Veldrid.RasterizerStateDescription?, Bliss.CSharp.Colors.Color?)
-  type: Method
-  source:
-    remote:
-      path: src/Bliss/CSharp/Geometry/Mesh.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: Draw
-    path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1240
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Geometry
-  summary: Renders the mesh with the specified properties and configurations.
-  example: []
-  syntax:
-    content: public void Draw(CommandList commandList, Transform transform, OutputDescription output, Sampler? sampler = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Color? color = null)
-    parameters:
-    - id: commandList
-      type: Veldrid.CommandList
-      description: The command list used to issue rendering commands.
-    - id: transform
-      type: Bliss.CSharp.Transformations.Transform
-      description: The transformation applied to the mesh.
-    - id: output
-      type: Veldrid.OutputDescription
-      description: The output description specifying the rendering target and format.
-    - id: sampler
-      type: Veldrid.Sampler
-      description: The optional sampler state for texture sampling.
-    - id: depthStencilState
-      type: System.Nullable{Veldrid.DepthStencilStateDescription}
-      description: The optional depth-stencil state description for depth testing.
-    - id: rasterizerState
-      type: System.Nullable{Veldrid.RasterizerStateDescription}
-      description: The optional rasterizer state description for culling and rasterization.
-    - id: color
-      type: System.Nullable{Bliss.CSharp.Colors.Color}
-      description: An optional color to override the material's albedo map color.
-    content.vb: Public Sub Draw(commandList As CommandList, transform As Transform, output As OutputDescription, sampler As Sampler = Nothing, depthStencilState As DepthStencilStateDescription? = Nothing, rasterizerState As RasterizerStateDescription? = Nothing, color As Color? = Nothing)
-  overload: Bliss.CSharp.Geometry.Mesh.Draw*
-  nameWithType.vb: Mesh.Draw(CommandList, Transform, OutputDescription, Sampler, DepthStencilStateDescription?, RasterizerStateDescription?, Color?)
-  fullName.vb: Bliss.CSharp.Geometry.Mesh.Draw(Veldrid.CommandList, Bliss.CSharp.Transformations.Transform, Veldrid.OutputDescription, Veldrid.Sampler, Veldrid.DepthStencilStateDescription?, Veldrid.RasterizerStateDescription?, Bliss.CSharp.Colors.Color?)
-  name.vb: Draw(CommandList, Transform, OutputDescription, Sampler, DepthStencilStateDescription?, RasterizerStateDescription?, Color?)
 - uid: Bliss.CSharp.Geometry.Mesh.Dispose(System.Boolean)
   commentId: M:Bliss.CSharp.Geometry.Mesh.Dispose(System.Boolean)
   id: Dispose(System.Boolean)
@@ -1393,7 +1340,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Geometry/Mesh.cs
-    startLine: 1376
+    startLine: 1148
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -1761,6 +1708,17 @@ references:
   - uid: Bliss.CSharp
     name: CSharp
     href: Bliss.CSharp.html
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
 - uid: Bliss.CSharp.Geometry.Mesh.GraphicsDevice*
   commentId: Overload:Bliss.CSharp.Geometry.Mesh.GraphicsDevice
   href: Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_GraphicsDevice
@@ -1771,7 +1729,7 @@ references:
   commentId: T:Veldrid.GraphicsDevice
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs
   name: GraphicsDevice
   nameWithType: GraphicsDevice
   fullName: Veldrid.GraphicsDevice
@@ -1781,12 +1739,6 @@ references:
   name: Veldrid
   nameWithType: Veldrid
   fullName: Veldrid
-- uid: Bliss.CSharp.Geometry.Mesh.Material*
-  commentId: Overload:Bliss.CSharp.Geometry.Mesh.Material
-  href: Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_Material
-  name: Material
-  nameWithType: Mesh.Material
-  fullName: Bliss.CSharp.Geometry.Mesh.Material
 - uid: Bliss.CSharp.Materials.Material
   commentId: T:Bliss.CSharp.Materials.Material
   parent: Bliss.CSharp.Materials
@@ -1880,171 +1832,23 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.uint32
   - name: (
   - name: )
-- uid: Bliss.CSharp.Geometry.Mesh.BoneInfos*
-  commentId: Overload:Bliss.CSharp.Geometry.Mesh.BoneInfos
-  href: Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_BoneInfos
-  name: BoneInfos
-  nameWithType: Mesh.BoneInfos
-  fullName: Bliss.CSharp.Geometry.Mesh.BoneInfos
-- uid: System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.Int32,Bliss.CSharp.Geometry.Animations.BoneInfo[]}}
-  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.Int32,Bliss.CSharp.Geometry.Animations.BoneInfo[]}}
-  parent: System.Collections.Generic
-  definition: System.Collections.Generic.Dictionary`2
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  name: Dictionary<string, Dictionary<int, BoneInfo[]>>
-  nameWithType: Dictionary<string, Dictionary<int, BoneInfo[]>>
-  fullName: System.Collections.Generic.Dictionary<string, System.Collections.Generic.Dictionary<int, Bliss.CSharp.Geometry.Animations.BoneInfo[]>>
-  nameWithType.vb: Dictionary(Of String, Dictionary(Of Integer, BoneInfo()))
-  fullName.vb: System.Collections.Generic.Dictionary(Of String, System.Collections.Generic.Dictionary(Of Integer, Bliss.CSharp.Geometry.Animations.BoneInfo()))
-  name.vb: Dictionary(Of String, Dictionary(Of Integer, BoneInfo()))
-  spec.csharp:
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: <
-  - uid: System.Int32
-    name: int
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: Bliss.CSharp.Geometry.Animations.BoneInfo
-    name: BoneInfo
-    href: Bliss.CSharp.Geometry.Animations.BoneInfo.html
-  - name: '['
-  - name: ']'
-  - name: '>'
-  - name: '>'
-  spec.vb:
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: Bliss.CSharp.Geometry.Animations.BoneInfo
-    name: BoneInfo
-    href: Bliss.CSharp.Geometry.Animations.BoneInfo.html
-  - name: (
-  - name: )
-  - name: )
-  - name: )
-- uid: System.Collections.Generic.Dictionary`2
-  commentId: T:System.Collections.Generic.Dictionary`2
+- uid: Bliss.CSharp.Geometry.Mesh.HasBones*
+  commentId: Overload:Bliss.CSharp.Geometry.Mesh.HasBones
+  href: Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_HasBones
+  name: HasBones
+  nameWithType: Mesh.HasBones
+  fullName: Bliss.CSharp.Geometry.Mesh.HasBones
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
   isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  name: Dictionary<TKey, TValue>
-  nameWithType: Dictionary<TKey, TValue>
-  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
-  nameWithType.vb: Dictionary(Of TKey, TValue)
-  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
-  name.vb: Dictionary(Of TKey, TValue)
-  spec.csharp:
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: <
-  - name: TKey
-  - name: ','
-  - name: " "
-  - name: TValue
-  - name: '>'
-  spec.vb:
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - name: TKey
-  - name: ','
-  - name: " "
-  - name: TValue
-  - name: )
-- uid: System.Collections.Generic
-  commentId: N:System.Collections.Generic
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System.Collections.Generic
-  nameWithType: System.Collections.Generic
-  fullName: System.Collections.Generic
-  spec.csharp:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Collections
-    name: Collections
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections
-  - name: .
-  - uid: System.Collections.Generic
-    name: Generic
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
-  spec.vb:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Collections
-    name: Collections
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections
-  - name: .
-  - uid: System.Collections.Generic
-    name: Generic
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
-- uid: Bliss.CSharp.Geometry.Mesh.BoundingBox*
-  commentId: Overload:Bliss.CSharp.Geometry.Mesh.BoundingBox
-  href: Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_BoundingBox
-  name: BoundingBox
-  nameWithType: Mesh.BoundingBox
-  fullName: Bliss.CSharp.Geometry.Mesh.BoundingBox
-- uid: Bliss.CSharp.Geometry.BoundingBox
-  commentId: T:Bliss.CSharp.Geometry.BoundingBox
-  parent: Bliss.CSharp.Geometry
-  href: Bliss.CSharp.Geometry.BoundingBox.html
-  name: BoundingBox
-  nameWithType: BoundingBox
-  fullName: Bliss.CSharp.Geometry.BoundingBox
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
 - uid: Bliss.CSharp.Geometry.Mesh.VertexCount*
   commentId: Overload:Bliss.CSharp.Geometry.Mesh.VertexCount
   href: Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_VertexCount
@@ -2068,6 +1872,26 @@ references:
   name: IndexCount
   nameWithType: Mesh.IndexCount
   fullName: Bliss.CSharp.Geometry.Mesh.IndexCount
+- uid: Bliss.CSharp.Geometry.Mesh.VertexBuffer*
+  commentId: Overload:Bliss.CSharp.Geometry.Mesh.VertexBuffer
+  href: Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_VertexBuffer
+  name: VertexBuffer
+  nameWithType: Mesh.VertexBuffer
+  fullName: Bliss.CSharp.Geometry.Mesh.VertexBuffer
+- uid: Veldrid.DeviceBuffer
+  commentId: T:Veldrid.DeviceBuffer
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Buffer.cs
+  name: DeviceBuffer
+  nameWithType: DeviceBuffer
+  fullName: Veldrid.DeviceBuffer
+- uid: Bliss.CSharp.Geometry.Mesh.IndexBuffer*
+  commentId: Overload:Bliss.CSharp.Geometry.Mesh.IndexBuffer
+  href: Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_IndexBuffer
+  name: IndexBuffer
+  nameWithType: Mesh.IndexBuffer
+  fullName: Bliss.CSharp.Geometry.Mesh.IndexBuffer
 - uid: Bliss.CSharp.Geometry.Mesh
   commentId: T:Bliss.CSharp.Geometry.Mesh
   parent: Bliss.CSharp.Geometry
@@ -2077,7 +1901,7 @@ references:
   fullName: Bliss.CSharp.Geometry.Mesh
 - uid: Bliss.CSharp.Geometry.Mesh.#ctor*
   commentId: Overload:Bliss.CSharp.Geometry.Mesh.#ctor
-  href: Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Materials_Material_Bliss_CSharp_Graphics_VertexTypes_Vertex3D___System_UInt32___System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_Dictionary_System_Int32_Bliss_CSharp_Geometry_Animations_BoneInfo_____
+  href: Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Materials_Material_Bliss_CSharp_Graphics_VertexTypes_Vertex3D___System_UInt32___
   name: Mesh
   nameWithType: Mesh.Mesh
   fullName: Bliss.CSharp.Geometry.Mesh.Mesh
@@ -2090,17 +1914,6 @@ references:
   name: GenPoly
   nameWithType: Mesh.GenPoly
   fullName: Bliss.CSharp.Geometry.Mesh.GenPoly
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.int32
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
 - uid: System.Single
   commentId: T:System.Single
   parent: System
@@ -2244,12 +2057,25 @@ references:
     name: Numerics
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.numerics
-- uid: Bliss.CSharp.Geometry.Mesh.GenerateTangents*
-  commentId: Overload:Bliss.CSharp.Geometry.Mesh.GenerateTangents
-  href: Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_GenerateTangents
-  name: GenerateTangents
-  nameWithType: Mesh.GenerateTangents
-  fullName: Bliss.CSharp.Geometry.Mesh.GenerateTangents
+- uid: Bliss.CSharp.Geometry.Mesh.GenBoundingBox*
+  commentId: Overload:Bliss.CSharp.Geometry.Mesh.GenBoundingBox
+  href: Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_GenBoundingBox
+  name: GenBoundingBox
+  nameWithType: Mesh.GenBoundingBox
+  fullName: Bliss.CSharp.Geometry.Mesh.GenBoundingBox
+- uid: Bliss.CSharp.Geometry.BoundingBox
+  commentId: T:Bliss.CSharp.Geometry.BoundingBox
+  parent: Bliss.CSharp.Geometry
+  href: Bliss.CSharp.Geometry.BoundingBox.html
+  name: BoundingBox
+  nameWithType: BoundingBox
+  fullName: Bliss.CSharp.Geometry.BoundingBox
+- uid: Bliss.CSharp.Geometry.Mesh.GenTangents*
+  commentId: Overload:Bliss.CSharp.Geometry.Mesh.GenTangents
+  href: Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_GenTangents
+  name: GenTangents
+  nameWithType: Mesh.GenTangents
+  fullName: Bliss.CSharp.Geometry.Mesh.GenTangents
 - uid: Bliss.CSharp.Geometry.Mesh.SetVertexValue*
   commentId: Overload:Bliss.CSharp.Geometry.Mesh.SetVertexValue
   href: Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_SetVertexValue_System_Int32_Bliss_CSharp_Graphics_VertexTypes_Vertex3D_
@@ -2311,7 +2137,7 @@ references:
   commentId: T:Veldrid.CommandList
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/CommandList.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/CommandList.cs
   name: CommandList
   nameWithType: CommandList
   fullName: Veldrid.CommandList
@@ -2363,208 +2189,6 @@ references:
   name: UpdateIndexBuffer
   nameWithType: Mesh.UpdateIndexBuffer
   fullName: Bliss.CSharp.Geometry.Mesh.UpdateIndexBuffer
-- uid: Bliss.CSharp.Geometry.Mesh.UpdateAnimationBones*
-  commentId: Overload:Bliss.CSharp.Geometry.Mesh.UpdateAnimationBones
-  href: Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_UpdateAnimationBones_Veldrid_CommandList_Bliss_CSharp_Geometry_Animations_ModelAnimation_System_Int32_
-  name: UpdateAnimationBones
-  nameWithType: Mesh.UpdateAnimationBones
-  fullName: Bliss.CSharp.Geometry.Mesh.UpdateAnimationBones
-- uid: Bliss.CSharp.Geometry.Animations.ModelAnimation
-  commentId: T:Bliss.CSharp.Geometry.Animations.ModelAnimation
-  parent: Bliss.CSharp.Geometry.Animations
-  href: Bliss.CSharp.Geometry.Animations.ModelAnimation.html
-  name: ModelAnimation
-  nameWithType: ModelAnimation
-  fullName: Bliss.CSharp.Geometry.Animations.ModelAnimation
-- uid: Bliss.CSharp.Geometry.Animations
-  commentId: N:Bliss.CSharp.Geometry.Animations
-  href: Bliss.html
-  name: Bliss.CSharp.Geometry.Animations
-  nameWithType: Bliss.CSharp.Geometry.Animations
-  fullName: Bliss.CSharp.Geometry.Animations
-  spec.csharp:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Geometry
-    name: Geometry
-    href: Bliss.CSharp.Geometry.html
-  - name: .
-  - uid: Bliss.CSharp.Geometry.Animations
-    name: Animations
-    href: Bliss.CSharp.Geometry.Animations.html
-  spec.vb:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Geometry
-    name: Geometry
-    href: Bliss.CSharp.Geometry.html
-  - name: .
-  - uid: Bliss.CSharp.Geometry.Animations
-    name: Animations
-    href: Bliss.CSharp.Geometry.Animations.html
-- uid: Bliss.CSharp.Geometry.Mesh.ResetAnimationBones*
-  commentId: Overload:Bliss.CSharp.Geometry.Mesh.ResetAnimationBones
-  href: Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_ResetAnimationBones_Veldrid_CommandList_
-  name: ResetAnimationBones
-  nameWithType: Mesh.ResetAnimationBones
-  fullName: Bliss.CSharp.Geometry.Mesh.ResetAnimationBones
-- uid: Bliss.CSharp.Geometry.Mesh.Draw*
-  commentId: Overload:Bliss.CSharp.Geometry.Mesh.Draw
-  href: Bliss.CSharp.Geometry.Mesh.html#Bliss_CSharp_Geometry_Mesh_Draw_Veldrid_CommandList_Bliss_CSharp_Transformations_Transform_Veldrid_OutputDescription_Veldrid_Sampler_System_Nullable_Veldrid_DepthStencilStateDescription__System_Nullable_Veldrid_RasterizerStateDescription__System_Nullable_Bliss_CSharp_Colors_Color__
-  name: Draw
-  nameWithType: Mesh.Draw
-  fullName: Bliss.CSharp.Geometry.Mesh.Draw
-- uid: Bliss.CSharp.Transformations.Transform
-  commentId: T:Bliss.CSharp.Transformations.Transform
-  parent: Bliss.CSharp.Transformations
-  href: Bliss.CSharp.Transformations.Transform.html
-  name: Transform
-  nameWithType: Transform
-  fullName: Bliss.CSharp.Transformations.Transform
-- uid: Veldrid.OutputDescription
-  commentId: T:Veldrid.OutputDescription
-  parent: Veldrid
-  isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/OutputDescription.cs
-  name: OutputDescription
-  nameWithType: OutputDescription
-  fullName: Veldrid.OutputDescription
-- uid: Veldrid.Sampler
-  commentId: T:Veldrid.Sampler
-  parent: Veldrid
-  isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/Sampler.cs
-  name: Sampler
-  nameWithType: Sampler
-  fullName: Veldrid.Sampler
-- uid: System.Nullable{Veldrid.DepthStencilStateDescription}
-  commentId: T:System.Nullable{Veldrid.DepthStencilStateDescription}
-  parent: System
-  definition: System.Nullable`1
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
-  name: DepthStencilStateDescription?
-  nameWithType: DepthStencilStateDescription?
-  fullName: Veldrid.DepthStencilStateDescription?
-  spec.csharp:
-  - uid: Veldrid.DepthStencilStateDescription
-    name: DepthStencilStateDescription
-    isExternal: true
-    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
-  - name: '?'
-  spec.vb:
-  - uid: Veldrid.DepthStencilStateDescription
-    name: DepthStencilStateDescription
-    isExternal: true
-    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
-  - name: '?'
-- uid: System.Nullable{Veldrid.RasterizerStateDescription}
-  commentId: T:System.Nullable{Veldrid.RasterizerStateDescription}
-  parent: System
-  definition: System.Nullable`1
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
-  name: RasterizerStateDescription?
-  nameWithType: RasterizerStateDescription?
-  fullName: Veldrid.RasterizerStateDescription?
-  spec.csharp:
-  - uid: Veldrid.RasterizerStateDescription
-    name: RasterizerStateDescription
-    isExternal: true
-    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
-  - name: '?'
-  spec.vb:
-  - uid: Veldrid.RasterizerStateDescription
-    name: RasterizerStateDescription
-    isExternal: true
-    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
-  - name: '?'
-- uid: System.Nullable{Bliss.CSharp.Colors.Color}
-  commentId: T:System.Nullable{Bliss.CSharp.Colors.Color}
-  parent: System
-  definition: System.Nullable`1
-  href: Bliss.CSharp.Colors.Color.html
-  name: Color?
-  nameWithType: Color?
-  fullName: Bliss.CSharp.Colors.Color?
-  spec.csharp:
-  - uid: Bliss.CSharp.Colors.Color
-    name: Color
-    href: Bliss.CSharp.Colors.Color.html
-  - name: '?'
-  spec.vb:
-  - uid: Bliss.CSharp.Colors.Color
-    name: Color
-    href: Bliss.CSharp.Colors.Color.html
-  - name: '?'
-- uid: Bliss.CSharp.Transformations
-  commentId: N:Bliss.CSharp.Transformations
-  href: Bliss.html
-  name: Bliss.CSharp.Transformations
-  nameWithType: Bliss.CSharp.Transformations
-  fullName: Bliss.CSharp.Transformations
-  spec.csharp:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Transformations
-    name: Transformations
-    href: Bliss.CSharp.Transformations.html
-  spec.vb:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Transformations
-    name: Transformations
-    href: Bliss.CSharp.Transformations.html
-- uid: System.Nullable`1
-  commentId: T:System.Nullable`1
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
-  name: Nullable<T>
-  nameWithType: Nullable<T>
-  fullName: System.Nullable<T>
-  nameWithType.vb: Nullable(Of T)
-  fullName.vb: System.Nullable(Of T)
-  name.vb: Nullable(Of T)
-  spec.csharp:
-  - uid: System.Nullable`1
-    name: Nullable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: System.Nullable`1
-    name: Nullable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
 - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
   commentId: M:Bliss.CSharp.Disposable.Dispose(System.Boolean)
   parent: Bliss.CSharp.Disposable
@@ -2602,14 +2226,3 @@ references:
   name: Dispose
   nameWithType: Mesh.Dispose
   fullName: Bliss.CSharp.Geometry.Mesh.Dispose
-- uid: System.Boolean
-  commentId: T:System.Boolean
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.boolean
-  name: bool
-  nameWithType: bool
-  fullName: bool
-  nameWithType.vb: Boolean
-  fullName.vb: Boolean
-  name.vb: Boolean

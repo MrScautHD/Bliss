@@ -1,0 +1,502 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData
+  id: MaterialData
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  children:
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.Item(System.Int32)
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.MaxMaterialMapCount
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.RenderMode
+  langs:
+  - csharp
+  - vb
+  name: MaterialData
+  nameWithType: MaterialData
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData
+  type: Struct
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Materials/Data/MaterialData.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: MaterialData
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Materials/Data/MaterialData.cs
+    startLine: 5
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  syntax:
+    content: public struct MaterialData
+    content.vb: Public Structure MaterialData
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.MaxMaterialMapCount
+  commentId: F:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.MaxMaterialMapCount
+  id: MaxMaterialMapCount
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData
+  langs:
+  - csharp
+  - vb
+  name: MaxMaterialMapCount
+  nameWithType: MaterialData.MaxMaterialMapCount
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.MaxMaterialMapCount
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Materials/Data/MaterialData.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: MaxMaterialMapCount
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Materials/Data/MaterialData.cs
+    startLine: 11
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  summary: The maximum number of material maps supported per material.
+  example: []
+  syntax:
+    content: public const int MaxMaterialMapCount = 8
+    return:
+      type: System.Int32
+    content.vb: Public Const MaxMaterialMapCount As Integer = 8
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.RenderMode
+  commentId: P:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.RenderMode
+  id: RenderMode
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData
+  langs:
+  - csharp
+  - vb
+  name: RenderMode
+  nameWithType: MaterialData.RenderMode
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.RenderMode
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Materials/Data/MaterialData.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: RenderMode
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Materials/Data/MaterialData.cs
+    startLine: 31
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  summary: Gets or sets the render mode of the material.
+  example: []
+  syntax:
+    content: public RenderMode RenderMode { get; set; }
+    parameters: []
+    return:
+      type: Bliss.CSharp.Graphics.Rendering.RenderMode
+    content.vb: Public Property RenderMode As RenderMode
+  overload: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.RenderMode*
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.Item(System.Int32)
+  commentId: P:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.Item(System.Int32)
+  id: Item(System.Int32)
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData
+  langs:
+  - csharp
+  - vb
+  name: this[int]
+  nameWithType: MaterialData.this[int]
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.this[int]
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Materials/Data/MaterialData.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: this[]
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Materials/Data/MaterialData.cs
+    startLine: 41
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  summary: Gets a reference to the <xref href="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialMapData" data-throw-if-not-resolved="false"></xref> at the specified index.
+  example: []
+  syntax:
+    content: public ref MaterialMapData this[int index] { get; }
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The zero-based index of the material map.
+    return:
+      type: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialMapData
+      description: A reference to the <xref href="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialMapData" data-throw-if-not-resolved="false"></xref> at the given index.
+    content.vb: Public ReadOnly Default ByRef Property this[](index As Integer) As MaterialMapData
+  overload: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.Item*
+  nameWithType.vb: MaterialData.this[](Integer)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.this[](Integer)
+  name.vb: this[](Integer)
+references:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+    name: Forward
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials
+    name: Materials
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+    name: Data
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+    name: Forward
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials
+    name: Materials
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+    name: Data
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.RenderMode*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.RenderMode
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Materials_Data_MaterialData_RenderMode
+  name: RenderMode
+  nameWithType: MaterialData.RenderMode
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.RenderMode
+- uid: Bliss.CSharp.Graphics.Rendering.RenderMode
+  commentId: T:Bliss.CSharp.Graphics.Rendering.RenderMode
+  parent: Bliss.CSharp.Graphics.Rendering
+  href: Bliss.CSharp.Graphics.Rendering.RenderMode.html
+  name: RenderMode
+  nameWithType: RenderMode
+  fullName: Bliss.CSharp.Graphics.Rendering.RenderMode
+- uid: Bliss.CSharp.Graphics.Rendering
+  commentId: N:Bliss.CSharp.Graphics.Rendering
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Rendering
+  nameWithType: Bliss.CSharp.Graphics.Rendering
+  fullName: Bliss.CSharp.Graphics.Rendering
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialMapData
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialMapData
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialMapData.html
+  name: MaterialMapData
+  nameWithType: MaterialMapData
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialMapData
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.Item*
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.Item
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Materials_Data_MaterialData_Item_System_Int32_
+  name: this
+  nameWithType: MaterialData.this
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.this
+  nameWithType.vb: MaterialData.this[]
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.this[]
+  name.vb: this[]

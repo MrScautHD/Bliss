@@ -1,0 +1,101 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  id: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  children:
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialMapData
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData.html
+  name: MaterialData
+  nameWithType: MaterialData
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialData
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialMapData
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialMapData
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialMapData.html
+  name: MaterialMapData
+  nameWithType: MaterialMapData
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.MaterialMapData
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+    name: Forward
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials
+    name: Materials
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+    name: Data
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+    name: Forward
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials
+    name: Materials
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
+    name: Data
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data.html

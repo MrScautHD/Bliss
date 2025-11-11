@@ -1,0 +1,1733 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  id: SimpleStructuredBuffer`2
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers
+  children:
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.#ctor(Veldrid.GraphicsDevice,System.UInt32,System.UInt32,Veldrid.ShaderStages,System.Boolean,System.Boolean)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.DeviceBuffer
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.Dispose(System.Boolean)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ElementData
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ElementDataSize
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.GraphicsDevice
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.HeaderData
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.HeaderDataSize
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.RawBuffer
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ReadOnly
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValue(System.Int32,`1)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValueDeferred(Veldrid.CommandList,System.Int32,`1)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValueDeferred(Veldrid.CommandList,System.Int32,`1@)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValueImmediate(System.Int32,`1)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValueImmediate(System.Int32,`1@)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValue(System.Int32,`0)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValueDeferred(Veldrid.CommandList,System.Int32,`0)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValueDeferred(Veldrid.CommandList,System.Int32,`0@)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValueImmediate(System.Int32,`0)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValueImmediate(System.Int32,`0@)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ShaderStages
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.UpdateBufferDeferred(Veldrid.CommandList)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.UpdateBufferImmediate
+  langs:
+  - csharp
+  - vb
+  name: SimpleStructuredBuffer<THeader, TElement>
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>
+  type: Class
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SimpleStructuredBuffer
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 5
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  syntax:
+    content: 'public class SimpleStructuredBuffer<THeader, TElement> : Disposable, ISimpleBuffer, IDisposable where THeader : unmanaged where TElement : unmanaged'
+    typeParameters:
+    - id: THeader
+    - id: TElement
+    content.vb: Public Class SimpleStructuredBuffer(Of THeader As Structure, TElement As Structure) Inherits Disposable Implements ISimpleBuffer, IDisposable
+  inheritance:
+  - System.Object
+  - Bliss.CSharp.Disposable
+  implements:
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+  - System.IDisposable
+  inheritedMembers:
+  - Bliss.CSharp.Disposable.HasDisposed
+  - Bliss.CSharp.Disposable.Dispose
+  - Bliss.CSharp.Disposable.ThrowIfDisposed
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement)
+  name.vb: SimpleStructuredBuffer(Of THeader, TElement)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.GraphicsDevice
+  commentId: P:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.GraphicsDevice
+  id: GraphicsDevice
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: GraphicsDevice
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.GraphicsDevice
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.GraphicsDevice
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GraphicsDevice
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 10
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Gets the graphics device associated with this buffer.
+  example: []
+  syntax:
+    content: public GraphicsDevice GraphicsDevice { get; }
+    parameters: []
+    return:
+      type: Veldrid.GraphicsDevice
+    content.vb: Public Property GraphicsDevice As GraphicsDevice
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.GraphicsDevice*
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).GraphicsDevice
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).GraphicsDevice
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.HeaderDataSize
+  commentId: P:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.HeaderDataSize
+  id: HeaderDataSize
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: HeaderDataSize
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.HeaderDataSize
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.HeaderDataSize
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: HeaderDataSize
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 15
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Gets the number of header elements stored in this buffer.
+  example: []
+  syntax:
+    content: public uint HeaderDataSize { get; }
+    parameters: []
+    return:
+      type: System.UInt32
+    content.vb: Public Property HeaderDataSize As UInteger
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.HeaderDataSize*
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).HeaderDataSize
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).HeaderDataSize
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ElementDataSize
+  commentId: P:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ElementDataSize
+  id: ElementDataSize
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: ElementDataSize
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.ElementDataSize
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.ElementDataSize
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ElementDataSize
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 20
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Gets the number of element entries stored in this buffer.
+  example: []
+  syntax:
+    content: public uint ElementDataSize { get; }
+    parameters: []
+    return:
+      type: System.UInt32
+    content.vb: Public Property ElementDataSize As UInteger
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ElementDataSize*
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).ElementDataSize
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).ElementDataSize
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ReadOnly
+  commentId: P:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ReadOnly
+  id: ReadOnly
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: ReadOnly
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.ReadOnly
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.ReadOnly
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ReadOnly
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 25
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Gets a value indicating whether this buffer is read-only.
+  example: []
+  syntax:
+    content: public bool ReadOnly { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property [ReadOnly] As Boolean
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ReadOnly*
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).ReadOnly
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).ReadOnly
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.RawBuffer
+  commentId: P:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.RawBuffer
+  id: RawBuffer
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: RawBuffer
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.RawBuffer
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.RawBuffer
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: RawBuffer
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 30
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Gets a value indicating whether this buffer is treated as a raw buffer.
+  example: []
+  syntax:
+    content: public bool RawBuffer { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property RawBuffer As Boolean
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.RawBuffer*
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).RawBuffer
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).RawBuffer
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.HeaderData
+  commentId: P:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.HeaderData
+  id: HeaderData
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: HeaderData
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.HeaderData
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.HeaderData
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: HeaderData
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 35
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Gets the header data stored in this buffer.
+  example: []
+  syntax:
+    content: public THeader[] HeaderData { get; }
+    parameters: []
+    return:
+      type: '{THeader}[]'
+    content.vb: Public Property HeaderData As THeader()
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.HeaderData*
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).HeaderData
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).HeaderData
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ElementData
+  commentId: P:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ElementData
+  id: ElementData
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: ElementData
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.ElementData
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.ElementData
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ElementData
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 40
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Gets the element data stored in this buffer.
+  example: []
+  syntax:
+    content: public TElement[] ElementData { get; }
+    parameters: []
+    return:
+      type: '{TElement}[]'
+    content.vb: Public Property ElementData As TElement()
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ElementData*
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).ElementData
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).ElementData
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ShaderStages
+  commentId: P:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ShaderStages
+  id: ShaderStages
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: ShaderStages
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.ShaderStages
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.ShaderStages
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ShaderStages
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 45
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Gets the shader stages where this buffer will be used.
+  example: []
+  syntax:
+    content: public ShaderStages ShaderStages { get; }
+    parameters: []
+    return:
+      type: Veldrid.ShaderStages
+    content.vb: Public ReadOnly Property ShaderStages As ShaderStages
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ShaderStages*
+  implements:
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.ShaderStages
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).ShaderStages
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).ShaderStages
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.DeviceBuffer
+  commentId: P:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.DeviceBuffer
+  id: DeviceBuffer
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: DeviceBuffer
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.DeviceBuffer
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.DeviceBuffer
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: DeviceBuffer
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 50
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Gets the GPU device buffer backing this structured buffer.
+  example: []
+  syntax:
+    content: public DeviceBuffer DeviceBuffer { get; }
+    parameters: []
+    return:
+      type: Veldrid.DeviceBuffer
+    content.vb: Public ReadOnly Property DeviceBuffer As DeviceBuffer
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.DeviceBuffer*
+  implements:
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).DeviceBuffer
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).DeviceBuffer
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.#ctor(Veldrid.GraphicsDevice,System.UInt32,System.UInt32,Veldrid.ShaderStages,System.Boolean,System.Boolean)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.#ctor(Veldrid.GraphicsDevice,System.UInt32,System.UInt32,Veldrid.ShaderStages,System.Boolean,System.Boolean)
+  id: '#ctor(Veldrid.GraphicsDevice,System.UInt32,System.UInt32,Veldrid.ShaderStages,System.Boolean,System.Boolean)'
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: SimpleStructuredBuffer(GraphicsDevice, uint, uint, ShaderStages, bool, bool)
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.SimpleStructuredBuffer(GraphicsDevice, uint, uint, ShaderStages, bool, bool)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.SimpleStructuredBuffer(Veldrid.GraphicsDevice, uint, uint, Veldrid.ShaderStages, bool, bool)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 67
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: >-
+    Initializes a new instance of the <xref href="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer%602" data-throw-if-not-resolved="false"></xref> class
+
+    with the specified device, sizes, shader stages, and usage options.
+  example: []
+  syntax:
+    content: public SimpleStructuredBuffer(GraphicsDevice graphicsDevice, uint headerDataSize, uint elementDataSize, ShaderStages stages, bool readOnly = true, bool rawBuffer = false)
+    parameters:
+    - id: graphicsDevice
+      type: Veldrid.GraphicsDevice
+      description: The graphics device used to create the buffer.
+    - id: headerDataSize
+      type: System.UInt32
+      description: The number of header entries to allocate.
+    - id: elementDataSize
+      type: System.UInt32
+      description: The number of element entries to allocate.
+    - id: stages
+      type: Veldrid.ShaderStages
+      description: The shader stages where this buffer will be bound.
+    - id: readOnly
+      type: System.Boolean
+      description: 'Whether the buffer is read-only (default: true).'
+    - id: rawBuffer
+      type: System.Boolean
+      description: 'Whether the buffer is treated as raw (default: false).'
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, headerDataSize As UInteger, elementDataSize As UInteger, stages As ShaderStages, [readOnly] As Boolean = True, rawBuffer As Boolean = False)
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.#ctor*
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).New(GraphicsDevice, UInteger, UInteger, ShaderStages, Boolean, Boolean)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).New(Veldrid.GraphicsDevice, UInteger, UInteger, Veldrid.ShaderStages, Boolean, Boolean)
+  name.vb: New(GraphicsDevice, UInteger, UInteger, ShaderStages, Boolean, Boolean)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  id: GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: GetResourceSet(SimpleBufferLayout)
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.GetResourceSet(SimpleBufferLayout)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetResourceSet
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 102
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Retrieves a cached or newly created resource set for this buffer using the specified layout.
+  example: []
+  syntax:
+    content: public ResourceSet GetResourceSet(SimpleBufferLayout layout)
+    parameters:
+    - id: layout
+      type: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+      description: The buffer layout for resource binding.
+    return:
+      type: Veldrid.ResourceSet
+      description: A resource set containing this buffer bound to the given layout.
+    content.vb: Public Function GetResourceSet(layout As SimpleBufferLayout) As ResourceSet
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.GetResourceSet*
+  implements:
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).GetResourceSet(SimpleBufferLayout)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValue(System.Int32,`0)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValue(System.Int32,`0)
+  id: SetHeaderValue(System.Int32,`0)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: SetHeaderValue(int, THeader)
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.SetHeaderValue(int, THeader)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.SetHeaderValue(int, THeader)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetHeaderValue
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 118
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Sets a header value in the CPU-side array without immediately updating the GPU buffer.
+  example: []
+  syntax:
+    content: public void SetHeaderValue(int index, THeader value)
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The index of the header element.
+    - id: value
+      type: '{THeader}'
+      description: The value to assign to the header element.
+    content.vb: Public Sub SetHeaderValue(index As Integer, value As THeader)
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValue*
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).SetHeaderValue(Integer, THeader)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).SetHeaderValue(Integer, THeader)
+  name.vb: SetHeaderValue(Integer, THeader)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValueImmediate(System.Int32,`0)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValueImmediate(System.Int32,`0)
+  id: SetHeaderValueImmediate(System.Int32,`0)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: SetHeaderValueImmediate(int, THeader)
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.SetHeaderValueImmediate(int, THeader)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.SetHeaderValueImmediate(int, THeader)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetHeaderValueImmediate
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 131
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Sets a header value immediately in both the CPU-side array and GPU buffer.
+  example: []
+  syntax:
+    content: public void SetHeaderValueImmediate(int index, THeader value)
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The index of the header element.
+    - id: value
+      type: '{THeader}'
+      description: The value to set at the specified index.
+    content.vb: Public Sub SetHeaderValueImmediate(index As Integer, value As THeader)
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValueImmediate*
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).SetHeaderValueImmediate(Integer, THeader)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).SetHeaderValueImmediate(Integer, THeader)
+  name.vb: SetHeaderValueImmediate(Integer, THeader)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValueImmediate(System.Int32,`0@)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValueImmediate(System.Int32,`0@)
+  id: SetHeaderValueImmediate(System.Int32,`0@)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: SetHeaderValueImmediate(int, ref THeader)
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.SetHeaderValueImmediate(int, ref THeader)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.SetHeaderValueImmediate(int, ref THeader)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetHeaderValueImmediate
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 140
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Sets a header value immediately in both the CPU-side array and GPU buffer using a reference value.
+  example: []
+  syntax:
+    content: public void SetHeaderValueImmediate(int index, ref THeader value)
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The index of the header element.
+    - id: value
+      type: '{THeader}'
+      description: The reference to the value to set at the specified index.
+    content.vb: Public Sub SetHeaderValueImmediate(index As Integer, value As THeader)
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValueImmediate*
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).SetHeaderValueImmediate(Integer, THeader)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).SetHeaderValueImmediate(Integer, THeader)
+  name.vb: SetHeaderValueImmediate(Integer, THeader)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValueDeferred(Veldrid.CommandList,System.Int32,`0)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValueDeferred(Veldrid.CommandList,System.Int32,`0)
+  id: SetHeaderValueDeferred(Veldrid.CommandList,System.Int32,`0)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: SetHeaderValueDeferred(CommandList, int, THeader)
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.SetHeaderValueDeferred(CommandList, int, THeader)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.SetHeaderValueDeferred(Veldrid.CommandList, int, THeader)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetHeaderValueDeferred
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 157
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Sets a header value and schedules it to be uploaded to the GPU using a <xref href="Veldrid.CommandList" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public void SetHeaderValueDeferred(CommandList commandList, int index, THeader value)
+    parameters:
+    - id: commandList
+      type: Veldrid.CommandList
+      description: The command list used to defer the buffer update.
+    - id: index
+      type: System.Int32
+      description: The index of the header element.
+    - id: value
+      type: '{THeader}'
+      description: The value to assign to the header element.
+    content.vb: Public Sub SetHeaderValueDeferred(commandList As CommandList, index As Integer, value As THeader)
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValueDeferred*
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).SetHeaderValueDeferred(CommandList, Integer, THeader)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).SetHeaderValueDeferred(Veldrid.CommandList, Integer, THeader)
+  name.vb: SetHeaderValueDeferred(CommandList, Integer, THeader)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValueDeferred(Veldrid.CommandList,System.Int32,`0@)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValueDeferred(Veldrid.CommandList,System.Int32,`0@)
+  id: SetHeaderValueDeferred(Veldrid.CommandList,System.Int32,`0@)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: SetHeaderValueDeferred(CommandList, int, ref THeader)
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.SetHeaderValueDeferred(CommandList, int, ref THeader)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.SetHeaderValueDeferred(Veldrid.CommandList, int, ref THeader)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetHeaderValueDeferred
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 167
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Sets a header value and schedules it to be uploaded to the GPU using a <xref href="Veldrid.CommandList" data-throw-if-not-resolved="false"></xref> with a reference value.
+  example: []
+  syntax:
+    content: public void SetHeaderValueDeferred(CommandList commandList, int index, ref THeader value)
+    parameters:
+    - id: commandList
+      type: Veldrid.CommandList
+      description: The command list used to defer the buffer update.
+    - id: index
+      type: System.Int32
+      description: The index of the header element.
+    - id: value
+      type: '{THeader}'
+      description: The reference to the value to assign to the header element.
+    content.vb: Public Sub SetHeaderValueDeferred(commandList As CommandList, index As Integer, value As THeader)
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValueDeferred*
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).SetHeaderValueDeferred(CommandList, Integer, THeader)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).SetHeaderValueDeferred(Veldrid.CommandList, Integer, THeader)
+  name.vb: SetHeaderValueDeferred(CommandList, Integer, THeader)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValue(System.Int32,`1)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValue(System.Int32,`1)
+  id: SetElementValue(System.Int32,`1)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: SetElementValue(int, TElement)
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.SetElementValue(int, TElement)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.SetElementValue(int, TElement)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetElementValue
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 183
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Sets an element value in the CPU-side array without immediately updating the GPU buffer.
+  example: []
+  syntax:
+    content: public void SetElementValue(int index, TElement value)
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The index of the element.
+    - id: value
+      type: '{TElement}'
+      description: The value to assign to the element.
+    content.vb: Public Sub SetElementValue(index As Integer, value As TElement)
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValue*
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).SetElementValue(Integer, TElement)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).SetElementValue(Integer, TElement)
+  name.vb: SetElementValue(Integer, TElement)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValueImmediate(System.Int32,`1)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValueImmediate(System.Int32,`1)
+  id: SetElementValueImmediate(System.Int32,`1)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: SetElementValueImmediate(int, TElement)
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.SetElementValueImmediate(int, TElement)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.SetElementValueImmediate(int, TElement)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetElementValueImmediate
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 196
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Sets an element value immediately in both the CPU-side array and GPU buffer.
+  example: []
+  syntax:
+    content: public void SetElementValueImmediate(int index, TElement value)
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The index of the element.
+    - id: value
+      type: '{TElement}'
+      description: The value to assign to the element.
+    content.vb: Public Sub SetElementValueImmediate(index As Integer, value As TElement)
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValueImmediate*
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).SetElementValueImmediate(Integer, TElement)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).SetElementValueImmediate(Integer, TElement)
+  name.vb: SetElementValueImmediate(Integer, TElement)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValueImmediate(System.Int32,`1@)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValueImmediate(System.Int32,`1@)
+  id: SetElementValueImmediate(System.Int32,`1@)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: SetElementValueImmediate(int, ref TElement)
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.SetElementValueImmediate(int, ref TElement)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.SetElementValueImmediate(int, ref TElement)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetElementValueImmediate
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 205
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Sets an element value immediately in both the CPU-side array and GPU buffer using a reference value.
+  example: []
+  syntax:
+    content: public void SetElementValueImmediate(int index, ref TElement value)
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The index of the element.
+    - id: value
+      type: '{TElement}'
+      description: The reference to the value to assign to the element.
+    content.vb: Public Sub SetElementValueImmediate(index As Integer, value As TElement)
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValueImmediate*
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).SetElementValueImmediate(Integer, TElement)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).SetElementValueImmediate(Integer, TElement)
+  name.vb: SetElementValueImmediate(Integer, TElement)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValueDeferred(Veldrid.CommandList,System.Int32,`1)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValueDeferred(Veldrid.CommandList,System.Int32,`1)
+  id: SetElementValueDeferred(Veldrid.CommandList,System.Int32,`1)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: SetElementValueDeferred(CommandList, int, TElement)
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.SetElementValueDeferred(CommandList, int, TElement)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.SetElementValueDeferred(Veldrid.CommandList, int, TElement)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetElementValueDeferred
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 224
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Sets an element value and schedules it to be uploaded to the GPU using a <xref href="Veldrid.CommandList" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public void SetElementValueDeferred(CommandList commandList, int index, TElement value)
+    parameters:
+    - id: commandList
+      type: Veldrid.CommandList
+      description: The command list used to defer the buffer update.
+    - id: index
+      type: System.Int32
+      description: The index of the element.
+    - id: value
+      type: '{TElement}'
+      description: The value to assign to the element.
+    content.vb: Public Sub SetElementValueDeferred(commandList As CommandList, index As Integer, value As TElement)
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValueDeferred*
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).SetElementValueDeferred(CommandList, Integer, TElement)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).SetElementValueDeferred(Veldrid.CommandList, Integer, TElement)
+  name.vb: SetElementValueDeferred(CommandList, Integer, TElement)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValueDeferred(Veldrid.CommandList,System.Int32,`1@)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValueDeferred(Veldrid.CommandList,System.Int32,`1@)
+  id: SetElementValueDeferred(Veldrid.CommandList,System.Int32,`1@)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: SetElementValueDeferred(CommandList, int, ref TElement)
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.SetElementValueDeferred(CommandList, int, ref TElement)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.SetElementValueDeferred(Veldrid.CommandList, int, ref TElement)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetElementValueDeferred
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 234
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Sets an element value and schedules it to be uploaded to the GPU using a <xref href="Veldrid.CommandList" data-throw-if-not-resolved="false"></xref> with a reference value.
+  example: []
+  syntax:
+    content: public void SetElementValueDeferred(CommandList commandList, int index, ref TElement value)
+    parameters:
+    - id: commandList
+      type: Veldrid.CommandList
+      description: The command list used to defer the buffer update.
+    - id: index
+      type: System.Int32
+      description: The index of the element.
+    - id: value
+      type: '{TElement}'
+      description: The reference to the value to assign to the element.
+    content.vb: Public Sub SetElementValueDeferred(commandList As CommandList, index As Integer, value As TElement)
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValueDeferred*
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).SetElementValueDeferred(CommandList, Integer, TElement)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).SetElementValueDeferred(Veldrid.CommandList, Integer, TElement)
+  name.vb: SetElementValueDeferred(CommandList, Integer, TElement)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.UpdateBufferImmediate
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.UpdateBufferImmediate
+  id: UpdateBufferImmediate
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: UpdateBufferImmediate()
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.UpdateBufferImmediate()
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.UpdateBufferImmediate()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: UpdateBufferImmediate
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 250
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Updates the entire buffer immediately on the GPU with both header and element data.
+  example: []
+  syntax:
+    content: public void UpdateBufferImmediate()
+    content.vb: Public Sub UpdateBufferImmediate()
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.UpdateBufferImmediate*
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).UpdateBufferImmediate()
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).UpdateBufferImmediate()
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.UpdateBufferDeferred(Veldrid.CommandList)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.UpdateBufferDeferred(Veldrid.CommandList)
+  id: UpdateBufferDeferred(Veldrid.CommandList)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: UpdateBufferDeferred(CommandList)
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.UpdateBufferDeferred(CommandList)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.UpdateBufferDeferred(Veldrid.CommandList)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: UpdateBufferDeferred
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 264
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Updates the entire buffer deferred using a <xref href="Veldrid.CommandList" data-throw-if-not-resolved="false"></xref> with both header and element data.
+  example: []
+  syntax:
+    content: public void UpdateBufferDeferred(CommandList commandList)
+    parameters:
+    - id: commandList
+      type: Veldrid.CommandList
+      description: The command list used to defer the buffer update.
+    content.vb: Public Sub UpdateBufferDeferred(commandList As CommandList)
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.UpdateBufferDeferred*
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).UpdateBufferDeferred(CommandList)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).UpdateBufferDeferred(Veldrid.CommandList)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.Dispose(System.Boolean)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  langs:
+  - csharp
+  - vb
+  name: Dispose(bool)
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.Dispose(bool)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.Dispose(bool)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Dispose
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleStructuredBuffer.cs
+    startLine: 274
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Disposes of the object and releases associated resources.
+  example: []
+  syntax:
+    content: protected override void Dispose(bool disposing)
+    parameters:
+    - id: disposing
+      type: System.Boolean
+      description: True if called from user code; false if called from a finalizer.
+    content.vb: Protected Overrides Sub Dispose(disposing As Boolean)
+  overridden: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.Dispose*
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).Dispose(Boolean)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+references:
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+  commentId: N:Bliss.CSharp.Graphics.Pipelines.Buffers
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Pipelines.Buffers
+  nameWithType: Bliss.CSharp.Graphics.Pipelines.Buffers
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+    name: Buffers
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+    name: Buffers
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Bliss.CSharp.Disposable
+  commentId: T:Bliss.CSharp.Disposable
+  parent: Bliss.CSharp
+  href: Bliss.CSharp.Disposable.html
+  name: Disposable
+  nameWithType: Disposable
+  fullName: Bliss.CSharp.Disposable
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.html
+  name: ISimpleBuffer
+  nameWithType: ISimpleBuffer
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Bliss.CSharp.Disposable.HasDisposed
+  commentId: P:Bliss.CSharp.Disposable.HasDisposed
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_HasDisposed
+  name: HasDisposed
+  nameWithType: Disposable.HasDisposed
+  fullName: Bliss.CSharp.Disposable.HasDisposed
+- uid: Bliss.CSharp.Disposable.Dispose
+  commentId: M:Bliss.CSharp.Disposable.Dispose
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  name: Dispose()
+  nameWithType: Disposable.Dispose()
+  fullName: Bliss.CSharp.Disposable.Dispose()
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.Dispose
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.Dispose
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+  commentId: M:Bliss.CSharp.Disposable.ThrowIfDisposed
+  parent: Bliss.CSharp.Disposable
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  name: ThrowIfDisposed()
+  nameWithType: Disposable.ThrowIfDisposed()
+  fullName: Bliss.CSharp.Disposable.ThrowIfDisposed()
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+    name: ThrowIfDisposed
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
+    name: ThrowIfDisposed
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp
+  commentId: N:Bliss.CSharp
+  href: Bliss.html
+  name: Bliss.CSharp
+  nameWithType: Bliss.CSharp
+  fullName: Bliss.CSharp
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.GraphicsDevice*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.GraphicsDevice
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleStructuredBuffer_2_GraphicsDevice
+  name: GraphicsDevice
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.GraphicsDevice
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.GraphicsDevice
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).GraphicsDevice
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).GraphicsDevice
+- uid: Veldrid.GraphicsDevice
+  commentId: T:Veldrid.GraphicsDevice
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs
+  name: GraphicsDevice
+  nameWithType: GraphicsDevice
+  fullName: Veldrid.GraphicsDevice
+- uid: Veldrid
+  commentId: N:Veldrid
+  isExternal: true
+  name: Veldrid
+  nameWithType: Veldrid
+  fullName: Veldrid
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.HeaderDataSize*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.HeaderDataSize
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleStructuredBuffer_2_HeaderDataSize
+  name: HeaderDataSize
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.HeaderDataSize
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.HeaderDataSize
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).HeaderDataSize
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).HeaderDataSize
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ElementDataSize*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ElementDataSize
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleStructuredBuffer_2_ElementDataSize
+  name: ElementDataSize
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.ElementDataSize
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.ElementDataSize
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).ElementDataSize
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).ElementDataSize
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ReadOnly*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ReadOnly
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleStructuredBuffer_2_ReadOnly
+  name: ReadOnly
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.ReadOnly
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.ReadOnly
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).ReadOnly
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).ReadOnly
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.RawBuffer*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.RawBuffer
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleStructuredBuffer_2_RawBuffer
+  name: RawBuffer
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.RawBuffer
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.RawBuffer
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).RawBuffer
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).RawBuffer
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.HeaderData*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.HeaderData
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleStructuredBuffer_2_HeaderData
+  name: HeaderData
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.HeaderData
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.HeaderData
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).HeaderData
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).HeaderData
+- uid: '{THeader}[]'
+  isExternal: true
+  name: THeader[]
+  nameWithType: THeader[]
+  fullName: THeader[]
+  nameWithType.vb: THeader()
+  fullName.vb: THeader()
+  name.vb: THeader()
+  spec.csharp:
+  - name: THeader
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - name: THeader
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ElementData*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ElementData
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleStructuredBuffer_2_ElementData
+  name: ElementData
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.ElementData
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.ElementData
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).ElementData
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).ElementData
+- uid: '{TElement}[]'
+  isExternal: true
+  name: TElement[]
+  nameWithType: TElement[]
+  fullName: TElement[]
+  nameWithType.vb: TElement()
+  fullName.vb: TElement()
+  name.vb: TElement()
+  spec.csharp:
+  - name: TElement
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - name: TElement
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ShaderStages*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.ShaderStages
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleStructuredBuffer_2_ShaderStages
+  name: ShaderStages
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.ShaderStages
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.ShaderStages
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).ShaderStages
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).ShaderStages
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.ShaderStages
+  commentId: P:Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.ShaderStages
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.html#Bliss_CSharp_Graphics_Pipelines_Buffers_ISimpleBuffer_ShaderStages
+  name: ShaderStages
+  nameWithType: ISimpleBuffer.ShaderStages
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.ShaderStages
+- uid: Veldrid.ShaderStages
+  commentId: T:Veldrid.ShaderStages
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/ShaderStages.cs
+  name: ShaderStages
+  nameWithType: ShaderStages
+  fullName: Veldrid.ShaderStages
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.DeviceBuffer*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.DeviceBuffer
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleStructuredBuffer_2_DeviceBuffer
+  name: DeviceBuffer
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.DeviceBuffer
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.DeviceBuffer
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).DeviceBuffer
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).DeviceBuffer
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer
+  commentId: P:Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.html#Bliss_CSharp_Graphics_Pipelines_Buffers_ISimpleBuffer_DeviceBuffer
+  name: DeviceBuffer
+  nameWithType: ISimpleBuffer.DeviceBuffer
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer
+- uid: Veldrid.DeviceBuffer
+  commentId: T:Veldrid.DeviceBuffer
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Buffer.cs
+  name: DeviceBuffer
+  nameWithType: DeviceBuffer
+  fullName: Veldrid.DeviceBuffer
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html
+  name: SimpleStructuredBuffer<THeader, TElement>
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement)
+  name.vb: SimpleStructuredBuffer(Of THeader, TElement)
+  spec.csharp:
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+    name: SimpleStructuredBuffer
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html
+  - name: <
+  - name: THeader
+  - name: ','
+  - name: " "
+  - name: TElement
+  - name: '>'
+  spec.vb:
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+    name: SimpleStructuredBuffer
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: THeader
+  - name: ','
+  - name: " "
+  - name: TElement
+  - name: )
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.#ctor*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.#ctor
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleStructuredBuffer_2__ctor_Veldrid_GraphicsDevice_System_UInt32_System_UInt32_Veldrid_ShaderStages_System_Boolean_System_Boolean_
+  name: SimpleStructuredBuffer
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.SimpleStructuredBuffer
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.SimpleStructuredBuffer
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).New
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).New
+  name.vb: New
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.GetResourceSet*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.GetResourceSet
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleStructuredBuffer_2_GetResourceSet_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferLayout_
+  name: GetResourceSet
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.GetResourceSet
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.GetResourceSet
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).GetResourceSet
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).GetResourceSet
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.html#Bliss_CSharp_Graphics_Pipelines_Buffers_ISimpleBuffer_GetResourceSet_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferLayout_
+  name: GetResourceSet(SimpleBufferLayout)
+  nameWithType: ISimpleBuffer.GetResourceSet(SimpleBufferLayout)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  spec.csharp:
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+    name: GetResourceSet
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.html#Bliss_CSharp_Graphics_Pipelines_Buffers_ISimpleBuffer_GetResourceSet_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferLayout_
+  - name: (
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+    name: SimpleBufferLayout
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+    name: GetResourceSet
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.html#Bliss_CSharp_Graphics_Pipelines_Buffers_ISimpleBuffer_GetResourceSet_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferLayout_
+  - name: (
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+    name: SimpleBufferLayout
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
+  - name: )
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
+  name: SimpleBufferLayout
+  nameWithType: SimpleBufferLayout
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+- uid: Veldrid.ResourceSet
+  commentId: T:Veldrid.ResourceSet
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/ResourceSet.cs
+  name: ResourceSet
+  nameWithType: ResourceSet
+  fullName: Veldrid.ResourceSet
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValue*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValue
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleStructuredBuffer_2_SetHeaderValue_System_Int32__0_
+  name: SetHeaderValue
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.SetHeaderValue
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.SetHeaderValue
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).SetHeaderValue
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).SetHeaderValue
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: '{THeader}'
+  commentId: '!:THeader'
+  definition: THeader
+  name: THeader
+  nameWithType: THeader
+  fullName: THeader
+- uid: THeader
+  name: THeader
+  nameWithType: THeader
+  fullName: THeader
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValueImmediate*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValueImmediate
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleStructuredBuffer_2_SetHeaderValueImmediate_System_Int32__0_
+  name: SetHeaderValueImmediate
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.SetHeaderValueImmediate
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.SetHeaderValueImmediate
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).SetHeaderValueImmediate
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).SetHeaderValueImmediate
+- uid: Veldrid.CommandList
+  commentId: T:Veldrid.CommandList
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/CommandList.cs
+  name: CommandList
+  nameWithType: CommandList
+  fullName: Veldrid.CommandList
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValueDeferred*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetHeaderValueDeferred
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleStructuredBuffer_2_SetHeaderValueDeferred_Veldrid_CommandList_System_Int32__0_
+  name: SetHeaderValueDeferred
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.SetHeaderValueDeferred
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.SetHeaderValueDeferred
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).SetHeaderValueDeferred
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).SetHeaderValueDeferred
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValue*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValue
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleStructuredBuffer_2_SetElementValue_System_Int32__1_
+  name: SetElementValue
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.SetElementValue
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.SetElementValue
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).SetElementValue
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).SetElementValue
+- uid: '{TElement}'
+  commentId: '!:TElement'
+  definition: TElement
+  name: TElement
+  nameWithType: TElement
+  fullName: TElement
+- uid: TElement
+  name: TElement
+  nameWithType: TElement
+  fullName: TElement
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValueImmediate*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValueImmediate
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleStructuredBuffer_2_SetElementValueImmediate_System_Int32__1_
+  name: SetElementValueImmediate
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.SetElementValueImmediate
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.SetElementValueImmediate
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).SetElementValueImmediate
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).SetElementValueImmediate
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValueDeferred*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.SetElementValueDeferred
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleStructuredBuffer_2_SetElementValueDeferred_Veldrid_CommandList_System_Int32__1_
+  name: SetElementValueDeferred
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.SetElementValueDeferred
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.SetElementValueDeferred
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).SetElementValueDeferred
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).SetElementValueDeferred
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.UpdateBufferImmediate*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.UpdateBufferImmediate
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleStructuredBuffer_2_UpdateBufferImmediate
+  name: UpdateBufferImmediate
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.UpdateBufferImmediate
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.UpdateBufferImmediate
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).UpdateBufferImmediate
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).UpdateBufferImmediate
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.UpdateBufferDeferred*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.UpdateBufferDeferred
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleStructuredBuffer_2_UpdateBufferDeferred_Veldrid_CommandList_
+  name: UpdateBufferDeferred
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.UpdateBufferDeferred
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.UpdateBufferDeferred
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).UpdateBufferDeferred
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).UpdateBufferDeferred
+- uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  commentId: M:Bliss.CSharp.Disposable.Dispose(System.Boolean)
+  parent: Bliss.CSharp.Disposable
+  isExternal: true
+  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  name: Dispose(bool)
+  nameWithType: Disposable.Dispose(bool)
+  fullName: Bliss.CSharp.Disposable.Dispose(bool)
+  nameWithType.vb: Disposable.Dispose(Boolean)
+  fullName.vb: Bliss.CSharp.Disposable.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+  spec.csharp:
+  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
+    name: Dispose
+    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.Dispose*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2.Dispose
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleStructuredBuffer_2_Dispose_System_Boolean_
+  name: Dispose
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>.Dispose
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>.Dispose
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement).Dispose
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement).Dispose

@@ -7,7 +7,8 @@ items:
   - Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
   - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
   - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
-  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1
   langs:
   - csharp
   - vb
@@ -25,31 +26,6 @@ references:
   name: ISimpleBuffer
   nameWithType: ISimpleBuffer
   fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
-- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
-  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
-  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html
-  name: SimpleBuffer<T>
-  nameWithType: SimpleBuffer<T>
-  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer<T>
-  nameWithType.vb: SimpleBuffer(Of T)
-  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer(Of T)
-  name.vb: SimpleBuffer(Of T)
-  spec.csharp:
-  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
-    name: SimpleBuffer
-    href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer`1
-    name: SimpleBuffer
-    href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBuffer-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
 - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
   commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
   parent: Bliss.CSharp.Graphics.Pipelines.Buffers
@@ -64,6 +40,62 @@ references:
   name: SimpleBufferType
   nameWithType: SimpleBufferType
   fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html
+  name: SimpleStructuredBuffer<THeader, TElement>
+  nameWithType: SimpleStructuredBuffer<THeader, TElement>
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer<THeader, TElement>
+  nameWithType.vb: SimpleStructuredBuffer(Of THeader, TElement)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer(Of THeader, TElement)
+  name.vb: SimpleStructuredBuffer(Of THeader, TElement)
+  spec.csharp:
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+    name: SimpleStructuredBuffer
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html
+  - name: <
+  - name: THeader
+  - name: ','
+  - name: " "
+  - name: TElement
+  - name: '>'
+  spec.vb:
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer`2
+    name: SimpleStructuredBuffer
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleStructuredBuffer-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: THeader
+  - name: ','
+  - name: " "
+  - name: TElement
+  - name: )
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer-1.html
+  name: SimpleUniformBuffer<T>
+  nameWithType: SimpleUniformBuffer<T>
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer<T>
+  nameWithType.vb: SimpleUniformBuffer(Of T)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer(Of T)
+  name.vb: SimpleUniformBuffer(Of T)
+  spec.csharp:
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1
+    name: SimpleUniformBuffer
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1
+    name: SimpleUniformBuffer
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
 - uid: Bliss.CSharp.Graphics.Pipelines.Buffers
   commentId: N:Bliss.CSharp.Graphics.Pipelines.Buffers
   href: Bliss.html

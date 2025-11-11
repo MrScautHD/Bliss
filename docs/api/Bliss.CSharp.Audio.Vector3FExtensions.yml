@@ -5,7 +5,7 @@ items:
   id: Vector3FExtensions
   parent: Bliss.CSharp.Audio
   children:
-  - Bliss.CSharp.Audio.Vector3FExtensions.ToVector3(MiniAudioEx.Vector3f)
+  - Bliss.CSharp.Audio.Vector3FExtensions.ToVector3(MiniAudioEx.Core.StandardAPI.Vector3f)
   - Bliss.CSharp.Audio.Vector3FExtensions.ToVector3F(System.Numerics.Vector3)
   langs:
   - csharp
@@ -38,9 +38,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-- uid: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3(MiniAudioEx.Vector3f)
-  commentId: M:Bliss.CSharp.Audio.Vector3FExtensions.ToVector3(MiniAudioEx.Vector3f)
-  id: ToVector3(MiniAudioEx.Vector3f)
+- uid: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3(MiniAudioEx.Core.StandardAPI.Vector3f)
+  commentId: M:Bliss.CSharp.Audio.Vector3FExtensions.ToVector3(MiniAudioEx.Core.StandardAPI.Vector3f)
+  id: ToVector3(MiniAudioEx.Core.StandardAPI.Vector3f)
   isExtensionMethod: true
   parent: Bliss.CSharp.Audio.Vector3FExtensions
   langs:
@@ -48,7 +48,7 @@ items:
   - vb
   name: ToVector3(Vector3f)
   nameWithType: Vector3FExtensions.ToVector3(Vector3f)
-  fullName: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3(MiniAudioEx.Vector3f)
+  fullName: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3(MiniAudioEx.Core.StandardAPI.Vector3f)
   type: Method
   source:
     remote:
@@ -61,17 +61,17 @@ items:
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Audio
-  summary: Converts a <xref href="MiniAudioEx.Vector3f" data-throw-if-not-resolved="false"></xref> instance to a <xref href="System.Numerics.Vector3" data-throw-if-not-resolved="false"></xref> instance.
+  summary: Converts a <xref href="MiniAudioEx.Core.StandardAPI.Vector3f" data-throw-if-not-resolved="false"></xref> instance to a <xref href="System.Numerics.Vector3" data-throw-if-not-resolved="false"></xref> instance.
   example: []
   syntax:
     content: public static Vector3 ToVector3(this Vector3f v)
     parameters:
     - id: v
-      type: MiniAudioEx.Vector3f
-      description: The <xref href="MiniAudioEx.Vector3f" data-throw-if-not-resolved="false"></xref> instance to convert.
+      type: MiniAudioEx.Core.StandardAPI.Vector3f
+      description: The <xref href="MiniAudioEx.Core.StandardAPI.Vector3f" data-throw-if-not-resolved="false"></xref> instance to convert.
     return:
       type: System.Numerics.Vector3
-      description: A <xref href="System.Numerics.Vector3" data-throw-if-not-resolved="false"></xref> instance corresponding to the given <xref href="MiniAudioEx.Vector3f" data-throw-if-not-resolved="false"></xref>.
+      description: A <xref href="System.Numerics.Vector3" data-throw-if-not-resolved="false"></xref> instance corresponding to the given <xref href="MiniAudioEx.Core.StandardAPI.Vector3f" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Shared Function ToVector3(v As Vector3f) As Vector3
   overload: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3*
 - uid: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3F(System.Numerics.Vector3)
@@ -97,7 +97,7 @@ items:
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Audio
-  summary: Converts a <xref href="System.Numerics.Vector3" data-throw-if-not-resolved="false"></xref> instance to a <xref href="MiniAudioEx.Vector3f" data-throw-if-not-resolved="false"></xref> instance.
+  summary: Converts a <xref href="System.Numerics.Vector3" data-throw-if-not-resolved="false"></xref> instance to a <xref href="MiniAudioEx.Core.StandardAPI.Vector3f" data-throw-if-not-resolved="false"></xref> instance.
   example: []
   syntax:
     content: public static Vector3f ToVector3F(this Vector3 v)
@@ -106,8 +106,8 @@ items:
       type: System.Numerics.Vector3
       description: The <xref href="System.Numerics.Vector3" data-throw-if-not-resolved="false"></xref> instance to convert.
     return:
-      type: MiniAudioEx.Vector3f
-      description: A <xref href="MiniAudioEx.Vector3f" data-throw-if-not-resolved="false"></xref> instance corresponding to the given <xref href="System.Numerics.Vector3" data-throw-if-not-resolved="false"></xref>.
+      type: MiniAudioEx.Core.StandardAPI.Vector3f
+      description: A <xref href="MiniAudioEx.Core.StandardAPI.Vector3f" data-throw-if-not-resolved="false"></xref> instance corresponding to the given <xref href="System.Numerics.Vector3" data-throw-if-not-resolved="false"></xref>.
     content.vb: Public Shared Function ToVector3F(v As Vector3) As Vector3f
   overload: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3F*
 references:
@@ -378,13 +378,13 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: MiniAudioEx.Vector3f
-  commentId: T:MiniAudioEx.Vector3f
-  parent: MiniAudioEx
+- uid: MiniAudioEx.Core.StandardAPI.Vector3f
+  commentId: T:MiniAudioEx.Core.StandardAPI.Vector3f
+  parent: MiniAudioEx.Core.StandardAPI
   isExternal: true
   name: Vector3f
   nameWithType: Vector3f
-  fullName: MiniAudioEx.Vector3f
+  fullName: MiniAudioEx.Core.StandardAPI.Vector3f
 - uid: System.Numerics.Vector3
   commentId: T:System.Numerics.Vector3
   parent: System.Numerics
@@ -395,16 +395,40 @@ references:
   fullName: System.Numerics.Vector3
 - uid: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3*
   commentId: Overload:Bliss.CSharp.Audio.Vector3FExtensions.ToVector3
-  href: Bliss.CSharp.Audio.Vector3FExtensions.html#Bliss_CSharp_Audio_Vector3FExtensions_ToVector3_MiniAudioEx_Vector3f_
+  href: Bliss.CSharp.Audio.Vector3FExtensions.html#Bliss_CSharp_Audio_Vector3FExtensions_ToVector3_MiniAudioEx_Core_StandardAPI_Vector3f_
   name: ToVector3
   nameWithType: Vector3FExtensions.ToVector3
   fullName: Bliss.CSharp.Audio.Vector3FExtensions.ToVector3
-- uid: MiniAudioEx
-  commentId: N:MiniAudioEx
+- uid: MiniAudioEx.Core.StandardAPI
+  commentId: N:MiniAudioEx.Core.StandardAPI
   isExternal: true
-  name: MiniAudioEx
-  nameWithType: MiniAudioEx
-  fullName: MiniAudioEx
+  name: MiniAudioEx.Core.StandardAPI
+  nameWithType: MiniAudioEx.Core.StandardAPI
+  fullName: MiniAudioEx.Core.StandardAPI
+  spec.csharp:
+  - uid: MiniAudioEx
+    name: MiniAudioEx
+    isExternal: true
+  - name: .
+  - uid: MiniAudioEx.Core
+    name: Core
+    isExternal: true
+  - name: .
+  - uid: MiniAudioEx.Core.StandardAPI
+    name: StandardAPI
+    isExternal: true
+  spec.vb:
+  - uid: MiniAudioEx
+    name: MiniAudioEx
+    isExternal: true
+  - name: .
+  - uid: MiniAudioEx.Core
+    name: Core
+    isExternal: true
+  - name: .
+  - uid: MiniAudioEx.Core.StandardAPI
+    name: StandardAPI
+    isExternal: true
 - uid: System.Numerics
   commentId: N:System.Numerics
   isExternal: true

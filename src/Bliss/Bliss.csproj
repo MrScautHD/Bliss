@@ -18,11 +18,11 @@
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <NoWarn>$(NoWarn);1591</NoWarn>
-        <Description>A fast, Cross-platform .NET 9 C# 13 Render Framework.</Description>
+        <Description>A fast, Cross-platform .NET 10 C# 14 Render Framework.</Description>
         <PackageProjectUrl>https://github.com/MrScautHD/Bliss</PackageProjectUrl>
         <PackageLicenseUrl>https://github.com/MrScautHD/Bliss/blob/main/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/MrScautHD/Bliss</RepositoryUrl>
-        <PackageTags>Renderer, Framework, Direct3D, Vulkan, Metal, OpenGL, OpenGLES, Net9, C#13, 3D, 2D, Fast, Cross-platform, Audio</PackageTags>
+        <PackageTags>Renderer, Framework, Direct3D, Vulkan, Metal, OpenGL, OpenGLES, Net10, C#14, 3D, 2D, Fast, Cross-platform, Audio</PackageTags>
         <PackageIcon>icon.png</PackageIcon>
     </PropertyGroup>
 

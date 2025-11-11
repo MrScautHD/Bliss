@@ -6,6 +6,8 @@ items:
   parent: Bliss.CSharp.Graphics.Pipelines.Buffers
   children:
   - Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.ShaderStages
   langs:
   - csharp
   - vb
@@ -29,6 +31,37 @@ items:
     content.vb: Public Interface ISimpleBuffer Inherits IDisposable
   inheritedMembers:
   - System.IDisposable.Dispose
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.ShaderStages
+  commentId: P:Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.ShaderStages
+  id: ShaderStages
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+  langs:
+  - csharp
+  - vb
+  name: ShaderStages
+  nameWithType: ISimpleBuffer.ShaderStages
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.ShaderStages
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/ISimpleBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ShaderStages
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/ISimpleBuffer.cs
+    startLine: 9
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Gets the shader stages where this buffer is used.
+  example: []
+  syntax:
+    content: ShaderStages ShaderStages { get; }
+    parameters: []
+    return:
+      type: Veldrid.ShaderStages
+    content.vb: ReadOnly Property ShaderStages As ShaderStages
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.ShaderStages*
 - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer
   commentId: P:Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer
   id: DeviceBuffer
@@ -47,11 +80,11 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DeviceBuffer
     path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/ISimpleBuffer.cs
-    startLine: 9
+    startLine: 14
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
-  summary: The device buffer associated with this instance.
+  summary: Gets the GPU device buffer associated with this simple buffer.
   example: []
   syntax:
     content: DeviceBuffer DeviceBuffer { get; }
@@ -60,6 +93,41 @@ items:
       type: Veldrid.DeviceBuffer
     content.vb: ReadOnly Property DeviceBuffer As DeviceBuffer
   overload: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer*
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  id: GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer
+  langs:
+  - csharp
+  - vb
+  name: GetResourceSet(SimpleBufferLayout)
+  nameWithType: ISimpleBuffer.GetResourceSet(SimpleBufferLayout)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/ISimpleBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetResourceSet
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/ISimpleBuffer.cs
+    startLine: 21
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Retrieves a resource set for this buffer using the specified layout.
+  example: []
+  syntax:
+    content: ResourceSet GetResourceSet(SimpleBufferLayout layout)
+    parameters:
+    - id: layout
+      type: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+      description: The layout defining how the buffer is bound to the shader.
+    return:
+      type: Veldrid.ResourceSet
+      description: A <xref href="Veldrid.ResourceSet" data-throw-if-not-resolved="false"></xref> containing this buffer bound according to the given layout.
+    content.vb: Function GetResourceSet(layout As SimpleBufferLayout) As ResourceSet
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.GetResourceSet*
 references:
 - uid: Bliss.CSharp.Graphics.Pipelines.Buffers
   commentId: N:Bliss.CSharp.Graphics.Pipelines.Buffers
@@ -144,6 +212,26 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.ShaderStages*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.ShaderStages
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.html#Bliss_CSharp_Graphics_Pipelines_Buffers_ISimpleBuffer_ShaderStages
+  name: ShaderStages
+  nameWithType: ISimpleBuffer.ShaderStages
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.ShaderStages
+- uid: Veldrid.ShaderStages
+  commentId: T:Veldrid.ShaderStages
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/ShaderStages.cs
+  name: ShaderStages
+  nameWithType: ShaderStages
+  fullName: Veldrid.ShaderStages
+- uid: Veldrid
+  commentId: N:Veldrid
+  isExternal: true
+  name: Veldrid
+  nameWithType: Veldrid
+  fullName: Veldrid
 - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer*
   commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer
   href: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.html#Bliss_CSharp_Graphics_Pipelines_Buffers_ISimpleBuffer_DeviceBuffer
@@ -154,13 +242,28 @@ references:
   commentId: T:Veldrid.DeviceBuffer
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/Buffer.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Buffer.cs
   name: DeviceBuffer
   nameWithType: DeviceBuffer
   fullName: Veldrid.DeviceBuffer
-- uid: Veldrid
-  commentId: N:Veldrid
+- uid: Veldrid.ResourceSet
+  commentId: T:Veldrid.ResourceSet
+  parent: Veldrid
   isExternal: true
-  name: Veldrid
-  nameWithType: Veldrid
-  fullName: Veldrid
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/ResourceSet.cs
+  name: ResourceSet
+  nameWithType: ResourceSet
+  fullName: Veldrid.ResourceSet
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.GetResourceSet*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.GetResourceSet
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.html#Bliss_CSharp_Graphics_Pipelines_Buffers_ISimpleBuffer_GetResourceSet_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferLayout_
+  name: GetResourceSet
+  nameWithType: ISimpleBuffer.GetResourceSet
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.GetResourceSet
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
+  name: SimpleBufferLayout
+  nameWithType: SimpleBufferLayout
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout

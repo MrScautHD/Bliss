@@ -1,0 +1,185 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType
+  id: LightType
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  children:
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType.Directional
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType.Point
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType.Spot
+  langs:
+  - csharp
+  - vb
+  name: LightType
+  nameWithType: LightType
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType
+  type: Enum
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Lighting/LightType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LightType
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Lighting/LightType.cs
+    startLine: 2
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  syntax:
+    content: public enum LightType
+    content.vb: Public Enum LightType
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType.Directional
+  commentId: F:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType.Directional
+  id: Directional
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType
+  langs:
+  - csharp
+  - vb
+  name: Directional
+  nameWithType: LightType.Directional
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType.Directional
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Lighting/LightType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Directional
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Lighting/LightType.cs
+    startLine: 7
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  summary: A directional light, simulating a distant light source with parallel rays (e.g., sunlight).
+  example: []
+  syntax:
+    content: Directional = 0
+    return:
+      type: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType.Point
+  commentId: F:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType.Point
+  id: Point
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType
+  langs:
+  - csharp
+  - vb
+  name: Point
+  nameWithType: LightType.Point
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType.Point
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Lighting/LightType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Point
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Lighting/LightType.cs
+    startLine: 12
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  summary: A point light emitting light in all directions from a single position.
+  example: []
+  syntax:
+    content: Point = 1
+    return:
+      type: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType.Spot
+  commentId: F:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType.Spot
+  id: Spot
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType
+  langs:
+  - csharp
+  - vb
+  name: Spot
+  nameWithType: LightType.Spot
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType.Spot
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Lighting/LightType.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Spot
+    path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Lighting/LightType.cs
+    startLine: 17
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  summary: A spotlight emitting light in a cone from a position in a specified direction.
+  example: []
+  syntax:
+    content: Spot = 2
+    return:
+      type: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType
+references:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+    name: Forward
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+    name: Lighting
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+    name: Forward
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+    name: Lighting
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.html
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType.html
+  name: LightType
+  nameWithType: LightType
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType

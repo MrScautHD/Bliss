@@ -1,0 +1,112 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  id: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  children:
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer-1.html
+  name: ForwardRenderer<T>
+  nameWithType: ForwardRenderer<T>
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer<T>
+  nameWithType.vb: ForwardRenderer(Of T)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer(Of T)
+  name.vb: ForwardRenderer(Of T)
+  spec.csharp:
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
+    name: ForwardRenderer
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
+    name: ForwardRenderer
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer.html
+  name: IRenderer
+  nameWithType: IRenderer
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+  parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html
+  name: Renderable
+  nameWithType: Renderable
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+    name: Forward
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering
+    name: Rendering
+    href: Bliss.CSharp.Graphics.Rendering.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers
+    name: Renderers
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+    name: Forward
+    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.html

@@ -167,15 +167,15 @@ items:
   summary: Initializes a new instance of the <xref href="Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer" data-throw-if-not-resolved="false"></xref> class with the specified graphics device, output, effect, and capacity.
   example: []
   syntax:
-    content: public ImmediateRenderer(GraphicsDevice graphicsDevice, uint capacity = 30720)
+    content: public ImmediateRenderer(GraphicsDevice graphicsDevice, uint capacity = 10240)
     parameters:
     - id: graphicsDevice
       type: Veldrid.GraphicsDevice
       description: The graphics device used for rendering.
     - id: capacity
       type: System.UInt32
-      description: The maximum number of vertices. Defaults to 30720.
-    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, capacity As UInteger = 30720)
+      description: The maximum number of vertices. Defaults to 10.240.
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, capacity As UInteger = 10240)
   overload: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.#ctor*
   nameWithType.vb: ImmediateRenderer.New(GraphicsDevice, UInteger)
   fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.New(Veldrid.GraphicsDevice, UInteger)
@@ -706,7 +706,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawSphere
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 412
+    startLine: 413
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -759,7 +759,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawSphereWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 483
+    startLine: 484
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -812,7 +812,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawHemisphere
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 542
+    startLine: 543
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -865,7 +865,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawHemisphereWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 657
+    startLine: 658
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -918,7 +918,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawCylinder
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 741
+    startLine: 742
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -971,7 +971,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawCylinderWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 847
+    startLine: 848
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1024,7 +1024,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawCapsule
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 938
+    startLine: 939
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1077,7 +1077,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawCapsuleWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1100
+    startLine: 1101
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1130,7 +1130,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawCone
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1246
+    startLine: 1247
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1183,7 +1183,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawConeWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1325
+    startLine: 1326
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1236,7 +1236,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawTorus
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1397
+    startLine: 1398
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1292,7 +1292,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawTorusWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1474
+    startLine: 1475
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1348,7 +1348,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawKnot
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1535
+    startLine: 1536
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1404,7 +1404,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawKnotWires
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1626
+    startLine: 1627
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1460,7 +1460,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawGrid
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1701
+    startLine: 1702
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1519,7 +1519,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawBoundingBox
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1815
+    startLine: 1816
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1563,7 +1563,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawLine
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1851
+    startLine: 1852
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1607,7 +1607,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawBillboard
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1881
+    startLine: 1882
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -1651,7 +1651,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DrawVertices
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 1963
+    startLine: 1964
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers
@@ -2095,7 +2095,7 @@ references:
   commentId: T:Veldrid.GraphicsDevice
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs
   name: GraphicsDevice
   nameWithType: GraphicsDevice
   fullName: Veldrid.GraphicsDevice
@@ -2190,7 +2190,7 @@ references:
   commentId: T:Veldrid.BlendStateDescription
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/BlendStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/BlendStateDescription.cs
   name: BlendStateDescription
   nameWithType: BlendStateDescription
   fullName: Veldrid.BlendStateDescription
@@ -2203,7 +2203,7 @@ references:
 - uid: Veldrid.BlendStateDescription.SINGLE_ALPHA_BLEND
   commentId: F:Veldrid.BlendStateDescription.SINGLE_ALPHA_BLEND
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/BlendStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/BlendStateDescription.cs
   name: SINGLE_ALPHA_BLEND
   nameWithType: BlendStateDescription.SINGLE_ALPHA_BLEND
   fullName: Veldrid.BlendStateDescription.SINGLE_ALPHA_BLEND
@@ -2217,7 +2217,7 @@ references:
   commentId: T:System.Nullable{Veldrid.BlendStateDescription}
   parent: System
   definition: System.Nullable`1
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/BlendStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/BlendStateDescription.cs
   name: BlendStateDescription?
   nameWithType: BlendStateDescription?
   fullName: Veldrid.BlendStateDescription?
@@ -2225,13 +2225,13 @@ references:
   - uid: Veldrid.BlendStateDescription
     name: BlendStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/BlendStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/BlendStateDescription.cs
   - name: '?'
   spec.vb:
   - uid: Veldrid.BlendStateDescription
     name: BlendStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/BlendStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/BlendStateDescription.cs
   - name: '?'
 - uid: System.Nullable`1
   commentId: T:System.Nullable`1
@@ -2265,7 +2265,7 @@ references:
   commentId: T:Veldrid.DepthStencilStateDescription
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/DepthStencilStateDescription.cs
   name: DepthStencilStateDescription
   nameWithType: DepthStencilStateDescription
   fullName: Veldrid.DepthStencilStateDescription
@@ -2285,7 +2285,7 @@ references:
   commentId: T:System.Nullable{Veldrid.DepthStencilStateDescription}
   parent: System
   definition: System.Nullable`1
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/DepthStencilStateDescription.cs
   name: DepthStencilStateDescription?
   nameWithType: DepthStencilStateDescription?
   fullName: Veldrid.DepthStencilStateDescription?
@@ -2293,13 +2293,13 @@ references:
   - uid: Veldrid.DepthStencilStateDescription
     name: DepthStencilStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/DepthStencilStateDescription.cs
   - name: '?'
   spec.vb:
   - uid: Veldrid.DepthStencilStateDescription
     name: DepthStencilStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/DepthStencilStateDescription.cs
   - name: '?'
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentRasterizerState*
   commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer.GetCurrentRasterizerState
@@ -2311,7 +2311,7 @@ references:
   commentId: T:Veldrid.RasterizerStateDescription
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/RasterizerStateDescription.cs
   name: RasterizerStateDescription
   nameWithType: RasterizerStateDescription
   fullName: Veldrid.RasterizerStateDescription
@@ -2325,7 +2325,7 @@ references:
   commentId: T:System.Nullable{Veldrid.RasterizerStateDescription}
   parent: System
   definition: System.Nullable`1
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/RasterizerStateDescription.cs
   name: RasterizerStateDescription?
   nameWithType: RasterizerStateDescription?
   fullName: Veldrid.RasterizerStateDescription?
@@ -2333,13 +2333,13 @@ references:
   - uid: Veldrid.RasterizerStateDescription
     name: RasterizerStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/RasterizerStateDescription.cs
   - name: '?'
   spec.vb:
   - uid: Veldrid.RasterizerStateDescription
     name: RasterizerStateDescription
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
+    href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/RasterizerStateDescription.cs
   - name: '?'
 - uid: Bliss.CSharp.Textures.Texture2D
   commentId: T:Bliss.CSharp.Textures.Texture2D
@@ -2388,7 +2388,7 @@ references:
   commentId: T:Veldrid.Sampler
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/Sampler.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Sampler.cs
   name: Sampler
   nameWithType: Sampler
   fullName: Veldrid.Sampler
@@ -2481,7 +2481,7 @@ references:
   commentId: T:Veldrid.CommandList
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/CommandList.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/CommandList.cs
   name: CommandList
   nameWithType: CommandList
   fullName: Veldrid.CommandList
@@ -2489,7 +2489,7 @@ references:
   commentId: T:Veldrid.OutputDescription
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/OutputDescription.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/OutputDescription.cs
   name: OutputDescription
   nameWithType: OutputDescription
   fullName: Veldrid.OutputDescription
@@ -2824,7 +2824,7 @@ references:
   commentId: T:Veldrid.PrimitiveTopology
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/PrimitiveTopology.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/PrimitiveTopology.cs
   name: PrimitiveTopology
   nameWithType: PrimitiveTopology
   fullName: Veldrid.PrimitiveTopology

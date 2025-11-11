@@ -5,12 +5,14 @@
       "src": [
         {
           "src": "../src/Bliss",
-          "files": [
-            "**/*.csproj"
-          ]
+          "files": ["**/*.csproj"]
         }
       ],
-      "dest": "api"
+      "dest": "api",
+      "properties": {
+        "TargetFramework": "net10.0",
+        "LangVersion": "preview"
+      }
     }
   ],
   "build": {

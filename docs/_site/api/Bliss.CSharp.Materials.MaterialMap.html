@@ -89,7 +89,7 @@
 
 
   <h1 id="Bliss_CSharp_Materials_MaterialMap" data-uid="Bliss.CSharp.Materials.MaterialMap" class="text-break">
-Class MaterialMap  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/MaterialMap.cs/#L6"><i class="bi bi-code-slash"></i></a>
+Class MaterialMap  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/MaterialMap.cs/#L8"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -154,23 +154,26 @@ Class MaterialMap  <a class="header-action link-secondary" title="View source" h
 
   <a id="Bliss_CSharp_Materials_MaterialMap__ctor_" data-uid="Bliss.CSharp.Materials.MaterialMap.#ctor*"></a>
 
-  <h3 id="Bliss_CSharp_Materials_MaterialMap__ctor_Bliss_CSharp_Textures_Texture2D_System_Nullable_Bliss_CSharp_Colors_Color__System_Single_" data-uid="Bliss.CSharp.Materials.MaterialMap.#ctor(Bliss.CSharp.Textures.Texture2D,System.Nullable{Bliss.CSharp.Colors.Color},System.Single)">
-  MaterialMap(Texture2D?, Color?, float)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/MaterialMap.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  <h3 id="Bliss_CSharp_Materials_MaterialMap__ctor_Bliss_CSharp_Textures_Texture2D_Veldrid_Sampler_System_Nullable_Bliss_CSharp_Colors_Color__System_Single_" data-uid="Bliss.CSharp.Materials.MaterialMap.#ctor(Bliss.CSharp.Textures.Texture2D,Veldrid.Sampler,System.Nullable{Bliss.CSharp.Colors.Color},System.Single)">
+  MaterialMap(Texture2D?, Sampler?, Color?, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/MaterialMap.cs/#L42"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Bliss.CSharp.Materials.MaterialMap.html">MaterialMap</a> class with the specified texture, color, and value.</p>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Bliss.CSharp.Materials.MaterialMap.html">MaterialMap</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public MaterialMap(Texture2D? texture = null, Color? color = null, float value = 0)</code></pre>
+    <pre><code class="lang-csharp hljs">public MaterialMap(Texture2D? texture = null, Sampler? sampler = null, Color? color = null, float value = 0)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>texture</code> <a class="xref" href="Bliss.CSharp.Textures.Texture2D.html">Texture2D</a></dt>
     <dd><p>The texture associated with the material map. Can be <code>null</code>.</p>
+</dd>
+    <dt><code>sampler</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Sampler.cs">Sampler</a></dt>
+    <dd><p>The sampler to use with the texture, or <code>null</code> if not used.</p>
 </dd>
     <dt><code>color</code> <a class="xref" href="Bliss.CSharp.Colors.Color.html">Color</a>?</dt>
     <dd><p>The color associated with the material map. Can be <code>null</code>.</p>
@@ -198,7 +201,7 @@ Class MaterialMap  <a class="header-action link-secondary" title="View source" h
 
   <h3 id="Bliss_CSharp_Materials_MaterialMap_Color" data-uid="Bliss.CSharp.Materials.MaterialMap.Color">
   Color
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/MaterialMap.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/MaterialMap.cs/#L27"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Represents color information with properties for red, green, blue, and alpha components.
@@ -228,9 +231,42 @@ This structure is used for defining the color attributes of various graphical el
 
 
 
+  <h3 id="Bliss_CSharp_Materials_MaterialMap_Sampler" data-uid="Bliss.CSharp.Materials.MaterialMap.Sampler">
+  Sampler
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/MaterialMap.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Represents a sampler used in a material map for texture sampling operations.
+A sampler defines how textures are sampled, including settings such as filtering,
+addressing mode, and LOD behavior, which influence rendering outcomes and texture mapping techniques.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Sampler? Sampler</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Sampler.cs">Sampler</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Bliss_CSharp_Materials_MaterialMap_Texture" data-uid="Bliss.CSharp.Materials.MaterialMap.Texture">
   Texture
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/MaterialMap.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/MaterialMap.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Represents a 2D texture used in a material map. This texture can include properties such as
@@ -262,7 +298,7 @@ height, width, pixel format, and mip levels. It is used for rendering purposes i
 
   <h3 id="Bliss_CSharp_Materials_MaterialMap_Value" data-uid="Bliss.CSharp.Materials.MaterialMap.Value">
   Value
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/MaterialMap.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/MaterialMap.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Represents a float value associated with a material map. This value can be used for various purposes such as setting
@@ -291,11 +327,57 @@ shader parameters or controlling material properties in a rendering engine.</p>
 
 
 
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Bliss_CSharp_Materials_MaterialMap_GetTextureResourceSet_" data-uid="Bliss.CSharp.Materials.MaterialMap.GetTextureResourceSet*"></a>
+
+  <h3 id="Bliss_CSharp_Materials_MaterialMap_GetTextureResourceSet_Veldrid_Sampler_Bliss_CSharp_Graphics_Pipelines_Textures_SimpleTextureLayout_" data-uid="Bliss.CSharp.Materials.MaterialMap.GetTextureResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)">
+  GetTextureResourceSet(Sampler, SimpleTextureLayout)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/MaterialMap.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The texture resource set associated with the specified sampler and texture layout.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ResourceSet? GetTextureResourceSet(Sampler sampler, SimpleTextureLayout layout)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sampler</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Sampler.cs">Sampler</a></dt>
+    <dd><p>The sampler used for creating the resource set.</p>
+</dd>
+    <dt><code>layout</code> <a class="xref" href="Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout.html">SimpleTextureLayout</a></dt>
+    <dd><p>The texture layout used for creating the resource set.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/ResourceSet.cs">ResourceSet</a></dt>
+    <dd><p>The resource set associated with the texture, or <code>null</code> if the texture is not available.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/MaterialMap.cs/#L6" class="edit-link">Edit this page</a>
+          <a href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Materials/MaterialMap.cs/#L8" class="edit-link">Edit this page</a>
         </div>
 
 

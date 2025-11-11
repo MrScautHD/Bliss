@@ -1,0 +1,627 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Geometry.Animation.Skeleton
+  commentId: T:Bliss.CSharp.Geometry.Animation.Skeleton
+  id: Skeleton
+  parent: Bliss.CSharp.Geometry.Animation
+  children:
+  - Bliss.CSharp.Geometry.Animation.Skeleton.#ctor(System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.BoneInfo})
+  - Bliss.CSharp.Geometry.Animation.Skeleton.BoneNameToIndex
+  - Bliss.CSharp.Geometry.Animation.Skeleton.Bones
+  langs:
+  - csharp
+  - vb
+  name: Skeleton
+  nameWithType: Skeleton
+  fullName: Bliss.CSharp.Geometry.Animation.Skeleton
+  type: Class
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/Skeleton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Skeleton
+    path: ../src/Bliss/CSharp/Geometry/Animation/Skeleton.cs
+    startLine: 4
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation
+  syntax:
+    content: public class Skeleton
+    content.vb: Public Class Skeleton
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Bliss.CSharp.Geometry.Animation.Skeleton.Bones
+  commentId: P:Bliss.CSharp.Geometry.Animation.Skeleton.Bones
+  id: Bones
+  parent: Bliss.CSharp.Geometry.Animation.Skeleton
+  langs:
+  - csharp
+  - vb
+  name: Bones
+  nameWithType: Skeleton.Bones
+  fullName: Bliss.CSharp.Geometry.Animation.Skeleton.Bones
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/Skeleton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Bones
+    path: ../src/Bliss/CSharp/Geometry/Animation/Skeleton.cs
+    startLine: 9
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation
+  summary: The list of bones that make up the skeleton.
+  example: []
+  syntax:
+    content: public IReadOnlyList<BoneInfo> Bones { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.BoneInfo}
+    content.vb: Public Property Bones As IReadOnlyList(Of BoneInfo)
+  overload: Bliss.CSharp.Geometry.Animation.Skeleton.Bones*
+- uid: Bliss.CSharp.Geometry.Animation.Skeleton.BoneNameToIndex
+  commentId: P:Bliss.CSharp.Geometry.Animation.Skeleton.BoneNameToIndex
+  id: BoneNameToIndex
+  parent: Bliss.CSharp.Geometry.Animation.Skeleton
+  langs:
+  - csharp
+  - vb
+  name: BoneNameToIndex
+  nameWithType: Skeleton.BoneNameToIndex
+  fullName: Bliss.CSharp.Geometry.Animation.Skeleton.BoneNameToIndex
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/Skeleton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: BoneNameToIndex
+    path: ../src/Bliss/CSharp/Geometry/Animation/Skeleton.cs
+    startLine: 14
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation
+  summary: A dictionary mapping bone names to their corresponding indices in the <xref href="Bliss.CSharp.Geometry.Animation.Skeleton.Bones" data-throw-if-not-resolved="false"></xref> list.
+  example: []
+  syntax:
+    content: public IReadOnlyDictionary<string, uint> BoneNameToIndex { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyDictionary{System.String,System.UInt32}
+    content.vb: Public Property BoneNameToIndex As IReadOnlyDictionary(Of String, UInteger)
+  overload: Bliss.CSharp.Geometry.Animation.Skeleton.BoneNameToIndex*
+- uid: Bliss.CSharp.Geometry.Animation.Skeleton.#ctor(System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.BoneInfo})
+  commentId: M:Bliss.CSharp.Geometry.Animation.Skeleton.#ctor(System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.BoneInfo})
+  id: '#ctor(System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.BoneInfo})'
+  parent: Bliss.CSharp.Geometry.Animation.Skeleton
+  langs:
+  - csharp
+  - vb
+  name: Skeleton(IReadOnlyList<BoneInfo>)
+  nameWithType: Skeleton.Skeleton(IReadOnlyList<BoneInfo>)
+  fullName: Bliss.CSharp.Geometry.Animation.Skeleton.Skeleton(System.Collections.Generic.IReadOnlyList<Bliss.CSharp.Geometry.Animation.BoneInfo>)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Animation/Skeleton.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Geometry/Animation/Skeleton.cs
+    startLine: 20
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry.Animation
+  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Geometry.Animation.Skeleton" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public Skeleton(IReadOnlyList<BoneInfo> bones)
+    parameters:
+    - id: bones
+      type: System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.BoneInfo}
+      description: The list of bones that define the skeleton.
+    content.vb: Public Sub New(bones As IReadOnlyList(Of BoneInfo))
+  overload: Bliss.CSharp.Geometry.Animation.Skeleton.#ctor*
+  nameWithType.vb: Skeleton.New(IReadOnlyList(Of BoneInfo))
+  fullName.vb: Bliss.CSharp.Geometry.Animation.Skeleton.New(System.Collections.Generic.IReadOnlyList(Of Bliss.CSharp.Geometry.Animation.BoneInfo))
+  name.vb: New(IReadOnlyList(Of BoneInfo))
+references:
+- uid: Bliss.CSharp.Geometry.Animation
+  commentId: N:Bliss.CSharp.Geometry.Animation
+  href: Bliss.html
+  name: Bliss.CSharp.Geometry.Animation
+  nameWithType: Bliss.CSharp.Geometry.Animation
+  fullName: Bliss.CSharp.Geometry.Animation
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation
+    name: Animation
+    href: Bliss.CSharp.Geometry.Animation.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation
+    name: Animation
+    href: Bliss.CSharp.Geometry.Animation.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Bliss.CSharp.Geometry.Animation.Skeleton.Bones*
+  commentId: Overload:Bliss.CSharp.Geometry.Animation.Skeleton.Bones
+  href: Bliss.CSharp.Geometry.Animation.Skeleton.html#Bliss_CSharp_Geometry_Animation_Skeleton_Bones
+  name: Bones
+  nameWithType: Skeleton.Bones
+  fullName: Bliss.CSharp.Geometry.Animation.Skeleton.Bones
+- uid: System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.BoneInfo}
+  commentId: T:System.Collections.Generic.IReadOnlyList{Bliss.CSharp.Geometry.Animation.BoneInfo}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<BoneInfo>
+  nameWithType: IReadOnlyList<BoneInfo>
+  fullName: System.Collections.Generic.IReadOnlyList<Bliss.CSharp.Geometry.Animation.BoneInfo>
+  nameWithType.vb: IReadOnlyList(Of BoneInfo)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of Bliss.CSharp.Geometry.Animation.BoneInfo)
+  name.vb: IReadOnlyList(Of BoneInfo)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: Bliss.CSharp.Geometry.Animation.BoneInfo
+    name: BoneInfo
+    href: Bliss.CSharp.Geometry.Animation.BoneInfo.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bliss.CSharp.Geometry.Animation.BoneInfo
+    name: BoneInfo
+    href: Bliss.CSharp.Geometry.Animation.BoneInfo.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Bliss.CSharp.Geometry.Animation.Skeleton.Bones
+  commentId: P:Bliss.CSharp.Geometry.Animation.Skeleton.Bones
+  href: Bliss.CSharp.Geometry.Animation.Skeleton.html#Bliss_CSharp_Geometry_Animation_Skeleton_Bones
+  name: Bones
+  nameWithType: Skeleton.Bones
+  fullName: Bliss.CSharp.Geometry.Animation.Skeleton.Bones
+- uid: Bliss.CSharp.Geometry.Animation.Skeleton.BoneNameToIndex*
+  commentId: Overload:Bliss.CSharp.Geometry.Animation.Skeleton.BoneNameToIndex
+  href: Bliss.CSharp.Geometry.Animation.Skeleton.html#Bliss_CSharp_Geometry_Animation_Skeleton_BoneNameToIndex
+  name: BoneNameToIndex
+  nameWithType: Skeleton.BoneNameToIndex
+  fullName: Bliss.CSharp.Geometry.Animation.Skeleton.BoneNameToIndex
+- uid: System.Collections.Generic.IReadOnlyDictionary{System.String,System.UInt32}
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary{System.String,System.UInt32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<string, uint>
+  nameWithType: IReadOnlyDictionary<string, uint>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<string, uint>
+  nameWithType.vb: IReadOnlyDictionary(Of String, UInteger)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of String, UInteger)
+  name.vb: IReadOnlyDictionary(Of String, UInteger)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary`2
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<TKey, TValue>
+  nameWithType: IReadOnlyDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue)
+  name.vb: IReadOnlyDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: Bliss.CSharp.Geometry.Animation.Skeleton
+  commentId: T:Bliss.CSharp.Geometry.Animation.Skeleton
+  parent: Bliss.CSharp.Geometry.Animation
+  href: Bliss.CSharp.Geometry.Animation.Skeleton.html
+  name: Skeleton
+  nameWithType: Skeleton
+  fullName: Bliss.CSharp.Geometry.Animation.Skeleton
+- uid: Bliss.CSharp.Geometry.Animation.Skeleton.#ctor*
+  commentId: Overload:Bliss.CSharp.Geometry.Animation.Skeleton.#ctor
+  href: Bliss.CSharp.Geometry.Animation.Skeleton.html#Bliss_CSharp_Geometry_Animation_Skeleton__ctor_System_Collections_Generic_IReadOnlyList_Bliss_CSharp_Geometry_Animation_BoneInfo__
+  name: Skeleton
+  nameWithType: Skeleton.Skeleton
+  fullName: Bliss.CSharp.Geometry.Animation.Skeleton.Skeleton
+  nameWithType.vb: Skeleton.New
+  fullName.vb: Bliss.CSharp.Geometry.Animation.Skeleton.New
+  name.vb: New

@@ -23,7 +23,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: CubemapVertex3D
     path: ../src/Bliss/CSharp/Graphics/VertexTypes/CubemapVertex3D.cs
-    startLine: 5
+    startLine: 6
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.VertexTypes
@@ -55,7 +55,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: VertexLayout
     path: ../src/Bliss/CSharp/Graphics/VertexTypes/CubemapVertex3D.cs
-    startLine: 10
+    startLine: 12
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.VertexTypes
@@ -84,7 +84,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Position
     path: ../src/Bliss/CSharp/Graphics/VertexTypes/CubemapVertex3D.cs
-    startLine: 17
+    startLine: 20
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.VertexTypes
@@ -113,7 +113,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Color
     path: ../src/Bliss/CSharp/Graphics/VertexTypes/CubemapVertex3D.cs
-    startLine: 22
+    startLine: 25
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.VertexTypes
@@ -142,7 +142,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Graphics/VertexTypes/CubemapVertex3D.cs
-    startLine: 29
+    startLine: 32
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.VertexTypes
@@ -428,7 +428,7 @@ references:
   commentId: T:Veldrid.VertexLayoutDescription
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/VertexLayoutDescription.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/VertexLayoutDescription.cs
   name: VertexLayoutDescription
   nameWithType: VertexLayoutDescription
   fullName: Veldrid.VertexLayoutDescription

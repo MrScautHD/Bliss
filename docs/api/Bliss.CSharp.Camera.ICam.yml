@@ -23,7 +23,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ICam
     path: ../src/Bliss/CSharp/Camera/ICam.cs
-    startLine: 4
+    startLine: 2
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera
@@ -48,7 +48,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Update
     path: ../src/Bliss/CSharp/Camera/ICam.cs
-    startLine: 9
+    startLine: 7
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera
@@ -82,7 +82,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Resize
     path: ../src/Bliss/CSharp/Camera/ICam.cs
-    startLine: 16
+    startLine: 14
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera
@@ -120,7 +120,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Begin
     path: ../src/Bliss/CSharp/Camera/ICam.cs
-    startLine: 21
+    startLine: 19
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera
@@ -148,7 +148,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: End
     path: ../src/Bliss/CSharp/Camera/ICam.cs
-    startLine: 26
+    startLine: 24
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Camera

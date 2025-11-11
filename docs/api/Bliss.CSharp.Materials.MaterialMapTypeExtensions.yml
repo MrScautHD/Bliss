@@ -20,7 +20,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: MaterialMapTypeExtensions
     path: ../src/Bliss/CSharp/Materials/MaterialMapTypeExtensions.cs
-    startLine: 5
+    startLine: 6
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
@@ -56,28 +56,21 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetName
     path: ../src/Bliss/CSharp/Materials/MaterialMapTypeExtensions.cs
-    startLine: 15
+    startLine: 18
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Materials
-  summary: >-
-    Retrieves the string representation of the specified <xref href="Bliss.CSharp.Materials.MaterialMapType" data-throw-if-not-resolved="false"></xref> enum value,
-
-    using the value from the <xref href="System.Runtime.Serialization.EnumMemberAttribute" data-throw-if-not-resolved="false"></xref> if available.
-
-    If the attribute is not present, it returns the enum value's name as a string.
+  summary: Retrieves the name of the specified <xref href="Bliss.CSharp.Materials.MaterialMapType" data-throw-if-not-resolved="false"></xref> enum value.
   example: []
   syntax:
     content: public static string GetName(this MaterialMapType type)
     parameters:
     - id: type
       type: Bliss.CSharp.Materials.MaterialMapType
-      description: The <xref href="Bliss.CSharp.Materials.MaterialMapType" data-throw-if-not-resolved="false"></xref> enum value for which to retrieve the name.
+      description: The <xref href="Bliss.CSharp.Materials.MaterialMapType" data-throw-if-not-resolved="false"></xref> enum value whose name is to be retrieved.
     return:
       type: System.String
-      description: >-
-        The string representation of the <xref href="Bliss.CSharp.Materials.MaterialMapType" data-throw-if-not-resolved="false"></xref>.
-            If the <xref href="System.Runtime.Serialization.EnumMemberAttribute" data-throw-if-not-resolved="false"></xref> is defined, its value is returned; otherwise, the enum name is returned.
+      description: A string representation of the <xref href="Bliss.CSharp.Materials.MaterialMapType" data-throw-if-not-resolved="false"></xref> enum value, either from the <xref href="System.Runtime.Serialization.EnumMemberAttribute" data-throw-if-not-resolved="false"></xref> or the enum's name.
     content.vb: Public Shared Function GetName(type As MaterialMapType) As String
   overload: Bliss.CSharp.Materials.MaterialMapTypeExtensions.GetName*
 references:

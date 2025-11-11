@@ -5,16 +5,14 @@ items:
   id: Model
   parent: Bliss.CSharp.Geometry
   children:
-  - Bliss.CSharp.Geometry.Model.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Geometry.Mesh[],Bliss.CSharp.Geometry.Animations.ModelAnimation[])
+  - Bliss.CSharp.Geometry.Model.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Geometry.Mesh[],Bliss.CSharp.Geometry.Animation.Skeleton,Bliss.CSharp.Geometry.Animation.ModelAnimation[])
   - Bliss.CSharp.Geometry.Model.Animations
-  - Bliss.CSharp.Geometry.Model.BoundingBox
   - Bliss.CSharp.Geometry.Model.Dispose(System.Boolean)
-  - Bliss.CSharp.Geometry.Model.Draw(Veldrid.CommandList,Bliss.CSharp.Transformations.Transform,Veldrid.OutputDescription,Veldrid.Sampler,System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{Bliss.CSharp.Colors.Color})
+  - Bliss.CSharp.Geometry.Model.GenBoundingBox
   - Bliss.CSharp.Geometry.Model.GraphicsDevice
   - Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean)
   - Bliss.CSharp.Geometry.Model.Meshes
-  - Bliss.CSharp.Geometry.Model.ResetAnimationBones(Veldrid.CommandList)
-  - Bliss.CSharp.Geometry.Model.UpdateAnimationBones(Veldrid.CommandList,Bliss.CSharp.Geometry.Animations.ModelAnimation,System.Int32)
+  - Bliss.CSharp.Geometry.Model.Skeleton
   langs:
   - csharp
   - vb
@@ -29,7 +27,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Model
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 23
+    startLine: 22
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -70,7 +68,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GraphicsDevice
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 68
+    startLine: 67
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -101,7 +99,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Meshes
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 73
+    startLine: 72
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -114,6 +112,37 @@ items:
       type: Bliss.CSharp.Geometry.Mesh[]
     content.vb: Public Property Meshes As Mesh()
   overload: Bliss.CSharp.Geometry.Model.Meshes*
+- uid: Bliss.CSharp.Geometry.Model.Skeleton
+  commentId: P:Bliss.CSharp.Geometry.Model.Skeleton
+  id: Skeleton
+  parent: Bliss.CSharp.Geometry.Model
+  langs:
+  - csharp
+  - vb
+  name: Skeleton
+  nameWithType: Model.Skeleton
+  fullName: Bliss.CSharp.Geometry.Model.Skeleton
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Geometry/Model.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Skeleton
+    path: ../src/Bliss/CSharp/Geometry/Model.cs
+    startLine: 77
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Geometry
+  summary: The hierarchical skeletal structure of the model.
+  example: []
+  syntax:
+    content: public Skeleton? Skeleton { get; }
+    parameters: []
+    return:
+      type: Bliss.CSharp.Geometry.Animation.Skeleton
+    content.vb: Public Property Skeleton As Skeleton
+  overload: Bliss.CSharp.Geometry.Model.Skeleton*
 - uid: Bliss.CSharp.Geometry.Model.Animations
   commentId: P:Bliss.CSharp.Geometry.Model.Animations
   id: Animations
@@ -132,63 +161,29 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Animations
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 79
+    startLine: 82
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
-  summary: >-
-    Collection of animations associated with the model.
-
-    Each animation encapsulates skeletal transformations over time, enabling the model to exhibit complex motions.
+  summary: Collection of animations associated with the model.
   example: []
   syntax:
     content: public ModelAnimation[] Animations { get; }
     parameters: []
     return:
-      type: Bliss.CSharp.Geometry.Animations.ModelAnimation[]
+      type: Bliss.CSharp.Geometry.Animation.ModelAnimation[]
     content.vb: Public Property Animations As ModelAnimation()
   overload: Bliss.CSharp.Geometry.Model.Animations*
-- uid: Bliss.CSharp.Geometry.Model.BoundingBox
-  commentId: P:Bliss.CSharp.Geometry.Model.BoundingBox
-  id: BoundingBox
+- uid: Bliss.CSharp.Geometry.Model.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Geometry.Mesh[],Bliss.CSharp.Geometry.Animation.Skeleton,Bliss.CSharp.Geometry.Animation.ModelAnimation[])
+  commentId: M:Bliss.CSharp.Geometry.Model.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Geometry.Mesh[],Bliss.CSharp.Geometry.Animation.Skeleton,Bliss.CSharp.Geometry.Animation.ModelAnimation[])
+  id: '#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Geometry.Mesh[],Bliss.CSharp.Geometry.Animation.Skeleton,Bliss.CSharp.Geometry.Animation.ModelAnimation[])'
   parent: Bliss.CSharp.Geometry.Model
   langs:
   - csharp
   - vb
-  name: BoundingBox
-  nameWithType: Model.BoundingBox
-  fullName: Bliss.CSharp.Geometry.Model.BoundingBox
-  type: Property
-  source:
-    remote:
-      path: src/Bliss/CSharp/Geometry/Model.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: BoundingBox
-    path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 84
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Geometry
-  summary: Represents the axis-aligned bounding box of the model.
-  example: []
-  syntax:
-    content: public BoundingBox BoundingBox { get; }
-    parameters: []
-    return:
-      type: Bliss.CSharp.Geometry.BoundingBox
-    content.vb: Public Property BoundingBox As BoundingBox
-  overload: Bliss.CSharp.Geometry.Model.BoundingBox*
-- uid: Bliss.CSharp.Geometry.Model.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Geometry.Mesh[],Bliss.CSharp.Geometry.Animations.ModelAnimation[])
-  commentId: M:Bliss.CSharp.Geometry.Model.#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Geometry.Mesh[],Bliss.CSharp.Geometry.Animations.ModelAnimation[])
-  id: '#ctor(Veldrid.GraphicsDevice,Bliss.CSharp.Geometry.Mesh[],Bliss.CSharp.Geometry.Animations.ModelAnimation[])'
-  parent: Bliss.CSharp.Geometry.Model
-  langs:
-  - csharp
-  - vb
-  name: Model(GraphicsDevice, Mesh[], ModelAnimation[])
-  nameWithType: Model.Model(GraphicsDevice, Mesh[], ModelAnimation[])
-  fullName: Bliss.CSharp.Geometry.Model.Model(Veldrid.GraphicsDevice, Bliss.CSharp.Geometry.Mesh[], Bliss.CSharp.Geometry.Animations.ModelAnimation[])
+  name: Model(GraphicsDevice, Mesh[], Skeleton?, ModelAnimation[])
+  nameWithType: Model.Model(GraphicsDevice, Mesh[], Skeleton?, ModelAnimation[])
+  fullName: Bliss.CSharp.Geometry.Model.Model(Veldrid.GraphicsDevice, Bliss.CSharp.Geometry.Mesh[], Bliss.CSharp.Geometry.Animation.Skeleton?, Bliss.CSharp.Geometry.Animation.ModelAnimation[])
   type: Constructor
   source:
     remote:
@@ -197,14 +192,14 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 92
+    startLine: 91
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
   summary: Initializes a new instance of the <xref href="Bliss.CSharp.Geometry.Model" data-throw-if-not-resolved="false"></xref> class with the specified graphics device, meshes, and animations.
   example: []
   syntax:
-    content: public Model(GraphicsDevice graphicsDevice, Mesh[] meshes, ModelAnimation[] animations)
+    content: public Model(GraphicsDevice graphicsDevice, Mesh[] meshes, Skeleton? skeleton, ModelAnimation[] animations)
     parameters:
     - id: graphicsDevice
       type: Veldrid.GraphicsDevice
@@ -212,14 +207,17 @@ items:
     - id: meshes
       type: Bliss.CSharp.Geometry.Mesh[]
       description: An array of <xref href="Bliss.CSharp.Geometry.Mesh" data-throw-if-not-resolved="false"></xref> objects representing the geometric components of the model.
+    - id: skeleton
+      type: Bliss.CSharp.Geometry.Animation.Skeleton
+      description: The optional skeleton used for skeletal animation, or <code>null</code> if not present.
     - id: animations
-      type: Bliss.CSharp.Geometry.Animations.ModelAnimation[]
-      description: An array of <xref href="Bliss.CSharp.Geometry.Animations.ModelAnimation" data-throw-if-not-resolved="false"></xref> objects defining the animations for the model.
-    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, meshes As Mesh(), animations As ModelAnimation())
+      type: Bliss.CSharp.Geometry.Animation.ModelAnimation[]
+      description: An array of <xref href="Bliss.CSharp.Geometry.Animation.ModelAnimation" data-throw-if-not-resolved="false"></xref> objects defining the animations for the model.
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, meshes As Mesh(), skeleton As Skeleton, animations As ModelAnimation())
   overload: Bliss.CSharp.Geometry.Model.#ctor*
-  nameWithType.vb: Model.New(GraphicsDevice, Mesh(), ModelAnimation())
-  fullName.vb: Bliss.CSharp.Geometry.Model.New(Veldrid.GraphicsDevice, Bliss.CSharp.Geometry.Mesh(), Bliss.CSharp.Geometry.Animations.ModelAnimation())
-  name.vb: New(GraphicsDevice, Mesh(), ModelAnimation())
+  nameWithType.vb: Model.New(GraphicsDevice, Mesh(), Skeleton, ModelAnimation())
+  fullName.vb: Bliss.CSharp.Geometry.Model.New(Veldrid.GraphicsDevice, Bliss.CSharp.Geometry.Mesh(), Bliss.CSharp.Geometry.Animation.Skeleton, Bliss.CSharp.Geometry.Animation.ModelAnimation())
+  name.vb: New(GraphicsDevice, Mesh(), Skeleton, ModelAnimation())
 - uid: Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean)
   commentId: M:Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean)
   id: Load(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean)
@@ -238,7 +236,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Load
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 107
+    startLine: 106
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -267,132 +265,37 @@ items:
   nameWithType.vb: Model.Load(GraphicsDevice, String, Boolean, Boolean)
   fullName.vb: Bliss.CSharp.Geometry.Model.Load(Veldrid.GraphicsDevice, String, Boolean, Boolean)
   name.vb: Load(GraphicsDevice, String, Boolean, Boolean)
-- uid: Bliss.CSharp.Geometry.Model.UpdateAnimationBones(Veldrid.CommandList,Bliss.CSharp.Geometry.Animations.ModelAnimation,System.Int32)
-  commentId: M:Bliss.CSharp.Geometry.Model.UpdateAnimationBones(Veldrid.CommandList,Bliss.CSharp.Geometry.Animations.ModelAnimation,System.Int32)
-  id: UpdateAnimationBones(Veldrid.CommandList,Bliss.CSharp.Geometry.Animations.ModelAnimation,System.Int32)
+- uid: Bliss.CSharp.Geometry.Model.GenBoundingBox
+  commentId: M:Bliss.CSharp.Geometry.Model.GenBoundingBox
+  id: GenBoundingBox
   parent: Bliss.CSharp.Geometry.Model
   langs:
   - csharp
   - vb
-  name: UpdateAnimationBones(CommandList, ModelAnimation, int)
-  nameWithType: Model.UpdateAnimationBones(CommandList, ModelAnimation, int)
-  fullName: Bliss.CSharp.Geometry.Model.UpdateAnimationBones(Veldrid.CommandList, Bliss.CSharp.Geometry.Animations.ModelAnimation, int)
+  name: GenBoundingBox()
+  nameWithType: Model.GenBoundingBox()
+  fullName: Bliss.CSharp.Geometry.Model.GenBoundingBox()
   type: Method
   source:
     remote:
       path: src/Bliss/CSharp/Geometry/Model.cs
       branch: main
       repo: https://github.com/MrScautHD/Bliss.git
-    id: UpdateAnimationBones
+    id: GenBoundingBox
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 462
+    startLine: 432
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
-  summary: Updates the animation bones for all meshes in the model based on the specified animation and frame.
+  summary: Generates a bounding box that encapsulates all the vertices in the model's meshes.
   example: []
   syntax:
-    content: public void UpdateAnimationBones(CommandList commandList, ModelAnimation animation, int frame)
-    parameters:
-    - id: commandList
-      type: Veldrid.CommandList
-      description: The command list used to issue rendering commands.
-    - id: animation
-      type: Bliss.CSharp.Geometry.Animations.ModelAnimation
-      description: The animation whose bone transformations should be applied.
-    - id: frame
-      type: System.Int32
-      description: The specific frame of the animation to update the bones to.
-    content.vb: Public Sub UpdateAnimationBones(commandList As CommandList, animation As ModelAnimation, frame As Integer)
-  overload: Bliss.CSharp.Geometry.Model.UpdateAnimationBones*
-  nameWithType.vb: Model.UpdateAnimationBones(CommandList, ModelAnimation, Integer)
-  fullName.vb: Bliss.CSharp.Geometry.Model.UpdateAnimationBones(Veldrid.CommandList, Bliss.CSharp.Geometry.Animations.ModelAnimation, Integer)
-  name.vb: UpdateAnimationBones(CommandList, ModelAnimation, Integer)
-- uid: Bliss.CSharp.Geometry.Model.ResetAnimationBones(Veldrid.CommandList)
-  commentId: M:Bliss.CSharp.Geometry.Model.ResetAnimationBones(Veldrid.CommandList)
-  id: ResetAnimationBones(Veldrid.CommandList)
-  parent: Bliss.CSharp.Geometry.Model
-  langs:
-  - csharp
-  - vb
-  name: ResetAnimationBones(CommandList)
-  nameWithType: Model.ResetAnimationBones(CommandList)
-  fullName: Bliss.CSharp.Geometry.Model.ResetAnimationBones(Veldrid.CommandList)
-  type: Method
-  source:
-    remote:
-      path: src/Bliss/CSharp/Geometry/Model.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: ResetAnimationBones
-    path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 472
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Geometry
-  summary: Resets the animation bone transformations for all meshes in the model using the given command list.
-  example: []
-  syntax:
-    content: public void ResetAnimationBones(CommandList commandList)
-    parameters:
-    - id: commandList
-      type: Veldrid.CommandList
-      description: The command list used to execute the reset operation on the GPU.
-    content.vb: Public Sub ResetAnimationBones(commandList As CommandList)
-  overload: Bliss.CSharp.Geometry.Model.ResetAnimationBones*
-- uid: Bliss.CSharp.Geometry.Model.Draw(Veldrid.CommandList,Bliss.CSharp.Transformations.Transform,Veldrid.OutputDescription,Veldrid.Sampler,System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{Bliss.CSharp.Colors.Color})
-  commentId: M:Bliss.CSharp.Geometry.Model.Draw(Veldrid.CommandList,Bliss.CSharp.Transformations.Transform,Veldrid.OutputDescription,Veldrid.Sampler,System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{Bliss.CSharp.Colors.Color})
-  id: Draw(Veldrid.CommandList,Bliss.CSharp.Transformations.Transform,Veldrid.OutputDescription,Veldrid.Sampler,System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription},System.Nullable{Bliss.CSharp.Colors.Color})
-  parent: Bliss.CSharp.Geometry.Model
-  langs:
-  - csharp
-  - vb
-  name: Draw(CommandList, Transform, OutputDescription, Sampler?, DepthStencilStateDescription?, RasterizerStateDescription?, Color?)
-  nameWithType: Model.Draw(CommandList, Transform, OutputDescription, Sampler?, DepthStencilStateDescription?, RasterizerStateDescription?, Color?)
-  fullName: Bliss.CSharp.Geometry.Model.Draw(Veldrid.CommandList, Bliss.CSharp.Transformations.Transform, Veldrid.OutputDescription, Veldrid.Sampler?, Veldrid.DepthStencilStateDescription?, Veldrid.RasterizerStateDescription?, Bliss.CSharp.Colors.Color?)
-  type: Method
-  source:
-    remote:
-      path: src/Bliss/CSharp/Geometry/Model.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: Draw
-    path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 488
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Geometry
-  summary: Draws the model using the specified command list, transform, and rendering configurations.
-  example: []
-  syntax:
-    content: public void Draw(CommandList commandList, Transform transform, OutputDescription output, Sampler? sampler = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Color? color = null)
-    parameters:
-    - id: commandList
-      type: Veldrid.CommandList
-      description: The <xref href="Veldrid.CommandList" data-throw-if-not-resolved="false"></xref> that issues the rendering commands.
-    - id: transform
-      type: Bliss.CSharp.Transformations.Transform
-      description: The <xref href="Bliss.CSharp.Transformations.Transform" data-throw-if-not-resolved="false"></xref> describing the position, rotation, and scale of the model in the scene.
-    - id: output
-      type: Veldrid.OutputDescription
-      description: The <xref href="Veldrid.OutputDescription" data-throw-if-not-resolved="false"></xref> that defines the target rendering output settings, such as resolution and format.
-    - id: sampler
-      type: Veldrid.Sampler
-      description: An optional <xref href="Veldrid.Sampler" data-throw-if-not-resolved="false"></xref> used for texture sampling. If not provided, a default sampler is applied.
-    - id: depthStencilState
-      type: System.Nullable{Veldrid.DepthStencilStateDescription}
-      description: An optional <xref href="Veldrid.DepthStencilStateDescription" data-throw-if-not-resolved="false"></xref> to configure depth and stencil testing for the drawing process.
-    - id: rasterizerState
-      type: System.Nullable{Veldrid.RasterizerStateDescription}
-      description: An optional <xref href="Veldrid.RasterizerStateDescription" data-throw-if-not-resolved="false"></xref> that manages the rasterizer configuration, such as culling and fill mode.
-    - id: color
-      type: System.Nullable{Bliss.CSharp.Colors.Color}
-      description: An optional <xref href="Bliss.CSharp.Colors.Color" data-throw-if-not-resolved="false"></xref> to override or apply a custom tint to the model's rendered output.
-    content.vb: Public Sub Draw(commandList As CommandList, transform As Transform, output As OutputDescription, sampler As Sampler = Nothing, depthStencilState As DepthStencilStateDescription? = Nothing, rasterizerState As RasterizerStateDescription? = Nothing, color As Color? = Nothing)
-  overload: Bliss.CSharp.Geometry.Model.Draw*
-  nameWithType.vb: Model.Draw(CommandList, Transform, OutputDescription, Sampler, DepthStencilStateDescription?, RasterizerStateDescription?, Color?)
-  fullName.vb: Bliss.CSharp.Geometry.Model.Draw(Veldrid.CommandList, Bliss.CSharp.Transformations.Transform, Veldrid.OutputDescription, Veldrid.Sampler, Veldrid.DepthStencilStateDescription?, Veldrid.RasterizerStateDescription?, Bliss.CSharp.Colors.Color?)
-  name.vb: Draw(CommandList, Transform, OutputDescription, Sampler, DepthStencilStateDescription?, RasterizerStateDescription?, Color?)
+    content: public BoundingBox GenBoundingBox()
+    return:
+      type: Bliss.CSharp.Geometry.BoundingBox
+      description: A <xref href="Bliss.CSharp.Geometry.BoundingBox" data-throw-if-not-resolved="false"></xref> that represents the minimum and maximum bounds of the model.
+    content.vb: Public Function GenBoundingBox() As BoundingBox
+  overload: Bliss.CSharp.Geometry.Model.GenBoundingBox*
 - uid: Bliss.CSharp.Geometry.Model.Dispose(System.Boolean)
   commentId: M:Bliss.CSharp.Geometry.Model.Dispose(System.Boolean)
   id: Dispose(System.Boolean)
@@ -411,7 +314,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 512
+    startLine: 446
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry
@@ -789,7 +692,7 @@ references:
   commentId: T:Veldrid.GraphicsDevice
   parent: Veldrid
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/GraphicsDevice.cs
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/GraphicsDevice.cs
   name: GraphicsDevice
   nameWithType: GraphicsDevice
   fullName: Veldrid.GraphicsDevice
@@ -826,46 +729,84 @@ references:
     href: Bliss.CSharp.Geometry.Mesh.html
   - name: (
   - name: )
+- uid: Bliss.CSharp.Geometry.Model.Skeleton*
+  commentId: Overload:Bliss.CSharp.Geometry.Model.Skeleton
+  href: Bliss.CSharp.Geometry.Model.html#Bliss_CSharp_Geometry_Model_Skeleton
+  name: Skeleton
+  nameWithType: Model.Skeleton
+  fullName: Bliss.CSharp.Geometry.Model.Skeleton
+- uid: Bliss.CSharp.Geometry.Animation.Skeleton
+  commentId: T:Bliss.CSharp.Geometry.Animation.Skeleton
+  parent: Bliss.CSharp.Geometry.Animation
+  href: Bliss.CSharp.Geometry.Animation.Skeleton.html
+  name: Skeleton
+  nameWithType: Skeleton
+  fullName: Bliss.CSharp.Geometry.Animation.Skeleton
+- uid: Bliss.CSharp.Geometry.Animation
+  commentId: N:Bliss.CSharp.Geometry.Animation
+  href: Bliss.html
+  name: Bliss.CSharp.Geometry.Animation
+  nameWithType: Bliss.CSharp.Geometry.Animation
+  fullName: Bliss.CSharp.Geometry.Animation
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation
+    name: Animation
+    href: Bliss.CSharp.Geometry.Animation.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry
+    name: Geometry
+    href: Bliss.CSharp.Geometry.html
+  - name: .
+  - uid: Bliss.CSharp.Geometry.Animation
+    name: Animation
+    href: Bliss.CSharp.Geometry.Animation.html
 - uid: Bliss.CSharp.Geometry.Model.Animations*
   commentId: Overload:Bliss.CSharp.Geometry.Model.Animations
   href: Bliss.CSharp.Geometry.Model.html#Bliss_CSharp_Geometry_Model_Animations
   name: Animations
   nameWithType: Model.Animations
   fullName: Bliss.CSharp.Geometry.Model.Animations
-- uid: Bliss.CSharp.Geometry.Animations.ModelAnimation[]
+- uid: Bliss.CSharp.Geometry.Animation.ModelAnimation[]
   isExternal: true
-  href: Bliss.CSharp.Geometry.Animations.ModelAnimation.html
+  href: Bliss.CSharp.Geometry.Animation.ModelAnimation.html
   name: ModelAnimation[]
   nameWithType: ModelAnimation[]
-  fullName: Bliss.CSharp.Geometry.Animations.ModelAnimation[]
+  fullName: Bliss.CSharp.Geometry.Animation.ModelAnimation[]
   nameWithType.vb: ModelAnimation()
-  fullName.vb: Bliss.CSharp.Geometry.Animations.ModelAnimation()
+  fullName.vb: Bliss.CSharp.Geometry.Animation.ModelAnimation()
   name.vb: ModelAnimation()
   spec.csharp:
-  - uid: Bliss.CSharp.Geometry.Animations.ModelAnimation
+  - uid: Bliss.CSharp.Geometry.Animation.ModelAnimation
     name: ModelAnimation
-    href: Bliss.CSharp.Geometry.Animations.ModelAnimation.html
+    href: Bliss.CSharp.Geometry.Animation.ModelAnimation.html
   - name: '['
   - name: ']'
   spec.vb:
-  - uid: Bliss.CSharp.Geometry.Animations.ModelAnimation
+  - uid: Bliss.CSharp.Geometry.Animation.ModelAnimation
     name: ModelAnimation
-    href: Bliss.CSharp.Geometry.Animations.ModelAnimation.html
+    href: Bliss.CSharp.Geometry.Animation.ModelAnimation.html
   - name: (
   - name: )
-- uid: Bliss.CSharp.Geometry.Model.BoundingBox*
-  commentId: Overload:Bliss.CSharp.Geometry.Model.BoundingBox
-  href: Bliss.CSharp.Geometry.Model.html#Bliss_CSharp_Geometry_Model_BoundingBox
-  name: BoundingBox
-  nameWithType: Model.BoundingBox
-  fullName: Bliss.CSharp.Geometry.Model.BoundingBox
-- uid: Bliss.CSharp.Geometry.BoundingBox
-  commentId: T:Bliss.CSharp.Geometry.BoundingBox
-  parent: Bliss.CSharp.Geometry
-  href: Bliss.CSharp.Geometry.BoundingBox.html
-  name: BoundingBox
-  nameWithType: BoundingBox
-  fullName: Bliss.CSharp.Geometry.BoundingBox
 - uid: Bliss.CSharp.Geometry.Model
   commentId: T:Bliss.CSharp.Geometry.Model
   parent: Bliss.CSharp.Geometry
@@ -886,60 +827,22 @@ references:
   name: Mesh
   nameWithType: Mesh
   fullName: Bliss.CSharp.Geometry.Mesh
-- uid: Bliss.CSharp.Geometry.Animations.ModelAnimation
-  commentId: T:Bliss.CSharp.Geometry.Animations.ModelAnimation
-  parent: Bliss.CSharp.Geometry.Animations
-  href: Bliss.CSharp.Geometry.Animations.ModelAnimation.html
+- uid: Bliss.CSharp.Geometry.Animation.ModelAnimation
+  commentId: T:Bliss.CSharp.Geometry.Animation.ModelAnimation
+  parent: Bliss.CSharp.Geometry.Animation
+  href: Bliss.CSharp.Geometry.Animation.ModelAnimation.html
   name: ModelAnimation
   nameWithType: ModelAnimation
-  fullName: Bliss.CSharp.Geometry.Animations.ModelAnimation
+  fullName: Bliss.CSharp.Geometry.Animation.ModelAnimation
 - uid: Bliss.CSharp.Geometry.Model.#ctor*
   commentId: Overload:Bliss.CSharp.Geometry.Model.#ctor
-  href: Bliss.CSharp.Geometry.Model.html#Bliss_CSharp_Geometry_Model__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Geometry_Mesh___Bliss_CSharp_Geometry_Animations_ModelAnimation___
+  href: Bliss.CSharp.Geometry.Model.html#Bliss_CSharp_Geometry_Model__ctor_Veldrid_GraphicsDevice_Bliss_CSharp_Geometry_Mesh___Bliss_CSharp_Geometry_Animation_Skeleton_Bliss_CSharp_Geometry_Animation_ModelAnimation___
   name: Model
   nameWithType: Model.Model
   fullName: Bliss.CSharp.Geometry.Model.Model
   nameWithType.vb: Model.New
   fullName.vb: Bliss.CSharp.Geometry.Model.New
   name.vb: New
-- uid: Bliss.CSharp.Geometry.Animations
-  commentId: N:Bliss.CSharp.Geometry.Animations
-  href: Bliss.html
-  name: Bliss.CSharp.Geometry.Animations
-  nameWithType: Bliss.CSharp.Geometry.Animations
-  fullName: Bliss.CSharp.Geometry.Animations
-  spec.csharp:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Geometry
-    name: Geometry
-    href: Bliss.CSharp.Geometry.html
-  - name: .
-  - uid: Bliss.CSharp.Geometry.Animations
-    name: Animations
-    href: Bliss.CSharp.Geometry.Animations.html
-  spec.vb:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Geometry
-    name: Geometry
-    href: Bliss.CSharp.Geometry.html
-  - name: .
-  - uid: Bliss.CSharp.Geometry.Animations
-    name: Animations
-    href: Bliss.CSharp.Geometry.Animations.html
 - uid: Bliss.CSharp.Geometry.Model.Load*
   commentId: Overload:Bliss.CSharp.Geometry.Model.Load
   href: Bliss.CSharp.Geometry.Model.html#Bliss_CSharp_Geometry_Model_Load_Veldrid_GraphicsDevice_System_String_System_Boolean_System_Boolean_
@@ -968,235 +871,19 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
-- uid: Bliss.CSharp.Geometry.Model.UpdateAnimationBones*
-  commentId: Overload:Bliss.CSharp.Geometry.Model.UpdateAnimationBones
-  href: Bliss.CSharp.Geometry.Model.html#Bliss_CSharp_Geometry_Model_UpdateAnimationBones_Veldrid_CommandList_Bliss_CSharp_Geometry_Animations_ModelAnimation_System_Int32_
-  name: UpdateAnimationBones
-  nameWithType: Model.UpdateAnimationBones
-  fullName: Bliss.CSharp.Geometry.Model.UpdateAnimationBones
-- uid: Veldrid.CommandList
-  commentId: T:Veldrid.CommandList
-  parent: Veldrid
-  isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/CommandList.cs
-  name: CommandList
-  nameWithType: CommandList
-  fullName: Veldrid.CommandList
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.int32
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
-- uid: Bliss.CSharp.Geometry.Model.ResetAnimationBones*
-  commentId: Overload:Bliss.CSharp.Geometry.Model.ResetAnimationBones
-  href: Bliss.CSharp.Geometry.Model.html#Bliss_CSharp_Geometry_Model_ResetAnimationBones_Veldrid_CommandList_
-  name: ResetAnimationBones
-  nameWithType: Model.ResetAnimationBones
-  fullName: Bliss.CSharp.Geometry.Model.ResetAnimationBones
-- uid: Bliss.CSharp.Transformations.Transform
-  commentId: T:Bliss.CSharp.Transformations.Transform
-  parent: Bliss.CSharp.Transformations
-  href: Bliss.CSharp.Transformations.Transform.html
-  name: Transform
-  nameWithType: Transform
-  fullName: Bliss.CSharp.Transformations.Transform
-- uid: Veldrid.OutputDescription
-  commentId: T:Veldrid.OutputDescription
-  parent: Veldrid
-  isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/OutputDescription.cs
-  name: OutputDescription
-  nameWithType: OutputDescription
-  fullName: Veldrid.OutputDescription
-- uid: Veldrid.Sampler
-  commentId: T:Veldrid.Sampler
-  parent: Veldrid
-  isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/Sampler.cs
-  name: Sampler
-  nameWithType: Sampler
-  fullName: Veldrid.Sampler
-- uid: Veldrid.DepthStencilStateDescription
-  commentId: T:Veldrid.DepthStencilStateDescription
-  parent: Veldrid
-  isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
-  name: DepthStencilStateDescription
-  nameWithType: DepthStencilStateDescription
-  fullName: Veldrid.DepthStencilStateDescription
-- uid: Veldrid.RasterizerStateDescription
-  commentId: T:Veldrid.RasterizerStateDescription
-  parent: Veldrid
-  isExternal: true
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
-  name: RasterizerStateDescription
-  nameWithType: RasterizerStateDescription
-  fullName: Veldrid.RasterizerStateDescription
-- uid: Bliss.CSharp.Colors.Color
-  commentId: T:Bliss.CSharp.Colors.Color
-  parent: Bliss.CSharp.Colors
-  href: Bliss.CSharp.Colors.Color.html
-  name: Color
-  nameWithType: Color
-  fullName: Bliss.CSharp.Colors.Color
-- uid: Bliss.CSharp.Geometry.Model.Draw*
-  commentId: Overload:Bliss.CSharp.Geometry.Model.Draw
-  href: Bliss.CSharp.Geometry.Model.html#Bliss_CSharp_Geometry_Model_Draw_Veldrid_CommandList_Bliss_CSharp_Transformations_Transform_Veldrid_OutputDescription_Veldrid_Sampler_System_Nullable_Veldrid_DepthStencilStateDescription__System_Nullable_Veldrid_RasterizerStateDescription__System_Nullable_Bliss_CSharp_Colors_Color__
-  name: Draw
-  nameWithType: Model.Draw
-  fullName: Bliss.CSharp.Geometry.Model.Draw
-- uid: System.Nullable{Veldrid.DepthStencilStateDescription}
-  commentId: T:System.Nullable{Veldrid.DepthStencilStateDescription}
-  parent: System
-  definition: System.Nullable`1
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
-  name: DepthStencilStateDescription?
-  nameWithType: DepthStencilStateDescription?
-  fullName: Veldrid.DepthStencilStateDescription?
-  spec.csharp:
-  - uid: Veldrid.DepthStencilStateDescription
-    name: DepthStencilStateDescription
-    isExternal: true
-    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
-  - name: '?'
-  spec.vb:
-  - uid: Veldrid.DepthStencilStateDescription
-    name: DepthStencilStateDescription
-    isExternal: true
-    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/DepthStencilStateDescription.cs
-  - name: '?'
-- uid: System.Nullable{Veldrid.RasterizerStateDescription}
-  commentId: T:System.Nullable{Veldrid.RasterizerStateDescription}
-  parent: System
-  definition: System.Nullable`1
-  href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
-  name: RasterizerStateDescription?
-  nameWithType: RasterizerStateDescription?
-  fullName: Veldrid.RasterizerStateDescription?
-  spec.csharp:
-  - uid: Veldrid.RasterizerStateDescription
-    name: RasterizerStateDescription
-    isExternal: true
-    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
-  - name: '?'
-  spec.vb:
-  - uid: Veldrid.RasterizerStateDescription
-    name: RasterizerStateDescription
-    isExternal: true
-    href: https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/RasterizerStateDescription.cs
-  - name: '?'
-- uid: System.Nullable{Bliss.CSharp.Colors.Color}
-  commentId: T:System.Nullable{Bliss.CSharp.Colors.Color}
-  parent: System
-  definition: System.Nullable`1
-  href: Bliss.CSharp.Colors.Color.html
-  name: Color?
-  nameWithType: Color?
-  fullName: Bliss.CSharp.Colors.Color?
-  spec.csharp:
-  - uid: Bliss.CSharp.Colors.Color
-    name: Color
-    href: Bliss.CSharp.Colors.Color.html
-  - name: '?'
-  spec.vb:
-  - uid: Bliss.CSharp.Colors.Color
-    name: Color
-    href: Bliss.CSharp.Colors.Color.html
-  - name: '?'
-- uid: Bliss.CSharp.Transformations
-  commentId: N:Bliss.CSharp.Transformations
-  href: Bliss.html
-  name: Bliss.CSharp.Transformations
-  nameWithType: Bliss.CSharp.Transformations
-  fullName: Bliss.CSharp.Transformations
-  spec.csharp:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Transformations
-    name: Transformations
-    href: Bliss.CSharp.Transformations.html
-  spec.vb:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Transformations
-    name: Transformations
-    href: Bliss.CSharp.Transformations.html
-- uid: Bliss.CSharp.Colors
-  commentId: N:Bliss.CSharp.Colors
-  href: Bliss.html
-  name: Bliss.CSharp.Colors
-  nameWithType: Bliss.CSharp.Colors
-  fullName: Bliss.CSharp.Colors
-  spec.csharp:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Colors
-    name: Colors
-    href: Bliss.CSharp.Colors.html
-  spec.vb:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  - name: .
-  - uid: Bliss.CSharp.Colors
-    name: Colors
-    href: Bliss.CSharp.Colors.html
-- uid: System.Nullable`1
-  commentId: T:System.Nullable`1
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
-  name: Nullable<T>
-  nameWithType: Nullable<T>
-  fullName: System.Nullable<T>
-  nameWithType.vb: Nullable(Of T)
-  fullName.vb: System.Nullable(Of T)
-  name.vb: Nullable(Of T)
-  spec.csharp:
-  - uid: System.Nullable`1
-    name: Nullable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: System.Nullable`1
-    name: Nullable
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
+- uid: Bliss.CSharp.Geometry.BoundingBox
+  commentId: T:Bliss.CSharp.Geometry.BoundingBox
+  parent: Bliss.CSharp.Geometry
+  href: Bliss.CSharp.Geometry.BoundingBox.html
+  name: BoundingBox
+  nameWithType: BoundingBox
+  fullName: Bliss.CSharp.Geometry.BoundingBox
+- uid: Bliss.CSharp.Geometry.Model.GenBoundingBox*
+  commentId: Overload:Bliss.CSharp.Geometry.Model.GenBoundingBox
+  href: Bliss.CSharp.Geometry.Model.html#Bliss_CSharp_Geometry_Model_GenBoundingBox
+  name: GenBoundingBox
+  nameWithType: Model.GenBoundingBox
+  fullName: Bliss.CSharp.Geometry.Model.GenBoundingBox
 - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
   commentId: M:Bliss.CSharp.Disposable.Dispose(System.Boolean)
   parent: Bliss.CSharp.Disposable

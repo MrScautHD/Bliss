@@ -81,7 +81,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 32
+    startLine: 17
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -120,7 +120,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 48
+    startLine: 33
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -159,7 +159,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 63
+    startLine: 48
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -194,7 +194,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 76
+    startLine: 61
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -235,7 +235,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 88
+    startLine: 73
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -276,7 +276,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Width
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 107
+    startLine: 92
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -311,7 +311,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Height
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 125
+    startLine: 110
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -346,7 +346,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Data
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 143
+    startLine: 128
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -381,7 +381,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetColor
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 161
+    startLine: 146
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -422,7 +422,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetPixel
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 176
+    startLine: 161
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -463,7 +463,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Resize
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 193
+    startLine: 178
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -501,7 +501,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ResizeNN
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 231
+    startLine: 216
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -539,7 +539,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: FlipVertical
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 258
+    startLine: 243
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -567,7 +567,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: FlipHorizontal
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 280
+    startLine: 265
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -595,7 +595,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Rotate
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 303
+    startLine: 288
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -630,7 +630,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: RotateCW
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 317
+    startLine: 302
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -658,7 +658,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: RotateCCW
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 344
+    startLine: 329
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -686,7 +686,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Crop
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 373
+    startLine: 358
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -722,7 +722,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Tint
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 403
+    startLine: 388
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -754,7 +754,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SaveAsBmp
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 416
+    startLine: 401
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -789,7 +789,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SaveAsTga
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 427
+    startLine: 412
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -824,7 +824,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SaveAsHdr
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 438
+    startLine: 423
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -859,7 +859,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SaveAsPng
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 449
+    startLine: 434
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -894,7 +894,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SaveAsJpg
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 461
+    startLine: 446
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -932,7 +932,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Clone
     path: ../src/Bliss/CSharp/Images/Image.cs
-    startLine: 472
+    startLine: 457
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images

@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives
+  commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives
+  id: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives
+  children:
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives.PrimitiveBatch
+  langs:
+  - csharp
+  - vb
+  name: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives
+  nameWithType: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives
+  type: Namespace
+  assemblies:
+  - Bliss
+references:
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives.PrimitiveBatch
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives.PrimitiveBatch
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives.PrimitiveBatch.html
+  name: PrimitiveBatch
+  nameWithType: PrimitiveBatch
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives.PrimitiveBatch

@@ -131,10 +131,10 @@ Interface ISimpleBuffer  <a class="header-action link-secondary" title="View sou
 
   <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_ISimpleBuffer_DeviceBuffer" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.DeviceBuffer">
   DeviceBuffer
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/ISimpleBuffer.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/ISimpleBuffer.cs/#L15"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The device buffer associated with this instance.</p>
+  <div class="markdown level1 summary"><p>Gets the GPU device buffer associated with this simple buffer.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -148,9 +148,84 @@ Interface ISimpleBuffer  <a class="header-action link-secondary" title="View sou
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/086790861c76f5dff99240b2ca2a363987549da3/src/Veldrid/Buffer.cs">DeviceBuffer</a></dt>
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/Buffer.cs">DeviceBuffer</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Pipelines_Buffers_ISimpleBuffer_ShaderStages_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.ShaderStages*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_ISimpleBuffer_ShaderStages" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.ShaderStages">
+  ShaderStages
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/ISimpleBuffer.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the shader stages where this buffer is used.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ShaderStages ShaderStages { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/ShaderStages.cs">ShaderStages</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Bliss_CSharp_Graphics_Pipelines_Buffers_ISimpleBuffer_GetResourceSet_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.GetResourceSet*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_ISimpleBuffer_GetResourceSet_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferLayout_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.ISimpleBuffer.GetResourceSet(Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)">
+  GetResourceSet(SimpleBufferLayout)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/ISimpleBuffer.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a resource set for this buffer using the specified layout.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ResourceSet GetResourceSet(SimpleBufferLayout layout)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>layout</code> <a class="xref" href="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html">SimpleBufferLayout</a></dt>
+    <dd><p>The layout defining how the buffer is bound to the shader.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/ResourceSet.cs">ResourceSet</a></dt>
+    <dd><p>A <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/ResourceSet.cs">ResourceSet</a> containing this buffer bound according to the given layout.</p>
+</dd>
+  </dl>
+
+
+
 
 
 
