@@ -77,13 +77,9 @@ public class Material : ICloneable {
     /// <param name="type">The type of the material map to retrieve.</param>
     /// <returns>The <see cref="MaterialMap"/> associated with the specified type if it exists; otherwise, null.</returns>
     public MaterialMap? GetMaterialMap(MaterialMapType type) {
-        if (this._maps.TryGetValue(type, out MaterialMap? map)) {
-            return map;
-        }
-        
-        return null;
+        return this._maps.GetValueOrDefault(type);
     }
-
+    
     /// <summary>
     /// Adds a material map to the material, associating it with the specified material map type.
     /// </summary>

@@ -11,21 +11,6 @@ namespace Bliss.CSharp.Images;
 public class Image : ICloneable {
     
     /// <summary>
-    /// Stores the width of the image in pixels.
-    /// </summary>
-    private int _width;
-    
-    /// <summary>
-    /// Stores the height of the image in pixels.
-    /// </summary>
-    private int _height;
-    
-    /// <summary>
-    /// Stores the raw pixel data of the image. The data is in RGBA format, where each pixel is represented by 4 bytes.
-    /// </summary>
-    private byte[] _data;
-
-    /// <summary>
     /// Initializes a new instance of the <see cref="Image"/> class by loading an image from the specified file path.
     /// </summary>
     /// <param name="path">The file path of the image to load.</param>
@@ -98,7 +83,7 @@ public class Image : ICloneable {
             this.Data[i + 3] = color.A;
         }
     }
-
+    
     /// <summary>
     /// Gets or sets the width of the image in pixels.
     /// </summary>
@@ -106,17 +91,17 @@ public class Image : ICloneable {
     /// Thrown when a negative or zero value is assigned to the width.
     /// </exception>
     public int Width {
-        get => this._width;
+        get;
         set {
             if (value > 0) {
-                this._width = value;
+                field = value;
             }
             else {
                 throw new ArgumentOutOfRangeException($"Width: {value} must be positive.");
             }
         }
     }
-
+    
     /// <summary>
     /// Gets or sets the height of the image in pixels.
     /// </summary>
@@ -124,10 +109,10 @@ public class Image : ICloneable {
     /// Thrown when a non-positive value is assigned to the height.
     /// </exception>
     public int Height {
-        get => this._height;
+        get;
         set {
             if (value > 0) {
-                this._height = value;
+                field = value;
             }
             else {
                 throw new ArgumentOutOfRangeException($"Height: {value} must be positive.");
@@ -142,10 +127,10 @@ public class Image : ICloneable {
     /// Thrown when the assigned data size does not match the product of the image's width, height, and the number of color components (4 for RGBA).
     /// </exception>
     public byte[] Data {
-        get => this._data;
+        get;
         set {
             if (value.Length == this.Width * this.Height * 4) {
-                this._data = value;
+                field = value;
             }
             else {
                 throw new ArgumentException("Invalid data size.");

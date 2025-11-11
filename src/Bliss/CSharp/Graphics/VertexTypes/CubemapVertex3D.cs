@@ -6,7 +6,7 @@ namespace Bliss.CSharp.Graphics.VertexTypes;
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
 public struct CubemapVertex3D {
-
+    
     /// <summary>
     /// Represents the layout description for the <see cref="CubemapVertex3D"/> structure.
     /// </summary>
@@ -24,7 +24,7 @@ public struct CubemapVertex3D {
     /// The color of the vertex.
     /// </summary>
     public Vector4 Color;
-
+    
     /// <summary>
     /// Initializes a new instance of the <see cref="CubemapVertex3D"/> structure.
     /// </summary>
