@@ -5,9 +5,11 @@ namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing;
 public class ShadowMap : Disposable {
     
     public GraphicsDevice GraphicsDevice { get; private set; }
+    
     public int Resolution { get; private set; }
     
     public Texture DepthTexture { get; private set; }
+    
     public Framebuffer Framebuffer { get; private set; }
     
     public ShadowMap(GraphicsDevice graphicsDevice, int resolution = 1024) {

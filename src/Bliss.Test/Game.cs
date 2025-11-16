@@ -1,5 +1,4 @@
 using System.Numerics;
-using System.Runtime.InteropServices;
 using Bliss.CSharp;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Effects;
@@ -182,8 +181,8 @@ public class Game : Disposable {
         this.FullScreenRenderer = new FullScreenRenderer(this.GraphicsDevice);
         this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), this.Settings.SampleCount);
         
-        this._fixedLightHandler = new FixedLightHandler();
-        this._fixedLightHandler.AddLight(new LightDefinition(LightType.Point, new Vector3(3, 3, 0)), out uint id);
+        this._fixedLightHandler = new FixedLightHandler(Color.Red.ToRgbaFloatVec4().AsVector3(), 0.1F);
+        this._fixedLightHandler.AddLight(new LightDefinition(LightType.Point, new Vector3(3, 3, -3), color: Color.LightBlue.ToRgbaFloatVec4().AsVector3(), intensity: 4, range: 7), out uint id);
         
         // Default model effect.
         this._lightingModelEffect = new Effect(this.GraphicsDevice, Vertex3D.VertexLayout, "content/shaders/lighting_model.vert", "content/shaders/lighting_model.frag");
@@ -217,6 +216,11 @@ public class Game : Disposable {
         }
         
         this._planeModel = Model.Load(this.GraphicsDevice, "content/plane.glb");
+
+        foreach (Mesh mesh in this._planeModel.Meshes) {
+            mesh.Material.Effect = this._lightingModelEffect;
+        }
+        
         this._treeModel = Model.Load(this.GraphicsDevice, "content/tree.glb", false);
 
         Texture2D treeTexture = new Texture2D(this.GraphicsDevice, "content/tree_texture.png");
@@ -313,6 +317,17 @@ public class Game : Disposable {
         this._cam3D.Begin();
         
         // ImmediateRenderer START
+
+        if (Input.IsKeyDown(KeyboardKey.L)) {
+            this._forwardRenderer.LightHandler!.GetLightById(1).Position += new Vector3(0, 0, 0.6F * (float) Time.Delta);
+        }
+        
+        if (Input.IsKeyPressed(KeyboardKey.K)) {
+            this._forwardRenderer.LightHandler!.GetLightById(1).Position = new Vector3(3, 3, -3);
+        }
+        
+        // Light test
+        this._immediateRenderer.DrawSphere(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = this._forwardRenderer.LightHandler!.GetLightById(1).Position}, 0.5F, 10, 10, Color.Blue);
         
         this._immediateRenderer.SetTexture(this._customMeshTexture);
         this._immediateRenderer.DrawCube(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(9, 0, 6) }, new Vector3(1, 1, 1));

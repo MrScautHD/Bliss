@@ -26,6 +26,7 @@ layout (location = 1) out vec2 fTexCoords2;
 layout (location = 2) out vec3 fNormal;
 layout (location = 3) out vec4 fTangent;
 layout (location = 4) out vec4 fColor;
+layout (location = 5) out vec3 fWorldPos;
 
 mat4x4 getBoneTransformation() {
     if (length(vBoneWeights) == 0.0F) {
@@ -47,7 +48,13 @@ void main() {
     fTangent = vTangent;
     fColor = vColor;
     
+    // bone transform.
     mat4x4 boneTransformation = getBoneTransformation();
     vec4 v4Pos = vec4(vPosition, 1.0F);
-    gl_Position = uProjection * uView * uTransformation * boneTransformation * v4Pos;
+    
+    // world transform.
+    vec4 worldPos = uTransformation * boneTransformation * v4Pos;
+    fWorldPos = worldPos.xyz;
+    
+    gl_Position = uProjection * uView * worldPos;
 }
