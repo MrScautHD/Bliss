@@ -10,12 +10,12 @@ struct MaterialMap {
 
 layout(std140, set = 2, binding = 0) uniform MaterialBuffer {
     int renderMode;
-    MaterialMap[MAX_MAPS_COUNT] maps;
+    MaterialMap maps[MAX_MAPS_COUNT];
 };
 
 struct Light {
     int type; // Type: (Direction = 0, Point = 1, Spot = 2).
-    int id; // The id to identify the light with.
+    uint id; // The id to identify the light with.
     float range; // Range.
     float spotAngle; // SpotAngle.
     vec4 position; // xyz: (Position), w: (Padding).
@@ -32,12 +32,9 @@ layout(std140, set = 3, binding = 0) uniform LightBuffer {
 layout (set = 4, binding = 0) uniform texture2D fAlbedo;
 layout (set = 4, binding = 1) uniform sampler fAlbedoSampler;
 
-layout (location = 0) in vec2 fTexCoords;
-layout (location = 1) in vec2 fTexCoords2;
+layout (location = 0) in vec3 fWorldPosition;
+layout (location = 1) in vec2 fTexCoords;
 layout (location = 2) in vec3 fNormal;
-layout (location = 3) in vec4 fTangent;
-layout (location = 4) in vec4 fColor;
-layout (location = 5) in vec3 fWorldPos;
 
 layout (location = 0) out vec4 fFragColor;
 
@@ -75,7 +72,7 @@ void main() {
         // We force point light behavior here, regardless of type
         float range = max(light.range, 0.001);
         
-        vec3 toLight = light.position.xyz - fWorldPos;
+        vec3 toLight = light.position.xyz - fWorldPosition;
         float distance = length(toLight);
         
         if (distance < range) {

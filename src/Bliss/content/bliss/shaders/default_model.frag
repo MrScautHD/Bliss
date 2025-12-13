@@ -9,17 +9,13 @@ struct MaterialMap {
 
 layout(std140, set = 2, binding = 0) uniform MaterialBuffer {
     int renderMode;
-    MaterialMap[MAX_MAPS_COUNT] maps;
+    MaterialMap maps[MAX_MAPS_COUNT];
 };
 
 layout (set = 3, binding = 0) uniform texture2D fAlbedo;
 layout (set = 3, binding = 1) uniform sampler fAlbedoSampler;
 
 layout (location = 0) in vec2 fTexCoords;
-layout (location = 1) in vec2 fTexCoords2;
-layout (location = 2) in vec3 fNormal;
-layout (location = 3) in vec4 fTangent;
-layout (location = 4) in vec4 fColor;
 
 layout (location = 0) out vec4 fFragColor;
 

@@ -12,6 +12,8 @@ public class ShadowMap : Disposable {
     
     public Framebuffer Framebuffer { get; private set; }
     
+    // TODO: Remove this and replace it with a RenderTexture2D ... maybe (take a look on the raylib tutorial but not only)
+    
     public ShadowMap(GraphicsDevice graphicsDevice, int resolution = 1024) {
         this.GraphicsDevice = graphicsDevice;
         this.Resolution = resolution;

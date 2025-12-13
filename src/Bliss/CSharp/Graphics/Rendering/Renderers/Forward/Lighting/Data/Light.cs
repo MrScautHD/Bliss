@@ -14,7 +14,7 @@ public struct Light {
     /// <summary>
     /// An internal identifier used to uniquely distinguish the light instance.
     /// </summary>
-    private int _id;
+    private uint _id;
     
     /// <summary>
     /// The effective range of the light.
@@ -52,7 +52,7 @@ public struct Light {
     /// <param name="intensity">The brightness or intensity of the light.</param>
     /// <param name="range">The range of the light (used for point and spot lights).</param>
     /// <param name="spotAngle">The angle of the spotlight cone in radians.</param>
-    public Light(LightType type, int id, Vector3 position = default, Vector3 direction = default, Vector3 color = default, float intensity = 1.0F, float range = 0.0F, float spotAngle = 0.0F) {
+    public Light(LightType type, uint id, Vector3 position = default, Vector3 direction = default, Vector3 color = default, float intensity = 1.0F, float range = 0.0F, float spotAngle = 0.0F) {
         this._lightType = (int) type;
         this._id = id;
         this._position = position.AsVector4();
@@ -73,7 +73,7 @@ public struct Light {
     /// <summary>
     /// Gets the unique identifier of the <see cref="Light"/> instance.
     /// </summary>
-    public int Id => this._id;
+    public uint Id => this._id;
     
     /// <summary>
     /// Gets or sets the position of the light in world space.
@@ -121,5 +121,26 @@ public struct Light {
     public float SpotAngle {
         get => this._spotAngle;
         set => this._spotAngle = value;
+    }
+
+    public Matrix4x4 GetProjection() {
+        switch (this.LightType) {
+            case LightType.Directional:
+                float size = this._range > 0.0F ? this._range : 100.0F;
+                return Matrix4x4.CreateOrthographic(size, size, 0.1F, size);
+            
+            case LightType.Spot:
+                return Matrix4x4.CreatePerspectiveFieldOfView(this._spotAngle, 1.0F, 1.0F, this._range);
+            
+            case LightType.Point:
+                return Matrix4x4.CreatePerspectiveFieldOfView(MathF.PI / 2.0F, 1.0F, 0.1F, this._range);
+        }
+        
+        return Matrix4x4.Identity;
+    }
+    
+    public Matrix4x4 GetView() {
+        Vector3 target = this.Position + this.Direction;
+        return Matrix4x4.CreateLookAt(this.Position, target, Vector3.UnitY);
     }
 }

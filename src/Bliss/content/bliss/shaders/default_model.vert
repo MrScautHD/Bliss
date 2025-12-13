@@ -22,10 +22,6 @@ layout (location = 6) in vec4 vTangent;
 layout (location = 7) in vec4 vColor;
 
 layout (location = 0) out vec2 fTexCoords;
-layout (location = 1) out vec2 fTexCoords2;
-layout (location = 2) out vec3 fNormal;
-layout (location = 3) out vec4 fTangent;
-layout (location = 4) out vec4 fColor;
 
 mat4x4 getBoneTransformation() {
     if (length(vBoneWeights) == 0.0F) {
@@ -42,11 +38,7 @@ mat4x4 getBoneTransformation() {
 
 void main() {
     fTexCoords = vTexCoords;
-    fTexCoords2 = vTexCoords2;
-    fNormal = vNormal;
-    fTangent = vTangent;
-    fColor = vColor;
-
+    
     mat4x4 boneTransformation = getBoneTransformation();
     vec4 v4Pos = vec4(vPosition, 1.0F);
     gl_Position = uProjection * uView * uTransformation * boneTransformation * v4Pos;

@@ -21,34 +21,21 @@ layout (location = 5) in vec3 vNormal;
 layout (location = 6) in vec4 vTangent;
 layout (location = 7) in vec4 vColor;
 
-layout (location = 0) out vec3 fWorldPosition;
-layout (location = 1) out vec2 fTexCoords;
-layout (location = 2) out vec3 fNormal;
-
 mat4x4 getBoneTransformation() {
     if (length(vBoneWeights) == 0.0F) {
         return mat4x4(1.0F);
     }
-
+    
     mat4x4 boneTransformation = uBonesTransformations[vBoneIndices.x] * vBoneWeights.x;
     boneTransformation += uBonesTransformations[vBoneIndices.y] * vBoneWeights.y;
     boneTransformation += uBonesTransformations[vBoneIndices.z] * vBoneWeights.z;
     boneTransformation += uBonesTransformations[vBoneIndices.w] * vBoneWeights.w;
-
+    
     return boneTransformation;
 }
 
 void main() {
-    fTexCoords = vTexCoords;
-    fNormal = vNormal;
-    
-    // bone transform.
     mat4x4 boneTransformation = getBoneTransformation();
     vec4 v4Pos = vec4(vPosition, 1.0F);
-
-    // world transform.
-    vec4 worldPos = uTransformation * boneTransformation * v4Pos;
-    fWorldPosition = worldPos.xyz;
-
-    gl_Position = uProjection * uView * worldPos;
+    gl_Position = uProjection * uView * uTransformation * boneTransformation * v4Pos;
 }

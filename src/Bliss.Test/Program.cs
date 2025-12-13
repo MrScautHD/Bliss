@@ -3,7 +3,7 @@ using Veldrid;
 
 GameSettings settings = new GameSettings() {
     Title = "Bliss - [Test]",
-    VSync = false,
+    VSync = false
 };
 
 using Game game = new Game(settings);

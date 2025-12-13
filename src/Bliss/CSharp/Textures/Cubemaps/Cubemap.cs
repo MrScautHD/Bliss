@@ -1,3 +1,4 @@
+using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Transformations;
@@ -15,7 +16,7 @@ public class Cubemap : Disposable {
     /// <summary>
     /// Gets the mipmap levels of images for each face of the cubemap.
     /// </summary>
-    public Image[][] Images { get; }
+    public Image[][] Images { get; private set; }
 
     /// <summary>
     /// Gets the width of the cubemap.
@@ -30,7 +31,7 @@ public class Cubemap : Disposable {
     /// <summary>
     /// Gets the pixel format of the cubemap.
     /// </summary>
-    public PixelFormat Format { get; }
+    public PixelFormat Format { get; private set; }
 
     /// <summary>
     /// Gets the size of a pixel in bytes.
@@ -55,7 +56,7 @@ public class Cubemap : Disposable {
     /// <summary>
     /// Caches resource sets for combinations of sampler objects and texture layouts.
     /// </summary>
-    private Dictionary<(Sampler, ResourceLayout), ResourceSet> _cachedResourceSets;
+    private Dictionary<(Sampler, SimpleTextureLayout), ResourceSet> _cachedResourceSets;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Cubemap"/> class by loading cubemap faces from a file path.
@@ -68,7 +69,7 @@ public class Cubemap : Disposable {
     public Cubemap(GraphicsDevice graphicsDevice, string path, CubemapLayout layout = CubemapLayout.AutoDetect, bool mipmap = true, bool srgb = false) : this(graphicsDevice, new Image(path), layout, mipmap, srgb) {
         Logger.Info($"Loading cubemap from path: [{path}]");
     }
-
+    
     /// <summary>
     /// Initializes a new instance of the <see cref="Cubemap"/> class by loading cubemap faces from a stream.
     /// </summary>
@@ -80,7 +81,7 @@ public class Cubemap : Disposable {
     public Cubemap(GraphicsDevice graphicsDevice, Stream stream, CubemapLayout layout = CubemapLayout.AutoDetect, bool mipmap = true, bool srgb = false) : this(graphicsDevice, new Image(stream), layout, mipmap, srgb) {
         Logger.Info($"Loading cubemap from stream: [{stream}]");
     }
-
+    
     /// <summary>
     /// Initializes a new instance of the <see cref="Cubemap"/> class by splitting a single image into cubemap faces.
     /// </summary>
@@ -101,23 +102,23 @@ public class Cubemap : Disposable {
     
         this.Format = srgb ? PixelFormat.R8G8B8A8UNormSRgb : PixelFormat.R8G8B8A8UNorm;
         this.CreateDeviceTexture();
-        this._cachedResourceSets = new Dictionary<(Sampler, ResourceLayout), ResourceSet>();
+        this._cachedResourceSets = new Dictionary<(Sampler, SimpleTextureLayout), ResourceSet>();
     }
-
+    
     /// <summary>
     /// Retrieves a resource set from the cache or creates a new one using a specified sampler and texture layout.
     /// </summary>
     /// <param name="sampler">The sampler object to be used for the resource set.</param>
     /// <param name="layout">The texture layout to be used for the resource set.</param>
     /// <returns>A <see cref="ResourceSet"/> object associated with the provided sampler and layout.</returns>
-    public ResourceSet GetResourceSet(Sampler sampler, ResourceLayout layout) {
+    public ResourceSet GetResourceSet(Sampler sampler, SimpleTextureLayout layout) {
         if (!this._cachedResourceSets.TryGetValue((sampler, layout), out ResourceSet? resourceSet)) {
-            ResourceSet newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(layout, this.TextureView, sampler));
-
+            ResourceSet newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(layout.Layout, this.TextureView, sampler));
+            
             this._cachedResourceSets.Add((sampler, layout), newResourceSet);
             return newResourceSet;
         }
-
+        
         return resourceSet;
     }
 

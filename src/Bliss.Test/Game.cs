@@ -14,6 +14,7 @@ using Bliss.CSharp.Graphics.Rendering.Renderers.Forward;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Interact;
@@ -49,6 +50,7 @@ public class Game : Disposable {
     
     public FullScreenRenderer FullScreenRenderer { get; private set; }
     public RenderTexture2D FullScreenTexture { get; private set; }
+    public Texture2D FullScreenResolvedTexture { get; private set; }
     
     private FixedLightHandler _fixedLightHandler;
     private Effect _lightingModelEffect;
@@ -179,10 +181,12 @@ public class Game : Disposable {
     
     protected virtual void Init() {
         this.FullScreenRenderer = new FullScreenRenderer(this.GraphicsDevice);
-        this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), this.Settings.SampleCount);
+        this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), false, this.Settings.SampleCount);
+        this.FullScreenResolvedTexture = new Texture2D(this.GraphicsDevice, new Image(this.MainWindow.GetWidth(), this.MainWindow.GetHeight()), false);
         
-        this._fixedLightHandler = new FixedLightHandler(Color.Red.ToRgbaFloatVec4().AsVector3(), 0.1F);
-        this._fixedLightHandler.AddLight(new LightDefinition(LightType.Point, new Vector3(3, 3, -3), color: Color.LightBlue.ToRgbaFloatVec4().AsVector3(), intensity: 4, range: 7), out uint id);
+        this._fixedLightHandler = new FixedLightHandler(GlobalResource.DefaultShadowMapEffect, Color.Red.ToRgbaFloatVec4().AsVector3());
+        this._fixedLightHandler.AddLight(new LightDefinition(LightType.Point, new Vector3(3, 3, -3), color: Color.LightBlue.ToRgbaFloatVec4().AsVector3(), intensity: 4, range: 7, direction: new Vector3(-3, 0, -3)), out uint id);
+        this._fixedLightHandler.SetShadowMapForLightId(id, new ShadowMap(this.GraphicsDevice));
         
         // Default model effect.
         this._lightingModelEffect = new Effect(this.GraphicsDevice, Vertex3D.VertexLayout, "content/shaders/lighting_model.vert", "content/shaders/lighting_model.frag");
@@ -191,7 +195,7 @@ public class Game : Disposable {
         this._lightingModelEffect.AddBufferLayout("MaterialBuffer", 2, SimpleBufferType.Uniform, ShaderStages.Fragment);
         this._lightingModelEffect.AddBufferLayout("LightBuffer", 3, SimpleBufferType.Uniform, ShaderStages.Fragment);
         this._lightingModelEffect.AddTextureLayout(MaterialMapType.Albedo.GetName(), 4);
-            
+        
         this._forwardRenderer = new ForwardRenderer<FixedLightData>(this.GraphicsDevice, this._fixedLightHandler);
         this._renderables = new List<Renderable>();
         
@@ -431,7 +435,7 @@ public class Game : Disposable {
             this._forwardRenderer.DrawRenderable(renderable);
         }
         
-        this._forwardRenderer.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._forwardRenderer.Draw(commandList, this.FullScreenTexture.Framebuffer);
         
         // DRAW FORWARD RENDERER (END)!
         
@@ -497,14 +501,18 @@ public class Game : Disposable {
         // Draw ScreenPass.
         commandList.Begin();
         
+        // Resolve texture.
         if (this.FullScreenTexture.SampleCount != TextureSampleCount.Count1) {
-            commandList.ResolveTexture(this.FullScreenTexture.ColorTexture, this.FullScreenTexture.DestinationTexture);
+            commandList.ResolveTexture(this.FullScreenTexture.ColorTexture, this.FullScreenResolvedTexture.DeviceTexture);
+        }
+        else {
+            commandList.CopyTexture(this.FullScreenTexture.ColorTexture, this.FullScreenResolvedTexture.DeviceTexture);
         }
         
         commandList.SetFramebuffer(graphicsDevice.SwapchainFramebuffer);
         commandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
         
-        this.FullScreenRenderer.Draw(commandList, this.FullScreenTexture, this.GraphicsDevice.SwapchainFramebuffer.OutputDescription);
+        this.FullScreenRenderer.Draw(commandList, this.FullScreenResolvedTexture, this.GraphicsDevice.SwapchainFramebuffer.OutputDescription);
         
         commandList.End();
         
@@ -513,11 +521,21 @@ public class Game : Disposable {
     }
     
     protected virtual void OnResize(Rectangle rectangle) {
+        
+        // Resize main swapchain.
         this.GraphicsDevice.MainSwapchain.Resize((uint) rectangle.Width, (uint) rectangle.Height);
+        
+        // Resize full screen texture.
         this.FullScreenTexture.Resize((uint) rectangle.Width, (uint) rectangle.Height);
+        
+        // Resize destination texture for MSAA.
+        this.FullScreenResolvedTexture.Dispose();
+        this.FullScreenResolvedTexture = new Texture2D(this.GraphicsDevice, new Image(rectangle.Width, rectangle.Height), false);
+        
+        // Resize cam.
         this._cam3D.Resize((uint) rectangle.Width, (uint) rectangle.Height);
     }
-
+    
     protected virtual void OnClose() { }
 
     public int GetTargetFps() {

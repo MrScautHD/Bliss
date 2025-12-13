@@ -1,5 +1,7 @@
 using System.Numerics;
+using Bliss.CSharp.Effects;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing;
 
 namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers;
 
@@ -14,6 +16,11 @@ public interface ILightHandler<T> : IDisposable where T : unmanaged {
     /// Gets the maximum number of lights supported by this handler.
     /// </summary>
     int LightCapacity { get; }
+    
+    /// <summary>
+    /// Gets the shadow effect associated with this light handler.
+    /// </summary>
+    Effect? ShadowEffect { get; }
     
     /// <summary>
     /// Gets the underlying unmanaged light data structure.
@@ -88,4 +95,26 @@ public interface ILightHandler<T> : IDisposable where T : unmanaged {
     /// Clears all lights stored within the container.
     /// </summary>
     void ClearLights();
+    
+    /// <summary>
+    /// The shadow map associated with the specified light ID.
+    /// </summary>
+    /// <param name="id">The unique identifier of the light.</param>
+    /// <returns>The <see cref="ShadowMap"/> associated with the given light ID, or null if no shadow map is assigned.</returns>
+    ShadowMap? GetShadowMapByLightId(uint id);
+    
+    /// <summary>
+    /// Associates a shadow map with the light specified by its unique identifier.
+    /// </summary>
+    /// <param name="id">The unique identifier of the light to associate the shadow map with.</param>
+    /// <param name="shadowMap">The shadow map to be set for the specified light. Can be null to remove an existing shadow map.</param>
+    void SetShadowMapForLightId(uint id, ShadowMap? shadowMap);
+    
+    /// <summary>
+    /// Attempts to assign a shadow map to a light specified by its unique identifier.
+    /// </summary>
+    /// <param name="id">The unique identifier of the light.</param>
+    /// <param name="shadowMap">The shadow map to assign, or null to remove the association.</param>
+    /// <returns>True if the shadow map was successfully assigned to the light; otherwise, false.</returns>
+    bool TrySetShadowMapForLightId(uint id, ShadowMap? shadowMap);
 }

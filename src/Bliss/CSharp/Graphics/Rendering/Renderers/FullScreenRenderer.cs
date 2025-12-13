@@ -43,19 +43,19 @@ public class FullScreenRenderer : Disposable {
             PrimitiveTopology = PrimitiveTopology.TriangleList
         };
     }
-
+    
     /// <summary>
     /// Executes the draw operation using the specified resources, rendering configurations, and GPU states.
     /// </summary>
     /// <param name="commandList">The command list for issuing draw commands to the graphics device.</param>
-    /// <param name="renderTexture">The render texture used as the input or output target for rendering operations.</param>
+    /// <param name="texture">The texture used as the input or output target for rendering operations.</param>
     /// <param name="output">The output description detailing the format and layout of render targets and depth-stencil buffers.</param>
     /// <param name="effect">An optional shader effect utilized for rendering. A default effect is applied if none is specified.</param>
     /// <param name="sampler">An optional sampler used for texture sampling in the rendering process. If not set, a default point sampler is used.</param>
     /// <param name="blendState">An optional blend state configuration for blending operations. Defaults to alpha blending if not provided.</param>
     /// <param name="depthStencilState">An optional depth-stencil state description to control depth and stencil testing. A disabled state is used by default.</param>
     /// <param name="rasterizerState">An optional rasterizer state description to configure rasterization settings. Defaults to a standard rasterizer configuration if not specified.</param>
-    public void Draw(CommandList commandList, RenderTexture2D renderTexture, OutputDescription output, Effect? effect = null, Sampler? sampler = null, BlendStateDescription? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null) {
+    public void Draw(CommandList commandList, Texture2D texture, OutputDescription output, Effect? effect = null, Sampler? sampler = null, BlendStateDescription? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null) {
         Effect finalEffect = effect ?? GlobalResource.DefaultFullScreenRenderPassEffect;
         Sampler finalSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointClamp);
         BlendStateDescription finalBlendState = blendState ?? BlendStateDescription.SINGLE_ALPHA_BLEND;
@@ -78,7 +78,7 @@ public class FullScreenRenderer : Disposable {
         commandList.SetPipeline(finalEffect.GetPipeline(this._pipelineDescription).Pipeline);
         
         // Set resourceSet of the texture.
-        commandList.SetGraphicsResourceSet(finalEffect.GetTextureLayoutSlot("fTexture"), renderTexture.GetResourceSet(finalSampler, finalEffect.GetTextureLayout("fTexture").Layout));
+        commandList.SetGraphicsResourceSet(finalEffect.GetTextureLayoutSlot("fTexture"), texture.GetResourceSet(finalSampler, finalEffect.GetTextureLayout("fTexture")));
         
         // Apply effect.
         finalEffect.Apply(commandList);

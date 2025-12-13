@@ -31,7 +31,7 @@ public class Texture2D : Disposable {
     /// <summary>
     /// Gets the pixel format of the texture.
     /// </summary>
-    public PixelFormat Format { get; }
+    public PixelFormat Format  { get; private set; }
 
     /// <summary>
     /// Gets the size of a pixel in bytes.
@@ -46,7 +46,7 @@ public class Texture2D : Disposable {
     /// <summary>
     /// Gets the device texture created from the images.
     /// </summary>
-    public Texture DeviceTexture { get; }
+    public Texture DeviceTexture  { get; private set; }
 
     /// <summary>
     /// A dictionary that caches resource sets associated with samplers, used to avoid redundant resource set creation.

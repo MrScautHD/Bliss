@@ -1,5 +1,7 @@
 using System.Numerics;
+using Bliss.CSharp.Effects;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing;
 
 namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers;
 
@@ -14,6 +16,11 @@ public class FixedLightHandler : Disposable, ILightHandler<FixedLightData> {
     /// Gets the maximum number of lights supported by this handler.
     /// </summary>
     public int LightCapacity => FixedLightData.MaxLightCount;
+    
+    /// <summary>
+    /// Gets the shadow effect associated with this light handler.
+    /// </summary>
+    public Effect? ShadowEffect { get; }
     
     /// <summary>
     /// Gets the underlying light data managed by this handler.
@@ -31,14 +38,23 @@ public class FixedLightHandler : Disposable, ILightHandler<FixedLightData> {
     private uint _lightIds;
     
     /// <summary>
+    /// A collection that maps light IDs to their corresponding shadow maps.
+    /// </summary>
+    private Dictionary<uint, ShadowMap> _shadowMaps;
+    
+    /// <summary>
     /// Initializes a new instance of the <see cref="FixedLightHandler"/> class.
     /// </summary>
+    /// <param name="shadowEffect">The effect used for rendering shadows for supported light types.</param>
     /// <param name="ambientColor">The global ambient color applied to the scene.</param>
     /// <param name="ambientColorIntensity">The intensity of the ambient color.</param>
-    public FixedLightHandler(Vector3 ambientColor = default, float ambientColorIntensity = 0.1F) {
+    public FixedLightHandler(Effect? shadowEffect, Vector3 ambientColor = default, float ambientColorIntensity = 0.1F) {
+        this.ShadowEffect = shadowEffect;
         this._lightData = new FixedLightData() {
             AmbientColor = new Vector4(ambientColor, ambientColorIntensity)
         };
+        
+        this._shadowMaps = new Dictionary<uint, ShadowMap>();
     }
     
     /// <summary>
@@ -62,7 +78,7 @@ public class FixedLightHandler : Disposable, ILightHandler<FixedLightData> {
     /// </summary>
     /// <returns>The number of lights currently stored.</returns>
     public int GetNumOfLights() {
-        return this.LightData.NumOfLights;
+        return this._lightData.NumOfLights;
     }
     
     /// <summary>
@@ -131,8 +147,8 @@ public class FixedLightHandler : Disposable, ILightHandler<FixedLightData> {
         }
         
         id = ++this._lightIds;
-        Light light = new Light(lightDef.LightType, (int) id, lightDef.Position, lightDef.Direction, lightDef.Color, lightDef.Intensity, lightDef.Range, lightDef.SpotAngle);
-            
+        Light light = new Light(lightDef.LightType, id, lightDef.Position, lightDef.Direction, lightDef.Color, lightDef.Intensity, lightDef.Range, lightDef.SpotAngle);
+        
         this._lightData.Lights[this._lightData.NumOfLights] = light;
         this._lightData.NumOfLights++;
         return true;
@@ -166,6 +182,10 @@ public class FixedLightHandler : Disposable, ILightHandler<FixedLightData> {
                 // Decrease the light count and clear the last light entry.
                 this._lightData.NumOfLights--;
                 this._lightData.Lights[this._lightData.NumOfLights] = default;
+                
+                // Remove the shadow map if there.
+                this._shadowMaps.Remove(id);
+                
                 return true;
             }
         }
@@ -177,8 +197,56 @@ public class FixedLightHandler : Disposable, ILightHandler<FixedLightData> {
     /// Removes all lights from this handler.
     /// </summary>
     public void ClearLights() {
+        
+        // Clear lights.
         this._lightData.NumOfLights = 0;
         this._lightData.Lights.AsSpan().Fill(default);
+        
+        // Clear shadow maps.
+        this._shadowMaps.Clear();
+    }
+    
+    /// <summary>
+    /// The shadow map associated with the specified light ID.
+    /// </summary>
+    /// <param name="id">The unique identifier of the light.</param>
+    /// <returns>The <see cref="ShadowMap"/> associated with the given light ID, or null if no shadow map is assigned.</returns>
+    public ShadowMap? GetShadowMapByLightId(uint id) {
+        return this._shadowMaps.GetValueOrDefault(id);
+    }
+    
+    /// <summary>
+    /// Associates a shadow map with the light specified by its unique identifier.
+    /// </summary>
+    /// <param name="id">The unique identifier of the light to associate the shadow map with.</param>
+    /// <param name="shadowMap">The shadow map to be set for the specified light. Can be null to remove an existing shadow map.</param>
+    public void SetShadowMapForLightId(uint id, ShadowMap? shadowMap) {
+        if (!this.TrySetShadowMapForLightId(id, shadowMap)) {
+            throw new KeyNotFoundException($"Cannot set shadow map: light with ID {id} not found.");
+        }
+    }
+    
+    /// <summary>
+    /// Attempts to assign a shadow map to a light specified by its unique identifier.
+    /// </summary>
+    /// <param name="id">The unique identifier of the light.</param>
+    /// <param name="shadowMap">The shadow map to assign, or null to remove the association.</param>
+    /// <returns>True if the shadow map was successfully assigned to the light; otherwise, false.</returns>
+    public bool TrySetShadowMapForLightId(uint id, ShadowMap? shadowMap) {
+        for (int i = 0; i < this._lightData.NumOfLights; i++) {
+            if (this._lightData.Lights[i].Id == id) {
+                if (shadowMap != null) {
+                    this._shadowMaps[id] = shadowMap;
+                }
+                else {
+                    this._shadowMaps.Remove(id);
+                }
+                
+                return true;
+            }
+        }
+        
+        return false;
     }
     
     protected override void Dispose(bool disposing) {
