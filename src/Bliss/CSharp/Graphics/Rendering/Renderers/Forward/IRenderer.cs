@@ -15,5 +15,5 @@ public interface IRenderer : IDisposable {
     /// </summary>
     /// <param name="commandList">The command list that records GPU draw commands.</param>
     /// <param name="output">The output description that defines the render target format and depth configuration.</param>
-    void Draw(CommandList commandList, Framebuffer output);
+    void Draw(CommandList commandList, OutputDescription output);
 }

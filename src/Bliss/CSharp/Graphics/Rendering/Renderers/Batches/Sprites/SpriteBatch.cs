@@ -272,11 +272,11 @@ public class SpriteBatch : Disposable {
         // Create index buffer.
         this._indices = new ushort[capacity * IndicesPerQuad];
         this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(capacity * IndicesPerQuad * sizeof(ushort), BufferUsage.IndexBuffer | BufferUsage.Dynamic));
-
+        
         for (int i = 0; i < capacity; i++) {
             long startIndex = i * IndicesPerQuad;
             long offset = i * VerticesPerQuad;
-
+            
             this._indices[startIndex + 0] = (ushort) (IndicesTemplate[0] + offset);
             this._indices[startIndex + 1] = (ushort) (IndicesTemplate[1] + offset);
             this._indices[startIndex + 2] = (ushort) (IndicesTemplate[2] + offset);

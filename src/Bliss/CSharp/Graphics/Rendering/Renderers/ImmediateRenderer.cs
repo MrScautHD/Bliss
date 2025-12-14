@@ -2006,6 +2006,19 @@ public class ImmediateRenderer : Disposable {
         this._pipelineDescription.PrimitiveTopology = topology;
         this._pipelineDescription.Outputs = output;
         
+        // Set pipeline.
+        commandList.SetPipeline(this._currentEffect.GetPipeline(this._pipelineDescription).Pipeline);
+        
+        // Set matrix buffer.
+        commandList.SetGraphicsResourceSet(this._currentEffect.GetBufferLayoutSlot("MatrixBuffer"), this._matrixBuffer.GetResourceSet(this._currentEffect.GetBufferLayout("MatrixBuffer")));
+        
+        // Set resourceSet of the texture.
+        commandList.SetGraphicsResourceSet(this._currentEffect.GetTextureLayoutSlot("fTexture"), this._currentTexture.GetResourceSet(this._currentSampler, this._currentEffect.GetTextureLayout("fTexture")));
+        
+        // Apply effect.
+        this._currentEffect.Apply(commandList);
+        
+        // Draw renderable and set vertex/index buffers.
         if (this._indexCount > 0) {
             
             // Update vertex and index buffer.
@@ -2015,18 +2028,6 @@ public class ImmediateRenderer : Disposable {
             // Set vertex and index buffer.
             commandList.SetVertexBuffer(0, this._vertexBuffer);
             commandList.SetIndexBuffer(this._indexBuffer, IndexFormat.UInt32);
-
-            // Set pipeline.
-            commandList.SetPipeline(this._currentEffect.GetPipeline(this._pipelineDescription).Pipeline);
-        
-            // Set matrix buffer.
-            commandList.SetGraphicsResourceSet(this._currentEffect.GetBufferLayoutSlot("MatrixBuffer"), this._matrixBuffer.GetResourceSet(this._currentEffect.GetBufferLayout("MatrixBuffer")));
-
-            // Set resourceSet of the texture.
-            commandList.SetGraphicsResourceSet(this._currentEffect.GetTextureLayoutSlot("fTexture"), this._currentTexture.GetResourceSet(this._currentSampler, this._currentEffect.GetTextureLayout("fTexture")));
-            
-            // Apply effect.
-            this._currentEffect.Apply(commandList);
             
             // Draw.
             commandList.DrawIndexed((uint) this._indexCount);
@@ -2038,18 +2039,6 @@ public class ImmediateRenderer : Disposable {
             
             // Set vertex buffer.
             commandList.SetVertexBuffer(0, this._vertexBuffer);
-
-            // Set pipeline.
-            commandList.SetPipeline(this._currentEffect.GetPipeline(this._pipelineDescription).Pipeline);
-        
-            // Set matrix buffer.
-            commandList.SetGraphicsResourceSet(this._currentEffect.GetBufferLayoutSlot("MatrixBuffer"), this._matrixBuffer.GetResourceSet(this._currentEffect.GetBufferLayout("MatrixBuffer")));
-        
-            // Set resourceSet of the texture.
-            commandList.SetGraphicsResourceSet(this._currentEffect.GetTextureLayoutSlot("fTexture"), this._currentTexture.GetResourceSet(this._currentSampler, this._currentEffect.GetTextureLayout("fTexture")));
-            
-            // Apply effect.
-            this._currentEffect.Apply(commandList);
             
             // Draw.
             commandList.Draw((uint) this._vertexCount);

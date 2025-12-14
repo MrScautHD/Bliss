@@ -57,11 +57,6 @@ public static class GlobalResource {
     public static Effect DefaultModelEffect { get; private set; }
 
     /// <summary>
-    /// The default <see cref="Effect"/> used for shadow maps.
-    /// </summary>
-    public static Effect DefaultShadowMapEffect { get; private set; }
-
-    /// <summary>
     /// The default <see cref="Texture2D"/> used for immediate mode rendering.
     /// </summary>
     public static Texture2D DefaultImmediateRendererTexture { get; private set; }
@@ -131,21 +126,12 @@ public static class GlobalResource {
         DefaultImmediateRendererEffect.AddTextureLayout("fTexture", 1);
         
         // Default model effect.
-        DefaultModelEffect = new Effect(graphicsDevice, Vertex3D.VertexLayout, "content/bliss/shaders/default_model.vert", "content/bliss/shaders/default_model.frag");
+        DefaultModelEffect = new Effect(graphicsDevice, [Vertex3D.VertexLayout, Vertex3D.InstanceMatrixLayout], "content/bliss/shaders/default_model.vert", "content/bliss/shaders/default_model.frag");
         DefaultModelEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
         DefaultModelEffect.AddBufferLayout("BoneBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex);
         DefaultModelEffect.AddBufferLayout("MaterialBuffer", 2, SimpleBufferType.Uniform, ShaderStages.Fragment);
         DefaultModelEffect.AddTextureLayout(MaterialMapType.Albedo.GetName(), 3);
-        
-        // Default shadow map effect.
-        DefaultShadowMapEffect = new Effect(graphicsDevice, Vertex3D.VertexLayout, "content/bliss/shaders/shadow_map.vert", "content/bliss/shaders/shadow_map.frag");
-        DefaultShadowMapEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
-        DefaultShadowMapEffect.AddBufferLayout("BoneBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex);
-        //DefaultShadowMapEffect.AddBufferLayout("MaterialBuffer", 2, SimpleBufferType.Uniform, ShaderStages.Fragment);
-        //DefaultShadowMapEffect.AddBufferLayout("ShadowBuffer", 3, SimpleBufferType.Uniform, ShaderStages.Fragment);
-        //DefaultShadowMapEffect.AddTextureLayout(MaterialMapType.Albedo.GetName(), 4);
-        //DefaultShadowMapEffect.AddTextureLayout("fShadowMap", 5);
-        
+
         // Default immediate renderer texture.
         DefaultImmediateRendererTexture = new Texture2D(graphicsDevice, new Image(1, 1, Color.White));
         
@@ -165,7 +151,6 @@ public static class GlobalResource {
         DefaultFullScreenRenderPassEffect.Dispose();
         DefaultImmediateRendererEffect.Dispose();
         DefaultModelEffect.Dispose();
-        DefaultShadowMapEffect.Dispose();
         DefaultImmediateRendererTexture.Dispose();
         DefaultModelTexture.Dispose();
     }

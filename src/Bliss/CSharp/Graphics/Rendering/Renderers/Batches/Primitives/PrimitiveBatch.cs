@@ -36,11 +36,6 @@ public class PrimitiveBatch : Disposable {
     public int DrawCallCount { get; private set; }
     
     /// <summary>
-    /// Buffer storing the combined projection and view matrix for rendering.
-    /// </summary>
-    private SimpleUniformBuffer<Matrix4x4> _projViewBuffer;
-    
-    /// <summary>
     /// Array of vertices used for rendering 2D primitives.
     /// </summary>
     private PrimitiveVertex2D[] _vertices;
@@ -54,7 +49,12 @@ public class PrimitiveBatch : Disposable {
     /// Buffer that stores vertex data for rendering.
     /// </summary>
     private DeviceBuffer _vertexBuffer;
-
+    
+    /// <summary>
+    /// Buffer storing the combined projection and view matrix for rendering.
+    /// </summary>
+    private SimpleUniformBuffer<Matrix4x4> _projViewBuffer;
+    
     /// <summary>
     /// Stores the description of the graphics pipeline, defining its configuration and behavior.
     /// </summary>

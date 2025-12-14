@@ -21,6 +21,12 @@ layout (location = 5) in vec3 vNormal;
 layout (location = 6) in vec4 vTangent;
 layout (location = 7) in vec4 vColor;
 
+// Per instance model transformation matrix. (Slot 1)
+layout (location = 8) in vec4 iModel0;
+layout (location = 9) in vec4 iModel1;
+layout (location = 10) in vec4 iModel2;
+layout (location = 11) in vec4 iModel3;
+
 layout (location = 0) out vec2 fTexCoords;
 
 mat4x4 getBoneTransformation() {
@@ -40,6 +46,8 @@ void main() {
     fTexCoords = vTexCoords;
     
     mat4x4 boneTransformation = getBoneTransformation();
+    mat4x4 iModel = mat4x4(iModel0, iModel1, iModel2, iModel3);
+    
     vec4 v4Pos = vec4(vPosition, 1.0F);
-    gl_Position = uProjection * uView * uTransformation * boneTransformation * v4Pos;
+    gl_Position = uProjection * uView * iModel * uTransformation * boneTransformation * v4Pos;
 }

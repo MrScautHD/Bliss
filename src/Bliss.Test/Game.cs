@@ -11,10 +11,6 @@ using Bliss.CSharp.Graphics.Rendering.Renderers;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Forward;
-using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting;
-using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data;
-using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers;
-using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Interact;
@@ -52,9 +48,7 @@ public class Game : Disposable {
     public RenderTexture2D FullScreenTexture { get; private set; }
     public Texture2D FullScreenResolvedTexture { get; private set; }
     
-    private FixedLightHandler _fixedLightHandler;
-    private Effect _lightingModelEffect;
-    private ForwardRenderer<FixedLightData> _forwardRenderer;
+    private BasicForwardRenderer _basicForwardRenderer;
     private List<Renderable> _renderables;
     
     private ImmediateRenderer _immediateRenderer;
@@ -184,19 +178,7 @@ public class Game : Disposable {
         this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), false, this.Settings.SampleCount);
         this.FullScreenResolvedTexture = new Texture2D(this.GraphicsDevice, new Image(this.MainWindow.GetWidth(), this.MainWindow.GetHeight()), false);
         
-        this._fixedLightHandler = new FixedLightHandler(GlobalResource.DefaultShadowMapEffect, Color.Red.ToRgbaFloatVec4().AsVector3());
-        this._fixedLightHandler.AddLight(new LightDefinition(LightType.Point, new Vector3(3, 3, -3), color: Color.LightBlue.ToRgbaFloatVec4().AsVector3(), intensity: 4, range: 7, direction: new Vector3(-3, 0, -3)), out uint id);
-        this._fixedLightHandler.SetShadowMapForLightId(id, new ShadowMap(this.GraphicsDevice));
-        
-        // Default model effect.
-        this._lightingModelEffect = new Effect(this.GraphicsDevice, Vertex3D.VertexLayout, "content/shaders/lighting_model.vert", "content/shaders/lighting_model.frag");
-        this._lightingModelEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
-        this._lightingModelEffect.AddBufferLayout("BoneBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex);
-        this._lightingModelEffect.AddBufferLayout("MaterialBuffer", 2, SimpleBufferType.Uniform, ShaderStages.Fragment);
-        this._lightingModelEffect.AddBufferLayout("LightBuffer", 3, SimpleBufferType.Uniform, ShaderStages.Fragment);
-        this._lightingModelEffect.AddTextureLayout(MaterialMapType.Albedo.GetName(), 4);
-        
-        this._forwardRenderer = new ForwardRenderer<FixedLightData>(this.GraphicsDevice, this._fixedLightHandler);
+        this._basicForwardRenderer = new BasicForwardRenderer(this.GraphicsDevice);
         this._renderables = new List<Renderable>();
         
         this._immediateRenderer = new ImmediateRenderer(this.GraphicsDevice);
@@ -214,17 +196,11 @@ public class Game : Disposable {
         this._playerBox = this._playerModel.GenBoundingBox();
         
         foreach (Mesh mesh in this._playerModel.Meshes) {
-            mesh.Material.Effect = this._lightingModelEffect;
             mesh.Material.RenderMode = RenderMode.Cutout;
             mesh.GenTangents();
         }
         
         this._planeModel = Model.Load(this.GraphicsDevice, "content/plane.glb");
-
-        foreach (Mesh mesh in this._planeModel.Meshes) {
-            mesh.Material.Effect = this._lightingModelEffect;
-        }
-        
         this._treeModel = Model.Load(this.GraphicsDevice, "content/tree.glb", false);
 
         Texture2D treeTexture = new Texture2D(this.GraphicsDevice, "content/tree_texture.png");
@@ -321,17 +297,6 @@ public class Game : Disposable {
         this._cam3D.Begin();
         
         // ImmediateRenderer START
-
-        if (Input.IsKeyDown(KeyboardKey.L)) {
-            this._forwardRenderer.LightHandler!.GetLightById(1).Position += new Vector3(0, 0, 0.6F * (float) Time.Delta);
-        }
-        
-        if (Input.IsKeyPressed(KeyboardKey.K)) {
-            this._forwardRenderer.LightHandler!.GetLightById(1).Position = new Vector3(3, 3, -3);
-        }
-        
-        // Light test
-        this._immediateRenderer.DrawSphere(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = this._forwardRenderer.LightHandler!.GetLightById(1).Position}, 0.5F, 10, 10, Color.Blue);
         
         this._immediateRenderer.SetTexture(this._customMeshTexture);
         this._immediateRenderer.DrawCube(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(9, 0, 6) }, new Vector3(1, 1, 1));
@@ -432,10 +397,10 @@ public class Game : Disposable {
         // DRAW FORWARD RENDERER (BEGIN)!
         // (Every renderable should be in his own (for example ModelRendererComponent, MeshRenderableComponent... (there are few concepts to handle this, bliss does not provide such a system!).
         foreach (Renderable renderable in this._renderables) {
-            this._forwardRenderer.DrawRenderable(renderable);
+            this._basicForwardRenderer.DrawRenderable(renderable);
         }
         
-        this._forwardRenderer.Draw(commandList, this.FullScreenTexture.Framebuffer);
+        this._basicForwardRenderer.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription);
         
         // DRAW FORWARD RENDERER (END)!
         
@@ -575,6 +540,18 @@ public class Game : Disposable {
         
         foreach (Mesh mesh in this._playerModel.Meshes) {
             this._renderables.Add(new Renderable(mesh, new Transform() { Translation = new Vector3(0, 0.05F, 0) }));
+        }
+        
+        foreach (Mesh mesh in this._playerModel.Meshes) {
+            List<Transform> transforms = new List<Transform>();
+            
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    transforms.Add(new Transform() { Translation = new Vector3(-40 + (i * 2), 0, 0 + (j * 2))} );
+                }
+            }
+            
+            this._renderables.Add(new Renderable(mesh, transforms.ToArray()));
         }
     }
     

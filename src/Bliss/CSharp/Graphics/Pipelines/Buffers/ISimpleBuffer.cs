@@ -12,7 +12,7 @@ public interface ISimpleBuffer : IDisposable {
     /// <summary>
     /// Gets the GPU device buffer associated with this simple buffer.
     /// </summary>
-    DeviceBuffer DeviceBuffer  { get; }
+    DeviceBuffer DeviceBuffer { get; }
     
     /// <summary>
     /// Retrieves a resource set for this buffer using the specified layout.

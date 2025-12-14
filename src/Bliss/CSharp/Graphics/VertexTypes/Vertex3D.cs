@@ -23,6 +23,18 @@ public struct Vertex3D {
     );
     
     /// <summary>
+    /// Represents the layout description for instance-level model matrix data used in rendering.
+    /// </summary>
+    public static VertexLayoutDescription InstanceMatrixLayout = new VertexLayoutDescription(
+        stride: 64,
+        instanceStepRate: 1,
+        new VertexElementDescription("iModel0", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float4),
+        new VertexElementDescription("iModel1", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float4),
+        new VertexElementDescription("iModel2", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float4),
+        new VertexElementDescription("iModel3", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float4)
+    );
+    
+    /// <summary>
     /// The position of the vertex in 3D space.
     /// </summary>
     public Vector3 Position;

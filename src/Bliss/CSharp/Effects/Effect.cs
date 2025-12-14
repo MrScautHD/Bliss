@@ -21,9 +21,9 @@ public class Effect : Disposable {
     public readonly (Shader VertShader, Shader FragShader) Shader;
 
     /// <summary>
-    /// Describes the layout of vertex data for a graphics pipeline.
+    /// Describes the layouts of vertex data for a graphics pipeline.
     /// </summary>
-    public readonly VertexLayoutDescription VertexLayout;
+    public readonly VertexLayoutDescription[] VertexLayouts;
 
     /// <summary>
     /// Represents a description of a shader set, including vertex layout details, shader information, and optional specialization constants.
@@ -46,24 +46,44 @@ public class Effect : Disposable {
     private Dictionary<SimplePipelineDescription, SimplePipeline> _cachedPipelines;
     
     /// <summary>
-    /// Initializes a new instance of the <see cref="Effect"/> class using shader file paths.
+    /// Initializes a new <see cref="Effect"/> using a single vertex layout and shader bytecode loaded from file paths.
     /// </summary>
-    /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used for rendering.</param>
-    /// <param name="vertexLayout">The <see cref="VertexLayoutDescription"/> defining the vertex structure.</param>
-    /// <param name="vertPath">The path to the vertex shader file.</param>
-    /// <param name="fragPath">The path to the fragment shader file.</param>
-    /// <param name="constants">Optional specialization constants for shader customization.</param>
-    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, string vertPath, string fragPath, SpecializationConstant[]? constants = null) : this(graphicsDevice, vertexLayout, LoadBytecode(vertPath), LoadBytecode(fragPath), constants) { }
+    /// <param name="graphicsDevice">The graphics device used to create shaders and related GPU resources.</param>
+    /// <param name="vertexLayout">The vertex layout describing the structure of vertex input data.</param>
+    /// <param name="vertPath">The file path to the compiled vertex shader bytecode.</param>
+    /// <param name="fragPath">The file path to the compiled fragment shader bytecode.</param>
+    /// <param name="constants">Optional specialization constants applied to the shaders.</param>
+    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, string vertPath, string fragPath, SpecializationConstant[]? constants = null) : this(graphicsDevice, [vertexLayout], LoadBytecode(vertPath), LoadBytecode(fragPath), constants) { }
     
     /// <summary>
-    /// Initializes a new instance of the <see cref="Effect"/> class using shader bytecode.
+    /// Initializes a new <see cref="Effect"/> using multiple vertex layouts and shader bytecode loaded from file paths.
     /// </summary>
-    /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used for rendering.</param>
-    /// <param name="vertexLayout">The <see cref="VertexLayoutDescription"/> defining the vertex structure.</param>
-    /// <param name="vertBytes">The compiled bytecode for the vertex shader.</param>
-    /// <param name="fragBytes">The compiled bytecode for the fragment shader.</param>
-    /// <param name="constants">Optional specialization constants for shader customization.</param>
-    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, byte[] vertBytes, byte[] fragBytes, SpecializationConstant[]? constants = null) { // TODO: Make better support for constants.
+    /// <param name="graphicsDevice">The graphics device used to create shaders and related GPU resources.</param>
+    /// <param name="vertexLayouts">The vertex layouts describing the structure of vertex input data.</param>
+    /// <param name="vertPath">The file path to the compiled vertex shader bytecode.</param>
+    /// <param name="fragPath">The file path to the compiled fragment shader bytecode.</param>
+    /// <param name="constants">Optional specialization constants applied to the shaders.</param>
+    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription[] vertexLayouts, string vertPath, string fragPath, SpecializationConstant[]? constants = null) : this(graphicsDevice, vertexLayouts, LoadBytecode(vertPath), LoadBytecode(fragPath), constants) { }
+    
+    /// <summary>
+    /// Initializes a new <see cref="Effect"/> using a single vertex layout and provided shader bytecode.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used to create shaders and related GPU resources.</param>
+    /// <param name="vertexLayout">The vertex layout describing the structure of vertex input data.</param>
+    /// <param name="vertBytes">The compiled vertex shader bytecode.</param>
+    /// <param name="fragBytes">The compiled fragment shader bytecode.</param>
+    /// <param name="constants">Optional specialization constants applied to the shaders.</param>
+    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, byte[] vertBytes, byte[] fragBytes, SpecializationConstant[]? constants = null) : this(graphicsDevice, [vertexLayout], vertBytes, fragBytes, constants) { }
+    
+    /// <summary>
+    /// Initializes a new <see cref="Effect"/> using multiple vertex layouts and provided shader bytecode.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used to create shaders, pipelines, and related GPU resources.</param>
+    /// <param name="vertexLayouts">The vertex layouts describing the structure of vertex input data.</param>
+    /// <param name="vertBytes">The compiled vertex shader bytecode.</param>
+    /// <param name="fragBytes">The compiled fragment shader bytecode.</param>
+    /// <param name="constants">Optional specialization constants applied to the shaders.</param>
+    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription[] vertexLayouts, byte[] vertBytes, byte[] fragBytes, SpecializationConstant[]? constants = null) { // TODO: Make better support for constants.
         this.GraphicsDevice = graphicsDevice;
         
         ShaderDescription vertDescription = new ShaderDescription(ShaderStages.Vertex, vertBytes, "main");
@@ -73,12 +93,10 @@ public class Effect : Disposable {
         
         this.Shader.VertShader = shaders[0];
         this.Shader.FragShader = shaders[1];
-        this.VertexLayout = vertexLayout;
+        this.VertexLayouts = vertexLayouts;
         
         this.ShaderSet = new ShaderSetDescription() {
-            VertexLayouts = [
-                this.VertexLayout
-            ],
+            VertexLayouts = this.VertexLayouts,
             Shaders = [
                 this.Shader.VertShader,
                 this.Shader.FragShader

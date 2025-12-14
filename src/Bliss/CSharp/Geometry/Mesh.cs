@@ -91,7 +91,7 @@ public class Mesh : Disposable {
         // Create vertex buffer.
         this.VertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
         graphicsDevice.UpdateBuffer(this.VertexBuffer, 0, this.Vertices);
-
+        
         // Create index buffer (if their indices).
         if (this.IndexCount > 0) {
             this.IndexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
