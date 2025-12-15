@@ -1,0 +1,6 @@
+<Solution>
+
+    <Project Path="src/Bliss/Bliss.csproj" />
+    <Project Path="src/Bliss.Test/Bliss.Test.csproj" />
+
+</Solution>
