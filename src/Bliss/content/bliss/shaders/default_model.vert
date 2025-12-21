@@ -48,7 +48,7 @@ void main() {
     
     mat4x4 boneTransformation = getBoneTransformation();
     mat4x4 iModel = mat4x4(1.0);
-
+    
     #if USE_INSTANCING
     iModel = mat4x4(iModel0, iModel1, iModel2, iModel3);
     #endif 

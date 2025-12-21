@@ -32,7 +32,6 @@ public class Model : Disposable {
                                                              PostProcessSteps.Triangulate |
                                                              PostProcessSteps.CalculateTangentSpace |
                                                              PostProcessSteps.GenerateSmoothNormals |
-                                                             PostProcessSteps.JoinIdenticalVertices |
                                                              PostProcessSteps.FindInvalidData |
                                                              PostProcessSteps.ImproveCacheLocality |
                                                              PostProcessSteps.FixInFacingNormals |
