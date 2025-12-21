@@ -11,6 +11,7 @@ using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
 using Bliss.CSharp.Textures;
 using Veldrid;
+using Veldrid.SPIRV;
 using AMesh = Assimp.Mesh;
 using ShaderMaterialProperties = Assimp.Material.ShaderMaterialProperties;
 using Material = Bliss.CSharp.Materials.Material;
@@ -373,7 +374,7 @@ public class Model : Disposable {
                 return cachedEffect;
             }
             
-            Effect effect = new Effect(graphicsDevice, Vertex3D.VertexLayout, Encoding.UTF8.GetBytes(shaderProperties.VertexShader), Encoding.UTF8.GetBytes(shaderProperties.FragmentShader));
+            Effect effect = new Effect(graphicsDevice, Vertex3D.VertexLayout, Encoding.UTF8.GetBytes(shaderProperties.VertexShader), Encoding.UTF8.GetBytes(shaderProperties.FragmentShader), new CrossCompileOptions());
             cachedEffects[effectKey] = effect;
             return effect;
         }

@@ -551,7 +551,10 @@ public class Game : Disposable {
                 }
             }
             
-            this._renderables.Add(new Renderable(mesh, transforms.ToArray()));
+            Material material = (Material) mesh.Material.Clone();
+            material.Effect = GlobalResource.ModelInstancingEffect;
+            
+            this._renderables.Add(new Renderable(mesh, transforms.ToArray(), material));
         }
     }
     

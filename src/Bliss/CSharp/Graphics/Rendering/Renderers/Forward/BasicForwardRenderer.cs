@@ -5,8 +5,10 @@ using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data;
+using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Materials;
 using Veldrid;
+using Veldrid.SPIRV;
 using Mesh = Bliss.CSharp.Geometry.Mesh;
 
 namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward;
@@ -174,13 +176,7 @@ public class BasicForwardRenderer : Disposable, IRenderer {
         this._materialDataBuffer.SetValueDeferred(commandList, 0, ref materialData);
         
         // Set renderable transform (And updating matrix buffer).
-        if (renderable.IsInstanced) {
-            this._matrixBuffer.SetValue(2, Matrix4x4.Identity);
-        }
-        else {
-            this._matrixBuffer.SetValue(2, renderable.Transforms[0].GetTransform());
-        }
-        
+        this._matrixBuffer.SetValue(2, renderable.IsInstanced ? Matrix4x4.Identity : renderable.Transforms[0].GetTransform());
         this._matrixBuffer.UpdateBufferDeferred(commandList);
         
         // Set the main pipeline parameters.
@@ -220,9 +216,6 @@ public class BasicForwardRenderer : Disposable, IRenderer {
         // Apply effect.
         renderable.Material.Effect.Apply(commandList, renderable.Material);
         
-        // Ensure the instance-matrix vertex buffer is large enough for this draw call
-        this.EnsureInstanceModelBufferCapacity(renderable.InstanceCount);
-        
         // Draw renderable and set vertex/index buffers.
         if (renderable.Mesh.IndexCount > 0) {
             
@@ -231,6 +224,9 @@ public class BasicForwardRenderer : Disposable, IRenderer {
             commandList.SetIndexBuffer(renderable.Mesh.IndexBuffer, IndexFormat.UInt32);
             
             if (renderable.IsInstanced) {
+                
+                // Ensure the instance-matrix vertex buffer is large enough for this draw call.
+                this.EnsureInstanceModelBufferCapacity(renderable.InstanceCount);
                 
                 // Set the temp instance transformations.
                 for (int i = 0; i < renderable.InstanceCount; i++) {
@@ -246,10 +242,6 @@ public class BasicForwardRenderer : Disposable, IRenderer {
             }
             else {
                 
-                // Set the instance buffer. (Set to Matrix4x4.Identity to avoid braking the shader)
-                commandList.UpdateBuffer(this._instanceVertexBuffer, 0, Matrix4x4.Identity);
-                commandList.SetVertexBuffer(1, this._instanceVertexBuffer);
-                
                 // Draw.
                 commandList.DrawIndexed(renderable.Mesh.IndexCount);
             }
@@ -260,6 +252,9 @@ public class BasicForwardRenderer : Disposable, IRenderer {
             commandList.SetVertexBuffer(0, renderable.Mesh.VertexBuffer);
             
             if (renderable.IsInstanced) {
+                
+                // Ensure the instance-matrix vertex buffer is large enough for this draw call.
+                this.EnsureInstanceModelBufferCapacity(renderable.InstanceCount);
                 
                 // Set the temp instance transformations.
                 for (int i = 0; i < renderable.InstanceCount; i++) {
@@ -274,10 +269,6 @@ public class BasicForwardRenderer : Disposable, IRenderer {
                 commandList.Draw(renderable.Mesh.VertexCount, renderable.InstanceCount, 0, 0);
             }
             else {
-                
-                // Set the instance buffer. (Set to Matrix4x4.Identity to avoid braking the shader)
-                commandList.UpdateBuffer(this._instanceVertexBuffer, 0, Matrix4x4.Identity);
-                commandList.SetVertexBuffer(1, this._instanceVertexBuffer);
                 
                 // Draw.
                 commandList.Draw(renderable.Mesh.VertexCount);

@@ -16,20 +16,30 @@ public class Effect : Disposable {
     public GraphicsDevice GraphicsDevice { get; private set; }
     
     /// <summary>
+    /// Specialization constants applied to the shaders when creating pipelines from this effect.
+    /// </summary>
+    public readonly SpecializationConstant[] Specializations;
+    
+    /// <summary>
+    /// Preprocessor macro definitions used when compiling shader source code.
+    /// </summary>
+    public readonly MacroDefinition[] Macros;
+    
+    /// <summary>
     /// Represents a pair of shaders consisting of a vertex shader and a fragment shader.
     /// </summary>
     public readonly (Shader VertShader, Shader FragShader) Shader;
-
+    
     /// <summary>
     /// Describes the layouts of vertex data for a graphics pipeline.
     /// </summary>
     public readonly VertexLayoutDescription[] VertexLayouts;
-
+    
     /// <summary>
     /// Represents a description of a shader set, including vertex layout details, shader information, and optional specialization constants.
     /// </summary>
     public readonly ShaderSetDescription ShaderSet;
-
+    
     /// <summary>
     /// A collection of buffer layout descriptions used to define buffer bindings.
     /// </summary>
@@ -52,8 +62,8 @@ public class Effect : Disposable {
     /// <param name="vertexLayout">The vertex layout describing the structure of vertex input data.</param>
     /// <param name="vertPath">The file path to the compiled vertex shader bytecode.</param>
     /// <param name="fragPath">The file path to the compiled fragment shader bytecode.</param>
-    /// <param name="constants">Optional specialization constants applied to the shaders.</param>
-    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, string vertPath, string fragPath, SpecializationConstant[]? constants = null) : this(graphicsDevice, [vertexLayout], LoadBytecode(vertPath), LoadBytecode(fragPath), constants) { }
+    /// <param name="compileOptions">Optional cross-compilation options used when creating the shaders.</param>
+    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, string vertPath, string fragPath, CrossCompileOptions compileOptions) : this(graphicsDevice, [vertexLayout], LoadBytecodeFromFile(vertPath), LoadBytecodeFromFile(fragPath), compileOptions) { }
     
     /// <summary>
     /// Initializes a new <see cref="Effect"/> using multiple vertex layouts and shader bytecode loaded from file paths.
@@ -62,8 +72,8 @@ public class Effect : Disposable {
     /// <param name="vertexLayouts">The vertex layouts describing the structure of vertex input data.</param>
     /// <param name="vertPath">The file path to the compiled vertex shader bytecode.</param>
     /// <param name="fragPath">The file path to the compiled fragment shader bytecode.</param>
-    /// <param name="constants">Optional specialization constants applied to the shaders.</param>
-    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription[] vertexLayouts, string vertPath, string fragPath, SpecializationConstant[]? constants = null) : this(graphicsDevice, vertexLayouts, LoadBytecode(vertPath), LoadBytecode(fragPath), constants) { }
+    /// <param name="compileOptions">Optional cross-compilation options used when creating the shaders.</param>
+    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription[] vertexLayouts, string vertPath, string fragPath, CrossCompileOptions compileOptions) : this(graphicsDevice, vertexLayouts, LoadBytecodeFromFile(vertPath), LoadBytecodeFromFile(fragPath), compileOptions) { }
     
     /// <summary>
     /// Initializes a new <see cref="Effect"/> using a single vertex layout and provided shader bytecode.
@@ -72,8 +82,8 @@ public class Effect : Disposable {
     /// <param name="vertexLayout">The vertex layout describing the structure of vertex input data.</param>
     /// <param name="vertBytes">The compiled vertex shader bytecode.</param>
     /// <param name="fragBytes">The compiled fragment shader bytecode.</param>
-    /// <param name="constants">Optional specialization constants applied to the shaders.</param>
-    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, byte[] vertBytes, byte[] fragBytes, SpecializationConstant[]? constants = null) : this(graphicsDevice, [vertexLayout], vertBytes, fragBytes, constants) { }
+    /// <param name="compileOptions">Optional cross-compilation options used when creating the shaders.</param>
+    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, byte[] vertBytes, byte[] fragBytes, CrossCompileOptions compileOptions) : this(graphicsDevice, [vertexLayout], vertBytes, fragBytes, compileOptions) { }
     
     /// <summary>
     /// Initializes a new <see cref="Effect"/> using multiple vertex layouts and provided shader bytecode.
@@ -82,14 +92,15 @@ public class Effect : Disposable {
     /// <param name="vertexLayouts">The vertex layouts describing the structure of vertex input data.</param>
     /// <param name="vertBytes">The compiled vertex shader bytecode.</param>
     /// <param name="fragBytes">The compiled fragment shader bytecode.</param>
-    /// <param name="constants">Optional specialization constants applied to the shaders.</param>
-    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription[] vertexLayouts, byte[] vertBytes, byte[] fragBytes, SpecializationConstant[]? constants = null) { // TODO: Make better support for constants.
+    /// <param name="compileOptions">Optional cross-compilation options used when creating the shaders.</param>
+    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription[] vertexLayouts, byte[] vertBytes, byte[] fragBytes, CrossCompileOptions compileOptions) {
         this.GraphicsDevice = graphicsDevice;
+        this.Specializations = compileOptions.Specializations ?? [];
         
         ShaderDescription vertDescription = new ShaderDescription(ShaderStages.Vertex, vertBytes, "main");
         ShaderDescription fragDescription = new ShaderDescription(ShaderStages.Fragment, fragBytes, "main");
         
-        Shader[] shaders = graphicsDevice.ResourceFactory.CreateFromSpirv(vertDescription, fragDescription);
+        Shader[] shaders = graphicsDevice.ResourceFactory.CreateFromSpirv(vertDescription, fragDescription, compileOptions);
         
         this.Shader.VertShader = shaders[0];
         this.Shader.FragShader = shaders[1];
@@ -100,21 +111,91 @@ public class Effect : Disposable {
             Shaders = [
                 this.Shader.VertShader,
                 this.Shader.FragShader
-            ],
-            Specializations = constants ?? []
+            ]
         };
         
         this._bufferLayouts = new Dictionary<uint, SimpleBufferLayout>();
         this._textureLayouts = new Dictionary<uint, SimpleTextureLayout>();
         this._cachedPipelines = new Dictionary<SimplePipelineDescription, SimplePipeline>();
     }
-
+    
+    /// <summary>
+    /// Creates a new <see cref="Effect"/> by compiling GLSL shader source code into SPIR-V.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used to create GPU resources.</param>
+    /// <param name="vertexLayout">The vertex layout describing the structure of vertex input data.</param>
+    /// <param name="vertText">The GLSL source code for the vertex shader.</param>
+    /// <param name="fragText">The GLSL source code for the fragment shader.</param>
+    /// <param name="compileOptions">Optional cross-compilation and specialization options.</param>
+    /// <param name="macros">Optional macro definitions injected during shader compilation.</param>
+    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, string vertText, string fragText, CrossCompileOptions compileOptions, MacroDefinition[] macros) : this(graphicsDevice, [vertexLayout], vertText, fragText, compileOptions, macros) { }
+    
+    /// <summary>
+    /// Creates a new <see cref="Effect"/> by compiling GLSL shader source code into SPIR-V.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used to create GPU resources.</param>
+    /// <param name="vertexLayouts">The vertex layouts describing the structure of vertex input data.</param>
+    /// <param name="vertText">The GLSL source code for the vertex shader.</param>
+    /// <param name="fragText">The GLSL source code for the fragment shader.</param>
+    /// <param name="compileOptions">Optional cross-compilation and specialization options.</param>
+    /// <param name="macros">Optional macro definitions injected during shader compilation.</param>
+    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription[] vertexLayouts, string vertText, string fragText, CrossCompileOptions compileOptions, MacroDefinition[] macros) {
+        this.GraphicsDevice = graphicsDevice;
+        this.Specializations = compileOptions.Specializations ?? [];
+        this.Macros = macros;
+        
+        GlslCompileOptions glslOptions = new GlslCompileOptions(false, macros);
+        SpirvCompilationResult vertResult = SpirvCompilation.CompileGlslToSpirv(vertText, nameof(ShaderStages.Vertex), ShaderStages.Vertex, glslOptions);
+        SpirvCompilationResult fragResult = SpirvCompilation.CompileGlslToSpirv(fragText, nameof(ShaderStages.Fragment), ShaderStages.Fragment, glslOptions);
+        
+        ShaderDescription vertDescription = new ShaderDescription(ShaderStages.Vertex, vertResult.SpirvBytes, "main");
+        ShaderDescription fragDescription = new ShaderDescription(ShaderStages.Fragment, fragResult.SpirvBytes, "main");
+        
+        Shader[] shaders = graphicsDevice.ResourceFactory.CreateFromSpirv(vertDescription, fragDescription, compileOptions);
+        
+        this.Shader.VertShader = shaders[0];
+        this.Shader.FragShader = shaders[1];
+        this.VertexLayouts = vertexLayouts;
+        
+        this.ShaderSet = new ShaderSetDescription() {
+            VertexLayouts = this.VertexLayouts,
+            Shaders = [
+                this.Shader.VertShader,
+                this.Shader.FragShader
+            ]
+        };
+        
+        this._bufferLayouts = new Dictionary<uint, SimpleBufferLayout>();
+        this._textureLayouts = new Dictionary<uint, SimpleTextureLayout>();
+        this._cachedPipelines = new Dictionary<SimplePipelineDescription, SimplePipeline>();
+    }
+    
     /// <summary>
     /// Loads the bytecode from the specified shader file path.
     /// </summary>
     /// <param name="path">The file path to the shader source code.</param>
     /// <returns>A byte array containing the bytecode from the shader file.</returns>
-    public static byte[] LoadBytecode(string path) {
+    /// <exception cref="Exception">Thrown if the file does not exist or the file type is not supported.</exception>
+    public static byte[] LoadBytecodeFromFile(string path) {
+        if (!File.Exists(path)) {
+            throw new Exception($"No shader file found in path: [{path}]");
+        }
+
+        if (Path.GetExtension(path) != ".vert" && Path.GetExtension(path) != ".frag") {
+            throw new Exception($"This shader type is not supported: [{Path.GetExtension(path)}]");
+        }
+        
+        Logger.Info($"Shader bytes loaded successfully from path: [{path}]");
+        return File.ReadAllBytes(path);
+    }
+    
+    /// <summary>
+    /// Loads shader source text from a file at the specified path.
+    /// </summary>
+    /// <param name="path">The file path to the shader source file. Must have a supported extension (.vert or .frag).</param>
+    /// <returns>The contents of the shader source file as a string.</returns>
+    /// <exception cref="Exception">Thrown if the file does not exist or the file type is not supported.</exception>
+    public static string LoadTextCodeFromFile(string path) {
         if (!File.Exists(path)) {
             throw new Exception($"No shader file found in path: [{path}]");
         }
@@ -124,7 +205,7 @@ public class Effect : Disposable {
         }
         
         Logger.Info($"Shader bytes loaded successfully from path: [{path}]");
-        return File.ReadAllBytes(path);
+        return File.ReadAllText(path);
     }
     
     /// <summary>
