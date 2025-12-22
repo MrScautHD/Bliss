@@ -18,12 +18,12 @@ public class Effect : Disposable {
     /// <summary>
     /// Specialization constants applied to the shaders when creating pipelines from this effect.
     /// </summary>
-    public readonly SpecializationConstant[] Specializations;
+    public IReadOnlyList<SpecializationConstant> Specializations { get; private set; }
     
     /// <summary>
     /// Preprocessor macro definitions used when compiling shader source code.
     /// </summary>
-    public readonly MacroDefinition[] Macros;
+    public IReadOnlyList<MacroDefinition> Macros { get; private set; }
     
     /// <summary>
     /// Represents a pair of shaders consisting of a vertex shader and a fragment shader.
@@ -96,6 +96,7 @@ public class Effect : Disposable {
     public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription[] vertexLayouts, byte[] vertBytes, byte[] fragBytes, CrossCompileOptions compileOptions) {
         this.GraphicsDevice = graphicsDevice;
         this.Specializations = compileOptions.Specializations ?? [];
+        this.Macros = [];
         
         ShaderDescription vertDescription = new ShaderDescription(ShaderStages.Vertex, vertBytes, "main");
         ShaderDescription fragDescription = new ShaderDescription(ShaderStages.Fragment, fragBytes, "main");

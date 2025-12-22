@@ -26,7 +26,7 @@ layout (location = 8) in vec4 iModel0;
 layout (location = 9) in vec4 iModel1;
 layout (location = 10) in vec4 iModel2;
 layout (location = 11) in vec4 iModel3;
-#endif 
+#endif
 
 layout (location = 0) out vec2 fTexCoords;
 
@@ -51,7 +51,7 @@ void main() {
     
     #if USE_INSTANCING
     iModel = mat4x4(iModel0, iModel1, iModel2, iModel3);
-    #endif 
+    #endif
     
     vec4 v4Pos = vec4(vPosition, 1.0F);
     gl_Position = uProjection * uView * iModel * uTransformation * boneTransformation * v4Pos;
