@@ -5,10 +5,8 @@ using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data;
-using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Materials;
 using Veldrid;
-using Veldrid.SPIRV;
 using Mesh = Bliss.CSharp.Geometry.Mesh;
 
 namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward;
@@ -64,8 +62,6 @@ public class BasicForwardRenderer : Disposable, IRenderer {
     /// Description of the pipeline used for rendering.
     /// </summary>
     private SimplePipelineDescription _pipelineDescription;
-    
-    // TODO: Add MultiThread system.
     
     public BasicForwardRenderer(GraphicsDevice graphicsDevice) {
         this.GraphicsDevice = graphicsDevice;
