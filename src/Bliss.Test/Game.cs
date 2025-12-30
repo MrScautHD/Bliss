@@ -580,6 +580,8 @@ public class Game : Disposable {
             this._playerModel.Dispose();
             this._planeModel.Dispose();
             this._treeModel.Dispose();
+            this._font.Dispose();
+            this._spriteBatch.Dispose();
             
             AudioContext.Deinitialize();
             GlobalResource.Destroy();

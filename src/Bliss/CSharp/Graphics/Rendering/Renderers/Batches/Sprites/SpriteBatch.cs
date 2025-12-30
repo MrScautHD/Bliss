@@ -89,7 +89,7 @@ public class SpriteBatch : Disposable {
 
     /// <summary>
     /// A buffer used to store and update the projection-view matrix for the shader.
-    /// It is an instance of <see cref="SimpleBuffer{Matrix4x4}"/> and is used in the rendering process to transform sprite coordinates for rendering on the screen.
+    /// It is an instance of <see cref="SimpleUniformBuffer{Matrix4x4}"/> and is used in the rendering process to transform sprite coordinates for rendering on the screen.
     /// </summary>
     private SimpleUniformBuffer<Matrix4x4> _projViewBuffer;
 
@@ -894,7 +894,6 @@ public class SpriteBatch : Disposable {
     
     protected override void Dispose(bool disposing) {
         if (disposing) {
-            this.FontStashRenderer.Dispose();
             this._vertexBuffer.Dispose();
             this._indexBuffer.Dispose();
             this._projViewBuffer.Dispose();

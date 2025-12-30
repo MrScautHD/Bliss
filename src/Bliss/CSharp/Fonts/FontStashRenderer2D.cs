@@ -10,7 +10,7 @@ using Color = Bliss.CSharp.Colors.Color;
 
 namespace Bliss.CSharp.Fonts;
 
-public class FontStashRenderer2D : Disposable, IFontStashRenderer {
+public class FontStashRenderer2D : IFontStashRenderer {
     
     /// <summary>
     /// The graphics device used for rendering.
@@ -54,11 +54,5 @@ public class FontStashRenderer2D : Disposable, IFontStashRenderer {
         Color color = new Color(fsColor.R, fsColor.G, fsColor.B, fsColor.A);
         
         this.SpriteBatch.DrawTexture(texture2D, position, depth, source, scale, Vector2.Zero, float.RadiansToDegrees(rotation), color);
-    }
-    
-    protected override void Dispose(bool disposing) {
-        if (disposing) {
-            ((FontStashTextureManager) this.TextureManager).Dispose();
-        }
     }
 }

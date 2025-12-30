@@ -8,17 +8,12 @@ using SRectangle = System.Drawing.Rectangle;
 
 namespace Bliss.CSharp.Fonts;
 
-public class FontStashTextureManager : Disposable, ITexture2DManager {
+public class FontStashTextureManager : ITexture2DManager {
     
     /// <summary>
     /// The graphics device used to create and manage textures.
     /// </summary>
     public GraphicsDevice GraphicsDevice { get; private set; }
-    
-    /// <summary>
-    /// A reference to the currently managed 2D texture.
-    /// </summary>
-    private Texture2D? _texture;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="FontStashTextureManager"/> class.
@@ -35,7 +30,7 @@ public class FontStashTextureManager : Disposable, ITexture2DManager {
     /// <param name="height">The height of the texture.</param>
     /// <returns>A new texture object.</returns>
     public object CreateTexture(int width, int height) {
-        return this._texture = new Texture2D(this.GraphicsDevice, new Image(width, height));
+        return new Texture2D(this.GraphicsDevice, new Image(width, height));
     }
     
     /// <summary>
@@ -57,11 +52,5 @@ public class FontStashTextureManager : Disposable, ITexture2DManager {
     public void SetTextureData(object texture, SRectangle bounds, byte[] data) {
         Texture2D texture2D = (Texture2D) texture;
         texture2D.SetData(data, new Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height));
-    }
-
-    protected override void Dispose(bool disposing) {
-        if (disposing) {
-            this._texture?.Dispose();
-        }
     }
 }
