@@ -385,7 +385,7 @@ Class SimpleUniformBuffer&lt;T&gt;  <a class="header-action link-secondary" titl
 
   <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleUniformBuffer_1_Dispose_System_Boolean_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.Dispose(System.Boolean)">
   Dispose(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleUniformBuffer.cs/#L150"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleUniformBuffer.cs/#L211"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Disposes of the object and releases associated resources.</p>
@@ -643,7 +643,7 @@ Class SimpleUniformBuffer&lt;T&gt;  <a class="header-action link-secondary" titl
 
   <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleUniformBuffer_1_UpdateBufferDeferred_Veldrid_CommandList_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferDeferred(Veldrid.CommandList)">
   UpdateBufferDeferred(CommandList)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleUniformBuffer.cs/#L146"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleUniformBuffer.cs/#L207"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Updates the entire GPU buffer using a deferred command list.</p>
@@ -676,7 +676,7 @@ Class SimpleUniformBuffer&lt;T&gt;  <a class="header-action link-secondary" titl
 
   <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleUniformBuffer_1_UpdateBufferImmediate" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferImmediate">
   UpdateBufferImmediate()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleUniformBuffer.cs/#L138"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleUniformBuffer.cs/#L199"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Updates the entire GPU buffer immediately with the current CPU data.</p>
@@ -696,6 +696,111 @@ Class SimpleUniformBuffer&lt;T&gt;  <a class="header-action link-secondary" titl
 
 
 
+
+
+
+  <a id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleUniformBuffer_1_UpdateBufferSliceDeferred_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceDeferred*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleUniformBuffer_1_UpdateBufferSliceDeferred_Veldrid_CommandList_System_Int32_System_Int32_System_Int32_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceDeferred(Veldrid.CommandList,System.Int32,System.Int32,System.Int32)">
+  UpdateBufferSliceDeferred(CommandList, int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleUniformBuffer.cs/#L175"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates a portion of the GPU buffer using a deferred command list with a slice of the local CPU data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateBufferSliceDeferred(CommandList commandList, int destinationOffsetIndex, int sourceStartIndex, int sourceLength)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/CommandList.cs">CommandList</a></dt>
+    <dd><p>The command list used to defer the buffer update.</p>
+</dd>
+    <dt><code>destinationOffsetIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index in the destination buffer where the update begins, measured in elements.</p>
+</dd>
+    <dt><code>sourceStartIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The starting index in the local data array to copy from.</p>
+</dd>
+    <dt><code>sourceLength</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of elements to copy from the local data array.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>Thrown if <code class="paramref">sourceStartIndex</code> is outside the bounds of the local data array.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>Thrown if <code class="paramref">sourceLength</code> is negative or extends beyond the end of the local data array.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>Thrown if the update range exceeds the size of the GPU buffer.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleUniformBuffer_1_UpdateBufferSliceImmediate_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceImmediate*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleUniformBuffer_1_UpdateBufferSliceImmediate_System_Int32_System_Int32_System_Int32_" data-uid="Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceImmediate(System.Int32,System.Int32,System.Int32)">
+  UpdateBufferSliceImmediate(int, int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleUniformBuffer.cs/#L144"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates a portion of the GPU buffer immediately with a slice of the local CPU data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateBufferSliceImmediate(int destinationOffsetIndex, int sourceStartIndex, int sourceLength)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>destinationOffsetIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index in the destination buffer where the update begins, measured in elements.</p>
+</dd>
+    <dt><code>sourceStartIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The starting index in the local data array to copy from.</p>
+</dd>
+    <dt><code>sourceLength</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of elements to copy from the local data array.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>Thrown if <code class="paramref">sourceStartIndex</code> is outside the bounds of the local data array.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>Thrown if <code class="paramref">sourceLength</code> is negative or extends beyond the end of the local data array.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>Thrown if the update range exceeds the size of the GPU buffer.</p>
+</dd>
+  </dl>
 
 
 

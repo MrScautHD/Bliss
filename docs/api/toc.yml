@@ -210,63 +210,14 @@ items:
   name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
   type: Namespace
   items:
-  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
-    name: ForwardRenderer<T>
+  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer
+    name: BasicForwardRenderer
     type: Class
   - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer
     name: IRenderer
     type: Interface
   - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
     name: Renderable
-    type: Class
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
-  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting
-  type: Namespace
-  items:
-  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightDefinition
-    name: LightDefinition
-    type: Struct
-  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.LightType
-    name: LightType
-    type: Enum
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data
-  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data
-  type: Namespace
-  items:
-  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.DynamicLightData
-    name: DynamicLightData
-    type: Struct
-  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData
-    name: FixedLightData
-    type: Struct
-  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.FixedLightData.LightArray
-    name: FixedLightData.LightArray
-    type: Struct
-  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.Light
-    name: Light
-    type: Struct
-  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Data.NoLightData
-    name: NoLightData
-    type: Struct
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers
-  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers
-  type: Namespace
-  items:
-  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.DynamicLightHandler
-    name: DynamicLightHandler
-    type: Class
-  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.FixedLightHandler
-    name: FixedLightHandler
-    type: Class
-  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.ILightHandler`1
-    name: ILightHandler<T>
-    type: Interface
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing
-  name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing
-  type: Namespace
-  items:
-  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing.ShadowMap
-    name: ShadowMap
     type: Class
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
   name: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data
@@ -402,16 +353,6 @@ items:
   items:
   - uid: Bliss.CSharp.Mathematics.BlissMath
     name: BlissMath
-    type: Class
-- uid: Bliss.CSharp.Media
-  name: Bliss.CSharp.Media
-  type: Namespace
-  items:
-  - uid: Bliss.CSharp.Media.VideoClip
-    name: VideoClip
-    type: Class
-  - uid: Bliss.CSharp.Media.VideoPlayer
-    name: VideoPlayer
     type: Class
 - uid: Bliss.CSharp.Textures
   name: Bliss.CSharp.Textures

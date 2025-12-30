@@ -27,7 +27,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Model
     path: ../src/Bliss/CSharp/Geometry/Model.cs
-    startLine: 22
+    startLine: 23
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Geometry

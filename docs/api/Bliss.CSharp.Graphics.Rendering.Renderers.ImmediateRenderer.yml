@@ -1701,7 +1701,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Graphics/Rendering/Renderers/ImmediateRenderer.cs
-    startLine: 2070
+    startLine: 2059
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Rendering.Renderers

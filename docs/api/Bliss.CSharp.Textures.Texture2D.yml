@@ -212,7 +212,7 @@ items:
     parameters: []
     return:
       type: Veldrid.PixelFormat
-    content.vb: Public ReadOnly Property Format As PixelFormat
+    content.vb: Public Property Format As PixelFormat
   overload: Bliss.CSharp.Textures.Texture2D.Format*
 - uid: Bliss.CSharp.Textures.Texture2D.PixelSizeInBytes
   commentId: P:Bliss.CSharp.Textures.Texture2D.PixelSizeInBytes
@@ -305,7 +305,7 @@ items:
     parameters: []
     return:
       type: Veldrid.Texture
-    content.vb: Public ReadOnly Property DeviceTexture As Texture
+    content.vb: Public Property DeviceTexture As Texture
   overload: Bliss.CSharp.Textures.Texture2D.DeviceTexture*
 - uid: Bliss.CSharp.Textures.Texture2D.#ctor(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean)
   commentId: M:Bliss.CSharp.Textures.Texture2D.#ctor(Veldrid.GraphicsDevice,System.String,System.Boolean,System.Boolean)

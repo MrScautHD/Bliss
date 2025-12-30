@@ -1,5 +1,4 @@
-﻿
-<p align="center" style="margin-bottom: 0px !important;">
+﻿<p align="center" style="margin-bottom: 0px !important;">
   <img width="512" src="https://github.com/user-attachments/assets/cb8a5929-3f79-4a68-ab2c-36b395148c06" alt="Logo" align="center">
 </p>
 
@@ -31,6 +30,9 @@ dotnet add package Bliss --version [VERSION]
 > 2. Add `Bliss.csproj` as a reference to your project.
 ---
 
+# ⭐ Getting Started
+> Explore our [Documentation](https://mrscauthd.github.io/Bliss/) to kick off smoothly.
+
 📚 Libraries - [Nuget](https://www.nuget.org/packages)
 ======================================================
 - [`ppy.Veldrid`](https://www.nuget.org/packages/ppy.Veldrid)
@@ -39,21 +41,20 @@ dotnet add package Bliss --version [VERSION]
 - [`StbImageSharp`](https://www.nuget.org/packages/StbImageSharp/)
 - [`StbImageWriteSharp`](https://www.nuget.org/packages/StbImageWriteSharp/)
 - [`AssimpNetter`](https://www.nuget.org/packages/AssimpNetter)
-- [`FontStashSharp`](https://www.nuget.org/packages/FontStashSharp.Base)
+- [`FontStashSharp.PlatformAgnostic`](https://www.nuget.org/packages/FontStashSharp.PlatformAgnostic)
 - [`MiniAudioEx`](https://www.nuget.org/packages/JAJ.Packages.MiniAudioEx)
 
-# 💻 Platforms
-[<img src="https://github.com/MrScautHD/Sparkle/assets/65916181/e37eb15f-4237-47ae-9ae7-e4455f7c3d92" alt="macOS" width="70" height="70" align="left">](https://www.apple.com/at/macos/sonoma/)
-### Windows
-	- Graphics APIs: Direct3D11, Vulkan, OpenGL, OpenGL-ES
+# 💻 Supported Platforms
 
-[<img src="https://github.com/MrScautHD/Sparkle/assets/65916181/f9e643a8-4d46-450c-91ac-d220394ecd42" alt="Linux" width="70" height="70" align="left">](https://www.ubuntu.com/)
-### Linux
-	- Graphics APIs: Vulkan, OpenGL, OpenGL-ES
+|      | DX11  | Vulkan | OpenGL | OpenGL-ES | Metal |
+| :--- | :---: | :----: | :----: | :-------: | :---: |
+| [<img src="https://github.com/user-attachments/assets/f8b66880-9037-4ba8-acc4-6ea390e1dde9" alt="Windows" width="54" height="54" align="center">](https://www.microsoft.com/de-at/windows)  Windows   | ✔️ | ✔️ | ✔️ | ✔️ | ❌ |
+| [<img src="https://github.com/user-attachments/assets/814ce8c3-5242-47f4-a51b-b185680d38ff" alt="Linux" width="54" height="54" align="center">](https://www.ubuntu.com/)                    Linux     | ⚠️ | ✔️ | ✔️ | ✔️ | ❌ |
+| [<img src="https://github.com/user-attachments/assets/99605868-0590-42ce-a72a-f6feb1cabf6e" alt="MacOS" width="54" height="54" align="center">](https://www.apple.com/at/macos/)            MacOS     | ❌ | ⚠️ | ✔️ | ❌ | ✔️ |
+| [<img src="https://github.com/user-attachments/assets/8ec16850-3a1e-42e1-b35e-cf3d3ea32d46" alt="Android" width="54" height="54" align="center">](https://www.android.com/)                 Android   | - | - | - | - | - |
+| [<img src="https://github.com/user-attachments/assets/a0f33f2f-bd7c-4049-a207-85d3a67bef78" alt="IOS" width="54" height="54" align="center">](https://www.apple.com/at/ios/)                IOS       | - | - | - | - | - |
 
-[<img src="https://github.com/MrScautHD/Sparkle/assets/65916181/e37eb15f-4237-47ae-9ae7-e4455f7c3d92" alt="macOS" width="70" height="70" align="left">](https://www.apple.com/at/macos/sonoma/)
-### MacOS
-	- Graphics APIs: Metal, OpenGL, OpenGL-ES
+⚠️ - Requires a translation layer like [DXVK](https://github.com/doitsujin/dxvk) or [MoltenVK](https://github.com/KhronosGroup/MoltenVK).
 
 # 🧑 Contributors
 <a href="https://github.com/mrscauthd/Bliss/graphs/contributors">

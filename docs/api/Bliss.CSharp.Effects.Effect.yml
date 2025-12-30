@@ -5,8 +5,12 @@ items:
   id: Effect
   parent: Bliss.CSharp.Effects
   children:
-  - Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.Byte[],System.Byte[],Veldrid.SpecializationConstant[])
-  - Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String,Veldrid.SpecializationConstant[])
+  - Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.Byte[],System.Byte[],Veldrid.SPIRV.CrossCompileOptions)
+  - Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String,Veldrid.SPIRV.CrossCompileOptions)
+  - Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String,Veldrid.SPIRV.CrossCompileOptions,Veldrid.SPIRV.MacroDefinition[])
+  - Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription[],System.Byte[],System.Byte[],Veldrid.SPIRV.CrossCompileOptions)
+  - Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription[],System.String,System.String,Veldrid.SPIRV.CrossCompileOptions)
+  - Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription[],System.String,System.String,Veldrid.SPIRV.CrossCompileOptions,Veldrid.SPIRV.MacroDefinition[])
   - Bliss.CSharp.Effects.Effect.AddBufferLayout(System.String,System.UInt32,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferType,Veldrid.ShaderStages)
   - Bliss.CSharp.Effects.Effect.AddTextureLayout(System.String,System.UInt32)
   - Bliss.CSharp.Effects.Effect.Apply(Veldrid.CommandList,Bliss.CSharp.Materials.Material)
@@ -19,10 +23,13 @@ items:
   - Bliss.CSharp.Effects.Effect.GetTextureLayoutSlot(System.String)
   - Bliss.CSharp.Effects.Effect.GetTextureLayouts
   - Bliss.CSharp.Effects.Effect.GraphicsDevice
-  - Bliss.CSharp.Effects.Effect.LoadBytecode(System.String)
+  - Bliss.CSharp.Effects.Effect.LoadBytecodeFromFile(System.String)
+  - Bliss.CSharp.Effects.Effect.LoadTextCodeFromFile(System.String)
+  - Bliss.CSharp.Effects.Effect.Macros
   - Bliss.CSharp.Effects.Effect.Shader
   - Bliss.CSharp.Effects.Effect.ShaderSet
-  - Bliss.CSharp.Effects.Effect.VertexLayout
+  - Bliss.CSharp.Effects.Effect.Specializations
+  - Bliss.CSharp.Effects.Effect.VertexLayouts
   langs:
   - csharp
   - vb
@@ -91,6 +98,68 @@ items:
       type: Veldrid.GraphicsDevice
     content.vb: Public Property GraphicsDevice As GraphicsDevice
   overload: Bliss.CSharp.Effects.Effect.GraphicsDevice*
+- uid: Bliss.CSharp.Effects.Effect.Specializations
+  commentId: P:Bliss.CSharp.Effects.Effect.Specializations
+  id: Specializations
+  parent: Bliss.CSharp.Effects.Effect
+  langs:
+  - csharp
+  - vb
+  name: Specializations
+  nameWithType: Effect.Specializations
+  fullName: Bliss.CSharp.Effects.Effect.Specializations
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Effects/Effect.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Specializations
+    path: ../src/Bliss/CSharp/Effects/Effect.cs
+    startLine: 20
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Effects
+  summary: Specialization constants applied to the shaders when creating pipelines from this effect.
+  example: []
+  syntax:
+    content: public IReadOnlyList<SpecializationConstant> Specializations { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{Veldrid.SpecializationConstant}
+    content.vb: Public Property Specializations As IReadOnlyList(Of SpecializationConstant)
+  overload: Bliss.CSharp.Effects.Effect.Specializations*
+- uid: Bliss.CSharp.Effects.Effect.Macros
+  commentId: P:Bliss.CSharp.Effects.Effect.Macros
+  id: Macros
+  parent: Bliss.CSharp.Effects.Effect
+  langs:
+  - csharp
+  - vb
+  name: Macros
+  nameWithType: Effect.Macros
+  fullName: Bliss.CSharp.Effects.Effect.Macros
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Effects/Effect.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Macros
+    path: ../src/Bliss/CSharp/Effects/Effect.cs
+    startLine: 25
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Effects
+  summary: Preprocessor macro definitions used when compiling shader source code.
+  example: []
+  syntax:
+    content: public IReadOnlyList<MacroDefinition> Macros { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{Veldrid.SPIRV.MacroDefinition}
+    content.vb: Public Property Macros As IReadOnlyList(Of MacroDefinition)
+  overload: Bliss.CSharp.Effects.Effect.Macros*
 - uid: Bliss.CSharp.Effects.Effect.Shader
   commentId: F:Bliss.CSharp.Effects.Effect.Shader
   id: Shader
@@ -109,7 +178,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Shader
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 20
+    startLine: 30
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -120,35 +189,35 @@ items:
     return:
       type: System.ValueTuple{Veldrid.Shader,Veldrid.Shader}
     content.vb: Public ReadOnly Shader As (VertShader As Shader, FragShader As Shader)
-- uid: Bliss.CSharp.Effects.Effect.VertexLayout
-  commentId: F:Bliss.CSharp.Effects.Effect.VertexLayout
-  id: VertexLayout
+- uid: Bliss.CSharp.Effects.Effect.VertexLayouts
+  commentId: F:Bliss.CSharp.Effects.Effect.VertexLayouts
+  id: VertexLayouts
   parent: Bliss.CSharp.Effects.Effect
   langs:
   - csharp
   - vb
-  name: VertexLayout
-  nameWithType: Effect.VertexLayout
-  fullName: Bliss.CSharp.Effects.Effect.VertexLayout
+  name: VertexLayouts
+  nameWithType: Effect.VertexLayouts
+  fullName: Bliss.CSharp.Effects.Effect.VertexLayouts
   type: Field
   source:
     remote:
       path: src/Bliss/CSharp/Effects/Effect.cs
       branch: main
       repo: https://github.com/MrScautHD/Bliss.git
-    id: VertexLayout
+    id: VertexLayouts
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 25
+    startLine: 35
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
-  summary: Describes the layout of vertex data for a graphics pipeline.
+  summary: Describes the layouts of vertex data for a graphics pipeline.
   example: []
   syntax:
-    content: public readonly VertexLayoutDescription VertexLayout
+    content: public readonly VertexLayoutDescription[] VertexLayouts
     return:
-      type: Veldrid.VertexLayoutDescription
-    content.vb: Public ReadOnly VertexLayout As VertexLayoutDescription
+      type: Veldrid.VertexLayoutDescription[]
+    content.vb: Public ReadOnly VertexLayouts As VertexLayoutDescription()
 - uid: Bliss.CSharp.Effects.Effect.ShaderSet
   commentId: F:Bliss.CSharp.Effects.Effect.ShaderSet
   id: ShaderSet
@@ -167,7 +236,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ShaderSet
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 30
+    startLine: 40
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -178,63 +247,16 @@ items:
     return:
       type: Veldrid.ShaderSetDescription
     content.vb: Public ReadOnly ShaderSet As ShaderSetDescription
-- uid: Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String,Veldrid.SpecializationConstant[])
-  commentId: M:Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String,Veldrid.SpecializationConstant[])
-  id: '#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String,Veldrid.SpecializationConstant[])'
+- uid: Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String,Veldrid.SPIRV.CrossCompileOptions)
+  commentId: M:Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String,Veldrid.SPIRV.CrossCompileOptions)
+  id: '#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String,Veldrid.SPIRV.CrossCompileOptions)'
   parent: Bliss.CSharp.Effects.Effect
   langs:
   - csharp
   - vb
-  name: Effect(GraphicsDevice, VertexLayoutDescription, string, string, SpecializationConstant[]?)
-  nameWithType: Effect.Effect(GraphicsDevice, VertexLayoutDescription, string, string, SpecializationConstant[]?)
-  fullName: Bliss.CSharp.Effects.Effect.Effect(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, string, string, Veldrid.SpecializationConstant[]?)
-  type: Constructor
-  source:
-    remote:
-      path: src/Bliss/CSharp/Effects/Effect.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: .ctor
-    path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 55
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Effects
-  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Effects.Effect" data-throw-if-not-resolved="false"></xref> class using shader file paths.
-  example: []
-  syntax:
-    content: public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, string vertPath, string fragPath, SpecializationConstant[]? constants = null)
-    parameters:
-    - id: graphicsDevice
-      type: Veldrid.GraphicsDevice
-      description: The <xref href="Bliss.CSharp.Effects.Effect.GraphicsDevice" data-throw-if-not-resolved="false"></xref> used for rendering.
-    - id: vertexLayout
-      type: Veldrid.VertexLayoutDescription
-      description: The <xref href="Veldrid.VertexLayoutDescription" data-throw-if-not-resolved="false"></xref> defining the vertex structure.
-    - id: vertPath
-      type: System.String
-      description: The path to the vertex shader file.
-    - id: fragPath
-      type: System.String
-      description: The path to the fragment shader file.
-    - id: constants
-      type: Veldrid.SpecializationConstant[]
-      description: Optional specialization constants for shader customization.
-    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, vertexLayout As VertexLayoutDescription, vertPath As String, fragPath As String, constants As SpecializationConstant() = Nothing)
-  overload: Bliss.CSharp.Effects.Effect.#ctor*
-  nameWithType.vb: Effect.New(GraphicsDevice, VertexLayoutDescription, String, String, SpecializationConstant())
-  fullName.vb: Bliss.CSharp.Effects.Effect.New(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, String, String, Veldrid.SpecializationConstant())
-  name.vb: New(GraphicsDevice, VertexLayoutDescription, String, String, SpecializationConstant())
-- uid: Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.Byte[],System.Byte[],Veldrid.SpecializationConstant[])
-  commentId: M:Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.Byte[],System.Byte[],Veldrid.SpecializationConstant[])
-  id: '#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.Byte[],System.Byte[],Veldrid.SpecializationConstant[])'
-  parent: Bliss.CSharp.Effects.Effect
-  langs:
-  - csharp
-  - vb
-  name: Effect(GraphicsDevice, VertexLayoutDescription, byte[], byte[], SpecializationConstant[]?)
-  nameWithType: Effect.Effect(GraphicsDevice, VertexLayoutDescription, byte[], byte[], SpecializationConstant[]?)
-  fullName: Bliss.CSharp.Effects.Effect.Effect(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, byte[], byte[], Veldrid.SpecializationConstant[]?)
+  name: Effect(GraphicsDevice, VertexLayoutDescription, string, string, CrossCompileOptions)
+  nameWithType: Effect.Effect(GraphicsDevice, VertexLayoutDescription, string, string, CrossCompileOptions)
+  fullName: Bliss.CSharp.Effects.Effect.Effect(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, string, string, Veldrid.SPIRV.CrossCompileOptions)
   type: Constructor
   source:
     remote:
@@ -247,57 +269,298 @@ items:
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
-  summary: Initializes a new instance of the <xref href="Bliss.CSharp.Effects.Effect" data-throw-if-not-resolved="false"></xref> class using shader bytecode.
+  summary: Initializes a new <xref href="Bliss.CSharp.Effects.Effect" data-throw-if-not-resolved="false"></xref> using a single vertex layout and shader bytecode loaded from file paths.
   example: []
   syntax:
-    content: public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, byte[] vertBytes, byte[] fragBytes, SpecializationConstant[]? constants = null)
+    content: public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, string vertPath, string fragPath, CrossCompileOptions compileOptions)
     parameters:
     - id: graphicsDevice
       type: Veldrid.GraphicsDevice
-      description: The <xref href="Bliss.CSharp.Effects.Effect.GraphicsDevice" data-throw-if-not-resolved="false"></xref> used for rendering.
+      description: The graphics device used to create shaders and related GPU resources.
     - id: vertexLayout
       type: Veldrid.VertexLayoutDescription
-      description: The <xref href="Veldrid.VertexLayoutDescription" data-throw-if-not-resolved="false"></xref> defining the vertex structure.
-    - id: vertBytes
-      type: System.Byte[]
-      description: The compiled bytecode for the vertex shader.
-    - id: fragBytes
-      type: System.Byte[]
-      description: The compiled bytecode for the fragment shader.
-    - id: constants
-      type: Veldrid.SpecializationConstant[]
-      description: Optional specialization constants for shader customization.
-    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, vertexLayout As VertexLayoutDescription, vertBytes As Byte(), fragBytes As Byte(), constants As SpecializationConstant() = Nothing)
+      description: The vertex layout describing the structure of vertex input data.
+    - id: vertPath
+      type: System.String
+      description: The file path to the compiled vertex shader bytecode.
+    - id: fragPath
+      type: System.String
+      description: The file path to the compiled fragment shader bytecode.
+    - id: compileOptions
+      type: Veldrid.SPIRV.CrossCompileOptions
+      description: Optional cross-compilation options used when creating the shaders.
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, vertexLayout As VertexLayoutDescription, vertPath As String, fragPath As String, compileOptions As CrossCompileOptions)
   overload: Bliss.CSharp.Effects.Effect.#ctor*
-  nameWithType.vb: Effect.New(GraphicsDevice, VertexLayoutDescription, Byte(), Byte(), SpecializationConstant())
-  fullName.vb: Bliss.CSharp.Effects.Effect.New(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, Byte(), Byte(), Veldrid.SpecializationConstant())
-  name.vb: New(GraphicsDevice, VertexLayoutDescription, Byte(), Byte(), SpecializationConstant())
-- uid: Bliss.CSharp.Effects.Effect.LoadBytecode(System.String)
-  commentId: M:Bliss.CSharp.Effects.Effect.LoadBytecode(System.String)
-  id: LoadBytecode(System.String)
+  nameWithType.vb: Effect.New(GraphicsDevice, VertexLayoutDescription, String, String, CrossCompileOptions)
+  fullName.vb: Bliss.CSharp.Effects.Effect.New(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, String, String, Veldrid.SPIRV.CrossCompileOptions)
+  name.vb: New(GraphicsDevice, VertexLayoutDescription, String, String, CrossCompileOptions)
+- uid: Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription[],System.String,System.String,Veldrid.SPIRV.CrossCompileOptions)
+  commentId: M:Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription[],System.String,System.String,Veldrid.SPIRV.CrossCompileOptions)
+  id: '#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription[],System.String,System.String,Veldrid.SPIRV.CrossCompileOptions)'
   parent: Bliss.CSharp.Effects.Effect
   langs:
   - csharp
   - vb
-  name: LoadBytecode(string)
-  nameWithType: Effect.LoadBytecode(string)
-  fullName: Bliss.CSharp.Effects.Effect.LoadBytecode(string)
+  name: Effect(GraphicsDevice, VertexLayoutDescription[], string, string, CrossCompileOptions)
+  nameWithType: Effect.Effect(GraphicsDevice, VertexLayoutDescription[], string, string, CrossCompileOptions)
+  fullName: Bliss.CSharp.Effects.Effect.Effect(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription[], string, string, Veldrid.SPIRV.CrossCompileOptions)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Effects/Effect.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Effects/Effect.cs
+    startLine: 75
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Effects
+  summary: Initializes a new <xref href="Bliss.CSharp.Effects.Effect" data-throw-if-not-resolved="false"></xref> using multiple vertex layouts and shader bytecode loaded from file paths.
+  example: []
+  syntax:
+    content: public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription[] vertexLayouts, string vertPath, string fragPath, CrossCompileOptions compileOptions)
+    parameters:
+    - id: graphicsDevice
+      type: Veldrid.GraphicsDevice
+      description: The graphics device used to create shaders and related GPU resources.
+    - id: vertexLayouts
+      type: Veldrid.VertexLayoutDescription[]
+      description: The vertex layouts describing the structure of vertex input data.
+    - id: vertPath
+      type: System.String
+      description: The file path to the compiled vertex shader bytecode.
+    - id: fragPath
+      type: System.String
+      description: The file path to the compiled fragment shader bytecode.
+    - id: compileOptions
+      type: Veldrid.SPIRV.CrossCompileOptions
+      description: Optional cross-compilation options used when creating the shaders.
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, vertexLayouts As VertexLayoutDescription(), vertPath As String, fragPath As String, compileOptions As CrossCompileOptions)
+  overload: Bliss.CSharp.Effects.Effect.#ctor*
+  nameWithType.vb: Effect.New(GraphicsDevice, VertexLayoutDescription(), String, String, CrossCompileOptions)
+  fullName.vb: Bliss.CSharp.Effects.Effect.New(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription(), String, String, Veldrid.SPIRV.CrossCompileOptions)
+  name.vb: New(GraphicsDevice, VertexLayoutDescription(), String, String, CrossCompileOptions)
+- uid: Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.Byte[],System.Byte[],Veldrid.SPIRV.CrossCompileOptions)
+  commentId: M:Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.Byte[],System.Byte[],Veldrid.SPIRV.CrossCompileOptions)
+  id: '#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.Byte[],System.Byte[],Veldrid.SPIRV.CrossCompileOptions)'
+  parent: Bliss.CSharp.Effects.Effect
+  langs:
+  - csharp
+  - vb
+  name: Effect(GraphicsDevice, VertexLayoutDescription, byte[], byte[], CrossCompileOptions)
+  nameWithType: Effect.Effect(GraphicsDevice, VertexLayoutDescription, byte[], byte[], CrossCompileOptions)
+  fullName: Bliss.CSharp.Effects.Effect.Effect(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, byte[], byte[], Veldrid.SPIRV.CrossCompileOptions)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Effects/Effect.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Effects/Effect.cs
+    startLine: 85
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Effects
+  summary: Initializes a new <xref href="Bliss.CSharp.Effects.Effect" data-throw-if-not-resolved="false"></xref> using a single vertex layout and provided shader bytecode.
+  example: []
+  syntax:
+    content: public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, byte[] vertBytes, byte[] fragBytes, CrossCompileOptions compileOptions)
+    parameters:
+    - id: graphicsDevice
+      type: Veldrid.GraphicsDevice
+      description: The graphics device used to create shaders and related GPU resources.
+    - id: vertexLayout
+      type: Veldrid.VertexLayoutDescription
+      description: The vertex layout describing the structure of vertex input data.
+    - id: vertBytes
+      type: System.Byte[]
+      description: The compiled vertex shader bytecode.
+    - id: fragBytes
+      type: System.Byte[]
+      description: The compiled fragment shader bytecode.
+    - id: compileOptions
+      type: Veldrid.SPIRV.CrossCompileOptions
+      description: Optional cross-compilation options used when creating the shaders.
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, vertexLayout As VertexLayoutDescription, vertBytes As Byte(), fragBytes As Byte(), compileOptions As CrossCompileOptions)
+  overload: Bliss.CSharp.Effects.Effect.#ctor*
+  nameWithType.vb: Effect.New(GraphicsDevice, VertexLayoutDescription, Byte(), Byte(), CrossCompileOptions)
+  fullName.vb: Bliss.CSharp.Effects.Effect.New(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, Byte(), Byte(), Veldrid.SPIRV.CrossCompileOptions)
+  name.vb: New(GraphicsDevice, VertexLayoutDescription, Byte(), Byte(), CrossCompileOptions)
+- uid: Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription[],System.Byte[],System.Byte[],Veldrid.SPIRV.CrossCompileOptions)
+  commentId: M:Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription[],System.Byte[],System.Byte[],Veldrid.SPIRV.CrossCompileOptions)
+  id: '#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription[],System.Byte[],System.Byte[],Veldrid.SPIRV.CrossCompileOptions)'
+  parent: Bliss.CSharp.Effects.Effect
+  langs:
+  - csharp
+  - vb
+  name: Effect(GraphicsDevice, VertexLayoutDescription[], byte[], byte[], CrossCompileOptions)
+  nameWithType: Effect.Effect(GraphicsDevice, VertexLayoutDescription[], byte[], byte[], CrossCompileOptions)
+  fullName: Bliss.CSharp.Effects.Effect.Effect(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription[], byte[], byte[], Veldrid.SPIRV.CrossCompileOptions)
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Effects/Effect.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Effects/Effect.cs
+    startLine: 95
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Effects
+  summary: Initializes a new <xref href="Bliss.CSharp.Effects.Effect" data-throw-if-not-resolved="false"></xref> using multiple vertex layouts and provided shader bytecode.
+  example: []
+  syntax:
+    content: public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription[] vertexLayouts, byte[] vertBytes, byte[] fragBytes, CrossCompileOptions compileOptions)
+    parameters:
+    - id: graphicsDevice
+      type: Veldrid.GraphicsDevice
+      description: The graphics device used to create shaders, pipelines, and related GPU resources.
+    - id: vertexLayouts
+      type: Veldrid.VertexLayoutDescription[]
+      description: The vertex layouts describing the structure of vertex input data.
+    - id: vertBytes
+      type: System.Byte[]
+      description: The compiled vertex shader bytecode.
+    - id: fragBytes
+      type: System.Byte[]
+      description: The compiled fragment shader bytecode.
+    - id: compileOptions
+      type: Veldrid.SPIRV.CrossCompileOptions
+      description: Optional cross-compilation options used when creating the shaders.
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, vertexLayouts As VertexLayoutDescription(), vertBytes As Byte(), fragBytes As Byte(), compileOptions As CrossCompileOptions)
+  overload: Bliss.CSharp.Effects.Effect.#ctor*
+  nameWithType.vb: Effect.New(GraphicsDevice, VertexLayoutDescription(), Byte(), Byte(), CrossCompileOptions)
+  fullName.vb: Bliss.CSharp.Effects.Effect.New(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription(), Byte(), Byte(), Veldrid.SPIRV.CrossCompileOptions)
+  name.vb: New(GraphicsDevice, VertexLayoutDescription(), Byte(), Byte(), CrossCompileOptions)
+- uid: Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String,Veldrid.SPIRV.CrossCompileOptions,Veldrid.SPIRV.MacroDefinition[])
+  commentId: M:Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String,Veldrid.SPIRV.CrossCompileOptions,Veldrid.SPIRV.MacroDefinition[])
+  id: '#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String,Veldrid.SPIRV.CrossCompileOptions,Veldrid.SPIRV.MacroDefinition[])'
+  parent: Bliss.CSharp.Effects.Effect
+  langs:
+  - csharp
+  - vb
+  name: Effect(GraphicsDevice, VertexLayoutDescription, string, string, CrossCompileOptions, MacroDefinition[])
+  nameWithType: Effect.Effect(GraphicsDevice, VertexLayoutDescription, string, string, CrossCompileOptions, MacroDefinition[])
+  fullName: Bliss.CSharp.Effects.Effect.Effect(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, string, string, Veldrid.SPIRV.CrossCompileOptions, Veldrid.SPIRV.MacroDefinition[])
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Effects/Effect.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Effects/Effect.cs
+    startLine: 131
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Effects
+  summary: Creates a new <xref href="Bliss.CSharp.Effects.Effect" data-throw-if-not-resolved="false"></xref> by compiling GLSL shader source code into SPIR-V.
+  example: []
+  syntax:
+    content: public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, string vertText, string fragText, CrossCompileOptions compileOptions, MacroDefinition[] macros)
+    parameters:
+    - id: graphicsDevice
+      type: Veldrid.GraphicsDevice
+      description: The graphics device used to create GPU resources.
+    - id: vertexLayout
+      type: Veldrid.VertexLayoutDescription
+      description: The vertex layout describing the structure of vertex input data.
+    - id: vertText
+      type: System.String
+      description: The GLSL source code for the vertex shader.
+    - id: fragText
+      type: System.String
+      description: The GLSL source code for the fragment shader.
+    - id: compileOptions
+      type: Veldrid.SPIRV.CrossCompileOptions
+      description: Optional cross-compilation and specialization options.
+    - id: macros
+      type: Veldrid.SPIRV.MacroDefinition[]
+      description: Optional macro definitions injected during shader compilation.
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, vertexLayout As VertexLayoutDescription, vertText As String, fragText As String, compileOptions As CrossCompileOptions, macros As MacroDefinition())
+  overload: Bliss.CSharp.Effects.Effect.#ctor*
+  nameWithType.vb: Effect.New(GraphicsDevice, VertexLayoutDescription, String, String, CrossCompileOptions, MacroDefinition())
+  fullName.vb: Bliss.CSharp.Effects.Effect.New(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, String, String, Veldrid.SPIRV.CrossCompileOptions, Veldrid.SPIRV.MacroDefinition())
+  name.vb: New(GraphicsDevice, VertexLayoutDescription, String, String, CrossCompileOptions, MacroDefinition())
+- uid: Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription[],System.String,System.String,Veldrid.SPIRV.CrossCompileOptions,Veldrid.SPIRV.MacroDefinition[])
+  commentId: M:Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription[],System.String,System.String,Veldrid.SPIRV.CrossCompileOptions,Veldrid.SPIRV.MacroDefinition[])
+  id: '#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription[],System.String,System.String,Veldrid.SPIRV.CrossCompileOptions,Veldrid.SPIRV.MacroDefinition[])'
+  parent: Bliss.CSharp.Effects.Effect
+  langs:
+  - csharp
+  - vb
+  name: Effect(GraphicsDevice, VertexLayoutDescription[], string, string, CrossCompileOptions, MacroDefinition[])
+  nameWithType: Effect.Effect(GraphicsDevice, VertexLayoutDescription[], string, string, CrossCompileOptions, MacroDefinition[])
+  fullName: Bliss.CSharp.Effects.Effect.Effect(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription[], string, string, Veldrid.SPIRV.CrossCompileOptions, Veldrid.SPIRV.MacroDefinition[])
+  type: Constructor
+  source:
+    remote:
+      path: src/Bliss/CSharp/Effects/Effect.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: .ctor
+    path: ../src/Bliss/CSharp/Effects/Effect.cs
+    startLine: 142
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Effects
+  summary: Creates a new <xref href="Bliss.CSharp.Effects.Effect" data-throw-if-not-resolved="false"></xref> by compiling GLSL shader source code into SPIR-V.
+  example: []
+  syntax:
+    content: public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription[] vertexLayouts, string vertText, string fragText, CrossCompileOptions compileOptions, MacroDefinition[] macros)
+    parameters:
+    - id: graphicsDevice
+      type: Veldrid.GraphicsDevice
+      description: The graphics device used to create GPU resources.
+    - id: vertexLayouts
+      type: Veldrid.VertexLayoutDescription[]
+      description: The vertex layouts describing the structure of vertex input data.
+    - id: vertText
+      type: System.String
+      description: The GLSL source code for the vertex shader.
+    - id: fragText
+      type: System.String
+      description: The GLSL source code for the fragment shader.
+    - id: compileOptions
+      type: Veldrid.SPIRV.CrossCompileOptions
+      description: Optional cross-compilation and specialization options.
+    - id: macros
+      type: Veldrid.SPIRV.MacroDefinition[]
+      description: Optional macro definitions injected during shader compilation.
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, vertexLayouts As VertexLayoutDescription(), vertText As String, fragText As String, compileOptions As CrossCompileOptions, macros As MacroDefinition())
+  overload: Bliss.CSharp.Effects.Effect.#ctor*
+  nameWithType.vb: Effect.New(GraphicsDevice, VertexLayoutDescription(), String, String, CrossCompileOptions, MacroDefinition())
+  fullName.vb: Bliss.CSharp.Effects.Effect.New(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription(), String, String, Veldrid.SPIRV.CrossCompileOptions, Veldrid.SPIRV.MacroDefinition())
+  name.vb: New(GraphicsDevice, VertexLayoutDescription(), String, String, CrossCompileOptions, MacroDefinition())
+- uid: Bliss.CSharp.Effects.Effect.LoadBytecodeFromFile(System.String)
+  commentId: M:Bliss.CSharp.Effects.Effect.LoadBytecodeFromFile(System.String)
+  id: LoadBytecodeFromFile(System.String)
+  parent: Bliss.CSharp.Effects.Effect
+  langs:
+  - csharp
+  - vb
+  name: LoadBytecodeFromFile(string)
+  nameWithType: Effect.LoadBytecodeFromFile(string)
+  fullName: Bliss.CSharp.Effects.Effect.LoadBytecodeFromFile(string)
   type: Method
   source:
     remote:
       path: src/Bliss/CSharp/Effects/Effect.cs
       branch: main
       repo: https://github.com/MrScautHD/Bliss.git
-    id: LoadBytecode
+    id: LoadBytecodeFromFile
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 98
+    startLine: 179
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
   summary: Loads the bytecode from the specified shader file path.
   example: []
   syntax:
-    content: public static byte[] LoadBytecode(string path)
+    content: public static byte[] LoadBytecodeFromFile(string path)
     parameters:
     - id: path
       type: System.String
@@ -305,11 +568,57 @@ items:
     return:
       type: System.Byte[]
       description: A byte array containing the bytecode from the shader file.
-    content.vb: Public Shared Function LoadBytecode(path As String) As Byte()
-  overload: Bliss.CSharp.Effects.Effect.LoadBytecode*
-  nameWithType.vb: Effect.LoadBytecode(String)
-  fullName.vb: Bliss.CSharp.Effects.Effect.LoadBytecode(String)
-  name.vb: LoadBytecode(String)
+    content.vb: Public Shared Function LoadBytecodeFromFile(path As String) As Byte()
+  overload: Bliss.CSharp.Effects.Effect.LoadBytecodeFromFile*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown if the file does not exist or the file type is not supported.
+  nameWithType.vb: Effect.LoadBytecodeFromFile(String)
+  fullName.vb: Bliss.CSharp.Effects.Effect.LoadBytecodeFromFile(String)
+  name.vb: LoadBytecodeFromFile(String)
+- uid: Bliss.CSharp.Effects.Effect.LoadTextCodeFromFile(System.String)
+  commentId: M:Bliss.CSharp.Effects.Effect.LoadTextCodeFromFile(System.String)
+  id: LoadTextCodeFromFile(System.String)
+  parent: Bliss.CSharp.Effects.Effect
+  langs:
+  - csharp
+  - vb
+  name: LoadTextCodeFromFile(string)
+  nameWithType: Effect.LoadTextCodeFromFile(string)
+  fullName: Bliss.CSharp.Effects.Effect.LoadTextCodeFromFile(string)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Effects/Effect.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: LoadTextCodeFromFile
+    path: ../src/Bliss/CSharp/Effects/Effect.cs
+    startLine: 198
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Effects
+  summary: Loads shader source text from a file at the specified path.
+  example: []
+  syntax:
+    content: public static string LoadTextCodeFromFile(string path)
+    parameters:
+    - id: path
+      type: System.String
+      description: The file path to the shader source file. Must have a supported extension (.vert or .frag).
+    return:
+      type: System.String
+      description: The contents of the shader source file as a string.
+    content.vb: Public Shared Function LoadTextCodeFromFile(path As String) As String
+  overload: Bliss.CSharp.Effects.Effect.LoadTextCodeFromFile*
+  exceptions:
+  - type: System.Exception
+    commentId: T:System.Exception
+    description: Thrown if the file does not exist or the file type is not supported.
+  nameWithType.vb: Effect.LoadTextCodeFromFile(String)
+  fullName.vb: Bliss.CSharp.Effects.Effect.LoadTextCodeFromFile(String)
+  name.vb: LoadTextCodeFromFile(String)
 - uid: Bliss.CSharp.Effects.Effect.GetBufferLayouts
   commentId: M:Bliss.CSharp.Effects.Effect.GetBufferLayouts
   id: GetBufferLayouts
@@ -328,7 +637,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetBufferLayouts
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 115
+    startLine: 215
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -359,7 +668,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetBufferLayout
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 125
+    startLine: 225
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -401,7 +710,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetBufferLayoutSlot
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 141
+    startLine: 241
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -443,7 +752,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: AddBufferLayout
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 159
+    startLine: 259
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -491,7 +800,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetTextureLayouts
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 172
+    startLine: 272
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -522,7 +831,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetTextureLayout
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 182
+    startLine: 282
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -564,7 +873,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetTextureLayoutSlot
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 198
+    startLine: 298
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -606,7 +915,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: AddTextureLayout
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 215
+    startLine: 315
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -648,7 +957,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetPipeline
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 229
+    startLine: 329
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -683,7 +992,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Apply
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 243
+    startLine: 343
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -719,7 +1028,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 245
+    startLine: 345
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -1107,6 +1416,151 @@ references:
   name: Veldrid
   nameWithType: Veldrid
   fullName: Veldrid
+- uid: Bliss.CSharp.Effects.Effect.Specializations*
+  commentId: Overload:Bliss.CSharp.Effects.Effect.Specializations
+  href: Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_Specializations
+  name: Specializations
+  nameWithType: Effect.Specializations
+  fullName: Bliss.CSharp.Effects.Effect.Specializations
+- uid: System.Collections.Generic.IReadOnlyList{Veldrid.SpecializationConstant}
+  commentId: T:System.Collections.Generic.IReadOnlyList{Veldrid.SpecializationConstant}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<SpecializationConstant>
+  nameWithType: IReadOnlyList<SpecializationConstant>
+  fullName: System.Collections.Generic.IReadOnlyList<Veldrid.SpecializationConstant>
+  nameWithType.vb: IReadOnlyList(Of SpecializationConstant)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of Veldrid.SpecializationConstant)
+  name.vb: IReadOnlyList(Of SpecializationConstant)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: Veldrid.SpecializationConstant
+    name: SpecializationConstant
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/SpecializationConstant.cs
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Veldrid.SpecializationConstant
+    name: SpecializationConstant
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/SpecializationConstant.cs
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Bliss.CSharp.Effects.Effect.Macros*
+  commentId: Overload:Bliss.CSharp.Effects.Effect.Macros
+  href: Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_Macros
+  name: Macros
+  nameWithType: Effect.Macros
+  fullName: Bliss.CSharp.Effects.Effect.Macros
+- uid: System.Collections.Generic.IReadOnlyList{Veldrid.SPIRV.MacroDefinition}
+  commentId: T:System.Collections.Generic.IReadOnlyList{Veldrid.SPIRV.MacroDefinition}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<MacroDefinition>
+  nameWithType: IReadOnlyList<MacroDefinition>
+  fullName: System.Collections.Generic.IReadOnlyList<Veldrid.SPIRV.MacroDefinition>
+  nameWithType.vb: IReadOnlyList(Of MacroDefinition)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of Veldrid.SPIRV.MacroDefinition)
+  name.vb: IReadOnlyList(Of MacroDefinition)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: Veldrid.SPIRV.MacroDefinition
+    name: MacroDefinition
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Veldrid.SPIRV.MacroDefinition
+    name: MacroDefinition
+    isExternal: true
+  - name: )
 - uid: System.ValueTuple{Veldrid.Shader,Veldrid.Shader}
   commentId: T:System.ValueTuple{Veldrid.Shader,Veldrid.Shader}
   parent: System
@@ -1183,14 +1637,29 @@ references:
   - name: " "
   - name: T2
   - name: )
-- uid: Veldrid.VertexLayoutDescription
-  commentId: T:Veldrid.VertexLayoutDescription
-  parent: Veldrid
+- uid: Veldrid.VertexLayoutDescription[]
   isExternal: true
   href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/VertexLayoutDescription.cs
-  name: VertexLayoutDescription
-  nameWithType: VertexLayoutDescription
-  fullName: Veldrid.VertexLayoutDescription
+  name: VertexLayoutDescription[]
+  nameWithType: VertexLayoutDescription[]
+  fullName: Veldrid.VertexLayoutDescription[]
+  nameWithType.vb: VertexLayoutDescription()
+  fullName.vb: Veldrid.VertexLayoutDescription()
+  name.vb: VertexLayoutDescription()
+  spec.csharp:
+  - uid: Veldrid.VertexLayoutDescription
+    name: VertexLayoutDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/VertexLayoutDescription.cs
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Veldrid.VertexLayoutDescription
+    name: VertexLayoutDescription
+    isExternal: true
+    href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/VertexLayoutDescription.cs
+  - name: (
+  - name: )
 - uid: Veldrid.ShaderSetDescription
   commentId: T:Veldrid.ShaderSetDescription
   parent: Veldrid
@@ -1206,21 +1675,23 @@ references:
   name: Effect
   nameWithType: Effect
   fullName: Bliss.CSharp.Effects.Effect
-- uid: Bliss.CSharp.Effects.Effect.GraphicsDevice
-  commentId: P:Bliss.CSharp.Effects.Effect.GraphicsDevice
-  href: Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_GraphicsDevice
-  name: GraphicsDevice
-  nameWithType: Effect.GraphicsDevice
-  fullName: Bliss.CSharp.Effects.Effect.GraphicsDevice
 - uid: Bliss.CSharp.Effects.Effect.#ctor*
   commentId: Overload:Bliss.CSharp.Effects.Effect.#ctor
-  href: Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect__ctor_Veldrid_GraphicsDevice_Veldrid_VertexLayoutDescription_System_String_System_String_Veldrid_SpecializationConstant___
+  href: Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect__ctor_Veldrid_GraphicsDevice_Veldrid_VertexLayoutDescription_System_String_System_String_Veldrid_SPIRV_CrossCompileOptions_
   name: Effect
   nameWithType: Effect.Effect
   fullName: Bliss.CSharp.Effects.Effect.Effect
   nameWithType.vb: Effect.New
   fullName.vb: Bliss.CSharp.Effects.Effect.New
   name.vb: New
+- uid: Veldrid.VertexLayoutDescription
+  commentId: T:Veldrid.VertexLayoutDescription
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/VertexLayoutDescription.cs
+  name: VertexLayoutDescription
+  nameWithType: VertexLayoutDescription
+  fullName: Veldrid.VertexLayoutDescription
 - uid: System.String
   commentId: T:System.String
   parent: System
@@ -1232,29 +1703,35 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
-- uid: Veldrid.SpecializationConstant[]
+- uid: Veldrid.SPIRV.CrossCompileOptions
+  commentId: T:Veldrid.SPIRV.CrossCompileOptions
+  parent: Veldrid.SPIRV
   isExternal: true
-  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/SpecializationConstant.cs
-  name: SpecializationConstant[]
-  nameWithType: SpecializationConstant[]
-  fullName: Veldrid.SpecializationConstant[]
-  nameWithType.vb: SpecializationConstant()
-  fullName.vb: Veldrid.SpecializationConstant()
-  name.vb: SpecializationConstant()
+  name: CrossCompileOptions
+  nameWithType: CrossCompileOptions
+  fullName: Veldrid.SPIRV.CrossCompileOptions
+- uid: Veldrid.SPIRV
+  commentId: N:Veldrid.SPIRV
+  isExternal: true
+  name: Veldrid.SPIRV
+  nameWithType: Veldrid.SPIRV
+  fullName: Veldrid.SPIRV
   spec.csharp:
-  - uid: Veldrid.SpecializationConstant
-    name: SpecializationConstant
+  - uid: Veldrid
+    name: Veldrid
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/SpecializationConstant.cs
-  - name: '['
-  - name: ']'
+  - name: .
+  - uid: Veldrid.SPIRV
+    name: SPIRV
+    isExternal: true
   spec.vb:
-  - uid: Veldrid.SpecializationConstant
-    name: SpecializationConstant
+  - uid: Veldrid
+    name: Veldrid
     isExternal: true
-    href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/SpecializationConstant.cs
-  - name: (
-  - name: )
+  - name: .
+  - uid: Veldrid.SPIRV
+    name: SPIRV
+    isExternal: true
 - uid: System.Byte[]
   isExternal: true
   href: https://learn.microsoft.com/dotnet/api/system.byte
@@ -1278,12 +1755,46 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.byte
   - name: (
   - name: )
-- uid: Bliss.CSharp.Effects.Effect.LoadBytecode*
-  commentId: Overload:Bliss.CSharp.Effects.Effect.LoadBytecode
-  href: Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_LoadBytecode_System_String_
-  name: LoadBytecode
-  nameWithType: Effect.LoadBytecode
-  fullName: Bliss.CSharp.Effects.Effect.LoadBytecode
+- uid: Veldrid.SPIRV.MacroDefinition[]
+  isExternal: true
+  name: MacroDefinition[]
+  nameWithType: MacroDefinition[]
+  fullName: Veldrid.SPIRV.MacroDefinition[]
+  nameWithType.vb: MacroDefinition()
+  fullName.vb: Veldrid.SPIRV.MacroDefinition()
+  name.vb: MacroDefinition()
+  spec.csharp:
+  - uid: Veldrid.SPIRV.MacroDefinition
+    name: MacroDefinition
+    isExternal: true
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Veldrid.SPIRV.MacroDefinition
+    name: MacroDefinition
+    isExternal: true
+  - name: (
+  - name: )
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: Bliss.CSharp.Effects.Effect.LoadBytecodeFromFile*
+  commentId: Overload:Bliss.CSharp.Effects.Effect.LoadBytecodeFromFile
+  href: Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_LoadBytecodeFromFile_System_String_
+  name: LoadBytecodeFromFile
+  nameWithType: Effect.LoadBytecodeFromFile
+  fullName: Bliss.CSharp.Effects.Effect.LoadBytecodeFromFile
+- uid: Bliss.CSharp.Effects.Effect.LoadTextCodeFromFile*
+  commentId: Overload:Bliss.CSharp.Effects.Effect.LoadTextCodeFromFile
+  href: Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_LoadTextCodeFromFile_System_String_
+  name: LoadTextCodeFromFile
+  nameWithType: Effect.LoadTextCodeFromFile
+  fullName: Bliss.CSharp.Effects.Effect.LoadTextCodeFromFile
 - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
   commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
   parent: Bliss.CSharp.Graphics.Pipelines.Buffers
@@ -1404,43 +1915,6 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: System.Collections.Generic
-  commentId: N:System.Collections.Generic
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System.Collections.Generic
-  nameWithType: System.Collections.Generic
-  fullName: System.Collections.Generic
-  spec.csharp:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Collections
-    name: Collections
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections
-  - name: .
-  - uid: System.Collections.Generic
-    name: Generic
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
-  spec.vb:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Collections
-    name: Collections
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections
-  - name: .
-  - uid: System.Collections.Generic
-    name: Generic
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
 - uid: System.Collections.Generic.KeyNotFoundException
   commentId: T:System.Collections.Generic.KeyNotFoundException
   isExternal: true

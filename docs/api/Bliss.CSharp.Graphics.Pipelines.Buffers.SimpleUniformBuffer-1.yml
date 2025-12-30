@@ -20,6 +20,8 @@ items:
   - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.Size
   - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferDeferred(Veldrid.CommandList)
   - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferImmediate
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceDeferred(Veldrid.CommandList,System.Int32,System.Int32,System.Int32)
+  - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceImmediate(System.Int32,System.Int32,System.Int32)
   langs:
   - csharp
   - vb
@@ -508,6 +510,111 @@ items:
   nameWithType.vb: SimpleUniformBuffer(Of T).SetValueDeferred(CommandList, Integer, T)
   fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer(Of T).SetValueDeferred(Veldrid.CommandList, Integer, T)
   name.vb: SetValueDeferred(CommandList, Integer, T)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceImmediate(System.Int32,System.Int32,System.Int32)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceImmediate(System.Int32,System.Int32,System.Int32)
+  id: UpdateBufferSliceImmediate(System.Int32,System.Int32,System.Int32)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1
+  langs:
+  - csharp
+  - vb
+  name: UpdateBufferSliceImmediate(int, int, int)
+  nameWithType: SimpleUniformBuffer<T>.UpdateBufferSliceImmediate(int, int, int)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer<T>.UpdateBufferSliceImmediate(int, int, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleUniformBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: UpdateBufferSliceImmediate
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleUniformBuffer.cs
+    startLine: 143
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Updates a portion of the GPU buffer immediately with a slice of the local CPU data.
+  example: []
+  syntax:
+    content: public void UpdateBufferSliceImmediate(int destinationOffsetIndex, int sourceStartIndex, int sourceLength)
+    parameters:
+    - id: destinationOffsetIndex
+      type: System.Int32
+      description: The index in the destination buffer where the update begins, measured in elements.
+    - id: sourceStartIndex
+      type: System.Int32
+      description: The starting index in the local data array to copy from.
+    - id: sourceLength
+      type: System.Int32
+      description: The number of elements to copy from the local data array.
+    content.vb: Public Sub UpdateBufferSliceImmediate(destinationOffsetIndex As Integer, sourceStartIndex As Integer, sourceLength As Integer)
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceImmediate*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Thrown if <code class="paramref">sourceStartIndex</code> is outside the bounds of the local data array.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Thrown if <code class="paramref">sourceLength</code> is negative or extends beyond the end of the local data array.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Thrown if the update range exceeds the size of the GPU buffer.
+  nameWithType.vb: SimpleUniformBuffer(Of T).UpdateBufferSliceImmediate(Integer, Integer, Integer)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer(Of T).UpdateBufferSliceImmediate(Integer, Integer, Integer)
+  name.vb: UpdateBufferSliceImmediate(Integer, Integer, Integer)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceDeferred(Veldrid.CommandList,System.Int32,System.Int32,System.Int32)
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceDeferred(Veldrid.CommandList,System.Int32,System.Int32,System.Int32)
+  id: UpdateBufferSliceDeferred(Veldrid.CommandList,System.Int32,System.Int32,System.Int32)
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1
+  langs:
+  - csharp
+  - vb
+  name: UpdateBufferSliceDeferred(CommandList, int, int, int)
+  nameWithType: SimpleUniformBuffer<T>.UpdateBufferSliceDeferred(CommandList, int, int, int)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer<T>.UpdateBufferSliceDeferred(Veldrid.CommandList, int, int, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleUniformBuffer.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: UpdateBufferSliceDeferred
+    path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleUniformBuffer.cs
+    startLine: 174
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
+  summary: Updates a portion of the GPU buffer using a deferred command list with a slice of the local CPU data.
+  example: []
+  syntax:
+    content: public void UpdateBufferSliceDeferred(CommandList commandList, int destinationOffsetIndex, int sourceStartIndex, int sourceLength)
+    parameters:
+    - id: commandList
+      type: Veldrid.CommandList
+      description: The command list used to defer the buffer update.
+    - id: destinationOffsetIndex
+      type: System.Int32
+      description: The index in the destination buffer where the update begins, measured in elements.
+    - id: sourceStartIndex
+      type: System.Int32
+      description: The starting index in the local data array to copy from.
+    - id: sourceLength
+      type: System.Int32
+      description: The number of elements to copy from the local data array.
+    content.vb: Public Sub UpdateBufferSliceDeferred(commandList As CommandList, destinationOffsetIndex As Integer, sourceStartIndex As Integer, sourceLength As Integer)
+  overload: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceDeferred*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Thrown if <code class="paramref">sourceStartIndex</code> is outside the bounds of the local data array.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Thrown if <code class="paramref">sourceLength</code> is negative or extends beyond the end of the local data array.
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Thrown if the update range exceeds the size of the GPU buffer.
+  nameWithType.vb: SimpleUniformBuffer(Of T).UpdateBufferSliceDeferred(CommandList, Integer, Integer, Integer)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer(Of T).UpdateBufferSliceDeferred(Veldrid.CommandList, Integer, Integer, Integer)
+  name.vb: UpdateBufferSliceDeferred(CommandList, Integer, Integer, Integer)
 - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferImmediate
   commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferImmediate
   id: UpdateBufferImmediate
@@ -526,7 +633,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: UpdateBufferImmediate
     path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleUniformBuffer.cs
-    startLine: 137
+    startLine: 198
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
@@ -556,7 +663,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: UpdateBufferDeferred
     path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleUniformBuffer.cs
-    startLine: 145
+    startLine: 206
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
@@ -590,7 +697,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Graphics/Pipelines/Buffers/SimpleUniformBuffer.cs
-    startLine: 149
+    startLine: 210
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.Pipelines.Buffers
@@ -1227,6 +1334,29 @@ references:
   name: CommandList
   nameWithType: CommandList
   fullName: Veldrid.CommandList
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceImmediate*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceImmediate
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer-1.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleUniformBuffer_1_UpdateBufferSliceImmediate_System_Int32_System_Int32_System_Int32_
+  name: UpdateBufferSliceImmediate
+  nameWithType: SimpleUniformBuffer<T>.UpdateBufferSliceImmediate
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer<T>.UpdateBufferSliceImmediate
+  nameWithType.vb: SimpleUniformBuffer(Of T).UpdateBufferSliceImmediate
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer(Of T).UpdateBufferSliceImmediate
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceDeferred*
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceDeferred
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer-1.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleUniformBuffer_1_UpdateBufferSliceDeferred_Veldrid_CommandList_System_Int32_System_Int32_System_Int32_
+  name: UpdateBufferSliceDeferred
+  nameWithType: SimpleUniformBuffer<T>.UpdateBufferSliceDeferred
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer<T>.UpdateBufferSliceDeferred
+  nameWithType.vb: SimpleUniformBuffer(Of T).UpdateBufferSliceDeferred
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer(Of T).UpdateBufferSliceDeferred
 - uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferImmediate*
   commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferImmediate
   href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer-1.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleUniformBuffer_1_UpdateBufferImmediate

@@ -276,8 +276,8 @@ Class FullScreenRenderer  <a class="header-action link-secondary" title="View so
 
   <a id="Bliss_CSharp_Graphics_Rendering_Renderers_FullScreenRenderer_Draw_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer.Draw*"></a>
 
-  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_FullScreenRenderer_Draw_Veldrid_CommandList_Bliss_CSharp_Textures_RenderTexture2D_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_Veldrid_Sampler_System_Nullable_Veldrid_BlendStateDescription__System_Nullable_Veldrid_DepthStencilStateDescription__System_Nullable_Veldrid_RasterizerStateDescription__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Veldrid.Sampler,System.Nullable{Veldrid.BlendStateDescription},System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription})">
-  Draw(CommandList, RenderTexture2D, OutputDescription, Effect?, Sampler?, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?)
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_FullScreenRenderer_Draw_Veldrid_CommandList_Bliss_CSharp_Textures_Texture2D_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_Veldrid_Sampler_System_Nullable_Veldrid_BlendStateDescription__System_Nullable_Veldrid_DepthStencilStateDescription__System_Nullable_Veldrid_RasterizerStateDescription__" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.Texture2D,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Veldrid.Sampler,System.Nullable{Veldrid.BlendStateDescription},System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription})">
+  Draw(CommandList, Texture2D, OutputDescription, Effect?, Sampler?, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?)
   <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/FullScreenRenderer.cs/#L58"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -286,7 +286,7 @@ Class FullScreenRenderer  <a class="header-action link-secondary" title="View so
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Draw(CommandList commandList, RenderTexture2D renderTexture, OutputDescription output, Effect? effect = null, Sampler? sampler = null, BlendStateDescription? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Draw(CommandList commandList, Texture2D texture, OutputDescription output, Effect? effect = null, Sampler? sampler = null, BlendStateDescription? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -294,8 +294,8 @@ Class FullScreenRenderer  <a class="header-action link-secondary" title="View so
     <dt><code>commandList</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/CommandList.cs">CommandList</a></dt>
     <dd><p>The command list for issuing draw commands to the graphics device.</p>
 </dd>
-    <dt><code>renderTexture</code> <a class="xref" href="Bliss.CSharp.Textures.RenderTexture2D.html">RenderTexture2D</a></dt>
-    <dd><p>The render texture used as the input or output target for rendering operations.</p>
+    <dt><code>texture</code> <a class="xref" href="Bliss.CSharp.Textures.Texture2D.html">Texture2D</a></dt>
+    <dd><p>The texture used as the input or output target for rendering operations.</p>
 </dd>
     <dt><code>output</code> <a class="xref" href="https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/OutputDescription.cs">OutputDescription</a></dt>
     <dd><p>The output description detailing the format and layout of render targets and depth-stencil buffers.</p>

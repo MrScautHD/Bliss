@@ -156,10 +156,10 @@ Class Renderable  <a class="header-action link-secondary" title="View source" hr
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable__ctor_Bliss_CSharp_Geometry_Mesh_Bliss_CSharp_Transformations_Transform_Bliss_CSharp_Materials_Material_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.#ctor(Bliss.CSharp.Geometry.Mesh,Bliss.CSharp.Transformations.Transform,Bliss.CSharp.Materials.Material)">
   Renderable(Mesh, Transform, Material)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs/#L62"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html">Renderable</a> with a specific material.</p>
+  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html">Renderable</a> using a single transform and a specific material.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -173,10 +173,10 @@ Class Renderable  <a class="header-action link-secondary" title="View source" hr
     <dd><p>The mesh to render.</p>
 </dd>
     <dt><code>transform</code> <a class="xref" href="Bliss.CSharp.Transformations.Transform.html">Transform</a></dt>
-    <dd><p>The transform to apply.</p>
+    <dd><p>The transform applied to the renderable.</p>
 </dd>
     <dt><code>material</code> <a class="xref" href="Bliss.CSharp.Materials.Material.html">Material</a></dt>
-    <dd><p>The material to use for this renderable.</p>
+    <dd><p>The material used for rendering.</p>
 </dd>
   </dl>
 
@@ -195,10 +195,10 @@ Class Renderable  <a class="header-action link-secondary" title="View source" hr
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable__ctor_Bliss_CSharp_Geometry_Mesh_Bliss_CSharp_Transformations_Transform_System_Boolean_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.#ctor(Bliss.CSharp.Geometry.Mesh,Bliss.CSharp.Transformations.Transform,System.Boolean)">
   Renderable(Mesh, Transform, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs/#L46"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html">Renderable</a> using the mesh's material or a cloned material.</p>
+  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html">Renderable</a> using a single transform and optionally a cloned mesh material.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -212,10 +212,88 @@ Class Renderable  <a class="header-action link-secondary" title="View source" hr
     <dd><p>The mesh to render.</p>
 </dd>
     <dt><code>transform</code> <a class="xref" href="Bliss.CSharp.Transformations.Transform.html">Transform</a></dt>
-    <dd><p>The transform to apply.</p>
+    <dd><p>The transform applied to the renderable.</p>
 </dd>
     <dt><code>copyMeshMaterial</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>If true, creates a cloned copy of the mesh's material to allow independent modification. If false, uses the mesh's existing material.</p>
+    <dd><p>If true, clones the mesh material for independent modification.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable__ctor_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.#ctor*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable__ctor_Bliss_CSharp_Geometry_Mesh_Bliss_CSharp_Transformations_Transform___Bliss_CSharp_Materials_Material_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.#ctor(Bliss.CSharp.Geometry.Mesh,Bliss.CSharp.Transformations.Transform[],Bliss.CSharp.Materials.Material)">
+  Renderable(Mesh, Transform[], Material)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html">Renderable</a> using one or more transforms and a specific material.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Renderable(Mesh mesh, Transform[] transforms, Material material)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mesh</code> <a class="xref" href="Bliss.CSharp.Geometry.Mesh.html">Mesh</a></dt>
+    <dd><p>The mesh to render.</p>
+</dd>
+    <dt><code>transforms</code> <a class="xref" href="Bliss.CSharp.Transformations.Transform.html">Transform</a>[]</dt>
+    <dd><p>The transforms applied to the renderable, where providing more than one transform enables instanced rendering.</p>
+</dd>
+    <dt><code>material</code> <a class="xref" href="Bliss.CSharp.Materials.Material.html">Material</a></dt>
+    <dd><p>The material used for rendering.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable__ctor_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.#ctor*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable__ctor_Bliss_CSharp_Geometry_Mesh_Bliss_CSharp_Transformations_Transform___System_Boolean_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.#ctor(Bliss.CSharp.Geometry.Mesh,Bliss.CSharp.Transformations.Transform[],System.Boolean)">
+  Renderable(Mesh, Transform[], bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html">Renderable</a> using one or more transforms and optionally a cloned mesh material.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Renderable(Mesh mesh, Transform[] transforms, bool copyMeshMaterial = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mesh</code> <a class="xref" href="Bliss.CSharp.Geometry.Mesh.html">Mesh</a></dt>
+    <dd><p>The mesh to render.</p>
+</dd>
+    <dt><code>transforms</code> <a class="xref" href="Bliss.CSharp.Transformations.Transform.html">Transform</a>[]</dt>
+    <dd><p>The transforms applied to the renderable, where providing more than one transform enables instanced rendering.</p>
+</dd>
+    <dt><code>copyMeshMaterial</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>If true, clones the mesh material for independent modification.</p>
 </dd>
   </dl>
 
@@ -237,7 +315,7 @@ Class Renderable  <a class="header-action link-secondary" title="View source" hr
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_Material" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Material">
   Material
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs/#L33"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The material used for rendering.</p>
@@ -266,17 +344,17 @@ Class Renderable  <a class="header-action link-secondary" title="View source" hr
 
 
 
-  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_Transform" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Transform">
-  Transform
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_Transforms" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Transforms">
+  Transforms
   <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs/#L18"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"><p>The transformation (position, rotation, scale) applied to this renderable.</p>
+  <div class="markdown level1 summary"><p>The transforms applied to the renderable, where providing more than one transform enables instanced rendering.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Transform Transform</code></pre>
+    <pre><code class="lang-csharp hljs">public Transform[] Transforms</code></pre>
   </div>
 
 
@@ -284,7 +362,7 @@ Class Renderable  <a class="header-action link-secondary" title="View source" hr
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Bliss.CSharp.Transformations.Transform.html">Transform</a></dt>
+    <dt><a class="xref" href="Bliss.CSharp.Transformations.Transform.html">Transform</a>[]</dt>
     <dd></dd>
   </dl>
 
@@ -304,7 +382,7 @@ Class Renderable  <a class="header-action link-secondary" title="View source" hr
 
   <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_BoneMatrices" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.BoneMatrices">
   BoneMatrices
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Optional array of bone matrices for skinned meshes.</p>
@@ -322,6 +400,70 @@ Class Renderable  <a class="header-action link-secondary" title="View source" hr
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.numerics.matrix4x4">Matrix4x4</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_InstanceCount_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.InstanceCount*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_InstanceCount" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.InstanceCount">
+  InstanceCount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Number of instances (transforms) to draw.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint InstanceCount { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_IsInstanced_" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.IsInstanced*"></a>
+
+  <h3 id="Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_IsInstanced" data-uid="Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.IsInstanced">
+  IsInstanced
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Graphics/Rendering/Renderers/Forward/Renderable.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>True if this renderable should be drawn multiple times with different transforms.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsInstanced { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 

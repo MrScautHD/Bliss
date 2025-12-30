@@ -17,6 +17,7 @@ items:
   - Bliss.CSharp.GlobalResource.GraphicsDevice
   - Bliss.CSharp.GlobalResource.Init(Veldrid.GraphicsDevice)
   - Bliss.CSharp.GlobalResource.LinearClampSampler
+  - Bliss.CSharp.GlobalResource.ModelInstancingEffect
   - Bliss.CSharp.GlobalResource.PointClampSampler
   langs:
   - csharp
@@ -328,6 +329,37 @@ items:
       type: Bliss.CSharp.Effects.Effect
     content.vb: Public Shared Property DefaultModelEffect As Effect
   overload: Bliss.CSharp.GlobalResource.DefaultModelEffect*
+- uid: Bliss.CSharp.GlobalResource.ModelInstancingEffect
+  commentId: P:Bliss.CSharp.GlobalResource.ModelInstancingEffect
+  id: ModelInstancingEffect
+  parent: Bliss.CSharp.GlobalResource
+  langs:
+  - csharp
+  - vb
+  name: ModelInstancingEffect
+  nameWithType: GlobalResource.ModelInstancingEffect
+  fullName: Bliss.CSharp.GlobalResource.ModelInstancingEffect
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/GlobalResource.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: ModelInstancingEffect
+    path: ../src/Bliss/CSharp/GlobalResource.cs
+    startLine: 62
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp
+  summary: The instancing <xref href="Bliss.CSharp.Effects.Effect" data-throw-if-not-resolved="false"></xref> used for rendering 3D models.
+  example: []
+  syntax:
+    content: public static Effect ModelInstancingEffect { get; }
+    parameters: []
+    return:
+      type: Bliss.CSharp.Effects.Effect
+    content.vb: Public Shared Property ModelInstancingEffect As Effect
+  overload: Bliss.CSharp.GlobalResource.ModelInstancingEffect*
 - uid: Bliss.CSharp.GlobalResource.DefaultImmediateRendererTexture
   commentId: P:Bliss.CSharp.GlobalResource.DefaultImmediateRendererTexture
   id: DefaultImmediateRendererTexture
@@ -346,7 +378,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DefaultImmediateRendererTexture
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 62
+    startLine: 67
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -377,7 +409,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: DefaultModelTexture
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 67
+    startLine: 72
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -408,7 +440,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Init
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 73
+    startLine: 78
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -440,7 +472,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Destroy
     path: ../src/Bliss/CSharp/GlobalResource.cs
-    startLine: 145
+    startLine: 159
   assemblies:
   - Bliss
   namespace: Bliss.CSharp
@@ -823,6 +855,12 @@ references:
   name: DefaultModelEffect
   nameWithType: GlobalResource.DefaultModelEffect
   fullName: Bliss.CSharp.GlobalResource.DefaultModelEffect
+- uid: Bliss.CSharp.GlobalResource.ModelInstancingEffect*
+  commentId: Overload:Bliss.CSharp.GlobalResource.ModelInstancingEffect
+  href: Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_ModelInstancingEffect
+  name: ModelInstancingEffect
+  nameWithType: GlobalResource.ModelInstancingEffect
+  fullName: Bliss.CSharp.GlobalResource.ModelInstancingEffect
 - uid: Bliss.CSharp.Textures.Texture2D
   commentId: T:Bliss.CSharp.Textures.Texture2D
   parent: Bliss.CSharp.Textures

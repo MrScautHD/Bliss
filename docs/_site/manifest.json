@@ -1034,6 +1034,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer-1.yml",
       "output": {
         ".html": {

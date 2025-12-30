@@ -10,6 +10,7 @@ items:
   - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.BoneIndices
   - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.BoneWeights
   - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Color
+  - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.InstanceMatrixLayout
   - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Normal
   - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Position
   - Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Tangent
@@ -73,6 +74,35 @@ items:
     return:
       type: Veldrid.VertexLayoutDescription
     content.vb: Public Shared VertexLayout As VertexLayoutDescription
+- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.InstanceMatrixLayout
+  commentId: F:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.InstanceMatrixLayout
+  id: InstanceMatrixLayout
+  parent: Bliss.CSharp.Graphics.VertexTypes.Vertex3D
+  langs:
+  - csharp
+  - vb
+  name: InstanceMatrixLayout
+  nameWithType: Vertex3D.InstanceMatrixLayout
+  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.InstanceMatrixLayout
+  type: Field
+  source:
+    remote:
+      path: src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: InstanceMatrixLayout
+    path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
+    startLine: 27
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Graphics.VertexTypes
+  summary: Represents the layout description for instance-level model matrix data used in rendering.
+  example: []
+  syntax:
+    content: public static VertexLayoutDescription InstanceMatrixLayout
+    return:
+      type: Veldrid.VertexLayoutDescription
+    content.vb: Public Shared InstanceMatrixLayout As VertexLayoutDescription
 - uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Position
   commentId: F:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Position
   id: Position
@@ -91,7 +121,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Position
     path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
-    startLine: 27
+    startLine: 39
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.VertexTypes
@@ -120,7 +150,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: BoneWeights
     path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
-    startLine: 32
+    startLine: 44
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.VertexTypes
@@ -149,7 +179,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: BoneIndices
     path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
-    startLine: 37
+    startLine: 49
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.VertexTypes
@@ -178,7 +208,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: TexCoords
     path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
-    startLine: 42
+    startLine: 54
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.VertexTypes
@@ -207,7 +237,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: TexCoords2
     path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
-    startLine: 47
+    startLine: 59
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.VertexTypes
@@ -236,7 +266,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Normal
     path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
-    startLine: 52
+    startLine: 64
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.VertexTypes
@@ -265,7 +295,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Tangent
     path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
-    startLine: 57
+    startLine: 69
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.VertexTypes
@@ -294,7 +324,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Color
     path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
-    startLine: 62
+    startLine: 74
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.VertexTypes
@@ -323,7 +353,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
-    startLine: 75
+    startLine: 87
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.VertexTypes
@@ -379,7 +409,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: AddBone
     path: ../src/Bliss/CSharp/Graphics/VertexTypes/Vertex3D.cs
-    startLine: 91
+    startLine: 103
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Graphics.VertexTypes

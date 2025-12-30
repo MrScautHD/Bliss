@@ -4,7 +4,7 @@ items:
   commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers.Forward
   id: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
   children:
-  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer
   - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer
   - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable
   langs:
@@ -17,31 +17,12 @@ items:
   assemblies:
   - Bliss
 references:
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
-  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
-  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer-1.html
-  name: ForwardRenderer<T>
-  nameWithType: ForwardRenderer<T>
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer<T>
-  nameWithType.vb: ForwardRenderer(Of T)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer(Of T)
-  name.vb: ForwardRenderer(Of T)
-  spec.csharp:
-  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
-    name: ForwardRenderer
-    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer-1.html
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
-    name: ForwardRenderer
-    href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer-1.html
-  - name: (
-  - name: Of
-  - name: " "
-  - name: T
-  - name: )
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer
+  href: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.html
+  name: BasicForwardRenderer
+  nameWithType: BasicForwardRenderer
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer
   commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.IRenderer
   parent: Bliss.CSharp.Graphics.Rendering.Renderers.Forward

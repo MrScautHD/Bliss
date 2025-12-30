@@ -47,10 +47,7 @@ items:
   - Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout
   - Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives.PrimitiveBatch
   - Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites.SpriteBatch
-  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
-  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.DynamicLightHandler
-  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Handlers.FixedLightHandler
-  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Lighting.Shadowing.ShadowMap
+  - Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer
   - Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer
   - Bliss.CSharp.Graphics.Rendering.Renderers.ImmediateRenderer
   - Bliss.CSharp.Interact.Contexts.Sdl3InputContext

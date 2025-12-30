@@ -5,17 +5,19 @@ items:
   id: RenderTexture2D
   parent: Bliss.CSharp.Textures
   children:
-  - Bliss.CSharp.Textures.RenderTexture2D.#ctor(Veldrid.GraphicsDevice,System.UInt32,System.UInt32,Veldrid.TextureSampleCount)
+  - Bliss.CSharp.Textures.RenderTexture2D.#ctor(Veldrid.GraphicsDevice,System.UInt32,System.UInt32,System.Boolean,Veldrid.TextureSampleCount)
   - Bliss.CSharp.Textures.RenderTexture2D.ColorTexture
   - Bliss.CSharp.Textures.RenderTexture2D.CreateFrameBuffer
   - Bliss.CSharp.Textures.RenderTexture2D.DepthTexture
-  - Bliss.CSharp.Textures.RenderTexture2D.DestinationTexture
   - Bliss.CSharp.Textures.RenderTexture2D.Dispose(System.Boolean)
+  - Bliss.CSharp.Textures.RenderTexture2D.Format
   - Bliss.CSharp.Textures.RenderTexture2D.Framebuffer
-  - Bliss.CSharp.Textures.RenderTexture2D.GetResourceSet(Veldrid.Sampler,Veldrid.ResourceLayout)
+  - Bliss.CSharp.Textures.RenderTexture2D.GetColorResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  - Bliss.CSharp.Textures.RenderTexture2D.GetDepthResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
   - Bliss.CSharp.Textures.RenderTexture2D.GraphicsDevice
   - Bliss.CSharp.Textures.RenderTexture2D.Height
   - Bliss.CSharp.Textures.RenderTexture2D.Resize(System.UInt32,System.UInt32)
+  - Bliss.CSharp.Textures.RenderTexture2D.Resized
   - Bliss.CSharp.Textures.RenderTexture2D.SampleCount
   - Bliss.CSharp.Textures.RenderTexture2D.Width
   langs:
@@ -32,7 +34,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: RenderTexture2D
     path: ../src/Bliss/CSharp/Textures/RenderTexture2D.cs
-    startLine: 5
+    startLine: 7
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures
@@ -73,7 +75,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GraphicsDevice
     path: ../src/Bliss/CSharp/Textures/RenderTexture2D.cs
-    startLine: 10
+    startLine: 12
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures
@@ -104,7 +106,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Width
     path: ../src/Bliss/CSharp/Textures/RenderTexture2D.cs
-    startLine: 15
+    startLine: 17
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures
@@ -135,7 +137,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Height
     path: ../src/Bliss/CSharp/Textures/RenderTexture2D.cs
-    startLine: 20
+    startLine: 22
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures
@@ -148,37 +150,37 @@ items:
       type: System.UInt32
     content.vb: Public Property Height As UInteger
   overload: Bliss.CSharp.Textures.RenderTexture2D.Height*
-- uid: Bliss.CSharp.Textures.RenderTexture2D.DepthTexture
-  commentId: P:Bliss.CSharp.Textures.RenderTexture2D.DepthTexture
-  id: DepthTexture
+- uid: Bliss.CSharp.Textures.RenderTexture2D.Format
+  commentId: P:Bliss.CSharp.Textures.RenderTexture2D.Format
+  id: Format
   parent: Bliss.CSharp.Textures.RenderTexture2D
   langs:
   - csharp
   - vb
-  name: DepthTexture
-  nameWithType: RenderTexture2D.DepthTexture
-  fullName: Bliss.CSharp.Textures.RenderTexture2D.DepthTexture
+  name: Format
+  nameWithType: RenderTexture2D.Format
+  fullName: Bliss.CSharp.Textures.RenderTexture2D.Format
   type: Property
   source:
     remote:
       path: src/Bliss/CSharp/Textures/RenderTexture2D.cs
       branch: main
       repo: https://github.com/MrScautHD/Bliss.git
-    id: DepthTexture
+    id: Format
     path: ../src/Bliss/CSharp/Textures/RenderTexture2D.cs
-    startLine: 25
+    startLine: 27
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures
-  summary: Gets the depth texture associated with this render texture, used for depth and stencil operations.
+  summary: Gets the pixel format of the color texture.
   example: []
   syntax:
-    content: public Texture DepthTexture { get; }
+    content: public PixelFormat Format { get; }
     parameters: []
     return:
-      type: Veldrid.Texture
-    content.vb: Public Property DepthTexture As Texture
-  overload: Bliss.CSharp.Textures.RenderTexture2D.DepthTexture*
+      type: Veldrid.PixelFormat
+    content.vb: Public Property Format As PixelFormat
+  overload: Bliss.CSharp.Textures.RenderTexture2D.Format*
 - uid: Bliss.CSharp.Textures.RenderTexture2D.ColorTexture
   commentId: P:Bliss.CSharp.Textures.RenderTexture2D.ColorTexture
   id: ColorTexture
@@ -197,7 +199,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ColorTexture
     path: ../src/Bliss/CSharp/Textures/RenderTexture2D.cs
-    startLine: 30
+    startLine: 32
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures
@@ -210,37 +212,37 @@ items:
       type: Veldrid.Texture
     content.vb: Public Property ColorTexture As Texture
   overload: Bliss.CSharp.Textures.RenderTexture2D.ColorTexture*
-- uid: Bliss.CSharp.Textures.RenderTexture2D.DestinationTexture
-  commentId: P:Bliss.CSharp.Textures.RenderTexture2D.DestinationTexture
-  id: DestinationTexture
+- uid: Bliss.CSharp.Textures.RenderTexture2D.DepthTexture
+  commentId: P:Bliss.CSharp.Textures.RenderTexture2D.DepthTexture
+  id: DepthTexture
   parent: Bliss.CSharp.Textures.RenderTexture2D
   langs:
   - csharp
   - vb
-  name: DestinationTexture
-  nameWithType: RenderTexture2D.DestinationTexture
-  fullName: Bliss.CSharp.Textures.RenderTexture2D.DestinationTexture
+  name: DepthTexture
+  nameWithType: RenderTexture2D.DepthTexture
+  fullName: Bliss.CSharp.Textures.RenderTexture2D.DepthTexture
   type: Property
   source:
     remote:
       path: src/Bliss/CSharp/Textures/RenderTexture2D.cs
       branch: main
       repo: https://github.com/MrScautHD/Bliss.git
-    id: DestinationTexture
+    id: DepthTexture
     path: ../src/Bliss/CSharp/Textures/RenderTexture2D.cs
-    startLine: 35
+    startLine: 37
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures
-  summary: Gets the destination texture used for sampling operations in this render texture.
+  summary: Gets the depth texture associated with this render texture, used for depth and stencil operations.
   example: []
   syntax:
-    content: public Texture DestinationTexture { get; }
+    content: public Texture DepthTexture { get; }
     parameters: []
     return:
       type: Veldrid.Texture
-    content.vb: Public Property DestinationTexture As Texture
-  overload: Bliss.CSharp.Textures.RenderTexture2D.DestinationTexture*
+    content.vb: Public Property DepthTexture As Texture
+  overload: Bliss.CSharp.Textures.RenderTexture2D.DepthTexture*
 - uid: Bliss.CSharp.Textures.RenderTexture2D.Framebuffer
   commentId: P:Bliss.CSharp.Textures.RenderTexture2D.Framebuffer
   id: Framebuffer
@@ -259,7 +261,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Framebuffer
     path: ../src/Bliss/CSharp/Textures/RenderTexture2D.cs
-    startLine: 40
+    startLine: 42
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures
@@ -272,16 +274,45 @@ items:
       type: Veldrid.Framebuffer
     content.vb: Public Property Framebuffer As Framebuffer
   overload: Bliss.CSharp.Textures.RenderTexture2D.Framebuffer*
-- uid: Bliss.CSharp.Textures.RenderTexture2D.#ctor(Veldrid.GraphicsDevice,System.UInt32,System.UInt32,Veldrid.TextureSampleCount)
-  commentId: M:Bliss.CSharp.Textures.RenderTexture2D.#ctor(Veldrid.GraphicsDevice,System.UInt32,System.UInt32,Veldrid.TextureSampleCount)
-  id: '#ctor(Veldrid.GraphicsDevice,System.UInt32,System.UInt32,Veldrid.TextureSampleCount)'
+- uid: Bliss.CSharp.Textures.RenderTexture2D.Resized
+  commentId: E:Bliss.CSharp.Textures.RenderTexture2D.Resized
+  id: Resized
   parent: Bliss.CSharp.Textures.RenderTexture2D
   langs:
   - csharp
   - vb
-  name: RenderTexture2D(GraphicsDevice, uint, uint, TextureSampleCount)
-  nameWithType: RenderTexture2D.RenderTexture2D(GraphicsDevice, uint, uint, TextureSampleCount)
-  fullName: Bliss.CSharp.Textures.RenderTexture2D.RenderTexture2D(Veldrid.GraphicsDevice, uint, uint, Veldrid.TextureSampleCount)
+  name: Resized
+  nameWithType: RenderTexture2D.Resized
+  fullName: Bliss.CSharp.Textures.RenderTexture2D.Resized
+  type: Event
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/RenderTexture2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Resized
+    path: ../src/Bliss/CSharp/Textures/RenderTexture2D.cs
+    startLine: 47
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: An event that is triggered when the dimensions of the render texture are resized.
+  example: []
+  syntax:
+    content: public event Action<Rectangle>? Resized
+    return:
+      type: System.Action{Bliss.CSharp.Transformations.Rectangle}
+    content.vb: Public Event Resized As Action(Of Rectangle)
+- uid: Bliss.CSharp.Textures.RenderTexture2D.#ctor(Veldrid.GraphicsDevice,System.UInt32,System.UInt32,System.Boolean,Veldrid.TextureSampleCount)
+  commentId: M:Bliss.CSharp.Textures.RenderTexture2D.#ctor(Veldrid.GraphicsDevice,System.UInt32,System.UInt32,System.Boolean,Veldrid.TextureSampleCount)
+  id: '#ctor(Veldrid.GraphicsDevice,System.UInt32,System.UInt32,System.Boolean,Veldrid.TextureSampleCount)'
+  parent: Bliss.CSharp.Textures.RenderTexture2D
+  langs:
+  - csharp
+  - vb
+  name: RenderTexture2D(GraphicsDevice, uint, uint, bool, TextureSampleCount)
+  nameWithType: RenderTexture2D.RenderTexture2D(GraphicsDevice, uint, uint, bool, TextureSampleCount)
+  fullName: Bliss.CSharp.Textures.RenderTexture2D.RenderTexture2D(Veldrid.GraphicsDevice, uint, uint, bool, Veldrid.TextureSampleCount)
   type: Constructor
   source:
     remote:
@@ -290,14 +321,14 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Textures/RenderTexture2D.cs
-    startLine: 60
+    startLine: 72
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures
   summary: Initializes a new instance of the <xref href="Bliss.CSharp.Textures.RenderTexture2D" data-throw-if-not-resolved="false"></xref> class, creating a render target texture with specified dimensions and sample count.
   example: []
   syntax:
-    content: public RenderTexture2D(GraphicsDevice graphicsDevice, uint width, uint height, TextureSampleCount sampleCount = TextureSampleCount.Count1)
+    content: public RenderTexture2D(GraphicsDevice graphicsDevice, uint width, uint height, bool srgb = false, TextureSampleCount sampleCount = TextureSampleCount.Count1)
     parameters:
     - id: graphicsDevice
       type: Veldrid.GraphicsDevice
@@ -308,14 +339,17 @@ items:
     - id: height
       type: System.UInt32
       description: The height of the render texture in pixels.
+    - id: srgb
+      type: System.Boolean
+      description: Indicates whether to use sRGB color space for the color texture.
     - id: sampleCount
       type: Veldrid.TextureSampleCount
       description: The number of samples for multisampling. Defaults to <xref href="Veldrid.TextureSampleCount.Count1" data-throw-if-not-resolved="false"></xref>.
-    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, width As UInteger, height As UInteger, sampleCount As TextureSampleCount = TextureSampleCount.Count1)
+    content.vb: Public Sub New(graphicsDevice As GraphicsDevice, width As UInteger, height As UInteger, srgb As Boolean = False, sampleCount As TextureSampleCount = TextureSampleCount.Count1)
   overload: Bliss.CSharp.Textures.RenderTexture2D.#ctor*
-  nameWithType.vb: RenderTexture2D.New(GraphicsDevice, UInteger, UInteger, TextureSampleCount)
-  fullName.vb: Bliss.CSharp.Textures.RenderTexture2D.New(Veldrid.GraphicsDevice, UInteger, UInteger, Veldrid.TextureSampleCount)
-  name.vb: New(GraphicsDevice, UInteger, UInteger, TextureSampleCount)
+  nameWithType.vb: RenderTexture2D.New(GraphicsDevice, UInteger, UInteger, Boolean, TextureSampleCount)
+  fullName.vb: Bliss.CSharp.Textures.RenderTexture2D.New(Veldrid.GraphicsDevice, UInteger, UInteger, Boolean, Veldrid.TextureSampleCount)
+  name.vb: New(GraphicsDevice, UInteger, UInteger, Boolean, TextureSampleCount)
 - uid: Bliss.CSharp.Textures.RenderTexture2D.SampleCount
   commentId: P:Bliss.CSharp.Textures.RenderTexture2D.SampleCount
   id: SampleCount
@@ -334,7 +368,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SampleCount
     path: ../src/Bliss/CSharp/Textures/RenderTexture2D.cs
-    startLine: 72
+    startLine: 86
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures
@@ -365,7 +399,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: CreateFrameBuffer
     path: ../src/Bliss/CSharp/Textures/RenderTexture2D.cs
-    startLine: 84
+    startLine: 98
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures
@@ -393,7 +427,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Resize
     path: ../src/Bliss/CSharp/Textures/RenderTexture2D.cs
-    startLine: 96
+    startLine: 109
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures
@@ -413,47 +447,82 @@ items:
   nameWithType.vb: RenderTexture2D.Resize(UInteger, UInteger)
   fullName.vb: Bliss.CSharp.Textures.RenderTexture2D.Resize(UInteger, UInteger)
   name.vb: Resize(UInteger, UInteger)
-- uid: Bliss.CSharp.Textures.RenderTexture2D.GetResourceSet(Veldrid.Sampler,Veldrid.ResourceLayout)
-  commentId: M:Bliss.CSharp.Textures.RenderTexture2D.GetResourceSet(Veldrid.Sampler,Veldrid.ResourceLayout)
-  id: GetResourceSet(Veldrid.Sampler,Veldrid.ResourceLayout)
+- uid: Bliss.CSharp.Textures.RenderTexture2D.GetColorResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  commentId: M:Bliss.CSharp.Textures.RenderTexture2D.GetColorResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  id: GetColorResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
   parent: Bliss.CSharp.Textures.RenderTexture2D
   langs:
   - csharp
   - vb
-  name: GetResourceSet(Sampler, ResourceLayout)
-  nameWithType: RenderTexture2D.GetResourceSet(Sampler, ResourceLayout)
-  fullName: Bliss.CSharp.Textures.RenderTexture2D.GetResourceSet(Veldrid.Sampler, Veldrid.ResourceLayout)
+  name: GetColorResourceSet(Sampler, SimpleBufferLayout)
+  nameWithType: RenderTexture2D.GetColorResourceSet(Sampler, SimpleBufferLayout)
+  fullName: Bliss.CSharp.Textures.RenderTexture2D.GetColorResourceSet(Veldrid.Sampler, Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
   type: Method
   source:
     remote:
       path: src/Bliss/CSharp/Textures/RenderTexture2D.cs
       branch: main
       repo: https://github.com/MrScautHD/Bliss.git
-    id: GetResourceSet
+    id: GetColorResourceSet
     path: ../src/Bliss/CSharp/Textures/RenderTexture2D.cs
-    startLine: 111
+    startLine: 125
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures
-  summary: >-
-    Retrieves a <xref href="Veldrid.ResourceSet" data-throw-if-not-resolved="false"></xref> for the specified <xref href="Veldrid.Sampler" data-throw-if-not-resolved="false"></xref> and <xref href="Veldrid.ResourceLayout" data-throw-if-not-resolved="false"></xref>.
-
-    If the resource set is not already cached, a new one is created, cached, and then returned.
+  summary: Retrieves a cached or newly created color <xref href="Veldrid.ResourceSet" data-throw-if-not-resolved="false"></xref> associated with the specified sampler and resource layout.
   example: []
   syntax:
-    content: public ResourceSet GetResourceSet(Sampler sampler, ResourceLayout layout)
+    content: public ResourceSet GetColorResourceSet(Sampler sampler, SimpleBufferLayout layout)
     parameters:
     - id: sampler
       type: Veldrid.Sampler
-      description: The sampler to be used in the resource set.
+      description: The <xref href="Veldrid.Sampler" data-throw-if-not-resolved="false"></xref> used for sampling the color texture.
     - id: layout
-      type: Veldrid.ResourceLayout
-      description: The resource layout defining how resources are bound to the pipeline.
+      type: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+      description: The <xref href="Veldrid.ResourceLayout" data-throw-if-not-resolved="false"></xref> defining the resource bindings for the color texture.
     return:
       type: Veldrid.ResourceSet
-      description: A <xref href="Veldrid.ResourceSet" data-throw-if-not-resolved="false"></xref> that contains the specified sampler and layout.
-    content.vb: Public Function GetResourceSet(sampler As Sampler, layout As ResourceLayout) As ResourceSet
-  overload: Bliss.CSharp.Textures.RenderTexture2D.GetResourceSet*
+      description: A <xref href="Veldrid.ResourceSet" data-throw-if-not-resolved="false"></xref> that binds the color texture and provided sampler to the specified resource layout.
+    content.vb: Public Function GetColorResourceSet(sampler As Sampler, layout As SimpleBufferLayout) As ResourceSet
+  overload: Bliss.CSharp.Textures.RenderTexture2D.GetColorResourceSet*
+- uid: Bliss.CSharp.Textures.RenderTexture2D.GetDepthResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  commentId: M:Bliss.CSharp.Textures.RenderTexture2D.GetDepthResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  id: GetDepthResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  parent: Bliss.CSharp.Textures.RenderTexture2D
+  langs:
+  - csharp
+  - vb
+  name: GetDepthResourceSet(Sampler, SimpleBufferLayout)
+  nameWithType: RenderTexture2D.GetDepthResourceSet(Sampler, SimpleBufferLayout)
+  fullName: Bliss.CSharp.Textures.RenderTexture2D.GetDepthResourceSet(Veldrid.Sampler, Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Textures/RenderTexture2D.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetDepthResourceSet
+    path: ../src/Bliss/CSharp/Textures/RenderTexture2D.cs
+    startLine: 142
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Textures
+  summary: Retrieves a <xref href="Veldrid.ResourceSet" data-throw-if-not-resolved="false"></xref> object used for sampling the depth texture of the render target.
+  example: []
+  syntax:
+    content: public ResourceSet GetDepthResourceSet(Sampler sampler, SimpleBufferLayout layout)
+    parameters:
+    - id: sampler
+      type: Veldrid.Sampler
+      description: The sampler object used to define how the depth texture will be sampled.
+    - id: layout
+      type: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+      description: The layout that specifies the structure of the resource set.
+    return:
+      type: Veldrid.ResourceSet
+      description: A <xref href="Veldrid.ResourceSet" data-throw-if-not-resolved="false"></xref> used for accessing the depth texture with the specified sampler and layout.
+    content.vb: Public Function GetDepthResourceSet(sampler As Sampler, layout As SimpleBufferLayout) As ResourceSet
+  overload: Bliss.CSharp.Textures.RenderTexture2D.GetDepthResourceSet*
 - uid: Bliss.CSharp.Textures.RenderTexture2D.Dispose(System.Boolean)
   commentId: M:Bliss.CSharp.Textures.RenderTexture2D.Dispose(System.Boolean)
   id: Dispose(System.Boolean)
@@ -472,7 +541,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Textures/RenderTexture2D.cs
-    startLine: 163
+    startLine: 191
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Textures
@@ -883,12 +952,26 @@ references:
   name: Height
   nameWithType: RenderTexture2D.Height
   fullName: Bliss.CSharp.Textures.RenderTexture2D.Height
-- uid: Bliss.CSharp.Textures.RenderTexture2D.DepthTexture*
-  commentId: Overload:Bliss.CSharp.Textures.RenderTexture2D.DepthTexture
-  href: Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_DepthTexture
-  name: DepthTexture
-  nameWithType: RenderTexture2D.DepthTexture
-  fullName: Bliss.CSharp.Textures.RenderTexture2D.DepthTexture
+- uid: Bliss.CSharp.Textures.RenderTexture2D.Format*
+  commentId: Overload:Bliss.CSharp.Textures.RenderTexture2D.Format
+  href: Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_Format
+  name: Format
+  nameWithType: RenderTexture2D.Format
+  fullName: Bliss.CSharp.Textures.RenderTexture2D.Format
+- uid: Veldrid.PixelFormat
+  commentId: T:Veldrid.PixelFormat
+  parent: Veldrid
+  isExternal: true
+  href: https://github.com/ppy/veldrid/blob/a405fe8484fa5384dfbd1faff58c74f717f46651/src/Veldrid/PixelFormat.cs
+  name: PixelFormat
+  nameWithType: PixelFormat
+  fullName: Veldrid.PixelFormat
+- uid: Bliss.CSharp.Textures.RenderTexture2D.ColorTexture*
+  commentId: Overload:Bliss.CSharp.Textures.RenderTexture2D.ColorTexture
+  href: Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_ColorTexture
+  name: ColorTexture
+  nameWithType: RenderTexture2D.ColorTexture
+  fullName: Bliss.CSharp.Textures.RenderTexture2D.ColorTexture
 - uid: Veldrid.Texture
   commentId: T:Veldrid.Texture
   parent: Veldrid
@@ -897,18 +980,12 @@ references:
   name: Texture
   nameWithType: Texture
   fullName: Veldrid.Texture
-- uid: Bliss.CSharp.Textures.RenderTexture2D.ColorTexture*
-  commentId: Overload:Bliss.CSharp.Textures.RenderTexture2D.ColorTexture
-  href: Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_ColorTexture
-  name: ColorTexture
-  nameWithType: RenderTexture2D.ColorTexture
-  fullName: Bliss.CSharp.Textures.RenderTexture2D.ColorTexture
-- uid: Bliss.CSharp.Textures.RenderTexture2D.DestinationTexture*
-  commentId: Overload:Bliss.CSharp.Textures.RenderTexture2D.DestinationTexture
-  href: Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_DestinationTexture
-  name: DestinationTexture
-  nameWithType: RenderTexture2D.DestinationTexture
-  fullName: Bliss.CSharp.Textures.RenderTexture2D.DestinationTexture
+- uid: Bliss.CSharp.Textures.RenderTexture2D.DepthTexture*
+  commentId: Overload:Bliss.CSharp.Textures.RenderTexture2D.DepthTexture
+  href: Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_DepthTexture
+  name: DepthTexture
+  nameWithType: RenderTexture2D.DepthTexture
+  fullName: Bliss.CSharp.Textures.RenderTexture2D.DepthTexture
 - uid: Bliss.CSharp.Textures.RenderTexture2D.Framebuffer*
   commentId: Overload:Bliss.CSharp.Textures.RenderTexture2D.Framebuffer
   href: Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_Framebuffer
@@ -923,9 +1000,69 @@ references:
   name: Framebuffer
   nameWithType: Framebuffer
   fullName: Veldrid.Framebuffer
+- uid: System.Action{Bliss.CSharp.Transformations.Rectangle}
+  commentId: T:System.Action{Bliss.CSharp.Transformations.Rectangle}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<Rectangle>
+  nameWithType: Action<Rectangle>
+  fullName: System.Action<Bliss.CSharp.Transformations.Rectangle>
+  nameWithType.vb: Action(Of Rectangle)
+  fullName.vb: System.Action(Of Bliss.CSharp.Transformations.Rectangle)
+  name.vb: Action(Of Rectangle)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Bliss.CSharp.Transformations.Rectangle
+    name: Rectangle
+    href: Bliss.CSharp.Transformations.Rectangle.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Bliss.CSharp.Transformations.Rectangle
+    name: Rectangle
+    href: Bliss.CSharp.Transformations.Rectangle.html
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
 - uid: Bliss.CSharp.Textures.RenderTexture2D
   commentId: T:Bliss.CSharp.Textures.RenderTexture2D
-  parent: Bliss.CSharp.Textures
   href: Bliss.CSharp.Textures.RenderTexture2D.html
   name: RenderTexture2D
   nameWithType: RenderTexture2D
@@ -945,13 +1082,24 @@ references:
   fullName: Veldrid.TextureSampleCount.Count1
 - uid: Bliss.CSharp.Textures.RenderTexture2D.#ctor*
   commentId: Overload:Bliss.CSharp.Textures.RenderTexture2D.#ctor
-  href: Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D__ctor_Veldrid_GraphicsDevice_System_UInt32_System_UInt32_Veldrid_TextureSampleCount_
+  href: Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D__ctor_Veldrid_GraphicsDevice_System_UInt32_System_UInt32_System_Boolean_Veldrid_TextureSampleCount_
   name: RenderTexture2D
   nameWithType: RenderTexture2D.RenderTexture2D
   fullName: Bliss.CSharp.Textures.RenderTexture2D.RenderTexture2D
   nameWithType.vb: RenderTexture2D.New
   fullName.vb: Bliss.CSharp.Textures.RenderTexture2D.New
   name.vb: New
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
 - uid: Veldrid.TextureSampleCount
   commentId: T:Veldrid.TextureSampleCount
   parent: Veldrid
@@ -1002,12 +1150,71 @@ references:
   name: ResourceLayout
   nameWithType: ResourceLayout
   fullName: Veldrid.ResourceLayout
-- uid: Bliss.CSharp.Textures.RenderTexture2D.GetResourceSet*
-  commentId: Overload:Bliss.CSharp.Textures.RenderTexture2D.GetResourceSet
-  href: Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_GetResourceSet_Veldrid_Sampler_Veldrid_ResourceLayout_
-  name: GetResourceSet
-  nameWithType: RenderTexture2D.GetResourceSet
-  fullName: Bliss.CSharp.Textures.RenderTexture2D.GetResourceSet
+- uid: Bliss.CSharp.Textures.RenderTexture2D.GetColorResourceSet*
+  commentId: Overload:Bliss.CSharp.Textures.RenderTexture2D.GetColorResourceSet
+  href: Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_GetColorResourceSet_Veldrid_Sampler_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferLayout_
+  name: GetColorResourceSet
+  nameWithType: RenderTexture2D.GetColorResourceSet
+  fullName: Bliss.CSharp.Textures.RenderTexture2D.GetColorResourceSet
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+  commentId: T:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+  parent: Bliss.CSharp.Graphics.Pipelines.Buffers
+  href: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout.html
+  name: SimpleBufferLayout
+  nameWithType: SimpleBufferLayout
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+  commentId: N:Bliss.CSharp.Graphics.Pipelines.Buffers
+  href: Bliss.html
+  name: Bliss.CSharp.Graphics.Pipelines.Buffers
+  nameWithType: Bliss.CSharp.Graphics.Pipelines.Buffers
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers
+  spec.csharp:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+    name: Buffers
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.html
+  spec.vb:
+  - uid: Bliss
+    name: Bliss
+    href: Bliss.html
+  - name: .
+  - uid: Bliss.CSharp
+    name: CSharp
+    href: Bliss.CSharp.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics
+    name: Graphics
+    href: Bliss.CSharp.Graphics.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines
+    name: Pipelines
+    href: Bliss.CSharp.Graphics.Pipelines.html
+  - name: .
+  - uid: Bliss.CSharp.Graphics.Pipelines.Buffers
+    name: Buffers
+    href: Bliss.CSharp.Graphics.Pipelines.Buffers.html
+- uid: Bliss.CSharp.Textures.RenderTexture2D.GetDepthResourceSet*
+  commentId: Overload:Bliss.CSharp.Textures.RenderTexture2D.GetDepthResourceSet
+  href: Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_GetDepthResourceSet_Veldrid_Sampler_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferLayout_
+  name: GetDepthResourceSet
+  nameWithType: RenderTexture2D.GetDepthResourceSet
+  fullName: Bliss.CSharp.Textures.RenderTexture2D.GetDepthResourceSet
 - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
   commentId: M:Bliss.CSharp.Disposable.Dispose(System.Boolean)
   parent: Bliss.CSharp.Disposable
@@ -1045,14 +1252,3 @@ references:
   name: Dispose
   nameWithType: RenderTexture2D.Dispose
   fullName: Bliss.CSharp.Textures.RenderTexture2D.Dispose
-- uid: System.Boolean
-  commentId: T:System.Boolean
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.boolean
-  name: bool
-  nameWithType: bool
-  fullName: bool
-  nameWithType.vb: Boolean
-  fullName.vb: Boolean
-  name.vb: Boolean

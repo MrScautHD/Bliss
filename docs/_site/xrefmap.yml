@@ -1622,24 +1622,60 @@ references:
   commentId: T:Bliss.CSharp.Effects.Effect
   fullName: Bliss.CSharp.Effects.Effect
   nameWithType: Effect
-- uid: Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.Byte[],System.Byte[],Veldrid.SpecializationConstant[])
-  name: Effect(GraphicsDevice, VertexLayoutDescription, byte[], byte[], SpecializationConstant[]?)
-  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect__ctor_Veldrid_GraphicsDevice_Veldrid_VertexLayoutDescription_System_Byte___System_Byte___Veldrid_SpecializationConstant___
-  commentId: M:Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.Byte[],System.Byte[],Veldrid.SpecializationConstant[])
-  name.vb: New(GraphicsDevice, VertexLayoutDescription, Byte(), Byte(), SpecializationConstant())
-  fullName: Bliss.CSharp.Effects.Effect.Effect(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, byte[], byte[], Veldrid.SpecializationConstant[]?)
-  fullName.vb: Bliss.CSharp.Effects.Effect.New(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, Byte(), Byte(), Veldrid.SpecializationConstant())
-  nameWithType: Effect.Effect(GraphicsDevice, VertexLayoutDescription, byte[], byte[], SpecializationConstant[]?)
-  nameWithType.vb: Effect.New(GraphicsDevice, VertexLayoutDescription, Byte(), Byte(), SpecializationConstant())
-- uid: Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String,Veldrid.SpecializationConstant[])
-  name: Effect(GraphicsDevice, VertexLayoutDescription, string, string, SpecializationConstant[]?)
-  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect__ctor_Veldrid_GraphicsDevice_Veldrid_VertexLayoutDescription_System_String_System_String_Veldrid_SpecializationConstant___
-  commentId: M:Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String,Veldrid.SpecializationConstant[])
-  name.vb: New(GraphicsDevice, VertexLayoutDescription, String, String, SpecializationConstant())
-  fullName: Bliss.CSharp.Effects.Effect.Effect(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, string, string, Veldrid.SpecializationConstant[]?)
-  fullName.vb: Bliss.CSharp.Effects.Effect.New(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, String, String, Veldrid.SpecializationConstant())
-  nameWithType: Effect.Effect(GraphicsDevice, VertexLayoutDescription, string, string, SpecializationConstant[]?)
-  nameWithType.vb: Effect.New(GraphicsDevice, VertexLayoutDescription, String, String, SpecializationConstant())
+- uid: Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.Byte[],System.Byte[],Veldrid.SPIRV.CrossCompileOptions)
+  name: Effect(GraphicsDevice, VertexLayoutDescription, byte[], byte[], CrossCompileOptions)
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect__ctor_Veldrid_GraphicsDevice_Veldrid_VertexLayoutDescription_System_Byte___System_Byte___Veldrid_SPIRV_CrossCompileOptions_
+  commentId: M:Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.Byte[],System.Byte[],Veldrid.SPIRV.CrossCompileOptions)
+  name.vb: New(GraphicsDevice, VertexLayoutDescription, Byte(), Byte(), CrossCompileOptions)
+  fullName: Bliss.CSharp.Effects.Effect.Effect(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, byte[], byte[], Veldrid.SPIRV.CrossCompileOptions)
+  fullName.vb: Bliss.CSharp.Effects.Effect.New(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, Byte(), Byte(), Veldrid.SPIRV.CrossCompileOptions)
+  nameWithType: Effect.Effect(GraphicsDevice, VertexLayoutDescription, byte[], byte[], CrossCompileOptions)
+  nameWithType.vb: Effect.New(GraphicsDevice, VertexLayoutDescription, Byte(), Byte(), CrossCompileOptions)
+- uid: Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String,Veldrid.SPIRV.CrossCompileOptions)
+  name: Effect(GraphicsDevice, VertexLayoutDescription, string, string, CrossCompileOptions)
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect__ctor_Veldrid_GraphicsDevice_Veldrid_VertexLayoutDescription_System_String_System_String_Veldrid_SPIRV_CrossCompileOptions_
+  commentId: M:Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String,Veldrid.SPIRV.CrossCompileOptions)
+  name.vb: New(GraphicsDevice, VertexLayoutDescription, String, String, CrossCompileOptions)
+  fullName: Bliss.CSharp.Effects.Effect.Effect(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, string, string, Veldrid.SPIRV.CrossCompileOptions)
+  fullName.vb: Bliss.CSharp.Effects.Effect.New(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, String, String, Veldrid.SPIRV.CrossCompileOptions)
+  nameWithType: Effect.Effect(GraphicsDevice, VertexLayoutDescription, string, string, CrossCompileOptions)
+  nameWithType.vb: Effect.New(GraphicsDevice, VertexLayoutDescription, String, String, CrossCompileOptions)
+- uid: Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String,Veldrid.SPIRV.CrossCompileOptions,Veldrid.SPIRV.MacroDefinition[])
+  name: Effect(GraphicsDevice, VertexLayoutDescription, string, string, CrossCompileOptions, MacroDefinition[])
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect__ctor_Veldrid_GraphicsDevice_Veldrid_VertexLayoutDescription_System_String_System_String_Veldrid_SPIRV_CrossCompileOptions_Veldrid_SPIRV_MacroDefinition___
+  commentId: M:Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription,System.String,System.String,Veldrid.SPIRV.CrossCompileOptions,Veldrid.SPIRV.MacroDefinition[])
+  name.vb: New(GraphicsDevice, VertexLayoutDescription, String, String, CrossCompileOptions, MacroDefinition())
+  fullName: Bliss.CSharp.Effects.Effect.Effect(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, string, string, Veldrid.SPIRV.CrossCompileOptions, Veldrid.SPIRV.MacroDefinition[])
+  fullName.vb: Bliss.CSharp.Effects.Effect.New(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription, String, String, Veldrid.SPIRV.CrossCompileOptions, Veldrid.SPIRV.MacroDefinition())
+  nameWithType: Effect.Effect(GraphicsDevice, VertexLayoutDescription, string, string, CrossCompileOptions, MacroDefinition[])
+  nameWithType.vb: Effect.New(GraphicsDevice, VertexLayoutDescription, String, String, CrossCompileOptions, MacroDefinition())
+- uid: Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription[],System.Byte[],System.Byte[],Veldrid.SPIRV.CrossCompileOptions)
+  name: Effect(GraphicsDevice, VertexLayoutDescription[], byte[], byte[], CrossCompileOptions)
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect__ctor_Veldrid_GraphicsDevice_Veldrid_VertexLayoutDescription___System_Byte___System_Byte___Veldrid_SPIRV_CrossCompileOptions_
+  commentId: M:Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription[],System.Byte[],System.Byte[],Veldrid.SPIRV.CrossCompileOptions)
+  name.vb: New(GraphicsDevice, VertexLayoutDescription(), Byte(), Byte(), CrossCompileOptions)
+  fullName: Bliss.CSharp.Effects.Effect.Effect(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription[], byte[], byte[], Veldrid.SPIRV.CrossCompileOptions)
+  fullName.vb: Bliss.CSharp.Effects.Effect.New(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription(), Byte(), Byte(), Veldrid.SPIRV.CrossCompileOptions)
+  nameWithType: Effect.Effect(GraphicsDevice, VertexLayoutDescription[], byte[], byte[], CrossCompileOptions)
+  nameWithType.vb: Effect.New(GraphicsDevice, VertexLayoutDescription(), Byte(), Byte(), CrossCompileOptions)
+- uid: Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription[],System.String,System.String,Veldrid.SPIRV.CrossCompileOptions)
+  name: Effect(GraphicsDevice, VertexLayoutDescription[], string, string, CrossCompileOptions)
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect__ctor_Veldrid_GraphicsDevice_Veldrid_VertexLayoutDescription___System_String_System_String_Veldrid_SPIRV_CrossCompileOptions_
+  commentId: M:Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription[],System.String,System.String,Veldrid.SPIRV.CrossCompileOptions)
+  name.vb: New(GraphicsDevice, VertexLayoutDescription(), String, String, CrossCompileOptions)
+  fullName: Bliss.CSharp.Effects.Effect.Effect(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription[], string, string, Veldrid.SPIRV.CrossCompileOptions)
+  fullName.vb: Bliss.CSharp.Effects.Effect.New(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription(), String, String, Veldrid.SPIRV.CrossCompileOptions)
+  nameWithType: Effect.Effect(GraphicsDevice, VertexLayoutDescription[], string, string, CrossCompileOptions)
+  nameWithType.vb: Effect.New(GraphicsDevice, VertexLayoutDescription(), String, String, CrossCompileOptions)
+- uid: Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription[],System.String,System.String,Veldrid.SPIRV.CrossCompileOptions,Veldrid.SPIRV.MacroDefinition[])
+  name: Effect(GraphicsDevice, VertexLayoutDescription[], string, string, CrossCompileOptions, MacroDefinition[])
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect__ctor_Veldrid_GraphicsDevice_Veldrid_VertexLayoutDescription___System_String_System_String_Veldrid_SPIRV_CrossCompileOptions_Veldrid_SPIRV_MacroDefinition___
+  commentId: M:Bliss.CSharp.Effects.Effect.#ctor(Veldrid.GraphicsDevice,Veldrid.VertexLayoutDescription[],System.String,System.String,Veldrid.SPIRV.CrossCompileOptions,Veldrid.SPIRV.MacroDefinition[])
+  name.vb: New(GraphicsDevice, VertexLayoutDescription(), String, String, CrossCompileOptions, MacroDefinition())
+  fullName: Bliss.CSharp.Effects.Effect.Effect(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription[], string, string, Veldrid.SPIRV.CrossCompileOptions, Veldrid.SPIRV.MacroDefinition[])
+  fullName.vb: Bliss.CSharp.Effects.Effect.New(Veldrid.GraphicsDevice, Veldrid.VertexLayoutDescription(), String, String, Veldrid.SPIRV.CrossCompileOptions, Veldrid.SPIRV.MacroDefinition())
+  nameWithType: Effect.Effect(GraphicsDevice, VertexLayoutDescription[], string, string, CrossCompileOptions, MacroDefinition[])
+  nameWithType.vb: Effect.New(GraphicsDevice, VertexLayoutDescription(), String, String, CrossCompileOptions, MacroDefinition())
 - uid: Bliss.CSharp.Effects.Effect.#ctor*
   name: Effect
   href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect__ctor_
@@ -1830,22 +1866,51 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Effects.Effect.GraphicsDevice
   nameWithType: Effect.GraphicsDevice
-- uid: Bliss.CSharp.Effects.Effect.LoadBytecode(System.String)
-  name: LoadBytecode(string)
-  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_LoadBytecode_System_String_
-  commentId: M:Bliss.CSharp.Effects.Effect.LoadBytecode(System.String)
-  name.vb: LoadBytecode(String)
-  fullName: Bliss.CSharp.Effects.Effect.LoadBytecode(string)
-  fullName.vb: Bliss.CSharp.Effects.Effect.LoadBytecode(String)
-  nameWithType: Effect.LoadBytecode(string)
-  nameWithType.vb: Effect.LoadBytecode(String)
-- uid: Bliss.CSharp.Effects.Effect.LoadBytecode*
-  name: LoadBytecode
-  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_LoadBytecode_
-  commentId: Overload:Bliss.CSharp.Effects.Effect.LoadBytecode
+- uid: Bliss.CSharp.Effects.Effect.LoadBytecodeFromFile(System.String)
+  name: LoadBytecodeFromFile(string)
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_LoadBytecodeFromFile_System_String_
+  commentId: M:Bliss.CSharp.Effects.Effect.LoadBytecodeFromFile(System.String)
+  name.vb: LoadBytecodeFromFile(String)
+  fullName: Bliss.CSharp.Effects.Effect.LoadBytecodeFromFile(string)
+  fullName.vb: Bliss.CSharp.Effects.Effect.LoadBytecodeFromFile(String)
+  nameWithType: Effect.LoadBytecodeFromFile(string)
+  nameWithType.vb: Effect.LoadBytecodeFromFile(String)
+- uid: Bliss.CSharp.Effects.Effect.LoadBytecodeFromFile*
+  name: LoadBytecodeFromFile
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_LoadBytecodeFromFile_
+  commentId: Overload:Bliss.CSharp.Effects.Effect.LoadBytecodeFromFile
   isSpec: "True"
-  fullName: Bliss.CSharp.Effects.Effect.LoadBytecode
-  nameWithType: Effect.LoadBytecode
+  fullName: Bliss.CSharp.Effects.Effect.LoadBytecodeFromFile
+  nameWithType: Effect.LoadBytecodeFromFile
+- uid: Bliss.CSharp.Effects.Effect.LoadTextCodeFromFile(System.String)
+  name: LoadTextCodeFromFile(string)
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_LoadTextCodeFromFile_System_String_
+  commentId: M:Bliss.CSharp.Effects.Effect.LoadTextCodeFromFile(System.String)
+  name.vb: LoadTextCodeFromFile(String)
+  fullName: Bliss.CSharp.Effects.Effect.LoadTextCodeFromFile(string)
+  fullName.vb: Bliss.CSharp.Effects.Effect.LoadTextCodeFromFile(String)
+  nameWithType: Effect.LoadTextCodeFromFile(string)
+  nameWithType.vb: Effect.LoadTextCodeFromFile(String)
+- uid: Bliss.CSharp.Effects.Effect.LoadTextCodeFromFile*
+  name: LoadTextCodeFromFile
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_LoadTextCodeFromFile_
+  commentId: Overload:Bliss.CSharp.Effects.Effect.LoadTextCodeFromFile
+  isSpec: "True"
+  fullName: Bliss.CSharp.Effects.Effect.LoadTextCodeFromFile
+  nameWithType: Effect.LoadTextCodeFromFile
+- uid: Bliss.CSharp.Effects.Effect.Macros
+  name: Macros
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_Macros
+  commentId: P:Bliss.CSharp.Effects.Effect.Macros
+  fullName: Bliss.CSharp.Effects.Effect.Macros
+  nameWithType: Effect.Macros
+- uid: Bliss.CSharp.Effects.Effect.Macros*
+  name: Macros
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_Macros_
+  commentId: Overload:Bliss.CSharp.Effects.Effect.Macros
+  isSpec: "True"
+  fullName: Bliss.CSharp.Effects.Effect.Macros
+  nameWithType: Effect.Macros
 - uid: Bliss.CSharp.Effects.Effect.Shader
   name: Shader
   href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_Shader
@@ -1858,12 +1923,25 @@ references:
   commentId: F:Bliss.CSharp.Effects.Effect.ShaderSet
   fullName: Bliss.CSharp.Effects.Effect.ShaderSet
   nameWithType: Effect.ShaderSet
-- uid: Bliss.CSharp.Effects.Effect.VertexLayout
-  name: VertexLayout
-  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_VertexLayout
-  commentId: F:Bliss.CSharp.Effects.Effect.VertexLayout
-  fullName: Bliss.CSharp.Effects.Effect.VertexLayout
-  nameWithType: Effect.VertexLayout
+- uid: Bliss.CSharp.Effects.Effect.Specializations
+  name: Specializations
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_Specializations
+  commentId: P:Bliss.CSharp.Effects.Effect.Specializations
+  fullName: Bliss.CSharp.Effects.Effect.Specializations
+  nameWithType: Effect.Specializations
+- uid: Bliss.CSharp.Effects.Effect.Specializations*
+  name: Specializations
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_Specializations_
+  commentId: Overload:Bliss.CSharp.Effects.Effect.Specializations
+  isSpec: "True"
+  fullName: Bliss.CSharp.Effects.Effect.Specializations
+  nameWithType: Effect.Specializations
+- uid: Bliss.CSharp.Effects.Effect.VertexLayouts
+  name: VertexLayouts
+  href: api/Bliss.CSharp.Effects.Effect.html#Bliss_CSharp_Effects_Effect_VertexLayouts
+  commentId: F:Bliss.CSharp.Effects.Effect.VertexLayouts
+  fullName: Bliss.CSharp.Effects.Effect.VertexLayouts
+  nameWithType: Effect.VertexLayouts
 - uid: Bliss.CSharp.Fonts
   name: Bliss.CSharp.Fonts
   href: api/Bliss.CSharp.Fonts.html
@@ -4356,6 +4434,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.GlobalResource.LinearClampSampler
   nameWithType: GlobalResource.LinearClampSampler
+- uid: Bliss.CSharp.GlobalResource.ModelInstancingEffect
+  name: ModelInstancingEffect
+  href: api/Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_ModelInstancingEffect
+  commentId: P:Bliss.CSharp.GlobalResource.ModelInstancingEffect
+  fullName: Bliss.CSharp.GlobalResource.ModelInstancingEffect
+  nameWithType: GlobalResource.ModelInstancingEffect
+- uid: Bliss.CSharp.GlobalResource.ModelInstancingEffect*
+  name: ModelInstancingEffect
+  href: api/Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_ModelInstancingEffect_
+  commentId: Overload:Bliss.CSharp.GlobalResource.ModelInstancingEffect
+  isSpec: "True"
+  fullName: Bliss.CSharp.GlobalResource.ModelInstancingEffect
+  nameWithType: GlobalResource.ModelInstancingEffect
 - uid: Bliss.CSharp.GlobalResource.PointClampSampler
   name: PointClampSampler
   href: api/Bliss.CSharp.GlobalResource.html#Bliss_CSharp_GlobalResource_PointClampSampler
@@ -5559,6 +5650,42 @@ references:
   fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer(Of T).UpdateBufferImmediate
   nameWithType: SimpleUniformBuffer<T>.UpdateBufferImmediate
   nameWithType.vb: SimpleUniformBuffer(Of T).UpdateBufferImmediate
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceDeferred(Veldrid.CommandList,System.Int32,System.Int32,System.Int32)
+  name: UpdateBufferSliceDeferred(CommandList, int, int, int)
+  href: api/Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer-1.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleUniformBuffer_1_UpdateBufferSliceDeferred_Veldrid_CommandList_System_Int32_System_Int32_System_Int32_
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceDeferred(Veldrid.CommandList,System.Int32,System.Int32,System.Int32)
+  name.vb: UpdateBufferSliceDeferred(CommandList, Integer, Integer, Integer)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer<T>.UpdateBufferSliceDeferred(Veldrid.CommandList, int, int, int)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer(Of T).UpdateBufferSliceDeferred(Veldrid.CommandList, Integer, Integer, Integer)
+  nameWithType: SimpleUniformBuffer<T>.UpdateBufferSliceDeferred(CommandList, int, int, int)
+  nameWithType.vb: SimpleUniformBuffer(Of T).UpdateBufferSliceDeferred(CommandList, Integer, Integer, Integer)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceDeferred*
+  name: UpdateBufferSliceDeferred
+  href: api/Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer-1.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleUniformBuffer_1_UpdateBufferSliceDeferred_
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceDeferred
+  isSpec: "True"
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer<T>.UpdateBufferSliceDeferred
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer(Of T).UpdateBufferSliceDeferred
+  nameWithType: SimpleUniformBuffer<T>.UpdateBufferSliceDeferred
+  nameWithType.vb: SimpleUniformBuffer(Of T).UpdateBufferSliceDeferred
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceImmediate(System.Int32,System.Int32,System.Int32)
+  name: UpdateBufferSliceImmediate(int, int, int)
+  href: api/Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer-1.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleUniformBuffer_1_UpdateBufferSliceImmediate_System_Int32_System_Int32_System_Int32_
+  commentId: M:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceImmediate(System.Int32,System.Int32,System.Int32)
+  name.vb: UpdateBufferSliceImmediate(Integer, Integer, Integer)
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer<T>.UpdateBufferSliceImmediate(int, int, int)
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer(Of T).UpdateBufferSliceImmediate(Integer, Integer, Integer)
+  nameWithType: SimpleUniformBuffer<T>.UpdateBufferSliceImmediate(int, int, int)
+  nameWithType.vb: SimpleUniformBuffer(Of T).UpdateBufferSliceImmediate(Integer, Integer, Integer)
+- uid: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceImmediate*
+  name: UpdateBufferSliceImmediate
+  href: api/Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer-1.html#Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleUniformBuffer_1_UpdateBufferSliceImmediate_
+  commentId: Overload:Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer`1.UpdateBufferSliceImmediate
+  isSpec: "True"
+  fullName: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer<T>.UpdateBufferSliceImmediate
+  fullName.vb: Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleUniformBuffer(Of T).UpdateBufferSliceImmediate
+  nameWithType: SimpleUniformBuffer<T>.UpdateBufferSliceImmediate
+  nameWithType.vb: SimpleUniformBuffer(Of T).UpdateBufferSliceImmediate
 - uid: Bliss.CSharp.Graphics.Pipelines.SimplePipeline
   name: SimplePipeline
   href: api/Bliss.CSharp.Graphics.Pipelines.SimplePipeline.html
@@ -8610,6 +8737,86 @@ references:
   commentId: N:Bliss.CSharp.Graphics.Rendering.Renderers.Forward
   fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
   nameWithType: Bliss.CSharp.Graphics.Rendering.Renderers.Forward
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer
+  name: BasicForwardRenderer
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.html
+  commentId: T:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer
+  nameWithType: BasicForwardRenderer
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.#ctor(Veldrid.GraphicsDevice)
+  name: BasicForwardRenderer(GraphicsDevice)
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_BasicForwardRenderer__ctor_Veldrid_GraphicsDevice_
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.#ctor(Veldrid.GraphicsDevice)
+  name.vb: New(GraphicsDevice)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.BasicForwardRenderer(Veldrid.GraphicsDevice)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.New(Veldrid.GraphicsDevice)
+  nameWithType: BasicForwardRenderer.BasicForwardRenderer(GraphicsDevice)
+  nameWithType.vb: BasicForwardRenderer.New(GraphicsDevice)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.#ctor*
+  name: BasicForwardRenderer
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_BasicForwardRenderer__ctor_
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.BasicForwardRenderer
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.New
+  nameWithType: BasicForwardRenderer.BasicForwardRenderer
+  nameWithType.vb: BasicForwardRenderer.New
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.Dispose(System.Boolean)
+  name: Dispose(bool)
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_BasicForwardRenderer_Dispose_System_Boolean_
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.Dispose(System.Boolean)
+  name.vb: Dispose(Boolean)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.Dispose(bool)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.Dispose(Boolean)
+  nameWithType: BasicForwardRenderer.Dispose(bool)
+  nameWithType.vb: BasicForwardRenderer.Dispose(Boolean)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.Dispose*
+  name: Dispose
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_BasicForwardRenderer_Dispose_
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.Dispose
+  isSpec: "True"
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.Dispose
+  nameWithType: BasicForwardRenderer.Dispose
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.Draw(Veldrid.CommandList,Veldrid.OutputDescription)
+  name: Draw(CommandList, OutputDescription)
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_BasicForwardRenderer_Draw_Veldrid_CommandList_Veldrid_OutputDescription_
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.Draw(Veldrid.CommandList,Veldrid.OutputDescription)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.Draw(Veldrid.CommandList, Veldrid.OutputDescription)
+  nameWithType: BasicForwardRenderer.Draw(CommandList, OutputDescription)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.Draw*
+  name: Draw
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_BasicForwardRenderer_Draw_
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.Draw
+  isSpec: "True"
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.Draw
+  nameWithType: BasicForwardRenderer.Draw
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.DrawRenderable(Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable)
+  name: DrawRenderable(Renderable)
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_BasicForwardRenderer_DrawRenderable_Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.DrawRenderable(Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.DrawRenderable(Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable)
+  nameWithType: BasicForwardRenderer.DrawRenderable(Renderable)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.DrawRenderable*
+  name: DrawRenderable
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_BasicForwardRenderer_DrawRenderable_
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.DrawRenderable
+  isSpec: "True"
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.DrawRenderable
+  nameWithType: BasicForwardRenderer.DrawRenderable
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.GraphicsDevice
+  name: GraphicsDevice
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_BasicForwardRenderer_GraphicsDevice
+  commentId: P:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.GraphicsDevice
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.GraphicsDevice
+  nameWithType: BasicForwardRenderer.GraphicsDevice
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.GraphicsDevice*
+  name: GraphicsDevice
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_BasicForwardRenderer_GraphicsDevice_
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.GraphicsDevice
+  isSpec: "True"
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.BasicForwardRenderer.GraphicsDevice
+  nameWithType: BasicForwardRenderer.GraphicsDevice
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer`1
   name: ForwardRenderer<T>
   href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.ForwardRenderer-1.html
@@ -10032,6 +10239,24 @@ references:
   fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.New(Bliss.CSharp.Geometry.Mesh, Bliss.CSharp.Transformations.Transform, Boolean)
   nameWithType: Renderable.Renderable(Mesh, Transform, bool)
   nameWithType.vb: Renderable.New(Mesh, Transform, Boolean)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.#ctor(Bliss.CSharp.Geometry.Mesh,Bliss.CSharp.Transformations.Transform[],Bliss.CSharp.Materials.Material)
+  name: Renderable(Mesh, Transform[], Material)
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable__ctor_Bliss_CSharp_Geometry_Mesh_Bliss_CSharp_Transformations_Transform___Bliss_CSharp_Materials_Material_
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.#ctor(Bliss.CSharp.Geometry.Mesh,Bliss.CSharp.Transformations.Transform[],Bliss.CSharp.Materials.Material)
+  name.vb: New(Mesh, Transform(), Material)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Renderable(Bliss.CSharp.Geometry.Mesh, Bliss.CSharp.Transformations.Transform[], Bliss.CSharp.Materials.Material)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.New(Bliss.CSharp.Geometry.Mesh, Bliss.CSharp.Transformations.Transform(), Bliss.CSharp.Materials.Material)
+  nameWithType: Renderable.Renderable(Mesh, Transform[], Material)
+  nameWithType.vb: Renderable.New(Mesh, Transform(), Material)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.#ctor(Bliss.CSharp.Geometry.Mesh,Bliss.CSharp.Transformations.Transform[],System.Boolean)
+  name: Renderable(Mesh, Transform[], bool)
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable__ctor_Bliss_CSharp_Geometry_Mesh_Bliss_CSharp_Transformations_Transform___System_Boolean_
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.#ctor(Bliss.CSharp.Geometry.Mesh,Bliss.CSharp.Transformations.Transform[],System.Boolean)
+  name.vb: New(Mesh, Transform(), Boolean)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Renderable(Bliss.CSharp.Geometry.Mesh, Bliss.CSharp.Transformations.Transform[], bool)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.New(Bliss.CSharp.Geometry.Mesh, Bliss.CSharp.Transformations.Transform(), Boolean)
+  nameWithType: Renderable.Renderable(Mesh, Transform[], bool)
+  nameWithType.vb: Renderable.New(Mesh, Transform(), Boolean)
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.#ctor*
   name: Renderable
   href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable__ctor_
@@ -10055,6 +10280,32 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.BoneMatrices
   nameWithType: Renderable.BoneMatrices
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.InstanceCount
+  name: InstanceCount
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_InstanceCount
+  commentId: P:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.InstanceCount
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.InstanceCount
+  nameWithType: Renderable.InstanceCount
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.InstanceCount*
+  name: InstanceCount
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_InstanceCount_
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.InstanceCount
+  isSpec: "True"
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.InstanceCount
+  nameWithType: Renderable.InstanceCount
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.IsInstanced
+  name: IsInstanced
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_IsInstanced
+  commentId: P:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.IsInstanced
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.IsInstanced
+  nameWithType: Renderable.IsInstanced
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.IsInstanced*
+  name: IsInstanced
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_IsInstanced_
+  commentId: Overload:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.IsInstanced
+  isSpec: "True"
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.IsInstanced
+  nameWithType: Renderable.IsInstanced
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Material
   name: Material
   href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_Material
@@ -10074,12 +10325,12 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Mesh
   nameWithType: Renderable.Mesh
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Transform
-  name: Transform
-  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_Transform
-  commentId: F:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Transform
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Transform
-  nameWithType: Renderable.Transform
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Transforms
+  name: Transforms
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.html#Bliss_CSharp_Graphics_Rendering_Renderers_Forward_Renderable_Transforms
+  commentId: F:Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Transforms
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Renderable.Transforms
+  nameWithType: Renderable.Transforms
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer
   name: FullScreenRenderer
   href: api/Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer.html
@@ -10121,15 +10372,15 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer.Dispose
   nameWithType: FullScreenRenderer.Dispose
-- uid: Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Veldrid.Sampler,System.Nullable{Veldrid.BlendStateDescription},System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription})
-  name: Draw(CommandList, RenderTexture2D, OutputDescription, Effect?, Sampler?, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?)
-  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_FullScreenRenderer_Draw_Veldrid_CommandList_Bliss_CSharp_Textures_RenderTexture2D_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_Veldrid_Sampler_System_Nullable_Veldrid_BlendStateDescription__System_Nullable_Veldrid_DepthStencilStateDescription__System_Nullable_Veldrid_RasterizerStateDescription__
-  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.RenderTexture2D,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Veldrid.Sampler,System.Nullable{Veldrid.BlendStateDescription},System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription})
-  name.vb: Draw(CommandList, RenderTexture2D, OutputDescription, Effect, Sampler, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?)
-  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer.Draw(Veldrid.CommandList, Bliss.CSharp.Textures.RenderTexture2D, Veldrid.OutputDescription, Bliss.CSharp.Effects.Effect?, Veldrid.Sampler?, Veldrid.BlendStateDescription?, Veldrid.DepthStencilStateDescription?, Veldrid.RasterizerStateDescription?)
-  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer.Draw(Veldrid.CommandList, Bliss.CSharp.Textures.RenderTexture2D, Veldrid.OutputDescription, Bliss.CSharp.Effects.Effect, Veldrid.Sampler, Veldrid.BlendStateDescription?, Veldrid.DepthStencilStateDescription?, Veldrid.RasterizerStateDescription?)
-  nameWithType: FullScreenRenderer.Draw(CommandList, RenderTexture2D, OutputDescription, Effect?, Sampler?, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?)
-  nameWithType.vb: FullScreenRenderer.Draw(CommandList, RenderTexture2D, OutputDescription, Effect, Sampler, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?)
+- uid: Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.Texture2D,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Veldrid.Sampler,System.Nullable{Veldrid.BlendStateDescription},System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription})
+  name: Draw(CommandList, Texture2D, OutputDescription, Effect?, Sampler?, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?)
+  href: api/Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_FullScreenRenderer_Draw_Veldrid_CommandList_Bliss_CSharp_Textures_Texture2D_Veldrid_OutputDescription_Bliss_CSharp_Effects_Effect_Veldrid_Sampler_System_Nullable_Veldrid_BlendStateDescription__System_Nullable_Veldrid_DepthStencilStateDescription__System_Nullable_Veldrid_RasterizerStateDescription__
+  commentId: M:Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer.Draw(Veldrid.CommandList,Bliss.CSharp.Textures.Texture2D,Veldrid.OutputDescription,Bliss.CSharp.Effects.Effect,Veldrid.Sampler,System.Nullable{Veldrid.BlendStateDescription},System.Nullable{Veldrid.DepthStencilStateDescription},System.Nullable{Veldrid.RasterizerStateDescription})
+  name.vb: Draw(CommandList, Texture2D, OutputDescription, Effect, Sampler, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?)
+  fullName: Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer.Draw(Veldrid.CommandList, Bliss.CSharp.Textures.Texture2D, Veldrid.OutputDescription, Bliss.CSharp.Effects.Effect?, Veldrid.Sampler?, Veldrid.BlendStateDescription?, Veldrid.DepthStencilStateDescription?, Veldrid.RasterizerStateDescription?)
+  fullName.vb: Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer.Draw(Veldrid.CommandList, Bliss.CSharp.Textures.Texture2D, Veldrid.OutputDescription, Bliss.CSharp.Effects.Effect, Veldrid.Sampler, Veldrid.BlendStateDescription?, Veldrid.DepthStencilStateDescription?, Veldrid.RasterizerStateDescription?)
+  nameWithType: FullScreenRenderer.Draw(CommandList, Texture2D, OutputDescription, Effect?, Sampler?, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?)
+  nameWithType.vb: FullScreenRenderer.Draw(CommandList, Texture2D, OutputDescription, Effect, Sampler, BlendStateDescription?, DepthStencilStateDescription?, RasterizerStateDescription?)
 - uid: Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer.Draw*
   name: Draw
   href: api/Bliss.CSharp.Graphics.Rendering.Renderers.FullScreenRenderer.html#Bliss_CSharp_Graphics_Rendering_Renderers_FullScreenRenderer_Draw_
@@ -11004,6 +11255,12 @@ references:
   commentId: F:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Color
   fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Color
   nameWithType: Vertex3D.Color
+- uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.InstanceMatrixLayout
+  name: InstanceMatrixLayout
+  href: api/Bliss.CSharp.Graphics.VertexTypes.Vertex3D.html#Bliss_CSharp_Graphics_VertexTypes_Vertex3D_InstanceMatrixLayout
+  commentId: F:Bliss.CSharp.Graphics.VertexTypes.Vertex3D.InstanceMatrixLayout
+  fullName: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.InstanceMatrixLayout
+  nameWithType: Vertex3D.InstanceMatrixLayout
 - uid: Bliss.CSharp.Graphics.VertexTypes.Vertex3D.Normal
   name: Normal
   href: api/Bliss.CSharp.Graphics.VertexTypes.Vertex3D.html#Bliss_CSharp_Graphics_VertexTypes_Vertex3D_Normal
@@ -15730,12 +15987,12 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetDataFromImage
   nameWithType: Cubemap.GetDataFromImage
-- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler,Veldrid.ResourceLayout)
-  name: GetResourceSet(Sampler, ResourceLayout)
-  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_GetResourceSet_Veldrid_Sampler_Veldrid_ResourceLayout_
-  commentId: M:Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler,Veldrid.ResourceLayout)
-  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler, Veldrid.ResourceLayout)
-  nameWithType: Cubemap.GetResourceSet(Sampler, ResourceLayout)
+- uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+  name: GetResourceSet(Sampler, SimpleTextureLayout)
+  href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_GetResourceSet_Veldrid_Sampler_Bliss_CSharp_Graphics_Pipelines_Textures_SimpleTextureLayout_
+  commentId: M:Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+  fullName: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet(Veldrid.Sampler, Bliss.CSharp.Graphics.Pipelines.Textures.SimpleTextureLayout)
+  nameWithType: Cubemap.GetResourceSet(Sampler, SimpleTextureLayout)
 - uid: Bliss.CSharp.Textures.Cubemaps.Cubemap.GetResourceSet*
   name: GetResourceSet
   href: api/Bliss.CSharp.Textures.Cubemaps.Cubemap.html#Bliss_CSharp_Textures_Cubemaps_Cubemap_GetResourceSet_
@@ -15984,15 +16241,15 @@ references:
   commentId: T:Bliss.CSharp.Textures.RenderTexture2D
   fullName: Bliss.CSharp.Textures.RenderTexture2D
   nameWithType: RenderTexture2D
-- uid: Bliss.CSharp.Textures.RenderTexture2D.#ctor(Veldrid.GraphicsDevice,System.UInt32,System.UInt32,Veldrid.TextureSampleCount)
-  name: RenderTexture2D(GraphicsDevice, uint, uint, TextureSampleCount)
-  href: api/Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D__ctor_Veldrid_GraphicsDevice_System_UInt32_System_UInt32_Veldrid_TextureSampleCount_
-  commentId: M:Bliss.CSharp.Textures.RenderTexture2D.#ctor(Veldrid.GraphicsDevice,System.UInt32,System.UInt32,Veldrid.TextureSampleCount)
-  name.vb: New(GraphicsDevice, UInteger, UInteger, TextureSampleCount)
-  fullName: Bliss.CSharp.Textures.RenderTexture2D.RenderTexture2D(Veldrid.GraphicsDevice, uint, uint, Veldrid.TextureSampleCount)
-  fullName.vb: Bliss.CSharp.Textures.RenderTexture2D.New(Veldrid.GraphicsDevice, UInteger, UInteger, Veldrid.TextureSampleCount)
-  nameWithType: RenderTexture2D.RenderTexture2D(GraphicsDevice, uint, uint, TextureSampleCount)
-  nameWithType.vb: RenderTexture2D.New(GraphicsDevice, UInteger, UInteger, TextureSampleCount)
+- uid: Bliss.CSharp.Textures.RenderTexture2D.#ctor(Veldrid.GraphicsDevice,System.UInt32,System.UInt32,System.Boolean,Veldrid.TextureSampleCount)
+  name: RenderTexture2D(GraphicsDevice, uint, uint, bool, TextureSampleCount)
+  href: api/Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D__ctor_Veldrid_GraphicsDevice_System_UInt32_System_UInt32_System_Boolean_Veldrid_TextureSampleCount_
+  commentId: M:Bliss.CSharp.Textures.RenderTexture2D.#ctor(Veldrid.GraphicsDevice,System.UInt32,System.UInt32,System.Boolean,Veldrid.TextureSampleCount)
+  name.vb: New(GraphicsDevice, UInteger, UInteger, Boolean, TextureSampleCount)
+  fullName: Bliss.CSharp.Textures.RenderTexture2D.RenderTexture2D(Veldrid.GraphicsDevice, uint, uint, bool, Veldrid.TextureSampleCount)
+  fullName.vb: Bliss.CSharp.Textures.RenderTexture2D.New(Veldrid.GraphicsDevice, UInteger, UInteger, Boolean, Veldrid.TextureSampleCount)
+  nameWithType: RenderTexture2D.RenderTexture2D(GraphicsDevice, uint, uint, bool, TextureSampleCount)
+  nameWithType.vb: RenderTexture2D.New(GraphicsDevice, UInteger, UInteger, Boolean, TextureSampleCount)
 - uid: Bliss.CSharp.Textures.RenderTexture2D.#ctor*
   name: RenderTexture2D
   href: api/Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D__ctor_
@@ -16042,19 +16299,6 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Textures.RenderTexture2D.DepthTexture
   nameWithType: RenderTexture2D.DepthTexture
-- uid: Bliss.CSharp.Textures.RenderTexture2D.DestinationTexture
-  name: DestinationTexture
-  href: api/Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_DestinationTexture
-  commentId: P:Bliss.CSharp.Textures.RenderTexture2D.DestinationTexture
-  fullName: Bliss.CSharp.Textures.RenderTexture2D.DestinationTexture
-  nameWithType: RenderTexture2D.DestinationTexture
-- uid: Bliss.CSharp.Textures.RenderTexture2D.DestinationTexture*
-  name: DestinationTexture
-  href: api/Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_DestinationTexture_
-  commentId: Overload:Bliss.CSharp.Textures.RenderTexture2D.DestinationTexture
-  isSpec: "True"
-  fullName: Bliss.CSharp.Textures.RenderTexture2D.DestinationTexture
-  nameWithType: RenderTexture2D.DestinationTexture
 - uid: Bliss.CSharp.Textures.RenderTexture2D.Dispose(System.Boolean)
   name: Dispose(bool)
   href: api/Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_Dispose_System_Boolean_
@@ -16071,6 +16315,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Textures.RenderTexture2D.Dispose
   nameWithType: RenderTexture2D.Dispose
+- uid: Bliss.CSharp.Textures.RenderTexture2D.Format
+  name: Format
+  href: api/Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_Format
+  commentId: P:Bliss.CSharp.Textures.RenderTexture2D.Format
+  fullName: Bliss.CSharp.Textures.RenderTexture2D.Format
+  nameWithType: RenderTexture2D.Format
+- uid: Bliss.CSharp.Textures.RenderTexture2D.Format*
+  name: Format
+  href: api/Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_Format_
+  commentId: Overload:Bliss.CSharp.Textures.RenderTexture2D.Format
+  isSpec: "True"
+  fullName: Bliss.CSharp.Textures.RenderTexture2D.Format
+  nameWithType: RenderTexture2D.Format
 - uid: Bliss.CSharp.Textures.RenderTexture2D.Framebuffer
   name: Framebuffer
   href: api/Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_Framebuffer
@@ -16084,19 +16341,32 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Textures.RenderTexture2D.Framebuffer
   nameWithType: RenderTexture2D.Framebuffer
-- uid: Bliss.CSharp.Textures.RenderTexture2D.GetResourceSet(Veldrid.Sampler,Veldrid.ResourceLayout)
-  name: GetResourceSet(Sampler, ResourceLayout)
-  href: api/Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_GetResourceSet_Veldrid_Sampler_Veldrid_ResourceLayout_
-  commentId: M:Bliss.CSharp.Textures.RenderTexture2D.GetResourceSet(Veldrid.Sampler,Veldrid.ResourceLayout)
-  fullName: Bliss.CSharp.Textures.RenderTexture2D.GetResourceSet(Veldrid.Sampler, Veldrid.ResourceLayout)
-  nameWithType: RenderTexture2D.GetResourceSet(Sampler, ResourceLayout)
-- uid: Bliss.CSharp.Textures.RenderTexture2D.GetResourceSet*
-  name: GetResourceSet
-  href: api/Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_GetResourceSet_
-  commentId: Overload:Bliss.CSharp.Textures.RenderTexture2D.GetResourceSet
+- uid: Bliss.CSharp.Textures.RenderTexture2D.GetColorResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  name: GetColorResourceSet(Sampler, SimpleBufferLayout)
+  href: api/Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_GetColorResourceSet_Veldrid_Sampler_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferLayout_
+  commentId: M:Bliss.CSharp.Textures.RenderTexture2D.GetColorResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  fullName: Bliss.CSharp.Textures.RenderTexture2D.GetColorResourceSet(Veldrid.Sampler, Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  nameWithType: RenderTexture2D.GetColorResourceSet(Sampler, SimpleBufferLayout)
+- uid: Bliss.CSharp.Textures.RenderTexture2D.GetColorResourceSet*
+  name: GetColorResourceSet
+  href: api/Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_GetColorResourceSet_
+  commentId: Overload:Bliss.CSharp.Textures.RenderTexture2D.GetColorResourceSet
   isSpec: "True"
-  fullName: Bliss.CSharp.Textures.RenderTexture2D.GetResourceSet
-  nameWithType: RenderTexture2D.GetResourceSet
+  fullName: Bliss.CSharp.Textures.RenderTexture2D.GetColorResourceSet
+  nameWithType: RenderTexture2D.GetColorResourceSet
+- uid: Bliss.CSharp.Textures.RenderTexture2D.GetDepthResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  name: GetDepthResourceSet(Sampler, SimpleBufferLayout)
+  href: api/Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_GetDepthResourceSet_Veldrid_Sampler_Bliss_CSharp_Graphics_Pipelines_Buffers_SimpleBufferLayout_
+  commentId: M:Bliss.CSharp.Textures.RenderTexture2D.GetDepthResourceSet(Veldrid.Sampler,Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  fullName: Bliss.CSharp.Textures.RenderTexture2D.GetDepthResourceSet(Veldrid.Sampler, Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout)
+  nameWithType: RenderTexture2D.GetDepthResourceSet(Sampler, SimpleBufferLayout)
+- uid: Bliss.CSharp.Textures.RenderTexture2D.GetDepthResourceSet*
+  name: GetDepthResourceSet
+  href: api/Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_GetDepthResourceSet_
+  commentId: Overload:Bliss.CSharp.Textures.RenderTexture2D.GetDepthResourceSet
+  isSpec: "True"
+  fullName: Bliss.CSharp.Textures.RenderTexture2D.GetDepthResourceSet
+  nameWithType: RenderTexture2D.GetDepthResourceSet
 - uid: Bliss.CSharp.Textures.RenderTexture2D.GraphicsDevice
   name: GraphicsDevice
   href: api/Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_GraphicsDevice
@@ -16139,6 +16409,12 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Textures.RenderTexture2D.Resize
   nameWithType: RenderTexture2D.Resize
+- uid: Bliss.CSharp.Textures.RenderTexture2D.Resized
+  name: Resized
+  href: api/Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_Resized
+  commentId: E:Bliss.CSharp.Textures.RenderTexture2D.Resized
+  fullName: Bliss.CSharp.Textures.RenderTexture2D.Resized
+  nameWithType: RenderTexture2D.Resized
 - uid: Bliss.CSharp.Textures.RenderTexture2D.SampleCount
   name: SampleCount
   href: api/Bliss.CSharp.Textures.RenderTexture2D.html#Bliss_CSharp_Textures_RenderTexture2D_SampleCount

@@ -25,7 +25,6 @@ references:
   fullName: Bliss.CSharp.Textures.MipmapHelper
 - uid: Bliss.CSharp.Textures.RenderTexture2D
   commentId: T:Bliss.CSharp.Textures.RenderTexture2D
-  parent: Bliss.CSharp.Textures
   href: Bliss.CSharp.Textures.RenderTexture2D.html
   name: RenderTexture2D
   nameWithType: RenderTexture2D
