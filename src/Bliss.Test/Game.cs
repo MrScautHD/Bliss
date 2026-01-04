@@ -439,8 +439,10 @@ public class Game : Disposable {
         
         // Calculate the position in the grid.
         int columns = this._animatedImage.Columns;
+        int rows = this._animatedImage.Rows;
+        
         int column = frame % columns;
-        int row = frame / columns;
+        int row = (frame / columns) % rows;
         
         Rectangle sourceRect = new Rectangle(column * width, row * height, width, height);
         
