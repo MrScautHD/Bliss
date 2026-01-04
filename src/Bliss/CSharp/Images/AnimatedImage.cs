@@ -14,6 +14,16 @@ public class AnimatedImage {
     /// Gets the sprite sheet representation of the animated image, where all frames are arranged in a single image.
     /// </summary>
     public Image SpriteSheet { get; private set; }
+
+    /// <summary>
+    /// Gets the number of columns in the sprite sheet layout used for organizing frames of the animated image.
+    /// </summary>
+    public int Columns { get; private set; }
+
+    /// <summary>
+    /// Gets the number of rows in the sprite sheet layout used for the animated image.
+    /// </summary>
+    public int Rows { get; private set; }
     
     /// <summary>
     /// Initializes a new instance of the <see cref="AnimatedImage"/> class from a file path.
@@ -95,29 +105,44 @@ public class AnimatedImage {
     /// </summary>
     /// <returns>The generated sprite sheet as an <see cref="Image"/> object.</returns>
     private Image CreateSpriteSheet() {
-        int totalWidth = this.Frames.Sum(frame => frame.Key.Width);
+        int frameCount = this.Frames.Count;
+        
+        // Calculate columns and rows to create a layout as square as possible.
+        this.Columns = (int) Math.Ceiling(Math.Sqrt(frameCount));
+        this.Rows = (int) Math.Ceiling((double) frameCount / this.Columns);
+        
+        int maxWidth = this.Frames.Max(frame => frame.Key.Width);
         int maxHeight = this.Frames.Max(frame => frame.Key.Height);
-    
+        
+        int totalWidth = this.Columns * maxWidth;
+        int totalHeight = this.Rows * maxHeight;
+        
         // Create a new blank sprite sheet image.
-        byte[] spriteSheetData = new byte[totalWidth * maxHeight * 4];
-        Image spriteSheet = new Image(totalWidth, maxHeight, spriteSheetData);
-    
-        // Position each frame image horizontally in the sprite sheet.
-        int offsetX = 0;
+        byte[] spriteSheetData = new byte[totalWidth * totalHeight * 4];
+        Image spriteSheet = new Image(totalWidth, totalHeight, spriteSheetData);
+        
+        int currentFrameIndex = 0;
         foreach (Image frame in this.Frames.Keys) {
+            int column = currentFrameIndex % this.Columns;
+            int row = currentFrameIndex / this.Columns;
+            
+            int offsetX = column * maxWidth;
+            int offsetY = row * maxHeight;
+            
+            // Position each frame image in the grid.
             for (int y = 0; y < frame.Height; y++) {
                 for (int x = 0; x < frame.Width; x++) {
                     int sourceIndex = (y * frame.Width + x) * 4;
-                    int targetIndex = (y * totalWidth + (x + offsetX)) * 4;
-    
+                    int targetIndex = ((y + offsetY) * totalWidth + x + offsetX) * 4;
+                    
                     // Copy pixel data.
                     Array.Copy(frame.Data, sourceIndex, spriteSheet.Data, targetIndex, 4);
                 }
             }
             
-            offsetX += frame.Width;
+            currentFrameIndex++;
         }
-    
+        
         return spriteSheet;
     }
 }

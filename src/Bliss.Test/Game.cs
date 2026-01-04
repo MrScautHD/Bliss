@@ -432,15 +432,23 @@ public class Game : Disposable {
         this._spriteBatch.DrawText(this._font, $"Text Input: {this._textInput}", new Vector2(80, 80), 18);
         
         this._spriteBatch.DrawText(this._font, $"FPS: {this.GetFps()}", new Vector2(5, 5), 18);
-
-        int frame = 4;
+        
+        int frameCount = this._animatedImage.GetFrameCount();
+        int frame = (int) (Time.Total * 20) % frameCount;
         this._animatedImage.GetFrameInfo(frame, out int width, out int height, out float duration);
         
-        this._spriteBatch.PushRasterizerState(this._spriteBatch.GetCurrentRasterizerState() with { ScissorTestEnabled = true });
-        this._spriteBatch.PushScissorRect(new Rectangle(30, 30, (int) (width / 2.0F * 0.2F), (int) (height / 2.0F * 0.2F)));
-        this._spriteBatch.DrawTexture(this._gif, new Vector2(30, 30), sourceRect: new Rectangle(width * frame, 0, width, height), scale: new Vector2(0.2F, 0.2F), color: new Color(255, 255, 255, 155));
-        this._spriteBatch.PopScissorRect();
-        this._spriteBatch.PopRasterizerState();
+        // Calculate the position in the grid.
+        int columns = this._animatedImage.Columns;
+        int column = frame % columns;
+        int row = frame / columns;
+        
+        Rectangle sourceRect = new Rectangle(column * width, row * height, width, height);
+        
+        //this._spriteBatch.PushRasterizerState(this._spriteBatch.GetCurrentRasterizerState() with { ScissorTestEnabled = true });
+        //this._spriteBatch.PushScissorRect(new Rectangle(30, 30, (int) (width / 2.0F * 0.2F), (int) (height / 2.0F * 0.2F)));
+        this._spriteBatch.DrawTexture(this._gif, new Vector2(30, 30), sourceRect: sourceRect, scale: new Vector2(0.2F, 0.2F), color: new Color(255, 255, 255, 155));
+        //this._spriteBatch.PopScissorRect();
+        //this._spriteBatch.PopRasterizerState();
         
         //this._spriteBatch.DrawTexture(this._customMeshTexture, Input.GetMousePosition(), scale: new Vector2(3, 3));
         //this._spriteBatch.DrawTexture(this._button, new Vector2(300, 300), scale: new Vector2(3, 3));
