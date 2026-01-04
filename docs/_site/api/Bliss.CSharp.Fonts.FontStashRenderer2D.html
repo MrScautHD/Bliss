@@ -101,7 +101,7 @@ Class FontStashRenderer2D  <a class="header-action link-secondary" title="View s
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class FontStashRenderer2D : Disposable, IDisposable, IFontStashRenderer</code></pre>
+    <pre><code class="lang-csharp hljs">public class FontStashRenderer2D : IFontStashRenderer</code></pre>
   </div>
 
 
@@ -111,7 +111,6 @@ Class FontStashRenderer2D  <a class="header-action link-secondary" title="View s
     <dt>Inheritance</dt>
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-      <div><a class="xref" href="Bliss.CSharp.Disposable.html">Disposable</a></div>
       <div><span class="xref">FontStashRenderer2D</span></div>
     </dd>
   </dl>
@@ -119,7 +118,6 @@ Class FontStashRenderer2D  <a class="header-action link-secondary" title="View s
   <dl class="typelist implements">
     <dt>Implements</dt>
     <dd>
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
       <div><span class="xref">IFontStashRenderer</span></div>
     </dd>
   </dl>
@@ -128,15 +126,6 @@ Class FontStashRenderer2D  <a class="header-action link-secondary" title="View s
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
-    <div>
-      <a class="xref" href="Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_HasDisposed">Disposable.HasDisposed</a>
-    </div>
-    <div>
-      <a class="xref" href="Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose">Disposable.Dispose()</a>
-    </div>
-    <div>
-      <a class="xref" href="Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed">Disposable.ThrowIfDisposed()</a>
-    </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -307,39 +296,6 @@ Class FontStashRenderer2D  <a class="header-action link-secondary" title="View s
 
   <h2 class="section" id="methods">Methods
 </h2>
-
-
-  <a id="Bliss_CSharp_Fonts_FontStashRenderer2D_Dispose_" data-uid="Bliss.CSharp.Fonts.FontStashRenderer2D.Dispose*"></a>
-
-  <h3 id="Bliss_CSharp_Fonts_FontStashRenderer2D_Dispose_System_Boolean_" data-uid="Bliss.CSharp.Fonts.FontStashRenderer2D.Dispose(System.Boolean)">
-  Dispose(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Fonts/FontStashRenderer2D.cs/#L59"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"><p>Disposes of the object and releases associated resources.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override void Dispose(bool disposing)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>disposing</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>True if called from user code; false if called from a finalizer.</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
 
 
   <a id="Bliss_CSharp_Fonts_FontStashRenderer2D_Draw_" data-uid="Bliss.CSharp.Fonts.FontStashRenderer2D.Draw*"></a>

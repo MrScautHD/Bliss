@@ -36,8 +36,6 @@ items:
   derivedClasses:
   - Bliss.CSharp.Effects.Effect
   - Bliss.CSharp.Fonts.Font
-  - Bliss.CSharp.Fonts.FontStashRenderer2D
-  - Bliss.CSharp.Fonts.FontStashTextureManager
   - Bliss.CSharp.Geometry.Mesh
   - Bliss.CSharp.Geometry.Model
   - Bliss.CSharp.Graphics.Pipelines.Buffers.SimpleBufferLayout

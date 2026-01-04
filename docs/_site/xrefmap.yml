@@ -2129,22 +2129,6 @@ references:
   fullName.vb: Bliss.CSharp.Fonts.FontStashRenderer2D.New
   nameWithType: FontStashRenderer2D.FontStashRenderer2D
   nameWithType.vb: FontStashRenderer2D.New
-- uid: Bliss.CSharp.Fonts.FontStashRenderer2D.Dispose(System.Boolean)
-  name: Dispose(bool)
-  href: api/Bliss.CSharp.Fonts.FontStashRenderer2D.html#Bliss_CSharp_Fonts_FontStashRenderer2D_Dispose_System_Boolean_
-  commentId: M:Bliss.CSharp.Fonts.FontStashRenderer2D.Dispose(System.Boolean)
-  name.vb: Dispose(Boolean)
-  fullName: Bliss.CSharp.Fonts.FontStashRenderer2D.Dispose(bool)
-  fullName.vb: Bliss.CSharp.Fonts.FontStashRenderer2D.Dispose(Boolean)
-  nameWithType: FontStashRenderer2D.Dispose(bool)
-  nameWithType.vb: FontStashRenderer2D.Dispose(Boolean)
-- uid: Bliss.CSharp.Fonts.FontStashRenderer2D.Dispose*
-  name: Dispose
-  href: api/Bliss.CSharp.Fonts.FontStashRenderer2D.html#Bliss_CSharp_Fonts_FontStashRenderer2D_Dispose_
-  commentId: Overload:Bliss.CSharp.Fonts.FontStashRenderer2D.Dispose
-  isSpec: "True"
-  fullName: Bliss.CSharp.Fonts.FontStashRenderer2D.Dispose
-  nameWithType: FontStashRenderer2D.Dispose
 - uid: Bliss.CSharp.Fonts.FontStashRenderer2D.Draw(System.Object,System.Numerics.Vector2,System.Nullable{System.Drawing.Rectangle},FontStashSharp.FSColor,System.Single,System.Numerics.Vector2,System.Single)
   name: Draw(object, Vector2, Rectangle?, FSColor, float, Vector2, float)
   href: api/Bliss.CSharp.Fonts.FontStashRenderer2D.html#Bliss_CSharp_Fonts_FontStashRenderer2D_Draw_System_Object_System_Numerics_Vector2_System_Nullable_System_Drawing_Rectangle__FontStashSharp_FSColor_System_Single_System_Numerics_Vector2_System_Single_
@@ -2241,22 +2225,6 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Fonts.FontStashTextureManager.CreateTexture
   nameWithType: FontStashTextureManager.CreateTexture
-- uid: Bliss.CSharp.Fonts.FontStashTextureManager.Dispose(System.Boolean)
-  name: Dispose(bool)
-  href: api/Bliss.CSharp.Fonts.FontStashTextureManager.html#Bliss_CSharp_Fonts_FontStashTextureManager_Dispose_System_Boolean_
-  commentId: M:Bliss.CSharp.Fonts.FontStashTextureManager.Dispose(System.Boolean)
-  name.vb: Dispose(Boolean)
-  fullName: Bliss.CSharp.Fonts.FontStashTextureManager.Dispose(bool)
-  fullName.vb: Bliss.CSharp.Fonts.FontStashTextureManager.Dispose(Boolean)
-  nameWithType: FontStashTextureManager.Dispose(bool)
-  nameWithType.vb: FontStashTextureManager.Dispose(Boolean)
-- uid: Bliss.CSharp.Fonts.FontStashTextureManager.Dispose*
-  name: Dispose
-  href: api/Bliss.CSharp.Fonts.FontStashTextureManager.html#Bliss_CSharp_Fonts_FontStashTextureManager_Dispose_
-  commentId: Overload:Bliss.CSharp.Fonts.FontStashTextureManager.Dispose
-  isSpec: "True"
-  fullName: Bliss.CSharp.Fonts.FontStashTextureManager.Dispose
-  nameWithType: FontStashTextureManager.Dispose
 - uid: Bliss.CSharp.Fonts.FontStashTextureManager.GetTextureSize(System.Object)
   name: GetTextureSize(object)
   href: api/Bliss.CSharp.Fonts.FontStashTextureManager.html#Bliss_CSharp_Fonts_FontStashTextureManager_GetTextureSize_System_Object_
@@ -11337,6 +11305,19 @@ references:
   fullName.vb: Bliss.CSharp.Images.AnimatedImage.New
   nameWithType: AnimatedImage.AnimatedImage
   nameWithType.vb: AnimatedImage.New
+- uid: Bliss.CSharp.Images.AnimatedImage.Columns
+  name: Columns
+  href: api/Bliss.CSharp.Images.AnimatedImage.html#Bliss_CSharp_Images_AnimatedImage_Columns
+  commentId: P:Bliss.CSharp.Images.AnimatedImage.Columns
+  fullName: Bliss.CSharp.Images.AnimatedImage.Columns
+  nameWithType: AnimatedImage.Columns
+- uid: Bliss.CSharp.Images.AnimatedImage.Columns*
+  name: Columns
+  href: api/Bliss.CSharp.Images.AnimatedImage.html#Bliss_CSharp_Images_AnimatedImage_Columns_
+  commentId: Overload:Bliss.CSharp.Images.AnimatedImage.Columns
+  isSpec: "True"
+  fullName: Bliss.CSharp.Images.AnimatedImage.Columns
+  nameWithType: AnimatedImage.Columns
 - uid: Bliss.CSharp.Images.AnimatedImage.Frames
   name: Frames
   href: api/Bliss.CSharp.Images.AnimatedImage.html#Bliss_CSharp_Images_AnimatedImage_Frames
@@ -11379,6 +11360,19 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Images.AnimatedImage.GetFrameInfo
   nameWithType: AnimatedImage.GetFrameInfo
+- uid: Bliss.CSharp.Images.AnimatedImage.Rows
+  name: Rows
+  href: api/Bliss.CSharp.Images.AnimatedImage.html#Bliss_CSharp_Images_AnimatedImage_Rows
+  commentId: P:Bliss.CSharp.Images.AnimatedImage.Rows
+  fullName: Bliss.CSharp.Images.AnimatedImage.Rows
+  nameWithType: AnimatedImage.Rows
+- uid: Bliss.CSharp.Images.AnimatedImage.Rows*
+  name: Rows
+  href: api/Bliss.CSharp.Images.AnimatedImage.html#Bliss_CSharp_Images_AnimatedImage_Rows_
+  commentId: Overload:Bliss.CSharp.Images.AnimatedImage.Rows
+  isSpec: "True"
+  fullName: Bliss.CSharp.Images.AnimatedImage.Rows
+  nameWithType: AnimatedImage.Rows
 - uid: Bliss.CSharp.Images.AnimatedImage.SpriteSheet
   name: SpriteSheet
   href: api/Bliss.CSharp.Images.AnimatedImage.html#Bliss_CSharp_Images_AnimatedImage_SpriteSheet

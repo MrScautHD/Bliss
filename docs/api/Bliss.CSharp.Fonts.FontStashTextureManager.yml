@@ -7,7 +7,6 @@ items:
   children:
   - Bliss.CSharp.Fonts.FontStashTextureManager.#ctor(Veldrid.GraphicsDevice)
   - Bliss.CSharp.Fonts.FontStashTextureManager.CreateTexture(System.Int32,System.Int32)
-  - Bliss.CSharp.Fonts.FontStashTextureManager.Dispose(System.Boolean)
   - Bliss.CSharp.Fonts.FontStashTextureManager.GetTextureSize(System.Object)
   - Bliss.CSharp.Fonts.FontStashTextureManager.GraphicsDevice
   - Bliss.CSharp.Fonts.FontStashTextureManager.SetTextureData(System.Object,System.Drawing.Rectangle,System.Byte[])
@@ -30,18 +29,13 @@ items:
   - Bliss
   namespace: Bliss.CSharp.Fonts
   syntax:
-    content: 'public class FontStashTextureManager : Disposable, IDisposable, ITexture2DManager'
-    content.vb: Public Class FontStashTextureManager Inherits Disposable Implements IDisposable, ITexture2DManager
+    content: 'public class FontStashTextureManager : ITexture2DManager'
+    content.vb: Public Class FontStashTextureManager Implements ITexture2DManager
   inheritance:
   - System.Object
-  - Bliss.CSharp.Disposable
   implements:
-  - System.IDisposable
   - FontStashSharp.Interfaces.ITexture2DManager
   inheritedMembers:
-  - Bliss.CSharp.Disposable.HasDisposed
-  - Bliss.CSharp.Disposable.Dispose
-  - Bliss.CSharp.Disposable.ThrowIfDisposed
   - System.Object.Equals(System.Object)
   - System.Object.Equals(System.Object,System.Object)
   - System.Object.GetHashCode
@@ -98,7 +92,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Fonts/FontStashTextureManager.cs
-    startLine: 26
+    startLine: 21
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Fonts
@@ -133,7 +127,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: CreateTexture
     path: ../src/Bliss/CSharp/Fonts/FontStashTextureManager.cs
-    startLine: 36
+    startLine: 31
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Fonts
@@ -176,7 +170,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetTextureSize
     path: ../src/Bliss/CSharp/Fonts/FontStashTextureManager.cs
-    startLine: 45
+    startLine: 40
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Fonts
@@ -216,7 +210,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetTextureData
     path: ../src/Bliss/CSharp/Fonts/FontStashTextureManager.cs
-    startLine: 56
+    startLine: 51
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Fonts
@@ -241,42 +235,6 @@ items:
   nameWithType.vb: FontStashTextureManager.SetTextureData(Object, Rectangle, Byte())
   fullName.vb: Bliss.CSharp.Fonts.FontStashTextureManager.SetTextureData(Object, System.Drawing.Rectangle, Byte())
   name.vb: SetTextureData(Object, Rectangle, Byte())
-- uid: Bliss.CSharp.Fonts.FontStashTextureManager.Dispose(System.Boolean)
-  commentId: M:Bliss.CSharp.Fonts.FontStashTextureManager.Dispose(System.Boolean)
-  id: Dispose(System.Boolean)
-  parent: Bliss.CSharp.Fonts.FontStashTextureManager
-  langs:
-  - csharp
-  - vb
-  name: Dispose(bool)
-  nameWithType: FontStashTextureManager.Dispose(bool)
-  fullName: Bliss.CSharp.Fonts.FontStashTextureManager.Dispose(bool)
-  type: Method
-  source:
-    remote:
-      path: src/Bliss/CSharp/Fonts/FontStashTextureManager.cs
-      branch: main
-      repo: https://github.com/MrScautHD/Bliss.git
-    id: Dispose
-    path: ../src/Bliss/CSharp/Fonts/FontStashTextureManager.cs
-    startLine: 61
-  assemblies:
-  - Bliss
-  namespace: Bliss.CSharp.Fonts
-  summary: Disposes of the object and releases associated resources.
-  example: []
-  syntax:
-    content: protected override void Dispose(bool disposing)
-    parameters:
-    - id: disposing
-      type: System.Boolean
-      description: True if called from user code; false if called from a finalizer.
-    content.vb: Protected Overrides Sub Dispose(disposing As Boolean)
-  overridden: Bliss.CSharp.Disposable.Dispose(System.Boolean)
-  overload: Bliss.CSharp.Fonts.FontStashTextureManager.Dispose*
-  nameWithType.vb: FontStashTextureManager.Dispose(Boolean)
-  fullName.vb: Bliss.CSharp.Fonts.FontStashTextureManager.Dispose(Boolean)
-  name.vb: Dispose(Boolean)
 references:
 - uid: Bliss.CSharp.Fonts
   commentId: N:Bliss.CSharp.Fonts
@@ -319,21 +277,6 @@ references:
   nameWithType.vb: Object
   fullName.vb: Object
   name.vb: Object
-- uid: Bliss.CSharp.Disposable
-  commentId: T:Bliss.CSharp.Disposable
-  parent: Bliss.CSharp
-  href: Bliss.CSharp.Disposable.html
-  name: Disposable
-  nameWithType: Disposable
-  fullName: Bliss.CSharp.Disposable
-- uid: System.IDisposable
-  commentId: T:System.IDisposable
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.idisposable
-  name: IDisposable
-  nameWithType: IDisposable
-  fullName: System.IDisposable
 - uid: FontStashSharp.Interfaces.ITexture2DManager
   commentId: T:FontStashSharp.Interfaces.ITexture2DManager
   parent: FontStashSharp.Interfaces
@@ -341,51 +284,6 @@ references:
   name: ITexture2DManager
   nameWithType: ITexture2DManager
   fullName: FontStashSharp.Interfaces.ITexture2DManager
-- uid: Bliss.CSharp.Disposable.HasDisposed
-  commentId: P:Bliss.CSharp.Disposable.HasDisposed
-  parent: Bliss.CSharp.Disposable
-  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_HasDisposed
-  name: HasDisposed
-  nameWithType: Disposable.HasDisposed
-  fullName: Bliss.CSharp.Disposable.HasDisposed
-- uid: Bliss.CSharp.Disposable.Dispose
-  commentId: M:Bliss.CSharp.Disposable.Dispose
-  parent: Bliss.CSharp.Disposable
-  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
-  name: Dispose()
-  nameWithType: Disposable.Dispose()
-  fullName: Bliss.CSharp.Disposable.Dispose()
-  spec.csharp:
-  - uid: Bliss.CSharp.Disposable.Dispose
-    name: Dispose
-    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: Bliss.CSharp.Disposable.Dispose
-    name: Dispose
-    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose
-  - name: (
-  - name: )
-- uid: Bliss.CSharp.Disposable.ThrowIfDisposed
-  commentId: M:Bliss.CSharp.Disposable.ThrowIfDisposed
-  parent: Bliss.CSharp.Disposable
-  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
-  name: ThrowIfDisposed()
-  nameWithType: Disposable.ThrowIfDisposed()
-  fullName: Bliss.CSharp.Disposable.ThrowIfDisposed()
-  spec.csharp:
-  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
-    name: ThrowIfDisposed
-    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: Bliss.CSharp.Disposable.ThrowIfDisposed
-    name: ThrowIfDisposed
-    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_ThrowIfDisposed
-  - name: (
-  - name: )
 - uid: System.Object.Equals(System.Object)
   commentId: M:System.Object.Equals(System.Object)
   parent: System.Object
@@ -612,28 +510,6 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: Bliss.CSharp
-  commentId: N:Bliss.CSharp
-  href: Bliss.html
-  name: Bliss.CSharp
-  nameWithType: Bliss.CSharp
-  fullName: Bliss.CSharp
-  spec.csharp:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
-  spec.vb:
-  - uid: Bliss
-    name: Bliss
-    href: Bliss.html
-  - name: .
-  - uid: Bliss.CSharp
-    name: CSharp
-    href: Bliss.CSharp.html
 - uid: FontStashSharp.Interfaces
   commentId: N:FontStashSharp.Interfaces
   isExternal: true
@@ -919,51 +795,3 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.byte
   - name: (
   - name: )
-- uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
-  commentId: M:Bliss.CSharp.Disposable.Dispose(System.Boolean)
-  parent: Bliss.CSharp.Disposable
-  isExternal: true
-  href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
-  name: Dispose(bool)
-  nameWithType: Disposable.Dispose(bool)
-  fullName: Bliss.CSharp.Disposable.Dispose(bool)
-  nameWithType.vb: Disposable.Dispose(Boolean)
-  fullName.vb: Bliss.CSharp.Disposable.Dispose(Boolean)
-  name.vb: Dispose(Boolean)
-  spec.csharp:
-  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
-    name: Dispose
-    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
-  - name: (
-  - uid: System.Boolean
-    name: bool
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.boolean
-  - name: )
-  spec.vb:
-  - uid: Bliss.CSharp.Disposable.Dispose(System.Boolean)
-    name: Dispose
-    href: Bliss.CSharp.Disposable.html#Bliss_CSharp_Disposable_Dispose_System_Boolean_
-  - name: (
-  - uid: System.Boolean
-    name: Boolean
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.boolean
-  - name: )
-- uid: Bliss.CSharp.Fonts.FontStashTextureManager.Dispose*
-  commentId: Overload:Bliss.CSharp.Fonts.FontStashTextureManager.Dispose
-  href: Bliss.CSharp.Fonts.FontStashTextureManager.html#Bliss_CSharp_Fonts_FontStashTextureManager_Dispose_System_Boolean_
-  name: Dispose
-  nameWithType: FontStashTextureManager.Dispose
-  fullName: Bliss.CSharp.Fonts.FontStashTextureManager.Dispose
-- uid: System.Boolean
-  commentId: T:System.Boolean
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.boolean
-  name: bool
-  nameWithType: bool
-  fullName: bool
-  nameWithType.vb: Boolean
-  fullName.vb: Boolean
-  name.vb: Boolean

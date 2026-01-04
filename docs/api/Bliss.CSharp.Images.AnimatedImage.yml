@@ -7,9 +7,11 @@ items:
   children:
   - Bliss.CSharp.Images.AnimatedImage.#ctor(System.IO.Stream)
   - Bliss.CSharp.Images.AnimatedImage.#ctor(System.String)
+  - Bliss.CSharp.Images.AnimatedImage.Columns
   - Bliss.CSharp.Images.AnimatedImage.Frames
   - Bliss.CSharp.Images.AnimatedImage.GetFrameCount
   - Bliss.CSharp.Images.AnimatedImage.GetFrameInfo(System.Int32,System.Int32@,System.Int32@,System.Single@)
+  - Bliss.CSharp.Images.AnimatedImage.Rows
   - Bliss.CSharp.Images.AnimatedImage.SpriteSheet
   langs:
   - csharp
@@ -104,6 +106,68 @@ items:
       type: Bliss.CSharp.Images.Image
     content.vb: Public Property SpriteSheet As Image
   overload: Bliss.CSharp.Images.AnimatedImage.SpriteSheet*
+- uid: Bliss.CSharp.Images.AnimatedImage.Columns
+  commentId: P:Bliss.CSharp.Images.AnimatedImage.Columns
+  id: Columns
+  parent: Bliss.CSharp.Images.AnimatedImage
+  langs:
+  - csharp
+  - vb
+  name: Columns
+  nameWithType: AnimatedImage.Columns
+  fullName: Bliss.CSharp.Images.AnimatedImage.Columns
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/AnimatedImage.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Columns
+    path: ../src/Bliss/CSharp/Images/AnimatedImage.cs
+    startLine: 20
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Gets the number of columns in the sprite sheet layout used for organizing frames of the animated image.
+  example: []
+  syntax:
+    content: public int Columns { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Columns As Integer
+  overload: Bliss.CSharp.Images.AnimatedImage.Columns*
+- uid: Bliss.CSharp.Images.AnimatedImage.Rows
+  commentId: P:Bliss.CSharp.Images.AnimatedImage.Rows
+  id: Rows
+  parent: Bliss.CSharp.Images.AnimatedImage
+  langs:
+  - csharp
+  - vb
+  name: Rows
+  nameWithType: AnimatedImage.Rows
+  fullName: Bliss.CSharp.Images.AnimatedImage.Rows
+  type: Property
+  source:
+    remote:
+      path: src/Bliss/CSharp/Images/AnimatedImage.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: Rows
+    path: ../src/Bliss/CSharp/Images/AnimatedImage.cs
+    startLine: 25
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Images
+  summary: Gets the number of rows in the sprite sheet layout used for the animated image.
+  example: []
+  syntax:
+    content: public int Rows { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Rows As Integer
+  overload: Bliss.CSharp.Images.AnimatedImage.Rows*
 - uid: Bliss.CSharp.Images.AnimatedImage.#ctor(System.String)
   commentId: M:Bliss.CSharp.Images.AnimatedImage.#ctor(System.String)
   id: '#ctor(System.String)'
@@ -122,7 +186,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Images/AnimatedImage.cs
-    startLine: 21
+    startLine: 31
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -157,7 +221,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: .ctor
     path: ../src/Bliss/CSharp/Images/AnimatedImage.cs
-    startLine: 49
+    startLine: 59
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -192,7 +256,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetFrameCount
     path: ../src/Bliss/CSharp/Images/AnimatedImage.cs
-    startLine: 75
+    startLine: 85
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -223,7 +287,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetFrameInfo
     path: ../src/Bliss/CSharp/Images/AnimatedImage.cs
-    startLine: 86
+    startLine: 96
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Images
@@ -652,6 +716,29 @@ references:
   name: Image
   nameWithType: Image
   fullName: Bliss.CSharp.Images.Image
+- uid: Bliss.CSharp.Images.AnimatedImage.Columns*
+  commentId: Overload:Bliss.CSharp.Images.AnimatedImage.Columns
+  href: Bliss.CSharp.Images.AnimatedImage.html#Bliss_CSharp_Images_AnimatedImage_Columns
+  name: Columns
+  nameWithType: AnimatedImage.Columns
+  fullName: Bliss.CSharp.Images.AnimatedImage.Columns
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Bliss.CSharp.Images.AnimatedImage.Rows*
+  commentId: Overload:Bliss.CSharp.Images.AnimatedImage.Rows
+  href: Bliss.CSharp.Images.AnimatedImage.html#Bliss_CSharp_Images_AnimatedImage_Rows
+  name: Rows
+  nameWithType: AnimatedImage.Rows
+  fullName: Bliss.CSharp.Images.AnimatedImage.Rows
 - uid: Bliss.CSharp.Images.AnimatedImage
   commentId: T:Bliss.CSharp.Images.AnimatedImage
   href: Bliss.CSharp.Images.AnimatedImage.html
@@ -719,17 +806,6 @@ references:
   name: GetFrameCount
   nameWithType: AnimatedImage.GetFrameCount
   fullName: Bliss.CSharp.Images.AnimatedImage.GetFrameCount
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.int32
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
 - uid: Bliss.CSharp.Images.AnimatedImage.GetFrameInfo*
   commentId: Overload:Bliss.CSharp.Images.AnimatedImage.GetFrameInfo
   href: Bliss.CSharp.Images.AnimatedImage.html#Bliss_CSharp_Images_AnimatedImage_GetFrameInfo_System_Int32_System_Int32__System_Int32__System_Single__
