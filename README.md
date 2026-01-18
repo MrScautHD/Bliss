@@ -3,13 +3,12 @@
 </p>
 
 # Bliss 🚀
+![grafik](https://github.com/user-attachments/assets/e0b69197-34b6-45d3-8e05-6264aaa308a4)
 [![Discord](https://img.shields.io/discord/1199798541980283051?style=flat-square&logo=discord&label=Discord)](https://discord.gg/7XKw6YQa76)
 [![Activity](https://img.shields.io/github/commit-activity/w/MrScautHD/Bliss?style=flat-square&logo=Github&label=Activity)](https://github.com/MrScautHD/Bliss/activity)
 [![Stars](https://img.shields.io/github/stars/MrScautHD/Bliss?style=flat-square&logo=Github&label=Stars)](https://github.com/MrScautHD/Bliss/stargazers)
 
 __Bliss__ is a modern `Direct3D11`, `Vulkan`, `OpenGL`, `Metal`, `OpenGL-ES` Render Framework.
-
-![grafik](https://github.com/user-attachments/assets/97c5f6a7-b196-44f1-8043-c90c52e847b4)
 
 # ✨ Features ✨
 - 🎨 Efficient rendering of textures, fonts, and shapes using SpriteBatch.
