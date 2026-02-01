@@ -178,7 +178,7 @@ public interface IWindow : IDisposable {
     /// Retrieves the current size of the window.
     /// </summary>
     /// <returns>A tuple containing the width and height of the window.</returns>
-    (int, int) GetSize();
+    (int Width, int Height) GetSize();
 
     /// <summary>
     /// Sets the size of the window to the specified width and height.
@@ -204,12 +204,55 @@ public interface IWindow : IDisposable {
     /// </summary>
     /// <returns>The current window height as an integer.</returns>
     int GetHeight();
-
+    
+    /// <summary>
+    /// Sets the height of the window to the specified value.
+    /// </summary>
+    /// <param name="height">The new height of the window.</param>
+    void SetHeight(int height);
+    
+    /// <summary>
+    /// Retrieves the minimum allowed size of the window.
+    /// </summary>
+    /// <returns> A tuple containing the minimum width and height of the window.</returns>
+    (int Width, int Height) GetMinimumSize();
+    
+    /// <summary>
+    /// Sets the minimum allowed size of the window.
+    /// </summary>
+    /// <param name="width">The minimum width the window can be resized to.</param>
+    /// <param name="height">The minimum height the window can be resized to.</param>
+    void SetMinimumSize(int width, int height);
+    
+    /// <summary>
+    /// Retrieves the minimum allowed width of the window.
+    /// </summary>
+    /// <returns>The minimum window width as an integer.</returns>
+    int GetMinimumWidth();
+    
+    /// <summary>
+    /// Sets the minimum allowed width of the window.
+    /// </summary>
+    /// <param name="width">The minimum width the window can be resized to.</param>
+    void SetMinimumWidth(int width);
+    
+    /// <summary>
+    /// Retrieves the minimum allowed height of the window.
+    /// </summary>
+    /// <returns>The minimum window height as an integer.</returns>
+    int GetMinimumHeight();
+    
+    /// <summary>
+    /// Sets the minimum allowed height of the window.
+    /// </summary>
+    /// <param name="height">The minimum height the window can be resized to.</param>
+    void SetMinimumHeight(int height);
+    
     /// <summary>
     /// Retrieves the current position of the window.
     /// </summary>
     /// <returns>A tuple containing the x and y coordinates of the window.</returns>
-    (int, int) GetPosition();
+    (int X, int Y) GetPosition();
 
     /// <summary>
     /// Sets the position of the window to the specified coordinates.
@@ -241,12 +284,6 @@ public interface IWindow : IDisposable {
     /// </summary>
     /// <param name="y">The new y-coordinate to set for the window.</param>
     void SetY(int y);
-
-    /// <summary>
-    /// Sets the height of the window to the specified value.
-    /// </summary>
-    /// <param name="height">The new height for the window.</param>
-    void SetHeight(int height);
     
     /// <summary>
     /// Retrieves the current state of the window.

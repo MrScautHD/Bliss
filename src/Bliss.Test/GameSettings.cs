@@ -11,15 +11,9 @@ public struct GameSettings {
     /// </summary>
     public string Title { get; init; }
     
-    /// <summary>
-    /// The width of the game window in pixels.
-    /// </summary>
-    public int Width { get; init; }
+    public (int Width, int Height) Size { get; init; }
     
-    /// <summary>
-    /// The height of the game window in pixels.
-    /// </summary>
-    public int Height { get; init; }
+    public (int Width, int Height) MinSize { get; init; }
     
     /// <summary>
     /// The file path to the window icon image.
@@ -61,8 +55,8 @@ public struct GameSettings {
     /// </summary>
     public GameSettings() {
         this.Title = Assembly.GetEntryAssembly()?.GetName().Name ?? "Bliss";
-        this.Width = 1280;
-        this.Height = 720;
+        this.Size = (1280, 720);
+        this.MinSize = (640, 480);
         this.IconPath = string.Empty;
         this.TargetFps = 0;
         this.FixedTimeStep = 1.0F / 60.0F;

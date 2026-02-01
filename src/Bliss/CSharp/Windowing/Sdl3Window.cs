@@ -272,14 +272,14 @@ public class Sdl3Window : Disposable, IWindow {
     /// Retrieves the current width and height of the window in pixels.
     /// </summary>
     /// <returns>A tuple containing two integers representing the width and height of the window in pixels.</returns>
-    public unsafe (int, int) GetSize() {
+    public unsafe (int Width, int Height) GetSize() {
         int width;
         int height;
         
         if (!SDL3.SDL_GetWindowSizeInPixels((SDL_Window*) this.Handle, &width, &height)) {
             Logger.Warn($"Failed to get the size of the window: [{this.Id}] Error: {SDL3.SDL_GetError()}");
         }
-
+        
         return (width, height);
     }
 
@@ -299,7 +299,7 @@ public class Sdl3Window : Disposable, IWindow {
     /// </summary>
     /// <returns>The width of the window in pixels.</returns>
     public int GetWidth() {
-        return this.GetSize().Item1;
+        return this.GetSize().Width;
     }
 
     /// <summary>
@@ -315,9 +315,9 @@ public class Sdl3Window : Disposable, IWindow {
     /// </summary>
     /// <returns>The height of the window in pixels.</returns>
     public int GetHeight() {
-        return this.GetSize().Item2;
+        return this.GetSize().Height;
     }
-
+    
     /// <summary>
     /// Sets the height of the window to the specified value.
     /// </summary>
@@ -327,11 +327,69 @@ public class Sdl3Window : Disposable, IWindow {
     }
     
     /// <summary>
+    /// Retrieves the minimum allowed size of the window.
+    /// </summary>
+    /// <returns> A tuple containing the minimum width and height of the window.</returns>
+    public unsafe (int Width, int Height) GetMinimumSize() {
+        int width;
+        int height;
+        
+        if (!SDL3.SDL_GetWindowMinimumSize((SDL_Window*) this.Handle, &width, &height)) {
+            Logger.Warn($"Failed to get the min size of the window: [{this.Id}] Error: {SDL3.SDL_GetError()}");
+        }
+        
+        return (width, height);
+    }
+    
+    /// <summary>
+    /// Sets the minimum allowed size of the window.
+    /// </summary>
+    /// <param name="width">The minimum width the window can be resized to.</param>
+    /// <param name="height">The minimum height the window can be resized to.</param>
+    public unsafe void SetMinimumSize(int width, int height) {
+        if (!SDL3.SDL_SetWindowMinimumSize((SDL_Window*) this.Handle, width, height)) {
+            Logger.Warn($"Failed to set the min size of the window: [{this.Id}] Error: {SDL3.SDL_GetError()}");
+        }
+    }
+    
+    /// <summary>
+    /// Retrieves the minimum allowed width of the window.
+    /// </summary>
+    /// <returns>The minimum window width as an integer.</returns>
+    public int GetMinimumWidth() {
+        return this.GetMinimumSize().Width;
+    }
+    
+    /// <summary>
+    /// Sets the minimum allowed width of the window.
+    /// </summary>
+    /// <param name="width">The minimum width the window can be resized to.</param>
+    public void SetMinimumWidth(int width) {
+        this.SetMinimumSize(width, this.GetMinimumHeight());
+    }
+    
+    /// <summary>
+    /// Retrieves the minimum allowed height of the window.
+    /// </summary>
+    /// <returns>The minimum window height as an integer.</returns>
+    public int GetMinimumHeight() {
+        return this.GetMinimumSize().Height;
+    }
+    
+    /// <summary>
+    /// Sets the minimum allowed height of the window.
+    /// </summary>
+    /// <param name="height">The minimum height the window can be resized to.</param>
+    public void SetMinimumHeight(int height) {
+        this.SetMinimumSize(this.GetMinimumWidth(), height);
+    }
+
+    /// <summary>
     /// Retrieves the current position of the window.
     /// </summary>
     /// <returns>A tuple containing the x and y coordinates of the window's position.</returns>
     /// <exception cref="System.Exception">Thrown if there is an error retrieving the window's position.</exception>
-    public unsafe (int, int) GetPosition() {
+    public unsafe (int X, int Y) GetPosition() {
         int x;
         int y;
         
@@ -356,7 +414,7 @@ public class Sdl3Window : Disposable, IWindow {
     /// </summary>
     /// <returns>The X-coordinate of the window's position.</returns>
     public int GetX() {
-        return this.GetPosition().Item1;
+        return this.GetPosition().X;
     }
 
     /// <summary>
@@ -372,7 +430,7 @@ public class Sdl3Window : Disposable, IWindow {
     /// </summary>
     /// <returns>The Y-coordinate of the window's position.</returns>
     public int GetY() {
-        return this.GetPosition().Item2;
+        return this.GetPosition().Y;
     }
 
     /// <summary>

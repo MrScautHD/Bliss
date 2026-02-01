@@ -113,7 +113,8 @@ public class Game : Disposable {
             SwapchainSrgbFormat = false
         };
         
-        this.MainWindow = Window.CreateWindow(WindowType.Sdl3, this.Settings.Width, this.Settings.Height, this.Settings.Title, this.Settings.WindowFlags, options, this.Settings.Backend, out GraphicsDevice graphicsDevice);
+        this.MainWindow = Window.CreateWindow(WindowType.Sdl3, this.Settings.Size.Width, this.Settings.Size.Height, this.Settings.Title, this.Settings.WindowFlags, options, this.Settings.Backend, out GraphicsDevice graphicsDevice);
+        this.MainWindow.SetMinimumSize(this.Settings.MinSize.Width, this.Settings.MinSize.Height);
         this.MainWindow.Resized += () => this.OnResize(new Rectangle(this.MainWindow.GetX(), this.MainWindow.GetY(), this.MainWindow.GetWidth(), this.MainWindow.GetHeight()));
         this.GraphicsDevice = graphicsDevice;
         
