@@ -306,7 +306,6 @@ public class Effect : Disposable {
         throw new KeyNotFoundException($"Failed to get the slot for [{name}]. A texture layout with this name do not exist.");
     }
 
-
     /// <summary>
     /// Adds a new texture layout to the effect with the specified parameters.
     /// </summary>

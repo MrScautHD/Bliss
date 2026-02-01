@@ -157,7 +157,7 @@ public class RenderTexture2D : Disposable {
     /// <param name="sampleCount">The desired sample count.</param>
     /// <returns>The valid sample count, which might be equal to or less than the requested sample count.</returns>
     private TextureSampleCount GetValidSampleCount(TextureSampleCount sampleCount) {
-        TextureSampleCount maxSamples = this.GraphicsDevice.GetSampleCountLimit(PixelFormat.R8G8B8A8UNorm, false);
+        TextureSampleCount maxSamples = this.GraphicsDevice.GetSampleCountLimit(this.Format, false);
 
         if (sampleCount > maxSamples) {
             Logger.Warn($"The count of [{sampleCount}] samples is to high for this GraphicsDevice, the count will fall back to [{maxSamples}] samples!");
