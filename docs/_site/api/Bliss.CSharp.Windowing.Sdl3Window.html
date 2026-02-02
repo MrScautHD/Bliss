@@ -393,7 +393,7 @@ This identifier can be used to reference or differentiate between multiple windo
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_CaptureMouse_System_Boolean_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.CaptureMouse(System.Boolean)">
   CaptureMouse(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L498"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L556"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Captures or releases the mouse input for the window.</p>
@@ -426,7 +426,7 @@ This identifier can be used to reference or differentiate between multiple windo
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_ClientToScreen_Bliss_CSharp_Transformations_Point_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.ClientToScreen(Bliss.CSharp.Transformations.Point)">
   ClientToScreen(Point)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L549"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L607"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts a point from client-area coordinates to screen coordinates.</p>
@@ -465,7 +465,7 @@ This identifier can be used to reference or differentiate between multiple windo
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_Dispose_System_Boolean_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.Dispose(System.Boolean)">
   Dispose(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L1119"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L1177"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Disposes of the object and releases associated resources.</p>
@@ -527,11 +527,110 @@ This identifier can be used to reference or differentiate between multiple windo
 
 
 
+  <a id="Bliss_CSharp_Windowing_Sdl3Window_GetMinimumHeight_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.GetMinimumHeight*"></a>
+
+  <h3 id="Bliss_CSharp_Windowing_Sdl3Window_GetMinimumHeight" data-uid="Bliss.CSharp.Windowing.Sdl3Window.GetMinimumHeight">
+  GetMinimumHeight()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L375"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the minimum allowed height of the window.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetMinimumHeight()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The minimum window height as an integer.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Windowing_Sdl3Window_GetMinimumSize_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.GetMinimumSize*"></a>
+
+  <h3 id="Bliss_CSharp_Windowing_Sdl3Window_GetMinimumSize" data-uid="Bliss.CSharp.Windowing.Sdl3Window.GetMinimumSize">
+  GetMinimumSize()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L333"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the minimum allowed size of the window.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public (int Width, int Height) GetMinimumSize()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32-.width">Width</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32-.height">Height</a>)</dt>
+    <dd><p>A tuple containing the minimum width and height of the window.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Windowing_Sdl3Window_GetMinimumWidth_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.GetMinimumWidth*"></a>
+
+  <h3 id="Bliss_CSharp_Windowing_Sdl3Window_GetMinimumWidth" data-uid="Bliss.CSharp.Windowing.Sdl3Window.GetMinimumWidth">
+  GetMinimumWidth()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L359"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves the minimum allowed width of the window.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetMinimumWidth()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The minimum window width as an integer.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Bliss_CSharp_Windowing_Sdl3Window_GetOrCreateOpenGlPlatformInfo_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.GetOrCreateOpenGlPlatformInfo*"></a>
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_GetOrCreateOpenGlPlatformInfo_Veldrid_GraphicsDeviceOptions_Veldrid_GraphicsBackend_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.GetOrCreateOpenGlPlatformInfo(Veldrid.GraphicsDeviceOptions,Veldrid.GraphicsBackend)">
   GetOrCreateOpenGlPlatformInfo(GraphicsDeviceOptions, GraphicsBackend)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L569"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L627"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves or creates the OpenGL platform information for the current window.</p>
@@ -579,7 +678,7 @@ This identifier can be used to reference or differentiate between multiple windo
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_GetPosition" data-uid="Bliss.CSharp.Windowing.Sdl3Window.GetPosition">
   GetPosition()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L334"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L392"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the current position of the window.</p>
@@ -587,13 +686,13 @@ This identifier can be used to reference or differentiate between multiple windo
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public (int, int) GetPosition()</code></pre>
+    <pre><code class="lang-csharp hljs">public (int X, int Y) GetPosition()</code></pre>
   </div>
 
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>)</dt>
+    <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32-.width">Width</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32-.height">Height</a>)</dt>
     <dd><p>A tuple containing the x and y coordinates of the window's position.</p>
 </dd>
   </dl>
@@ -626,13 +725,13 @@ This identifier can be used to reference or differentiate between multiple windo
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public (int, int) GetSize()</code></pre>
+    <pre><code class="lang-csharp hljs">public (int Width, int Height) GetSize()</code></pre>
   </div>
 
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>)</dt>
+    <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32-.width">Width</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32-.height">Height</a>)</dt>
     <dd><p>A tuple containing two integers representing the width and height of the window in pixels.</p>
 </dd>
   </dl>
@@ -651,7 +750,7 @@ This identifier can be used to reference or differentiate between multiple windo
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_GetState" data-uid="Bliss.CSharp.Windowing.Sdl3Window.GetState">
   GetState()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L390"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L448"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the current state of the window.</p>
@@ -750,7 +849,7 @@ This identifier can be used to reference or differentiate between multiple windo
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_GetX" data-uid="Bliss.CSharp.Windowing.Sdl3Window.GetX">
   GetX()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L358"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L416"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the current X-coordinate position of the window.</p>
@@ -783,7 +882,7 @@ This identifier can be used to reference or differentiate between multiple windo
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_GetY" data-uid="Bliss.CSharp.Windowing.Sdl3Window.GetY">
   GetY()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L374"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L432"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Retrieves the Y-coordinate of the window's position.</p>
@@ -816,7 +915,7 @@ This identifier can be used to reference or differentiate between multiple windo
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_HasState_Bliss_CSharp_Windowing_WindowState_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.HasState(Bliss.CSharp.Windowing.WindowState)">
   HasState(WindowState)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L438"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L496"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Determines if the current window state matches the specified state.</p>
@@ -855,7 +954,7 @@ This identifier can be used to reference or differentiate between multiple windo
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_Hide" data-uid="Bliss.CSharp.Windowing.Sdl3Window.Hide">
   Hide()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L483"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L541"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Hides the window, making it invisible to the user.</p>
@@ -882,7 +981,7 @@ This identifier can be used to reference or differentiate between multiple windo
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_Maximize" data-uid="Bliss.CSharp.Windowing.Sdl3Window.Maximize">
   Maximize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L469"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L527"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Maximizes the window to occupy the entire screen space available within the current display's working area.</p>
@@ -909,7 +1008,7 @@ This identifier can be used to reference or differentiate between multiple windo
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_Minimize" data-uid="Bliss.CSharp.Windowing.Sdl3Window.Minimize">
   Minimize()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L476"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L534"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Minimizes the current window.</p>
@@ -936,7 +1035,7 @@ This identifier can be used to reference or differentiate between multiple windo
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_PumpEvents" data-uid="Bliss.CSharp.Windowing.Sdl3Window.PumpEvents">
   PumpEvents()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L532"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L590"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Processes all pending events for the window and invokes corresponding event handlers.</p>
@@ -969,7 +1068,7 @@ This identifier can be used to reference or differentiate between multiple windo
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_ScreenToClient_Bliss_CSharp_Transformations_Point_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.ScreenToClient(Bliss.CSharp.Transformations.Point)">
   ScreenToClient(Point)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L558"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L616"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Converts a point from screen coordinates to client coordinates.</p>
@@ -1008,7 +1107,7 @@ This identifier can be used to reference or differentiate between multiple windo
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_SetBordered_System_Boolean_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.SetBordered(System.Boolean)">
   SetBordered(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L462"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L520"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets whether the window should have a border.</p>
@@ -1041,7 +1140,7 @@ This identifier can be used to reference or differentiate between multiple windo
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_SetFullscreen_System_Boolean_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.SetFullscreen(System.Boolean)">
   SetFullscreen(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L454"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L512"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the fullscreen state of the window.</p>
@@ -1107,7 +1206,7 @@ This identifier can be used to reference or differentiate between multiple windo
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_SetIcon_Bliss_CSharp_Images_Image_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.SetIcon(Bliss.CSharp.Images.Image)">
   SetIcon(Image)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L515"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L573"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the icon for the SDL3 window using the provided image.</p>
@@ -1142,11 +1241,113 @@ This identifier can be used to reference or differentiate between multiple windo
 
 
 
+  <a id="Bliss_CSharp_Windowing_Sdl3Window_SetMinimumHeight_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.SetMinimumHeight*"></a>
+
+  <h3 id="Bliss_CSharp_Windowing_Sdl3Window_SetMinimumHeight_System_Int32_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.SetMinimumHeight(System.Int32)">
+  SetMinimumHeight(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L383"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the minimum allowed height of the window.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetMinimumHeight(int height)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The minimum height the window can be resized to.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Windowing_Sdl3Window_SetMinimumSize_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.SetMinimumSize*"></a>
+
+  <h3 id="Bliss_CSharp_Windowing_Sdl3Window_SetMinimumSize_System_Int32_System_Int32_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.SetMinimumSize(System.Int32,System.Int32)">
+  SetMinimumSize(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L349"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the minimum allowed size of the window.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetMinimumSize(int width, int height)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The minimum width the window can be resized to.</p>
+</dd>
+    <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The minimum height the window can be resized to.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Bliss_CSharp_Windowing_Sdl3Window_SetMinimumWidth_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.SetMinimumWidth*"></a>
+
+  <h3 id="Bliss_CSharp_Windowing_Sdl3Window_SetMinimumWidth_System_Int32_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.SetMinimumWidth(System.Int32)">
+  SetMinimumWidth(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L367"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the minimum allowed width of the window.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetMinimumWidth(int width)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The minimum width the window can be resized to.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Bliss_CSharp_Windowing_Sdl3Window_SetPosition_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.SetPosition*"></a>
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_SetPosition_System_Int32_System_Int32_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.SetPosition(System.Int32,System.Int32)">
   SetPosition(int, int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L350"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L408"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the position of the window on the screen.</p>
@@ -1182,7 +1383,7 @@ This identifier can be used to reference or differentiate between multiple windo
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_SetResizable_System_Boolean_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.SetResizable(System.Boolean)">
   SetResizable(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L446"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L504"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Specifies whether the window should be resizable and updates its resizable state accordingly.</p>
@@ -1323,7 +1524,7 @@ This identifier can be used to reference or differentiate between multiple windo
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_SetWindowAlwaysOnTop_System_Boolean_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.SetWindowAlwaysOnTop(System.Boolean)">
   SetWindowAlwaysOnTop(bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L506"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L564"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets whether the window should always be displayed on top of other windows.</p>
@@ -1356,7 +1557,7 @@ This identifier can be used to reference or differentiate between multiple windo
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_SetX_System_Int32_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.SetX(System.Int32)">
   SetX(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L366"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L424"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the X coordinate of the window's position.</p>
@@ -1389,7 +1590,7 @@ This identifier can be used to reference or differentiate between multiple windo
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_SetY_System_Int32_" data-uid="Bliss.CSharp.Windowing.Sdl3Window.SetY(System.Int32)">
   SetY(int)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L382"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L440"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Sets the Y-coordinate of the window's position.</p>
@@ -1422,7 +1623,7 @@ This identifier can be used to reference or differentiate between multiple windo
 
   <h3 id="Bliss_CSharp_Windowing_Sdl3Window_Show" data-uid="Bliss.CSharp.Windowing.Sdl3Window.Show">
   Show()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L490"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MrScautHD/Bliss/blob/main/src/Bliss/CSharp/Windowing/Sdl3Window.cs/#L548"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Makes the window visible if it is currently hidden.</p>

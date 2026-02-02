@@ -17599,6 +17599,45 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Windowing.IWindow.GetHeight
   nameWithType: IWindow.GetHeight
+- uid: Bliss.CSharp.Windowing.IWindow.GetMinimumHeight
+  name: GetMinimumHeight()
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetMinimumHeight
+  commentId: M:Bliss.CSharp.Windowing.IWindow.GetMinimumHeight
+  fullName: Bliss.CSharp.Windowing.IWindow.GetMinimumHeight()
+  nameWithType: IWindow.GetMinimumHeight()
+- uid: Bliss.CSharp.Windowing.IWindow.GetMinimumHeight*
+  name: GetMinimumHeight
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetMinimumHeight_
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.GetMinimumHeight
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.IWindow.GetMinimumHeight
+  nameWithType: IWindow.GetMinimumHeight
+- uid: Bliss.CSharp.Windowing.IWindow.GetMinimumSize
+  name: GetMinimumSize()
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetMinimumSize
+  commentId: M:Bliss.CSharp.Windowing.IWindow.GetMinimumSize
+  fullName: Bliss.CSharp.Windowing.IWindow.GetMinimumSize()
+  nameWithType: IWindow.GetMinimumSize()
+- uid: Bliss.CSharp.Windowing.IWindow.GetMinimumSize*
+  name: GetMinimumSize
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetMinimumSize_
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.GetMinimumSize
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.IWindow.GetMinimumSize
+  nameWithType: IWindow.GetMinimumSize
+- uid: Bliss.CSharp.Windowing.IWindow.GetMinimumWidth
+  name: GetMinimumWidth()
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetMinimumWidth
+  commentId: M:Bliss.CSharp.Windowing.IWindow.GetMinimumWidth
+  fullName: Bliss.CSharp.Windowing.IWindow.GetMinimumWidth()
+  nameWithType: IWindow.GetMinimumWidth()
+- uid: Bliss.CSharp.Windowing.IWindow.GetMinimumWidth*
+  name: GetMinimumWidth
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetMinimumWidth_
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.GetMinimumWidth
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.IWindow.GetMinimumWidth
+  nameWithType: IWindow.GetMinimumWidth
 - uid: Bliss.CSharp.Windowing.IWindow.GetOrCreateOpenGlPlatformInfo(Veldrid.GraphicsDeviceOptions,Veldrid.GraphicsBackend)
   name: GetOrCreateOpenGlPlatformInfo(GraphicsDeviceOptions, GraphicsBackend)
   href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetOrCreateOpenGlPlatformInfo_Veldrid_GraphicsDeviceOptions_Veldrid_GraphicsBackend_
@@ -17947,6 +17986,54 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Windowing.IWindow.SetIcon
   nameWithType: IWindow.SetIcon
+- uid: Bliss.CSharp.Windowing.IWindow.SetMinimumHeight(System.Int32)
+  name: SetMinimumHeight(int)
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetMinimumHeight_System_Int32_
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetMinimumHeight(System.Int32)
+  name.vb: SetMinimumHeight(Integer)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetMinimumHeight(int)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.SetMinimumHeight(Integer)
+  nameWithType: IWindow.SetMinimumHeight(int)
+  nameWithType.vb: IWindow.SetMinimumHeight(Integer)
+- uid: Bliss.CSharp.Windowing.IWindow.SetMinimumHeight*
+  name: SetMinimumHeight
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetMinimumHeight_
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.SetMinimumHeight
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.IWindow.SetMinimumHeight
+  nameWithType: IWindow.SetMinimumHeight
+- uid: Bliss.CSharp.Windowing.IWindow.SetMinimumSize(System.Int32,System.Int32)
+  name: SetMinimumSize(int, int)
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetMinimumSize_System_Int32_System_Int32_
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetMinimumSize(System.Int32,System.Int32)
+  name.vb: SetMinimumSize(Integer, Integer)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetMinimumSize(int, int)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.SetMinimumSize(Integer, Integer)
+  nameWithType: IWindow.SetMinimumSize(int, int)
+  nameWithType.vb: IWindow.SetMinimumSize(Integer, Integer)
+- uid: Bliss.CSharp.Windowing.IWindow.SetMinimumSize*
+  name: SetMinimumSize
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetMinimumSize_
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.SetMinimumSize
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.IWindow.SetMinimumSize
+  nameWithType: IWindow.SetMinimumSize
+- uid: Bliss.CSharp.Windowing.IWindow.SetMinimumWidth(System.Int32)
+  name: SetMinimumWidth(int)
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetMinimumWidth_System_Int32_
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetMinimumWidth(System.Int32)
+  name.vb: SetMinimumWidth(Integer)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetMinimumWidth(int)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.SetMinimumWidth(Integer)
+  nameWithType: IWindow.SetMinimumWidth(int)
+  nameWithType.vb: IWindow.SetMinimumWidth(Integer)
+- uid: Bliss.CSharp.Windowing.IWindow.SetMinimumWidth*
+  name: SetMinimumWidth
+  href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetMinimumWidth_
+  commentId: Overload:Bliss.CSharp.Windowing.IWindow.SetMinimumWidth
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.IWindow.SetMinimumWidth
+  nameWithType: IWindow.SetMinimumWidth
 - uid: Bliss.CSharp.Windowing.IWindow.SetPosition(System.Int32,System.Int32)
   name: SetPosition(int, int)
   href: api/Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetPosition_System_Int32_System_Int32_
@@ -18269,6 +18356,45 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Windowing.Sdl3Window.GetHeight
   nameWithType: Sdl3Window.GetHeight
+- uid: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumHeight
+  name: GetMinimumHeight()
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_GetMinimumHeight
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.GetMinimumHeight
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumHeight()
+  nameWithType: Sdl3Window.GetMinimumHeight()
+- uid: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumHeight*
+  name: GetMinimumHeight
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_GetMinimumHeight_
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.GetMinimumHeight
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumHeight
+  nameWithType: Sdl3Window.GetMinimumHeight
+- uid: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumSize
+  name: GetMinimumSize()
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_GetMinimumSize
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.GetMinimumSize
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumSize()
+  nameWithType: Sdl3Window.GetMinimumSize()
+- uid: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumSize*
+  name: GetMinimumSize
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_GetMinimumSize_
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.GetMinimumSize
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumSize
+  nameWithType: Sdl3Window.GetMinimumSize
+- uid: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumWidth
+  name: GetMinimumWidth()
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_GetMinimumWidth
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.GetMinimumWidth
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumWidth()
+  nameWithType: Sdl3Window.GetMinimumWidth()
+- uid: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumWidth*
+  name: GetMinimumWidth
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_GetMinimumWidth_
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.GetMinimumWidth
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumWidth
+  nameWithType: Sdl3Window.GetMinimumWidth
 - uid: Bliss.CSharp.Windowing.Sdl3Window.GetOrCreateOpenGlPlatformInfo(Veldrid.GraphicsDeviceOptions,Veldrid.GraphicsBackend)
   name: GetOrCreateOpenGlPlatformInfo(GraphicsDeviceOptions, GraphicsBackend)
   href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_GetOrCreateOpenGlPlatformInfo_Veldrid_GraphicsDeviceOptions_Veldrid_GraphicsBackend_
@@ -18623,6 +18749,54 @@ references:
   isSpec: "True"
   fullName: Bliss.CSharp.Windowing.Sdl3Window.SetIcon
   nameWithType: Sdl3Window.SetIcon
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumHeight(System.Int32)
+  name: SetMinimumHeight(int)
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetMinimumHeight_System_Int32_
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.SetMinimumHeight(System.Int32)
+  name.vb: SetMinimumHeight(Integer)
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumHeight(int)
+  fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumHeight(Integer)
+  nameWithType: Sdl3Window.SetMinimumHeight(int)
+  nameWithType.vb: Sdl3Window.SetMinimumHeight(Integer)
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumHeight*
+  name: SetMinimumHeight
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetMinimumHeight_
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.SetMinimumHeight
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumHeight
+  nameWithType: Sdl3Window.SetMinimumHeight
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumSize(System.Int32,System.Int32)
+  name: SetMinimumSize(int, int)
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetMinimumSize_System_Int32_System_Int32_
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.SetMinimumSize(System.Int32,System.Int32)
+  name.vb: SetMinimumSize(Integer, Integer)
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumSize(int, int)
+  fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumSize(Integer, Integer)
+  nameWithType: Sdl3Window.SetMinimumSize(int, int)
+  nameWithType.vb: Sdl3Window.SetMinimumSize(Integer, Integer)
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumSize*
+  name: SetMinimumSize
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetMinimumSize_
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.SetMinimumSize
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumSize
+  nameWithType: Sdl3Window.SetMinimumSize
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumWidth(System.Int32)
+  name: SetMinimumWidth(int)
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetMinimumWidth_System_Int32_
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.SetMinimumWidth(System.Int32)
+  name.vb: SetMinimumWidth(Integer)
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumWidth(int)
+  fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumWidth(Integer)
+  nameWithType: Sdl3Window.SetMinimumWidth(int)
+  nameWithType.vb: Sdl3Window.SetMinimumWidth(Integer)
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumWidth*
+  name: SetMinimumWidth
+  href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetMinimumWidth_
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.SetMinimumWidth
+  isSpec: "True"
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumWidth
+  nameWithType: Sdl3Window.SetMinimumWidth
 - uid: Bliss.CSharp.Windowing.Sdl3Window.SetPosition(System.Int32,System.Int32)
   name: SetPosition(int, int)
   href: api/Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetPosition_System_Int32_System_Int32_

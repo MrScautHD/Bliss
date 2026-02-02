@@ -21,6 +21,9 @@ items:
   - Bliss.CSharp.Windowing.Sdl3Window.GamepadButtonUp
   - Bliss.CSharp.Windowing.Sdl3Window.GamepadRemoved
   - Bliss.CSharp.Windowing.Sdl3Window.GetHeight
+  - Bliss.CSharp.Windowing.Sdl3Window.GetMinimumHeight
+  - Bliss.CSharp.Windowing.Sdl3Window.GetMinimumSize
+  - Bliss.CSharp.Windowing.Sdl3Window.GetMinimumWidth
   - Bliss.CSharp.Windowing.Sdl3Window.GetOrCreateOpenGlPlatformInfo(Veldrid.GraphicsDeviceOptions,Veldrid.GraphicsBackend)
   - Bliss.CSharp.Windowing.Sdl3Window.GetPosition
   - Bliss.CSharp.Windowing.Sdl3Window.GetSize
@@ -54,6 +57,9 @@ items:
   - Bliss.CSharp.Windowing.Sdl3Window.SetFullscreen(System.Boolean)
   - Bliss.CSharp.Windowing.Sdl3Window.SetHeight(System.Int32)
   - Bliss.CSharp.Windowing.Sdl3Window.SetIcon(Bliss.CSharp.Images.Image)
+  - Bliss.CSharp.Windowing.Sdl3Window.SetMinimumHeight(System.Int32)
+  - Bliss.CSharp.Windowing.Sdl3Window.SetMinimumSize(System.Int32,System.Int32)
+  - Bliss.CSharp.Windowing.Sdl3Window.SetMinimumWidth(System.Int32)
   - Bliss.CSharp.Windowing.Sdl3Window.SetPosition(System.Int32,System.Int32)
   - Bliss.CSharp.Windowing.Sdl3Window.SetResizable(System.Boolean)
   - Bliss.CSharp.Windowing.Sdl3Window.SetSize(System.Int32,System.Int32)
@@ -1164,11 +1170,11 @@ items:
   summary: Retrieves the current width and height of the window in pixels.
   example: []
   syntax:
-    content: public (int, int) GetSize()
+    content: public (int Width, int Height) GetSize()
     return:
       type: System.ValueTuple{System.Int32,System.Int32}
       description: A tuple containing two integers representing the width and height of the window in pixels.
-    content.vb: Public Function GetSize() As (Integer, Integer)
+    content.vb: Public Function GetSize() As (Width As Integer, Height As Integer)
   overload: Bliss.CSharp.Windowing.Sdl3Window.GetSize*
   implements:
   - Bliss.CSharp.Windowing.IWindow.GetSize
@@ -1352,6 +1358,219 @@ items:
   nameWithType.vb: Sdl3Window.SetHeight(Integer)
   fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.SetHeight(Integer)
   name.vb: SetHeight(Integer)
+- uid: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumSize
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.GetMinimumSize
+  id: GetMinimumSize
+  parent: Bliss.CSharp.Windowing.Sdl3Window
+  langs:
+  - csharp
+  - vb
+  name: GetMinimumSize()
+  nameWithType: Sdl3Window.GetMinimumSize()
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumSize()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Sdl3Window.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetMinimumSize
+    path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
+    startLine: 332
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Retrieves the minimum allowed size of the window.
+  example: []
+  syntax:
+    content: public (int Width, int Height) GetMinimumSize()
+    return:
+      type: System.ValueTuple{System.Int32,System.Int32}
+      description: A tuple containing the minimum width and height of the window.
+    content.vb: Public Function GetMinimumSize() As (Width As Integer, Height As Integer)
+  overload: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumSize*
+  implements:
+  - Bliss.CSharp.Windowing.IWindow.GetMinimumSize
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumSize(System.Int32,System.Int32)
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.SetMinimumSize(System.Int32,System.Int32)
+  id: SetMinimumSize(System.Int32,System.Int32)
+  parent: Bliss.CSharp.Windowing.Sdl3Window
+  langs:
+  - csharp
+  - vb
+  name: SetMinimumSize(int, int)
+  nameWithType: Sdl3Window.SetMinimumSize(int, int)
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumSize(int, int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Sdl3Window.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetMinimumSize
+    path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
+    startLine: 348
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Sets the minimum allowed size of the window.
+  example: []
+  syntax:
+    content: public void SetMinimumSize(int width, int height)
+    parameters:
+    - id: width
+      type: System.Int32
+      description: The minimum width the window can be resized to.
+    - id: height
+      type: System.Int32
+      description: The minimum height the window can be resized to.
+    content.vb: Public Sub SetMinimumSize(width As Integer, height As Integer)
+  overload: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumSize*
+  implements:
+  - Bliss.CSharp.Windowing.IWindow.SetMinimumSize(System.Int32,System.Int32)
+  nameWithType.vb: Sdl3Window.SetMinimumSize(Integer, Integer)
+  fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumSize(Integer, Integer)
+  name.vb: SetMinimumSize(Integer, Integer)
+- uid: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumWidth
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.GetMinimumWidth
+  id: GetMinimumWidth
+  parent: Bliss.CSharp.Windowing.Sdl3Window
+  langs:
+  - csharp
+  - vb
+  name: GetMinimumWidth()
+  nameWithType: Sdl3Window.GetMinimumWidth()
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumWidth()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Sdl3Window.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetMinimumWidth
+    path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
+    startLine: 358
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Retrieves the minimum allowed width of the window.
+  example: []
+  syntax:
+    content: public int GetMinimumWidth()
+    return:
+      type: System.Int32
+      description: The minimum window width as an integer.
+    content.vb: Public Function GetMinimumWidth() As Integer
+  overload: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumWidth*
+  implements:
+  - Bliss.CSharp.Windowing.IWindow.GetMinimumWidth
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumWidth(System.Int32)
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.SetMinimumWidth(System.Int32)
+  id: SetMinimumWidth(System.Int32)
+  parent: Bliss.CSharp.Windowing.Sdl3Window
+  langs:
+  - csharp
+  - vb
+  name: SetMinimumWidth(int)
+  nameWithType: Sdl3Window.SetMinimumWidth(int)
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumWidth(int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Sdl3Window.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetMinimumWidth
+    path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
+    startLine: 366
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Sets the minimum allowed width of the window.
+  example: []
+  syntax:
+    content: public void SetMinimumWidth(int width)
+    parameters:
+    - id: width
+      type: System.Int32
+      description: The minimum width the window can be resized to.
+    content.vb: Public Sub SetMinimumWidth(width As Integer)
+  overload: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumWidth*
+  implements:
+  - Bliss.CSharp.Windowing.IWindow.SetMinimumWidth(System.Int32)
+  nameWithType.vb: Sdl3Window.SetMinimumWidth(Integer)
+  fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumWidth(Integer)
+  name.vb: SetMinimumWidth(Integer)
+- uid: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumHeight
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.GetMinimumHeight
+  id: GetMinimumHeight
+  parent: Bliss.CSharp.Windowing.Sdl3Window
+  langs:
+  - csharp
+  - vb
+  name: GetMinimumHeight()
+  nameWithType: Sdl3Window.GetMinimumHeight()
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumHeight()
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Sdl3Window.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: GetMinimumHeight
+    path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
+    startLine: 374
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Retrieves the minimum allowed height of the window.
+  example: []
+  syntax:
+    content: public int GetMinimumHeight()
+    return:
+      type: System.Int32
+      description: The minimum window height as an integer.
+    content.vb: Public Function GetMinimumHeight() As Integer
+  overload: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumHeight*
+  implements:
+  - Bliss.CSharp.Windowing.IWindow.GetMinimumHeight
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumHeight(System.Int32)
+  commentId: M:Bliss.CSharp.Windowing.Sdl3Window.SetMinimumHeight(System.Int32)
+  id: SetMinimumHeight(System.Int32)
+  parent: Bliss.CSharp.Windowing.Sdl3Window
+  langs:
+  - csharp
+  - vb
+  name: SetMinimumHeight(int)
+  nameWithType: Sdl3Window.SetMinimumHeight(int)
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumHeight(int)
+  type: Method
+  source:
+    remote:
+      path: src/Bliss/CSharp/Windowing/Sdl3Window.cs
+      branch: main
+      repo: https://github.com/MrScautHD/Bliss.git
+    id: SetMinimumHeight
+    path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
+    startLine: 382
+  assemblies:
+  - Bliss
+  namespace: Bliss.CSharp.Windowing
+  summary: Sets the minimum allowed height of the window.
+  example: []
+  syntax:
+    content: public void SetMinimumHeight(int height)
+    parameters:
+    - id: height
+      type: System.Int32
+      description: The minimum height the window can be resized to.
+    content.vb: Public Sub SetMinimumHeight(height As Integer)
+  overload: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumHeight*
+  implements:
+  - Bliss.CSharp.Windowing.IWindow.SetMinimumHeight(System.Int32)
+  nameWithType.vb: Sdl3Window.SetMinimumHeight(Integer)
+  fullName.vb: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumHeight(Integer)
+  name.vb: SetMinimumHeight(Integer)
 - uid: Bliss.CSharp.Windowing.Sdl3Window.GetPosition
   commentId: M:Bliss.CSharp.Windowing.Sdl3Window.GetPosition
   id: GetPosition
@@ -1370,18 +1589,18 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetPosition
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 333
+    startLine: 391
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
   summary: Retrieves the current position of the window.
   example: []
   syntax:
-    content: public (int, int) GetPosition()
+    content: public (int X, int Y) GetPosition()
     return:
       type: System.ValueTuple{System.Int32,System.Int32}
       description: A tuple containing the x and y coordinates of the window's position.
-    content.vb: Public Function GetPosition() As (Integer, Integer)
+    content.vb: Public Function GetPosition() As (X As Integer, Y As Integer)
   overload: Bliss.CSharp.Windowing.Sdl3Window.GetPosition*
   exceptions:
   - type: System.Exception
@@ -1407,7 +1626,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetPosition
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 349
+    startLine: 407
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1447,7 +1666,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetX
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 357
+    startLine: 415
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1480,7 +1699,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetX
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 365
+    startLine: 423
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1517,7 +1736,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetY
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 373
+    startLine: 431
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1550,7 +1769,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetY
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 381
+    startLine: 439
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1587,7 +1806,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetState
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 389
+    startLine: 447
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1620,7 +1839,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: HasState
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 437
+    startLine: 495
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1657,7 +1876,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetResizable
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 445
+    startLine: 503
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1694,7 +1913,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetFullscreen
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 453
+    startLine: 511
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1731,7 +1950,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetBordered
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 461
+    startLine: 519
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1768,7 +1987,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Maximize
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 468
+    startLine: 526
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1798,7 +2017,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Minimize
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 475
+    startLine: 533
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1828,7 +2047,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Hide
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 482
+    startLine: 540
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1858,7 +2077,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Show
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 489
+    startLine: 547
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1888,7 +2107,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: CaptureMouse
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 497
+    startLine: 555
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1925,7 +2144,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetWindowAlwaysOnTop
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 505
+    startLine: 563
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -1962,7 +2181,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: SetIcon
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 514
+    startLine: 572
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -2000,7 +2219,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: PumpEvents
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 531
+    startLine: 589
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -2034,7 +2253,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ClientToScreen
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 548
+    startLine: 606
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -2071,7 +2290,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: ScreenToClient
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 557
+    startLine: 615
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -2108,7 +2327,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetOrCreateOpenGlPlatformInfo
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 568
+    startLine: 626
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -2152,7 +2371,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Windowing/Sdl3Window.cs
-    startLine: 1118
+    startLine: 1176
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Windowing
@@ -3408,32 +3627,52 @@ references:
   parent: System
   definition: System.ValueTuple`2
   href: https://learn.microsoft.com/dotnet/api/system.int32
-  name: (int, int)
-  nameWithType: (int, int)
-  fullName: (int, int)
-  nameWithType.vb: (Integer, Integer)
-  fullName.vb: (Integer, Integer)
-  name.vb: (Integer, Integer)
+  name: (int Width, int Height)
+  nameWithType: (int Width, int Height)
+  fullName: (int Width, int Height)
+  nameWithType.vb: (Width As Integer, Height As Integer)
+  fullName.vb: (Width As Integer, Height As Integer)
+  name.vb: (Width As Integer, Height As Integer)
   spec.csharp:
   - name: (
   - uid: System.Int32
     name: int
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: " "
+  - uid: System.ValueTuple{System.Int32,System.Int32}.Width
+    name: Width
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32-.width
   - name: ','
   - name: " "
   - uid: System.Int32
     name: int
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: " "
+  - uid: System.ValueTuple{System.Int32,System.Int32}.Height
+    name: Height
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32-.height
   - name: )
   spec.vb:
   - name: (
+  - uid: System.ValueTuple{System.Int32,System.Int32}.Width
+    name: Width
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32-.width
+  - name: " "
+  - name: As
+  - name: " "
   - uid: System.Int32
     name: Integer
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.Int32,System.Int32}.Height
+    name: Height
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.int32,system.int32-.height
+  - name: " "
+  - name: As
   - name: " "
   - uid: System.Int32
     name: Integer
@@ -3626,6 +3865,204 @@ references:
   - uid: Bliss.CSharp.Windowing.IWindow.SetHeight(System.Int32)
     name: SetHeight
     href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetHeight_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumSize*
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.GetMinimumSize
+  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_GetMinimumSize
+  name: GetMinimumSize
+  nameWithType: Sdl3Window.GetMinimumSize
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumSize
+- uid: Bliss.CSharp.Windowing.IWindow.GetMinimumSize
+  commentId: M:Bliss.CSharp.Windowing.IWindow.GetMinimumSize
+  parent: Bliss.CSharp.Windowing.IWindow
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetMinimumSize
+  name: GetMinimumSize()
+  nameWithType: IWindow.GetMinimumSize()
+  fullName: Bliss.CSharp.Windowing.IWindow.GetMinimumSize()
+  spec.csharp:
+  - uid: Bliss.CSharp.Windowing.IWindow.GetMinimumSize
+    name: GetMinimumSize
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetMinimumSize
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Windowing.IWindow.GetMinimumSize
+    name: GetMinimumSize
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetMinimumSize
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumSize*
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.SetMinimumSize
+  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetMinimumSize_System_Int32_System_Int32_
+  name: SetMinimumSize
+  nameWithType: Sdl3Window.SetMinimumSize
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumSize
+- uid: Bliss.CSharp.Windowing.IWindow.SetMinimumSize(System.Int32,System.Int32)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetMinimumSize(System.Int32,System.Int32)
+  parent: Bliss.CSharp.Windowing.IWindow
+  isExternal: true
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetMinimumSize_System_Int32_System_Int32_
+  name: SetMinimumSize(int, int)
+  nameWithType: IWindow.SetMinimumSize(int, int)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetMinimumSize(int, int)
+  nameWithType.vb: IWindow.SetMinimumSize(Integer, Integer)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.SetMinimumSize(Integer, Integer)
+  name.vb: SetMinimumSize(Integer, Integer)
+  spec.csharp:
+  - uid: Bliss.CSharp.Windowing.IWindow.SetMinimumSize(System.Int32,System.Int32)
+    name: SetMinimumSize
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetMinimumSize_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Windowing.IWindow.SetMinimumSize(System.Int32,System.Int32)
+    name: SetMinimumSize
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetMinimumSize_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumWidth*
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.GetMinimumWidth
+  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_GetMinimumWidth
+  name: GetMinimumWidth
+  nameWithType: Sdl3Window.GetMinimumWidth
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumWidth
+- uid: Bliss.CSharp.Windowing.IWindow.GetMinimumWidth
+  commentId: M:Bliss.CSharp.Windowing.IWindow.GetMinimumWidth
+  parent: Bliss.CSharp.Windowing.IWindow
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetMinimumWidth
+  name: GetMinimumWidth()
+  nameWithType: IWindow.GetMinimumWidth()
+  fullName: Bliss.CSharp.Windowing.IWindow.GetMinimumWidth()
+  spec.csharp:
+  - uid: Bliss.CSharp.Windowing.IWindow.GetMinimumWidth
+    name: GetMinimumWidth
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetMinimumWidth
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Windowing.IWindow.GetMinimumWidth
+    name: GetMinimumWidth
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetMinimumWidth
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumWidth*
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.SetMinimumWidth
+  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetMinimumWidth_System_Int32_
+  name: SetMinimumWidth
+  nameWithType: Sdl3Window.SetMinimumWidth
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumWidth
+- uid: Bliss.CSharp.Windowing.IWindow.SetMinimumWidth(System.Int32)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetMinimumWidth(System.Int32)
+  parent: Bliss.CSharp.Windowing.IWindow
+  isExternal: true
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetMinimumWidth_System_Int32_
+  name: SetMinimumWidth(int)
+  nameWithType: IWindow.SetMinimumWidth(int)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetMinimumWidth(int)
+  nameWithType.vb: IWindow.SetMinimumWidth(Integer)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.SetMinimumWidth(Integer)
+  name.vb: SetMinimumWidth(Integer)
+  spec.csharp:
+  - uid: Bliss.CSharp.Windowing.IWindow.SetMinimumWidth(System.Int32)
+    name: SetMinimumWidth
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetMinimumWidth_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Windowing.IWindow.SetMinimumWidth(System.Int32)
+    name: SetMinimumWidth
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetMinimumWidth_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumHeight*
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.GetMinimumHeight
+  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_GetMinimumHeight
+  name: GetMinimumHeight
+  nameWithType: Sdl3Window.GetMinimumHeight
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.GetMinimumHeight
+- uid: Bliss.CSharp.Windowing.IWindow.GetMinimumHeight
+  commentId: M:Bliss.CSharp.Windowing.IWindow.GetMinimumHeight
+  parent: Bliss.CSharp.Windowing.IWindow
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetMinimumHeight
+  name: GetMinimumHeight()
+  nameWithType: IWindow.GetMinimumHeight()
+  fullName: Bliss.CSharp.Windowing.IWindow.GetMinimumHeight()
+  spec.csharp:
+  - uid: Bliss.CSharp.Windowing.IWindow.GetMinimumHeight
+    name: GetMinimumHeight
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetMinimumHeight
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Windowing.IWindow.GetMinimumHeight
+    name: GetMinimumHeight
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_GetMinimumHeight
+  - name: (
+  - name: )
+- uid: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumHeight*
+  commentId: Overload:Bliss.CSharp.Windowing.Sdl3Window.SetMinimumHeight
+  href: Bliss.CSharp.Windowing.Sdl3Window.html#Bliss_CSharp_Windowing_Sdl3Window_SetMinimumHeight_System_Int32_
+  name: SetMinimumHeight
+  nameWithType: Sdl3Window.SetMinimumHeight
+  fullName: Bliss.CSharp.Windowing.Sdl3Window.SetMinimumHeight
+- uid: Bliss.CSharp.Windowing.IWindow.SetMinimumHeight(System.Int32)
+  commentId: M:Bliss.CSharp.Windowing.IWindow.SetMinimumHeight(System.Int32)
+  parent: Bliss.CSharp.Windowing.IWindow
+  isExternal: true
+  href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetMinimumHeight_System_Int32_
+  name: SetMinimumHeight(int)
+  nameWithType: IWindow.SetMinimumHeight(int)
+  fullName: Bliss.CSharp.Windowing.IWindow.SetMinimumHeight(int)
+  nameWithType.vb: IWindow.SetMinimumHeight(Integer)
+  fullName.vb: Bliss.CSharp.Windowing.IWindow.SetMinimumHeight(Integer)
+  name.vb: SetMinimumHeight(Integer)
+  spec.csharp:
+  - uid: Bliss.CSharp.Windowing.IWindow.SetMinimumHeight(System.Int32)
+    name: SetMinimumHeight
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetMinimumHeight_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Bliss.CSharp.Windowing.IWindow.SetMinimumHeight(System.Int32)
+    name: SetMinimumHeight
+    href: Bliss.CSharp.Windowing.IWindow.html#Bliss_CSharp_Windowing_IWindow_SetMinimumHeight_System_Int32_
   - name: (
   - uid: System.Int32
     name: Integer

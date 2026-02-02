@@ -915,7 +915,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: AddTextureLayout
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 315
+    startLine: 314
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -957,7 +957,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: GetPipeline
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 329
+    startLine: 328
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -992,7 +992,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Apply
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 343
+    startLine: 342
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
@@ -1028,7 +1028,7 @@ items:
       repo: https://github.com/MrScautHD/Bliss.git
     id: Dispose
     path: ../src/Bliss/CSharp/Effects/Effect.cs
-    startLine: 345
+    startLine: 344
   assemblies:
   - Bliss
   namespace: Bliss.CSharp.Effects
