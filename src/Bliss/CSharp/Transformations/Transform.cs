@@ -3,87 +3,46 @@ using System.Numerics;
 namespace Bliss.CSharp.Transformations;
 
 public struct Transform : IEquatable<Transform> {
-
+    
+    /// <summary>
+    /// Stores the translation (position) vector of the transform.
+    /// </summary>
+    public Vector3 Translation;
+    
+    /// <summary>
+    /// Stores the rotation of the transform as a quaternion.
+    /// </summary>
+    public Quaternion Rotation;
+    
+    /// <summary>
+    /// Stores the scale of the transform.
+    /// </summary>
+    public Vector3 Scale;
+    
     /// <summary>
     /// The forward Vector.
     /// </summary>
-    public Vector3 Forward => Vector3.Transform(-Vector3.UnitZ, this._rotation);
+    public Vector3 Forward => Vector3.Transform(-Vector3.UnitZ, this.Rotation);
     
     /// <summary>
     /// The up vector.
     /// </summary>
-    public Vector3 Up => Vector3.Transform(Vector3.UnitY, this._rotation);
-  
+    public Vector3 Up => Vector3.Transform(Vector3.UnitY, this.Rotation);
+    
     /// <summary>
     /// The right vector.
     /// </summary>
-    public Vector3 Right => Vector3.Transform(Vector3.UnitX, this._rotation);
-
-    /// <summary>
-    /// Event triggered whenever the transformation is updated (translation, rotation, or scale changes).
-    /// </summary>
-    public event Action<Transform>? OnUpdate;
-
-    /// <summary>
-    /// Stores the translation (position) vector of the transform.
-    /// </summary>
-    private Vector3 _translation;
-
-    /// <summary>
-    /// Stores the rotation of the transform as a quaternion.
-    /// </summary>
-    private Quaternion _rotation;
-
-    /// <summary>
-    /// Stores the scale of the transform.
-    /// </summary>
-    private Vector3 _scale;
-
+    public Vector3 Right => Vector3.Transform(Vector3.UnitX, this.Rotation);
+    
     /// <summary>
     /// Initializes a new instance of the <see cref="Transform"/> class with default values.
     /// </summary>
     public Transform() {
-        this._translation = Vector3.Zero;
-        this._rotation = Quaternion.Identity;
-        this._scale = Vector3.One;
+        this.Translation = Vector3.Zero;
+        this.Rotation = Quaternion.Identity;
+        this.Scale = Vector3.One;
     }
-
-    /// <summary>
-    /// Gets or sets the translation (position) component of the transform.
-    /// Triggers the <see cref="OnUpdate"/> event when changed.
-    /// </summary>
-    public Vector3 Translation {
-        get => this._translation;
-        set {
-            this._translation = value;
-            this.OnUpdate?.Invoke(this);
-        }
-    }
-
-    /// <summary>
-    /// Gets or sets the rotation component of the transform as a quaternion.
-    /// Triggers the <see cref="OnUpdate"/> event when changed.
-    /// </summary>
-    public Quaternion Rotation {
-        get => this._rotation;
-        set {
-            this._rotation = value;
-            this.OnUpdate?.Invoke(this);
-        }
-    }
-
-    /// <summary>
-    /// Gets or sets the scale component of the transform.
-    /// Triggers the <see cref="OnUpdate"/> event when changed.
-    /// </summary>
-    public Vector3 Scale {
-        get => this._scale;
-        set {
-            this._scale = value;
-            this.OnUpdate?.Invoke(this);
-        }
-    }
-
+    
     /// <summary>
     /// Determines whether two instances of the <see cref="Transform"/> struct are equal.
     /// </summary>
@@ -105,9 +64,9 @@ public struct Transform : IEquatable<Transform> {
     /// </summary>
     /// <returns>The transformation matrix.</returns>
     public Matrix4x4 GetTransform() {
-        Matrix4x4 matScale = Matrix4x4.CreateScale(this._scale);
-        Matrix4x4 matRotation = Matrix4x4.CreateFromQuaternion(this._rotation);
-        Matrix4x4 matTranslation = Matrix4x4.CreateTranslation(this._translation);
+        Matrix4x4 matScale = Matrix4x4.CreateScale(this.Scale);
+        Matrix4x4 matRotation = Matrix4x4.CreateFromQuaternion(this.Rotation);
+        Matrix4x4 matTranslation = Matrix4x4.CreateTranslation(this.Translation);
         
         return matScale * matRotation * matTranslation;
     }
@@ -118,9 +77,9 @@ public struct Transform : IEquatable<Transform> {
     /// <param name="other">The <see cref="Transform"/> to compare with the current instance.</param>
     /// <returns><c>true</c> if the current instance is equal to the specified <see cref="Transform"/>; otherwise, <c>false</c>.</returns>
     public bool Equals(Transform other) {
-        return this._translation.Equals(other._translation) &&
-               this._rotation.Equals(other._rotation) &&
-               this._scale.Equals(other._scale);
+        return this.Translation.Equals(other.Translation) &&
+               this.Rotation.Equals(other.Rotation) &&
+               this.Scale.Equals(other.Scale);
     }
 
     /// <summary>
@@ -137,7 +96,7 @@ public struct Transform : IEquatable<Transform> {
     /// </summary>
     /// <returns>An integer representing the hash code of the current <see cref="Transform"/> instance.</returns>
     public override int GetHashCode() {
-        return HashCode.Combine(this._translation.GetHashCode(), this._rotation.GetHashCode(), this._scale.GetHashCode());
+        return HashCode.Combine(this.Translation.GetHashCode(), this.Rotation.GetHashCode(), this.Scale.GetHashCode());
     }
 
     /// <summary>
@@ -145,6 +104,6 @@ public struct Transform : IEquatable<Transform> {
     /// </summary>
     /// <returns>A string that represents the values of Translation, Rotation, and Scale.</returns>
     public override string ToString() {
-        return $"Translation:{this._translation} Rotation:{this._rotation} Scale:{this._scale}";
+        return $"Translation:{this.Translation} Rotation:{this.Rotation} Scale:{this.Scale}";
     }
 }

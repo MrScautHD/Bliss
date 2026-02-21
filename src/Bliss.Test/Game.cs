@@ -383,11 +383,9 @@ public class Game : Disposable {
                 foreach (Mesh mesh in this._playerModel.Meshes) {
                     if (renderable.Mesh == mesh) {
                         ModelAnimation animation = this._playerModel.Animations[1];
-
+                        
                         for (int boneId = 0; boneId < animation.BoneFrameTransformations[this._frameCount].Length; boneId++) {
-                            if (renderable.BoneMatrices != null) {
-                                renderable.BoneMatrices[boneId] = animation.BoneFrameTransformations[this._frameCount][boneId];
-                            }
+                            renderable.BoneMatrices?[boneId] = animation.BoneFrameTransformations[this._frameCount][boneId];
                         }
                     }
                 }
