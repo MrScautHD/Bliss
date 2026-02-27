@@ -26,11 +26,22 @@ public class SkeletonBuilder {
     public Skeleton Build() {
         List<BoneInfo> bones = new List<BoneInfo>();
         
+        // Collect all unique bones.
         foreach (AMesh mesh in this._scene.Meshes) {
             foreach (Bone bone in mesh.Bones) {
                 if (bones.All(b => b.Name != bone.Name)) {
                     bones.Add(new BoneInfo(bone.Name, (uint) bones.Count, Matrix4x4.Transpose(bone.OffsetMatrix)));
                 }
+            }
+        }
+        
+        // Determine parent relationships using the Node hierarchy.
+        foreach (BoneInfo boneInfo in bones) {
+            Node boneNode = this._scene.RootNode.FindNode(boneInfo.Name);
+            
+            if (boneNode?.Parent != null) {
+                int parentIndex = bones.FindIndex(b => b.Name == boneNode.Parent.Name);
+                boneInfo.ParentId = parentIndex;
             }
         }
         
