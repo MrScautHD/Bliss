@@ -5,7 +5,7 @@ namespace Bliss.CSharp.Mathematics;
 public static class BlissMathExtensions {
     
     /// <summary>
-    /// Provides extension methods for working with vector3.
+    /// Provides extension methods for working with <see cref="Vector3"/>.
     /// </summary>
     extension(Vector3) {
         
@@ -36,7 +36,7 @@ public static class BlissMathExtensions {
     }
     
     /// <summary>
-    /// Provides extension methods for working with quaternion.
+    /// Provides extension methods for working with <see cref="Quaternion"/>.
     /// </summary>
     extension(Quaternion) {
         
@@ -65,7 +65,7 @@ public static class BlissMathExtensions {
     }
     
     /// <summary>
-    /// Provides extension methods for working with matrices.
+    /// Provides extension methods for working with <see cref="Matrix4x4"/>.
     /// </summary>
     extension(Matrix4x4) {
         
