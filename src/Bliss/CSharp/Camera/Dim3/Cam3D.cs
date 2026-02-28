@@ -381,7 +381,7 @@ public class Cam3D : ICam {
         Vector3 view = this.Target - this.Position;
 
         // Calculate target pos.
-        Vector3 targetPosition = BlissMath.Vector3RotateByAxisAngle(view, this.Up, finalAngle);
+        Vector3 targetPosition = Vector3.RotateByAxisAngle(view, this.Up, finalAngle);
         
         if (rotateAroundTarget) {
             this.Position = this.Target - targetPosition;
@@ -409,17 +409,17 @@ public class Cam3D : ICam {
         
         // Calculate view vector.
         Vector3 view = this.Target - this.Position;
-
+        
         // Calculate max allowable upward and downward angles.
-        float maxAngleUp = BlissMath.Vector3Angle(this.Up, view) - 0.001F;
-        float maxAngleDown = -BlissMath.Vector3Angle(Vector3.Negate(this.Up), view) + 0.001F;
+        float maxAngleUp = Vector3.AngleBetween(this.Up, view) - 0.001F;
+        float maxAngleDown = -Vector3.AngleBetween(Vector3.Negate(this.Up), view) + 0.001F;
         
         // Clamp the angle within the min and max bounds.
         finalAngle = Math.Clamp(finalAngle, maxAngleDown, maxAngleUp);
         
         // Calculate target pos.
-        Vector3 targetPosition = BlissMath.Vector3RotateByAxisAngle(view, this.GetRight(), finalAngle);
-
+        Vector3 targetPosition = Vector3.RotateByAxisAngle(view, this.GetRight(), finalAngle);
+        
         if (rotateAroundTarget) {
             this.Position = this.Target - targetPosition;
         }
@@ -435,16 +435,16 @@ public class Cam3D : ICam {
     public float GetRoll() {
         return this.GetRotation().Z;
     }
-
+    
     /// <summary>
     /// Sets the roll angle of the camera by rotating around the forward axis.
     /// </summary>
     /// <param name="angle">The angle in degrees by which to set the roll.</param>
     public void SetRoll(float angle) {
         float finalAngle = float.DegreesToRadians(angle - this.GetRoll());
-        this.Up = BlissMath.Vector3RotateByAxisAngle(this.Up, this.GetForward(), finalAngle);
+        this.Up = Vector3.RotateByAxisAngle(this.Up, this.GetForward(), finalAngle);
     }
-
+    
     /// <summary>
     /// Retrieves the camera frustum by extracting the frustum planes based on the current view and projection matrices.
     /// </summary>
