@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+    
     <!-- Project -->
     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
@@ -9,7 +9,7 @@
         <NoWarn>$(NoWarn);CS8618</NoWarn>
         <LangVersion>14</LangVersion>
     </PropertyGroup>
-
+    
     <!-- Nuget -->
     <PropertyGroup>
         <Title>Bliss</Title>
@@ -25,7 +25,7 @@
         <PackageTags>Renderer, Framework, Direct3D, Vulkan, Metal, OpenGL, OpenGLES, Net10, C#14, 3D, 2D, Fast, Cross-platform, Audio</PackageTags>
         <PackageIcon>icon.png</PackageIcon>
     </PropertyGroup>
-
+    
     <!-- Backends -->
     <PropertyGroup>
         <DefineConstants Condition="'$(ExcludeD3D11)' == 'true'">$(DefineConstants);EXCLUDE_D3D11_BACKEND</DefineConstants>
@@ -45,7 +45,7 @@
         <PackageReference Include="StbImageSharp" Version="2.30.15" />
         <PackageReference Include="StbImageWriteSharp" Version="1.16.7" />
     </ItemGroup>
-
+    
     <!-- Icon -->
     <ItemGroup>
         <None Include="content\bliss\images\icon.png" Pack="true" PackagePath="" />
