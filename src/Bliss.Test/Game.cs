@@ -81,6 +81,7 @@ public class Game : Disposable {
     private Mesh _customTorus;
     private Mesh _customKnot;
     private Mesh _customHeighmap;
+    private Mesh _customQuad;
     //private Mesh _customCubemap;
 
     private int _frameCount;
@@ -255,6 +256,9 @@ public class Game : Disposable {
         
         this._customHeighmap = Mesh.GenHeightmap(this.GraphicsDevice, new Image("content/heightmap.png"), new Vector3(1, 1, 1));
         this._customHeighmap.Material.SetMapTexture(MaterialMapType.Albedo, new Texture2D(this.GraphicsDevice, "content/heightmap.png"));
+
+        this._customQuad = Mesh.GenQuad(this.GraphicsDevice, 1, 1);
+        this._customQuad.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
         
         this._cubemap = new Cubemap(this.GraphicsDevice, "content/cubemap.png");
         this._cubemapTexture = new Texture2D(this.GraphicsDevice, this._cubemap.Images[5][0]);
@@ -533,6 +537,7 @@ public class Game : Disposable {
         this._renderables.Add(new Renderable(this._customTorus, new Transform() { Translation = new Vector3(23, 0, 0) }));
         this._renderables.Add(new Renderable(this._customKnot, new Transform() { Translation = new Vector3(25, 0, 0) }));
         this._renderables.Add(new Renderable(this._customHeighmap, new Transform() { Translation = new Vector3(27, 0, 0) }));
+        this._renderables.Add(new Renderable(this._customQuad, new Transform() { Translation = new Vector3(29, 0, 0) }));
         
         // Models:
         foreach (Mesh mesh in this._planeModel.Meshes) {

@@ -14,7 +14,7 @@
     <PropertyGroup>
         <Title>Bliss</Title>
         <Authors>MrScautHD</Authors>
-        <Version>1.4.5</Version>
+        <Version>1.4.8</Version>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <NoWarn>$(NoWarn);1591</NoWarn>
@@ -38,8 +38,8 @@
     <ItemGroup>
         <PackageReference Include="AssimpNetter" Version="6.0.2.1" />
         <PackageReference Include="FontStashSharp.PlatformAgnostic" Version="1.5.4" />
-        <PackageReference Include="JAJ.Packages.MiniAudioEx" Version="3.0.0" />
-        <PackageReference Include="ppy.SDL3-CS" Version="2025.1205.0" />
+        <PackageReference Include="JAJ.Packages.MiniAudioEx" Version="3.1.1" />
+        <PackageReference Include="ppy.SDL3-CS" Version="2026.302.0" />
         <PackageReference Include="ppy.Veldrid" Version="4.9.69-ga405fe8484" />
         <PackageReference Include="ppy.Veldrid.SPIRV" Version="1.0.15-gfbb03d21c2" />
         <PackageReference Include="StbImageSharp" Version="2.30.15" />

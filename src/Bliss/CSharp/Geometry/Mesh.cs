@@ -100,6 +100,55 @@ public class Mesh : Disposable {
     }
     
     /// <summary>
+    /// Creates a new quad mesh with the specified width and height.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used to generate the quad mesh.</param>
+    /// <param name="width">The width of the quad.</param>
+    /// <param name="height">The height of the quad.</param>
+    /// <returns>A new mesh representing a quadrilateral.</returns>
+    public static Mesh GenQuad(GraphicsDevice graphicsDevice, float width, float height) {
+        float halfWidth = width / 2.0F;
+        float halfHeight = height / 2.0F;
+        
+        Vertex3D[] vertices = [
+            new Vertex3D() {
+                Position = new Vector3(-halfWidth, 0.0F, -halfHeight),
+                Normal = Vector3.UnitY,
+                TexCoords = new Vector2(0.0F, 1.0F)
+            },
+            new Vertex3D() {
+                Position = new Vector3(halfWidth, 0.0F, -halfHeight),
+                Normal = Vector3.UnitY,
+                TexCoords = new Vector2(1.0F, 1.0F)
+            },
+            new Vertex3D() {
+                Position = new Vector3(halfWidth, 0.0F, halfHeight),
+                Normal = Vector3.UnitY,
+                TexCoords = new Vector2(1.0F, 0.0F)
+            },
+            new Vertex3D() {
+                Position = new Vector3(-halfWidth, 0.0F, halfHeight),
+                Normal = Vector3.UnitY,
+                TexCoords = new Vector2(0.0F, 0.0F)
+            }
+        ];
+        
+        uint[] indices = [
+            0, 1, 2,
+            2, 3, 0
+        ];
+        
+        Material material = new Material(GlobalResource.DefaultModelEffect);
+        
+        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
+            Texture = GlobalResource.DefaultModelTexture,
+            Color = Color.White
+        });
+        
+        return new Mesh(graphicsDevice, material, vertices, indices);
+    }
+    
+    /// <summary>
     /// Generates a 3D polygon mesh with the specified number of sides and radius.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used to manage GPU resources for the generated mesh.</param>
@@ -111,10 +160,10 @@ public class Mesh : Disposable {
             sides = 3;
             Logger.Warn("The number of sides must be at least 3. The value is now set to 3.");
         }
-    
+        
         List<Vertex3D> vertices = new List<Vertex3D>();
         List<uint> indices = new List<uint>();
-    
+        
         // Center vertex.
         vertices.Add(new Vertex3D {
             Position = new Vector3(0.0F, 0.0F, 0.0F),
@@ -141,14 +190,14 @@ public class Mesh : Disposable {
             indices.Add(i);
             indices.Add((uint) (i % sides + 1));
         }
-    
+        
         Material material = new Material(GlobalResource.DefaultModelEffect);
-    
+        
         material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
-    
+        
         return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
     }
 
@@ -199,40 +248,40 @@ public class Mesh : Disposable {
                 };
             }
         }
-    
+        
         uint[] indices = [
             // Front face
             0, 1, 2,
             2, 3, 0,
-    
+            
             // Back face
             4, 5, 6,
             6, 7, 4,
-    
+            
             // Left face
             8, 9, 10,
             10, 11, 8,
-    
+            
             // Right face
             12, 13, 14,
             14, 15, 12,
-    
+            
             // Top face
             16, 17, 18,
             18, 19, 16,
-    
+            
             // Bottom face
             20, 21, 22,
             22, 23, 20
         ];
-    
+        
         Material material = new Material(GlobalResource.DefaultModelEffect);
-    
+        
         material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap() {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
-    
+        
         return new Mesh(graphicsDevice, material, vertices, indices);
     }
 
