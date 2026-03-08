@@ -140,7 +140,7 @@ public class Cam3D : ICam {
         this.OrbitalSpeed = 0.5F;
         this._frustum = new Frustum();
     }
-
+    
     public void Update(double timeStep) {
         switch (this.Mode) {
             case CameraMode.Free:
@@ -246,6 +246,7 @@ public class Cam3D : ICam {
     public void Begin() {
         this.UpdateProjection();
         this.UpdateView();
+        this._frustum.Extract(this.GetView() * this.GetProjection());
         
         ActiveCamera = this;
     }
@@ -450,7 +451,6 @@ public class Cam3D : ICam {
     /// </summary>
     /// <returns>The updated frustum containing the extracted planes.</returns>
     public Frustum GetFrustum() {
-        this._frustum.Extract(this.GetView() * this.GetProjection());
         return this._frustum;
     }
     
