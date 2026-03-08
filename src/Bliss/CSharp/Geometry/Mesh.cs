@@ -112,23 +112,23 @@ public class Mesh : Disposable {
         
         Vertex3D[] vertices = [
             new Vertex3D() {
-                Position = new Vector3(-halfWidth, 0.0F, -halfHeight),
-                Normal = Vector3.UnitY,
+                Position = new Vector3(-halfWidth, -halfHeight, 0.0F),
+                Normal = Vector3.UnitZ,
                 TexCoords = new Vector2(0.0F, 1.0F)
             },
             new Vertex3D() {
-                Position = new Vector3(halfWidth, 0.0F, -halfHeight),
-                Normal = Vector3.UnitY,
+                Position = new Vector3(halfWidth, -halfHeight, 0.0F),
+                Normal = Vector3.UnitZ,
                 TexCoords = new Vector2(1.0F, 1.0F)
             },
             new Vertex3D() {
-                Position = new Vector3(halfWidth, 0.0F, halfHeight),
-                Normal = Vector3.UnitY,
+                Position = new Vector3(halfWidth, halfHeight, 0.0F),
+                Normal = Vector3.UnitZ,
                 TexCoords = new Vector2(1.0F, 0.0F)
             },
             new Vertex3D() {
-                Position = new Vector3(-halfWidth, 0.0F, halfHeight),
-                Normal = Vector3.UnitY,
+                Position = new Vector3(-halfWidth, halfHeight, 0.0F),
+                Normal = Vector3.UnitZ,
                 TexCoords = new Vector2(0.0F, 0.0F)
             }
         ];
