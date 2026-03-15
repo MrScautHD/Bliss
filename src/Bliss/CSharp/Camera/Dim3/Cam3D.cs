@@ -209,8 +209,8 @@ public class Cam3D : ICam {
             
             case CameraMode.FirstPerson:
                 if (!Input.IsGamepadAvailable(0)) {
-                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity) * (float) delta, false);
-                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity) * (float) delta, false);
+                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity), false);
+                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity), false);
                 }
                 else {
                     this.SetYaw(this.GetYaw() - (Input.GetGamepadAxisMovement(0, GamepadAxis.RightX) * 6) * this.MouseSensitivity * (float) delta, false);
@@ -220,8 +220,8 @@ public class Cam3D : ICam {
             
             case CameraMode.ThirdPerson:
                 if (!Input.IsGamepadAvailable(0)) {
-                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity) * (float) delta, true);
-                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity) * (float) delta, true);
+                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity), true);
+                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity), true);
                 }
                 else {
                     this.SetYaw(this.GetYaw() + (Input.GetGamepadAxisMovement(0, GamepadAxis.RightX) * 6) * this.MouseSensitivity * (float) delta, true);
