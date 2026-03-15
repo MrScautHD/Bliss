@@ -135,69 +135,69 @@ public class Cam3D : ICam {
         this.Fov = fov;
         this.NearPlane = nearPlane;
         this.FarPlane = farPlane;
-        this.MouseSensitivity = 10.0F;
+        this.MouseSensitivity = 0.05F;
         this.MovementSpeed = 10.0F;
         this.OrbitalSpeed = 0.5F;
         this._frustum = new Frustum();
     }
     
-    public void Update(double timeStep) {
+    public void Update(double delta) {
         switch (this.Mode) {
             case CameraMode.Free:
                 if (!Input.IsGamepadAvailable(0)) {
-                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity) * (float) timeStep, false);
-                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity) * (float) timeStep, false);
-
+                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity), false);
+                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity), false);
+                    
                     if (Input.IsKeyDown(KeyboardKey.W)) {
-                        this.MoveForward(this.MovementSpeed * (float) timeStep, true);
+                        this.MoveForward(this.MovementSpeed * (float) delta, true);
                     }
                     
                     if (Input.IsKeyDown(KeyboardKey.S)) {
-                        this.MoveForward(-this.MovementSpeed * (float) timeStep, true);
+                        this.MoveForward(-this.MovementSpeed * (float) delta, true);
                     }
                     
                     if (Input.IsKeyDown(KeyboardKey.A)) {
-                        this.MoveRight(-this.MovementSpeed * (float) timeStep, true);
+                        this.MoveRight(-this.MovementSpeed * (float) delta, true);
                     }
                     if (Input.IsKeyDown(KeyboardKey.D)) {
-                        this.MoveRight(this.MovementSpeed * (float) timeStep, true);
+                        this.MoveRight(this.MovementSpeed * (float) delta, true);
                     }
                     
                     if (Input.IsKeyDown(KeyboardKey.Space)) {
-                        this.MoveUp(this.MovementSpeed * (float) timeStep);
+                        this.MoveUp(this.MovementSpeed * (float) delta);
                     }
                     
                     if (Input.IsKeyDown(KeyboardKey.ShiftLeft)) {
-                        this.MoveUp(-this.MovementSpeed * (float) timeStep);
+                        this.MoveUp(-this.MovementSpeed * (float) delta);
                     }
                 }
                 else {
-                    this.SetYaw(this.GetYaw() - (Input.GetGamepadAxisMovement(0, GamepadAxis.RightX) * 6) * this.MouseSensitivity * (float) timeStep, false);
-                    this.SetPitch(this.GetPitch() - (Input.GetGamepadAxisMovement(0, GamepadAxis.RightY) * 6) * this.MouseSensitivity * (float) timeStep, false);
+                    this.SetYaw(this.GetYaw() - (Input.GetGamepadAxisMovement(0, GamepadAxis.RightX) * 6) * this.MouseSensitivity * (float) delta, false);
+                    this.SetPitch(this.GetPitch() - (Input.GetGamepadAxisMovement(0, GamepadAxis.RightY) * 6) * this.MouseSensitivity * (float) delta, false);
                     
-                    this.MoveForward(this.MovementSpeed * Input.GetGamepadAxisMovement(0, GamepadAxis.TriggerRight) * (float) timeStep, false);
-                    this.MoveForward(-this.MovementSpeed * Input.GetGamepadAxisMovement(0, GamepadAxis.TriggerLeft) * (float) timeStep, false);
+                    this.MoveForward(this.MovementSpeed * Input.GetGamepadAxisMovement(0, GamepadAxis.TriggerRight) * (float) delta, false);
+                    this.MoveForward(-this.MovementSpeed * Input.GetGamepadAxisMovement(0, GamepadAxis.TriggerLeft) * (float) delta, false);
                     
                     if (Input.IsGamepadButtonDown(0, GamepadButton.RightShoulder)) {
-                        this.MoveRight(this.MovementSpeed * (float) timeStep, true);
+                        this.MoveRight(this.MovementSpeed * (float) delta, true);
                     }
                     
                     if (Input.IsGamepadButtonDown(0, GamepadButton.LeftShoulder)) {
-                        this.MoveRight(-this.MovementSpeed * (float) timeStep, true);
+                        this.MoveRight(-this.MovementSpeed * (float) delta, true);
                     }
                     
                     if (Input.IsGamepadButtonDown(0, GamepadButton.RightStick)) {
-                        this.MoveUp(this.MovementSpeed * (float) timeStep);
+                        this.MoveUp(this.MovementSpeed * (float) delta);
                     }
                     
                     if (Input.IsGamepadButtonDown(0, GamepadButton.LeftStick)) {
-                        this.MoveUp(-this.MovementSpeed * (float) timeStep);
+                        this.MoveUp(-this.MovementSpeed * (float) delta);
                     }
                 }
                 break;
             
             case CameraMode.Orbital:
-                Matrix4x4 rotation = Matrix4x4.CreateFromAxisAngle(this.Up, this.OrbitalSpeed * (float) timeStep);
+                Matrix4x4 rotation = Matrix4x4.CreateFromAxisAngle(this.Up, this.OrbitalSpeed * (float) delta);
                 Vector3 view = this.Position - this.Target;
                 Vector3 transform = Vector3.Transform(view, rotation);
                 this.Position = this.Target + transform;
@@ -209,23 +209,23 @@ public class Cam3D : ICam {
             
             case CameraMode.FirstPerson:
                 if (!Input.IsGamepadAvailable(0)) {
-                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity) * (float) timeStep, false);
-                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity) * (float) timeStep, false);
+                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity) * (float) delta, false);
+                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity) * (float) delta, false);
                 }
                 else {
-                    this.SetYaw(this.GetYaw() - (Input.GetGamepadAxisMovement(0, GamepadAxis.RightX) * 6) * this.MouseSensitivity * (float) timeStep, false);
-                    this.SetPitch(this.GetPitch() - (Input.GetGamepadAxisMovement(0, GamepadAxis.RightY) * 6) * this.MouseSensitivity * (float) timeStep, false);
+                    this.SetYaw(this.GetYaw() - (Input.GetGamepadAxisMovement(0, GamepadAxis.RightX) * 6) * this.MouseSensitivity * (float) delta, false);
+                    this.SetPitch(this.GetPitch() - (Input.GetGamepadAxisMovement(0, GamepadAxis.RightY) * 6) * this.MouseSensitivity * (float) delta, false);
                 }
                 break;
             
             case CameraMode.ThirdPerson:
                 if (!Input.IsGamepadAvailable(0)) {
-                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity) * (float) timeStep, true);
-                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity) * (float) timeStep, true);
+                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity) * (float) delta, true);
+                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity) * (float) delta, true);
                 }
                 else {
-                    this.SetYaw(this.GetYaw() + (Input.GetGamepadAxisMovement(0, GamepadAxis.RightX) * 6) * this.MouseSensitivity * (float) timeStep, true);
-                    this.SetPitch(this.GetPitch() + (Input.GetGamepadAxisMovement(0, GamepadAxis.RightY) * 6) * this.MouseSensitivity * (float) timeStep, true);
+                    this.SetYaw(this.GetYaw() + (Input.GetGamepadAxisMovement(0, GamepadAxis.RightX) * 6) * this.MouseSensitivity * (float) delta, true);
+                    this.SetPitch(this.GetPitch() + (Input.GetGamepadAxisMovement(0, GamepadAxis.RightY) * 6) * this.MouseSensitivity * (float) delta, true);
                 }
                 break;
         }

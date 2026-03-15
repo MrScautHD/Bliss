@@ -91,15 +91,15 @@ public class Cam2D : ICam {
     /// <summary>
     /// Updates the camera's state based on the elapsed time and current mode.
     /// </summary>
-    /// <param name="timeStep">The time elapsed since the last update, in seconds.</param>
-    public void Update(double timeStep) {
+    /// <param name="delta">The time elapsed since the last update, in seconds.</param>
+    public void Update(double delta) {
         switch (this.Mode) {
             case CameraFollowMode.FollowTarget:
                 this.TargetFollowMovement();
                 break;
             
             case CameraFollowMode.FollowTargetSmooth:
-                this.SmoothTargetFollowMovement(timeStep);
+                this.SmoothTargetFollowMovement(delta);
                 break;
         }
     }

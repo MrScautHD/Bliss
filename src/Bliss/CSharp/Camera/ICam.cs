@@ -5,7 +5,7 @@ public interface ICam {
     /// <summary>
     /// Updates the camera's state, recalculating its parameters as needed.
     /// </summary>
-    void Update(double timeStep);
+    void Update(double delta);
     
     /// <summary>
     /// Resizes the viewport and updates the aspect ratio based on the given width and height.
