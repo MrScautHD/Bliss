@@ -20,10 +20,5 @@ public enum LogType {
     /// <summary>
     /// Error level logging, used for error messages that indicate a failure.
     /// </summary>
-    Error,
-    
-    /// <summary>
-    /// Fatal level logging, used for critical errors that cause termination.
-    /// </summary>
-    Fatal
+    Error
 }

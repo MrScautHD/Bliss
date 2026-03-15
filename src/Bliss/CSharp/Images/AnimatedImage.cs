@@ -31,7 +31,7 @@ public class AnimatedImage {
     /// <param name="path">The file path to the animated image (e.g., a GIF).</param>
     public AnimatedImage(string path) {
         if (!File.Exists(path)) {
-            Logger.Fatal($"Failed to find path [{path}]!");
+            throw new FileNotFoundException($"Failed to find path! [{path}]");
         }
         
         Dictionary<Image, int> frames = new Dictionary<Image, int>();
@@ -59,7 +59,7 @@ public class AnimatedImage {
     /// <param name="stream">The stream containing the animated image data.</param>
     public AnimatedImage(Stream stream) {
         if (!stream.CanRead) {
-            Logger.Fatal($"Failed to read stream [{stream}]!");
+            throw new ArgumentException($"Failed to read stream! [{stream}]");
         }
         
         Dictionary<Image, int> frames = new Dictionary<Image, int>();

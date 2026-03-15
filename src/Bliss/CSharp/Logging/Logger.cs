@@ -68,18 +68,6 @@ public class Logger {
     }
     
     /// <summary>
-    /// Logs a fatal error message.
-    /// </summary>
-    /// <param name="msg">The fatal error message to log.</param>
-    /// <param name="sourceFilePath">The file path of the caller. Automatically set by the compiler.</param>
-    /// <param name="memberName">The name of the calling member. Automatically set by the compiler.</param>
-    /// <param name="sourceLineNumber">The line number of the call within the source file. Automatically set by the compiler.</param>
-    public static void Fatal(string msg, [CallerFilePath] string sourceFilePath = "", [CallerMemberName] string memberName = "", [CallerLineNumber] int sourceLineNumber = 0) {
-        Log(LogType.Fatal, msg, ConsoleColor.Red, sourceFilePath, memberName, sourceLineNumber);
-        throw new Exception(msg);
-    }
-    
-    /// <summary>
     /// Logs a message.
     /// </summary>
     /// <param name="type">The type of log (e.g., Debug, Info, Warn, Error, Fatal).</param>
