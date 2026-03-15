@@ -179,7 +179,7 @@ public class Game : Disposable {
         this.FullScreenRenderer = new FullScreenRenderer(this.GraphicsDevice);
         this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), false, this.Settings.SampleCount);
         this.FullScreenResolvedTexture = new Texture2D(this.GraphicsDevice, new Image(this.MainWindow.GetWidth(), this.MainWindow.GetHeight()), false);
-        
+
         this._basicForwardRenderer = new BasicForwardRenderer(this.GraphicsDevice);
         this._renderables = new List<Renderable>();
         
@@ -282,7 +282,7 @@ public class Game : Disposable {
         if (Input.IsKeyDown(KeyboardKey.H)) {
             this._playingAnim = true;
             this._frameCount++;
-
+            
             if (this._frameCount >= this._playerModel.Animations[1].FrameCount) {
                 this._frameCount = 0;
             }

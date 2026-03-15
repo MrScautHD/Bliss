@@ -1,10 +1,16 @@
-﻿using Bliss.Test;
-using Veldrid;
+﻿using Bliss.CSharp.Logging;
+using Bliss.Test;
 
-GameSettings settings = new GameSettings() {
-    Title = "Bliss - [Test]",
-    VSync = false
-};
+try {
+    GameSettings settings = new GameSettings() {
+        Title = "Bliss - [Test]",
+        VSync = false
+    };
 
-using Game game = new Game(settings);
-game.Run();
+    using Game game = new Game(settings);
+    game.Run();
+}
+catch (Exception ex) {
+    Logger.Error(ex.ToString());
+    Environment.ExitCode = 1;
+}

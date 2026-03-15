@@ -1973,11 +1973,11 @@ public class ImmediateRenderer : Disposable {
         }
         
         if (vertices.Count > this.Capacity) {
-            Logger.Fatal(new InvalidOperationException($"The number of provided vertices exceeds the capacity! [{vertices.Count} > {this.Capacity}]"));
+            throw new InvalidOperationException($"The number of provided vertices exceeds the capacity! [{vertices.Count} > {this.Capacity}]");
         }
         
         if (indices != null && indices.Count > this.Capacity * 3) {
-            Logger.Fatal(new InvalidOperationException($"The number of provided indices exceeds the capacity! [{indices.Count} > {this.Capacity * 3}]"));
+            throw new InvalidOperationException($"The number of provided indices exceeds the capacity! [{indices.Count} > {this.Capacity * 3}]");
         }
         
         // Add vertices.
