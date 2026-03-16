@@ -13,14 +13,15 @@ public class Renderable {
     public Mesh Mesh { get; private set; }
     
     /// <summary>
-    /// The transforms applied to the renderable, where providing more than one transform enables instanced rendering.
+    /// The transforms applied to the renderable. 
+    /// Multiple transforms can be used for instanced rendering, but instancing only occurs if <see cref="UseInstancing"/> is true.
     /// </summary>
     public Transform[] Transforms;
     
     /// <summary>
-    /// True if this renderable should be drawn multiple times with different transforms.
+    /// If true, enables GPU instancing for all transforms.
     /// </summary>
-    public bool IsInstanced => this.InstanceCount > 1;
+    public bool UseInstancing;
     
     /// <summary>
     /// Number of instances (transforms) to draw.
@@ -43,7 +44,8 @@ public class Renderable {
     /// <param name="mesh">The mesh to render.</param>
     /// <param name="transform">The transform applied to the renderable.</param>
     /// <param name="copyMeshMaterial">If true, clones the mesh material for independent modification.</param>
-    public Renderable(Mesh mesh, Transform transform, bool copyMeshMaterial = false) : this(mesh, [transform], copyMeshMaterial) { }
+    /// <param name="useInstancing">If true, enables GPU instancing even for a single transform.</param>
+    public Renderable(Mesh mesh, Transform transform, bool copyMeshMaterial = false, bool useInstancing = false) : this(mesh, [transform], copyMeshMaterial, useInstancing) { }
     
     /// <summary>
     /// Initializes a new <see cref="Renderable"/> using one or more transforms and optionally a cloned mesh material.
@@ -51,7 +53,8 @@ public class Renderable {
     /// <param name="mesh">The mesh to render.</param>
     /// <param name="transforms">The transforms applied to the renderable, where providing more than one transform enables instanced rendering.</param>
     /// <param name="copyMeshMaterial">If true, clones the mesh material for independent modification.</param>
-    public Renderable(Mesh mesh, Transform[] transforms, bool copyMeshMaterial = false) : this(mesh, transforms, copyMeshMaterial ? (Material) mesh.Material.Clone() : mesh.Material) { }
+    /// <param name="useInstancing">If true, enables GPU instancing even for a single transform.</param>
+    public Renderable(Mesh mesh, Transform[] transforms, bool copyMeshMaterial = false, bool useInstancing = false) : this(mesh, transforms, copyMeshMaterial ? (Material) mesh.Material.Clone() : mesh.Material, useInstancing) { }
     
     /// <summary>
     /// Initializes a new <see cref="Renderable"/> using a single transform and a specific material.
@@ -59,7 +62,8 @@ public class Renderable {
     /// <param name="mesh">The mesh to render.</param>
     /// <param name="transform">The transform applied to the renderable.</param>
     /// <param name="material">The material used for rendering.</param>
-    public Renderable(Mesh mesh, Transform transform, Material material) : this(mesh, [transform], material) { }
+    /// <param name="useInstancing">If true, enables GPU instancing even for a single transform.</param>
+    public Renderable(Mesh mesh, Transform transform, Material material, bool useInstancing = false) : this(mesh, [transform], material, useInstancing) { }
     
     /// <summary>
     /// Initializes a new <see cref="Renderable"/> using one or more transforms and a specific material.
@@ -67,9 +71,11 @@ public class Renderable {
     /// <param name="mesh">The mesh to render.</param>
     /// <param name="transforms">The transforms applied to the renderable, where providing more than one transform enables instanced rendering.</param>
     /// <param name="material">The material used for rendering.</param>
-    public Renderable(Mesh mesh, Transform[] transforms, Material material) {
+    /// <param name="useInstancing">If true, enables GPU instancing even for a single transform.</param>
+    public Renderable(Mesh mesh, Transform[] transforms, Material material, bool useInstancing = false) {
         this.Mesh = mesh;
         this.Material = material;
+        this.UseInstancing = useInstancing;
         this.BoneMatrices = mesh.HasBones ? Enumerable.Repeat(Matrix4x4.Identity, Mesh.MaxBoneCount).ToArray() : null;
         this.Transforms = transforms;
     }

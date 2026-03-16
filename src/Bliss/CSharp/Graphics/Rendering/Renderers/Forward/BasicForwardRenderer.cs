@@ -172,7 +172,7 @@ public class BasicForwardRenderer : Disposable, IRenderer {
         this._materialDataBuffer.SetValueDeferred(commandList, 0, ref materialData);
         
         // Set renderable transform (And updating matrix buffer).
-        this._matrixBuffer.SetValue(2, renderable.IsInstanced ? Matrix4x4.Identity : renderable.Transforms[0].GetTransform());
+        this._matrixBuffer.SetValue(2, renderable.UseInstancing ? Matrix4x4.Identity : renderable.Transforms[0].GetTransform());
         this._matrixBuffer.UpdateBufferDeferred(commandList);
         
         // Set the main pipeline parameters.
@@ -219,7 +219,7 @@ public class BasicForwardRenderer : Disposable, IRenderer {
             commandList.SetVertexBuffer(0, renderable.Mesh.VertexBuffer);
             commandList.SetIndexBuffer(renderable.Mesh.IndexBuffer, IndexFormat.UInt32);
             
-            if (renderable.IsInstanced) {
+            if (renderable.UseInstancing) {
                 
                 // Ensure the instance-matrix vertex buffer is large enough for this draw call.
                 this.EnsureInstanceModelBufferCapacity(renderable.InstanceCount);
@@ -247,7 +247,7 @@ public class BasicForwardRenderer : Disposable, IRenderer {
             // Set vertex buffer.
             commandList.SetVertexBuffer(0, renderable.Mesh.VertexBuffer);
             
-            if (renderable.IsInstanced) {
+            if (renderable.UseInstancing) {
                 
                 // Ensure the instance-matrix vertex buffer is large enough for this draw call.
                 this.EnsureInstanceModelBufferCapacity(renderable.InstanceCount);
