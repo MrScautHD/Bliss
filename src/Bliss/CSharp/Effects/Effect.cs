@@ -145,7 +145,7 @@ public class Effect : Disposable {
         this.Specializations = compileOptions.Specializations ?? [];
         this.Macros = macros;
         
-        GlslCompileOptions glslOptions = new GlslCompileOptions(false, macros);
+        GlslCompileOptions glslOptions = new GlslCompileOptions(true, macros);
         SpirvCompilationResult vertResult = SpirvCompilation.CompileGlslToSpirv(vertText, nameof(ShaderStages.Vertex), ShaderStages.Vertex, glslOptions);
         SpirvCompilationResult fragResult = SpirvCompilation.CompileGlslToSpirv(fragText, nameof(ShaderStages.Fragment), ShaderStages.Fragment, glslOptions);
         

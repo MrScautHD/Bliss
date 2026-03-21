@@ -36,6 +36,7 @@ public class FullScreenRenderer : Disposable {
         // Create vertex buffer.
         uint vertexBufferSize = (uint) (6 * Marshal.SizeOf<SpriteVertex2D>());
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
+        this._vertexBuffer.Name = "VertexBuffer";
         graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this.GetVertices(graphicsDevice.IsUvOriginTopLeft));
         
         // Create pipeline.
@@ -61,7 +62,7 @@ public class FullScreenRenderer : Disposable {
         BlendStateDescription finalBlendState = blendState ?? BlendStateDescription.SINGLE_ALPHA_BLEND;
         DepthStencilStateDescription finalDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DISABLED;
         RasterizerStateDescription finalRasterizerState = rasterizerState ?? RasterizerStateDescription.CULL_NONE;
-
+        
         // Update pipeline description.
         this._pipelineDescription.BlendState = finalBlendState;
         this._pipelineDescription.DepthStencilState = finalDepthStencilState;

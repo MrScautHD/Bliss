@@ -63,6 +63,10 @@ public class BasicForwardRenderer : Disposable, IRenderer {
     /// </summary>
     private SimplePipelineDescription _pipelineDescription;
     
+    /// <summary>
+    /// Represents a basic forward renderer that handles rendering operations using a forward rendering pipeline.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used for rendering operations and resource management.</param>
     public BasicForwardRenderer(GraphicsDevice graphicsDevice) {
         this.GraphicsDevice = graphicsDevice;
         
@@ -72,12 +76,15 @@ public class BasicForwardRenderer : Disposable, IRenderer {
         
         // Create the matrix buffer.
         this._matrixBuffer = new SimpleUniformBuffer<Matrix4x4>(graphicsDevice, 3, ShaderStages.Vertex);
+        this._matrixBuffer.DeviceBuffer.Name = "MatrixBuffer";
         
         // Create the bone buffer.
         this._boneBuffer = new SimpleUniformBuffer<Matrix4x4>(graphicsDevice, Mesh.MaxBoneCount, ShaderStages.Vertex);
+        this._boneBuffer.DeviceBuffer.Name = "BoneBuffer";
         
         // Create material map buffer.
         this._materialDataBuffer = new SimpleUniformBuffer<MaterialData>(graphicsDevice, 1, ShaderStages.Fragment);
+        this._materialDataBuffer.DeviceBuffer.Name = "MaterialBuffer";
         
         // Create the main pipeline description.
         this._pipelineDescription = new SimplePipelineDescription() {
@@ -145,7 +152,7 @@ public class BasicForwardRenderer : Disposable, IRenderer {
     private void DrawPreparedRenderable(CommandList commandList, Renderable renderable) {
         
         // Update bone buffer.
-        if (renderable.BoneMatrices != null) {
+        if (renderable.BoneMatrices != null && !renderable.UseInstancing) {
             for (int i = 0; i < Mesh.MaxBoneCount; i++) {
                 this._boneBuffer.SetValue(i, renderable.BoneMatrices[i]);
             }

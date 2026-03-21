@@ -1,9 +1,11 @@
 ﻿using Bliss.CSharp.Logging;
 using Bliss.Test;
+using Veldrid;
 
 try {
     GameSettings settings = new GameSettings() {
         Title = "Bliss - [Test]",
+        Backend = GraphicsBackend.OpenGL,
         VSync = false
     };
 

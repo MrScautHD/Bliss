@@ -125,15 +125,18 @@ public class ImmediateRenderer : Disposable {
         this._vertices = new ImmediateVertex3D[capacity];
         this._tempVertices = new List<ImmediateVertex3D>();
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
+        this._vertexBuffer.Name = "VertexBuffer";
         
         // Create index buffer.
         uint indexBufferSize = capacity * 3 * sizeof(uint);
         this._indices = new uint[capacity * 3];
         this._tempIndices = new List<uint>();
         this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
+        this._indexBuffer.Name = "IndexBuffer";
         
         // Create matrix buffer.
         this._matrixBuffer = new SimpleUniformBuffer<Matrix4x4>(graphicsDevice, 3, ShaderStages.Vertex);
+        this._matrixBuffer.DeviceBuffer.Name = "MatrixBuffer";
         
         // Create pipeline description.
         this._pipelineDescription = new SimplePipelineDescription();

@@ -46,13 +46,14 @@ mat4x4 getBoneTransformation() {
 void main() {
     fTexCoords = vTexCoords;
     
-    mat4x4 boneTransformation = getBoneTransformation();
-    mat4x4 iModel = mat4x4(1.0);
-    
     #if USE_INSTANCING
-    iModel = mat4x4(iModel0, iModel1, iModel2, iModel3);
+    mat4x4 transformation = mat4x4(iModel0, iModel1, iModel2, iModel3);
+    #else
+    mat4x4 transformation = uTransformation;
     #endif
     
+    mat4x4 boneTransformation = getBoneTransformation();
+    
     vec4 v4Pos = vec4(vPosition, 1.0F);
-    gl_Position = uProjection * uView * iModel * uTransformation * boneTransformation * v4Pos;
+    gl_Position = uProjection * uView * transformation * boneTransformation * v4Pos;
 }

@@ -54,7 +54,7 @@ public class SimpleStructuredBuffer<THeader, TElement> : Disposable, ISimpleBuff
     /// Caches resource sets keyed by their corresponding buffer layouts.
     /// </summary>
     private Dictionary<SimpleBufferLayout, ResourceSet> _cachedResourceSets;
-    
+
     /// <summary>
     /// Initializes a new instance of the <see cref="SimpleStructuredBuffer{THeader, TElement}"/> class
     /// with the specified device, sizes, shader stages, and usage options.

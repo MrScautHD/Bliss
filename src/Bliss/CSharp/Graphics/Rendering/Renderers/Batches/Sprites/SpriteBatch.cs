@@ -268,10 +268,12 @@ public class SpriteBatch : Disposable {
         // Create vertex buffer.
         this._vertices = new SpriteVertex2D[capacity * VerticesPerQuad];
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (capacity * VerticesPerQuad * Marshal.SizeOf<SpriteVertex2D>()), BufferUsage.VertexBuffer | BufferUsage.Dynamic));
+        this._vertexBuffer.Name = "VertexBuffer";
         
         // Create index buffer.
         this._indices = new ushort[capacity * IndicesPerQuad];
         this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(capacity * IndicesPerQuad * sizeof(ushort), BufferUsage.IndexBuffer | BufferUsage.Dynamic));
+        this._indexBuffer.Name = "IndexBuffer";
         
         for (int i = 0; i < capacity; i++) {
             long startIndex = i * IndicesPerQuad;
@@ -290,6 +292,7 @@ public class SpriteBatch : Disposable {
         
         // Create projection view buffer.
         this._projViewBuffer = new SimpleUniformBuffer<Matrix4x4>(graphicsDevice, 2, ShaderStages.Vertex);
+        this._projViewBuffer.DeviceBuffer.Name = "ProjViewBuffer";
 
         // Create pipeline description.
         this._pipelineDescription = new SimplePipelineDescription() {

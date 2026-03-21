@@ -210,9 +210,11 @@ public class PrimitiveBatch : Disposable {
         this._vertices = new PrimitiveVertex2D[capacity];
         this._tempVertices = new List<PrimitiveVertex2D>();
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (capacity * Marshal.SizeOf<PrimitiveVertex2D>()), BufferUsage.VertexBuffer | BufferUsage.Dynamic));
+        this._vertexBuffer.Name = "VertexBuffer";
         
         // Create projection view buffer.
         this._projViewBuffer = new SimpleUniformBuffer<Matrix4x4>(graphicsDevice, 2, ShaderStages.Vertex);
+        this._projViewBuffer.DeviceBuffer.Name = "ProjViewBuffer";
         
         // Create pipeline description.
         this._pipelineDescription = new SimplePipelineDescription();
