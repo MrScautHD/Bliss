@@ -5,7 +5,7 @@ using Veldrid;
 try {
     GameSettings settings = new GameSettings() {
         Title = "Bliss - [Test]",
-        Backend = GraphicsBackend.OpenGL,
+        //Backend = GraphicsBackend.OpenGL,
         VSync = false
     };
 

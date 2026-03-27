@@ -152,7 +152,7 @@ public class BasicForwardRenderer : Disposable, IRenderer {
     private void DrawPreparedRenderable(CommandList commandList, Renderable renderable) {
         
         // Update bone buffer.
-        if (renderable.BoneMatrices != null && !renderable.UseInstancing) {
+        if (renderable.BoneMatrices != null) {
             for (int i = 0; i < Mesh.MaxBoneCount; i++) {
                 this._boneBuffer.SetValue(i, renderable.BoneMatrices[i]);
             }

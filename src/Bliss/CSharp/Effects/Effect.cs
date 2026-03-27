@@ -281,7 +281,7 @@ public class Effect : Disposable {
     /// <returns>The <see cref="SimpleTextureLayout"/> matching the specified name.</returns>
     /// <exception cref="KeyNotFoundException">Thrown if no texture layout with the specified name is found.</exception>
     public SimpleTextureLayout GetTextureLayout(string name) {
-        foreach (var layout in _textureLayouts.Values) {
+        foreach (var layout in this._textureLayouts.Values) {
             if (layout.Name == name) {
                 return layout;
             }
