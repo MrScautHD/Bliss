@@ -1,5 +1,6 @@
 using System.Numerics;
 using Bliss.CSharp.Transformations;
+using Veldrid;
 
 namespace Bliss.CSharp.Camera.Dim2;
 
@@ -114,11 +115,12 @@ public class Cam2D : ICam {
     }
 
     /// <summary>
-    /// Initializes the camera's usage in the current frame and sets it as the active camera.
+    /// Prepares the camera for rendering in the current frame and assigns it as the active camera.
     /// </summary>
-    public void Begin() {
+    /// <param name="commandList">The command list used to record rendering commands for the current frame.</param>
+    public void Begin(CommandList commandList) {
         this.UpdateView();
-        
+
         ActiveCamera = this;
     }
 

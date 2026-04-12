@@ -2000,6 +2000,8 @@ public class ImmediateRenderer : Disposable {
         this._indexCount = indices?.Count ?? 0;
         
         // Update matrix buffer.
+        // TODO: Use the matrix buffer of camera + do a capacity system for transform is it full flush it like the vertices...!
+        
         this._matrixBuffer.SetValue(0, cam3D.GetProjection());
         this._matrixBuffer.SetValue(1, cam3D.GetView());
         this._matrixBuffer.SetValue(2, transform.GetTransform());

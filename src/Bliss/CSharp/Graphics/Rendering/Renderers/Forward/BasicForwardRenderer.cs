@@ -2,12 +2,9 @@ using System.Numerics;
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Graphics.Pipelines;
-using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
-using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data;
 using Bliss.CSharp.Materials;
 using Veldrid;
-using Mesh = Bliss.CSharp.Geometry.Mesh;
 
 namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward;
 
@@ -27,21 +24,6 @@ public class BasicForwardRenderer : Disposable, IRenderer {
     /// List of translucent renderables waiting to be drawn.
     /// </summary>
     private List<Renderable> _translucentRenderables;
-    
-    /// <summary>
-    /// Uniform buffer storing projection, view, and model matrices.
-    /// </summary>
-    private SimpleUniformBuffer<Matrix4x4> _matrixBuffer;
-    
-    /// <summary>
-    /// Uniform buffer storing bone matrices for skinned meshes.
-    /// </summary>
-    private SimpleUniformBuffer<Matrix4x4> _boneBuffer;
-    
-    /// <summary>
-    /// Uniform buffer storing material data.
-    /// </summary>
-    private SimpleUniformBuffer<MaterialData> _materialDataBuffer;
     
     /// <summary>
     /// A device buffer used to store instance-specific vertex data for rendering instanced objects.
@@ -73,18 +55,6 @@ public class BasicForwardRenderer : Disposable, IRenderer {
         // Create lists for renderables.
         this._opaqueRenderables = new List<Renderable>();
         this._translucentRenderables = new List<Renderable>();
-        
-        // Create the matrix buffer.
-        this._matrixBuffer = new SimpleUniformBuffer<Matrix4x4>(graphicsDevice, 3, ShaderStages.Vertex);
-        this._matrixBuffer.DeviceBuffer.Name = "MatrixBuffer";
-        
-        // Create the bone buffer.
-        this._boneBuffer = new SimpleUniformBuffer<Matrix4x4>(graphicsDevice, Mesh.MaxBoneCount, ShaderStages.Vertex);
-        this._boneBuffer.DeviceBuffer.Name = "BoneBuffer";
-        
-        // Create material map buffer.
-        this._materialDataBuffer = new SimpleUniformBuffer<MaterialData>(graphicsDevice, 1, ShaderStages.Fragment);
-        this._materialDataBuffer.DeviceBuffer.Name = "MaterialBuffer";
         
         // Create the main pipeline description.
         this._pipelineDescription = new SimplePipelineDescription() {
@@ -119,24 +89,20 @@ public class BasicForwardRenderer : Disposable, IRenderer {
         }
         
         // Order renderables.
-        this._opaqueRenderables.Sort((a, b) => Vector3.DistanceSquared(a.Transforms[0].Translation, cam3D.Position).CompareTo(Vector3.DistanceSquared(b.Transforms[0].Translation, cam3D.Position)));
-        this._translucentRenderables.Sort((a, b) => Vector3.DistanceSquared(b.Transforms[0].Translation, cam3D.Position).CompareTo(Vector3.DistanceSquared(a.Transforms[0].Translation, cam3D.Position)));
-        
-        // Set projection and view matrix to the buffer.
-        this._matrixBuffer.SetValue(0, cam3D.GetProjection());
-        this._matrixBuffer.SetValue(1, cam3D.GetView());
+        this._opaqueRenderables.Sort((a, b) => Vector3.DistanceSquared(a.GetTransforms()[0].Translation, cam3D.Position).CompareTo(Vector3.DistanceSquared(b.GetTransforms()[0].Translation, cam3D.Position)));
+        this._translucentRenderables.Sort((a, b) => Vector3.DistanceSquared(b.GetTransforms()[0].Translation, cam3D.Position).CompareTo(Vector3.DistanceSquared(a.GetTransforms()[0].Translation, cam3D.Position)));
         
         // Set the pipeline output.
         this._pipelineDescription.Outputs = output;
         
         // Draw opaques renderables.
         foreach (Renderable renderable in this._opaqueRenderables) {
-            this.DrawPreparedRenderable(commandList, renderable);
+            this.DrawPreparedRenderable(commandList, cam3D, renderable);
         }
         
         // Draw translucent renderables.
         foreach (Renderable renderable in this._translucentRenderables) {
-            this.DrawPreparedRenderable(commandList, renderable);
+            this.DrawPreparedRenderable(commandList, cam3D, renderable);
         }
         
         // Clean up.
@@ -145,42 +111,27 @@ public class BasicForwardRenderer : Disposable, IRenderer {
     }
     
     /// <summary>
-    /// Draws a prepared renderable object, setting up necessary buffers, pipeline parameters, and managing the drawing process.
+    /// Draws a prepared renderable object by configuring necessary buffers, setting up pipeline parameters, and executing the rendering process.
     /// </summary>
-    /// <param name="commandList">The command list used to execute rendering commands.</param>
-    /// <param name="renderable">The renderable object to be drawn.</param>
-    private void DrawPreparedRenderable(CommandList commandList, Renderable renderable) {
+    /// <param name="commandList">The command list used for issuing rendering commands.</param>
+    /// <param name="camera">The 3D camera providing view and projection matrices for rendering.</param>
+    /// <param name="renderable">The renderable object containing mesh, material, transforms, and other rendering data to be processed.</param>
+    private void DrawPreparedRenderable(CommandList commandList, Cam3D camera, Renderable renderable) {
+        
+        // Update transform buffer.
+        if (renderable.IsTransformBufferDirty) {
+            renderable.UpdateTransformBuffer(commandList);
+        }
         
         // Update bone buffer.
-        if (renderable.BoneMatrices != null) {
-            for (int i = 0; i < Mesh.MaxBoneCount; i++) {
-                this._boneBuffer.SetValue(i, renderable.BoneMatrices[i]);
-            }
-            
-            this._boneBuffer.UpdateBufferDeferred(commandList);
+        if (renderable.IsBoneBufferDirty) {
+            renderable.UpdateBoneBuffer(commandList);
         }
         
         // Update material buffer.
-        MaterialData materialData = new MaterialData {
-            RenderMode = renderable.Material.RenderMode
-        };
-        
-        foreach (MaterialMapType mapType in renderable.Material.GetMaterialMapTypes()) {
-            MaterialMap? map = renderable.Material.GetMaterialMap(mapType);
-            
-            if (map != null) {
-                materialData[(int) mapType] = new MaterialMapData() {
-                    Color = map.Color?.ToRgbaFloatVec4() ?? Vector4.Zero,
-                    Value = map.Value
-                };
-            }
+        if (renderable.IsMaterialBufferDirty) {
+            renderable.UpdateMaterialBuffer(commandList);
         }
-        
-        this._materialDataBuffer.SetValueDeferred(commandList, 0, ref materialData);
-        
-        // Set renderable transform (And updating matrix buffer).
-        this._matrixBuffer.SetValue(2, renderable.UseInstancing ? Matrix4x4.Identity : renderable.Transforms[0].GetTransform());
-        this._matrixBuffer.UpdateBufferDeferred(commandList);
         
         // Set the main pipeline parameters.
         this._pipelineDescription.BlendState = renderable.Material.BlendState;
@@ -193,13 +144,16 @@ public class BasicForwardRenderer : Disposable, IRenderer {
         commandList.SetPipeline(renderable.Material.Effect.GetPipeline(this._pipelineDescription).Pipeline);
         
         // Set matrix buffer.
-        commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("MatrixBuffer"), this._matrixBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("MatrixBuffer")));
+        commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("MatrixBuffer"), camera.GetMatrixBuffer().GetResourceSet(renderable.Material.Effect.GetBufferLayout("MatrixBuffer")));
+        
+        // Set transform buffer.
+        commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("TransformBuffer"), renderable.GetTransformBuffer().GetResourceSet(renderable.Material.Effect.GetBufferLayout("TransformBuffer")));
         
         // Set bone buffer.
-        commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("BoneBuffer"), this._boneBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("BoneBuffer")));
+        commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("BoneBuffer"), renderable.GetBoneBuffer().GetResourceSet(renderable.Material.Effect.GetBufferLayout("BoneBuffer")));
         
         // Set material map buffer.
-        commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("MaterialBuffer"), this._materialDataBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("MaterialBuffer")));
+        commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("MaterialBuffer"), renderable.GetMaterialBuffer().GetResourceSet(renderable.Material.Effect.GetBufferLayout("MaterialBuffer")));
         
         // Set material texture.
         foreach (SimpleTextureLayout textureLayout in renderable.Material.Effect.GetTextureLayouts()) {
@@ -233,7 +187,7 @@ public class BasicForwardRenderer : Disposable, IRenderer {
                 
                 // Set the temp instance transformations.
                 for (int i = 0; i < renderable.InstanceCount; i++) {
-                    this._tempInstanceTransforms?[i] = renderable.Transforms[i].GetTransform();
+                    this._tempInstanceTransforms?[i] = renderable.GetTransforms()[i].GetTransform();
                 }
                 
                 // Set the instance buffer.
@@ -261,7 +215,7 @@ public class BasicForwardRenderer : Disposable, IRenderer {
                 
                 // Set the temp instance transformations.
                 for (int i = 0; i < renderable.InstanceCount; i++) {
-                    this._tempInstanceTransforms?[i] = renderable.Transforms[i].GetTransform();
+                    this._tempInstanceTransforms?[i] = renderable.GetTransforms()[i].GetTransform();
                 }
                 
                 // Set the instance buffer.
@@ -321,9 +275,6 @@ public class BasicForwardRenderer : Disposable, IRenderer {
     
     protected override void Dispose(bool disposing) {
         if (disposing) {
-            this._matrixBuffer.Dispose();
-            this._boneBuffer.Dispose();
-            this._materialDataBuffer.Dispose();
             this._instanceVertexBuffer?.Dispose();
         }
     }

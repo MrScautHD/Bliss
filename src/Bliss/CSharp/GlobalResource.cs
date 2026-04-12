@@ -134,18 +134,20 @@ public static class GlobalResource {
         // Default model effect.
         DefaultModelEffect = new Effect(graphicsDevice, Vertex3D.VertexLayout, "content/bliss/shaders/default_model.vert", "content/bliss/shaders/default_model.frag", new CrossCompileOptions());
         DefaultModelEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
-        DefaultModelEffect.AddBufferLayout("BoneBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex);
-        DefaultModelEffect.AddBufferLayout("MaterialBuffer", 2, SimpleBufferType.Uniform, ShaderStages.Fragment);
-        DefaultModelEffect.AddTextureLayout(MaterialMapType.Albedo.GetName(), 3);
+        DefaultModelEffect.AddBufferLayout("TransformBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        DefaultModelEffect.AddBufferLayout("BoneBuffer", 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        DefaultModelEffect.AddBufferLayout("MaterialBuffer", 3, SimpleBufferType.Uniform, ShaderStages.Fragment);
+        DefaultModelEffect.AddTextureLayout(MaterialMapType.Albedo.GetName(), 4);
         
         // Model instancing effect.
         ModelInstancingEffect = new Effect(graphicsDevice, [Vertex3D.VertexLayout, Vertex3D.InstanceMatrixLayout], Effect.LoadTextCodeFromFile("content/bliss/shaders/default_model.vert"), Effect.LoadTextCodeFromFile("content/bliss/shaders/default_model.frag"), new CrossCompileOptions(), [
             new MacroDefinition("USE_INSTANCING", "1")
         ]);
         ModelInstancingEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
-        ModelInstancingEffect.AddBufferLayout("BoneBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex);
-        ModelInstancingEffect.AddBufferLayout("MaterialBuffer", 2, SimpleBufferType.Uniform, ShaderStages.Fragment);
-        ModelInstancingEffect.AddTextureLayout(MaterialMapType.Albedo.GetName(), 3);
+        ModelInstancingEffect.AddBufferLayout("TransformBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        ModelInstancingEffect.AddBufferLayout("BoneBuffer", 2, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        ModelInstancingEffect.AddBufferLayout("MaterialBuffer", 3, SimpleBufferType.Uniform, ShaderStages.Fragment);
+        ModelInstancingEffect.AddTextureLayout(MaterialMapType.Albedo.GetName(), 4);
         
         // Default immediate renderer texture.
         DefaultImmediateRendererTexture = new Texture2D(graphicsDevice, new Image(1, 1, Color.White));

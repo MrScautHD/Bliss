@@ -193,7 +193,7 @@ public class Game : Disposable {
         this._gif = new Texture2D(this.GraphicsDevice, this._animatedImage.SpriteSheet);
         
         float aspectRatio = (float) this.MainWindow.GetWidth() / (float) this.MainWindow.GetHeight();
-        this._cam3D = new Cam3D(new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0), aspectRatio);
+        this._cam3D = new Cam3D(this.GraphicsDevice, new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0), aspectRatio);
         this._playerModel = Model.Load(this.GraphicsDevice, "content/player.glb");
         this._playerBox = this._playerModel.GenBoundingBox();
         
@@ -299,7 +299,7 @@ public class Game : Disposable {
         Input.EnableRelativeMouseMode();
         
         // Drawing 3D.
-        this._cam3D.Begin();
+        this._cam3D.Begin(this.CommandList);
         
         // ImmediateRenderer START
         
@@ -370,8 +370,8 @@ public class Game : Disposable {
             foreach (Renderable renderable in this._renderables) {
                 foreach (Mesh mesh in this._playerModel.Meshes) {
                     if (renderable.Mesh == mesh) {
-                        if (renderable.BoneMatrices != null) {
-                            Array.Fill(renderable.BoneMatrices, Matrix4x4.Identity);
+                        if (renderable.HasBones) {
+                            renderable.ClearBoneMatrices();
                         }
                     }
                 }
@@ -389,7 +389,9 @@ public class Game : Disposable {
                         ModelAnimation animation = this._playerModel.Animations[1];
                         
                         for (int boneId = 0; boneId < animation.BoneFrameTransformations[this._frameCount].Length; boneId++) {
-                            renderable.BoneMatrices?[boneId] = animation.BoneFrameTransformations[this._frameCount][boneId];
+                            if (renderable.HasBones) {
+                                renderable.SetBoneMatrix(boneId, animation.BoneFrameTransformations[this._frameCount][boneId]);
+                            }
                         }
                     }
                 }
@@ -596,6 +598,7 @@ public class Game : Disposable {
             this._treeModel.Dispose();
             this._font.Dispose();
             this._spriteBatch.Dispose();
+            this._cam3D.Dispose();
             
             AudioContext.Deinitialize();
             GlobalResource.Destroy();

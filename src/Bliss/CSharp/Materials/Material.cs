@@ -35,6 +35,11 @@ public class Material : ICloneable {
     public List<float> Parameters;
     
     /// <summary>
+    /// Indicates whether the material has changed and needs its GPU buffer updated.
+    /// </summary>
+    public bool IsDirty { get; internal set; }
+    
+    /// <summary>
     /// A dictionary mapping material map types to material map data, used for managing material textures.
     /// </summary>
     private Dictionary<MaterialMapType, MaterialMap> _maps;
@@ -86,7 +91,10 @@ public class Material : ICloneable {
     /// <param name="type">The type of the material map, represented as a <see cref="MaterialMapType"/> enum value.</param>
     /// <param name="map">The material map to associate with the specified type.</param>
     public void AddMaterialMap(MaterialMapType type, MaterialMap map) {
-        if (!this._maps.TryAdd(type, map)) {
+        if (this._maps.TryAdd(type, map)) {
+            this.IsDirty = true;
+        }
+        else {
             Logger.Warn($"Failed to add MaterialMap with the type [{type.GetName()}]. A material map with this type might already exist.");
         }
     }
@@ -139,6 +147,7 @@ public class Material : ICloneable {
     public void SetMapColor(MaterialMapType type, Color color) {
         if (this._maps.TryGetValue(type, out MaterialMap? map)) {
             map.Color = color;
+            this.IsDirty = true;
         }
         else {
             Logger.Warn($"Failed to set color for: [{type.GetName()}]. The map might not exist.");
@@ -166,6 +175,7 @@ public class Material : ICloneable {
     public void SetMapValue(MaterialMapType type, float value) {
         if (this._maps.TryGetValue(type, out MaterialMap? map)) {
             map.Value = value;
+            this.IsDirty = true;
         }
         else {
             Logger.Warn($"Failed to set value for: [{type.GetName()}]. The map might not exist.");

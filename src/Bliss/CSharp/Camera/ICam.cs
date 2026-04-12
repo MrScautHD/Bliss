@@ -1,3 +1,5 @@
+using Veldrid;
+
 namespace Bliss.CSharp.Camera;
 
 public interface ICam {
@@ -15,10 +17,11 @@ public interface ICam {
     void Resize(uint width, uint height);
 
     /// <summary>
-    /// Initializes the camera's usage in the current frame and sets it as the active camera.
+    /// Prepares the camera for rendering in the current frame and assigns it as the active camera.
     /// </summary>
-    void Begin();
-    
+    /// <param name="commandList">The command list used to record rendering commands or update GPU resources for the current frame.</param>
+    void Begin(CommandList commandList);
+
     /// <summary>
     /// Concludes the camera's operations for the current frame.
     /// </summary>

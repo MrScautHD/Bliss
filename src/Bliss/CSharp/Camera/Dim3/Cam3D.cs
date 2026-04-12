@@ -1,14 +1,16 @@
 using System.Numerics;
+using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Rendering;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Gamepads;
 using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Mathematics;
+using Veldrid;
 using Vortice.Mathematics;
 
 namespace Bliss.CSharp.Camera.Dim3;
 
-public class Cam3D : ICam {
+public class Cam3D : Disposable, ICam {
     
     /// <summary>
     /// References the currently active instance of the Cam3D class.
@@ -16,7 +18,13 @@ public class Cam3D : ICam {
     /// Can be accessed from other classes to retrieve camera-specific properties and methods.
     /// </summary>
     public static Cam3D? ActiveCamera { get; private set; }
-
+    
+    /// <summary>
+    /// Represents the graphics device associated with this camera instance.
+    /// Provides access to rendering functionality and is responsible for managing GPU resources.
+    /// </summary>
+    public GraphicsDevice GraphicsDevice { get; private set; }
+    
     /// <summary>
     /// Represents the ratio between the width and height of the camera's viewport.
     /// Used to adjust the projection matrix for rendering the 3D scene correctly on the screen.
@@ -112,10 +120,18 @@ public class Cam3D : ICam {
     /// It is used in rendering to position and orient the camera in the scene.
     /// </summary>
     private Matrix4x4 _view;
+
+    /// <summary>
+    /// Represents a GPU buffer for storing transformation matrices, such as the view and projection matrices,
+    /// used in rendering operations. This buffer facilitates the efficient transfer of matrix data to the
+    /// GPU via a uniform buffer, ensuring that the camera's transformations are correctly applied in the shader.
+    /// </summary>
+    private SimpleUniformBuffer<Matrix4x4> _matrixBuffer;
     
     /// <summary>
     /// Initializes a new instance of the <see cref="Cam3D"/> class.
     /// </summary>
+    /// <param name="graphicsDevice">The graphics device used for rendering operations.</param>
     /// <param name="position">The camera position in world space.</param>
     /// <param name="target">The target point the camera is looking at.</param>
     /// <param name="aspectRatio">The aspect ratio (width / height). Must be greater than zero.</param>
@@ -125,7 +141,8 @@ public class Cam3D : ICam {
     /// <param name="fov">The field of view in degrees. Should be between 1 and 179.</param>
     /// <param name="nearPlane">The near clipping plane. Must be positive and smaller than <paramref name="farPlane"/>.</param>
     /// <param name="farPlane">The far clipping plane. Must be positive and greater than <paramref name="nearPlane"/>.</param>
-    public Cam3D(Vector3 position, Vector3 target, float aspectRatio, Vector3? up = null, ProjectionType projectionType = ProjectionType.Perspective, CameraMode mode = CameraMode.Free, float fov = 70.0F, float nearPlane = 0.01F, float farPlane = 10000.0F) {
+    public Cam3D(GraphicsDevice graphicsDevice, Vector3 position, Vector3 target, float aspectRatio, Vector3? up = null, ProjectionType projectionType = ProjectionType.Perspective, CameraMode mode = CameraMode.Free, float fov = 70.0F, float nearPlane = 0.01F, float farPlane = 10000.0F) {
+        this.GraphicsDevice = graphicsDevice;
         this.Position = position;
         this.Target = target;
         this.AspectRatio = aspectRatio;
@@ -139,6 +156,8 @@ public class Cam3D : ICam {
         this.MovementSpeed = 10.0F;
         this.OrbitalSpeed = 0.5F;
         this._frustum = new Frustum();
+        this._matrixBuffer = new SimpleUniformBuffer<Matrix4x4>(GlobalResource.GraphicsDevice, 2, ShaderStages.Vertex);
+        this._matrixBuffer.DeviceBuffer.Name = "MatrixBuffer";
     }
     
     public void Update(double delta) {
@@ -243,11 +262,22 @@ public class Cam3D : ICam {
     /// <summary>
     /// Activates the current camera instance as the active camera and updates its projection and view matrices.
     /// </summary>
-    public void Begin() {
+    /// <param name="commandList">The <see cref="CommandList"/> used to issue GPU commands for updating camera matrices and related operations.</param>
+    public void Begin(CommandList commandList) {
+        
+        // Update proj/view.
         this.UpdateProjection();
         this.UpdateView();
+        
+        // Upload proj/view to GPU.
+        this._matrixBuffer.SetValue(0, this.GetProjection());
+        this._matrixBuffer.SetValue(1, this.GetView());
+        this._matrixBuffer.UpdateBufferDeferred(commandList);
+        
+        // Extract frustum.
         this._frustum.Extract(this.GetView() * this.GetProjection());
         
+        // Set active camera.
         ActiveCamera = this;
     }
 
@@ -256,6 +286,14 @@ public class Cam3D : ICam {
     /// </summary>
     public void End() {
         ActiveCamera = null;
+    }
+
+    /// <summary>
+    /// Gets the matrix buffer associated with the camera.
+    /// </summary>
+    /// <returns> A <see cref="SimpleUniformBuffer{Matrix4x4}"/> containing the camera's transformation matrices. </returns>
+    public SimpleUniformBuffer<Matrix4x4> GetMatrixBuffer() {
+        return this._matrixBuffer;
     }
     
     /// <summary>
@@ -510,5 +548,11 @@ public class Cam3D : ICam {
     /// </summary>
     private void UpdateView() {
         this._view = Matrix4x4.CreateLookAt(this.Position, this.Target, this.Up);
+    }
+    
+    protected override void Dispose(bool disposing) {
+        if (disposing) {
+            this._matrixBuffer.Dispose();
+        }
     }
 } 
