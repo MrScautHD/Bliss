@@ -2,7 +2,9 @@ using System.Numerics;
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Graphics.Pipelines;
+using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
+using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
 using Veldrid;
 
@@ -150,7 +152,27 @@ public class BasicForwardRenderer : Disposable, IRenderer {
         commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("TransformBuffer"), renderable.GetTransformBuffer().GetResourceSet(renderable.Material.Effect.GetBufferLayout("TransformBuffer")));
         
         // Set bone buffer.
-        commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("BoneBuffer"), renderable.GetBoneBuffer().GetResourceSet(renderable.Material.Effect.GetBufferLayout("BoneBuffer")));
+        if (renderable.HasBones) {
+            bool hasBoneBuffer = false;
+            
+            foreach (SimpleBufferLayout bufferLayout in renderable.Material.Effect.GetBufferLayouts()) {
+                if (bufferLayout.Name == "BoneBuffer") {
+                    hasBoneBuffer = true;
+                    break;
+                }
+            }
+            
+            if (hasBoneBuffer) {
+                SimpleUniformBuffer<Matrix4x4>? boneBuffer = renderable.GetBoneBuffer();
+                
+                if (boneBuffer != null) {
+                    commandList.SetGraphicsResourceSet(
+                        renderable.Material.Effect.GetBufferLayoutSlot("BoneBuffer"),
+                        boneBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("BoneBuffer"))
+                    );
+                }
+            }
+        }
         
         // Set material map buffer.
         commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("MaterialBuffer"), renderable.GetMaterialBuffer().GetResourceSet(renderable.Material.Effect.GetBufferLayout("MaterialBuffer")));

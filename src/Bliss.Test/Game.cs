@@ -198,6 +198,7 @@ public class Game : Disposable {
         this._playerBox = this._playerModel.GenBoundingBox();
         
         foreach (Mesh mesh in this._playerModel.Meshes) {
+            mesh.Material.Effect = GlobalResource.DefaultSkinnedModelEffect;
             mesh.Material.RenderMode = RenderMode.Cutout;
             mesh.GenTangents();
         }
@@ -568,7 +569,7 @@ public class Game : Disposable {
             }
             
             Material material = (Material) mesh.Material.Clone();
-            material.Effect = GlobalResource.ModelInstancingEffect;
+            material.Effect = GlobalResource.DefaultSkinnedModelEffect.GetEffectVariant([Vertex3D.VertexLayout, Vertex3D.InstanceMatrixLayout], "USE_INSTANCING").Effect;
             
             this._renderables.Add(new Renderable(mesh, transforms.ToArray(), material, true));
         }

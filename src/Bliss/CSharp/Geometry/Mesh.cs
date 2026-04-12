@@ -52,17 +52,17 @@ public class Mesh : Disposable {
     /// This value determines the number of vertices available for rendering within the mesh.
     /// </summary>
     public uint VertexCount { get; private set; }
-
+    
     /// <summary>
     /// The number of indices in the mesh used for rendering.
     /// </summary>
     public uint IndexCount { get; private set; }
-
+    
     /// <summary>
     /// A buffer that stores vertex data used for rendering in the graphics pipeline.
     /// </summary>
     public DeviceBuffer VertexBuffer { get; private set; }
-
+    
     /// <summary>
     /// A buffer that stores index data used for indexed drawing in the graphics pipeline.
     /// </summary>

@@ -2,7 +2,7 @@
 using Bliss.Test;
 using Veldrid;
 
-try {
+//try {
     GameSettings settings = new GameSettings() {
         Title = "Bliss - [Test]",
         //Backend = GraphicsBackend.OpenGL,
@@ -11,8 +11,8 @@ try {
 
     using Game game = new Game(settings);
     game.Run();
-}
-catch (Exception ex) {
-    Logger.Error(ex.ToString());
-    Environment.ExitCode = 1;
-}
+//}
+//catch (Exception ex) {
+//    Logger.Error(ex.ToString());
+//    Environment.ExitCode = 1;
+//}

@@ -2,6 +2,7 @@ using System.Numerics;
 using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data;
+using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
 using Bliss.CSharp.Transformations;
 using Veldrid;
@@ -93,7 +94,7 @@ public class Renderable : Disposable {
     /// <summary>
     /// The uniform buffer that stores bone matrices for skinned rendering.
     /// </summary>
-    private SimpleUniformBuffer<Matrix4x4> _boneBuffer;
+    private SimpleUniformBuffer<Matrix4x4>? _boneBuffer;
     
     /// <summary>
     /// The uniform buffer that stores material data for rendering.
@@ -147,9 +148,11 @@ public class Renderable : Disposable {
         this.IsTransformBufferDirty = true;
         
         // Create the bone buffer.
-        this._boneBuffer = new SimpleUniformBuffer<Matrix4x4>(mesh.GraphicsDevice, Mesh.MaxBoneCount, ShaderStages.Vertex);
-        this._boneBuffer.DeviceBuffer.Name = "BoneBuffer";
-        this.IsBoneBufferDirty = mesh.HasBones;
+        if (mesh.HasBones) {
+            this._boneBuffer = new SimpleUniformBuffer<Matrix4x4>(mesh.GraphicsDevice, Mesh.MaxBoneCount, ShaderStages.Vertex);
+            this._boneBuffer.DeviceBuffer.Name = "BoneBuffer";
+            this.IsBoneBufferDirty = true;
+        }
         
         // Create material data buffer.
         this._materialDataBuffer = new SimpleUniformBuffer<MaterialData>(mesh.GraphicsDevice, 1, ShaderStages.Fragment);
@@ -240,7 +243,7 @@ public class Renderable : Disposable {
     /// Gets the bone buffer used for skinned rendering.
     /// </summary>
     /// <returns>The bone uniform buffer.</returns>
-    public SimpleUniformBuffer<Matrix4x4> GetBoneBuffer() {
+    public SimpleUniformBuffer<Matrix4x4>? GetBoneBuffer() {
         return this._boneBuffer;
     }
     
@@ -289,7 +292,7 @@ public class Renderable : Disposable {
     /// </summary>
     /// <param name="commandList">The command list used to defer the GPU upload.</param>
     public void UpdateBoneBuffer(CommandList commandList) {
-        if (this._boneMatrices == null) {
+        if (this._boneMatrices == null || this._boneBuffer == null) {
             return;
         }
         
@@ -337,7 +340,7 @@ public class Renderable : Disposable {
     protected override void Dispose(bool disposing) {
         if (disposing) {
             this._transformBuffer.Dispose();
-            this._boneBuffer.Dispose();
+            this._boneBuffer?.Dispose();
             this._materialDataBuffer.Dispose();
         }
     }

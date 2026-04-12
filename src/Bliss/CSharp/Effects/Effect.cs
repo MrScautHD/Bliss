@@ -41,6 +41,21 @@ public class Effect : Disposable {
     public readonly ShaderSetDescription ShaderSet;
     
     /// <summary>
+    /// The GLSL vertex shader source code, if this effect was created from source.
+    /// </summary>
+    private readonly string? _vertText;
+    
+    /// <summary>
+    /// The GLSL fragment shader source code, if this effect was created from source.
+    /// </summary>
+    private readonly string? _fragText;
+    
+    /// <summary>
+    /// The cross compile options used for shader creation.
+    /// </summary>
+    private readonly CrossCompileOptions _compileOptions;
+    
+    /// <summary>
     /// A collection of buffer layout descriptions used to define buffer bindings.
     /// </summary>
     private Dictionary<uint, SimpleBufferLayout> _bufferLayouts;
@@ -54,6 +69,11 @@ public class Effect : Disposable {
     /// A cache of pipelines created for specific pipeline descriptions, enabling reuse.
     /// </summary>
     private Dictionary<SimplePipelineDescription, SimplePipeline> _cachedPipelines;
+    
+    /// <summary>
+    /// A cache of effect variants compiled for specific macro/layout combinations.
+    /// </summary>
+    private Dictionary<string, EffectVariant> _cachedVariants;
     
     /// <summary>
     /// Initializes a new <see cref="Effect"/> using a single vertex layout and shader bytecode loaded from file paths.
@@ -97,6 +117,9 @@ public class Effect : Disposable {
         this.GraphicsDevice = graphicsDevice;
         this.Specializations = compileOptions.Specializations ?? [];
         this.Macros = [];
+        this._vertText = null;
+        this._fragText = null;
+        this._compileOptions = compileOptions;
         
         ShaderDescription vertDescription = new ShaderDescription(ShaderStages.Vertex, vertBytes, "main");
         ShaderDescription fragDescription = new ShaderDescription(ShaderStages.Fragment, fragBytes, "main");
@@ -118,6 +141,7 @@ public class Effect : Disposable {
         this._bufferLayouts = new Dictionary<uint, SimpleBufferLayout>();
         this._textureLayouts = new Dictionary<uint, SimpleTextureLayout>();
         this._cachedPipelines = new Dictionary<SimplePipelineDescription, SimplePipeline>();
+        this._cachedVariants = new Dictionary<string, EffectVariant>();
     }
     
     /// <summary>
@@ -144,6 +168,9 @@ public class Effect : Disposable {
         this.GraphicsDevice = graphicsDevice;
         this.Specializations = compileOptions.Specializations ?? [];
         this.Macros = macros;
+        this._vertText = vertText;
+        this._fragText = fragText;
+        this._compileOptions = compileOptions;
         
         GlslCompileOptions glslOptions = new GlslCompileOptions(true, macros);
         SpirvCompilationResult vertResult = SpirvCompilation.CompileGlslToSpirv(vertText, nameof(ShaderStages.Vertex), ShaderStages.Vertex, glslOptions);
@@ -169,6 +196,7 @@ public class Effect : Disposable {
         this._bufferLayouts = new Dictionary<uint, SimpleBufferLayout>();
         this._textureLayouts = new Dictionary<uint, SimpleTextureLayout>();
         this._cachedPipelines = new Dictionary<SimplePipelineDescription, SimplePipeline>();
+        this._cachedVariants = new Dictionary<string, EffectVariant>();
     }
     
     /// <summary>
@@ -207,6 +235,82 @@ public class Effect : Disposable {
         
         Logger.Info($"Shader bytes loaded successfully from path: [{path}]");
         return File.ReadAllText(path);
+    }
+    
+    /// <summary>
+    /// Retrieves an <see cref="EffectVariant"/> based on the current vertex layouts and the supplied macro definitions.
+    /// </summary>
+    /// <param name="macros">An array of macro definitions used to customize the effect variant.</param>
+    /// <returns>An instance of <see cref="EffectVariant"/> configured with the current vertex layouts and specified macro definitions.</returns>
+    public EffectVariant GetEffectVariant(params string[] macros) {
+        return this.GetEffectVariant(this.VertexLayouts, macros);
+    }
+    
+    // TODO: FIX ALLOC THINGS LIKE params string[] and also the list.
+    // TODO: Maybe take a look if you should add a param to mesh for skinning.
+    /// <summary>
+    /// Retrieves an <see cref="EffectVariant"/> corresponding to the specified vertex layouts and macros.
+    /// </summary>
+    /// <param name="vertexLayouts">The array of vertex layout descriptions defining the input layout for the effect variant.</param>
+    /// <param name="macros">The list of preprocessor macro definitions used to compile the effect variant.</param>
+    /// <returns>An <see cref="EffectVariant"/> instance created or retrieved from the cache.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when the effect is not based on GLSL source code.</exception>
+    public EffectVariant GetEffectVariant(VertexLayoutDescription[] vertexLayouts, params string[] macros) {
+        if (this._vertText == null || this._fragText == null) {
+            throw new InvalidOperationException("Effect variants can only be created from GLSL source-based effects.");
+        }
+        
+        // Normalized Macros.
+        List<string> normalizedMacros = [];
+        
+        foreach (string macro in macros) {
+            if (!string.IsNullOrWhiteSpace(macro)) {
+                normalizedMacros.Add(macro);
+            }
+        }
+        
+        normalizedMacros = [.. normalizedMacros.Distinct(StringComparer.Ordinal).OrderBy(macro => macro, StringComparer.Ordinal)];
+        
+        // Build layout key.
+        List<string> layoutParts = [];
+        
+        foreach (VertexLayoutDescription layout in vertexLayouts) {
+            List<string> elementParts = [];
+            
+            foreach (VertexElementDescription element in layout.Elements) {
+                elementParts.Add($"{element.Name}:{element.Format}:{element.Offset}");
+            }
+            
+            layoutParts.Add($"{layout.Stride}:{layout.InstanceStepRate}:{string.Join(",", elementParts)}");
+        }
+        
+        // Create cache key.
+        string key = $"{string.Join(";", layoutParts)}||{string.Join(";", normalizedMacros)}";
+        
+        // Return cached variant if it exists.
+        if (this._cachedVariants.TryGetValue(key, out EffectVariant? cachedVariant)) {
+            return cachedVariant;
+        }
+        
+        // Convert macros.
+        MacroDefinition[] macroDefinitions = normalizedMacros.Select(macro => new MacroDefinition(macro, "1")).ToArray();
+        
+        // Compile variant effect.
+        Effect compiledEffect = new Effect(this.GraphicsDevice, vertexLayouts, this._vertText, this._fragText, this._compileOptions, macroDefinitions);
+        
+        // Copy buffer layouts.
+        foreach (var bufferLayout in this._bufferLayouts) {
+            compiledEffect.AddBufferLayout(bufferLayout.Value.Name, bufferLayout.Key, bufferLayout.Value.BufferType, bufferLayout.Value.ShaderStages);
+        }
+        
+        // Copy texture layouts.
+        foreach (var textureLayout in this._textureLayouts) {
+            compiledEffect.AddTextureLayout(textureLayout.Value.Name, textureLayout.Key);
+        }
+        
+        EffectVariant variant = new EffectVariant(this, compiledEffect, key);
+        this._cachedVariants.Add(key, variant);
+        return variant;
     }
     
     /// <summary>
@@ -346,6 +450,10 @@ public class Effect : Disposable {
         if (disposing) {
             foreach (SimplePipeline pipeline in this._cachedPipelines.Values) {
                 pipeline.Dispose();
+            }
+            
+            foreach (EffectVariant variant in this._cachedVariants.Values) {
+                variant.Dispose();
             }
             
             this.Shader.VertShader.Dispose();
