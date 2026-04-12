@@ -62,6 +62,36 @@ public static class BlissMathExtensions {
         public static Quaternion CreateFromYawPitchRollInDegrees(float pitch, float yaw, float roll, float deltaTime) {
             return Quaternion.CreateFromYawPitchRoll(float.DegreesToRadians(yaw * deltaTime), float.DegreesToRadians(pitch * deltaTime), float.DegreesToRadians(roll * deltaTime));
         }
+        
+        /// <summary>
+        /// Converts a <see cref="Quaternion"/> to Euler angles in radians.
+        /// </summary>
+        /// <returns>A <see cref="Vector3"/> containing pitch (X), yaw (Y), and roll (Z).</returns>
+        public static Vector3 ToEulerAngles(Quaternion rotation) {
+            float xx = rotation.X * rotation.X;
+            float yy = rotation.Y * rotation.Y;
+            float zz = rotation.Z * rotation.Z;
+            
+            float m31 = 2.0F * rotation.X * rotation.Z + 2.0F * rotation.Y * rotation.W;
+            float m32 = 2.0F * rotation.Y * rotation.Z - 2.0F * rotation.X * rotation.W;
+            float m33 = 1.0F - 2.0F * xx - 2.0F * yy;
+            
+            float cy = MathF.Sqrt(m33 * m33 + m31 * m31);
+            float cx = MathF.Atan2(-m32, cy);
+            
+            if (cy > 16.0F * float.Epsilon) {
+                float m12 = 2.0F * rotation.X * rotation.Y + 2.0F * rotation.Z * rotation.W;
+                float m22 = 1.0F - 2.0F * xx - 2.0F * zz;
+                
+                return new Vector3(cx, MathF.Atan2(m31, m33), MathF.Atan2(m12, m22));
+            }
+            else {
+                float m11 = 1.0F - 2.0F * yy - 2.0F * zz;
+                float m21 = 2.0F * rotation.X * rotation.Y - 2.0F * rotation.Z * rotation.W;
+
+                return new Vector3(cx, 0.0F, MathF.Atan2(-m21, m11));
+            }
+        }
     }
     
     /// <summary>

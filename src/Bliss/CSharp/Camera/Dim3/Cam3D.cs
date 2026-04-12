@@ -6,7 +6,6 @@ using Bliss.CSharp.Interact.Gamepads;
 using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Mathematics;
 using Veldrid;
-using Vortice.Mathematics;
 
 namespace Bliss.CSharp.Camera.Dim3;
 
@@ -396,7 +395,7 @@ public class Cam3D : Disposable, ICam {
     /// </summary>
     /// <returns>A Vector3 representing the current rotation of the camera.</returns>
     public Vector3 GetRotation() {
-        Vector3 rotation = Quaternion.CreateFromRotationMatrix(this.GetView()).ToEuler();
+        Vector3 rotation = Quaternion.ToEulerAngles(Quaternion.CreateFromRotationMatrix(this.GetView()));
         return new Vector3(float.RadiansToDegrees(rotation.X), float.RadiansToDegrees(rotation.Y), float.RadiansToDegrees(rotation.Z));
     }
     
