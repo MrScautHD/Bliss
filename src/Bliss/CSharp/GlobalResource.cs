@@ -129,7 +129,8 @@ public static class GlobalResource {
         // ImmediateRenderer effect.
         DefaultImmediateRendererEffect = new Effect(graphicsDevice, ImmediateVertex3D.VertexLayout, "content/bliss/shaders/immediate_renderer.vert", "content/bliss/shaders/immediate_renderer.frag", new CrossCompileOptions());
         DefaultImmediateRendererEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
-        DefaultImmediateRendererEffect.AddTextureLayout("fTexture", 1);
+        DefaultImmediateRendererEffect.AddBufferLayout("TransformBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        DefaultImmediateRendererEffect.AddTextureLayout("fTexture", 2);
         
         // Default model effect.
         DefaultModelEffect = new Effect(graphicsDevice, Vertex3D.VertexLayout, "content/bliss/shaders/default_model.vert", "content/bliss/shaders/default_model.frag", new CrossCompileOptions());

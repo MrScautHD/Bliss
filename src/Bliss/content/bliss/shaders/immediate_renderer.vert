@@ -3,6 +3,9 @@
 layout(std140, set = 0, binding = 0) uniform MatrixBuffer {
     mat4x4 uProjection;
     mat4x4 uView;
+};
+
+layout(std140, set = 1, binding = 0) uniform TransformBuffer {
     mat4x4 uTransformation;
 };
 

@@ -65,12 +65,9 @@ public class ImmediateRenderer : Disposable {
     /// The GPU buffer that stores index data.
     /// </summary>
     private DeviceBuffer _indexBuffer;
-
-    /// <summary>
-    /// The uniform buffer that holds transformation matrices (projection, view, and transform).
-    /// </summary>
-    private SimpleUniformBuffer<Matrix4x4> _matrixBuffer;
-
+    
+    private SimpleUniformBuffer<Matrix4x4> _trasnformBuffer;
+    
     /// <summary>
     /// The pipeline description used to configure the graphics pipeline for rendering.
     /// </summary>
@@ -134,9 +131,9 @@ public class ImmediateRenderer : Disposable {
         this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
         this._indexBuffer.Name = "IndexBuffer";
         
-        // Create matrix buffer.
-        this._matrixBuffer = new SimpleUniformBuffer<Matrix4x4>(graphicsDevice, 3, ShaderStages.Vertex);
-        this._matrixBuffer.DeviceBuffer.Name = "MatrixBuffer";
+        // Create transform buffer.
+        this._trasnformBuffer = new SimpleUniformBuffer<Matrix4x4>(graphicsDevice, 1, ShaderStages.Vertex);
+        this._trasnformBuffer.DeviceBuffer.Name = "TransformBuffer";
         
         // Create pipeline description.
         this._pipelineDescription = new SimplePipelineDescription();
@@ -1999,13 +1996,8 @@ public class ImmediateRenderer : Disposable {
         this._vertexCount = vertices.Count;
         this._indexCount = indices?.Count ?? 0;
         
-        // Update matrix buffer.
-        // TODO: Use the matrix buffer of camera + do a capacity system for transform is it full flush it like the vertices...!
-        
-        this._matrixBuffer.SetValue(0, cam3D.GetProjection());
-        this._matrixBuffer.SetValue(1, cam3D.GetView());
-        this._matrixBuffer.SetValue(2, transform.GetTransform());
-        this._matrixBuffer.UpdateBufferDeferred(commandList);
+        // Update transform buffer.
+        this._trasnformBuffer.SetValueDeferred(commandList, 0, transform.GetTransform());
         
         // Update pipeline description.
         this._pipelineDescription.PrimitiveTopology = topology;
@@ -2015,7 +2007,10 @@ public class ImmediateRenderer : Disposable {
         commandList.SetPipeline(this._currentEffect.GetPipeline(this._pipelineDescription).Pipeline);
         
         // Set matrix buffer.
-        commandList.SetGraphicsResourceSet(this._currentEffect.GetBufferLayoutSlot("MatrixBuffer"), this._matrixBuffer.GetResourceSet(this._currentEffect.GetBufferLayout("MatrixBuffer")));
+        commandList.SetGraphicsResourceSet(this._currentEffect.GetBufferLayoutSlot("MatrixBuffer"), cam3D.GetMatrixBuffer().GetResourceSet(this._currentEffect.GetBufferLayout("MatrixBuffer")));
+        
+        // Set transform buffer.
+        commandList.SetGraphicsResourceSet(this._currentEffect.GetBufferLayoutSlot("TransformBuffer"), this._trasnformBuffer.GetResourceSet(this._currentEffect.GetBufferLayout("TransformBuffer")));
         
         // Set resourceSet of the texture.
         commandList.SetGraphicsResourceSet(this._currentEffect.GetTextureLayoutSlot("fTexture"), this._currentTexture.GetResourceSet(this._currentSampler, this._currentEffect.GetTextureLayout("fTexture")));
@@ -2066,7 +2061,7 @@ public class ImmediateRenderer : Disposable {
         if (disposing) {
             this._vertexBuffer.Dispose();
             this._indexBuffer.Dispose();
-            this._matrixBuffer.Dispose();
+            this._trasnformBuffer.Dispose();
         }
     }
 }
