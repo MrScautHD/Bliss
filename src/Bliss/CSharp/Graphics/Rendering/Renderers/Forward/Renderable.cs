@@ -8,7 +8,7 @@ using Veldrid;
 
 namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward;
 
-public class Renderable {
+public class Renderable : Disposable {
     
     /// <summary>
     /// The mesh associated with this renderable object.
@@ -332,5 +332,13 @@ public class Renderable {
         this._materialDataBuffer.SetValueDeferred(commandList, 0, ref materialData);
         this.Material.IsDirty = false;
         this._hasMaterialChanged = false;
+    }
+
+    protected override void Dispose(bool disposing) {
+        if (disposing) {
+            this._transformBuffer.Dispose();
+            this._boneBuffer.Dispose();
+            this._materialDataBuffer.Dispose();
+        }
     }
 }
