@@ -24,7 +24,7 @@ public class Renderable {
             if (ReferenceEquals(field, value)) {
                 return;
             }
-
+            
             field = value;
             this._hasMaterialChanged = true;
         }
@@ -195,11 +195,35 @@ public class Renderable {
     }
     
     /// <summary>
+    /// Resizes the stored transform array.
+    /// Existing transforms are preserved, and any new slots are filled with the default transform.
+    /// </summary>
+    /// <param name="newSize">The new number of transforms to store.</param>
+    public void ResizeTransformArray(int newSize) {
+        if (newSize < 1) {
+            throw new ArgumentOutOfRangeException(nameof(newSize), "Transform array size must be at least 1.");
+        }
+        
+        if (newSize == this._transforms.Length) {
+            return;
+        }
+        
+        Array.Resize(ref this._transforms, newSize);
+        
+        if (!this.UseInstancing) {
+            this.IsTransformBufferDirty = true;
+        }
+    }
+    
+    /// <summary>
     /// Clears all stored transforms and marks the transform buffer as dirty.
     /// </summary>
     public void ClearTransform() {
         Array.Fill(this._transforms, new Transform());
-        this.IsTransformBufferDirty = true;
+        
+        if (!this.UseInstancing) {
+            this.IsTransformBufferDirty = true;
+        }
     }
     
     /// <summary>
