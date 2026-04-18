@@ -1,19 +1,25 @@
 using System.Numerics;
 using System.Runtime.InteropServices;
+using Bliss.CSharp.Graphics.Pipelines;
 using Veldrid;
 
 namespace Bliss.CSharp.Graphics.VertexTypes;
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-public struct PrimitiveVertex2D {
+public struct PrimitiveVertex2D : IVertexType {
     
     /// <summary>
     /// Represents the layout description for the <see cref="PrimitiveVertex2D"/> structure.
     /// </summary>
-    public static VertexLayoutDescription VertexLayout = new VertexLayoutDescription(
+    public static VertexFormat VertexLayout = new VertexFormat("PrimitiveVertex2D", new VertexLayoutDescription(
         new VertexElementDescription("vPosition", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float3),
         new VertexElementDescription("vColor", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float4)
-    );
+    ));
+    
+    /// <summary>
+    /// Defines the vertex layout configuration used to describe the structure and attributes of a vertex.
+    /// </summary>
+    VertexFormat IVertexType.VertexLayout => VertexLayout;
     
     /// <summary>
     /// The position of the vertex in 2D space (Z is used for layout depth).

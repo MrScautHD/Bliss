@@ -5,7 +5,7 @@ using Veldrid;
 namespace Bliss.CSharp.Graphics.Pipelines;
 
 public struct SimplePipelineDescription : IEquatable<SimplePipelineDescription> {
-
+    
     /// <summary>
     /// Configuration for how colors are blended during rendering.
     /// </summary>

@@ -114,33 +114,33 @@ public static class GlobalResource {
         });
         
         // Default sprite effect.
-        DefaultSpriteEffect = new Effect(graphicsDevice, SpriteVertex2D.VertexLayout, "content/bliss/shaders/sprite.vert", "content/bliss/shaders/sprite.frag", new CrossCompileOptions());
+        DefaultSpriteEffect = new Effect(graphicsDevice, "content/bliss/shaders/sprite.vert", "content/bliss/shaders/sprite.frag", new CrossCompileOptions());
         DefaultSpriteEffect.AddBufferLayout("ProjectionViewBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
         DefaultSpriteEffect.AddTextureLayout("fTexture", 1);
         
         // Primitive effect.
-        DefaultPrimitiveEffect = new Effect(graphicsDevice, PrimitiveVertex2D.VertexLayout, "content/bliss/shaders/primitive.vert", "content/bliss/shaders/primitive.frag", new CrossCompileOptions());
+        DefaultPrimitiveEffect = new Effect(graphicsDevice, "content/bliss/shaders/primitive.vert", "content/bliss/shaders/primitive.frag", new CrossCompileOptions());
         DefaultPrimitiveEffect.AddBufferLayout("ProjectionViewBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
         
         // FullScreenRenderPass effect.
-        DefaultFullScreenRenderPassEffect = new Effect(graphicsDevice, SpriteVertex2D.VertexLayout, "content/bliss/shaders/full_screen_render_pass.vert", "content/bliss/shaders/full_screen_render_pass.frag", new CrossCompileOptions());
+        DefaultFullScreenRenderPassEffect = new Effect(graphicsDevice, "content/bliss/shaders/full_screen_render_pass.vert", "content/bliss/shaders/full_screen_render_pass.frag", new CrossCompileOptions());
         DefaultFullScreenRenderPassEffect.AddTextureLayout("fTexture", 0);
         
         // ImmediateRenderer effect.
-        DefaultImmediateRendererEffect = new Effect(graphicsDevice, ImmediateVertex3D.VertexLayout, "content/bliss/shaders/immediate_renderer.vert", "content/bliss/shaders/immediate_renderer.frag", new CrossCompileOptions());
+        DefaultImmediateRendererEffect = new Effect(graphicsDevice, "content/bliss/shaders/immediate_renderer.vert", "content/bliss/shaders/immediate_renderer.frag", new CrossCompileOptions());
         DefaultImmediateRendererEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
         DefaultImmediateRendererEffect.AddBufferLayout("TransformBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex);
         DefaultImmediateRendererEffect.AddTextureLayout("fTexture", 2);
         
         // Default model effect.
-        DefaultModelEffect = new Effect(graphicsDevice, Vertex3D.VertexLayout, Effect.LoadTextCodeFromFile("content/bliss/shaders/default_model.vert"), Effect.LoadTextCodeFromFile("content/bliss/shaders/default_model.frag"), new CrossCompileOptions(), []);
+        DefaultModelEffect = new Effect(graphicsDevice, Effect.LoadTextCodeFromFile("content/bliss/shaders/default_model.vert"), Effect.LoadTextCodeFromFile("content/bliss/shaders/default_model.frag"), new CrossCompileOptions(), []);
         DefaultModelEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
         DefaultModelEffect.AddBufferLayout("TransformBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex);
         DefaultModelEffect.AddBufferLayout("MaterialBuffer", 2, SimpleBufferType.Uniform, ShaderStages.Fragment);
         DefaultModelEffect.AddTextureLayout(MaterialMapType.Albedo.GetName(), 3);
         
         // Skinned model effect.
-        DefaultSkinnedModelEffect = new Effect(graphicsDevice, Vertex3D.VertexLayout, Effect.LoadTextCodeFromFile("content/bliss/shaders/default_skinned_model.vert"), Effect.LoadTextCodeFromFile("content/bliss/shaders/default_skinned_model.frag"), new CrossCompileOptions(), []);
+        DefaultSkinnedModelEffect = new Effect(graphicsDevice, Effect.LoadTextCodeFromFile("content/bliss/shaders/default_skinned_model.vert"), Effect.LoadTextCodeFromFile("content/bliss/shaders/default_skinned_model.frag"), new CrossCompileOptions(), []);
         DefaultSkinnedModelEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
         DefaultSkinnedModelEffect.AddBufferLayout("TransformBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex);
         DefaultSkinnedModelEffect.AddBufferLayout("BoneBuffer", 2, SimpleBufferType.Uniform, ShaderStages.Vertex);

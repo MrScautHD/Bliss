@@ -14,7 +14,7 @@
     <PropertyGroup>
         <Title>Bliss</Title>
         <Authors>MrScautHD</Authors>
-        <Version>1.4.19</Version>
+        <Version>1.4.20</Version>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <NoWarn>$(NoWarn);1591</NoWarn>
@@ -37,8 +37,8 @@
     <!-- Libraries -->
     <ItemGroup>
         <PackageReference Include="AssimpNetter" Version="6.0.4" />
-        <PackageReference Include="FontStashSharp.PlatformAgnostic" Version="1.5.4" />
-        <PackageReference Include="JAJ.Packages.MiniAudioEx" Version="3.2.1" />
+        <PackageReference Include="FontStashSharp.PlatformAgnostic" Version="1.5.5" />
+        <PackageReference Include="JAJ.Packages.MiniAudioEx" Version="3.3.0" />
         <PackageReference Include="ppy.SDL3-CS" Version="2026.320.0" />
         <PackageReference Include="ppy.Veldrid" Version="4.9.76-g3cdad6c06a" />
         <PackageReference Include="ppy.Veldrid.SPIRV" Version="1.0.15-gfbb03d21c2" />

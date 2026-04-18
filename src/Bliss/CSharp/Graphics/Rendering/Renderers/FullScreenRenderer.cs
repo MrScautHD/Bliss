@@ -69,7 +69,7 @@ public class FullScreenRenderer : Disposable {
         this._pipelineDescription.RasterizerState = finalRasterizerState;
         this._pipelineDescription.BufferLayouts = finalEffect.GetBufferLayouts();
         this._pipelineDescription.TextureLayouts = finalEffect.GetTextureLayouts();
-        this._pipelineDescription.ShaderSet = finalEffect.ShaderSet;
+        this._pipelineDescription.ShaderSet = new ShaderSetDescription(SpriteVertex2D.VertexLayout.Layouts, finalEffect.Shaders);
         this._pipelineDescription.Outputs = output;
         
         // Set vertex buffer.

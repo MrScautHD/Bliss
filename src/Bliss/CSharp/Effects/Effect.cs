@@ -31,14 +31,9 @@ public class Effect : Disposable {
     public readonly (Shader VertShader, Shader FragShader) Shader;
     
     /// <summary>
-    /// Describes the layouts of vertex data for a graphics pipeline.
+    /// An array of shader objects used within an effect for rendering operations.
     /// </summary>
-    public readonly VertexLayoutDescription[] VertexLayouts;
-    
-    /// <summary>
-    /// Represents a description of a shader set, including vertex layout details, shader information, and optional specialization constants.
-    /// </summary>
-    public readonly ShaderSetDescription ShaderSet;
+    public readonly Shader[] Shaders;
     
     /// <summary>
     /// The GLSL vertex shader source code, if this effect was created from source.
@@ -72,48 +67,26 @@ public class Effect : Disposable {
     
     /// <summary>
     /// A cache of effect variants compiled for specific macro/layout combinations.
-    /// </summary>
-    private Dictionary<string, EffectVariant> _cachedVariants;
-    
-    /// <summary>
-    /// Initializes a new <see cref="Effect"/> using a single vertex layout and shader bytecode loaded from file paths.
-    /// </summary>
-    /// <param name="graphicsDevice">The graphics device used to create shaders and related GPU resources.</param>
-    /// <param name="vertexLayout">The vertex layout describing the structure of vertex input data.</param>
-    /// <param name="vertPath">The file path to the compiled vertex shader bytecode.</param>
-    /// <param name="fragPath">The file path to the compiled fragment shader bytecode.</param>
-    /// <param name="compileOptions">Optional cross-compilation options used when creating the shaders.</param>
-    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, string vertPath, string fragPath, CrossCompileOptions compileOptions) : this(graphicsDevice, [vertexLayout], LoadBytecodeFromFile(vertPath), LoadBytecodeFromFile(fragPath), compileOptions) { }
+    /// </summary>du
+    private Dictionary<EffectVariantKey, EffectVariant> _cachedVariants;
     
     /// <summary>
     /// Initializes a new <see cref="Effect"/> using multiple vertex layouts and shader bytecode loaded from file paths.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used to create shaders and related GPU resources.</param>
-    /// <param name="vertexLayouts">The vertex layouts describing the structure of vertex input data.</param>
     /// <param name="vertPath">The file path to the compiled vertex shader bytecode.</param>
     /// <param name="fragPath">The file path to the compiled fragment shader bytecode.</param>
     /// <param name="compileOptions">Optional cross-compilation options used when creating the shaders.</param>
-    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription[] vertexLayouts, string vertPath, string fragPath, CrossCompileOptions compileOptions) : this(graphicsDevice, vertexLayouts, LoadBytecodeFromFile(vertPath), LoadBytecodeFromFile(fragPath), compileOptions) { }
-    
-    /// <summary>
-    /// Initializes a new <see cref="Effect"/> using a single vertex layout and provided shader bytecode.
-    /// </summary>
-    /// <param name="graphicsDevice">The graphics device used to create shaders and related GPU resources.</param>
-    /// <param name="vertexLayout">The vertex layout describing the structure of vertex input data.</param>
-    /// <param name="vertBytes">The compiled vertex shader bytecode.</param>
-    /// <param name="fragBytes">The compiled fragment shader bytecode.</param>
-    /// <param name="compileOptions">Optional cross-compilation options used when creating the shaders.</param>
-    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, byte[] vertBytes, byte[] fragBytes, CrossCompileOptions compileOptions) : this(graphicsDevice, [vertexLayout], vertBytes, fragBytes, compileOptions) { }
+    public Effect(GraphicsDevice graphicsDevice, string vertPath, string fragPath, CrossCompileOptions compileOptions) : this(graphicsDevice, LoadBytecodeFromFile(vertPath), LoadBytecodeFromFile(fragPath), compileOptions) { }
     
     /// <summary>
     /// Initializes a new <see cref="Effect"/> using multiple vertex layouts and provided shader bytecode.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used to create shaders, pipelines, and related GPU resources.</param>
-    /// <param name="vertexLayouts">The vertex layouts describing the structure of vertex input data.</param>
     /// <param name="vertBytes">The compiled vertex shader bytecode.</param>
     /// <param name="fragBytes">The compiled fragment shader bytecode.</param>
     /// <param name="compileOptions">Optional cross-compilation options used when creating the shaders.</param>
-    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription[] vertexLayouts, byte[] vertBytes, byte[] fragBytes, CrossCompileOptions compileOptions) {
+    public Effect(GraphicsDevice graphicsDevice, byte[] vertBytes, byte[] fragBytes, CrossCompileOptions compileOptions) {
         this.GraphicsDevice = graphicsDevice;
         this.Specializations = compileOptions.Specializations ?? [];
         this.Macros = [];
@@ -124,47 +97,25 @@ public class Effect : Disposable {
         ShaderDescription vertDescription = new ShaderDescription(ShaderStages.Vertex, vertBytes, "main");
         ShaderDescription fragDescription = new ShaderDescription(ShaderStages.Fragment, fragBytes, "main");
         
-        Shader[] shaders = graphicsDevice.ResourceFactory.CreateFromSpirv(vertDescription, fragDescription, compileOptions);
-        
-        this.Shader.VertShader = shaders[0];
-        this.Shader.FragShader = shaders[1];
-        this.VertexLayouts = vertexLayouts;
-        
-        this.ShaderSet = new ShaderSetDescription() {
-            VertexLayouts = this.VertexLayouts,
-            Shaders = [
-                this.Shader.VertShader,
-                this.Shader.FragShader
-            ]
-        };
+        this.Shaders = graphicsDevice.ResourceFactory.CreateFromSpirv(vertDescription, fragDescription, compileOptions);
+        this.Shader.VertShader = this.Shaders[0];
+        this.Shader.FragShader = this.Shaders[1];
         
         this._bufferLayouts = new Dictionary<uint, SimpleBufferLayout>();
         this._textureLayouts = new Dictionary<uint, SimpleTextureLayout>();
         this._cachedPipelines = new Dictionary<SimplePipelineDescription, SimplePipeline>();
-        this._cachedVariants = new Dictionary<string, EffectVariant>();
+        this._cachedVariants = new Dictionary<EffectVariantKey, EffectVariant>();
     }
     
     /// <summary>
     /// Creates a new <see cref="Effect"/> by compiling GLSL shader source code into SPIR-V.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used to create GPU resources.</param>
-    /// <param name="vertexLayout">The vertex layout describing the structure of vertex input data.</param>
     /// <param name="vertText">The GLSL source code for the vertex shader.</param>
     /// <param name="fragText">The GLSL source code for the fragment shader.</param>
     /// <param name="compileOptions">Optional cross-compilation and specialization options.</param>
     /// <param name="macros">Optional macro definitions injected during shader compilation.</param>
-    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription vertexLayout, string vertText, string fragText, CrossCompileOptions compileOptions, MacroDefinition[] macros) : this(graphicsDevice, [vertexLayout], vertText, fragText, compileOptions, macros) { }
-    
-    /// <summary>
-    /// Creates a new <see cref="Effect"/> by compiling GLSL shader source code into SPIR-V.
-    /// </summary>
-    /// <param name="graphicsDevice">The graphics device used to create GPU resources.</param>
-    /// <param name="vertexLayouts">The vertex layouts describing the structure of vertex input data.</param>
-    /// <param name="vertText">The GLSL source code for the vertex shader.</param>
-    /// <param name="fragText">The GLSL source code for the fragment shader.</param>
-    /// <param name="compileOptions">Optional cross-compilation and specialization options.</param>
-    /// <param name="macros">Optional macro definitions injected during shader compilation.</param>
-    public Effect(GraphicsDevice graphicsDevice, VertexLayoutDescription[] vertexLayouts, string vertText, string fragText, CrossCompileOptions compileOptions, MacroDefinition[] macros) {
+    public Effect(GraphicsDevice graphicsDevice, string vertText, string fragText, CrossCompileOptions compileOptions, MacroDefinition[] macros) {
         this.GraphicsDevice = graphicsDevice;
         this.Specializations = compileOptions.Specializations ?? [];
         this.Macros = macros;
@@ -179,24 +130,14 @@ public class Effect : Disposable {
         ShaderDescription vertDescription = new ShaderDescription(ShaderStages.Vertex, vertResult.SpirvBytes, "main");
         ShaderDescription fragDescription = new ShaderDescription(ShaderStages.Fragment, fragResult.SpirvBytes, "main");
         
-        Shader[] shaders = graphicsDevice.ResourceFactory.CreateFromSpirv(vertDescription, fragDescription, compileOptions);
-        
-        this.Shader.VertShader = shaders[0];
-        this.Shader.FragShader = shaders[1];
-        this.VertexLayouts = vertexLayouts;
-        
-        this.ShaderSet = new ShaderSetDescription() {
-            VertexLayouts = this.VertexLayouts,
-            Shaders = [
-                this.Shader.VertShader,
-                this.Shader.FragShader
-            ]
-        };
+        this.Shaders = graphicsDevice.ResourceFactory.CreateFromSpirv(vertDescription, fragDescription, compileOptions);
+        this.Shader.VertShader = this.Shaders[0];
+        this.Shader.FragShader = this.Shaders[1];
         
         this._bufferLayouts = new Dictionary<uint, SimpleBufferLayout>();
         this._textureLayouts = new Dictionary<uint, SimpleTextureLayout>();
         this._cachedPipelines = new Dictionary<SimplePipelineDescription, SimplePipeline>();
-        this._cachedVariants = new Dictionary<string, EffectVariant>();
+        this._cachedVariants = new Dictionary<EffectVariantKey, EffectVariant>();
     }
     
     /// <summary>
@@ -209,7 +150,7 @@ public class Effect : Disposable {
         if (!File.Exists(path)) {
             throw new Exception($"No shader file found in path: [{path}]");
         }
-
+        
         if (Path.GetExtension(path) != ".vert" && Path.GetExtension(path) != ".frag") {
             throw new Exception($"This shader type is not supported: [{Path.GetExtension(path)}]");
         }
@@ -238,77 +179,49 @@ public class Effect : Disposable {
     }
     
     /// <summary>
-    /// Retrieves an <see cref="EffectVariant"/> based on the current vertex layouts and the supplied macro definitions.
-    /// </summary>
-    /// <param name="macros">An array of macro definitions used to customize the effect variant.</param>
-    /// <returns>An instance of <see cref="EffectVariant"/> configured with the current vertex layouts and specified macro definitions.</returns>
-    public EffectVariant GetEffectVariant(params string[] macros) {
-        return this.GetEffectVariant(this.VertexLayouts, macros);
-    }
-    
-    // TODO: FIX ALLOC THINGS LIKE params string[] and also the list.
-    // TODO: Maybe take a look if you should add a param to mesh for skinning.
-    /// <summary>
     /// Retrieves an <see cref="EffectVariant"/> corresponding to the specified vertex layouts and macros.
     /// </summary>
-    /// <param name="vertexLayouts">The array of vertex layout descriptions defining the input layout for the effect variant.</param>
     /// <param name="macros">The list of preprocessor macro definitions used to compile the effect variant.</param>
     /// <returns>An <see cref="EffectVariant"/> instance created or retrieved from the cache.</returns>
     /// <exception cref="InvalidOperationException">Thrown when the effect is not based on GLSL source code.</exception>
-    public EffectVariant GetEffectVariant(VertexLayoutDescription[] vertexLayouts, params string[] macros) {
+    public EffectVariant GetEffectVariant(string[] macros) {
         if (this._vertText == null || this._fragText == null) {
             throw new InvalidOperationException("Effect variants can only be created from GLSL source-based effects.");
         }
         
-        // Normalized Macros.
-        List<string> normalizedMacros = [];
+        // Check cache.
+        EffectVariantKey key = new EffectVariantKey(this.Macros, macros);
         
-        foreach (string macro in macros) {
-            if (!string.IsNullOrWhiteSpace(macro)) {
-                normalizedMacros.Add(macro);
-            }
-        }
-        
-        normalizedMacros = [.. normalizedMacros.Distinct(StringComparer.Ordinal).OrderBy(macro => macro, StringComparer.Ordinal)];
-        
-        // Build layout key.
-        List<string> layoutParts = [];
-        
-        foreach (VertexLayoutDescription layout in vertexLayouts) {
-            List<string> elementParts = [];
-            
-            foreach (VertexElementDescription element in layout.Elements) {
-                elementParts.Add($"{element.Name}:{element.Format}:{element.Offset}");
-            }
-            
-            layoutParts.Add($"{layout.Stride}:{layout.InstanceStepRate}:{string.Join(",", elementParts)}");
-        }
-        
-        // Create cache key.
-        string key = $"{string.Join(";", layoutParts)}||{string.Join(";", normalizedMacros)}";
-        
-        // Return cached variant if it exists.
         if (this._cachedVariants.TryGetValue(key, out EffectVariant? cachedVariant)) {
             return cachedVariant;
         }
         
-        // Convert macros.
-        MacroDefinition[] macroDefinitions = normalizedMacros.Select(macro => new MacroDefinition(macro, "1")).ToArray();
+        // Build compiled effect macros.
+        MacroDefinition[] macroDefinitions = new MacroDefinition[this.Macros.Count + macros.Length];
         
-        // Compile variant effect.
-        Effect compiledEffect = new Effect(this.GraphicsDevice, vertexLayouts, this._vertText, this._fragText, this._compileOptions, macroDefinitions);
+        int macroIndex = 0;
         
-        // Copy buffer layouts.
+        foreach (MacroDefinition macroDef in this.Macros) {
+            macroDefinitions[macroIndex++] = macroDef;
+        }
+        
+        foreach (string macro in macros) {
+            macroDefinitions[macroIndex++] = new MacroDefinition(macro, "1");
+        }
+        
+        // Compile effect variant.
+        Effect compiledEffect = new Effect(this.GraphicsDevice, this._vertText, this._fragText, this._compileOptions, macroDefinitions);
+        
         foreach (var bufferLayout in this._bufferLayouts) {
             compiledEffect.AddBufferLayout(bufferLayout.Value.Name, bufferLayout.Key, bufferLayout.Value.BufferType, bufferLayout.Value.ShaderStages);
         }
         
-        // Copy texture layouts.
         foreach (var textureLayout in this._textureLayouts) {
             compiledEffect.AddTextureLayout(textureLayout.Value.Name, textureLayout.Key);
         }
         
-        EffectVariant variant = new EffectVariant(this, compiledEffect, key);
+        // Cache and return.
+        EffectVariant variant = new EffectVariant(this, compiledEffect);
         this._cachedVariants.Add(key, variant);
         return variant;
     }

@@ -1,8 +1,7 @@
 using System.Numerics;
-using Bliss.CSharp.Geometry;
+using Bliss.CSharp.Geometry.Meshes;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data;
-using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
 using Bliss.CSharp.Transformations;
 using Veldrid;
@@ -14,7 +13,7 @@ public class Renderable : Disposable {
     /// <summary>
     /// The mesh associated with this renderable object.
     /// </summary>
-    public Mesh Mesh { get; private set; }
+    public IMesh Mesh { get; private set; }
     
     /// <summary>
     /// Gets or sets the material used to render.
@@ -108,7 +107,7 @@ public class Renderable : Disposable {
     /// <param name="transform">The transform applied to the renderable.</param>
     /// <param name="copyMeshMaterial">If true, clones the mesh material for independent modification.</param>
     /// <param name="useInstancing">If true, enables GPU instancing even for a single transform.</param>
-    public Renderable(Mesh mesh, Transform transform, bool copyMeshMaterial = false, bool useInstancing = false) : this(mesh, [transform], copyMeshMaterial, useInstancing) { }
+    public Renderable(IMesh mesh, Transform transform, bool copyMeshMaterial = false, bool useInstancing = false) : this(mesh, [transform], copyMeshMaterial, useInstancing) { }
     
     /// <summary>
     /// Initializes a new <see cref="Renderable"/> using one or more transforms and optionally a cloned mesh material.
@@ -117,7 +116,7 @@ public class Renderable : Disposable {
     /// <param name="transforms">The transforms applied to the renderable, where providing more than one transform enables instanced rendering.</param>
     /// <param name="copyMeshMaterial">If true, clones the mesh material for independent modification.</param>
     /// <param name="useInstancing">If true, enables GPU instancing even for a single transform.</param>
-    public Renderable(Mesh mesh, Transform[] transforms, bool copyMeshMaterial = false, bool useInstancing = false) : this(mesh, transforms, copyMeshMaterial ? (Material) mesh.Material.Clone() : mesh.Material, useInstancing) { }
+    public Renderable(IMesh mesh, Transform[] transforms, bool copyMeshMaterial = false, bool useInstancing = false) : this(mesh, transforms, copyMeshMaterial ? (Material) mesh.Material.Clone() : mesh.Material, useInstancing) { }
     
     /// <summary>
     /// Initializes a new <see cref="Renderable"/> using a single transform and a specific material.
@@ -126,7 +125,7 @@ public class Renderable : Disposable {
     /// <param name="transform">The transform applied to the renderable.</param>
     /// <param name="material">The material used for rendering.</param>
     /// <param name="useInstancing">If true, enables GPU instancing even for a single transform.</param>
-    public Renderable(Mesh mesh, Transform transform, Material material, bool useInstancing = false) : this(mesh, [transform], material, useInstancing) { }
+    public Renderable(IMesh mesh, Transform transform, Material material, bool useInstancing = false) : this(mesh, [transform], material, useInstancing) { }
     
     /// <summary>
     /// Initializes a new <see cref="Renderable"/> using one or more transforms and a specific material.
@@ -135,11 +134,11 @@ public class Renderable : Disposable {
     /// <param name="transforms">The transforms applied to the renderable, where providing more than one transform enables instanced rendering.</param>
     /// <param name="material">The material used for rendering.</param>
     /// <param name="useInstancing">If true, enables GPU instancing even for a single transform.</param>
-    public Renderable(Mesh mesh, Transform[] transforms, Material material, bool useInstancing = false) {
+    public Renderable(IMesh mesh, Transform[] transforms, Material material, bool useInstancing = false) {
         this.Mesh = mesh;
         this.UseInstancing = useInstancing;
         this._transforms = transforms;
-        this._boneMatrices = mesh.HasBones ? Enumerable.Repeat(Matrix4x4.Identity, Mesh.MaxBoneCount).ToArray() : null;
+        this._boneMatrices = mesh.IsSkinned ? Enumerable.Repeat(Matrix4x4.Identity, IMesh.MaxBoneCount).ToArray() : null;
         this.Material = material;
         
         // Create the transform buffer.
@@ -148,8 +147,8 @@ public class Renderable : Disposable {
         this.IsTransformBufferDirty = true;
         
         // Create the bone buffer.
-        if (mesh.HasBones) {
-            this._boneBuffer = new SimpleUniformBuffer<Matrix4x4>(mesh.GraphicsDevice, Mesh.MaxBoneCount, ShaderStages.Vertex);
+        if (mesh.IsSkinned) {
+            this._boneBuffer = new SimpleUniformBuffer<Matrix4x4>(mesh.GraphicsDevice, IMesh.MaxBoneCount, ShaderStages.Vertex);
             this._boneBuffer.DeviceBuffer.Name = "BoneBuffer";
             this.IsBoneBufferDirty = true;
         }
@@ -296,7 +295,7 @@ public class Renderable : Disposable {
             return;
         }
         
-        for (int i = 0; i < Mesh.MaxBoneCount; i++) {
+        for (int i = 0; i < IMesh.MaxBoneCount; i++) {
             this._boneBuffer.SetValue(i, this._boneMatrices[i]);
         }
         

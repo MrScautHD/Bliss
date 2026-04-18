@@ -5,6 +5,8 @@ using Assimp.Configs;
 using Bliss.CSharp.Effects;
 using Bliss.CSharp.Geometry.Animation;
 using Bliss.CSharp.Geometry.Animation.Builders;
+using Bliss.CSharp.Geometry.Meshes;
+using Bliss.CSharp.Geometry.Meshes.Data;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Logging;
@@ -19,7 +21,7 @@ using AMaterial = Assimp.Material;
 using Color = Bliss.CSharp.Colors.Color;
 using TextureType = Assimp.TextureType;
 
-namespace Bliss.CSharp.Geometry;
+namespace Bliss.CSharp.Geometry.Models;
 
 public class Model : Disposable {
     
@@ -70,7 +72,7 @@ public class Model : Disposable {
     /// <summary>
     /// An array of meshes that make up the model.
     /// </summary>
-    public Mesh[] Meshes { get; private set; }
+    public IMesh[] Meshes { get; private set; }
     
     /// <summary>
     /// The hierarchical skeletal structure of the model.
@@ -89,22 +91,23 @@ public class Model : Disposable {
     /// <param name="meshes">An array of <see cref="Mesh"/> objects representing the geometric components of the model.</param>
     /// <param name="skeleton">The optional skeleton used for skeletal animation, or <c>null</c> if not present.</param>
     /// <param name="animations">An array of <see cref="ModelAnimation"/> objects defining the animations for the model.</param>
-    public Model(GraphicsDevice graphicsDevice, Mesh[] meshes, Skeleton? skeleton, ModelAnimation[] animations) {
+    public Model(GraphicsDevice graphicsDevice, IMesh[] meshes, Skeleton? skeleton, ModelAnimation[] animations) {
         this.GraphicsDevice = graphicsDevice;
         this.Meshes = meshes;
         this.Skeleton = skeleton;
         this.Animations = animations;
     }
-
+    
     /// <summary>
     /// Loads a model from the specified file path using the provided graphics device and configuration options.
     /// </summary>
-    /// <param name="graphicsDevice">The graphics device used for rendering and managing model resources.</param>
-    /// <param name="path">The file path to the model to be loaded.</param>
-    /// <param name="loadMaterial">Specifies whether the material should be loaded with the model. Default is true.</param>
-    /// <param name="flipUv">Determines whether the UV coordinates of the model should be flipped. Default is false.</param>
-    /// <returns>Returns a new instance of the <see cref="Model"/> class containing the loaded meshes and animations.</returns>
-    public static Model Load(GraphicsDevice graphicsDevice, string path, bool loadMaterial = true, bool flipUv = false) {
+    /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used for rendering and resource management.</param>
+    /// <param name="path">The file path to the model to load.</param>
+    /// <param name="loadMaterial">A value indicating whether to load associated materials. Defaults to <c>true</c>.</param>
+    /// <param name="flipUv">A value indicating whether to flip the UV coordinates. Defaults to <c>false</c>.</param>
+    /// <param name="isSkinned">A value indicating whether the model is skinned for skeletal animation. Defaults to <c>false</c>.</param>
+    /// <returns>A new instance of the <see cref="Model"/> class loaded from the specified file.</returns>
+    public static Model Load(GraphicsDevice graphicsDevice, string path, bool loadMaterial = true, bool flipUv = false, bool isSkinned = false) {
         using AssimpContext context = new AssimpContext();
         
         foreach (PropertyConfig config in PropertyConfigs) {
@@ -112,7 +115,7 @@ public class Model : Disposable {
         }
         
         Scene scene = context.ImportFile(path, DefaultPostProcessSteps);
-        List<Mesh> meshes = new List<Mesh>();
+        List<IMesh> meshes = new List<IMesh>();
         
         // Cache effects and textures to load them just 1 time per model.
         Dictionary<string, Effect> cachedEffects = new Dictionary<string, Effect>();
@@ -126,10 +129,27 @@ public class Model : Disposable {
             
             if (scene.HasMaterials && loadMaterial) {
                 AMaterial aMaterial = scene.Materials[mesh.MaterialIndex];
-                effect = LoadMaterialEffect(graphicsDevice, cachedEffects, aMaterial) ?? GlobalResource.DefaultModelEffect;
+                Effect? loadedEffect = LoadMaterialEffect(graphicsDevice, cachedEffects, aMaterial);
+
+                if (loadedEffect != null) {
+                    effect = loadedEffect;
+                }
+                else {
+                    if (isSkinned && mesh.HasBones) {
+                        effect = GlobalResource.DefaultSkinnedModelEffect;
+                    }
+                    else {
+                        effect = GlobalResource.DefaultModelEffect;
+                    }
+                }
             }
             else {
-                effect = GlobalResource.DefaultModelEffect;
+                if (isSkinned && mesh.HasBones) {
+                    effect = GlobalResource.DefaultSkinnedModelEffect;
+                }
+                else {
+                    effect = GlobalResource.DefaultModelEffect;
+                }
             }
             
             // Load material maps.
@@ -214,54 +234,54 @@ public class Model : Disposable {
                 });
             }
             
-            // Setup vertices.
-            Vertex3D[] vertices = new Vertex3D[scene.Meshes[i].VertexCount];
+            // Setup vertices data.
+            List<Vector3> positions = new List<Vector3>(mesh.VertexCount);
+            List<Vector2> texCoords = new List<Vector2>(mesh.VertexCount);
+            List<Vector2> texCoords2 = new List<Vector2>(mesh.VertexCount);
+            List<Vector3> normals = new List<Vector3>(mesh.VertexCount);
+            List<Vector4> tangents = new List<Vector4>(mesh.VertexCount);
             
             for (int j = 0; j < mesh.VertexCount; j++) {
                 
-                // Set Position.
-                vertices[j].Position = mesh.Vertices[j];
+                // Add Position.
+                positions.Add(mesh.Vertices[j]);
                 
-                // Set TexCoord.
+                // Add TexCoord.
                 if (mesh.HasTextureCoords(0)) {
                     Vector3 texCoord = mesh.TextureCoordinateChannels[0][j];
                     Vector2 finalTexCoord = new Vector2(texCoord.X, -texCoord.Y);
                     
-                    vertices[j].TexCoords = flipUv ? -finalTexCoord : finalTexCoord;
+                    texCoords.Add(flipUv ? -finalTexCoord : finalTexCoord);
                 }
                 else {
-                    vertices[j].TexCoords = Vector2.Zero;
+                    texCoords.Add(Vector2.Zero);
                 }
                 
-                // Set TexCoord2.
+                // Add TexCoord2.
                 if (mesh.HasTextureCoords(1)) {
                     Vector3 texCoord2 = mesh.TextureCoordinateChannels[1][j];
                     Vector2 finalTexCoord2 = new Vector2(texCoord2.X, -texCoord2.Y);
                     
-                    vertices[j].TexCoords2 = flipUv ? -finalTexCoord2 : finalTexCoord2;
+                    texCoords2.Add(flipUv ? -finalTexCoord2 : finalTexCoord2);
                 }
                 else {
-                    vertices[j].TexCoords2 = Vector2.Zero;
+                    texCoords2.Add(Vector2.Zero);
                 }
                 
-                // Set Normal.
-                vertices[j].Normal = mesh.HasNormals ? mesh.Normals[j] : Vector3.Zero;
+                // Add Normal.
+                normals.Add(mesh.HasNormals ? mesh.Normals[j] : Vector3.Zero);
                 
-                // Set Tangent.
-                float tangentSign = 1.0F;
-                
+                // Add Tangent.
                 if (mesh.HasTangentBasis) {
                     Vector3 normal = mesh.Normals[j];
                     Vector3 tangent = mesh.Tangents[j];
                     Vector3 bitangent = Vector3.Cross(normal, tangent);
-                    
-                    tangentSign = Vector3.Dot(bitangent, mesh.BiTangents[j]) > 0.0F ? 1.0F : -1.0F;
+                    float tangentSign = Vector3.Dot(bitangent, mesh.BiTangents[j]) > 0.0F ? 1.0F : -1.0F;
+                    tangents.Add(new Vector4(mesh.Tangents[j], tangentSign));
                 }
-                
-                vertices[j].Tangent = mesh.HasTangentBasis ? new Vector4(mesh.Tangents[j], tangentSign) : Vector4.Zero;
-                
-                // Set Color.
-                vertices[j].Color = material.GetMapColor(MaterialMapType.Albedo)?.ToRgbaFloatVec4() ?? Vector4.Zero;
+                else {
+                    tangents.Add(Vector4.Zero);
+                }
             }
             
             // Setup indices.
@@ -280,15 +300,46 @@ public class Model : Disposable {
             }
             
             // Setup bones.
-            for (int j = 0; j < mesh.BoneCount; j++) {
-                Bone bone = mesh.Bones[j];
+            if (isSkinned && mesh.HasBones) {
+                SkinnedVertex3D[] vertices = new SkinnedVertex3D[mesh.VertexCount];
                 
-                foreach (VertexWeight vertexWeight in bone.VertexWeights) {
-                    vertices[vertexWeight.VertexID].AddBone((uint) j, vertexWeight.Weight);
+                for (int j = 0; j < mesh.VertexCount; j++) {
+                    vertices[j] = new SkinnedVertex3D() {
+                        Position = positions[j],
+                        TexCoords = texCoords[j],
+                        TexCoords2 = texCoords2[j],
+                        Normal = normals[j],
+                        Tangent = tangents[j],
+                        Color = material.GetMapColor(MaterialMapType.Albedo)?.ToRgbaFloatVec4() ?? Vector4.Zero
+                    };
                 }
+                
+                for (int j = 0; j < mesh.BoneCount; j++) {
+                    Bone bone = mesh.Bones[j];
+                    
+                    foreach (VertexWeight vertexWeight in bone.VertexWeights) {
+                        vertices[vertexWeight.VertexID].AddBone((uint) j, vertexWeight.Weight);
+                    }
+                }
+                
+                meshes.Add(new Mesh<SkinnedVertex3D>(graphicsDevice, material, new SkinnedMeshData(vertices, indices.ToArray())));
             }
-            
-            meshes.Add(new Mesh(graphicsDevice, material, vertices, indices.ToArray()));
+            else {
+                Vertex3D[] vertices = new Vertex3D[mesh.VertexCount];
+                
+                for (int j = 0; j < mesh.VertexCount; j++) {
+                    vertices[j] = new Vertex3D() {
+                        Position = positions[j],
+                        TexCoords = texCoords[j],
+                        TexCoords2 = texCoords2[j],
+                        Normal = normals[j],
+                        Tangent = tangents[j],
+                        Color = material.GetMapColor(MaterialMapType.Albedo)?.ToRgbaFloatVec4() ?? Vector4.Zero
+                    };
+                }
+                
+                meshes.Add(new Mesh<Vertex3D>(graphicsDevice, material, new BasicMeshData(vertices, indices.ToArray())));
+            }
         }
         
         // Apply the final world transform.
@@ -328,26 +379,49 @@ public class Model : Disposable {
     /// <param name="node">The <see cref="Node"/> to be processed, representing a part of the scene hierarchy.</param>
     /// <param name="meshes">A list of <see cref="Mesh"/> objects to be transformed based on the node's transformations.</param>
     /// <param name="transform">The cumulative transformation matrix applied to the current node and its children.</param>
-    private static void ProcessNode(Node node, List<Mesh> meshes, Matrix4x4 transform) {
+    private static void ProcessNode(Node node, List<IMesh> meshes, Matrix4x4 transform) {
         Matrix4x4 nodeTransform = Matrix4x4.Transpose(node.Transform) * transform;
         
         foreach (int meshIndex in node.MeshIndices) {
-            Mesh mesh = meshes[meshIndex];
-            
-            for (int i = 0; i < mesh.Vertices.Length; i++) {
-                
-                // Set Position.
-                mesh.Vertices[i].Position = Vector3.Transform(mesh.Vertices[i].Position, nodeTransform);
-                
-                // Set Normal.
-                Matrix4x4.Invert(Matrix4x4.Transpose(nodeTransform), out Matrix4x4 nodeInverseTransform);
-                mesh.Vertices[i].Normal = Vector3.Normalize(Vector3.TransformNormal(mesh.Vertices[i].Normal, nodeInverseTransform));
-                
-                // Set Tangent.
-                mesh.Vertices[i].Tangent = Vector4.Transform(mesh.Vertices[i].Tangent, nodeTransform);
+            if (meshes[meshIndex] is Mesh<SkinnedVertex3D> skinnedMesh) {
+                if (skinnedMesh.MeshData is SkinnedMeshData meshData) {
+                    for (int i = 0; i < meshData.VertexCount; i++) {
+                        
+                        // Set Position.
+                        meshData.Vertices[i].Position = Vector3.Transform(meshData.Vertices[i].Position, nodeTransform);
+                        
+                        // Set Normal.
+                        Matrix4x4.Invert(Matrix4x4.Transpose(nodeTransform), out Matrix4x4 nodeInverseTransform);
+                        meshData.Vertices[i].Normal = Vector3.Normalize(Vector3.TransformNormal(meshData.Vertices[i].Normal, nodeInverseTransform));
+                        
+                        // Set Tangent.
+                        meshData.Vertices[i].Tangent = Vector4.Transform(meshData.Vertices[i].Tangent, nodeTransform);
+                    }
+
+                    skinnedMesh.UpdateVertexBufferImmediate();
+                }
             }
-            
-            mesh.UpdateVertexBufferImmediate();
+            else if (meshes[meshIndex] is Mesh<Vertex3D> mesh) {
+                if (mesh.MeshData is BasicMeshData meshData) {
+                    for (int i = 0; i < meshData.VertexCount; i++) {
+                        
+                        // Set Position.
+                        meshData.Vertices[i].Position = Vector3.Transform(meshData.Vertices[i].Position, nodeTransform);
+                        
+                        // Set Normal.
+                        Matrix4x4.Invert(Matrix4x4.Transpose(nodeTransform), out Matrix4x4 nodeInverseTransform);
+                        meshData.Vertices[i].Normal = Vector3.Normalize(Vector3.TransformNormal(meshData.Vertices[i].Normal, nodeInverseTransform));
+                        
+                        // Set Tangent.
+                        meshData.Vertices[i].Tangent = Vector4.Transform(meshData.Vertices[i].Tangent, nodeTransform);
+                    }
+                    
+                    mesh.UpdateVertexBufferImmediate();
+                }
+            }
+            else {
+                throw new NotSupportedException($"Mesh type '{meshes[meshIndex].GetType().Name}' is not supported.");
+            }
         }
         
         foreach (var childNode in node.Children) {
@@ -373,7 +447,7 @@ public class Model : Disposable {
                 return cachedEffect;
             }
             
-            Effect effect = new Effect(graphicsDevice, Vertex3D.VertexLayout, Encoding.UTF8.GetBytes(shaderProperties.VertexShader), Encoding.UTF8.GetBytes(shaderProperties.FragmentShader), new CrossCompileOptions());
+            Effect effect = new Effect(graphicsDevice, Encoding.UTF8.GetBytes(shaderProperties.VertexShader), Encoding.UTF8.GetBytes(shaderProperties.FragmentShader), new CrossCompileOptions());
             cachedEffects[effectKey] = effect;
             return effect;
         }
@@ -434,7 +508,7 @@ public class Model : Disposable {
         Vector3 min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
         Vector3 max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
         
-        foreach (Mesh mesh in this.Meshes) {
+        foreach (IMesh mesh in this.Meshes) {
             BoundingBox meshBox = mesh.GenBoundingBox();
             
             min = Vector3.Min(min, meshBox.Min);
@@ -448,7 +522,7 @@ public class Model : Disposable {
         if (disposing) {
             
             // Dispose meshes.
-            foreach (Mesh mesh in this.Meshes) {
+            foreach (IMesh mesh in this.Meshes) {
                 mesh.Dispose();
             }
             

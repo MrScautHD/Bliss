@@ -4,7 +4,6 @@ using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
-using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
 using Veldrid;
 
@@ -140,7 +139,7 @@ public class BasicForwardRenderer : Disposable, IRenderer {
         this._pipelineDescription.RasterizerState = renderable.Material.RasterizerState;
         this._pipelineDescription.BufferLayouts = renderable.Material.Effect.GetBufferLayouts();
         this._pipelineDescription.TextureLayouts = renderable.Material.Effect.GetTextureLayouts();
-        this._pipelineDescription.ShaderSet = renderable.Material.Effect.ShaderSet;
+        this._pipelineDescription.ShaderSet = new ShaderSetDescription(renderable.Mesh.VertexFormat.Layouts, renderable.Mesh.Material.Effect.Shaders);
         
         // Set pipeline.
         commandList.SetPipeline(renderable.Material.Effect.GetPipeline(this._pipelineDescription).Pipeline);
@@ -153,24 +152,10 @@ public class BasicForwardRenderer : Disposable, IRenderer {
         
         // Set bone buffer.
         if (renderable.HasBones) {
-            bool hasBoneBuffer = false;
+            SimpleUniformBuffer<Matrix4x4>? boneBuffer = renderable.GetBoneBuffer();
             
-            foreach (SimpleBufferLayout bufferLayout in renderable.Material.Effect.GetBufferLayouts()) {
-                if (bufferLayout.Name == "BoneBuffer") {
-                    hasBoneBuffer = true;
-                    break;
-                }
-            }
-            
-            if (hasBoneBuffer) {
-                SimpleUniformBuffer<Matrix4x4>? boneBuffer = renderable.GetBoneBuffer();
-                
-                if (boneBuffer != null) {
-                    commandList.SetGraphicsResourceSet(
-                        renderable.Material.Effect.GetBufferLayoutSlot("BoneBuffer"),
-                        boneBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("BoneBuffer"))
-                    );
-                }
+            if (boneBuffer != null) {
+                commandList.SetGraphicsResourceSet(renderable.Material.Effect.GetBufferLayoutSlot("BoneBuffer"), boneBuffer.GetResourceSet(renderable.Material.Effect.GetBufferLayout("BoneBuffer")));
             }
         }
         

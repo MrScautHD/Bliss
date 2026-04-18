@@ -1,5 +1,7 @@
 using System.Numerics;
 using System.Runtime.InteropServices;
+using Bliss.CSharp.Geometry.Meshes.Data;
+using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Logging;
@@ -8,94 +10,72 @@ using Veldrid;
 using Color = Bliss.CSharp.Colors.Color;
 using Material = Bliss.CSharp.Materials.Material;
 
-namespace Bliss.CSharp.Geometry;
+namespace Bliss.CSharp.Geometry.Meshes;
 
-public class Mesh : Disposable {
+public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
     
     /// <summary>
-    /// The maximum number of bones supported for skeletal animations in a mesh.
-    /// </summary>
-    public const int MaxBoneCount = 72;
-    
-    /// <summary>
-    /// Represents the graphics device used for rendering operations.
-    /// This property provides access to the underlying GraphicsDevice instance responsible for managing GPU resources and executing rendering commands.
+    /// Gets the graphics device used by this mesh for GPU resource creation and updates.
     /// </summary>
     public GraphicsDevice GraphicsDevice { get; private set; }
-
-    /// <summary>
-    /// The material used for rendering the mesh.
-    /// </summary>
-    public Material Material;
     
     /// <summary>
-    /// An array of Vertex3D structures that define the geometric points of a mesh.
-    /// Each vertex contains attributes such as position, texture coordinates, normal, and optional color.
-    /// Vertices are used to construct the shape and appearance of a 3D model.
+    /// Gets or sets the material used to render this mesh.
     /// </summary>
-    public Vertex3D[] Vertices { get; private set; }
+    public Material Material { get; set; }
     
     /// <summary>
-    /// An array of indices that define the order in which vertices are drawn.
-    /// Indices are used in conjunction with the vertex array to form geometric shapes
-    /// such as triangles in a mesh. This allows for efficient reuse of vertex data.
+    /// Gets the mesh data used to populate the vertex and index buffers.
     /// </summary>
-    public uint[] Indices { get; private set; }
-
-    /// <summary>
-    /// Indicates whether the mesh contains bone information.
-    /// </summary>
-    public bool HasBones { get; private set; }
+    public IMeshData<T> MeshData { get; private set; }
     
     /// <summary>
-    /// The total count of vertices present in the mesh.
-    /// This value determines the number of vertices available for rendering within the mesh.
+    /// Gets the vertex format describing the layout of the mesh vertices.
     /// </summary>
-    public uint VertexCount { get; private set; }
+    public VertexFormat VertexFormat => this.MeshData.VertexFormat;
     
     /// <summary>
-    /// The number of indices in the mesh used for rendering.
+    /// Gets the number of vertices contained in this mesh.
     /// </summary>
-    public uint IndexCount { get; private set; }
+    public uint VertexCount => this.MeshData.VertexCount;
     
     /// <summary>
-    /// A buffer that stores vertex data used for rendering in the graphics pipeline.
+    /// Gets the number of indices contained in this mesh.
+    /// </summary>
+    public uint IndexCount => this.MeshData.IndexCount;
+    
+    /// <summary>
+    /// Gets a value indicating whether this mesh uses skinning data.
+    /// </summary>
+    public bool IsSkinned => this.MeshData.VertexFormat.IsSkinned;
+    
+    /// <summary>
+    /// Gets the GPU vertex buffer containing this mesh's vertex data.
     /// </summary>
     public DeviceBuffer VertexBuffer { get; private set; }
     
     /// <summary>
-    /// A buffer that stores index data used for indexed drawing in the graphics pipeline.
+    /// Gets the GPU index buffer containing this mesh's index data, if one exists.
     /// </summary>
     public DeviceBuffer? IndexBuffer { get; private set; }
     
     /// <summary>
-    /// Initializes a new instance of the <see cref="Mesh"/> class with the specified properties.
+    /// Initializes a new instance of the <see cref="Mesh{T}"/> class with the specified graphics device, material, and mesh data.
     /// </summary>
-    /// <param name="graphicsDevice">The graphics device used to create buffers.</param>
-    /// <param name="material">The material applied to the mesh.</param>
-    /// <param name="vertices">The vertex data for the mesh.</param>
-    /// <param name="indices">The index data defining triangle order (optional).</param>
-    public Mesh(GraphicsDevice graphicsDevice, Material material, Vertex3D[] vertices, uint[]? indices = null) {
+    /// <param name="graphicsDevice">The graphics device used to create and update GPU buffers.</param>
+    /// <param name="material">The material used to render the mesh.</param>
+    /// <param name="meshData">The mesh data containing vertices, indices, and vertex format information.</param>
+    public Mesh(GraphicsDevice graphicsDevice, Material material, IMeshData<T> meshData) {
         this.GraphicsDevice = graphicsDevice;
         this.Material = material;
-        this.Vertices = vertices;
-        this.Indices = indices ?? [];
-        this.HasBones = vertices.Any(v => v.BoneWeights != Vector4.Zero);
-        
-        this.VertexCount = (uint) this.Vertices.Length;
-        this.IndexCount = (uint) this.Indices.Length;
-        
-        uint vertexBufferSize = this.VertexCount * (uint) Marshal.SizeOf<Vertex3D>();
-        uint indexBufferSize = this.IndexCount * sizeof(uint);
+        this.MeshData = meshData;
         
         // Create vertex buffer.
-        this.VertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
-        graphicsDevice.UpdateBuffer(this.VertexBuffer, 0, this.Vertices);
+        this.VertexBuffer = this.MeshData.CreateVertexBuffer(graphicsDevice);
         
         // Create index buffer (if their indices).
-        if (this.IndexCount > 0) {
-            this.IndexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
-            graphicsDevice.UpdateBuffer(this.IndexBuffer, 0, this.Indices);
+        if (this.MeshData.IndexCount > 0) {
+            this.IndexBuffer = this.MeshData.CreateIndexBuffer(graphicsDevice);
         }
     }
     
@@ -106,7 +86,7 @@ public class Mesh : Disposable {
     /// <param name="width">The width of the quad.</param>
     /// <param name="height">The height of the quad.</param>
     /// <returns>A new mesh representing a quadrilateral.</returns>
-    public static Mesh GenQuad(GraphicsDevice graphicsDevice, float width, float height) {
+    public static Mesh<Vertex3D> GenQuad(GraphicsDevice graphicsDevice, float width, float height) {
         float halfWidth = width / 2.0F;
         float halfHeight = height / 2.0F;
         
@@ -145,7 +125,7 @@ public class Mesh : Disposable {
             Color = Color.White
         });
         
-        return new Mesh(graphicsDevice, material, vertices, indices);
+        return new Mesh<Vertex3D>(graphicsDevice, material, new BasicMeshData(vertices, indices));
     }
     
     /// <summary>
@@ -154,8 +134,8 @@ public class Mesh : Disposable {
     /// <param name="graphicsDevice">The graphics device used to manage GPU resources for the generated mesh.</param>
     /// <param name="sides">The number of sides of the polygon. Must be at least 3.</param>
     /// <param name="radius">The radius of the polygon.</param>
-    /// <returns>A new instance of the <see cref="Mesh"/> class representing the 3D polygon.</returns>
-    public static Mesh GenPoly(GraphicsDevice graphicsDevice, int sides, float radius) {
+    /// <returns>A new instance of the <see cref="Mesh{Vertex3D}"/> class representing the 3D polygon.</returns>
+    public static Mesh<Vertex3D> GenPoly(GraphicsDevice graphicsDevice, int sides, float radius) {
         if (sides < 3) {
             sides = 3;
             Logger.Warn("The number of sides must be at least 3. The value is now set to 3.");
@@ -198,18 +178,18 @@ public class Mesh : Disposable {
             Color = Color.White
         });
         
-        return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
+        return new Mesh<Vertex3D>(graphicsDevice, material, new BasicMeshData(vertices.ToArray(), indices.ToArray()));
     }
 
     /// <summary>
-    /// Generates a cuboid mesh with the specified dimensions and initializes it with default material and texture settings.
+    /// Generates a cuboid mesh with the specified dimensions and initializes it with default materials and texture settings.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device that manages GPU resources for the mesh.</param>
     /// <param name="width">The width of the cuboid.</param>
     /// <param name="height">The height of the cuboid.</param>
     /// <param name="length">The length of the cuboid.</param>
-    /// <returns>A new instance of the <see cref="Mesh"/> class representing the cuboid.</returns>
-    public static Mesh GenCube(GraphicsDevice graphicsDevice, float width, float height, float length) {
+    /// <returns>A new instance of the <see cref="Mesh{Vertex3D}"/> class representing the cuboid.</returns>
+    public static Mesh<Vertex3D> GenCube(GraphicsDevice graphicsDevice, float width, float height, float length) {
         Vector3[] normals = [
             new Vector3(0.0F, 0.0F, -1.0F), new Vector3(0.0F, 0.0F, 1.0F),
             new Vector3(-1.0F, 0.0F, 0.0F), new Vector3(1.0F, 0.0F, 0.0F),
@@ -282,18 +262,18 @@ public class Mesh : Disposable {
             Color = Color.White
         });
         
-        return new Mesh(graphicsDevice, material, vertices, indices);
+        return new Mesh<Vertex3D>(graphicsDevice, material, new BasicMeshData(vertices, indices));
     }
 
     /// <summary>
-    /// Generates a sphere mesh with the specified radius, rings, and slices.
+    /// Generates a sphere mesh with the specified radius, number of rings, and number of slices.
     /// </summary>
-    /// <param name="graphicsDevice">The graphics device used to create and manage the GPU resources needed for the mesh.</param>
+    /// <param name="graphicsDevice">The graphics device used to create and manage GPU resources for the mesh.</param>
     /// <param name="radius">The radius of the sphere.</param>
-    /// <param name="rings">The number of horizontal segments dividing the sphere.</param>
-    /// <param name="slices">The number of vertical segments dividing the sphere.</param>
-    /// <returns>A new instance of the <see cref="Mesh"/> class representing the generated sphere.</returns>
-    public static Mesh GenSphere(GraphicsDevice graphicsDevice, float radius, int rings, int slices) {
+    /// <param name="rings">The number of horizontal segments dividing the sphere. Must be greater than or equal to 3.</param>
+    /// <param name="slices">The number of vertical segments dividing the sphere. Must be greater than or equal to 3.</param>
+    /// <returns>A new sphere mesh represented as an instance of the <see cref="Mesh{Vertex3D}"/> class.</returns>
+    public static Mesh<Vertex3D> GenSphere(GraphicsDevice graphicsDevice, float radius, int rings, int slices) {
         if (rings < 3) {
             rings = 3;
             Logger.Warn("The number of rings must be at least 3. The value is now set to 3.");
@@ -364,18 +344,18 @@ public class Mesh : Disposable {
             Color = Color.White
         });
 
-        return new Mesh(graphicsDevice, material, vertices, indices);
+        return new Mesh<Vertex3D>(graphicsDevice, material, new BasicMeshData(vertices, indices));
     }
 
     /// <summary>
-    /// Generates a 3D hemisphere mesh with a specified radius, number of rings, and slices.
+    /// Generates a 3D hemisphere mesh with the specified radius, number of rings, and slices.
     /// </summary>
-    /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> instance used to allocate GPU resources for the mesh.</param>
+    /// <param name="graphicsDevice">The graphics device used for allocating GPU resources needed for the mesh.</param>
     /// <param name="radius">The radius of the hemisphere.</param>
-    /// <param name="rings">The number of subdivisions along the vertical (Y-axis) direction of the hemisphere.</param>
-    /// <param name="slices">The number of subdivisions around the horizontal (XZ-plane) direction of the hemisphere.</param>
-    /// <returns>A new instance of the <see cref="Mesh"/> class representing the generated hemisphere model.</returns>
-    public static Mesh GenHemisphere(GraphicsDevice graphicsDevice, float radius, int rings, int slices) {
+    /// <param name="rings">The number of vertical subdivisions along the Y-axis direction of the hemisphere.</param>
+    /// <param name="slices">The number of horizontal subdivisions around the XZ-plane direction of the hemisphere.</param>
+    /// <returns>A new mesh representing the generated hemisphere.</returns>
+    public static Mesh<Vertex3D> GenHemisphere(GraphicsDevice graphicsDevice, float radius, int rings, int slices) {
         if (rings < 3) {
             rings = 3;
             Logger.Warn("The number of rings must be at least 3. The value is now set to 3.");
@@ -468,18 +448,18 @@ public class Mesh : Disposable {
             Color = Color.White
         });
     
-        return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
+        return new Mesh<Vertex3D>(graphicsDevice, material, new BasicMeshData(vertices.ToArray(), indices.ToArray()));
     }
 
     /// <summary>
-    /// Generates a cylindrical mesh with specified dimensions and resolution.
+    /// Generates a cylindrical mesh with the specified dimensions and resolution.
     /// </summary>
-    /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> responsible for managing GPU resources.</param>
+    /// <param name="graphicsDevice">The graphics device responsible for managing GPU resources.</param>
     /// <param name="radius">The radius of the cylinder's base and top.</param>
     /// <param name="height">The height of the cylinder.</param>
     /// <param name="slices">The number of slices (or segments) used to approximate the cylinder. Must be at least 3.</param>
-    /// <returns>A new instance of <see cref="Mesh"/> representing the generated cylindrical geometry.</returns>
-    public static Mesh GenCylinder(GraphicsDevice graphicsDevice, float radius, float height, int slices) {
+    /// <returns>A new mesh representing the generated cylindrical geometry.</returns>
+    public static Mesh<Vertex3D> GenCylinder(GraphicsDevice graphicsDevice, float radius, float height, int slices) {
         if (slices < 3) {
             slices = 3;
             Logger.Warn("The number of slices must be at least 3. The value is now set to 3.");
@@ -567,7 +547,7 @@ public class Mesh : Disposable {
             Color = Color.White
         });
     
-        return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
+        return new Mesh<Vertex3D>(graphicsDevice, material, new BasicMeshData(vertices.ToArray(), indices.ToArray()));
     }
 
     /// <summary>
@@ -575,10 +555,10 @@ public class Mesh : Disposable {
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used to create and manage the mesh's GPU resources.</param>
     /// <param name="radius">The radius of the capsule.</param>
-    /// <param name="height">The cylindrical midsection's height of the capsule.</param>
+    /// <param name="height">The height of the cylindrical midsection of the capsule.</param>
     /// <param name="slices">The number of slices used to approximate the capsule. Must be at least 3.</param>
-    /// <returns>A <see cref="Mesh"/> representing a capsule with the given parameters.</returns>
-    public static Mesh GenCapsule(GraphicsDevice graphicsDevice, float radius, float height, int slices) {
+    /// <returns>A mesh representing a capsule with the specified dimensions and configuration.</returns>
+    public static Mesh<Vertex3D> GenCapsule(GraphicsDevice graphicsDevice, float radius, float height, int slices) {
         if (slices < 3) {
             slices = 3;
             Logger.Warn("The number of slices must be at least 3. The value is now set to 3.");
@@ -717,18 +697,18 @@ public class Mesh : Disposable {
             Color = Color.White
         });
         
-        return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
+        return new Mesh<Vertex3D>(graphicsDevice, material, new BasicMeshData(vertices.ToArray(), indices.ToArray()));
     }
-
+    
     /// <summary>
-    /// Generates a 3D cone mesh with a specified radius, height, and number of slices.
+    /// Generates a 3D cone mesh with the specified radius, height, and number of slices.
     /// </summary>
-    /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used to manage GPU resources for the mesh.</param>
+    /// <param name="graphicsDevice">The graphics device used to manage GPU resources for the mesh.</param>
     /// <param name="radius">The radius of the cone's base.</param>
     /// <param name="height">The height of the cone from base to tip.</param>
     /// <param name="slices">The number of slices dividing the circular base. Must be at least 3.</param>
-    /// <returns>A new instance of the <see cref="Mesh"/> class representing the generated cone.</returns>
-    public static Mesh GenCone(GraphicsDevice graphicsDevice, float radius, float height, int slices) {
+    /// <returns>A new mesh representing the generated 3D cone.</returns>
+    public static Mesh<Vertex3D> GenCone(GraphicsDevice graphicsDevice, float radius, float height, int slices) {
         if (slices < 3) {
             slices = 3;
             Logger.Warn("The number of slices must be at least 3. The value is now set to 3.");
@@ -795,19 +775,19 @@ public class Mesh : Disposable {
             Color = Color.White
         });
 
-        return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
+        return new Mesh<Vertex3D>(graphicsDevice, material, new BasicMeshData(vertices.ToArray(), indices.ToArray()));
     }
-
+    
     /// <summary>
-    /// Generates a torus-shaped mesh with specified dimensions and detail.
+    /// Generates a torus-shaped mesh with specified dimensions and level of detail.
     /// </summary>
-    /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used for managing GPU resources.</param>
-    /// <param name="radius">The radius of the torus from the center to the middle of the tube.</param>
-    /// <param name="size">The thickness of the torus tube.</param>
-    /// <param name="radSeg">The number of radial segments in the torus.</param>
-    /// <param name="sides">The number of segments around the tube's circular cross-section.</param>
-    /// <returns>A new instance of <see cref="Mesh"/> representing the generated torus.</returns>
-    public static Mesh GenTorus(GraphicsDevice graphicsDevice, float radius, float size, int radSeg, int sides) {
+    /// <param name="graphicsDevice">The graphics device used for managing GPU resources while creating the mesh.</param>
+    /// <param name="radius">The distance from the center of the torus to the center of its circular tube.</param>
+    /// <param name="size">The thickness of the torus tube's circular cross-section.</param>
+    /// <param name="radSeg">The number of radial segments dividing the torus along its circumference.</param>
+    /// <param name="sides">The number of segments dividing the torus tube's circular cross-section.</param>
+    /// <returns>A new mesh object representing the generated torus.</returns>
+    public static Mesh<Vertex3D> GenTorus(GraphicsDevice graphicsDevice, float radius, float size, int radSeg, int sides) {
         if (radSeg < 3) {
             radSeg = 3;
             Logger.Warn("The number of radial segments must be at least 3. The value is now set to 3.");
@@ -870,45 +850,45 @@ public class Mesh : Disposable {
             Color = Color.White
         });
 
-        return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
+        return new Mesh<Vertex3D>(graphicsDevice, material, new BasicMeshData(vertices.ToArray(), indices.ToArray()));
     }
 
     /// <summary>
     /// Generates a torus knot mesh with the specified parameters.
     /// </summary>
-    /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used to manage GPU resources for the mesh.</param>
+    /// <param name="graphicsDevice">The graphics device used to manage GPU resources for the mesh.</param>
     /// <param name="radius">The radius of the torus knot.</param>
     /// <param name="tubeRadius">The thickness of the tube forming the torus knot.</param>
     /// <param name="radSeg">The number of radial segments for the torus knot. The minimum value is 3.</param>
     /// <param name="sides">The number of sides forming the cross-section of the tube. The minimum value is 3.</param>
-    /// <returns>A <see cref="Mesh"/> representing the torus knot with the specified parameters.</returns>
-    public static Mesh GenKnot(GraphicsDevice graphicsDevice, float radius, float tubeRadius, int radSeg, int sides) {
+    /// <returns>A mesh representing the torus knot with the specified parameters.</returns>
+    public static Mesh<Vertex3D> GenKnot(GraphicsDevice graphicsDevice, float radius, float tubeRadius, int radSeg, int sides) {
         if (radSeg < 3) {
             radSeg = 3;
             Logger.Warn("The number of radial segments must be at least 3. The value is now set to 3.");
         }
-    
+        
         if (sides < 3) {
             sides = 3;
             Logger.Warn("The number of sides must be at least 3. The value is now set to 3.");
         }
-    
+        
         List<Vertex3D> vertices = new List<Vertex3D>();
         List<uint> indices = new List<uint>();
-    
+        
         float step = MathF.Tau / radSeg;
         float sideStep = MathF.Tau / sides;
-    
+        
         // Generate the vertices.
         for (int rad = 0; rad <= radSeg; rad++) {
             float t = rad * step;
-    
+            
             float x = MathF.Sin(t) + 2.0F * MathF.Sin(2.0F * t);
             float y = MathF.Cos(t) - 2.0F * MathF.Cos(2.0F * t);
             float z = -MathF.Sin(3.0F * t);
-    
+            
             Vector3 center = new Vector3(x, y, z) * (radius / 6.0F);
-    
+            
             Vector3 tangent = Vector3.Normalize(new Vector3(
                 MathF.Cos(t) + 4.0F * MathF.Cos(2.0F * t),
                 -MathF.Sin(t) + 4.0F * MathF.Sin(2.0F * t),
@@ -922,13 +902,13 @@ public class Mesh : Disposable {
                 float sideAngle = side * sideStep;
                 float cosAngle = MathF.Cos(sideAngle);
                 float sinAngle = MathF.Sin(sideAngle);
-    
+                
                 Vector3 offset = normal * cosAngle * (tubeRadius / 6.0F) + binormal * sinAngle * (tubeRadius / 6.0F);
                 Vector3 position = center + offset;
-    
+                
                 Vector3 vertexNormal = Vector3.Normalize(offset);
                 Vector2 texCoords = new Vector2((float) rad / radSeg, (float) side / sides);
-    
+                
                 vertices.Add(new Vertex3D {
                     Position = position,
                     Normal = vertexNormal,
@@ -960,17 +940,17 @@ public class Mesh : Disposable {
             Color = Color.White
         });
         
-        return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
+        return new Mesh<Vertex3D>(graphicsDevice, material, new BasicMeshData(vertices.ToArray(), indices.ToArray()));
     }
 
     /// <summary>
-    /// Generates a heightmap-based 3D mesh from the given heightmap image and dimensions.
+    /// Generates a heightmap-based 3D mesh from the specified heightmap image and dimensions.
     /// </summary>
-    /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used for managing GPU resources and rendering the generated mesh.</param>
-    /// <param name="heightmap">The heightmap image used to determine the height of each vertex in the mesh.</param>
-    /// <param name="size">The 3D size of the heightmap mesh in world units, where X and Z represent the width and depth, and Y represents the height scale.</param>
-    /// <returns>A new <see cref="Mesh"/> instance representing the generated heightmap mesh based on the input parameters.</returns>
-    public static Mesh GenHeightmap(GraphicsDevice graphicsDevice, Image heightmap, Vector3 size) {
+    /// <param name="graphicsDevice">The graphics device used to manage GPU resources and render the resulting mesh.</param>
+    /// <param name="heightmap">The heightmap image defining the height for each vertex in the mesh.</param>
+    /// <param name="size">The size of the resulting mesh in world units, where X and Z represent the width and depth, and Y indicates the height scale.</param>
+    /// <returns>A new mesh constructed from the given heightmap and dimensions.</returns>
+    public static Mesh<Vertex3D> GenHeightmap(GraphicsDevice graphicsDevice, Image heightmap, Vector3 size) {
         float xStep = size.X / (heightmap.Width - 1.0F);
         float zStep = size.Z / (heightmap.Height - 1.0F);
         float heightScale = size.Y / 255.0F;
@@ -1016,183 +996,118 @@ public class Mesh : Disposable {
         }
         
         Material material = new Material(GlobalResource.DefaultModelEffect);
-
+        
         material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
-
-        return new Mesh(graphicsDevice, material, vertices.ToArray(), indices.ToArray());
+        
+        return new Mesh<Vertex3D>(graphicsDevice, material, new BasicMeshData(vertices.ToArray(), indices.ToArray()));
     }
     
     /// <summary>
-    /// Calculates the bounding box for the current mesh based on its vertices.
+    /// Generates a bounding box that encloses the mesh geometry.
     /// </summary>
-    /// <returns>A BoundingBox object that encompasses all vertices of the mesh.</returns>
+    /// <returns>A bounding box covering the mesh's vertices.</returns>
     public BoundingBox GenBoundingBox() {
-        Vector3 min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
-        Vector3 max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
-        
-        foreach (Vertex3D vertex in this.Vertices) {
-            min = Vector3.Min(min, vertex.Position);
-            max = Vector3.Max(max, vertex.Position);
-        }
-        
-        return new BoundingBox(min, max);
+        return this.MeshData.GenBoundingBox();
     }
     
     /// <summary>
-    /// Generates tangent vectors for the mesh's vertices based on the provided geometric and UV coordinate data.
+    /// Generates tangent vectors for the mesh vertices.
     /// </summary>
     public void GenTangents() {
-        if (this.Vertices.Length < 3 || this.Indices.Length < 3) {
-            return;
-        }
-
-        Vector3[] tan1 = new Vector3[this.Vertices.Length];
-        Vector3[] tan2 = new Vector3[this.Vertices.Length];
-
-        for (int i = 0; i < this.Indices.Length; i += 3) {
-            int i1 = (int) this.Indices[i];
-            int i2 = (int) this.Indices[i + 1];
-            int i3 = (int) this.Indices[i + 2];
-
-            Vertex3D v1 = this.Vertices[i1];
-            Vertex3D v2 = this.Vertices[i2];
-            Vertex3D v3 = this.Vertices[i3];
-
-            Vector3 p1 = v1.Position;
-            Vector3 p2 = v2.Position;
-            Vector3 p3 = v3.Position;
-
-            Vector3 w1 = new Vector3(v1.TexCoords.X, v1.TexCoords.Y, 1.0F);
-            Vector3 w2 = new Vector3(v2.TexCoords.X, v2.TexCoords.Y, 1.0F);
-            
-            Vector3 q1 = p2 - p1;
-            Vector3 q2 = p3 - p1;
-
-            Vector3 sdir = new Vector3(
-                w2.Y * q1.X - w1.Y * q2.X,
-                w2.Y * q1.Y - w1.Y * q2.Y,
-                w2.Y * q1.Z - w1.Y * q2.Z
-            );
-            
-            Vector3 tdir = new Vector3(
-                w1.X * q2.X - w2.X * q1.X,
-                w1.X * q2.Y - w2.X * q1.Y,
-                w1.X * q2.Z - w2.X * q1.Z
-            );
-
-            tan1[i1] += sdir;
-            tan1[i2] += sdir;
-            tan1[i3] += sdir;
-
-            tan2[i1] += tdir;
-            tan2[i2] += tdir;
-            tan2[i3] += tdir;
-        }
-
-        for (int i = 0; i < this.Vertices.Length; i++) {
-            Vertex3D vertex = this.Vertices[i];
-            Vector3 n = vertex.Normal;
-            Vector3 t = tan1[i];
-            Vector3 b = tan2[i];
-
-            float sign = Vector3.Dot(Vector3.Cross(n, t), b) > 0.0F ? 1.0F : -1.0F;
-            
-            Vector4 tangent = new Vector4(Vector3.Normalize(t - n * Vector3.Dot(n, t)), sign);
-            this.Vertices[i].Tangent = tangent;
-        }
+        this.MeshData.GenTangents();
     }
-
+    
     /// <summary>
-    /// Sets the value of a vertex at a specified index.
+    /// Updates the value of a vertex in the mesh data.
     /// </summary>
-    /// <param name="index">The index of the vertex to set.</param>
-    /// <param name="value">The new value to assign to the vertex.</param>
-    public void SetVertexValue(int index, Vertex3D value) {
-        this.Vertices[index] = value;
-    }
-
-    /// <summary>
-    /// Sets the vertex value at the specified index and updates the vertex buffer immediately.
-    /// </summary>
-    /// <param name="index">The index at which the vertex value will be set.</param>
-    /// <param name="value">The new vertex value to set at the specified index.</param>
-    public void SetVertexValueImmediate(int index, Vertex3D value) {
-        this.Vertices[index] = value;
-        this.GraphicsDevice.UpdateBuffer(this.VertexBuffer, (uint) (index * Marshal.SizeOf<Vertex3D>()), this.Vertices[index]);
-    }
-
-    /// <summary>
-    /// Updates the vertex buffer with a new vertex value at the specified index in a deferred manner, using the provided command list.
-    /// </summary>
-    /// <param name="commandList">The <see cref="CommandList"/> used to issue the update commands.</param>
     /// <param name="index">The index of the vertex to update.</param>
-    /// <param name="value">The new <see cref="Vertex3D"/> value to set at the specified index.</param>
-    public void SetVertexValueDeferred(CommandList commandList, int index, Vertex3D value) {
-        this.Vertices[index] = value;
-        commandList.UpdateBuffer(this.VertexBuffer, (uint) (index * Marshal.SizeOf<Vertex3D>()), this.Vertices[index]);
+    /// <param name="value">The new vertex value.</param>
+    public void SetVertexValue(int index, T value) {
+        this.MeshData.Vertices[index] = value;
     }
-
+    
     /// <summary>
-    /// Updates the vertex buffer with the current vertex data immediately on the GPU.
+    /// Updates the value of a vertex in the mesh data and uploads the change to the GPU immediately.
+    /// </summary>
+    /// <param name="index">The index of the vertex to update.</param>
+    /// <param name="value">The new vertex value.</param>
+    public void SetVertexValueImmediate(int index, T value) {
+        this.MeshData.Vertices[index] = value;
+        this.GraphicsDevice.UpdateBuffer(this.VertexBuffer, (uint) (index * Marshal.SizeOf<T>()), this.MeshData.Vertices[index]);
+    }
+    
+    /// <summary>
+    /// Updates the value of a vertex in the mesh data and schedules the change on the provided command list.
+    /// </summary>
+    /// <param name="commandList">The command list used to update the GPU buffer.</param>
+    /// <param name="index">The index of the vertex to update.</param>
+    /// <param name="value">The new vertex value.</param>
+    public void SetVertexValueDeferred(CommandList commandList, int index, T value) {
+        this.MeshData.Vertices[index] = value;
+        commandList.UpdateBuffer(this.VertexBuffer, (uint) (index * Marshal.SizeOf<T>()), this.MeshData.Vertices[index]);
+    }
+    
+    /// <summary>
+    /// Uploads the entire vertex array to the GPU immediately.
     /// </summary>
     public void UpdateVertexBufferImmediate() {
-        this.GraphicsDevice.UpdateBuffer(this.VertexBuffer, 0, this.Vertices);
+        this.GraphicsDevice.UpdateBuffer(this.VertexBuffer, 0, this.MeshData.Vertices);
     }
-
+    
     /// <summary>
-    /// Updates the vertex buffer with the current vertex data using the specified command list.
+    /// Uploads the entire vertex array to the GPU using the provided command list.
     /// </summary>
-    /// <param name="commandList">The command list used to update the vertex buffer.</param>
+    /// <param name="commandList">The command list used to update the GPU buffer.</param>
     public void UpdateVertexBuffer(CommandList commandList) {
-        commandList.UpdateBuffer(this.VertexBuffer, 0, this.Vertices);
+        commandList.UpdateBuffer(this.VertexBuffer, 0, this.MeshData.Vertices);
     }
-
+    
     /// <summary>
-    /// Sets the index value in the mesh's index buffer at the specified position.
+    /// Updates the value of an index in the mesh data.
     /// </summary>
-    /// <param name="index">The position in the index buffer to set the value.</param>
-    /// <param name="value">The value to assign to the specified index position.</param>
+    /// <param name="index">The index of the index entry to update.</param>
+    /// <param name="value">The new index value.</param>
     public void SetIndexValue(int index, uint value) {
-        this.Indices[index] = value;
+        this.MeshData.Indices[index] = value;
     }
-
+    
     /// <summary>
-    /// Sets the value of an index in the index buffer and updates the buffer immediately.
+    /// Updates the value of an index in the mesh data and uploads the change to the GPU immediately.
     /// </summary>
-    /// <param name="index">The position in the index buffer to be updated.</param>
-    /// <param name="value">The new index value to be set at the specified position.</param>
+    /// <param name="index">The index of the index entry to update.</param>
+    /// <param name="value">The new index value.</param>
     public void SetIndexValueImmediate(int index, uint value) {
-        this.Indices[index] = value;
-        this.GraphicsDevice.UpdateBuffer(this.IndexBuffer, (uint) index * sizeof(uint), this.Indices[index]);
+        this.MeshData.Indices[index] = value;
+        this.GraphicsDevice.UpdateBuffer(this.IndexBuffer, (uint) index * sizeof(uint), this.MeshData.Indices[index]);
     }
-
+    
     /// <summary>
-    /// Updates the value of an index in the deferred rendering pipeline and applies the changes to the index buffer.
+    /// Updates the value of an index in the mesh data and schedules the change on the provided command list.
     /// </summary>
-    /// <param name="commandList">The command list used for recording GPU commands.</param>
-    /// <param name="index">The index of the element to be updated.</param>
-    /// <param name="value">The new value to assign to the specified index.</param>
+    /// <param name="commandList">The command list used to update the GPU buffer.</param>
+    /// <param name="index">The index of the index entry to update.</param>
+    /// <param name="value">The new index value.</param>
     public void SetIndexValueDeferred(CommandList commandList, int index, uint value) {
-        this.Indices[index] = value;
-        commandList.UpdateBuffer(this.IndexBuffer, (uint) index * sizeof(uint), this.Indices[index]);
+        this.MeshData.Indices[index] = value;
+        commandList.UpdateBuffer(this.IndexBuffer, (uint) index * sizeof(uint), this.MeshData.Indices[index]);
     }
-
+    
     /// <summary>
-    /// Updates the index buffer of the mesh immediately with the current index data.
+    /// Uploads the entire index array to the GPU immediately.
     /// </summary>
     public void UpdateIndexBufferImmediate() {
-        this.GraphicsDevice.UpdateBuffer(this.IndexBuffer, 0, this.Indices);
+        this.GraphicsDevice.UpdateBuffer(this.IndexBuffer, 0, this.MeshData.Indices);
     }
-
+    
     /// <summary>
-    /// Updates the index buffer with the current index data on the specified command list.
+    /// Uploads the entire index array to the GPU using the provided command list.
     /// </summary>
-    /// <param name="commandList">The command list used to update the index buffer.</param>
+    /// <param name="commandList">The command list used to update the GPU buffer.</param>
     public void UpdateIndexBuffer(CommandList commandList) {
-        commandList.UpdateBuffer(this.IndexBuffer, 0, this.Indices);
+        commandList.UpdateBuffer(this.IndexBuffer, 0, this.MeshData.Indices);
     }
     
     protected override void Dispose(bool disposing) {

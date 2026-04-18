@@ -161,7 +161,7 @@ public class ImmediateRenderer : Disposable {
         // Update pipeline description.
         this._pipelineDescription.BufferLayouts = this._currentEffect.GetBufferLayouts();
         this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
-        this._pipelineDescription.ShaderSet = this._currentEffect.ShaderSet;
+        this._pipelineDescription.ShaderSet = new ShaderSetDescription(ImmediateVertex3D.VertexLayout.Layouts, this._currentEffect.Shaders);
     }
 
     /// <summary>

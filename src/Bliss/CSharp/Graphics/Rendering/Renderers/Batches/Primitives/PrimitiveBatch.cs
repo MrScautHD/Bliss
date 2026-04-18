@@ -1174,13 +1174,13 @@ public class PrimitiveBatch : Disposable {
         this._pipelineDescription.RasterizerState = this._currentRasterizerState;
         this._pipelineDescription.BufferLayouts = this._currentEffect.GetBufferLayouts();
         this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
-        this._pipelineDescription.ShaderSet = this._currentEffect.ShaderSet;
+        this._pipelineDescription.ShaderSet = new ShaderSetDescription(PrimitiveVertex2D.VertexLayout.Layouts, this._currentEffect.Shaders);
         this._pipelineDescription.Outputs = this._currentOutput;
         
         if (this._currentBatchCount + vertices.Count >= this._vertices.Length) {
             this.Flush();
         }
-
+        
         for (int i = 0; i < vertices.Count; i++) {
             this._vertices[this._currentBatchCount] = vertices[i];
             this._currentBatchCount++;

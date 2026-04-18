@@ -5,6 +5,9 @@ using Bliss.CSharp.Effects;
 using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Geometry.Animation;
+using Bliss.CSharp.Geometry.Meshes;
+using Bliss.CSharp.Geometry.Models;
+using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Rendering;
 using Bliss.CSharp.Graphics.Rendering.Renderers;
@@ -64,6 +67,7 @@ public class Game : Disposable {
     
     private Cam3D _cam3D;
     private Model _playerModel;
+    private Model _instancedPlayerModel;
     public BoundingBox _playerBox;
     private Model _planeModel;
     private Model _treeModel;
@@ -71,17 +75,17 @@ public class Game : Disposable {
     private Texture2D _cyberCarTexture;
 
     private Texture2D _customMeshTexture;
-    private Mesh _customPoly;
-    private Mesh _customCube;
-    private Mesh _customSphere;
-    private Mesh _customHemishpere;
-    private Mesh _customCylinder;
-    private Mesh _customCapsule;
-    private Mesh _customCone;
-    private Mesh _customTorus;
-    private Mesh _customKnot;
-    private Mesh _customHeighmap;
-    private Mesh _customQuad;
+    private Mesh<Vertex3D> _customPoly;
+    private Mesh<Vertex3D> _customCube;
+    private Mesh<Vertex3D> _customSphere;
+    private Mesh<Vertex3D> _customHemishpere;
+    private Mesh<Vertex3D> _customCylinder;
+    private Mesh<Vertex3D> _customCapsule;
+    private Mesh<Vertex3D> _customCone;
+    private Mesh<Vertex3D> _customTorus;
+    private Mesh<Vertex3D> _customKnot;
+    private Mesh<Vertex3D> _customHeighmap;
+    private Mesh<Vertex3D> _customQuad;
     //private Mesh _customCubemap;
 
     private int _frameCount;
@@ -194,12 +198,31 @@ public class Game : Disposable {
         
         float aspectRatio = (float) this.MainWindow.GetWidth() / (float) this.MainWindow.GetHeight();
         this._cam3D = new Cam3D(this.GraphicsDevice, new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0), aspectRatio);
-        this._playerModel = Model.Load(this.GraphicsDevice, "content/player.glb");
+        this._playerModel = Model.Load(this.GraphicsDevice, "content/player.glb", isSkinned: true);
         this._playerBox = this._playerModel.GenBoundingBox();
         
-        foreach (Mesh mesh in this._playerModel.Meshes) {
-            mesh.Material.Effect = GlobalResource.DefaultSkinnedModelEffect;
+        foreach (IMesh mesh in this._playerModel.Meshes) {
             mesh.Material.RenderMode = RenderMode.Cutout;
+            mesh.GenTangents();
+        }
+        
+        // Instancing.
+        this._instancedPlayerModel = Model.Load(this.GraphicsDevice, "content/player.glb", isSkinned: true);
+        foreach (IMesh mesh in this._instancedPlayerModel.Meshes) {
+            mesh.Material.Effect = GlobalResource.DefaultSkinnedModelEffect.GetEffectVariant(["USE_INSTANCING"]).Effect;
+            mesh.Material.RenderMode = RenderMode.Cutout;
+
+            if (mesh is Mesh<SkinnedVertex3D> skinnedMesh) {
+                skinnedMesh.MeshData.VertexFormat = new VertexFormat(
+                    SkinnedVertex3D.VertexLayout.Name,
+                    [
+                    ..SkinnedVertex3D.VertexLayout.Layouts,
+                    ..SkinnedVertex3D.InstanceMatrixLayout.Layouts
+                ]) {
+                    IsSkinned = true
+                };
+            }
+            
             mesh.GenTangents();
         }
         
@@ -208,7 +231,7 @@ public class Game : Disposable {
 
         Texture2D treeTexture = new Texture2D(this.GraphicsDevice, "content/tree_texture.png");
         
-        foreach (Mesh mesh in this._treeModel.Meshes) {
+        foreach (IMesh mesh in this._treeModel.Meshes) {
             mesh.Material.SetMapTexture(MaterialMapType.Albedo, treeTexture);
             mesh.Material.RasterizerState = RasterizerStateDescription.CULL_NONE;
             mesh.Material.RenderMode = RenderMode.Cutout;
@@ -217,7 +240,7 @@ public class Game : Disposable {
         this._cyberCarModel = Model.Load(this.GraphicsDevice, "content/cybercar.glb", false);
         this._cyberCarTexture = new Texture2D(this.GraphicsDevice, "content/cybercar.png");
 
-        foreach (Mesh mesh in _cyberCarModel.Meshes) {
+        foreach (IMesh mesh in _cyberCarModel.Meshes) {
             mesh.Material.SetMapTexture(MaterialMapType.Albedo, this._cyberCarTexture);
             mesh.Material.RenderMode = RenderMode.Cutout;
         }
@@ -228,37 +251,37 @@ public class Game : Disposable {
         
         this._customMeshTexture = new Texture2D(this.GraphicsDevice, "content/cube.png");
         
-        this._customPoly = Mesh.GenPoly(this.GraphicsDevice, 40, 1);
+        this._customPoly = Mesh<Vertex3D>.GenPoly(this.GraphicsDevice, 40, 1);
         this._customPoly.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
 
-        this._customCube = Mesh.GenCube(this.GraphicsDevice, 1, 1, 1);
+        this._customCube = Mesh<Vertex3D>.GenCube(this.GraphicsDevice, 1, 1, 1);
         this._customCube.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
 
-        this._customSphere = Mesh.GenSphere(this.GraphicsDevice, 1F, 40, 40);
+        this._customSphere = Mesh<Vertex3D>.GenSphere(this.GraphicsDevice, 1F, 40, 40);
         this._customSphere.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
 
-        this._customHemishpere = Mesh.GenHemisphere(this.GraphicsDevice, 1F, 40, 40);
+        this._customHemishpere = Mesh<Vertex3D>.GenHemisphere(this.GraphicsDevice, 1F, 40, 40);
         this._customHemishpere.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
 
-        this._customCylinder = Mesh.GenCylinder(this.GraphicsDevice, 1F, 1F, 40);
+        this._customCylinder = Mesh<Vertex3D>.GenCylinder(this.GraphicsDevice, 1F, 1F, 40);
         this._customCylinder.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
         
-        this._customCapsule = Mesh.GenCapsule(this.GraphicsDevice, 1, 1, 60);
+        this._customCapsule = Mesh<Vertex3D>.GenCapsule(this.GraphicsDevice, 1, 1, 60);
         this._customCapsule.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
 
-        this._customCone = Mesh.GenCone(this.GraphicsDevice, 1F, 1F, 40);
+        this._customCone = Mesh<Vertex3D>.GenCone(this.GraphicsDevice, 1F, 1F, 40);
         this._customCone.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
 
-        this._customTorus = Mesh.GenTorus(this.GraphicsDevice, 2.0F, 1F, 40, 40);
+        this._customTorus = Mesh<Vertex3D>.GenTorus(this.GraphicsDevice, 2.0F, 1F, 40, 40);
         this._customTorus.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
 
-        this._customKnot = Mesh.GenKnot(this.GraphicsDevice, 1F, 1F, 40, 40);
+        this._customKnot = Mesh<Vertex3D>.GenKnot(this.GraphicsDevice, 1F, 1F, 40, 40);
         this._customKnot.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
         
-        this._customHeighmap = Mesh.GenHeightmap(this.GraphicsDevice, new Image("content/heightmap.png"), new Vector3(1, 1, 1));
+        this._customHeighmap = Mesh<Vertex3D>.GenHeightmap(this.GraphicsDevice, new Image("content/heightmap.png"), new Vector3(1, 1, 1));
         this._customHeighmap.Material.SetMapTexture(MaterialMapType.Albedo, new Texture2D(this.GraphicsDevice, "content/heightmap.png"));
 
-        this._customQuad = Mesh.GenQuad(this.GraphicsDevice, 1, 1);
+        this._customQuad = Mesh<Vertex3D>.GenQuad(this.GraphicsDevice, 1, 1);
         this._customQuad.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
         
         this._cubemap = new Cubemap(this.GraphicsDevice, "content/cubemap.png");
@@ -369,7 +392,18 @@ public class Game : Disposable {
         // Rest PLAYER animation.
         if (Input.IsKeyPressed(KeyboardKey.G)) {
             foreach (Renderable renderable in this._renderables) {
-                foreach (Mesh mesh in this._playerModel.Meshes) {
+                
+                // PLAYER
+                foreach (IMesh mesh in this._playerModel.Meshes) {
+                    if (renderable.Mesh == mesh) {
+                        if (renderable.HasBones) {
+                            renderable.ClearBoneMatrices();
+                        }
+                    }
+                }
+                
+                // INSTANCED PLAYER
+                foreach (IMesh mesh in this._instancedPlayerModel.Meshes) {
                     if (renderable.Mesh == mesh) {
                         if (renderable.HasBones) {
                             renderable.ClearBoneMatrices();
@@ -385,9 +419,24 @@ public class Game : Disposable {
         // Play PLAYER animation.
         if (this._playingAnim) {
             foreach (Renderable renderable in this._renderables) {
-                foreach (Mesh mesh in this._playerModel.Meshes) {
+                
+                // PLAYER
+                foreach (IMesh mesh in this._playerModel.Meshes) {
                     if (renderable.Mesh == mesh) {
                         ModelAnimation animation = this._playerModel.Animations[1];
+                        
+                        for (int boneId = 0; boneId < animation.BoneFrameTransformations[this._frameCount].Length; boneId++) {
+                            if (renderable.HasBones) {
+                                renderable.SetBoneMatrix(boneId, animation.BoneFrameTransformations[this._frameCount][boneId]);
+                            }
+                        }
+                    }
+                }
+                
+                // INSTANCED PLAYER
+                foreach (IMesh mesh in this._instancedPlayerModel.Meshes) {
+                    if (renderable.Mesh == mesh) {
+                        ModelAnimation animation = this._instancedPlayerModel.Animations[1];
                         
                         for (int boneId = 0; boneId < animation.BoneFrameTransformations[this._frameCount].Length; boneId++) {
                             if (renderable.HasBones) {
@@ -543,23 +592,23 @@ public class Game : Disposable {
         this._renderables.Add(new Renderable(this._customQuad, new Transform() { Translation = new Vector3(29, 0, 0) }));
         
         // Models:
-        foreach (Mesh mesh in this._planeModel.Meshes) {
+        foreach (IMesh mesh in this._planeModel.Meshes) {
             this._renderables.Add(new Renderable(mesh, new Transform()));
         }
         
-        foreach (Mesh mesh in this._treeModel.Meshes) {
+        foreach (IMesh mesh in this._treeModel.Meshes) {
             this._renderables.Add(new Renderable(mesh, new Transform() { Translation = new Vector3(0, 0, 20) }));
         }
         
-        foreach (Mesh mesh in this._cyberCarModel.Meshes) {
+        foreach (IMesh mesh in this._cyberCarModel.Meshes) {
             this._renderables.Add(new Renderable(mesh, new Transform() { Translation = new Vector3(10, 0, 20) }));
         }
         
-        foreach (Mesh mesh in this._playerModel.Meshes) {
+        foreach (IMesh mesh in this._playerModel.Meshes) {
             this._renderables.Add(new Renderable(mesh, new Transform() { Translation = new Vector3(0, 0.05F, 0) }));
         }
         
-        foreach (Mesh mesh in this._playerModel.Meshes) {
+        foreach (IMesh mesh in this._instancedPlayerModel.Meshes) {
             List<Transform> transforms = new List<Transform>();
             
             for (int i = 0; i < 10; i++) {
@@ -568,10 +617,7 @@ public class Game : Disposable {
                 }
             }
             
-            Material material = (Material) mesh.Material.Clone();
-            material.Effect = GlobalResource.DefaultSkinnedModelEffect.GetEffectVariant([Vertex3D.VertexLayout, Vertex3D.InstanceMatrixLayout], "USE_INSTANCING").Effect;
-            
-            this._renderables.Add(new Renderable(mesh, transforms.ToArray(), material, true));
+            this._renderables.Add(new Renderable(mesh, transforms.ToArray(), false, true));
         }
     }
     

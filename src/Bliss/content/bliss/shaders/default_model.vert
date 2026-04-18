@@ -12,19 +12,17 @@ layout(std140, set = 1, binding = 0) uniform TransformBuffer {
 };
 
 layout (location = 0) in vec3 vPosition;
-layout (location = 1) in vec4 vBoneWeights;
-layout (location = 2) in uvec4 vBoneIndices;
-layout (location = 3) in vec2 vTexCoords;
-layout (location = 4) in vec2 vTexCoords2;
-layout (location = 5) in vec3 vNormal;
-layout (location = 6) in vec4 vTangent;
-layout (location = 7) in vec4 vColor;
+layout (location = 1) in vec2 vTexCoords;
+layout (location = 2) in vec2 vTexCoords2;
+layout (location = 3) in vec3 vNormal;
+layout (location = 4) in vec4 vTangent;
+layout (location = 5) in vec4 vColor;
 
 #if USE_INSTANCING
-layout (location = 8) in vec4 iModel0;
-layout (location = 9) in vec4 iModel1;
-layout (location = 10) in vec4 iModel2;
-layout (location = 11) in vec4 iModel3;
+layout (location = 6) in vec4 iModel0;
+layout (location = 7) in vec4 iModel1;
+layout (location = 8) in vec4 iModel2;
+layout (location = 9) in vec4 iModel3;
 #endif
 
 layout (location = 0) out vec2 fTexCoords;
