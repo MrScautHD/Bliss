@@ -2288,32 +2288,23 @@ public class ImmediateRenderer : Disposable {
     /// <param name="vertices">The list of vertices that define the geometry.</param>
     /// <param name="indices">Optional index list. If null or empty, sequential indices are generated automatically.</param>
     /// <param name="topology">The primitive topology used to interpret the geometry (e.g., TriangleList, LineList).</param>
-    public void DrawGeometry(List<ImmediateVertex3D> vertices, List<uint>? indices = null, PrimitiveTopology topology = PrimitiveTopology.TriangleList) {
-        if (vertices.Count == 0) {
+    public void DrawGeometry(ReadOnlySpan<ImmediateVertex3D> vertices, ReadOnlySpan<uint> indices = default, PrimitiveTopology topology = PrimitiveTopology.TriangleList) {
+        if (vertices.IsEmpty) {
             return;
         }
         
-        int vertexCount = vertices.Count;
-        int indexCount = indices?.Count ?? vertexCount;
+        int baseVertex = this.Prepare(topology, vertices.Length, indices.IsEmpty ? vertices.Length : indices.Length);
         
-        int baseVertex = this.Prepare(topology, vertexCount, indexCount);
-        
-        // Copy vertices.
-        for (int i = 0; i < vertexCount; i++) {
-            this._vertices[this._vertexCount++] = vertices[i];
-        }
-        
-        if (indices != null && indices.Count > 0) {
-            
-            // Copy indices (with base vertex offset).
-            for (int i = 0; i < indices.Count; i++) {
+        vertices.CopyTo(new Span<ImmediateVertex3D>(this._vertices, this._vertexCount, vertices.Length));
+        this._vertexCount += vertices.Length;
+
+        if (!indices.IsEmpty) {
+            for (int i = 0; i < indices.Length; i++) {
                 this._indices[this._indexCount++] = (uint) (baseVertex + indices[i]);
             }
         }
         else {
-            
-            // Generate sequential indices.
-            for (int i = 0; i < vertexCount; i++) {
+            for (int i = 0; i < vertices.Length; i++) {
                 this._indices[this._indexCount++] = (uint) (baseVertex + i);
             }
         }
@@ -2340,42 +2331,40 @@ public class ImmediateRenderer : Disposable {
             throw new InvalidOperationException($"The number of provided indices exceeds the capacity! [{indexCount} > {this.Capacity * 3}]");
         }
         
-        if (!this._currentOutput.Equals(this._requestedOutput) ||
-            !this._currentEffect.Equals(this._requestedEffect) ||
-            !this._currentBlendState.Equals(this._requestedBlendState) ||
-            !this._currentDepthStencilState.Equals(this._requestedDepthStencilState) ||
-            !this._currentRasterizerState.Equals(this._requestedRasterizerState) ||
-            !this._currentTexture.Equals(this._requestedTexture) ||
-            !this._currentSampler.Equals(this._requestedSampler) ||
-            !this._currentTopology.Equals(topology)) {
+        bool stateChanged = !this._currentOutput.Equals(this._requestedOutput) ||
+                            !this._currentEffect.Equals(this._requestedEffect) ||
+                            !this._currentBlendState.Equals(this._requestedBlendState) ||
+                            !this._currentDepthStencilState.Equals(this._requestedDepthStencilState) ||
+                            !this._currentRasterizerState.Equals(this._requestedRasterizerState) ||
+                            !this._currentTexture.Equals(this._requestedTexture) ||
+                            !this._currentSampler.Equals(this._requestedSampler) ||
+                            this._currentTopology != topology;
+        
+        if (stateChanged) {
             this.Flush();
+            
+            this._currentOutput = this._requestedOutput;
+            this._currentEffect = this._requestedEffect;
+            this._currentBlendState = this._requestedBlendState;
+            this._currentDepthStencilState = this._requestedDepthStencilState;
+            this._currentRasterizerState = this._requestedRasterizerState;
+            this._currentTexture = this._requestedTexture;
+            this._currentSourceRect = this._requestedSourceRect; 
+            this._currentSampler = this._requestedSampler;
+            this._currentTopology = topology;
+            
+            // Update pipeline description.
+            this._pipelineDescription.BlendState = this._currentBlendState;
+            this._pipelineDescription.DepthStencilState = this._currentDepthStencilState;
+            this._pipelineDescription.RasterizerState = this._currentRasterizerState;
+            this._pipelineDescription.BufferLayouts = this._currentEffect.GetBufferLayouts();
+            this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
+            this._pipelineDescription.ShaderSet = new ShaderSetDescription(ImmediateVertex3D.VertexLayout.Layouts, this._currentEffect.Shaders);
+            this._pipelineDescription.PrimitiveTopology = this._currentTopology;
+            this._pipelineDescription.Outputs = this._currentOutput;
         }
         
-        this._currentOutput = this._requestedOutput;
-        this._currentEffect = this._requestedEffect;
-        this._currentBlendState = this._requestedBlendState;
-        this._currentDepthStencilState = this._requestedDepthStencilState;
-        this._currentRasterizerState = this._requestedRasterizerState;
-        this._currentTexture = this._requestedTexture;
-        this._currentSourceRect = this._requestedSourceRect; 
-        this._currentSampler = this._requestedSampler;
-        this._currentTopology = topology;
-        
-        // Update pipeline description.
-        this._pipelineDescription.BlendState = this._currentBlendState;
-        this._pipelineDescription.DepthStencilState = this._currentDepthStencilState;
-        this._pipelineDescription.RasterizerState = this._currentRasterizerState;
-        this._pipelineDescription.BufferLayouts = this._currentEffect.GetBufferLayouts();
-        this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
-        this._pipelineDescription.ShaderSet = new ShaderSetDescription(ImmediateVertex3D.VertexLayout.Layouts, this._currentEffect.Shaders);
-        this._pipelineDescription.PrimitiveTopology = this._currentTopology;
-        this._pipelineDescription.Outputs = this._currentOutput;
-        
-        if (this._vertexCount + vertexCount > this._vertices.Length) {
-            this.Flush();
-        }
-        
-        if (this._indexCount + indexCount > this._indices.Length) {
+        if (this._vertexCount + vertexCount > this._vertices.Length || this._indexCount + indexCount > this._indices.Length) {
             this.Flush();
         }
         
