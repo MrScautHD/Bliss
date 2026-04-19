@@ -1159,25 +1159,25 @@ public class PrimitiveBatch : Disposable {
         
         if (stateChanged) {
             this.Flush();
-            
-            this._currentOutput = this._requestedOutput;
-            this._currentEffect = this._requestedEffect;
-            this._currentBlendState = this._requestedBlendState;
-            this._currentDepthStencilState = this._requestedDepthStencilState;
-            this._currentRasterizerState = this._requestedRasterizerState;
-            this._currentProjection = this._requestedProjection;
-            this._currentView = this._requestedView;
-            this._currentScissorRect = this._requestedScissorRect;
-            
-            // Update pipeline description.
-            this._pipelineDescription.BlendState = this._currentBlendState;
-            this._pipelineDescription.DepthStencilState = this._currentDepthStencilState;
-            this._pipelineDescription.RasterizerState = this._currentRasterizerState;
-            this._pipelineDescription.BufferLayouts = this._currentEffect.GetBufferLayouts();
-            this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
-            this._pipelineDescription.ShaderSet = new ShaderSetDescription(PrimitiveVertex2D.VertexLayout.Layouts, this._currentEffect.Shaders);
-            this._pipelineDescription.Outputs = this._currentOutput;
         }
+        
+        this._currentOutput = this._requestedOutput;
+        this._currentEffect = this._requestedEffect;
+        this._currentBlendState = this._requestedBlendState;
+        this._currentDepthStencilState = this._requestedDepthStencilState;
+        this._currentRasterizerState = this._requestedRasterizerState;
+        this._currentProjection = this._requestedProjection;
+        this._currentView = this._requestedView;
+        this._currentScissorRect = this._requestedScissorRect;
+            
+        // Update pipeline description.
+        this._pipelineDescription.BlendState = this._currentBlendState;
+        this._pipelineDescription.DepthStencilState = this._currentDepthStencilState;
+        this._pipelineDescription.RasterizerState = this._currentRasterizerState;
+        this._pipelineDescription.BufferLayouts = this._currentEffect.GetBufferLayouts();
+        this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
+        this._pipelineDescription.ShaderSet = new ShaderSetDescription(PrimitiveVertex2D.VertexLayout.Layouts, this._currentEffect.Shaders);
+        this._pipelineDescription.Outputs = this._currentOutput;
         
         if (this._currentBatchCount + vertices.Count >= this._vertices.Length) {
             this.Flush();
