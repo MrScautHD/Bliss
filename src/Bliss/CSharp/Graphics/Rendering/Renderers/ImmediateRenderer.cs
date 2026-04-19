@@ -39,16 +39,6 @@ public class ImmediateRenderer : Disposable {
     /// The array of indices used for batching immediate mode geometry.
     /// </summary>
     private uint[] _indices;
-
-    /// <summary>
-    /// A temporary storage of vertices used for rendering operations.
-    /// </summary>
-    private List<ImmediateVertex3D> _tempVertices;
-
-    /// <summary>
-    /// A Temporary storage of indices used for rendering operations.
-    /// </summary>
-    private List<uint> _tempIndices;
     
     /// <summary>
     /// The current count of batched vertices.
@@ -214,14 +204,12 @@ public class ImmediateRenderer : Disposable {
         // Create vertex buffer.
         uint vertexBufferSize = capacity * (uint) Marshal.SizeOf<ImmediateVertex3D>();
         this._vertices = new ImmediateVertex3D[capacity];
-        this._tempVertices = new List<ImmediateVertex3D>((int) capacity);
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
         this._vertexBuffer.Name = "VertexBuffer";
         
         // Create index buffer.
         uint indexBufferSize = capacity * 3 * sizeof(uint);
         this._indices = new uint[capacity * 3];
-        this._tempIndices = new List<uint>((int) capacity);
         this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
         this._indexBuffer.Name = "IndexBuffer";
         
@@ -437,62 +425,57 @@ public class ImmediateRenderer : Disposable {
         Texture2D texture = this._currentTexture;
         Rectangle sourceRec = this._currentSourceRect;
         
+        Matrix4x4 transformMatrix = transform.GetMatrix();
+        
+        Vector3 half = new Vector3(size.X / 2.0F, size.Y / 2.0F, size.Z / 2.0F);
+        
         // Calculate source rectangle UVs.
         float uLeft = sourceRec.X / (float) texture.Width;
         float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
         float vTop = sourceRec.Y / (float) texture.Height;
         float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
         
-        Matrix4x4 transformMatrix = transform.GetMatrix();
+        int vertexCount = 6 * 4;
+        int indexCount = 6 * 6;
         
+        int baseVertex = this.Prepare(PrimitiveTopology.TriangleList, vertexCount, indexCount);
+        
+        // Cube faces.
         for (int face = 0; face < 6; face++) {
             
-            // Define the normal for each face.
+            // Face normal.
             Vector3 faceNormal = face switch {
-                // Front.
                 0 => new Vector3(0.0F, 0.0F, -1.0F),
-                // Back.
                 1 => new Vector3(0.0F, 0.0F, 1.0F),
-                // Left.
                 2 => new Vector3(-1.0F, 0.0F, 0.0F),
-                // Right.
                 3 => new Vector3(1.0F, 0.0F, 0.0F),
-                // Top.
                 4 => new Vector3(0.0F, 1.0F, 0.0F),
-                // Bottom.
                 5 => new Vector3(0.0F, -1.0F, 0.0F),
                 _ => Vector3.Zero
             };
             
-            // Define the tangent for each face.
+            // Face tangent.
             Vector3 tangent = face switch {
-                // Front.
                 0 => new Vector3(1.0F, 0.0F, 0.0F),
-                // Back.
                 1 => new Vector3(-1.0F, 0.0F, 0.0F),
-                // Left.
                 2 => new Vector3(0.0F, 0.0F, -1.0F),
-                // Right.
                 3 => new Vector3(0.0F, 0.0F, 1.0F),
-                // Top.
                 4 => new Vector3(1.0F, 0.0F, 0.0F),
-                // Bottom.
                 5 => new Vector3(1.0F, 0.0F, 0.0F),
                 _ => Vector3.Zero
             };
             
-            // Compute the bitangent as the cross product of the normal and tangent.
+            // Bitangent.
             Vector3 bitangent = Vector3.Cross(faceNormal, tangent);
             
-            // Generate the 4 corners for the current face.
+            int faceStart = this._vertexCount;
+            
+            // Face vertices.
             for (int corner = 0; corner < 4; corner++) {
-                
-                // Calculate the position of each corner.
                 Vector3 position = faceNormal
                     + (corner == 0 || corner == 3 ? -tangent : tangent)
                     + (corner == 0 || corner == 1 ? -bitangent : bitangent);
                 
-                // Assign texture coordinates for the current corner.
                 Vector2 texCoord = corner switch {
                     0 => new Vector2(uLeft, vTop),
                     1 => new Vector2(uRight, vTop),
@@ -501,27 +484,24 @@ public class ImmediateRenderer : Disposable {
                     _ => Vector2.Zero
                 };
                 
-                // Add the generated vertex.
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = Vector3.Transform(position * new Vector3(size.X / 2.0F, size.Y / 2.0F, size.Z / 2.0F), transformMatrix),
+                this._vertices[this._vertexCount++] = new ImmediateVertex3D {
+                    Position = Vector3.Transform(position * half, transformMatrix),
                     TexCoords = texCoord,
                     Color = colorVec4
-                });
+                };
             }
             
-            // Add the indices for the two triangles that make up the current face.
-            int vertexOffset = face * 4;
-            this._tempIndices.Add((uint) (vertexOffset + 0));
-            this._tempIndices.Add((uint) (vertexOffset + 3));
-            this._tempIndices.Add((uint) (vertexOffset + 2));
-            this._tempIndices.Add((uint) (vertexOffset + 2));
-            this._tempIndices.Add((uint) (vertexOffset + 1));
-            this._tempIndices.Add((uint) (vertexOffset + 0));
+            // Face triangles.
+            this._indices[this._indexCount++] = (uint) (faceStart + 0);
+            this._indices[this._indexCount++] = (uint) (faceStart + 3);
+            this._indices[this._indexCount++] = (uint) (faceStart + 2);
+            
+            this._indices[this._indexCount++] = (uint) (faceStart + 2);
+            this._indices[this._indexCount++] = (uint) (faceStart + 1);
+            this._indices[this._indexCount++] = (uint) (faceStart + 0);
         }
-        
-        this.AddGeometry(this._tempVertices, this._tempIndices);
     }
-
+    
     /// <summary>
     /// Draws the wireframe of a cube with the specified transform, size, and optional color.
     /// </summary>
@@ -532,32 +512,41 @@ public class ImmediateRenderer : Disposable {
         Vector4 colorVec4 = color?.ToRgbaFloatVec4() ?? Color.White.ToRgbaFloatVec4();
         Matrix4x4 transformMatrix = transform.GetMatrix();
         
+        Vector3 half = new Vector3(size.X / 2.0F, size.Y / 2.0F, size.Z / 2.0F);
+        
+        int vertexCount = 8;
+        int indexCount = 24;
+        
+        int baseVertex = this.Prepare(PrimitiveTopology.LineList, vertexCount, indexCount);
+        
+        // Cube vertices.
+        int cubeStart = baseVertex;
+        
         for (int i = 0; i < 8; i++) {
             
-            // Calculate the x, y, z coordinates.
             float x = (i & 1) == 0 ? -1.0F : 1.0F;
             float y = (i & 2) == 0 ? -1.0F : 1.0F;
             float z = (i & 4) == 0 ? -1.0F : 1.0F;
             
-            // Add the vertex to the list.
-            this._tempVertices.Add(new ImmediateVertex3D {
-                Position = Vector3.Transform(new Vector3(x, y, z) * new Vector3(size.X / 2.0F, size.Y / 2.0F, size.Z / 2.0F), transformMatrix),
+            this._vertices[this._vertexCount++] = new ImmediateVertex3D {
+                Position = Vector3.Transform(new Vector3(x, y, z) * half, transformMatrix),
                 Color = colorVec4
-            });
-            
-            // Connect the vertex to its neighbors.
+            };
+        }
+        
+        // Cube edges.
+        for (int i = 0; i < 8; i++) {
             for (int bit = 0; bit < 3; bit++) {
                 if ((i & (1 << bit)) == 0) {
                     int neighbor = i | (1 << bit);
-                    this._tempIndices.Add((uint) i);
-                    this._tempIndices.Add((uint) neighbor);
+                    
+                    this._indices[this._indexCount++] = (uint) (cubeStart + i);
+                    this._indices[this._indexCount++] = (uint) (cubeStart + neighbor);
                 }
             }
         }
-        
-        this.AddGeometry(this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
-
+    
     /// <summary>
     /// Draws a sphere with the specified transformation, radius, number of rings, slices, and optional color.
     /// </summary>
@@ -580,52 +569,62 @@ public class ImmediateRenderer : Disposable {
             slices = 3;
         }
         
+        int stride = slices + 1;
+        
         // Calculate source rectangle UVs.
         float uLeft = sourceRec.X / (float) texture.Width;
         float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
         float vTop = sourceRec.Y / (float) texture.Height;
         float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
         
-        // Generate vertices.
+        int vertexCount = (rings + 1) * stride;
+        int indexCount = rings * slices * 6;
+        
+        int baseVertex = this.Prepare(PrimitiveTopology.TriangleList, vertexCount, indexCount);
+        
+        // Sphere vertices.
+        int sphereStart = baseVertex;
+        
         for (int ring = 0; ring <= rings; ring++) {
             float ringAngle = MathF.PI * ring / rings;
             
+            float sinTheta = MathF.Sin(ringAngle);
+            float cosTheta = MathF.Cos(ringAngle);
+            
             for (int slice = 0; slice <= slices; slice++) {
-                float sliceAngle = MathF.PI * 2 * slice / slices;
+                float sliceAngle = MathF.Tau * slice / slices;
                 
-                float x = MathF.Sin(ringAngle) * MathF.Cos(sliceAngle);
-                float y = MathF.Cos(ringAngle);
-                float z = MathF.Sin(ringAngle) * MathF.Sin(sliceAngle);
+                float sinPhi = MathF.Sin(sliceAngle);
+                float cosPhi = MathF.Cos(sliceAngle);
                 
-                this._tempVertices.Add(new ImmediateVertex3D() {
-                    Position = Vector3.Transform(new Vector3(x, y, z) * (radius / 2), transformMatrix),
+                Vector3 position = new Vector3(sinTheta * cosPhi, cosTheta, sinTheta * sinPhi) * (radius / 2.0F);
+                
+                this._vertices[this._vertexCount++] = new ImmediateVertex3D {
+                    Position = Vector3.Transform(position, transformMatrix),
                     TexCoords = new Vector2(
                         uLeft + (uRight - uLeft) * (slice / (float) slices),
                         vTop + (vBottom - vTop) * (ring / (float) rings)
                     ),
                     Color = colorVec4
-                });
+                };
             }
         }
         
-        // Generate indices.
+        // Sphere triangles.
         for (int ring = 0; ring < rings; ring++) {
             for (int slice = 0; slice < slices; slice++) {
-                int current = ring * (slices + 1) + slice;
-                int next = current + slices + 1;
+                int current = sphereStart + ring * stride + slice;
+                int next = current + stride;
                 
-                // Two triangles per quad.
-                this._tempIndices.Add((uint) current);
-                this._tempIndices.Add((uint) (next + 1));
-                this._tempIndices.Add((uint) (current + 1));
+                this._indices[this._indexCount++] = (uint) current;
+                this._indices[this._indexCount++] = (uint) (next + 1);
+                this._indices[this._indexCount++] = (uint) (current + 1);
                 
-                this._tempIndices.Add((uint) current);
-                this._tempIndices.Add((uint) next);
-                this._tempIndices.Add((uint) (next + 1));
+                this._indices[this._indexCount++] = (uint) current;
+                this._indices[this._indexCount++] = (uint) next;
+                this._indices[this._indexCount++] = (uint) (next + 1);
             }
         }
-        
-        this.AddGeometry(this._tempVertices, this._tempIndices);
     }
     
     /// <summary>
@@ -648,42 +647,50 @@ public class ImmediateRenderer : Disposable {
             slices = 3;
         }
         
-        // Generate wireframe vertices.
+        int stride = slices + 1;
+        
+        int vertexCount = (rings + 1) * stride;
+        int indexCount = rings * slices * 4;
+        
+        int baseVertex = this.Prepare(PrimitiveTopology.LineList, vertexCount, indexCount);
+        
+        // Sphere vertices.
+        int sphereStart = baseVertex;
+        
         for (int ring = 0; ring <= rings; ring++) {
             float ringAngle = MathF.PI * ring / rings;
-            float y = MathF.Cos(ringAngle) * (radius / 2);
-            float ringRadius = MathF.Sin(ringAngle) * (radius / 2);
+            
+            float y = MathF.Cos(ringAngle) * (radius / 2.0F);
+            float ringRadius = MathF.Sin(ringAngle) * (radius / 2.0F);
             
             for (int slice = 0; slice <= slices; slice++) {
-                float sliceAngle = MathF.PI * 2 * slice / slices;
+                float sliceAngle = MathF.Tau * slice / slices;
                 
                 float x = MathF.Cos(sliceAngle) * ringRadius;
                 float z = MathF.Sin(sliceAngle) * ringRadius;
                 
-                this._tempVertices.Add(new ImmediateVertex3D {
+                this._vertices[this._vertexCount++] = new ImmediateVertex3D {
                     Position = Vector3.Transform(new Vector3(x, y, z), transformMatrix),
                     Color = colorVec4
-                });
+                };
             }
         }
         
-        // Generate wireframe indices.
+        // Wireframe lines.
         for (int ring = 0; ring < rings; ring++) {
             for (int slice = 0; slice < slices; slice++) {
-                int current = ring * (slices + 1) + slice;
-                int next = current + slices + 1;
+                int current = sphereStart + ring * stride + slice;
+                int next = current + stride;
                 
-                // Connect horizontal lines.
-                this._tempIndices.Add((uint) current);
-                this._tempIndices.Add((uint) (current + 1));
+                // Horizontal lines.
+                this._indices[this._indexCount++] = (uint) current;
+                this._indices[this._indexCount++] = (uint) (current + 1);
                 
-                // Connect vertical lines.
-                this._tempIndices.Add((uint) current);
-                this._tempIndices.Add((uint) next);
+                // Vertical lines.
+                this._indices[this._indexCount++] = (uint) current;
+                this._indices[this._indexCount++] = (uint) next;
             }
         }
-        
-        this.AddGeometry(this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
     
     /// <summary>
@@ -708,96 +715,106 @@ public class ImmediateRenderer : Disposable {
             slices = 3;
         }
         
+        float halfHeight = radius / 4.0F;
+        int hemiRings = rings / 2;
+        int stride = slices + 1;
+        
         // Calculate source rectangle UVs.
-        float uLeft = sourceRec.X / (float)texture.Width;
-        float uRight = (sourceRec.X + sourceRec.Width) / (float)texture.Width;
+        float uLeft = sourceRec.X / (float) texture.Width;
+        float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
         float vTop = sourceRec.Y / (float) texture.Height;
         float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
         
-        float halfHeight = radius / 4.0F;
+        int vertexCount = (hemiRings + 1) * stride + 1 + stride;
+        int indexCount = hemiRings * slices * 6 + slices * 3;
         
-        // Generate positions, normals, and texture coordinates for the hemisphere.
-        for (int ring = 0; ring <= rings / 2; ring++) {
+        int baseVertex = this.Prepare(PrimitiveTopology.TriangleList, vertexCount, indexCount);
+        
+        // Hemisphere.
+        int hemiStart = baseVertex;
+        
+        for (int ring = 0; ring <= hemiRings; ring++) {
             float theta = ring * MathF.PI / (rings % 2 == 0 ? rings : rings - 1);
             float sinTheta = MathF.Sin(theta);
             float cosTheta = MathF.Cos(theta);
             
             for (int slice = 0; slice <= slices; slice++) {
-                float phi = slice * 2.0F * MathF.PI / slices;
+                float phi = slice * MathF.Tau / slices;
                 float sinPhi = MathF.Sin(phi);
                 float cosPhi = MathF.Cos(phi);
                 
                 Vector3 position = new Vector3(
-                    radius / 2.0F * sinTheta * cosPhi,
-                    radius / 2.0F * cosTheta - halfHeight,
-                    radius / 2.0F * sinTheta * sinPhi
+                    (radius / 2.0F) * sinTheta * cosPhi,
+                    (radius / 2.0F) * cosTheta - halfHeight,
+                    (radius / 2.0F) * sinTheta * sinPhi
                 );
                 
-                this._tempVertices.Add(new ImmediateVertex3D() {
+                this._vertices[this._vertexCount++] = new ImmediateVertex3D {
                     Position = Vector3.Transform(position, transformMatrix),
                     TexCoords = new Vector2(
                         uLeft + (uRight - uLeft) * (0.5F + cosPhi * sinTheta * 0.5F),
                         vTop + (vBottom - vTop) * (0.5F + sinPhi * sinTheta * 0.5F)
                     ),
                     Color = colorVec4
-                });
+                };
             }
         }
         
-        int baseCenterIndex = this._tempVertices.Count;
+        // Base center.
+        int baseCenter = this._vertexCount;
         
-        // Add center vertex for the circular base.
-        this._tempVertices.Add(new ImmediateVertex3D() {
+        this._vertices[this._vertexCount++] = new ImmediateVertex3D {
             Position = Vector3.Transform(new Vector3(0.0F, -halfHeight, 0.0F), transformMatrix),
             TexCoords = new Vector2(
-                uLeft + (uRight - uLeft) * 0.5F,
-                vTop + (vBottom - vTop) * 0.5F
+                (uLeft + uRight) * 0.5F,
+                (vTop + vBottom) * 0.5F
             ),
             Color = colorVec4
-        });
+        };
         
-        // Generate vertices for the base circle.
+        // Base ring.
+        int baseRingStart = this._vertexCount;
+        
         for (int slice = 0; slice <= slices; slice++) {
-            float sliceAngle = MathF.PI * 2.0F * slice / slices;
+            float angle = slice * MathF.Tau / slices;
             
-            float x = MathF.Cos(sliceAngle) * (radius / 2.0F);
-            float z = MathF.Sin(sliceAngle) * (radius / 2.0F);
+            float x = MathF.Cos(angle) * (radius / 2.0F);
+            float z = MathF.Sin(angle) * (radius / 2.0F);
             
-            this._tempVertices.Add(new ImmediateVertex3D() {
+            this._vertices[this._vertexCount++] = new ImmediateVertex3D {
                 Position = Vector3.Transform(new Vector3(x, -halfHeight, z), transformMatrix),
                 TexCoords = new Vector2(
                     uLeft + (uRight - uLeft) * (0.5F + x / radius),
                     vTop + (vBottom - vTop) * (0.5F + z / radius)
                 ),
                 Color = colorVec4
-            });
+            };
         }
         
-        // Generate indices for the hemisphere.
-        for (int ring = 0; ring < rings / 2; ring++) {
+        // Hemisphere triangles.
+        for (int ring = 0; ring < hemiRings; ring++) {
             for (int slice = 0; slice < slices; slice++) {
-                int current = ring * (slices + 1) + slice;
-                int next = current + slices + 1;
+                int current = hemiStart + ring * stride + slice;
+                int next = current + stride;
                 
-                // Two triangles per quad.
-                this._tempIndices.Add((uint) current);
-                this._tempIndices.Add((uint) (next + 1));
-                this._tempIndices.Add((uint) (current + 1));
+                this._indices[this._indexCount++] = (uint) current;
+                this._indices[this._indexCount++] = (uint) (next + 1);
+                this._indices[this._indexCount++] = (uint) (current + 1);
                 
-                this._tempIndices.Add((uint) current);
-                this._tempIndices.Add((uint) next);
-                this._tempIndices.Add((uint) (next + 1));
+                this._indices[this._indexCount++] = (uint) current;
+                this._indices[this._indexCount++] = (uint) next;
+                this._indices[this._indexCount++] = (uint) (next + 1);
             }
         }
         
-        // Generate indices for the base circle.
+        // Base cap.
         for (int slice = 0; slice < slices; slice++) {
-            this._tempIndices.Add((uint) baseCenterIndex);
-            this._tempIndices.Add((uint) (baseCenterIndex + slice + 2));
-            this._tempIndices.Add((uint) (baseCenterIndex + slice + 1));
+            int current = baseRingStart + slice;
+            
+            this._indices[this._indexCount++] = (uint) baseCenter;
+            this._indices[this._indexCount++] = (uint) (current + 1);
+            this._indices[this._indexCount++] = (uint) current;
         }
-        
-        this.AddGeometry(this._tempVertices, this._tempIndices);
     }
     
     /// <summary>
@@ -810,79 +827,99 @@ public class ImmediateRenderer : Disposable {
     /// <param name="color">An optional color for the hemisphere. If null, it defaults to white.</param>
     public void DrawHemisphereWires(Transform transform, float radius, int rings, int slices, Color? color = null) {
         Vector4 colorVec4 = color?.ToRgbaFloatVec4() ?? Color.White.ToRgbaFloatVec4();
-        float halfHeight = radius / 4.0F;
         Matrix4x4 transformMatrix = transform.GetMatrix();
         
-        // Generate vertices for the hemisphere.
-        for (int ring = 0; ring <= rings / 2; ring++) {
+        if (rings < 2) {
+            rings = 2;
+        }
+        
+        if (slices < 3) {
+            slices = 3;
+        }
+        
+        float halfHeight = radius / 4.0F;
+        
+        int hemiRings = rings / 2;
+        int stride = slices + 1;
+        
+        int vertexCount = (hemiRings + 1) * stride + 1 + stride;
+        int indexCount = vertexCount * 4;
+        
+        int baseVertex = this.Prepare(PrimitiveTopology.LineList, vertexCount, indexCount);
+        
+        int hemiStart = baseVertex;
+        
+        for (int ring = 0; ring <= hemiRings; ring++) {
             float ringAngle = ring * MathF.PI / (rings % 2 == 0 ? rings : rings - 1);
+            
             float y = MathF.Cos(ringAngle) * (radius / 2.0F);
             float ringRadius = MathF.Sin(ringAngle) * (radius / 2.0F);
             
             for (int slice = 0; slice <= slices; slice++) {
-                float sliceAngle = MathF.PI * 2.0F * slice / slices;
+                float sliceAngle = MathF.Tau * slice / slices;
                 
                 float x = MathF.Cos(sliceAngle) * ringRadius;
                 float z = MathF.Sin(sliceAngle) * ringRadius;
                 
-                this._tempVertices.Add(new ImmediateVertex3D {
+                this._vertices[this._vertexCount++] = new ImmediateVertex3D {
                     Position = Vector3.Transform(new Vector3(x, y - halfHeight, z), transformMatrix),
                     Color = colorVec4
-                });
+                };
             }
         }
         
-        // Generate vertices for the base circle.
-        int baseCenterIndex = this._tempVertices.Count;
+        int baseCenter = this._vertexCount;
         
-        this._tempVertices.Add(new ImmediateVertex3D {
+        // Center vertex
+        this._vertices[this._vertexCount++] = new ImmediateVertex3D {
             Position = Vector3.Transform(new Vector3(0.0F, -halfHeight, 0.0F), transformMatrix),
             Color = colorVec4
-        });
+        };
         
+        int baseRingStart = this._vertexCount;
+        
+        // Base ring vertices
         for (int slice = 0; slice <= slices; slice++) {
-            float sliceAngle = MathF.PI * 2.0F * slice / slices;
+            float sliceAngle = MathF.Tau * slice / slices;
             
             float x = MathF.Cos(sliceAngle) * (radius / 2.0F);
             float z = MathF.Sin(sliceAngle) * (radius / 2.0F);
             
-            this._tempVertices.Add(new ImmediateVertex3D {
+            this._vertices[this._vertexCount++] = new ImmediateVertex3D {
                 Position = Vector3.Transform(new Vector3(x, -halfHeight, z), transformMatrix),
                 Color = colorVec4
-            });
+            };
             
-            // Connect the central vertex to the base circle.
-            this._tempIndices.Add((uint) baseCenterIndex);
-            this._tempIndices.Add((uint) (baseCenterIndex + slice));
+            // Radial lines (center → ring)
+            this._indices[this._indexCount++] = (uint) baseCenter;
+            this._indices[this._indexCount++] = (uint) (baseRingStart + slice);
         }
         
-        // Generate wireframe indices.
-        for (int ring = 0; ring < rings / 2; ring++) {
+        // Hemisphere wireframe.
+        for (int ring = 0; ring < hemiRings; ring++) {
             for (int slice = 0; slice < slices; slice++) {
-                int current = ring * (slices + 1) + slice;
-                int next = current + slices + 1;
+                int current = hemiStart + ring * stride + slice;
+                int nextRing = current + stride;
                 
-                // Connect horizontal lines for hemispherical surface.
-                this._tempIndices.Add((uint) current);
-                this._tempIndices.Add((uint) (current + 1));
+                // Horizontal ring lines
+                this._indices[this._indexCount++] = (uint) current;
+                this._indices[this._indexCount++] = (uint) (current + 1);
                 
-                // Connect vertical lines for hemispherical surface.
-                this._tempIndices.Add((uint) current);
-                this._tempIndices.Add((uint) next);
+                // Vertical connections between rings
+                this._indices[this._indexCount++] = (uint) current;
+                this._indices[this._indexCount++] = (uint) nextRing;
             }
         }
         
-        // Connect base circle.
-        int baseStartIndex = baseCenterIndex + 1;
-        
+        // Base circle ring.
         for (int slice = 0; slice < slices; slice++) {
-            this._tempIndices.Add((uint) (baseStartIndex + slice));
-            this._tempIndices.Add((uint) (baseStartIndex + slice + 1));
+            int current = baseRingStart + slice;
+            
+            this._indices[this._indexCount++] = (uint) current;
+            this._indices[this._indexCount++] = (uint) (current + 1);
         }
-        
-        this.AddGeometry(this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
-
+    
     /// <summary>
     /// Renders a cylinder using the specified command list, output description, transform, dimensions, slice count, and optional color.
     /// </summary>
@@ -901,91 +938,100 @@ public class ImmediateRenderer : Disposable {
             slices = 3;
         }
         
+        float halfHeight = height / 2.0F;
+        
         // Calculate source rectangle UVs.
         float uLeft = sourceRec.X / (float) texture.Width;
         float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
         float vTop = sourceRec.Y / (float) texture.Height;
         float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
         
-        float halfHeight = height / 2.0F;
+        int vertexCount = (slices + 1) * 2 + 2;
+        int indexCount = slices * 6 + slices * 3 + slices * 3;
         
-        // Generate vertices for the side.
+        int baseVertex = this.Prepare(PrimitiveTopology.TriangleList, vertexCount, indexCount);
+        
+        // Side vertices.
         for (int slice = 0; slice <= slices; slice++) {
             float angle = slice * MathF.Tau / slices;
             float x = MathF.Cos(angle) * (radius / 2.0F);
             float z = MathF.Sin(angle) * (radius / 2.0F);
+            
             float u = (float) slice / slices;
+            float uCoord = uLeft + (uRight - uLeft) * u;
             
             // Bottom vertex.
-            this._tempVertices.Add(new ImmediateVertex3D {
+            this._vertices[this._vertexCount++] = new ImmediateVertex3D {
                 Position = Vector3.Transform(new Vector3(x, -halfHeight, z), transformMatrix),
-                TexCoords = new Vector2(float.Lerp(uLeft, uRight, u), vBottom),
+                TexCoords = new Vector2(uCoord, vBottom),
                 Color = colorVec4
-            });
+            };
             
             // Top vertex.
-            this._tempVertices.Add(new ImmediateVertex3D {
+            this._vertices[this._vertexCount++] = new ImmediateVertex3D {
                 Position = Vector3.Transform(new Vector3(x, halfHeight, z), transformMatrix),
-                TexCoords = new Vector2(float.Lerp(uLeft, uRight, u), vTop),
+                TexCoords = new Vector2(uCoord, vTop),
                 Color = colorVec4
-            });
+            };
         }
         
-        // Generate indices for the side.
+        // Side triangles.
         for (int slice = 0; slice < slices; slice++) {
-            int baseIndex = slice * 2;
-            int nextIndex = (slice + 1) * 2;
+            int baseIndex = baseVertex + slice * 2;
+            int nextIndex = baseVertex + (slice + 1) * 2;
             
-            this._tempIndices.Add((uint) (baseIndex + 1));
-            this._tempIndices.Add((uint) baseIndex);
-            this._tempIndices.Add((uint) nextIndex);
+            this._indices[this._indexCount++] = (uint) (baseIndex + 1);
+            this._indices[this._indexCount++] = (uint) baseIndex;
+            this._indices[this._indexCount++] = (uint) nextIndex;
             
-            this._tempIndices.Add((uint) (baseIndex + 1));
-            this._tempIndices.Add((uint) nextIndex);
-            this._tempIndices.Add((uint) (nextIndex + 1));
+            this._indices[this._indexCount++] = (uint) (baseIndex + 1);
+            this._indices[this._indexCount++] = (uint) nextIndex;
+            this._indices[this._indexCount++] = (uint) (nextIndex + 1);
         }
         
-        // Bottom cap.
-        int bottomCenterIndex = this._tempVertices.Count;
+        // Bottom cap center.
+        int bottomCenter = this._vertexCount;
         
-        this._tempVertices.Add(new ImmediateVertex3D {
+        this._vertices[this._vertexCount++] = new ImmediateVertex3D {
             Position = Vector3.Transform(new Vector3(0.0F, -halfHeight, 0.0F), transformMatrix),
             TexCoords = new Vector2(
-                float.Lerp(uLeft, uRight, 0.5F), 
-                float.Lerp(vBottom, vTop, 0.5F)
+                (uLeft + uRight) * 0.5F,
+                (vBottom + vTop) * 0.5F
             ),
             Color = colorVec4
-        });
+        };
         
+        // Bottom cap triangles.
         for (int slice = 0; slice < slices; slice++) {
-            int baseIndex = slice * 2;
+            int baseIndex = baseVertex + slice * 2;
+            int nextIndex = baseVertex + (slice + 1) * 2;
             
-            this._tempIndices.Add((uint) bottomCenterIndex);
-            this._tempIndices.Add((uint) (baseIndex + 2));
-            this._tempIndices.Add((uint) baseIndex);
+            this._indices[this._indexCount++] = (uint) bottomCenter;
+            this._indices[this._indexCount++] = (uint) nextIndex;
+            this._indices[this._indexCount++] = (uint) baseIndex;
         }
         
-        // Top cap.
-        int topCenterIndex = this._tempVertices.Count;
+        // Top cap center.
+        int topCenter = this._vertexCount;
         
-        this._tempVertices.Add(new ImmediateVertex3D {
+        this._vertices[this._vertexCount++] = new ImmediateVertex3D {
             Position = Vector3.Transform(new Vector3(0.0F, halfHeight, 0.0F), transformMatrix),
             TexCoords = new Vector2(
-                float.Lerp(uLeft, uRight, 0.5F),
-                float.Lerp(vBottom, vTop, 0.5F)
+                (uLeft + uRight) * 0.5F,
+                (vBottom + vTop) * 0.5F
             ),
             Color = colorVec4
-        });
+        };
         
+        // Top cap triangles.
         for (int slice = 0; slice < slices; slice++) {
-            int baseIndex = slice * 2 + 1;
+            int baseIndex = baseVertex + slice * 2 + 1;
+            int nextIndex = baseVertex + (slice + 1) * 2 + 1;
             
-            this._tempIndices.Add((uint) topCenterIndex);
-            this._tempIndices.Add((uint) baseIndex);
-            this._tempIndices.Add((uint) (baseIndex + 2));
+            this._indices[this._indexCount++] = (uint) topCenter;
+            this._indices[this._indexCount++] = (uint) baseIndex;
+            this._indices[this._indexCount++] = (uint) nextIndex;
         }
-        
-        this.AddGeometry(this._tempVertices, this._tempIndices);
     }
 
     /// <summary>
@@ -1006,76 +1052,82 @@ public class ImmediateRenderer : Disposable {
         
         float halfHeight = height / 2.0F;
         
-        // Generate vertices for top and bottom circles, and the side edges.
+        int vertexCount = (slices + 1) * 2 + 2;
+        int indexCount = vertexCount * 4;
+        
+        int baseVertex = this.Prepare(PrimitiveTopology.LineList, vertexCount, indexCount);
+        
+        // Circle vertices (bottom + top).
         for (int slice = 0; slice <= slices; slice++) {
             float angle = slice * MathF.Tau / slices;
             float x = MathF.Cos(angle) * (radius / 2.0F);
             float z = MathF.Sin(angle) * (radius / 2.0F);
             
-            // Bottom circle vertex.
-            this._tempVertices.Add(new ImmediateVertex3D {
+            // Bottom vertex.
+            this._vertices[this._vertexCount++] = new ImmediateVertex3D {
                 Position = Vector3.Transform(new Vector3(x, -halfHeight, z), transformMatrix),
                 Color = colorVec4
-            });
+            };
             
-            // Top circle vertex.
-            this._tempVertices.Add(new ImmediateVertex3D {
+            // Top vertex.
+            this._vertices[this._vertexCount++] = new ImmediateVertex3D {
                 Position = Vector3.Transform(new Vector3(x, halfHeight, z), transformMatrix),
                 Color = colorVec4
-            });
+            };
         }
         
-        // Generate indices for the top and bottom circles.
+        // Circle edges.
         for (int slice = 0; slice < slices; slice++) {
-            int bottomIndex = slice * 2;
+            int bottomIndex = baseVertex + slice * 2;
             int topIndex = bottomIndex + 1;
             
-            // Bottom circle edge.
-            this._tempIndices.Add((uint) bottomIndex);
-            this._tempIndices.Add((uint) ((bottomIndex + 2) % (slices * 2)));
+            int nextBottom = baseVertex + ((slice + 1) * 2);
+            int nextTop = nextBottom + 1;
             
-            // Top circle edge.
-            this._tempIndices.Add((uint) topIndex);
-            this._tempIndices.Add((uint) ((topIndex + 2) % (slices * 2)));
+            // Bottom circle.
+            this._indices[this._indexCount++] = (uint) bottomIndex;
+            this._indices[this._indexCount++] = (uint) nextBottom;
+            
+            // Top circle.
+            this._indices[this._indexCount++] = (uint) topIndex;
+            this._indices[this._indexCount++] = (uint) nextTop;
         }
         
-        // Center vertices for bottom and top circles.
-        int bottomCenterIndex = this._tempVertices.Count;
-        this._tempVertices.Add(new ImmediateVertex3D {
+        // Center vertices.
+        int bottomCenter = this._vertexCount;
+        this._vertices[this._vertexCount++] = new ImmediateVertex3D {
             Position = Vector3.Transform(new Vector3(0.0F, -halfHeight, 0.0F), transformMatrix),
             Color = colorVec4
-        });
+        };
         
-        int topCenterIndex = this._tempVertices.Count;
-        this._tempVertices.Add(new ImmediateVertex3D {
+        int topCenter = this._vertexCount;
+        this._vertices[this._vertexCount++] = new ImmediateVertex3D {
             Position = Vector3.Transform(new Vector3(0.0F, halfHeight, 0.0F), transformMatrix),
             Color = colorVec4
-        });
+        };
         
-        // Generate indices for lines from center to edge for bottom and top circles.
+        // Center to edge lines.
         for (int slice = 0; slice <= slices; slice++) {
-            int bottomEdgeIndex = slice * 2;
-            int topEdgeIndex = bottomEdgeIndex + 1;
+            int bottomEdge = baseVertex + slice * 2;
+            int topEdge = bottomEdge + 1;
             
-            // Line from center of bottom circle to edge.
-            this._tempIndices.Add((uint) bottomCenterIndex);
-            this._tempIndices.Add((uint) bottomEdgeIndex);
+            // Bottom spokes.
+            this._indices[this._indexCount++] = (uint) bottomCenter;
+            this._indices[this._indexCount++] = (uint) bottomEdge;
             
-            // Line from center of top circle to edge.
-            this._tempIndices.Add((uint) topCenterIndex);
-            this._tempIndices.Add((uint) topEdgeIndex);
+            // Top spokes.
+            this._indices[this._indexCount++] = (uint) topCenter;
+            this._indices[this._indexCount++] = (uint) topEdge;
         }
         
-        // Generate indices for the vertical edges.
+        // Vertical edges.
         for (int slice = 0; slice < slices; slice++) {
-            int bottomIndex = slice * 2;
+            int bottomIndex = baseVertex + slice * 2;
             int topIndex = bottomIndex + 1;
             
-            this._tempIndices.Add((uint) bottomIndex);
-            this._tempIndices.Add((uint) topIndex);
+            this._indices[this._indexCount++] = (uint) bottomIndex;
+            this._indices[this._indexCount++] = (uint) topIndex;
         }
-        
-        this.AddGeometry(this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
 
     /// <summary>
@@ -1100,20 +1152,29 @@ public class ImmediateRenderer : Disposable {
         float halfHeight = height / 2.0F;
         int rings = slices / 2;
         
+        int stride = slices + 1;
+        
         // Calculate source rectangle UVs.
-        float uLeft = sourceRec.X / (float)texture.Width;
+        float uLeft = sourceRec.X / (float) texture.Width;
         float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
         float vTop = sourceRec.Y / (float) texture.Height;
         float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
         
-        // Create top hemisphere vertices.
+        int vertexCount = (rings + 1) * stride + 2 * stride + (rings + 1) * stride;
+        int indexCount = vertexCount * 6;
+        
+        int baseVertex = this.Prepare(PrimitiveTopology.TriangleList, vertexCount, indexCount);
+        
+        // Top hemisphere.
+        int topStart = baseVertex;
+        
         for (int ring = 0; ring <= rings; ring++) {
             float theta = ring * MathF.PI / (rings * 2.0F);
             float sinTheta = MathF.Sin(theta);
             float cosTheta = MathF.Cos(theta);
             
             for (int slice = 0; slice <= slices; slice++) {
-                float phi = slice * 2.0F * MathF.PI / slices;
+                float phi = slice * MathF.Tau / slices;
                 float cosPhi = MathF.Cos(phi);
                 float sinPhi = MathF.Sin(phi);
                 
@@ -1121,50 +1182,52 @@ public class ImmediateRenderer : Disposable {
                 float y = halfRadius * cosTheta + halfHeight;
                 float z = halfRadius * sinTheta * sinPhi;
                 
-                // Add vertex.
-                this._tempVertices.Add(new ImmediateVertex3D {
+                this._vertices[this._vertexCount++] = new ImmediateVertex3D {
                     Position = Vector3.Transform(new Vector3(x, y, z), transformMatrix),
                     TexCoords = new Vector2(
                         uLeft + (uRight - uLeft) * slice / slices,
                         vTop + (vBottom - vTop) * ring / rings
                     ),
                     Color = colorVec4
-                });
+                };
             }
         }
         
-        // Create cylindrical body vertices.
+        // Cylinder.
+        int cylinderStart = this._vertexCount;
+        
         for (int yStep = 0; yStep <= 1; yStep++) {
             float y = yStep == 0 ? -halfHeight : halfHeight;
             
             for (int slice = 0; slice <= slices; slice++) {
-                float phi = slice * 2.0F * MathF.PI / slices;
+                float phi = slice * MathF.Tau / slices;
                 float cosPhi = MathF.Cos(phi);
                 float sinPhi = MathF.Sin(phi);
                 
                 float x = halfRadius * cosPhi;
                 float z = halfRadius * sinPhi;
                 
-                // Add vertex.
-                this._tempVertices.Add(new ImmediateVertex3D {
+                this._vertices[this._vertexCount++] = new ImmediateVertex3D {
                     Position = Vector3.Transform(new Vector3(x, y, z), transformMatrix),
                     TexCoords = new Vector2(
                         uLeft + (uRight - uLeft) * slice / slices,
-                        yStep == 0 ? vBottom : vTop 
+                        yStep == 0 ? vBottom : vTop
                     ),
                     Color = colorVec4
-                });
+                };
             }
         }
         
-        // Create bottom hemisphere vertices.
+        // Bottom hemisphere.
+        int bottomStart = this._vertexCount;
+        
         for (int ring = 0; ring <= rings; ring++) {
             float theta = ring * MathF.PI / (rings * 2.0F) + MathF.PI;
             float sinTheta = MathF.Sin(theta);
             float cosTheta = MathF.Cos(theta);
             
             for (int slice = 0; slice <= slices; slice++) {
-                float phi = slice * 2.0F * MathF.PI / slices;
+                float phi = slice * MathF.Tau / slices;
                 float cosPhi = MathF.Cos(phi);
                 float sinPhi = MathF.Sin(phi);
                 
@@ -1172,73 +1235,64 @@ public class ImmediateRenderer : Disposable {
                 float y = halfRadius * cosTheta - halfHeight;
                 float z = halfRadius * sinTheta * sinPhi;
                 
-                // Add vertex.
-                this._tempVertices.Add(new ImmediateVertex3D {
+                this._vertices[this._vertexCount++] = new ImmediateVertex3D {
                     Position = Vector3.Transform(new Vector3(-x, y, -z), transformMatrix),
                     TexCoords = new Vector2(
                         uLeft + (uRight - uLeft) * slice / slices,
                         vBottom - (vBottom - vTop) * ring / rings
                     ),
                     Color = colorVec4
-                });
+                };
             }
         }
         
-        // Generate indices for top hemisphere.
+        // Top hemisphere indices.
         for (int ring = 0; ring < rings; ring++) {
             for (int slice = 0; slice < slices; slice++) {
-                uint first = (uint) (ring * (slices + 1) + slice);
-                uint second = first + (uint) (slices + 1);
+                uint first = (uint)(topStart + ring * stride + slice);
+                uint second = first + (uint)stride;
                 
-                this._tempIndices.Add(first);
-                this._tempIndices.Add(second);
-                this._tempIndices.Add(first + 1);
+                this._indices[this._indexCount++] = first;
+                this._indices[this._indexCount++] = second;
+                this._indices[this._indexCount++] = first + 1;
                 
-                this._tempIndices.Add(second);
-                this._tempIndices.Add(second + 1);
-                this._tempIndices.Add(first + 1);
+                this._indices[this._indexCount++] = second;
+                this._indices[this._indexCount++] = second + 1;
+                this._indices[this._indexCount++] = first + 1;
             }
         }
         
-        // Generate indices for the cylindrical body.
-        int cylinderStartIndex = (rings + 1) * (slices + 1);
-        
-        for (int step = 0; step < 1; step++) {
-            for (int slice = 0; slice < slices; slice++) {
-                uint first = (uint) (cylinderStartIndex + step * (slices + 1) + slice);
-                uint second = first + (uint) (slices + 1);
-                
-                this._tempIndices.Add(first);
-                this._tempIndices.Add(first + 1);
-                this._tempIndices.Add(second);
-                
-                this._tempIndices.Add(first + 1);
-                this._tempIndices.Add(second + 1);
-                this._tempIndices.Add(second);
-            }
+        // Cylinder indices.
+        for (int slice = 0; slice < slices; slice++) {
+            uint first = (uint)(cylinderStart + slice);
+            uint second = first + (uint)stride;
+            
+            this._indices[this._indexCount++] = first;
+            this._indices[this._indexCount++] = first + 1;
+            this._indices[this._indexCount++] = second;
+            
+            this._indices[this._indexCount++] = first + 1;
+            this._indices[this._indexCount++] = second + 1;
+            this._indices[this._indexCount++] = second;
         }
         
-        // Generate indices for bottom hemisphere.
-        int bottomStartIndex = cylinderStartIndex + 2 * (slices + 1);
-        
+        // Bottom hemisphere indices.
         for (int ring = 0; ring < rings; ring++) {
             for (int slice = 0; slice < slices; slice++) {
-                uint first = (uint) (bottomStartIndex + ring * (slices + 1) + slice);
-                uint second = first + (uint) (slices + 1);
+                uint first = (uint)(bottomStart + ring * stride + slice);
+                uint second = first + (uint)stride;
                 
-                this._tempIndices.Add(first);
-                this._tempIndices.Add(first + 1);
-                this._tempIndices.Add(second);
+                this._indices[this._indexCount++] = first;
+                this._indices[this._indexCount++] = first + 1;
+                this._indices[this._indexCount++] = second;
                 
-                this._tempIndices.Add(second);
-                this._tempIndices.Add(first + 1);
-                this._tempIndices.Add(second + 1);
+                this._indices[this._indexCount++] = second;
+                this._indices[this._indexCount++] = first + 1;
+                this._indices[this._indexCount++] = second + 1;
             }
         }
-        
-        this.AddGeometry(this._tempVertices, this._tempIndices);
     }
-
+    
     /// <summary>
     /// Draws the wireframe of a capsule based on the specified transform, dimensions, and color.
     /// </summary>
@@ -1258,15 +1312,24 @@ public class ImmediateRenderer : Disposable {
         float halfRadius = radius / 2.0F;
         float halfHeight = height / 2.0F;
         int rings = slices / 2;
+    
+        int stride = slices + 1;
         
-        // Create top hemisphere vertices.
+        int vertexCount = (rings + 1) * stride + 2 * stride + (rings + 1) * stride;
+        int indexCount = vertexCount * 4;
+        
+        int baseVertex = this.Prepare(PrimitiveTopology.LineList, vertexCount, indexCount);
+        
+        // Top hemisphere.
+        int topStart = baseVertex;
+    
         for (int ring = 0; ring <= rings; ring++) {
             float theta = ring * MathF.PI / (rings * 2.0F);
             float sinTheta = MathF.Sin(theta);
             float cosTheta = MathF.Cos(theta);
             
             for (int slice = 0; slice <= slices; slice++) {
-                float phi = slice * 2.0F * MathF.PI / slices;
+                float phi = slice * MathF.Tau / slices;
                 float cosPhi = MathF.Cos(phi);
                 float sinPhi = MathF.Sin(phi);
                 
@@ -1274,56 +1337,54 @@ public class ImmediateRenderer : Disposable {
                 float y = halfRadius * cosTheta + halfHeight;
                 float z = halfRadius * sinTheta * sinPhi;
                 
-                // Add vertex.
-                this._tempVertices.Add(new ImmediateVertex3D {
+                this._vertices[this._vertexCount++] = new ImmediateVertex3D {
                     Position = Vector3.Transform(new Vector3(x, y, z), transformMatrix),
                     Color = colorVec4
-                });
+                };
                 
-                // Connect vertical edges for the hemisphere.
+                // Vertical lines (between rings)
                 if (ring < rings) {
-                    int current = ring * (slices + 1) + slice;
-                    int next = current + slices + 1;
-                    
-                    this._tempIndices.Add((uint) current);
-                    this._tempIndices.Add((uint) next);
+                    int current = topStart + ring * stride + slice;
+                    int next = current + stride;
+    
+                    this._indices[this._indexCount++] = (uint) current;
+                    this._indices[this._indexCount++] = (uint) next;
                 }
             }
         }
         
-        // Create cylindrical body vertices.
-        int cylinderStartIndex = this._tempVertices.Count;
+        // Cylinder.
+        int cylinderStart = this._vertexCount;
         
         for (int yStep = 0; yStep <= 1; yStep++) {
-            float y = yStep == 0 ? -halfHeight : halfHeight;
+            float y = (yStep == 0) ? -halfHeight : halfHeight;
             
             for (int slice = 0; slice <= slices; slice++) {
-                float phi = slice * 2.0F * MathF.PI / slices;
+                float phi = slice * MathF.Tau / slices;
                 float cosPhi = MathF.Cos(phi);
                 float sinPhi = MathF.Sin(phi);
                 
                 float x = halfRadius * cosPhi;
                 float z = halfRadius * sinPhi;
                 
-                // Add vertex.
-                this._tempVertices.Add(new ImmediateVertex3D {
+                this._vertices[this._vertexCount++] = new ImmediateVertex3D {
                     Position = Vector3.Transform(new Vector3(x, y, z), transformMatrix),
                     Color = colorVec4
-                });
+                };
                 
-                // Connect vertical edges for the cylinder.
+                // Vertical lines (bottom ring → top ring)
                 if (yStep == 0) {
-                    int current = cylinderStartIndex + slice;
-                    int next = current + slices + 1;
+                    int current = cylinderStart + slice;
+                    int next = current + stride;
                     
-                    this._tempIndices.Add((uint) current);
-                    this._tempIndices.Add((uint) next);
+                    this._indices[this._indexCount++] = (uint) current;
+                    this._indices[this._indexCount++] = (uint) next;
                 }
             }
         }
         
-        // Create bottom hemisphere vertices.
-        int bottomStartIndex = this._tempVertices.Count;
+        // Bottom hemisphere.
+        int bottomStart = this._vertexCount;
         
         for (int ring = 0; ring <= rings; ring++) {
             float theta = MathF.PI - ring * MathF.PI / (rings * 2.0F);
@@ -1331,7 +1392,7 @@ public class ImmediateRenderer : Disposable {
             float cosTheta = MathF.Cos(theta);
             
             for (int slice = 0; slice <= slices; slice++) {
-                float phi = slice * 2.0F * MathF.PI / slices;
+                float phi = slice * MathF.Tau / slices;
                 float cosPhi = MathF.Cos(phi);
                 float sinPhi = MathF.Sin(phi);
                 
@@ -1339,49 +1400,49 @@ public class ImmediateRenderer : Disposable {
                 float y = halfRadius * cosTheta - halfHeight;
                 float z = halfRadius * sinTheta * sinPhi;
                 
-                // Add vertex.
-                this._tempVertices.Add(new ImmediateVertex3D {
+                this._vertices[this._vertexCount++] = new ImmediateVertex3D {
                     Position = Vector3.Transform(new Vector3(x, y, z), transformMatrix),
                     Color = colorVec4
-                });
+                };
                 
-                // Connect vertical edges for the hemisphere.
+                // Vertical lines (between rings).
                 if (ring < rings) {
-                    int current = bottomStartIndex + ring * (slices + 1) + slice;
-                    int next = current + slices + 1;
+                    int current = bottomStart + ring * stride + slice;
+                    int next = current + stride;
                     
-                    this._tempIndices.Add((uint) current);
-                    this._tempIndices.Add((uint) next);
+                    this._indices[this._indexCount++] = (uint) current;
+                    this._indices[this._indexCount++] = (uint) next;
                 }
             }
         }
         
-        // Connect horizontal edges.
+        // Horizontal rings.
         for (int slice = 0; slice < slices; slice++) {
             
-            // First hemisphere.
+            // Top hemisphere rings.
             for (int ring = 0; ring <= rings; ring++) {
-                int current = ring * (slices + 1) + slice;
-                this._tempIndices.Add((uint) current);
-                this._tempIndices.Add((uint) (current + 1));
+                int current = topStart + ring * stride + slice;
+    
+                this._indices[this._indexCount++] = (uint) current;
+                this._indices[this._indexCount++] = (uint) (current + 1);
             }
             
-            // Cylindrical body.
+            // Cylinder rings (bottom + top).
             for (int step = 0; step <= 1; step++) {
-                int current = cylinderStartIndex + step * (slices + 1) + slice;
-                this._tempIndices.Add((uint) current);
-                this._tempIndices.Add((uint) (current + 1));
+                int current = cylinderStart + step * stride + slice;
+    
+                this._indices[this._indexCount++] = (uint) current;
+                this._indices[this._indexCount++] = (uint) (current + 1);
             }
             
-            // Second hemisphere.
+            // Bottom hemisphere rings.
             for (int ring = 0; ring <= rings; ring++) {
-                int current = bottomStartIndex + ring * (slices + 1) + slice;
-                this._tempIndices.Add((uint) current);
-                this._tempIndices.Add((uint) (current + 1));
+                int current = bottomStart + ring * stride + slice;
+                
+                this._indices[this._indexCount++] = (uint) current;
+                this._indices[this._indexCount++] = (uint) (current + 1);
             }
         }
-        
-        this.AddGeometry(this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
     
     /// <summary>
@@ -1410,7 +1471,12 @@ public class ImmediateRenderer : Disposable {
         
         float halfHeight = height / 2.0F;
         
-        // Calculate the side vertices.
+        int vertexCount = (slices + 1) * 2 + 1;
+        int indexCount = slices * 6;
+        
+        int baseVertex = this.Prepare(PrimitiveTopology.TriangleList, vertexCount, indexCount);
+        
+        // Generate side vertices.
         for (int slice = 0; slice <= slices; slice++) {
             float angle = slice * MathF.Tau / slices;
             float x = MathF.Cos(angle) * (radius / 2.0F);
@@ -1418,50 +1484,50 @@ public class ImmediateRenderer : Disposable {
             float u = uLeft + (uRight - uLeft) * ((float) slice / slices);
             
             // Bottom vertex.
-            this._tempVertices.Add(new ImmediateVertex3D() {
+            this._vertices[this._vertexCount++] = new ImmediateVertex3D {
                 Position = Vector3.Transform(new Vector3(x, -halfHeight, z), transformMatrix),
                 TexCoords = new Vector2(u, vBottom),
                 Color = colorVec4
-            });
+            };
             
-            // Top vertex (tip of the cone).
-            this._tempVertices.Add(new ImmediateVertex3D {
+            // Top vertex (tip).
+            this._vertices[this._vertexCount++] = new ImmediateVertex3D {
                 Position = Vector3.Transform(new Vector3(0.0F, halfHeight, 0.0F), transformMatrix),
-                TexCoords = new Vector2(u, 0.0F),
+                TexCoords = new Vector2(u, vTop),
                 Color = colorVec4
-            });
+            };
         }
         
-        // Calculate the side indices.
+        // Local index of center vertex
+        int bottomCenterLocal = (slices + 1) * 2;
+    
+        // Add bottom center vertex.
+        this._vertices[this._vertexCount++] = new ImmediateVertex3D {
+            Position = Vector3.Transform(new Vector3(0.0F, -halfHeight, 0.0F), transformMatrix),
+            TexCoords = new Vector2((uLeft + uRight) * 0.5F, (vTop + vBottom) * 0.5F),
+            Color = colorVec4
+        };
+        
+        // Side triangles.
         for (int slice = 0; slice < slices; slice++) {
             int baseIndex = slice * 2;
             int nextIndex = (slice + 1) * 2;
             
-            this._tempIndices.Add((uint) (baseIndex + 1));
-            this._tempIndices.Add((uint) baseIndex);
-            this._tempIndices.Add((uint) nextIndex);
+            this._indices[this._indexCount++] = (uint)(baseVertex + baseIndex + 1);
+            this._indices[this._indexCount++] = (uint)(baseVertex + baseIndex);
+            this._indices[this._indexCount++] = (uint)(baseVertex + nextIndex);
         }
         
-        // Calculate the bottom cap.
-        int bottomCenterIndex = this._tempVertices.Count;
-        
-        this._tempVertices.Add(new ImmediateVertex3D() {
-            Position = Vector3.Transform(new Vector3(0.0F, -halfHeight, 0.0F), transformMatrix),
-            TexCoords = new Vector2((uLeft + uRight) / 2.0F, (vTop + vBottom) / 2.0F),
-            Color = colorVec4
-        });
-        
+        // Bottom cap.
         for (int slice = 0; slice < slices; slice++) {
             int baseIndex = slice * 2;
             
-            this._tempIndices.Add((uint) bottomCenterIndex);
-            this._tempIndices.Add((uint) (baseIndex + 2));
-            this._tempIndices.Add((uint) baseIndex);
+            this._indices[this._indexCount++] = (uint)(baseVertex + bottomCenterLocal);
+            this._indices[this._indexCount++] = (uint)(baseVertex + (baseIndex + 2));
+            this._indices[this._indexCount++] = (uint)(baseVertex + baseIndex);
         }
-        
-        this.AddGeometry(this._tempVertices, this._tempIndices);
     }
-
+    
     /// <summary>
     /// Draws a wireframe representation of a cone in 3D space.
     /// </summary>
@@ -1480,6 +1546,11 @@ public class ImmediateRenderer : Disposable {
         
         float halfHeight = height / 2.0F;
         
+        int vertexCount = (slices + 1) * 2 + 1;
+        int indexCount = slices * 6;
+        
+        int baseVertex = this.Prepare(PrimitiveTopology.LineList, vertexCount, indexCount);
+        
         // Generate vertices for the cone.
         for (int slice = 0; slice <= slices; slice++) {
             float angle = slice * MathF.Tau / slices;
@@ -1487,49 +1558,43 @@ public class ImmediateRenderer : Disposable {
             float z = MathF.Sin(angle) * (radius / 2.0F);
             
             // Bottom edge vertex.
-            this._tempVertices.Add(new ImmediateVertex3D {
+            this._vertices[this._vertexCount++] = new ImmediateVertex3D {
                 Position = Vector3.Transform(new Vector3(x, -halfHeight, z), transformMatrix),
                 Color = colorVec4
-            });
+            };
             
             // Top vertex (tip of the cone).
-            this._tempVertices.Add(new ImmediateVertex3D {
+            this._vertices[this._vertexCount++] = new ImmediateVertex3D {
                 Position = Vector3.Transform(new Vector3(0.0F, halfHeight, 0.0F), transformMatrix),
                 Color = colorVec4
-            });
+            };
         }
+        
+        // Save center index before adding it
+        int bottomCenterIndex = this._vertexCount;
+        
+        // Add center vertex for the bottom cap.
+        this._vertices[this._vertexCount++] = new ImmediateVertex3D {
+            Position = Vector3.Transform(new Vector3(0.0F, -halfHeight, 0.0F), transformMatrix),
+            Color = colorVec4
+        };
         
         // Generate indices for the cone edges.
         for (int slice = 0; slice < slices; slice++) {
             int baseIndex = slice * 2;
             
             // Edge from bottom to tip.
-            this._tempIndices.Add((uint) baseIndex);
-            this._tempIndices.Add((uint) (baseIndex + 1));
+            this._indices[this._indexCount++] = (uint) (baseVertex + baseIndex);
+            this._indices[this._indexCount++] = (uint) (baseVertex + baseIndex + 1);
             
-            // Edge along the base.
-            this._tempIndices.Add((uint) baseIndex);
-            this._tempIndices.Add((uint) ((baseIndex + 2) % (slices * 2)));
+            // Edge along the base ring.
+            this._indices[this._indexCount++] = (uint) (baseVertex + baseIndex);
+            this._indices[this._indexCount++] = (uint) (baseVertex + ((baseIndex + 2) % (slices * 2)));
+            
+            // Line from center to edge (bottom cap).
+            this._indices[this._indexCount++] = (uint) (baseVertex + (bottomCenterIndex - baseVertex));
+            this._indices[this._indexCount++] = (uint) (baseVertex + baseIndex);
         }
-        
-        // Center vertex for the bottom cap.
-        int bottomCenterIndex = this._tempVertices.Count;
-        
-        this._tempVertices.Add(new ImmediateVertex3D {
-            Position = Vector3.Transform(new Vector3(0.0F, -halfHeight, 0.0F), transformMatrix),
-            Color = colorVec4
-        });
-        
-        // Generate indices for the bottom cap.
-        for (int slice = 0; slice < slices; slice++) {
-            int baseIndex = slice * 2;
-    
-            this._tempIndices.Add((uint) bottomCenterIndex);
-            this._tempIndices.Add((uint) baseIndex);
-            this._tempIndices.Add((uint) ((baseIndex + 2) % (slices * 2)));
-        }
-        
-        this.AddGeometry(this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
     
     /// <summary>
@@ -1563,6 +1628,13 @@ public class ImmediateRenderer : Disposable {
         
         float circusStep = MathF.Tau / radSeg;
         float sideStep = MathF.Tau / sides;
+    
+        // Total counts for Prepare.
+        int vertexCount = (radSeg + 1) * (sides + 1);
+        int indexCount = radSeg * sides * 6;
+    
+        // Prepare renderer and get base vertex offset.
+        int baseVertex = this.Prepare(PrimitiveTopology.TriangleList, vertexCount, indexCount);
         
         // Calculate the vertices.
         for (int rad = 0; rad <= radSeg; rad++) {
@@ -1575,17 +1647,22 @@ public class ImmediateRenderer : Disposable {
                 float cosSide = MathF.Cos(sideAngle);
                 float sinSide = MathF.Sin(sideAngle);
                 
-                Vector3 position = new Vector3(cosSide * cosRad, sinSide, cosSide * sinRad) * (size / 4.0F) + new Vector3(cosRad * (radius / 4.0F), 0.0F, sinRad * (radius / 4.0F));
+                // Calculate torus vertex position.
+                Vector3 position = new Vector3(cosSide * cosRad, sinSide, cosSide * sinRad) * (size / 4.0F) +
+                                   new Vector3(cosRad * (radius / 4.0F), 0.0F, sinRad * (radius / 4.0F));
+                
+                // Calculate texture coordinates.
                 Vector2 texCoords = new Vector2(
                     uLeft + (uRight - uLeft) * ((float) rad / radSeg),
                     vTop + (vBottom - vTop) * ((float) side / sides)
                 );
                 
-                this._tempVertices.Add(new ImmediateVertex3D() {
+                // Add vertex.
+                this._vertices[this._vertexCount++] = new ImmediateVertex3D() {
                     Position = Vector3.Transform(position, transformMatrix),
                     TexCoords = texCoords,
                     Color = colorVec4
-                });
+                };
             }
         }
         
@@ -1595,17 +1672,17 @@ public class ImmediateRenderer : Disposable {
                 int current = rad * (sides + 1) + side;
                 int next = current + sides + 1;
                 
-                this._tempIndices.Add((uint) current);
-                this._tempIndices.Add((uint) next);
-                this._tempIndices.Add((uint) (next + 1));
+                // First triangle.
+                this._indices[this._indexCount++] = (uint) (baseVertex + current);
+                this._indices[this._indexCount++] = (uint) (baseVertex + next);
+                this._indices[this._indexCount++] = (uint) (baseVertex + next + 1);
                 
-                this._tempIndices.Add((uint) current);
-                this._tempIndices.Add((uint) (next + 1));
-                this._tempIndices.Add((uint) (current + 1));
+                // Second triangle.
+                this._indices[this._indexCount++] = (uint) (baseVertex + current);
+                this._indices[this._indexCount++] = (uint) (baseVertex + next + 1);
+                this._indices[this._indexCount++] = (uint) (baseVertex + current + 1);
             }
         }
-        
-        this.AddGeometry(this._tempVertices, this._tempIndices);
     }
 
     /// <summary>
@@ -1632,6 +1709,15 @@ public class ImmediateRenderer : Disposable {
         float circusStep = MathF.Tau / radSeg;
         float sideStep = MathF.Tau / sides;
         
+        // Total counts for Prepare.
+        int vertexCount = (radSeg + 1) * (sides + 1);
+        
+        // Each vertex can generate up to 2 lines (radial + side), each = 2 indices.
+        int indexCount = radSeg * sides * 4;
+    
+        // Prepare renderer and get base vertex offset.
+        int baseVertex = this.Prepare(PrimitiveTopology.LineList, vertexCount, indexCount);
+        
         // Calculate the vertices for wireframe.
         for (int rad = 0; rad <= radSeg; rad++) {
             float radAngle = rad * circusStep;
@@ -1643,31 +1729,36 @@ public class ImmediateRenderer : Disposable {
                 float cosSide = MathF.Cos(sideAngle);
                 float sinSide = MathF.Sin(sideAngle);
                 
-                Vector3 position = new Vector3(cosSide * cosRad, sinSide, cosSide * sinRad) * (size / 4.0F) + new Vector3(cosRad * (radius / 4.0F), 0.0F, sinRad * (radius / 4.0F));
+                // Calculate torus position.
+                Vector3 position = new Vector3(cosSide * cosRad, sinSide, cosSide * sinRad) * (size / 4.0F) +
+                                   new Vector3(cosRad * (radius / 4.0F), 0.0F, sinRad * (radius / 4.0F));
                 
-                this._tempVertices.Add(new ImmediateVertex3D() {
+                // Calculate local vertex index.
+                int localIndex = rad * (sides + 1) + side;
+                
+                // Add vertex.
+                this._vertices[this._vertexCount++] = new ImmediateVertex3D() {
                     Position = Vector3.Transform(position, transformMatrix),
                     Color = colorVec4
-                });
+                };
                 
                 // Add indices for connecting radial and side segments.
                 if (rad < radSeg && side < sides) {
-                    int current = rad * (sides + 1) + side;
-                    int nextSide = current + 1;
-                    int nextRad = current + (sides + 1);
+                    int nextSide = localIndex + 1;
+                    int nextRad = localIndex + (sides + 1);
                     
-                    this._tempIndices.Add((uint) current);
-                    this._tempIndices.Add((uint) nextSide);
+                    // Side connection.
+                    this._indices[this._indexCount++] = (uint) (baseVertex + localIndex);
+                    this._indices[this._indexCount++] = (uint) (baseVertex + nextSide);
                     
-                    this._tempIndices.Add((uint) current);
-                    this._tempIndices.Add((uint) nextRad);
+                    // Radial connection.
+                    this._indices[this._indexCount++] = (uint) (baseVertex + localIndex);
+                    this._indices[this._indexCount++] = (uint) (baseVertex + nextRad);
                 }
             }
         }
-        
-        this.AddGeometry(this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
-
+    
     /// <summary>
     /// Draws a knot shape with the specified parameters using a command list and defined properties such as transformations, radii, number of segments, and optional color.
     /// </summary>
@@ -1692,13 +1783,19 @@ public class ImmediateRenderer : Disposable {
         }
         
         // Calculate source rectangle UVs.
-        float uLeft = sourceRec.X / (float)texture.Width;
-        float uRight = (sourceRec.X + sourceRec.Width) / (float)texture.Width;
+        float uLeft = sourceRec.X / (float) texture.Width;
+        float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
         float vTop = sourceRec.Y / (float) texture.Height;
         float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
         
         float step = MathF.Tau / radSeg;
         float sideStep = MathF.Tau / sides;
+        
+        // Total counts for Prepare.
+        int vertexCount = (radSeg + 1) * (sides + 1);
+        int indexCount = radSeg * sides * 6;
+        
+        int baseVertex = this.Prepare(PrimitiveTopology.TriangleList, vertexCount, indexCount);
         
         // Calculate the vertices.
         for (int rad = 0; rad <= radSeg; rad++) {
@@ -1726,16 +1823,17 @@ public class ImmediateRenderer : Disposable {
                 
                 Vector3 offset = normal * cosAngle * (tubeRadius / 6.0F) + binormal * sinAngle * (tubeRadius / 6.0F);
                 Vector3 position = center + offset;
+                
                 Vector2 texCoords = new Vector2(
                     float.Lerp(uLeft, uRight, (float) rad / radSeg),
                     float.Lerp(vTop, vBottom, (float) side / sides)
                 );
                 
-                this._tempVertices.Add(new ImmediateVertex3D() {
+                this._vertices[this._vertexCount++] = new ImmediateVertex3D() {
                     Position = Vector3.Transform(position, transformMatrix),
                     TexCoords = texCoords,
                     Color = colorVec4
-                });
+                };
             }
         }
         
@@ -1745,19 +1843,19 @@ public class ImmediateRenderer : Disposable {
                 int current = rad * (sides + 1) + side;
                 int next = current + sides + 1;
                 
-                this._tempIndices.Add((uint) current);
-                this._tempIndices.Add((uint) next);
-                this._tempIndices.Add((uint) (next + 1));
+                // First triangle.
+                this._indices[this._indexCount++] = (uint)(baseVertex + current);
+                this._indices[this._indexCount++] = (uint)(baseVertex + next);
+                this._indices[this._indexCount++] = (uint)(baseVertex + next + 1);
                 
-                this._tempIndices.Add((uint) current);
-                this._tempIndices.Add((uint) (next + 1));
-                this._tempIndices.Add((uint) (current + 1));
+                // Second triangle.
+                this._indices[this._indexCount++] = (uint)(baseVertex + current);
+                this._indices[this._indexCount++] = (uint)(baseVertex + next + 1);
+                this._indices[this._indexCount++] = (uint)(baseVertex + current + 1);
             }
         }
-        
-        this.AddGeometry(this._tempVertices, this._tempIndices);
     }
-
+    
     /// <summary>
     /// Renders the wireframe of a knot shape using the specified transformation, radii, and segments.
     /// </summary>
@@ -1779,25 +1877,36 @@ public class ImmediateRenderer : Disposable {
             sides = 3;
         }
         
+        // Step sizes for radial progression and tube sides.
         float step = MathF.Tau / radSeg;
         float sideStep = MathF.Tau / sides;
         
-        // Calculate vertices and edges for the wireframe.
+        // Total vertex and index counts (used for buffer preparation).
+        int vertexCount = (radSeg + 1) * (sides + 1);
+        int indexCount = (radSeg * (sides + 1)) * 2 + ((radSeg + 1) * sides) * 2;
+        
+        // Prepare renderer and get base vertex offset.
+        int baseVertex = this.Prepare(PrimitiveTopology.LineList, vertexCount, indexCount);
+        
+        // Generate vertices and edges for the wireframe knot.
         for (int rad = 0; rad <= radSeg; rad++) {
             float t = rad * step;
             
+            // Parametric equation for knot center.
             float x = MathF.Sin(t) + 2.0F * MathF.Sin(2.0F * t);
             float y = MathF.Cos(t) - 2.0F * MathF.Cos(2.0F * t);
             float z = -MathF.Sin(3.0F * t);
             
             Vector3 center = new Vector3(x, y, z) * (radius / 6.0F);
             
+            // Calculate tangent direction.
             Vector3 tangent = Vector3.Normalize(new Vector3(
                 MathF.Cos(t) + 4.0F * MathF.Cos(2.0F * t),
                 -MathF.Sin(t) + 4.0F * MathF.Sin(2.0F * t),
                 -3.0F * MathF.Cos(3.0F * t)
             ));
             
+            // Generate normal and binormal vectors.
             Vector3 normal = Vector3.Normalize(new Vector3(-tangent.Y, tangent.X, 0.0F));
             Vector3 binormal = Vector3.Cross(tangent, normal);
             
@@ -1806,31 +1915,38 @@ public class ImmediateRenderer : Disposable {
                 float cosAngle = MathF.Cos(sideAngle);
                 float sinAngle = MathF.Sin(sideAngle);
                 
+                // Offset from center to form tube surface.
                 Vector3 offset = normal * cosAngle * (tubeRadius / 6.0F) + binormal * sinAngle * (tubeRadius / 6.0F);
                 Vector3 position = center + offset;
                 
-                this._tempVertices.Add(new ImmediateVertex3D() {
+                // Calculate local vertex index (relative to this draw call).
+                int localIndex = rad * (sides + 1) + side;
+                
+                // Add vertex to the buffer.
+                this._vertices[this._vertexCount++] = new ImmediateVertex3D {
                     Position = Vector3.Transform(position, transformMatrix),
                     Color = colorVec4
-                });
+                };
                 
                 // Connect to next radial segment.
                 if (rad < radSeg) {
-                    this._tempIndices.Add((uint) (rad * (sides + 1) + side));
-                    this._tempIndices.Add((uint) ((rad + 1) * (sides + 1) + side));
+                    int nextLocal = (rad + 1) * (sides + 1) + side;
+                    
+                    this._indices[this._indexCount++] = (uint)(baseVertex + localIndex);
+                    this._indices[this._indexCount++] = (uint)(baseVertex + nextLocal);
                 }
                 
                 // Connect to the next side (wrapping around at the end).
                 if (side < sides) {
-                    this._tempIndices.Add((uint) (rad * (sides + 1) + side));
-                    this._tempIndices.Add((uint) (rad * (sides + 1) + side + 1));
+                    int nextLocal = rad * (sides + 1) + (side + 1);
+                    
+                    this._indices[this._indexCount++] = (uint)(baseVertex + localIndex);
+                    this._indices[this._indexCount++] = (uint)(baseVertex + nextLocal);
                 }
             }
         }
-        
-        this.AddGeometry(this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
-    
+
     /// <summary>
     /// Renders a grid using the specified command list, output description, transformation matrix, and grid parameters.
     /// </summary>
@@ -1863,89 +1979,56 @@ public class ImmediateRenderer : Disposable {
         
         float halfSize = slices * spacing * 0.5F;
         
+        int totalVertices = (slices + 1) * 4;
+        int totalIndices = (slices + 1) * 4;
+        
+        // Prepare.
+        int baseVertex = this.Prepare(PrimitiveTopology.LineList, totalVertices, totalIndices);
+        
         for (int i = 0; i <= slices; i++) {
             float offset = -halfSize + i * spacing;
             
+            Vector4 currentColor;
+            
             if (i == slices / 2) {
-                
-                // Draw lines along the X axis.
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = Vector3.Transform(new Vector3(offset, 0.0F, -halfSize), transformMatrix),
-                    Color = axisColorXVec4
-                });
-                
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = Vector3.Transform(new Vector3(offset, 0.0F, halfSize), transformMatrix),
-                    Color = axisColorXVec4
-                });
-                
-                // Draw lines along the Z axis.
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = Vector3.Transform(new Vector3(-halfSize, 0.0F, offset), transformMatrix),
-                    Color = axisColorZVec4
-                });
-                
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = Vector3.Transform(new Vector3(halfSize, 0.0F, offset), transformMatrix),
-                    Color = axisColorZVec4
-                });
+                currentColor = Vector4.Zero;
             }
             else if (i % majorLineSpacing == 0) {
-                // Draw lines along the X axis.
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = Vector3.Transform(new Vector3(offset, 0.0F, -halfSize), transformMatrix),
-                    Color = colorLightVec4
-                });
-                
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = Vector3.Transform(new Vector3(offset, 0.0F, halfSize), transformMatrix),
-                    Color = colorLightVec4
-                });
-                
-                // Draw lines along the Z axis.
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = Vector3.Transform(new Vector3(-halfSize, 0.0F, offset), transformMatrix),
-                    Color = colorLightVec4
-                });
-                
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = Vector3.Transform(new Vector3(halfSize, 0.0F, offset), transformMatrix),
-                    Color = colorLightVec4
-                });
+                currentColor = colorLightVec4;
             }
             else {
-                
-                // Draw lines along the X axis.
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = Vector3.Transform(new Vector3(offset, 0.0F, -halfSize), transformMatrix),
-                    Color = colorVec4
-                });
-                
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = Vector3.Transform(new Vector3(offset, 0.0F, halfSize), transformMatrix),
-                    Color = colorVec4
-                });
-                
-                // Draw lines along the Z axis.
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = Vector3.Transform(new Vector3(-halfSize, 0.0F, offset), transformMatrix),
-                    Color = colorVec4
-                });
-                
-                this._tempVertices.Add(new ImmediateVertex3D {
-                    Position = Vector3.Transform(new Vector3(halfSize, 0.0F, offset), transformMatrix),
-                    Color = colorVec4
-                });
+                currentColor = colorVec4;
             }
             
+            int vStart = this._vertexCount;
+            
+            this._vertices[this._vertexCount++] = new ImmediateVertex3D {
+                Position = Vector3.Transform(new Vector3(offset, 0.0F, -halfSize), transformMatrix),
+                Color = (i == slices / 2) ? axisColorXVec4 : currentColor
+            };
+
+            this._vertices[this._vertexCount++] = new ImmediateVertex3D {
+                Position = Vector3.Transform(new Vector3(offset, 0.0F, halfSize), transformMatrix),
+                Color = (i == slices / 2) ? axisColorXVec4 : currentColor
+            };
+            
+            this._vertices[this._vertexCount++] = new ImmediateVertex3D {
+                Position = Vector3.Transform(new Vector3(-halfSize, 0.0F, offset), transformMatrix),
+                Color = (i == slices / 2) ? axisColorZVec4 : currentColor
+            };
+            
+            this._vertices[this._vertexCount++] = new ImmediateVertex3D {
+                Position = Vector3.Transform(new Vector3(halfSize, 0.0F, offset), transformMatrix),
+                Color = (i == slices / 2) ? axisColorZVec4 : currentColor
+            };
+            
             // Add indices for line pairs along X and Z.
-            this._tempIndices.Add((uint) (i * 4 + 0));
-            this._tempIndices.Add((uint) (i * 4 + 1));
-            this._tempIndices.Add((uint) (i * 4 + 2));
-            this._tempIndices.Add((uint) (i * 4 + 3));
+            this._indices[this._indexCount++] = (uint) (vStart + 0);
+            this._indices[this._indexCount++] = (uint) (vStart + 1);
+            
+            this._indices[this._indexCount++] = (uint) (vStart + 2);
+            this._indices[this._indexCount++] = (uint) (vStart + 3);
         }
-        
-        this.AddGeometry(this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
 
     /// <summary>
@@ -1958,31 +2041,33 @@ public class ImmediateRenderer : Disposable {
         Vector4 colorVec4 = color?.ToRgbaFloatVec4() ?? Color.White.ToRgbaFloatVec4();
         Matrix4x4 transformMatrix = transform.GetMatrix();
         
+        // Prepare.
+        int baseVertex = this.Prepare(PrimitiveTopology.LineList, 8, 24);
+        
         for (int i = 0; i < 8; i++) {
+            
             // Calculate the x, y, z coordinates.
             float x = (i & 1) == 0 ? box.Min.X : box.Max.X;
             float y = (i & 2) == 0 ? box.Min.Y : box.Max.Y;
             float z = (i & 4) == 0 ? box.Min.Z : box.Max.Z;
             
             // Add the vertex to the list.
-            this._tempVertices.Add(new ImmediateVertex3D {
+            this._vertices[this._vertexCount++] = new ImmediateVertex3D {
                 Position = Vector3.Transform(new Vector3(x, y, z), transformMatrix),
                 Color = colorVec4
-            });
+            };
             
             // Connect the vertex to its neighbors.
             for (int bit = 0; bit < 3; bit++) {
                 if ((i & (1 << bit)) == 0) {
                     int neighbor = i | (1 << bit);
-                    this._tempIndices.Add((uint) i);
-                    this._tempIndices.Add((uint) neighbor);
+                    this._indices[this._indexCount++] = (uint) (baseVertex + i);
+                    this._indices[this._indexCount++] = (uint) (baseVertex + neighbor);
                 }
             }
         }
-        
-        this.AddGeometry(this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
     }
-
+    
     /// <summary>
     /// Draws a line between two points in 3D space with a specified optional color.
     /// </summary>
@@ -1992,23 +2077,24 @@ public class ImmediateRenderer : Disposable {
     public void DrawLine(Vector3 startPos, Vector3 endPos, Color? color = null) {
         Vector4 colorVec4 = color?.ToRgbaFloatVec4() ?? Color.White.ToRgbaFloatVec4();
         
+        // Prepare.
+        int baseVertex = this.Prepare(PrimitiveTopology.LineList, 2, 2);
+        
         // Add start vertex.
-        this._tempVertices.Add(new ImmediateVertex3D {
+        this._vertices[this._vertexCount++] = new ImmediateVertex3D {
             Position = startPos,
             Color = colorVec4
-        });
+        };
         
         // Add end vertex.
-        this._tempVertices.Add(new ImmediateVertex3D {
+        this._vertices[this._vertexCount++] = new ImmediateVertex3D {
             Position = endPos,
             Color = colorVec4
-        });
+        };
         
         // Add indices for the line.
-        this._tempIndices.Add(0);
-        this._tempIndices.Add(1);
-        
-        this.AddGeometry(this._tempVertices, this._tempIndices, PrimitiveTopology.LineList);
+        this._indices[this._indexCount++] = (uint) (baseVertex + 0);
+        this._indices[this._indexCount++] = (uint) (baseVertex + 1);
     }
     
     /// <summary>
@@ -2020,8 +2106,6 @@ public class ImmediateRenderer : Disposable {
     public void DrawBillboard(Vector3 position, Vector2? scale = null, Color? color = null) {
         Vector4 colorVec4 = color?.ToRgbaFloatVec4() ?? Color.White.ToRgbaFloatVec4();
         Vector2 finalScale = scale ?? Vector2.One;
-        Texture2D texture = this._requestedTexture;
-        Rectangle sourceRec = this._requestedSourceRect;
         
         Cam3D? cam3D = Cam3D.ActiveCamera;
         
@@ -2047,6 +2131,12 @@ public class ImmediateRenderer : Disposable {
         
         Matrix4x4 transformMatrix = billboardTransform.GetMatrix();
         
+        // Prepare.
+        int baseVertex = this.Prepare(PrimitiveTopology.TriangleList, 4, 6);
+        
+        Texture2D texture = this._currentTexture;
+        Rectangle sourceRec = this._currentSourceRect;
+        
         // Calculate source rectangle UVs.
         float uLeft = sourceRec.X / (float) texture.Width;
         float uRight = (sourceRec.X + sourceRec.Width) / (float) texture.Width;
@@ -2058,52 +2148,55 @@ public class ImmediateRenderer : Disposable {
         Vector3 halfSize = new Vector3(finalScale.X * aspectRatio, finalScale.Y, 0.0F) / 2.0F;
         
         // Add vertices.
-        this._tempVertices.Add(new ImmediateVertex3D {
+        this._vertices[this._vertexCount++] = new ImmediateVertex3D {
             Position = Vector3.Transform(new Vector3(-halfSize.X, -halfSize.Y, 0.0F), transformMatrix),
             TexCoords = new Vector2(uRight, vBottom),
             Color = colorVec4
-        });
+        };
         
-        this._tempVertices.Add(new ImmediateVertex3D {
+        this._vertices[this._vertexCount++] = new ImmediateVertex3D {
             Position = Vector3.Transform(new Vector3(halfSize.X, -halfSize.Y, 0.0F), transformMatrix),
             TexCoords = new Vector2(uLeft, vBottom),
             Color = colorVec4
-        });
+        };
         
-        this._tempVertices.Add(new ImmediateVertex3D {
+        this._vertices[this._vertexCount++] = new ImmediateVertex3D {
             Position = Vector3.Transform(new Vector3(halfSize.X, halfSize.Y, 0.0F), transformMatrix),
             TexCoords = new Vector2(uLeft, vTop),
             Color = colorVec4
-        });
+        };
         
-        this._tempVertices.Add(new ImmediateVertex3D {
+        this._vertices[this._vertexCount++] = new ImmediateVertex3D {
             Position = Vector3.Transform(new Vector3(-halfSize.X, halfSize.Y, 0.0F), transformMatrix),
             TexCoords = new Vector2(uRight, vTop),
             Color = colorVec4
-        });
+        };
         
         // Add indices for 2 triangles making up the quad.
-        this._tempIndices.Add(0);
-        this._tempIndices.Add(1);
-        this._tempIndices.Add(2);
-        this._tempIndices.Add(2);
-        this._tempIndices.Add(3);
-        this._tempIndices.Add(0);
+        this._indices[this._indexCount++] = (uint) (baseVertex + 0);
+        this._indices[this._indexCount++] = (uint) (baseVertex + 1);
+        this._indices[this._indexCount++] = (uint) (baseVertex + 2);
         
-        this.AddGeometry(this._tempVertices, this._tempIndices);
+        this._indices[this._indexCount++] = (uint) (baseVertex + 2);
+        this._indices[this._indexCount++] = (uint) (baseVertex + 3);
+        this._indices[this._indexCount++] = (uint) (baseVertex + 0);
     }
     
-    private void AddGeometry(List<ImmediateVertex3D> vertices, List<uint>? indices = null, PrimitiveTopology topology = PrimitiveTopology.TriangleList) {
+    //public void DrawGeometry(List<ImmediateVertex3D> vertices, List<uint>? indices = null, PrimitiveTopology topology = PrimitiveTopology.TriangleList) {
+    //    this.AddGeometry(vertices, indices, topology, false);
+    //}
+    
+    private int Prepare(PrimitiveTopology topology, int vertexCount, int indexCount) {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
         }
         
-        if (vertices.Count > this.Capacity) {
-            throw new InvalidOperationException($"The number of provided vertices exceeds the capacity! [{vertices.Count} > {this.Capacity}]");
+        if (vertexCount > this.Capacity) {
+            throw new InvalidOperationException($"The number of provided vertices exceeds the capacity! [{vertexCount} > {this.Capacity}]");
         }
         
-        if (indices != null && indices.Count > this.Capacity * 3) {
-            throw new InvalidOperationException($"The number of provided indices exceeds the capacity! [{indices.Count} > {this.Capacity * 3}]");
+        if (indexCount > this.Capacity * 3) {
+            throw new InvalidOperationException($"The number of provided indices exceeds the capacity! [{indexCount} > {this.Capacity * 3}]");
         }
         
         if (!this._currentOutput.Equals(this._requestedOutput) ||
@@ -2137,35 +2230,15 @@ public class ImmediateRenderer : Disposable {
         this._pipelineDescription.PrimitiveTopology = this._currentTopology;
         this._pipelineDescription.Outputs = this._currentOutput;
         
-        if (this._vertexCount + vertices.Count >= this._vertices.Length) {
+        if (this._vertexCount + vertexCount > this._vertices.Length) {
             this.Flush();
         }
         
-        if (this._indexCount + indices?.Count >= this._indices.Length) {
+        if (this._indexCount + indexCount > this._indices.Length) {
             this.Flush();
         }
         
-        int vertexOffset = this._vertexCount;
-        
-        // Add vertices.
-        for (int i = 0; i < vertices.Count; i++) {
-            this._vertices[this._vertexCount + i] = vertices[i];
-        }
-        
-        this._vertexCount += vertices.Count;
-        
-        // Add indices with vertex offset.
-        if (indices != null) {
-            for (int i = 0; i < indices.Count; i++) {
-                this._indices[this._indexCount + i] = indices[i] + (uint) vertexOffset;
-            }
-            
-            this._indexCount += indices.Count;
-        }
-        
-        // Clear temp data.
-        this._tempVertices.Clear();
-        this._tempIndices.Clear();
+        return this._vertexCount;
     }
     
     private void Flush() {
