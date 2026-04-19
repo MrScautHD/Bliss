@@ -6,7 +6,6 @@ using Bliss.CSharp.Effects;
 using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.VertexTypes;
-using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
 using Veldrid;
@@ -70,6 +69,9 @@ public class ImmediateRenderer : Disposable {
     /// </summary>
     private bool _begun;
     
+    /// <summary>
+    /// The command list currently used for rendering.
+    /// </summary>
     private CommandList _currentCommandList;
     
     /// <summary>
@@ -197,6 +199,11 @@ public class ImmediateRenderer : Disposable {
     /// </summary>
     private PrimitiveTopology _currentTopology;
     
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ImmediateRenderer"/> class.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used for rendering.</param>
+    /// <param name="capacity">The maximum number of vertices that can be batched.</param>
     public ImmediateRenderer(GraphicsDevice graphicsDevice, uint capacity = 10240) {
         this.GraphicsDevice = graphicsDevice;
         this.Capacity = capacity;
@@ -217,6 +224,17 @@ public class ImmediateRenderer : Disposable {
         this._pipelineDescription = new SimplePipelineDescription();
     }
     
+    /// <summary>
+    /// Begins a new rendering session with the specified pipeline state.
+    /// </summary>
+    /// <param name="commandList">The command list used for issuing draw commands.</param>
+    /// <param name="output">The output description defining render targets.</param>
+    /// <param name="effect">Optional effect used for rendering.</param>
+    /// <param name="blendState">Optional blend state.</param>
+    /// <param name="depthStencilState">Optional depth-stencil state.</param>
+    /// <param name="rasterizerState">Optional rasterizer state.</param>
+    /// <param name="sampler">Optional texture sampler.</param>
+    /// <param name="sourceRect">Optional texture source rectangle.</param>
     public void Begin(CommandList commandList, OutputDescription output, Effect? effect = null, BlendStateDescription? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Sampler? sampler = null, Rectangle? sourceRect = null) {
         if (this._begun) {
             throw new Exception("The ImmediateRenderer has already begun!");
@@ -231,11 +249,14 @@ public class ImmediateRenderer : Disposable {
         this._mainRasterizerState = this._currentRasterizerState = this._requestedRasterizerState = rasterizerState ?? RasterizerStateDescription.DEFAULT;
         this._mainTexture = this._currentTexture = this._requestedTexture = GlobalResource.DefaultImmediateRendererTexture;
         this._mainSampler = this._currentSampler = this._requestedSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointClamp);
-        this._mainSourceRect = this._currentSourceRect = sourceRect ?? new Rectangle(0, 0, (int) this._mainTexture.Width, (int) this._mainTexture.Height);
+        this._mainSourceRect = this._currentSourceRect = this._requestedSourceRect = sourceRect ?? new Rectangle(0, 0, (int) this._mainTexture.Width, (int) this._mainTexture.Height);
         
         this.DrawCallCount = 0;
     }
     
+    /// <summary>
+    /// Ends the current rendering session and flushes all remaining batched geometry.
+    /// </summary>
     public void End() {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -245,6 +266,10 @@ public class ImmediateRenderer : Disposable {
         this.Flush();
     }
     
+    /// <summary>
+    /// Gets the currently active output description.
+    /// </summary>
+    /// <returns>The current <see cref="OutputDescription"/>.</returns>
     public OutputDescription GetCurrentOutput() {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -253,6 +278,10 @@ public class ImmediateRenderer : Disposable {
         return this._currentOutput;
     }
     
+    /// <summary>
+    /// Sets a new output description to be used for subsequent draw calls.
+    /// </summary>
+    /// <param name="output">The output description to apply.</param>
     public void PushOutput(OutputDescription output) {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -261,6 +290,9 @@ public class ImmediateRenderer : Disposable {
         this._requestedOutput = output;
     }
     
+    /// <summary>
+    /// Restores the default output description.
+    /// </summary>
     public void PopOutput() {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -269,6 +301,10 @@ public class ImmediateRenderer : Disposable {
         this._requestedOutput = this._mainOutput;
     }
     
+    /// <summary>
+    /// Gets the currently active effect.
+    /// </summary>
+    /// <returns>The current <see cref="Effect"/>.</returns>
     public Effect GetCurrentEffect() {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -277,6 +313,10 @@ public class ImmediateRenderer : Disposable {
         return this._currentEffect;
     }
     
+    /// <summary>
+    /// Sets a new effect to be used for subsequent draw calls.
+    /// </summary>
+    /// <param name="effect">The effect to apply.</param>
     public void PushEffect(Effect effect) {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -285,6 +325,9 @@ public class ImmediateRenderer : Disposable {
         this._requestedEffect = effect;
     }
     
+    /// <summary>
+    /// Restores the default effect.
+    /// </summary>
     public void PopEffect() {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -292,7 +335,11 @@ public class ImmediateRenderer : Disposable {
         
         this._requestedEffect = this._mainEffect;
     }
-
+    
+    /// <summary>
+    /// Gets the currently active blend state.
+    /// </summary>
+    /// <returns>The current <see cref="BlendStateDescription"/>.</returns>
     public BlendStateDescription GetCurrentBlendState() {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -301,6 +348,10 @@ public class ImmediateRenderer : Disposable {
         return this._currentBlendState;
     }
     
+    /// <summary>
+    /// Sets a new blend state to be used for subsequent draw calls.
+    /// </summary>
+    /// <param name="blendState">The blend state to apply.</param>
     public void PushBlendState(BlendStateDescription blendState) {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -309,6 +360,9 @@ public class ImmediateRenderer : Disposable {
         this._requestedBlendState = blendState;
     }
     
+    /// <summary>
+    /// Restores the default blend state.
+    /// </summary>
     public void PopBlendState() {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -317,6 +371,10 @@ public class ImmediateRenderer : Disposable {
         this._requestedBlendState = this._mainBlendState;
     }
     
+    /// <summary>
+    /// Gets the currently active depth-stencil state.
+    /// </summary>
+    /// <returns>The current <see cref="DepthStencilStateDescription"/>.</returns>
     public DepthStencilStateDescription GetCurrentDepthStencilState() {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -325,6 +383,10 @@ public class ImmediateRenderer : Disposable {
         return this._currentDepthStencilState;
     }
     
+    /// <summary>
+    /// Sets a new depth-stencil state to be used for subsequent draw calls.
+    /// </summary>
+    /// <param name="depthStencilState">The depth-stencil state to apply.</param>
     public void PushDepthStencilState(DepthStencilStateDescription depthStencilState) {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -333,6 +395,9 @@ public class ImmediateRenderer : Disposable {
         this._requestedDepthStencilState = depthStencilState;
     }
     
+    /// <summary>
+    /// Restores the default depth-stencil state.
+    /// </summary>
     public void PopDepthStencilState() {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -341,6 +406,10 @@ public class ImmediateRenderer : Disposable {
         this._requestedDepthStencilState = this._mainDepthStencilState;
     }
     
+    /// <summary>
+    /// Gets the currently active rasterizer state.
+    /// </summary>
+    /// <returns>The current <see cref="RasterizerStateDescription"/>.</returns>
     public RasterizerStateDescription GetCurrentRasterizerState() {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -349,6 +418,10 @@ public class ImmediateRenderer : Disposable {
         return this._currentRasterizerState;
     }
     
+    /// <summary>
+    /// Sets a new rasterizer state to be used for subsequent draw calls.
+    /// </summary>
+    /// <param name="rasterizerState">The rasterizer state to apply.</param>
     public void PushRasterizerState(RasterizerStateDescription rasterizerState) {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -357,6 +430,9 @@ public class ImmediateRenderer : Disposable {
         this._requestedRasterizerState = rasterizerState;
     }
     
+    /// <summary>
+    /// Restores the default rasterizer state.
+    /// </summary>
     public void PopRasterizerState() {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -365,6 +441,10 @@ public class ImmediateRenderer : Disposable {
         this._requestedRasterizerState = this._mainRasterizerState;
     }
     
+    /// <summary>
+    /// Gets the currently bound texture.
+    /// </summary>
+    /// <returns>The current <see cref="Texture2D"/>.</returns>
     public Texture2D GetCurrentTexture() {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -373,6 +453,11 @@ public class ImmediateRenderer : Disposable {
         return this._currentTexture;
     }
     
+    /// <summary>
+    /// Sets a new texture and optional source rectangle for subsequent draw calls.
+    /// </summary>
+    /// <param name="texture">The texture to apply.</param>
+    /// <param name="sourceRect">Optional source rectangle. Defaults to the full texture.</param>
     public void PushTexture(Texture2D texture, Rectangle? sourceRect = null) {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -382,14 +467,22 @@ public class ImmediateRenderer : Disposable {
         this._requestedSourceRect = sourceRect ?? new Rectangle(0, 0, (int) texture.Width, (int) texture.Height);
     }
     
+    /// <summary>
+    /// Restores the default texture and source rectangle.
+    /// </summary>
     public void PopTexture() {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
         }
         
         this._requestedTexture = this._mainTexture;
+        this._requestedSourceRect = this._mainSourceRect;
     }
     
+    /// <summary>
+    /// Gets the currently active sampler.
+    /// </summary>
+    /// <returns>The current <see cref="Sampler"/>.</returns>
     public Sampler GetCurrentSampler() {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -398,6 +491,10 @@ public class ImmediateRenderer : Disposable {
         return this._currentSampler;
     }
     
+    /// <summary>
+    /// Sets a new sampler to be used for subsequent draw calls.
+    /// </summary>
+    /// <param name="sampler">The sampler to apply.</param>
     public void PushSampler(Sampler sampler) {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -406,6 +503,9 @@ public class ImmediateRenderer : Disposable {
         this._requestedSampler = sampler;
     }
     
+    /// <summary>
+    /// Restores the default sampler.
+    /// </summary>
     public void PopSampler() {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -2182,10 +2282,51 @@ public class ImmediateRenderer : Disposable {
         this._indices[this._indexCount++] = (uint) (baseVertex + 0);
     }
     
-    //public void DrawGeometry(List<ImmediateVertex3D> vertices, List<uint>? indices = null, PrimitiveTopology topology = PrimitiveTopology.TriangleList) {
-    //    this.AddGeometry(vertices, indices, topology, false);
-    //}
+    /// <summary>
+    /// Submits arbitrary geometry to the renderer using the specified topology.
+    /// </summary>
+    /// <param name="vertices">The list of vertices that define the geometry.</param>
+    /// <param name="indices">Optional index list. If null or empty, sequential indices are generated automatically.</param>
+    /// <param name="topology">The primitive topology used to interpret the geometry (e.g., TriangleList, LineList).</param>
+    public void DrawGeometry(List<ImmediateVertex3D> vertices, List<uint>? indices = null, PrimitiveTopology topology = PrimitiveTopology.TriangleList) {
+        if (vertices.Count == 0) {
+            return;
+        }
+        
+        int vertexCount = vertices.Count;
+        int indexCount = indices?.Count ?? vertexCount;
+        
+        int baseVertex = this.Prepare(topology, vertexCount, indexCount);
+        
+        // Copy vertices.
+        for (int i = 0; i < vertexCount; i++) {
+            this._vertices[this._vertexCount++] = vertices[i];
+        }
+        
+        if (indices != null && indices.Count > 0) {
+            
+            // Copy indices (with base vertex offset).
+            for (int i = 0; i < indices.Count; i++) {
+                this._indices[this._indexCount++] = (uint) (baseVertex + indices[i]);
+            }
+        }
+        else {
+            
+            // Generate sequential indices.
+            for (int i = 0; i < vertexCount; i++) {
+                this._indices[this._indexCount++] = (uint) (baseVertex + i);
+            }
+        }
+    }
     
+    /// <summary>
+    /// Prepares the renderer for drawing by ensuring sufficient buffer space and synchronizing pipeline state.
+    /// Flushes the current batch if required due to state changes or capacity limits.
+    /// </summary>
+    /// <param name="topology">The primitive topology for the upcoming draw call.</param>
+    /// <param name="vertexCount">The number of vertices that will be submitted.</param>
+    /// <param name="indexCount">The number of indices that will be submitted.</param>
+    /// <returns>The base vertex index for the new geometry within the batch.</returns>
     private int Prepare(PrimitiveTopology topology, int vertexCount, int indexCount) {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
@@ -2241,6 +2382,10 @@ public class ImmediateRenderer : Disposable {
         return this._vertexCount;
     }
     
+    /// <summary>
+    /// Submits the currently batched geometry to the GPU and resets the batch buffers.
+    /// Applies the active pipeline state, updates GPU buffers, and issues the appropriate draw call.
+    /// </summary>
     private void Flush() {
         if (this._vertexCount == 0) {
             return;
