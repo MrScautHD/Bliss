@@ -1,7 +1,7 @@
 #version 450
 
-layout (set = 2, binding = 0) uniform texture2D fTexture;
-layout (set = 2, binding = 1) uniform sampler fTextureSampler;
+layout (set = 1, binding = 0) uniform texture2D fTexture;
+layout (set = 1, binding = 1) uniform sampler fTextureSampler;
 
 layout (location = 0) in vec2 fTexCoords;
 layout (location = 1) in vec4 fColor;

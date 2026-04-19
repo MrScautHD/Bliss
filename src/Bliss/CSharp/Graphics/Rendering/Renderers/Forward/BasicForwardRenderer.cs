@@ -194,7 +194,7 @@ public class BasicForwardRenderer : Disposable, IRenderer {
                 
                 // Set the temp instance transformations.
                 for (int i = 0; i < renderable.InstanceCount; i++) {
-                    this._tempInstanceTransforms?[i] = renderable.GetTransforms()[i].GetTransform();
+                    this._tempInstanceTransforms?[i] = renderable.GetTransforms()[i].GetMatrix();
                 }
                 
                 // Set the instance buffer.
@@ -222,7 +222,7 @@ public class BasicForwardRenderer : Disposable, IRenderer {
                 
                 // Set the temp instance transformations.
                 for (int i = 0; i < renderable.InstanceCount; i++) {
-                    this._tempInstanceTransforms?[i] = renderable.GetTransforms()[i].GetTransform();
+                    this._tempInstanceTransforms?[i] = renderable.GetTransforms()[i].GetMatrix();
                 }
                 
                 // Set the instance buffer.

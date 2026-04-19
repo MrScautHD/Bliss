@@ -1,7 +1,6 @@
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Effects;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
-using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Materials;
 using Bliss.CSharp.Textures;
@@ -129,8 +128,7 @@ public static class GlobalResource {
         // ImmediateRenderer effect.
         DefaultImmediateRendererEffect = new Effect(graphicsDevice, "content/bliss/shaders/immediate_renderer.vert", "content/bliss/shaders/immediate_renderer.frag", new CrossCompileOptions());
         DefaultImmediateRendererEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
-        DefaultImmediateRendererEffect.AddBufferLayout("TransformBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex);
-        DefaultImmediateRendererEffect.AddTextureLayout("fTexture", 2);
+        DefaultImmediateRendererEffect.AddTextureLayout("fTexture", 1);
         
         // Default model effect.
         DefaultModelEffect = new Effect(graphicsDevice, Effect.LoadTextCodeFromFile("content/bliss/shaders/default_model.vert"), Effect.LoadTextCodeFromFile("content/bliss/shaders/default_model.frag"), new CrossCompileOptions(), []);

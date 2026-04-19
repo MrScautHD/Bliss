@@ -325,67 +325,40 @@ public class Game : Disposable {
         // Drawing 3D.
         this._cam3D.Begin(this.CommandList);
         
-        // ImmediateRenderer START
+        // ImmediateRenderer BEGIN
+        this._immediateRenderer.Begin(commandList, this.FullScreenTexture.Framebuffer.OutputDescription);
         
-        this._immediateRenderer.SetTexture(this._customMeshTexture);
-        this._immediateRenderer.DrawCube(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(9, 0, 6) }, new Vector3(1, 1, 1));
-        this._immediateRenderer.ResetSettings();
+        // Draw with texture.
+        this._immediateRenderer.PushTexture(this._customMeshTexture);
+        this._immediateRenderer.DrawCube(new Transform() { Translation = new Vector3(9, 0, 6) }, new Vector3(1, 1, 1));
+        this._immediateRenderer.DrawSphere(new Transform() { Translation = new Vector3(13, 0, 6) }, 1, 20, 20);
+        this._immediateRenderer.DrawHemisphere(new Transform() { Translation = new Vector3(17, 0, 6) }, 1, 20, 20);
+        this._immediateRenderer.DrawCylinder(new Transform() { Translation = new Vector3(23, 0, 6) }, 1, 1, 20);
+        this._immediateRenderer.DrawCylinder(new Transform() { Translation = new Vector3(23, 0, 6) }, 1, 1, 20);
+        this._immediateRenderer.DrawCapsule(new Transform() { Translation = new Vector3(31, 0, 6) }, 1, 1, 20);
+        this._immediateRenderer.DrawCone(new Transform() { Translation = new Vector3(38, 0, 6)}, 1, 1, 20);
+        this._immediateRenderer.DrawTorus(new Transform() { Translation = new Vector3(42, 0, 6) }, 2, 1, 20, 20);
+        this._immediateRenderer.DrawKnot(new Transform() { Translation = new Vector3(46, 0, 6) }, 1, 1, 20, 20);
+        this._immediateRenderer.PopTexture();
         
-        this._immediateRenderer.DrawCubeWires(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(11, 0, 6) }, new Vector3(1, 1, 1), Color.Green);
+        this._immediateRenderer.PushTexture(this._logoTexture);
+        this._immediateRenderer.DrawBillboard(new Vector3(35, 0, 6));
+        this._immediateRenderer.PopTexture();
         
-        this._immediateRenderer.SetTexture(this._customMeshTexture);
-        this._immediateRenderer.DrawSphere(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(13, 0, 6) }, 1, 20, 20);
-        this._immediateRenderer.ResetSettings();
+        // Draw with wires.
+        this._immediateRenderer.DrawCubeWires(new Transform() { Translation = new Vector3(11, 0, 6) }, new Vector3(1, 1, 1), Color.Green);
+        this._immediateRenderer.DrawSphereWires(new Transform() { Translation = new Vector3(15, 0, 6) }, 1, 20, 20, Color.Green);
+        this._immediateRenderer.DrawHemisphereWires(new Transform() { Translation = new Vector3(19, 0, 6) }, 1, 20, 20, Color.Green);
+        this._immediateRenderer.DrawLine(new Vector3(20.5F, 0, 6), new Vector3(21.5F, 0, 6), Color.Green);
+        this._immediateRenderer.DrawGrid(new Transform(), 96, 1, 16, Color.Gray);
+        this._immediateRenderer.DrawCylinderWires(new Transform() { Translation = new Vector3(25, 0, 6) }, 1, 1, 20, Color.Green);
+        this._immediateRenderer.DrawBoundingBox(new Transform() { Translation = new Vector3(28, 0, 6) }, this._playerBox, Color.Green);
+        this._immediateRenderer.DrawCapsuleWires(new Transform() { Translation = new Vector3(33, 0, 6) }, 1, 1, 20, Color.Green);
+        this._immediateRenderer.DrawConeWires(new Transform() { Translation = new Vector3(40, 0, 6)}, 1, 1, 20, Color.Green);
+        this._immediateRenderer.DrawTorusWires(new Transform() { Translation = new Vector3(44, 0, 6) }, 2, 1, 20, 20, Color.Green);
+        this._immediateRenderer.DrawKnotWires(new Transform() { Translation = new Vector3(48, 0, 6) }, 1, 1, 20, 20, Color.Green);
         
-        this._immediateRenderer.DrawSphereWires(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(15, 0, 6) }, 1, 20, 20, Color.Green);
-        
-        this._immediateRenderer.SetTexture(this._customMeshTexture);
-        this._immediateRenderer.DrawHemisphere(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(17, 0, 6) }, 1, 20, 20);
-        this._immediateRenderer.ResetSettings();
-        
-        this._immediateRenderer.DrawHemisphereWires(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(19, 0, 6) }, 1, 20, 20, Color.Green);
-        this._immediateRenderer.ResetSettings();
-        
-        this._immediateRenderer.DrawLine(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Vector3(20.5F, 0, 6), new Vector3(21.5F, 0, 6), Color.Green);
-        
-        this._immediateRenderer.DrawGrid(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform(), 96, 1, 16, Color.Gray);
-        
-        this._immediateRenderer.SetTexture(this._customMeshTexture);
-        this._immediateRenderer.DrawCylinder(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(23, 0, 6) }, 1, 1, 20);
-        this._immediateRenderer.ResetSettings();
-        
-        this._immediateRenderer.DrawCylinderWires(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(25, 0, 6) }, 1, 1, 20, Color.Green);
-        this._immediateRenderer.ResetSettings();
-        
-        this._immediateRenderer.DrawBoundingBox(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(28, 0, 6) }, this._playerBox, Color.Green);
-        
-        this._immediateRenderer.SetTexture(this._customMeshTexture);
-        this._immediateRenderer.DrawCapsule(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(31, 0, 6) }, 1, 1, 20);
-        this._immediateRenderer.ResetSettings();
-        
-        this._immediateRenderer.DrawCapsuleWires(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(33, 0, 6) }, 1, 1, 20, Color.Green);
-        
-        this._immediateRenderer.SetTexture(this._logoTexture, sourceRect: new Rectangle(0, 0, (int) this._logoTexture.Width, (int) this._logoTexture.Height));
-        this._immediateRenderer.DrawBillboard(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Vector3(35, 0, 6));
-        this._immediateRenderer.ResetSettings();
-        
-        this._immediateRenderer.SetTexture(this._customMeshTexture);
-        this._immediateRenderer.DrawCone(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(38, 0, 6)}, 1, 1, 20);
-        this._immediateRenderer.ResetSettings();
-        
-        this._immediateRenderer.DrawConeWires(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(40, 0, 6)}, 1, 1, 20, Color.Green);
-        
-        this._immediateRenderer.SetTexture(this._customMeshTexture);
-        this._immediateRenderer.DrawTorus(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(42, 0, 6) }, 2, 1, 20, 20);
-        this._immediateRenderer.ResetSettings();
-        
-        this._immediateRenderer.DrawTorusWires(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(44, 0, 6) }, 2, 1, 20, 20, Color.Green);
-        
-        this._immediateRenderer.SetTexture(this._customMeshTexture);
-        this._immediateRenderer.DrawKnot(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(46, 0, 6) }, 1, 1, 20, 20);
-        this._immediateRenderer.ResetSettings();
-        
-        this._immediateRenderer.DrawKnotWires(commandList, this.FullScreenTexture.Framebuffer.OutputDescription, new Transform() { Translation = new Vector3(48, 0, 6) }, 1, 1, 20, 20, Color.Green);
+        this._immediateRenderer.End();
         // ImmediateRenderer END
         
         // Animate PLAYER (Begin)

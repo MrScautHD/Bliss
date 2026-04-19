@@ -5,10 +5,6 @@ layout(std140, set = 0, binding = 0) uniform MatrixBuffer {
     mat4x4 uView;
 };
 
-layout(std140, set = 1, binding = 0) uniform TransformBuffer {
-    mat4x4 uTransformation;
-};
-
 layout (location = 0) in vec3 vPosition;
 layout (location = 1) in vec2 vTexCoords;
 layout (location = 2) in vec4 vColor;
@@ -21,5 +17,5 @@ void main() {
     fColor = vColor;
 
     vec4 v4Pos = vec4(vPosition, 1.0F);
-    gl_Position = uProjection * uView * uTransformation * v4Pos;
+    gl_Position = uProjection * uView * v4Pos;
 }

@@ -233,7 +233,7 @@ public class Renderable : Disposable {
     /// </summary>
     /// <param name="commandList">The command list used to defer the GPU upload.</param>
     public void UpdateTransformBuffer(CommandList commandList) {
-        this._transformBuffer.SetValue(0, this.UseInstancing ? Matrix4x4.Identity : this._transforms[0].GetTransform());
+        this._transformBuffer.SetValue(0, this.UseInstancing ? Matrix4x4.Identity : this._transforms[0].GetMatrix());
         this._transformBuffer.UpdateBufferDeferred(commandList);
         this.IsTransformBufferDirty = false;
     }
