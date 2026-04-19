@@ -794,51 +794,53 @@ public class SpriteBatch : Disposable {
         if (!this._begun) {
             throw new Exception("You must begin the SpriteBatch before calling draw methods!");
         }
-        
-        if (!this._currentOutput.Equals(this._requestedOutput) ||
-            this._currentEffect != this._requestedEffect ||
-            !this._currentBlendState.Equals(this._requestedBlendState) ||
-            !this._currentDepthStencilState.Equals(this._requestedDepthStencilState) ||
-            !this._currentRasterizerState.Equals(this._requestedRasterizerState) ||
-            this._currentProjection != this._requestedProjection ||
-            this._currentView != this._requestedView ||
-            this._currentSampler != this._requestedSampler ||
-            this._currentScissorRect != this._requestedScissorRect ||
-            this._currentTexture != texture) {
-            this.Flush();
-        }
 
-        this._currentOutput = this._requestedOutput;
-        this._currentEffect = this._requestedEffect;
-        this._currentBlendState = this._requestedBlendState;
-        this._currentDepthStencilState = this._requestedDepthStencilState;
-        this._currentRasterizerState = this._requestedRasterizerState;
-        this._currentProjection = this._requestedProjection;
-        this._currentView = this._requestedView;
-        this._currentSampler = this._requestedSampler;
-        this._currentScissorRect = this._requestedScissorRect;
-        this._currentTexture = texture;
+        bool stateChanged = !this._currentOutput.Equals(this._requestedOutput) ||
+                            this._currentEffect != this._requestedEffect ||
+                            !this._currentBlendState.Equals(this._requestedBlendState) ||
+                            !this._currentDepthStencilState.Equals(this._requestedDepthStencilState) ||
+                            !this._currentRasterizerState.Equals(this._requestedRasterizerState) ||
+                            this._currentProjection != this._requestedProjection ||
+                            this._currentView != this._requestedView ||
+                            this._currentSampler != this._requestedSampler ||
+                            this._currentScissorRect != this._requestedScissorRect ||
+                            this._currentTexture != texture;
         
-        // Update pipeline description.
-        this._pipelineDescription.BlendState = this._currentBlendState;
-        this._pipelineDescription.DepthStencilState = this._currentDepthStencilState;
-        this._pipelineDescription.RasterizerState = this._currentRasterizerState;
-        this._pipelineDescription.BufferLayouts = this._currentEffect.GetBufferLayouts();
-        this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
-        this._pipelineDescription.ShaderSet = new ShaderSetDescription(SpriteVertex2D.VertexLayout.Layouts, this._currentEffect.Shaders);
-        this._pipelineDescription.Outputs = this._currentOutput;
+        if (stateChanged) {
+            this.Flush();
+            
+            this._currentOutput = this._requestedOutput;
+            this._currentEffect = this._requestedEffect;
+            this._currentBlendState = this._requestedBlendState;
+            this._currentDepthStencilState = this._requestedDepthStencilState;
+            this._currentRasterizerState = this._requestedRasterizerState;
+            this._currentProjection = this._requestedProjection;
+            this._currentView = this._requestedView;
+            this._currentSampler = this._requestedSampler;
+            this._currentScissorRect = this._requestedScissorRect;
+            this._currentTexture = texture;
+            
+            // Update pipeline description.
+            this._pipelineDescription.BlendState = this._currentBlendState;
+            this._pipelineDescription.DepthStencilState = this._currentDepthStencilState;
+            this._pipelineDescription.RasterizerState = this._currentRasterizerState;
+            this._pipelineDescription.BufferLayouts = this._currentEffect.GetBufferLayouts();
+            this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
+            this._pipelineDescription.ShaderSet = new ShaderSetDescription(SpriteVertex2D.VertexLayout.Layouts, this._currentEffect.Shaders);
+            this._pipelineDescription.Outputs = this._currentOutput;
+        }
         
         if (this._currentBatchCount >= (this.Capacity - 1)) {
             this.Flush();
         }
         
         uint index = this._currentBatchCount * VerticesPerQuad;
-
+        
         this._vertices[index] = topLeft;
         this._vertices[index + 1] = topRight;
         this._vertices[index + 2] = bottomLeft;
         this._vertices[index + 3] = bottomRight;
-
+        
         this._currentBatchCount++;
     }
     
