@@ -9,7 +9,7 @@ public interface IMesh : IDisposable {
     /// <summary>
     /// The maximum number of bones supported by a skinned mesh.
     /// </summary>
-    public const int MaxBoneCount = 72;
+    public const int MaxBoneCount = 256;
     
     /// <summary>
     /// Gets the graphics device used by this mesh for creating and updating GPU resources.
@@ -35,6 +35,11 @@ public interface IMesh : IDisposable {
     /// Gets the number of indices contained in this mesh.
     /// </summary>
     uint IndexCount { get; }
+    
+    /// <summary>
+    /// The number of bones influencing the skinned mesh.
+    /// </summary>
+    uint BoneCount { get; }
     
     /// <summary>
     /// Gets a value indicating whether this mesh uses skinning data.

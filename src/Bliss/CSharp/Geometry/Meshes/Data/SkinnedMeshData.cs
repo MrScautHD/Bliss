@@ -29,19 +29,26 @@ public class SkinnedMeshData : IMeshData<SkinnedVertex3D> {
     public uint[] Indices { get; private set; }
     
     /// <summary>
+    /// Gets the number of bones associated with this skinned mesh data.
+    /// </summary>
+    public uint BoneCount { get; private set; }
+    
+    /// <summary>
     /// Gets or sets the vertex format describing the layout of the mesh vertices.
     /// </summary>
     public VertexFormat VertexFormat { get; set; }
-    
+
     /// <summary>
     /// Initializes a new instance of the <see cref="SkinnedMeshData"/> class with the specified vertices, indices, and optional vertex format.
     /// </summary>
     /// <param name="vertices">The vertex array that defines the mesh geometry.</param>
     /// <param name="indices">The index array that defines how vertices are connected into primitives.</param>
+    /// <param name="boneCount">The number of bones associated with this skinned mesh data.</param>
     /// <param name="vertexFormat">The vertex format describing the layout of the vertex data. If not specified, <see cref="SkinnedVertex3D.VertexLayout"/> is used.</param>
-    public SkinnedMeshData(SkinnedVertex3D[] vertices, uint[] indices, VertexFormat? vertexFormat = null) {
+    public SkinnedMeshData(SkinnedVertex3D[] vertices, uint[] indices, uint boneCount, VertexFormat? vertexFormat = null) {
         this.Vertices = vertices;
         this.Indices = indices;
+        this.BoneCount = boneCount;
         this.VertexFormat = vertexFormat ?? SkinnedVertex3D.VertexLayout;
     }
     

@@ -43,6 +43,11 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
     /// Gets the number of indices contained in this mesh.
     /// </summary>
     public uint IndexCount => this.MeshData.IndexCount;
+
+    /// <summary>
+    /// Gets the number of bones associated with this mesh.
+    /// </summary>
+    public uint BoneCount => this.MeshData.BoneCount;
     
     /// <summary>
     /// Gets a value indicating whether this mesh uses skinning data.

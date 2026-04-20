@@ -322,7 +322,7 @@ public class Model : Disposable {
                     }
                 }
                 
-                meshes.Add(new Mesh<SkinnedVertex3D>(graphicsDevice, material, new SkinnedMeshData(vertices, indices.ToArray())));
+                meshes.Add(new Mesh<SkinnedVertex3D>(graphicsDevice, material, new SkinnedMeshData(vertices, indices.ToArray(), (uint) mesh.BoneCount)));
             }
             else {
                 Vertex3D[] vertices = new Vertex3D[mesh.VertexCount];

@@ -1138,7 +1138,9 @@ public class PrimitiveBatch : Disposable {
 
         this.AddVertices(this._tempVertices);
     }
-
+    
+    // TODO: Remove the AddVertices system and add the Prepare system like in the immedateRenderer.
+    
     /// <summary>
     /// Adds a collection of vertices to the current batch for rendering.
     /// </summary>

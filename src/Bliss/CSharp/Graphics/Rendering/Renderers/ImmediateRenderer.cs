@@ -2226,7 +2226,7 @@ public class ImmediateRenderer : Disposable {
         Transform billboardTransform = new Transform {
             Translation = position,
             Rotation = Quaternion.CreateFromAxisAngle(Vector3.UnitY, angle),
-            Scale = Vector3.One
+            Scale = new Vector3(finalScale, 0)
         };
         
         Matrix4x4 transformMatrix = billboardTransform.GetMatrix();
@@ -2244,8 +2244,7 @@ public class ImmediateRenderer : Disposable {
         float vBottom = (sourceRec.Y + sourceRec.Height) / (float) texture.Height;
         
         // Calculate half size with aspect ratio preserved.
-        float aspectRatio = (float) sourceRec.Width / sourceRec.Height;
-        Vector3 halfSize = new Vector3(finalScale.X * aspectRatio, finalScale.Y, 0.0F) / 2.0F;
+        Vector3 halfSize = new Vector3(sourceRec.Width / 100.0F, sourceRec.Height / 100.0F, 0.0F) / 2.0F;
         
         // Add vertices.
         this._vertices[this._vertexCount++] = new ImmediateVertex3D {

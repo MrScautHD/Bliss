@@ -264,8 +264,8 @@ public class Renderable : Disposable {
             return;
         }
         
-        if (index < 0 || index >= this._boneMatrices.Length) {
-            throw new ArgumentOutOfRangeException(nameof(index));
+        if (index < 0 || index >= this.Mesh.BoneCount) {
+            throw new ArgumentOutOfRangeException($"Index is out of range. Max bone count for this mesh: {this.Mesh.BoneCount}.");
         }
         
         if (this._boneMatrices[index] == value) {
@@ -281,7 +281,7 @@ public class Renderable : Disposable {
     /// </summary>
     public void ClearBoneMatrices() {
         if (this._boneMatrices != null) {
-            Array.Fill(this._boneMatrices, Matrix4x4.Identity);
+            Array.Fill(this._boneMatrices, Matrix4x4.Identity, 0, (int) this.Mesh.BoneCount);
             this.IsBoneBufferDirty = true;
         }
     }
@@ -295,7 +295,7 @@ public class Renderable : Disposable {
             return;
         }
         
-        for (int i = 0; i < IMesh.MaxBoneCount; i++) {
+        for (int i = 0; i < this.Mesh.BoneCount; i++) {
             this._boneBuffer.SetValue(i, this._boneMatrices[i]);
         }
         

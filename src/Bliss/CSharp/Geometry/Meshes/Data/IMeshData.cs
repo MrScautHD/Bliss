@@ -27,6 +27,11 @@ public interface IMeshData<T> where T : unmanaged, IVertexType {
     uint[] Indices { get; }
     
     /// <summary>
+    /// Gets the number of bones associated with the mesh data.
+    /// </summary>
+    public uint BoneCount { get; }
+    
+    /// <summary>
     /// Gets or sets the vertex format describing the layout of the mesh vertices.
     /// </summary>
     VertexFormat VertexFormat { get; set; }

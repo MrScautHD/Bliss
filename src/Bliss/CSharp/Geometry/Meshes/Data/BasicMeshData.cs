@@ -29,6 +29,11 @@ public class BasicMeshData : IMeshData<Vertex3D> {
     public uint[] Indices { get; private set; }
     
     /// <summary>
+    /// Gets the number of bones used in this mesh data.
+    /// </summary>
+    public uint BoneCount => 0;
+
+    /// <summary>
     /// Gets or sets the vertex format describing the layout of the mesh vertices.
     /// </summary>
     public VertexFormat VertexFormat { get; set; }
