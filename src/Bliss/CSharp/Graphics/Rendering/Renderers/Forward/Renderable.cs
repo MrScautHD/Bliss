@@ -1,4 +1,5 @@
 using System.Numerics;
+using System.Runtime.InteropServices;
 using Bliss.CSharp.Geometry.Meshes;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data;
@@ -31,19 +32,9 @@ public class Renderable : Disposable {
     }
     
     /// <summary>
-    /// Gets or sets a value indicating whether instanced rendering is enabled.
+    /// Gets a value indicating whether instanced rendering is enabled.
     /// </summary>
-    public bool UseInstancing {
-        get;
-        set {
-            if (value == field) {
-                return;
-            }
-            
-            field = value;
-            this.IsTransformBufferDirty = true;
-        }
-    }
+    public bool UseInstancing { get; private set; }
     
     /// <summary>
     /// Gets the number of instance transforms stored by this renderable.
@@ -59,6 +50,11 @@ public class Renderable : Disposable {
     /// Gets a value indicating whether the transform buffer needs to be updated.
     /// </summary>
     public bool IsTransformBufferDirty { get; private set; }
+    
+    /// <summary>
+    /// Gets a value indicating whether the instance vertex buffer needs to be updated.
+    /// </summary>
+    public bool IsInstanceVertexBufferDirty { get; private set; }
     
     /// <summary>
     /// Gets a value indicating whether the bone buffer needs to be updated.
@@ -81,6 +77,16 @@ public class Renderable : Disposable {
     private Transform[] _transforms;
     
     /// <summary>
+    /// The number of instances <see cref="_instanceVertexBuffer"/> is currently allocated for.
+    /// </summary>
+    private uint _instanceCapacity;
+    
+    /// <summary>
+    /// Reusable scratch buffer for converting <see cref="_transforms"/> to matrices before uploading
+    /// </summary>
+    private Matrix4x4[] _tempInstanceTransforms;
+    
+    /// <summary>
     /// Stores the bone matrices used for skeletal animation, if the mesh supports bones.
     /// </summary>
     private Matrix4x4[]? _boneMatrices;
@@ -89,6 +95,11 @@ public class Renderable : Disposable {
     /// The uniform buffer that stores transform data for rendering.
     /// </summary>
     private SimpleUniformBuffer<Matrix4x4> _transformBuffer;
+    
+    /// <summary>
+    /// The uniform buffer used to store instance-specific vertex data for rendering instanced objects.
+    /// </summary>
+    private DeviceBuffer? _instanceVertexBuffer;
     
     /// <summary>
     /// The uniform buffer that stores bone matrices for skinned rendering.
@@ -146,6 +157,14 @@ public class Renderable : Disposable {
         this._transformBuffer.DeviceBuffer.Name = "TransformBuffer";
         this.IsTransformBufferDirty = true;
         
+        // Create the instance vertex buffer.
+        if (useInstancing) {
+            this._instanceCapacity = (uint) transforms.Length;
+            this._instanceVertexBuffer = this.CreateInstanceVertexBuffer(this._instanceCapacity);
+            this._tempInstanceTransforms = new Matrix4x4[this._instanceCapacity];
+            this.IsInstanceVertexBufferDirty = true;
+        }
+        
         // Create the bone buffer.
         if (mesh.IsSkinned) {
             this._boneBuffer = new SimpleUniformBuffer<Matrix4x4>(mesh.GraphicsDevice, IMesh.MaxBoneCount, ShaderStages.Vertex);
@@ -190,8 +209,11 @@ public class Renderable : Disposable {
         }
         
         this._transforms[index] = transform;
-        
-        if (!this.UseInstancing && index == 0) {
+
+        if (this.UseInstancing) {
+            this.IsInstanceVertexBufferDirty = true;
+        }
+        else if (index == 0) {
             this.IsTransformBufferDirty = true;
         }
     }
@@ -201,7 +223,11 @@ public class Renderable : Disposable {
     /// Existing transforms are preserved, and any new slots are filled with the default transform.
     /// </summary>
     /// <param name="newSize">The new number of transforms to store.</param>
-    public void ResizeTransformArray(int newSize) {
+    public void ResizeTransformArray(uint newSize) {
+        if (!this.UseInstancing) {
+            throw new InvalidOperationException("Cannot resize transform array because instancing is disabled.");
+        }
+        
         if (newSize < 1) {
             throw new ArgumentOutOfRangeException(nameof(newSize), "Transform array size must be at least 1.");
         }
@@ -210,20 +236,28 @@ public class Renderable : Disposable {
             return;
         }
         
-        Array.Resize(ref this._transforms, newSize);
+        Array.Resize(ref this._transforms, (int) newSize);
         
-        if (!this.UseInstancing) {
-            this.IsTransformBufferDirty = true;
+        if (newSize > this._instanceCapacity) {
+            this._instanceCapacity = newSize;
+            this._instanceVertexBuffer?.Dispose();
+            this._instanceVertexBuffer = this.CreateInstanceVertexBuffer(this._instanceCapacity);
+            this._tempInstanceTransforms = new Matrix4x4[this._instanceCapacity];
         }
+        
+        this.IsInstanceVertexBufferDirty = true;
     }
     
     /// <summary>
     /// Clears all stored transforms and marks the transform buffer as dirty.
     /// </summary>
-    public void ClearTransform() {
+    public void ClearTransforms() {
         Array.Fill(this._transforms, new Transform());
         
-        if (!this.UseInstancing) {
+        if (this.UseInstancing) {
+            this.IsInstanceVertexBufferDirty = true;
+        }
+        else {
             this.IsTransformBufferDirty = true;
         }
     }
@@ -236,6 +270,31 @@ public class Renderable : Disposable {
         this._transformBuffer.SetValue(0, this.UseInstancing ? Matrix4x4.Identity : this._transforms[0].GetMatrix());
         this._transformBuffer.UpdateBufferDeferred(commandList);
         this.IsTransformBufferDirty = false;
+    }
+    
+    /// <summary>
+    /// Returns the GPU vertex buffer that holds per-instance transform matrices, or
+    /// <see langword="null"/> when instancing is disabled.
+    /// </summary>
+    public DeviceBuffer? GetInstanceVertexBuffer() {
+        return this._instanceVertexBuffer;
+    }
+    
+    /// <summary>
+    /// Converts the current transforms to matrices and uploads them to the instance vertex buffer.
+    /// </summary>
+    /// <param name="commandList">The command list used to issue the buffer update.</param>
+    public void UpdateInstanceVertexBuffer(CommandList commandList) {
+        if (!this.UseInstancing) {
+            return;
+        }
+        
+        for (int i = 0; i < this._transforms.Length; i++) {
+            this._tempInstanceTransforms[i] = this._transforms[i].GetMatrix();
+        }
+        
+        commandList.UpdateBuffer(this._instanceVertexBuffer, 0, new ReadOnlySpan<Matrix4x4>(this._tempInstanceTransforms, 0, this._transforms.Length));
+        this.IsInstanceVertexBufferDirty = false;
     }
     
     /// <summary>
@@ -335,10 +394,21 @@ public class Renderable : Disposable {
         this.Material.IsDirty = false;
         this._hasMaterialChanged = false;
     }
-
+    
+    /// <summary>
+    /// Allocates a new dynamic vertex buffer sized to hold <paramref name="instanceCount"/> transform matrices.
+    /// </summary>
+    /// <param name="instanceCount">The number of instances the buffer must accommodate.</param>
+    private DeviceBuffer CreateInstanceVertexBuffer(uint instanceCount) {
+        DeviceBuffer buffer = this.Mesh.GraphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(instanceCount * (uint) Marshal.SizeOf<Matrix4x4>(), BufferUsage.VertexBuffer | BufferUsage.Dynamic));
+        buffer.Name = "InstanceVertexBuffer";
+        return buffer;
+    }
+    
     protected override void Dispose(bool disposing) {
         if (disposing) {
             this._transformBuffer.Dispose();
+            this._instanceVertexBuffer?.Dispose();
             this._boneBuffer?.Dispose();
             this._materialDataBuffer.Dispose();
         }

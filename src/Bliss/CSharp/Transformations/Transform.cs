@@ -7,47 +7,17 @@ public struct Transform : IEquatable<Transform> {
     /// <summary>
     /// Stores the translation (position) vector of the transform.
     /// </summary>
-    public Vector3 Translation {
-        get;
-        set {
-            if (field == value) {
-                return;
-            }
-            
-            field = value;
-            this._isDirty = true;
-        }
-    }
+    public Vector3 Translation;
     
     /// <summary>
     /// Stores the rotation of the transform as a quaternion.
     /// </summary>
-    public Quaternion Rotation {
-        get;
-        set {
-            if (field == value) {
-                return;
-            }
-            
-            field = value;
-            this._isDirty = true;
-        }
-    }
-    
+    public Quaternion Rotation;
+
     /// <summary>
     /// Stores the scale of the transform.
     /// </summary>
-    public Vector3 Scale {
-        get;
-        set {
-            if (field == value) {
-                return;
-            }
-            
-            field = value;
-            this._isDirty = true;
-        }
-    }
+    public Vector3 Scale;
     
     /// <summary>
     /// The forward Vector.
@@ -65,23 +35,12 @@ public struct Transform : IEquatable<Transform> {
     public Vector3 Right => Vector3.Transform(Vector3.UnitX, this.Rotation);
     
     /// <summary>
-    /// Caches the computed transformation matrix.
-    /// </summary>
-    private Matrix4x4 _transformMatrix;
-    
-    /// <summary>
-    /// Indicates whether the transformation matrix needs to be recalculated.
-    /// </summary>
-    private bool _isDirty;
-    
-    /// <summary>
     /// Initializes a new instance of the <see cref="Transform"/> class with default values.
     /// </summary>
     public Transform() {
         this.Translation = Vector3.Zero;
         this.Rotation = Quaternion.Identity;
         this.Scale = Vector3.One;
-        this._isDirty = true;
     }
     
     /// <summary>
@@ -99,22 +58,15 @@ public struct Transform : IEquatable<Transform> {
     /// <param name="right">The second instance of <see cref="Transform"/> to compare.</param>
     /// <returns><c>true</c> if the two instances are not equal; otherwise, <c>false</c>.</returns>
     public static bool operator !=(Transform left, Transform right) => !left.Equals(right);
-
+    
     /// <summary>
     /// Returns the transformation matrix for the current Transform object.
     /// </summary>
     /// <returns>The transformation matrix.</returns>
-    public Matrix4x4 GetMatrix() {
-        if (this._isDirty) {
-            Matrix4x4 matScale = Matrix4x4.CreateScale(this.Scale);
-            Matrix4x4 matRotation = Matrix4x4.CreateFromQuaternion(this.Rotation);
-            Matrix4x4 matTranslation = Matrix4x4.CreateTranslation(this.Translation);
-            
-            this._transformMatrix = matScale * matRotation * matTranslation;
-            this._isDirty = false;
-        }
-        
-        return this._transformMatrix;
+    public readonly Matrix4x4 GetMatrix() {
+        return Matrix4x4.CreateScale(this.Scale)
+               * Matrix4x4.CreateFromQuaternion(this.Rotation)
+               * Matrix4x4.CreateTranslation(this.Translation);
     }
     
     /// <summary>

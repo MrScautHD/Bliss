@@ -127,7 +127,7 @@ public class SimpleUniformBuffer<T> : Disposable, ISimpleBuffer where T : unmana
         if (index < 0 || index >= this.Size) {
             throw new IndexOutOfRangeException($"Index {index} is outside the valid range of 0 to {this.Size - 1}.");
         }
-
+        
         this.Data[index] = value;
         commandList.UpdateBuffer(this.DeviceBuffer, (uint) (index * Marshal.SizeOf<T>()), ref this.Data[index]);
     }

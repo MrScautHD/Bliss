@@ -1,5 +1,4 @@
 using System.Numerics;
-using System.Runtime.InteropServices;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
@@ -25,21 +24,6 @@ public class BasicForwardRenderer : Disposable, IRenderer {
     /// List of translucent renderables waiting to be drawn.
     /// </summary>
     private List<Renderable> _translucentRenderables;
-    
-    /// <summary>
-    /// A device buffer used to store instance-specific vertex data for rendering instanced objects.
-    /// </summary>
-    private DeviceBuffer? _instanceVertexBuffer;
-    
-    /// <summary>
-    /// A temporary array of instance transforms used for buffering model transformation matrices during instance rendering.
-    /// </summary>
-    private Matrix4x4[]? _tempInstanceTransforms;
-    
-    /// <summary>
-    /// The capacity of the instance model buffer, indicating the maximum number of instances that can be stored and rendered in the current buffer allocation.
-    /// </summary>
-    private uint _instanceCapacity;
     
     /// <summary>
     /// Description of the pipeline used for rendering.
@@ -96,6 +80,15 @@ public class BasicForwardRenderer : Disposable, IRenderer {
         // Set the pipeline output.
         this._pipelineDescription.Outputs = output;
         
+        // Update renderable buffers.
+        foreach (Renderable renderable in this._opaqueRenderables) {
+            this.UpdateRenderableBuffer(commandList, renderable);
+        }
+        
+        foreach (Renderable renderable in this._translucentRenderables) {
+            this.UpdateRenderableBuffer(commandList, renderable);
+        }
+        
         // Draw opaques renderables.
         foreach (Renderable renderable in this._opaqueRenderables) {
             this.DrawPreparedRenderable(commandList, cam3D, renderable);
@@ -118,21 +111,6 @@ public class BasicForwardRenderer : Disposable, IRenderer {
     /// <param name="camera">The 3D camera providing view and projection matrices for rendering.</param>
     /// <param name="renderable">The renderable object containing mesh, material, transforms, and other rendering data to be processed.</param>
     private void DrawPreparedRenderable(CommandList commandList, Cam3D camera, Renderable renderable) {
-        
-        // Update transform buffer.
-        if (renderable.IsTransformBufferDirty) {
-            renderable.UpdateTransformBuffer(commandList);
-        }
-        
-        // Update bone buffer.
-        if (renderable.IsBoneBufferDirty) {
-            renderable.UpdateBoneBuffer(commandList);
-        }
-        
-        // Update material buffer.
-        if (renderable.IsMaterialBufferDirty) {
-            renderable.UpdateMaterialBuffer(commandList);
-        }
         
         // Set the main pipeline parameters.
         this._pipelineDescription.BlendState = renderable.Material.BlendState;
@@ -189,17 +167,8 @@ public class BasicForwardRenderer : Disposable, IRenderer {
             
             if (renderable.UseInstancing) {
                 
-                // Ensure the instance-matrix vertex buffer is large enough for this draw call.
-                this.EnsureInstanceModelBufferCapacity(renderable.InstanceCount);
-                
-                // Set the temp instance transformations.
-                for (int i = 0; i < renderable.InstanceCount; i++) {
-                    this._tempInstanceTransforms?[i] = renderable.GetTransforms()[i].GetMatrix();
-                }
-                
                 // Set the instance buffer.
-                commandList.UpdateBuffer(this._instanceVertexBuffer, 0, new ReadOnlySpan<Matrix4x4>(this._tempInstanceTransforms, 0, (int) renderable.InstanceCount));
-                commandList.SetVertexBuffer(1, this._instanceVertexBuffer);
+                commandList.SetVertexBuffer(1, renderable.GetInstanceVertexBuffer());
                 
                 // Draw.
                 commandList.DrawIndexed(renderable.Mesh.IndexCount, renderable.InstanceCount, 0, 0, 0);
@@ -217,17 +186,8 @@ public class BasicForwardRenderer : Disposable, IRenderer {
             
             if (renderable.UseInstancing) {
                 
-                // Ensure the instance-matrix vertex buffer is large enough for this draw call.
-                this.EnsureInstanceModelBufferCapacity(renderable.InstanceCount);
-                
-                // Set the temp instance transformations.
-                for (int i = 0; i < renderable.InstanceCount; i++) {
-                    this._tempInstanceTransforms?[i] = renderable.GetTransforms()[i].GetMatrix();
-                }
-                
                 // Set the instance buffer.
-                commandList.UpdateBuffer(this._instanceVertexBuffer, 0, new ReadOnlySpan<Matrix4x4>(this._tempInstanceTransforms, 0, (int) renderable.InstanceCount));
-                commandList.SetVertexBuffer(1, this._instanceVertexBuffer);
+                commandList.SetVertexBuffer(1, renderable.GetInstanceVertexBuffer());
                 
                 // Draw.
                 commandList.Draw(renderable.Mesh.VertexCount, renderable.InstanceCount, 0, 0);
@@ -238,51 +198,35 @@ public class BasicForwardRenderer : Disposable, IRenderer {
                 commandList.Draw(renderable.Mesh.VertexCount);
             }
         }
-        
-        // Clear temp data.
-        if (this._tempInstanceTransforms != null) {
-            Array.Clear(this._tempInstanceTransforms);
-        }
     }
     
     /// <summary>
-    /// Ensures that the instance model buffer has enough capacity to accommodate the specified number of instances.
-    /// Increases the buffer size if needed, growing to the next power of two to minimize frequent reallocations.
+    /// Updates the necessary GPU buffers for the specified renderable based on its dirty state.
     /// </summary>
-    /// <param name="requiredInstanceCount">The number of instances needed for rendering.</param>
-    private void EnsureInstanceModelBufferCapacity(uint requiredInstanceCount) {
+    /// <param name="commandList">The command list used to issue GPU commands.</param>
+    /// <param name="renderable">The renderable object whose buffers need to be updated.</param>
+    private void UpdateRenderableBuffer(CommandList commandList, Renderable renderable) {
         
-        // Nothing to allocate if we don't draw any instances.
-        if (requiredInstanceCount == 0) {
-            return;
+        // Update transform buffer.
+        if (renderable.IsTransformBufferDirty) {
+            renderable.UpdateTransformBuffer(commandList);
         }
         
-        // If the current buffer exists and is large enough, keep it.
-        if (this._instanceVertexBuffer != null && this._instanceCapacity >= requiredInstanceCount) {
-            return;
+        // Update instance vertex buffer.
+        if (renderable.IsInstanceVertexBufferDirty) {
+            renderable.UpdateInstanceVertexBuffer(commandList);
         }
         
-        // Grow to the next power of two to avoid reallocating every frame.
-        uint newCapacity = this._instanceCapacity == 0 ? 1 : this._instanceCapacity;
-        
-        while (newCapacity < requiredInstanceCount) {
-            newCapacity <<= 1;
+        // Update bone buffer.
+        if (renderable.IsBoneBufferDirty) {
+            renderable.UpdateBoneBuffer(commandList);
         }
         
-        // Persist the new capacity.
-        this._instanceCapacity = newCapacity;
-        
-        // Recreate the instance transform array.
-        this._tempInstanceTransforms = new Matrix4x4[this._instanceCapacity];
-        
-        // Recreate buffer with the new size.
-        this._instanceVertexBuffer?.Dispose();
-        this._instanceVertexBuffer = this.GraphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(this._instanceCapacity * (uint) Marshal.SizeOf<Matrix4x4>(), BufferUsage.VertexBuffer | BufferUsage.Dynamic));
+        // Update material buffer.
+        if (renderable.IsMaterialBufferDirty) {
+            renderable.UpdateMaterialBuffer(commandList);
+        }
     }
     
-    protected override void Dispose(bool disposing) {
-        if (disposing) {
-            this._instanceVertexBuffer?.Dispose();
-        }
-    }
+    protected override void Dispose(bool disposing) { }
 }
