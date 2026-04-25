@@ -39,7 +39,7 @@ public class Renderable : Disposable {
     /// <summary>
     /// Gets the number of instance transforms stored by this renderable.
     /// </summary>
-    public uint InstanceCount => (uint) this._transforms.Length;
+    public uint InstanceCount => (uint) this._transformCount;
     
     /// <summary>
     /// Gets a value indicating whether this renderable has any bone matrices.
@@ -77,9 +77,17 @@ public class Renderable : Disposable {
     private Transform[] _transforms;
     
     /// <summary>
-    /// The number of instances <see cref="_instanceVertexBuffer"/> is currently allocated for.
+    /// The number of logically active transforms. This is the slice of
+    /// <see cref="_transforms"/> that is meaningful and will be sent to the GPU.
     /// </summary>
-    private uint _instanceCapacity;
+    private int _transformCount;
+    
+    /// <summary>
+    /// The number of slots currently allocated in <see cref="_transforms"/> and
+    /// in <see cref="_instanceVertexBuffer"/>. Grows in powers-of-two (min 8).
+    /// Never shrinks so that repeated add/remove cycles don't thrash the GPU allocator.
+    /// </summary>
+    private uint _transformCapacity;
     
     /// <summary>
     /// Reusable scratch buffer for converting <see cref="_transforms"/> to matrices before uploading
@@ -148,9 +156,14 @@ public class Renderable : Disposable {
     public Renderable(IMesh mesh, Transform[] transforms, Material material, bool useInstancing = false) {
         this.Mesh = mesh;
         this.UseInstancing = useInstancing;
-        this._transforms = transforms;
-        this._boneMatrices = mesh.IsSkinned ? Enumerable.Repeat(Matrix4x4.Identity, IMesh.MaxBoneCount).ToArray() : null;
         this.Material = material;
+        this._boneMatrices = mesh.IsSkinned ? Enumerable.Repeat(Matrix4x4.Identity, IMesh.MaxBoneCount).ToArray() : null;
+        
+        // Allocate the backing transform array.
+        this._transformCount = useInstancing ? transforms.Length : 1;
+        this._transformCapacity = useInstancing ? this.NextPowerOfTwo((uint) Math.Max(transforms.Length, 8)) : 1;
+        this._transforms = new Transform[this._transformCapacity];
+        Array.Copy(transforms, this._transforms, transforms.Length);
         
         // Create the transform buffer.
         this._transformBuffer = new SimpleUniformBuffer<Matrix4x4>(mesh.GraphicsDevice, 1, ShaderStages.Vertex);
@@ -159,9 +172,8 @@ public class Renderable : Disposable {
         
         // Create the instance vertex buffer.
         if (useInstancing) {
-            this._instanceCapacity = (uint) transforms.Length;
-            this._instanceVertexBuffer = this.CreateInstanceVertexBuffer(this._instanceCapacity);
-            this._tempInstanceTransforms = new Matrix4x4[this._instanceCapacity];
+            this._instanceVertexBuffer = this.CreateInstanceVertexBuffer(this._transformCapacity);
+            this._tempInstanceTransforms = new Matrix4x4[this._transformCapacity];
             this.IsInstanceVertexBufferDirty = true;
         }
         
@@ -200,7 +212,7 @@ public class Renderable : Disposable {
     /// <param name="index">The transform index to update.</param>
     /// <param name="transform">The new transform value.</param>
     public void SetTransform(int index, Transform transform) {
-        if (index < 0 || index >= this._transforms.Length) {
+        if (index < 0 || index >= this._transformCount) {
             throw new ArgumentOutOfRangeException(nameof(index));
         }
         
@@ -213,7 +225,7 @@ public class Renderable : Disposable {
         if (this.UseInstancing) {
             this.IsInstanceVertexBufferDirty = true;
         }
-        else if (index == 0) {
+        else {
             this.IsTransformBufferDirty = true;
         }
     }
@@ -222,27 +234,39 @@ public class Renderable : Disposable {
     /// Resizes the stored transform array.
     /// Existing transforms are preserved, and any new slots are filled with the default transform.
     /// </summary>
-    /// <param name="newSize">The new number of transforms to store.</param>
-    public void ResizeTransformArray(uint newSize) {
+    /// <param name="newCount">The new number of transforms to store.</param>
+    public void ResizeTransformArray(uint newCount) {
         if (!this.UseInstancing) {
             throw new InvalidOperationException("Cannot resize transform array because instancing is disabled.");
         }
         
-        if (newSize < 1) {
-            throw new ArgumentOutOfRangeException(nameof(newSize), "Transform array size must be at least 1.");
+        if (newCount < 1) {
+            throw new ArgumentOutOfRangeException(nameof(newCount), "Transform array size must be at least 1.");
         }
         
-        if (newSize == this._transforms.Length) {
+        if (newCount == this._transformCount) {
             return;
         }
         
-        Array.Resize(ref this._transforms, (int) newSize);
+        this._transformCount = (int) newCount;
         
-        if (newSize > this._instanceCapacity) {
-            this._instanceCapacity = newSize;
+        // Grow capacity if needed. (Never shrink)
+        if (newCount > this._transformCapacity) {
+            uint newCapacity = this._transformCapacity;
+            
+            while (newCapacity < newCount) {
+                newCapacity *= 2;
+            }
+            
+            this._transformCapacity = newCapacity;
+            
+            // Reallocate CPU arrays.
+            Array.Resize(ref this._transforms, (int) newCapacity);
+            this._tempInstanceTransforms = new Matrix4x4[newCapacity];
+            
+            // Reallocate GPU buffer.
             this._instanceVertexBuffer?.Dispose();
-            this._instanceVertexBuffer = this.CreateInstanceVertexBuffer(this._instanceCapacity);
-            this._tempInstanceTransforms = new Matrix4x4[this._instanceCapacity];
+            this._instanceVertexBuffer = this.CreateInstanceVertexBuffer(newCapacity);
         }
         
         this.IsInstanceVertexBufferDirty = true;
@@ -252,7 +276,7 @@ public class Renderable : Disposable {
     /// Clears all stored transforms and marks the transform buffer as dirty.
     /// </summary>
     public void ClearTransforms() {
-        Array.Fill(this._transforms, new Transform());
+        Array.Fill(this._transforms, new Transform(), 0, this._transformCount);
         
         if (this.UseInstancing) {
             this.IsInstanceVertexBufferDirty = true;
@@ -293,7 +317,7 @@ public class Renderable : Disposable {
             this._tempInstanceTransforms[i] = this._transforms[i].GetMatrix();
         }
         
-        commandList.UpdateBuffer(this._instanceVertexBuffer, 0, new ReadOnlySpan<Matrix4x4>(this._tempInstanceTransforms, 0, this._transforms.Length));
+        commandList.UpdateBuffer(this._instanceVertexBuffer, 0, new ReadOnlySpan<Matrix4x4>(this._tempInstanceTransforms, 0, this._transformCount));
         this.IsInstanceVertexBufferDirty = false;
     }
     
@@ -403,6 +427,25 @@ public class Renderable : Disposable {
         DeviceBuffer buffer = this.Mesh.GraphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(instanceCount * (uint) Marshal.SizeOf<Matrix4x4>(), BufferUsage.VertexBuffer | BufferUsage.Dynamic));
         buffer.Name = "InstanceVertexBuffer";
         return buffer;
+    }
+    
+    /// <summary>
+    /// Returns the smallest power of two that is ≥ <paramref name="value"/>.
+    /// </summary>
+    private uint NextPowerOfTwo(uint value) {
+        if (value == 0) {
+            return 1;
+        }
+        
+        value--;
+        
+        value |= value >> 1;
+        value |= value >> 2;
+        value |= value >> 4;
+        value |= value >> 8;
+        value |= value >> 16;
+        
+        return value + 1;
     }
     
     protected override void Dispose(bool disposing) {
