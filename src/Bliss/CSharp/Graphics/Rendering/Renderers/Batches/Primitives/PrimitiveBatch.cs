@@ -1154,20 +1154,28 @@ public class PrimitiveBatch : Disposable {
             return;
         }
         
-        this.Prepare(vertices.Length);
+        int baseVertex = this.Prepare(vertices.Length);
         
-        vertices.CopyTo(new Span<PrimitiveVertex2D>(this._vertices, this._vertexCount, vertices.Length));
+        vertices.CopyTo(new Span<PrimitiveVertex2D>(this._vertices, baseVertex, vertices.Length));
         this._vertexCount += vertices.Length;
     }
-    
+
     /// <summary>
-    /// Ensures there is room for <paramref name="vertexCount"/> new vertices, flushing and
-    /// synchronising pipeline state if needed.
+    /// Prepares the batch for an incoming write of <paramref name="vertexCount"/> vertices by
+    /// synchronising pipeline state and flushing the current batch if a state change is detected
+    /// or if the remaining buffer capacity would be exceeded.
     /// </summary>
-    /// <param name="vertexCount">Number of vertices about to be written.</param>
-    private void Prepare(int vertexCount) {
+    /// <param name="vertexCount">The number of vertices about to be written into the batch.</param>
+    /// <returns>The current vertex write cursor, representing the base index for the incoming vertices.</returns>
+    /// <exception cref="Exception">Thrown if <see cref="Begin"/> has not been called.</exception>
+    /// <exception cref="InvalidOperationException">Thrown if <paramref name="vertexCount"/> exceeds the total batch capacity.</exception>
+    private int Prepare(int vertexCount) {
         if (!this._begun) {
             throw new Exception("You must begin the PrimitiveBatch before calling draw methods!");
+        }
+        
+        if (vertexCount > this.Capacity) {
+            throw new InvalidOperationException($"The number of provided vertices exceeds the capacity! [{vertexCount} > {this.Capacity}]");
         }
         
         bool stateChanged = !this._currentOutput.Equals(this._requestedOutput) ||
@@ -1200,10 +1208,12 @@ public class PrimitiveBatch : Disposable {
         this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
         this._pipelineDescription.ShaderSet = new ShaderSetDescription(PrimitiveVertex2D.VertexLayout.Layouts, this._currentEffect.Shaders);
         this._pipelineDescription.Outputs = this._currentOutput;
-
+        
         if (this._vertexCount + vertexCount > this._vertices.Length) {
             this.Flush();
         }
+        
+        return this._vertexCount;
     }
     
     /// <summary>
