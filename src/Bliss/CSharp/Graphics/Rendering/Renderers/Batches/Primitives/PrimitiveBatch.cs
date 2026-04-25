@@ -36,14 +36,14 @@ public class PrimitiveBatch : Disposable {
     public int DrawCallCount { get; private set; }
     
     /// <summary>
+    /// Tracks the number of vertices in the current batch.
+    /// </summary>
+    private int _vertexCount;
+    
+    /// <summary>
     /// Array of vertices used for rendering 2D primitives.
     /// </summary>
     private PrimitiveVertex2D[] _vertices;
-    
-    /// <summary>
-    /// Temporary array of vertices used during vertex manipulation.
-    /// </summary>
-    private List<PrimitiveVertex2D> _tempVertices;
     
     /// <summary>
     /// Buffer that stores vertex data for rendering.
@@ -191,11 +191,6 @@ public class PrimitiveBatch : Disposable {
     private Rectangle? _requestedScissorRect;
     
     /// <summary>
-    /// Tracks the number of vertices in the current batch.
-    /// </summary>
-    private uint _currentBatchCount;
-    
-    /// <summary>
     /// Initializes a new instance of the PrimitiveBatch class for rendering 2D primitives.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used for rendering.</param>
@@ -208,7 +203,6 @@ public class PrimitiveBatch : Disposable {
         
         // Create vertex buffer.
         this._vertices = new PrimitiveVertex2D[capacity];
-        this._tempVertices = new List<PrimitiveVertex2D>();
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) (capacity * Marshal.SizeOf<PrimitiveVertex2D>()), BufferUsage.VertexBuffer | BufferUsage.Dynamic));
         this._vertexBuffer.Name = "VertexBuffer";
         
@@ -237,7 +231,7 @@ public class PrimitiveBatch : Disposable {
         if (this._begun) {
             throw new Exception("The PrimitiveBatch has already begun!");
         }
-
+        
         this._begun = true;
         this._currentCommandList = commandList;
         this._mainOutput = this._currentOutput = this._requestedOutput = output;
@@ -260,11 +254,11 @@ public class PrimitiveBatch : Disposable {
         if (!this._begun) {
             throw new Exception("The PrimitiveBatch has not begun yet!");
         }
-
+        
         this._begun = false;
         this.Flush();
     }
-
+    
     /// <summary>
     /// Retrieves the current output description for the primitive batch.
     /// </summary>
@@ -638,41 +632,44 @@ public class PrimitiveBatch : Disposable {
     /// <param name="color">Optional. The fill color of the rectangle, defaults to White.</param>
     public void DrawFilledRectangle(RectangleF rectangle, Vector2? origin = null, float rotation = 0.0F, float layerDepth = 0.5F, Color? color = null) {
         Vector2 finalOrigin = origin ?? Vector2.Zero;
-        Color finalColor = color ?? Color.White;
         float finalRotation = float.DegreesToRadians(rotation);
-
+        Vector4 colorVec4 = color?.ToRgbaFloatVec4() ?? Color.White.ToRgbaFloatVec4();
+        
         Matrix3x2 transform = Matrix3x2.CreateRotation(finalRotation, rectangle.Position);
-
-        PrimitiveVertex2D topLeft = new PrimitiveVertex2D() {
-            Position = new Vector3(Vector2.Transform(new Vector2(rectangle.X, rectangle.Y) - finalOrigin, transform), layerDepth),
-            Color = finalColor.ToRgbaFloatVec4()
-        };
         
-        PrimitiveVertex2D topRight = new PrimitiveVertex2D() {
-            Position = new Vector3(Vector2.Transform(new Vector2(rectangle.X + rectangle.Width, rectangle.Y) - finalOrigin, transform), layerDepth),
-            Color = finalColor.ToRgbaFloatVec4()
-        };
+        this.Prepare(6);
         
-        PrimitiveVertex2D bottomLeft = new PrimitiveVertex2D() {
+        this._vertices[this._vertexCount++] = new PrimitiveVertex2D {
             Position = new Vector3(Vector2.Transform(new Vector2(rectangle.X, rectangle.Y + rectangle.Height) - finalOrigin, transform), layerDepth),
-            Color = finalColor.ToRgbaFloatVec4()
+            Color = colorVec4
         };
         
-        PrimitiveVertex2D bottomRight = new PrimitiveVertex2D() {
+        this._vertices[this._vertexCount++] = new PrimitiveVertex2D {
+            Position = new Vector3(Vector2.Transform(new Vector2(rectangle.X + rectangle.Width, rectangle.Y) - finalOrigin, transform), layerDepth),
+            Color = colorVec4
+        };
+        
+        this._vertices[this._vertexCount++] = new PrimitiveVertex2D {
+            Position = new Vector3(Vector2.Transform(new Vector2(rectangle.X, rectangle.Y) - finalOrigin, transform), layerDepth),
+            Color = colorVec4
+        };
+        
+        this._vertices[this._vertexCount++] = new PrimitiveVertex2D {
+            Position = new Vector3(Vector2.Transform(new Vector2(rectangle.X, rectangle.Y + rectangle.Height) - finalOrigin, transform), layerDepth),
+            Color = colorVec4
+        };
+        
+        this._vertices[this._vertexCount++] = new PrimitiveVertex2D {
             Position = new Vector3(Vector2.Transform(new Vector2(rectangle.X + rectangle.Width, rectangle.Y + rectangle.Height) - finalOrigin, transform), layerDepth),
-            Color = finalColor.ToRgbaFloatVec4()
+            Color = colorVec4
         };
         
-        this._tempVertices.Add(bottomLeft);
-        this._tempVertices.Add(topRight);
-        this._tempVertices.Add(topLeft);
-        this._tempVertices.Add(bottomLeft);
-        this._tempVertices.Add(bottomRight);
-        this._tempVertices.Add(topRight);
-        
-        this.AddVertices(this._tempVertices);
+        this._vertices[this._vertexCount++] = new PrimitiveVertex2D {
+            Position = new Vector3(Vector2.Transform(new Vector2(rectangle.X + rectangle.Width, rectangle.Y) - finalOrigin, transform), layerDepth),
+            Color = colorVec4
+        };
     }
-
+    
     /// <summary>
     /// Draws an empty circle sector using the specified parameters.
     /// </summary>
@@ -688,18 +685,19 @@ public class PrimitiveBatch : Disposable {
         float finalStartAngle = float.DegreesToRadians(startAngle);
         float finalEndAngle = float.DegreesToRadians(endAngle);
         Color finalColor = color ?? Color.White;
-
+        
         // Calculate angular range and number of segments
         float angularRange = finalEndAngle - finalStartAngle;
         int segmentCount = (int) (Math.Max(4, segments) * (angularRange / (2 * MathF.PI)));
         int finalSegments = Math.Max(4, segmentCount);
-
+        
         float angleIncrement = angularRange / finalSegments;
         Vector2 firstPoint = position + new Vector2(radius * MathF.Cos(finalStartAngle), radius * MathF.Sin(finalStartAngle));
         Vector2 lastPoint = firstPoint;
-
+        
         for (int i = 1; i <= finalSegments; i++) {
             float angle = finalStartAngle + i * angleIncrement;
+            
             Vector2 currentPoint = new Vector2(
                 position.X + radius * MathF.Cos(angle),
                 position.Y + radius * MathF.Sin(angle)
@@ -708,15 +706,15 @@ public class PrimitiveBatch : Disposable {
             this.DrawLine(lastPoint, currentPoint, thickness, layerDepth, finalColor);
             lastPoint = currentPoint;
         }
-
+        
         // Draw the sector edges to the center.
         Vector2 lineOffsetX = new Vector2(thickness / 2.0F, 0);
         Vector2 lineOffsetY = new Vector2(0, thickness / 2.0F);
-
+        
         this.DrawLine(position - lineOffsetX, firstPoint + lineOffsetX, thickness, layerDepth, finalColor);
         this.DrawLine(position + lineOffsetY, lastPoint - lineOffsetY, thickness, layerDepth, finalColor);
     }
-
+    
     /// <summary>
     /// Draws a filled sector of a circle at a specified position with defined parameters.
     /// </summary>
@@ -730,38 +728,42 @@ public class PrimitiveBatch : Disposable {
     public void DrawFilledCircleSector(Vector2 position, float radius, float startAngle, float endAngle, int segments, float layerDepth = 0.5F, Color? color = null) {
         float finalStartAngle = float.DegreesToRadians(startAngle);
         float finalEndAngle = float.DegreesToRadians(endAngle);
-        Color finalColor = color ?? Color.White;
-
+        Vector4 colorVec4 = color?.ToRgbaFloatVec4() ?? Color.White.ToRgbaFloatVec4();
+        
         // Calculate the angular range and the number of segments
         float angularRange = finalEndAngle - finalStartAngle;
-        int segmentCount = (int)(Math.Max(4, segments) * (angularRange / (2 * MathF.PI)));
+        int segmentCount = (int) (Math.Max(4, segments) * (angularRange / (2 * MathF.PI)));
         int finalSegments = Math.Max(4, segmentCount);
-
+        
         float angleIncrement = angularRange / finalSegments;
         Vector2 firstPoint = position + new Vector2(radius * MathF.Cos(finalStartAngle), radius * MathF.Sin(finalStartAngle));
         Vector2 lastPoint = firstPoint;
-    
+        
         for (int i = 1; i <= finalSegments; i++) {
             float angle = finalStartAngle + i * angleIncrement;
+            
             Vector2 currentPoint = new Vector2(
                 position.X + radius * MathF.Cos(angle),
                 position.Y + radius * MathF.Sin(angle)
             );
-
-            this._tempVertices.Add(new PrimitiveVertex2D() {
+            
+            this.Prepare(3);
+            
+            this._vertices[this._vertexCount++] = new PrimitiveVertex2D() {
                 Position = new Vector3(position, layerDepth),
-                Color = finalColor.ToRgbaFloatVec4()
-            });
-            this._tempVertices.Add(new PrimitiveVertex2D() {
+                Color = colorVec4
+            };
+            
+            this._vertices[this._vertexCount++] = new PrimitiveVertex2D() {
                 Position = new Vector3(lastPoint, layerDepth),
-                Color = finalColor.ToRgbaFloatVec4()
-            });
-            this._tempVertices.Add(new PrimitiveVertex2D() {
+                Color = colorVec4
+            };
+            
+            this._vertices[this._vertexCount++] = new PrimitiveVertex2D() {
                 Position = new Vector3(currentPoint, layerDepth),
-                Color = finalColor.ToRgbaFloatVec4()
-            });
-        
-            this.AddVertices(this._tempVertices);
+                Color = colorVec4
+            };
+            
             lastPoint = currentPoint;
         }
     }
@@ -778,14 +780,14 @@ public class PrimitiveBatch : Disposable {
     public void DrawEmptyCircle(Vector2 position, float radius, int thickness, int segments, float layerDepth = 0.5F, Color? color = null) {
         int finalSegments = Math.Max(4, segments);
         Color finalColor = color ?? Color.White;
-
+        
         float angleIncrement = 2 * MathF.PI / finalSegments;
         float lineOffset = thickness / 2.0F;
-
+        
         for (int i = 0; i < finalSegments; i++) {
             float startAngle = i * angleIncrement;
             float endAngle = (i + 1) * angleIncrement;
-
+            
             Vector2 startPoint = new Vector2(
                 position.X + radius * MathF.Cos(startAngle),
                 position.Y + radius * MathF.Sin(startAngle)
@@ -798,14 +800,14 @@ public class PrimitiveBatch : Disposable {
             
             // Calculate the direction of the segment.
             Vector2 direction = Vector2.Normalize(endPoint - startPoint);
-        
+            
             // Perpendicular vector for offset (rotate 90 degrees).
             Vector2 perpendicular = new Vector2(-direction.Y, direction.X);
-
+            
             // Apply offset to start and end points.
             Vector2 startOffset = perpendicular * lineOffset;
             Vector2 endOffset = perpendicular * lineOffset;
-
+            
             // Adjusted start and end points.
             Vector2 adjustedStartPoint = startPoint + startOffset;
             Vector2 adjustedEndPoint = endPoint + endOffset;
@@ -824,33 +826,36 @@ public class PrimitiveBatch : Disposable {
     /// <param name="color">The optional color of the circle. If null, defaults to white.</param>
     public void DrawFilledCircle(Vector2 position, float radius, int segments, float layerDepth = 0.5F, Color? color = null) {
         int finalSegments = Math.Max(4, segments);
-        Color finalColor = color ?? Color.White;
-
-        float angleIncrement = MathF.PI * 2.0f / finalSegments;
+        Vector4 colorVec4 = color?.ToRgbaFloatVec4() ?? Color.White.ToRgbaFloatVec4();
+        
+        float angleIncrement = MathF.Tau / finalSegments;
         Vector2 firstPoint = position + new Vector2(radius, 0);
         Vector2 lastPoint = firstPoint;
-
+        
         for (int i = 1; i <= finalSegments; i++) {
             float angle = i * angleIncrement;
             Vector2 currentPoint = new Vector2(
                 position.X + radius * MathF.Cos(angle),
                 position.Y + radius * MathF.Sin(angle)
             );
-
-            this._tempVertices.Add(new PrimitiveVertex2D() {
-                Position = new Vector3(position, layerDepth),
-                Color = finalColor.ToRgbaFloatVec4()
-            });
-            this._tempVertices.Add(new PrimitiveVertex2D() {
-                Position = new Vector3(lastPoint, layerDepth),
-                Color = finalColor.ToRgbaFloatVec4()
-            });
-            this._tempVertices.Add(new PrimitiveVertex2D() {
-                Position = new Vector3(currentPoint, layerDepth),
-                Color = finalColor.ToRgbaFloatVec4()
-            });
             
-            this.AddVertices(this._tempVertices);
+            this.Prepare(3);
+            
+            this._vertices[this._vertexCount++] = new PrimitiveVertex2D() {
+                Position = new Vector3(position, layerDepth),
+                Color = colorVec4
+            };
+            
+            this._vertices[this._vertexCount++] = new PrimitiveVertex2D() {
+                Position = new Vector3(lastPoint, layerDepth),
+                Color = colorVec4
+            };
+            
+            this._vertices[this._vertexCount++] = new PrimitiveVertex2D() {
+                Position = new Vector3(currentPoint, layerDepth),
+                Color = colorVec4
+            };
+            
             lastPoint = currentPoint;
         }
     }
@@ -868,29 +873,29 @@ public class PrimitiveBatch : Disposable {
     public void DrawEmptyRing(Vector2 position, float innerRadius, float outerRadius, int thickness, int segments, float layerDepth = 0.5F, Color? color = null) {
         int finalSegments = Math.Max(4, segments);
         Color finalColor = color ?? Color.White;
-
+        
         float angleIncrement = MathF.PI * 2.0f / finalSegments;
         float lineOffset = thickness / 2.0F;
-
+        
         for (int i = 0; i < finalSegments; i++) {
             float startAngle = i * angleIncrement;
             float endAngle = (i + 1) * angleIncrement;
-
+            
             Vector2 innerStart = new Vector2(
                 position.X + innerRadius * MathF.Cos(startAngle),
                 position.Y + innerRadius * MathF.Sin(startAngle)
             );
-
+            
             Vector2 innerEnd = new Vector2(
                 position.X + innerRadius * MathF.Cos(endAngle),
                 position.Y + innerRadius * MathF.Sin(endAngle)
             );
-
+            
             Vector2 outerStart = new Vector2(
                 position.X + outerRadius * MathF.Cos(startAngle),
                 position.Y + outerRadius * MathF.Sin(startAngle)
             );
-
+            
             Vector2 outerEnd = new Vector2(
                 position.X + outerRadius * MathF.Cos(endAngle),
                 position.Y + outerRadius * MathF.Sin(endAngle)
@@ -899,26 +904,26 @@ public class PrimitiveBatch : Disposable {
             // Calculate the direction of the segment.
             Vector2 innerDirection = Vector2.Normalize(innerEnd - innerStart);
             Vector2 innerPerpendicular = new Vector2(-innerDirection.Y, innerDirection.X);
-
+            
             // Apply offset to start and end points.
             Vector2 innerStartOffset = innerPerpendicular * lineOffset;
             Vector2 innerEndOffset = innerPerpendicular * lineOffset;
-
+            
             // Adjusted start and end points.
             Vector2 adjustedInnerStartPoint = innerStart + innerStartOffset;
             Vector2 adjustedInnerEndPoint = innerEnd + innerEndOffset;
-
+            
             // Draw the inner ring.
             this.DrawLine(adjustedInnerStartPoint, adjustedInnerEndPoint, thickness, layerDepth, finalColor);
             
             // Calculate the direction of the segment.
             Vector2 outerDirection = Vector2.Normalize(outerEnd - outerStart);
             Vector2 outerPerpendicular = new Vector2(-outerDirection.Y, outerDirection.X);
-
+            
             // Apply offset to start and end points.
             Vector2 outerStartOffset = outerPerpendicular * lineOffset;
             Vector2 outerEndOffset = outerPerpendicular * lineOffset;
-
+            
             // Adjusted start and end points.
             Vector2 adjustedOuterStartPoint = outerStart + outerStartOffset;
             Vector2 adjustedOuterEndPoint = outerEnd + outerEndOffset;
@@ -939,62 +944,62 @@ public class PrimitiveBatch : Disposable {
     /// <param name="color">The color of the ring. If not provided, defaults to white.</param>
     public void DrawFilledRing(Vector2 position, float innerRadius, float outerRadius, int segments, float layerDepth = 0.5F, Color? color = null) {
         int finalSegments = Math.Max(4, segments);
-        Color finalColor = color ?? Color.White;
-
-        float angleIncrement = MathF.PI * 2.0f / finalSegments;
-
+        Vector4 colorVec4 = color?.ToRgbaFloatVec4() ?? Color.White.ToRgbaFloatVec4();
+        
+        float angleIncrement = MathF.Tau / finalSegments;
+        
         for (int i = 0; i < finalSegments; i++) {
             float startAngle = i * angleIncrement;
             float endAngle = (i + 1) * angleIncrement;
-
+            
             Vector2 innerStart = new Vector2(
                 position.X + innerRadius * MathF.Cos(startAngle),
                 position.Y + innerRadius * MathF.Sin(startAngle)
             );
-    
+            
             Vector2 innerEnd = new Vector2(
                 position.X + innerRadius * MathF.Cos(endAngle),
                 position.Y + innerRadius * MathF.Sin(endAngle)
             );
-    
+            
             Vector2 outerStart = new Vector2(
                 position.X + outerRadius * MathF.Cos(startAngle),
                 position.Y + outerRadius * MathF.Sin(startAngle)
             );
-    
+            
             Vector2 outerEnd = new Vector2(
                 position.X + outerRadius * MathF.Cos(endAngle),
                 position.Y + outerRadius * MathF.Sin(endAngle)
             );
-    
+            
+            this.Prepare(6);
+            
             // Define the vertices for the triangle as part of the ring segment.
-            this._tempVertices.Add(new PrimitiveVertex2D() {
+            this._vertices[this._vertexCount++] = new PrimitiveVertex2D() {
                 Position = new Vector3(innerStart, layerDepth),
-                Color = finalColor.ToRgbaFloatVec4()
-            });
-            this._tempVertices.Add(new PrimitiveVertex2D() {
+                Color = colorVec4
+            };
+            this._vertices[this._vertexCount++] = new PrimitiveVertex2D() {
                 Position = new Vector3(outerStart, layerDepth),
-                Color = finalColor.ToRgbaFloatVec4()
-            });
-            this._tempVertices.Add(new PrimitiveVertex2D() {
+                Color = colorVec4
+            };
+            this._vertices[this._vertexCount++] = new PrimitiveVertex2D() {
                 Position = new Vector3(outerEnd, layerDepth),
-                Color = finalColor.ToRgbaFloatVec4()
-            });
-    
-            this._tempVertices.Add(new PrimitiveVertex2D() {
+                Color = colorVec4
+            };
+            
+            this._vertices[this._vertexCount++] = new PrimitiveVertex2D() {
                 Position = new Vector3(innerStart, layerDepth),
-                Color = finalColor.ToRgbaFloatVec4()
-            });
-            this._tempVertices.Add(new PrimitiveVertex2D() {
+                Color = colorVec4
+            };
+            this._vertices[this._vertexCount++] = new PrimitiveVertex2D() {
                 Position = new Vector3(outerEnd, layerDepth),
-                Color = finalColor.ToRgbaFloatVec4()
-            });
-            this._tempVertices.Add(new PrimitiveVertex2D() {
+                Color = colorVec4
+            };
+            this._vertices[this._vertexCount++] = new PrimitiveVertex2D() {
                 Position = new Vector3(innerEnd, layerDepth),
-                Color = finalColor.ToRgbaFloatVec4()
-            });
-    
-            this.AddVertices(this._tempVertices);
+                Color = colorVec4
+            };
         }
     }
 
@@ -1011,7 +1016,7 @@ public class PrimitiveBatch : Disposable {
         int finalSegments = Math.Max(4, segments);
         Color finalColor = color ?? Color.White;
 
-        float angleIncrement = MathF.PI * 2.0f / finalSegments;
+        float angleIncrement = MathF.Tau / finalSegments;
         float lineOffset = thickness / 2.0F;
 
         for (int i = 0; i < finalSegments; i++) {
@@ -1057,10 +1062,10 @@ public class PrimitiveBatch : Disposable {
     /// <param name="color">The color to fill the ellipse. Defaults to white if not specified.</param>
     public void DrawFilledEllipse(Vector2 position, Vector2 radius, int segments, float layerDepth = 0.5F, Color? color = null) {
         int finalSegments = Math.Max(4, segments);
-        Color finalColor = color ?? Color.White;
-
-        float angleIncrement = MathF.PI * 2.0f / finalSegments;
-
+        Vector4 colorVec4 = color?.ToRgbaFloatVec4() ?? Color.White.ToRgbaFloatVec4();
+        
+        float angleIncrement = MathF.Tau / finalSegments;
+        
         for (int i = 0; i < finalSegments; i++) {
             float startAngle = i * angleIncrement;
             float endAngle = (i + 1) * angleIncrement;
@@ -1074,23 +1079,23 @@ public class PrimitiveBatch : Disposable {
                 position.X + radius.X * MathF.Cos(endAngle),
                 position.Y + radius.Y * MathF.Sin(endAngle)
             );
-
-            this._tempVertices.Add(new PrimitiveVertex2D {
+            
+            this.Prepare(3);
+            
+            this._vertices[this._vertexCount++] = new PrimitiveVertex2D {
                 Position = new Vector3(position, layerDepth),
-                Color = finalColor.ToRgbaFloatVec4()
-            });
+                Color = colorVec4
+            };
             
-            this._tempVertices.Add(new PrimitiveVertex2D {
+            this._vertices[this._vertexCount++] = new PrimitiveVertex2D {
                 Position = new Vector3(startPoint, layerDepth),
-                Color = finalColor.ToRgbaFloatVec4()
-            });
+                Color = colorVec4
+            };
             
-            this._tempVertices.Add(new PrimitiveVertex2D {
+            this._vertices[this._vertexCount++] = new PrimitiveVertex2D {
                 Position = new Vector3(endPoint, layerDepth),
-                Color = finalColor.ToRgbaFloatVec4()
-            });
-
-            this.AddVertices(this._tempVertices);
+                Color = colorVec4
+            };
         }
     }
 
@@ -1120,32 +1125,47 @@ public class PrimitiveBatch : Disposable {
     /// <param name="layerDepth">The layer depth of the triangle, determining its rendering order. Default is 0.5.</param>
     /// <param name="color">The color of the triangle. If null, the default color is white.</param>
     public void DrawFilledTriangle(Vector2 point1, Vector2 point2, Vector2 point3, float layerDepth = 0.5F, Color? color = null) {
-        Color finalColor = color ?? Color.White;
-
-        this._tempVertices.Add(new PrimitiveVertex2D {
-            Position = new Vector3(point1, layerDepth), Color = finalColor.ToRgbaFloatVec4()
-        });
-
-        this._tempVertices.Add(new PrimitiveVertex2D {
+        Vector4 colorVec4 = color?.ToRgbaFloatVec4() ?? Color.White.ToRgbaFloatVec4();
+        
+        this.Prepare(3);
+        
+        this._vertices[this._vertexCount++] = new PrimitiveVertex2D {
+            Position = new Vector3(point1, layerDepth),
+            Color = colorVec4
+        };
+        
+        this._vertices[this._vertexCount++] = new PrimitiveVertex2D {
             Position = new Vector3(point2, layerDepth),
-            Color = finalColor.ToRgbaFloatVec4()
-        });
-
-        this._tempVertices.Add(new PrimitiveVertex2D {
+            Color = colorVec4
+        };
+        
+        this._vertices[this._vertexCount++] = new PrimitiveVertex2D {
             Position = new Vector3(point3, layerDepth),
-            Color = finalColor.ToRgbaFloatVec4()
-        });
-
-        this.AddVertices(this._tempVertices);
+            Color = colorVec4
+        };
     }
     
-    // TODO: Remove the AddVertices system and add the Prepare system like in the immedateRenderer.
+    /// <summary>
+    /// Submits arbitrary 2D geometry directly to the batch.
+    /// </summary>
+    /// <param name="vertices">The vertices to submit.</param>
+    public void DrawGeometry(ReadOnlySpan<PrimitiveVertex2D> vertices) {
+        if (vertices.IsEmpty) {
+            return;
+        }
+        
+        this.Prepare(vertices.Length);
+        
+        vertices.CopyTo(new Span<PrimitiveVertex2D>(this._vertices, this._vertexCount, vertices.Length));
+        this._vertexCount += vertices.Length;
+    }
     
     /// <summary>
-    /// Adds a collection of vertices to the current batch for rendering.
+    /// Ensures there is room for <paramref name="vertexCount"/> new vertices, flushing and
+    /// synchronising pipeline state if needed.
     /// </summary>
-    /// <param name="vertices">The list of vertices to be added to the batch.</param>
-    public void AddVertices(List<PrimitiveVertex2D> vertices) {
+    /// <param name="vertexCount">Number of vertices about to be written.</param>
+    private void Prepare(int vertexCount) {
         if (!this._begun) {
             throw new Exception("You must begin the PrimitiveBatch before calling draw methods!");
         }
@@ -1171,7 +1191,7 @@ public class PrimitiveBatch : Disposable {
         this._currentProjection = this._requestedProjection;
         this._currentView = this._requestedView;
         this._currentScissorRect = this._requestedScissorRect;
-            
+        
         // Update pipeline description.
         this._pipelineDescription.BlendState = this._currentBlendState;
         this._pipelineDescription.DepthStencilState = this._currentDepthStencilState;
@@ -1180,25 +1200,17 @@ public class PrimitiveBatch : Disposable {
         this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
         this._pipelineDescription.ShaderSet = new ShaderSetDescription(PrimitiveVertex2D.VertexLayout.Layouts, this._currentEffect.Shaders);
         this._pipelineDescription.Outputs = this._currentOutput;
-        
-        if (this._currentBatchCount + vertices.Count >= this._vertices.Length) {
+
+        if (this._vertexCount + vertexCount > this._vertices.Length) {
             this.Flush();
         }
-        
-        for (int i = 0; i < vertices.Count; i++) {
-            this._vertices[this._currentBatchCount] = vertices[i];
-            this._currentBatchCount++;
-        }
-        
-        // Clear temp data.
-        this._tempVertices.Clear();
     }
-
+    
     /// <summary>
     /// Flushes the current batch of primitives to the GPU for rendering.
     /// </summary>
     private void Flush() {
-        if (this._currentBatchCount == 0) {
+        if (this._vertexCount == 0) {
             return;
         }
         
@@ -1208,7 +1220,7 @@ public class PrimitiveBatch : Disposable {
         this._projViewBuffer.UpdateBufferDeferred(this._currentCommandList);
         
         // Update vertex buffer.
-        this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, new ReadOnlySpan<PrimitiveVertex2D>(this._vertices, 0, (int) this._currentBatchCount));
+        this._currentCommandList.UpdateBuffer(this._vertexBuffer, 0, new ReadOnlySpan<PrimitiveVertex2D>(this._vertices, 0, this._vertexCount));
         
         // Set vertex buffer.
         this._currentCommandList.SetVertexBuffer(0, this._vertexBuffer);
@@ -1229,16 +1241,15 @@ public class PrimitiveBatch : Disposable {
         this._currentEffect.Apply(this._currentCommandList);
         
         // Draw.
-        this._currentCommandList.Draw(this._currentBatchCount);
+        this._currentCommandList.Draw((uint) this._vertexCount);
         
         // Reset scissor.
         if (this._pipelineDescription.RasterizerState.ScissorTestEnabled && this._currentScissorRect != null) {
             this._currentCommandList.SetFullScissorRect(0);
         }
-
-        // Clear data.
-        this._currentBatchCount = 0;
-        Array.Clear(this._vertices);
+        
+        // Reset vertex count.
+        this._vertexCount = 0;
         
         this.DrawCallCount++;
     }

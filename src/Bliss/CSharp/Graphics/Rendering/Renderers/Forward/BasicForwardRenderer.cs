@@ -80,11 +80,12 @@ public class BasicForwardRenderer : Disposable, IRenderer {
         // Set the pipeline output.
         this._pipelineDescription.Outputs = output;
         
-        // Update renderable buffers.
+        // Update opaques renderable buffers.
         foreach (Renderable renderable in this._opaqueRenderables) {
             this.UpdateRenderableBuffer(commandList, renderable);
         }
         
+        // Update translucent renderable buffers.
         foreach (Renderable renderable in this._translucentRenderables) {
             this.UpdateRenderableBuffer(commandList, renderable);
         }

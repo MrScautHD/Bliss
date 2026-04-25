@@ -420,11 +420,11 @@ public class Renderable : Disposable {
     }
     
     /// <summary>
-    /// Allocates a new dynamic vertex buffer sized to hold <paramref name="instanceCount"/> transform matrices.
+    /// Allocates a new dynamic vertex buffer large enough for <paramref name="capacity"/> transform matrices.
     /// </summary>
-    /// <param name="instanceCount">The number of instances the buffer must accommodate.</param>
-    private DeviceBuffer CreateInstanceVertexBuffer(uint instanceCount) {
-        DeviceBuffer buffer = this.Mesh.GraphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(instanceCount * (uint) Marshal.SizeOf<Matrix4x4>(), BufferUsage.VertexBuffer | BufferUsage.Dynamic));
+    /// <param name="capacity">The number of instances the buffer must accommodate.</param>
+    private DeviceBuffer CreateInstanceVertexBuffer(uint capacity) {
+        DeviceBuffer buffer = this.Mesh.GraphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(capacity * (uint) Marshal.SizeOf<Matrix4x4>(), BufferUsage.VertexBuffer | BufferUsage.Dynamic));
         buffer.Name = "InstanceVertexBuffer";
         return buffer;
     }
@@ -438,13 +438,11 @@ public class Renderable : Disposable {
         }
         
         value--;
-        
         value |= value >> 1;
         value |= value >> 2;
         value |= value >> 4;
         value |= value >> 8;
         value |= value >> 16;
-        
         return value + 1;
     }
     

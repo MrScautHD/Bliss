@@ -2032,16 +2032,16 @@ public class ImmediateRenderer : Disposable {
                 if (rad < radSeg) {
                     int nextLocal = (rad + 1) * (sides + 1) + side;
                     
-                    this._indices[this._indexCount++] = (uint)(baseVertex + localIndex);
-                    this._indices[this._indexCount++] = (uint)(baseVertex + nextLocal);
+                    this._indices[this._indexCount++] = (uint) (baseVertex + localIndex);
+                    this._indices[this._indexCount++] = (uint) (baseVertex + nextLocal);
                 }
                 
                 // Connect to the next side (wrapping around at the end).
                 if (side < sides) {
                     int nextLocal = rad * (sides + 1) + (side + 1);
                     
-                    this._indices[this._indexCount++] = (uint)(baseVertex + localIndex);
-                    this._indices[this._indexCount++] = (uint)(baseVertex + nextLocal);
+                    this._indices[this._indexCount++] = (uint) (baseVertex + localIndex);
+                    this._indices[this._indexCount++] = (uint) (baseVertex + nextLocal);
                 }
             }
         }

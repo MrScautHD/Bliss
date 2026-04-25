@@ -728,7 +728,7 @@ public class SpriteBatch : Disposable {
         Vector2 finalScale = scale ?? new Vector2(1.0F, 1.0F);
         Vector2 finalOrigin = origin ?? new Vector2(0.0F, 0.0F);
         float finalRotation = float.DegreesToRadians(rotation);
-        Color finalColor = color ?? Color.White;
+        Vector4 colorVec4 = color?.ToRgbaFloatVec4() ?? Color.White.ToRgbaFloatVec4();
         
         Vector2 spriteScale = new Vector2(finalSource.Width, finalSource.Height) * finalScale;
         Vector2 spriteOrigin = finalOrigin * finalScale;
@@ -757,25 +757,25 @@ public class SpriteBatch : Disposable {
         SpriteVertex2D topLeft = new SpriteVertex2D() {
             Position = new Vector3(Vector2.Transform(new Vector2(position.X, position.Y) - spriteOrigin, transform), layerDepth),
             TexCoords = new Vector2(u0, v0),
-            Color = finalColor.ToRgbaFloatVec4()
+            Color = colorVec4
         };
         
         SpriteVertex2D topRight = new SpriteVertex2D() {
             Position = new Vector3(Vector2.Transform(new Vector2(position.X + spriteScale.X, position.Y) - spriteOrigin, transform), layerDepth),
             TexCoords = new Vector2(u1, v0),
-            Color = finalColor.ToRgbaFloatVec4()
+            Color = colorVec4
         };
         
         SpriteVertex2D bottomLeft = new SpriteVertex2D() {
             Position = new Vector3(Vector2.Transform(new Vector2(position.X, position.Y + spriteScale.Y) - spriteOrigin, transform), layerDepth),
             TexCoords = new Vector2(u0, v1),
-            Color = finalColor.ToRgbaFloatVec4()
+            Color = colorVec4
         };
         
         SpriteVertex2D bottomRight = new SpriteVertex2D() {
             Position = new Vector3(Vector2.Transform(new Vector2(position.X + spriteScale.X, position.Y + spriteScale.Y) - spriteOrigin, transform), layerDepth),
             TexCoords = new Vector2(u1, v1),
-            Color = finalColor.ToRgbaFloatVec4()
+            Color = colorVec4
         };
         
         this.AddQuad(texture, topLeft, topRight, bottomLeft, bottomRight);
@@ -830,7 +830,7 @@ public class SpriteBatch : Disposable {
         this._pipelineDescription.ShaderSet = new ShaderSetDescription(SpriteVertex2D.VertexLayout.Layouts, this._currentEffect.Shaders);
         this._pipelineDescription.Outputs = this._currentOutput;
         
-        if (this._currentBatchCount >= (this.Capacity - 1)) {
+        if (this._currentBatchCount >= this.Capacity) {
             this.Flush();
         }
         
@@ -892,7 +892,6 @@ public class SpriteBatch : Disposable {
 
         // Clean up.
         this._currentBatchCount = 0;
-        Array.Clear(this._vertices);
         
         this.DrawCallCount++;
     }
