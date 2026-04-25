@@ -125,7 +125,7 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
         
         Material material = new Material(GlobalResource.DefaultModelEffect);
         
-        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
+        material.AddMaterialMap(MaterialMapType.Albedo, 0, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
@@ -178,7 +178,7 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
         
         Material material = new Material(GlobalResource.DefaultModelEffect);
         
-        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
+        material.AddMaterialMap(MaterialMapType.Albedo, 0, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
@@ -262,7 +262,7 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
         
         Material material = new Material(GlobalResource.DefaultModelEffect);
         
-        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap() {
+        material.AddMaterialMap(MaterialMapType.Albedo, 0, new MaterialMap() {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
@@ -344,7 +344,7 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
 
         Material material = new Material(GlobalResource.DefaultModelEffect);
 
-        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap() {
+        material.AddMaterialMap(MaterialMapType.Albedo, 0, new MaterialMap() {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
@@ -448,7 +448,7 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
     
         Material material = new Material(GlobalResource.DefaultModelEffect);
     
-        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap() {
+        material.AddMaterialMap(MaterialMapType.Albedo, 0, new MaterialMap() {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
@@ -547,7 +547,7 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
     
         Material material = new Material(GlobalResource.DefaultModelEffect);
         
-        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
+        material.AddMaterialMap(MaterialMapType.Albedo, 0, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
@@ -697,7 +697,7 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
         
         Material material = new Material(GlobalResource.DefaultModelEffect);
         
-        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
+        material.AddMaterialMap(MaterialMapType.Albedo, 0, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
@@ -775,7 +775,7 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
 
         Material material = new Material(GlobalResource.DefaultModelEffect);
 
-        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
+        material.AddMaterialMap(MaterialMapType.Albedo, 0, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
@@ -850,7 +850,7 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
 
         Material material = new Material(GlobalResource.DefaultModelEffect);
         
-        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
+        material.AddMaterialMap(MaterialMapType.Albedo, 0, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
@@ -940,7 +940,7 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
         
         Material material = new Material(GlobalResource.DefaultModelEffect);
         
-        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
+        material.AddMaterialMap(MaterialMapType.Albedo, 0, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
@@ -1002,7 +1002,7 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
         
         Material material = new Material(GlobalResource.DefaultModelEffect);
         
-        material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap {
+        material.AddMaterialMap(MaterialMapType.Albedo, 0, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });

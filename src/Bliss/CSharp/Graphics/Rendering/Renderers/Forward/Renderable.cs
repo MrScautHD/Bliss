@@ -403,15 +403,18 @@ public class Renderable : Disposable {
             RenderMode = this.Material.RenderMode
         };
         
-        foreach (MaterialMapType mapType in this.Material.GetMaterialMapTypes()) {
-            MaterialMap? map = this.Material.GetMaterialMap(mapType);
+        foreach (MaterialMapKey mapKey in this.Material.GetMaterialMapKeys()) {
+            MaterialMap? map = this.Material.GetMaterialMap(mapKey);
+            int slot = this.Material.GetMaterialMapSlot(mapKey);
             
-            if (map != null) {
-                materialData[(int) mapType] = new MaterialMapData() {
-                    Color = map.Color?.ToRgbaFloatVec4() ?? Vector4.Zero,
-                    Value = map.Value
-                };
+            if (map == null || slot < 0) {
+                continue;
             }
+            
+            materialData[slot] = new MaterialMapData() {
+                Color = map.Color?.ToRgbaFloatVec4() ?? Vector4.Zero,
+                Value = map.Value
+            };
         }
         
         this._materialDataBuffer.SetValueDeferred(commandList, 0, ref materialData);

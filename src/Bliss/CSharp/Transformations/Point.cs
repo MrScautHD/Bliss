@@ -55,7 +55,7 @@ public struct Point : IEquatable<Point> {
     /// <param name="obj">The object to compare with the current instance.</param>
     /// <returns>true if the specified object is a Point and is equal to the current Point; otherwise, false.</returns>
     public override bool Equals(object? obj) {
-        return obj is Point p && this.Equals(p);
+        return obj is Point other && this.Equals(other);
     }
 
     /// <summary>

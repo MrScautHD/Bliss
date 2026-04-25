@@ -143,10 +143,10 @@ public class BasicForwardRenderer : Disposable, IRenderer {
         
         // Set material texture.
         foreach (SimpleTextureLayout textureLayout in renderable.Material.Effect.GetTextureLayouts()) {
-            foreach (MaterialMapType mapType in renderable.Material.GetMaterialMapTypes()) {
-                if (textureLayout.Name == mapType.GetName()) {
+            foreach (MaterialMapKey mapKey in renderable.Material.GetMaterialMapKeys()) {
+                if (textureLayout.Name == mapKey.Name) {
                     string mapName = textureLayout.Name;
-                    MaterialMap map = renderable.Material.GetMaterialMap(mapType)!;
+                    MaterialMap map = renderable.Material.GetMaterialMap(mapKey)!;
                     ResourceSet? resourceSet = map.GetTextureResourceSet(map.Sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointWrap), renderable.Material.Effect.GetTextureLayout(mapName));
                     
                     if (resourceSet != null) {

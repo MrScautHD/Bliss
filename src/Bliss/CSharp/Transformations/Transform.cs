@@ -86,7 +86,7 @@ public struct Transform : IEquatable<Transform> {
     /// <param name="obj">The object to compare with the current <see cref="Transform"/>.</param>
     /// <returns><c>true</c> if the specified object is equal to the current <see cref="Transform"/>; otherwise, <c>false</c>.</returns>
     public override bool Equals(object? obj) {
-        return obj is Transform p && this.Equals(p);
+        return obj is Transform other && this.Equals(other);
     }
 
     /// <summary>

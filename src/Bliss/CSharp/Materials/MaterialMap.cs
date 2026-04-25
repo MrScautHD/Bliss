@@ -45,7 +45,7 @@ public class MaterialMap {
         this.Color = color;
         this.Value = value;
     }
-
+    
     /// <summary>
     /// The texture resource set associated with the specified sampler and texture layout.
     /// </summary>

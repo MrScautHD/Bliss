@@ -160,13 +160,13 @@ public class Model : Disposable {
                 
                 // Albedo map.
                 if (aMaterial.HasTextureDiffuse || aMaterial.HasColorDiffuse ) {
-                    material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Albedo, 0, new MaterialMap() {
                         Texture = aMaterial.HasTextureDiffuse ? LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Diffuse) : GlobalResource.DefaultModelTexture,
                         Color = aMaterial.HasColorDiffuse ? new Color(new RgbaFloat(aMaterial.ColorDiffuse)) : Color.White,
                     });
                 }
                 else {
-                    material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Albedo, 0, new MaterialMap() {
                         Texture = GlobalResource.DefaultModelTexture,
                         Color = Color.White
                     });
@@ -174,7 +174,7 @@ public class Model : Disposable {
                 
                 // Metallic map.
                 if (aMaterial.PBR.HasTextureMetalness || aMaterial.HasColorSpecular ) {
-                    material.AddMaterialMap(MaterialMapType.Metallic, new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Metallic, 1, new MaterialMap() {
                         Texture = aMaterial.PBR.HasTextureMetalness ? LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Metalness) : null,
                         Color = aMaterial.HasColorSpecular ? new Color(new RgbaFloat(aMaterial.ColorSpecular)) : Color.White
                     });
@@ -182,7 +182,7 @@ public class Model : Disposable {
                 
                 // Normal map.
                 if (aMaterial.HasTextureNormal || aMaterial.HasShininess) {
-                    material.AddMaterialMap(MaterialMapType.Normal, new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Normal, 1, new MaterialMap() {
                         Texture = aMaterial.HasTextureNormal ? LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Normals) : null,
                         Color = Color.White,
                         Value = aMaterial.Shininess
@@ -191,7 +191,7 @@ public class Model : Disposable {
                 
                 // Roughness map.
                 if (aMaterial.PBR.HasTextureRoughness) {
-                    material.AddMaterialMap(MaterialMapType.Roughness, new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Roughness, 3, new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Roughness),
                         Color = Color.White
                     });
@@ -199,7 +199,7 @@ public class Model : Disposable {
                 
                 // Occlusion map.
                 if (aMaterial.HasTextureAmbientOcclusion) {
-                    material.AddMaterialMap(MaterialMapType.Occlusion, new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Occlusion, 4, new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.AmbientOcclusion),
                         Color = Color.White
                     });
@@ -207,7 +207,7 @@ public class Model : Disposable {
                 
                 // Emissive map.
                 if (aMaterial.HasTextureEmissive || aMaterial.HasColorEmissive) {
-                    material.AddMaterialMap(MaterialMapType.Emission, new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Emission, 5, new MaterialMap() {
                         Texture = aMaterial.HasTextureEmissive ? LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Emissive) : null,
                         Color = aMaterial.HasColorEmissive ? new Color(new RgbaFloat(aMaterial.ColorEmissive)) : Color.Black,
                     });
@@ -215,20 +215,20 @@ public class Model : Disposable {
                 
                 // Opacity map.
                 if (aMaterial.HasTextureOpacity) {
-                    material.AddMaterialMap(MaterialMapType.Opacity, new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Opacity, 6, new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Opacity)
                     });
                 }
                 
                 // Height map.
                 if (aMaterial.HasTextureHeight) {
-                    material.AddMaterialMap(MaterialMapType.Height, new MaterialMap() {
+                    material.AddMaterialMap(MaterialMapType.Height, 7, new MaterialMap() {
                         Texture = LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Height)
                     });
                 }
             }
             else {
-                material.AddMaterialMap(MaterialMapType.Albedo, new MaterialMap() {
+                material.AddMaterialMap(MaterialMapType.Albedo, 0, new MaterialMap() {
                     Texture = GlobalResource.DefaultModelTexture,
                     Color = Color.White
                 });
