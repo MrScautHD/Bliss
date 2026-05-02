@@ -39,7 +39,7 @@
         <PackageReference Include="AssimpNetter" Version="6.0.4" />
         <PackageReference Include="FontStashSharp.PlatformAgnostic" Version="1.5.5" />
         <PackageReference Include="JAJ.Packages.MiniAudioEx" Version="3.3.0" />
-        <PackageReference Include="ppy.SDL3-CS" Version="2026.320.0" />
+        <PackageReference Include="ppy.SDL3-CS" Version="2026.429.0" />
         <PackageReference Include="ppy.Veldrid" Version="4.9.76-g3cdad6c06a" />
         <PackageReference Include="ppy.Veldrid.SPIRV" Version="1.0.15-gfbb03d21c2" />
         <PackageReference Include="StbImageSharp" Version="2.30.15" />
