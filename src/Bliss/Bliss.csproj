@@ -53,9 +53,10 @@
     
     <!-- Content -->
     <ItemGroup>
-        <Content Include="content/**/*" Pack="true">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-            <PackageCopyToOutput>true</PackageCopyToOutput>
-        </Content>
+        <Content Include="content\**\*"
+                 Pack="true"
+                 PackagePath="contentFiles\any\any\content\%(RecursiveDir)%(Filename)%(Extension)"
+                 PackageCopyToOutput="true"
+                 CopyToOutputDirectory="PreserveNewest" />
     </ItemGroup>
 </Project>
