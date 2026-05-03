@@ -50,7 +50,14 @@
     <ItemGroup>
         <None Include="content\bliss\images\icon.png" Pack="true" PackagePath="" />
     </ItemGroup>
-    
+
+    <!-- Build Transitive -->
+    <ItemGroup>
+        <None Include="buildTransitive\Bliss.targets"
+              Pack="true"
+              PackagePath="buildTransitive\Bliss.targets" />
+    </ItemGroup>
+
     <!-- Content -->
     <ItemGroup>
         <Content Include="content\**\*"
