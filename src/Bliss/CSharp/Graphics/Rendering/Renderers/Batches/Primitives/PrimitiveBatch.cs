@@ -101,11 +101,6 @@ public class PrimitiveBatch : Disposable {
     private Effect _requestedEffect;
     
     /// <summary>
-    /// Tracks the version of the current effect being used.
-    /// </summary>
-    private ulong _currentEffectVersion;
-    
-    /// <summary>
     /// The main <see cref="BlendStateDescription"/>.
     /// </summary>
     private BlendStateDescription _mainBlendState;
@@ -1320,11 +1315,8 @@ public class PrimitiveBatch : Disposable {
             throw new InvalidOperationException($"The number of provided vertices exceeds the capacity! [{vertexCount} > {this.Capacity}]");
         }
         
-        ulong requestedEffectVersion = this._requestedEffect.StateVersion;
-        
         bool stateChanged = !this._currentOutput.Equals(this._requestedOutput) ||
                             this._currentEffect != this._requestedEffect ||
-                            this._currentEffectVersion != requestedEffectVersion ||
                             !this._currentBlendState.Equals(this._requestedBlendState) ||
                             !this._currentDepthStencilState.Equals(this._requestedDepthStencilState) ||
                             !this._currentRasterizerState.Equals(this._requestedRasterizerState) ||
@@ -1338,7 +1330,6 @@ public class PrimitiveBatch : Disposable {
         
         this._currentOutput = this._requestedOutput;
         this._currentEffect = this._requestedEffect;
-        this._currentEffectVersion = requestedEffectVersion;
         this._currentBlendState = this._requestedBlendState;
         this._currentDepthStencilState = this._requestedDepthStencilState;
         this._currentRasterizerState = this._requestedRasterizerState;
@@ -1365,7 +1356,11 @@ public class PrimitiveBatch : Disposable {
     /// <summary>
     /// Flushes the current batch of primitives to the GPU for rendering.
     /// </summary>
-    private void Flush() {
+    public void Flush() {
+        if (!this._begun) {
+            throw new Exception("You must begin the batch before flushing!");
+        }
+        
         if (this._vertexCount == 0) {
             return;
         }

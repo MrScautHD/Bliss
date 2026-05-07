@@ -139,11 +139,6 @@ public class SpriteBatch : Disposable {
     private Effect _requestedEffect;
     
     /// <summary>
-    /// Tracks the version of the current effect being used.
-    /// </summary>
-    private ulong _currentEffectVersion;
-    
-    /// <summary>
     /// The main <see cref="BlendStateDescription"/>.
     /// </summary>
     private BlendStateDescription _mainBlendState;
@@ -800,11 +795,9 @@ public class SpriteBatch : Disposable {
             throw new Exception("You must begin the SpriteBatch before calling draw methods!");
         }
         
-        ulong requestedEffectVersion = this._requestedEffect.StateVersion;
         
         bool stateChanged = !this._currentOutput.Equals(this._requestedOutput) ||
                             this._currentEffect != this._requestedEffect ||
-                            this._currentEffectVersion != requestedEffectVersion ||
                             !this._currentBlendState.Equals(this._requestedBlendState) ||
                             !this._currentDepthStencilState.Equals(this._requestedDepthStencilState) ||
                             !this._currentRasterizerState.Equals(this._requestedRasterizerState) ||
@@ -820,7 +813,6 @@ public class SpriteBatch : Disposable {
         
         this._currentOutput = this._requestedOutput;
         this._currentEffect = this._requestedEffect;
-        this._currentEffectVersion = requestedEffectVersion;
         this._currentBlendState = this._requestedBlendState;
         this._currentDepthStencilState = this._requestedDepthStencilState;
         this._currentRasterizerState = this._requestedRasterizerState;
@@ -856,7 +848,11 @@ public class SpriteBatch : Disposable {
     /// <summary>
     /// Flushes the current batch of sprites to the GPU for rendering.
     /// </summary>
-    private void Flush() {
+    public void Flush() {
+        if (!this._begun) {
+            throw new Exception("You must begin the batch before flushing!");
+        }
+        
         if (this._currentBatchCount == 0) {
             return;
         }
