@@ -255,8 +255,8 @@ public class PrimitiveBatch : Disposable {
             throw new Exception("The PrimitiveBatch has not begun yet!");
         }
         
-        this._begun = false;
         this.Flush();
+        this._begun = false;
     }
     
     /// <summary>

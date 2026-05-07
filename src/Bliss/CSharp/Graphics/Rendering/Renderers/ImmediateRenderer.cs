@@ -262,8 +262,8 @@ public class ImmediateRenderer : Disposable {
             throw new Exception("The ImmediateRenderer has not begun yet!");
         }
         
-        this._begun = false;
         this.Flush();
+        this._begun = false;
     }
     
     /// <summary>

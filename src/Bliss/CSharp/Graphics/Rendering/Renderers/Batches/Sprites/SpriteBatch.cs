@@ -344,8 +344,8 @@ public class SpriteBatch : Disposable {
             throw new Exception("The SpriteBatch has not begun yet!");
         }
         
-        this._begun = false;
         this.Flush();
+        this._begun = false;
     }
 
     /// <summary>
