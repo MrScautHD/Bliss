@@ -101,6 +101,11 @@ public class PrimitiveBatch : Disposable {
     private Effect _requestedEffect;
     
     /// <summary>
+    /// Tracks the version of the current effect being used.
+    /// </summary>
+    private ulong _currentEffectVersion;
+    
+    /// <summary>
     /// The main <see cref="BlendStateDescription"/>.
     /// </summary>
     private BlendStateDescription _mainBlendState;
@@ -671,6 +676,143 @@ public class PrimitiveBatch : Disposable {
     }
     
     /// <summary>
+    /// Draws an empty rounded rectangle with the specified radius and outline thickness.
+    /// </summary>
+    /// <param name="rectangle">The rectangle defining the bounds.</param>
+    /// <param name="radius">The corner radius.</param>
+    /// <param name="thickness">The thickness of the outline.</param>
+    /// <param name="segments">The number of segments used for each rounded corner.</param>
+    /// <param name="layerDepth">The depth layer for rendering. Defaults to 0.5.</param>
+    /// <param name="color">The outline color. Defaults to white if not specified.</param>
+    public void DrawEmptyRoundedRectangle(RectangleF rectangle, float radius, int thickness, int segments, float layerDepth = 0.5F, Color? color = null) {
+        float finalRadius = Math.Clamp(radius, 0.0F, MathF.Min(rectangle.Width, rectangle.Height) / 2.0F);
+        int finalSegments = Math.Max(1, segments);
+        Color finalColor = color ?? Color.White;
+        
+        if (finalRadius <= 0.0F) {
+            this.DrawEmptyRectangle(rectangle, thickness, Vector2.Zero, 0.0F, layerDepth, finalColor);
+            return;
+        }
+        
+        float left = rectangle.X;
+        float top = rectangle.Y;
+        float right = rectangle.X + rectangle.Width;
+        float bottom = rectangle.Y + rectangle.Height;
+        
+        // Top side.
+        this.DrawLine(new Vector2(left + finalRadius, top), new Vector2(right - finalRadius, top), thickness, layerDepth, finalColor);
+        
+        // Right side.
+        this.DrawLine(new Vector2(right, top + finalRadius), new Vector2(right, bottom - finalRadius), thickness, layerDepth, finalColor);
+        
+        // Bottom side.
+        this.DrawLine(new Vector2(right - finalRadius, bottom), new Vector2(left + finalRadius, bottom), thickness, layerDepth, finalColor);
+        
+        // Left side.
+        this.DrawLine(new Vector2(left, bottom - finalRadius), new Vector2(left, top + finalRadius), thickness, layerDepth, finalColor);
+        
+        // Top-left corner.
+        float startAngle = float.DegreesToRadians(180.0F);
+        float endAngle = float.DegreesToRadians(270.0F);
+        float angleIncrement = (endAngle - startAngle) / finalSegments;
+        Vector2 center = new Vector2(left + finalRadius, top + finalRadius);
+        Vector2 lastPoint = new Vector2(center.X + finalRadius * MathF.Cos(startAngle), center.Y + finalRadius * MathF.Sin(startAngle));
+        
+        for (int i = 1; i <= finalSegments; i++) {
+            float angle = startAngle + angleIncrement * i;
+            Vector2 currentPoint = new Vector2(center.X + finalRadius * MathF.Cos(angle), center.Y + finalRadius * MathF.Sin(angle));
+            
+            this.DrawLine(lastPoint, currentPoint, thickness, layerDepth, finalColor);
+            lastPoint = currentPoint;
+        }
+        
+        // Top-right corner.
+        startAngle = float.DegreesToRadians(270.0F);
+        endAngle = float.DegreesToRadians(360.0F);
+        angleIncrement = (endAngle - startAngle) / finalSegments;
+        center = new Vector2(right - finalRadius, top + finalRadius);
+        lastPoint = new Vector2(center.X + finalRadius * MathF.Cos(startAngle), center.Y + finalRadius * MathF.Sin(startAngle));
+        
+        for (int i = 1; i <= finalSegments; i++) {
+            float angle = startAngle + angleIncrement * i;
+            Vector2 currentPoint = new Vector2(center.X + finalRadius * MathF.Cos(angle), center.Y + finalRadius * MathF.Sin(angle));
+            
+            this.DrawLine(lastPoint, currentPoint, thickness, layerDepth, finalColor);
+            lastPoint = currentPoint;
+        }
+        
+        // Bottom-right corner.
+        startAngle = float.DegreesToRadians(0.0F);
+        endAngle = float.DegreesToRadians(90.0F);
+        angleIncrement = (endAngle - startAngle) / finalSegments;
+        center = new Vector2(right - finalRadius, bottom - finalRadius);
+        lastPoint = new Vector2(center.X + finalRadius * MathF.Cos(startAngle), center.Y + finalRadius * MathF.Sin(startAngle));
+        
+        for (int i = 1; i <= finalSegments; i++) {
+            float angle = startAngle + angleIncrement * i;
+            Vector2 currentPoint = new Vector2(center.X + finalRadius * MathF.Cos(angle), center.Y + finalRadius * MathF.Sin(angle));
+            
+            this.DrawLine(lastPoint, currentPoint, thickness, layerDepth, finalColor);
+            lastPoint = currentPoint;
+        }
+        
+        // Bottom-left corner.
+        startAngle = float.DegreesToRadians(90.0F);
+        endAngle = float.DegreesToRadians(180.0F);
+        angleIncrement = (endAngle - startAngle) / finalSegments;
+        center = new Vector2(left + finalRadius, bottom - finalRadius);
+        lastPoint = new Vector2(center.X + finalRadius * MathF.Cos(startAngle), center.Y + finalRadius * MathF.Sin(startAngle));
+        
+        for (int i = 1; i <= finalSegments; i++) {
+            float angle = startAngle + angleIncrement * i;
+            Vector2 currentPoint = new Vector2(center.X + finalRadius * MathF.Cos(angle), center.Y + finalRadius * MathF.Sin(angle));
+            
+            this.DrawLine(lastPoint, currentPoint, thickness, layerDepth, finalColor);
+            lastPoint = currentPoint;
+        }
+    }
+    
+    /// <summary>
+    /// Draws a filled rounded rectangle with the specified radius.
+    /// </summary>
+    /// <param name="rectangle">The rectangle defining the bounds.</param>
+    /// <param name="radius">The corner radius.</param>
+    /// <param name="segments">The number of segments used for each rounded corner.</param>
+    /// <param name="layerDepth">The depth layer for rendering. Defaults to 0.5.</param>
+    /// <param name="color">The fill color. Defaults to white if not specified.</param>
+    public void DrawFilledRoundedRectangle(RectangleF rectangle, float radius, int segments, float layerDepth = 0.5F, Color? color = null) {
+        float finalRadius = Math.Clamp(radius, 0.0F, MathF.Min(rectangle.Width, rectangle.Height) / 2.0F);
+        int finalSegments = Math.Max(1, segments);
+        Color finalColor = color ?? Color.White;
+        
+        if (finalRadius <= 0.0F) {
+            this.DrawFilledRectangle(rectangle, Vector2.Zero, 0.0F, layerDepth, finalColor);
+            return;
+        }
+        
+        // Center area.
+        this.DrawFilledRectangle(new RectangleF(rectangle.X + finalRadius, rectangle.Y + finalRadius, rectangle.Width - finalRadius * 2.0F, rectangle.Height - finalRadius * 2.0F), Vector2.Zero, 0.0F, layerDepth, finalColor);
+        
+        // Top strip.
+        this.DrawFilledRectangle(new RectangleF(rectangle.X + finalRadius, rectangle.Y, rectangle.Width - finalRadius * 2.0F, finalRadius), Vector2.Zero, 0.0F, layerDepth, finalColor);
+        
+        // Bottom strip.
+        this.DrawFilledRectangle(new RectangleF(rectangle.X + finalRadius, rectangle.Y + rectangle.Height - finalRadius, rectangle.Width - finalRadius * 2.0F, finalRadius), Vector2.Zero, 0.0F, layerDepth, finalColor);
+        
+        // Left strip.
+        this.DrawFilledRectangle(new RectangleF(rectangle.X, rectangle.Y + finalRadius, finalRadius, rectangle.Height - finalRadius * 2.0F), Vector2.Zero, 0.0F, layerDepth, finalColor);
+        
+        // Right strip.
+        this.DrawFilledRectangle(new RectangleF(rectangle.X + rectangle.Width - finalRadius, rectangle.Y + finalRadius, finalRadius, rectangle.Height - finalRadius * 2.0F), Vector2.Zero, 0.0F, layerDepth, finalColor);
+        
+        // Corners.
+        this.DrawFilledCircleSector(new Vector2(rectangle.X + finalRadius, rectangle.Y + finalRadius), finalRadius, 180.0F, 270.0F, finalSegments * 4, layerDepth, finalColor);
+        this.DrawFilledCircleSector(new Vector2(rectangle.X + rectangle.Width - finalRadius, rectangle.Y + finalRadius), finalRadius, 270.0F, 360.0F, finalSegments * 4, layerDepth, finalColor);
+        this.DrawFilledCircleSector(new Vector2(rectangle.X + rectangle.Width - finalRadius, rectangle.Y + rectangle.Height - finalRadius), finalRadius, 0.0F, 90.0F, finalSegments * 4, layerDepth, finalColor);
+        this.DrawFilledCircleSector(new Vector2(rectangle.X + finalRadius, rectangle.Y + rectangle.Height - finalRadius), finalRadius, 90.0F, 180.0F, finalSegments * 4, layerDepth, finalColor);
+    }
+    
+    /// <summary>
     /// Draws an empty circle sector using the specified parameters.
     /// </summary>
     /// <param name="position">The position of the center of the circle.</param>
@@ -1159,7 +1301,7 @@ public class PrimitiveBatch : Disposable {
         vertices.CopyTo(new Span<PrimitiveVertex2D>(this._vertices, baseVertex, vertices.Length));
         this._vertexCount += vertices.Length;
     }
-
+    
     /// <summary>
     /// Prepares the batch for an incoming write of <paramref name="vertexCount"/> vertices by
     /// synchronising pipeline state and flushing the current batch if a state change is detected
@@ -1178,8 +1320,11 @@ public class PrimitiveBatch : Disposable {
             throw new InvalidOperationException($"The number of provided vertices exceeds the capacity! [{vertexCount} > {this.Capacity}]");
         }
         
+        ulong requestedEffectVersion = this._requestedEffect.StateVersion;
+        
         bool stateChanged = !this._currentOutput.Equals(this._requestedOutput) ||
                             this._currentEffect != this._requestedEffect ||
+                            this._currentEffectVersion != requestedEffectVersion ||
                             !this._currentBlendState.Equals(this._requestedBlendState) ||
                             !this._currentDepthStencilState.Equals(this._requestedDepthStencilState) ||
                             !this._currentRasterizerState.Equals(this._requestedRasterizerState) ||
@@ -1193,6 +1338,7 @@ public class PrimitiveBatch : Disposable {
         
         this._currentOutput = this._requestedOutput;
         this._currentEffect = this._requestedEffect;
+        this._currentEffectVersion = requestedEffectVersion;
         this._currentBlendState = this._requestedBlendState;
         this._currentDepthStencilState = this._requestedDepthStencilState;
         this._currentRasterizerState = this._requestedRasterizerState;

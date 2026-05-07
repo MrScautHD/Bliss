@@ -495,6 +495,8 @@ public class Game : Disposable {
         
         this._primitiveBatch.DrawFilledRectangle(new RectangleF(200, 200, 100, 100), origin: new Vector2(0, 0), rotation: _frameCount, color: Color.Green);
         this._primitiveBatch.DrawEmptyRectangle(new RectangleF(200, 200, 100, 100), 4, origin: new Vector2(0, 0), rotation: _frameCount, color: Color.Red);
+        this._primitiveBatch.DrawFilledRoundedRectangle(new RectangleF(400, 200, 200, 200), 30, 10, color: new Color(128, 128, 128, 128));
+        this._primitiveBatch.DrawEmptyRoundedRectangle(new RectangleF(400, 200, 200, 200), 30, 4, 10);
         
         this._primitiveBatch.End();
         

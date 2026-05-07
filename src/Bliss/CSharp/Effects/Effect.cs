@@ -31,6 +31,11 @@ public class Effect : Disposable {
     public readonly (Shader VertShader, Shader FragShader) Shader;
     
     /// <summary>
+    /// Tracks the version of the internal state of the effect, incrementing each time the state is modified (Useful if something has to update in <see cref="Apply"/>).
+    /// </summary>
+    public ulong StateVersion { get; private set; }
+    
+    /// <summary>
     /// An array of shader objects used within an effect for rendering operations.
     /// </summary>
     public readonly Shader[] Shaders;
@@ -352,6 +357,14 @@ public class Effect : Disposable {
         }
         
         return pipeline;
+    }
+    
+    /// <summary>
+    /// Marks the effect's state as dirty by incrementing the internal state version.
+    /// This signals that the effect's state has changed and may require re-validation or update.
+    /// </summary>
+    protected void MarkStateDirty() {
+        this.StateVersion++;
     }
     
     /// <summary>
