@@ -5,9 +5,33 @@ namespace Bliss.CSharp.Mathematics;
 public static class BlissMathExtensions {
     
     /// <summary>
+    /// Provides extension methods for working with <see cref="Vector2"/>.
+    /// </summary>
+    extension(Vector2) {
+        
+        /// <summary>
+        /// Returns a new <see cref="Vector2"/> with each component floored to the largest integer less than or equal to that component.
+        /// </summary>
+        /// <param name="vector">The vector to floor.</param>
+        /// <returns>A <see cref="Vector2"/> with floored components.</returns>
+        public static Vector2 Floor(Vector2 vector) {
+            return new Vector2(MathF.Floor(vector.X), MathF.Floor(vector.Y));
+        }
+    }
+    
+    /// <summary>
     /// Provides extension methods for working with <see cref="Vector3"/>.
     /// </summary>
     extension(Vector3) {
+        
+        /// <summary>
+        /// Returns a new <see cref="Vector3"/> with each component floored to the largest integer less than or equal to that component.
+        /// </summary>
+        /// <param name="vector">The vector to floor.</param>
+        /// <returns>A <see cref="Vector3"/> with floored components.</returns>
+        public static Vector3 Floor(Vector3 vector) {
+            return new Vector3(MathF.Floor(vector.X), MathF.Floor(vector.Y), MathF.Floor(vector.Z));
+        }
         
         /// <summary>
         /// Calculates the angle in radians between two vectors.

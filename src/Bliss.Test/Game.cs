@@ -457,7 +457,7 @@ public class Game : Disposable {
             }
         }
         
-        this._spriteBatch.DrawText(this._font, $"Text Input: {this._textInput}", new Vector2(80, 80), 18);
+        this._spriteBatch.DrawText(this._font, $"Text Input: {this._textInput}", new Vector2(80F, 80F), 18, scale: new Vector2(2, 2));
         
         this._spriteBatch.DrawText(this._font, $"FPS: {this.GetFps()}", new Vector2(5, 5), 18);
         
