@@ -6,6 +6,7 @@ using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.VertexTypes;
+using Bliss.CSharp.Mathematics;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
@@ -677,7 +678,7 @@ public class SpriteBatch : Disposable {
 
         this._requestedScissorRect = rectangle;
     }
-
+    
     /// <summary>
     /// Pop the current <see cref="Rectangle"/> scissor to the main scissor used by the <see cref="SpriteBatch"/>.
     /// </summary>
@@ -689,7 +690,7 @@ public class SpriteBatch : Disposable {
 
         this._requestedScissorRect = this._mainScissorRect;
     }
-
+    
     /// <summary>
     /// Draws the specified text at the given position with the provided font and styling options.
     /// </summary>
@@ -702,15 +703,21 @@ public class SpriteBatch : Disposable {
     /// <param name="scale">Optional scale applied to the text. Default is null.</param>
     /// <param name="layerDepth">Optional depth value for sorting layers. Default is 0.5F.</param>
     /// <param name="origin">Optional origin point for rotation and scaling. Default is null.</param>
-    /// <param name="rotation">Optional rotation angle in radians. Default is 0.0F.</param>
+    /// <param name="pixelSnap">When <c>true</c>, snaps <paramref name="position"/> and <paramref name="origin"/> to whole pixels using floor, preventing sub-pixel blurriness. Default is false.</param>
+    /// <param name="rotation">Optional rotation angle in degrees. Default is 0.0F.</param>
     /// <param name="color">Optional color of the text. Default is null.</param>
     /// <param name="style">Optional text style. Default is TextStyle.None.</param>
     /// <param name="effect">Optional effect applied to the text. Default is FontSystemEffect.None.</param>
     /// <param name="effectAmount">Optional amount for the effect applied. Default is 0.</param>
-    public void DrawText(Font font, string text, Vector2 position, float size, float characterSpacing = 0.0F, float lineSpacing = 0.0F, Vector2? scale = null, float layerDepth = 0.5F, Vector2? origin = null, float rotation = 0.0F, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0) {
+    public void DrawText(Font font, string text, Vector2 position, float size, float characterSpacing = 0.0F, float lineSpacing = 0.0F, Vector2? scale = null, float layerDepth = 0.5F, Vector2? origin = null, bool pixelSnap = false, float rotation = 0.0F, Color? color = null, TextStyle style = TextStyle.None, FontSystemEffect effect = FontSystemEffect.None, int effectAmount = 0) {
+        if (pixelSnap) {
+            position = Vector2.Floor(position);
+            origin = Vector2.Floor(origin ?? Vector2.Zero);
+        }
+        
         font.Draw(this, text, position, size, characterSpacing, lineSpacing, scale, layerDepth, origin, rotation, color, style, effect, effectAmount);
     }
-
+    
     /// <summary>
     /// Draws a texture onto the screen with configurable position, scaling, rotation, depth, and color.
     /// </summary>
@@ -720,10 +727,16 @@ public class SpriteBatch : Disposable {
     /// <param name="sourceRect">An optional <see cref="Rectangle"/> specifying the region of the texture to be used. If null, the entire texture is used.</param>
     /// <param name="scale">The scaling factor applied to the texture. Defaults to no scaling (1.0F, 1.0F).</param>
     /// <param name="origin">The origin point for rotation and scaling, relative to the source rectangle. Defaults to the top-left corner.</param>
+    /// <param name="pixelSnap">When <c>true</c>, snaps <paramref name="position"/> and <paramref name="origin"/> to whole pixels using floor, preventing sub-pixel blurriness. Default is false.</param>
     /// <param name="rotation">The angle, in degrees, to rotate the texture about the origin point. Defaults to 0.0F.</param>
     /// <param name="color">The <see cref="Color"/> to apply to the texture for tinting. Defaults to White (no tint).</param>
     /// <param name="flip">The flip mode to apply to the texture, such as horizontal or vertical flipping. Defaults to <see cref="SpriteFlip.None"/>.</param>
-    public void DrawTexture(Texture2D texture, Vector2 position, float layerDepth = 0.5F, Rectangle? sourceRect = null, Vector2? scale = null, Vector2? origin = null, float rotation = 0.0F, Color? color = null, SpriteFlip flip = SpriteFlip.None) {
+    public void DrawTexture(Texture2D texture, Vector2 position, float layerDepth = 0.5F, Rectangle? sourceRect = null, Vector2? scale = null, Vector2? origin = null, bool pixelSnap = false, float rotation = 0.0F, Color? color = null, SpriteFlip flip = SpriteFlip.None) {
+        if (pixelSnap) {
+            position = Vector2.Floor(position);
+            origin = Vector2.Floor(origin ?? Vector2.Zero);
+        }
+        
         Rectangle finalSource = sourceRect ?? new Rectangle(0, 0, (int) texture.Width, (int) texture.Height);
         Vector2 finalScale = scale ?? new Vector2(1.0F, 1.0F);
         Vector2 finalOrigin = origin ?? new Vector2(0.0F, 0.0F);

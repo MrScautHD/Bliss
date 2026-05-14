@@ -53,6 +53,6 @@ public class FontStashRenderer2D : IFontStashRenderer {
         Rectangle? source = src != null ? new Rectangle(src.Value.X, src.Value.Y, src.Value.Width, src.Value.Height) : null;
         Color color = new Color(fsColor.R, fsColor.G, fsColor.B, fsColor.A);
         
-        this.SpriteBatch.DrawTexture(texture2D, position, depth, source, scale, Vector2.Zero, float.RadiansToDegrees(rotation), color);
+        this.SpriteBatch.DrawTexture(texture2D, position, depth, source, scale, Vector2.Zero, false, float.RadiansToDegrees(rotation), color);
     }
 }
