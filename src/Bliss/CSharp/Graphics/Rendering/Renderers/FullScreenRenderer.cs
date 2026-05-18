@@ -34,10 +34,25 @@ public class FullScreenRenderer : Disposable {
         this.GraphicsDevice = graphicsDevice;
         
         // Create vertex buffer.
-        uint vertexBufferSize = (uint) (6 * Marshal.SizeOf<SpriteVertex2D>());
+        SpriteVertex2D[] vertices = this.GetVertices(graphicsDevice.IsUvOriginTopLeft);
+        uint vertexBufferSize = (uint) (vertices.Length * Marshal.SizeOf<SpriteVertex2D>());
+    
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer));
-        this._vertexBuffer.Name = "VertexBuffer";
-        graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this.GetVertices(graphicsDevice.IsUvOriginTopLeft));
+        this._vertexBuffer.Name = "FullScreenVertexBuffer";
+        
+        DeviceBuffer stagingBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.Staging));
+        graphicsDevice.UpdateBuffer(stagingBuffer, 0, vertices);
+    
+        CommandList commandList = graphicsDevice.ResourceFactory.CreateCommandList();
+        commandList.Begin();
+        commandList.CopyBuffer(stagingBuffer, 0, this._vertexBuffer, 0, vertexBufferSize);
+        commandList.End();
+    
+        graphicsDevice.SubmitCommands(commandList);
+        graphicsDevice.WaitForIdle();
+    
+        commandList.Dispose();
+        stagingBuffer.Dispose();
         
         // Create pipeline.
         this._pipelineDescription = new SimplePipelineDescription() {
