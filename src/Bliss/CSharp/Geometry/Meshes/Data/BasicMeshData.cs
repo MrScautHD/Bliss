@@ -57,23 +57,9 @@ public class BasicMeshData : IMeshData<Vertex3D> {
     /// <returns>A GPU buffer containing the mesh vertices.</returns>
     public DeviceBuffer CreateVertexBuffer(GraphicsDevice graphicsDevice) {
         uint bufferSize = this.VertexCount * (uint) Marshal.SizeOf<Vertex3D>();
-    
-        DeviceBuffer buffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(bufferSize, BufferUsage.VertexBuffer));
-        DeviceBuffer stagingBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(bufferSize, BufferUsage.Staging));
-    
-        graphicsDevice.UpdateBuffer(stagingBuffer, 0, this.Vertices);
-    
-        CommandList commandList = graphicsDevice.ResourceFactory.CreateCommandList();
-        commandList.Begin();
-        commandList.CopyBuffer(stagingBuffer, 0, buffer, 0, bufferSize);
-        commandList.End();
-    
-        graphicsDevice.SubmitCommands(commandList);
-        graphicsDevice.WaitForIdle();
-    
-        commandList.Dispose();
-        stagingBuffer.Dispose();
-    
+        DeviceBuffer buffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(bufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
+        graphicsDevice.UpdateBuffer(buffer, 0, this.Vertices);
+        
         return buffer;
     }
     
@@ -84,23 +70,9 @@ public class BasicMeshData : IMeshData<Vertex3D> {
     /// <returns>A GPU buffer containing the mesh indices.</returns>
     public DeviceBuffer CreateIndexBuffer(GraphicsDevice graphicsDevice) {
         uint bufferSize = this.IndexCount * sizeof(uint);
-    
-        DeviceBuffer buffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(bufferSize, BufferUsage.IndexBuffer));
-        DeviceBuffer stagingBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(bufferSize, BufferUsage.Staging));
-    
-        graphicsDevice.UpdateBuffer(stagingBuffer, 0, this.Indices);
-    
-        CommandList commandList = graphicsDevice.ResourceFactory.CreateCommandList();
-        commandList.Begin();
-        commandList.CopyBuffer(stagingBuffer, 0, buffer, 0, bufferSize);
-        commandList.End();
-    
-        graphicsDevice.SubmitCommands(commandList);
-        graphicsDevice.WaitForIdle();
-    
-        commandList.Dispose();
-        stagingBuffer.Dispose();
-    
+        DeviceBuffer buffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(bufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
+        graphicsDevice.UpdateBuffer(buffer, 0, this.Indices);
+        
         return buffer;
     }
     
