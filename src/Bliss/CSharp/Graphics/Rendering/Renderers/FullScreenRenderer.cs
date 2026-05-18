@@ -35,7 +35,7 @@ public class FullScreenRenderer : Disposable {
         
         // Create vertex buffer.
         uint vertexBufferSize = (uint) (6 * Marshal.SizeOf<SpriteVertex2D>());
-        this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
+        this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer));
         this._vertexBuffer.Name = "VertexBuffer";
         graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this.GetVertices(graphicsDevice.IsUvOriginTopLeft));
         

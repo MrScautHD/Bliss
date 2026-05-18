@@ -59,7 +59,7 @@ public class SkinnedMeshData : IMeshData<SkinnedVertex3D> {
     /// <returns>A GPU buffer containing the mesh vertices.</returns>
     public DeviceBuffer CreateVertexBuffer(GraphicsDevice graphicsDevice) {
         uint bufferSize = this.VertexCount * (uint) Marshal.SizeOf<SkinnedVertex3D>();
-        DeviceBuffer buffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(bufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
+        DeviceBuffer buffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(bufferSize, BufferUsage.VertexBuffer));
         graphicsDevice.UpdateBuffer(buffer, 0, this.Vertices);
         
         return buffer;
@@ -72,7 +72,7 @@ public class SkinnedMeshData : IMeshData<SkinnedVertex3D> {
     /// <returns>A GPU buffer containing the mesh indices.</returns>
     public DeviceBuffer CreateIndexBuffer(GraphicsDevice graphicsDevice) {
         uint bufferSize = this.IndexCount * sizeof(uint);
-        DeviceBuffer buffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(bufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
+        DeviceBuffer buffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(bufferSize, BufferUsage.IndexBuffer));
         graphicsDevice.UpdateBuffer(buffer, 0, this.Indices);
         
         return buffer;
