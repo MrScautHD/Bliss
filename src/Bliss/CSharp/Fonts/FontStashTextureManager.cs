@@ -30,7 +30,7 @@ public class FontStashTextureManager : ITexture2DManager {
     /// <param name="height">The height of the texture.</param>
     /// <returns>A new texture object.</returns>
     public object CreateTexture(int width, int height) {
-        return new Texture2D(this.GraphicsDevice, new Image(width, height));
+        return new Texture2D(this.GraphicsDevice, new Image(width, height), false);
     }
     
     /// <summary>

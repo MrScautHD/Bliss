@@ -140,8 +140,13 @@ public class Texture2D : Disposable {
         for (int y = 0; y < rect.Height; y++) {
             int sourceOffset = y * rowLengthInBytes;
             int destinationOffset = ((rect.Y + y) * originalImage.Width + rect.X) * (int) this.PixelSizeInBytes;
-
+            
             Array.Copy(data, sourceOffset, originalImage.Data, destinationOffset, rowLengthInBytes);
+        }
+        
+        if (area != null && this.MipLevels == 1) {
+            this.GraphicsDevice.UpdateTexture(this.DeviceTexture, data, (uint) rect.X, (uint) rect.Y, 0, (uint) rect.Width, (uint) rect.Height, 1, 0, 0);
+            return;
         }
         
         this.SetData(originalImage);
