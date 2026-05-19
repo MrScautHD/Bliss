@@ -8,7 +8,7 @@
 [![Activity](https://img.shields.io/github/commit-activity/w/MrScautHD/Bliss?style=flat-square&logo=Github&label=Activity)](https://github.com/MrScautHD/Bliss/activity)
 [![Stars](https://img.shields.io/github/stars/MrScautHD/Bliss?style=flat-square&logo=Github&label=Stars)](https://github.com/MrScautHD/Bliss/stargazers)
 
-__Bliss__ is a modern `Direct3D11`, `Vulkan`, `OpenGL`, `Metal`, `OpenGL-ES` Render Framework.
+__Bliss__ is a modern `Direct3D12`, `Vulkan`, `Metal` Render Framework.
 
 # ✨ Features ✨
 - 🎨 Efficient rendering of textures, fonts, and shapes using SpriteBatch.
