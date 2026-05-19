@@ -1,6 +1,6 @@
 ﻿using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.VertexTypes;
-using Veldrid;
+using Veldrith;
 
 namespace Bliss.CSharp.Geometry.Meshes.Data;
 

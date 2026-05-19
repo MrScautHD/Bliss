@@ -1,7 +1,7 @@
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Textures;
-using Veldrid;
+using Veldrith;
 
 namespace Bliss.CSharp.Materials;
 

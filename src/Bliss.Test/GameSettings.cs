@@ -1,6 +1,6 @@
 using System.Reflection;
 using Bliss.CSharp.Windowing;
-using Veldrid;
+using Veldrith;
 
 namespace Bliss.Test;
 

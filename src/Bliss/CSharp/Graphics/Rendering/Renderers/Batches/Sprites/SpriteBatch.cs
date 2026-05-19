@@ -11,7 +11,7 @@ using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
 using FontStashSharp;
-using Veldrid;
+using Veldrith;
 
 namespace Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites;
 

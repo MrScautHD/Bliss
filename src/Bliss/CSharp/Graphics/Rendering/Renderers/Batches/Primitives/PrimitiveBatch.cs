@@ -6,7 +6,7 @@ using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
-using Veldrid;
+using Veldrith;
 using Color = Bliss.CSharp.Colors.Color;
 
 namespace Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives;

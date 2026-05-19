@@ -4,7 +4,7 @@ using Bliss.CSharp.Graphics.Rendering;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Forward.Materials.Data;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Textures;
-using Veldrid;
+using Veldrith;
 
 namespace Bliss.CSharp.Materials;
 

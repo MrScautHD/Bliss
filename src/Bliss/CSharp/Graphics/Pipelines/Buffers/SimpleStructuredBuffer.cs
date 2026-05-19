@@ -1,5 +1,5 @@
 using System.Runtime.InteropServices;
-using Veldrid;
+using Veldrith;
 
 namespace Bliss.CSharp.Graphics.Pipelines.Buffers;
 

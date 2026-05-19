@@ -3,7 +3,7 @@ using Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites;
 using Bliss.CSharp.Textures;
 using FontStashSharp;
 using FontStashSharp.Interfaces;
-using Veldrid;
+using Veldrith;
 using Rectangle = Bliss.CSharp.Transformations.Rectangle;
 using SRectangle = System.Drawing.Rectangle;
 using Color = Bliss.CSharp.Colors.Color;

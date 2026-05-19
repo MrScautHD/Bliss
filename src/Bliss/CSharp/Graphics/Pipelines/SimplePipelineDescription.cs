@@ -1,6 +1,6 @@
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
-using Veldrid;
+using Veldrith;
 
 namespace Bliss.CSharp.Graphics.Pipelines;
 

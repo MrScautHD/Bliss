@@ -8,7 +8,7 @@ using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Transformations;
-using Veldrid;
+using Veldrith;
 
 namespace Bliss.CSharp.Graphics.Rendering.Renderers;
 

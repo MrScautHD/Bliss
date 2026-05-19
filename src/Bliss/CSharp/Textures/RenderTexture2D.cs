@@ -1,7 +1,7 @@
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Transformations;
-using Veldrid;
+using Veldrith;
 
 namespace Bliss.CSharp.Textures;
 

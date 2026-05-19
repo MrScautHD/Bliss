@@ -1,7 +1,7 @@
 using System.Numerics;
 using System.Runtime.InteropServices;
 using Bliss.CSharp.Graphics.Pipelines;
-using Veldrid;
+using Veldrith;
 
 namespace Bliss.CSharp.Graphics.VertexTypes;
 

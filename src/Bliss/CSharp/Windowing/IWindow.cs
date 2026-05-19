@@ -2,8 +2,7 @@ using System.Numerics;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Interact.Gamepads;
 using Bliss.CSharp.Windowing.Events;
-using Veldrid;
-using Veldrid.OpenGL;
+using Veldrith;
 using Point = Bliss.CSharp.Transformations.Point;
 
 namespace Bliss.CSharp.Windowing;
@@ -372,12 +371,4 @@ public interface IWindow : IDisposable {
     /// <param name="point">The screen coordinates to convert.</param>
     /// <returns>The converted client-area coordinates as a Point.</returns>
     Point ScreenToClient(Point point);
-
-    /// <summary>
-    /// Retrieves or creates the OpenGL platform information required for the specified graphics device options and backend.
-    /// </summary>
-    /// <param name="options">The graphics device options to use.</param>
-    /// <param name="backend">The graphics backend to use.</param>
-    /// <returns>The OpenGL platform information.</returns>
-    OpenGLPlatformInfo GetOrCreateOpenGlPlatformInfo(GraphicsDeviceOptions options, GraphicsBackend backend);
 }

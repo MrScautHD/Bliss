@@ -1,7 +1,7 @@
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Textures;
 using FontStashSharp.Interfaces;
-using Veldrid;
+using Veldrith;
 using Point = System.Drawing.Point;
 using Rectangle = Bliss.CSharp.Transformations.Rectangle;
 using SRectangle = System.Drawing.Rectangle;

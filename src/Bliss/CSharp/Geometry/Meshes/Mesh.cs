@@ -6,7 +6,7 @@ using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Logging;
 using Bliss.CSharp.Materials;
-using Veldrid;
+using Veldrith;
 using Color = Bliss.CSharp.Colors.Color;
 using Material = Bliss.CSharp.Materials.Material;
 

@@ -1,4 +1,4 @@
-using Veldrid;
+using Veldrith;
 
 namespace Bliss.CSharp.Windowing;
 
@@ -37,16 +37,16 @@ public static class Window {
     /// <returns>The default <see cref="GraphicsBackend"/> for the current platform.</returns>
     public static GraphicsBackend GetPlatformDefaultBackend() {
         if (OperatingSystem.IsWindows()) {
-            return GraphicsBackend.Direct3D11;
+            return GraphicsDevice.IsBackendSupported(GraphicsBackend.Direct3D12) ? GraphicsBackend.Direct3D12 : GraphicsBackend.Vulkan;
         }
         else if (OperatingSystem.IsMacOS()) {
-            return GraphicsDevice.IsBackendSupported(GraphicsBackend.Metal) ? GraphicsBackend.Metal : GraphicsBackend.OpenGL;
+            return GraphicsDevice.IsBackendSupported(GraphicsBackend.Metal) ? GraphicsBackend.Metal : GraphicsBackend.Vulkan;
         }
         else {
-            return GraphicsDevice.IsBackendSupported(GraphicsBackend.Vulkan) ? GraphicsBackend.Vulkan : GraphicsBackend.OpenGL;
+            return GraphicsBackend.Vulkan;
         }
     }
-
+    
     /// <summary>
     /// Creates a graphics device for the specified window, based on the provided options and preferred backend.
     /// </summary>
@@ -56,11 +56,11 @@ public static class Window {
     /// <returns>A graphics device configured according to the specified options and preferred backend.</returns>
     public static GraphicsDevice CreateGraphicsDevice(IWindow window, GraphicsDeviceOptions options, GraphicsBackend preferredBackend) {
         switch (preferredBackend) {
-            case GraphicsBackend.Direct3D11:
+            case GraphicsBackend.Direct3D12:
 #if !EXCLUDE_D3D11_BACKEND
-                return CreateD3D11GraphicsDevice(window, options);
+                return CreateD3D12GraphicsDevice(window, options);
 #else
-                throw new VeldridException("Direct3D11 support has not been included in this configuration of Veldrid");
+                throw new VeldridException("Direct3D12 support has not been included in this configuration of Veldrid");
 #endif
             case GraphicsBackend.Vulkan:
 #if !EXCLUDE_VULKAN_BACKEND
@@ -74,30 +74,18 @@ public static class Window {
 #else
                 throw new VeldridException("Metal support has not been included in this configuration of Veldrid");
 #endif
-            case GraphicsBackend.OpenGL:
-#if !EXCLUDE_OPENGL_BACKEND
-                return CreateOpenGlGraphicsDevice(window, options, preferredBackend);
-#else
-                throw new VeldridException("OpenGL support has not been included in this configuration of Veldrid");
-#endif
-            case GraphicsBackend.OpenGLES:
-#if !EXCLUDE_OPENGL_BACKEND
-                return CreateOpenGlGraphicsDevice(window, options, preferredBackend);
-#else
-                throw new VeldridException("OpenGL ES support has not been included in this configuration of Veldrid");
-#endif
             default:
                 throw new VeldridException($"Invalid GraphicsBackend: [{preferredBackend}]");
         }
     }
 
     /// <summary>
-    /// Creates a Direct3D11 graphics device and swapchain for the specified window.
+    /// Creates a Direct3D12 graphics device and swapchain for the specified window.
     /// </summary>
     /// <param name="window">The window for which to create the graphics device.</param>
     /// <param name="options">Options for configuring the graphics device.</param>
-    /// <returns>A <see cref="GraphicsDevice"/> instance configured for Direct3D11.</returns>
-    private static GraphicsDevice CreateD3D11GraphicsDevice(IWindow window, GraphicsDeviceOptions options) {
+    /// <returns>A <see cref="GraphicsDevice"/> instance configured for Direct3D12.</returns>
+    private static GraphicsDevice CreateD3D12GraphicsDevice(IWindow window, GraphicsDeviceOptions options) {
         SwapchainDescription description = new SwapchainDescription() {
             Source = window.SwapchainSource,
             Width = (uint) window.GetWidth(),
@@ -107,7 +95,7 @@ public static class Window {
             ColorSrgb = options.SwapchainSrgbFormat
         };
         
-        return GraphicsDevice.CreateD3D11(options, description);
+        return GraphicsDevice.CreateD3D12(options, description);
     }
 
     /// <summary>
@@ -146,16 +134,5 @@ public static class Window {
         };
 
         return GraphicsDevice.CreateMetal(options, description);
-    }
-
-    /// <summary>
-    /// Creates an OpenGL graphics device based on the specified parameters.
-    /// </summary>
-    /// <param name="window">The window for which the graphics device is being created.</param>
-    /// <param name="options">Options for configuring the graphics device.</param>
-    /// <param name="backend">The graphics backend creating the device.</param>
-    /// <returns>The created OpenGL graphics device.</returns>
-    private static GraphicsDevice CreateOpenGlGraphicsDevice(IWindow window, GraphicsDeviceOptions options, GraphicsBackend backend) {
-        return GraphicsDevice.CreateOpenGL(options, window.GetOrCreateOpenGlPlatformInfo(options, backend), (uint) window.GetWidth(), (uint) window.GetHeight());
     }
 }

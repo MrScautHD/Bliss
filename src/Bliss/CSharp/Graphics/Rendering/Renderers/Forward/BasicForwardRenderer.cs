@@ -4,7 +4,7 @@ using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Materials;
-using Veldrid;
+using Veldrith;
 
 namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward;
 

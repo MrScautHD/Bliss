@@ -1,14 +1,12 @@
 using System.Numerics;
 using Bliss.CSharp;
 using Bliss.CSharp.Camera.Dim3;
-using Bliss.CSharp.Effects;
 using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Geometry;
 using Bliss.CSharp.Geometry.Animation;
 using Bliss.CSharp.Geometry.Meshes;
 using Bliss.CSharp.Geometry.Models;
 using Bliss.CSharp.Graphics.Pipelines;
-using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Rendering;
 using Bliss.CSharp.Graphics.Rendering.Renderers;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives;
@@ -27,7 +25,7 @@ using Bliss.CSharp.Textures.Cubemaps;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
 using MiniAudioEx.Core.StandardAPI;
-using Veldrid;
+using Veldrith;
 using Color = Bliss.CSharp.Colors.Color;
 using Rectangle = Bliss.CSharp.Transformations.Rectangle;
 

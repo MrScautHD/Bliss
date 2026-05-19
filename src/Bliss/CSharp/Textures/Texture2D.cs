@@ -1,7 +1,7 @@
 using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Logging;
-using Veldrid;
+using Veldrith;
 using Rectangle = Bliss.CSharp.Transformations.Rectangle;
 
 namespace Bliss.CSharp.Textures;

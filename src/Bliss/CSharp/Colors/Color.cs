@@ -1,5 +1,5 @@
 using System.Numerics;
-using Veldrid;
+using Veldrith;
 
 namespace Bliss.CSharp.Colors;
 

@@ -1,4 +1,4 @@
-﻿using Veldrid.SPIRV;
+﻿using Veldrith.SPIRV;
 
 namespace Bliss.CSharp.Effects;
 
