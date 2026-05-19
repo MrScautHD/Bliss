@@ -57,7 +57,7 @@ public static class Window {
     public static GraphicsDevice CreateGraphicsDevice(IWindow window, GraphicsDeviceOptions options, GraphicsBackend preferredBackend) {
         switch (preferredBackend) {
             case GraphicsBackend.Direct3D12:
-#if !EXCLUDE_D3D11_BACKEND
+#if !EXCLUDE_D3D12_BACKEND
                 return CreateD3D12GraphicsDevice(window, options);
 #else
                 throw new VeldridException("Direct3D12 support has not been included in this configuration of Veldrid");
