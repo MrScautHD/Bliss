@@ -28,16 +28,16 @@
     
     <!-- Backends -->
     <PropertyGroup>
-        <DefineConstants Condition="'$(ExcludeD3D11)' == 'true'">$(DefineConstants);EXCLUDE_D3D11_BACKEND</DefineConstants>
+        <DefineConstants Condition="'$(ExcludeD3D12)' == 'true'">$(DefineConstants);EXCLUDE_D3D12_BACKEND</DefineConstants>
         <DefineConstants Condition="'$(ExcludeVulkan)' == 'true'">$(DefineConstants);EXCLUDE_VULKAN_BACKEND</DefineConstants>
         <DefineConstants Condition="'$(ExcludeMetal)' == 'true'">$(DefineConstants);EXCLUDE_METAL_BACKEND</DefineConstants>
-        <DefineConstants Condition="'$(ExcludeOpenGL)' == 'true'">$(DefineConstants);EXCLUDE_OPENGL_BACKEND</DefineConstants>
     </PropertyGroup>
     
     <!-- Libraries -->
     <ItemGroup>
-        <PackageReference Include="Veldrith" Version="1.0.2" />
-        <PackageReference Include="Veldrith.SPIRV" Version="1.0.2" />
+        <PackageReference Include="Veldrith" Version="1.0.3" />
+        <PackageReference Include="Veldrith.MetalBindings" Version="1.0.3" />
+        <PackageReference Include="Veldrith.SPIRV" Version="1.0.3" />
         <PackageReference Include="AssimpNetter" Version="6.0.4" />
         <PackageReference Include="FontStashSharp.PlatformAgnostic" Version="1.5.5" />
         <PackageReference Include="JAJ.Packages.MiniAudioEx" Version="3.3.3" />
