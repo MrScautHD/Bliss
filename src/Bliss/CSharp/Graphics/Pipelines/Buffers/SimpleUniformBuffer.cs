@@ -47,7 +47,7 @@ public class SimpleUniformBuffer<T> : Disposable, ISimpleBuffer where T : unmana
         this.Data = new T[size];
         this.ShaderStages = stages;
         
-        uint alignment = graphicsDevice.UniformBufferMinOffsetAlignment;
+        uint alignment = Math.Max(16, graphicsDevice.UniformBufferMinOffsetAlignment);
         long dataSize = size * Marshal.SizeOf<T>();
         long bufferSize = (dataSize / alignment + (dataSize % alignment > 0 ? 1 : 0)) * alignment;
         

@@ -54,6 +54,11 @@ public class SimpleStructuredBuffer<THeader, TElement> : Disposable, ISimpleBuff
     /// Caches resource sets keyed by their corresponding buffer layouts.
     /// </summary>
     private Dictionary<SimpleBufferLayout, ResourceSet> _cachedResourceSets;
+    
+    /// <summary>
+    /// The byte offset where element data begins in the GPU buffer.
+    /// </summary>
+    private uint _elementDataOffsetInBytes;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SimpleStructuredBuffer{THeader, TElement}"/> class
@@ -75,7 +80,7 @@ public class SimpleStructuredBuffer<THeader, TElement> : Disposable, ISimpleBuff
         this.ReadOnly = readOnly;
         this.RawBuffer = rawBuffer;
         
-        uint alignment = graphicsDevice.StructuredBufferMinOffsetAlignment;
+        uint alignment = Math.Max(1, graphicsDevice.StructuredBufferMinOffsetAlignment);
         
         long headerSize = headerDataSize * Marshal.SizeOf<THeader>();
         long elementSize = elementDataSize * Marshal.SizeOf<TElement>();
@@ -84,6 +89,7 @@ public class SimpleStructuredBuffer<THeader, TElement> : Disposable, ISimpleBuff
         long finalElementDataSize = (elementSize / alignment + (elementSize % alignment > 0 ? 1 : 0)) * alignment;
         
         long bufferSize = finalHeaderDataSize + finalElementDataSize;
+        this._elementDataOffsetInBytes = (uint) finalHeaderDataSize;
         
         BufferUsage bufferUsage = readOnly ? BufferUsage.StructuredBufferReadOnly | BufferUsage.Dynamic : BufferUsage.StructuredBufferReadWrite;
         
@@ -210,9 +216,8 @@ public class SimpleStructuredBuffer<THeader, TElement> : Disposable, ISimpleBuff
         
         this.ElementData[index] = value;
         
-        uint headerSizeInBytes = (uint) (this.ElementDataSize * Marshal.SizeOf<THeader>());
         uint elementOffsetInBytes = (uint) (index * Marshal.SizeOf<TElement>());
-        uint totalBufferOffsetInBytes = headerSizeInBytes + elementOffsetInBytes;
+        uint totalBufferOffsetInBytes = this._elementDataOffsetInBytes + elementOffsetInBytes;
         this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, totalBufferOffsetInBytes, ref this.ElementData[index]);
     }
     
@@ -239,9 +244,8 @@ public class SimpleStructuredBuffer<THeader, TElement> : Disposable, ISimpleBuff
         
         this.ElementData[index] = value;
         
-        uint headerSizeInBytes = (uint) (this.ElementDataSize * Marshal.SizeOf<THeader>());
         uint elementOffsetInBytes = (uint) (index * Marshal.SizeOf<TElement>());
-        uint totalBufferOffsetInBytes = headerSizeInBytes + elementOffsetInBytes;
+        uint totalBufferOffsetInBytes = this._elementDataOffsetInBytes + elementOffsetInBytes;
         commandList.UpdateBuffer(this.DeviceBuffer, totalBufferOffsetInBytes, ref this.ElementData[index]);
     }
     
@@ -254,8 +258,7 @@ public class SimpleStructuredBuffer<THeader, TElement> : Disposable, ISimpleBuff
         this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, 0, this.HeaderData);
         
         // Update element data.
-        uint headerSizeInBytes = (uint) (this.HeaderDataSize * Marshal.SizeOf<THeader>());
-        this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, headerSizeInBytes, this.ElementData);
+        this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, this._elementDataOffsetInBytes, this.ElementData);
     }
     
     /// <summary>
@@ -268,8 +271,7 @@ public class SimpleStructuredBuffer<THeader, TElement> : Disposable, ISimpleBuff
         commandList.UpdateBuffer(this.DeviceBuffer, 0, this.HeaderData);
         
         // Update element data.
-        uint headerSizeInBytes = (uint) (this.HeaderDataSize * Marshal.SizeOf<THeader>());
-        commandList.UpdateBuffer(this.DeviceBuffer, headerSizeInBytes, this.ElementData);
+        commandList.UpdateBuffer(this.DeviceBuffer, this._elementDataOffsetInBytes, this.ElementData);
     }
     
     protected override void Dispose(bool disposing) {

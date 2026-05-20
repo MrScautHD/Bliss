@@ -6,7 +6,7 @@ using Veldrith;
 //try {
     GameSettings settings = new GameSettings() {
         Title = "Bliss - [Test]",
-        Backend = Window.GetPlatformDefaultBackend(),
+        Backend = GraphicsBackend.Direct3D12,
         VSync = false
     };
 
