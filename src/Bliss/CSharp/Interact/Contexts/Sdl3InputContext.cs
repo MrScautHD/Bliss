@@ -5,7 +5,7 @@ using Bliss.CSharp.Interact.Mice;
 using Bliss.CSharp.Interact.Mice.Cursors;
 using Bliss.CSharp.Windowing;
 using Bliss.CSharp.Windowing.Events;
-using SDL;
+using SDL3;
 
 namespace Bliss.CSharp.Interact.Contexts;
 
@@ -125,11 +125,8 @@ public class Sdl3InputContext : Disposable, IInputContext {
 
     public void Begin() { }
     
-    public unsafe void End() {
-        float mouseDeltaX;
-        float mouseDeltaY;
-        
-        SDL3.SDL_GetRelativeMouseState(&mouseDeltaX, &mouseDeltaY);
+    public void End() {
+        SDL.GetRelativeMouseState(out float mouseDeltaX, out float mouseDeltaY);
         this._mouseDelta = new Vector2(mouseDeltaX, mouseDeltaY);
         
         this._mouseMoving = Vector2.Zero;
@@ -152,42 +149,39 @@ public class Sdl3InputContext : Disposable, IInputContext {
     /* ------------------------------------ Mouse ------------------------------------ */
 
     public bool IsCursorShown() {
-        return SDL3.SDL_CursorVisible();
+        return SDL.CursorVisible();
     }
 
     public void ShowCursor() {
-        SDL3.SDL_ShowCursor();
+        SDL.ShowCursor();
     }
 
     public void HideCursor() {
-        SDL3.SDL_HideCursor();
+        SDL.HideCursor();
     }
 
-    public unsafe ICursor GetMouseCursor() {
-        return new Sdl3Cursor(SDL3.SDL_GetCursor());
+    public ICursor GetMouseCursor() {
+        return new Sdl3Cursor(SDL.GetCursor());
     }
 
-    public unsafe void SetMouseCursor(ICursor cursor) {
-        SDL3.SDL_SetCursor((SDL_Cursor*) cursor.GetHandle());
+    public void SetMouseCursor(ICursor cursor) {
+        SDL.SetCursor(cursor.GetHandle());
     }
 
-    public unsafe bool IsRelativeMouseModeEnabled() {
-        return SDL3.SDL_GetWindowRelativeMouseMode((SDL_Window*) this._window.Handle);
+    public bool IsRelativeMouseModeEnabled() {
+        return SDL.GetWindowRelativeMouseMode(this._window.Handle);
     }
 
-    public unsafe void EnableRelativeMouseMode() {
-        SDL3.SDL_SetWindowRelativeMouseMode((SDL_Window*) this._window.Handle, true);
+    public void EnableRelativeMouseMode() {
+        SDL.SetWindowRelativeMouseMode(this._window.Handle, true);
     }
 
-    public unsafe void DisableRelativeMouseMode() {
-        SDL3.SDL_SetWindowRelativeMouseMode((SDL_Window*) this._window.Handle, false);
+    public void DisableRelativeMouseMode() {
+        SDL.SetWindowRelativeMouseMode(this._window.Handle, false);
     }
 
-    public unsafe Vector2 GetMousePosition() {
-        float x;
-        float y;
-
-        SDL3.SDL_GetMouseState(&x, &y);
+    public Vector2 GetMousePosition() {
+        SDL.GetMouseState(out float x, out float y);
         return new Vector2(x, y);
     }
 
@@ -195,8 +189,8 @@ public class Sdl3InputContext : Disposable, IInputContext {
         return this._mouseDelta;
     }
 
-    public unsafe void SetMousePosition(Vector2 position) {
-        SDL3.SDL_WarpMouseInWindow((SDL_Window*) this._window.Handle, position.X, position.Y);
+    public void SetMousePosition(Vector2 position) {
+        SDL.WarpMouseInWindow(this._window.Handle, position.X, position.Y);
     }
 
     public bool IsMouseButtonPressed(MouseButton button) {
@@ -253,24 +247,24 @@ public class Sdl3InputContext : Disposable, IInputContext {
         return text != string.Empty;
     }
 
-    public unsafe bool IsTextInputActive() {
-        return SDL3.SDL_TextInputActive((SDL_Window*) this._window.Handle);
+    public bool IsTextInputActive() {
+        return SDL.TextInputActive(this._window.Handle);
     }
     
-    public unsafe void EnableTextInput() {
-        SDL3.SDL_StartTextInput((SDL_Window*) this._window.Handle);
+    public void EnableTextInput() {
+        SDL.StartTextInput(this._window.Handle);
     }
     
-    public unsafe void DisableTextInput() {
-        SDL3.SDL_StopTextInput((SDL_Window*) this._window.Handle);
+    public void DisableTextInput() {
+        SDL.StopTextInput(this._window.Handle);
     }
     
     public string GetClipboardText() {
-        return SDL3.SDL_GetClipboardText() ?? string.Empty;
+        return SDL.GetClipboardText();
     }
     
     public void SetClipboardText(string text) {
-        SDL3.SDL_SetClipboardText(text);
+        SDL.SetClipboardText(text);
     }
 
     /* ------------------------------------ Gamepad ------------------------------------ */
@@ -288,7 +282,7 @@ public class Sdl3InputContext : Disposable, IInputContext {
     }
 
     public unsafe void RumbleGamepad(uint gamepad, ushort lowFrequencyRumble, ushort highFrequencyRumble, uint durationMs) {
-        SDL3.SDL_RumbleGamepad((SDL_Gamepad*) this._gamepads[gamepad].GetHandle(), lowFrequencyRumble, highFrequencyRumble, durationMs);
+        SDL.RumbleGamepad(this._gamepads[gamepad].GetHandle(), lowFrequencyRumble, highFrequencyRumble, durationMs);
     }
 
     public float GetGamepadAxisMovement(uint gamepad, GamepadAxis axis) {
