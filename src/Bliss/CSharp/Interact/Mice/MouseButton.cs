@@ -3,6 +3,11 @@ namespace Bliss.CSharp.Interact.Mice;
 public enum MouseButton {
     
     /// <summary>
+    /// Represents an invalid button.
+    /// </summary>
+    Invalid = -1,
+    
+    /// <summary>
     /// The left mouse button.
     /// </summary>
     Left = 1,

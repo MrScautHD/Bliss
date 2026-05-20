@@ -654,7 +654,7 @@ public class Sdl3Window : Disposable, IWindow {
     private void HandleEvent(SDL.Event sdlEvent) {
         this.SdlEvent?.Invoke(sdlEvent);
         
-        switch ((SDL.EventType)sdlEvent.Type) {
+        switch ((SDL.EventType) sdlEvent.Type) {
             case SDL.EventType.Quit:
             case SDL.EventType.Terminating:
                 this.Exists = false;
@@ -921,7 +921,7 @@ public class Sdl3Window : Disposable, IWindow {
             SDL.MouseButtonFlags.Right => MouseButton.Right,
             SDL.MouseButtonFlags.X1 => MouseButton.X1,
             SDL.MouseButtonFlags.X2 => MouseButton.X2,
-            _ => throw new Exception("This type of mouse button is not supported!")
+            _ => MouseButton.Invalid
         };
     }
 
