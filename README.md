@@ -36,7 +36,8 @@ dotnet add package Bliss --version [VERSION]
 ======================================================
 - [`Veldrith`](https://www.nuget.org/packages/Veldrith)
 - [`Veldrith.SPIRV`](https://www.nuget.org/packages/Veldrith.SPIRV)
-- [`ppy.SDL3-CS`](https://www.nuget.org/packages/ppy.SDL3-CS)
+- [`Veldrith.MetalBindings`](https://www.nuget.org/packages/Veldrith.SPIRV)
+- [`SDL3-CS`](https://www.nuget.org/packages/SDL3-CS)
 - [`StbImageSharp`](https://www.nuget.org/packages/StbImageSharp/)
 - [`StbImageWriteSharp`](https://www.nuget.org/packages/StbImageWriteSharp/)
 - [`AssimpNetter`](https://www.nuget.org/packages/AssimpNetter)
