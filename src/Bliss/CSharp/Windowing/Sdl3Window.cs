@@ -712,11 +712,11 @@ public class Sdl3Window : Disposable, IWindow {
                 break;
 
             case SDL.EventType.MouseButtonDown:
-                this.MouseButtonDown?.Invoke(new MouseEvent(this.MapMouseButton((SDL.MouseButtonFlags) sdlEvent.Button.Button), sdlEvent.Button.Down, sdlEvent.Button.Clicks == 2));
+                this.MouseButtonDown?.Invoke(new MouseEvent(this.MapMouseButton(sdlEvent.Button.Button), sdlEvent.Button.Down, sdlEvent.Button.Clicks == 2));
                 break;
 
             case SDL.EventType.MouseButtonUp:
-                this.MouseButtonUp?.Invoke(new MouseEvent(this.MapMouseButton((SDL.MouseButtonFlags) sdlEvent.Button.Button), sdlEvent.Button.Down, sdlEvent.Button.Clicks == 2));
+                this.MouseButtonUp?.Invoke(new MouseEvent(this.MapMouseButton(sdlEvent.Button.Button), sdlEvent.Button.Down, sdlEvent.Button.Clicks == 2));
                 break;
 
             case SDL.EventType.KeyDown:
@@ -914,13 +914,13 @@ public class Sdl3Window : Disposable, IWindow {
     /// <param name="button">The SDL button to map.</param>
     /// <returns>The corresponding <see cref="MouseButton"/>.</returns>
     /// <exception cref="Exception">Thrown when the SDL button is not supported.</exception>
-    private MouseButton MapMouseButton(SDL.MouseButtonFlags button) {
+    private MouseButton MapMouseButton(byte button) {
         return button switch {
-            SDL.MouseButtonFlags.Left => MouseButton.Left,
-            SDL.MouseButtonFlags.Middle => MouseButton.Middle,
-            SDL.MouseButtonFlags.Right => MouseButton.Right,
-            SDL.MouseButtonFlags.X1 => MouseButton.X1,
-            SDL.MouseButtonFlags.X2 => MouseButton.X2,
+            1 => MouseButton.Left,
+            2 => MouseButton.Middle,
+            3 => MouseButton.Right,
+            4 => MouseButton.X1,
+            5 => MouseButton.X2,
             _ => MouseButton.Invalid
         };
     }

@@ -21,6 +21,11 @@ public class SimpleUniformBuffer<T> : Disposable, ISimpleBuffer where T : unmana
     public T[] Data { get; private set; }
     
     /// <summary>
+    /// Gets a value indicating whether this buffer was created with dynamic usage.
+    /// </summary>
+    public bool UseDynamicBuffer { get; private set; }
+    
+    /// <summary>
     /// Gets the shader stages where this buffer is bound and used.
     /// </summary>
     public ShaderStages ShaderStages { get; }
@@ -41,17 +46,25 @@ public class SimpleUniformBuffer<T> : Disposable, ISimpleBuffer where T : unmana
     /// <param name="graphicsDevice">The graphics device used to create the buffer and related resources.</param>
     /// <param name="size">The total number of elements in the buffer.</param>
     /// <param name="stages">The shader stages where this buffer will be used.</param>
-    public SimpleUniformBuffer(GraphicsDevice graphicsDevice, uint size, ShaderStages stages) {
+    /// <param name="useDynamicBuffer">Whether the GPU buffer should be created with dynamic usage.</param>
+    public SimpleUniformBuffer(GraphicsDevice graphicsDevice, uint size, ShaderStages stages, bool useDynamicBuffer = true) {
         this.GraphicsDevice = graphicsDevice;
         this.Size = size;
         this.Data = new T[size];
         this.ShaderStages = stages;
+        this.UseDynamicBuffer = useDynamicBuffer;
         
         uint alignment = graphicsDevice.UniformBufferMinOffsetAlignment;
         long dataSize = size * Marshal.SizeOf<T>();
         long bufferSize = (dataSize / alignment + (dataSize % alignment > 0 ? 1 : 0)) * alignment;
         
-        this.DeviceBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) bufferSize, BufferUsage.UniformBuffer | BufferUsage.Dynamic));
+        BufferUsage usage = BufferUsage.UniformBuffer;
+        
+        if (useDynamicBuffer) {
+            usage |= BufferUsage.Dynamic;
+        }
+        
+        this.DeviceBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) bufferSize, usage));
         this._cachedResourceSets = new Dictionary<SimpleBufferLayout, ResourceSet>();
     }
     

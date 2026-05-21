@@ -41,6 +41,11 @@ public class SimpleStructuredBuffer<THeader, TElement> : Disposable, ISimpleBuff
     public TElement[] ElementData { get; private set; }
     
     /// <summary>
+    /// Gets a value indicating whether this buffer was created with dynamic usage.
+    /// </summary>
+    public bool UseDynamicBuffer { get; private set; }
+    
+    /// <summary>
     /// Gets the shader stages where this buffer will be used.
     /// </summary>
     public ShaderStages ShaderStages { get; }
@@ -63,15 +68,17 @@ public class SimpleStructuredBuffer<THeader, TElement> : Disposable, ISimpleBuff
     /// <param name="headerDataSize">The number of header entries to allocate.</param>
     /// <param name="elementDataSize">The number of element entries to allocate.</param>
     /// <param name="stages">The shader stages where this buffer will be bound.</param>
+    /// <param name="useDynamicBuffer">Whether the GPU buffer should be created with dynamic usage. This is ignored when <paramref name="readOnly"/> is <c>false</c>, because read-write structured buffers cannot be combined with <see cref="BufferUsage.Dynamic"/>.</param>
     /// <param name="readOnly">Whether the buffer is read-only (default: true).</param>
     /// <param name="rawBuffer">Whether the buffer is treated as raw (default: false).</param>
-    public SimpleStructuredBuffer(GraphicsDevice graphicsDevice, uint headerDataSize, uint elementDataSize, ShaderStages stages, bool readOnly = true, bool rawBuffer = false) {
+    public SimpleStructuredBuffer(GraphicsDevice graphicsDevice, uint headerDataSize, uint elementDataSize, ShaderStages stages, bool useDynamicBuffer = true, bool readOnly = true, bool rawBuffer = false) {
         this.GraphicsDevice = graphicsDevice;
         this.HeaderDataSize = headerDataSize;
         this.ElementDataSize = elementDataSize;
         this.HeaderData = new THeader[headerDataSize];
         this.ElementData = new TElement[elementDataSize];
         this.ShaderStages = stages;
+        this.UseDynamicBuffer = readOnly && useDynamicBuffer;
         this.ReadOnly = readOnly;
         this.RawBuffer = rawBuffer;
         
@@ -85,7 +92,11 @@ public class SimpleStructuredBuffer<THeader, TElement> : Disposable, ISimpleBuff
         
         long bufferSize = finalHeaderDataSize + finalElementDataSize;
         
-        BufferUsage bufferUsage = readOnly ? BufferUsage.StructuredBufferReadOnly | BufferUsage.Dynamic : BufferUsage.StructuredBufferReadWrite;
+        BufferUsage bufferUsage = readOnly ? BufferUsage.StructuredBufferReadOnly : BufferUsage.StructuredBufferReadWrite;
+        
+        if (this.UseDynamicBuffer) {
+            bufferUsage |= BufferUsage.Dynamic;
+        }
         
         this.DeviceBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription((uint) bufferSize, bufferUsage) {
             StructureByteStride = (uint) Marshal.SizeOf<TElement>(),

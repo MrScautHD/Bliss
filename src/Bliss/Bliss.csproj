@@ -35,9 +35,9 @@
     
     <!-- Libraries -->
     <ItemGroup>
-        <PackageReference Include="Veldrith" Version="1.2.6" />
-        <PackageReference Include="Veldrith.MetalBindings" Version="1.2.6" />
-        <PackageReference Include="Veldrith.SPIRV" Version="1.2.6" />
+        <PackageReference Include="Veldrith" Version="1.2.9" />
+        <PackageReference Include="Veldrith.MetalBindings" Version="1.2.9" />
+        <PackageReference Include="Veldrith.SPIRV" Version="1.2.9" />
         <PackageReference Include="SDL3-CS" Version="3.5.0-preview.20260213-150035" />
         <PackageReference Include="SDL3-CS.Native" Version="3.5.0-preview.20260205-174353" />
         <PackageReference Include="AssimpNetter" Version="6.0.4" />

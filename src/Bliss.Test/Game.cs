@@ -294,6 +294,10 @@ public class Game : Disposable {
         if (Input.IsMouseButtonDoubleClicked(MouseButton.Left)) {
             Logger.Error("DOUBLE CLICKED!");
         }
+
+        if (Input.IsMouseButtonDown(MouseButton.Middle)) {
+            Logger.Error("MOUSE WELL DOWN!");
+        }
         
         this._cam3D.Update((float) Time.Delta);
     }
