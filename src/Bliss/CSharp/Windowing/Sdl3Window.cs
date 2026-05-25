@@ -189,6 +189,7 @@ public class Sdl3Window : Disposable, IWindow {
         
         SDL.SetHint(SDL.Hints.WindowsCloseOnAltF4, "1");
         SDL.SetHint(SDL.Hints.MouseFocusClickthrough, "1");
+        SDL.SetHint(SDL.Hints.MouseDPIScaleCursors, "1");
         
         if (!SDL.InitSubSystem(InitFlags)) {
             throw new Exception($"Failed to initialise SDL! Error: {SDL.GetError()}");
