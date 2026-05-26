@@ -193,10 +193,10 @@ public class Sdl3Window : Disposable, IWindow {
         if (!SDL.InitSubSystem(InitFlags)) {
             throw new Exception($"Failed to initialise SDL! Error: {SDL.GetError()}");
         }
-
+        
         // Setup window flags.
         SDL.WindowFlags flags = this.MapWindowState(state);
-
+        
         if (backend == GraphicsBackend.Vulkan) {
             flags |= SDL.WindowFlags.Vulkan;
         }
