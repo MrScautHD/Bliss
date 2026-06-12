@@ -1,5 +1,6 @@
 using System.Numerics;
 using Bliss.CSharp;
+using Bliss.CSharp.Atlases;
 using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Fonts;
 using Bliss.CSharp.Geometry;
@@ -49,16 +50,15 @@ public class Game : Disposable {
     public RenderTexture2D FullScreenTexture { get; private set; }
     public Texture2D FullScreenResolvedTexture { get; private set; }
     
+    public TextureAtlas TextureAtlas { get; private set; }
+    
     private BasicForwardRenderer _basicForwardRenderer;
     private List<Renderable> _renderables;
     
     private ImmediateRenderer _immediateRenderer;
     private SpriteBatch _spriteBatch;
     private PrimitiveBatch _primitiveBatch;
-    private AnimatedImage _animatedImage;
-    private Texture2D _gif;
     private Font _font;
-    private Texture2D _logoTexture;
     private Cubemap _cubemap;
     private Texture2D _cubemapTexture;
     private Texture2D _button;
@@ -190,9 +190,11 @@ public class Game : Disposable {
         this._primitiveBatch = new PrimitiveBatch(this.GraphicsDevice, this.MainWindow);
         
         this._font = new Font("content/fonts/fontoe.ttf");
-        this._logoTexture = new Texture2D(this.GraphicsDevice, "content/bliss/images/logo.png");
-        this._animatedImage = new AnimatedImage("content/animated.gif");
-        this._gif = new Texture2D(this.GraphicsDevice, this._animatedImage.SpriteSheet);
+        
+        TextureAtlasBuilder textureAtlasBuilder = new TextureAtlasBuilder();
+        textureAtlasBuilder.Add("logo", "content/bliss/images/logo.png");
+        textureAtlasBuilder.Add("animated", new AnimatedImage("content/animated.gif"));
+        this.TextureAtlas = textureAtlasBuilder.Build(this.GraphicsDevice);
         
         float aspectRatio = (float) this.MainWindow.GetWidth() / (float) this.MainWindow.GetHeight();
         this._cam3D = new Cam3D(this.GraphicsDevice, new Vector3(0, 3, -3), new Vector3(0, 1.5F, 0), aspectRatio);
@@ -343,7 +345,7 @@ public class Game : Disposable {
         this._immediateRenderer.DrawKnot(new Transform() { Translation = new Vector3(46, 0, 6) }, 1, 1, 20, 20);
         this._immediateRenderer.PopTexture();
         
-        this._immediateRenderer.PushTexture(this._logoTexture);
+        this._immediateRenderer.PushTexture(this.TextureAtlas.Texture, this.TextureAtlas.GetRegion("logo"));
         this._immediateRenderer.DrawBillboard(new Vector3(35, 0, 6));
         this._immediateRenderer.PopTexture();
         
@@ -463,22 +465,22 @@ public class Game : Disposable {
         
         this._spriteBatch.DrawText(this._font, $"FPS: {this.GetFps()}", new Vector2(5, 5), 18);
         
-        int frameCount = this._animatedImage.GetFrameCount();
-        int frame = (int) (Time.Total * 20) % frameCount;
-        this._animatedImage.GetFrameInfo(frame, out int width, out int height, out float duration);
+        AtlasAnimation anim = this.TextureAtlas.GetAnimation("animated");
+        int frame = (int) (Time.Total * 20) % anim.FrameCount;
+        //this._animatedImage.GetFrameInfo(frame, out int width, out int height, out float duration);
         
         // Calculate the position in the grid.
-        int columns = this._animatedImage.Columns;
-        int rows = this._animatedImage.Rows;
+        //int columns = this._animatedImage.Columns;
+        //int rows = this._animatedImage.Rows;
+        //
+        //int column = frame % columns;
+        //int row = (frame / columns) % rows;
         
-        int column = frame % columns;
-        int row = (frame / columns) % rows;
-        
-        Rectangle sourceRect = new Rectangle(column * width, row * height, width, height);
+        //Rectangle sourceRect = new Rectangle(column * width, row * height, width, height);
         
         //this._spriteBatch.PushRasterizerState(this._spriteBatch.GetCurrentRasterizerState() with { ScissorTestEnabled = true });
         //this._spriteBatch.PushScissorRect(new Rectangle(30, 30, (int) (width / 2.0F * 0.2F), (int) (height / 2.0F * 0.2F)));
-        this._spriteBatch.DrawTexture(this._gif, new Vector2(30, 30), sourceRect: sourceRect, scale: new Vector2(0.2F, 0.2F), color: new Color(255, 255, 255, 155));
+        this._spriteBatch.DrawTexture(this.TextureAtlas.Texture, new Vector2(30, 30), sourceRect: anim.GetFrameRegion(frame), scale: new Vector2(0.2F, 0.2F), color: new Color(255, 255, 255, 155));
         //this._spriteBatch.PopScissorRect();
         //this._spriteBatch.PopRasterizerState();
         
