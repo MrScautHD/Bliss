@@ -294,7 +294,7 @@ public class SpriteBatch : Disposable {
         // Create projection view buffer.
         this._projViewBuffer = new SimpleUniformBuffer<Matrix4x4>(graphicsDevice, 2, ShaderStages.Vertex);
         this._projViewBuffer.DeviceBuffer.Name = "ProjViewBuffer";
-
+        
         // Create pipeline description.
         this._pipelineDescription = new SimplePipelineDescription() {
             PrimitiveTopology = PrimitiveTopology.TriangleList

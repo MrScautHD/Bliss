@@ -25,6 +25,8 @@ using Bliss.CSharp.Textures;
 using Bliss.CSharp.Textures.Cubemaps;
 using Bliss.CSharp.Transformations;
 using Bliss.CSharp.Windowing;
+using Bliss.ImGUI.CSharp;
+using Hexa.NET.ImGui;
 using MiniAudioEx.Core.StandardAPI;
 using Veldrith;
 using Color = Bliss.CSharp.Colors.Color;
@@ -40,7 +42,9 @@ public class Game : Disposable {
     public IWindow MainWindow { get; private set; }
     public GraphicsDevice GraphicsDevice { get; private set; }
     public CommandList CommandList { get; private set; }
-
+    
+    private ImGuiController _imGuiController;
+    
     private double _fixedFrameRate;
     
     private readonly double _fixedUpdateTimeStep;
@@ -62,6 +66,7 @@ public class Game : Disposable {
     private Cubemap _cubemap;
     private Texture2D _cubemapTexture;
     private Texture2D _button;
+    private ImTextureID _buttonTextureId;
     
     private Cam3D _cam3D;
     private Model _playerModel;
@@ -90,11 +95,13 @@ public class Game : Disposable {
     private bool _playingAnim;
 
     private string _textInput;
+    private byte[] _imGuiTextInput;
     
     public Game(GameSettings settings) {
         Instance = this;
         this.Settings = settings;
         this._fixedUpdateTimeStep = settings.FixedTimeStep;
+        this._imGuiTextInput = new byte[256];
     }
 
     public void Run() {
@@ -188,6 +195,7 @@ public class Game : Disposable {
         this._immediateRenderer = new ImmediateRenderer(this.GraphicsDevice);
         this._spriteBatch = new SpriteBatch(this.GraphicsDevice, this.MainWindow);
         this._primitiveBatch = new PrimitiveBatch(this.GraphicsDevice, this.MainWindow);
+        this._imGuiController = new ImGuiController(this.GraphicsDevice, this.MainWindow);
         
         this._font = new Font("content/fonts/fontoe.ttf");
         
@@ -288,11 +296,14 @@ public class Game : Disposable {
         this._cubemapTexture = new Texture2D(this.GraphicsDevice, this._cubemap.Images[5][0]);
 
         this._button = new Texture2D(this.GraphicsDevice, "content/button.png");
+        this._buttonTextureId = this._imGuiController.BindTexture(this._button);
         
         this.SetupForwardRenderables();
     }
     
     protected virtual void Update() {
+        this._imGuiController.Update(Time.Delta);
+        
         if (Input.IsMouseButtonDoubleClicked(MouseButton.Left)) {
             Logger.Error("DOUBLE CLICKED!");
         }
@@ -323,8 +334,13 @@ public class Game : Disposable {
         commandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
         commandList.ClearDepthStencil(1.0F);
         
-        // Enables relative mouse mod.
-        Input.EnableRelativeMouseMode();
+        // Enables relative mouse mod when ImGUI does not need the mouse.
+        //if (this._imGuiController.IO.WantCaptureMouse) {
+        //    Input.DisableRelativeMouseMode();
+        //}
+        //else {
+        //    Input.EnableRelativeMouseMode();
+        //}
         
         // Drawing 3D.
         this._cam3D.Begin(this.CommandList);
@@ -523,6 +539,36 @@ public class Game : Disposable {
         
         this.FullScreenRenderer.Draw(commandList, this.FullScreenResolvedTexture, this.GraphicsDevice.SwapchainFramebuffer.OutputDescription);
         
+        this._imGuiController.Begin(commandList, this.GraphicsDevice.SwapchainFramebuffer.OutputDescription);
+        
+        ImGui.SetNextWindowSize(new Vector2(320.0F, 180.0F), ImGuiCond.FirstUseEver);
+        
+        if (ImGui.Begin("Bliss ImGUI Test")) {
+            Vector2 mousePosition = Input.GetMousePosition();
+            
+            ImGui.Text($"Delta: {Time.Delta:0.0000}s");
+            ImGui.Text($"Mouse: {mousePosition.X:0}, {mousePosition.Y:0}");
+            ImGui.Separator();
+            
+            ImGui.Text("Bound Texture2D:");
+            ImGui.Image(new ImTextureRef() {
+                TexID = this._buttonTextureId
+            }, new Vector2(128.0F, 64.0F));
+            ImGui.Separator();
+            
+            unsafe {
+                fixed (byte* textInput = this._imGuiTextInput) {
+                    ImGui.InputText("Text Input", textInput, (uint) this._imGuiTextInput.Length);
+                }
+            }
+            
+            ImGui.Text("Raw ImGUI drawing from Game.cs");
+        }
+        
+        ImGui.End();
+        
+        this._imGuiController.End();
+        
         commandList.End();
         
         graphicsDevice.SubmitCommands(commandList);
@@ -625,6 +671,9 @@ public class Game : Disposable {
             this._font.Dispose();
             this._spriteBatch.Dispose();
             this._cam3D.Dispose();
+            this._imGuiController.UnbindTexture(this._buttonTextureId);
+            this._button.Dispose();
+            this._imGuiController.Dispose();
             
             AudioContext.Deinitialize();
             GlobalResource.Destroy();

@@ -1,20 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+    
     <!-- Project -->
     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <OutputType>Exe</OutputType>
-        <LangVersion>14</LangVersion>
-        <ApplicationIcon>..\Bliss\content\bliss\images\icon.ico</ApplicationIcon>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <NoWarn>$(NoWarn);CS8618</NoWarn>
+        <LangVersion>14</LangVersion>
     </PropertyGroup>
     
     <!-- References -->
     <ItemGroup>
-      <ProjectReference Include="..\Bliss.ImGUI\Bliss.ImGUI.csproj" />
       <ProjectReference Include="..\Bliss\Bliss.csproj" />
+    </ItemGroup>
+    
+    <!-- Libraries -->
+    <ItemGroup>
+        <PackageReference Include="Hexa.NET.ImGui" Version="2.2.10-prerelease" />
     </ItemGroup>
     
     <!-- Content -->
