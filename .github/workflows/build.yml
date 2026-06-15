@@ -39,6 +39,8 @@ jobs:
   # Publish to NuGet
   publish-nuget:
     runs-on: ubuntu-latest
+    needs: build
+    if: github.event_name == 'release'
     
     # Run
     steps:
@@ -55,11 +57,13 @@ jobs:
         run: dotnet restore
       
       # Build and pack NuGet package
-      - name: Pack NuGet package
-        if: github.event_name == 'release'
+      - name: Pack Bliss
         run: dotnet pack src/Bliss -p:PackageVersion=${{ github.event.release.tag_name }} --configuration Release --output nuget
-
+      
+      # Pack Bliss.ImGUI
+      - name: Pack Bliss.ImGUI
+        run: dotnet pack src/Bliss.ImGUI -p:PackageVersion=${{ github.event.release.tag_name }} --configuration Release --output nuget
+      
       # Publish NuGet package
       - name: Publish NuGet package
-        if: github.event_name == 'release'
         run: dotnet nuget push nuget/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
