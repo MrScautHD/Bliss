@@ -10,6 +10,22 @@
         <LangVersion>14</LangVersion>
     </PropertyGroup>
     
+    <!-- Nuget -->
+    <PropertyGroup>
+        <Title>Bliss.ImGUI</Title>
+        <Authors>MrScautHD</Authors>
+        <Version>1.0.0</Version>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);1591</NoWarn>
+        <Description>A fast, Cross-platform .NET 10 C# 14 Render Framework.</Description>
+        <PackageProjectUrl>https://github.com/MrScautHD/Bliss</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/MrScautHD/Bliss/blob/main/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/MrScautHD/Bliss</RepositoryUrl>
+        <PackageTags>Renderer, Framework, Direct3D12, Vulkan, Metal, Net10, C#14, 3D, 2D, Fast, Cross-platform, Audio</PackageTags>
+        <PackageIcon>icon.png</PackageIcon>
+    </PropertyGroup>
+    
     <!-- References -->
     <ItemGroup>
       <ProjectReference Include="..\Bliss\Bliss.csproj" />
@@ -18,6 +34,11 @@
     <!-- Libraries -->
     <ItemGroup>
         <PackageReference Include="Hexa.NET.ImGui" Version="2.2.10-prerelease" />
+    </ItemGroup>
+    
+    <!-- Icon -->
+    <ItemGroup>
+        <None Include="content\imgui\images\icon.png" Pack="true" PackagePath="" />
     </ItemGroup>
     
     <!-- Content -->
