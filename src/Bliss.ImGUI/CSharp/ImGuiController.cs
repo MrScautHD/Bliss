@@ -12,7 +12,6 @@ using Bliss.CSharp.Interact.Mice;
 using Bliss.CSharp.Textures;
 using Bliss.CSharp.Windowing;
 using Bliss.CSharp.Windowing.Events;
-using Bliss.ImGUI.CSharp.VertexTypes;
 using Hexa.NET.ImGui;
 using Veldrith;
 using Veldrith.SPIRV;
@@ -124,7 +123,7 @@ public class ImGuiController : Disposable {
         this.Capacity = capacity;
         
         // Create vertex buffer.
-        uint vertexBufferSize = capacity * (uint) Marshal.SizeOf<ImGuiVertex>();
+        uint vertexBufferSize = capacity * (uint) Marshal.SizeOf<ImDrawVert>();
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
         this._vertexBuffer.Name = "VertexBuffer";
         
@@ -137,6 +136,18 @@ public class ImGuiController : Disposable {
         this._projViewBuffer = new SimpleUniformBuffer<Matrix4x4>(graphicsDevice, 2, ShaderStages.Vertex);
         this._projViewBuffer.DeviceBuffer.Name = "ProjViewBuffer";
         
+        // Create effect.
+        this._effect = new Effect(graphicsDevice, "content/imgui/shaders/imgui_default.vert", "content/imgui/shaders/imgui_default.frag", new CrossCompileOptions());
+        this._effect.AddBufferLayout("ProjectionViewBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        this._effect.AddTextureLayout("fTexture", 1);
+        
+        // Create vertex layout.
+        VertexLayoutDescription vertexLayout = new VertexLayoutDescription(
+            new VertexElementDescription("vPosition", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float2),
+            new VertexElementDescription("vTexCoords", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Float2),
+            new VertexElementDescription("vColor", VertexElementSemantic.TextureCoordinate, VertexElementFormat.Byte4Norm)
+        );
+        
         // Create pipeline description.
         this._pipelineDescription = new SimplePipelineDescription() {
             PrimitiveTopology = PrimitiveTopology.TriangleList,
@@ -144,13 +155,11 @@ public class ImGuiController : Disposable {
             DepthStencilState = DepthStencilStateDescription.DISABLED,
             RasterizerState = RasterizerStateDescription.CULL_NONE with {
                 ScissorTestEnabled = true
-            }
+            },
+            BufferLayouts = this._effect.GetBufferLayouts(),
+            TextureLayouts = this._effect.GetTextureLayouts(),
+            ShaderSet = new ShaderSetDescription([vertexLayout], this._effect.Shaders)
         };
-        
-        // Create effect.
-        this._effect = new Effect(graphicsDevice, "content/imgui/shaders/imgui_default.vert", "content/imgui/shaders/imgui_default.frag", new CrossCompileOptions());
-        this._effect.AddBufferLayout("ProjectionViewBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
-        this._effect.AddTextureLayout("fTexture", 1);
         
         // Create texture cache.
         this._textures = new Dictionary<ulong, (Texture2D Texture, Sampler Sampler)>();
@@ -281,9 +290,6 @@ public class ImGuiController : Disposable {
         this._projViewBuffer.UpdateBufferDeferred(this._commandList);
         
         // Update pipeline description.
-        this._pipelineDescription.BufferLayouts = this._effect.GetBufferLayouts();
-        this._pipelineDescription.TextureLayouts = this._effect.GetTextureLayouts();
-        this._pipelineDescription.ShaderSet = new ShaderSetDescription(ImGuiVertex.VertexLayout.Layouts, this._effect.Shaders);
         this._pipelineDescription.Outputs = this._output;
         
         // Set vertex/index buffer.
@@ -303,22 +309,7 @@ public class ImGuiController : Disposable {
             ImDrawListPtr cmdList = drawData.CmdLists[i];
             
             // Update vertex/index buffer.
-            ImGuiVertex[] vertices = new ImGuiVertex[cmdList.VtxBuffer.Size];
-            ImDrawVert* drawVertices = cmdList.VtxBuffer.Data;
-            
-            for (int j = 0; j < vertices.Length; j++) {
-                ImDrawVert drawVertex = drawVertices[j];
-                
-                byte r = (byte) (drawVertex.Col & 0xFF);
-                byte g = (byte) ((drawVertex.Col >> 8) & 0xFF);
-                byte b = (byte) ((drawVertex.Col >> 16) & 0xFF);
-                byte a = (byte) ((drawVertex.Col >> 24) & 0xFF);
-                
-                vertices[j] = new ImGuiVertex(new Vector3(drawVertex.Pos, 0.0F), drawVertex.Uv, new Vector4(r, g, b, a) / 255.0F);
-            }
-            
-            // Update vertex/index buffer.
-            this._commandList.UpdateBuffer(this._vertexBuffer, (uint) (vertexOffset * Marshal.SizeOf<ImGuiVertex>()), vertices);
+            this._commandList.UpdateBuffer(this._vertexBuffer, (uint) (vertexOffset * sizeof(ImDrawVert)), new ReadOnlySpan<ImDrawVert>(cmdList.VtxBuffer.Data, cmdList.VtxBuffer.Size));
             this._commandList.UpdateBuffer(this._indexBuffer, indexOffset * sizeof(ushort), new ReadOnlySpan<ushort>(cmdList.IdxBuffer.Data, cmdList.IdxBuffer.Size));
             
             uint cmdListIndexOffset = indexOffset;
@@ -482,7 +473,7 @@ public class ImGuiController : Disposable {
         
         // Recreate vertex buffer.
         this._vertexBuffer.Dispose();
-        uint vertexBufferSize = this.Capacity * (uint) Marshal.SizeOf<ImGuiVertex>();
+        uint vertexBufferSize = this.Capacity * (uint) Marshal.SizeOf<ImDrawVert>();
         this._vertexBuffer = this.GraphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
         this._vertexBuffer.Name = "VertexBuffer";
         
