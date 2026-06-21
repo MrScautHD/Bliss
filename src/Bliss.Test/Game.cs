@@ -300,7 +300,7 @@ public class Game : Disposable {
         
         this.SetupForwardRenderables();
         
-        Input.EnableRelativeMouseMode(); // TODO: RELATIVE MODE TO SAVE FPS WHEN MOVING THE MOUSE
+        //Input.EnableRelativeMouseMode(); // TODO: RELATIVE MODE TO SAVE FPS WHEN MOVING THE MOUSE
     }
     
     protected virtual void Update() {
@@ -533,111 +533,36 @@ public class Game : Disposable {
         
         this.FullScreenRenderer.Draw(commandList, this.FullScreenResolvedTexture, this.GraphicsDevice.SwapchainFramebuffer.OutputDescription);
         
-this._imGuiController.Begin(commandList, this.GraphicsDevice.SwapchainFramebuffer.OutputDescription);
-
-ImGui.SetNextWindowPos(new Vector2(20.0F, 20.0F), ImGuiCond.FirstUseEver);
-ImGui.SetNextWindowSize(new Vector2(520.0F, 430.0F), ImGuiCond.FirstUseEver);
-
-ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 14.0F);
-ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 8.0F);
-ImGui.PushStyleVar(ImGuiStyleVar.ChildRounding, 10.0F);
-ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(16.0F, 14.0F));
-ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(10.0F, 8.0F));
-
-ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4(0.035F, 0.04F, 0.055F, 0.92F));
-ImGui.PushStyleColor(ImGuiCol.Border, new Vector4(0.25F, 0.75F, 1.0F, 0.35F));
-ImGui.PushStyleColor(ImGuiCol.TitleBg, new Vector4(0.06F, 0.08F, 0.12F, 1.0F));
-ImGui.PushStyleColor(ImGuiCol.TitleBgActive, new Vector4(0.04F, 0.18F, 0.26F, 1.0F));
-ImGui.PushStyleColor(ImGuiCol.Header, new Vector4(0.08F, 0.22F, 0.30F, 0.85F));
-ImGui.PushStyleColor(ImGuiCol.HeaderHovered, new Vector4(0.10F, 0.34F, 0.44F, 0.95F));
-ImGui.PushStyleColor(ImGuiCol.HeaderActive, new Vector4(0.08F, 0.45F, 0.60F, 1.0F));
-ImGui.PushStyleColor(ImGuiCol.Text, new Vector4(0.90F, 0.95F, 1.0F, 1.0F));
-
-bool opened = true;
-
-if (ImGui.Begin("Stellution Debug Console", ref opened, ImGuiWindowFlags.NoCollapse)) {
-    
-    // Header.
-    ImGui.TextColored(new Vector4(0.35F, 0.85F, 1.0F, 1.0F), "STELLUTION");
-    ImGui.SameLine();
-    ImGui.TextDisabled("/ runtime diagnostics");
-    
-    ImGui.Separator();
-    
-    int fps = 0;
-    float fpsNormalized = Math.Clamp(fps / 144.0F, 0.0F, 1.0F);
-    Vector4 fpsColor = fps >= 60
-        ? new Vector4(0.40F, 1.0F, 0.45F, 1.0F)
-        : fps >= 30
-            ? new Vector4(1.0F, 0.80F, 0.25F, 1.0F)
-            : new Vector4(1.0F, 0.35F, 0.35F, 1.0F);
-    
-    ImGui.Text("Performance");
-    ImGui.PushStyleColor(ImGuiCol.PlotHistogram, fpsColor);
-    ImGui.ProgressBar(fpsNormalized, new Vector2(-1.0F, 8.0F), string.Empty);
-    ImGui.PopStyleColor();
-    
-    ImGui.SameLine();
-    ImGui.TextColored(fpsColor, $"{fps} FPS");
-    
-    ImGui.Spacing();
-    
-    // Section helper.
-    void DrawSection(string title, Vector4 accentColor, Action content) {
-        ImGui.PushStyleColor(ImGuiCol.ChildBg, new Vector4(0.06F, 0.075F, 0.10F, 0.78F));
-        ImGui.PushStyleColor(ImGuiCol.Border, new Vector4(accentColor.X, accentColor.Y, accentColor.Z, 0.35F));
+        this._imGuiController.Begin(commandList, this.GraphicsDevice.SwapchainFramebuffer.OutputDescription);
         
-        ImGui.BeginChild(title, new Vector2(0.0F, 0.0F), ImGuiChildFlags.Borders | ImGuiChildFlags.AutoResizeY);
+        ImGui.SetNextWindowPos(new Vector2(5.0F, 5.0F));
+        ImGui.SetNextWindowSize(new Vector2(320.0F, 180.0F), ImGuiCond.FirstUseEver);
         
-        ImGui.TextColored(accentColor, title);
-        ImGui.Separator();
+        if (ImGui.Begin("Bliss ImGUI Test")) {
+            Vector2 mousePosition = Input.GetMousePosition();
+            
+            ImGui.Text($"Delta: {Time.Delta:0.0000}s");
+            ImGui.Text($"Mouse: {mousePosition.X:0}, {mousePosition.Y:0}");
+            ImGui.Separator();
+            
+            ImGui.Text("Bound Texture2D:");
+            ImGui.Image(new ImTextureRef() {
+                TexID = this._buttonTextureId
+            }, new Vector2(128.0F, 64.0F));
+            ImGui.Separator();
+            
+            unsafe {
+                fixed (byte* textInput = this._imGuiTextInput) {
+                    ImGui.InputText("Text Input", textInput, (uint) this._imGuiTextInput.Length);
+                }
+            }
+            
+            ImGui.Text("Raw ImGUI drawing from Game.cs");
+        }
         
-        content.Invoke();
+        ImGui.End();
         
-        ImGui.EndChild();
-        
-        ImGui.PopStyleColor(2);
-    }
-    
-    // Info row helper.
-    void DrawInfoRow(string label, string value) {
-        ImGui.TextDisabled(label);
-        ImGui.SameLine(170.0F);
-        ImGui.TextColored(new Vector4(0.92F, 0.97F, 1.0F, 1.0F), value);
-    }
-    
-    DrawSection("SYSTEM INFO", new Vector4(0.35F, 0.85F, 1.0F, 1.0F), () => {
-        DrawInfoRow("CPU", "-");
-        DrawInfoRow("Memory", "Total: 0 MB  /  Available: 0 MB");
-        DrawInfoRow("Threads", "0");
-        DrawInfoRow("OS", "-");
-    });
-    
-    ImGui.Spacing();
-    
-    DrawSection("RENDERING", new Vector4(0.55F, 1.0F, 0.55F, 1.0F), () => {
-        DrawInfoRow("FPS", "0");
-        DrawInfoRow("Frame", "0");
-        DrawInfoRow("Backend", "-");
-        DrawInfoRow("Renderer", "-");
-    });
-    
-    ImGui.Spacing();
-    
-    DrawSection("MEMORY", new Vector4(1.0F, 0.65F, 0.35F, 1.0F), () => {
-        DrawInfoRow("Managed Heap", "0 B");
-        DrawInfoRow("Native / Other Est.", "0 B");
-        DrawInfoRow("Process Private", "0 B");
-        DrawInfoRow("RAM Resident", "0 B");
-    });
-}
-
-ImGui.End();
-
-ImGui.PopStyleColor(8);
-ImGui.PopStyleVar(5);
-
-this._imGuiController.End();
+        this._imGuiController.End();
         
         commandList.End();
         
