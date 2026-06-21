@@ -291,16 +291,16 @@ public class ImGuiController : Disposable {
         
         // Update pipeline description.
         this._pipelineDescription.Outputs = this._output;
-
+        
         int vertexOffset = 0;
         uint indexOffset = 0;
-
+        
         for (int i = 0; i < drawData.CmdListsCount; i++) {
             ImDrawListPtr cmdList = drawData.CmdLists[i];
-
+            
             this._commandList.UpdateBuffer(this._vertexBuffer, (uint) (vertexOffset * sizeof(ImDrawVert)), new ReadOnlySpan<ImDrawVert>(cmdList.VtxBuffer.Data, cmdList.VtxBuffer.Size));
             this._commandList.UpdateBuffer(this._indexBuffer, indexOffset * sizeof(ushort), new ReadOnlySpan<ushort>(cmdList.IdxBuffer.Data, cmdList.IdxBuffer.Size));
-
+            
             vertexOffset += cmdList.VtxBuffer.Size;
             indexOffset += (uint) cmdList.IdxBuffer.Size;
         }
