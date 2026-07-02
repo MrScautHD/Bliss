@@ -90,7 +90,7 @@ public class Game : Disposable {
     private Mesh<Vertex3D> _customHeighmap;
     private Mesh<Vertex3D> _customQuad;
     //private Mesh _customCubemap;
-
+    
     private int _frameCount;
     private bool _playingAnim;
 

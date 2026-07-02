@@ -232,6 +232,7 @@ public class ImGuiController : Disposable {
         // Draw ImGUI.
         ImGui.Render();
         this.UpdateTextInput();
+        this.UpdateFontTexture();
         this.RenderDrawData(ImGui.GetDrawData());
         
         this._begun = false;
@@ -243,7 +244,6 @@ public class ImGuiController : Disposable {
     /// <param name="deltaTime">The time in seconds since the last update. If zero or negative, a default value is used.</param>
     public void Update(double deltaTime) {
         this.Io.DeltaTime = deltaTime > 0.0 ? (float) deltaTime : 1.0F / 60.0F;
-        this.UpdateFontTexture();
     }
     
     /// <summary>

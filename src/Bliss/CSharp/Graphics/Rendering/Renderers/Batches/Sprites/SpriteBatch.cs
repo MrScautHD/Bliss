@@ -334,7 +334,7 @@ public class SpriteBatch : Disposable {
         
         this.DrawCallCount = 0;
     }
-
+    
     /// <summary>
     /// Ends the current drawing session that was initiated by a call to <see cref="Begin"/>.
     /// This method finalizes the batch operations by flushing all pending draw calls.
