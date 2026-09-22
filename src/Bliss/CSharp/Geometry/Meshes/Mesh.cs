@@ -99,22 +99,26 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
             new Vertex3D() {
                 Position = new Vector3(-halfWidth, -halfHeight, 0.0F),
                 Normal = Vector3.UnitZ,
-                TexCoords = new Vector2(0.0F, 1.0F)
+                TexCoords = new Vector2(0.0F, 1.0F),
+                Color = Vector4.One
             },
             new Vertex3D() {
                 Position = new Vector3(halfWidth, -halfHeight, 0.0F),
                 Normal = Vector3.UnitZ,
-                TexCoords = new Vector2(1.0F, 1.0F)
+                TexCoords = new Vector2(1.0F, 1.0F),
+                Color = Vector4.One
             },
             new Vertex3D() {
                 Position = new Vector3(halfWidth, halfHeight, 0.0F),
                 Normal = Vector3.UnitZ,
-                TexCoords = new Vector2(1.0F, 0.0F)
+                TexCoords = new Vector2(1.0F, 0.0F),
+                Color = Vector4.One
             },
             new Vertex3D() {
                 Position = new Vector3(-halfWidth, halfHeight, 0.0F),
                 Normal = Vector3.UnitZ,
-                TexCoords = new Vector2(0.0F, 0.0F)
+                TexCoords = new Vector2(0.0F, 0.0F),
+                Color = Vector4.One
             }
         ];
         
@@ -153,7 +157,8 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
         vertices.Add(new Vertex3D {
             Position = new Vector3(0.0F, 0.0F, 0.0F),
             Normal = Vector3.UnitY,
-            TexCoords = new Vector2(0.5F, 0.5F)
+            TexCoords = new Vector2(0.5F, 0.5F),
+            Color = Vector4.One
         });
         
         // Generate vertices for the outer circle.
@@ -161,11 +166,12 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
             float angle = i * MathF.Tau / sides;
             float x = MathF.Cos(angle) * radius / 2.0F;
             float z = MathF.Sin(angle) * radius / 2.0F;
-    
+            
             vertices.Add(new Vertex3D {
                 Position = new Vector3(x, 0.0F, z),
                 Normal = Vector3.UnitY,
-                TexCoords = new Vector2(x / radius + 0.5F, z / radius + 0.5F)
+                TexCoords = new Vector2(x / radius + 0.5F, z / radius + 0.5F),
+                Color = Vector4.One
             });
         }
         
@@ -229,7 +235,8 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
                 vertices[index] = new Vertex3D() {
                     Position = positions[index] * new Vector3(width / 2.0F, height / 2.0F, length / 2.0F),
                     TexCoords = texCoords[j],
-                    Normal = normals[i]
+                    Normal = normals[i],
+                    Color = Vector4.One
                 };
             }
         }
@@ -320,7 +327,8 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
                 vertices[index] = new Vertex3D() {
                     Position = positions[index],
                     TexCoords = texCoords[index],
-                    Normal = normals[index]
+                    Normal = normals[index],
+                    Color = Vector4.One
                 };
             }
         }
@@ -396,7 +404,8 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
                 vertices.Add(new Vertex3D() {
                     Position = position,
                     TexCoords = new Vector2(0.5F + cosPhi * sinTheta * 0.5F, 0.5F + sinPhi * sinTheta * 0.5F),
-                    Normal = Vector3.Normalize(position)
+                    Normal = Vector3.Normalize(position),
+                    Color = Vector4.One
                 });
             }
         }
@@ -423,7 +432,8 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
         vertices.Add(new Vertex3D() {
             Position = new Vector3(0.0F, -halfHeight, 0.0F),
             TexCoords = new Vector2(0.5F, 0.5F),
-            Normal = Vector3.UnitY
+            Normal = Vector3.UnitY,
+            Color = Vector4.One
         });
         
         // Add circle vertices.
@@ -435,7 +445,8 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
             vertices.Add(new Vertex3D() {
                 Position = new Vector3(radius / 2.0F * cosPhi, -halfHeight, radius / 2.0F * sinPhi),
                 TexCoords = new Vector2(0.5F + cosPhi * 0.5F, 0.5F + sinPhi * 0.5F),
-                Normal = Vector3.UnitY
+                Normal = Vector3.UnitY,
+                Color = Vector4.One
             });
         }
     
@@ -469,34 +480,36 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
             slices = 3;
             Logger.Warn("The number of slices must be at least 3. The value is now set to 3.");
         }
-    
+        
         List<Vertex3D> vertices = new List<Vertex3D>();
         List<uint> indices = new List<uint>();
-    
+        
         float halfHeight = height / 2.0F;
-    
+        
         // Generate the side vertices.
         for (int slice = 0; slice <= slices; slice++) {
             float angle = slice * MathF.Tau / slices;
             float x = MathF.Cos(angle) * (radius / 2.0F);
             float z = MathF.Sin(angle) * (radius / 2.0F);
             float u = (float) slice / slices;
-    
+            
             // Bottom vertex.
             vertices.Add(new Vertex3D {
                 Position = new Vector3(x, -halfHeight, z),
                 Normal = Vector3.Normalize(new Vector3(x, 0.0F, z)),
-                TexCoords = new Vector2(u, 1.0F)
+                TexCoords = new Vector2(u, 1.0F),
+                Color = Vector4.One
             });
-    
+            
             // Top vertex.
             vertices.Add(new Vertex3D {
                 Position = new Vector3(x, halfHeight, z),
                 Normal = Vector3.Normalize(new Vector3(x, 0.0F, z)),
-                TexCoords = new Vector2(u, 0.0F)
+                TexCoords = new Vector2(u, 0.0F),
+                Color = Vector4.One
             });
         }
-    
+        
         // Generate the side indices.
         for (int slice = 0; slice < slices; slice++) {
             int baseIndex = slice * 2;
@@ -517,41 +530,43 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
         vertices.Add(new Vertex3D {
             Position = new Vector3(0, -halfHeight, 0),
             Normal = -Vector3.UnitY,
-            TexCoords = new Vector2(0.5F, 0.5F)
+            TexCoords = new Vector2(0.5F, 0.5F),
+            Color = Vector4.One
         });
-    
+        
         for (int slice = 0; slice < slices; slice++) {
             int baseIndex = slice * 2;
-    
+            
             indices.Add((uint) bottomCenterIndex);
             indices.Add((uint) (baseIndex + 2));
             indices.Add((uint) baseIndex);
         }
-    
+        
         // Generate the top cap.
         int topCenterIndex = vertices.Count;
         
         vertices.Add(new Vertex3D {
             Position = new Vector3(0.0F, halfHeight, 0.0F),
             Normal = Vector3.UnitY,
-            TexCoords = new Vector2(0.5F, 0.5F)
+            TexCoords = new Vector2(0.5F, 0.5F),
+            Color = Vector4.One
         });
-    
+        
         for (int slice = 0; slice < slices; slice++) {
             int baseIndex = slice * 2 + 1;
-    
+            
             indices.Add((uint) topCenterIndex);
             indices.Add((uint) baseIndex);
             indices.Add((uint) (baseIndex + 2));
         }
-    
+        
         Material material = new Material(GlobalResource.DefaultModelEffect);
         
         material.AddMaterialMap(MaterialMapType.Albedo, 0, new MaterialMap {
             Texture = GlobalResource.DefaultModelTexture,
             Color = Color.White
         });
-    
+        
         return new Mesh<Vertex3D>(graphicsDevice, material, new BasicMeshData(vertices.ToArray(), indices.ToArray()));
     }
 
@@ -595,7 +610,8 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
                 vertices.Add(new Vertex3D {
                     Position = new Vector3(x, y, z),
                     TexCoords = new Vector2((float) slice / slices, (float) ring / rings),
-                    Normal = Vector3.Normalize(new Vector3(x, y - halfHeight, z))
+                    Normal = Vector3.Normalize(new Vector3(x, y - halfHeight, z)),
+                    Color = Vector4.One
                 });
             }
         }
@@ -616,7 +632,8 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
                 vertices.Add(new Vertex3D {
                     Position = new Vector3(x, y, z),
                     TexCoords = new Vector2((float) slice / slices, -yStep),
-                    Normal = Vector3.Normalize(new Vector3(x, 0, z))
+                    Normal = Vector3.Normalize(new Vector3(x, 0.0F, z)),
+                    Color = Vector4.One
                 });
             }
         }
@@ -640,7 +657,8 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
                 vertices.Add(new Vertex3D {
                     Position = new Vector3(-x, y, -z),
                     TexCoords = new Vector2((float) slice / slices, 1.0F - (float) ring / rings),
-                    Normal = Vector3.Normalize(new Vector3(-x, y + halfHeight, -z))
+                    Normal = Vector3.Normalize(new Vector3(-x, y + halfHeight, -z)),
+                    Color = Vector4.One
                 });
             }
         }
@@ -735,14 +753,16 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
             vertices.Add(new Vertex3D {
                 Position = new Vector3(x, -halfHeight, z),
                 Normal = Vector3.Normalize(new Vector3(x, radius / 2.0F, z)),
-                TexCoords = new Vector2(u, 1.0F)
+                TexCoords = new Vector2(u, 1.0F),
+                Color = Vector4.One
             });
 
             // Top vertex (tip of the cone).
             vertices.Add(new Vertex3D {
                 Position = new Vector3(0.0F, halfHeight, 0.0F),
                 Normal = Vector3.Normalize(new Vector3(x, radius / 2.0F, z)),
-                TexCoords = new Vector2(u, 0.0F)
+                TexCoords = new Vector2(u, 0.0F),
+                Color = Vector4.One
             });
         }
 
@@ -827,7 +847,8 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
                 vertices.Add(new Vertex3D {
                     Position = position,
                     Normal = Vector3.Normalize(normal),
-                    TexCoords = texCoords
+                    TexCoords = texCoords,
+                    Color = Vector4.One
                 });
             }
         }
@@ -917,7 +938,8 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
                 vertices.Add(new Vertex3D {
                     Position = position,
                     Normal = vertexNormal,
-                    TexCoords = texCoords
+                    TexCoords = texCoords,
+                    Color = Vector4.One
                 });
             }
         }
@@ -959,10 +981,10 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
         float xStep = size.X / (heightmap.Width - 1.0F);
         float zStep = size.Z / (heightmap.Height - 1.0F);
         float heightScale = size.Y / 255.0F;
-
+        
         List<Vertex3D> vertices = new List<Vertex3D>();
         List<uint> indices = new List<uint>();
-
+        
         // Generate the vertices.
         for (int y = 0; y < heightmap.Height; y++) {
             for (int x = 0; x < heightmap.Width; x++) {
@@ -973,15 +995,16 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
                 Vector3 position = new Vector3(x * xStep - size.X / 2, height, y * zStep - size.Z / 2);
                 Vector3 normal = Vector3.UnitY;
                 Vector2 texCoords = new Vector2(x / (heightmap.Width - 1.0F), y / (heightmap.Height - 1.0F));
-
+                
                 vertices.Add(new Vertex3D {
                     Position = position,
                     Normal = normal,
-                    TexCoords = texCoords
+                    TexCoords = texCoords,
+                    Color = Vector4.One
                 });
             }
         }
-
+        
         // Generate the indices.
         for (int z = 0; z < heightmap.Height - 1; z++) {
             for (int x = 0; x < heightmap.Width - 1; x++) {
@@ -989,11 +1012,11 @@ public class Mesh<T> : Disposable, IMesh where T : unmanaged, IVertexType {
                 uint topRight = (uint) (z * heightmap.Width + x + 1);
                 uint bottomLeft = (uint) ((z + 1) * heightmap.Width + x);
                 uint bottomRight = (uint) ((z + 1) * heightmap.Width + x + 1);
-
+                
                 indices.Add(topLeft);
                 indices.Add(topRight);
                 indices.Add(bottomLeft);
-
+                
                 indices.Add(bottomLeft);
                 indices.Add(topRight);
                 indices.Add(bottomRight);

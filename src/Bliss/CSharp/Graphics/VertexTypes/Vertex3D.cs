@@ -41,27 +41,27 @@ public struct Vertex3D : IVertexType {
     /// The position of the vertex in 3D space.
     /// </summary>
     public Vector3 Position;
-
+    
     /// <summary>
     /// The primary texture coordinates of the vertex.
     /// </summary>
     public Vector2 TexCoords;
-
+    
     /// <summary>
     /// The secondary texture coordinates of the vertex.
     /// </summary>
     public Vector2 TexCoords2;
-
+    
     /// <summary>
     /// The normal vector of the vertex, used for lighting calculations.
     /// </summary>
     public Vector3 Normal;
-
+    
     /// <summary>
     /// The tangent vector of the vertex, used for normal mapping.
     /// </summary>
     public Vector4 Tangent;
-
+    
     /// <summary>
     /// The color of the vertex.
     /// </summary>

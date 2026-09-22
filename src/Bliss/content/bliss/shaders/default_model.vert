@@ -24,9 +24,11 @@ layout (location = 9) in vec4 iModel3;
 #endif
 
 layout (location = 0) out vec2 fTexCoords;
+layout (location = 1) out vec4 fColor;
 
 void main() {
     fTexCoords = vTexCoords;
+    fColor = vColor;
     
     #if USE_INSTANCING
     mat4x4 transformation = mat4x4(iModel0, iModel1, iModel2, iModel3);

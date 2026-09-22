@@ -261,7 +261,7 @@ public class Game : Disposable {
         
         this._customPoly = Mesh<Vertex3D>.GenPoly(this.GraphicsDevice, 40, 1);
         this._customPoly.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
-
+        
         this._customCube = Mesh<Vertex3D>.GenCube(this.GraphicsDevice, 1, 1, 1);
         this._customCube.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
 

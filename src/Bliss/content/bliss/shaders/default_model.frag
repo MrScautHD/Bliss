@@ -16,6 +16,7 @@ layout (set = 3, binding = 0) uniform texture2D fAlbedo;
 layout (set = 3, binding = 1) uniform sampler fAlbedoSampler;
 
 layout (location = 0) in vec2 fTexCoords;
+layout (location = 1) in vec4 fColor;
 
 layout (location = 0) out vec4 fFragColor;
 
@@ -38,5 +39,5 @@ void main() {
             break;
     }
     
-    fFragColor = texelColor * maps[0].color;
+    fFragColor = fColor * texelColor * maps[0].color;
 }
