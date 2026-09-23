@@ -192,7 +192,7 @@ public class Material : ICloneable {
             Logger.Warn($"Failed to set value for [{key}]. The map might not exist.");
         }
     }
-
+    
     /// <summary>
     /// Creates a new instance of the <see cref="Material"/> class that is a copy of the current instance.
     /// </summary>
