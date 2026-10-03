@@ -57,7 +57,7 @@ public static class GlobalResource {
     public static Effect DefaultModelEffect { get; private set; }
     
     /// <summary>
-    /// The instancing <see cref="Effect"/> used for rendering 3D models.
+    /// The skinned <see cref="Effect"/> used for rendering 3D models.
     /// </summary>
     public static Effect DefaultSkinnedModelEffect { get; private set; }
     
