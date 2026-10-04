@@ -340,7 +340,7 @@ public class Game : Disposable {
         this._cam3D.Begin(this.CommandList);
         
         // ImmediateRenderer BEGIN
-        this._immediateRenderer.Begin(commandList, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._immediateRenderer.Begin(commandList, this.FullScreenTexture.Framebuffer);
         
         // Draw with texture.
         this._immediateRenderer.PushTexture(this._customMeshTexture);
@@ -442,14 +442,14 @@ public class Game : Disposable {
             this._basicForwardRenderer.DrawRenderable(renderable);
         }
         
-        this._basicForwardRenderer.Draw(commandList, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._basicForwardRenderer.Draw(commandList, this.FullScreenTexture.Framebuffer);
         
         // DRAW FORWARD RENDERER (END)!
         
         this._cam3D.End();
         
         // SpriteBatch Drawing.
-        this._spriteBatch.Begin(commandList, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._spriteBatch.Begin(commandList, this.FullScreenTexture.Framebuffer);
         
         if (Input.IsKeyPressed(KeyboardKey.O)) {
             Input.EnableTextInput();
@@ -499,7 +499,7 @@ public class Game : Disposable {
         
         this._spriteBatch.End();
         
-        this._primitiveBatch.Begin(commandList, this.FullScreenTexture.Framebuffer.OutputDescription);
+        this._primitiveBatch.Begin(commandList, this.FullScreenTexture.Framebuffer);
         
         this._primitiveBatch.PushRasterizerState(this._primitiveBatch.GetCurrentRasterizerState() with { ScissorTestEnabled = true });
         this._primitiveBatch.PushScissorRect(new Rectangle(90, 90, 40, 80));
@@ -531,9 +531,9 @@ public class Game : Disposable {
         commandList.SetFramebuffer(graphicsDevice.SwapchainFramebuffer);
         commandList.ClearColorTarget(0, Color.DarkGray.ToRgbaFloat());
         
-        this.FullScreenRenderer.Draw(commandList, this.FullScreenResolvedTexture, this.GraphicsDevice.SwapchainFramebuffer.OutputDescription);
+        this.FullScreenRenderer.Draw(commandList, this.FullScreenResolvedTexture, this.GraphicsDevice.SwapchainFramebuffer);
         
-        this._imGuiController.Begin(commandList, this.GraphicsDevice.SwapchainFramebuffer.OutputDescription);
+        this._imGuiController.Begin(commandList, this.GraphicsDevice.SwapchainFramebuffer);
         
         ImGui.SetNextWindowPos(new Vector2(5.0F, 5.0F));
         ImGui.SetNextWindowSize(new Vector2(320.0F, 180.0F), ImGuiCond.FirstUseEver);

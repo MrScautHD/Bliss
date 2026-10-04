@@ -90,19 +90,19 @@ public class ImmediateRenderer : Disposable {
     private Effect _requestedEffect;
     
     /// <summary>
-    /// The main <see cref="OutputDescription"/>.
+    /// The main <see cref="Framebuffer"/>.
     /// </summary>
-    private OutputDescription _mainOutput;
+    private Framebuffer _mainFramebuffer;
     
     /// <summary>
-    /// The current <see cref="OutputDescription"/>.
+    /// The current <see cref="Framebuffer"/>.
     /// </summary>
-    private OutputDescription _currentOutput;
+    private Framebuffer _currentFramebuffer;
     
     /// <summary>
-    /// The requested <see cref="OutputDescription"/>.
+    /// The requested <see cref="Framebuffer"/>.
     /// </summary>
-    private OutputDescription _requestedOutput;
+    private Framebuffer _requestedFramebuffer;
     
     /// <summary>
     /// The main <see cref="BlendStateDescription"/>.
@@ -225,24 +225,24 @@ public class ImmediateRenderer : Disposable {
     }
     
     /// <summary>
-    /// Begins a new rendering session with the specified pipeline state.
+    /// Begins a new rendering session with the specified settings and pipeline state.
     /// </summary>
-    /// <param name="commandList">The command list used for issuing draw commands.</param>
-    /// <param name="output">The output description defining render targets.</param>
-    /// <param name="effect">Optional effect used for rendering.</param>
-    /// <param name="blendState">Optional blend state.</param>
-    /// <param name="depthStencilState">Optional depth-stencil state.</param>
-    /// <param name="rasterizerState">Optional rasterizer state.</param>
-    /// <param name="sampler">Optional texture sampler.</param>
-    /// <param name="sourceRect">Optional texture source rectangle.</param>
-    public void Begin(CommandList commandList, OutputDescription output, Effect? effect = null, BlendStateDescription? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Sampler? sampler = null, Rectangle? sourceRect = null) {
+    /// <param name="commandList">The command list used for issuing draw commands during the rendering session.</param>
+    /// <param name="framebuffer">The framebuffer that serves as the rendering target.</param>
+    /// <param name="effect">Optional effect to be used for rendering operations. If null, a default effect is applied.</param>
+    /// <param name="blendState">Optional blend state configuration. If null, a default blend state is used.</param>
+    /// <param name="depthStencilState">Optional depth-stencil state configuration. If null, a default depth-stencil state is used.</param>
+    /// <param name="rasterizerState">Optional rasterizer state configuration. If null, a default rasterizer state is applied.</param>
+    /// <param name="sampler">Optional texture sampler. If null, a default point-clamp sampler is used.</param>
+    /// <param name="sourceRect">Optional source rectangle defining the texture region to be used. If null, the entire texture is utilized.</param>
+    public void Begin(CommandList commandList, Framebuffer framebuffer, Effect? effect = null, BlendStateDescription? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Sampler? sampler = null, Rectangle? sourceRect = null) {
         if (this._begun) {
             throw new Exception("The ImmediateRenderer has already begun!");
         }
         
         this._begun = true;
         this._currentCommandList = commandList;
-        this._mainOutput = this._currentOutput = this._requestedOutput = output;
+        this._mainFramebuffer = this._currentFramebuffer = this._requestedFramebuffer = framebuffer;
         this._mainEffect = this._currentEffect = this._requestedEffect = effect ?? GlobalResource.DefaultImmediateRendererEffect;
         this._mainBlendState = this._currentBlendState = this._requestedBlendState = blendState ?? BlendStateDescription.SINGLE_DISABLED;
         this._mainDepthStencilState = this._currentDepthStencilState = this._requestedDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DEPTH_ONLY_LESS_EQUAL;
@@ -267,38 +267,40 @@ public class ImmediateRenderer : Disposable {
     }
     
     /// <summary>
-    /// Gets the currently active output description.
+    /// Retrieves the currently bound framebuffer associated with the <see cref="ImmediateRenderer"/> instance.
     /// </summary>
-    /// <returns>The current <see cref="OutputDescription"/>.</returns>
-    public OutputDescription GetCurrentOutput() {
+    /// <returns>The currently active <see cref="Framebuffer"/>. Throws an exception if the renderer has not been started.</returns>
+    public Framebuffer GetCurrentFramebuffer() {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
         }
         
-        return this._currentOutput;
+        return this._currentFramebuffer;
     }
     
     /// <summary>
-    /// Sets a new output description to be used for subsequent draw calls.
+    /// Sets the specified framebuffer to be used as the active rendering target.
     /// </summary>
-    /// <param name="output">The output description to apply.</param>
-    public void PushOutput(OutputDescription output) {
+    /// <param name="framebuffer">The framebuffer to set as the active rendering target.</param>
+    /// <exception cref="Exception">Thrown if the renderer has not been started by calling the <see cref="Begin"/> method.</exception
+    public void PushFramebuffer(Framebuffer framebuffer) {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
         }
         
-        this._requestedOutput = output;
+        this._requestedFramebuffer = framebuffer;
     }
     
     /// <summary>
-    /// Restores the default output description.
+    /// Restores the previously active framebuffer set by the <see cref="PushFramebuffer"/> method.
     /// </summary>
-    public void PopOutput() {
+    /// <exception cref="Exception">Thrown if the renderer has not been started by calling the <see cref="Begin"/> method.</exception>
+    public void PopFramebuffer() {
         if (!this._begun) {
             throw new Exception("The ImmediateRenderer has not begun yet!");
         }
         
-        this._requestedOutput = this._mainOutput;
+        this._requestedFramebuffer = this._mainFramebuffer;
     }
     
     /// <summary>
@@ -2330,7 +2332,7 @@ public class ImmediateRenderer : Disposable {
             throw new InvalidOperationException($"The number of provided indices exceeds the capacity! [{indexCount} > {this.Capacity * 3}]");
         }
         
-        bool stateChanged = !this._currentOutput.Equals(this._requestedOutput) ||
+        bool stateChanged = !this._currentFramebuffer.Equals(this._requestedFramebuffer) ||
                             this._currentEffect !=this._requestedEffect ||
                             !this._currentBlendState.Equals(this._requestedBlendState) ||
                             !this._currentDepthStencilState.Equals(this._requestedDepthStencilState) ||
@@ -2343,7 +2345,7 @@ public class ImmediateRenderer : Disposable {
             this.Flush();
         }
         
-        this._currentOutput = this._requestedOutput;
+        this._currentFramebuffer = this._requestedFramebuffer;
         this._currentEffect = this._requestedEffect;
         this._currentBlendState = this._requestedBlendState;
         this._currentDepthStencilState = this._requestedDepthStencilState;
@@ -2361,7 +2363,7 @@ public class ImmediateRenderer : Disposable {
         this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
         this._pipelineDescription.ShaderSet = new ShaderSetDescription(ImmediateVertex3D.VertexLayout.Layouts, this._currentEffect.Shaders);
         this._pipelineDescription.PrimitiveTopology = this._currentTopology;
-        this._pipelineDescription.Outputs = this._currentOutput;
+        this._pipelineDescription.Outputs = this._currentFramebuffer.OutputDescription;
         
         if (this._vertexCount + vertexCount > this._vertices.Length || this._indexCount + indexCount > this._indices.Length) {
             this.Flush();

@@ -46,17 +46,17 @@ public class FullScreenRenderer : Disposable {
     }
     
     /// <summary>
-    /// Executes the draw operation using the specified resources, rendering configurations, and GPU states.
+    /// Performs a full-screen rendering operation using the specified parameters for configuration.
     /// </summary>
-    /// <param name="commandList">The command list for issuing draw commands to the graphics device.</param>
-    /// <param name="texture">The texture used as the input or output target for rendering operations.</param>
-    /// <param name="output">The output description detailing the format and layout of render targets and depth-stencil buffers.</param>
-    /// <param name="effect">An optional shader effect utilized for rendering. A default effect is applied if none is specified.</param>
-    /// <param name="sampler">An optional sampler used for texture sampling in the rendering process. If not set, a default point sampler is used.</param>
-    /// <param name="blendState">An optional blend state configuration for blending operations. Defaults to alpha blending if not provided.</param>
-    /// <param name="depthStencilState">An optional depth-stencil state description to control depth and stencil testing. A disabled state is used by default.</param>
-    /// <param name="rasterizerState">An optional rasterizer state description to configure rasterization settings. Defaults to a standard rasterizer configuration if not specified.</param>
-    public void Draw(CommandList commandList, Texture2D texture, OutputDescription output, Effect? effect = null, Sampler? sampler = null, BlendStateDescription? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null) {
+    /// <param name="commandList">The command list used to record rendering commands.</param>
+    /// <param name="texture">The 2D texture to be rendered to the full-screen quad.</param>
+    /// <param name="framebuffer">The framebuffer used as the render target output.</param>
+    /// <param name="effect">The effect to apply during rendering. If null, a default effect is used.</param>
+    /// <param name="sampler">The sampler to use for texture sampling. If null, a default point-clamp sampler is used.</param>
+    /// <param name="blendState">The blend state description used for blending. If null, a default single alpha blend state is used.</param>
+    /// <param name="depthStencilState">The depth-stencil state description for depth and stencil testing. If null, depth-stencil testing is disabled.</param>
+    /// <param name="rasterizerState">The rasterizer state description for configuring rasterization. If null, a default state with no culling is used.</param>
+    public void Draw(CommandList commandList, Texture2D texture, Framebuffer framebuffer, Effect? effect = null, Sampler? sampler = null, BlendStateDescription? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null) {
         Effect finalEffect = effect ?? GlobalResource.DefaultFullScreenRenderPassEffect;
         Sampler finalSampler = sampler ?? GraphicsHelper.GetSampler(this.GraphicsDevice, SamplerType.PointClamp);
         BlendStateDescription finalBlendState = blendState ?? BlendStateDescription.SINGLE_ALPHA_BLEND;
@@ -70,7 +70,7 @@ public class FullScreenRenderer : Disposable {
         this._pipelineDescription.BufferLayouts = finalEffect.GetBufferLayouts();
         this._pipelineDescription.TextureLayouts = finalEffect.GetTextureLayouts();
         this._pipelineDescription.ShaderSet = new ShaderSetDescription(SpriteVertex2D.VertexLayout.Layouts, finalEffect.Shaders);
-        this._pipelineDescription.Outputs = output;
+        this._pipelineDescription.Outputs = framebuffer.OutputDescription;
         
         // Set vertex buffer.
         commandList.SetVertexBuffer(0, this._vertexBuffer);

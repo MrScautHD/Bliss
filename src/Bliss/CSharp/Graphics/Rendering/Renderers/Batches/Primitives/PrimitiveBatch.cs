@@ -71,19 +71,19 @@ public class PrimitiveBatch : Disposable {
     private CommandList _currentCommandList;
 
     /// <summary>
-    /// The main <see cref="OutputDescription"/>.
+    /// The main <see cref="Framebuffer"/>.
     /// </summary>
-    private OutputDescription _mainOutput;
+    private Framebuffer _mainFramebuffer;
     
     /// <summary>
-    /// The current <see cref="OutputDescription"/>.
+    /// The current <see cref="Framebuffer"/>.
     /// </summary>
-    private OutputDescription _currentOutput;
+    private Framebuffer _currentFramebuffer;
 
     /// <summary>
-    /// The requested <see cref="OutputDescription"/>.
+    /// The requested <see cref="Framebuffer"/>.
     /// </summary>
-    private OutputDescription _requestedOutput;
+    private Framebuffer _requestedFramebuffer;
     
     /// <summary>
     /// The main <see cref="Effect"/>.
@@ -218,7 +218,7 @@ public class PrimitiveBatch : Disposable {
     /// Begins a new batch of primitive drawing operations with specified rendering configurations.
     /// </summary>
     /// <param name="commandList">The command list to record drawing commands.</param>
-    /// <param name="output">The output description defining the render target configuration.</param>
+    /// <param name="framebuffer">The framebuffer to which the primitives will be rendered.</param>
     /// <param name="effect">Optional. The effect to use for rendering operations. Defaults to the global default primitive effect if not specified.</param>
     /// <param name="blendState">Optional. The blend state description used for rendering. Defaults to a single alpha blend if not specified.</param>
     /// <param name="depthStencilState">Optional. The depth stencil state description used for rendering. Defaults to disabled depth-stencil testing if not specified.</param>
@@ -227,14 +227,14 @@ public class PrimitiveBatch : Disposable {
     /// <param name="view">Optional. The view matrix for the rendering. Defaults to the identity matrix if not specified.</param>
     /// <param name="scissorRect">An optional <see cref="Rectangle"/> that defines the scissor rectangle for rendering. No scissor rect is applied if not specified.</param>
     /// <exception cref="Exception">Thrown when the method is called before the previous batch has been properly ended.</exception>
-    public void Begin(CommandList commandList, OutputDescription output, Effect? effect = null, BlendStateDescription? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Matrix4x4? projection = null, Matrix4x4? view = null, Rectangle? scissorRect = null) {
+    public void Begin(CommandList commandList, Framebuffer framebuffer, Effect? effect = null, BlendStateDescription? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Matrix4x4? projection = null, Matrix4x4? view = null, Rectangle? scissorRect = null) {
         if (this._begun) {
             throw new Exception("The PrimitiveBatch has already begun!");
         }
         
         this._begun = true;
         this._currentCommandList = commandList;
-        this._mainOutput = this._currentOutput = this._requestedOutput = output;
+        this._mainFramebuffer = this._currentFramebuffer = this._requestedFramebuffer = framebuffer;
         this._mainEffect = this._currentEffect = this._requestedEffect = effect ?? GlobalResource.DefaultPrimitiveEffect;
         this._mainBlendState = this._currentBlendState = this._requestedBlendState = blendState ?? BlendStateDescription.SINGLE_ALPHA_BLEND;
         this._mainDepthStencilState = this._currentDepthStencilState = this._requestedDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DEPTH_ONLY_LESS_EQUAL;
@@ -260,43 +260,43 @@ public class PrimitiveBatch : Disposable {
     }
     
     /// <summary>
-    /// Retrieves the current output description for the primitive batch.
+    /// Gets the current framebuffer being used by the primitive batch.
     /// </summary>
-    /// <returns>The current <see cref="OutputDescription"/> associated with the batch.</returns>
-    /// <exception cref="Exception">Thrown if the <see cref="PrimitiveBatch"/> has not begun.</exception>  
-    public OutputDescription GetCurrentOutput() {
+    /// <returns>The current <see cref="Framebuffer"/> associated with the batch.</returns>
+    /// <exception cref="Exception">Thrown if the <see cref="PrimitiveBatch"/> has not been started with a call to <see cref="Begin"/>.</exception>
+    public Framebuffer GetCurrentFramebuffer() {
         if (!this._begun) {
             throw new Exception("The PrimitiveBatch has not begun yet!");
         }
-
-        return this._currentOutput;
+        
+        return this._currentFramebuffer;
     }
     
     /// <summary>
-    /// Push the requested <see cref="OutputDescription"/> for the <see cref="PrimitiveBatch"/>.
+    /// Pushes the specified framebuffer to the <see cref="PrimitiveBatch"/> for rendering operations.
     /// </summary>
-    /// <param name="output">The <see cref="OutputDescription"/> to apply for rendering.</param>
-    /// <exception cref="Exception">Thrown if the <see cref="PrimitiveBatch"/> has not begun.</exception>
-    public void PushOutput(OutputDescription output) {
+    /// <param name="framebuffer">The framebuffer to use for rendering.</param>
+    /// <exception cref="Exception">Thrown if the <see cref="PrimitiveBatch"/> has not been started with a call to <see cref="Begin"/>.</exception>
+    public void PushFramebuffer(Framebuffer framebuffer) {
         if (!this._begun) {
             throw new Exception("The PrimitiveBatch has not begun yet!");
         }
-
-        this._requestedOutput = output;
+        
+        this._requestedFramebuffer = framebuffer;
     }
     
     /// <summary>
-    /// Pop the output of the <see cref="OutputDescription"/> for the <see cref="PrimitiveBatch"/>.
+    /// Restores the framebuffer of the PrimitiveBatch to the previously set framebuffer prior to the last push operation.
     /// </summary>
-    /// <exception cref="Exception">Thrown if the <see cref="PrimitiveBatch"/> has not begun.</exception>
-    public void PopOutput() {
+    /// <exception cref="Exception">Thrown if the PrimitiveBatch has not been started using the Begin method.</exception>
+    public void PopFramebuffer() {
         if (!this._begun) {
             throw new Exception("The PrimitiveBatch has not begun yet!");
         }
-
-        this._requestedOutput = this._mainOutput;
+        
+        this._requestedFramebuffer = this._mainFramebuffer;
     }
-
+    
     /// <summary>
     /// Retrieves the currently active effect for the PrimitiveBatch.
     /// </summary>
@@ -1315,7 +1315,7 @@ public class PrimitiveBatch : Disposable {
             throw new InvalidOperationException($"The number of provided vertices exceeds the capacity! [{vertexCount} > {this.Capacity}]");
         }
         
-        bool stateChanged = !this._currentOutput.Equals(this._requestedOutput) ||
+        bool stateChanged = !this._currentFramebuffer.Equals(this._requestedFramebuffer) ||
                             this._currentEffect != this._requestedEffect ||
                             !this._currentBlendState.Equals(this._requestedBlendState) ||
                             !this._currentDepthStencilState.Equals(this._requestedDepthStencilState) ||
@@ -1328,7 +1328,7 @@ public class PrimitiveBatch : Disposable {
             this.Flush();
         }
         
-        this._currentOutput = this._requestedOutput;
+        this._currentFramebuffer = this._requestedFramebuffer;
         this._currentEffect = this._requestedEffect;
         this._currentBlendState = this._requestedBlendState;
         this._currentDepthStencilState = this._requestedDepthStencilState;
@@ -1344,7 +1344,7 @@ public class PrimitiveBatch : Disposable {
         this._pipelineDescription.BufferLayouts = this._currentEffect.GetBufferLayouts();
         this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
         this._pipelineDescription.ShaderSet = new ShaderSetDescription(PrimitiveVertex2D.VertexLayout.Layouts, this._currentEffect.Shaders);
-        this._pipelineDescription.Outputs = this._currentOutput;
+        this._pipelineDescription.Outputs = this._currentFramebuffer.OutputDescription;
         
         if (this._vertexCount + vertexCount > this._vertices.Length) {
             this.Flush();

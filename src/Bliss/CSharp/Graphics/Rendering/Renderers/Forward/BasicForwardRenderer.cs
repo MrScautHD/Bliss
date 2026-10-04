@@ -65,20 +65,20 @@ public class BasicForwardRenderer : Disposable, IRenderer {
     /// Executes the rendering process for drawing opaque and translucent renderable objects.
     /// </summary>
     /// <param name="commandList">The command list used to execute rendering commands.</param>
-    /// <param name="output">The output description specifying the rendering target configuration.</param>
-    public void Draw(CommandList commandList, OutputDescription output) {
+    /// <param name="framebuffer">The framebuffer defining the rendering target and its properties.</param>
+    public void Draw(CommandList commandList, Framebuffer framebuffer) {
         Cam3D? cam3D = Cam3D.ActiveCamera;
-        
+
         if (cam3D == null) {
             return;
         }
-        
+
         // Order renderables.
         this._opaqueRenderables.Sort((a, b) => Vector3.DistanceSquared(a.GetTransforms()[0].Translation, cam3D.Position).CompareTo(Vector3.DistanceSquared(b.GetTransforms()[0].Translation, cam3D.Position)));
         this._translucentRenderables.Sort((a, b) => Vector3.DistanceSquared(b.GetTransforms()[0].Translation, cam3D.Position).CompareTo(Vector3.DistanceSquared(a.GetTransforms()[0].Translation, cam3D.Position)));
         
         // Set the pipeline output.
-        this._pipelineDescription.Outputs = output;
+        this._pipelineDescription.Outputs = framebuffer.OutputDescription;
         
         // Update opaques renderable buffers.
         foreach (Renderable renderable in this._opaqueRenderables) {

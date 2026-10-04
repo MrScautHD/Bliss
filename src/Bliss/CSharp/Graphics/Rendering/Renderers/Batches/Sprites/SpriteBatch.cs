@@ -110,20 +110,20 @@ public class SpriteBatch : Disposable {
     private CommandList _currentCommandList;
     
     /// <summary>
-    /// The main <see cref="OutputDescription"/>.
+    /// The main <see cref="Framebuffer"/>.
     /// </summary>
-    private OutputDescription _mainOutput;
+    private Framebuffer _mainFramebuffer;
     
     /// <summary>
-    /// The current <see cref="OutputDescription"/>.
+    /// The current <see cref="Framebuffer"/>.
     /// </summary>
-    private OutputDescription _currentOutput;
+    private Framebuffer _currentFramebuffer;
     
     /// <summary>
-    /// The requested <see cref="OutputDescription"/>.
+    /// The requested <see cref="Framebuffer"/>.
     /// </summary>
-    private OutputDescription _requestedOutput;
-
+    private Framebuffer _requestedFramebuffer;
+    
     /// <summary>
     /// The main <see cref="Effect"/>.
     /// </summary>
@@ -300,12 +300,12 @@ public class SpriteBatch : Disposable {
             PrimitiveTopology = PrimitiveTopology.TriangleList
         };
     }
-
+    
     /// <summary>
     /// Begins a sprite batch operation, initializing the specified settings for rendering.
     /// </summary>
     /// <param name="commandList">The <see cref="CommandList"/> to which rendering commands will be submitted.</param>
-    /// <param name="output">The <see cref="OutputDescription"/> that defines the render target and its properties.</param>
+    /// <param name="framebuffer">The <see cref="Framebuffer"/> used as the target for rendering.</param>
     /// <param name="sampler">An optional <see cref="Sampler"/> object used for texture sampling. Defaults to a point sampler if not specified.</param>
     /// <param name="effect">An optional <see cref="Effect"/> to apply during rendering. Defaults to the global default sprite effect if not specified.</param>
     /// <param name="blendState">An optional <see cref="BlendStateDescription"/> for configuring blend state. Defaults to single alpha blending if not specified.</param>
@@ -315,14 +315,14 @@ public class SpriteBatch : Disposable {
     /// <param name="view">An optional <see cref="Matrix4x4"/> for the view matrix. Defaults to the identity matrix if not specified.</param>
     /// <param name="scissorRect">An optional <see cref="Rectangle"/> that defines the scissor rectangle for rendering. No scissor rect is applied if not specified.</param>
     /// <exception cref="Exception">Thrown when the method is called before the previous batch has been properly ended.</exception>
-    public void Begin(CommandList commandList, OutputDescription output, Sampler? sampler = null, Effect? effect = null, BlendStateDescription? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Matrix4x4? projection = null, Matrix4x4? view = null, Rectangle? scissorRect = null) {
+    public void Begin(CommandList commandList, Framebuffer framebuffer, Sampler? sampler = null, Effect? effect = null, BlendStateDescription? blendState = null, DepthStencilStateDescription? depthStencilState = null, RasterizerStateDescription? rasterizerState = null, Matrix4x4? projection = null, Matrix4x4? view = null, Rectangle? scissorRect = null) {
         if (this._begun) {
             throw new Exception("The SpriteBatch has already begun!");
         }
         
         this._begun = true;
         this._currentCommandList = commandList;
-        this._mainOutput = this._currentOutput = this._requestedOutput = output;
+        this._mainFramebuffer = this._currentFramebuffer = this._requestedFramebuffer = framebuffer;
         this._mainEffect = this._currentEffect = this._requestedEffect = effect ?? GlobalResource.DefaultSpriteEffect;
         this._mainBlendState = this._currentBlendState = this._requestedBlendState = blendState ?? BlendStateDescription.SINGLE_ALPHA_BLEND;
         this._mainDepthStencilState = this._currentDepthStencilState = this._requestedDepthStencilState = depthStencilState ?? DepthStencilStateDescription.DEPTH_ONLY_LESS_EQUAL;
@@ -348,45 +348,45 @@ public class SpriteBatch : Disposable {
         this.Flush();
         this._begun = false;
     }
-
+    
     /// <summary>
-    /// Retrieves the current <see cref="OutputDescription"/> being used by the <see cref="SpriteBatch"/>.
+    /// Gets the current framebuffer being used by the sprite batch.
     /// </summary>
-    /// <returns>The <see cref="OutputDescription"/> currently associated with the <see cref="SpriteBatch"/>.</returns>
-    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
-    public OutputDescription GetCurrentOutput() {
+    /// <returns>The current <see cref="Framebuffer"/> associated with the batch.</returns>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not been started with a call to <see cref="Begin"/>.</exception>
+    public Framebuffer GetCurrentFramebuffer() {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
         }
-
-        return this._currentOutput;
+        
+        return this._currentFramebuffer;
     }
-
+    
     /// <summary>
-    /// Push the requested <see cref="OutputDescription"/> for the <see cref="SpriteBatch"/>.
+    /// Pushes the specified framebuffer to the <see cref="SpriteBatch"/> for rendering operations.
     /// </summary>
-    /// <param name="output">The <see cref="OutputDescription"/> to apply for rendering.</param>
-    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
-    public void PushOutput(OutputDescription output) {
+    /// <param name="framebuffer">The framebuffer to use for rendering.</param>
+    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not been started with a call to <see cref="Begin"/>.</exception>
+    public void PushFramebuffer(Framebuffer framebuffer) {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
         }
-
-        this._requestedOutput = output;
+        
+        this._requestedFramebuffer = framebuffer;
     }
-
+    
     /// <summary>
-    /// Pop the output of the <see cref="OutputDescription"/> for the <see cref="SpriteBatch"/>.
+    /// Restores the framebuffer of the SpriteBatch to the previously set framebuffer prior to the last push operation.
     /// </summary>
-    /// <exception cref="Exception">Thrown if the <see cref="SpriteBatch"/> has not begun.</exception>
-    public void PopOutput() {
+    /// <exception cref="Exception">Thrown if the SpriteBatch has not been started using the Begin method.</exception>
+    public void PopFramebuffer() {
         if (!this._begun) {
             throw new Exception("The SpriteBatch has not begun yet!");
         }
-
-        this._requestedOutput = this._mainOutput;
+        
+        this._requestedFramebuffer = this._mainFramebuffer;
     }
-
+    
     /// <summary>
     /// Retrieves the current <see cref="Effect"/> being used by the <see cref="SpriteBatch"/>.
     /// </summary>
@@ -809,7 +809,7 @@ public class SpriteBatch : Disposable {
         }
         
         
-        bool stateChanged = !this._currentOutput.Equals(this._requestedOutput) ||
+        bool stateChanged = !this._currentFramebuffer.Equals(this._requestedFramebuffer) ||
                             this._currentEffect != this._requestedEffect ||
                             !this._currentBlendState.Equals(this._requestedBlendState) ||
                             !this._currentDepthStencilState.Equals(this._requestedDepthStencilState) ||
@@ -824,7 +824,7 @@ public class SpriteBatch : Disposable {
             this.Flush();
         }
         
-        this._currentOutput = this._requestedOutput;
+        this._currentFramebuffer = this._requestedFramebuffer;
         this._currentEffect = this._requestedEffect;
         this._currentBlendState = this._requestedBlendState;
         this._currentDepthStencilState = this._requestedDepthStencilState;
@@ -842,7 +842,7 @@ public class SpriteBatch : Disposable {
         this._pipelineDescription.BufferLayouts = this._currentEffect.GetBufferLayouts();
         this._pipelineDescription.TextureLayouts = this._currentEffect.GetTextureLayouts();
         this._pipelineDescription.ShaderSet = new ShaderSetDescription(SpriteVertex2D.VertexLayout.Layouts, this._currentEffect.Shaders);
-        this._pipelineDescription.Outputs = this._currentOutput;
+        this._pipelineDescription.Outputs = this._currentFramebuffer.OutputDescription;
         
         if (this._currentBatchCount >= this.Capacity) {
             this.Flush();

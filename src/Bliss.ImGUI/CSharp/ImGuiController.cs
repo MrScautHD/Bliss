@@ -82,9 +82,9 @@ public class ImGuiController : Disposable {
     private CommandList _commandList;
     
     /// <summary>
-    /// The output description defining the render target the current frame is drawn into.
+    /// The framebuffer used as the output target for rendering operations.
     /// </summary>
-    private OutputDescription _output;
+    private Framebuffer _framebuffer;
     
     /// <summary>
     /// The effect providing the shaders and resource layouts used to render ImGui draw data.
@@ -200,13 +200,13 @@ public class ImGuiController : Disposable {
         this.Window.KeyUp += this.OnKeyUp;
         this.Window.TextInput += this.OnTextInput;
     }
-    
+
     /// <summary>
-    /// Prepares the ImGui frame by initializing the necessary command list and output description.
+    /// Prepares the ImGui frame by initializing the command list and framebuffer for rendering.
     /// </summary>
     /// <param name="commandList">The command list used for rendering ImGui frames.</param>
-    /// <param name="output">The output description defining the target rendering context.</param>
-    public void Begin(CommandList commandList, OutputDescription output) {
+    /// <param name="framebuffer">The framebuffer representing the target rendering surface.</param>
+    public void Begin(CommandList commandList, Framebuffer framebuffer) {
         if (this._begun) {
             throw new Exception("The ImGuiController has already begun!");
         }
@@ -214,7 +214,7 @@ public class ImGuiController : Disposable {
         this._begun = true;
         
         this._commandList = commandList;
-        this._output = output;
+        this._framebuffer = framebuffer;
         
         this.UpdateIo();
         ImGui.NewFrame();
@@ -290,7 +290,7 @@ public class ImGuiController : Disposable {
         this._projViewBuffer.UpdateBufferDeferred(this._commandList);
         
         // Update pipeline description.
-        this._pipelineDescription.Outputs = this._output;
+        this._pipelineDescription.Outputs = this._framebuffer.OutputDescription;
         
         int vertexOffset = 0;
         uint indexOffset = 0;
