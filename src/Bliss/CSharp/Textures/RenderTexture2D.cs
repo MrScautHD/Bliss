@@ -94,15 +94,6 @@ public class RenderTexture2D : Disposable {
     }
     
     /// <summary>
-    /// Creates a framebuffer with depth and color textures based on the specified width, height, and sample count.
-    /// </summary>
-    public void CreateFrameBuffer() {
-        this.ColorTexture = this.GraphicsDevice.ResourceFactory.CreateTexture(new TextureDescription(this.Width, this.Height, 1, 1, 1, this.Format, TextureUsage.RenderTarget | TextureUsage.Sampled, TextureType.Texture2D, this._sampleCount));
-        this.DepthTexture = this.GraphicsDevice.ResourceFactory.CreateTexture(new TextureDescription(this.Width, this.Height, 1, 1, 1, PixelFormat.D32FloatS8UInt, TextureUsage.DepthStencil | TextureUsage.Sampled, TextureType.Texture2D, this._sampleCount));
-        this.Framebuffer = this.GraphicsDevice.ResourceFactory.CreateFramebuffer(new FramebufferDescription(this.DepthTexture, this.ColorTexture));
-    }
-    
-    /// <summary>
     /// Resizes the render textures and framebuffer to the new specified width and height.
     /// </summary>
     /// <param name="width">The new width of the render texture.</param>
@@ -169,8 +160,16 @@ public class RenderTexture2D : Disposable {
     }
     
     /// <summary>
-    /// Releases the resources allocated for the depth, color, and destination textures, as well as the framebuffer.
-    /// Also clears any cached resource sets to ensure no references to disposed resources remain.
+    /// Creates a framebuffer with depth and color textures based on the specified width, height, and sample count.
+    /// </summary>
+    private void CreateFrameBuffer() {
+        this.ColorTexture = this.GraphicsDevice.ResourceFactory.CreateTexture(new TextureDescription(this.Width, this.Height, 1, 1, 1, this.Format, TextureUsage.RenderTarget | TextureUsage.Sampled, TextureType.Texture2D, this._sampleCount));
+        this.DepthTexture = this.GraphicsDevice.ResourceFactory.CreateTexture(new TextureDescription(this.Width, this.Height, 1, 1, 1, PixelFormat.D32FloatS8UInt, TextureUsage.DepthStencil | TextureUsage.Sampled, TextureType.Texture2D, this._sampleCount));
+        this.Framebuffer = this.GraphicsDevice.ResourceFactory.CreateFramebuffer(new FramebufferDescription(this.DepthTexture, this.ColorTexture));
+    }
+    
+    /// <summary>
+    /// Releases the resources allocated.
     /// </summary>
     private void ClearResources() {
         this.ColorTexture.Dispose();
