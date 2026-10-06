@@ -5,6 +5,11 @@ namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward;
 public interface IRenderer : IDisposable {
     
     /// <summary>
+    /// Gets or sets the skybox used for rendering the background environment in a 3D scene.
+    /// </summary>
+    SkyBox? SkyBox { get; set; }
+    
+    /// <summary>
     /// Draws the specified <see cref="Renderable"/> object using the renderer’s internal pipeline and state.
     /// </summary>
     /// <param name="renderable">The renderable object to be drawn.</param>

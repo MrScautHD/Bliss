@@ -62,6 +62,11 @@ public static class GlobalResource {
     public static Effect DefaultSkinnedModelEffect { get; private set; }
     
     /// <summary>
+    /// Gets the <see cref="Effect"/> used for rendering skyboxes in 3D environments.
+    /// </summary>
+    public static Effect SkyboxEffect { get; private set; }
+    
+    /// <summary>
     /// The default <see cref="Texture2D"/> used for immediate mode rendering.
     /// </summary>
     public static Texture2D DefaultImmediateRendererTexture { get; private set; }
@@ -145,6 +150,11 @@ public static class GlobalResource {
         DefaultSkinnedModelEffect.AddBufferLayout("MaterialBuffer", 3, SimpleBufferType.Uniform, ShaderStages.Fragment);
         DefaultSkinnedModelEffect.AddTextureLayout(MaterialMapType.Albedo.GetName(), 4);
         
+        // Skybox effect.
+        SkyboxEffect = new Effect(GraphicsDevice, "content/bliss/shaders/skybox.vert", "content/bliss/shaders/skybox.frag", new CrossCompileOptions());
+        SkyboxEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        SkyboxEffect.AddTextureLayout("fCubemap", 1);
+        
         // Default immediate renderer texture.
         DefaultImmediateRendererTexture = new Texture2D(graphicsDevice, new Image(1, 1, Color.White));
         
@@ -165,6 +175,7 @@ public static class GlobalResource {
         DefaultImmediateRendererEffect.Dispose();
         DefaultModelEffect.Dispose();
         DefaultSkinnedModelEffect.Dispose();
+        SkyboxEffect.Dispose();
         DefaultImmediateRendererTexture.Dispose();
         DefaultModelTexture.Dispose();
     }

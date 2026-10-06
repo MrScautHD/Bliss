@@ -16,6 +16,11 @@ public class BasicForwardRenderer : Disposable, IRenderer {
     public GraphicsDevice GraphicsDevice { get; private set; }
     
     /// <summary>
+    /// Gets or sets the skybox used for rendering the background environment in a 3D scene.
+    /// </summary>
+    public SkyBox? SkyBox { get; set; }
+    
+    /// <summary>
     /// List of opaque renderables waiting to be drawn.
     /// </summary>
     private List<Renderable> _opaqueRenderables;
@@ -33,9 +38,11 @@ public class BasicForwardRenderer : Disposable, IRenderer {
     /// <summary>
     /// Represents a basic forward renderer that handles rendering operations using a forward rendering pipeline.
     /// </summary>
-    /// <param name="graphicsDevice">The graphics device used for rendering operations and resource management.</param>
-    public BasicForwardRenderer(GraphicsDevice graphicsDevice) {
+    /// <param name="graphicsDevice">The graphics device responsible for rendering operations and resource management.</param>
+    /// <param name="skyBox">An optional skybox instance used to render the background of the scene.</param>
+    public BasicForwardRenderer(GraphicsDevice graphicsDevice, SkyBox? skyBox = null) {
         this.GraphicsDevice = graphicsDevice;
+        this.SkyBox = skyBox;
         
         // Create lists for renderables.
         this._opaqueRenderables = new List<Renderable>();
@@ -47,7 +54,7 @@ public class BasicForwardRenderer : Disposable, IRenderer {
             PrimitiveTopology = PrimitiveTopology.TriangleList
         };
     }
-    
+
     /// <summary>
     /// Queues a renderable for drawing.
     /// </summary>
@@ -72,7 +79,10 @@ public class BasicForwardRenderer : Disposable, IRenderer {
         if (cam3D == null) {
             return;
         }
-
+        
+        // Draw Skybox.
+        this.SkyBox?.Draw(commandList, framebuffer);
+        
         // Order renderables.
         this._opaqueRenderables.Sort((a, b) => Vector3.DistanceSquared(a.GetTransforms()[0].Translation, cam3D.Position).CompareTo(Vector3.DistanceSquared(b.GetTransforms()[0].Translation, cam3D.Position)));
         this._translucentRenderables.Sort((a, b) => Vector3.DistanceSquared(b.GetTransforms()[0].Translation, cam3D.Position).CompareTo(Vector3.DistanceSquared(a.GetTransforms()[0].Translation, cam3D.Position)));
