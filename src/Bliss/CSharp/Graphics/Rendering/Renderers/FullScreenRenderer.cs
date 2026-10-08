@@ -20,7 +20,7 @@ public class FullScreenRenderer : Disposable {
     /// The vertex buffer that stores the vertex data for rendering a full-screen quad.
     /// </summary>
     private DeviceBuffer _vertexBuffer;
-
+    
     /// <summary>
     /// Represents the configuration details for creating and managing a simple graphics pipeline.
     /// </summary>

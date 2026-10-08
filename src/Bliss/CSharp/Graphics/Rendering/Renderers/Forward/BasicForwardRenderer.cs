@@ -21,6 +21,21 @@ public class BasicForwardRenderer : Disposable, IRenderer {
     public SkyBox? SkyBox { get; set; }
     
     /// <summary>
+    /// Occurs after the skybox/background was rendered and before opaque geometry is rendered.
+    /// </summary>
+    public event Action<CommandList, Framebuffer>? BeforeOpaquePass;
+    
+    /// <summary>
+    /// Occurs after opaque geometry was rendered and before translucent geometry is rendered.
+    /// </summary>
+    public event Action<CommandList, Framebuffer>? AfterOpaquePass;
+    
+    /// <summary>
+    /// Occurs after translucent geometry was rendered and before renderer-internal fullscreen passes.
+    /// </summary>
+    public event Action<CommandList, Framebuffer>? AfterTranslucentPass;
+    
+    /// <summary>
     /// List of opaque renderables waiting to be drawn.
     /// </summary>
     private List<Renderable> _opaqueRenderables;
@@ -100,15 +115,21 @@ public class BasicForwardRenderer : Disposable, IRenderer {
             this.UpdateRenderableBuffer(commandList, renderable);
         }
         
+        this.BeforeOpaquePass?.Invoke(commandList, framebuffer);
+        
         // Draw opaques renderables.
         foreach (Renderable renderable in this._opaqueRenderables) {
             this.DrawPreparedRenderable(commandList, cam3D, renderable);
         }
         
+        this.AfterOpaquePass?.Invoke(commandList, framebuffer);
+        
         // Draw translucent renderables.
         foreach (Renderable renderable in this._translucentRenderables) {
             this.DrawPreparedRenderable(commandList, cam3D, renderable);
         }
+        
+        this.AfterTranslucentPass?.Invoke(commandList, framebuffer);
         
         // Clean up.
         this._opaqueRenderables.Clear();
