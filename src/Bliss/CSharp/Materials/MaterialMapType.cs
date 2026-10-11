@@ -41,6 +41,12 @@ public enum MaterialMapType {
     Emission,
     
     /// <summary>
+    /// Emission map, which defines areas of the material that emit light.
+    /// </summary>
+    [EnumMember(Value = "fReflection")]
+    Reflection,
+    
+    /// <summary>
     /// Opacity map, which defines the transparency levels of the material.
     /// </summary>
     [EnumMember(Value = "fOpacity")]

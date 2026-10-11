@@ -209,7 +209,16 @@ public class Model : Disposable {
                 if (aMaterial.HasTextureEmissive || aMaterial.HasColorEmissive) {
                     material.AddMaterialMap(MaterialMapType.Emission, 5, new MaterialMap() {
                         Texture = aMaterial.HasTextureEmissive ? LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Emissive) : null,
-                        Color = aMaterial.HasColorEmissive ? new Color(new RgbaFloat(aMaterial.ColorEmissive)) : Color.Black,
+                        Color = aMaterial.HasColorEmissive ? new Color(new RgbaFloat(aMaterial.ColorEmissive)) : Color.Black
+                    });
+                }
+                
+                // Reflection map.
+                if (aMaterial.HasTextureReflection || aMaterial.HasColorReflective || aMaterial.HasReflectivity) {
+                    material.AddMaterialMap(MaterialMapType.Reflection, 6, new MaterialMap() {
+                        Texture = aMaterial.HasTextureReflection ? LoadMaterialTexture(graphicsDevice, cachedTextures, scene, aMaterial, path, TextureType.Reflection) : null,
+                        Color = aMaterial.HasColorReflective ? new Color(new RgbaFloat(aMaterial.ColorReflective)) : Color.White,
+                        Value = aMaterial.Reflectivity
                     });
                 }
                 
