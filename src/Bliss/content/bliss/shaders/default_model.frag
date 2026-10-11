@@ -7,7 +7,7 @@ struct MaterialMap {
     float value;
 };
 
-layout(std140, set = 2, binding = 0) uniform MaterialBuffer {
+layout (std140, set = 2, binding = 0) uniform MaterialBuffer {
     int renderMode;
     MaterialMap maps[MAX_MAPS_COUNT];
 };

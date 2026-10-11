@@ -1,6 +1,6 @@
 #version 450
 
-layout(std140, set = 0, binding = 0) uniform MatrixBuffer {
+layout (std140, set = 0, binding = 0) uniform MatrixBuffer {
     mat4x4 uProjection;
     mat4x4 uView;
 };
