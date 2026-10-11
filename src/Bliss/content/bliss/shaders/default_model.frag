@@ -1,6 +1,6 @@
 #version 450
 
-#define MAX_MAPS_COUNT 8
+#define MAX_MAPS_COUNT 12
 
 struct MaterialMap {
     vec4 color;

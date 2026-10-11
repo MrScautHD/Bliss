@@ -9,7 +9,7 @@ public struct MaterialData {
     /// <summary>
     /// The maximum number of material maps supported per material.
     /// </summary>
-    public const int MaxMaterialMapCount = 8;
+    public const int MaxMaterialMapCount = 12;
     
     /// <summary>
     /// The render mode of the material stored as an integer.
