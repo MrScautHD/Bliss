@@ -93,13 +93,13 @@ public class Cubemap : Disposable {
     public Cubemap(GraphicsDevice graphicsDevice, Image image, CubemapLayout layout = CubemapLayout.AutoDetect, bool mipmap = true, bool srgb = false) {
         this.GraphicsDevice = graphicsDevice;
         this.Images = new Image[6][];
-
+        
         Image[] cubemapFaces = CubemapHelper.GenCubemapImages(image, layout);
-    
+        
         for (int i = 0; i < 6; i++) {
             this.Images[i] = mipmap ? MipmapHelper.GenerateMipmaps(cubemapFaces[i]) : [cubemapFaces[i]];
         }
-    
+        
         this.Format = srgb ? PixelFormat.R8G8B8A8UNormSRgb : PixelFormat.R8G8B8A8UNorm;
         this.CreateDeviceTexture();
         this._cachedResourceSets = new Dictionary<(Sampler, SimpleTextureLayout), ResourceSet>();

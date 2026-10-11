@@ -95,12 +95,14 @@ public class SkyBox : Disposable {
         uint vertexBufferSize = (uint) Marshal.SizeOf<CubemapVertex3D>() * 8;
         this._vertices = this.GenVertices();
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
+        this._vertexBuffer.Name = "VertexBuffer";
         graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this._vertices);
         
         // Create index buffer.
         uint indexBufferSize = sizeof(uint) * 36;
         this._indices = this.GenIndices();
         this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
+        this._indexBuffer.Name = "IndexBuffer";
         graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this._indices);
         
         // Create pipeline.
