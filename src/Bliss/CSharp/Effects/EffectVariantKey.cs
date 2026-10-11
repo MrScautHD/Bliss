@@ -25,6 +25,15 @@ public readonly struct EffectVariantKey : IEquatable<EffectVariantKey> {
     }
     
     /// <summary>
+    /// Determines whether this key represents the given macro combination, without creating a new key.
+    /// </summary>
+    /// <param name="macros">The additional macro names to compare against.</param>
+    /// <returns><see langword="true"/> if the macro names are identical and in the same order; otherwise, <see langword="false"/>.</returns>
+    public bool Matches(ReadOnlySpan<string> macros) {
+        return this._macros.AsSpan().SequenceEqual(macros);
+    }
+    
+    /// <summary>
     /// Determines whether the current key is equal to another key by comparing macro names.
     /// </summary>
     /// <param name="other">The key to compare against.</param>

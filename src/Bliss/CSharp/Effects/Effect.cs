@@ -184,16 +184,16 @@ public class Effect : Disposable {
     /// <param name="macros">The list of preprocessor macro definitions used to compile the effect variant.</param>
     /// <returns>An <see cref="EffectVariant"/> instance created or retrieved from the cache.</returns>
     /// <exception cref="InvalidOperationException">Thrown when the effect is not based on GLSL source code.</exception>
-    public EffectVariant GetEffectVariant(string[] macros) {
+    public EffectVariant GetEffectVariant(ReadOnlySpan<string> macros) {
         if (this._vertText == null || this._fragText == null) {
             throw new InvalidOperationException("Effect variants can only be created from GLSL source-based effects.");
         }
         
         // Check cache.
-        EffectVariantKey key = new EffectVariantKey(this.Macros, macros);
-        
-        if (this._cachedVariants.TryGetValue(key, out EffectVariant? cachedVariant)) {
-            return cachedVariant;
+        foreach ((EffectVariantKey cachedKey, EffectVariant cachedVariant) in this._cachedVariants) {
+            if (cachedKey.Matches(macros)) {
+                return cachedVariant;
+            }
         }
         
         // Build compiled effect macros.
@@ -221,6 +221,7 @@ public class Effect : Disposable {
         }
         
         // Cache and return.
+        EffectVariantKey key = new EffectVariantKey(this.Macros, macros.ToArray());
         EffectVariant variant = new EffectVariant(this, compiledEffect);
         this._cachedVariants.Add(key, variant);
         return variant;
