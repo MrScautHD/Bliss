@@ -250,7 +250,7 @@ public class SimpleStructuredBuffer<THeader, TElement> : Disposable, ISimpleBuff
         
         this.ElementData[index] = value;
         
-        uint headerSizeInBytes = (uint) (this.ElementDataSize * Marshal.SizeOf<THeader>());
+        uint headerSizeInBytes = (uint) (this.HeaderDataSize * Marshal.SizeOf<THeader>());
         uint elementOffsetInBytes = (uint) (index * Marshal.SizeOf<TElement>());
         uint totalBufferOffsetInBytes = headerSizeInBytes + elementOffsetInBytes;
         commandList.UpdateBuffer(this.DeviceBuffer, totalBufferOffsetInBytes, ref this.ElementData[index]);

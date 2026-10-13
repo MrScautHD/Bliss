@@ -13,7 +13,7 @@ public class EffectVariant : Disposable {
     public Effect Effect { get; private set; }
     
     /// <summary>
-    /// Initializes a new <see cref="EffectVariant"/> with the specified parent effect, compiled effect, and cache key.
+    /// Initializes a new <see cref="EffectVariant"/> class.
     /// </summary>
     /// <param name="parentEffect">The effect that owns this variant.</param>
     /// <param name="effect">The compiled effect used by this variant.</param>

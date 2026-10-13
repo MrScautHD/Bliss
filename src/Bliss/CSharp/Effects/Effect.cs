@@ -88,7 +88,7 @@ public class Effect : Disposable {
     /// <param name="compileOptions">Optional cross-compilation options used when creating the shaders.</param>
     public Effect(GraphicsDevice graphicsDevice, byte[] vertBytes, byte[] fragBytes, CrossCompileOptions compileOptions) {
         this.GraphicsDevice = graphicsDevice;
-        this.Specializations = compileOptions.Specializations ?? [];
+        this.Specializations = compileOptions.Specializations;
         this.Macros = [];
         this._vertText = null;
         this._fragText = null;
@@ -117,7 +117,7 @@ public class Effect : Disposable {
     /// <param name="macros">Optional macro definitions injected during shader compilation.</param>
     public Effect(GraphicsDevice graphicsDevice, string vertText, string fragText, CrossCompileOptions compileOptions, MacroDefinition[] macros) {
         this.GraphicsDevice = graphicsDevice;
-        this.Specializations = compileOptions.Specializations ?? [];
+        this.Specializations = compileOptions.Specializations;
         this.Macros = macros;
         this._vertText = vertText;
         this._fragText = fragText;

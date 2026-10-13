@@ -73,11 +73,11 @@ public readonly struct EffectVariantKey : IEquatable<EffectVariantKey> {
         foreach (var baseMacro in this._baseMacros) {
             hash.Add(baseMacro.Name);
         }
-
+        
         foreach (var macro in this._macros) {
             hash.Add(macro);
         }
-
+        
         return hash.ToHashCode();
     }
 }
