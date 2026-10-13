@@ -161,6 +161,34 @@ public class SimpleStructuredBuffer<THeader, TElement> : Disposable, ISimpleBuff
     }
     
     /// <summary>
+    /// Updates a range of header entries immediately on the GPU using the current CPU-side header data.
+    /// </summary>
+    /// <param name="startIndex">The zero-based index of the first header entry to upload.</param>
+    /// <param name="count">The number of header entries to upload.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="startIndex"/> or <paramref name="count"/> is negative.</exception>
+    /// <exception cref="IndexOutOfRangeException">Thrown if the specified header range is outside the valid header data range.</exception>
+    public void UpdateHeaderRangeImmediate(int startIndex, int count) {
+        if (startIndex < 0) {
+            throw new ArgumentOutOfRangeException(nameof(startIndex), "Start index cannot be negative.");
+        }
+        
+        if (count < 0) {
+            throw new ArgumentOutOfRangeException(nameof(count), "Count cannot be negative.");
+        }
+        
+        if ((uint) startIndex > this.HeaderDataSize || (uint) (startIndex + count) > this.HeaderDataSize) {
+            throw new IndexOutOfRangeException($"Header range [{startIndex}, {startIndex + count}] is outside the valid range of 0 to {this.HeaderDataSize}.");
+        }
+        
+        if (count == 0) {
+            return;
+        }
+        
+        uint headerOffsetInBytes = (uint) (startIndex * Marshal.SizeOf<THeader>());
+        this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, headerOffsetInBytes, this.HeaderData.AsSpan(startIndex, count));
+    }
+    
+    /// <summary>
     /// Sets a header value and schedules it to be uploaded to the GPU using a <see cref="CommandList"/>.
     /// </summary>
     /// <param name="commandList">The command list used to defer the buffer update.</param>
@@ -185,6 +213,35 @@ public class SimpleStructuredBuffer<THeader, TElement> : Disposable, ISimpleBuff
         
         uint headerOffsetInBytes = (uint) (index * Marshal.SizeOf<THeader>());
         commandList.UpdateBuffer(this.DeviceBuffer, headerOffsetInBytes, ref this.HeaderData[index]);
+    }
+    
+    /// <summary>
+    /// Updates a range of header entries on the GPU using the specified command list and the current CPU-side header data.
+    /// </summary>
+    /// <param name="commandList">The command list used to defer the buffer update.</param>
+    /// <param name="startIndex">The zero-based index of the first header entry to upload.</param>
+    /// <param name="count">The number of header entries to upload.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="startIndex"/> or <paramref name="count"/> is negative.</exception>
+    /// <exception cref="IndexOutOfRangeException">Thrown if the specified header range is outside the valid header data range.</exception>
+    public void UpdateHeaderRangeDeferred(CommandList commandList, int startIndex, int count) {
+        if (startIndex < 0) {
+            throw new ArgumentOutOfRangeException(nameof(startIndex), "Start index cannot be negative.");
+        }
+        
+        if (count < 0) {
+            throw new ArgumentOutOfRangeException(nameof(count), "Count cannot be negative.");
+        }
+        
+        if ((uint) startIndex > this.HeaderDataSize || (uint) (startIndex + count) > this.HeaderDataSize) {
+            throw new IndexOutOfRangeException($"Header range [{startIndex}, {startIndex + count}] is outside the valid range of 0 to {this.HeaderDataSize}.");
+        }
+        
+        if (count == 0) {
+            return;
+        }
+        
+        uint headerOffsetInBytes = (uint) (startIndex * Marshal.SizeOf<THeader>());
+        commandList.UpdateBuffer(this.DeviceBuffer, headerOffsetInBytes, this.HeaderData.AsSpan(startIndex, count));
     }
     
     /// <summary>
@@ -228,6 +285,52 @@ public class SimpleStructuredBuffer<THeader, TElement> : Disposable, ISimpleBuff
     }
     
     /// <summary>
+    /// Updates a range of element entries immediately on the GPU using the current CPU-side element data.
+    /// </summary>
+    /// <param name="startIndex">The zero-based index of the first element entry to upload.</param>
+    /// <param name="count">The number of element entries to upload.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="startIndex"/> or <paramref name="count"/> is negative.</exception>
+    /// <exception cref="IndexOutOfRangeException">Thrown if the specified element range is outside the valid element data range.</exception>
+    public void UpdateElementRangeImmediate(int startIndex, int count) {
+        if (startIndex < 0) {
+            throw new ArgumentOutOfRangeException(nameof(startIndex), "Start index cannot be negative.");
+        }
+        
+        if (count < 0) {
+            throw new ArgumentOutOfRangeException(nameof(count), "Count cannot be negative.");
+        }
+        
+        if ((uint) startIndex > this.ElementDataSize || (uint) (startIndex + count) > this.ElementDataSize) {
+            throw new IndexOutOfRangeException($"Element range [{startIndex}, {startIndex + count}] is outside the valid range of 0 to {this.ElementDataSize}.");
+        }
+        
+        if (count == 0) {
+            return;
+        }
+        
+        uint alignment = this.GraphicsDevice.StructuredBufferMinOffsetAlignment;
+        uint headerSizeInBytes = (uint) (this.HeaderDataSize * Marshal.SizeOf<THeader>());
+        uint alignedHeaderSizeInBytes = (headerSizeInBytes / alignment + (headerSizeInBytes % alignment > 0 ? 1U : 0U)) * alignment;
+        uint elementOffsetInBytes = (uint) (startIndex * Marshal.SizeOf<TElement>());
+        uint totalBufferOffsetInBytes = alignedHeaderSizeInBytes + elementOffsetInBytes;
+        
+        this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, totalBufferOffsetInBytes, this.ElementData.AsSpan(startIndex, count));
+    }
+    
+    /// <summary>
+    /// Updates the entire buffer immediately on the GPU with both header and element data.
+    /// </summary>
+    public void UpdateBufferImmediate() {
+        
+        // Update header data.
+        this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, 0, this.HeaderData);
+        
+        // Update element data.
+        uint headerSizeInBytes = (uint) (this.HeaderDataSize * Marshal.SizeOf<THeader>());
+        this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, headerSizeInBytes, this.ElementData);
+    }
+    
+    /// <summary>
     /// Sets an element value and schedules it to be uploaded to the GPU using a <see cref="CommandList"/>.
     /// </summary>
     /// <param name="commandList">The command list used to defer the buffer update.</param>
@@ -257,16 +360,37 @@ public class SimpleStructuredBuffer<THeader, TElement> : Disposable, ISimpleBuff
     }
     
     /// <summary>
-    /// Updates the entire buffer immediately on the GPU with both header and element data.
+    /// Updates a range of element entries on the GPU using the specified command list and the current CPU-side element data.
     /// </summary>
-    public void UpdateBufferImmediate() {
+    /// <param name="commandList">The command list used to defer the buffer update.</param>
+    /// <param name="startIndex">The zero-based index of the first element entry to upload.</param>
+    /// <param name="count">The number of element entries to upload.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="startIndex"/> or <paramref name="count"/> is negative.</exception>
+    /// <exception cref="IndexOutOfRangeException">Thrown if the specified element range is outside the valid element data range.</exception>
+    public void UpdateElementRangeDeferred(CommandList commandList, int startIndex, int count) {
+        if (startIndex < 0) {
+            throw new ArgumentOutOfRangeException(nameof(startIndex), "Start index cannot be negative.");
+        }
         
-        // Update header data.
-        this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, 0, this.HeaderData);
+        if (count < 0) {
+            throw new ArgumentOutOfRangeException(nameof(count), "Count cannot be negative.");
+        }
         
-        // Update element data.
+        if ((uint) startIndex > this.ElementDataSize || (uint) (startIndex + count) > this.ElementDataSize) {
+            throw new IndexOutOfRangeException($"Element range [{startIndex}, {startIndex + count}) is outside the valid range of 0 to {this.ElementDataSize}.");
+        }
+        
+        if (count == 0) {
+            return;
+        }
+        
+        uint alignment = this.GraphicsDevice.StructuredBufferMinOffsetAlignment;
         uint headerSizeInBytes = (uint) (this.HeaderDataSize * Marshal.SizeOf<THeader>());
-        this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, headerSizeInBytes, this.ElementData);
+        uint alignedHeaderSizeInBytes = (headerSizeInBytes / alignment + (headerSizeInBytes % alignment > 0 ? 1U : 0U)) * alignment;
+        uint elementOffsetInBytes = (uint) (startIndex * Marshal.SizeOf<TElement>());
+        uint totalBufferOffsetInBytes = alignedHeaderSizeInBytes + elementOffsetInBytes;
+        
+        commandList.UpdateBuffer(this.DeviceBuffer, totalBufferOffsetInBytes, this.ElementData.AsSpan(startIndex, count));
     }
     
     /// <summary>

@@ -121,6 +121,41 @@ public class SimpleUniformBuffer<T> : Disposable, ISimpleBuffer where T : unmana
     }
     
     /// <summary>
+    /// Updates a range of entries immediately on the GPU using the current CPU-side data.
+    /// </summary>
+    /// <param name="startIndex">The zero-based index of the first entry to upload.</param>
+    /// <param name="count">The number of entries to upload.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="startIndex"/> or <paramref name="count"/> is negative.</exception>
+    /// <exception cref="IndexOutOfRangeException">Thrown if the specified range is outside the valid data range.</exception>
+    public void UpdateBufferRangeImmediate(int startIndex, int count) {
+        if (startIndex < 0) {
+            throw new ArgumentOutOfRangeException(nameof(startIndex), "Start index cannot be negative.");
+        }
+        
+        if (count < 0) {
+            throw new ArgumentOutOfRangeException(nameof(count), "Count cannot be negative.");
+        }
+        
+        if ((uint) startIndex > this.Size || (uint) (startIndex + count) > this.Size) {
+            throw new IndexOutOfRangeException($"Range [{startIndex}, {startIndex + count}] is outside the valid range of 0 to {this.Size}.");
+        }
+        
+        if (count == 0) {
+            return;
+        }
+        
+        uint offsetInBytes = (uint) (startIndex * Marshal.SizeOf<T>());
+        this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, offsetInBytes, this.Data.AsSpan(startIndex, count));
+    }
+    
+    /// <summary>
+    /// Updates the entire GPU buffer immediately with the current CPU data.
+    /// </summary>
+    public void UpdateBufferImmediate() {
+        this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, 0, this.Data);
+    }
+    
+    /// <summary>
     /// Sets the value at the specified index and defers the GPU update using a command list.
     /// </summary>
     /// <param name="commandList">The command list used to defer the update.</param>
@@ -146,71 +181,32 @@ public class SimpleUniformBuffer<T> : Disposable, ISimpleBuffer where T : unmana
     }
     
     /// <summary>
-    /// Updates a portion of the GPU buffer immediately with a slice of the local CPU data.
-    /// </summary>
-    /// <param name="destinationOffsetIndex">The index in the destination buffer where the update begins, measured in elements.</param>
-    /// <param name="sourceStartIndex">The starting index in the local data array to copy from.</param>
-    /// <param name="sourceLength">The number of elements to copy from the local data array.</param>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="sourceStartIndex"/> is outside the bounds of the local data array.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="sourceLength"/> is negative or extends beyond the end of the local data array.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown if the update range exceeds the size of the GPU buffer.</exception>
-    public void UpdateBufferSliceImmediate(int destinationOffsetIndex, int sourceStartIndex, int sourceLength) {
-        if (sourceStartIndex > this.Data.Length) {
-            throw new ArgumentOutOfRangeException(nameof(sourceStartIndex));
-        }
-        
-        if (sourceLength < 0 || sourceStartIndex + sourceLength > this.Data.Length) {
-            throw new ArgumentOutOfRangeException(nameof(sourceLength));
-        }
-        
-        ReadOnlySpan<T> slice = this.Data.AsSpan(sourceStartIndex, sourceLength);
-        uint elementSize = (uint) Marshal.SizeOf<T>();
-        uint destinationOffsetBytes = (uint) destinationOffsetIndex * elementSize;
-        uint bytesToWrite = (uint) slice.Length * elementSize;
-        
-        if ((ulong) destinationOffsetBytes + bytesToWrite > this.DeviceBuffer.SizeInBytes) {
-            throw new ArgumentOutOfRangeException(nameof(destinationOffsetIndex), "The destination range exceeds the size of the buffer.");
-        }
-        
-        this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, destinationOffsetBytes, slice);
-    }
-    
-    /// <summary>
-    /// Updates a portion of the GPU buffer using a deferred command list with a slice of the local CPU data.
+    /// Updates a range of entries on the GPU using the specified command list and the current CPU-side data.
     /// </summary>
     /// <param name="commandList">The command list used to defer the buffer update.</param>
-    /// <param name="destinationOffsetIndex">The index in the destination buffer where the update begins, measured in elements.</param>
-    /// <param name="sourceStartIndex">The starting index in the local data array to copy from.</param>
-    /// <param name="sourceLength">The number of elements to copy from the local data array.</param>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="sourceStartIndex"/> is outside the bounds of the local data array.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="sourceLength"/> is negative or extends beyond the end of the local data array.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown if the update range exceeds the size of the GPU buffer.</exception>
-    public void UpdateBufferSliceDeferred(CommandList commandList, int destinationOffsetIndex, int sourceStartIndex, int sourceLength) {
-        if (sourceStartIndex > this.Data.Length) {
-            throw new ArgumentOutOfRangeException(nameof(sourceStartIndex));
+    /// <param name="startIndex">The zero-based index of the first entry to upload.</param>
+    /// <param name="count">The number of entries to upload.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="startIndex"/> or <paramref name="count"/> is negative.</exception>
+    /// <exception cref="IndexOutOfRangeException">Thrown if the specified range is outside the valid data range.</exception>
+    public void UpdateBufferRangeDeferred(CommandList commandList, int startIndex, int count) {
+        if (startIndex < 0) {
+            throw new ArgumentOutOfRangeException(nameof(startIndex), "Start index cannot be negative.");
         }
         
-        if (sourceLength < 0 || sourceStartIndex + sourceLength > this.Data.Length) {
-            throw new ArgumentOutOfRangeException(nameof(sourceLength));
+        if (count < 0) {
+            throw new ArgumentOutOfRangeException(nameof(count), "Count cannot be negative.");
         }
         
-        ReadOnlySpan<T> slice = this.Data.AsSpan(sourceStartIndex, sourceLength);
-        uint elementSize = (uint) Marshal.SizeOf<T>();
-        uint destinationOffsetBytes = (uint) destinationOffsetIndex * elementSize;
-        uint bytesToWrite = (uint) slice.Length * elementSize;
-        
-        if ((ulong) destinationOffsetBytes + bytesToWrite > this.DeviceBuffer.SizeInBytes) {
-            throw new ArgumentOutOfRangeException(nameof(destinationOffsetIndex), "The destination range exceeds the size of the buffer.");
+        if ((uint) startIndex > this.Size || (uint) (startIndex + count) > this.Size) {
+            throw new IndexOutOfRangeException($"Range [{startIndex}, {startIndex + count}] is outside the valid range of 0 to {this.Size}.");
         }
         
-        commandList.UpdateBuffer(this.DeviceBuffer, destinationOffsetBytes, slice);
-    }
-    
-    /// <summary>
-    /// Updates the entire GPU buffer immediately with the current CPU data.
-    /// </summary>
-    public void UpdateBufferImmediate() {
-        this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, 0, this.Data);
+        if (count == 0) {
+            return;
+        }
+        
+        uint offsetInBytes = (uint) (startIndex * Marshal.SizeOf<T>());
+        commandList.UpdateBuffer(this.DeviceBuffer, offsetInBytes, this.Data.AsSpan(startIndex, count));
     }
     
     /// <summary>
