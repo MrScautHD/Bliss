@@ -217,7 +217,7 @@ public class Effect : Disposable {
         }
         
         foreach (var textureLayout in this._textureLayouts) {
-            compiledEffect.AddTextureLayout(textureLayout.Value.Name, textureLayout.Key);
+            compiledEffect.AddTextureLayout(textureLayout.Value.Name, textureLayout.Key, textureLayout.Value.ShaderStages, textureLayout.Value.ResourceKind);
         }
         
         // Cache and return.
@@ -323,19 +323,21 @@ public class Effect : Disposable {
         
         throw new KeyNotFoundException($"Failed to get the slot for [{name}]. A texture layout with this name do not exist.");
     }
-
+    
     /// <summary>
     /// Adds a new texture layout to the effect with the specified parameters.
     /// </summary>
     /// <param name="name">The unique name of the texture layout to add.</param>
     /// <param name="slot">The slot index where the texture layout will be bound.</param>
+    /// <param name="stages">The shader stages that can access the texture layout.</param>
+    /// <param name="kind">The kind of texture resource. Defaults to a read-only texture.</param>
     /// <exception cref="InvalidOperationException">Thrown if a texture layout with the same name already exists.</exception>
-    public void AddTextureLayout(string name, uint slot) {
+    public void AddTextureLayout(string name, uint slot, ShaderStages stages = ShaderStages.Fragment, ResourceKind kind = ResourceKind.TextureReadOnly) {
         if (this._textureLayouts.Any(layoutPair => layoutPair.Value.Name == name)) {
             throw new InvalidOperationException($"Failed to add texture layout with name [{name}]. A texture layout with this name might already exist.");
         }
         
-        SimpleTextureLayout layout = new SimpleTextureLayout(this.GraphicsDevice, name);
+        SimpleTextureLayout layout = new SimpleTextureLayout(this.GraphicsDevice, name, stages, kind);
         this._textureLayouts.Add(slot, layout);
     }
     

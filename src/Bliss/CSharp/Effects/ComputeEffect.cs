@@ -1,4 +1,6 @@
-﻿using Bliss.CSharp.Logging;
+﻿using Bliss.CSharp.Graphics.Pipelines.Buffers;
+using Bliss.CSharp.Graphics.Pipelines.Textures;
+using Bliss.CSharp.Logging;
 using Veldrith;
 using Veldrith.SPIRV;
 
@@ -27,14 +29,9 @@ public class ComputeEffect : Disposable {
     public Shader Shader { get; private set; }
     
     /// <summary>
-    /// The resource layouts used by the compute pipeline.
-    /// </summary>
-    public ResourceLayout[] ResourceLayouts { get; private set; }
-    
-    /// <summary>
     /// The compute pipeline.
     /// </summary>
-    public Pipeline Pipeline { get; private set; }
+    public Pipeline? Pipeline { get; private set; }
     
     /// <summary>
     /// The X thread group size used by the compute pipeline.
@@ -62,6 +59,16 @@ public class ComputeEffect : Disposable {
     private readonly CrossCompileOptions _compileOptions;
     
     /// <summary>
+    /// A collection of buffer layout descriptions used to define buffer bindings.
+    /// </summary>
+    private Dictionary<uint, SimpleBufferLayout> _bufferLayouts;
+    
+    /// <summary>
+    /// A collection of texture layout descriptions used to define how textures bindings.
+    /// </summary>
+    private Dictionary<uint, SimpleTextureLayout> _textureLayouts;
+    
+    /// <summary>
     /// A cache of compute effect variants compiled for specific macro combinations.
     /// </summary>
     private Dictionary<ComputeEffectVariantKey, ComputeEffectVariant> _cachedVariants;
@@ -71,28 +78,25 @@ public class ComputeEffect : Disposable {
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used to create GPU resources.</param>
     /// <param name="computePath">The path to the compiled compute shader bytecode.</param>
-    /// <param name="resourceLayouts">The resource layouts used by the compute pipeline.</param>
     /// <param name="compileOptions">The cross compile options.</param>
     /// <param name="threadGroupSizeX">The X thread group size.</param>
     /// <param name="threadGroupSizeY">The Y thread group size.</param>
     /// <param name="threadGroupSizeZ">The Z thread group size.</param>
-    public ComputeEffect(GraphicsDevice graphicsDevice, string computePath, ResourceLayout[] resourceLayouts, CrossCompileOptions compileOptions, uint threadGroupSizeX, uint threadGroupSizeY, uint threadGroupSizeZ) : this(graphicsDevice, LoadBytecodeFromFile(computePath), resourceLayouts, compileOptions, threadGroupSizeX, threadGroupSizeY, threadGroupSizeZ) { }
+    public ComputeEffect(GraphicsDevice graphicsDevice, string computePath, CrossCompileOptions compileOptions, uint threadGroupSizeX, uint threadGroupSizeY, uint threadGroupSizeZ) : this(graphicsDevice, LoadBytecodeFromFile(computePath), compileOptions, threadGroupSizeX, threadGroupSizeY, threadGroupSizeZ) { }
     
     /// <summary>
     /// Creates a new <see cref="ComputeEffect"/> from compute shader bytecode.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used to create GPU resources.</param>
     /// <param name="computeBytes">The compiled compute shader bytecode.</param>
-    /// <param name="resourceLayouts">The resource layouts used by the compute pipeline.</param>
     /// <param name="compileOptions">The cross compile options.</param>
     /// <param name="threadGroupSizeX">The X thread group size.</param>
     /// <param name="threadGroupSizeY">The Y thread group size.</param>
     /// <param name="threadGroupSizeZ">The Z thread group size.</param>
-    public ComputeEffect(GraphicsDevice graphicsDevice, byte[] computeBytes, ResourceLayout[] resourceLayouts, CrossCompileOptions compileOptions, uint threadGroupSizeX, uint threadGroupSizeY, uint threadGroupSizeZ) {
+    public ComputeEffect(GraphicsDevice graphicsDevice, byte[] computeBytes, CrossCompileOptions compileOptions, uint threadGroupSizeX, uint threadGroupSizeY, uint threadGroupSizeZ) {
         this.GraphicsDevice = graphicsDevice;
         this.Specializations = compileOptions.Specializations;
         this.Macros = [];
-        this.ResourceLayouts = resourceLayouts;
         this.ThreadGroupSizeX = threadGroupSizeX;
         this.ThreadGroupSizeY = threadGroupSizeY;
         this.ThreadGroupSizeZ = threadGroupSizeZ;
@@ -100,10 +104,10 @@ public class ComputeEffect : Disposable {
         this._compileOptions = compileOptions;
         
         ShaderDescription shaderDescription = new ShaderDescription(ShaderStages.Compute, computeBytes, "main");
-        
         this.Shader = graphicsDevice.ResourceFactory.CreateFromSpirv(shaderDescription, compileOptions);
-        this.Pipeline = graphicsDevice.ResourceFactory.CreateComputePipeline(new ComputePipelineDescription(this.Shader, this.ResourceLayouts, this.ThreadGroupSizeX, this.ThreadGroupSizeY, this.ThreadGroupSizeZ));
         
+        this._bufferLayouts = new Dictionary<uint, SimpleBufferLayout>();
+        this._textureLayouts = new Dictionary<uint, SimpleTextureLayout>();
         this._cachedVariants = new Dictionary<ComputeEffectVariantKey, ComputeEffectVariant>();
     }
     
@@ -112,17 +116,15 @@ public class ComputeEffect : Disposable {
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used to create GPU resources.</param>
     /// <param name="computeText">The GLSL compute shader source code.</param>
-    /// <param name="resourceLayouts">The resource layouts used by the compute pipeline.</param>
     /// <param name="compileOptions">The cross compile options.</param>
     /// <param name="macros">The shader macro definitions.</param>
     /// <param name="threadGroupSizeX">The X thread group size.</param>
     /// <param name="threadGroupSizeY">The Y thread group size.</param>
     /// <param name="threadGroupSizeZ">The Z thread group size.</param>
-    public ComputeEffect(GraphicsDevice graphicsDevice, string computeText, ResourceLayout[] resourceLayouts, CrossCompileOptions compileOptions, MacroDefinition[] macros, uint threadGroupSizeX, uint threadGroupSizeY, uint threadGroupSizeZ) {
+    public ComputeEffect(GraphicsDevice graphicsDevice, string computeText, CrossCompileOptions compileOptions, MacroDefinition[] macros, uint threadGroupSizeX, uint threadGroupSizeY, uint threadGroupSizeZ) {
         this.GraphicsDevice = graphicsDevice;
         this.Specializations = compileOptions.Specializations;
         this.Macros = macros;
-        this.ResourceLayouts = resourceLayouts;
         this.ThreadGroupSizeX = threadGroupSizeX;
         this.ThreadGroupSizeY = threadGroupSizeY;
         this.ThreadGroupSizeZ = threadGroupSizeZ;
@@ -133,10 +135,10 @@ public class ComputeEffect : Disposable {
         SpirvCompilationResult computeResult = SpirvCompilation.CompileGlslToSpirv(computeText, nameof(ShaderStages.Compute), ShaderStages.Compute, glslOptions);
         
         ShaderDescription shaderDescription = new ShaderDescription(ShaderStages.Compute, computeResult.SpirvBytes, "main");
-        
         this.Shader = graphicsDevice.ResourceFactory.CreateFromSpirv(shaderDescription, compileOptions);
-        this.Pipeline = graphicsDevice.ResourceFactory.CreateComputePipeline(new ComputePipelineDescription(this.Shader, this.ResourceLayouts, this.ThreadGroupSizeX, this.ThreadGroupSizeY, this.ThreadGroupSizeZ));
         
+        this._bufferLayouts = new Dictionary<uint, SimpleBufferLayout>();
+        this._textureLayouts = new Dictionary<uint, SimpleTextureLayout>();
         this._cachedVariants = new Dictionary<ComputeEffectVariantKey, ComputeEffectVariant>();
     }
     
@@ -145,15 +147,14 @@ public class ComputeEffect : Disposable {
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used to create GPU resources.</param>
     /// <param name="computePath">The path to the GLSL compute shader source file.</param>
-    /// <param name="resourceLayouts">The resource layouts used by the compute pipeline.</param>
     /// <param name="compileOptions">The cross compile options.</param>
     /// <param name="macros">The shader macro definitions.</param>
     /// <param name="threadGroupSizeX">The X thread group size.</param>
     /// <param name="threadGroupSizeY">The Y thread group size.</param>
     /// <param name="threadGroupSizeZ">The Z thread group size.</param>
     /// <returns>A compute effect created from source code.</returns>
-    public static ComputeEffect FromSourceFile(GraphicsDevice graphicsDevice, string computePath, ResourceLayout[] resourceLayouts, CrossCompileOptions compileOptions, MacroDefinition[] macros, uint threadGroupSizeX, uint threadGroupSizeY, uint threadGroupSizeZ) {
-        return new ComputeEffect(graphicsDevice, LoadTextCodeFromFile(computePath), resourceLayouts, compileOptions, macros, threadGroupSizeX, threadGroupSizeY, threadGroupSizeZ);
+    public static ComputeEffect FromSourceFile(GraphicsDevice graphicsDevice, string computePath, CrossCompileOptions compileOptions, MacroDefinition[] macros, uint threadGroupSizeX, uint threadGroupSizeY, uint threadGroupSizeZ) {
+        return new ComputeEffect(graphicsDevice, LoadTextCodeFromFile(computePath), compileOptions, macros, threadGroupSizeX, threadGroupSizeY, threadGroupSizeZ);
     }
     
     /// <summary>
@@ -227,13 +228,157 @@ public class ComputeEffect : Disposable {
         }
         
         // Compile effect variant.
-        ComputeEffect compiledEffect = new ComputeEffect(this.GraphicsDevice, this._computeText, this.ResourceLayouts, this._compileOptions, macroDefinitions, this.ThreadGroupSizeX, this.ThreadGroupSizeY, this.ThreadGroupSizeZ);
+        ComputeEffect compiledEffect = new ComputeEffect(this.GraphicsDevice, this._computeText, this._compileOptions, macroDefinitions, this.ThreadGroupSizeX, this.ThreadGroupSizeY, this.ThreadGroupSizeZ);
+        
+        foreach (var bufferLayout in this._bufferLayouts) {
+            compiledEffect.AddBufferLayout(bufferLayout.Value.Name, bufferLayout.Key, bufferLayout.Value.BufferType, bufferLayout.Value.ShaderStages);
+        }
+        
+        foreach (var textureLayout in this._textureLayouts) {
+            compiledEffect.AddTextureLayout(textureLayout.Value.Name, textureLayout.Key, textureLayout.Value.ShaderStages, textureLayout.Value.ResourceKind);
+        }
         
         // Cache and return.
         ComputeEffectVariantKey key = new ComputeEffectVariantKey(this.Macros, macros.ToArray());
         ComputeEffectVariant variant = new ComputeEffectVariant(this, compiledEffect);
         this._cachedVariants.Add(key, variant);
         return variant;
+    }
+    
+    /// <summary>
+    /// Retrieves a collection of buffer layouts associated with the effect.
+    /// </summary>
+    /// <returns>A read-only collection of <see cref="SimpleBufferLayout"/> objects representing the buffer layouts.</returns>
+    public IReadOnlyCollection<SimpleBufferLayout> GetBufferLayouts() {
+        return this._bufferLayouts.Values;
+    }
+    
+    /// <summary>
+    /// Retrieves the buffer layout identified by the specified name.
+    /// </summary>
+    /// <param name="name">The name of the buffer layout to retrieve.</param>
+    /// <returns>The <see cref="SimpleBufferLayout"/> matching the specified name.</returns>
+    /// <exception cref="KeyNotFoundException">Thrown if no buffer layout with the specified name is found.</exception>
+    public SimpleBufferLayout GetBufferLayout(string name) {
+        foreach (var layout in _bufferLayouts.Values) {
+            if (layout.Name == name) {
+                return layout;
+            }
+        }
+        
+        throw new KeyNotFoundException($"No buffer layout found with name [{name}]");
+    }
+    
+    /// <summary>
+    /// Retrieves the slot index of a buffer layout by its name.
+    /// </summary>
+    /// <param name="name">The name of the buffer layout whose slot index is to be retrieved.</param>
+    /// <returns>The slot index of the specified buffer layout.</returns>
+    /// <exception cref="KeyNotFoundException">Thrown when the buffer layout with the specified name does not exist.</exception>
+    public uint GetBufferLayoutSlot(string name) {
+        foreach (var layoutPair in this._bufferLayouts) {
+            if (layoutPair.Value.Name == name) {
+                return layoutPair.Key;
+            }
+        }
+        
+        throw new KeyNotFoundException($"Failed to get the slot for [{name}]. A buffer layout with this name do not exist.");
+    }
+    
+    /// <summary>
+    /// Adds a new buffer layout to the effect with the specified parameters.
+    /// </summary>
+    /// <param name="name">The name of the buffer layout to add. Must be unique within the effect.</param>
+    /// <param name="slot">The slot index at which the buffer layout will be bound.</param>
+    /// <param name="bufferType">The type of buffer being added, defined by the <see cref="SimpleBufferType"/> enum.</param>
+    /// <param name="stages">The shader stages where the buffer will be accessible, specified by <see cref="ShaderStages"/>.</param>
+    /// <exception cref="InvalidOperationException"> Thrown if a buffer layout with the specified name already exists. </exception>
+    public void AddBufferLayout(string name, uint slot, SimpleBufferType bufferType, ShaderStages stages) {
+        if (this._bufferLayouts.Any(layoutPair => layoutPair.Value.Name == name)) {
+            throw new InvalidOperationException($"Failed to add buffer layout with name [{name}]. A buffer layout with this name might already exist.");
+        }
+        
+        SimpleBufferLayout layout = new SimpleBufferLayout(this.GraphicsDevice, name, bufferType, stages);
+        this._bufferLayouts.Add(slot, layout);
+    }
+    
+    /// <summary>
+    /// Retrieves a collection of texture layouts associated with the effect.
+    /// </summary>
+    /// <returns>A read-only collection of <see cref="SimpleTextureLayout"/> objects representing the texture layouts.</returns>
+    public IReadOnlyCollection<SimpleTextureLayout> GetTextureLayouts() {
+        return this._textureLayouts.Values;
+    }
+    
+    /// <summary>
+    /// Retrieves a texture layout by its name from the list of available texture layouts.
+    /// </summary>
+    /// <param name="name">The name of the texture layout to retrieve.</param>
+    /// <returns>The <see cref="SimpleTextureLayout"/> matching the specified name.</returns>
+    /// <exception cref="KeyNotFoundException">Thrown if no texture layout with the specified name is found.</exception>
+    public SimpleTextureLayout GetTextureLayout(string name) {
+        foreach (var layout in this._textureLayouts.Values) {
+            if (layout.Name == name) {
+                return layout;
+            }
+        }
+        
+        throw new KeyNotFoundException($"No buffer layout found with name [{name}]");
+    }
+    
+    /// <summary>
+    /// Retrieves the texture slot index for the specified texture name in the effect's texture layouts.
+    /// </summary>
+    /// <param name="name">The name of the texture whose slot index is to be retrieved.</param>
+    /// <returns>The zero-based index of the texture slot corresponding to the specified texture name.</returns>
+    /// <exception cref="KeyNotFoundException">Thrown when the specified texture name does not exist in the texture layouts.</exception>
+    public uint GetTextureLayoutSlot(string name) {
+        foreach (var layoutPair in this._textureLayouts) {
+            if (layoutPair.Value.Name == name) {
+                return layoutPair.Key;
+            }
+        }
+        
+        throw new KeyNotFoundException($"Failed to get the slot for [{name}]. A texture layout with this name do not exist.");
+    }
+    
+    /// <summary>
+    /// Adds a new texture layout to the effect with the specified parameters.
+    /// </summary>
+    /// <param name="name">The unique name of the texture layout to add.</param>
+    /// <param name="slot">The slot index where the texture layout will be bound.</param>
+    /// <param name="stages">The shader stages that can access the texture layout.</param>
+    /// <param name="kind">The kind of texture resource. Defaults to a read-only texture.</param>
+    /// <exception cref="InvalidOperationException">Thrown if a texture layout with the same name already exists.</exception>
+    public void AddTextureLayout(string name, uint slot, ShaderStages stages = ShaderStages.Fragment, ResourceKind kind = ResourceKind.TextureReadOnly) {
+        if (this._textureLayouts.Any(layoutPair => layoutPair.Value.Name == name)) {
+            throw new InvalidOperationException($"Failed to add texture layout with name [{name}]. A texture layout with this name might already exist.");
+        }
+        
+        SimpleTextureLayout layout = new SimpleTextureLayout(this.GraphicsDevice, name, stages, kind);
+        this._textureLayouts.Add(slot, layout);
+    }
+    
+    /// <summary>
+    /// Builds the compute pipeline using the registered buffer and texture layouts.
+    /// </summary>
+    /// <exception cref="InvalidOperationException">Thrown if the pipeline has already been built.</exception>
+    public void BuildPipeline() {
+        if (this.Pipeline != null) {
+            throw new InvalidOperationException("The pipeline has already been built.");
+        }
+        
+        ResourceLayout[] resourceLayouts = new ResourceLayout[this._bufferLayouts.Count + this._textureLayouts.Count];
+        
+        foreach ((uint slot, SimpleBufferLayout layout) in this._bufferLayouts) {
+            resourceLayouts[slot] = layout.Layout;
+        }
+        
+        foreach ((uint slot, SimpleTextureLayout layout) in this._textureLayouts) {
+            resourceLayouts[slot] = layout.Layout;
+        }
+        
+        this.Pipeline = this.GraphicsDevice.ResourceFactory.CreateComputePipeline(new ComputePipelineDescription(this.Shader, resourceLayouts, this.ThreadGroupSizeX, this.ThreadGroupSizeY, this.ThreadGroupSizeZ));
     }
     
     /// <summary>
@@ -245,6 +390,10 @@ public class ComputeEffect : Disposable {
     /// <param name="groupCountY">The Y dispatch group count.</param>
     /// <param name="groupCountZ">The Z dispatch group count.</param>
     public void Dispatch(CommandList commandList, ResourceSet[] resourceSets, uint groupCountX, uint groupCountY, uint groupCountZ) {
+        if (this.Pipeline == null) {
+            throw new InvalidOperationException("The compute effect must be built before it can be dispatched.");
+        }
+        
         commandList.SetPipeline(this.Pipeline);
         
         for (uint i = 0; i < resourceSets.Length; i++) {
@@ -286,12 +435,21 @@ public class ComputeEffect : Disposable {
     
     protected override void Dispose(bool disposing) {
         if (disposing) {
+            this.Pipeline?.Dispose();
+            
             foreach (ComputeEffectVariant variant in this._cachedVariants.Values) {
                 variant.Dispose();
             }
             
-            this.Pipeline.Dispose();
             this.Shader.Dispose();
+            
+            foreach (SimpleBufferLayout bufferLayout in this._bufferLayouts.Values) {
+                bufferLayout.Dispose();
+            }
+            
+            foreach (SimpleTextureLayout textureLayout in this._textureLayouts.Values) {
+                textureLayout.Dispose();
+            }
         }
     }
 }
