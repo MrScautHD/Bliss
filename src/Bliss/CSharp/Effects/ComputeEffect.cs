@@ -389,15 +389,15 @@ public class ComputeEffect : Disposable {
     /// <param name="groupCountX">The X dispatch group count.</param>
     /// <param name="groupCountY">The Y dispatch group count.</param>
     /// <param name="groupCountZ">The Z dispatch group count.</param>
-    public void Dispatch(CommandList commandList, ResourceSet[] resourceSets, uint groupCountX, uint groupCountY, uint groupCountZ) {
+    public void Dispatch(CommandList commandList, ReadOnlySpan<(uint Slot, ResourceSet ResourceSet)> resourceSets, uint groupCountX, uint groupCountY, uint groupCountZ) {
         if (this.Pipeline == null) {
             throw new InvalidOperationException("The compute effect must be built before it can be dispatched.");
         }
         
         commandList.SetPipeline(this.Pipeline);
         
-        for (uint i = 0; i < resourceSets.Length; i++) {
-            commandList.SetComputeResourceSet(i, resourceSets[i]);
+        foreach ((uint slot, ResourceSet resourceSet) in resourceSets) {
+            commandList.SetComputeResourceSet(slot, resourceSet);
         }
         
         commandList.Dispatch(groupCountX, groupCountY, groupCountZ);
@@ -411,7 +411,7 @@ public class ComputeEffect : Disposable {
     /// <param name="invocationCountX">The total X invocation count.</param>
     /// <param name="invocationCountY">The total Y invocation count.</param>
     /// <param name="invocationCountZ">The total Z invocation count.</param>
-    public void DispatchInvocations(CommandList commandList, ResourceSet[] resourceSets, uint invocationCountX, uint invocationCountY, uint invocationCountZ) {
+    public void DispatchInvocations(CommandList commandList, ReadOnlySpan<(uint Slot, ResourceSet ResourceSet)> resourceSets, uint invocationCountX, uint invocationCountY, uint invocationCountZ) {
         uint groupCountX = this.DivideRoundUp(invocationCountX, this.ThreadGroupSizeX);
         uint groupCountY = this.DivideRoundUp(invocationCountY, this.ThreadGroupSizeY);
         uint groupCountZ = this.DivideRoundUp(invocationCountZ, this.ThreadGroupSizeZ);
