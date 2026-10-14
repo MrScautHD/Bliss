@@ -161,6 +161,13 @@ public class SimpleStructuredBuffer<THeader, TElement> : Disposable, ISimpleBuff
     }
     
     /// <summary>
+    /// Uploads the header data to the GPU immediately.
+    /// </summary>
+    public void UpdateHeaderImmediate() {
+        this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, 0, this.HeaderData);
+    }
+    
+    /// <summary>
     /// Updates a range of header entries immediately on the GPU using the current CPU-side header data.
     /// </summary>
     /// <param name="startIndex">The zero-based index of the first header entry to upload.</param>
@@ -213,6 +220,14 @@ public class SimpleStructuredBuffer<THeader, TElement> : Disposable, ISimpleBuff
         
         uint headerOffsetInBytes = (uint) (index * Marshal.SizeOf<THeader>());
         commandList.UpdateBuffer(this.DeviceBuffer, headerOffsetInBytes, ref this.HeaderData[index]);
+    }
+    
+    /// <summary>
+    /// Schedules the header data to be uploaded to the GPU using a <see cref="CommandList"/>.
+    /// </summary>
+    /// <param name="commandList">The command list used to defer the buffer update.</param>
+    public void UpdateHeaderDeferred(CommandList commandList) {
+        commandList.UpdateBuffer(this.DeviceBuffer, 0, this.HeaderData);
     }
     
     /// <summary>
@@ -282,6 +297,14 @@ public class SimpleStructuredBuffer<THeader, TElement> : Disposable, ISimpleBuff
         uint elementOffsetInBytes = (uint) (index * Marshal.SizeOf<TElement>());
         uint totalBufferOffsetInBytes = headerSizeInBytes + elementOffsetInBytes;
         this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, totalBufferOffsetInBytes, ref this.ElementData[index]);
+    }
+    
+    /// <summary>
+    /// Uploads the whole element array to the GPU immediately.
+    /// </summary>
+    public void UpdateElementImmediate() {
+        uint headerSizeInBytes = (uint) (this.HeaderDataSize * Marshal.SizeOf<THeader>());
+        this.GraphicsDevice.UpdateBuffer(this.DeviceBuffer, headerSizeInBytes, this.ElementData);
     }
     
     /// <summary>
@@ -357,6 +380,15 @@ public class SimpleStructuredBuffer<THeader, TElement> : Disposable, ISimpleBuff
         uint elementOffsetInBytes = (uint) (index * Marshal.SizeOf<TElement>());
         uint totalBufferOffsetInBytes = headerSizeInBytes + elementOffsetInBytes;
         commandList.UpdateBuffer(this.DeviceBuffer, totalBufferOffsetInBytes, ref this.ElementData[index]);
+    }
+    
+    /// <summary>
+    /// Schedules the whole element array to be uploaded to the GPU using a <see cref="CommandList"/>.
+    /// </summary>
+    /// <param name="commandList">The command list used to defer the buffer update.</param>
+    public void UpdateElementDeferred(CommandList commandList) {
+        uint headerSizeInBytes = (uint) (this.HeaderDataSize * Marshal.SizeOf<THeader>());
+        commandList.UpdateBuffer(this.DeviceBuffer, headerSizeInBytes, this.ElementData);
     }
     
     /// <summary>
