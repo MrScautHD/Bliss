@@ -143,21 +143,6 @@ public class ComputeEffect : Disposable {
     }
     
     /// <summary>
-    /// Creates a new <see cref="ComputeEffect"/> from a compute shader source file.
-    /// </summary>
-    /// <param name="graphicsDevice">The graphics device used to create GPU resources.</param>
-    /// <param name="computePath">The path to the GLSL compute shader source file.</param>
-    /// <param name="compileOptions">The cross compile options.</param>
-    /// <param name="macros">The shader macro definitions.</param>
-    /// <param name="threadGroupSizeX">The X thread group size.</param>
-    /// <param name="threadGroupSizeY">The Y thread group size.</param>
-    /// <param name="threadGroupSizeZ">The Z thread group size.</param>
-    /// <returns>A compute effect created from source code.</returns>
-    public static ComputeEffect FromSourceFile(GraphicsDevice graphicsDevice, string computePath, CrossCompileOptions compileOptions, MacroDefinition[] macros, uint threadGroupSizeX, uint threadGroupSizeY, uint threadGroupSizeZ) {
-        return new ComputeEffect(graphicsDevice, LoadTextCodeFromFile(computePath), compileOptions, macros, threadGroupSizeX, threadGroupSizeY, threadGroupSizeZ);
-    }
-    
-    /// <summary>
     /// Loads compute shader bytecode from the specified file path.
     /// </summary>
     /// <param name="path">The file path to the compute shader bytecode.</param>
