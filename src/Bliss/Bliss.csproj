@@ -35,11 +35,15 @@
     
     <!-- Libraries -->
     <ItemGroup>
-        <PackageReference Include="Veldrith" Version="1.2.21" />
-        <PackageReference Include="Veldrith.MetalBindings" Version="1.2.21" />
-        <PackageReference Include="Veldrith.SPIRV" Version="1.2.21" />
-        <PackageReference Include="SDL3-CS" Version="3.5.0-preview.20260213-150035" />
-        <PackageReference Include="SDL3-CS.Native" Version="3.5.0-preview.20260205-174353" />
+        <PackageReference Include="Veldrith" Version="1.2.22" />
+        <PackageReference Include="Veldrith.MetalBindings" Version="1.2.22" />
+        <PackageReference Include="Veldrith.SPIRV" Version="1.2.22" />
+        <PackageReference Include="SDL3-CS" Version="3.4.18" />
+        <PackageReference Include="SDL3-CS.Windows" Version="3.4.18" />
+        <PackageReference Include="SDL3-CS.Linux" Version="3.4.18" />
+        <PackageReference Include="SDL3-CS.MacOS" Version="3.4.18" />
+        <PackageReference Include="SDL3-CS.Android" Version="3.4.18" />
+        <PackageReference Include="SDL3-CS.iOS" Version="3.4.18" />
         <PackageReference Include="AssimpNetter" Version="6.0.5" />
         <PackageReference Include="FontStashSharp.PlatformAgnostic" Version="1.6.1" />
         <PackageReference Include="JAJ.Packages.MiniAudioEx" Version="3.3.7" />
