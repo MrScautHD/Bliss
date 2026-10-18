@@ -217,7 +217,7 @@ public class Game : Disposable {
         // Instancing.
         this._instancedPlayerModel = Model.Load(this.GraphicsDevice, "content/player.glb", isSkinned: true);
         foreach (IMesh mesh in this._instancedPlayerModel.Meshes) {
-            mesh.Material.Effect = GlobalResource.DefaultSkinnedModelEffect.GetEffectVariant(["USE_INSTANCING"]).Effect;
+            mesh.Material.Effect = GlobalResource.DefaultSkinnedModelEffect.GetEffectVariant([("USE_INSTANCING", "1")]).Effect;
             mesh.Material.RenderMode = RenderMode.Cutout;
 
             if (mesh is Mesh<SkinnedVertex3D> skinnedMesh) {

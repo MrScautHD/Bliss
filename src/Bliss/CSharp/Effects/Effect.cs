@@ -16,6 +16,11 @@ public class Effect : Disposable {
     public GraphicsDevice GraphicsDevice { get; private set; }
     
     /// <summary>
+    /// Indicates whether this effect was compiled as a variant of another effect.
+    /// </summary>
+    public bool IsVariant { get; private set; }
+    
+    /// <summary>
     /// Specialization constants applied to the shaders when creating pipelines from this effect.
     /// </summary>
     public IReadOnlyList<SpecializationConstant> Specializations { get; private set; }
@@ -212,12 +217,17 @@ public class Effect : Disposable {
     }
     
     /// <summary>
-    /// Retrieves an <see cref="EffectVariant"/> corresponding to the specified vertex layouts and macros.
+    /// Retrieves an <see cref="EffectVariant"/> for the specified macros, compiling and caching it on the first request.
     /// </summary>
-    /// <param name="macros">The list of preprocessor macro definitions used to compile the effect variant.</param>
+    /// <param name="macros">The additional preprocessor macros (name and value pairs) used to compile the variant. They must not redefine any of the effect's base macros, and the order matters when matching cached variants.</param>
     /// <returns>An <see cref="EffectVariant"/> instance created or retrieved from the cache.</returns>
-    /// <exception cref="InvalidOperationException">Thrown when the effect is not based on GLSL source code.</exception>
-    public EffectVariant GetEffectVariant(ReadOnlySpan<string> macros) {
+    /// <exception cref="InvalidOperationException">Thrown when the effect is not based on GLSL source code, or when it is itself a variant (variants cannot create further variants).</exception>
+    /// <exception cref="ArgumentException">Thrown when one of the macros redefines a base macro of the effect.</exception>
+    public EffectVariant GetEffectVariant(ReadOnlySpan<(string Name, string Value)> macros) {
+        if (this.IsVariant) {
+            throw new InvalidOperationException("Variants cannot create further variants. Call GetEffectVariant on the root effect with the full macro set.");
+        }
+        
         if (this._vertText == null || this._fragText == null) {
             throw new InvalidOperationException("Effect variants can only be created from GLSL source-based effects.");
         }
@@ -226,6 +236,15 @@ public class Effect : Disposable {
         foreach ((EffectVariantKey cachedKey, EffectVariant cachedVariant) in this._cachedVariants) {
             if (cachedKey.Matches(macros)) {
                 return cachedVariant;
+            }
+        }
+        
+        // Reject macros that would redefine a base macro (only reached on a cache miss).
+        foreach ((string Name, string Value) macro in macros) {
+            for (int i = 0; i < this.Macros.Count; i++) {
+                if (this.Macros[i].Name == macro.Name) {
+                    throw new ArgumentException($"Macro '{macro.Name}' is already defined by the base effect.", nameof(macros));
+                }
             }
         }
         
@@ -238,12 +257,13 @@ public class Effect : Disposable {
             macroDefinitions[macroIndex++] = macroDef;
         }
         
-        foreach (string macro in macros) {
-            macroDefinitions[macroIndex++] = new MacroDefinition(macro, "1");
+        foreach ((string Name, string Value) macro in macros) {
+            macroDefinitions[macroIndex++] = new MacroDefinition(macro.Name, macro.Value);
         }
         
         // Compile effect variant.
         Effect compiledEffect = new Effect(this.GraphicsDevice, this._vertText, this._fragText, this._compileOptions, macroDefinitions);
+        compiledEffect.IsVariant = true;
         
         foreach (var bufferLayout in this._bufferLayouts) {
             compiledEffect.AddBufferLayout(bufferLayout.Value.Name, bufferLayout.Key, bufferLayout.Value.BufferType, bufferLayout.Value.ShaderStages);

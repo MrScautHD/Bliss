@@ -14,6 +14,11 @@ public class ComputeEffect : Disposable {
     public GraphicsDevice GraphicsDevice { get; private set; }
     
     /// <summary>
+    /// Indicates whether this effect was compiled as a variant of another effect.
+    /// </summary>
+    public bool IsVariant { get; private set; }
+    
+    /// <summary>
     /// Specialization constants applied to the compute shader.
     /// </summary>
     public IReadOnlyList<SpecializationConstant> Specializations { get; private set; }
@@ -217,13 +222,17 @@ public class ComputeEffect : Disposable {
     }
     
     /// <summary>
-    /// Creates or retrieves a cached variant of this compute effect with additional macros.
-    /// Variants can only be created when this compute effect was created from GLSL source code.
+    /// Retrieves an <see cref="ComputeEffectVariant"/> for the specified macros, compiling and caching it on the first request.
     /// </summary>
-    /// <param name="macros">The additional macro names.</param>
-    /// <returns>A compute effect variant.</returns>
-    /// <exception cref="InvalidOperationException">Thrown when this compute effect was not created from source code.</exception>
-    public ComputeEffectVariant GetEffectVariant(ReadOnlySpan<string> macros) {
+    /// <param name="macros">The additional preprocessor macros (name and value pairs) used to compile the variant. They must not redefine any of the effect's base macros, and the order matters when matching cached variants.</param>
+    /// <returns>An <see cref="ComputeEffectVariant"/> instance created or retrieved from the cache.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when the effect is not based on GLSL source code, or when it is itself a variant (variants cannot create further variants).</exception>
+    /// <exception cref="ArgumentException">Thrown when one of the macros redefines a base macro of the effect.</exception>
+    public ComputeEffectVariant GetEffectVariant(ReadOnlySpan<(string Name, string Value)> macros) {
+        if (this.IsVariant) {
+            throw new InvalidOperationException("Variants cannot create further variants. Call GetEffectVariant on the root effect with the full macro set.");
+        }
+        
         if (this._computeText == null) {
             throw new InvalidOperationException("Compute effect variants can only be created from GLSL source-based compute effects.");
         }
@@ -232,6 +241,15 @@ public class ComputeEffect : Disposable {
         foreach ((ComputeEffectVariantKey cachedKey, ComputeEffectVariant cachedVariant) in this._cachedVariants) {
             if (cachedKey.Matches(macros)) {
                 return cachedVariant;
+            }
+        }
+        
+        // Reject macros that would redefine a base macro (only reached on a cache miss).
+        foreach ((string Name, string Value) macro in macros) {
+            for (int i = 0; i < this.Macros.Count; i++) {
+                if (this.Macros[i].Name == macro.Name) {
+                    throw new ArgumentException($"Macro '{macro.Name}' is already defined by the base effect.", nameof(macros));
+                }
             }
         }
         
@@ -244,12 +262,13 @@ public class ComputeEffect : Disposable {
             macroDefinitions[macroIndex++] = macroDef;
         }
         
-        foreach (string macro in macros) {
-            macroDefinitions[macroIndex++] = new MacroDefinition(macro, "1");
+        foreach ((string Name, string Value) macro in macros) {
+            macroDefinitions[macroIndex++] = new MacroDefinition(macro.Name, macro.Value);
         }
         
         // Compile effect variant.
         ComputeEffect compiledEffect = new ComputeEffect(this.GraphicsDevice, this._computeText, this._compileOptions, macroDefinitions, this.ThreadGroupSizeX, this.ThreadGroupSizeY, this.ThreadGroupSizeZ);
+        compiledEffect.IsVariant = true;
         
         foreach (var bufferLayout in this._bufferLayouts) {
             compiledEffect.AddBufferLayout(bufferLayout.Value.Name, bufferLayout.Key, bufferLayout.Value.BufferType, bufferLayout.Value.ShaderStages);
