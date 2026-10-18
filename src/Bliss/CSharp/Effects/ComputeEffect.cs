@@ -143,6 +143,42 @@ public class ComputeEffect : Disposable {
     }
     
     /// <summary>
+    /// Creates a new <see cref="ComputeEffect"/> by loading GLSL compute shader source code from a file and compiling it into SPIR-V.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used to create GPU resources.</param>
+    /// <param name="computePath">The file path to the GLSL compute shader source.</param>
+    /// <param name="compileOptions">The cross compile options.</param>
+    /// <param name="macros">The shader macro definitions.</param>
+    /// <param name="threadGroupSizeX">The X thread group size. It has to match the local size of the shader.</param>
+    /// <param name="threadGroupSizeY">The Y thread group size. It has to match the local size of the shader.</param>
+    /// <param name="threadGroupSizeZ">The Z thread group size. It has to match the local size of the shader.</param>
+    /// <returns>The compiled compute effect.</returns>
+    /// <exception cref="Exception">Thrown if the shader file does not exist or has an unsupported file type.</exception>
+    public static ComputeEffect FromFiles(GraphicsDevice graphicsDevice, string computePath, CrossCompileOptions compileOptions, MacroDefinition[] macros, uint threadGroupSizeX, uint threadGroupSizeY, uint threadGroupSizeZ) {
+        return new ComputeEffect(graphicsDevice, LoadTextCodeFromFile(computePath), compileOptions, macros, threadGroupSizeX, threadGroupSizeY, threadGroupSizeZ);
+    }
+    
+    /// <summary>
+    /// Creates a new <see cref="ComputeEffect"/> by loading GLSL compute shader source code from a file, resolving its include directives, and compiling it into SPIR-V.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used to create GPU resources.</param>
+    /// <param name="shaderRoot">The root directory that is used to resolve the include directives.</param>
+    /// <param name="computePath">The file path to the GLSL compute shader source.</param>
+    /// <param name="compileOptions">The cross compile options.</param>
+    /// <param name="macros">The shader macro definitions.</param>
+    /// <param name="threadGroupSizeX">The X thread group size. It has to match the local size of the shader.</param>
+    /// <param name="threadGroupSizeY">The Y thread group size. It has to match the local size of the shader.</param>
+    /// <param name="threadGroupSizeZ">The Z thread group size. It has to match the local size of the shader.</param>
+    /// <returns>The compiled compute effect.</returns>
+    public static ComputeEffect FromFiles(GraphicsDevice graphicsDevice, string shaderRoot, string computePath, CrossCompileOptions compileOptions, MacroDefinition[] macros, uint threadGroupSizeX, uint threadGroupSizeY, uint threadGroupSizeZ) {
+        ShaderIncludeProcessor processor = new ShaderIncludeProcessor(shaderRoot);
+        
+        string computeText = processor.ProcessFile(computePath);
+        
+        return new ComputeEffect(graphicsDevice, computeText, compileOptions, macros, threadGroupSizeX, threadGroupSizeY, threadGroupSizeZ);
+    }
+    
+    /// <summary>
     /// Loads compute shader bytecode from the specified file path.
     /// </summary>
     /// <param name="path">The file path to the compute shader bytecode.</param>

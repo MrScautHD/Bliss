@@ -141,6 +141,39 @@ public class Effect : Disposable {
     }
     
     /// <summary>
+    /// Creates a new <see cref="Effect"/> by loading GLSL shader source code from files and compiling it into SPIR-V.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used to create GPU resources.</param>
+    /// <param name="vertPath">The file path to the GLSL vertex shader source (.vert).</param>
+    /// <param name="fragPath">The file path to the GLSL fragment shader source (.frag).</param>
+    /// <param name="compileOptions">Cross-compilation and specialization options.</param>
+    /// <param name="macros">Optional macro definitions injected during shader compilation. If <see langword="null"/>, no macros are defined.</param>
+    /// <returns>The compiled effect.</returns>
+    /// <exception cref="Exception">Thrown if a shader file does not exist or has an unsupported file type.</exception>
+    public static Effect FromFiles(GraphicsDevice graphicsDevice, string vertPath, string fragPath, CrossCompileOptions compileOptions, MacroDefinition[]? macros = null) {
+        return new Effect(graphicsDevice, LoadTextCodeFromFile(vertPath), LoadTextCodeFromFile(fragPath), compileOptions, macros ?? []);
+    }
+    
+    /// <summary>
+    /// Creates a new <see cref="Effect"/> by loading GLSL shader source code from files, resolving its include directives, and compiling it into SPIR-V.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used to create GPU resources.</param>
+    /// <param name="shaderRoot">The root directory that is used to resolve the include directives.</param>
+    /// <param name="vertPath">The file path to the GLSL vertex shader source (.vert).</param>
+    /// <param name="fragPath">The file path to the GLSL fragment shader source (.frag).</param>
+    /// <param name="compileOptions">Cross-compilation and specialization options.</param>
+    /// <param name="macros">Optional macro definitions injected during shader compilation. If <see langword="null"/>, no macros are defined.</param>
+    /// <returns>The compiled effect.</returns>
+    public static Effect FromFiles(GraphicsDevice graphicsDevice, string shaderRoot, string vertPath, string fragPath, CrossCompileOptions compileOptions, MacroDefinition[]? macros = null) {
+        ShaderIncludeProcessor processor = new ShaderIncludeProcessor(shaderRoot);
+        
+        string vertText = processor.ProcessFile(vertPath);
+        string fragText = processor.ProcessFile(fragPath);
+        
+        return new Effect(graphicsDevice, vertText, fragText, compileOptions, macros ?? []);
+    }
+    
+    /// <summary>
     /// Loads the bytecode from the specified shader file path.
     /// </summary>
     /// <param name="path">The file path to the shader source code.</param>
