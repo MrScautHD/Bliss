@@ -149,7 +149,7 @@ public class BasicForwardRenderer : Disposable, IRenderer {
         this._pipelineDescription.RasterizerState = renderable.Material.RasterizerState;
         this._pipelineDescription.BufferLayouts = renderable.Material.Effect.GetBufferLayouts();
         this._pipelineDescription.TextureLayouts = renderable.Material.Effect.GetTextureLayouts();
-        this._pipelineDescription.ShaderSet = new ShaderSetDescription(renderable.Mesh.VertexFormat.Layouts, renderable.Mesh.Material.Effect.Shaders);
+        this._pipelineDescription.ShaderSet = new ShaderSetDescription(renderable.Mesh.VertexFormat.Layouts, renderable.Material.Effect.Shaders);
         
         // Set pipeline.
         commandList.SetPipeline(renderable.Material.Effect.GetPipeline(this._pipelineDescription).Pipeline);
