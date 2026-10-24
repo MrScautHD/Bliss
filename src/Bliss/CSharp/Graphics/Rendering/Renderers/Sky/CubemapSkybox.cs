@@ -4,13 +4,14 @@ using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Effects;
 using Bliss.CSharp.Graphics.Pipelines;
+using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Textures.Cubemaps;
 using Veldrith;
 
-namespace Bliss.CSharp.Graphics.Rendering.Renderers;
+namespace Bliss.CSharp.Graphics.Rendering.Renderers.Sky;
 
-public class SkyBox : Disposable {
+public class CubemapSkybox : Disposable, ISkybox {
     
     /// <summary>
     /// The graphics device used for rendering.
@@ -43,7 +44,37 @@ public class SkyBox : Disposable {
     }
     
     /// <summary>
-    /// Indicates whether the vertex buffer needs to be updated.
+    /// The exposure level of the skybox, controlling the brightness adjustment of the rendered scene.
+    /// </summary>
+    public float Exposure {
+        get;
+        set {
+            if (Math.Abs(field - value) < float.Epsilon) {
+                return;
+            }
+            
+            field = value;
+            this._isDirty = true;
+        }
+    }
+    
+    /// <summary>
+    /// The rotational angle of the skybox in radians.
+    /// </summary>
+    public float Rotation {
+        get;
+        set {
+            if (Math.Abs(field - value) < float.Epsilon) {
+                return;
+            }
+            
+            field = value;
+            this._isDirty = true;
+        }
+    }
+    
+    /// <summary>
+    /// Indicates whether the skybox buffer needs to be updated.
     /// </summary>
     private bool _isDirty;
     
@@ -51,16 +82,6 @@ public class SkyBox : Disposable {
     /// The effect used for rendering the skybox.
     /// </summary>
     private Effect _effect;
-    
-    /// <summary>
-    /// The vertex data for the skybox.
-    /// </summary>
-    private CubemapVertex3D[] _vertices;
-    
-    /// <summary>
-    /// The index data defining the skybox faces.
-    /// </summary>
-    private uint[] _indices;
     
     /// <summary>
     /// The buffer containing vertex data.
@@ -71,39 +92,51 @@ public class SkyBox : Disposable {
     /// The buffer containing index data.
     /// </summary>
     private DeviceBuffer _indexBuffer;
-
+    
+    /// <summary>
+    /// Uniform buffer that holds the parameters for the skybox rendering.
+    /// </summary>
+    private SimpleUniformBuffer<SkyboxData> _skyboxBuffer;
+    
     /// <summary>
     /// The description of the rendering pipeline used for the skybox.
     /// </summary>
     private SimplePipelineDescription _pipelineDescription;
     
     /// <summary>
-    /// Initializes a new instance of the <see cref="SkyBox"/> class.
+    /// Initializes a new instance of the <see cref="CubemapSkybox"/> class.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used for rendering.</param>
     /// <param name="cubemap">The cubemap texture used for the skybox.</param>
     /// <param name="sampler">The optional texture sampler.</param>
     /// <param name="color">The optional color tint applied to the skybox.</param>
-    public SkyBox(GraphicsDevice graphicsDevice, Cubemap cubemap, Sampler? sampler = null, Color? color = null) {
+    /// <param name="exposure">A brightness multiplier for the skybox. 1.0 leaves the sky unchanged, values below 1.0 darken it, and values above 1.0 brighten it.</param>
+    /// <param name="rotation">The rotation of the skybox around the vertical axis. Changing it turns the sky without moving the camera.</param>
+    public CubemapSkybox(GraphicsDevice graphicsDevice, Cubemap cubemap, Sampler? sampler = null, Color? color = null, float exposure = 1.0F, float rotation = 0.0F) {
         this.GraphicsDevice = graphicsDevice;
         this.Cubemap = cubemap;
         this.Sampler = sampler ?? GraphicsHelper.GetSampler(graphicsDevice, SamplerType.Aniso4XClamp);
         this.Color = color ?? Color.White;
-        this._effect = GlobalResource.SkyboxEffect;
+        this.Exposure = exposure;
+        this.Rotation = rotation;
+        this._effect = GlobalResource.CubemapSkyboxEffect;
         
         // Create vertex buffer.
         uint vertexBufferSize = (uint) Marshal.SizeOf<CubemapVertex3D>() * 8;
-        this._vertices = this.GenVertices();
         this._vertexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(vertexBufferSize, BufferUsage.VertexBuffer | BufferUsage.Dynamic));
         this._vertexBuffer.Name = "VertexBuffer";
-        graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this._vertices);
+        graphicsDevice.UpdateBuffer(this._vertexBuffer, 0, this.GenVertices());
         
         // Create index buffer.
         uint indexBufferSize = sizeof(uint) * 36;
-        this._indices = this.GenIndices();
         this._indexBuffer = graphicsDevice.ResourceFactory.CreateBuffer(new BufferDescription(indexBufferSize, BufferUsage.IndexBuffer | BufferUsage.Dynamic));
         this._indexBuffer.Name = "IndexBuffer";
-        graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this._indices);
+        graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this.GenIndices());
+        
+        // Create the params buffer.
+        this._skyboxBuffer = new SimpleUniformBuffer<SkyboxData>(graphicsDevice, 1, ShaderStages.Fragment);
+        this._skyboxBuffer.DeviceBuffer.Name = "SkyboxBuffer";
+        this._isDirty = true;
         
         // Create pipeline.
         this._pipelineDescription = new SimplePipelineDescription() {
@@ -142,13 +175,14 @@ public class SkyBox : Disposable {
         // Update pipeline description.
         this._pipelineDescription.Outputs = framebuffer.OutputDescription;
         
-        // Update vertex buffer.
+        // Update skybox buffer.
         if (this._isDirty) {
-            for (int i = 0; i < this._vertices.Length; i++) {
-                this._vertices[i].Color = this.Color.ToRgbaFloatVec4();
-            }
-            
-            commandList.UpdateBuffer(this._vertexBuffer, 0, this._vertices);
+            this._skyboxBuffer.SetValue(0, new SkyboxData() {
+                Rotation = Matrix4x4.CreateRotationY(float.DegreesToRadians(this.Rotation)),
+                Color = this.Color.ToRgbaFloatVec4()
+            });
+            this._skyboxBuffer.UpdateBufferDeferred(commandList);
+            this._isDirty = false;
         }
         
         // Set vertex and index buffer.
@@ -160,6 +194,9 @@ public class SkyBox : Disposable {
         
         // Set matrix buffer.
         commandList.SetGraphicsResourceSet(this._effect.GetBufferLayoutSlot("MatrixBuffer"), cam3D.GetMatrixBuffer().GetResourceSet(this._effect.GetBufferLayout("MatrixBuffer")));
+        
+        // Set skybox data buffer.
+        commandList.SetGraphicsResourceSet(this._effect.GetBufferLayoutSlot("SkyboxBuffer"), this._skyboxBuffer.GetResourceSet(this._effect.GetBufferLayout("SkyboxBuffer")));
         
         // Set resourceSet of the cubemap.
         commandList.SetGraphicsResourceSet(this._effect.GetTextureLayoutSlot("fCubemap"), this.Cubemap.GetResourceSet(this.Sampler, this._effect.GetTextureLayout("fCubemap")));
@@ -217,10 +254,20 @@ public class SkyBox : Disposable {
         ];
     }
     
+    /// <summary>
+    /// Struct holding configurable Skybox data.
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    private struct SkyboxData {
+        public Matrix4x4 Rotation;
+        public Vector4 Color;
+    }
+    
     protected override void Dispose(bool disposing) {
         if (disposing) {
             this._vertexBuffer.Dispose();
             this._indexBuffer.Dispose();
+            this._skyboxBuffer.Dispose();
         }
     }
 }

@@ -8,14 +8,15 @@ layout (std140, set = 0, binding = 0) uniform MatrixBuffer {
 layout (location = 0) in vec3 vPosition;
 layout (location = 1) in vec4 vColor;
 
-layout (location = 0) out vec3 fTexCoords;
+layout (location = 0) out vec3 fDirection;
 layout (location = 1) out vec4 fColor;
 
 void main() {
-    fTexCoords = vPosition;
+    fDirection = vPosition;
     fColor = vColor;
     
-    vec4 v4Pos = vec4(vPosition, 1.0);
-    vec4 clipPos = uProjection * mat4(mat3(uView)) * v4Pos;
-    gl_Position = vec4(clipPos.xy, clipPos.w, clipPos.w);
+    mat4 viewWithoutTranslation = mat4(mat3(uView));
+    vec4 position = uProjection * viewWithoutTranslation * vec4(vPosition, 1.0);
+    
+    gl_Position = position.xyww;
 }

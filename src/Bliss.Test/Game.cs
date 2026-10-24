@@ -13,6 +13,7 @@ using Bliss.CSharp.Graphics.Rendering.Renderers;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Forward;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Sky;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Interact;
@@ -190,6 +191,8 @@ public class Game : Disposable {
         this.FullScreenResolvedTexture = new Texture2D(this.GraphicsDevice, new Image(this.MainWindow.GetWidth(), this.MainWindow.GetHeight()), false);
 
         this._basicForwardRenderer = new BasicForwardRenderer(this.GraphicsDevice);
+        this._cubemap = new Cubemap(this.GraphicsDevice, "content/cubemap.png");
+        this._basicForwardRenderer.SkyBox = new ProceduralSkybox(this.GraphicsDevice);
         this._renderables = new List<Renderable>();
         
         this._immediateRenderer = new ImmediateRenderer(this.GraphicsDevice);
@@ -292,7 +295,6 @@ public class Game : Disposable {
         this._customQuad = Mesh<Vertex3D>.GenQuad(this.GraphicsDevice, 1, 1);
         this._customQuad.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
         
-        this._cubemap = new Cubemap(this.GraphicsDevice, "content/cubemap.png");
         this._cubemapTexture = new Texture2D(this.GraphicsDevice, this._cubemap.Images[5][0]);
 
         this._button = new Texture2D(this.GraphicsDevice, "content/button.png");
@@ -300,7 +302,7 @@ public class Game : Disposable {
         
         this.SetupForwardRenderables();
         
-        //Input.EnableRelativeMouseMode(); // TODO: RELATIVE MODE TO SAVE FPS WHEN MOVING THE MOUSE
+        Input.EnableRelativeMouseMode(); // TODO: RELATIVE MODE TO SAVE FPS WHEN MOVING THE MOUSE
     }
     
     protected virtual void Update() {

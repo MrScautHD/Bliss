@@ -62,9 +62,14 @@ public static class GlobalResource {
     public static Effect DefaultSkinnedModelEffect { get; private set; }
     
     /// <summary>
-    /// Gets the <see cref="Effect"/> used for rendering skyboxes in 3D environments.
+    /// Gets the <see cref="Effect"/> used for rendering cubemap skyboxes in 3D environments.
     /// </summary>
-    public static Effect SkyboxEffect { get; private set; }
+    public static Effect CubemapSkyboxEffect { get; private set; }
+    
+    /// <summary>
+    /// Gets the <see cref="Effect"/> used for rendering procedural skyboxes in 3D environments.
+    /// </summary>
+    public static Effect ProceduralSkyboxEffect { get; private set; }
     
     /// <summary>
     /// The default <see cref="Texture2D"/> used for immediate mode rendering.
@@ -161,10 +166,16 @@ public static class GlobalResource {
         DefaultSkinnedModelEffect.AddBufferLayout("MaterialBuffer", 3, SimpleBufferType.Uniform, ShaderStages.Fragment);
         DefaultSkinnedModelEffect.AddTextureLayout(MaterialMapType.Albedo.GetName(), 4);
         
-        // Skybox effect.
-        SkyboxEffect = new Effect(GraphicsDevice, "content/bliss/shaders/environment/skybox.vert", "content/bliss/shaders/environment/skybox.frag", new CrossCompileOptions());
-        SkyboxEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
-        SkyboxEffect.AddTextureLayout("fCubemap", 1);
+        // Cubemap skybox effect.
+        CubemapSkyboxEffect = new Effect(GraphicsDevice, "content/bliss/shaders/environment/cubemap_skybox.vert", "content/bliss/shaders/environment/cubemap_skybox.frag", new CrossCompileOptions());
+        CubemapSkyboxEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        CubemapSkyboxEffect.AddBufferLayout("SkyboxBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex | ShaderStages.Fragment);
+        CubemapSkyboxEffect.AddTextureLayout("fCubemap", 2);
+        
+        // Procedural skybox effect.
+        ProceduralSkyboxEffect = new Effect(GraphicsDevice, "content/bliss/shaders/environment/procedural_skybox.vert", "content/bliss/shaders/environment/procedural_skybox.frag", new CrossCompileOptions());
+        ProceduralSkyboxEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
+        ProceduralSkyboxEffect.AddBufferLayout("SkyboxBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex | ShaderStages.Fragment);
         
         // Default immediate renderer texture.
         DefaultImmediateRendererTexture = new Texture2D(graphicsDevice, new Image(1, 1, Color.White));
@@ -186,7 +197,7 @@ public static class GlobalResource {
         DefaultImmediateRendererEffect.Dispose();
         DefaultModelEffect.Dispose();
         DefaultSkinnedModelEffect.Dispose();
-        SkyboxEffect.Dispose();
+        CubemapSkyboxEffect.Dispose();
         DefaultImmediateRendererTexture.Dispose();
         DefaultModelTexture.Dispose();
     }

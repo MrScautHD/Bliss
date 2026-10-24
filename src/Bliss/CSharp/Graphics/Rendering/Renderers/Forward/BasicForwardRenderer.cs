@@ -3,6 +3,7 @@ using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Sky;
 using Bliss.CSharp.Materials;
 using Veldrith;
 
@@ -18,7 +19,7 @@ public class BasicForwardRenderer : Disposable, IRenderer {
     /// <summary>
     /// Gets or sets the skybox used for rendering the background environment in a 3D scene.
     /// </summary>
-    public SkyBox? SkyBox { get; set; }
+    public ISkybox? SkyBox { get; set; }
     
     /// <summary>
     /// Occurs after the skybox/background was rendered and before opaque geometry is rendered.
@@ -55,7 +56,7 @@ public class BasicForwardRenderer : Disposable, IRenderer {
     /// </summary>
     /// <param name="graphicsDevice">The graphics device responsible for rendering operations and resource management.</param>
     /// <param name="skyBox">An optional skybox instance used to render the background of the scene.</param>
-    public BasicForwardRenderer(GraphicsDevice graphicsDevice, SkyBox? skyBox = null) {
+    public BasicForwardRenderer(GraphicsDevice graphicsDevice, ISkybox? skyBox = null) {
         this.GraphicsDevice = graphicsDevice;
         this.SkyBox = skyBox;
         
