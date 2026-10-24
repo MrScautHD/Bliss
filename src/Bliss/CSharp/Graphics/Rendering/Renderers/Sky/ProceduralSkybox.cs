@@ -412,6 +412,7 @@ public class ProceduralSkybox : Disposable, ISkybox {
         if (disposing) {
             this._vertexBuffer.Dispose();
             this._indexBuffer.Dispose();
+            this._skyboxBuffer.Dispose();
         }
     }
 }
