@@ -4,6 +4,7 @@ using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Sky;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Sky.Environment;
 using Bliss.CSharp.Materials;
 using Veldrith;
 
@@ -20,6 +21,12 @@ public class BasicForwardRenderer : Disposable, IRenderer {
     /// Gets or sets the skybox used for rendering the background environment in a 3D scene.
     /// </summary>
     public ISkybox? SkyBox { get; set; }
+    
+    /// <summary>
+    /// Gets or sets the provider of the environment data that the renderer lights the scene with, for example the maps for ambient and reflected light.
+    /// If <see langword="null"/>, the scene gets no environment lighting.
+    /// </summary>
+    public IEnvironmentProvider? EnvironmentProvider { get; set; }
     
     /// <summary>
     /// Occurs after the skybox/background was rendered and before opaque geometry is rendered.
@@ -56,9 +63,11 @@ public class BasicForwardRenderer : Disposable, IRenderer {
     /// </summary>
     /// <param name="graphicsDevice">The graphics device responsible for rendering operations and resource management.</param>
     /// <param name="skyBox">An optional skybox instance used to render the background of the scene.</param>
-    public BasicForwardRenderer(GraphicsDevice graphicsDevice, ISkybox? skyBox = null) {
+    /// <param name="environmentProvider">An optional provider of the environment data that the scene is lit with. If <see langword="null"/>, the scene gets no environment lighting.</param>
+    public BasicForwardRenderer(GraphicsDevice graphicsDevice, ISkybox? skyBox = null, IEnvironmentProvider? environmentProvider = null) {
         this.GraphicsDevice = graphicsDevice;
         this.SkyBox = skyBox;
+        this.EnvironmentProvider = environmentProvider;
         
         // Create lists for renderables.
         this._opaqueRenderables = new List<Renderable>();

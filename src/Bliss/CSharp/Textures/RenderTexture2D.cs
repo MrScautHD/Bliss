@@ -78,7 +78,7 @@ public class RenderTexture2D : Disposable {
         this._sampleCount = this.GetValidSampleCount(sampleCount);
         this._cachedColorResourceSets = new Dictionary<(Sampler, SimpleBufferLayout), ResourceSet>();
         this._cachedDepthResourceSets = new Dictionary<(Sampler, SimpleBufferLayout), ResourceSet>();
-        this.CreateFrameBuffer();
+        this.CreateFramebuffer();
     }
     
     /// <summary>
@@ -89,7 +89,7 @@ public class RenderTexture2D : Disposable {
         set {
             this._sampleCount = this.GetValidSampleCount(value);
             this.ClearResources();
-            this.CreateFrameBuffer();
+            this.CreateFramebuffer();
         }
     }
     
@@ -103,7 +103,7 @@ public class RenderTexture2D : Disposable {
         this.Height = height;
         
         this.ClearResources();
-        this.CreateFrameBuffer();
+        this.CreateFramebuffer();
         
         this.Resized?.Invoke(new Rectangle(0, 0, (int) width, (int) height));
     }
@@ -162,7 +162,7 @@ public class RenderTexture2D : Disposable {
     /// <summary>
     /// Creates a framebuffer with depth and color textures based on the specified width, height, and sample count.
     /// </summary>
-    private void CreateFrameBuffer() {
+    private void CreateFramebuffer() {
         this.ColorTexture = this.GraphicsDevice.ResourceFactory.CreateTexture(new TextureDescription(this.Width, this.Height, 1, 1, 1, this.Format, TextureUsage.RenderTarget | TextureUsage.Sampled, TextureType.Texture2D, this._sampleCount));
         this.DepthTexture = this.GraphicsDevice.ResourceFactory.CreateTexture(new TextureDescription(this.Width, this.Height, 1, 1, 1, PixelFormat.D32FloatS8UInt, TextureUsage.DepthStencil | TextureUsage.Sampled, TextureType.Texture2D, this._sampleCount));
         this.Framebuffer = this.GraphicsDevice.ResourceFactory.CreateFramebuffer(new FramebufferDescription(this.DepthTexture, this.ColorTexture));

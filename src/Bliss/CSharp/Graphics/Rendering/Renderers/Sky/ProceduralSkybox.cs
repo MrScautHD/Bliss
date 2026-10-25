@@ -201,13 +201,13 @@ public class ProceduralSkybox : Disposable, ISkybox {
     /// Initializes a new instance of the <see cref="ProceduralSkybox"/> class.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used for rendering.</param>
-    /// <param name="atmosphereThickness">The thickness of the atmosphere. Higher values scatter more light, which gives a deeper blue sky and stronger red and orange colors near the horizon at sunrise and sunset. 1.0 is an Earth-like atmosphere.</param>
-    /// <param name="sunQuality">The quality of the sun disc rendering, which decides how the sun and its glow are drawn.</param>
-    /// <param name="sunSize">The size of the sun disc. Higher values make the sun larger.</param>
-    /// <param name="sunSizeConvergence">How quickly the glow around the sun disc fades into the sky. Higher values give a tighter glow, and lower values give a wide halo.</param>
-    /// <param name="sunDirection">The direction that points from the viewer towards the sun. It does not have to be normalized. If <see langword="null"/>, a direction high in the sky is used.</param>
+    /// <param name="atmosphereThickness">Shapes the sky gradient, in the range [0, 5]. Higher values push the pale horizon color higher into the sky. It is a visual setting and does not simulate real light scattering.</param>
+    /// <param name="sunQuality">The quality of the sun rendering: off draws no sun, simple draws only a bright disc, and high quality adds glow layers around the disc.</param>
+    /// <param name="sunSize">The size of the sun disc as a cosine margin, in the range [0.0001, 0.5]. The disc covers all directions with a cosine above 1 - size, so the default of 0.002 is an angular radius of about 3.6 degrees.</param>
+    /// <param name="sunSizeConvergence">How tightly the glow hugs the sun, in the range [0, 10]. Higher values give a tighter glow, and lower values give a wider halo. It only has an effect with the high quality sun.</param>
+    /// <param name="sunDirection">The direction that points from the viewer towards the sun. The shader normalizes it. If <see langword="null"/>, a direction high in the sky is used.</param>
     /// <param name="sunColor">The color of the sun disc and its glow. If <see langword="null"/>, a warm white is used.</param>
-    /// <param name="skyColor">The color of the sky, which tints the atmospheric scattering. If <see langword="null"/>, a light blue is used.</param>
+    /// <param name="skyColor">The tint that is mixed into the sky gradient. If <see langword="null"/>, a light blue is used.</param>
     /// <param name="groundColor">The color of the ground below the horizon. If <see langword="null"/>, a medium gray is used.</param>
     /// <param name="color">The color tint that is multiplied with the whole skybox. If <see langword="null"/>, white is used, which leaves the sky unchanged.</param>
     /// <param name="exposure">A brightness multiplier for the skybox. 1.0 leaves the sky unchanged, values below 1.0 darken it, and values above 1.0 brighten it.</param>
@@ -248,7 +248,7 @@ public class ProceduralSkybox : Disposable, ISkybox {
         this._indexBuffer.Name = "IndexBuffer";
         graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this.GenIndices());
         
-        // Create the params buffer.
+        // Create the data buffer.
         this._skyboxBuffer = new SimpleUniformBuffer<SkyboxData>(graphicsDevice, 1, ShaderStages.Fragment);
         this._skyboxBuffer.DeviceBuffer.Name = "SkyboxBuffer";
         this._isDirty = true;
@@ -294,14 +294,12 @@ public class ProceduralSkybox : Disposable, ISkybox {
         if (this._isDirty) {
             
             // Create skybox data.
-            Vector3 sunDirection = this.SunDirection.LengthSquared() > 0.0F ? Vector3.Normalize(this.SunDirection) : Vector3.UnitY;
-            
             SkyboxData data = new SkyboxData() {
                 SkyColor = this.SkyColor.ToRgbaFloatVec4(),
                 GroundColor = this.GroundColor.ToRgbaFloatVec4(),
                 SunColor = this.SunColor.ToRgbaFloatVec4(),
                 Color = this.Color.ToRgbaFloatVec4(),
-                SunDirection = new Vector4(sunDirection, 0.0F),
+                SunDirection = new Vector4(this.SunDirection.LengthSquared() > 0.0F ? Vector3.Normalize(this.SunDirection) : Vector3.UnitY, 0.0F),
                 SunSize = this.SunSize,
                 SunSizeConvergence = this.SunSizeConvergence,
                 AtmosphereThickness = this.AtmosphereThickness,
@@ -340,18 +338,18 @@ public class ProceduralSkybox : Disposable, ISkybox {
     /// </summary>
     /// <returns>An array of <see cref="CubemapVertex3D"/> objects representing the vertices of the skybox.</returns>
     private CubemapVertex3D[] GenVertices() {
-        Color color = Color.White;
+        Vector4 color = Color.White.ToRgbaFloatVec4();
         
         return [
-            new CubemapVertex3D(new Vector3(-1, -1, -1), color.ToRgbaFloatVec4()),
-            new CubemapVertex3D(new Vector3(1, -1, -1), color.ToRgbaFloatVec4()),
-            new CubemapVertex3D(new Vector3(1, 1, -1), color.ToRgbaFloatVec4()),
-            new CubemapVertex3D(new Vector3(-1, 1, -1), color.ToRgbaFloatVec4()),
+            new CubemapVertex3D(new Vector3(-1, -1, -1), color),
+            new CubemapVertex3D(new Vector3(1, -1, -1), color),
+            new CubemapVertex3D(new Vector3(1, 1, -1), color),
+            new CubemapVertex3D(new Vector3(-1, 1, -1), color),
             
-            new CubemapVertex3D(new Vector3(-1, -1, 1), color.ToRgbaFloatVec4()),
-            new CubemapVertex3D(new Vector3(1, -1, 1), color.ToRgbaFloatVec4()),
-            new CubemapVertex3D(new Vector3(1, 1, 1), color.ToRgbaFloatVec4()),
-            new CubemapVertex3D(new Vector3(-1, 1, 1), color.ToRgbaFloatVec4())
+            new CubemapVertex3D(new Vector3(-1, -1, 1), color),
+            new CubemapVertex3D(new Vector3(1, -1, 1), color),
+            new CubemapVertex3D(new Vector3(1, 1, 1), color),
+            new CubemapVertex3D(new Vector3(-1, 1, 1), color)
         ];
     }
     

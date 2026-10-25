@@ -177,9 +177,11 @@ public class CubemapSkybox : Disposable, ISkybox {
         
         // Update skybox buffer.
         if (this._isDirty) {
+            Vector4 color = this.Color.ToRgbaFloatVec4();
+            
             this._skyboxBuffer.SetValue(0, new SkyboxData() {
                 Rotation = Matrix4x4.CreateRotationY(float.DegreesToRadians(this.Rotation)),
-                Color = this.Color.ToRgbaFloatVec4()
+                Color = new Vector4(color.X, color.Y, color.Z, this.Exposure)
             });
             this._skyboxBuffer.UpdateBufferDeferred(commandList);
             this._isDirty = false;
@@ -213,18 +215,18 @@ public class CubemapSkybox : Disposable, ISkybox {
     /// </summary>
     /// <returns>An array of <see cref="CubemapVertex3D"/> objects representing the vertices of the skybox.</returns>
     private CubemapVertex3D[] GenVertices() {
-        Color color = Color.White;
+        Vector4 color = Color.White.ToRgbaFloatVec4();
         
         return [
-            new CubemapVertex3D(new Vector3(-1, -1, -1), color.ToRgbaFloatVec4()),
-            new CubemapVertex3D(new Vector3(1, -1, -1), color.ToRgbaFloatVec4()),
-            new CubemapVertex3D(new Vector3(1, 1, -1), color.ToRgbaFloatVec4()),
-            new CubemapVertex3D(new Vector3(-1, 1, -1), color.ToRgbaFloatVec4()),
+            new CubemapVertex3D(new Vector3(-1, -1, -1), color),
+            new CubemapVertex3D(new Vector3(1, -1, -1), color),
+            new CubemapVertex3D(new Vector3(1, 1, -1), color),
+            new CubemapVertex3D(new Vector3(-1, 1, -1), color),
             
-            new CubemapVertex3D(new Vector3(-1, -1, 1), color.ToRgbaFloatVec4()),
-            new CubemapVertex3D(new Vector3(1, -1, 1), color.ToRgbaFloatVec4()),
-            new CubemapVertex3D(new Vector3(1, 1, 1), color.ToRgbaFloatVec4()),
-            new CubemapVertex3D(new Vector3(-1, 1, 1), color.ToRgbaFloatVec4())
+            new CubemapVertex3D(new Vector3(-1, -1, 1), color),
+            new CubemapVertex3D(new Vector3(1, -1, 1), color),
+            new CubemapVertex3D(new Vector3(1, 1, 1), color),
+            new CubemapVertex3D(new Vector3(-1, 1, 1), color)
         ];
     }
     

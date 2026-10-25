@@ -14,6 +14,7 @@ using Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Primitives;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Batches.Sprites;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Forward;
 using Bliss.CSharp.Graphics.Rendering.Renderers.Sky;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Sky.Environment;
 using Bliss.CSharp.Graphics.VertexTypes;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Interact;
@@ -192,7 +193,9 @@ public class Game : Disposable {
 
         this._basicForwardRenderer = new BasicForwardRenderer(this.GraphicsDevice);
         this._cubemap = new Cubemap(this.GraphicsDevice, "content/cubemap.png");
-        this._basicForwardRenderer.SkyBox = new ProceduralSkybox(this.GraphicsDevice);
+        ProceduralSkybox skybox = new ProceduralSkybox(this.GraphicsDevice);
+        this._basicForwardRenderer.SkyBox = skybox;
+        ProceduralEnvironment environment = new ProceduralEnvironment(skybox);
         this._renderables = new List<Renderable>();
         
         this._immediateRenderer = new ImmediateRenderer(this.GraphicsDevice);

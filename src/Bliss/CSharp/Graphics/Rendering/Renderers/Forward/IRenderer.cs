@@ -1,4 +1,5 @@
 using Bliss.CSharp.Graphics.Rendering.Renderers.Sky;
+using Bliss.CSharp.Graphics.Rendering.Renderers.Sky.Environment;
 using Veldrith;
 
 namespace Bliss.CSharp.Graphics.Rendering.Renderers.Forward;
@@ -9,6 +10,11 @@ public interface IRenderer : IDisposable {
     /// Gets or sets the skybox used for rendering the background environment in a 3D scene.
     /// </summary>
     ISkybox? SkyBox { get; set; }
+    
+    /// <summary>
+    /// Gets or sets the environment provider responsible for supplying environment-related resources, such as cubemaps or environment colors, used in rendering operations.
+    /// </summary>
+    IEnvironmentProvider? EnvironmentProvider { get; set; }
     
     /// <summary>
     /// Occurs after the skybox/background was rendered and before opaque geometry is rendered.
