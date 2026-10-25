@@ -11,28 +11,24 @@ public static class CubemapHelper {
     /// <param name="image">The input image to generate cubemap face images from.</param>
     /// <param name="layout">The layout of the cubemap in the source image. Determines how the image should be split into faces.</param>
     /// <returns>An array of six images, each representing one face of the cubemap. The order of the images corresponds to the cubemap faces.</returns>
-    /// <exception cref="ArgumentException">
-    /// Thrown when the dimensions of the input image are incompatible with the specified cubemap layout.
-    /// </exception>
-    /// <exception cref="ArgumentOutOfRangeException">
-    /// Thrown when the specified cubemap layout is not recognized or supported.
-    /// </exception>
+    /// <exception cref="ArgumentException">Thrown when the dimensions of the input image are incompatible with the specified cubemap layout.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the specified cubemap layout is not recognized or supported.</exception>
     public static Image[] GenCubemapImages(Image image, CubemapLayout layout) {
         int width = image.Width;
         int height = image.Height;
-
+        
         Image[] cubemapFaces = new Image[6];
-
+        
         if (layout == CubemapLayout.AutoDetect) {
             layout = DetectLayout(width, height);
         }
-
+        
         switch (layout) {
             case CubemapLayout.LineVertical:
                 if (height % 6 != 0) {
                     throw new ArgumentException("Image height is not divisible by 6 for LineVertical layout.");
                 }
-
+                
                 int faceHeight = height / 6;
                 
                 for (int i = 0; i < 6; i++) {
@@ -47,7 +43,7 @@ public static class CubemapHelper {
                 if (width % 6 != 0) {
                     throw new ArgumentException("Image width is not divisible by 6 for LineHorizontal layout.");
                 }
-
+                
                 int faceWidth = width / 6;
                 
                 for (int i = 0; i < 6; i++) {
@@ -57,7 +53,7 @@ public static class CubemapHelper {
                     cubemapFaces[i] = croppedImage;
                 }
                 break;
-
+            
             case CubemapLayout.CrossThreeByFour:
                 if (width % 3 != 0 || height % 4 != 0) {
                     throw new ArgumentException("Image dimensions do not match the CrossThreeByFour layout.");
@@ -65,23 +61,23 @@ public static class CubemapHelper {
                 
                 ProcessCrossThreeByFour(image, cubemapFaces, width, height);
                 break;
-
+            
             case CubemapLayout.CrossFourByThree:
                 if (width % 4 != 0 || height % 3 != 0) {
                     throw new ArgumentException("Image dimensions do not match the CrossFourByThree layout.");
                 }
-
+                
                 ProcessCrossFourByThree(image, cubemapFaces, width, height);
                 break;
-
+            
             case CubemapLayout.Panorama:
                 cubemapFaces = ProcessPanorama(image);
                 break;
-
+            
             default:
                 throw new ArgumentOutOfRangeException(nameof(layout), layout, "Unknown cubemap layout.");
         }
-
+        
         return cubemapFaces;
     }
 
@@ -110,7 +106,7 @@ public static class CubemapHelper {
             throw new ArgumentException("Unable to automatically detect the layout of the provided image.");
         }
     }
-
+    
     /// <summary>
     /// Processes a 3x4 cross-layout input image and extracts six cubemap faces corresponding to the positive and negative x, y, and z axes.
     /// </summary>
@@ -121,7 +117,7 @@ public static class CubemapHelper {
     private static void ProcessCrossThreeByFour(Image image, Image[] cubemapFaces, int width, int height) {
         int crossWidth = width / 3;
         int crossHeight = height / 4;
-
+        
         // PositiveX
         Image positiveX = (Image) image.Clone();
         positiveX.Crop(new Rectangle(crossWidth * 2, crossHeight, crossWidth, crossHeight));
@@ -146,13 +142,13 @@ public static class CubemapHelper {
         Image positiveZ = (Image) image.Clone();
         positiveZ.Crop(new Rectangle(crossWidth, crossHeight * 1, crossWidth, crossHeight));
         cubemapFaces[4] = positiveZ;
-
+        
         // NegativeZ
         Image negativeZ = (Image) image.Clone();
         negativeZ.Crop(new Rectangle(crossWidth * 2, crossHeight * 1, crossWidth, crossHeight));
         cubemapFaces[5] = negativeZ;
     }
-
+    
     /// <summary>
     /// Processes a source image in a 4x3 cross layout and extracts the six corresponding cubemap face images.
     /// </summary>
@@ -163,7 +159,7 @@ public static class CubemapHelper {
     private static void ProcessCrossFourByThree(Image image, Image[] cubemapFaces, int width, int height) {
         int crossWidth = width / 4;
         int crossHeight = height / 3;
-
+        
         // PositiveX
         Image positiveX = (Image) image.Clone();
         positiveX.Crop(new Rectangle(crossWidth * 2, crossHeight, crossWidth, crossHeight));
@@ -188,13 +184,13 @@ public static class CubemapHelper {
         Image positiveZ = (Image) image.Clone();
         positiveZ.Crop(new Rectangle(crossWidth * 1, crossHeight * 1, crossWidth, crossHeight));
         cubemapFaces[4] = positiveZ;
-
+        
         // NegativeZ
         Image negativeZ = (Image) image.Clone();
         negativeZ.Crop(new Rectangle(crossWidth * 3, crossHeight * 1, crossWidth, crossHeight));
         cubemapFaces[5] = negativeZ;
     }
-
+    
     /// <summary>
     /// Processes a panoramic image to generate an array of six images, each representing one face of a cubemap.
     /// </summary>
@@ -235,7 +231,7 @@ public static class CubemapHelper {
         Image negativeZ = (Image) image.Clone();
         negativeZ.Crop(new Rectangle(faceWidth * 2, faceHeight, faceWidth, faceHeight));
         faces[5] = negativeZ;
-
+        
         return faces;
     }
 }

@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Logging;
@@ -12,52 +13,42 @@ public class Cubemap : Disposable {
     /// Gets the graphics device associated with the cubemap instance.
     /// </summary>
     public GraphicsDevice GraphicsDevice { get; private set; }
-
-    /// <summary>
-    /// Gets the mipmap levels of images for each face of the cubemap.
-    /// </summary>
-    public Image[][] Images { get; private set; }
-
+    
     /// <summary>
     /// Gets the width of the cubemap.
     /// </summary>
-    public uint Width => (uint) this.Images[0][0].Width;
-
+    public uint Width { get; private set; }
+    
     /// <summary>
     /// Gets the height of the cubemap.
     /// </summary>
-    public uint Height => (uint) this.Images[0][0].Height;
-
+    public uint Height { get; private set; }
+    
     /// <summary>
     /// Gets the pixel format of the cubemap.
     /// </summary>
     public PixelFormat Format { get; private set; }
-
+    
     /// <summary>
     /// Gets the size of a pixel in bytes.
     /// </summary>
     public uint PixelSizeInBytes => sizeof(byte) * 4;
-
+    
     /// <summary>
-    /// Gets the number of mip levels of the cubemap.
+    /// Gets the total number of mipmap levels for this cubemap.
     /// </summary>
-    public uint MipLevels => (uint) this.Images[0].Length;
-
+    public uint MipLevels { get; private set; }
+    
     /// <summary>
     /// Gets the device texture.
     /// </summary>
     public Texture DeviceTexture { get; private set; }
-
-    /// <summary>
-    /// Gets the texture view associated with the cubemap, allowing shaders to access the cubemap texture data.
-    /// </summary>
-    public TextureView TextureView { get; private set; }
-
+    
     /// <summary>
     /// Caches resource sets for combinations of sampler objects and texture layouts.
     /// </summary>
     private Dictionary<(Sampler, SimpleTextureLayout), ResourceSet> _cachedResourceSets;
-
+    
     /// <summary>
     /// Initializes a new instance of the <see cref="Cubemap"/> class by loading cubemap faces from a file path.
     /// </summary>
@@ -90,18 +81,34 @@ public class Cubemap : Disposable {
     /// <param name="layout">The layout format used to interpret the cubemap faces in the source image.</param>
     /// <param name="mipmap">Specifies whether to generate mipmaps for each cubemap face.</param>
     /// <param name="srgb">Specifies whether the images should be loaded as sRGB format.</param>
-    public Cubemap(GraphicsDevice graphicsDevice, Image image, CubemapLayout layout = CubemapLayout.AutoDetect, bool mipmap = true, bool srgb = false) {
-        this.GraphicsDevice = graphicsDevice;
-        this.Images = new Image[6][];
-        
-        Image[] cubemapFaces = CubemapHelper.GenCubemapImages(image, layout);
-        
-        for (int i = 0; i < 6; i++) {
-            this.Images[i] = mipmap ? MipmapHelper.GenerateMipmaps(cubemapFaces[i]) : [cubemapFaces[i]];
+    public Cubemap(GraphicsDevice graphicsDevice, Image image, CubemapLayout layout = CubemapLayout.AutoDetect, bool mipmap = true, bool srgb = false) : this(graphicsDevice, CubemapHelper.GenCubemapImages(image, layout), mipmap, srgb) { }
+    
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Cubemap"/> class from six already loaded face images.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used for creating resources.</param>
+    /// <param name="faces">The six face images, ordered like <see cref="CubemapLayer"/> (+X, -X, +Y, -Y, +Z, -Z). All must be square and equally sized.</param>
+    /// <param name="mipmap">Specifies whether to generate mipmaps for the cubemap.</param>
+    /// <param name="srgb">Specifies whether to use the sRGB color space.</param>
+    public Cubemap(GraphicsDevice graphicsDevice, Image[] faces, bool mipmap = true, bool srgb = false) {
+        if (faces.Length != 6) {
+            throw new ArgumentException("A cubemap requires exactly 6 images.", nameof(faces));
         }
         
+        int size = faces[0].Width;
+        
+        foreach (Image face in faces) {
+            if (face.Width != size || face.Height != size) {
+                throw new ArgumentException("All cubemap faces must be square and have the same size.", nameof(faces));
+            }
+        }
+        
+        this.GraphicsDevice = graphicsDevice;
+        this.Width = (uint) faces[0].Width;
+        this.Height = (uint) faces[0].Height;
+        this.MipLevels = mipmap ? (uint) Math.Floor(Math.Log2(Math.Max(this.Width, this.Height))) + 1 : 1;
         this.Format = srgb ? PixelFormat.R8G8B8A8UNormSRgb : PixelFormat.R8G8B8A8UNorm;
-        this.CreateDeviceTexture();
+        this.DeviceTexture = this.CreateDeviceTexture(faces);
         this._cachedResourceSets = new Dictionary<(Sampler, SimpleTextureLayout), ResourceSet>();
     }
     
@@ -113,7 +120,7 @@ public class Cubemap : Disposable {
     /// <returns>A <see cref="ResourceSet"/> object associated with the provided sampler and layout.</returns>
     public ResourceSet GetResourceSet(Sampler sampler, SimpleTextureLayout layout) {
         if (!this._cachedResourceSets.TryGetValue((sampler, layout), out ResourceSet? resourceSet)) {
-            ResourceSet newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(layout.Layout, this.TextureView, sampler));
+            ResourceSet newResourceSet = this.GraphicsDevice.ResourceFactory.CreateResourceSet(new ResourceSetDescription(layout.Layout, this.DeviceTexture, sampler));
             
             this._cachedResourceSets.Add((sampler, layout), newResourceSet);
             return newResourceSet;
@@ -121,90 +128,208 @@ public class Cubemap : Disposable {
         
         return resourceSet;
     }
-
+    
     /// <summary>
-    /// Retrieves the raw byte data for a specific array layer of the cubemap.
+    /// Reads a single face of the cubemap (base mip level) back from the GPU.
     /// </summary>
-    /// <param name="cubemapLayer">The array layer of the cubemap to retrieve data from.</param>
-    /// <returns>An array of bytes containing the pixel data for the specified array layer.</returns>
+    /// <param name="cubemapLayer">The face to read.</param>
+    /// <returns>The pixel data in RGBA order, tightly packed without row padding.</returns>
     public byte[] GetDataFromBytes(CubemapLayer cubemapLayer) {
-        return this.Images[(int) cubemapLayer][0].Data;
-    }
-
-    /// <summary>
-    /// Retrieves the image data associated with the specified array layer of the cubemap.
-    /// </summary>
-    /// <param name="cubemapLayer">The specific array layer whose image data is to be retrieved.</param>
-    /// <returns>An <see cref="Image"/> object containing the image data for the specified array layer.</returns>
-    public Image GetDataFromImage(CubemapLayer cubemapLayer) {
-        return this.Images[(int) cubemapLayer][0];
-    }
-
-    /// <summary>
-    /// Updates the cubemap's data for a specified array layer and a rectangular area.
-    /// </summary>
-    /// <param name="data">The raw byte array containing the pixel data to be set.</param>
-    /// <param name="cubemapLayer">The specific cubemap array layer to update.</param>
-    /// <param name="area">An optional rectangle specifying the area to update. If null, the whole layer will be updated.</param>
-    public void SetData(byte[] data, CubemapLayer cubemapLayer, Rectangle? area = null) {
-        Rectangle rect = area ?? new Rectangle(0, 0, (int) this.Width, (int) this.Height);
-        Image originalImage = this.GetDataFromImage(cubemapLayer);
-
-        int rowLengthInBytes = rect.Width * (int) this.PixelSizeInBytes;
-        for (int y = 0; y < rect.Height; y++) {
-            int sourceOffset = y * rowLengthInBytes;
-            int destinationOffset = ((rect.Y + y) * originalImage.Width + rect.X) * (int) this.PixelSizeInBytes;
-
-            Array.Copy(data, sourceOffset, originalImage.Data, destinationOffset, rowLengthInBytes);
+        using Texture staging = this.GraphicsDevice.ResourceFactory.CreateTexture(TextureDescription.Texture2D(this.Width, this.Height, 1, 1, this.Format, TextureUsage.Staging));
+        using CommandList commandList = this.GraphicsDevice.ResourceFactory.CreateCommandList();
+        
+        commandList.Begin();
+        commandList.CopyTexture(this.DeviceTexture, 0, 0, 0, 0, (uint) cubemapLayer, staging, 0, 0, 0, 0, 0, this.Width, this.Height, 1, 1);
+        commandList.End();
+        
+        this.GraphicsDevice.SubmitCommands(commandList);
+        this.GraphicsDevice.WaitForIdle();
+        
+        byte[] result = new byte[this.Width * this.Height * this.PixelSizeInBytes];
+        MappedResource map = this.GraphicsDevice.Map(staging, MapMode.Read, 0);
+        
+        try {
+            uint rowSize = this.Width * this.PixelSizeInBytes;
+            
+            for (uint y = 0; y < this.Height; y++) {
+                nint src = map.Data + (int) (y * map.RowPitch);
+                Marshal.Copy(src, result, (int) (y * rowSize), (int) rowSize);
+            }
         }
-
-        this.SetData(originalImage, cubemapLayer);
+        finally {
+            this.GraphicsDevice.Unmap(staging, 0);
+        }
+        
+        return result;
     }
-
+    
     /// <summary>
-    /// Updates the data of a specified layer in the cubemap with the provided image data.
+    /// Reads a single face of the cubemap back from the GPU and wraps it in an <see cref="Image"/>.
     /// </summary>
-    /// <param name="data">The image data to set, which must match the dimensions of the texture.</param>
-    /// <param name="cubemapLayer">The layer of the cubemap to update.</param>
-    /// <exception cref="ArgumentException">
-    /// Throws if the dimensions of the provided image data do not match the dimensions of the cubemap.
-    /// </exception>
+    /// <param name="cubemapLayer">The face to read.</param>
+    /// <returns>A new <see cref="Image"/> with the current pixel data of the face.</returns>
+    public Image GetDataFromImage(CubemapLayer cubemapLayer) {
+        return new Image((int) this.Width, (int) this.Height, this.GetDataFromBytes(cubemapLayer));
+    }
+    
+    /// <summary>
+    /// Reads all six faces back from the GPU.
+    /// </summary>
+    /// <returns>An array of six images, indexed by <see cref="CubemapLayer"/>.</returns>
+    public Image[] GetDataFromImages() {
+        Image[] faces = new Image[6];
+        
+        foreach (CubemapLayer layer in Enum.GetValues<CubemapLayer>()) {
+            faces[(int) layer] = this.GetDataFromImage(layer);
+        }
+        
+        return faces;
+    }
+    
+    /// <summary>
+    /// Uploads raw pixel data to a face of the cubemap, either to the whole face or to a specific area.
+    /// Mipmaps are regenerated afterwards if the cubemap has more than one mip level.
+    /// </summary>
+    /// <param name="data">The pixel data in RGBA order. Its length must match the size of the target area.</param>
+    /// <param name="cubemapLayer">The face to update.</param>
+    /// <param name="area">The region of the face to update. If null, the entire face is updated.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown if the area exceeds the face bounds.</exception>
+    /// <exception cref="ArgumentException">Thrown if the data length does not match the target area.</exception>
+    public void SetData(byte[] data, CubemapLayer cubemapLayer, Rectangle? area = null) {
+        uint x = 0;
+        uint y = 0;
+        uint width = this.Width;
+        uint height = this.Height;
+        
+        if (area.HasValue) {
+            Rectangle rectangle = area.Value;
+            
+            if (rectangle.X < 0 || rectangle.Y < 0 || rectangle.X + rectangle.Width > this.Width || rectangle.Y + rectangle.Height > this.Height) {
+                throw new ArgumentOutOfRangeException(nameof(area), "Area exceeds cubemap face bounds.");
+            }
+            
+            x = (uint) rectangle.X;
+            y = (uint) rectangle.Y;
+            width = (uint) rectangle.Width;
+            height = (uint) rectangle.Height;
+        }
+        
+        uint requiredSize = width * height * this.PixelSizeInBytes;
+        
+        if (data.Length < requiredSize) {
+            throw new ArgumentException($"Expected at least {requiredSize} bytes, got {data.Length}.", nameof(data));
+        }
+        
+        this.GraphicsDevice.UpdateTexture(this.DeviceTexture, data, x, y, 0, width, height, 1, 0, (uint) cubemapLayer);
+        this.GenerateMipmaps();
+    }
+    
+    /// <summary>
+    /// Replaces the content of a single face with the pixel data of the given image.
+    /// </summary>
+    /// <param name="data">The image to upload. It must match the face size.</param>
+    /// <param name="cubemapLayer">The face to update.</param>
+    /// <exception cref="ArgumentException">Thrown if the image size does not match the face size.</exception>
     public void SetData(Image data, CubemapLayer cubemapLayer) {
         if (data.Width != this.Width || data.Height != this.Height) {
-            throw new ArgumentException("Image size do not match texture size!");
+            throw new ArgumentException("Image size must match the cubemap face size.", nameof(data));
         }
         
-        this.Images[(int) cubemapLayer] = this.MipLevels > 1 ? MipmapHelper.GenerateMipmaps(data) : [data];
-        
-        for (int i = 0; i < this.MipLevels; i++) {
-            Image image = this.Images[(int) cubemapLayer][i];
-            this.GraphicsDevice.UpdateTexture(this.DeviceTexture, image.Data, 0, 0, 0, (uint) image.Width, (uint) image.Height, 1, (uint) i, 0);
-        }
+        this.SetData(data.Data, cubemapLayer);
     }
-
+    
     /// <summary>
-    /// Creates a device texture for the Cubemap.
+    /// Replaces all six faces at once and regenerates the mipmaps a single time.
     /// </summary>
-    private void CreateDeviceTexture() {
-        this.DeviceTexture = this.GraphicsDevice.ResourceFactory.CreateTexture(TextureDescription.Texture2D(this.Width, this.Height, this.MipLevels, 1, this.Format, TextureUsage.Sampled | TextureUsage.Cubemap));
-        this.TextureView = this.GraphicsDevice.ResourceFactory.CreateTextureView(new TextureViewDescription(this.DeviceTexture));
-        
-        for (int level = 0; level < this.MipLevels; level++) {
-            Image image = this.Images[0][level];
-            uint width = (uint) image.Width;
-            uint height = (uint) image.Height;
-            
-            this.GraphicsDevice.UpdateTexture(this.DeviceTexture, this.Images[(int) CubemapLayer.PositiveX][level].Data, 0, 0, 0, width, height, 1, (uint) level, (int) CubemapLayer.PositiveX);
-            this.GraphicsDevice.UpdateTexture(this.DeviceTexture, this.Images[(int) CubemapLayer.NegativeX][level].Data, 0, 0, 0, width, height, 1, (uint) level, (int) CubemapLayer.NegativeX);
-            this.GraphicsDevice.UpdateTexture(this.DeviceTexture, this.Images[(int) CubemapLayer.PositiveY][level].Data, 0, 0, 0, width, height, 1, (uint) level, (int) CubemapLayer.PositiveY);
-            this.GraphicsDevice.UpdateTexture(this.DeviceTexture, this.Images[(int) CubemapLayer.NegativeY][level].Data, 0, 0, 0, width, height, 1, (uint) level, (int) CubemapLayer.NegativeY);
-            this.GraphicsDevice.UpdateTexture(this.DeviceTexture, this.Images[(int) CubemapLayer.PositiveZ][level].Data, 0, 0, 0, width, height, 1, (uint) level, (int) CubemapLayer.PositiveZ);
-            this.GraphicsDevice.UpdateTexture(this.DeviceTexture, this.Images[(int) CubemapLayer.NegativeZ][level].Data, 0, 0, 0, width, height, 1, (uint) level, (int) CubemapLayer.NegativeZ);            
+    /// <param name="faces">The six face images, indexed by <see cref="CubemapLayer"/>. They must match the face size.</param>
+    public void SetData(Image[] faces) {
+        if (faces.Length != 6) {
+            throw new ArgumentException("A cubemap requires exactly 6 images.", nameof(faces));
         }
+        
+        int size = faces[0].Width;
+        
+        foreach (Image face in faces) {
+            if (face.Width != size || face.Height != size) {
+                throw new ArgumentException("All cubemap faces must be square and have the same size.", nameof(faces));
+            }
+        }
+        
+        if (faces[0].Width != this.Width) {
+            throw new ArgumentException("Face size must match the cubemap face size.", nameof(faces));
+        }
+        
+        foreach (CubemapLayer layer in Enum.GetValues<CubemapLayer>()) {
+            this.GraphicsDevice.UpdateTexture(this.DeviceTexture, faces[(int) layer].Data, 0, 0, 0, this.Width, this.Height, 1, 0, (uint) layer);
+        }
+        
+        this.GenerateMipmaps();
     }
-
+    
+    /// <summary>
+    /// Creates the device texture of the cubemap and uploads the pixel data of all six faces to it.
+    /// The faces are validated first. If the cubemap has multiple mip levels, the mipmaps are generated after the upload.
+    /// </summary>
+    /// <param name="images">The six face images, indexed by <see cref="CubemapLayer"/>. All must be square and have the same size as the cubemap.</param>
+    /// <returns>The newly created cubemap device texture.</returns>
+    /// <exception cref="ArgumentException">Thrown if the array does not contain exactly six images, if the cubemap is not square, or if the faces differ in size.</exception>
+    private Texture CreateDeviceTexture(Image[] images) {
+        if (images.Length != 6) {
+            throw new ArgumentException("A cubemap requires exactly 6 images.", nameof(images));
+        }
+        
+        if (this.Width != this.Height) {
+            throw new ArgumentException("Cubemap faces must be square.", nameof(images));
+        }
+        
+        foreach (Image image in images) {
+            if (image.Width != this.Width || image.Height != this.Height) {
+                throw new ArgumentException("All cubemap faces must have the same size.", nameof(images));
+            }
+        }
+        
+        TextureUsage textureUsage = TextureUsage.Sampled| TextureUsage.Cubemap;
+        
+        if (this.MipLevels > 1) {
+            textureUsage |= TextureUsage.GenerateMipmaps;
+        }
+        
+        Texture texture = this.GraphicsDevice.ResourceFactory.CreateTexture(TextureDescription.Texture2D(this.Width, this.Height, this.MipLevels, 1, this.Format, textureUsage));
+        
+        foreach (CubemapLayer layer in Enum.GetValues<CubemapLayer>()) {
+            this.GraphicsDevice.UpdateTexture(texture, images[(int) layer].Data, 0, 0, 0, this.Width, this.Height, 1, 0, (uint) layer);
+        }
+        
+        this.GenerateMipmaps(texture);
+        return texture;
+    }
+    
+    /// <summary>
+    /// Generates the mipmap chain for all faces of the given texture, or for <see cref="DeviceTexture"/> if none is specified.
+    /// Does nothing if the cubemap has only one mip level. This blocks until the GPU has finished.
+    /// </summary>
+    /// <param name="texture">The texture to generate mipmaps for. If null, <see cref="DeviceTexture"/> is used.</param>
+    private void GenerateMipmaps(Texture? texture = null) {
+        if (this.MipLevels <= 1) {
+            return;
+        }
+        
+        using CommandList commandList = this.GraphicsDevice.ResourceFactory.CreateCommandList();
+        
+        commandList.Begin();
+        commandList.GenerateMipmaps(texture ?? this.DeviceTexture);
+        commandList.End();
+        
+        this.GraphicsDevice.SubmitCommands(commandList);
+        this.GraphicsDevice.WaitForIdle();
+    }
+    
     protected override void Dispose(bool disposing) {
         if (disposing) {
+            foreach (ResourceSet resourceSet in this._cachedResourceSets.Values) {
+                resourceSet.Dispose();
+            }
+            
             this.DeviceTexture.Dispose();
         }
     }

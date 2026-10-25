@@ -1,6 +1,5 @@
 ﻿using System.Numerics;
 using System.Runtime.InteropServices;
-using Bliss.CSharp.Camera.Dim3;
 using Bliss.CSharp.Colors;
 using Bliss.CSharp.Effects;
 using Bliss.CSharp.Graphics.Pipelines;
@@ -188,6 +187,11 @@ public class ProceduralSkybox : Disposable, ISkybox {
     private DeviceBuffer _indexBuffer;
     
     /// <summary>
+    /// A uniform buffer used to store transformation matrices for rendering the skybox.
+    /// </summary>
+    private SimpleUniformBuffer<Matrix4x4> _matrixBuffer;
+    
+    /// <summary>
     /// Uniform buffer that holds the parameters for the skybox rendering.
     /// </summary>
     private SimpleUniformBuffer<SkyboxData> _skyboxBuffer;
@@ -248,6 +252,10 @@ public class ProceduralSkybox : Disposable, ISkybox {
         this._indexBuffer.Name = "IndexBuffer";
         graphicsDevice.UpdateBuffer(this._indexBuffer, 0, this.GenIndices());
         
+        // Create matrix buffer.
+        this._matrixBuffer = new SimpleUniformBuffer<Matrix4x4>(this.GraphicsDevice, 2, ShaderStages.Vertex | ShaderStages.Fragment);
+        this._matrixBuffer.DeviceBuffer.Name = "MatrixBuffer";
+        
         // Create the data buffer.
         this._skyboxBuffer = new SimpleUniformBuffer<SkyboxData>(graphicsDevice, 1, ShaderStages.Fragment);
         this._skyboxBuffer.DeviceBuffer.Name = "SkyboxBuffer";
@@ -276,19 +284,21 @@ public class ProceduralSkybox : Disposable, ISkybox {
     }
     
     /// <summary>
-    /// Renders the skybox using the specified command list and framebuffer.
+    /// Renders the procedural skybox into the specified framebuffer.
     /// </summary>
-    /// <param name="commandList">The command list used for issuing draw commands.</param>
-    /// <param name="framebuffer">The framebuffer representing the current rendering target.</param>
-    public void Draw(CommandList commandList, Framebuffer framebuffer) {
-        Cam3D? cam3D = Cam3D.ActiveCamera;
-        
-        if (cam3D == null) {
-            return;
-        }
+    /// <param name="commandList">The command list used to record the rendering commands.</param>
+    /// <param name="framebuffer">The framebuffer to render the skybox into.</param>
+    /// <param name="projection">The projection matrix used to transform the skybox geometry.</param>
+    /// <param name="view">The view matrix used to determine the viewing orientation.</param>
+    public void Draw(CommandList commandList, Framebuffer framebuffer, Matrix4x4 projection, Matrix4x4 view) {
         
         // Update pipeline description.
         this._pipelineDescription.Outputs = framebuffer.OutputDescription;
+        
+        // Upload matrix buffer.
+        this._matrixBuffer.SetValue(0, projection);
+        this._matrixBuffer.SetValue(1, view);
+        this._matrixBuffer.UpdateBufferDeferred(commandList);
         
         // Update skybox buffer.
         if (this._isDirty) {
@@ -321,7 +331,7 @@ public class ProceduralSkybox : Disposable, ISkybox {
         commandList.SetPipeline(this._effect.GetPipeline(this._pipelineDescription).Pipeline);
         
         // Set matrix buffer.
-        commandList.SetGraphicsResourceSet(this._effect.GetBufferLayoutSlot("MatrixBuffer"), cam3D.GetMatrixBuffer().GetResourceSet(this._effect.GetBufferLayout("MatrixBuffer")));
+        commandList.SetGraphicsResourceSet(this._effect.GetBufferLayoutSlot("MatrixBuffer"), this._matrixBuffer.GetResourceSet(this._effect.GetBufferLayout("MatrixBuffer")));
         
         // Set skybox data buffer.
         commandList.SetGraphicsResourceSet(this._effect.GetBufferLayoutSlot("SkyboxBuffer"), this._skyboxBuffer.GetResourceSet(this._effect.GetBufferLayout("SkyboxBuffer")));

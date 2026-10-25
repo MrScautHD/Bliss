@@ -106,7 +106,7 @@ public class BasicForwardRenderer : Disposable, IRenderer {
         }
         
         // Draw Skybox.
-        this.SkyBox?.Draw(commandList, framebuffer);
+        this.SkyBox?.Draw(commandList, framebuffer, cam3D.GetProjection(), cam3D.GetView());
         
         // Order renderables.
         this._opaqueRenderables.Sort((a, b) => Vector3.DistanceSquared(a.GetTransforms()[0].Translation, cam3D.Position).CompareTo(Vector3.DistanceSquared(b.GetTransforms()[0].Translation, cam3D.Position)));

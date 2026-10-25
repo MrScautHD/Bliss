@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Images;
 using Bliss.CSharp.Logging;
@@ -12,47 +13,42 @@ public class Texture2D : Disposable {
     /// Gets the graphics device associated with this texture.
     /// </summary>
     public GraphicsDevice GraphicsDevice { get; private set; }
-
-    /// <summary>
-    /// Gets the array of images representing the mip levels of the texture.
-    /// </summary>
-    public Image[] Images { get; private set; }
-
+    
     /// <summary>
     /// Gets the width of the texture in pixels.
     /// </summary>
-    public uint Width => (uint) this.Images[0].Width;
-
+    public uint Width { get; private set; }
+    
     /// <summary>
     /// Gets the height of the texture in pixels.
     /// </summary>
-    public uint Height => (uint) this.Images[0].Height;
-
+    public uint Height { get; private set; }
+    
     /// <summary>
     /// Gets the pixel format of the texture.
     /// </summary>
-    public PixelFormat Format  { get; private set; }
-
+    public PixelFormat Format { get; private set; }
+    
     /// <summary>
     /// Gets the size of a pixel in bytes.
     /// </summary>
     public uint PixelSizeInBytes => sizeof(byte) * 4;
-
+    
     /// <summary>
-    /// Gets the number of mip levels in the texture.
+    /// Gets the total number of mipmap levels for this texture.
     /// </summary>
-    public uint MipLevels => (uint) this.Images.Length;
-
+    public uint MipLevels { get; private set; }
+    
     /// <summary>
     /// Gets the device texture created from the images.
     /// </summary>
-    public Texture DeviceTexture  { get; private set; }
-
+    public Texture DeviceTexture { get; private set; }
+    
     /// <summary>
     /// A dictionary that caches resource sets associated with samplers, used to avoid redundant resource set creation.
     /// </summary>
     private Dictionary<(Sampler, SimpleTextureLayout), ResourceSet> _cachedResourceSets;
-
+    
     /// <summary>
     /// Initializes a new instance of the <see cref="Texture2D"/> class using an image file path.
     /// Loads the texture from the specified path and applies the given sampler, mipmap, and sRGB settings.
@@ -87,9 +83,11 @@ public class Texture2D : Disposable {
     /// <param name="srgb">Indicates whether to use sRGB color space for the texture.</param>
     public Texture2D(GraphicsDevice graphicsDevice, Image image, bool mipmap = true, bool srgb = false) {
         this.GraphicsDevice = graphicsDevice;
-        this.Images = mipmap ? MipmapHelper.GenerateMipmaps(image) : [image];
+        this.Width = (uint) image.Width;
+        this.Height = (uint) image.Height;
+        this.MipLevels = mipmap ? (uint) Math.Floor(Math.Log2(Math.Max(this.Width, this.Height))) + 1 : 1;
         this.Format = srgb ? PixelFormat.R8G8B8A8UNormSRgb : PixelFormat.R8G8B8A8UNorm;
-        this.DeviceTexture = this.CreateDeviceTexture();
+        this.DeviceTexture = this.CreateDeviceTexture(image);
         this._cachedResourceSets = new Dictionary<(Sampler, SimpleTextureLayout), ResourceSet>();
     }
     
@@ -112,78 +110,137 @@ public class Texture2D : Disposable {
     }
     
     /// <summary>
-    /// Retrieves the texture data as a byte array.
+    /// Reads the base mip level of the texture back from the GPU.
+    /// The data is copied into a staging texture first and then read row by row, since the mapped row pitch can be larger than the actual row size.
     /// </summary>
-    /// <returns>A byte array containing the texture data.</returns>
+    /// <returns>A byte array containing the pixel data in RGBA order, tightly packed without row padding.</returns>
     public byte[] GetDataFromBytes() {
-        return this.Images[0].Data;
-    }
-    
-    /// <summary>
-    /// Retrieves the image data from the first image in the texture array.
-    /// </summary>
-    /// <returns>An <see cref="Image"/> representing the image data.</returns>
-    public Image GetDataFromImage() {
-        return this.Images[0];
-    }
-    
-    /// <summary>
-    /// Sets the texture data from a byte array, optionally specifying a rectangular area within the texture to update.
-    /// </summary>
-    /// <param name="data">The byte array containing the texture data.</param>
-    /// <param name="area">The rectangular area within the texture to update. If null, it updates the entire texture.</param>
-    public void SetData(byte[] data, Rectangle? area = null) {
-        Rectangle rect = area ?? new Rectangle(0, 0, (int) this.Width, (int) this.Height);
-        Image originalImage = this.GetDataFromImage();
+        using Texture staging = this.GraphicsDevice.ResourceFactory.CreateTexture(TextureDescription.Texture2D(this.Width, this.Height, 1, 1, this.Format, TextureUsage.Staging));
+        using CommandList commandList = this.GraphicsDevice.ResourceFactory.CreateCommandList();
         
-        int rowLengthInBytes = rect.Width * (int) this.PixelSizeInBytes;
-        for (int y = 0; y < rect.Height; y++) {
-            int sourceOffset = y * rowLengthInBytes;
-            int destinationOffset = ((rect.Y + y) * originalImage.Width + rect.X) * (int) this.PixelSizeInBytes;
+        commandList.Begin();
+        commandList.CopyTexture(this.DeviceTexture, 0, 0, 0, 0, 0, staging, 0, 0, 0, 0, 0, this.Width, this.Height, 1, 1);
+        commandList.End();
+        
+        this.GraphicsDevice.SubmitCommands(commandList);
+        this.GraphicsDevice.WaitForIdle();
+        
+        byte[] result = new byte[this.Width * this.Height * this.PixelSizeInBytes];
+        MappedResource map = this.GraphicsDevice.Map(staging, MapMode.Read, 0);
+        
+        try {
+            uint rowSize = this.Width * this.PixelSizeInBytes;
             
-            Array.Copy(data, sourceOffset, originalImage.Data, destinationOffset, rowLengthInBytes);
+            for (uint y = 0; y < this.Height; y++) {
+                nint src = map.Data + (int) (y * map.RowPitch);
+                Marshal.Copy(src, result, (int) (y * rowSize), (int) rowSize);
+            }
+        }
+        finally {
+            this.GraphicsDevice.Unmap(staging, 0);
         }
         
-        if (area != null && this.MipLevels == 1) {
-            this.GraphicsDevice.UpdateTexture(this.DeviceTexture, data, (uint) rect.X, (uint) rect.Y, 0, (uint) rect.Width, (uint) rect.Height, 1, 0, 0);
+        return result;
+    }
+    
+    /// <summary>
+    /// Reads the base mip level of the texture back from the GPU and wraps it in an <see cref="Image"/>.
+    /// </summary>
+    /// <returns>A new <see cref="Image"/> containing the current pixel data of the texture.</returns>
+    public Image GetDataFromImage() {
+        return new Image((int) this.Width, (int) this.Height, this.GetDataFromBytes());
+    }
+    
+    /// <summary>
+    /// Uploads raw pixel data to the texture, either to the whole texture or to a specific area.
+    /// Mipmaps are regenerated afterwards if the texture has more than one mip level.
+    /// </summary>
+    /// <param name="data">The pixel data in RGBA order. Its length must match the size of the target area.</param>
+    /// <param name="area">The region of the texture to update. If null, the entire texture is updated.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown if the specified area exceeds the texture bounds.</exception>
+    /// <exception cref="ArgumentException">Thrown if the length of <paramref name="data"/> does not match the size of the target area.</exception>
+    public void SetData(byte[] data, Rectangle? area = null) {
+        uint x = 0;
+        uint y = 0;
+        uint width = this.Width;
+        uint height = this.Height;
+        
+        if (area.HasValue) {
+            Rectangle rectangle = area.Value;
+            
+            if (rectangle.X < 0 || rectangle.Y < 0 || rectangle.X + rectangle.Width > this.Width || rectangle.Y + rectangle.Height > this.Height) {
+                throw new ArgumentOutOfRangeException(nameof(area), "Area exceeds texture bounds.");
+            }
+            
+            x = (uint) rectangle.X;
+            y = (uint) rectangle.Y;
+            width = (uint) rectangle.Width;
+            height = (uint) rectangle.Height;
+        }
+        
+        uint requiredSize = width * height * this.PixelSizeInBytes;
+        
+        if (data.Length < requiredSize) {
+            throw new ArgumentException($"Expected at least {requiredSize} bytes, got {data.Length}.", nameof(data));
+        }
+        
+        this.GraphicsDevice.UpdateTexture(this.DeviceTexture, data, x, y, 0, width, height, 1, 0, 0);
+        this.GenerateMipmaps();
+    }
+    
+    /// <summary>
+    /// Replaces the entire texture content with the pixel data of the given image.
+    /// The image must have the same dimensions as the texture.
+    /// </summary>
+    /// <param name="data">The image whose pixel data is uploaded to the texture.</param>
+    /// <exception cref="ArgumentException">Thrown if the image size does not match the texture size.</exception>
+    public void SetData(Image data) {
+        if (data.Width != this.Width || data.Height != this.Height) {
+            throw new ArgumentException("Image size must match the texture size.", nameof(data));
+        }
+        
+        this.SetData(data.Data);
+    }
+    
+    /// <summary>
+    /// Creates the device texture and uploads the pixel data of the given image to it.
+    /// If the texture has multiple mip levels, the mipmaps are generated after the upload.
+    /// </summary>
+    /// <param name="image">The image whose pixel data is uploaded to the texture.</param>
+    /// <returns>The newly created device texture.</returns>
+    private Texture CreateDeviceTexture(Image image) {
+        TextureUsage textureUsage = TextureUsage.Sampled;
+        
+        if (this.MipLevels > 1) {
+            textureUsage |= TextureUsage.GenerateMipmaps;
+        }
+        
+        Texture texture = this.GraphicsDevice.ResourceFactory.CreateTexture(TextureDescription.Texture2D(this.Width, this.Height, this.MipLevels, 1, this.Format, textureUsage));
+        this.GraphicsDevice.UpdateTexture(texture, image.Data, 0, 0, 0, (uint) image.Width, (uint) image.Height, 1, 0, 0);
+        
+        this.GenerateMipmaps(texture);
+        return texture;
+    }
+    
+    /// <summary>
+    /// Generates the mipmap chain for the given texture, or for <see cref="DeviceTexture"/> if none is specified.
+    /// </summary>
+    /// <param name="texture">The texture to generate mipmaps for. If null, <see cref="DeviceTexture"/> is used.</param>
+    private void GenerateMipmaps(Texture? texture = null) {
+        if (this.MipLevels <= 1) {
             return;
         }
         
-        this.SetData(originalImage);
+        using CommandList commandList = this.GraphicsDevice.ResourceFactory.CreateCommandList();
+        
+        commandList.Begin();
+        commandList.GenerateMipmaps(texture ?? this.DeviceTexture);
+        commandList.End();
+        
+        this.GraphicsDevice.SubmitCommands(commandList);
+        this.GraphicsDevice.WaitForIdle();
     }
-
-    /// <summary>
-    /// Loads the provided image data into the texture. If the image dimensions do not match the texture dimensions, an exception is thrown.
-    /// The image data is then split into mip levels if required and updated in the device texture.
-    /// </summary>
-    /// <param name="data">The image data to be loaded into the texture.</param>
-    public void SetData(Image data) {
-        if (data.Width != this.Width || data.Height != this.Height) {
-            throw new ArgumentException("Image size do not match texture size!");
-        }
-        
-        this.Images = this.MipLevels > 1 ? MipmapHelper.GenerateMipmaps(data) : [data];
-        
-        for (int i = 0; i < this.MipLevels; i++) {
-            Image image = this.Images[i];
-            this.GraphicsDevice.UpdateTexture(this.DeviceTexture, image.Data, 0, 0, 0, (uint) image.Width, (uint) image.Height, 1, (uint) i, 0);
-        }
-    }
-
-    /// <summary>
-    /// Creates a device texture from provided images and graphics device.
-    /// </summary>
-    private Texture CreateDeviceTexture() {
-        Texture texture = this.GraphicsDevice.ResourceFactory.CreateTexture(TextureDescription.Texture2D(this.Width, this.Height, this.MipLevels, 1, this.Format, TextureUsage.Sampled));
-        
-        for (int i = 0; i < this.MipLevels; i++) {
-            Image image = this.Images[i];
-            this.GraphicsDevice.UpdateTexture(texture, image.Data, 0, 0, 0, (uint) image.Width, (uint) image.Height, 1, (uint) i, 0);
-        }
-        
-        return texture;
-    }
-
+    
     protected override void Dispose(bool disposing) {
         if (disposing) {
             foreach (ResourceSet resourceSet in this._cachedResourceSets.Values) {

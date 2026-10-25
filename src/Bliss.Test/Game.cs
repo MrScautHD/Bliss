@@ -192,10 +192,12 @@ public class Game : Disposable {
         this.FullScreenResolvedTexture = new Texture2D(this.GraphicsDevice, new Image(this.MainWindow.GetWidth(), this.MainWindow.GetHeight()), false);
 
         this._basicForwardRenderer = new BasicForwardRenderer(this.GraphicsDevice);
+        
         this._cubemap = new Cubemap(this.GraphicsDevice, "content/cubemap.png");
         ProceduralSkybox skybox = new ProceduralSkybox(this.GraphicsDevice);
-        this._basicForwardRenderer.SkyBox = skybox;
-        ProceduralEnvironment environment = new ProceduralEnvironment(skybox);
+        UniversalEnvironment environment = new UniversalEnvironment(this.GraphicsDevice, skybox);
+        //this._basicForwardRenderer.SkyBox = skybox;
+        
         this._renderables = new List<Renderable>();
         
         this._immediateRenderer = new ImmediateRenderer(this.GraphicsDevice);
@@ -298,8 +300,8 @@ public class Game : Disposable {
         this._customQuad = Mesh<Vertex3D>.GenQuad(this.GraphicsDevice, 1, 1);
         this._customQuad.Material.SetMapTexture(MaterialMapType.Albedo, this._customMeshTexture);
         
-        this._cubemapTexture = new Texture2D(this.GraphicsDevice, this._cubemap.Images[5][0]);
-
+        this._cubemapTexture = new Texture2D(this.GraphicsDevice, this._cubemap.GetDataFromImage(CubemapLayer.NegativeZ));
+        
         this._button = new Texture2D(this.GraphicsDevice, "content/button.png");
         this._buttonTextureId = this._imGuiController.BindTexture(this._button);
         
