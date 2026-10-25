@@ -175,7 +175,7 @@ public static class GlobalResource {
         // Procedural skybox effect.
         ProceduralSkyboxEffect = new Effect(GraphicsDevice, "content/bliss/shaders/environment/procedural_skybox.vert", "content/bliss/shaders/environment/procedural_skybox.frag", new CrossCompileOptions());
         ProceduralSkyboxEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
-        ProceduralSkyboxEffect.AddBufferLayout("SkyboxBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex | ShaderStages.Fragment);
+        ProceduralSkyboxEffect.AddBufferLayout("SkyboxBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Fragment);
         
         // Default immediate renderer texture.
         DefaultImmediateRendererTexture = new Texture2D(graphicsDevice, new Image(1, 1, Color.White));
