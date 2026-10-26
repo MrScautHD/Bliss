@@ -25,7 +25,14 @@ public class Font : Disposable {
     /// <param name="path">The file path to the font file to load.</param>
     /// <param name="settings">Settings used to configure the internal font system.</param>
     public Font(string path, FontSystemSettings? settings = null) : this(LoadFontData(path), settings) { }
-
+    
+    /// <summary>
+    /// Creates a new <see cref="Font"/> instance by loading font data from the specified stream.
+    /// </summary>
+    /// <param name="stream">The stream containing the font data.</param>
+    /// <param name="settings">Settings used to configure the internal font system.</param>
+    public Font(Stream stream, FontSystemSettings? settings = null) : this(LoadFontData(stream), settings) { }
+    
     /// <summary>
     /// Creates a new <see cref="Font"/> instance using the provided font data in memory.
     /// </summary>
@@ -47,13 +54,31 @@ public class Font : Disposable {
         if (!File.Exists(path)) {
             throw new Exception($"No font file found in path: [{path}]");
         }
-
+        
         if (Path.GetExtension(path) != ".ttf") {
             throw new Exception($"This font type is not supported: [{Path.GetExtension(path)}]");
         }
         
         Logger.Info($"Font data loaded successfully from path: [{path}]");
         return File.ReadAllBytes(path);
+    }
+    
+    /// <summary>
+    /// Loads font data from the specified stream.
+    /// </summary>
+    /// <param name="stream">The stream containing the font data.</param>
+    /// <returns>A byte array containing the font data.</returns>
+    /// <exception cref="ArgumentException">Thrown if the stream is not readable.</exception>
+    private static byte[] LoadFontData(Stream stream) {
+        if (!stream.CanRead) {
+            throw new ArgumentException("Failed to read font stream!", nameof(stream));
+        }
+        
+        using MemoryStream memoryStream = new MemoryStream();
+        stream.CopyTo(memoryStream);
+        
+        Logger.Info("Font data loaded successfully from stream.");
+        return memoryStream.ToArray();
     }
     
     /// <summary>

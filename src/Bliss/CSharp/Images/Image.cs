@@ -1,3 +1,4 @@
+using System.Reflection;
 using Bliss.CSharp.Transformations;
 using StbImageSharp;
 using StbImageWriteSharp;
@@ -24,7 +25,7 @@ public class Image : ICloneable {
         this.Height = result.Height;
         this.Data = result.Data;
     }
-
+    
     /// <summary>
     /// Initializes a new instance of the <see cref="Image"/> class by loading an image from the specified stream.
     /// </summary>

@@ -51,36 +51,48 @@ public class Texture2D : Disposable {
     
     /// <summary>
     /// Initializes a new instance of the <see cref="Texture2D"/> class using an image file path.
-    /// Loads the texture from the specified path and applies the given sampler, mipmap, and sRGB settings.
+    /// Loads the texture from the specified path and applies the given mipmap and sRGB settings.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used for rendering the texture.</param>
     /// <param name="path">The file path of the image to load as a texture.</param>
     /// <param name="mipmap">Indicates whether to generate mipmaps for the texture.</param>
     /// <param name="srgb">Indicates whether to use sRGB color space for the texture.</param>
     public Texture2D(GraphicsDevice graphicsDevice, string path, bool mipmap = true, bool srgb = false) : this(graphicsDevice, new Image(path), mipmap, srgb) {
-        Logger.Info($"Loading texture from path: [{path}]");
+        Logger.Info($"Texture loaded successfully from path: [{path}]");
     }
-
+    
     /// <summary>
     /// Initializes a new instance of the <see cref="Texture2D"/> class using an image stream.
-    /// Loads the texture from the specified stream and applies the given sampler, mipmap, and sRGB settings.
+    /// Loads the texture from the specified stream and applies the given mipmap and sRGB settings.
     /// </summary>
     /// <param name="graphicsDevice">The graphics device used for rendering the texture.</param>
-    /// <param name="stream">The image stream to load as a texture.</param>
+    /// <param name="stream">The stream containing the image data to load as a texture.</param>
     /// <param name="mipmap">Indicates whether to generate mipmaps for the texture.</param>
     /// <param name="srgb">Indicates whether to use sRGB color space for the texture.</param>
     public Texture2D(GraphicsDevice graphicsDevice, Stream stream, bool mipmap = true, bool srgb = false) : this(graphicsDevice, new Image(stream), mipmap, srgb) {
-        Logger.Info($"Loading texture from stream: [{stream}]");
+        Logger.Info("Texture loaded successfully from stream.");
+    }
+    
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Texture2D"/> class using a byte array.
+    /// Loads the texture from the specified encoded image data (e.g., PNG or JPG) and applies the given mipmap and sRGB settings.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used for rendering the texture.</param>
+    /// <param name="data">The byte array containing the encoded image data to load as a texture.</param>
+    /// <param name="mipmap">Indicates whether to generate mipmaps for the texture.</param>
+    /// <param name="srgb">Indicates whether to use sRGB color space for the texture.</param>
+    public Texture2D(GraphicsDevice graphicsDevice, byte[] data, bool mipmap = true, bool srgb = false) : this(graphicsDevice, new Image(data), mipmap, srgb) {
+        Logger.Info($"Texture loaded successfully from byte array: [{data.Length} bytes]");
     }
     
     /// <summary>
     /// Initializes a new instance of the <see cref="Texture2D"/> class using an <see cref="Image"/> object.
-    /// Creates a device texture, applies the specified sampler, and stores mipmap and color format information.
+    /// Creates the device texture from the image data and sets up its dimensions, mip levels and pixel format.
     /// </summary>
-    /// <param name="graphicsDevice">The graphics device used for rendering the texture.</param>
-    /// <param name="image">The image object used to create the texture.</param>
-    /// <param name="mipmap">Indicates whether to generate mipmaps for the texture.</param>
-    /// <param name="srgb">Indicates whether to use sRGB color space for the texture.</param>
+    /// <param name="graphicsDevice">The graphics device used to create the texture and its GPU resources.</param>
+    /// <param name="image">The image that provides the pixel data and dimensions of the texture.</param>
+    /// <param name="mipmap">Indicates whether to generate a full mipmap chain for the texture. If <c>false</c>, only a single mip level is used.</param>
+    /// <param name="srgb">Indicates whether to use the sRGB color space (<c>R8G8B8A8UNormSRgb</c>) instead of linear (<c>R8G8B8A8UNorm</c>).</param>
     public Texture2D(GraphicsDevice graphicsDevice, Image image, bool mipmap = true, bool srgb = false) {
         this.GraphicsDevice = graphicsDevice;
         this.Width = (uint) image.Width;

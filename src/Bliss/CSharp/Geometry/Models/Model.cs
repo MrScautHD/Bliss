@@ -55,12 +55,12 @@ public class Model : Disposable {
     ];
 
     /// <summary>
-    /// Caches loaded effect of the <see cref="Load"/> method.
+    /// Caches loaded effect of the <see cref="LoadScene"/> method.
     /// </summary>
     private static Dictionary<Model, Effect[]> _effectCache = new();
     
     /// <summary>
-    /// Caches loaded textures of the <see cref="Load"/> method.
+    /// Caches loaded textures of the <see cref="LoadScene"/> method.
     /// </summary>
     private static Dictionary<Model, Texture2D[]> _textureCache = new();
     
@@ -115,6 +115,56 @@ public class Model : Disposable {
         }
         
         Scene scene = context.ImportFile(path, DefaultPostProcessSteps);
+        return LoadScene(graphicsDevice, scene, path, loadMaterial, flipUv, isSkinned);
+    }
+    
+    /// <summary>
+    /// Loads a model from the specified stream.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used for rendering and resource management.</param>
+    /// <param name="stream">The stream containing the model data.</param>
+    /// <param name="formatHint">The file format identifier used to identify the model format, such as "glb" or "fbx".</param>
+    /// <param name="loadMaterial">Whether to load associated materials. Defaults to <c>true</c>.</param>
+    /// <param name="flipUv">Whether to flip the UV coordinates. Defaults to <c>false</c>.</param>
+    /// <param name="isSkinned">Whether to load the model for skeletal animation. Defaults to <c>false</c>.</param>
+    /// <returns>The loaded model.</returns>
+    public static Model Load(GraphicsDevice graphicsDevice, Stream stream, string formatHint, bool loadMaterial = true, bool flipUv = false, bool isSkinned = false) {
+        using AssimpContext context = new AssimpContext();
+        
+        foreach (PropertyConfig config in PropertyConfigs) {
+            context.SetConfig(config);
+        }
+        
+        Scene scene = context.ImportFileFromStream(stream, DefaultPostProcessSteps, formatHint);
+        return LoadScene(graphicsDevice, scene, null, loadMaterial, flipUv, isSkinned);
+    }
+    
+    /// <summary>
+    /// Loads a model from the specified byte array.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used for rendering and resource management.</param>
+    /// <param name="data">The byte array containing the model data.</param>
+    /// <param name="formatHint">The file format identifier used to identify the model format, such as "glb" or "fbx".</param>
+    /// <param name="loadMaterial">Whether to load associated materials. Defaults to <c>true</c>.</param>
+    /// <param name="flipUv">Whether to flip the UV coordinates. Defaults to <c>false</c>.</param>
+    /// <param name="isSkinned">Whether to load the model for skeletal animation. Defaults to <c>false</c>.</param>
+    /// <returns>The loaded model.</returns>
+    public static Model Load(GraphicsDevice graphicsDevice, byte[] data, string formatHint, bool loadMaterial = true, bool flipUv = false, bool isSkinned = false) {
+        using MemoryStream stream = new MemoryStream(data, false);
+        return Load(graphicsDevice, stream, formatHint, loadMaterial, flipUv, isSkinned);
+    }
+    
+    /// <summary>
+    /// Builds a <see cref="Model"/> from an already imported Assimp scene, including its meshes, materials, skeleton and animations.
+    /// </summary>
+    /// <param name="graphicsDevice">The <see cref="GraphicsDevice"/> used for creating meshes, effects and textures.</param>
+    /// <param name="scene">The imported Assimp <see cref="Scene"/> to convert.</param>
+    /// <param name="path">The file path of the model, used to resolve external texture files and for logging. Pass <c>null</c> when loading from a stream or byte array; in that case only embedded textures can be loaded.</param>
+    /// <param name="loadMaterial">Whether to load associated materials. Defaults to <c>true</c>.</param>
+    /// <param name="flipUv">Whether to flip the UV coordinates. Defaults to <c>false</c>.</param>
+    /// <param name="isSkinned">Whether to load the model for skeletal animation. Defaults to <c>false</c>.</param>
+    /// <returns>The loaded <see cref="Model"/>.</returns>
+    private static Model LoadScene(GraphicsDevice graphicsDevice, Scene scene, string? path, bool loadMaterial = true, bool flipUv = false, bool isSkinned = false) {
         List<IMesh> meshes = new List<IMesh>();
         
         // Cache effects and textures to load them just 1 time per model.
@@ -130,7 +180,7 @@ public class Model : Disposable {
             if (scene.HasMaterials && loadMaterial) {
                 AMaterial aMaterial = scene.Materials[mesh.MaterialIndex];
                 Effect? loadedEffect = LoadMaterialEffect(graphicsDevice, cachedEffects, aMaterial);
-
+                
                 if (loadedEffect != null) {
                     effect = loadedEffect;
                 }
@@ -364,7 +414,7 @@ public class Model : Disposable {
             animations[i] = new ModelAnimationBuilder(scene.RootNode, skeleton, scene.Animations[i]).Build();
         }
         
-        Logger.Info($"Model loaded successfully from path: [{path}]");
+        Logger.Info(path != null ? $"Model loaded successfully from path: [{path}]" : "Model loaded successfully from stream.");
         Logger.Info($"\t> Meshes: {meshes.Count}");
         Logger.Info($"\t> Animations: {scene.AnimationCount}");
         Logger.Info($"\t> Effects: {cachedEffects.Count}");
@@ -474,7 +524,7 @@ public class Model : Disposable {
     /// <param name="path">The path to the model file, used to resolve texture file paths.</param>
     /// <param name="textureType">The type of texture to load from the material.</param>
     /// <returns>A <see cref="Texture2D"/> object if the texture is successfully loaded, otherwise null.</returns>
-    private static Texture2D? LoadMaterialTexture(GraphicsDevice graphicsDevice, Dictionary<string, Texture2D> cachedTextures, Scene scene, AMaterial aMaterial, string path, TextureType textureType) {
+    private static Texture2D? LoadMaterialTexture(GraphicsDevice graphicsDevice, Dictionary<string, Texture2D> cachedTextures, Scene scene, AMaterial aMaterial, string? path, TextureType textureType) {
         if (aMaterial.GetMaterialTexture(textureType, 0, out TextureSlot textureSlot)) {
             string filePath = textureSlot.FilePath;
             
@@ -499,6 +549,10 @@ public class Model : Disposable {
                 }
             }
             else {
+                if (path == null) {
+                    return null;
+                }
+                
                 string finalPath = Path.Combine(Path.GetDirectoryName(path) ?? string.Empty, filePath);
                 Texture2D texture = new Texture2D(graphicsDevice, finalPath);
                 cachedTextures[filePath] = texture;

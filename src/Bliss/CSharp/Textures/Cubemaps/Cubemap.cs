@@ -58,7 +58,7 @@ public class Cubemap : Disposable {
     /// <param name="mipmap">Specifies whether to generate mipmaps for the cubemap.</param>
     /// <param name="srgb">Specifies whether to load the image as sRGB.</param>
     public Cubemap(GraphicsDevice graphicsDevice, string path, CubemapLayout layout = CubemapLayout.AutoDetect, bool mipmap = true, bool srgb = false) : this(graphicsDevice, new Image(path), layout, mipmap, srgb) {
-        Logger.Info($"Loading cubemap from path: [{path}]");
+        Logger.Info($"Cubemap loaded successfully from path: [{path}]");
     }
     
     /// <summary>
@@ -70,7 +70,19 @@ public class Cubemap : Disposable {
     /// <param name="mipmap">Specifies whether to generate mipmaps for the cubemap.</param>
     /// <param name="srgb">Specifies whether to load the image as sRGB.</param>
     public Cubemap(GraphicsDevice graphicsDevice, Stream stream, CubemapLayout layout = CubemapLayout.AutoDetect, bool mipmap = true, bool srgb = false) : this(graphicsDevice, new Image(stream), layout, mipmap, srgb) {
-        Logger.Info($"Loading cubemap from stream: [{stream}]");
+        Logger.Info("Cubemap loaded successfully from stream.");
+    }
+    
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Cubemap"/> class by loading cubemap faces from a byte array.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used for creating resources.</param>
+    /// <param name="data">The byte array containing the encoded image data (e.g., PNG or JPG) for the cubemap faces.</param>
+    /// <param name="layout">The layout of the cubemap faces within the image.</param>
+    /// <param name="mipmap">Specifies whether to generate mipmaps for the cubemap.</param>
+    /// <param name="srgb">Specifies whether to load the image as sRGB.</param>
+    public Cubemap(GraphicsDevice graphicsDevice, byte[] data, CubemapLayout layout = CubemapLayout.AutoDetect, bool mipmap = true, bool srgb = false) : this(graphicsDevice, new Image(data), layout, mipmap, srgb) {
+        Logger.Info($"Cubemap loaded successfully from byte array: [{data.Length} bytes]");
     }
     
     /// <summary>

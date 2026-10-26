@@ -1,4 +1,5 @@
-﻿using Bliss.CSharp.Graphics.Pipelines.Buffers;
+﻿using System.Reflection;
+using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
 using Bliss.CSharp.Logging;
 using Veldrith;
@@ -88,6 +89,17 @@ public class ComputeEffect : Disposable {
     /// <param name="threadGroupSizeY">The Y thread group size.</param>
     /// <param name="threadGroupSizeZ">The Z thread group size.</param>
     public ComputeEffect(GraphicsDevice graphicsDevice, string computePath, CrossCompileOptions compileOptions, uint threadGroupSizeX, uint threadGroupSizeY, uint threadGroupSizeZ) : this(graphicsDevice, LoadBytecodeFromFile(computePath), compileOptions, threadGroupSizeX, threadGroupSizeY, threadGroupSizeZ) { }
+
+    /// <summary>
+    /// Creates a new <see cref="ComputeEffect"/> from a stream containing compute shader bytecode.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used to create GPU resources.</param>
+    /// <param name="computeStream">The stream containing the compiled compute shader bytecode.</param>
+    /// <param name="compileOptions">The cross compile options.</param>
+    /// <param name="threadGroupSizeX">The X thread group size.</param>
+    /// <param name="threadGroupSizeY">The Y thread group size.</param>
+    /// <param name="threadGroupSizeZ">The Z thread group size.</param>
+    public ComputeEffect(GraphicsDevice graphicsDevice, Stream computeStream, CrossCompileOptions compileOptions, uint threadGroupSizeX, uint threadGroupSizeY, uint threadGroupSizeZ) : this(graphicsDevice, LoadBytecodeFromStream(computeStream), compileOptions, threadGroupSizeX, threadGroupSizeY, threadGroupSizeZ) { }
     
     /// <summary>
     /// Creates a new <see cref="ComputeEffect"/> from compute shader bytecode.
@@ -203,6 +215,42 @@ public class ComputeEffect : Disposable {
     }
     
     /// <summary>
+    /// Loads compute shader bytecode from an embedded resource.
+    /// </summary>
+    /// <param name="assembly">The assembly containing the embedded compute shader resource.</param>
+    /// <param name="name">The fully qualified resource name.</param>
+    /// <returns>A byte array containing the compute shader bytecode.</returns>
+    /// <exception cref="FileNotFoundException">Thrown if the resource does not exist.</exception>
+    /// <exception cref="Exception">Thrown if the compute shader file type is not supported.</exception>
+    public static byte[] LoadBytecodeFromResource(Assembly assembly, string name) {
+        string extension = Path.GetExtension(name).ToLowerInvariant();
+        
+        if (extension != ".comp") {
+            throw new Exception($"This compute shader type is not supported: [{extension}]");
+        }
+        
+        byte[] bytes = Resource.LoadBytes(assembly, name);
+        
+        Logger.Info($"Compute shader bytecode loaded successfully from resource: [{name}]");
+        return bytes;
+    }
+    
+    /// <summary>
+    /// Loads compute shader bytecode from the specified stream.
+    /// </summary>
+    /// <param name="stream">The stream containing the compute shader bytecode.</param>
+    /// <returns>A byte array containing the compute shader bytecode.</returns>
+    public static byte[] LoadBytecodeFromStream(Stream stream) {
+        using MemoryStream memoryStream = new MemoryStream();
+        stream.CopyTo(memoryStream);
+        
+        byte[] bytes = memoryStream.ToArray();
+        
+        Logger.Info("Compute shader bytecode loaded successfully from stream.");
+        return bytes;
+    }
+    
+    /// <summary>
     /// Loads compute shader source text from a file at the specified path.
     /// </summary>
     /// <param name="path">The file path to the compute shader source file.</param>
@@ -219,6 +267,44 @@ public class ComputeEffect : Disposable {
         
         Logger.Info($"Compute shader code loaded successfully from path: [{path}]");
         return File.ReadAllText(path);
+    }
+    
+    /// <summary>
+    /// Loads compute shader source text from an embedded resource.
+    /// </summary>
+    /// <param name="assembly">The assembly containing the embedded compute shader resource.</param>
+    /// <param name="name">The fully qualified resource name.</param>
+    /// <returns>The contents of the embedded compute shader resource as a string.</returns>
+    /// <exception cref="FileNotFoundException">Thrown if the resource does not exist.</exception>
+    /// <exception cref="Exception">Thrown if the compute shader file type is not supported.</exception>
+    public static string LoadTextCodeFromResource(Assembly assembly, string name) {
+        string extension = Path.GetExtension(name).ToLowerInvariant();
+        
+        if (extension != ".comp") {
+            throw new Exception($"This compute shader type is not supported: [{extension}]");
+        }
+        
+        using Stream stream = Resource.Load(assembly, name);
+        using StreamReader reader = new StreamReader(stream);
+        
+        string source = reader.ReadToEnd();
+        
+        Logger.Info($"Compute shader source loaded successfully from resource: [{name}]");
+        return source;
+    }
+    
+    /// <summary>
+    /// Loads compute shader source text from the specified stream.
+    /// </summary>
+    /// <param name="stream">The stream containing the compute shader source code.</param>
+    /// <returns>The contents of the stream as a string.</returns>
+    public static string LoadTextCodeFromStream(Stream stream) {
+        using StreamReader reader = new StreamReader(stream, leaveOpen: true);
+        
+        string source = reader.ReadToEnd();
+        
+        Logger.Info("Compute shader source loaded successfully from stream.");
+        return source;
     }
     
     /// <summary>

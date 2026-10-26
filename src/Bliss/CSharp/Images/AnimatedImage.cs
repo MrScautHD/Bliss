@@ -70,7 +70,7 @@ public class AnimatedImage {
         this.Frames = frames;
         this.SpriteSheet = this.CreateSpriteSheet();
     }
-
+    
     /// <summary>
     /// Initializes a new instance of the <see cref="AnimatedImage"/> class from a stream.
     /// </summary>
@@ -104,7 +104,39 @@ public class AnimatedImage {
         this.Frames = frames;
         this.SpriteSheet = this.CreateSpriteSheet();
     }
-
+    
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AnimatedImage"/> class from a byte array.
+    /// </summary>
+    /// <param name="data">The byte array containing the animated image data (e.g., a GIF).</param>
+    public AnimatedImage(byte[] data) {
+        Dictionary<Image, int> frames = new Dictionary<Image, int>();
+        List<Image> frameImages = new List<Image>();
+        List<int> frameDelays = new List<int>();
+        
+        using (MemoryStream stream = new MemoryStream(data, false)) {
+            foreach (AnimatedFrameResult result in ImageResult.AnimatedGifFramesFromStream(stream)) {
+                byte[] frameData = new byte[result.Data.Length];
+                Array.Copy(result.Data, frameData, result.Data.Length);
+                
+                Image frame = new Image(result.Width, result.Height, frameData);
+                
+                if (frames.TryAdd(frame, result.DelayInMs)) {
+                    frameImages.Add(frame);
+                    frameDelays.Add(result.DelayInMs);
+                }
+                else {
+                    Logger.Error("Failed to add current Frame!");
+                }
+            }
+        }
+        
+        this._frameImages = frameImages;
+        this._frameDelays = frameDelays;
+        this.Frames = frames;
+        this.SpriteSheet = this.CreateSpriteSheet();
+    }
+    
     /// <summary>
     /// Retrieves the total number of frames in the animated image.
     /// </summary>

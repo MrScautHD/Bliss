@@ -26,6 +26,37 @@ public class TextureAtlasBuilder {
     }
     
     /// <summary>
+    /// Adds a named image loaded from the given file path.
+    /// </summary>
+    /// <param name="name">The unique region name.</param>
+    /// <param name="path">The image file path.</param>
+    public void Add(string name, string path) {
+        if (!this._names.Add(name)) {
+            throw new ArgumentException($"An entry with the name [{name}] was already added to the atlas!", nameof(name));
+        }
+        
+        this._entries.Add(new AtlasEntry(name, new Image(path)));
+    }
+    
+    /// <summary>
+    /// Adds a named image loaded from the given stream.
+    /// </summary>
+    /// <param name="name">The unique region name.</param>
+    /// <param name="stream">The stream containing the encoded image data (e.g., PNG or JPG).</param>
+    public void Add(string name, Stream stream) {
+        this.Add(name, new Image(stream));
+    }
+    
+    /// <summary>
+    /// Adds a named image loaded from the given byte array.
+    /// </summary>
+    /// <param name="name">The unique region name.</param>
+    /// <param name="data">The byte array containing the encoded image data (e.g., PNG or JPG).</param>
+    public void Add(string name, byte[] data) {
+        this.Add(name, new Image(data));
+    }
+    
+    /// <summary>
     /// Adds a named image to be packed.
     /// </summary>
     /// <param name="name">The unique region name.</param>
@@ -39,16 +70,33 @@ public class TextureAtlasBuilder {
     }
     
     /// <summary>
-    /// Adds a named image loaded from the given file path.
+    /// Adds an animated image loaded from the given file path. Its sprite sheet is packed as a single region and exposed
+    /// as an <see cref="AtlasAnimation"/> on the built atlas.
     /// </summary>
-    /// <param name="name">The unique region name.</param>
-    /// <param name="path">The image file path.</param>
-    public void Add(string name, string path) {
-        if (!this._names.Add(name)) {
-            throw new ArgumentException($"An entry with the name [{name}] was already added to the atlas!", nameof(name));
-        }
-        
-        this._entries.Add(new AtlasEntry(name, new Image(path)));
+    /// <param name="name">The unique animation name.</param>
+    /// <param name="path">The file path to the animated image (e.g., a GIF).</param>
+    public void AddAnimated(string name, string path) {
+        this.Add(name, new AnimatedImage(path));
+    }
+    
+    /// <summary>
+    /// Adds an animated image loaded from the given stream. Its sprite sheet is packed as a single region and exposed
+    /// as an <see cref="AtlasAnimation"/> on the built atlas.
+    /// </summary>
+    /// <param name="name">The unique animation name.</param>
+    /// <param name="stream">The stream containing the animated image data.</param>
+    public void AddAnimated(string name, Stream stream) {
+        this.Add(name, new AnimatedImage(stream));
+    }
+    
+    /// <summary>
+    /// Adds an animated image loaded from the given byte array. Its sprite sheet is packed as a single region and exposed
+    /// as an <see cref="AtlasAnimation"/> on the built atlas.
+    /// </summary>
+    /// <param name="name">The unique animation name.</param>
+    /// <param name="data">The byte array containing the animated image data (e.g., a GIF).</param>
+    public void AddAnimated(string name, byte[] data) {
+        this.Add(name, new AnimatedImage(data));
     }
     
     /// <summary>

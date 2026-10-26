@@ -1,3 +1,4 @@
+using System.Reflection;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
 using Bliss.CSharp.Graphics.Pipelines.Textures;
@@ -83,6 +84,15 @@ public class Effect : Disposable {
     /// <param name="fragPath">The file path to the compiled fragment shader bytecode.</param>
     /// <param name="compileOptions">Optional cross-compilation options used when creating the shaders.</param>
     public Effect(GraphicsDevice graphicsDevice, string vertPath, string fragPath, CrossCompileOptions compileOptions) : this(graphicsDevice, LoadBytecodeFromFile(vertPath), LoadBytecodeFromFile(fragPath), compileOptions) { }
+    
+    /// <summary>
+    /// Initializes a new <see cref="Effect"/> using shader bytecode read from streams.
+    /// </summary>
+    /// <param name="graphicsDevice">The graphics device used to create shaders and related GPU resources.</param>
+    /// <param name="vertStream">The stream containing the compiled vertex shader bytecode.</param>
+    /// <param name="fragStream">The stream containing the compiled fragment shader bytecode.</param>
+    /// <param name="compileOptions">Optional cross-compilation options used when creating the shaders.</param>
+    public Effect(GraphicsDevice graphicsDevice, Stream vertStream, Stream fragStream, CrossCompileOptions compileOptions) : this(graphicsDevice, LoadBytecodeFromStream(vertStream), LoadBytecodeFromStream(fragStream), compileOptions) { }
     
     /// <summary>
     /// Initializes a new <see cref="Effect"/> using multiple vertex layouts and provided shader bytecode.
@@ -193,8 +203,46 @@ public class Effect : Disposable {
             throw new Exception($"This shader type is not supported: [{Path.GetExtension(path)}]");
         }
         
+        byte[] source = File.ReadAllBytes(path);
+        
         Logger.Info($"Shader bytes loaded successfully from path: [{path}]");
-        return File.ReadAllBytes(path);
+        return source;
+    }
+    
+    /// <summary>
+    /// Loads bytecode from an embedded shader resource.
+    /// </summary>
+    /// <param name="assembly">The assembly containing the embedded shader resource.</param>
+    /// <param name="name">The fully qualified resource name.</param>
+    /// <returns>A byte array containing the shader bytecode.</returns>
+    /// <exception cref="FileNotFoundException">Thrown if the resource does not exist.</exception>
+    /// <exception cref="Exception">Thrown if the shader file type is not supported.</exception>
+    public static byte[] LoadBytecodeFromResource(Assembly assembly, string name) {
+        string extension = Path.GetExtension(name);
+        
+        if (extension != ".vert" && extension != ".frag") {
+            throw new Exception($"This shader type is not supported: [{extension}]");
+        }
+        
+        byte[] bytes = Resource.LoadBytes(assembly, name);
+        
+        Logger.Info($"Shader bytecode loaded successfully from resource: [{name}]");
+        return bytes;
+    }
+    
+    /// <summary>
+    /// Loads bytecode from the specified stream.
+    /// </summary>
+    /// <param name="stream">The stream containing the shader bytecode.</param>
+    /// <returns>A byte array containing the shader bytecode.</returns>
+    public static byte[] LoadBytecodeFromStream(Stream stream) {
+        using MemoryStream memoryStream = new MemoryStream();
+        stream.CopyTo(memoryStream);
+        
+        byte[] bytes = memoryStream.ToArray();
+        
+        Logger.Info("Shader bytecode loaded successfully from stream.");
+        return bytes;
     }
     
     /// <summary>
@@ -212,8 +260,48 @@ public class Effect : Disposable {
             throw new Exception($"This shader type is not supported: [{Path.GetExtension(path)}]");
         }
         
+        string source = File.ReadAllText(path);
+        
         Logger.Info($"Shader bytes loaded successfully from path: [{path}]");
-        return File.ReadAllText(path);
+        return source;
+    }
+    
+    /// <summary>
+    /// Loads shader source text from an embedded shader resource.
+    /// </summary>
+    /// <param name="assembly">The assembly containing the embedded shader resource.</param>
+    /// <param name="name">The fully qualified resource name.</param>
+    /// <returns>The contents of the embedded shader resource as a string.</returns>
+    /// <exception cref="FileNotFoundException">Thrown if the resource does not exist.</exception>
+    /// <exception cref="Exception">Thrown if the shader file type is not supported.</exception>
+    public static string LoadTextCodeFromResource(Assembly assembly, string name) {
+        string extension = Path.GetExtension(name);
+        
+        if (extension != ".vert" && extension != ".frag") {
+            throw new Exception($"This shader type is not supported: [{extension}]");
+        }
+        
+        using Stream stream = Resource.Load(assembly, name);
+        using StreamReader reader = new(stream);
+        
+        string source = reader.ReadToEnd();
+        
+        Logger.Info($"Shader source loaded successfully from resource: [{name}]");
+        return source;
+    }
+    
+    /// <summary>
+    /// Loads shader source text from the specified stream.
+    /// </summary>
+    /// <param name="stream">The stream containing the shader source code.</param>
+    /// <returns>The contents of the stream as a string.</returns>
+    public static string LoadTextCodeFromStream(Stream stream) {
+        using StreamReader reader = new StreamReader(stream, leaveOpen: true);
+        
+        string source = reader.ReadToEnd();
+        
+        Logger.Info("Shader source loaded successfully from stream.");
+        return source;
     }
     
     /// <summary>
