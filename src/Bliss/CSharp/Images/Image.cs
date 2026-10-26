@@ -1,4 +1,3 @@
-using System.Reflection;
 using Bliss.CSharp.Transformations;
 using StbImageSharp;
 using StbImageWriteSharp;

@@ -123,25 +123,25 @@ public static class GlobalResource {
         });
         
         // Default sprite effect.
-        DefaultSpriteEffect = new Effect(graphicsDevice, Resource.LoadBytes("content.bliss.shaders.batch.sprite.vert"), Resource.LoadBytes("content.bliss.shaders.batch.sprite.frag"), new CrossCompileOptions());
+        DefaultSpriteEffect = new Effect(graphicsDevice, "content/bliss/shaders/batch/sprite.vert", "content/bliss/shaders/batch/sprite.frag", new CrossCompileOptions());
         DefaultSpriteEffect.AddBufferLayout("ProjectionViewBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
         DefaultSpriteEffect.AddTextureLayout("fTexture", 1);
         
         // Primitive effect.
-        DefaultPrimitiveEffect = new Effect(graphicsDevice, Resource.LoadBytes("content.bliss.shaders.batch.primitive.vert"), Resource.LoadBytes("content.bliss.shaders.batch.primitive.frag"), new CrossCompileOptions());
+        DefaultPrimitiveEffect = new Effect(graphicsDevice, "content/bliss/shaders/batch/primitive.vert", "content/bliss/shaders/batch/primitive.frag", new CrossCompileOptions());
         DefaultPrimitiveEffect.AddBufferLayout("ProjectionViewBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
         
         // FullScreenRenderPass effect.
-        DefaultFullScreenRenderPassEffect = new Effect(graphicsDevice, Resource.LoadBytes("content.bliss.shaders.post.full_screen_render_pass.vert"), Resource.LoadBytes("content.bliss.shaders.post.full_screen_render_pass.frag"), new CrossCompileOptions());
+        DefaultFullScreenRenderPassEffect = new Effect(graphicsDevice, "content/bliss/shaders/post/full_screen_render_pass.vert", "content/bliss/shaders/post/full_screen_render_pass.frag", new CrossCompileOptions());
         DefaultFullScreenRenderPassEffect.AddTextureLayout("fTexture", 0);
         
         // ImmediateRenderer effect.
-        DefaultImmediateRendererEffect = new Effect(graphicsDevice, Resource.LoadBytes("content.bliss.shaders.immediate.immediate_renderer.vert"), Resource.LoadBytes("content.bliss.shaders.immediate.immediate_renderer.frag"), new CrossCompileOptions());
+        DefaultImmediateRendererEffect = new Effect(graphicsDevice, "content/bliss/shaders/immediate/immediate_renderer.vert", "content/bliss/shaders/immediate/immediate_renderer.frag", new CrossCompileOptions());
         DefaultImmediateRendererEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
         DefaultImmediateRendererEffect.AddTextureLayout("fTexture", 1);
         
         // Default model effect.
-        DefaultModelEffect = new Effect(graphicsDevice, Effect.LoadTextCodeFromResource(Resource.BlissAssembly, "content.bliss.shaders.model.default_model.vert"), Effect.LoadTextCodeFromResource(Resource.BlissAssembly, "content.bliss.shaders.model.default_model.frag"), new CrossCompileOptions(), [
+        DefaultModelEffect = new Effect(graphicsDevice, Effect.LoadTextCodeFromFile("content/bliss/shaders/model/default_model.vert"), Effect.LoadTextCodeFromFile("content/bliss/shaders/model/default_model.frag"), new CrossCompileOptions(), [
             new MacroDefinition("MATRIX_BUFFER_SET", "0"),
             new MacroDefinition("TRANSFORMER_BUFFER_SET", "1"),
             new MacroDefinition("MATERIAL_BUFFER_SET", "2"),
@@ -153,7 +153,7 @@ public static class GlobalResource {
         DefaultModelEffect.AddTextureLayout(MaterialMapType.Albedo.GetName(), 3);
         
         // Skinned model effect.
-        DefaultSkinnedModelEffect = new Effect(graphicsDevice, Effect.LoadTextCodeFromResource(Resource.BlissAssembly, "content.bliss.shaders.model.default_skinned_model.vert"), Effect.LoadTextCodeFromResource(Resource.BlissAssembly, "content.bliss.shaders.model.default_model.frag"), new CrossCompileOptions(), [
+        DefaultSkinnedModelEffect = new Effect(graphicsDevice, Effect.LoadTextCodeFromFile("content/bliss/shaders/model/default_skinned_model.vert"), Effect.LoadTextCodeFromFile("content/bliss/shaders/model/default_model.frag"), new CrossCompileOptions(), [
             new MacroDefinition("MATRIX_BUFFER_SET", "0"),
             new MacroDefinition("TRANSFORMER_BUFFER_SET", "1"),
             new MacroDefinition("BONE_BUFFER_SET", "2"),
@@ -167,13 +167,13 @@ public static class GlobalResource {
         DefaultSkinnedModelEffect.AddTextureLayout(MaterialMapType.Albedo.GetName(), 4);
         
         // Cubemap skybox effect.
-        CubemapSkyboxEffect = new Effect(GraphicsDevice, Resource.LoadBytes("content.bliss.shaders.environment.cubemap_skybox.vert"), Resource.LoadBytes("content.bliss.shaders.environment.cubemap_skybox.frag"), new CrossCompileOptions());
+        CubemapSkyboxEffect = new Effect(GraphicsDevice, "content/bliss/shaders/environment/cubemap_skybox.vert", "content/bliss/shaders/environment/cubemap_skybox.frag", new CrossCompileOptions());
         CubemapSkyboxEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
         CubemapSkyboxEffect.AddBufferLayout("SkyboxBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Vertex | ShaderStages.Fragment);
         CubemapSkyboxEffect.AddTextureLayout("fCubemap", 2);
         
         // Procedural skybox effect.
-        ProceduralSkyboxEffect = new Effect(GraphicsDevice, Resource.LoadBytes("content.bliss.shaders.environment.procedural_skybox.vert"), Resource.LoadBytes("content.bliss.shaders.environment.procedural_skybox.frag"), new CrossCompileOptions());
+        ProceduralSkyboxEffect = new Effect(GraphicsDevice, "content/bliss/shaders/environment/procedural_skybox.vert", "content/bliss/shaders/environment/procedural_skybox.frag", new CrossCompileOptions());
         ProceduralSkyboxEffect.AddBufferLayout("MatrixBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
         ProceduralSkyboxEffect.AddBufferLayout("SkyboxBuffer", 1, SimpleBufferType.Uniform, ShaderStages.Fragment);
         

@@ -43,6 +43,9 @@
     
     <!-- Content -->
     <ItemGroup>
-        <EmbeddedResource Include="content/**/*" />
+        <Content Include="content/**/*" Pack="true">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <PackageCopyToOutput>true</PackageCopyToOutput>
+        </Content>
     </ItemGroup>
 </Project>

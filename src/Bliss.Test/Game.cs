@@ -131,7 +131,7 @@ public class Game : Disposable {
         this.GraphicsDevice = graphicsDevice;
         
         Logger.Info("Loading window icon...");
-        this.MainWindow.SetIcon(this.Settings.IconPath != string.Empty ? new Image(this.Settings.IconPath) : new Image(Resource.Load("content.bliss.images.logo.png")));
+        this.MainWindow.SetIcon(this.Settings.IconPath != string.Empty ? new Image(this.Settings.IconPath) : new Image("content/bliss/images/logo.png"));
         
         Logger.Info("Initialize time...");
         Time.Init();
@@ -208,7 +208,7 @@ public class Game : Disposable {
         this._font = new Font("content/fonts/fontoe.ttf");
         
         TextureAtlasBuilder textureAtlasBuilder = new TextureAtlasBuilder();
-        textureAtlasBuilder.Add("logo", new Image(Resource.LoadBytes("content.bliss.images.logo.png")));
+        textureAtlasBuilder.Add("logo", new Image("content/bliss/images/logo.png"));
         textureAtlasBuilder.Add("animated", new AnimatedImage("content/animated.gif"));
         this.TextureAtlas = textureAtlasBuilder.Build(this.GraphicsDevice);
         

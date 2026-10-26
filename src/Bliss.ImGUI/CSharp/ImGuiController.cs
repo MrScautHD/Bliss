@@ -137,7 +137,7 @@ public class ImGuiController : Disposable {
         this._projViewBuffer.DeviceBuffer.Name = "ProjViewBuffer";
         
         // Create effect.
-        this._effect = new Effect(graphicsDevice, Resource.LoadBytes(typeof(ImGuiController).Assembly, "content.imgui.shaders.imgui_default.vert"), Resource.LoadBytes(typeof(ImGuiController).Assembly, "content.imgui.shaders.imgui_default.frag"), new CrossCompileOptions());
+        this._effect = new Effect(graphicsDevice, "content/imgui/shaders/imgui_default.vert", "content/imgui/shaders/imgui_default.frag", new CrossCompileOptions());
         this._effect.AddBufferLayout("ProjectionViewBuffer", 0, SimpleBufferType.Uniform, ShaderStages.Vertex);
         this._effect.AddTextureLayout("fTexture", 1);
         
