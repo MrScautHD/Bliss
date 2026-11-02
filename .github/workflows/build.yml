@@ -76,4 +76,4 @@ jobs:
 
     # Publish NuGet packages
     - name: Publish NuGet packages
-      run: dotnet nuget push nuget/*.nupkg --api-key ${{ steps.login.outputs.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push nuget/*.nupkg --api-key ${{ steps.login.outputs.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
