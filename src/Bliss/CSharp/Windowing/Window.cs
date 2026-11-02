@@ -88,8 +88,8 @@ public static class Window {
     private static GraphicsDevice CreateD3D12GraphicsDevice(IWindow window, GraphicsDeviceOptions options) {
         SwapchainDescription description = new SwapchainDescription() {
             Source = window.SwapchainSource,
-            Width = (uint) window.GetWidth(),
-            Height = (uint) window.GetHeight(),
+            Width = (uint) window.GetWidthInPixels(),
+            Height = (uint) window.GetHeightInPixels(),
             DepthFormat = options.SwapchainDepthFormat,
             SyncToVerticalBlank = options.SyncToVerticalBlank,
             ColorSrgb = options.SwapchainSrgbFormat
@@ -107,8 +107,8 @@ public static class Window {
     private static GraphicsDevice CreateVulkanGraphicsDevice(IWindow window, GraphicsDeviceOptions options) {
         SwapchainDescription description = new SwapchainDescription() {
             Source = window.SwapchainSource,
-            Width = (uint) window.GetWidth(),
-            Height = (uint) window.GetHeight(),
+            Width = (uint) window.GetWidthInPixels(),
+            Height = (uint) window.GetHeightInPixels(),
             DepthFormat = options.SwapchainDepthFormat,
             SyncToVerticalBlank = options.SyncToVerticalBlank,
             ColorSrgb = options.SwapchainSrgbFormat
@@ -126,8 +126,8 @@ public static class Window {
     private static GraphicsDevice CreateMetalGraphicsDevice(IWindow window, GraphicsDeviceOptions options) {
         SwapchainDescription description = new SwapchainDescription() {
             Source = window.SwapchainSource,
-            Width = (uint) window.GetWidth(),
-            Height = (uint) window.GetHeight(),
+            Width = (uint) window.GetWidthInPixels(),
+            Height = (uint) window.GetHeightInPixels(),
             DepthFormat = options.SwapchainDepthFormat,
             SyncToVerticalBlank = options.SyncToVerticalBlank,
             ColorSrgb = options.SwapchainSrgbFormat
