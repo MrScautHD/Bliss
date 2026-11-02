@@ -224,8 +224,8 @@ public class Sdl3Window : Disposable, IWindow {
     /// <returns>A handle to the specified module, or null if the module is not found.</returns>
     /// <exception cref="System.ComponentModel.Win32Exception">Thrown if an error occurs when retrieving the module handle.</exception>
     [DllImport("kernel32", ExactSpelling = true)]
-    private static extern unsafe nint GetModuleHandleW(ushort* lpModuleName);
-
+    private static unsafe extern nint GetModuleHandleW(ushort* lpModuleName);
+    
     /// <summary>
     /// Retrieves the title of the window.
     /// </summary>
@@ -244,167 +244,196 @@ public class Sdl3Window : Disposable, IWindow {
             Logger.Warn($"Failed to set the title of the window: [{this.Id}] Error: {SDL.GetError()}");
         }
     }
-
+    
     /// <summary>
-    /// Retrieves the current width and height of the window in pixels.
+    /// Retrieves the current logical size of the window.
     /// </summary>
-    /// <returns>A tuple containing two integers representing the width and height of the window in pixels.</returns>
+    /// <returns>A tuple containing the logical width and height of the window.</returns>
     public (int Width, int Height) GetSize() {
-        if (!SDL.GetWindowSizeInPixels(this.Handle, out int width, out int height)) {
-            Logger.Warn($"Failed to get the size of the window: [{this.Id}] Error: {SDL.GetError()}");
+        if (!SDL.GetWindowSize(this.Handle, out int width, out int height)) {
+            Logger.Warn($"Failed to get the logical size of the window: [{this.Id}] Error: {SDL.GetError()}");
         }
         
         return (width, height);
     }
-
+    
     /// <summary>
-    /// Sets the size of the window to the specified width and height.
+    /// Sets the logical size of the window.
     /// </summary>
-    /// <param name="width">The new width of the window.</param>
-    /// <param name="height">The new height of the window.</param>
+    /// <param name="width">The new logical width of the window.</param>
+    /// <param name="height">The new logical height of the window.</param>
     public void SetSize(int width, int height) {
         if (!SDL.SetWindowSize(this.Handle, width, height)) {
-            Logger.Warn($"Failed to set the size of the window: [{this.Id}] Error: {SDL.GetError()}");
+            Logger.Warn($"Failed to set the logical size of the window: [{this.Id}] Error: {SDL.GetError()}");
         }
     }
-
+    
     /// <summary>
-    /// Gets the width of the window.
+    /// Retrieves the current logical width of the window.
     /// </summary>
-    /// <returns>The width of the window in pixels.</returns>
+    /// <returns>The logical width of the window.</returns>
     public int GetWidth() {
         return this.GetSize().Width;
     }
-
+    
     /// <summary>
-    /// Sets the width of the window.
+    /// Sets the logical width of the window.
     /// </summary>
-    /// <param name="width">The new width of the window.</param>
+    /// <param name="width">The new logical width of the window.</param>
     public void SetWidth(int width) {
         this.SetSize(width, this.GetHeight());
     }
-
+    
     /// <summary>
-    /// Retrieves the height of the window.
+    /// Retrieves the current logical height of the window.
     /// </summary>
-    /// <returns>The height of the window in pixels.</returns>
+    /// <returns>The logical height of the window.</returns>
     public int GetHeight() {
         return this.GetSize().Height;
     }
     
     /// <summary>
-    /// Sets the height of the window to the specified value.
+    /// Sets the logical height of the window.
     /// </summary>
-    /// <param name="height">The new height of the window.</param>
+    /// <param name="height">The new logical height of the window.</param>
     public void SetHeight(int height) {
         this.SetSize(this.GetWidth(), height);
     }
     
     /// <summary>
-    /// Retrieves the minimum allowed size of the window.
+    /// Retrieves the current size of the window in physical pixels.
     /// </summary>
-    /// <returns> A tuple containing the minimum width and height of the window.</returns>
-    public (int Width, int Height) GetMinimumSize() {
-        if (!SDL.GetWindowMinimumSize(this.Handle, out int width, out int height)) {
-            Logger.Warn($"Failed to get the min size of the window: [{this.Id}] Error: {SDL.GetError()}");
+    /// <returns>A tuple containing the pixel width and height of the window.</returns>
+    public (int Width, int Height) GetSizeInPixels() {
+        if (!SDL.GetWindowSizeInPixels(this.Handle, out int width, out int height)) {
+            Logger.Warn($"Failed to get the pixel size of the window: [{this.Id}] Error: {SDL.GetError()}");
         }
         
         return (width, height);
     }
     
     /// <summary>
-    /// Sets the minimum allowed size of the window.
+    /// Retrieves the current physical width of the window in pixels.
     /// </summary>
-    /// <param name="width">The minimum width the window can be resized to.</param>
-    /// <param name="height">The minimum height the window can be resized to.</param>
+    /// <returns>The physical width of the window in pixels.</returns>
+    public int GetWidthInPixels() {
+        return this.GetSizeInPixels().Width;
+    }
+    
+    /// <summary>
+    /// Retrieves the current physical height of the window in pixels.
+    /// </summary>
+    /// <returns>The physical height of the window in pixels.</returns>
+    public int GetHeightInPixels() {
+        return this.GetSizeInPixels().Height;
+    }
+    
+    /// <summary>
+    /// Retrieves the minimum logical size of the window.
+    /// </summary>
+    /// <returns>A tuple containing the minimum logical width and height of the window.</returns>
+    public (int Width, int Height) GetMinimumSize() {
+        if (!SDL.GetWindowMinimumSize(this.Handle, out int width, out int height)) {
+            Logger.Warn($"Failed to get the minimum logical size of the window: [{this.Id}] Error: {SDL.GetError()}");
+        }
+        
+        return (width, height);
+    }
+    
+    /// <summary>
+    /// Sets the minimum logical size of the window.
+    /// </summary>
+    /// <param name="width">The minimum logical width of the window.</param>
+    /// <param name="height">The minimum logical height of the window.</param>
     public void SetMinimumSize(int width, int height) {
         if (!SDL.SetWindowMinimumSize(this.Handle, width, height)) {
-            Logger.Warn($"Failed to set the min size of the window: [{this.Id}] Error: {SDL.GetError()}");
+            Logger.Warn($"Failed to set the minimum logical size of the window: [{this.Id}] Error: {SDL.GetError()}");
         }
     }
     
     /// <summary>
-    /// Retrieves the minimum allowed width of the window.
+    /// Retrieves the minimum logical width of the window.
     /// </summary>
-    /// <returns>The minimum window width as an integer.</returns>
+    /// <returns>The minimum logical width of the window.</returns>
     public int GetMinimumWidth() {
         return this.GetMinimumSize().Width;
     }
     
     /// <summary>
-    /// Sets the minimum allowed width of the window.
+    /// Sets the minimum logical width of the window.
     /// </summary>
-    /// <param name="width">The minimum width the window can be resized to.</param>
+    /// <param name="width">The minimum logical width of the window.</param>
     public void SetMinimumWidth(int width) {
         this.SetMinimumSize(width, this.GetMinimumHeight());
     }
     
     /// <summary>
-    /// Retrieves the minimum allowed height of the window.
+    /// Retrieves the minimum logical height of the window.
     /// </summary>
-    /// <returns>The minimum window height as an integer.</returns>
+    /// <returns>The minimum logical height of the window.</returns>
     public int GetMinimumHeight() {
         return this.GetMinimumSize().Height;
     }
     
     /// <summary>
-    /// Sets the minimum allowed height of the window.
+    /// Sets the minimum logical height of the window.
     /// </summary>
-    /// <param name="height">The minimum height the window can be resized to.</param>
+    /// <param name="height">The minimum logical height of the window.</param>
     public void SetMinimumHeight(int height) {
         this.SetMinimumSize(this.GetMinimumWidth(), height);
     }
-
+    
     /// <summary>
-    /// Retrieves the current position of the window.
+    /// Retrieves the current position of the window in screen coordinates.
     /// </summary>
-    /// <returns>A tuple containing the x and y coordinates of the window's position.</returns>
-    /// <exception cref="System.Exception">Thrown if there is an error retrieving the window's position.</exception>
+    /// <returns>A tuple containing the X and Y coordinates of the window.</returns>
     public (int X, int Y) GetPosition() {
         if (!SDL.GetWindowPosition(this.Handle, out int x, out int y)) {
-            Logger.Warn($"Failed to set the position to the window: [{this.Id}] Error: {SDL.GetError()}");
+            Logger.Warn($"Failed to get the position of the window: [{this.Id}] Error: {SDL.GetError()}");
         }
         
         return (x, y);
     }
-
+    
     /// <summary>
-    /// Sets the position of the window on the screen.
+    /// Sets the position of the window using screen coordinates.
     /// </summary>
-    /// <param name="x">The x-coordinate of the window position.</param>
-    /// <param name="y">The y-coordinate of the window position.</param>
+    /// <param name="x">The X coordinate of the window.</param>
+    /// <param name="y">The Y coordinate of the window.</param>
     public void SetPosition(int x, int y) {
-        SDL.SetWindowPosition(this.Handle, x, y);
+        if (!SDL.SetWindowPosition(this.Handle, x, y)) {
+            Logger.Warn($"Failed to set the position of the window: [{this.Id}] Error: {SDL.GetError()}");
+        }
     }
-
+    
     /// <summary>
-    /// Retrieves the current X-coordinate position of the window.
+    /// Retrieves the current X coordinate of the window in screen coordinates.
     /// </summary>
-    /// <returns>The X-coordinate of the window's position.</returns>
+    /// <returns>The current X coordinate of the window.</returns>
     public int GetX() {
         return this.GetPosition().X;
     }
-
+    
     /// <summary>
-    /// Sets the X coordinate of the window's position.
+    /// Sets the X coordinate of the window using screen coordinates.
     /// </summary>
     /// <param name="x">The new X coordinate of the window.</param>
     public void SetX(int x) {
         this.SetPosition(x, this.GetY());
     }
-
+    
     /// <summary>
-    /// Retrieves the Y-coordinate of the window's position.
+    /// Retrieves the current Y coordinate of the window in screen coordinates.
     /// </summary>
-    /// <returns>The Y-coordinate of the window's position.</returns>
+    /// <returns>The current Y coordinate of the window.</returns>
     public int GetY() {
         return this.GetPosition().Y;
     }
-
+    
     /// <summary>
-    /// Sets the Y-coordinate of the window's position.
+    /// Sets the Y coordinate of the window using screen coordinates.
     /// </summary>
-    /// <param name="y">The new Y-coordinate.</param>
+    /// <param name="y">The new Y coordinate of the window.</param>
     public void SetY(int y) {
         this.SetPosition(this.GetX(), y);
     }

@@ -10,7 +10,7 @@ public static class MaterialMapTypeExtensions {
     /// A thread-safe dictionary used to cache the string representation of <see cref="MaterialMapType"/> enum values.
     /// </summary>
     private static ConcurrentDictionary<MaterialMapType, string> _nameCache = new();
-
+    
     /// <summary>
     /// Retrieves the name of the specified <see cref="MaterialMapType"/> enum value.
     /// </summary>

@@ -127,7 +127,7 @@ public class Game : Disposable {
         
         this.MainWindow = Window.CreateWindow(WindowType.Sdl3, this.Settings.Size.Width, this.Settings.Size.Height, this.Settings.Title, this.Settings.WindowFlags, options, this.Settings.Backend, out GraphicsDevice graphicsDevice);
         this.MainWindow.SetMinimumSize(this.Settings.MinSize.Width, this.Settings.MinSize.Height);
-        this.MainWindow.Resized += () => this.OnResize(new Rectangle(this.MainWindow.GetX(), this.MainWindow.GetY(), this.MainWindow.GetWidth(), this.MainWindow.GetHeight()));
+        this.MainWindow.Resized += () => this.OnResize(new Rectangle(this.MainWindow.GetX(), this.MainWindow.GetY(), this.MainWindow.GetWidthInPixels(), this.MainWindow.GetHeightInPixels()));
         this.GraphicsDevice = graphicsDevice;
         
         Logger.Info("Loading window icon...");
@@ -188,8 +188,8 @@ public class Game : Disposable {
     
     protected virtual void Init() {
         this.FullScreenRenderer = new FullScreenRenderer(this.GraphicsDevice);
-        this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.MainWindow.GetWidth(), (uint) this.MainWindow.GetHeight(), false, this.Settings.SampleCount);
-        this.FullScreenResolvedTexture = new Texture2D(this.GraphicsDevice, new Image(this.MainWindow.GetWidth(), this.MainWindow.GetHeight()), false);
+        this.FullScreenTexture = new RenderTexture2D(this.GraphicsDevice, (uint) this.MainWindow.GetWidthInPixels(), (uint) this.MainWindow.GetHeightInPixels(), false, this.Settings.SampleCount);
+        this.FullScreenResolvedTexture = new Texture2D(this.GraphicsDevice, new Image(this.MainWindow.GetWidthInPixels(), this.MainWindow.GetHeightInPixels()), false);
 
         this._basicForwardRenderer = new BasicForwardRenderer(this.GraphicsDevice);
         
@@ -307,7 +307,7 @@ public class Game : Disposable {
         
         this.SetupForwardRenderables();
         
-        Input.EnableRelativeMouseMode(); // TODO: RELATIVE MODE TO SAVE FPS WHEN MOVING THE MOUSE
+        //Input.EnableRelativeMouseMode(); // TODO: RELATIVE MODE TO SAVE FPS WHEN MOVING THE MOUSE
     }
     
     protected virtual void Update() {

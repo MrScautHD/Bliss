@@ -5,7 +5,6 @@ using Bliss.CSharp.Effects;
 using Bliss.CSharp.Graphics;
 using Bliss.CSharp.Graphics.Pipelines;
 using Bliss.CSharp.Graphics.Pipelines.Buffers;
-using Bliss.CSharp.Images;
 using Bliss.CSharp.Interact;
 using Bliss.CSharp.Interact.Keyboards;
 using Bliss.CSharp.Interact.Mice;
@@ -15,6 +14,7 @@ using Bliss.CSharp.Windowing.Events;
 using Hexa.NET.ImGui;
 using Veldrith;
 using Veldrith.SPIRV;
+using Image = Bliss.CSharp.Images.Image;
 using Sdl = SDL3.SDL;
 
 namespace Bliss.ImGUI.CSharp;
@@ -494,10 +494,18 @@ public class ImGuiController : Disposable {
     }
     
     /// <summary>
-    /// Updates the ImGui IO state with the current window dimensions and frame timing data.
+    /// Updates the ImGui display size and framebuffer scale using the current window dimensions.
     /// </summary>
     private void UpdateIo() {
-        this.Io.DisplaySize = new Vector2(this.Window.GetWidth(), this.Window.GetHeight());
+        (int width, int height) = this.Window.GetSize();
+        (int framebufferWidth, int framebufferHeight) = this.Window.GetSizeInPixels();
+        
+        this.Io.DisplaySize = new Vector2(width, height);
+        
+        this.Io.DisplayFramebufferScale = new Vector2(
+            width > 0.0F ? (float) framebufferWidth / width : 1.0F,
+            height > 0.0F ? (float) framebufferHeight / height : 1.0F
+        );
         
         if (this.Io.DeltaTime <= 0.0F) {
             this.Io.DeltaTime = 1.0F / 60.0F;

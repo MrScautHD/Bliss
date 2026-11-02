@@ -174,114 +174,132 @@ public interface IWindow : IDisposable {
     void SetTitle(string title);
 
     /// <summary>
-    /// Retrieves the current size of the window.
+    /// Retrieves the current logical size of the window.
     /// </summary>
-    /// <returns>A tuple containing the width and height of the window.</returns>
+    /// <returns>A tuple containing the logical width and height.</returns>
     (int Width, int Height) GetSize();
 
     /// <summary>
-    /// Sets the size of the window to the specified width and height.
+    /// Sets the logical size of the window.
     /// </summary>
-    /// <param name="width">The new width for the window.</param>
-    /// <param name="height">The new height for the window.</param>
+    /// <param name="width">The new logical width.</param>
+    /// <param name="height">The new logical height.</param>
     void SetSize(int width, int height);
 
     /// <summary>
-    /// Retrieves the current width of the window.
+    /// Retrieves the current logical width of the window.
     /// </summary>
-    /// <returns>The current window width as an integer.</returns>
+    /// <returns>The logical window width.</returns>
     int GetWidth();
 
     /// <summary>
-    /// Sets the width of the window to the specified value.
+    /// Sets the logical width of the window.
     /// </summary>
-    /// <param name="width">The new width for the window.</param>
+    /// <param name="width">The new logical width.</param>
     void SetWidth(int width);
 
     /// <summary>
-    /// Retrieves the current height of the window.
+    /// Retrieves the current logical height of the window.
     /// </summary>
-    /// <returns>The current window height as an integer.</returns>
+    /// <returns>The logical window height.</returns>
     int GetHeight();
     
     /// <summary>
-    /// Sets the height of the window to the specified value.
+    /// Sets the logical height of the window.
     /// </summary>
-    /// <param name="height">The new height of the window.</param>
+    /// <param name="height">The new logical height.</param>
     void SetHeight(int height);
     
     /// <summary>
-    /// Retrieves the minimum allowed size of the window.
+    /// Retrieves the current size of the window in physical pixels.
     /// </summary>
-    /// <returns> A tuple containing the minimum width and height of the window.</returns>
+    /// <returns>A tuple containing the pixel width and height.</returns>
+    (int Width, int Height) GetSizeInPixels();
+    
+    /// <summary>
+    /// Retrieves the current physical width of the window in pixels.
+    /// </summary>
+    /// <returns>The physical window width in pixels.</returns>
+    int GetWidthInPixels();
+    
+    /// <summary>
+    /// Retrieves the current physical height of the window in pixels.
+    /// </summary>
+    /// <returns>The physical window height in pixels.</returns>
+    int GetHeightInPixels();
+    
+    /// <summary>
+    /// Retrieves the minimum logical size of the window.
+    /// </summary>
+    /// <returns>A tuple containing the minimum logical width and height.</returns>
     (int Width, int Height) GetMinimumSize();
     
     /// <summary>
-    /// Sets the minimum allowed size of the window.
+    /// Sets the minimum logical size of the window.
     /// </summary>
-    /// <param name="width">The minimum width the window can be resized to.</param>
-    /// <param name="height">The minimum height the window can be resized to.</param>
+    /// <param name="width">The minimum logical width.</param>
+    /// <param name="height">The minimum logical height.</param>
     void SetMinimumSize(int width, int height);
     
     /// <summary>
-    /// Retrieves the minimum allowed width of the window.
+    /// Retrieves the minimum logical width of the window.
     /// </summary>
-    /// <returns>The minimum window width as an integer.</returns>
+    /// <returns>The minimum logical window width.</returns>
     int GetMinimumWidth();
     
     /// <summary>
-    /// Sets the minimum allowed width of the window.
+    /// Sets the minimum logical width of the window.
     /// </summary>
-    /// <param name="width">The minimum width the window can be resized to.</param>
+    /// <param name="width">The minimum logical width.</param>
     void SetMinimumWidth(int width);
     
     /// <summary>
-    /// Retrieves the minimum allowed height of the window.
+    /// Retrieves the minimum logical height of the window.
     /// </summary>
-    /// <returns>The minimum window height as an integer.</returns>
+    /// <returns>The minimum logical window height.</returns>
     int GetMinimumHeight();
     
     /// <summary>
-    /// Sets the minimum allowed height of the window.
+    /// Sets the minimum logical height of the window.
     /// </summary>
-    /// <param name="height">The minimum height the window can be resized to.</param>
+    /// <param name="height">The minimum logical height.</param>
     void SetMinimumHeight(int height);
     
     /// <summary>
-    /// Retrieves the current position of the window.
+    /// Retrieves the current position of the window in screen coordinates.
     /// </summary>
-    /// <returns>A tuple containing the x and y coordinates of the window.</returns>
+    /// <returns>A tuple containing the X and Y coordinates of the window.</returns>
     (int X, int Y) GetPosition();
 
     /// <summary>
-    /// Sets the position of the window to the specified coordinates.
+    /// Sets the position of the window using screen coordinates.
     /// </summary>
-    /// <param name="x">The x-coordinate to set for the window position.</param>
-    /// <param name="y">The y-coordinate to set for the window position.</param>
+    /// <param name="x">The X coordinate of the window.</param>
+    /// <param name="y">The Y coordinate of the window.</param>
     void SetPosition(int x, int y);
 
     /// <summary>
-    /// Retrieves the current X coordinate of the window.
+    /// Retrieves the current X coordinate of the window in screen coordinates.
     /// </summary>
-    /// <returns>The current X coordinate of the window as an integer.</returns>
+    /// <returns>The current X coordinate of the window.</returns>
     int GetX();
 
     /// <summary>
-    /// Sets the X coordinate of the window to the specified value.
+    /// Sets the X coordinate of the window using screen coordinates.
     /// </summary>
-    /// <param name="x">The new X coordinate for the window.</param>
+    /// <param name="x">The new X coordinate of the window.</param>
     void SetX(int x);
 
     /// <summary>
-    /// Retrieves the current y-coordinate of the window's position.
+    /// Retrieves the current Y coordinate of the window in screen coordinates.
     /// </summary>
-    /// <returns>The current y-coordinate of the window as an integer.</returns>
+    /// <returns>The current Y coordinate of the window.</returns>
     int GetY();
 
     /// <summary>
-    /// Sets the y-coordinate of the window's position.
+    /// Sets the Y coordinate of the window using screen coordinates.
     /// </summary>
-    /// <param name="y">The new y-coordinate to set for the window.</param>
+    /// <param name="y">The new Y coordinate of the window.</param>
     void SetY(int y);
     
     /// <summary>
