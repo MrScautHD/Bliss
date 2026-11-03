@@ -200,11 +200,13 @@ public class ImGuiController : Disposable {
     }
     
     /// <summary>
-    /// Prepares the ImGui frame by initializing the command list and framebuffer for rendering.
+    /// Begins a new ImGui frame using the specified command list and framebuffer, optionally overriding the mouse position.
     /// </summary>
-    /// <param name="commandList">The command list used for rendering ImGui frames.</param>
-    /// <param name="framebuffer">The framebuffer representing the target rendering surface.</param>
-    public void Begin(CommandList commandList, Framebuffer framebuffer) {
+    /// <param name="commandList">The command list used for rendering ImGui.</param>
+    /// <param name="framebuffer">The framebuffer used as the rendering target.</param>
+    /// <param name="mousePositionOverride">An optional mouse position override in ImGui coordinates.</param>
+    /// <exception cref="Exception">Thrown if an ImGui frame has already begun.</exception>
+    public void Begin(CommandList commandList, Framebuffer framebuffer, Vector2? mousePositionOverride = null) {
         if (this._begun) {
             throw new Exception("The ImGuiController has already begun!");
         }
@@ -214,7 +216,7 @@ public class ImGuiController : Disposable {
         this._commandList = commandList;
         this._framebuffer = framebuffer;
         
-        this.UpdateIo();
+        this.UpdateIo(mousePositionOverride);
         ImGui.NewFrame();
     }
     
@@ -494,7 +496,7 @@ public class ImGuiController : Disposable {
     /// <summary>
     /// Updates the ImGui display size and framebuffer scale using the current window dimensions.
     /// </summary>
-    private void UpdateIo() {
+    private void UpdateIo(Vector2? mousePositionOverride = null) {
         (int width, int height) = this.Window.GetSize();
         (int framebufferWidth, int framebufferHeight) = this.Window.GetSizeInPixels();
         
@@ -505,7 +507,11 @@ public class ImGuiController : Disposable {
             height > 0.0F ? (float) framebufferHeight / height : 1.0F
         );
         
-        if (Input.IsMouseMoving(out Vector2 mousePos)) {
+        if (mousePositionOverride.HasValue) {
+            Vector2 position = mousePositionOverride.Value;
+            this.Io.AddMousePosEvent(position.X, position.Y);
+        }
+        else if (Input.IsMouseMoving(out Vector2 mousePos)) {
             this.Io.AddMousePosEvent(mousePos.X, mousePos.Y);
         }
         
