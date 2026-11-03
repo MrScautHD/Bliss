@@ -93,6 +93,8 @@ public class Game : Disposable {
     private Mesh<Vertex3D> _customQuad;
     //private Mesh _customCubemap;
     
+    private Vector4 _pickedColor;
+    
     private int _frameCount;
     private bool _playingAnim;
 
@@ -542,7 +544,7 @@ public class Game : Disposable {
         
         this._imGuiController.Begin(commandList, this.GraphicsDevice.SwapchainFramebuffer);
         
-        ImGui.SetNextWindowPos(new Vector2(5.0F, 5.0F));
+        ImGui.SetNextWindowPos(new Vector2(5.0F, 5.0F), ImGuiCond.Once);
         ImGui.SetNextWindowSize(new Vector2(320.0F, 180.0F), ImGuiCond.FirstUseEver);
         
         if (ImGui.Begin("Bliss ImGUI Test")) {
@@ -565,6 +567,10 @@ public class Game : Disposable {
             }
             
             ImGui.Text("Raw ImGUI drawing from Game.cs");
+            
+            ImGui.Text("Color Picker:");
+            ImGui.Separator();
+            ImGui.ColorEdit4("Color", ref this._pickedColor, ImGuiColorEditFlags.Uint8 | ImGuiColorEditFlags.DisplayRgb);
         }
         
         ImGui.End();

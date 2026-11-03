@@ -192,15 +192,13 @@ public class ImGuiController : Disposable {
         
         // Add window events.
         this.Window.Resized += this.OnWindowResized;
-        this.Window.MouseMove += this.OnMouseMove;
-        this.Window.MouseWheel += this.OnMouseWheel;
         this.Window.MouseButtonDown += this.OnMouseButtonDown;
         this.Window.MouseButtonUp += this.OnMouseButtonUp;
         this.Window.KeyDown += this.OnKeyDown;
         this.Window.KeyUp += this.OnKeyUp;
         this.Window.TextInput += this.OnTextInput;
     }
-
+    
     /// <summary>
     /// Prepares the ImGui frame by initializing the command list and framebuffer for rendering.
     /// </summary>
@@ -507,6 +505,14 @@ public class ImGuiController : Disposable {
             height > 0.0F ? (float) framebufferHeight / height : 1.0F
         );
         
+        if (Input.IsMouseMoving(out Vector2 mousePos)) {
+            this.Io.AddMousePosEvent(mousePos.X, mousePos.Y);
+        }
+        
+        if (Input.IsMouseScrolling(out Vector2 wheelDelta)) {
+            this.Io.AddMouseWheelEvent(wheelDelta.X, wheelDelta.Y);
+        }
+        
         if (this.Io.DeltaTime <= 0.0F) {
             this.Io.DeltaTime = 1.0F / 60.0F;
         }
@@ -542,22 +548,6 @@ public class ImGuiController : Disposable {
     /// </summary>
     private void OnWindowResized() {
         this.UpdateIo();
-    }
-    
-    /// <summary>
-    /// Handles mouse movement events and updates the ImGui input system with the cursor's current position.
-    /// </summary>
-    /// <param name="position">The current position of the mouse cursor, represented as a 2D vector.</param>
-    private void OnMouseMove(Vector2 position) {
-        this.Io.AddMousePosEvent(position.X, position.Y);
-    }
-    
-    /// <summary>
-    /// Handles mouse wheel movement events and updates the ImGui input system with the scrolling deltas.
-    /// </summary>
-    /// <param name="wheel">The mouse wheel delta values, containing the horizontal and vertical scrolling amounts.</param>
-    private void OnMouseWheel(Vector2 wheel) {
-        this.Io.AddMouseWheelEvent(wheel.X, wheel.Y);
     }
     
     /// <summary>
@@ -774,8 +764,6 @@ public class ImGuiController : Disposable {
             this._effect.Dispose();
             
             this.Window.Resized -= this.OnWindowResized;
-            this.Window.MouseMove -= this.OnMouseMove;
-            this.Window.MouseWheel -= this.OnMouseWheel;
             this.Window.MouseButtonDown -= this.OnMouseButtonDown;
             this.Window.MouseButtonUp -= this.OnMouseButtonUp;
             this.Window.KeyDown -= this.OnKeyDown;
