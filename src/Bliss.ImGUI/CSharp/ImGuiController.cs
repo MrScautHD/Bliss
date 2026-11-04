@@ -500,13 +500,16 @@ public class ImGuiController : Disposable {
         (int width, int height) = this.Window.GetSize();
         (int framebufferWidth, int framebufferHeight) = this.Window.GetSizeInPixels();
         
+        // Update display size.
         this.Io.DisplaySize = new Vector2(width, height);
         
+        // Calculate framebuffer scale, falling back to 1 for zero-sized dimensions.
         this.Io.DisplayFramebufferScale = new Vector2(
             width > 0.0F ? (float) framebufferWidth / width : 1.0F,
             height > 0.0F ? (float) framebufferHeight / height : 1.0F
         );
         
+        // Apply the mouse position override or forward mouse movement.
         if (mousePositionOverride.HasValue) {
             Vector2 position = mousePositionOverride.Value;
             this.Io.AddMousePosEvent(position.X, position.Y);
@@ -515,10 +518,12 @@ public class ImGuiController : Disposable {
             this.Io.AddMousePosEvent(mousePos.X, mousePos.Y);
         }
         
+        // Forward mouse wheel input.
         if (Input.IsMouseScrolling(out Vector2 wheelDelta)) {
             this.Io.AddMouseWheelEvent(wheelDelta.X, wheelDelta.Y);
         }
         
+        // Use a default delta time if the current value is invalid.
         if (this.Io.DeltaTime <= 0.0F) {
             this.Io.DeltaTime = 1.0F / 60.0F;
         }
