@@ -67,23 +67,23 @@ public static class BlissMathExtensions {
         /// <summary>
         /// Creates a <see cref="Quaternion"/> from Euler angles specified in degrees.
         /// </summary>
-        /// <param name="pitch">The pitch angle in degrees (rotation around the X axis).</param>
         /// <param name="yaw">The yaw angle in degrees (rotation around the Y axis).</param>
+        /// <param name="pitch">The pitch angle in degrees (rotation around the X axis).</param>
         /// <param name="roll">The roll angle in degrees (rotation around the Z axis).</param>
         /// <returns>A <see cref="Quaternion"/> representing the combined rotation.</returns>
-        public static Quaternion CreateFromYawPitchRollInDegrees(float pitch, float yaw, float roll) {
+        public static Quaternion CreateFromYawPitchRollInDegrees(float yaw, float pitch, float roll) {
             return Quaternion.CreateFromYawPitchRoll(float.DegreesToRadians(yaw), float.DegreesToRadians(pitch), float.DegreesToRadians(roll));
         }
         
         /// <summary>
         /// Creates a delta <see cref="Quaternion"/> rotation from Euler angles in degrees, scaled by a time step.
         /// </summary>
-        /// <param name="pitch">The pitch angle in degrees (rotation around the X axis).</param>
         /// <param name="yaw">The yaw angle in degrees (rotation around the Y axis).</param>
+        /// <param name="pitch">The pitch angle in degrees (rotation around the X axis).</param>
         /// <param name="roll">The roll angle in degrees (rotation around the Z axis).</param>
         /// <param name="deltaTime">The elapsed time step to scale the rotation by.</param>
         /// <returns>A <see cref="Quaternion"/> representing the incremental rotation.</returns>
-        public static Quaternion CreateFromYawPitchRollInDegrees(float pitch, float yaw, float roll, float deltaTime) {
+        public static Quaternion CreateFromYawPitchRollInDegrees(float yaw, float pitch, float roll, float deltaTime) {
             return Quaternion.CreateFromYawPitchRoll(float.DegreesToRadians(yaw * deltaTime), float.DegreesToRadians(pitch * deltaTime), float.DegreesToRadians(roll * deltaTime));
         }
         
