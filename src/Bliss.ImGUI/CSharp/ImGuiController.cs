@@ -546,6 +546,9 @@ public class ImGuiController : Disposable {
                 this.Io.AddMouseWheelEvent(wheelDelta.X, wheelDelta.Y);
             }
         }
+        else {
+            this.Io.AddMousePosEvent(-float.MaxValue, -float.MaxValue);
+        }
         
         // Use a default delta time if the current value is invalid.
         if (this.Io.DeltaTime <= 0.0F) {
