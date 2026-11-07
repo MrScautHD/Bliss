@@ -513,8 +513,10 @@ public class ImGuiController : Disposable {
     }
     
     /// <summary>
-    /// Updates the ImGui display size and framebuffer scale using the current window dimensions.
+    /// Updates the ImGui display size, framebuffer scale, mouse input and delta time using the current window state.
     /// </summary>
+    /// <param name="applyMouseEvents">Whether mouse input (position, movement and wheel) is forwarded to ImGui. If <c>false</c>, the mouse input is skipped for this update.</param>
+    /// <param name="mousePositionOverride">An optional mouse position override in ImGui coordinates, used instead of the window's mouse movement.</param>
     private void UpdateIo(bool applyMouseEvents = true, Vector2? mousePositionOverride = null) {
         (int width, int height) = this.Window.GetSize();
         (int framebufferWidth, int framebufferHeight) = this.Window.GetSizeInPixels();
