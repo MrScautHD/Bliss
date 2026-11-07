@@ -37,6 +37,16 @@ public class ImGuiController : Disposable {
     public uint Capacity { get; private set; }
     
     /// <summary>
+    /// Gets the ImGui context owned by this controller.
+    /// </summary>
+    public ImGuiContextPtr ContextPtr { get; private set; }
+    
+    /// <summary>
+    /// Gets the ImGui context that was current before this controller made its own context current, so it can be restored afterwards.
+    /// </summary>
+    public ImGuiContextPtr PreviousContextPtr { get; private set; }
+    
+    /// <summary>
     /// The ImGui IO state providing input, timing, and configuration flags.
     /// </summary>
     public ImGuiIOPtr Io { get; private set; }
@@ -166,8 +176,9 @@ public class ImGuiController : Disposable {
         this._textureIds = 1;
         
         // Create ImGUI context.
-        ImGuiContextPtr contextPtr = ImGui.CreateContext();
-        ImGui.SetCurrentContext(contextPtr);
+        ImGuiContextPtr previousContext = ImGui.GetCurrentContext();
+        this.ContextPtr = ImGui.CreateContext();
+        ImGui.SetCurrentContext(this.ContextPtr);
         
         this.Io = ImGui.GetIO();
         this.Io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard
@@ -197,6 +208,9 @@ public class ImGuiController : Disposable {
         this.Window.KeyDown += this.OnKeyDown;
         this.Window.KeyUp += this.OnKeyUp;
         this.Window.TextInput += this.OnTextInput;
+        
+        // Restore previous context.
+        ImGui.SetCurrentContext(previousContext);
     }
     
     /// <summary>
@@ -204,9 +218,10 @@ public class ImGuiController : Disposable {
     /// </summary>
     /// <param name="commandList">The command list used for rendering ImGui.</param>
     /// <param name="framebuffer">The framebuffer used as the rendering target.</param>
+    /// <param name="applyMouseEvents">Whether mouse input (position, movement and wheel) is forwarded to ImGui this frame.</param>
     /// <param name="mousePositionOverride">An optional mouse position override in ImGui coordinates.</param>
     /// <exception cref="Exception">Thrown if an ImGui frame has already begun.</exception>
-    public void Begin(CommandList commandList, Framebuffer framebuffer, Vector2? mousePositionOverride = null) {
+    public void Begin(CommandList commandList, Framebuffer framebuffer, bool applyMouseEvents = true, Vector2? mousePositionOverride = null) {
         if (this._begun) {
             throw new Exception("The ImGuiController has already begun!");
         }
@@ -216,7 +231,10 @@ public class ImGuiController : Disposable {
         this._commandList = commandList;
         this._framebuffer = framebuffer;
         
-        this.UpdateIo(mousePositionOverride);
+        this.PreviousContextPtr = ImGui.GetCurrentContext();
+        ImGui.SetCurrentContext(this.ContextPtr);
+        
+        this.UpdateIo(applyMouseEvents, mousePositionOverride);
         ImGui.NewFrame();
     }
     
@@ -234,6 +252,7 @@ public class ImGuiController : Disposable {
         this.UpdateTextInput();
         this.UpdateFontTexture();
         this.RenderDrawData(ImGui.GetDrawData());
+        ImGui.SetCurrentContext(this.PreviousContextPtr);
         
         this._begun = false;
     }
@@ -496,7 +515,7 @@ public class ImGuiController : Disposable {
     /// <summary>
     /// Updates the ImGui display size and framebuffer scale using the current window dimensions.
     /// </summary>
-    private void UpdateIo(Vector2? mousePositionOverride = null) {
+    private void UpdateIo(bool applyMouseEvents = true, Vector2? mousePositionOverride = null) {
         (int width, int height) = this.Window.GetSize();
         (int framebufferWidth, int framebufferHeight) = this.Window.GetSizeInPixels();
         
@@ -509,18 +528,21 @@ public class ImGuiController : Disposable {
             height > 0.0F ? (float) framebufferHeight / height : 1.0F
         );
         
-        // Apply the mouse position override or forward mouse movement.
-        if (mousePositionOverride.HasValue) {
-            Vector2 position = mousePositionOverride.Value;
-            this.Io.AddMousePosEvent(position.X, position.Y);
-        }
-        else if (Input.IsMouseMoving(out Vector2 mousePos)) {
-            this.Io.AddMousePosEvent(mousePos.X, mousePos.Y);
-        }
-        
-        // Forward mouse wheel input.
-        if (Input.IsMouseScrolling(out Vector2 wheelDelta)) {
-            this.Io.AddMouseWheelEvent(wheelDelta.X, wheelDelta.Y);
+        if (applyMouseEvents) {
+            
+            // Apply the mouse position override or forward mouse movement.
+            if (mousePositionOverride.HasValue) {
+                Vector2 position = mousePositionOverride.Value;
+                this.Io.AddMousePosEvent(position.X, position.Y);
+            }
+            else if (Input.IsMouseMoving(out Vector2 mousePos)) {
+                this.Io.AddMousePosEvent(mousePos.X, mousePos.Y);
+            }
+            
+            // Forward mouse wheel input.
+            if (Input.IsMouseScrolling(out Vector2 wheelDelta)) {
+                this.Io.AddMouseWheelEvent(wheelDelta.X, wheelDelta.Y);
+            }
         }
         
         // Use a default delta time if the current value is invalid.
@@ -762,7 +784,7 @@ public class ImGuiController : Disposable {
     
     protected override void Dispose(bool disposing) {
         if (disposing) {
-            ImGui.DestroyContext();
+            ImGui.DestroyContext(this.ContextPtr);
             
             if (this._textInputEnabled && Sdl.TextInputActive(this.Window.Handle)) {
                 Sdl.StopTextInput(this.Window.Handle);
