@@ -420,7 +420,7 @@ public class Cam3D : Disposable, ICam {
     public float GetYaw() {
         return this.GetRotation().Y;
     }
-
+    
     /// <summary>
     /// Sets the yaw of the camera by rotating it around the target or adjusting the target position, based on the specified angle.
     /// </summary>

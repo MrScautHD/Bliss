@@ -116,6 +116,31 @@ public static class BlissMathExtensions {
                 return new Vector3(cx, 0.0F, MathF.Atan2(-m21, m11));
             }
         }
+        
+        /// <summary>
+        /// Converts a quaternion to Euler angles in degrees near a reference.
+        /// It wraps two candidate representations and selects the closer one.
+        /// </summary>
+        /// <param name="rotation">The quaternion to convert.</param>
+        /// <param name="referenceDegrees">The reference Euler angles in degrees.</param>
+        /// <returns>The candidate closest to the reference, or the first candidate if tied.</returns>
+        public static Vector3 ToEulerAnglesInDegrees(Quaternion rotation, Vector3 referenceDegrees) {
+            Vector3 reference = referenceDegrees * (MathF.PI / 180.0F);
+            
+            Vector3 a = Quaternion.ToEulerAngles(rotation);
+            Vector3 b = new Vector3(MathF.PI - a.X, a.Y + MathF.PI, a.Z + MathF.PI);
+            
+            a.X -= MathF.Tau * MathF.Round((a.X - reference.X) / MathF.Tau);
+            a.Y -= MathF.Tau * MathF.Round((a.Y - reference.Y) / MathF.Tau);
+            a.Z -= MathF.Tau * MathF.Round((a.Z - reference.Z) / MathF.Tau);
+            
+            b.X -= MathF.Tau * MathF.Round((b.X - reference.X) / MathF.Tau);
+            b.Y -= MathF.Tau * MathF.Round((b.Y - reference.Y) / MathF.Tau);
+            b.Z -= MathF.Tau * MathF.Round((b.Z - reference.Z) / MathF.Tau);
+            
+            Vector3 best = Vector3.DistanceSquared(a, reference) <= Vector3.DistanceSquared(b, reference) ? a : b;
+            return best * (180.0F / MathF.PI);
+        }
     }
     
     /// <summary>

@@ -1,19 +1,37 @@
 using System.Numerics;
+using Bliss.CSharp.Mathematics;
 
 namespace Bliss.CSharp.Transformations;
 
 public struct Transform : IEquatable<Transform> {
-
+    
     /// <summary>
     /// Stores the translation (position) vector of the transform.
     /// </summary>
     public Vector3 Translation;
     
     /// <summary>
-    /// Stores the rotation of the transform as a quaternion.
+    /// The rotation as a quaternion. Setting it updates <see cref="EulerAngles"/>.
     /// </summary>
-    public Quaternion Rotation;
-
+    public Quaternion Rotation {
+        readonly get => this._rotation;
+        set {
+            this._rotation = value;
+            this._eulerAngles = Quaternion.ToEulerAnglesInDegrees(value, this._eulerAngles);
+        }
+    }
+    
+    /// <summary>
+    /// The rotation as Euler angles in degrees. Setting it updates <see cref="Rotation"/>.
+    /// </summary>
+    public Vector3 EulerAngles {
+        readonly get => this._eulerAngles;
+        set {
+            this._eulerAngles = value;
+            this._rotation = Quaternion.CreateFromYawPitchRollInDegrees(value.Y, value.X, value.Z);
+        }
+    }
+    
     /// <summary>
     /// Stores the scale of the transform.
     /// </summary>
@@ -35,11 +53,22 @@ public struct Transform : IEquatable<Transform> {
     public Vector3 Right => Vector3.Transform(Vector3.UnitX, this.Rotation);
     
     /// <summary>
+    /// Backing field for <see cref="Rotation"/>.
+    /// </summary>
+    private Quaternion _rotation;
+    
+    /// <summary>
+    /// Backing field for <see cref="EulerAngles"/>, stored in degrees.
+    /// </summary>
+    private Vector3 _eulerAngles;
+    
+    /// <summary>
     /// Initializes a new instance of the <see cref="Transform"/> class with default values.
     /// </summary>
     public Transform() {
         this.Translation = Vector3.Zero;
-        this.Rotation = Quaternion.Identity;
+        this._rotation = Quaternion.Identity;
+        this._eulerAngles = Vector3.Zero;
         this.Scale = Vector3.One;
     }
     
