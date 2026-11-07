@@ -218,10 +218,9 @@ public class ImGuiController : Disposable {
     /// </summary>
     /// <param name="commandList">The command list used for rendering ImGui.</param>
     /// <param name="framebuffer">The framebuffer used as the rendering target.</param>
-    /// <param name="applyMouseEvents">Whether mouse input (position, movement and wheel) is forwarded to ImGui this frame.</param>
     /// <param name="mousePositionOverride">An optional mouse position override in ImGui coordinates.</param>
     /// <exception cref="Exception">Thrown if an ImGui frame has already begun.</exception>
-    public void Begin(CommandList commandList, Framebuffer framebuffer, bool applyMouseEvents = true, Vector2? mousePositionOverride = null) {
+    public void Begin(CommandList commandList, Framebuffer framebuffer, Vector2? mousePositionOverride = null) {
         if (this._begun) {
             throw new Exception("The ImGuiController has already begun!");
         }
@@ -234,7 +233,7 @@ public class ImGuiController : Disposable {
         this.PreviousContextPtr = ImGui.GetCurrentContext();
         ImGui.SetCurrentContext(this.ContextPtr);
         
-        this.UpdateIo(applyMouseEvents, mousePositionOverride);
+        this.UpdateIo(mousePositionOverride);
         ImGui.NewFrame();
     }
     
@@ -515,9 +514,8 @@ public class ImGuiController : Disposable {
     /// <summary>
     /// Updates the ImGui display size, framebuffer scale, mouse input and delta time using the current window state.
     /// </summary>
-    /// <param name="applyMouseEvents">Whether mouse input (position, movement and wheel) is forwarded to ImGui. If <c>false</c>, the mouse input is skipped for this update.</param>
     /// <param name="mousePositionOverride">An optional mouse position override in ImGui coordinates, used instead of the window's mouse movement.</param>
-    private void UpdateIo(bool applyMouseEvents = true, Vector2? mousePositionOverride = null) {
+    private void UpdateIo(Vector2? mousePositionOverride = null) {
         (int width, int height) = this.Window.GetSize();
         (int framebufferWidth, int framebufferHeight) = this.Window.GetSizeInPixels();
         
@@ -530,24 +528,18 @@ public class ImGuiController : Disposable {
             height > 0.0F ? (float) framebufferHeight / height : 1.0F
         );
         
-        if (applyMouseEvents) {
-            
-            // Apply the mouse position override or forward mouse movement.
-            if (mousePositionOverride.HasValue) {
-                Vector2 position = mousePositionOverride.Value;
-                this.Io.AddMousePosEvent(position.X, position.Y);
-            }
-            else if (Input.IsMouseMoving(out Vector2 mousePos)) {
-                this.Io.AddMousePosEvent(mousePos.X, mousePos.Y);
-            }
-            
-            // Forward mouse wheel input.
-            if (Input.IsMouseScrolling(out Vector2 wheelDelta)) {
-                this.Io.AddMouseWheelEvent(wheelDelta.X, wheelDelta.Y);
-            }
+        // Apply the mouse position override or forward mouse movement.
+        if (mousePositionOverride.HasValue) {
+            Vector2 position = mousePositionOverride.Value;
+            this.Io.AddMousePosEvent(position.X, position.Y);
         }
-        else {
-            this.Io.AddMousePosEvent(-float.MaxValue, -float.MaxValue);
+        else if (Input.IsMouseMoving(out Vector2 mousePos)) {
+            this.Io.AddMousePosEvent(mousePos.X, mousePos.Y);
+        }
+        
+        // Forward mouse wheel input.
+        if (Input.IsMouseScrolling(out Vector2 wheelDelta)) {
+            this.Io.AddMouseWheelEvent(wheelDelta.X, wheelDelta.Y);
         }
         
         // Use a default delta time if the current value is invalid.
