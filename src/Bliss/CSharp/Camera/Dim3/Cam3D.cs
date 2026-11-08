@@ -144,9 +144,9 @@ public class Cam3D : Disposable, ICam {
         this.Mode = mode;
         this.Fov = fov;
         this.NearPlane = nearPlane;
+        this.FarPlane = farPlane;
         this.AllowRotation = true;
         this.AllowMovement = true;
-        this.FarPlane = farPlane;
         this.MouseSensitivity = 0.05F;
         this.GamepadSensitivity = 1.0F;
         this.MovementSpeed = 10.0F;
