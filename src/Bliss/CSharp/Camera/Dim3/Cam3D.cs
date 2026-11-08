@@ -25,112 +25,99 @@ public class Cam3D : Disposable, ICam {
     public GraphicsDevice GraphicsDevice { get; private set; }
     
     /// <summary>
-    /// Represents the ratio between the width and height of the camera's viewport.
-    /// Used to adjust the projection matrix for rendering the 3D scene correctly on the screen.
+    /// Gets the aspect ratio (width / height) used to build the projection matrix.
+    /// Updated through <see cref="Resize"/>.
     /// </summary>
     public float AspectRatio { get; private set; }
-
+    
     /// <summary>
-    /// Represents the position of the camera in a 3D space.
-    /// This defines the location from which the camera is capturing its view.
+    /// The position of the camera in world space.
     /// </summary>
     public Vector3 Position;
-
+    
     /// <summary>
-    /// Represents the focal point that the camera is aimed at in the 3D space.
-    /// Determines the direction in which the camera is looking.
+    /// The point in world space the camera is looking at.
     /// </summary>
     public Vector3 Target;
-
+    
     /// <summary>
-    /// Represents the upward direction vector for the camera, determining its orientation in the 3D space
-    /// relative to its position and target.
+    /// The upward direction of the camera. Defaults to (0,1,0) and is used for the view matrix, yaw rotation and vertical movement.
     /// </summary>
     public Vector3 Up;
-
+    
     /// <summary>
-    /// Represents the type of projection used by the camera, either Perspective or Orthographic,
-    /// influencing how 3D scenes are rendered onto a 2D viewport.
+    /// The projection type of the camera (Perspective or Orthographic).
     /// </summary>
     public ProjectionType ProjectionType;
-
+    
     /// <summary>
-    /// Defines the current operational mode of the camera.
-    /// This determines the behavior and control mechanics of the camera,
-    /// such as whether it's in Free mode, Orbital mode, etc.
+    /// The movement mode of the camera (Free, Orbital, FirstPerson or ThirdPerson). Determines how input is handled in <see cref="Update"/>.
     /// </summary>
     public CameraMode Mode;
-
+    
     /// <summary>
-    /// Defines the field of view (FOV) angle for the camera, determining
-    /// the extent of the observable world that is seen at any given moment.
+    /// The field of view in degrees for perspective projection.
+    /// For orthographic projection, this value defines the height of the visible view volume.
     /// </summary>
     public float Fov;
-
+    
     /// <summary>
-    /// Specifies the near clipping plane distance for the camera, determining
-    /// the minimum depth at which objects are rendered in the 3D scene.
+    /// The distance to the near clipping plane. Must be positive and smaller than <see cref="FarPlane"/>.
     /// </summary>
     public float NearPlane;
-
+    
     /// <summary>
-    /// Specifies the far clipping plane distance for the camera, determining
-    /// the maximum depth at which objects are rendered in the 3D scene.
+    /// The distance to the far clipping plane. Must be positive and greater than <see cref="NearPlane"/>.
     /// </summary>
     public float FarPlane;
-
+    
     /// <summary>
-    /// Determines the sensitivity of the camera to mouse movements.
-    /// This affects how fast the camera rotates or moves in response to mouse inputs.
-    /// Higher values result in faster and more responsive camera movements.
+    /// Determines whether the camera may be rotated by input in <see cref="Update"/>.
+    /// </summary>
+    public bool AllowRotation;
+    
+    /// <summary>
+    /// Determines whether the camera may be moved by input in <see cref="Update"/>.
+    /// </summary>
+    public bool AllowMovement;
+    
+    /// <summary>
+    /// The mouse sensitivity, in degrees of rotation per pixel of mouse movement.
     /// </summary>
     public float MouseSensitivity;
-
+    
     /// <summary>
-    /// Determines the sensitivity of the gamepad input when controlling the camera's movement or rotation.
-    /// Adjusting this value influences how responsive the camera is to gamepad interactions.
-    /// Used in scenarios where the camera is manipulated using joystick or trigger inputs.
+    /// The gamepad stick sensitivity multiplier. A value of 1.0 rotates the camera by 100 degrees per second at full stick deflection.
     /// </summary>
     public float GamepadSensitivity;
-
+    
     /// <summary>
-    /// Specifies the speed at which the camera can move within the scene.
-    /// Adjust this value to control how fast the camera translates in the 3D space.
-    /// Typically used in conjunction with user input to navigate the scene.
+    /// The movement speed of the camera in world units per second.
     /// </summary>
     public float MovementSpeed;
-
+    
     /// <summary>
-    /// Represents the speed at which the camera orbits around a target.
-    /// Determines how quickly the camera moves when controlled to orbit in any direction.
-    /// Typically used in orbital or tracking camera modes.
+    /// The rotation speed of the camera around its target in <see cref="CameraMode.Orbital"/> mode, in radians per second.
     /// </summary>
     public float OrbitalSpeed;
-
+    
     /// <summary>
-    /// Represents the viewing frustum for the camera, which determines the
-    /// visible field and boundary for objects in the 3D scene.
+    /// The view frustum of the camera, extracted from the view and projection matrices in <see cref="Begin"/>.
     /// </summary>
     private Frustum _frustum;
-
+    
     /// <summary>
-    /// Stores the projection matrix used for transforming 3D coordinates to 2D screen coordinates.
-    /// Updated based on the camera's projection type, field of view, aspect ratio, and near/far planes.
-    /// Accessed to retrieve the current projection matrix for rendering.
+    /// The cached projection matrix, recalculated in <see cref="Begin"/>.
     /// </summary>
     private Matrix4x4 _projection;
-
+    
     /// <summary>
-    /// Stores the view matrix of the camera.
-    /// The view matrix represents the transformation from world coordinates to camera coordinates.
-    /// It is used in rendering to position and orient the camera in the scene.
+    /// The cached view matrix, recalculated in <see cref="Begin"/>.
     /// </summary>
     private Matrix4x4 _view;
-
+    
     /// <summary>
-    /// Represents a GPU buffer for storing transformation matrices, such as the view and projection matrices,
-    /// used in rendering operations. This buffer facilitates the efficient transfer of matrix data to the
-    /// GPU via a uniform buffer, ensuring that the camera's transformations are correctly applied in the shader.
+    /// The uniform buffer that holds the projection matrix (index 0) and the view matrix (index 1) for the vertex shader stage.
     /// </summary>
     private SimpleUniformBuffer<Matrix4x4> _matrixBuffer;
     
@@ -167,95 +154,115 @@ public class Cam3D : Disposable, ICam {
         this._matrixBuffer.DeviceBuffer.Name = "MatrixBuffer";
     }
     
+    /// <summary>
+    /// Updates the camera based on the current <see cref="Mode"/>, handling mouse, keyboard and gamepad input for rotation and movement.
+    /// </summary>
+    /// <param name="delta">The time elapsed since the last update, in seconds.</param>
     public void Update(double delta) {
         switch (this.Mode) {
             case CameraMode.Free: {
                 if (!Input.GetFirstAvailableGamepad(out uint gamepad)) {
-                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity), false);
-                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity), false);
-                    
-                    if (Input.IsKeyDown(KeyboardKey.W)) {
-                        this.MoveForward(this.MovementSpeed * (float) delta, true);
+                    if (this.AllowRotation) {
+                        this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity), false);
+                        this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity), false);
                     }
                     
-                    if (Input.IsKeyDown(KeyboardKey.S)) {
-                        this.MoveForward(-this.MovementSpeed * (float) delta, true);
-                    }
-                    
-                    if (Input.IsKeyDown(KeyboardKey.A)) {
-                        this.MoveRight(-this.MovementSpeed * (float) delta, true);
-                    }
-                    
-                    if (Input.IsKeyDown(KeyboardKey.D)) {
-                        this.MoveRight(this.MovementSpeed * (float) delta, true);
-                    }
-                    
-                    if (Input.IsKeyDown(KeyboardKey.Space)) {
-                        this.MoveUp(this.MovementSpeed * (float) delta);
-                    }
-                    
-                    if (Input.IsKeyDown(KeyboardKey.ShiftLeft)) {
-                        this.MoveUp(-this.MovementSpeed * (float) delta);
+                    if (this.AllowMovement) {
+                        if (Input.IsKeyDown(KeyboardKey.W)) {
+                            this.MoveForward(this.MovementSpeed * (float) delta, true);
+                        }
+                        
+                        if (Input.IsKeyDown(KeyboardKey.S)) {
+                            this.MoveForward(-this.MovementSpeed * (float) delta, true);
+                        }
+                        
+                        if (Input.IsKeyDown(KeyboardKey.A)) {
+                            this.MoveRight(-this.MovementSpeed * (float) delta, true);
+                        }
+                        
+                        if (Input.IsKeyDown(KeyboardKey.D)) {
+                            this.MoveRight(this.MovementSpeed * (float) delta, true);
+                        }
+                        
+                        if (Input.IsKeyDown(KeyboardKey.Space)) {
+                            this.MoveUp(this.MovementSpeed * (float) delta);
+                        }
+                        
+                        if (Input.IsKeyDown(KeyboardKey.ShiftLeft)) {
+                            this.MoveUp(-this.MovementSpeed * (float) delta);
+                        }
                     }
                 }
                 else {
-                    this.SetYaw(this.GetYaw() - Input.GetGamepadAxisMovement(gamepad, GamepadAxis.RightX) * this.GamepadSensitivity * 100 * (float) delta, false);
-                    this.SetPitch(this.GetPitch() - Input.GetGamepadAxisMovement(gamepad, GamepadAxis.RightY) * this.GamepadSensitivity * 100 * (float) delta, false);
-                    
-                    this.MoveForward(this.MovementSpeed * Input.GetGamepadAxisMovement(gamepad, GamepadAxis.TriggerRight) * (float) delta, false);
-                    this.MoveForward(-this.MovementSpeed * Input.GetGamepadAxisMovement(gamepad, GamepadAxis.TriggerLeft) * (float) delta, false);
-                    
-                    if (Input.IsGamepadButtonDown(gamepad, GamepadButton.RightShoulder)) {
-                        this.MoveRight(this.MovementSpeed * (float) delta, true);
+                    if (this.AllowRotation) {
+                        this.SetYaw(this.GetYaw() - Input.GetGamepadAxisMovement(gamepad, GamepadAxis.RightX) * this.GamepadSensitivity * 100 * (float)delta, false);
+                        this.SetPitch(this.GetPitch() - Input.GetGamepadAxisMovement(gamepad, GamepadAxis.RightY) * this.GamepadSensitivity * 100 * (float)delta, false);
                     }
                     
-                    if (Input.IsGamepadButtonDown(gamepad, GamepadButton.LeftShoulder)) {
-                        this.MoveRight(-this.MovementSpeed * (float) delta, true);
-                    }
-                    
-                    if (Input.IsGamepadButtonDown(gamepad, GamepadButton.RightStick)) {
-                        this.MoveUp(this.MovementSpeed * (float) delta);
-                    }
-                    
-                    if (Input.IsGamepadButtonDown(gamepad, GamepadButton.LeftStick)) {
-                        this.MoveUp(-this.MovementSpeed * (float) delta);
+                    if (this.AllowMovement) {
+                        this.MoveForward(this.MovementSpeed * Input.GetGamepadAxisMovement(gamepad, GamepadAxis.TriggerRight) * (float)delta, false);
+                        this.MoveForward(-this.MovementSpeed * Input.GetGamepadAxisMovement(gamepad, GamepadAxis.TriggerLeft) * (float)delta, false);
+                        
+                        if (Input.IsGamepadButtonDown(gamepad, GamepadButton.RightShoulder)) {
+                            this.MoveRight(this.MovementSpeed * (float)delta, true);
+                        }
+                        
+                        if (Input.IsGamepadButtonDown(gamepad, GamepadButton.LeftShoulder)) {
+                            this.MoveRight(-this.MovementSpeed * (float)delta, true);
+                        }
+                        
+                        if (Input.IsGamepadButtonDown(gamepad, GamepadButton.RightStick)) {
+                            this.MoveUp(this.MovementSpeed * (float)delta);
+                        }
+                        
+                        if (Input.IsGamepadButtonDown(gamepad, GamepadButton.LeftStick)) {
+                            this.MoveUp(-this.MovementSpeed * (float)delta);
+                        }
                     }
                 }
                 
                 break;
             }
             case CameraMode.Orbital: {
-                Matrix4x4 rotation = Matrix4x4.CreateFromAxisAngle(this.Up, this.OrbitalSpeed * (float) delta);
-                Vector3 view = this.Position - this.Target;
-                Vector3 transform = Vector3.Transform(view, rotation);
-                this.Position = this.Target + transform;
+                if (this.AllowRotation) {
+                    Matrix4x4 rotation = Matrix4x4.CreateFromAxisAngle(this.Up, this.OrbitalSpeed * (float) delta);
+                    Vector3 view = this.Position - this.Target;
+                    Vector3 transform = Vector3.Transform(view, rotation);
+                    this.Position = this.Target + transform;
+                }
                 
-                if (Input.IsMouseScrolling(out Vector2 wheelDelta)) {
-                    this.MoveToTarget(-wheelDelta.Y);
+                if (this.AllowMovement) {
+                    if (Input.IsMouseScrolling(out Vector2 wheelDelta)) {
+                        this.MoveToTarget(-wheelDelta.Y);
+                    }
                 }
                 
                 break;
             }
             case CameraMode.FirstPerson: {
-                if (!Input.GetFirstAvailableGamepad(out uint gamepad)) {
-                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity), false);
-                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity), false);
-                }
-                else {
-                    this.SetYaw(this.GetYaw() - Input.GetGamepadAxisMovement(gamepad, GamepadAxis.RightX) * this.GamepadSensitivity * 100 * (float) delta, false);
-                    this.SetPitch(this.GetPitch() - Input.GetGamepadAxisMovement(gamepad, GamepadAxis.RightY) * this.GamepadSensitivity * 100 * (float) delta, false);
+                if (this.AllowRotation) {
+                    if (!Input.GetFirstAvailableGamepad(out uint gamepad)) {
+                        this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity), false);
+                        this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity), false);
+                    }
+                    else {
+                        this.SetYaw(this.GetYaw() - Input.GetGamepadAxisMovement(gamepad, GamepadAxis.RightX) * this.GamepadSensitivity * 100 * (float)delta, false);
+                        this.SetPitch(this.GetPitch() - Input.GetGamepadAxisMovement(gamepad, GamepadAxis.RightY) * this.GamepadSensitivity * 100 * (float)delta, false);
+                    }
                 }
                 
                 break;
             }
             case CameraMode.ThirdPerson: {
-                if (!Input.GetFirstAvailableGamepad(out uint gamepad)) {
-                    this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity), true);
-                    this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity), true);
-                }
-                else {
-                    this.SetYaw(this.GetYaw() + Input.GetGamepadAxisMovement(gamepad, GamepadAxis.RightX) * this.GamepadSensitivity * 100 * (float) delta, true);
-                    this.SetPitch(this.GetPitch() + Input.GetGamepadAxisMovement(gamepad, GamepadAxis.RightY) * this.GamepadSensitivity * 100 * (float) delta, true);
+                if (this.AllowRotation) {
+                    if (!Input.GetFirstAvailableGamepad(out uint gamepad)) {
+                        this.SetYaw(this.GetYaw() - (Input.GetMouseDelta().X * this.MouseSensitivity), true);
+                        this.SetPitch(this.GetPitch() - (Input.GetMouseDelta().Y * this.MouseSensitivity), true);
+                    }
+                    else {
+                        this.SetYaw(this.GetYaw() + Input.GetGamepadAxisMovement(gamepad, GamepadAxis.RightX) * this.GamepadSensitivity * 100 * (float)delta, true);
+                        this.SetPitch(this.GetPitch() + Input.GetGamepadAxisMovement(gamepad, GamepadAxis.RightY) * this.GamepadSensitivity * 100 * (float)delta, true);
+                    }
                 }
                 
                 break;
@@ -568,4 +575,4 @@ public class Cam3D : Disposable, ICam {
             this._matrixBuffer.Dispose();
         }
     }
-} 
+}
